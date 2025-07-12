@@ -1,0 +1,3247 @@
+Probing Atomic-Scale Processes at the
+Ferrihydrite-Water Interface With Reactive
+Molecular Dynamics
+Ardalan Hayatifar,∗,† Simon Gravelle,‡ Beatriz D. Moreno,¶ Valerie A. Schoepfer,†
+1
+
+and Matthew B.J. Lindsay∗,†
+†Department of Geological Sciences, University of Saskatchewan, Saskatoon, SK, Canada
+S7N 5E2
+‡University Grenoble Alpes, CNRS, LIPhy, 38000 Grenoble, France
+¶Brockhouse Diffraction Sector, Canadian Light Source, Saskatoon, SK, Canada
+E-mail: ardalan.hayatifar@usask.ca; matt.lindsay@usask.ca
+
+1
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Abstract
+
+2
+
+3
+
+Interfacial processes involving metal (oxyhydr)oxide phases are important for the
+
+4
+
+mobility and bioavailability of nutrient and contaminant elements in soils, sediments,
+
+5
+
+and water. Consequently, these processes influence ecosystem health and functioning,
+
+6
+
+and have shaped the biological and environmental co-evolution of Earth over geologic
+
+7
+
+time. Here we employ reactive molecular dynamics simulations, supported by syn-
+
+8
+
+chrotron X-ray spectroscopy to study the molecular-scale interfacial processes that in-
+
+9
+
+fluence surface complexation in ferrihydrite-water systems containing aqueous MoO4 2 – .
+
+10
+
+We validate the utility of this approach by calculating surface complexation models di-
+
+11
+
+rectly from simulations. The reactive force-field captures the realistic dynamics of
+
+12
+
+surface restructuring, surface charge equilibration, and the evolution of the interfacial
+
+13
+
+water hydrogen bond network in response to adsorption and proton transfer. We find
+
+14
+
+that upon hydration and adsorption, ferrihydrite restructures into a more disordered
+
+15
+
+phase through surface charge equilibration, as revealed by simulations and grazing inci-
+
+16
+
+dent X-ray scattering. We observed how this restructuring leads to a different interfacial
+
+17
+
+hydrogen bond network compared to bulk water by monitoring water dynamics. Us-
+
+18
+
+ing umbrella sampling, we constructed the free energy landscape of aqueous MoO4 2 –
+
+19
+
+adsorption at various concentrations and the deprotonation of the ferrihydrite surface.
+
+20
+
+The results demonstrate excellent agreement with the values reported by experimen-
+
+21
+
+tal surface complexation models. These findings are important as reactive molecular
+
+22
+
+dynamics opens new avenues to study mineral-water interfaces, enriching and refining
+
+23
+
+surface complexation models beyond their foundational assumptions.
+
+24
+
+Keywords
+
+25
+
+Adsorption, Umbrella Sampling, Synchrotron X-ray, Pair Distribution Function, Surface
+
+26
+
+Complexation Models, Ferrihydrite
+
+2
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+27
+
+TOC Art
+
+28
+
+29
+
+Introduction
+
+30
+
+The mobility and bioavailability of nutrient and contaminant elements in soils, sediments and
+
+31
+
+water are strongly influenced by atomic-scale processes at mineral-water interfaces. Surface
+
+32
+
+adsorption or precipitation reactions can promote element attenuation, while desorption and
+
+33
+
+dissolution reactions may drive element release 1–3 . Ferrihydrite (Fh) and other iron (oxy-
+
+34
+
+hydr)oxides are often important controls on aqueous concentrations of oxyanion-forming ele-
+
+35
+
+ments, which can have important implications for ecosystem health and functioning 4–6 . For
+
+36
+
+example, molybdate (MoO4 2 – ) adsorption onto Fh surfaces has implications for biosynthesis
+
+37
+
+of Mo-enzymes central to global biogeochemical cycles that have shaped Earth’s biological
+
+38
+
+and environmental coevolution.
+
+39
+
+In aqueous systems, Fh typically bears a non-zero surface charge originating from the
+
+40
+
+ionization of the surface hydroxyl ( – OH) groups and the adsorption of dissolved ions 7,8 .
+
+41
+
+Oxyanions adsorption strongly influences physical, chemical, and structural properties of the
+
+42
+
+Fh surface 9,10 , primarily due to the induced re-organizing of water molecules altering phase
+
+43
+
+stability and its transformation pathways 11 . Furthermore, Fh surface charge modification
+
+44
+
+through adsorption not only leads to a reorientation of interfacial species, affecting both
+
+45
+
+their adsorption kinetics and diffusion across the interface but also alters the hydrogen bond
+
+46
+
+(HB) network at the interface. This alteration in the HB network additionally influences
+
+3
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+47
+
+the acidity of protic species, which include any species capable of donating a hydrogen ion
+
+48
+
+(H+ ) 8,12,13 .
+
+49
+
+Past studies of charged interfaces in water experiencing adsorption events have com-
+
+50
+
+monly relied on empirical studies, supported by various spectroscopic techniques and surface
+
+51
+
+complexation models (SCM), while some recent studies have used more advanced method-
+
+52
+
+ologies 7,14–19 . SCM account for surface charge along with solute-surface adsorption complex
+
+53
+
+equilibrium constants to fit a model of surface complexes to batch adsorption experiments
+
+54
+
+data 20,21 . The models rely upon empirical constants to describe the equilibrium between
+
+55
+
+aqueous species and mineral surface sites 22,23 using parameters such as surface site den-
+
+56
+
+sity, surface potential, intrinsic acid-base constants, and apparent complexation constants,
+
+57
+
+determined with the assistance of non-linear parameter estimation codes 23–25 .
+
+58
+
+While SCM have proven valuable, they require fitting a large amount of data under the
+
+59
+
+presumption that surfaces are static and homogeneous 25–28 , and simplifying the effects of wa-
+
+60
+
+ter chemistry 15,29–31 . Reactive molecular dynamics (MD) simulations offer a complementary
+
+61
+
+perspective by providing a realistic depiction of fluid-solid interactions. Reactive force fields
+
+62
+
+such as ReaxFF allow one to simulate molecular dynamics while incorporating bond-breaking
+
+63
+
+and formation events. They are more computationally efficient than ab initio MD 19,32,33 and
+
+64
+
+density functional theory (DFT) methods for the Mo(VI)-FeOx interface 19,34,35 . Reactive
+
+65
+
+force-fields have proven successful in modeling solid-water interfaces 36 , accurately describing
+
+66
+
+the restructuration of clay surfaces and interlayers in water consistent with neutron scat-
+
+67
+
+tering and nuclear magnetic resonance spectroscopy (NMR) data 37 . Furthermore, reactive
+
+68
+
+force fields have been utilized to examine the reactions of water with solid surfaces. This
+
+69
+
+includes describing reactivity trends of various crystal surfaces towards water dissociation in
+
+70
+
+TiO2 38 , and studying water dissociation at the surfaces of calcium silicate hydrate micropores
+
+71
+
+and silica surfaces, successfully reproducing experimental properties, such as dipole moment,
+
+72
+
+diffusion coefficients, and proton-transfer pathways similar to the Grotthuss mechanism 39,40 .
+
+73
+
+Here, we use reactive MD paired with synchrotron X-ray scattering to explore processes
+4
+
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+74
+
+at the Fh-water interface, surface restructuring during aqueous MoO4 2 – adsorption. Our
+
+75
+
+results also explore the surface charge of Fh and interfacial HB network. Additionally, we
+
+76
+
+leverage our model to calculate SCM constants from simulations using umbrella sampling,
+
+77
+
+achieving excellent agreement for surface acidity and the concentration-dependent adsorp-
+
+78
+
+tion constants of MoO4 2 – . Our approach effectively integrates experimental findings with
+
+79
+
+theoretical models 41 , particularly in connecting MD simulations to empirical SCM parame-
+
+80
+
+ters.
+
+81
+
+The choice of molybdenum in its aqueous molybdate form (MoO4 2 – ) as a model oxyanion
+
+82
+
+is motivated by its dual role as an essential micronutrient and a pollutant element 42,43 .
+
+83
+
+Bioavailable molybdenum is crucial in the function of oxidoreductase enzymes within the
+
+84
+
+biogeochemical cycles of N, C, and S. Furthermore, mobile aqueous molybdenum species
+
+85
+
+negatively impact water quality, underscoring its significant environmental and biological
+
+86
+
+implications.
+
+87
+
+The choice of molybdenum in its aqueous molybdate form (MoO4 2 – ) as a model oxyanion
+
+88
+
+is motivated by its importance as an essential micronutrient and a pollutant element 42,43 .
+
+89
+
+Bioavailable molybdenum has a critical role in the function of oxidoreductase enzymes within
+
+90
+
+the biogeochemical cycles of N, C, and S. Additionally, mobile aqueous molybdenum species
+
+91
+
+have a negative impact on water quality, reflecting the environmental and biological relevance
+
+92
+
+of our findings.
+
+93
+
+Materials and Methods
+
+94
+
+Sample Preparation
+
+95
+
+Synthesis of 2-line Fh followed the method of Schwertmann and Cornell 44 , where 500 mL of
+
+96
+
+a 0.2 M Fe(NO3 )3 · 9 H2 O solution was titrated to approximately pH 7.5 using 1 M KOH.
+
+97
+
+The base addition was conducted over approximately 30 minutes and the resulting solution
+
+98
+
+was stirred for approximately 1 hour. Aliquots of the suspension were transferred into 50
+5
+
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+99
+
+mL conical tubes, which were centrifuged at 3000 rpm for 5 minutes. The supernatant was
+
+100
+
+decanted and 40 mL ultrapure water was added and mixed. The centrifugation process and
+
+101
+
+ultrapure water addition was repeated for a total of three times to remove residual salts.
+
+102
+
+Solids were flash frozen and freeze dried, and powder X-ray diffraction confirmed phase
+
+103
+
+identity.
+
+104
+
+Modeling Setup
+
+105
+
+Fh slabs and surfaces were generated based on the structure suggested by Michel et al. 45 .
+
+106
+
+The Fh supercell was terminated by oxygen atoms of (11̄0) plane, which accounts for 67-85,
+
+107
+
+% of the total surface area of Fh 46 , to emulate geochemical conditions, using Pymatgen 47 .
+
+108
+
+Symmetric slab with zero or no dipole moment was then selected for the preparation of 3.6
+
+109
+
+× 3.5 × 2.9 nm Fh supercell, with the composition of Fe946.56 H144 O1536 . Dangling surface
+
+110
+
+oxygens were saturated by hydrogen atoms based on their acidity.
+
+111
+
+Reactive MD Simulations
+
+112
+
+All simulations were carried out with LAMMPS package 48 using the ReaxFF pair_style as
+
+113
+
+implemented in LAMMPS 49 , with the ReaxFF parameters obtained for Fh 50 , Mo 51 , Na 52 ,
+
+114
+
+and Na – Fe cross-terms 53 . The data files for simulations were prepared using the VMD
+
+115
+
+TopoTools plugin and Moltemplate 54,55 . Except in the microcanonical ensemble (NVE -
+
+116
+
+constant number of atoms, volume, and energy) where a Berendsen thermostat was utilized,
+
+117
+
+in all other cases Nosé-Hoover thermostat and barostat with damping constants of 100
+
+118
+
+fs, and 1000 fs were used to control the temperature and pressure, respectively. In all
+
+119
+
+simulations, a time step of 0.25 fs was used to integrate Newton’s equation of motion by the
+
+120
+
+velocity-Verlet algorithm. The charge polarization effects of all atoms were included in the
+
+121
+
+simulation by calculating geometry-dependent atomic charges at every time step using the
+
+122
+
+charge equilibration (QEq) approach with a cutoff radii 10.0 Å for all interactions 56 .
+
+123
+
+The initial configuration of the slab was first minimized using the steepest descent algo6
+
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+−1
+
+124
+
+rithm while stopping tolerances for energy and force were set to 10−4 and 10−6 (kcal.mol−1 .Å ),
+
+125
+
+respectively. To prevent melting, the temperature of the system was gradually increased in
+
+126
+
+a series of iterations in the NVT ensemble, starting with 10,000 steps of 0.1 Å maximum
+
+127
+
+distance-limited NVE (nve/limit in LAMMPS) at 1 K (damping constant 1 fs), followed
+
+128
+
+by NVT stages consisting of 10,000 steps at 1 K (damping constant 1 fs) and a 10,000
+
+129
+
+steps temperature ramp from 1 K to 300 K (damping constant 100 fs). Finally, the slab
+
+130
+
+was relaxed for 1 ns in the anisotropic NPT ensemble (constant number of atoms, pressure,
+
+131
+
+and temperature) at 298 K and 1 atm in x and y directions in a simulation cell with the
+
+132
+
+dimensions of approximately 4 × 4 × 6.7 nm including a 4 nm gap in the z direction, in
+
+133
+
+which the volume was subsequently filled with equilibrated aqueous solutions.
+
+134
+
+The initial configuration of solutions was prepared by randomly placing aqueous ions
+
+135
+
+within the 3.0 Å region of the middle of the bulk aqueous solution to yield simulations
+
+136
+
+of Fh and solutions containing different numbers of Na2 MoO4 (Mo-n, n= 0, 1, 2, 3, 6,
+
+137
+
+8), corresponding to [Na2 MoO4 ]= 0, 0.025, 0.05, 0.075, 0.15, and 0.2 (mol.L−1 ) with a
+
+138
+
+water density of 33 (particle.nm−3 ) using Packmol 57 . In the equilibration stage, solutions
+
+139
+
+were first simulated while turning off ReaxFF mechanism. This was achieved by treating
+
+140
+
+water O – H and molybdate Mo – O bonds as classical harmonic springs with a constant
+
+141
+
+of 50 (kcal.mol−1 .Å ). The spring constant was chosen considering the ef activeness of
+
+142
+
+pressure/temperature control and the stability of simulations with the used time step 58 . The
+
+143
+
+equilibration of solutions while water O – H and molybdate Mo – O bonds were constrained
+
+144
+
+using harmonic restraints, was performed for 0.2 ns, divided into stages comprising of 100 ps
+
+145
+
+of 0.1 Å maximum distance-limited NVE at 298 K (damping constant 100 fs), 100 ps in the
+
+146
+
+NVE 298 K (damping constant 50 fs), 300 ps in the canonical ensemble (NVT - constant
+
+147
+
+number of atoms, volume, and temperature) at 298 K (damping constant 50 fs), and 500
+
+148
+
+ps in the NPT at 298 K and 1 atm in z direction. For each concentration, 3 independent
+
+149
+
+simulations have been performed to capture statistical variations. The reactive simulations
+
+150
+
+for all reps are then combined and used for further analysis using in house python codes
+
+−2
+
+7
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+151
+
+based on MDAnalysis package 59,60 .
+
+152
+
+Umbrella Sampling
+
+153
+
+Umbrella sampling is a technique that enables sampling of high-energy states, also known
+
+154
+
+as rare events, that are otherwise not feasible for direct sampling 61 during simulations. It
+
+155
+
+acts by enforcing an external harmonic restraint along a reaction coordinate, in a series
+
+156
+
+of windows, represented by a collective variable, which, in this case, is the distance of Mo
+
+157
+
+from the surface. This free energy along the collective variable is also referred to as the
+
+158
+
+potential-of-mean-force (PMF).
+
+159
+
+We used Colvars module interfaced with LAMMPS to perform umbrella sampling 62 . A
+
+160
+
+series of 20 initial configurations (windows) were generated from 0 to 20 Å from the surface
+
+161
+
+in the z direction (width = 1 Å). A constraining force constant of 5 Kcal.mol−1 .Å
+
+162
+
+used, while allowing the selected Mo atom to move in x and y directions. The selected force
+
+163
+
+constant resulted in sufficient overlap of the position histograms (shown in Figure SI 20),
+
+164
+
+allowing a smooth reconstruction of the PMF. Each window was run in NVT ensemble for
+
+165
+
+at least 3 ns. The PMFs were obtained using an algorithm known as WHAM (Weighted
+
+166
+
+Histogram Analysis Method) which is used to remove the biasing potential and reconstruct
+
+167
+
+the PMF with error analysis performed using the Monte Carlo bootstrap method 63,64 .
+
+168
+
+Synchrotron X-ray Measurements
+
+169
+
+All X-ray measurements were conducted at Brockhouse Diffraction Sector (BXDS) at the
+
+170
+
+Canadian Light Source (CLS). The high-resolution X-ray diffraction (XRD) data were col-
+
+171
+
+lected at Low Energy Wiggler Beamline (WLE) at the CLS. The measurements were con-
+
+172
+
+ducted by using a Kapton capillary filled with solid particles or particle dispersions. The
+
+173
+
+capillary was mounted and spun during the measurements to improve uniformity. A fixed
+
+174
+
+photon energy λ=0.819 Å with a Si (111) monochromator and Dectris Mythen2 X series 1K
+
+175
+
+detector system were used.
+8
+
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+−2
+
+was
+
+176
+
+Pair distribution function (PDF) measurements were performed at the High Energy Wig-
+
+177
+
+gler (HEW) beamline (Energy range 20–94 keV; beam size 2–10 mm × ∼100 mm (W × H);
+
+178
+
+energy resolution 1 × 10−3 ∆d/d) at 54 keV (0.2265 Å) with a crystal Si (111) monochroma-
+
+179
+
+tor. The samples were loaded in Kaptoncapillary tubes and were spun during the measure-
+
+180
+
+ments to improve uniformity. A fixed photon energy λ=0.819 Å with a Si (111) monochro-
+
+181
+
+mator and Dectris Mythen2 X series 1K detector system were used. The data processing was
+
+182
+
+calibrated using a Ni standard. The data was integrated from 2D to 1D using GSAS-II 65 ,
+
+183
+
+and the PDFs were generated by the Fourier transform of total scattering structure factor
+
+184
+
+S(Q) with a Qmax of 22 Å−1 . The PDF of containers were measure for background signal
+
+185
+
+removal.
+
+186
+
+Calculations of X-ray Scattering
+
+187
+
+For XRD calculation, the thermal disorder was taken into account by averaging snapshots
+
+188
+
+from MD trajectories separated by a 1 ps time step. To further enhance the interfacial signal,
+
+189
+
+and emulate the experimental setup, the snapshots were limited to the interfacial region
+
+190
+
+found by identification of truly interfacial molecules (ITIM) algorithm. XRD patterns were
+
+191
+
+simulated at λ=0.819 Å with parameters for Fe(III) and Mo(VI) 66 using XrDebye module of
+
+192
+
+Atomic Simulation Environment (ASE) package 67 . The PDF plots of selected MD snapshots
+
+193
+
+were calculated from atomic coordinates using the Debye scattering equation implemented
+
+194
+
+in Diffpy-CMI as DebyeCalculator class 68 . Differential pair distribution functions (d-PDFs)
+
+195
+
+were calculated by subtracting a scaled reference PDF, Fh-water mixture from the PDF of
+
+196
+
+Fh-[Mo]aq .
+
+9
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+197
+
+Results and Discussion
+
+198
+
+Synchrotron X-ray Spectroscopy and Reactive Molecular Dynamics
+
+199
+
+The grazing-incident X-ray scattering (GIXS) experiments and ensemble-averaged MD simu-
+
+200
+
+lated XRD patterns (Figure 1) for synthesized Fh (a3) and MD-relaxed Fh slab (a2) display
+
+201
+
+poorly resolved, broad features suggesting the presence of 2-line nano-crystalline Fh with
+
+202
+
+a small domain size (<10 nm), consistent with PDF data 69,70 . Based on simulated XRD
+
+203
+
+patterns and radial distribution function (RDF) (Figure SI 3), MD relaxation of the initial
+
+204
+
+structure of Fh slab for MD simulations based on the Michel model 70 (a1), results in the
+
+205
+
+loss of long-range order to yield a Fh phase (a2) that closely resembles the experimental Fh
+
+206
+
+sample (a3).
+
+207
+
+Fh restructures in response to contact with water, which is evident in the XRD patterns
+
+208
+
+of both synthesized (b2) and simulated Fh (b1). These patterns exhibit increased broadening
+
+209
+
+and disorder compared to their respective dry structures. Upon the introduction of [Mo]aq ,
+
+210
+
+further adsorption-induced structural changes are observed, characterized by an increased
+
+211
+
+structural disorder in the lower angle region, particularly around ∼ 10◦ 2θ as seen in (c1).
+
+212
+
+This corresponds to the dominant surface (11̄0) plane of Fh (a2) at 10.50◦ 2θ.
+
+213
+
+The size of coherent scattering domains 69 determined by PDF signal attenuation of the
+
+214
+
+Fh/water/MoO4(aq) samples (Figure SI 5) suggests average crystallite size of 1.5-2 nm. The
+
+215
+
+addition of water and molybdate did not produce a noticeable change in the PDF signal.
+
+216
+
+The observed distances at 1.98 Å, and 3.06 Å align closely with the reported values of 2 Å
+
+217
+
+for the Fe – O bond in tetrahedrally coordinated iron and 3.03 Å for the Fe – Fe bond in FeO6
+
+218
+
+polyhedra 69 .
+
+219
+
+The d-PDF (c-b), comprising of peaks at 1.98, 3.10, and 3.43 Å (Figure 2-A), enhances
+
+220
+
+interfacial signals by isolating the interfacial region from the bulk system. This focus on
+
+221
+
+changes in the PDF of Fh/water introduced by [Mo]aq allows for a more detailed analysis
+
+222
+
+of interfacial interactions. The simulation of the PDF from the Mo-9 trajectory, containing
+10
+
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Figure 1: Comparative XRD analysis of Fh: structural insights from simulated
+and synthesized environments with [Mo]aq . XRD pattern for a1) Michel’s crystallographic structure of Fh , a2) MD-relaxed Fh slab, a3) synthesized Fh , b1) Fh slab and water
+(Mo-0) , b2) synthesized Fh and water , c1) Fh slab with [Mo]aq (Mo-8), and c2) synthesized
+Fh with [Mo]aq .
+
+11
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Figure 2: Pair-wise distances at the Fh-water interface: insights from d-PDF and
+RDF analyses with adsorbed [Mo]aq . A) d-PDF plot resulted from the subtraction of
+Fh/water (b) PDF from Fh/water/[Mo]aq (c) PDF ((c)-(b)) along with simulated PDF plots
+from Mo-9 representing the total calculated PDF (total), and contributions from different
+scattering pairs Fe – Fe (scaled by 0.1), Fe – O (scaled by 0.2), Fe – Mo (scaled by 50), and
+Mo – O (scaled by 100). B) Calculated RDF plots of Fh in the presence of [Mo]ads for Fe – Fe
+and Fe – O pairs. C) Calculated RDF plots of [Mo]aq with Fh Fe (Fe – Mo) and O (Mo – OFh )
+atoms.
+12
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+223
+
+adsorbed Mo ([Mo]ads ), provides a bottom-up approach for interpreting the measured PDF.
+
+224
+
+This simulated total PDF aligns with the d-PDF at peak positions, exhibiting peaks at 2.04
+
+225
+
+Å and a broad peak with a shoulder at 3.10 Å. Detailed analysis of individual scattering pairs
+
+226
+
+reveals that the simulated PDF comprises peaks at 2.06 Å for Fe – O, while the broad feature
+
+227
+
+is a composite of Fe – Fe and Mo – O contributions at 3.09 Å and 3.40 Å, respectively. The
+
+228
+
+absence of the first shell peak for Mo – O in [MoO4 2 – ]aq is attributed to its low abundance.
+
+229
+
+Analysis of the RDF from MD trajectories (Figure 2-B), effectively determines pairwise
+
+230
+
+distances during simulations. The reactive MD approach, by successfully reproducing the
+
+231
+
+Fh structure in contact with water and at varying [Mo]aq concentrations, demonstrates the
+
+232
+
+appropriateness of the chosen force field. This is further substantiated by both the measured
+
+233
+
+PDF and RDF, which confirm that the Fh bulk maintains its local structure throughout the
+
+234
+
+simulations aligning with reported values of 1.98 and 3.04 Å for Fe – Fe and Fe – O distances,
+
+235
+
+respectively 69 .
+
+236
+
+RDF analysis additionally enables the monitoring of prevalent [Mo]aq distances to the Fh
+
+237
+
+surface (Figure 2-C). Notably, the peak positions remaining unaffected across different [Mo]aq
+
+238
+
+concentrations suggests the energetically favorable nature of [Mo]aq interactions with the
+
+239
+
+surface. The first shell peak at 1.73 Å, indicative of inner-sphere, octahedrally-coordinated
+
+240
+
+Mo – O, aligns with values from extended X-ray absorption fine structure (EXAFS) (1.77
+
+241
+
+Å) 71 and X-ray scattering (1.78 Å) 72 . This distance is comparable with the Mo – O bond
+
+242
+
+length in hematite (1.73 Å) 19 , and to As – O (1.68 Å) on Fh 73 . The model architecture allows
+
+243
+
+for exchange processes that extend beyond proton transfer reactions and allows the formation
+
+244
+
+of directly-bound [Mo]aq complexes which are a result of the exchange of oxygen atoms. RDF
+
+245
+
+analysis also facilitates the observation of adsorbed, fully water-solvated [Mo]aq species. The
+
+246
+
+second shell peak at 2.80 Å corresponds to outer-sphere adsorbed [Mo]aq complexes. The
+
+247
+
+broad Mo – Fe feature (3.2-4.5 Å) encompasses both inner- and outer-sphere adsorbed [Mo]aq
+
+248
+
+complexes, aligning with the EXAFS reported range of 3.28-3.53 Å for Fh Mo – Fe 74 . Notably,
+
+249
+
+the proximity of outer-sphere complexes to inner-sphere complexes at these distances suggests
+13
+
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+250
+
+the potential for exchange between these states depending on the concentration of [Mo]aq
+
+251
+
+(vide infra).
+
+252
+
+Surface Interactions and Structural Dynamics
+
+253
+
+At equilibrium, the calculated surface charge of the Fh slab reveals a net positively charged
+
+254
+
+top and bottom layer. This positive charge primarily results from Fe atoms and surface
+
+255
+
+protons at pH = 7. This observation aligns with the reported point of zero charge (PZC) for
+
+256
+
+Fh (PZC=7-9) 75 .
+
+257
+
+To investigate the impact of [Mo]aq adsorption on Fh charge distribution, a charge differ-
+
+258
+
+ence plot was generated, comparing Fh in vacuum to Fh/water/[Mo]aq (Mo-8) (Figure 3-A).
+
+259
+
+This plot reveals localized sites, where the adsorption of negatively charged [Mo]aq leads to
+
+260
+
+short-range, localized charge perturbations. These perturbations are specifically confined to
+
+261
+
+regions where [Mo]aq forms inner-sphere complexes with the surface (Figure SI 6). Following
+
+262
+
+charge equilibration, these localized charge transfers collectively lead to a change in the total
+
+263
+
+surface charge of Fh.
+
+264
+
+The charge probability distribution for Fh (Figure 3-B) displays distinct characteris-
+
+265
+
+tics, with positively-charged Fe and H atoms, alongside negatively-charged oxygen atoms.
+
+266
+
+Notably, the O atom charge distribution exhibits a doublet-like feature. Upon detailed anal-
+
+267
+
+ysis, the more negative peak is attributed to surface oxygens, while the relatively positive
+
+268
+
+one corresponds to bulk Fh oxygen atoms, in water. The ITIM algorithm analysis, both in
+
+269
+
+the presence (Mo-8) and absence (Mo-0) of [Mo]aq , reveals that the more negatively-charged
+
+270
+
+oxygens are located at the interfacial regions on the top or bottom of the Fh slab (Figures
+
+271
+
+SI 7 and SI 8). In the case of Mo-8, the adsorption of negatively-charged [Mo]aq shifts the
+
+272
+
+charge distribution of Fh oxygen atoms towards a more pronounced interfacial character,
+
+273
+
+further indicating a charge transfer to the surface.
+
+274
+
+Calculating the surface charge as a function of [Mo]aq concentration (Figure 3-C) indicates
+
+275
+
+that water alone minimally alters the relative surface charge of Fh. As the concentration of
+14
+
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+276
+
+[Mo]aq increases, the surface charge of Fh becomes more negative. However, at higher [Mo]aq
+
+277
+
+concentrations, the relative surface charge does not continue to decrease but instead reaches
+
+278
+
+a plateau, as observed in the Mo-6 and Mo-8 regimes. This plateau phase is characterized
+
+279
+
+by larger error margins in surface charge, particularly in Mo-8, indicative of non-classical
+
+280
+
+overcharging behavior. This behavior is influenced by pronounced ion-ion association, which
+
+281
+
+affect the structure of the interfacial water hydrogen bond network, competition for adsorp-
+
+282
+
+tion sites on Fh, and the polymerization equilibria of [Mo]aq species 76 .
+
+Figure 3: Surface charge analysis of Fh: impacts of [Mo]aq adsorption on surface
+charge distribution. A) Charge probability distribution of Fh in Mo-0 and Mo-8. B)
+Calculated surface charge as a function of the number of [Mo]aq . C) Calculated equilibrium
+atomic charge difference between Mo-0 and Mo-8. Circled areas show the spots with the
+highest charge perturbations.
+283
+
+The structural dynamics of Fh during simulations are further elucidated by analyzing
+
+284
+
+the Fe – O – Fe bond angle probability distribution (Figure SI 9). The initial nano-crystalline
+
+285
+
+Michel Fh structure 70 comprises both tetrahedral (109.5º) and octahedral (90◦ , 180◦ ) Fe
+
+286
+
+atoms. During MD relaxation and upon contact with water, the sharp features of angle
+
+287
+
+probability distribution broaden, yet the tetrahedral-octahedral coordination environment
+
+288
+
+of Fe is retained. This observation aligns with calculations suggesting that at 298 K, for a
+
+289
+
+simulated Fh with a diameter of ∼3 nm, the Michel model remains slightly more stable 77 . In
+
+290
+
+our simulations, the initial Michel’s Fh structure does not undergo a phase transformation
+
+291
+
+into a fully octahedral Fe structure, also referred to as the Manceau Fh model. This high15
+
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+292
+
+lights the stability and persistence of the mixed coordination environment under simulated
+
+293
+
+conditions.
+
+294
+
+The presence of [Mo]aq , at both low and high concentrations simulated (Mo-3 and Mo-
+
+295
+
+8), does not appear to induce any noticeable changes in the Fe – O – Fe angle distribution
+
+296
+
+(Figure SI 10). This observation highlights the interfacial nature of [Mo]aq interactions with
+
+297
+
+Fh, suggesting that the [Mo]aq primarily affects the surface rather than altering the bulk
+
+298
+
+structure of Fh.
+
+299
+
+The Chemistry of Water at Ferrihydrite Interface and Solution
+
+300
+
+We also explored non-covalent interactions, especially the HB network of water at the Fh-
+
+301
+
+water interface. These interactions influence the structure and dynamics at the solid-water
+
+302
+
+interface 78 , impacting geochemical processes such as crystallization 79 and isotopic fractiona-
+
+303
+
+tion 80 . In contrast to classical MD, where hydrogen bonds are not predefined and are instead
+
+304
+
+determined based on energy and geometric criteria 81 , the ReaxFF force field declares hy-
+
+305
+
+drogen bonding a priori in our reactive simulations. This approach enables more realistic
+
+306
+
+simulations, particularly effective in predicting the short-range cohesive forces within wa-
+
+307
+
+ter 82 .
+
+308
+
+The average number of HBs (hNH i) (Figure 4-A) gradually increases with distance from
+
+309
+
+the Fh surface. This trend results from the restricted mobility and fewer accessible config-
+
+310
+
+urations of water molecules at the interface, leading to a reduced number of HBs compared
+
+311
+
+to bulk water 83 . For the Fh/water system (Mo-0), hNH i approaches that of bulk water at
+
+312
+
+approximately 6 Å from the surface, with a transition region extending from about ∼2.5 to
+
+313
+
+6 Å. In the presence of [Mo]aq (Mo-8), this interfacial-to-bulk HB transition region extends
+
+314
+
+slightly further from the surface, before HB dynamics returns to its unperturbed bulk wa-
+
+315
+
+ter state. This effect is most pronounced in the 2-5 Å region from the surface, correlating
+
+316
+
+with the coexistence of inner- and outer-sphere [Mo]aq complexes, which can act as both HB
+
+317
+
+donors and acceptors.
+16
+
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Figure 4: Effect of [Mo]aq on the HB network at the interface of Fh-water:
+Average number of hydrogen bonds as a function of distance from the surface, A) for Fh for
+Mo-0, and Mo-8. B) for surface oxygen Of donors and water oxygen Ow acceptors. Inset)
+shows surface, water, and MoO4 2 – can act as HB donors and acceptors. For the latter, the
+simulations show the formation of protonated MoO4aq 2 – species that can act as HB donors
+(not shown in this image).
+318
+
+[Mo]aq influences the hydrogen HB donor abilities of both surface and water oxygens
+
+319
+
+(Of and Ow ), with its impact being more pronounced on water oxygens (Ow ) in forming
+
+320
+
+HBs with Fh surface oxygens (Figure SI 11). In the presence of [Mo]aq (Mo-8), the Ow
+
+321
+
+donor population shifts away from the surface, compared to the Fh/water system (Mo-0).
+
+322
+
+This shift leads to a decrease in the average number of HBs involving Ow donors (Ow ···Of ),
+
+323
+
+a consequence of the competitive adsorptive interactions between [Mo]aq and Fh, limiting
+
+324
+
+water’s access to the surface. Regarding Fh surface donors (Of ) ((Figure 4)-B), the presence
+
+325
+
+of [Mo]aq in Mo-8 extends the range within which the surface can act as a donor. [Mo]aq
+
+326
+
+effectively out-competes water as an HB acceptor up to 5 Å from the surface, shaping a new
+
+327
+
+HB network with water.
+
+328
+
+For the HB acceptor abilities of MoO4(aq) 2 – oxygen atoms (Om ) (Figures SI 12 and
+
+329
+
+SI 13), at distances greater than 5 Å, [Mo]aq is fully solvated and primarily accepts HBs
+
+330
+
+from water. As the concentration of [Mo]aq increases from Mo-3 to Mo-8, a broader range
+
+331
+
+of HB interactions between Of ···Om emerges, indicating the onset of [Mo]aq adsorption.
+17
+
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+332
+
+[Mo]aq HB donor abilities (Figure SI 14), suggest that the reactive simulation predicts the
+
+333
+
+formation of protonated [Mo]aq species with lifetimes long enough to form HBs. Adsorbed
+
+334
+
+[Mo]aq out-competes water in HB donor abilities up to 5 Å from the surface.
+
+335
+
+The HB acceptor and donor abilities of Om emphasize the crucial role of outer-sphere
+
+336
+
+complexes in mediating surface interactions through HBs 84 . The disruption of HB networks is
+
+337
+
+energetically costly, and the surface HB abilities determine its affinity to water. Additionally,
+
+338
+
+interfacial HB between solutes and water likely reduce its adsorption energy 85 . Consequently,
+
+339
+
+the model predicts various pathways that affect the adsorption free energy.
+
+340
+
+The reactive simulations provide insights into the behavior of species in bulk solution,
+
+341
+
+particularly highlighting the exchange of oxygen atoms between water and molybdate groups
+
+342
+
+(Figure SI 15). This exchange is evident when monitoring the distance of Mo with water
+
+343
+
+oxygens within a 4 Å shell. Over time, and as hydration of [Mo]aq progresses, water oxygens
+
+344
+
+segregate into two distinct groups around [Mo]aq : directly bonded oxygens at ∼1.78 Å,
+
+345
+
+forming Mo – Ow bonds, consistent with the reported experimental value 72 , and the first
+
+346
+
+hydration shell observed at 2-2.5 Å. This is also reflected in RDF of Mo and water oxygen
+
+347
+
+(Mo – Ow) (Figure SI 16). The results suggest that at equilibrium in solution, Mo – Om bonds
+
+348
+
+are susceptible to hydrolysis, indicating the dynamic and reactive nature of the hydration
+
+349
+
+process.
+
+350
+
+Furthermore, the model accurately describes the behavior of solvents and counter-ions.
+
+351
+
+The RDF of water (Ow – Ow ) (Figures SI 17) gives a good reproduction of both experimental
+
+352
+
+and ReaxFF values at room temperature 86 . Notably, there is a slight increase in the height
+
+353
+
+of the first peak of the water Ow – Ow RDF. This difference may be attributed to stronger
+
+354
+
+interactions between water molecules, potentially heightened by nano-confinement effects
+
+355
+
+between hydrophilic Fh layers 86 . In addition, the RDF of Na – Ow (Figure SI 18), suggests
+
+356
+
+a hydrated Na+ cation with a water solvation shell at 2.50 Å. This observation aligns with
+
+357
+
+the reported values for ReaxFF electrolyte systems 52 , further validating the model accuracy
+
+358
+
+in describing the solvation structure of Na+ in aqueous environments.
+18
+
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+359
+
+Bridging Reactive Molecular Dynamics With Surface Com-
+
+360
+
+plexation Models
+
+Figure 5: Free energy landscape of [Mo]aq adsorption at the ferrihydrite-water
+interface A) Electron density profile of [Mo]aq from the surface of Fh. The surface is
+defined by the uppermost layer of Fh depicted with the blue region at zero. B) Free energy
+of adsorption of [Mo]aq as a function of distance from the surface of Fh. Green and redshaded areas show the regions where inner- and outer-sphere adsorbed complexes exist. The
+arrows denote the exchange between the two complexes.
+
+361
+
+Energetics of Adsorption
+
+362
+
+The electron density profiles of [Mo]aq as a function of distance from the Fh surface (Figure
+
+363
+
+5-A) offer a kinetic perspective on [Mo]aq distribution. This surface is defined as the top
+
+364
+
+interfacial layer of Fh, identified using the ITIM algorithm in each simulation snapshot. The
+
+365
+
+dynamic and rough nature of the Fh surface necessitates this approach.
+
+366
+
+At infinite dilution (Mo-1), the non-zero electron density at a range of distances of 2.5-10
+
+367
+
+Å from the surface and farther in the bulk solution, indicates that [Mo]aq moves between the
+
+368
+
+adsorbed and diffused states. As the concentration of [Mo]aq increases from Mo-2 to Mo-8,
+
+369
+
+the inner-sphere complexes move closer to the surface at a distance of 2-4 Å, and outer-sphere
+
+370
+
+complexes are positioned in 4-7 Å from the surface. At higher concentrations (Mo-6, Mo-8),
+19
+
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+371
+
+more [Mo]aq are also present at farther distances to up to 10-15 Å and rather than in the
+
+372
+
+bulk solution signifying the strength of adsorptive interactions between [Mo]aq and Fh. At
+
+373
+
+lower concentrations (Mo-2, Mo-3), the electron density peaks corresponding to inner- and
+
+374
+
+outer-sphere complexes of [Mo]aq show minimal or no overlap, suggesting less exchange of
+
+375
+
+[Mo]aq between these two adsorbed states. However, at higher concentrations (Mo-6, Mo-8),
+
+376
+
+there is a notable overlap between the peaks for inner- and outer-sphere complexes. This
+
+377
+
+overlap indicates a facilitated exchange between the two states.
+
+378
+
+As previously discussed in the Methods section, to comprehensively access the full range of
+
+379
+
+the free energy landscape and the probability distribution of [Mo]aq as a function of distance
+
+380
+
+from the surface (Figure 5-B) (SI 21), umbrella sampling is employed. This technique is
+
+381
+
+capable of sampling states that are high in energy, with energy barriers exceeding kB T
+
+382
+
+(2.479 kJ.mol−1 at 298 K), which are often referred to as rare events.
+
+383
+
+At infinite dilution (Mo-1) the free energy shows a flat profile with small energy barriers
+
+384
+
+between different adsorbed states and bulk states, consistent with the electron density profile.
+
+385
+
+At relatively low concentrations of [Mo]aq (Mo-2-3), two distinct adsorbed states of – inner-
+
+386
+
+and outer-sphere complexes – are predominantly observed. Inner-sphere complexes, forming
+
+387
+
+at distances of up to 3 Å from the surface, are more energetically favorable by about 15-20
+
+388
+
+kJ.mol−1 compared to outer-sphere complexes at distances >3-7.5 Å. This energy difference
+
+389
+
+results in a lower desorption rate (kIS→OS ) from the surface consistent with electron density
+
+390
+
+profiles for Mo-3 mostly consisting of inner-sphere complexes and Mo-2 having two distinct
+
+391
+
+absences of electron density at the onset of ∼2.5 Å. Meanwhile, outer-sphere complexes are
+
+392
+
+located at 4-5 Å from the surface, characterized by a smaller or negligible energy barrier and
+
+393
+
+a higher rate of transition to inner-sphere complexes (kOS→IS ). The observed energy barrier
+
+394
+
+between the inner- and outer-sphere states in both directions is likely attributable to the
+
+395
+
+solvation/desolvation of [Mo]aq , the displacement and reorientation of water in the solvation
+
+396
+
+sphere of [Mo]aq and at the Fh surface, and the disruption of the hydrogen bond network at
+
+397
+
+the interface 87 .
+20
+
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+398
+
+At higher [Mo]aq concentrations (Mo-6 to Mo-8), the adsorption free energy ranges be-
+
+399
+
+tween -15 and -10 kJ.mol−1 . In this regime, the energy barrier between inner- and outer-
+
+400
+
+sphere complexes disappears entirely. This phenomenon is likely due to the effects of surface
+
+401
+
+charge screening by the adsorbed [Mo]aq species 88,89 .
+
+402
+
+Acidity of Surface Protons
+
+403
+
+We have selected Fh surface protons based on their equilibrium charge (high, low, medium)
+
+404
+
+(Figure SI 22) after reactive MD in water (Mo-0) to calculate the pKa of the corresponding
+
+405
+
+surface oxygen sites using umbrella sampling. Surface acidity, determined by the pKa of
+
+406
+
+surface hydroxyl groups is foundational in predictive SCM. These pKa ’s which are generally
+
+407
+
+found by titration measurements are not capable of assigning individual pKa ’s for different
+
+408
+
+surface protons and are challenging due to mineral dissolution during the titration. The sur-
+
+409
+
+face reactivity strongly depends on the surface acidity and is critical in understanding the
+
+410
+
+adsorption of solutes at water-mineral interfaces. Computational approaches to calculating
+
+411
+
+unique surface species pKa do not rely on fitting experimental parameters and can yield valu-
+
+412
+
+able information on surface chemical behavior and its interface with water. The idea behind
+
+413
+
+these computational methods is to calculate the free energy difference between the proto-
+
+414
+
+nated/deprotonated surface sites mostly through ab initio MD, and PMF techniques 90,91 .
+
+415
+
+The studied deprotonation sites are selected based on their chemical environment (coordi-
+
+416
+
+nation number -connected to 1 or 2 Fe or species Al – OH vs Si – OH).
+
+417
+
+The summarized results (Table 1) show surface deprotonation is an endergonic process
+
+418
+
+in water at pH = 7. The results also show that there is no direct relationship between the
+
+419
+
+initial charge of the proton and its pKa value giving an emphasis to other factors, such as the
+
+420
+
+local chemical environment of the proton, its interface, (de)hydration effects, and hydrogen
+
+421
+
+bonding affecting the final deprotonated state of the hydrogen atoms. The calculated pKa
+
+422
+
+values agree well with reported charge distribution multi-site ion complexation (MUSIC)
+
+423
+
+model calculations for (11̄0) surface of Fh with pKa = 7.17 slightly underestimated while
+21
+
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Table 1: Fh surface acidity calculations: umbrella sampling results versus MUSIC models. Computed surface deprotonation free energies ∆G and pKa values of surface
+protons, compered with results from MUSIC model
+Proton
+(ReaxFF Charge)
+1 (Medium)
+2 (High)
+3 (Low)
+a
+
+∆G
+(kJ.mol−1 )
+48.1 ± 0.6
+40.9 ± 0.4
+33.4 ± 0.4
+
+pKa
+
+MUSIC Modela
+Species pKa
+8.40 ± 0.1 Fe2 OH
+8.2
+7.17 ± 0.07 FeOH2
+8.0
+5.85 ± 0.08 Fe3 OH
+5.5
+
+From reference 46 .
+
+424
+
+being within 1 pKa unit.
+
+425
+
+Adsorption Constants
+
+426
+
+The adsorption constants for different [Mo]aq complexes with the surface of Fh, calculated
+
+427
+
+by SCM, linear free energy relationships (LFER) and the current study are summarized in
+
+428
+
+Table 2. Although the SCM calculations for adsorbed inner-sphere complexes are performed
+
+429
+
+at pH > 5 and with taking into account the acidity of (HO)MoO3 – (pKa =4.2), partially or
+
+430
+
+fully protonated Mo species needed to be introduced to improve the model. The calculated
+
+431
+
+adsorption constant for MoO4 2 – adsorbed as FeOHMoO4 – 2 , from reactive simulations free
+
+432
+
+energy profile, was found to be 3.14, slightly higher than the value by LFER calculation.
+
+433
+
+Using the adsorption PMF results (Figure 5-B), the adsorption constants for [Mo]aq in Mo-
+
+434
+
+1-8 were calculated. The weight-averaged LogKa over all trajectories was then calculated
+
+435
+
+using the Equations 3-4. The calculated LogKa of 3.39 is attributable to the greater influ-
+
+436
+
+ence (lower error) of data points in regimes of higher concentration, potentially due to a
+
+437
+
+better representation of experimental conditions. The observed slight difference with SCM
+
+438
+
+fitting methodologies can be linked to the use of different parameters in deriving the values.
+
+439
+
+However, the general agreement with the reported values suggests a holistic approach that
+
+440
+
+can be further expanded by varying simulation conditions.
+
+22
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Table 2: Concentration-dependent adsorption constants of [Mo]aq onto Fh: insights from reactive MD and comparisons with SCM models. Calculated adsorption
+equilibrium constant (uncertainty) LogKa (σ) of [Mo]aq on the surface of Fh from free energies of adsorption derived from umbrella sampling PMFs and reported values from SCM
+and LFER
+Species
+Fh-[Mo]aq Mo-1
+Fh-[Mo]aq Mo-2
+Fh-[Mo]aq Mo-3
+Fh-[Mo]aq Mo-6
+Fh-[Mo]aq Mo-8
+Weighted Average
+a
+FeOHMoO4 – 2
+b
+FeOHMoO4 – 2
+a
+b
+
+LogKa
+0.864
+2.543
+3.785
+1.500
+2.664
+3.169
+3.14
+2.4
+
+(σ)
+0.001
+0.006
+0.0001
+0.001
+0.0009
+0.0002
+0.039
+
+From SCM 23 .
+From LFER 92 .
+
+441
+
+Environmental Implications
+
+442
+
+Global biogeochemical N, C, and S cycles that have shaped the environmental and biological
+
+443
+
+co-evolution of Earth are dependent upon the mobility and the bioavailability of aqueous nu-
+
+444
+
+trient and contaminant elements, such as oxidoreductase enzymes cofactors requiring cellular
+
+445
+
+uptake of aqueous molybdate (MoO4 2 – ) ions 42,43 .
+
+446
+
+Geochemical reactions involving Fe- and S-bearing minerals have regulated MoO4 2 – mo-
+
+447
+
+bility and availability over geologic time 1,2 . Interfacial reactions with Fe(III) (oxyhydr)oxide
+
+448
+
+(FeOx ) phases often limit aqueous MoO4 2 – concentrations in soils, sediments, and waters 4,5 .
+
+449
+
+Unravelling these complex reaction mechanisms and pathways is important for understand-
+
+450
+
+ing MoO4 2 – availability in modern environments and paleoenvironments. SCM commonly
+
+451
+
+used to describe the adsorption of nutrient and pollutant elements rely on assumptions that
+
+452
+
+can be furthered refined to provide new insights into these interfacial interactions. Here, we
+
+453
+
+employ reactive MD and synchrotron X-ray techniques to show how hydration and adsorp-
+
+454
+
+tion of aqueous MoO4 2 – affects the surface charge of Fh which initiates a restructuration
+
+455
+
+towards a more disordered phase response observable in simulations and experiments. The
+
+456
+
+Fh surface charge change due to interfacial interactions is concentration-dependent and af23
+
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+457
+
+fects a wide range of chemistry at the interface such as hydrogen bonding and even the
+
+458
+
+dynamics and energetics of exchange between inner- and outer-sphere adsorbed complexes
+
+459
+
+with important implications for the bioavailability and transport of the aqueous species, as
+
+460
+
+well as, implications in isotopic fractionation mechanisms 93 . The accuracy of our model was
+
+461
+
+further tested by deriving SCM parameters for Fh surface acidity and the adsorption con-
+
+462
+
+stants of [Mo]aq showing excellent agreement with the literature. This new approach enables
+
+463
+
+informing and improving SCM where experimental work is not feasible or for expanding the
+
+464
+
+chemical conditions explored for accurately describing adsorption via SCM or our current
+
+465
+
+model. This work offers a new way of looking into interfacial processes and more studies
+
+466
+
+about phase transformation of other Fe (oxy)hydroxide phases with different aqueous metals
+
+467
+
+is currently underway.
+
+468
+
+Acknowledgement
+
+469
+
+A. H. thank Miles A. Shumaker and C. J. Fennell for providing guidance and direction.
+
+470
+
+AH also thank NSERC-CREATE to INSPIRE for the fellowship (Grant No. CREATE-
+
+471
+
+555378-2021). Funding was provided by the Natural Sciences and Engineering Research
+
+472
+
+Council of Canada (NSERC) through a Discovery Grant (Grant No. RGPIN-2020-05172)
+
+473
+
+held by MBJL. The computational aspects of this research were enabled in part by support
+
+474
+
+provided by University of Saskatchewan research computing (Plato) and the Digital Research
+
+475
+
+Alliance of Canada. Part or all of the research described in this paper was performed at
+
+476
+
+the Canadian Light Source, a national research facility of the University of Saskatchewan,
+
+477
+
+which is supported by the Canada Foundation for Innovation (CFI), the Natural Sciences
+
+478
+
+and Engineering Research Council (NSERC), the National Research Council (NRC), the
+
+479
+
+Canadian Institutes of Health Research (CIHR), the Government of Saskatchewan, and the
+
+480
+
+University of Saskatchewan. S. G. acknowledges fundings from the European Union’s Horizon
+
+481
+
+2020 research and innovation programme under the Marie Skłodowska-Curie grant agreement
+
+24
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+482
+
+No 101065060.
+
+483
+
+Author Information
+
+484
+
+Corresponding Authors
+
+485
+
+Ardalan Hayatifar - Department of Geological Sciences, University of Saskatchewan,
+
+486
+
+Saskatoon, SK, Canada S7N 5E2; https://orcid.org/0000-0002-7884-6917;
+
+487
+
+Email: ardalan.hayatifar@usask.ca
+
+488
+
+Matthew B.J. Lindsay - of Geological Sciences, University of Saskatchewan, Saskatoon,
+
+489
+
+SK, Canada S7N 5E2; https://orcid.org/0000-0001-9123-3261;
+
+490
+
+Email: matt.lindsay@usask.ca
+
+491
+
+Authors
+
+492
+
+Simon Gravelle - University Grenoble Alpes, CNRS, LIPhy, 38000 Grenoble, France;
+
+493
+
+https://orcid.org/0000-0003-2149-6706;
+
+494
+
+Email: simon.gravelle@cnrs.fr
+
+495
+
+Beatriz D. Moreno - Brockhouse Diffraction Sector, Canadian Light Source, Saskatoon,
+
+496
+
+SK, Canada; Email: Beatriz.diazmoreno@lightsource.ca
+
+497
+
+Valerie A. Schoepfer - Department of Geological Sciences, University of Saskatchewan,
+
+498
+
+Saskatoon, SK, Canada S7N 5E2; https://orcid.org/0000-0002-9582-9940;
+
+499
+
+Email: valerie.schoepfer@usask.ca
+
+500
+
+Competing Interests
+
+501
+
+The authors declare no competing interests.
+
+25
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+502
+
+Supporting Information Available
+
+503
+
+The following files are available free of charge.
+
+504
+
+505
+
+• Supporting Information
+
+References
+
+506
+
+(1) Scott, C.; Lyons, T. W. Contrasting molybdenum cycling and isotopic properties in
+
+507
+
+euxinic versus non-euxinic sediments and sedimentary rocks: Refining the paleoproxies.
+
+508
+
+Chemical Geology 2012, 324–325, 19–27.
+
+509
+
+(2) Parnell, J.; Spinks, S.; Andrews, S.; Thayalan, W.; Bowden, S. High Molybdenum
+
+510
+
+availability for evolution in a Mesoproterozoic lacustrine environment. Nature Commu-
+
+511
+
+nications 2015, 6 .
+
+512
+
+(3) Pichler, T.; Koopmann, S. Should Monitoring of Molybdenum (Mo) in Groundwater,
+
+513
+
+Drinking Water and Well Permitting Made Mandatory? Environmental Science &
+
+514
+
+Technology 2019, 54, 1–2.
+
+515
+
+(4) Ge, X. et al. Iron- and aluminium-induced depletion of molybdenum in acidic environ-
+
+516
+
+ments impedes the nitrogen cycle. Environmental Microbiology 2018, 21, 152–163.
+
+517
+
+(5) Yang, P.-T.; Wang, S.-L. Sorption and speciation of molybdate in soils: Implications
+
+518
+
+for molybdenum mobility and availability. Journal of Hazardous Materials 2021, 408,
+
+519
+
+124934.
+
+520
+
+(6) Wang, X.; Li, W.; Harrington, R.; Liu, F.; Parise, J. B.; Feng, X.; Sparks, D. L. Effect
+
+521
+
+of Ferrihydrite Crystallite Size on Phosphate Adsorption Reactivity. Environmental
+
+522
+
+Science & Technology 2013, 47, 10322–10331.
+
+523
+
+524
+
+(7) Boily, J.-F.; Song, X. Direct identification of reaction sites on ferrihydrite. Communications Chemistry 2020, 3 .
+26
+
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+525
+
+(8) Gonella, G.; Backus, E. H. G.; Nagata, Y.; Bonthuis, D. J.; Loche, P.; Schlaich, A.;
+
+526
+
+Netz, R. R.; Kühnle, A.; McCrum, I. T.; Koper, M. T. M.; Wolf, M.; Winter, B.;
+
+527
+
+Meijer, G.; Campen, R. K.; Bonn, M. Water at charged interfaces. Nature Reviews
+
+528
+
+Chemistry 2021, 5, 466–485.
+
+529
+
+(9) Fukushi, K.; Sato, T. Using a Surface Complexation Model To Predict the Nature and
+
+530
+
+Stability of Nanoparticles. Environmental Science & Technology 2005, 39, 1250–1256.
+
+531
+
+(10) Majzlan, J. Thermodynamic Stabilization of Hydrous Ferric Oxide by Adsorption of
+
+532
+
+Phosphate and Arsenate. Environmental Science & Technology 2011, 45, 4726–4732.
+
+533
+
+(11) Namayandeh, A.; Borkiewicz, O. J.; Bompoti, N. M.; Chrysochoou, M.; Michel, F. M.
+
+534
+
+Oxyanion Surface Complexes Control the Kinetics and Pathway of Ferrihydrite Trans-
+
+535
+
+formation to Goethite and Hematite. Environmental Science & Technology 2022, 56,
+
+536
+
+15672–15684.
+
+537
+
+(12) Björneholm, O.; Hansen, M. H.; Hodgson, A.; Liu, L.-M.; Limmer, D. T.;
+
+538
+
+Michaelides, A.; Pedevilla, P.; Rossmeisl, J.; Shen, H.; Tocci, G.; Tyrode, E.; Walz, M.-
+
+539
+
+M.; Werner, J.; Bluhm, H. Water at Interfaces. Chemical Reviews 2016, 116, 7698–
+
+540
+
+7726.
+
+541
+
+542
+
+543
+
+544
+
+(13) Ruiz-Lopez, M. F.; Francisco, J. S.; Martins-Costa, M. T. C.; Anglada, J. M. Molecular
+reactions at aqueous interfaces. Nature Reviews Chemistry 2020, 4, 459–475.
+(14) Schoepfer, V. A.; Lindsay, M. B. Repartitioning of co-precipitated Mo(VI) during Fe(II)
+and S(-II) driven ferrihydrite transformation. Chemical Geology 2022, 610, 121075.
+
+545
+
+(15) Botella, R.; Lefèvre, G. A deep look into the diverse surface speciation of the mono-
+
+546
+
+molybdate/lepidocrocite system by ATR-IR and polarized ATR-IR spectroscopy. Col-
+
+547
+
+loids and Surfaces A: Physicochemical and Engineering Aspects 2022, 647, 129065.
+
+27
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+548
+
+(16) Schoepfer, V. A.; Lum, J. E.; Lindsay, M. B. J. Molybdenum(VI) Sequestration Mech-
+
+549
+
+anisms During Iron(II)-Induced Ferrihydrite Transformation. ACS Earth and Space
+
+550
+
+Chemistry 2021, 5, 2094–2104.
+
+551
+
+(17) Görn, M. G.; Bolanz, R. M.; Parry, S.; Göttlicher, J.; Steininger, R.; Majzlan, J.
+
+552
+
+INCORPORATION OF Mo6+ IN FERRIHYDRITE, GOETHITE, AND HEMATITE.
+
+553
+
+Clays and Clay Minerals 2021, 69, 188–204.
+
+554
+
+(18) Das, S.; Essilfie-Dughan, J.; Jim Hendry, M. Sequestration of molybdate during trans-
+
+555
+
+formation of 2-line ferrihydrite under alkaline conditions. Applied Geochemistry 2016,
+
+556
+
+73, 70–80.
+
+557
+
+(19) Zhang, J.; Coker, V. S.; Mosselmans, J. F. W.; Shaw, S. Adsorption of octahedral mono-
+
+558
+
+molybdate and poly-molybdate onto hematite: A multi-technique approach. Journal of
+
+559
+
+Hazardous Materials 2022, 431, 128564.
+
+560
+
+(20) Goldberg, S. Advances in Agronomy Volume 47 ; Elsevier, 1992; pp 233–329.
+
+561
+
+(21) Satpathy, A.; Wang, Q.; Giammar, D. E.; Wang, Z. Intercomparison and Refinement of
+
+562
+
+Surface Complexation Models for U(VI) Adsorption onto Goethite Based on a Metadata
+
+563
+
+Analysis. Environmental Science & Technology 2021, 55, 9352–9361.
+
+564
+
+565
+
+566
+
+567
+
+(22) Gustafsson, J. P.; Tiberg, C. Molybdenum binding to soil constituents in acid soils: An
+XAS and modelling study. Chemical Geology 2015, 417, 279–288.
+(23) Gustafsson, J. P. Modelling molybdate and tungstate adsorption to ferrihydrite. Chemical Geology 2003, 200, 105–115.
+
+568
+
+(24) Prasad Saripalli, K.; McGrail, B.; Girvin, D. C. Adsorption of molybdenum on to
+
+569
+
+anatase from dilute aqueous solutions. Applied Geochemistry 2002, 17, 649–656.
+
+570
+
+(25) Goldberg, S. Reference Module in Earth Systems and Environmental Sciences; Elsevier,
+
+571
+
+2013.
+28
+
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+572
+
+(26) Liu, X.; Tournassat, C.; Grangeon, S.; Kalinichev, A. G.; Takahashi, Y.; Marques Fer-
+
+573
+
+nandes, M. Molecular-level understanding of metal ion retention in clay-rich materials.
+
+574
+
+Nature Reviews Earth & Environment 2022, 3, 461–476.
+
+575
+
+576
+
+(27) Balistrieri, L. S.; Chao, T. Adsorption of selenium by amorphous iron oxyhydroxide
+and manganese dioxide. Geochimica et Cosmochimica Acta 1990, 54, 739–751.
+
+577
+
+(28) Bickmore, B. R.; Tadanier, C. J.; Rosso, K. M.; Monn, W. D.; Eggett, D. L. Bond-
+
+578
+
+valence methods for pKa prediction: critical reanalysis and a new approach. Geochimica
+
+579
+
+et Cosmochimica Acta 2004, 68, 2025–2042.
+
+580
+
+(29) Zarzycki, P. Distance-dependent dielectric constant at the calcite/electrolyte interface:
+
+581
+
+Implication for surface complexation modeling. Journal of Colloid and Interface Science
+
+582
+
+2023, 645, 752–764.
+
+583
+
+584
+
+585
+
+586
+
+(30) Lee, S. S.; Fenter, P.; Park, C.; Sturchio, N. C.; Nagy, K. L. Hydrated Cation Speciation
+at the Muscovite (001)-Water Interface. Langmuir 2010, 26, 16647–16651.
+(31) Brinza, L.; Vu, H. P.; Neamtu, M.; Benning, L. G. Experimental and simulation results
+of the adsorption of Mo and V onto ferrihydrite. Scientific Reports 2019, 9 .
+
+587
+
+(32) Prange, M. P.; Mergelsberg, S. T.; Kerisit, S. N. Structural water in amorphous car-
+
+588
+
+bonate minerals: ab initio molecular dynamics simulations of X-ray pair distribution
+
+589
+
+experiments. Physical Chemistry Chemical Physics 2023, 25, 6768–6779.
+
+590
+
+591
+
+(33) Kerisit, S.; Rosso, K. M. Charge transfer in FeO: A combined molecular-dynamics and
+ab initio study. The Journal of Chemical Physics 2005, 123 .
+
+592
+
+(34) Wang, S.; Zeng, X.; Lin, J.; Yuan, Z.; Qu, S.; Zhang, B.; Pan, Y.; Chen, N.; Chen, W.;
+
+593
+
+Jia, Y. Molecular Structure of Molybdate Adsorption on Goethite at pH 5–8: A Com-
+
+594
+
+bined DFT + U, EXAFS, and Ab Initio XANES Study. The Journal of Physical Chem-
+
+595
+
+istry C 2021, 125, 22052–22063.
+29
+
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+596
+
+(35) Davantès, A.; Costa, D.; Sallman, B.; Rakshit, S.; Lefèvre, G. Surface Polymerization of
+
+597
+
+Mo(VI) and W(VI) Anions on Hematite Revealed by in Situ Infrared Spectroscopy and
+
+598
+
+DFT+U Theoretical Study. The Journal of Physical Chemistry C 2016, 121, 324–332.
+
+599
+
+(36) Senftle, T. P.; Hong, S.; Islam, M. M.; Kylasa, S. B.; Zheng, Y.; Shin, Y. K.; Junker-
+
+600
+
+meier, C.; Engel-Herbert, R.; Janik, M. J.; Aktulga, H. M.; Verstraelen, T.; Grama, A.;
+
+601
+
+van Duin, A. C. T. The ReaxFF reactive force-field: development, applications and
+
+602
+
+future directions. npj Computational Materials 2016, 2 .
+
+603
+
+(37) Pitman, M. C.; van Duin, A. C. T. Dynamics of Confined Reactive Water in Smectite
+
+604
+
+Clay–Zeolite Composites. Journal of the American Chemical Society 2012, 134, 3042–
+
+605
+
+3053.
+
+606
+
+(38) Huang, L.; Gubbins, K. E.; Li, L.; Lu, X. Water on Titanium Dioxide Surface: A
+
+607
+
+Revisiting by Reactive Molecular Dynamics Simulations. Langmuir 2014, 30, 14832–
+
+608
+
+14840.
+
+609
+
+(39) Manzano, H.; Moeini, S.; Marinelli, F.; van Duin, A. C. T.; Ulm, F.-J.; Pellenq, R. J.-
+
+610
+
+M. Confined Water Dissociation in Microporous Defective Silicates: Mechanism, Dipole
+
+611
+
+Distribution, and Impact on Substrate Properties. Journal of the American Chemical
+
+612
+
+Society 2012, 134, 2208–2215.
+
+613
+
+(40) Fogarty, J. C.; Aktulga, H. M.; Grama, A. Y.; van Duin, A. C. T.; Pandit, S. A. A
+
+614
+
+reactive molecular dynamics simulation of the silica-water interface. The Journal of
+
+615
+
+Chemical Physics 2010, 132 .
+
+616
+
+(41) Nagata, Y.; Ohto, T.; Backus, E. H. G.; Bonn, M. Molecular Modeling of Water In-
+
+617
+
+terfaces: From Molecular Spectroscopy to Thermodynamics. The Journal of Physical
+
+618
+
+Chemistry B 2016, 120, 3785–3796.
+
+619
+
+620
+
+(42) Hille, R.; Hall, J.; Basu, P. The Mononuclear Molybdenum Enzymes. Chemical Reviews
+2014, 114, 3963–4038.
+30
+
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+621
+
+622
+
+623
+
+624
+
+(43) Giovannelli, D. Trace metal availability and the evolution of biogeochemistry. Nature
+Reviews Earth & Environment 2023, 4, 597–598.
+(44) Schwertmann, U.; Cornell, R. M. Iron oxides in the laboratory: preparation and characterization; John Wiley & Sons, 2008.
+
+625
+
+(45) Michel, F. M.; Ehm, L.; Antao, S. M.; Lee, P. L.; Chupas, P. J.; Liu, G.; Stron-
+
+626
+
+gin, D. R.; Schoonen, M. A.; Phillips, B. L.; Parise, J. B. The structure of ferrihydrite,
+
+627
+
+a nanocrystalline material. Science 2007, 316, 1726–1729.
+
+628
+
+629
+
+(46) Hiemstra, T. Surface and mineral structure of ferrihydrite. Geochimica et Cosmochimica
+Acta 2013, 105, 316–325.
+
+630
+
+(47) Ong, S. P.; Richards, W. D.; Jain, A.; Hautier, G.; Kocher, M.; Cholia, S.; Gunter, D.;
+
+631
+
+Chevrier, V. L.; Persson, K. A.; Ceder, G. Python Materials Genomics (pymatgen):
+
+632
+
+A robust, open-source python library for materials analysis. Computational Materials
+
+633
+
+Science 2013, 68, 314–319.
+
+634
+
+(48) Thompson, A. P.; Aktulga, H. M.; Berger, R.; Bolintineanu, D. S.; Brown, W. M.;
+
+635
+
+Crozier, P. S.; in ’t Veld, P. J.; Kohlmeyer, A.; Moore, S. G.; Nguyen, T. D.; Shan, R.;
+
+636
+
+Stevens, M. J.; Tranchida, J.; Trott, C.; Plimpton, S. J. LAMMPS - a flexible simulation
+
+637
+
+tool for particle-based materials modeling at the atomic, meso, and continuum scales.
+
+638
+
+Comp. Phys. Comm. 2022, 271, 108171.
+
+639
+
+(49) Aktulga, H. M.; Fogarty, J. C.; Pandit, S. A.; Grama, A. Y. Parallel reactive molecular
+
+640
+
+dynamics: Numerical methods and algorithmic techniques. parallel computing 2012,
+
+641
+
+38, 245–259.
+
+642
+
+(50) Aryanpour, M.; van Duin, A. C.; Kubicki, J. D. Development of a reactive force field
+
+643
+
+for iron- oxyhydroxide systems. The Journal of Physical Chemistry A 2010, 114, 6298–
+
+644
+
+6307.
+
+31
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+645
+
+(51) Chenoweth, K.; Van Duin, A. C.; Goddard III, W. A. The ReaxFF Monte Carlo reactive
+
+646
+
+dynamics method for predicting atomistic structures of disordered ceramics: application
+
+647
+
+to the Mo3 VOx Catalyst. Angewandte Chemie International Edition 2009, 48, 7630–
+
+648
+
+7634.
+
+649
+
+(52) Fedkin, M. V.; Shin, Y. K.; Dasgupta, N.; Yeon, J.; Zhang, W.; van Duin, D.; van
+
+650
+
+Duin, A. C. T.; Mori, K.; Fujiwara, A.; Machida, M.; Nakamura, H.; Okumura, M.
+
+651
+
+Development of the ReaxFF Methodology for Electrolyte–Water Systems. The Journal
+
+652
+
+of Physical Chemistry A 2019, 123, 2125–2141.
+
+653
+
+(53) Ta, T. D.; Le, H. M.; Tieu, A. K.; Zhu, H.; Ta, H. T. T.; Tran, N. V.; Wan, S.; van
+
+654
+
+Duin, A. Reactive Molecular Dynamics Study of Hierarchical Tribochemical Lubricant
+
+655
+
+Films at Elevated Temperatures. ACS Applied Nano Materials 2020, 3, 2687–2704.
+
+656
+
+(54) Kohlmeyer, A.; Vermaas, J. TopoTools, Release 1.9. 2022.
+
+657
+
+(55) Jewett, A. I.; Stelter, D.; Lambert, J.; Saladi, S. M.; Roscioni, O. M.; Ricci, M.;
+
+658
+
+Autin, L.; Maritan, M.; Bashusqeh, S. M.; Keyes, T., et al. Moltemplate: A tool
+
+659
+
+for coarse-grained modeling of complex biological matter and soft condensed matter
+
+660
+
+physics. Journal of molecular biology 2021, 433, 166841.
+
+661
+
+662
+
+(56) Rappe, A. K.; Goddard III, W. A. Charge equilibration for molecular dynamics simulations. The Journal of Physical Chemistry 1991, 95, 3358–3363.
+
+663
+
+(57) Martínez, L.; Andrade, R.; Birgin, E. G.; Martínez, J. M. PACKMOL: A package for
+
+664
+
+building initial configurations for molecular dynamics simulations. Journal of compu-
+
+665
+
+tational chemistry 2009, 30, 2157–2164.
+
+666
+
+667
+
+(58) Azenha, M.; Szefczyk, B. Exploration of the reactive modelling of sol–gel polycondensation in the presence of templates. Soft Matter 2019, 15, 5770–5778.
+
+32
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+668
+
+(59) Gowers, R.; Linke, M.; Barnoud, J.; Reddy, T.; Melo, M.; Seyler, S.; Domański, J.;
+
+669
+
+Dotson, D.; Buchoux, S.; Kenney, I.; Beckstein, O. MDAnalysis: A Python Package for
+
+670
+
+the Rapid Analysis of Molecular Dynamics Simulations. Proceedings of the Python in
+
+671
+
+Science Conference. 2016.
+
+672
+
+(60) Michaud-Agrawal, N.; Denning, E. J.; Woolf, T. B.; Beckstein, O. MDAnalysis: A
+
+673
+
+toolkit for the analysis of molecular dynamics simulations. Journal of Computational
+
+674
+
+Chemistry 2011, 32, 2319–2327.
+
+675
+
+676
+
+677
+
+678
+
+(61) Kästner, J. Umbrella sampling. WIREs Computational Molecular Science 2011, 1,
+932–942.
+(62) Fiorin, G.; Klein, M. L.; Hénin, J. Using collective variables to drive molecular dynamics
+simulations. Molecular Physics 2013, 111, 3345–3362.
+
+679
+
+(63) Kumar, S.; Rosenberg, J. M.; Bouzida, D.; Swendsen, R. H.; Kollman, P. A. Mul-
+
+680
+
+tidimensional free-energy calculations using the weighted histogram analysis method.
+
+681
+
+Journal of Computational Chemistry 1995, 16, 1339–1350.
+
+682
+
+(64) Grossfield, A. WHAM: the weighted histogram analysis method, version 2.0.10.1. Avail-
+
+683
+
+able at membrane. urmc. rochester. edu/content/wham. Accessed November 2023,
+
+684
+
+(65) Toby, B. H.; Dreele, R. B. V. GSAS-II: the genesis of a modern open-source all purpose
+
+685
+
+crystallography software package. Journal of Applied Crystallography 2013, 46, 544–
+
+686
+
+549.
+
+687
+
+(66) Waasmaier, D.; Kirfel, A. New analytical scattering-factor functions for free atoms
+
+688
+
+and ions. Acta Crystallographica Section A: Foundations of Crystallography 1995, 51,
+
+689
+
+416–431.
+
+690
+
+691
+
+(67) Larsen, A. H. et al. The atomic simulation environment—a Python library for working
+with atoms. Journal of Physics: Condensed Matter 2017, 29, 273002.
+33
+
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+692
+
+(68) Juhás, P.; Farrow, C. L.; Yang, X.; Knox, K. R.; Billinge, S. J. L. Complex modeling:
+
+693
+
+a strategy and software program for combining multiple information sources to solve ill
+
+694
+
+posed structure and nanostructure inverse problems. Acta Crystallographica Section A
+
+695
+
+Foundations and Advances 2015, 71, 562–568.
+
+696
+
+(69) Michel, F. M. et al. Similarities in 2- and 6-Line Ferrihydrite Based on Pair Distribution
+
+697
+
+Function Analysis of X-ray Total Scattering. Chemistry of Materials 2007, 19, 1489–
+
+698
+
+1496.
+
+699
+
+(70) Michel, F. M.; Ehm, L.; Antao, S. M.; Lee, P. L.; Chupas, P. J.; Liu, G.; Strongin, D. R.;
+
+700
+
+Schoonen, M. A. A.; Phillips, B. L.; Parise, J. B. The Structure of Ferrihydrite, a
+
+701
+
+Nanocrystalline Material. Science 2007, 316, 1726–1729.
+
+702
+
+(71) Liu, W.; Etschmann, B.; Mei, Y.; Guan, Q.; Testemale, D.; Brugger, J. The role of sulfur
+
+703
+
+in molybdenum transport in hydrothermal fluids: Insight from in situ synchrotron XAS
+
+704
+
+experiments and molecular dynamics simulations. Geochimica et Cosmochimica Acta
+
+705
+
+2020, 290, 162–179.
+
+706
+
+707
+
+(72) Johansson, G.; Caminiti, R. The Hydration of Tungstate and Molybdate Ions in Aqueous Solution. Zeitschrift für Naturforschung A 1986, 41, 1325–1329.
+
+708
+
+(73) Harrington, R.; Hausner, D. B.; Bhandari, N.; Strongin, D. R.; Chapman, K. W.;
+
+709
+
+Chupas, P. J.; Middlemiss, D. S.; Grey, C. P.; Parise, J. B. Investigation of Surface
+
+710
+
+Structures by Powder Diffraction: A Differential Pair Distribution Function Study on
+
+711
+
+Arsenate Sorption on Ferrihydrite. Inorganic Chemistry 2009, 49, 325–330.
+
+712
+
+(74) Zhang, J.; Wang, S.; Ma, X.; Yao, S.; Lv, H.; Pan, Y.; Chernikov, R.; Heredia, E.;
+
+713
+
+Lin, J.; Jia, Y. Observation of surface precipitation of ferric molybdate on ferrihydrite:
+
+714
+
+Implication for the mobility and fate of molybdate in natural and hydrometallurgical
+
+715
+
+environments. Science of The Total Environment 2022, 807, 150749.
+
+34
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+716
+
+(75) Appelo, C. A. J.; Weiden, M. J. J. V. D.; Tournassat, C.; Charlet, L. Surface Complex-
+
+717
+
+ation of Ferrous Iron and Carbonate on Ferrihydrite and the Mobilization of Arsenic.
+
+718
+
+Environmental Science & Technology 2002, 36, 3096–3103.
+
+719
+
+(76) Lee, S. S.; Koishi, A.; Bourg, I. C.; Fenter, P. Ion correlations drive charge overscreening
+
+720
+
+and heterogeneous nucleation at solid–aqueous electrolyte interfaces. Proceedings of the
+
+721
+
+National Academy of Sciences 2021, 118 .
+
+722
+
+723
+
+(77) Sassi, M.; Chaka, A. M.; Rosso, K. M. Ab initio thermodynamics reveals the nanocomposite structure of ferrihydrite. Communications Chemistry 2021, 4 .
+
+724
+
+(78) Kurapothula, P. K. J.; Shepherd, S.; Wilkins, D. M. Competing Nuclear Quantum
+
+725
+
+Effects and Hydrogen-Bond Jumps in Hydrated Kaolinite. The Journal of Physical
+
+726
+
+Chemistry Letters 2023, 14, 1542–1547.
+
+727
+
+728
+
+729
+
+730
+
+(79) Piana, S.; Jones, F.; Gale, J. D. Assisted Desolvation as a Key Kinetic Step for Crystal
+Growth. Journal of the American Chemical Society 2006, 128, 13568–13574.
+(80) Pokora, M.; Paneth, A.; Paneth, P. Non-Covalent Isotope Effects. The Journal of Physical Chemistry Letters 2023, 14, 3735–3742.
+
+731
+
+(81) Muthachikavil, A. V.; Peng, B.; Kontogeorgis, G. M.; Liang, X. Distinguishing Weak
+
+732
+
+and Strong Hydrogen Bonds in Liquid Water—A Potential of Mean Force-Based Ap-
+
+733
+
+proach. The Journal of Physical Chemistry B 2021, 125, 7187–7198.
+
+734
+
+(82) Kański, M.; Hrabar, S.; van Duin, A. C. T.; Postawa, Z. Development of a Charge-
+
+735
+
+Implicit ReaxFF for C/H/O Systems. The Journal of Physical Chemistry Letters 2022,
+
+736
+
+13, 628–633.
+
+737
+
+738
+
+(83) Shultz, M. J.; Bisson, P.; Vu, T. H. Insights into hydrogen bonding via ice interfaces
+and isolated water. The Journal of Chemical Physics 2014, 141 .
+
+35
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+739
+
+(84) Norén, K.; Persson, P. Adsorption of monocarboxylates at the water/goethite interface:
+
+740
+
+The importance of hydrogen bonding. Geochimica et Cosmochimica Acta 2007, 71,
+
+741
+
+5717â5730.
+
+742
+
+(85) Zhao, K.; Chang, X.; Su, H.; Nie, Y.; Lu, Q.; Xu, B. Enhancing Hydrogen Oxidation
+
+743
+
+and Evolution Kinetics by Tuning the Interfacial Hydrogen Bonding Environment on
+
+744
+
+Functionalized Platinum Surfaces. Angewandte Chemie 2022, 134 .
+
+745
+
+(86) Zhang, W.; van Duin, A. C. T. Second-Generation ReaxFF Water Force Field: Im-
+
+746
+
+provements in the Description of Water Density and OH-Anion Diffusion. The Journal
+
+747
+
+of Physical Chemistry B 2017, 121, 6021–6032.
+
+748
+
+(87) Lammers, L. N.; Kulasinski, K.; Zarzycki, P.; DePaolo, D. J. Molecular simulations of
+
+749
+
+kinetic stable calcium isotope fractionation at the calcite-aqueous interface. Chemical
+
+750
+
+Geology 2020, 532, 119315.
+
+751
+
+(88) Schmidt, M. P.; Siciliano, S. D.; Peak, D. Spectroscopic Quantification of Inner- and
+
+752
+
+Outer-Sphere Oxyanion Complexation Kinetics: Ionic Strength and Background Cation
+
+753
+
+Effect on Sulfate Adsorption to Hematite. ACS Earth and Space Chemistry 2020, 4,
+
+754
+
+1765–1776.
+
+755
+
+(89) Bourg, I. C.; Lee, S. S.; Fenter, P.; Tournassat, C. Stern Layer Structure and Energetics
+
+756
+
+at Mica-Water Interfaces. The Journal of Physical Chemistry C 2017, 121, 9402–9412.
+
+757
+
+(90) Leung, K.; Criscenti, L. J. Predicting the acidity constant of a goethite hydroxyl group
+
+758
+
+from first principles. Journal of Physics: Condensed Matter 2012, 24, 124105.
+
+759
+
+(91) Leung, K.; Nielsen, I. M. B.; Criscenti, L. J. Elucidating the Bimodal Acid-Base Be-
+
+760
+
+havior of the Water-Silica Interface from First Principles. Journal of the American
+
+761
+
+Chemical Society 2009, 131, 18358–18365.
+
+36
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+762
+
+763
+
+(92) Dzombak, D. A.; Morel, F. M. Surface complexation modeling: hydrous ferric oxide;
+John Wiley & Sons, 1991.
+
+764
+
+(93) Ferrari, C.; Resongles, E.; Freydier, R.; Casiot, C. Antimony isotope fractionation
+
+765
+
+during Sb(V) and Sb(III) adsorption on secondary Fe-minerals (schwertmannite, ferri-
+
+766
+
+hydrite) typical of mine waters. Applied Geochemistry 2024, 163, 105935.
+
+37
+https://doi.org/10.26434/chemrxiv-2024-35bkm-v2 ORCID: https://orcid.org/0000-0002-7884-6917 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+

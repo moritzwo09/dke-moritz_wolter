@@ -1,0 +1,1205 @@
+Sulfate radical anion-based degradation of
+metazachlor herbicide in the water and gas:
+A theoretical study
+Dinh Hieu Truonga,b, Nguyen Thi Ai Nhungc, Sonia Taamalli,d
+Abderrahman El Bakali,d Florent Louis,d Duy Quang Daoa,b,*
+a
+
+Institute of Research and Development, Duy Tan University, Da Nang 550000, Viet Nam
+b
+Faculty of Natural Science, Duy Tan University, Da Nang 550000, Viet Nam
+c
+Department of Chemistry, University of Sciences, Hue University, Hue City 530000, Viet Nam
+d
+Univ. Lille, CNRS, UMR 8522, Physico-Chimie des Processus de Combustion et de l’Atmosphère, 590000
+Lille, France.
+
+Abstract
+Metazachlor (MTZ) herbicide oxidation initiated by sulfate radical anion (SO4●-) in water and gas was
+investigated using the density functional theory (DFT) at the M06-2X/6-311++G(3df,3pd)//M062X/6-31+G(d,p) level of theory. Mechanisms and kinetics of MTZ oxidation via three oxidation
+mechanisms were investigated, including abstraction (Abs), addition (Add), and single electron
+transfer (SET). Results show that most oxidation reactions are favorable and spontaneous in both
+phases. The overall rate constants at 298.15K in water is 5.06 × 1010 M-1 s-1 whereas the one in gas is
+many times higher, 1.51 × 1013 M-1 s-1. Notably, the degradation in water is non-selected with the
+fastest reaction being SET with 5.76 × 109 M-1 s-1 and 11.39% of the kapp and Г, respectively. On the
+contrary, the one in gas almost occurs via Abs reaction with the fastest one being Abs-H24 with kapp
+and Г values being 1.08 × 1013 M-1 s-1 and 71.76%. In addition, the influence of temperature on the
+degradation kinetics is evaluated. Results show that the degradation in water increases as a function
+of temperature (283 to 323 K), while the drawback trend is found in the gas phase from 253 to 323 K.
+Diving into the chemical nature of the hydrogen abstraction processes, it is noteworthy that the most
+predominant Abs reactions at the methyl and methylene groups occur via the proton-coupled electron
+transfer (PCET) mechanism. Overall, the SO4●--based degradation is an effective and potential method
+for removing MTZ herbicide.
+Keywords: metazachlor, sulfate radical anion, degradation, pesticides, kinetics,
+*Corresponding author: daoduyquang@duytan.edu.vn
+
+1
+https://doi.org/10.26434/chemrxiv-2024-jfdmw ORCID: https://orcid.org/0000-0003-0896-5168 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Introduction
+In recent years, due to the remarkable increase in the use of pesticides causing environmental
+pollution, advanced oxidation processes (AOPs)1–5, especially sulfate radical anion-based AOPs (SRAOPs), and hydroxyl radical-based AOPs (HO-AOPs) have been applied for pesticide degradation
+and mineralization. HO-AOPs are among the most popular techniques because they oxidize pesticides
+to organic or inorganic compounds with low- or non-toxic properties.6,7 However, this process is only
+effective in an acidic environment and is not often selective with multistep reaction pathways.8 In
+addition, the effectiveness of HO-AOPs is remarkably reduced due to the presence of HO● radical
+scavengers, including dissolved organic materials and carbonate/bicarbonate anions.4,9
+SR-AOPs possessing a high degradation ability are expected to have more potential than HOAOPs. When determining the electronic potential in a Normal Hydrogen Electrode (NHE) at circumneutral pH, the redox potential of SO4●- is 2.5–3.1 V compared to 1.8–2.7 V for HO●.5,10 Besides, the
+half-life and the broader pH range of SO4●- (30–40 µs and pH = 2–8) are also higher than those of
+HO● (20 ns and pH = 2–4).11–14 Therefore, SR-AOPs may be applied to include neutral or even basic
+conditions. Besides, the employed oxidants in SR-AOPs, including peroxymonosulfate (PMS) and
+persulfate (PS), are in the solid phase, leading to being easily transported, compared to the liquid phase
+of H2O2 in HO-AOPs.1,4 As a result, SR-AOPs are a potential alternative to HO-AOPs and thus tend
+to have a broader application in environmental remediation.
+In SR-AOPs, the common oxidizing agents are PMS (HSO5-) or PS (S2O82-), which are activated
+to produce sulfate radical anion SO4●-.1,4,5 PMS agents, commonly known as Oxone –
+2KHSO5‧KHSO4‧K2SO4, are non-toxic, readily dissolved in water, and stable over a broad pH range.4
+Outstandingly, HO● and sulfur pentoxide radicals (SO5●-) are also formed, as well as SO4●-, in
+activating PMS.3 Meanwhile, the structure of PS agents, such as Na2S2O8 or K2S2O8, is symmetric,
+leading to increased stability and activation energy.15 As a result, PS has a more vital oxidizing ability
+than PMS. In SR-AOPs, the PS/PMS needs to be activated to degrade pesticides. Popular activation
+techniques include catalyst-free activations (i.e., UV 16, ultrasonic 17, microwave 18, heat 19, and visible
+light 20) and metal-based catalyst activations (i.e., transition metals21, homogeneous22, heterogeneous
+23
+, photo-electrons24, electrochemical25, alkali26, carbon-based materials27, and hybrid28). However,
+each method has its advantages and disadvantages. For example, transition metal activation has low
+energy and high reactivity for degradation and a low cost (only 0.517$ /m3 for Fe2+), but it causes a
+risk of metal ion leaching.29 In addition, many factors, such as the nature and concentration of organic
+matter or inorganic salts and the environmental pH, often significantly influence SR-AOP processes.
+As a result, activation methods should be carefully considered to choose the suitable one for each
+industrial wastewater based on the reality of the situation.
+Besides the application of pesticide degradation in water, SR-AOPs are also one of the most
+popular techniques for gaseous pollutant removal due to the strong oxidation ability of SO4●- and the
+environmental friendliness of oxidation products.30,31 Like the SR-AOPs in the water, the gaseous
+phase processes also use the PS or PMS as oxidizing agents, which must be activated. Generally, SRAOPs treat various emission sources, including flue gas, biogas, nature gas, coke oven gas, coalbed
+methane, waste incineration tail gas, and chemical process exhaust.30 The SR-AOPs have proven
+highly effective for volatile organic compounds in gaseous pollutants. In initial studies, the removal
+2
+https://doi.org/10.26434/chemrxiv-2024-jfdmw ORCID: https://orcid.org/0000-0003-0896-5168 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+efficiencies of SR-AOPs for gaseous pollutants removal of toluene, ethyl acetate, and chlorobenzene
+were determined as nearly 90%32, 98.3%33, and 90-97%34, respectively.
+The mechanism and kinetics of pesticide degradation by sulfate radical anions have recently been
+an attractive topic and have been investigated in the literature using experimental and computational
+approaches.5,10,35–42 He et al.35 experimentally and theoretically studied the degradation of lindane
+using SO4●- in water. Experimentally, compared with p–cyanobenzoic acid as a reference compound,
+the second order rate constant (k) was (8.95 ± 0.29) × 106 M−1 s−1. Meanwhile, the experimental results
+showed that H-abstraction reactions of cyclohexane were the main ones with the highest rates.
+Moreover, the k value was 4.41 × 107 M−1 s−1, close to the experiment. Lutze et al. degraded atrazine,
+propazine, and terbuthylazine by sulfate radical anions in reaction solutions adjusted to pH 7 with
+sodium hydroxide in water.37 Results showed that the rate constants of these processes were
+determined as 4.5 ± 0.30 × 109, 2.2 ± 0.05 × 109, and 3.0 ± 0.05 × 109 M-1 s-1, respectively. For the
+atrazine oxidation by SO4●-, de-alkylations play a crucial role with 63%, in which de-ethylation is
+about ten times more dominant than de-isopropylation. Besides, Luo et al. theoretically investigated
+the removal of 76 aromatic contaminants (ACs).40 The results showed that the higher the electrondonating character of ACs is, the lower the Gibbs free energy of the single electron transfer (SET)
+reaction is. Furthermore, the calculated second-order rate constants for the ACs via the SET pathway
+were compared with their experimental k values, and two fundamental SET reaction mechanisms were
+proposed based on the identified intermediates. As a result, the SET pathway played the main role in
+the degradation of these ACs with values around 109 M-1 s-1. Specifically, decarboxylation of the
+carboxylate group of benzoate compounds was the second favorable reaction following the SET one.
+Metazachlor (MTZ) commondly named as 2-chloro-N-(2,6-dimethylphenyl)-N-((1H-Pyrazol-1yl)methyl) acetamide is an organochlorine compound. In agriculture, MTZ acts as a herbicide to
+protect oil seed crops by controlling annual grass and broad-leaved weeds. Generally, it is sprayed on
+the soil as a pre-emergence herbicide43,44, contaminating the aquatic environment, including surface
+water and groundwater. Indeed, the concentration of MTZ in both tributaries in the Navesti River in
+Estonia was about 0.6 ng L−1.45 The MTZ has also been found in other areas in Europe, such as
+Germany46, the Czech Republic47, and Belgium48, with an overall concentration in water varied in the
+range of 0.1 μg/l – 100 μg/l. In natural water, MTZ is often detected with its oxidation products. Ulrich
+et al. showed that the MTZ, MTZ-oxalamic acid (MTZ OA), and MTZ – ethane sulfonic acid (MTZ
+ESA) were found in surface water in a river in the North of Germany, with the concentrations being
+0.62, 1.8, and 4.8 µg L-1, respectively.49 In addition, MTZ is also measured in the air environment.
+Recently, Mayer et al. measured pesticide distribution in the European atmosphere and demonstrated
+that MTZ was mainly found at the coastal, nonfree tropospheric mountain, and rural sites, with the
+highest concentration being 2.59 ng m-3.50 As a consequence, the accumulation of MTZ in the aquatic
+environments leads to harmful effects on the biosystems and biodiversity. MTZ is known as
+moderately toxic to many types of marine species43,51–53. For example, the LC50 of MTZ for the
+Zebrafish (Danio rerio)51 is determined as 5.0 mg/l, whereas its EC50 is 1.63 mg/l for green alga
+Chlorella spp. in 96h52. In addition, for mammalian, including rats, mice, and dogs, MTZ’s acute
+3
+https://doi.org/10.26434/chemrxiv-2024-jfdmw ORCID: https://orcid.org/0000-0003-0896-5168 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+toxicity is low via oral, dermal, and inhalation routes with median lethal dose – LD50 > 2000 mg/kg
+and median lethal concentration – LC50 > 34.5 mg/L.48
+Because of its accumulation and possible toxicity properties, the degradation of MTZ in
+environmental conditions has been a targeted project using experimental and theoretical approaches.
+Kask et al. have studied the sonolytic degradation of MTZ. As a result, the pseudo-first-order rate
+constants of MTZ degradation initiated by conventional sonolytic and O2-saturated and Fe2O3-added
+solutions are 1.11 × 10−2 min-1, and 1.79 × 10−2 and 2.88 × 10−2 min-1, respectively.45 Moreover, two
+degradation pathways were performed, including cleavage of the aliphatic sites and reactions of the
+pyrazole ring (i.e., the initial hydroxylation and oxidation). Dao et al.7 also investigated the MTZ
+oxidation by hydroxyl radicals in the gas and aqueous phases using density functional theory (DFT).
+Results show that the oxidation rate constants decreased from 8.40 × 1010 to 8.31 × 109 M-1 s-1 and
+from 1.31 × 109 to 1.27 × 109 M-1s-1, respectively, with the rise of temperature from 250 to 400K.
+Furthermore, the authors reported that the main products resulting from the oxidation are recognized
+as developmental toxicants with no mutagenic toxicity using the ECOSAR approach.
+Although several studies have investigated the sulfate radical anion-based oxidation of pesticides,
+many details of these processes are still unclear and remain enigmatic. Indeed, the mechanism,
+kinetics, and influencing parameters of pesticide degradation using SO4●- in different environments
+are still uncertain and need more research, especially from the computational approaches. Therefore,
+our primary goal in this study is to evaluate metazachlor (MTZ) herbicide degradation by sulfate
+radical anions in different environmental media, including the gas and the aqueous phases. The
+degradation mechanisms were considered via three processes: H-abstraction (Abs), addition (Add),
+and single electron transfer (SET). The temperature ranges in the gas and water are 253-323 and 283323K, respectively. After determining the mechanistic and kinetic parameters, the half-life times of
+MTZ in the sulfate radical anion-based AOPs were determined.
+
+Computational methods
+All geometry optimization and harmonic vibrational frequency calculations were performed both
+in the gas phase and water using Gaussian 16 Rev C.01 package 54 at the M06-2X/6311++G(3df,3pd)//M06-2X/6-31+G(d,p) level of theory. The universal solvation model based on
+solute electron density (SMD)55 was used to simulate the water solution.
+In this work, the mechanism and kinetics of the initial oxidation of MTZ by SO4●- radicals are
+investigated via abstraction (Abs), addition (Add), and single electron transfer (SET) reactions. Abs
+reactions occurred at all hydrogen atoms (15 sites except the H29). In contrast, the Add ones were
+investigated at 9 C atoms, except the C6 position, belonging to phenyl and pyrrole rings and the C=O
+group. The kinetics of reactions were determined using the pre-reactive complexes scheme proposed
+by Singleton and Cvetanovicvia56. The two-step mechanism is presented via the following reactions:
+MTZ + SO4●- → RC,
+ka
+(R1)
+●RC → MTZ + SO4 ,
+kb
+(R2)
+RC → TS,
+kc
+(R3)
+4
+https://doi.org/10.26434/chemrxiv-2024-jfdmw ORCID: https://orcid.org/0000-0003-0896-5168 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Where the RC and TS are pre-reactive complexes and transition states, respectively. Thermal rate
+constants – kTST of these reactions are calculated as the (eq.1).
+𝑘𝑐 𝑘𝑎
+𝑘𝑇𝑆𝑇 =
+= 𝑘𝑐 𝐾𝑎,𝑏
+(eq.1)
+𝑘𝑏
+The reaction rate constant in water and the gas phase was calculated in a temperature range of
+283–333 K and 253–333 K, respectively, using The GPOP program57 by employing the conventional
+Transition State Theory (TST). The following equations can determine kc and Kab in (eq.1):
+𝑘𝐵 𝑇 𝑄𝑇𝑆 (𝑇)
+𝐸𝑇𝑆 − 𝐸𝑅𝐶
+(eq.2)
+)
+𝑘𝑐 (𝑇) = 𝜅(𝑇) ×
+×
+× 𝑒𝑥𝑝 (−
+ℎ
+𝑄𝑅𝐶 (𝑇)
+𝑘𝐵 𝑇
+𝐸𝑀𝑇𝑍 + 𝐸𝑆𝑂4∙− − 𝐸𝑅𝐶
+𝑄𝑅𝐶 (𝑇)
+𝐾𝑎,𝑏 (𝑇) =
+𝑒𝑥𝑝 (
+)
+(eq.3)
+𝑘𝐵 𝑇
+𝑄𝑆𝑂4∙− (𝑇)𝑄𝑀𝑇𝑍 (𝑇)
+For single electron transfer reactions (SET), the reaction rate constant was calculated via the
+equation (eq.4)58,59 with the reaction barrier (ΔG‡) calculated through Marcus theory60–62 (eq.5):
+𝑘𝐵 𝑇 −∆𝐺‡ /𝑅𝑇
+(eq.4)
+𝑘 = 𝜎𝜅
+𝑒
+ℎ
+0
+𝜆
+Δ𝐺SET
+‡
+(eq.5)
+Δ𝐺 = (1 +
+)
+4
+𝜆
+For the reaction in water, the diffusion influence must be considered. This effect was calculated
+based on the Collin–Kimball theory63 and the steady-state rate constant (kD) via Smoluchowski64. The
+kD was calculated as (eq.6).
+kD = 4π RAB DAB NA
+(eq.6)
+Where the RAB is the reaction distance, DAB is the mutual diffusion coefficient of the reactants A
+(MTZ) and B (SO4●-), and NA is the Avogadro number.
+The diffusion-corrected apparent rate constants (kapp) are then determined via the following
+equation:
+𝑘𝑇𝑆𝑇 𝑘𝐷
+𝑘𝑎𝑝𝑝 =
+(eq.7)
+𝑘𝑇𝑆𝑇 + 𝑘𝐷
+Finally, the overall rate constant of the SO4●--initiated oxidation of MTZ was determined as the
+sum of Abs, Add, and SET reaction rate constants.
+koverall = ∑kapp (Abs) + ∑kapp (Add) + kapp (SET)
+(eq.8)
+65–68
+SEAGrid (http:www.seagrid.org)
+is acknowledged for computational resources and services
+for the results presented in this publication.
+
+Results and Discussion
+1. Mechanism of initiative reactions
+The mechanism of the sulfate radical anion-initiated oxidation of MTZ is studied via three radical–
+molecule reaction mechanisms, including H-abstraction (Abs), Addition (Add), and single electron
+transfer (SET).
+The optimized structures of the transition states (TSs) of Abs and Add reactions between MTZ
+and sulfate radical anions in water and gas are shown in Figures 2 and 3, respectively. Meanwhile,
+Figures 4 and 5 demonstrate the ZPE-corrected relative enthalpy profile at 0 K in water and gas,
+5
+https://doi.org/10.26434/chemrxiv-2024-jfdmw ORCID: https://orcid.org/0000-0003-0896-5168 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+respectively. Meanwhile, the structure, HOMO – LUMO orbitals, and ESP map of MTZ are shown
+in the Figure S1 of the SI file. Cartesian coordinates of all the reactant complexes (RC), TS, and
+product complexes (PC) involved in these pathways are resumed in Tables S1 and S2, respectively,
+of the Supporting information (SI) file. In addition, Figures 6 and 7 present the reaction pathway
+diagram of all the studied processes in the water and gas phases, respectively, in resuming their
+standard Gibbs free energies of reaction (rG0) and Gibbs free energies of activation (rG).
+1.1. Abstraction reaction
+Abstraction reaction between MTZ and SO4●- occurs at all hydrogen atoms, except the H29 one,
+because of the existence of nearby functional groups having the steric effect that prevents SO4●- from
+interacting with this atom. As can be seen in Figures 2 and 3, C···H distances of the TS structures
+vary from 1.15 to 1.29 Å in water and from 1.25 to 1.37 Å in gas, whereas H···O ones are from 1.22
+to 1.63 Å in water and from 1.09 to 1.36 Å in gas. The bond angles vary from 157 to 176º and 160 to
+173º in water and gas, respectively.
+Regarding Abs reactions in water, all the Abs reactions in water are barrierless, especially
+reactions at alkyl groups (i.e., methyl and methylene). Indeed, the relative enthalpies at 0K of these
+TSs (ΔH0K) vary from -51.7 (TS-H24) to -27.1 kJ mol-1 (TS-H20) in water (Figure 4), and the Gibbs
+free energies of activation ΔG‡ values at 298.15 K varying from -0.9 (Abs-H26) to 20.8 kJ mol-1 (AbsH21) (Figure 6). As a result, these reactions are all spontaneous and exergonic, with the standard
+Gibbs free energies of reaction ΔrG0 being all negative, from -142.6 (Abs-H27, Abs-H28) to -119.0
+kJ mol-1 (Abs-H20). The most spontaneous Abs reactions are found at Abs-H26 (ΔH0K of -51.0 kJ
+mol-1 and ΔG‡ of -0.9 kJ mol-1) and Abs-H24 (ΔH0K of -51.7 kJ mol-1 and ΔG‡ of -0.7 kJ mol-1). The
+standard Gibbs free energy ΔrG0 of these two Abs reactions is equal to -140.0 kJ mol-1. This can be
+explained by the presence of hydrogen bonds formed by one hydrogen atom close to oxygen ones of
+the SO4●– in the TS structure. Indeed, the distance for the H33(MTZ)···O38(SO4●–) and
+H33(MTZ)···O39(SO4●–) of the TS-H24 structure are 2.31 and 2.54 Å, respectively, while the
+H20(MTZ)···O39(SO4●–) and H20(MTZ)···O40(SO4●–) distances of the TS-H26 are 2.55 and 2.54 Å,
+respectively. As a result, the TS structure of these reactions becomes more stable, leading to a decrease
+in their energy barriers. Their rate constants are thus expected to be very fast. On the contrary, Abs
+reactions at hydrogen sites belonging to benzene and pyrrole rings have significantly higher ΔH0K and
+ΔG‡ at 298.15 K. ΔH0K values of the TSs vary from -22.4 (TS-H22) to 6.9 kJ mol-1 (TS-H31) (Figure
+4). Consequently, these Abs reactions may be slower than ones at methyl and methylene sites.
+Regarding the degradation in the gas phase, Abs reactions at alkyl groups of MTZ are also the
+most spontaneous and exergonic reactions. ΔH0K values for the TSs vary from -39.4 (TS-H24) to 13.1 kJ mol-1 (TS-H28) (Figure 5), while ΔG‡ ones at 298.15 K are from 11.4 (Abs-H24) to 37.2
+(Abs-H28), and ΔrG0 ones vary from -77.6 (Abs-H24) to 51.7 kJ mol-1 (Abs-H31) (Figure 6). Among
+them, the Abs reaction at H24 has the lowest ΔH0K of the TS as well as ΔG‡ at 298.15 K, due to the
+formation of the hydrogen bond H32(MTZ)···O38(SO4●–), with the distance being 2.13 Å. This
+reaction may play the most crucial role in the degradation of MTZ in the gas phase. Meanwhile, the
+
+6
+https://doi.org/10.26434/chemrxiv-2024-jfdmw ORCID: https://orcid.org/0000-0003-0896-5168 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Abs reactions at benzene and pyrrole rings have higher ΔH0K of the TS and ΔG‡ at 298 K and may
+have significantly slow rates compared to those at alkyl groups.
+
+Figure 2: Optimized structure of the transition states (TSs) for the hydrogen abstraction (Abs) and
+addition (Add) reactions between metazachlor (MTZ) and sulfate radical anion (SO4•−) in water.
+Numbers in red, blue, and green colors are interactive distances (Å), interactive angles (º), and
+interactive dihedral angles (º), respectively. D1 and D2 are C-H-O-S and C-C-O-S dihedral angles,
+respectively. The imaginary frequencies are also indicated.
+
+7
+https://doi.org/10.26434/chemrxiv-2024-jfdmw ORCID: https://orcid.org/0000-0003-0896-5168 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 3: Optimized structure of the transition states (TSs) for the hydrogen abstraction (Abs) and
+addition (Add) reactions between metazachlor (MTZ) and sulfate radical anion (SO4•−) in the gas
+phase. Numbers in red, blue, and green colors are interactive distances (Å), interactive angles (º),
+and interactive dihedral angles (º), respectively. D1 and D2 are C-H-O-S and C-C-O-S dihedral
+angles, respectively. The imaginary frequencies are also indicated.
+
+8
+https://doi.org/10.26434/chemrxiv-2024-jfdmw ORCID: https://orcid.org/0000-0003-0896-5168 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Thus, the Abs reactions at the H24 and H26 positions with low energy barriers are expected to be
+spontaneous and favorable, having high-rate constants, and may play an essential role in the
+degradation of MTZ by SO4●–.
+
+Figure 4: ZPE-corrected relative enthalpy profile at 0 K (ΔH0K) for abstraction (Abs) and addition
+(Add) reactions initiated by SO4●- radical anion in water.
+
+9
+https://doi.org/10.26434/chemrxiv-2024-jfdmw ORCID: https://orcid.org/0000-0003-0896-5168 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+1.2. Addition reaction
+The SO4●- radical may also react with MTZ via addition reactions (Add) at double bonds of the
+benzene and pyrazole rings. Regarding their TS structures in Figures 2 and 3, the O(SO4●–)···C(MTZ)
+distances vary from 1.80 to 2.57 Å in water and from 1.70 to 1.96 Å in gas.
+
+Figure 5: ZPE-corrected relative enthalpy profile at 0 K (ΔH0K) for addition and abstraction
+reactions initiated by SO4●- radical in the gas
+
+10
+https://doi.org/10.26434/chemrxiv-2024-jfdmw ORCID: https://orcid.org/0000-0003-0896-5168 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+For the Add reaction in water, the reactions at benzene and pyrazole rings are represented by
+negative ΔH0K(TS) values varying from -59.8 (TS-C12) to -41.2 kJ mol-1 (TS-C9), and from -62.1 (TSC18) to -48.6 (TS-C19), respectively (Figure 4). As a result, the thermodynamic parameters of these
+reactions at 298.15 K and 1 atm condition are also relatively low. The ΔG‡ at 298.15 K values are
+from -10.9 (Add-C18) to 10.4 kJ mol-1 (Add-C9), whereas the ΔrG0 ones vary from -60.4 (C16) to 14.7 kJ mol-1 (Add-C9), which indicates the spontaneous and exergonic properties (Figure 7). On the
+contrary, despite having the negative ΔrG0 (-39.9 kJ mol-1), the Add-reaction at C10 of the C=O group
+(Add-C10) is expected to be negligible because of having very high barrier energy. Indeed, its ΔH0K
+of the TS and ΔG‡ at 298.15K values are 31.4 and 57.5 kJ mol-1, respectively. Thus, its role in the
+degradation may be limited.
+Regarding the Add reactions in the gas phase, the energy barriers of the Add reactions in the gas
+phase are higher than those in water. Indeed, the ΔH0K values of the TS for the reactions at benzene
+and pyrazole rings are from -27.9 (TS-C11) to 22.0 kJ mol-1 (TS-C9) and -1.5 (TS-C16) to 22.1 kJ
+mol-1 (TS-19), respectively. Moreover, these reactions also have high ΔG‡ values at 298.15 K, being
+from 21.8 (Add-C11) to 74.8 kJ mol-1 (Add-C9) and from 44.3 (Add-C16) to 69.0 kJ mol-1 (AddC19), respectively. Meanwhile, the Add-C10 is also insignificant because of the high energy barrier
+(ΔH0K of the TS being 31.4 kJ mol-1 and 89.0 kJ mol-1 of ΔG‡). These values are all significantly
+higher than the corresponding values in water as well as those of Abs reactions in gas. As a result, the
+contribution of Add reactions in the gas phase is expected to be trivial.
+To sum up, the degradation of MTZ by SO4●- via Add reactions is spontaneous and favorable in
+the aqueous phase with low standard Gibbs free energies of reaction and Gibbs free energies of
+activation. However, because of their higher energy barrier in the gas phase compared to the ones of
+Abs reactions, the role of the Add reactions in this phase is expected to be minor.
+Outstandingly, one can see that energy barriers in water are significantly lower than the
+corresponding ones in the gas phase for both Abs and Add reactions. This can be explained by the
+better stabilization of the TS under the influence of the water solvent. Previous studies in the literature
+[69–71] showed that for a TS structure with high charge separation, the polar solvents with a high
+dielectric constant would stabilize the TS and promote the reaction to occur more favorably. As can
+be seen, the TS structures have a negative charge (-1), which is separated from the MTZ molecule and
+the sulfate radical anion, whose complexes are stabilized by the high dielectric constant of water
+solution (ε=78.3553). In other words, the interaction between TSs and the water molecules tends to
+neutralize the charge of the TSs, making them more stable. As a result, the energies of TS and the
+energy barriers remarkably decrease. In contrast, the TS structures in the gas phase do not have this
+effect and, thus, have higher energy barriers.
+
+11
+https://doi.org/10.26434/chemrxiv-2024-jfdmw ORCID: https://orcid.org/0000-0003-0896-5168 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 6: Schematic diagram of SO4●--initiated oxidation of metazachlor via abstraction (Abs)
+reactions in water (in blue) and in the gas phase (in red) at 298.15 K. ΔrG0 and ΔG‡ are standard
+Gibbs free energies of reaction and Gibbs free energies of activation, respectively.
+1.3 Single electron transfer
+The single electron transfer (SET) reaction is evaluated via one electron donating process from
+MTZ to SO4●-. As a result, in water, the SET has a relatively low energy barrier at 298.15K, with ΔrG0
+and ΔG‡ being 29.16 and 21.80 kJ mol-1, respectively (Figure 6). On the contrary, the SET reaction
+in the gas has high values of ΔrG0 (226.1 kJ mol-1) and ΔG‡ (571.1 kJ mol-1). Consequently, this
+gaseous reaction is expected to be negligible and unfavorable.
+
+12
+https://doi.org/10.26434/chemrxiv-2024-jfdmw ORCID: https://orcid.org/0000-0003-0896-5168 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 7: Schematic diagram of SO4●--initiated oxidation of metazachlor via single electron transfer
+(SET) and addition (Add) and reactions in water (in blue) and gas (in red) phases at 298.15 K. ΔrG0
+and ΔG‡ are standard Gibbs free energies of reaction and Gibbs free energies of activation,
+respectively.
+2. Kinetics of reactions
+Table 1 displays the rate constants of all Add, Abs, and SET reactions between SO4●− radical
+anion and MTZ at 298.15 K in water and gas phases.
+Regarding the Abs reactions in water (Table 1), their thermal rate constants (kTST) are much larger
+than the corresponding diffusion rate constants (kD) due to their low barrier energies, except the Abs
+ones at H31, H34, and H35. Therefore, their apparent rate constants (kapp) are approximately diffusioncontrolled rate constants, varying from 1.80 × 109 (Abs-H30) to 2.53× 109 M-1 s-1(Abs-H26), with the
+corresponding branching ratios (Г) being from 3.56% (Abs-H30) to 5.01% (Abs-H26), compared to
+the total rate constant. On the contrary, the rate constants of Abs-H31, Abs-H34, and Abs-H35
+reactions are significantly lower, from 1.94 × 105 to 1.99 × 108 M-1 s-1, with the branching ratios lower
+than 0.4%. In general, the Abs reactions play the most critical role, with 55.99% of the total Г. For the
+reactions in the gas phase, it is noteworthy that the Abs reaction is also the most important channel.
+Indeed, Abs-H24, Abs-H25, and Abs-H27 are the fastest reactions in gas, with the rate constants being
+1.08 × 1013, 2.15 × 1012, and 1.69 × 1012 M-1 s-1, respectively. These reactions are incredibly high
+because the reactions in the gas phase are not influenced by the diffusion regime. Therefore, these
+reactions in gas are not limited by the diffusion rate like those in water. Accordingly, these reactions
+13
+https://doi.org/10.26434/chemrxiv-2024-jfdmw ORCID: https://orcid.org/0000-0003-0896-5168 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+possess high branching ratios, 71.76, 14.24, and 11.17%, respectively. Meanwhile, the other Abs
+reactions have lower rate constants varying from 6.40 × 101 (H34) to 2.79 × 1011 M-1 s-1 (H32), and
+thus, their branching ratios are from 0.00% (H34) to 1.84% (H32). Overall, the total branching ratios
+of Abs-reaction in the gas at 298.15 K is remarkably high, with 99.69%.
+Table 1. Diffusion rate constants (kD, M−1 s−1), thermal rate constants (kTST, M−1 s−1), apparent rate
+constants (kapp, M−1 s−1), and branching ratio (Г, %) of the initiative reactions between SO4●– radical
+and metazachlor in water and gas phases at 298.15 K.
+kD
+Abstraction reactions
+Abs-H20
+2.48 × 109
+Abs-H21
+2.42 × 109
+Abs-H22
+2.31 × 109
+Abs-H23
+2.31 × 109
+Abs-H24
+2.53 × 109
+Abs-H25
+2.51 × 109
+Abs-H26
+2.53 × 109
+Abs-H27
+2.49 × 109
+Abs-H28
+2.47 × 109
+Abs-H30
+2.33 × 109
+Abs-H31
+2.28 × 109
+Abs-H32
+2.37 × 109
+Abs-H33
+2.35 × 109
+Abs-H34
+2.26 × 109
+Abs-H35
+2.26 × 109
+Addition reaction
+Add-C8
+1.89 × 109
+Add-C9
+1.94 × 109
+Add-C10 1.65 × 109
+Add-C11 2.36 × 109
+Add-C12 2.32 × 109
+Add-C15 2.13 × 109
+Add-C16 1.99 × 109
+Add-C18 1.69 × 109
+Add-C19 2.18 × 109
+Single electron transfer
+SET
+7.69 × 109
+Total
+
+kTST
+WATER
+
+kapp
+
+Г
+
+Г
+
+kTST
+GAS
+
+6.78 × 1010
+7.08 × 1010
+3.23 × 1010
+4.32 × 1010
+3.44 × 1014
+1.25 × 1013
+3.73 × 1014
+1.74 × 1014
+1.90 × 1013
+7.91 × 109
+1.94 × 105
+1.78 × 1011
+1.85 × 1012
+6.46 × 106
+2.18 × 108
+
+2.40 × 109
+2.34 × 109
+2.16 × 109
+2.19 × 109
+2.53 × 109
+2.51 × 109
+2.53 × 109
+2.49 × 109
+2.47 × 109
+1.80 × 109
+1.94 × 105
+2.34 × 109
+2.34 × 109
+6.44 × 106
+1.99 × 108
+
+4.74
+4.63
+4.27
+4.34
+5.00
+4.96
+5.01
+4.92
+4.88
+3.56
+0.00
+4.63
+4.64
+0.01
+0.39
+
+2.53 × 109
+4.06 × 1010
+7.81 × 104
+5.59 × 106
+1.08 × 1013
+2.15 × 1012
+3.89 × 1010
+1.69 × 1012
+7.48 × 108
+2.51 × 106
+7.03 × 103
+2.79 × 1011
+2.08 × 1010
+6.40 × 101
+5.12 × 102
+
+0.02
+0.27
+0.00
+0.00
+71.76
+14.24
+0.26
+11.17
+0.00
+0.00
+0.00
+1.84
+0.14
+0.00
+0.00
+
+1.12 × 1014
+2.35 × 1012
+1.37 × 104
+1.16 × 1016
+4.33 × 1015
+2.80 × 1014
+1.82 × 1015
+1.15 × 1016
+6.31 × 1014
+
+1.89 × 109
+1.94 × 109
+1.37 × 104
+2.36 × 109
+2.32 × 109
+2.13 × 109
+1.99 × 109
+1.69 × 109
+2.18 × 109
+
+3.74
+3.84
+0.00
+4.66
+4.58
+4.20
+3.94
+3.34
+4.31
+
+8.70 × 106
+1.79 × 101
+5.80 × 10-2
+3.25 × 1010
+1.38 × 1010
+9.74 × 106
+3.70 × 106
+1.87 × 103
+1.81 × 102
+
+0.00
+0.00
+0.00
+0.21
+0.09
+0.00
+0.00
+0.00
+0.00
+
+2.30 × 1010
+
+5.76 × 109
+
+11.39
+
+~0.00
+
+0.00
+
+5.06 × 1010
+
+100.00
+
+1.51 × 1013
+
+100.00
+14
+
+https://doi.org/10.26434/chemrxiv-2024-jfdmw ORCID: https://orcid.org/0000-0003-0896-5168 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+For the Add reactions in water, it is noteworthy that all reaction rates, except for the reaction at
+the C10 position of the C=O group, occur rapidly with rate constants close to the diffusion limit, from
+1.69 × 109 (Add-C18) to 2.36 × 109 M-1 s-1 (Add-C11), which are corresponding to the branching
+ratios slightly varied from 3.34% (Add-C18) to 4.66% (Add-C11). In contrast, the kapp value at C10
+is only 1.37 × 104 M-1 s-1 (Г, 0.00%). The total Г of the Add channel is equal to 32.61%. Concerning
+Add reactions in the gas phase, the rate constants of some Add reactions are relatively high, from 5.80
+× 10-2 (Add-C10) to 3.25 × 1010 M-1 s-1 (Add-C11). However, the rate constants of the Add reactions
+are remarkably lower than those of Abs ones, and thus, their total branching ratio in the gas phase is
+only 0.30%.
+Regarding the SET reaction, as mentioned above, due to the low barrier energies at 298.15 K, its
+thermal rate constant (kTST) in water reaches 2.30 × 1010 M-1 s-1. Moreover, because of the highest
+diffusion rate constants (kD) being 7.69 × 109 M-1 s-1, its apparent rate constant (kapp) is determined to
+be 5.76 × 109 M-1 s-1 (the corresponding branching ratio being 11.39%). As expected, the electron
+transfer process in the aqueous phase plays an important role in the oxidation process initiated by
+SO4●−, which has usually been forgotten in several computational works in the literature, leading to a
+significant underestimation of the pesticides’ degradation by SO4●- radical anion 36,41,69. Furthermore,
+our observation agrees with the experimental works, which mentioned the high oxidation potential of
+SO4●- in water by quickly donating an electron to organic contaminants. 4,5,10 The SET process is
+predominant in the degradation of various organic compounds, notably aromatic compounds, such as
+phenol, aminophenol, dihydroxyl phenol38, tyrosol39, and anthracene42. In this work, this process is
+observed to be crucial in the degradation using SO4●- of the MTZ in the aqueous phase. On the
+contrary, the SET reaction in the gas phase is negligible because of its significantly high barrier
+energy, as mentioned above.
+Overall, the sulfate radical anion-initiated oxidations of MTZ at 298.15 K are extremely fast in
+both the water and gas phases. The Abs reactions are the main channel for degradation in two phases,
+with the total branching ratios being 55.99 and 99.69%. In addition, it can be seen that the total rate
+constant in the gas (1.51 × 1013 M-1 s-1) is about 300 times faster than that in the water (5.06 × 1010
+M-1 s-1). This can be explained by the diffusion effect of water solvent, which significantly reduces
+the reaction rate in water. Indeed, diffusion rate constants – kD in water are from 1.69× 109 to 2.23 ×
+109 M-1 s-1 for the Abs and Add reaction and 7.69 × 109 M-1 s-1 for the SET reaction. Hence, despite
+having extremely high thermal rate constants, the kapp values of these reactions calculated via (eq.7)
+are all lower than 2.23 × 109 M-1 s-1 for Abs and Add reactions and only 5.76 × 109 M-1 s-1 for SET
+reaction. For example, the Abs reactions at H24 and H26 have the kTST being 3.44 × 1014 and 3.73 ×
+1014 M-1 s-1, respectively, but their kapp values are only 2.53 × 109 M-1 s-1. On the contrary, reactions
+in the gas phase are not affected by the diffusion regime of the solution, which leads to the thermal
+rate constants not being decreased. Among them, the rate constants of some reactions are many times
+higher than that in water, such as Abs-H24 (kTST = 1.08 × 1013 M-1 s-1) or Abs-H25 (kTST = 2.15 × 1012
+M-1 s-1). As a result, the rate constant of a similar reaction in the gas phase is remarkably faster than
+that in the aqueous phase.
+15
+https://doi.org/10.26434/chemrxiv-2024-jfdmw ORCID: https://orcid.org/0000-0003-0896-5168 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Finally, compared with the SO4●–-initiated degradations in water of other compounds, the rate
+constant MTZ one is about 16 times higher than that of toluene (3.1 × 109 M-1 s-1)33, 5 times than
+sulfamethoxazole (12.5 ± 1.9 × 109 M-1 s-1) and diclofenac (9.2 ± 0.6 × 109 M-1 s-1)70, and 50 times
+than aniline (~109 M-1 s-1)71.
+3. Influence of temperature on the reaction kinetics
+The influences of temperature on the main reactions of the degradation in water and gas are shown
+in Figures 8 and 9, respectively. Meanwhile, all details of the rate constants and branching ratios are
+present in Tables S3 to S6 of the SI file.
+Figure 8 shows the influence of temperature on the rate constant of the MTZ oxidation initiated
+by SO4●− radical anion, evaluated from 283 to 323K in water.
+Regarding the degradation in water, one can see that the effect of temperature on the SET reaction
+is the most remarkable. Indeed, the rate constants significantly increase from 3.43 × 109 M-1 s-1 (at
+283 K) to 1.14 × 1010 M-1 s-1 (at 323 K). Correspondingly, its branching ratio rises from 10.37% (283
+K) to 12.96% (323 K). Similarly, almost all rate constants of Abs reactions also increase with the total
+rate of this channel from 1.89 × 1010 (283 K) to 5.09 × 1010 M-1 s-1 (323K) and the branching ratios
+varying from 57.20 to 53.63%, respectively. The kapp values of the most significant Abs reactions (i.e.,
+Abs-H24 and Abs-H26) increase from 1.64 × 109 and 1.65 × 109 M-1 s-1 (at 283K) to 4.49 × 109 and
+4.50 × 109 M-1 s-1 (at 323 K), respectively. Similarly, all Add reactions become faster with the increase
+of temperature, with the total rate constant being 1.07 × 1010 and 2.93 × 1010 M-1 s-1 at 283 and 323
+K, respectively. The fastest Add reaction (i.e., Add-C11) occurs with the rate constant varying from
+1.53 × 109 (283K) to 4.18 × 109 M-1 s-1 (323K) and the corresponding Г being 4.63 and 4.78%,
+respectively. On the contrary, some reactions have drawbacks in the temperature range, including
+Abs-H31, Abs-H34, and Abs-H35. However, the contribution of these reactions is negligible, with the
+Г from 0.00 to 0.82%.
+Overall, it is noteworthy that all the reactions between MTZ and SO4●− in water occur with high
+reaction rates in the diffusion limit in the temperature range from 283 to 323 K. In addition, the kapp
+of this degradation significantly increases in this temperature range which can be explained by the
+increase of the diffusion rate (or the steady-state rate constant) kD as a function of the mutual diffusion
+coefficient – DAB (eq.6). Indeed, for the Abs and Add reactions, the kD values at 283 K vary from 1.07
+× 109 to 1.65 × 109 M-1 s-1, whereas the ones at 323 K are from 2.93 × 109 to 4.50 × 109 M-1 s-1.
+Meanwhile, the kD values of SET reaction at 283 and 323 K are 5.00 × 10 9 and 1.37 × 1010 M-1 s-1.
+Moreover, the kapp values of the main reactions in this degradation mainly depend on the kD because
+their kTST are many times higher than the corresponding kD, as mentioned in the previous section. For
+example, the kTST values of fastest reactions, i.e., SET, Abs-H24, and Abs-H26 at 283 K are 1.09 ×
+1010, 9.84 × 1014, and 1.04 × 1015 M-1 s-1, respectively, whereas ones at 323 K are 6.74 × 1010, 7.59
+× 1013, and 3.43 × 1013 M-1 s-1, respectively. As a result, the total rate of this degradation in water is
+diffusion-controlled in increasing from 3.31 × 1010 at 283 K to 8.76 × 1010 M-1 s-1 at 323 K.
+16
+https://doi.org/10.26434/chemrxiv-2024-jfdmw ORCID: https://orcid.org/0000-0003-0896-5168 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 8: Influence of temperature on the rate constants described as log k (M-1 s-1) and branching
+ratio Г (%) for the most dominant abstraction (Abs), addition (Add), and SET reactions of MTZ
+oxidation by SO4●- radical in water at 283-323 K temperature range.
+Regarding the degradation in the gas phase, the influence of temperature on the primary reactions
+of the MTZ oxidation by SO4●- is investigated from 253 to 323K and shown in Figure 9.
+The rate constants of main reactions in the gas phase remarkably decrease as a function of
+temperature. Indeed, the rate constants of the three fastest reactions, i.e., Abs-H24, Abs-H25, and AbsH27, reduce approximately 126, 116, and 85 times, respectively. The kTST values of these reactions at
+253 K are 3.42 × 1014, 6.40 × 1013, and 4.04 × 1013 M-1 s-1, respectively, whereas ones at 323 K are
+2.71 × 1012, 5.52 × 1011, and 4.76 × 1011 M-1 s-1, respectively. These reactions play the most crucial
+role in the degradation in the studied temperature range. Their corresponding branching ratios at 253
+K are 74.53, 13.94, and 8.79%, respectively, whereas the ones at 323 K are 70.07, 14.24, and 12.30%,
+17
+https://doi.org/10.26434/chemrxiv-2024-jfdmw ORCID: https://orcid.org/0000-0003-0896-5168 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+respectively. Overall, a sharp decrease in all reaction rate constants is recognized in the temperature
+range from 253 to 323K. This observation can be explained as the equilibrium constants of these
+reactions, featuring the ability to convert the reactants to pre-reactive complexes (RC), decrease more
+rapidly than the ones of thermal rate constants when the temperature rises from 253 to 323K. For
+example, the equilibrium constant (KA,B) of the Abs-H24 reaction, which accounts for more than 70%
+of the branching ratio, decreases about 1300 times (from 7.35 × 10-13 to 5.64 × 10-16, respectively). In
+contrast, its thermal rate constant (kc) only increases about 10 times (from 4.66 × 1026 to 4.81 × 1027
+M-1 s-1, respectively). Consequently, the kapp of this reaction calculated as the product of these two
+values reduces about 126 times, from 3.42 × 1014 (253 K) to 2.71 × 1012 M-1 s-1 (323 K). As a similar
+trend, other main reactions drop significantly, from 12 to 186 times.
+
+Figure 9: Influence of temperature on the overall rate constants as log k (M-1 s-1) and branching
+ratio Г (%) for main abstraction and addition reactions of MTZ oxidation by SO4●- radical in gas at
+253-323 K temperature range.
+When the temperature increases, the degradation of MTZ by SO4●- in the gas phase becomes
+slower. The koverall value reduces more than 100 times, from 4.59 × 1014 to 3.87 × 1012 M-1 s-1 with the
+temperature increase from 253 to 323 K.
+4. HAT or PCET
+Hydrogen transfer reactions may occur via two pathways: hydrogen atom transfer (HAT) and
+proton-coupled electron transfer (PCET).72–75 In HAT reactions, the proton and the electron are
+transferred together as a single entity, i.e., a hydrogen atom. Meanwhile, in PCET ones, these species
+are concertedly transferred in a single step, without any stable intermediate, but as two separated
+particles. To determine the chemical nature of this process, the singly occupied molecular orbital
+(SOMO) (Figure 10) and chemical parameters, including atomic charge, spin, and natural electron
+configuration (NEC) (Table 2), are considered. Furthermore, only the fastest reaction at each C-alkyl
+18
+https://doi.org/10.26434/chemrxiv-2024-jfdmw ORCID: https://orcid.org/0000-0003-0896-5168 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+is performed. In water, the Abs-H20, Abs-H26, Abs-H27, and Abs-H33 hydrogen abstraction
+reactions are investigated. Meanwhile, the ones in gas are Abs-H21, Abs-H24, Abs-H27, and AbsH32, respectively.
+Figure 10 presents structures and SOMO orbitals of the TS of Abs-H20, Abs-H26, Abs-H27, and
+Abs-H33 reactions in water. In principle, it has broadly been accepted that the significant part of the
+SOMO orbital of the HAT-TS is distributed in a straight line along the CHO transition vector,
+with a node plane found at the H atom. Meanwhile, the SOMO of the PCET-TS is located far from
+the reactive site of the reaction, and it is spread between the molecule and the radical, indicating the
+electron transfer route. This is the first signal allowing us to distinguish the TS of HAT or PCET
+reaction.
+
+Figure 10. The structure and SOMO orbital of the transition state (TS) of the most favorable
+abstraction reactions of the degradation of MTZ by SO4●- radical in the water and gas phases.
+19
+https://doi.org/10.26434/chemrxiv-2024-jfdmw ORCID: https://orcid.org/0000-0003-0896-5168 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+The SOMO orbitals of Abs-H20 and H33 (of methyl groups) are almost absent at the reactive site
+C···H···O. Instead, the SOMOs of these structures mainly appear in the benzene rings. As a result, the
+proton and the electron are transferred via two separate pathways as the characteristics of the PCET
+mechanism. In this PCET process, the proton is transferred from the C-H bond to the O atom, whereas
+the electron is moved from the benzene ring to the other O atom of SO4●- radical. Meanwhile, for the
+Abs-H26 and Abs-H27 (of methylene groups), although the SOMOs appear at the C···H···O sites, the
+overlaps at these structures are offset from the reactive vectors. Furthermore, SOMOs also appear at
+the benzene ring of a large size, like the Abs ones in H-methyl groups, which are projected to be the
+electron exchange sites. Therefore, the reactions are projected to occur via the PCET mechanism.
+In addition, the atomic charges and spin densities of the transferred-H atom in water are also used
+to confirm the PCET mechanism of these reactions (Table 2). Indeed, the charges of the transferredH atoms are all small and negligible, from 0.027 (Abs-H20) to 0.037 (Abs-H33). Meanwhile, spins of
+these atoms are also negligible, from 0.021 (Abs-H20) to 0.026 (Abs-H33), which corresponds to a
+natural electron configuration of type 1s0, indicating the chemical nature of the proton instead of
+atomic hydrogen. This is suitable with some reports in the literature72–74.
+To conclude, the PCET is determined to be the mechanism of the hydrogen abstraction reaction
+in the SO4●- degradation of MTZ in water.
+Table 2. Hirshfeld charge, spin density, and natural electron configuration (NEC) of the transition
+state of the most favorable abstraction reactions of the degradation of MTZ by SO4●- radical in the
+water and gas phase
+Position
+H20
+Charge
+Spin
+NEC
+H26
+Charge
+Spin
+NEC
+H27
+Charge
+Spin
+NEC
+H33
+Charge
+Spin
+NEC
+
+WATER
+Donator Hydrogen Acceptor Position
+0.069
+0.027
+-0.204
+H21
+0.122
+0.021
+0.563
+2s0 2p1
+1s0
+2s1 2p2
+-0.063
+0.030
+-0.208
+H24
+0.126
+0.023
+0.569
+1
+2
+0
+2s 2p
+1s
+2s1 22
+-0.076
+0.032
+-0.202
+H27
+0.132
+0.024
+0.591
+1
+2
+0
+2s 2p
+1s
+2s1 2p2
+0.012
+0.037
+-0.191
+H32
+0.210
+0.026
+0.523
+1
+2
+0
+2s 2p
+1s
+2s1 2p2
+
+Charge
+Spin
+NEC
+Charge
+Spin
+NEC
+Charge
+Spin
+NEC
+Charge
+Spin
+NEC
+
+GAS
+Donator Hydrogen Acceptor
+0.071
+0.041
+-0.205
+0.260
+0.021
+0.468
+1
+2
+0
+2s 2p
+1s
+2s1 2p2
+-0.069
+0.038
+-0.206
+0.215
+0.020
+0.525
+1
+2
+0
+2s 2p
+1s
+2s1 2p2
+-0.067
+0.037
+-0.200
+0.219
+0.021
+0.535
+1
+2
+0
+2s 2p
+1s
+2s1 2p2
+0.008
+0.043
+-0.197
+0.263
+0.018
+0.505
+1
+2
+0
+2s 2p
+1s
+2s1 2p2
+
+Regarding reactions in the gas phase, the PCET is also observed as the mechanism of the Abs
+reaction. Indeed, like the Abs reactions in water, the SOMOs of the TS of Abs-H21 and Abs-H32 (at
+methyl groups) are found far from the C···H···O transition vector. Meanwhile, for the Abs-24 and
+Abs-H27 reactions (at methylene groups), the SOMOs have located a part at the C···H···O transition
+vector but with a bent angle of about 100o, and the other significant part of the SOMOs is found at
+benzene ring. This indicates that the electron transfer process is expected to occur at a different route
+20
+https://doi.org/10.26434/chemrxiv-2024-jfdmw ORCID: https://orcid.org/0000-0003-0896-5168 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+from the proton transfer. In addition, charges, and spins of the transferred-H species are also
+negligible, which vary from 0.037 (Abs-H27) to 0.041 (Abs-H21), 0.018 (Abs-H32) to 0.021 (AbsH21 and H27). In addition, all the natural electron configurations (NEC) are likely to be type 1s0.
+Thus, the hydrogen species of the TSs in the gas have many characteristics of a proton. As a result,
+the mechanism of these Abs reactions is PCET.
+In conclusion, the Abs reaction at H atoms in the SO4●- degradation of MTZ occurs via the
+PCET reaction. In these reactions, the proton is transferred throughout the C···H···O vector, whereas
+the electron is shifted elsewhere, from the benzene ring to the sulfate radical anion.
+5. Discussion
+To evaluate the effectiveness of the SO4●--based degradation of MTZ, the rate constants of
+reactions initiated by SO4●-, HO● 7, and O3 76 calculated at the same level of theory are compared.
+Figure 12 demonstrates rate constants (log k) of MTZ degradation by SO4●-, HO● 7, and O3 76 in water
+and the gas phase at the temperature of 283-323K and 253-323K, respectively. Among them, the
+degradation of MTZ by O3 in the gas phase is evaluated from 283 to 323 K.76
+As can be seen, the rate constants of the reaction initiated by SO4●- are much faster than that of
+HO● and O3 in both water and gas. Indeed, the SO4●- - initiated degradation in the water is about 18
+and 53 times higher than that of the HO● one at 283 K and 323 K, respectively. Meanwhile, this
+degradation is also around 8 × 107 and 8 × 106 times faster than the O3-degradation reactions at the
+same temperature range, respectively. Regarding the gas phase, the SO4●- - initiated degradation is
+about 6000-226 times faster than that of HO● at 253-323 K and around 5 × 1012 – 1011 times as much
+as that of O3 one at 283-323 K, respectively.
+
+Figure 12. Comparison of MTZ degradations by SO4●-, HO● radicals, and O3 in the water (A) and
+gas (B) phases.
+
+21
+https://doi.org/10.26434/chemrxiv-2024-jfdmw ORCID: https://orcid.org/0000-0003-0896-5168 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Overall, the degradation of MTZ using SO4●- is expected to be significantly faster and more
+efficient than that by HO● and O3 in both gas and water. As a result, the SR-AOP is expected to be a
+highly advanced oxidation process for MTZ and similar compounds.
+Conclusions
+The mechanism and kinetics of the initial oxidation of metazachlor by sulfate radical anion in the
+influence of temperature have been investigated using density functional theory – DFT. The
+conclusions are multiple as follows:
+- The degradation of MTZ by SO4●- radicals occurs via three mechanisms, including abstraction,
+addition, and single electron transfer. In water, all reactions are favorable and spontaneous
+with low energy barriers. Meanwhile, in the gas phase, Abs and Add reactions are more
+predominant, while the SET ones are negligible.
+- The kinetics of degradation reactions in the water and gas phases at 298.15K have been
+determined. SO4●- is extremely reactive in the MTZ degradation in both water and gas. In
+water, the SET is the fastest reaction with the kapp = 5.76 × 109 M-1 s-1 and Г = 11.39%.
+Therefore, when MTZ contacts the SO4●- in the solution, the MTZ+ cation is expected to be
+the firstly formed product, which may further react with oxidizing agents in the aqueous
+environment. Besides, the Abs and Add reactions occurs in a non-selective manner, in which
+Г varies from 3.34% (Add-C18) to 5.01% (Abs-H26). On the contrary, the degradation in gas
+is highly selective mostly via the Abs reactions, with the most dominant reaction being AbsH24 with kapp = 1.08 × 1013 M-1 s-1 and Г = 71.76% at 298K. The most significant elementary
+reaction in the gas phase reduces in the order: Abs-H24 (Г, 71.76%) >> Add-C11 (0.21%) >>
+SET (0.00%).
+- The influence of temperature on the degradation reactions has been investigated. The
+degradation in water becomes faster and more favorable, with the rate constant varying from
+3.31 × 1010 (283K) to 8.76 × 1010 M-1 s-1 (323K), due the strong increase of the diffusion rate.
+In contrast, the decreasing trend is observed in the gas phase, with the rate constant from 4.59
+× 1014 (253K) to 3.87 × 1012 M-1 s-1 (323 K), which is explained as the remarkable decline of
+the equilibrium constant (KA,B).
+- The total rate constant of degradation in water is many times lower than that in the gaseous
+phase, e.g., at 298.15K, ktotal being 5.06 × 1010 and 1.51 × 1013 M-1 s-1, respectively. The main
+reasons of this phenomenon are the influence of the diffusion effect of water and the extremely
+high thermal rate constants of main reactions in both phases.
+- Regarding the chemical nature of Abs reaction, the most dominant Abs reactions occurring at
+H species of methyl and methylene groups of MTZ compound are observed to occur via the
+PCET mechanism in both water and gas phases. Indeed, in analyzing the SOMO, atomic
+charge, spin densities, and NECs of TS structure, we proved that the H-transferred species
+have the proton nature.
+- The rate of degradation of MTZ by SO4●- radicals is compared with those by HO● radicals and
+O3. The total rate constant of the degradation by SO4●- radical anions is much larger than ones
+
+22
+https://doi.org/10.26434/chemrxiv-2024-jfdmw ORCID: https://orcid.org/0000-0003-0896-5168 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+by the HO radical and O3. As a result, the SR-AOP is expected to be a potential and effective
+method for the degradation of MTZ.
+Hopefully, the obtained results shed more light on the oxidation process of pesticides using sulfate
+radical anion, which is highly prospective and active.
+REFERENCES
+1
+X. Duan, X. Niu, J. Gao, S. Wacławek, L. Tang and D. D. Dionysiou, Curr. Opin. Chem. Eng., 2022,
+38, 100867.
+2
+M. Malakootian, A. Shahesmaeili, M. Faraji, H. Amiri and S. Silva Martinez, Process Saf. Environ.
+Prot., 2020, 134, 292–307.
+3
+F. Ghanbari and M. Moradi, Chem. Eng. J., 2017, 310, 41–62.
+4
+A. Derbalah and H. Sakugawa, Sulfate Radical-Based Advanced Oxidation Technology to Remove
+Pesticides From Water A Review of the Most Recent Technologies, Springer International Publishing,
+2024, vol. 18.
+5
+X. Xia, F. Zhu, J. Li, H. Yang, L. Wei, Q. Li, J. Jiang, G. Zhang and Q. Zhao, Front. Chem., 2020, 8.
+6
+D. H. Truong, T. L. A. Nguyen, N. Alharzali, H. K. Al Rawas, S. Taamalli, M. Ribaucour, H. L.
+Nguyen, A. El Bakali, T. C. Ngo, I. Černušák, F. Louis and D. Q. Dao, Chemosphere, 2024, 350,
+141085.
+7
+D. Q. Dao, S. Taamalli, F. Louis, D. Kdouh, Z. Srour, T. C. Ngo, D. H. Truong, V. Fèvre-Nollet, M.
+Ribaucour, A. El Bakali and I. Černuśák, Chemosphere, 2023, 312, 137234.
+8
+A. Derbalah, A. Ismail, A. Hamza and S. Shaheen, Water Environ. Res., 2014, 86, 584–593.
+9
+V. A. Sakkas, D. A. Lambropoulou and T. A. Albanis, Chemosphere, 2002, 48, 939–945.
+10
+D. Manos, K. Miserli and I. Konstantinou, Catalysts, 2020, 10, 1–44.
+11
+B.-T. Zhang, Y. Zhang, Y. Teng and M. Fan, Crit. Rev. Environ. Sci. Technol., 2015, 45, 1756–1800.
+12
+A. TSITONAKI, B. PETRI, M. CRIMI, H. MOSBÆK, R. L. SIEGRIST and P. L. BJERG, Crit. Rev.
+Environ. Sci. Technol., 2010, 40, 55–91.
+13
+P. Hu and M. Long, Appl. Catal. B Environ., 2016, 181, 103–117.
+14
+Q. Zhao, Q. Mao, Y. Zhou, J. Wei, X. Liu, J. Yang, L. Luo, J. Zhang, H. Chen, H. Chen and L. Tang,
+Chemosphere, 2017, 189, 224–238.
+15
+S. Giannakis, K.-Y. A. Lin and F. Ghanbari, Chem. Eng. J., 2021, 406, 127083.
+16
+L. He, H. Chen, L. Wu, Z. Zhang, Y. Ma, J. Zhu, J. Liu, X. Yan, H. Li and L. Yang, Ecotoxicol.
+Environ. Saf., 2021, 208, 111522.
+17
+H. Lebik-Elhadi, Z. Frontistis, H. Ait-Amar, F. Madjene and D. Mantzavinos, Process Saf. Environ.
+Prot., 2020, 134, 197–207.
+18
+N. Genç and E. Durna, Environ. Prog. Sustain. Energy, 2018, 37, 1632–1637.
+19
+Y. Lu, Y. Liu, C. Tang, J. Chen and G. Liu, Processes, 2022, 10, 941.
+20
+K. Wei, A. Armutlulu, Y. Wang, G. Yao, R. Xie and B. Lai, Appl. Catal. B Environ., 2022, 303,
+120889.
+21
+W. Hayat, Z. Liu, Y. Wan and Y. Zhang, Environ. Technol. Innov., 2022, 26, 102352.
+22
+J. Deng, M. Xu, Y. Chen, J. Li, C. Qiu, X. Li and S. Zhou, Chem. Eng. J., 2019, 366, 491–503.
+23
+W. Wang, M. Chen, D. Wang, M. Yan and Z. Liu, Sci. Total Environ., 2021, 772, 145522.
+24
+Z. Shen, H. Zhou, P. Zhou, H. Zhang, Z. Xiong, Y. Yu, G. Yao and B. Lai, J. Hazard. Mater., 2022,
+425, 127781.
+25
+C. Cai, S. Kang, X. Xie and C. Liao, J. Hazard. Mater., 2020, 385, 121519.
+26
+A. Santos, J. Fernandez, S. Rodriguez, C. M. Dominguez, M. A. Lominchar, D. Lorenzo and A.
+Romero, Sci. Total Environ., 2018, 615, 1070–1077.
+27
+J. Tan, Z. Li, J. Li, Y. Meng, X. Yao, Y. Wang, Y. Lu and T. Zhang, J. Hazard. Mater., 2022, 423,
+127048.
+28
+W. Zheng, Y. Sun and Y. Gu, J. Hazard. Mater., 2022, 436, 129058.
+29
+M. Amasha, A. Baalbaki and A. Ghauch, Chem. Eng. J., 2018, 350, 395–410.
+30
+Y. Liu, L. Liu and Y. Wang, Environ. Sci. Technol., 2021, 55, 9691–9710.
+23
+https://doi.org/10.26434/chemrxiv-2024-jfdmw ORCID: https://orcid.org/0000-0003-0896-5168 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+
+51
+52
+53
+54
+
+Y. Liu, J. Zhou, Y. Zhang, J. Pan, Q. Wang and J. Zhang, Fuel, 2015, 145, 180–188.
+X. Ma, R. Hao, Z. Wang, P. Xu, Y. Luo and Y. Zhao, Chem. Eng. J., 2020, 401, 126101.
+R. Xie, J. Ji, K. Guo, D. Lei, Q. Fan, D. Y. C. Leung and H. Huang, Chem. Eng. J., 2019, 356, 632–
+640.
+R. Xie, J. Cao, X. Xie, D. Lei, K. Guo, H. Liu, Y. Zeng and H. Huang, Chem. Eng. J., 2020, 401,
+126077.
+L. He, L. Bu, R. Spinney, D. D. Dionysiou and R. Xiao, Environ. Res., 2021, 201, 111523.
+M. Xu, J. Yao, S. Sun, S. Yan and J. Sun, Toxics, 2021, 9, 234.
+H. V. Lutze, S. Bircher, I. Rapp, N. Kerlin, R. Bakkour, M. Geisler, C. Von Sonntag and T. C.
+Schmidt, Environ. Sci. Technol., 2015, 49, 1673–1680.
+Q. Mei, J. Sun, D. Han, B. Wei, Z. An, X. Wang, J. Xie, J. Zhan and M. He, Chem. Eng. J., 2019, 373,
+668–676.
+X. Bo, J. Sun, Q. Mei, B. Wei, Z. An, Z. Qiu, D. Han, J. Xie and M. He, J. Clean. Prod., 2021, 293,
+126161.
+S. Luo, Z. Wei, D. D. Dionysiou, R. Spinney, W. P. Hu, L. Chai, Z. Yang, T. Ye and R. Xiao, Chem.
+Eng. J., 2017, 327, 1056–1065.
+W. Liu, G. Lv, X. Sun, L. He, C. Zhang and Z. Li, Ecotoxicol. Environ. Saf., 2019, 183, 109551.
+D. Wang, Y. Li, M. Yang and M. Han, Sci. Total Environ., 2008, 393, 64–71.
+S. Mohr, R. Berghahn, M. Feibicke, S. Meinecke, T. Ottenströer, I. Schmiedling, R. Schmiediche and
+R. Schmidt, Aquat. Toxicol., 2007, 82, 73–84.
+F. L. Dixon, D. V. Clay and I. Willoughby, Crop Prot., 2006, 25, 259–268.
+M. Kask, M. Krichevskaya and J. Bolobajev, J. Environ. Chem. Eng., 2019, 7, 103095.
+G. Weber, N. Christmann, A.-C. Thiery, D. Martens and J. Kubiniok, Sci. Total Environ., 2018, 619–
+620, 638–648.
+V. Kodes and M. Rieder, in Managing Watersheds for Human and Natural Impacts, American
+Society of Civil Engineers, Reston, VA, 2005, pp. 1–5.
+P. Karier, G. Kraus and I. Kolber, Environ. Sci. Eur., 2017, 29, 25.
+U. Ulrich, G. Hörmann, M. Unger, M. Pfannerstill, F. Steinmann and N. Fohrer, Sci. Total Environ.,
+2018, 618, 26–38.
+L. Mayer, C. Degrendele, P. Šenk, J. Kohoutek, P. Přibylová, P. Kukučka, L. Melymuk, A. Durand, S.
+Ravier, A. Alastuey, A. R. Baker, U. Baltensperger, K. Baumann-Stanzer, T. Biermann, P. BohlinNizzetto, D. Ceburnis, S. Conil, C. Couret, A. Degórska, E. Diapouli, S. Eckhardt, K. Eleftheriadis, G.
+L. Forster, K. Freier, F. Gheusi, M. I. Gini, H. Hellén, S. Henne, H. Herrmann, A. Holubová
+Šmejkalová, U. Hõrrak, C. Hüglin, H. Junninen, A. Kristensson, L. Langrene, J. Levula, M. Lothon,
+E. Ludewig, U. Makkonen, J. Matejovičová, N. Mihalopoulos, V. Mináriková, W. Moche, S. M. Noe,
+N. Pérez, T. Petäjä, V. Pont, L. Poulain, E. Quivet, G. Ratz, T. Rehm, S. Reimann, I. Simmons, J. E.
+Sonke, M. Sorribas, R. Spoor, D. P. J. Swart, V. Vasilatou, H. Wortham, M. Yela, P. Zarmpas, C.
+Zellweger Fäsi, K. Tørseth, P. Laj, J. Klánová and G. Lammel, Environ. Sci. Technol., 2024, 58,
+3342–3352.
+J. Jurčíková, P. Mikula, R. Dobšíková, D. Némethová and Z. Svobodová, Acta Vet. Brno, 2007, 76,
+S61–S66.
+O. Işik, E. Sarihan, E. Kuşvuran, Ö. Gül and O. Erbatur, Aquaculture, 1999, 174, 299–311.
+J. Velisek, A. Stara, J. Kubec, E. Zuskova, M. Buric and A. Kouba, Sci. Rep., 2020, 10, 1–9.
+M. J. Frisch, G. W. Trucks, H. B. Schlegel, G. E. Scuseria, M. A. Robb, J. R. Cheeseman, G.
+Scalmani, V. Barone, G. A. Petersson, H. Nakatsuji, X. Li, M. Caricato, A. V. Marenich, J. Bloino, B.
+G. Janesko, R. Gomperts, B. Mennucci, H. P. Hratchian, J. V. Ortiz, A. F. Izmaylov, J. L.
+Sonnenberg, D. Williams-Young, F. Ding, F. Lipparini, F. Egidi, J. Goings, B. Peng, A. Petrone, T.
+Henderson, D. Ranasinghe, V. G. Zakrzewski, J. Gao, N. Rega, G. Zheng, W. Liang, M. Hada, M.
+Ehara, K. Toyota, R. Fukuda, J. Hasegawa, M. Ishida, T. Nakajima, Y. Honda, O. Kitao, H. Nakai, T.
+Vreven, K. Throssell, J. A. J. Montgomery, J. E. Peralta, F. Ogliaro, M. J. Bearpark, J. J. Heyd, E. N.
+Brothers, K. N. Kudin, V. N. Staroverov, T. A. Keith, R. Kobayashi, J. Normand, K. Raghavachari, A.
+P. Rendell, J. C. Burant, S. S. Iyengar, J. Tomasi, M. Cossi, J. M. Millam, M. Klene, C. Adamo, R.
+24
+
+https://doi.org/10.26434/chemrxiv-2024-jfdmw ORCID: https://orcid.org/0000-0003-0896-5168 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+
+Cammi, J. W. Ochterski, R. L. Martin, K. Morokuma, O. Farkas, J. B. Foresman and D. J. Fox,
+Gaussian 16, Revision A.03, Gaussian, Inc., Wallingford CT, 2016.
+A. V Marenich, C. J. Cramer and D. G. Truhlar, J. Phys. Chem. B, 2009, 113, 6378–6396.
+D. L. Singleton and R. J. Cvetanović, J. Am. Chem. Soc., 1976, 98, 6812–6819.
+A. Miyoshi, GPOP software, rev. 2022.01.20m1, available from the author., http://akrmys.com/gpop/.
+A. Galano and J. R. Alvarez-Idaboy, J. Comput. Chem., 2013, 34, 2430–2445.
+S. Canneaux, F. Bohr and E. Henon, J. Comput. Chem., 2014, 35, 82–93.
+R. A. Marcus, J. Chem. Phys., 1956, 24, 966–978.
+R. A. Marcus, J. Chem. Phys., 1957, 26, 872–877.
+R. A. Marcus, J. Chem. Phys., 1957, 26, 867–871.
+F. C. Collins and G. E. Kimball, J. Colloid Sci., 1949, 4, 425–437.
+M. v. Smoluchowski, Zeitschrift für Phys. Chemie, 1918, 92U, 129–168.
+S. Pamidighantam, S. Nakandala, E. Abeysinghe, C. Wimalasena, S. R. Yodage, S. Marru and M.
+Pierce, Procedia Comput. Sci., 2016, 80, 1927–1939.
+N. Shen, Y. Fan and S. Pamidighantam, J. Comput. Sci., 2014, 5, 576–589.
+R. Dooley, K. Milfeld, C. Guiang, S. Pamidighantam and G. Allen, J. Grid Comput., 2006, 4, 195–
+208.
+K. Milfeld, C. Guiang, S. Pamidighantam and J. Giuliani, Proc. 2005 Linux Clust. HPC Revolut.,
+2005.
+J. Yang, W.-L. You, D. You, L. Zheng, J. Jin and S.-L. Luo, Chemosphere, 2024, 363, 142953.
+M. Mahdi Ahmed, S. Barbati, P. Doumenq and S. Chiron, Chem. Eng. J., 2012, 197, 440–447.
+Y. Chen, M. Li, Y. Tong, Z. Liu, L. Fang, Y. Wu, Z. Fang, F. Wu and L. Z. Huang, Chem. Eng. J.,
+2019, 368, 495–503.
+D. H. Truong, T. H. Lan Nguyen and D. Q. Dao, R. Soc. Open Sci., , DOI:10.1098/rsos.230114.
+A. Martínez, A. Galano and R. Vargas, J. Phys. Chem. B, 2011, 115, 12591–12598.
+J. M. Mayer, D. A. Hrovat, J. L. Thomas and W. T. Borden, J. Am. Chem. Soc., 2002, 124, 11142–
+11147.
+A. Galano, J. Mex. Chem. Soc., 2017, 59, 231–262.
+C.-T. Phan Dang, D. H. Truong, T. L. A. Nguyen, S. Taamalli, A. El Bakali, F. Louis and D. Q. Dao,
+Environ. Sci. Pollut. Res., 2024, 31, 49427–49439.
+
+25
+https://doi.org/10.26434/chemrxiv-2024-jfdmw ORCID: https://orcid.org/0000-0003-0896-5168 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+

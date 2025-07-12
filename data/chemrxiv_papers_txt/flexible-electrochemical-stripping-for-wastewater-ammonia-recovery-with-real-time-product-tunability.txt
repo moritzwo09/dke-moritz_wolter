@@ -1,0 +1,1518 @@
+1
+2
+3
+4
+5
+6
+
+Flexible Electrochemical Stripping for Wastewater Ammonia Recovery
+with Real-Time Product Tunability
+
+7
+
+Anna Kogler1, Meili Gong2, William A. Tarpeh1,2*
+
+8
+9
+10
+11
+12
+13
+
+1
+
+Department of Civil and Environmental Engineering, Stanford University, Stanford, CA, 94305, USA
+2
+
+Department of Chemical Engineering, Stanford University, Stanford, CA, 94305, USA
+
+*Corresponding author, Email: wtarpeh@stanford.edu. Address: 443 Via Ortega, Room 387, Stanford
+CA, 94305. Telephone: 650-497-1324
+
+14
+15
+16
+
+Abstract: 179 words
+
+17
+
+Word Count (without figures/tables): 2,385 words
+
+18
+
+Figures: 3 (200 word equivalents each = 600 word equivalents)
+
+19
+
+Word Count: 2,985 words
+
+20
+21
+
+0
+
+https://doi.org/10.26434/chemrxiv-2024-tlxz4 ORCID: https://orcid.org/0000-0001-6594-0501 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+22
+
+Abstract
+
+23
+
+Nitrogen in wastewater can be recovered to prevent negative environmental, human health, and
+
+24
+
+economic impacts and to enable distributed chemical manufacturing. We developed novel flexible
+
+25
+
+electrochemical stripping (FECS) for tunable recovery of ammonia/ammonium (total ammonia
+
+26
+
+nitrogen, TAN) from urine as (NH4)2SO4 and aqueous NH3. Batch and continuous experiments
+
+27
+
+demonstrated that product speciation could be readily controlled by modifying electrochemical
+
+28
+
+cell operation frequency, duration, and applied current without affecting TAN removal. During
+
+29
+
+continuous experiments, FECS recovered NH3 solutions with concentrations similar to ready-to-
+
+30
+
+use cleaners (1% and 2% NH3 (w/w) or 8.22 and 16.4 g/L TAN) and cleaner concentrates (5%
+
+31
+
+NH3 (w/w) or 41.1 g/L TAN), as well as (NH4)2SO4 solutions between 5 and 18.4 g/L TAN,
+
+32
+
+approaching commercial fertilizer concentrations (28.4 g/L TAN). Beyond modifying applied
+
+33
+
+current, future process engineering and operating condition optimization should reduce energy
+
+34
+
+consumption, increase recovery efficiency, and enhance economic viability of FECS. Our findings
+
+35
+
+will enable development and deployment of electrochemical nitrogen recovery in contexts with
+
+36
+
+varying needs for ammonia-based products, paving the way for circular economies that integrate
+
+37
+
+distributed chemical manufacturing with sanitation systems.
+
+Keywords
+
+38
+39
+40
+
+circular economy, electrodialysis, membrane distillation, nitrogen, product diversification, resource
+recovery, urine
+
+41
+
+Statement of Environmental Relevance and Significance
+
+42
+
+Tunable electrochemical nitrogen recovery enables distributed manufacturing of ammonia and
+
+43
+
+derived products, reducing environmental impacts of wastewater treatment and chemical
+
+44
+
+industries.
+
+1
+
+https://doi.org/10.26434/chemrxiv-2024-tlxz4 ORCID: https://orcid.org/0000-0001-6594-0501 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+45
+
+TOC Art
+
+46
+47
+
+1 Introduction
+
+48
+
+Innovation in wastewater treatment and resource recovery can yield urgently needed solutions that
+
+49
+
+manage humanity’s transgression of multiple planetary boundaries (e.g., climate change,
+
+50
+
+nitrogen/phosphorus biochemical flows).1,2 Traditional wastewater nitrogen removal approaches
+
+51
+
+are energy- and chemical-intensive. Transitioning to wastewater nitrogen recovery can prevent the
+
+52
+
+negative environmental, human health, and economic impacts of nitrogen discharges,3–5 while
+
+53
+
+reducing greenhouse gas emissions from wastewater treatment6 and Haber-Bosch ammonia
+
+54
+
+production7 and rebalancing the nitrogen cycle. At the same time, expanding sanitation access
+
+55
+
+requires radical innovations in wastewater management, such as distributed treatment with
+
+56
+
+resource recovery.8–10 Rapid and transformative innovation enabling resource-efficient wastewater
+
+57
+
+management and circular economies is crucial to preventing irreversible, catastrophic changes
+
+58
+
+around the globe.11–13
+
+59
+
+Expanding product portfolios and increasing process tunability can accelerate scale-up and
+
+60
+
+deployment of circular wastewater technologies. Most nitrogen recovery processes generate
+
+61
+
+fertilizer products.14 Two main challenges associated with recovered fertilizers are their low
+
+62
+
+economic value and the breadth of formulations required to meet variable, regional, and crop-
+
+63
+
+specific needs.9,15–17 Co-generating multiple products can improve the economic viability of
+
+64
+
+recovery technologies.18–20 Some nitrogen recovery processes co-generate fertilizers and non2
+
+https://doi.org/10.26434/chemrxiv-2024-tlxz4 ORCID: https://orcid.org/0000-0001-6594-0501 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+65
+
+nutrient products, such as fuel (e.g., H2,21–24 CH4 25,26), electricity,21,25,27,28 caustic solutions,25
+
+66
+
+acids,23 H2O2,18,25 organics,25,26 and clean water.29,30 Multi-process systems have also been
+
+67
+
+demonstrated to generate multiple separate fertilizer products (e.g., struvite, (NH4)2SO4, potash).31
+
+68
+
+However, recovering non-fertilizer nitrogen products (e.g., microbial protein for use as animal
+
+69
+
+feed22) and controlling generation of multiple nitrogen products in a single reactor remain under-
+
+70
+
+explored. These advances could facilitate tailoring fertilizer formulations to soil or crop
+
+71
+
+characteristics,32 create more opportunities for nitrogen recovery (e.g., when fertilizer demand is
+
+72
+
+low), and enable recovery of higher-value products. For example, a process that can switch
+
+73
+
+between generating (NH4)2SO4 and NH3 could have advantages for economic viability and
+
+74
+
+equitable resource access. While (NH4)2SO4 is primarily used as a fertilizer,33 NH3 is not only a
+
+75
+
+fertilizer34 but also a disinfectant,35–38 precursor in chemical synthesis (e.g., plastics),34 and
+
+76
+
+fuel.39,40 While the price of NH3 is similar to or lower than that of (NH4)2SO4, products made from
+
+77
+
+NH3 (e.g., acrylonitrile, hexamethylenediamine, caprolactam) are significantly higher-value
+
+78
+
+(Figure S1-1, Table S1-1). Real-time tunability of product identity and composition can enable
+
+79
+
+distributed applications by responding to changes in product users’ needs.20,41 Electrochemical
+
+80
+
+processes, which are modular and easily scalable, automatable, low in chemical inputs, and well-
+
+81
+
+suited for decentralized wastewater treatment and chemical production,16,42–44 can facilitate tunable
+
+82
+
+multi-product recovery that meets specific chemical, public health, and environmental needs.16
+
+83
+
+In this study, we demonstrated tunable recovery of wastewater total ammonia nitrogen (TAN, sum
+
+84
+
+of NH3 and NH4+) as two products – (NH4)2SO4 and aqueous ammonia (NH3(aq)) – in a single
+
+85
+
+flexible electrochemical stripping (FECS) reactor. FECS builds on previously reported
+
+86
+
+electrochemical stripping (ECS, which recovers (NH4)2SO4)45–47 to broaden the TAN product
+
+87
+
+portfolio without dramatically increasing reactor footprint. The specific objectives of this study
+
+3
+
+https://doi.org/10.26434/chemrxiv-2024-tlxz4 ORCID: https://orcid.org/0000-0001-6594-0501 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+88
+
+were to: (1) develop a novel reactor architecture for producing two separate ammonia-based
+
+89
+
+products in a single reactor; (2) investigate electrochemical operating parameters as a mechanism
+
+90
+
+for controlling product distribution; and (3) demonstrate continuous urine treatment for tunable
+
+91
+
+generation of multiple commercially relevant aqueous ammonia product solutions. In the four-
+
+92
+
+chambered FECS reactor consisting of two electrochemical cells, the operating frequency and
+
+93
+
+current density of the second electrochemical cell controlled product distribution between
+
+94
+
+(NH4)2SO4 and NH3(aq). Stable, continuous FECS operation treating urine for 16 days generated
+
+95
+
+1% and 2% (w/w) NH3 solutions (8.22 and 16.4 g/L TAN) as ready-to-use cleaners and almost 5%
+
+96
+
+(w/w) NH3 solution (41.1 g/L TAN) as a cleaner concentrate, in addition to up to 18.4 g/L TAN
+
+97
+
+(NH4)2SO4 fertilizer. Therefore, FECS achieved product diversification beyond fertilizer by
+
+98
+
+recovering two ammonia-based products and enabled tuning product speciation to meet context-
+
+99
+
+specific needs. With these advances, FECS can facilitate distributed sanitation and manufacturing
+
+100
+
+of NH3(aq) and chemicals derived from it, reducing the environmental impacts of both industries,
+
+101
+
+fostering more equitable access to resources,48,49 and promoting waste valorization as a strategy to
+
+102
+
+keep human development within planetary limits.50
+
+103
+
+2 Materials and Methods
+
+104
+105
+
+2.1 Urine Collection
+
+106
+
+with approximately equal volumetric contributions from adult male and female donors (Internal
+
+107
+
+Review Board Protocol 60601). Urine was stored in a closed container at room temperature (25°C)
+
+108
+
+and allowed to hydrolyze for at least 12 months. Hydrolyzed urine contained below 0.35 mM urea-
+
+109
+
+N compared to 306  13 mM TAN for batch experiments (Section 2.2) and 353  20 mM TAN for
+
+110
+
+continuous experiments (Section 2.3), indicating complete hydrolysis.
+
+Urine was collected from July 3, 2021 to February 9, 2022 at Stanford University’s Shriram Center
+
+4
+
+https://doi.org/10.26434/chemrxiv-2024-tlxz4 ORCID: https://orcid.org/0000-0001-6594-0501 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+111
+
+2.2 Controlling Product Speciation with Electrochemical Operation
+
+112
+
+113
+114
+
+Figure 1. Flexible electrochemical stripping (FECS) process schematic with (A) concurrent electrochemical operation and (B)
+
+115
+
+staggered electrochemical operation. Schematics illustrating flow configuration in batch and continuous experiments are shown
+
+116
+
+in Figure S2-1.
+
+117
+
+FECS experiments were performed in a four-chambered reactor (Figure 1, Figure S2-1, Table S2-
+
+118
+
+1, Section S2.1). 12-hour batch experiments treating urine (Table S2-2) were conducted in two
+
+119
+
+modes – concurrent (Figure 1A) and staggered (Figure 1B). Staggered experiments were
+
+120
+
+conducted at three currents: 0.64 A (i.e., current density of 100 A/m2), 2 A (i.e., 312.5 A/m2), and
+
+121
+
+4 A (i.e., 625 A/m2). Experimental details are described in Section S2.2 and analytical procedures
+
+5
+
+https://doi.org/10.26434/chemrxiv-2024-tlxz4 ORCID: https://orcid.org/0000-0001-6594-0501 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+122
+
+in Section S2.4. Process performance was evaluated by removal and recovery efficiency and
+
+123
+
+energy consumption for removal and recovery (Table S2-4, Equations S5-2 to S5-9).
+
+124
+125
+
+2.3 Continuous Operation for Tunable Product Generation
+
+126
+
+16 days as described in Section S2.3 (Figure S2-1B through Figure S2-3). We evaluated the
+
+127
+
+process based on removal and recovery efficiency and energy consumption for removal and
+
+128
+
+recovery (Table S2-4, Equations S5-10 to S5-23).
+
+129
+
+3 Results and Discussion
+
+130
+131
+
+3.1 Controlling Product Speciation with Electrochemical Operation
+
+132
+
+batch experiments. Modifying operation of the second electrochemical cell enabled tuning product
+
+133
+
+speciation (Figure 2). TAN removal and total TAN recovery were similar for concurrent and
+
+134
+
+staggered operation at 0.64 A (100 A/m2) (Figure 2A, Table S3-1). The product distribution was
+
+135
+
+similar for both modes when the second electrochemical cell was on; (NH4)2SO4 in Chamber 3
+
+136
+
+dominated with 46.4  9.1% recovery efficiency for (NH4)2SO4 and 30.6  6.6% for NH3(aq) after
+
+137
+
+12 hours (2.15  0.33 g/L TAN as (NH4)2SO4 vs. 1.42  0.34 g/L TAN as NH3(aq)). Longer
+
+138
+
+operation up to 24 hours did not shift product speciation toward NH3(aq) (Figure S3-1, Figure S3-
+
+139
+
+2). While concurrent operation recovered a combination of (NH4)2SO4 and NH3(aq) at all times,
+
+140
+
+staggered operation at 0.64 A recovered only (NH4)2SO4 when the second electrochemical cell
+
+141
+
+was off (first 6 hours, 75.4  7.0% recovery efficiency for (NH4)2SO4 vs. 0.68  0.3% for NH3(aq)).
+
+142
+
+Because staggered operation at 0.64 A facilitated control over the start of NH3(aq) recovery (i.e., by
+
+143
+
+turning on the second electrochemical cell) but still primarily recovered (NH4)2SO4, further
+
+A continuous FECS experiment treating urine (Table S2-3) in staggered mode was conducted for
+
+FECS recovered both NH3(aq) and (NH4)2SO4 from urine containing 4.29  0.19 g/L TAN during
+
+6
+
+https://doi.org/10.26434/chemrxiv-2024-tlxz4 ORCID: https://orcid.org/0000-0001-6594-0501 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+144
+
+modified staggered operation of the second electrochemical cell was needed to target more tunable
+
+145
+
+TAN recovery.
+
+146
+
+Changing the current applied to the second electrochemical cell influenced product distribution
+
+147
+
+(Figure 2B). Across three applied currents (0.64 A or 100 A/m2, 2 A or 312.5 A/m2, and 4 A or
+
+148
+
+625 A/m2), we observed consistent removal efficiency (Table S3-2), indicating that operation of
+
+149
+
+the second electrochemical cell did not affect the removal process occurring in the first
+
+150
+
+electrochemical cell. Total recovery efficiency was also similar across the three staggered
+
+151
+
+conditions (Table S3-2) except when TAN mass balance closure differed (Figure S3-3). (NH4)2SO4
+
+152
+
+was the dominant product after 6 hours in all cases, but after 12 hours, the ratio of NH3(aq) to
+
+153
+
+(NH4)2SO4 varied directly with applied current. In fact, NH3(aq) was the dominant product within
+
+154
+
+2 hours of turning on the second electrochemical cell (8 hours of total operation) at 2 A and 4 A.
+
+155
+
+After 12 hours, recovery efficiencies were 57.1  7.6% as NH3(aq) versus 17.5  3.1% as (NH4)2SO4
+
+156
+
+at 2 A and 65.9  1.9% as NH3(aq) versus 14.2  1.9% as (NH4)2SO4 at 4 A. Therefore, increasing
+
+157
+
+current applied to the second electrochemical cell relative to the first cell prioritized NH3(aq) over
+
+158
+
+(NH4)2SO4 production, enabling applications of recovered TAN beyond fertilizer.
+
+7
+
+https://doi.org/10.26434/chemrxiv-2024-tlxz4 ORCID: https://orcid.org/0000-0001-6594-0501 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+159
+
+160
+161
+
+Figure 2. Batch flexible electrochemical stripping (FECS) experiments treating urine using concurrent and staggered
+
+162
+
+electrochemical operation. (A) Removal and recovery efficiency over time during concurrent and staggered operation with the
+
+163
+
+second electrochemical cell operating at 0.64 A. Figure S3-1 shows removal and recovery efficiency for 24-hour experiments in
+
+164
+
+concurrent mode and staggered mode at 0.64 A. (B) Removal and recovery efficiency during staggered operation at different
+
+165
+
+currents. Performance at 6 hours represents the end of Phase 1 of staggered operation when only electrochemical cell 1 is on;
+
+166
+
+data at 12 hours illustrate performance at the end of Phase 2 when both cells are on. The grid above the plots indicates which
+
+167
+
+electrochemical cells are on at the time points shown.
+
+8
+
+https://doi.org/10.26434/chemrxiv-2024-tlxz4 ORCID: https://orcid.org/0000-0001-6594-0501 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+168
+
+3.2 Continuous Operation for Tunable Product Generation
+
+169
+
+170
+171
+
+Figure 3. Performance of continuous flexible electrochemical stripping (FECS) with staggered electrochemical cell operation
+
+172
+
+while treating urine. (A) Total ammonia nitrogen (TAN) concentrations over time. (B) Removal efficiency, total recovery efficiency,
+
+173
+
+and recovery efficiency as (NH4)2SO4 in Chamber 3 and NH3(aq) in Chamber 4. Recovery efficiencies shown in panel B consider
+
+9
+
+https://doi.org/10.26434/chemrxiv-2024-tlxz4 ORCID: https://orcid.org/0000-0001-6594-0501 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+174
+
+only TAN present in the reactor chambers and recirculation bottles; Figure S3-4 shows analogous metrics accounting for TAN
+
+175
+
+captured in acid traps as well as TAN present in the reactor chambers and recirculation bottles.
+
+176
+
+When treating hydrolyzed urine, FECS generated: (1) NH3(aq) in Chamber 4 with concentrations
+
+177
+
+similar to ready-to-use cleaners (1% and 2% NH3 (w/w)) and cleaner concentrates (5% NH3 (w/w))
+
+178
+
+and (2) (NH4)2SO4 solutions in Chamber 3 with no less than 5 g/L TAN and up to 18.4 g/L TAN,
+
+179
+
+approaching commercial fertilizer concentrations (28.4 g/L TAN)51 (Figure 3). In this study, we
+
+180
+
+prioritized TAN up-concentration into NH3 solutions over (NH4)2SO4 to advance tunable FECS
+
+181
+
+product distribution compared to previous ECS studies focused on (NH4)2SO4 recovery.47
+
+182
+
+Continuous FECS removed 88.1  0.72% of TAN from urine with an influent concentration of
+
+183
+
+4,950  290 mg/L TAN (effluent composition shown in Table S3-3). Although continuous FECS
+
+184
+
+achieved removal similar to ECS (83.4 ± 1.5%),47 the steady-state recovery efficiency (30.7 
+
+185
+
+2.8% at 5 days onward) was lower than for ECS (73.0 ± 2.9%)47 and lower than removal in FECS.
+
+186
+
+Fluctuating pH in Chamber 3 decreased recovery efficiency in FECS compared to ECS by causing
+
+187
+
+an inconsistent NH3 concentration gradient driving diffusion from Chamber 2 to 3 and thus, TAN
+
+188
+
+accumulation in Chamber 2 (Figure S3-4, Figure S3-5Error! Reference source not found.).
+
+189
+
+Given alkaline conditions in Chambers 3 and 4 (Figure S3-4; intermittently alkaline in Chamber
+
+190
+
+3, always alkaline in Chamber 4), better sealing these chambers would reduce NH3 transfer to acid
+
+191
+
+traps and improve recovery efficiency (46.5 ± 3.3%, Figure S3-6). Additional factors contributing
+
+192
+
+to low FECS recovery included (Figure S3-7 through Figure S3-9, Section S3.2.1): TAN transfer
+
+193
+
+to the Chamber 2 acid trap; TAN oxidation to NO2-, NO3-, and possibly un-measured gaseous
+
+194
+
+species (e.g., N2); potential losses due to NH3 volatilization; and possible interference of mesh
+
+195
+
+supports around the omniphobic membrane with TAN mass transfer to and through the membrane.
+
+196
+
+While FECS achieved steady TAN removal and recovery, future improvements are needed to
+
+10
+
+https://doi.org/10.26434/chemrxiv-2024-tlxz4 ORCID: https://orcid.org/0000-0001-6594-0501 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+197
+
+increase TAN recovery as (NH4)2SO4 and NH3(aq) (e.g., preventing TAN oxidation) or enable
+
+198
+
+recovery of additional products (e.g., gaseous NH3, NO3-).
+
+199
+
+Despite low recovery efficiency, TAN concentrations in Chambers 3 and 4 generally increased
+
+200
+
+over time, and TAN concentrations and product distribution between Chambers 3 and 4 showed
+
+201
+
+short-term fluctuations that reflected operation of the second electrochemical cell (Figure 3). When
+
+202
+
+the second electrochemical cell was on, the TAN concentration in Chamber 3 decreased and the
+
+203
+
+TAN concentration in Chamber 4 increased due to electromigration of NH4+ from Chamber 3 to
+
+204
+
+4. When the second electrochemical cell was off, the TAN concentration in Chamber 4 decreased
+
+205
+
+and the TAN concentration in Chamber 3 increased due to NH3 back-diffusion from Chamber 4 to
+
+206
+
+3. Chamber 4 TAN concentration seemed to plateau (i.e., fluctuated between 23.7 and 31.2 g/L
+
+207
+
+each day) starting at about 8 days. On Days 11 and 13, we achieved higher Chamber 4
+
+208
+
+concentrations (up to 40.3 g/L TAN, 4.89% NH3 (w/w)) and greater product distribution toward
+
+209
+
+NH3(aq) over (NH4)2SO4 by increasing the operation frequency of the second electrochemical cell
+
+210
+
+(i.e., 1-hour on vs. 1-hour off periods instead of 1-hour on vs. 6- to 12-hour off periods) to limit
+
+211
+
+back-diffusion (Figure S3-10). Reactor modifications (e.g., using a thicker CEM in the second
+
+212
+
+electrochemical cell,52 alternative architectures like electrocatalyst-in-a-box (ECaB)53) in
+
+213
+
+combination with the demonstrated operational strategy could further enhance NH3(aq) recovery.
+
+214
+
+Long-term FECS operation revealed water transfer from Chamber 3 to 4 (due to osmosis and
+
+215
+
+electro-osmosis) as a second challenge to NH3(aq) up-concentration (Figure S3-11, Figure S3-12).
+
+216
+
+While water transfer did not drastically affect the time needed to reach ready-to-use cleaner
+
+217
+
+concentrations (1% and 2% (w/w) NH3), reaching 5% (w/w) NH3 could have been achieved in 9.4
+
+218
+
+rather than 13.2 days without water transfer (Figure S3-13). This detrimental effect of water
+
+219
+
+transfer was most noticeable at the highest target concentration because greater concentration
+11
+
+https://doi.org/10.26434/chemrxiv-2024-tlxz4 ORCID: https://orcid.org/0000-0001-6594-0501 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+220
+
+differences across the second CEM resulted in more osmotic water transport.54,55 Mitigating water
+
+221
+
+transfer likely requires material innovations, like tuning membrane properties (e.g., polymer and
+
+222
+
+fixed charge group identity, pore size and connectivity, coating).56–58 Therefore, integrated
+
+223
+
+optimization of reactor architecture, materials, and operation is needed to achieve more complete
+
+224
+
+TAN recovery and higher NH3(aq) concentrations in FECS.
+
+225
+
+The tunability that FECS offers had significant energy and monetary costs (Figure S3-14). TAN
+
+226
+
+removal via FECS required about 166  8.2 MJ/kg N compared to 61.2  4.2 MJ/kg N for ECS.47
+
+227
+
+Energy consumption for recovery was 470  56 MJ/kg N compared to 69.6  3.2 MJ/kg N
+
+228
+
+recovered for ECS,47 32 MJ/kg N for conventional ammonia stripping,59 31.6 MJ/kg N for the
+
+229
+
+Haber-Bosch process,60 and 77.9 MJ/kg N for conventional nitrogen management via the Haber-
+
+230
+
+Bosch process and nitrification-denitrification (Figure S3-15, Table S3-4).46,60 Despite the high
+
+231
+
+energy demand of FECS, in situ acid and base generation minimized chemical inputs, which can
+
+232
+
+contribute significantly to life-cycle costs and environmental impacts for nitrogen recovery
+
+233
+
+technologies.61 Each electrochemical cell contributed almost equally to total energy consumption
+
+234
+
+(Figure S3-16). Modifying the applied current for the second electrochemical cell could reduce
+
+235
+
+energy demand (Figure S3-17, Figure S3-18, Table S3-5, Table S3-6, Section S3.2.2). Altering the
+
+236
+
+operation frequency of the second electrochemical cell and reactor architecture could improve
+
+237
+
+energy efficiency by maintaining more consistent migration from Chamber 2 to 3 and reducing
+
+238
+
+NH3 back-diffusion from Chamber 4 to 3. Additional energy consumption and reactor components
+
+239
+
+(e.g., two anodes in FECS vs. one in ECS47) entail significant costs for the additional functionality
+
+240
+
+that FECS enables, motivating future studies on low-cost, durable materials; alternative reactor
+
+241
+
+configurations that reduce TAN losses and increase recovery efficiency; and further tuning
+
+12
+
+https://doi.org/10.26434/chemrxiv-2024-tlxz4 ORCID: https://orcid.org/0000-0001-6594-0501 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+242
+
+operating parameters to reduce energy consumption, improve recovery, and enhance product
+
+243
+
+control.
+
+244
+
+4 Implications
+
+245
+
+We demonstrated a novel reactor, FECS, that facilitates tunable recovery of ammonia/ammonium
+
+246
+
+from urine as both (NH4)2SO4 and NH3(aq). While (NH4)2SO4 is mainly used as a fertilizer, NH3 is
+
+247
+
+more versatile, with uses as a disinfecting cleaner,35–38 green fuel,39,40 and industrial feedstock for
+
+248
+
+plastic, rubber, and fiber synthesis.34 With minimal chemical inputs and real-time control over
+
+249
+
+product distribution, FECS can integrate distributed wastewater treatment and chemical
+
+250
+
+manufacturing in diverse settings with changing local needs and markets. Simpler, lower-cost, and
+
+251
+
+lower-energy systems like ECS may be more suitable in cases where TAN removal is the primary
+
+252
+
+goal (e.g., due to regulatory limits on environmental discharges). However, FECS is valuable if
+
+253
+
+NH3(aq) or switching between (NH4)2SO4 and NH3(aq) is desirable. For instance, FECS could supply
+
+254
+
+NH3 to nearby industries reducing dependence on long-distance supply chains and provide both
+
+255
+
+fertilizers and cleaners to remote rural agricultural communities. Therefore, integrating FECS into
+
+256
+
+sanitation systems can promote more equitable resource access, improve food security and health,
+
+257
+
+and lower environmental impacts of chemical industries while contributing to re-engineering the
+
+258
+
+nitrogen cycle toward circularity.
+
+259
+
+Supporting Information
+
+260
+
+The supporting information includes text describing reactor setup and operation; tables describing
+
+261
+
+influent and effluent streams, reactor component properties, statistical analysis of performance
+
+262
+
+metrics, and product prices; equations for efficiencies and energy demand; and figures showing
+
+263
+
+reactor setup, temporal trends in performance metrics and composition, and product prices.
+
+13
+
+https://doi.org/10.26434/chemrxiv-2024-tlxz4 ORCID: https://orcid.org/0000-0001-6594-0501 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+264
+
+Acknowledgements
+
+265
+
+We thank the Tarpeh lab for productive discussions in developing this work. The project was
+
+266
+
+funded by the Stanford University King Center on Global Development, Stanford University
+
+267
+
+Center for Innovation in Global Health, and the Sustainability Accelerator from the Stanford Doerr
+
+268
+
+School of Sustainability. Authors also acknowledge the following additional support: AK –
+
+269
+
+Stanford University Vice Provost for Graduate Education; MG – National Alliance for Water
+
+270
+
+Innovation (NAWI); and WAT – Camille and Henry Dreyfus Foundation. NAWI is funded by the
+
+271
+
+U.S. Department of Energy, Energy Efficiency and Renewable Energy Office, Advanced
+
+272
+
+Manufacturing Office under Funding Opportunity Announcement DE-FOA-0001905. Funding
+
+273
+
+has been provided in full or in part through an agreement with the California State Water Resources
+
+274
+
+Control Board using funds from Proposition 1. The contents of this document do not necessarily
+
+275
+
+reflect the views and policies of the foregoing, nor does mention of trade names or commercial
+
+276
+
+products constitute endorsement or recommendation for use.
+
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+
+References
+(1) Rockström, J.; Steffen, W.; Noone, K.; Persson, Å.; Chapin, F. S.; Lambin, E. F.; Lenton, T. M.;
+Scheffer, M.; Folke, C.; Schellnhuber, H. J.; Nykvist, B.; De Wit, C. A.; Hughes, T.; Van Der Leeuw,
+S.; Rodhe, H.; Sörlin, S.; Snyder, P. K.; Costanza, R.; Svedin, U.; Falkenmark, M.; Karlberg, L.;
+Corell, R. W.; Fabry, V. J.; Hansen, J.; Walker, B.; Liverman, D.; Richardson, K.; Crutzen, P.; Foley,
+J. A. A Safe Operating Space for Humanity. Nature 2009, 461 (7263), 472–475.
+https://doi.org/10.1038/461472a.
+(2) Steffen, W.; Richardson, K.; Rockström, J.; Cornell, S. E.; Fetzer, I.; Bennett, E. M.; Biggs, R.;
+Carpenter, S. R.; de Vries, W.; de Wit, C. A.; Folke, C.; Gerten, D.; Heinke, J.; Mace, G. M.;
+Persson, L. M.; Ramanathan, V.; Reyers, B.; Sörlin, S. Planetary Boundaries: Guiding Human
+Development on a Changing Planet. Science 2015, 347 (6223), 1259855.
+https://doi.org/10.1126/science.1259855.
+(3) Dodds, W. K.; Bouska, W. W.; Eitzmann, J. L.; Pilger, T. J.; Pitts, K. L.; Riley, A. J.; Schloesser, J.
+T.; Thornbrugh, D. J. Eutrophication of U.S. Freshwaters: Analysis of Potential Economic Damages.
+Environ. Sci. Technol. 2009, 43 (1), 12–19. https://doi.org/10.1021/es801217q.
+(4) Burow, K. R.; Nolan, B. T.; Rupert, M. G.; Dubrovsky, N. M. Nitrate in Groundwater of the United
+States, 1991−2003. Environ. Sci. Technol. 2010, 44 (13), 4988–4997.
+https://doi.org/10.1021/es100546y.
+(5) Falconer, I. R. An Overview of Problems Caused by Toxic Blue–Green Algae (Cyanobacteria) in
+Drinking and Recreational Water. Environmental Toxicology 1999, 14 (1), 5–12.
+https://doi.org/10.1002/(SICI)1522-7278(199902)14:1<5::AID-TOX3>3.0.CO;2-0.
+14
+
+https://doi.org/10.26434/chemrxiv-2024-tlxz4 ORCID: https://orcid.org/0000-0001-6594-0501 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+
+(6) Juli Iacuaniello; Orianna Bretschger. Decentralizing wastewater treatment can help corporations
+achieve climate goals. World Economic Forum.
+https://www.weforum.org/agenda/2022/10/wastewater-corporations-climate-goals/ (accessed 202401-09).
+(7) Kyriakou, V.; Garagounis, I.; Vourros, A.; Vasileiou, E.; Stoukides, M. An Electrochemical HaberBosch Process. Joule 2020, 4 (1), 142–158. https://doi.org/10.1016/j.joule.2019.10.006.
+(8) Larsen, T. A.; Hoffmann, S.; Lüthi, C.; Truffer, B.; Maurer, M. Emerging Solutions to the Water
+Challenges of an Urbanizing World. Science 2016, 352 (6288), 928–933.
+(9) Larsen, T. A.; Gruendl, H.; Binz, C. The Potential Contribution of Urine Source Separation to the
+SDG Agenda – a Review of the Progress so Far and Future Development Options. Environ. Sci.:
+Water Res. Technol. 2021, 7 (7), 1161–1176. https://doi.org/10.1039/D0EW01064B.
+(10) Randall, D. G.; Naidoo, V. Urine: The Liquid Gold of Wastewater. Journal of Environmental
+Chemical Engineering 2018, 6 (2), 2627–2635. https://doi.org/10.1016/j.jece.2018.04.012.
+(11) Will Steffen; Angelina Sanderson; Peter Tyson; Jill Jaeger; Pamela Matson; Berrien Moore III; Frank
+Oldfield; Katherine Richardson; H. John Schellnhuber; B.L. Turner II; Robert J. Wasson. Global
+Change and the Earth System: A Planet Under Pressure, 2nd printing.; Springer-Verlag: Berlin,
+2005.
+(12) Lenton, T. M.; Held, H.; Kriegler, E.; Hall, J. W.; Lucht, W.; Rahmstorf, S.; Schellnhuber, H. J.
+Tipping Elements in the Earth’s Climate System. Proc. Natl. Acad. Sci. U.S.A. 2008, 105 (6), 1786–
+1793. https://doi.org/10.1073/pnas.0705414105.
+(13) Scheffer, M.; Carpenter, S.; Foley, J. A.; Folke, C.; Walker, B. Catastrophic Shifts in Ecosystems.
+Nature 2001, 413 (6856), 591–596. https://doi.org/10.1038/35098000.
+(14) Kogler, A.; Farmer, M.; Simon, J. A.; Tilmans, S.; Wells, G. F.; Tarpeh, W. A. Systematic
+Evaluation of Emerging Wastewater Nutrient Removal and Recovery Technologies to Inform
+Practice and Advance Resource Efficiency. ACS EST Eng. 2021, 1 (4), 662–684.
+https://doi.org/10.1021/acsestengg.0c00253.
+(15) J.R. McConville; E. Kvarnström; H. Jönsson; E. Kärrman; M. Johansson. Is the Swedish Wastewater
+Sector Ready for a Transition to Source Separation? dwt 2017, 91, 320–328.
+https://doi.org/10.5004/dwt.2017.20881.
+(16) Miller, D. M.; Abels, K.; Guo, J.; Williams, K. S.; Liu, M. J.; Tarpeh, W. A. Electrochemical
+Wastewater Refining: A Vision for Circular Chemical Manufacturing. J. Am. Chem. Soc. 2023.
+https://doi.org/10.1021/jacs.3c01142.
+(17) Hengl, T.; Leenaars, J. G. B.; Shepherd, K. D.; Walsh, M. G.; Heuvelink, G. B. M.; Mamo, T.;
+Tilahun, H.; Berkhout, E.; Cooper, M.; Fegraus, E.; Wheeler, I.; Kwabena, N. A. Soil Nutrient Maps
+of Sub-Saharan Africa: Assessment of Soil Nutrient Content at 250 m Spatial Resolution Using
+Machine Learning. Nutr Cycl Agroecosyst 2017, 109 (1), 77–102. https://doi.org/10.1007/s10705017-9870-x.
+(18) Wang, R.; Yang, K.; Wong, C.; Aguirre-Villegas, H.; Larson, R.; Brushett, F.; Qin, M.; Jin, S.
+Electrochemical Ammonia Recovery and Co-Production of Chemicals from Manure Wastewater. Nat
+Sustain 2023, 1–12. https://doi.org/10.1038/s41893-023-01252-z.
+(19) Mousset, E.; Fournier, M.; Su, X. Recent Advances of Reactive Electroseparation Systems for Water
+Treatment and Selective Resource Recovery. Current Opinion in Electrochemistry 2023, 42, 101384.
+https://doi.org/10.1016/j.coelec.2023.101384.
+(20) Pickett, M. T.; Roberson, L. B.; Calabria, J. L.; Bullard, T. J.; Turner, G.; Yeh, D. H. Regenerative
+Water Purification for Space Applications: Needs, Challenges, and Technologies towards “Closing
+the Loop.” Life Sciences in Space Research 2020, 24, 64–82.
+https://doi.org/10.1016/j.lssr.2019.10.002.
+(21) Ledezma, P.; Kuntke, P.; Buisman, C. J. N.; Keller, J.; Freguia, S. Source-Separated Urine Opens
+Golden Opportunities for Microbial Electrochemical Technologies. Trends in Biotechnology 2015, 33
+(4), 214–220. https://doi.org/10.1016/j.tibtech.2015.01.007.
+
+15
+
+https://doi.org/10.26434/chemrxiv-2024-tlxz4 ORCID: https://orcid.org/0000-0001-6594-0501 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+
+(22) Christiaens, M. E. R.; Udert, K. M.; Arends, J. B. A.; Huysman, S.; Vanhaecke, L.; McAdam, E.;
+Rabaey, K. Membrane Stripping Enables Effective Electrochemical Ammonia Recovery from Urine
+While Retaining Microorganisms and Micropollutants. Water Research 2019, 150, 349–357.
+https://doi.org/10.1016/j.watres.2018.11.072.
+(23) Zhang, Y.; Angelidaki, I. Recovery of Ammonia and Sulfate from Waste Streams and Bioenergy
+Production via Bipolar Bioelectrodialysis. Water Research 2015, 85, 177–184.
+https://doi.org/10.1016/j.watres.2015.08.032.
+(24) Xie, A.; Popat, S. C. Electrochemical Ammonia Stripping from Non-Nitrified Animal Rendering
+Wastewater. Chemical Engineering Journal Advances 2020, 3, 100020.
+https://doi.org/10.1016/j.ceja.2020.100020.
+(25) Logan, B. E.; Rabaey, K. Conversion of Wastes into Bioelectricity and Chemicals by Using
+Microbial Electrochemical Technologies. Science 2012, 337 (6095), 686–690.
+https://doi.org/10.1126/science.1217412.
+(26) Nidheesh, P. V.; Ganiyu, S. O.; Kuppam, C.; Mousset, E.; Samsudeen, N.; Olvera-Vargas, H.;
+Kumar, G. Bioelectrochemical Cells as a Green Energy Source for Electrochemical Treatment of
+Water and Wastewater. Journal of Water Process Engineering 2022, 50, 103232.
+https://doi.org/10.1016/j.jwpe.2022.103232.
+(27) Kuntke, P.; Śmiech, K. M.; Bruning, H.; Zeeman, G.; Saakes, M.; Sleutels, T. H. J. A.; Hamelers, H.
+V. M.; Buisman, C. J. N. Ammonium Recovery and Energy Production from Urine by a Microbial
+Fuel Cell. Water Research 2012, 46 (8), 2627–2636. https://doi.org/10.1016/j.watres.2012.02.025.
+(28) Koskue, V.; Rinta-Kanto, J. M.; Freguia, S.; Ledezma, P.; Kokko, M. Optimising Nitrogen Recovery
+from Reject Water in a 3-Chamber Bioelectroconcentration Cell. Separation and Purification
+Technology 2021, 264, 118428. https://doi.org/10.1016/j.seppur.2021.118428.
+(29) Sutherland, D. L.; Turnbull, M. H.; Craggs, R. J. Increased Pond Depth Improves Algal Productivity
+and Nutrient Removal in Wastewater Treatment High Rate Algal Ponds. Water Research 2014, 53,
+271–281. https://doi.org/10.1016/j.watres.2014.01.025.
+(30) Xie, M.; Nghiem, L. D.; Price, W. E.; Elimelech, M. Toward Resource Recovery from Wastewater:
+Extraction of Phosphorus from Digested Sludge Using a Hybrid Forward Osmosis–Membrane
+Distillation Process. Environ. Sci. Technol. Lett. 2014, 1 (2), 191–195.
+https://doi.org/10.1021/ez400189z.
+(31) Jagtap, N.; Boyer, T. H. Integrated, Multi-Process Approach to Total Nutrient Recovery from Stored
+Urine. Environ. Sci.: Water Res. Technol. 2018, 4 (10), 1639–1650.
+https://doi.org/10.1039/C8EW00004B.
+(32) Trimmer, J. T.; Margenot, A. J.; Cusick, R. D.; Guest, J. S. Aligning Product Chemistry and Soil
+Context for Agronomic Reuse of Human-Derived Resources. Environ. Sci. Technol. 2019, 53 (11),
+6501–6510. https://doi.org/10.1021/acs.est.9b00504.
+(33) Speight, J. G. Chapter Three - Industrial Inorganic Chemistry. In Environmental Inorganic Chemistry
+for Engineers; Speight, J. G., Ed.; Butterworth-Heinemann, 2017; pp 111–169.
+https://doi.org/10.1016/B978-0-12-849891-0.00003-5.
+(34) International Energy Agency. Ammonia Technology Roadmap: Towards More Sustainable Nitrogen
+Fertiliser Production; OECD, 2021. https://doi.org/10.1787/f6daa4a0-en.
+(35) Ogunyoku, T. A.; Habebo, F.; Nelson, K. L. In-Toilet Disinfection of Fresh Fecal Sludge with
+Ammonia Naturally Present in Excreta. Journal of Water, Sanitation and Hygiene for Development
+2016, 6 (1), 104–114. https://doi.org/10.2166/washdev.2015.233.
+(36) Decrey, L.; Kazama, S.; Udert, K. M.; Kohn, T. Ammonia as an In Situ Sanitizer: Inactivation
+Kinetics and Mechanisms of the ssRNA Virus MS2 by NH 3. Environ. Sci. Technol. 2015, 49 (2),
+1060–1067. https://doi.org/10.1021/es5044529.
+(37) Pecson, B. M.; Nelson, K. L. Inactivation of Ascaris Suum Eggs by Ammonia. Environ. Sci. Technol.
+2005, 39 (20), 7909–7914. https://doi.org/10.1021/es050659a.
+(38) Jenkins, M. B.; Bowman, D. D.; Ghiorse, W. C. Inactivation of Cryptosporidium Parvum Oocysts by
+Ammonia. Appl Environ Microbiol 1998, 64 (2), 784–788.
+16
+
+https://doi.org/10.26434/chemrxiv-2024-tlxz4 ORCID: https://orcid.org/0000-0001-6594-0501 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+
+(39) MacFarlane, D. R.; Cherepanov, P. V.; Choi, J.; Suryanto, B. H. R.; Hodgetts, R. Y.; Bakker, J. M.;
+Ferrero Vallana, F. M.; Simonov, A. N. A Roadmap to the Ammonia Economy. Joule 2020, 4 (6),
+1186–1205. https://doi.org/10.1016/j.joule.2020.04.004.
+(40) Valera-Medina, A.; Amer-Hatem, F.; Azad, A. K.; Dedoussi, I. C.; de Joannon, M.; Fernandes, R. X.;
+Glarborg, P.; Hashemi, H.; He, X.; Mashruk, S.; McGowan, J.; Mounaim-Rouselle, C.; Ortiz-Prado,
+A.; Ortiz-Valera, A.; Rossetti, I.; Shu, B.; Yehia, M.; Xiao, H.; Costa, M. Review on Ammonia as a
+Potential Fuel: From Synthesis to Economics. Energy Fuels 2021, 35 (9), 6964–7029.
+https://doi.org/10.1021/acs.energyfuels.0c03685.
+(41) Tarpeh, W. A.; Chen, X. Making Wastewater Obsolete: Selective Separations to Enable Circular
+Water Treatment. Environmental Science and Ecotechnology 2021, 5, 100078.
+https://doi.org/10.1016/j.ese.2021.100078.
+(42) Chaplin, B. P. The Prospect of Electrochemical Technologies Advancing Worldwide Water
+Treatment. Acc. Chem. Res. 2019, 52 (3), 596–604. https://doi.org/10.1021/acs.accounts.8b00611.
+(43) Radjenovic, J.; Sedlak, D. L. Challenges and Opportunities for Electrochemical Processes as NextGeneration Technologies for the Treatment of Contaminated Water. Environ. Sci. Technol. 2015, 49
+(19), 11292–11302. https://doi.org/10.1021/acs.est.5b02414.
+(44) Kong, L.; Liu, X. Emerging Electrochemical Processes for Materials Recovery from Wastewater:
+Mechanisms and Prospects. Front. Environ. Sci. Eng. 2020, 14 (5), 90.
+https://doi.org/10.1007/s11783-020-1269-2.
+(45) Tarpeh, W. A.; Barazesh, J. M.; Cath, T. Y.; Nelson, K. L. Electrochemical Stripping to Recover
+Nitrogen from Source-Separated Urine. Environ. Sci. Technol. 2018, 52 (3), 1453–1460.
+https://doi.org/10.1021/acs.est.7b05488.
+(46) Liu, M. J.; Neo, B. S.; Tarpeh, W. A. Building an Operational Framework for Selective Nitrogen
+Recovery via Electrochemical Stripping. Water Research 2020, 169, 115226.
+https://doi.org/10.1016/j.watres.2019.115226.
+(47) Kogler, A.; Sharma, N.; Tiburcio, D.; Gong, M.; Miller, D. M.; Williams, K. S.; Chen, X.; Tarpeh,
+W. A. Long-Term Robustness and Failure Mechanisms of Electrochemical Stripping for Wastewater
+Ammonia Recovery. ACS Environ. Au 2024, acsenvironau.3c00058.
+https://doi.org/10.1021/acsenvironau.3c00058.
+(48) Comer, B. M.; Fuentes, P.; Dimkpa, C. O.; Liu, Y.-H.; Fernandez, C. A.; Arora, P.; Realff, M.;
+Singh, U.; Hatzell, M. C.; Medford, A. J. Prospects and Challenges for Solar Fertilizers. Joule 2019,
+3 (7), 1578–1605. https://doi.org/10.1016/j.joule.2019.05.001.
+(49) McArthur, J. W.; McCord, G. C. Fertilizing Growth: Agricultural Inputs and Their Effects in
+Economic Development. J Dev Econ 2017, 127, 133–152.
+https://doi.org/10.1016/j.jdeveco.2017.02.007.
+(50) Lim, M. M. L.; Søgaard Jørgensen, P.; Wyborn, C. A. Reframing the Sustainable Development Goals
+to Achieve Sustainable Development in the Anthropocene - a Systems Approach. E&S 2018, 23 (3),
+art22. https://doi.org/10.5751/ES-10182-230322.
+(51) Rodrigues, M.; Lund, R. J.; ter Heijne, A.; Sleutels, T.; Buisman, C. J. N.; Kuntke, P. Application of
+Ammonium Fertilizers Recovered by an Electrochemical System. Resources, Conservation and
+Recycling 2022, 181, 106225. https://doi.org/10.1016/j.resconrec.2022.106225.
+(52) Roman, M.; Roman, P.; Verbeke, R.; Gutierrez, L.; Vanoppen, M.; Dickmann, M.; Egger, W.;
+Vankelecom, I.; Post, J.; Cornelissen, E.; Keesman, K.; Verliefde, A. Non-Steady Diffusion and
+Adsorption of Organic Micropollutants in Ion-Exchange Membranes: Effect of the Membrane
+Thickness. iScience 2021, 24 (2), 102095. https://doi.org/10.1016/j.isci.2021.102095.
+(53) Miller, D.; Liu, M.; Abels, K.; Kogler, A.; Williams, K.; Tarpeh, W. Engineering a Molecular
+Electrocatalytic System for Energy-Efficient Ammonia Production from Wastewater Nitrate.
+ChemRxiv February 8, 2024. https://doi.org/10.26434/chemrxiv-2023-1s6n8-v2.
+(54) Galama, A. H.; Saakes, M.; Bruning, H.; Rijnaarts, H. H. M.; Post, J. W. Seawater Predesalination
+with Electrodialysis. Desalination 2014, 342, 61–69. https://doi.org/10.1016/j.desal.2013.07.012.
+
+17
+
+https://doi.org/10.26434/chemrxiv-2024-tlxz4 ORCID: https://orcid.org/0000-0001-6594-0501 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+
+(55) Galama, A. H.; Vermaas, D. A.; Veerman, J.; Saakes, M.; Rijnaarts, H. H. M.; Post, J. W.; Nijmeijer,
+K. Membrane Resistance: The Effect of Salinity Gradients over a Cation Exchange Membrane.
+Journal of Membrane Science 2014, 467, 279–291. https://doi.org/10.1016/j.memsci.2014.05.046.
+(56) Kingsbury, R. S.; Zhu, S.; Flotron, S.; Coronell, O. Microstructure Determines Water and Salt
+Permeation in Commercial Ion-Exchange Membranes. ACS Appl. Mater. Interfaces 2018, 10 (46),
+39745–39756. https://doi.org/10.1021/acsami.8b14494.
+(57) Rommerskirchen, A.; Roth, H.; Linnartz, C. J.; Egidi, F.; Kneppeck, C.; Roghmans, F.; Wessling, M.
+Mitigating Water Crossover by Crosslinked Coating of Cation-Exchange Membranes for Brine
+Concentration. Advanced Materials Technologies 2021, 6 (10), 2100202.
+https://doi.org/10.1002/admt.202100202.
+(58) Kamcev, J.; Freeman, B. D. Charged Polymer Membranes for Environmental/Energy Applications.
+Annu. Rev. Chem. Biomol. Eng. 2016, 7 (1), 111–133. https://doi.org/10.1146/annurev-chembioeng080615-033533.
+(59) Maurer, M.; Schwegler, P.; Larsen, T. A. Nutrients in Urine: Energetic Aspects of Removal and
+Recovery. Water Science and Technology 2003, 48 (1), 37–46.
+https://doi.org/10.2166/wst.2003.0011.
+(60) Rouwenhorst, K. H. R.; Krzywda, P. M.; Benes, N. E.; Mul, G.; Lefferts, L. Chapter 4 - Ammonia
+Production Technologies. In Techno-Economic Challenges of Green Ammonia as an Energy Vector;
+Valera-Medina, A., Banares-Alcantara, R., Eds.; Academic Press, 2021; pp 41–83.
+https://doi.org/10.1016/B978-0-12-820560-0.00004-7.
+(61) Kavvada, O.; Tarpeh, W. A.; Horvath, A.; Nelson, K. L. Life-Cycle Cost and Environmental
+Assessment of Decentralized Nitrogen Recovery Using Ion Exchange from Source-Separated Urine
+through Spatial Modeling. Environ. Sci. Technol. 2017, 51 (21), 12061–12071.
+https://doi.org/10.1021/acs.est.7b02244.
+
+18
+
+https://doi.org/10.26434/chemrxiv-2024-tlxz4 ORCID: https://orcid.org/0000-0001-6594-0501 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+

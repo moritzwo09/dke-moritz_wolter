@@ -1,0 +1,971 @@
+Prediction and Rationalization of Site Preference of Rare Earth Elements in
+Fluorapatite from Density Functional Theory
+Smahane Dahbi1, Angelika D. Rosa,2 Alain Manceau*1,2 and Stephan N. Steinmann*1
+1CNRS, ENS de Lyon, LCH, UMR 5182, 69342, Lyon cedex 07, France
+2European Synchrotron Radiation Facility (ESRF), 38000 Grenoble, France
+
+Corresponding authors: alain.manceau@ens-lyon.fr; stephan.steinmann@ens-lyon.fr
+
+ABSTRACT
+Fluorapatite (FAp, nominally Ca10(PO4)6F2) has been identified as an important host-material for rare
+earth elements and yttrium (REY) in marine sediments. REY can be accommodated in either the larger
+6+3 coordinated Ca1 site or the smaller 6+1 coordinated Ca2 site, yet little is known about the site
+preference of REY through the lanthanide series despite its importance for understanding REY
+enrichment processes in FAp. Theoretical investigations based on density functional theory (DFT)
+predict that all REY intrinsically prefer the smaller and more ionic Ca2 site. The Ca2 site preference is
+less pronounced when the excess of positive charge resulting from the REY3+ for Ca2+ substitution is
+compensated by a coupled Na+ for Ca2+ substitution, instead of the energetically more favorable Si4+
+for P5+ coupled substitution. The site preference varies quadratically with the ionic radius of REY and
+linearly with the sum of their first and second ionization energies. The quadratic shape of the site
+preference is similar to the shape of Onuma diagrams, which suggests that the local effective elastic
+constant of the site controls the site preference, rather than the nominal size of the site. Despite being
+smaller, the Ca2 site has a lower effective elastic constant, and is, therefore, more flexible than the Ca1
+site for accommodating larger and smaller trivalent REY cations. Concentration-dependent
+computations show that REY clustering is thermodynamically favorable, except for Yb and Lu.
+KEYWORDS: Apatite, REY, Onuma diagram, DFT, Ionic radii, Charge compensation, Concentration
+
+INTRODUCTION
+Incorporation of rare earth elements and yttrium (REY) in apatite (Ca10(PO4)6(OH,Cl,F)2) has been
+extensively studied in the past decades, when it was recognized that this mineral is the dominant host
+for REY in common magmatic/metamorphic rocks.1,2 This topic has attracted renewed attention
+recently3–7 after the discovery in 2011 of deep-sea muds rich in REY in the Pacific Ocean,8 and the
+further identification in 2014 of fluorapatite (FAp) as their main host phase.9 REY enrichment can reach
+ore-grade in FAp, and therefore marine deposits are considered a potential resource for strategic REY
+used in industrial and technological applications, such as permanent magnets, electronic equipment
+and catalysis.10 Knowing the crystal chemistry of REY in FAp would help us unravel the geochemical
+formation conditions of this georesource and may help develop efficient extraction processes.
+The crystal structure of FAp has two non-equivalent calcium sites.11 The Ca1 site is 9-fold
+coordinated with oxygen atoms (d(Ca1-O) = 2.554 Å), and exhibits C3v symmetry. The smaller Ca2 site
+is 7-fold coordinated with six oxygen atoms (d(Ca2-O) = 2.462 Å) and one fluorine atom (d(Ca2-F) =
+2.311 Å, average = 2.440 Å), and exhibits Cs symmetry. The Ca1 polyhedra are linked to each other
+through faces and to Ca2 polyhedra through corners. In contrast, the Ca2 polyhedra are linked to each
+other through corners, not faces. In this way, the Ca1 polyhedra form rigid chains and the Ca2 polyhedra
+flexible spirals along the c-axis. The two different Ca chains are interlinked by PO4 tetrahedra (Figure
+1).12 Electron and laser probe micro-analysis of magmatic/hydrothermal apatite showed that REY are
+
+1
+https://doi.org/10.26434/chemrxiv-2025-wnfmp-v2 ORCID: https://orcid.org/0000-0002-2777-356X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+incorporated in the crystal structure and substituted for Ca.7 Three questions arise from this result: (1)
+in which Ca site are REY preferentially incorporated in the structure, (2) does the partitioning of REY
+among the two sites vary through the lanthanide series as a function of the REY concentration, and (3)
+how is the REY3+ for Ca2+ substitution charge compensated?
+The three questions are regularly addressed in the literature, generally indicating that the nature of
+the sample (e.g., synthetic vs natural) may cause diverging results, although the Ca2 site is more
+commonly reported as the incorporation site of REY. In 1973, Mackie et al.13 synthesized Nd-doped
+FAp with a concentration of about 14,000 ppm (mg/kg), which they characterized by single-crystal Xray diffraction. They found that Nd occupies the two Ca sites when Nd is supplied as NdF3 and only the
+Ca2 site when it is supplied as Nd2O3. Incorporation of Nd in the Ca2 site with Nd2O3 as dopant source
+was confirmed by Fleet et al.14 in 1994 at a Nd concentration of 82,000 ppm. Preference of Nd for the
+Ca2 site is also predicted by density functional theory (DFT). Bertolus and Defranceschi15 calculated in
+2000 the thermodynamic stability of all possible structural configurations of Ca8NdNa(PO4)6F2 and
+Ca9Nd(PO4)5(SiO4)F2. Na+ and Si4+ were incorporated in the models to balance the excess of positive
+electric charge resulting from the Nd3+ for Ca2+ substitution. Nd was predicted to occupy the Ca2 site
+regardless of the charge compensation mechanism, whereas Na preferred the Ca1 site. X-ray powder
+diffraction and infrared spectroscopy were used by Get'man et al.16 in 2010 to study the incorporation
+of Sm and Gd in hydroxyapatite (HAp, Ca10−xREYx(PO4)6(OH)2−xOx). Sm and Gd were both found in the
+Ca2 site. Luminescence emission of Eu3+ indicates that Er occupies the Ca2 site both in HAp
+(Ca10−xEr2x/3□x/3(PO4)6(OH)2)17 and in oxyapatite (Ca10−xLax-0.2Eu0.2(SiO4)6Ox/2□4−x/2).
+The relative preference of REY for the Ca1 and Ca2 sites through the REY series was studied on
+both natural and synthetic samples. In 1991, Hughes et al.18 determined the structure of REY-containing
+natural apatite using single-crystal X-ray diffraction. They found that the light (i.e., larger) REE (La →
+Sm) have a marked preference for the smaller Ca2 site. This observation contrasts with bond valence
+calculation, which suggested that only La, Ce, and Pr are substituted preferentially at the Ca2 site, while
+Pm and Sm should preferentially occupy the Ca1 site. Fleet et al.19 revisited this question in 1995 on
+synthetic FAp doped at 79,000 - 110,000 ppm using also single-crystal X-ray diffraction. They found
+that the Ca2/Ca1 site occupancy ratio decreases monotonically with the effective ionic radius (IR)20,21
+of the REE. For example, the Ca2/Ca1 ratio of La (VIIR = 1.03 Å) was 4.04 and that of Dy (VIIR = 0.91
+Å) was 1.54. This trend is inconsistent with an IR effect only, because the Ca1 site is larger than the
+Ca2 site.
+In summary, previous studies have shown that REY favor the Ca2 site with, however, some
+differences depending on the synthesis method (e.g., NdF3 vs. Nd2O3), and suggested a possible trend
+in the relative preference of the lanthanides for the two sites, which remains unexplained.
+Regarding the charge balance of the REY3+ for Ca2+ substitution, three main possibilities may exist:
+Ca vacancies, coupled cation or coupled anion substitution.18,22,23 The two last are most relevant in the
+context of marine deposits as sodium ions and silica are present in seawater:
+2 Ca2+
+
+⇄
+
+REY3+ + Na+
+
+(1)
+
+Ca2+ + P5+
+
+⇄
+
+REY3+ + Si4+
+
+(2)
+
+Recently, we have studied the incorporation of Ce3+ in FAp using high energy-resolution fluorescence
+detected extended X-ray absorption fine structure (HERFD-EXAFS) spectroscopy and DFT.24 We
+showed that Ce occupies the Ca2 site and that Na favors the Ca1 site at a doping concentration of
+~15,000 ppm. In absence of meaningful reference energies for “free” Ca2+, P5+, Si4+ and Na+ cations to
+balance chemical equations, the most favorable charge-compensation models were obtained by
+comparing their energies relative to those of reference structures in which Ce and the co-dopant are
+well-separated and thus minimally interacting. Using this scheme, we found that the charge
+compensation with a 𝑆𝑖𝑂!!" for 𝑃𝑂!#" substitution (eq 2) is energetically more stable than that with a Na
+for Ca1 substitution (eq. 1). Furthermore, the coupled Ce3+-Na+ and Ce3+-Si4+ substitutions preferentially
+take place at short distance in the FAp structure (e.g., edge-sharing CeO7-SiO4 linkage, Figure 1b). Site
+preference and ionization energies were correlated linearly for divalent cations. On the basis of the
+
+2
+https://doi.org/10.26434/chemrxiv-2025-wnfmp-v2 ORCID: https://orcid.org/0000-0002-2777-356X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+atomic charge of divalent substituents, we found that the Ca2 site is more ionic, and therefore is
+preferred by dopants with low ionization energies (e.g. Ba) over those with higher ionization energies
+(e.g., Mg).
+Here, we extend our previous study on Ce to the whole REY series and explore the effect of REY
+concentration, focusing on the two main charge-compensation mechanisms, i.e., Na and Si co-doping.
+We reveal an intrinsic preference of all REY for the Ca2 site which is enhanced by the Si-based charge
+balance. However, at high concentration REY can be stabilized in the Ca1 site if the charge is balanced
+by Na.
+
+Figure 1: a) Polyhedral structure of FAp projected along the c-axis. b) Linkages of the Ca2 polyhedra.
+
+COMPUTATIONAL METHODOLOGY
+Geometry optimization of the pristine and doped FAp models was carried out using DFT,25 in
+combination with Projector Augmented Wave (PAW) pseudopotentials26,27 as implemented in the
+Vienna Ab-initio Simulation Package (VASP) software,28,29 running on a Linux-based high-performance
+computing platform.30 A plane-wave basis set with a kinetic energy cutoff of 500 eV was chosen, along
+with the generalized gradient approximation developed by Perdew, Burke, and Ernzerhof (PBE)31 to
+describe the exchange-correlation potential, coupled with the density-dependent dispersion correction
+(dDsC).32,33 The parameter controlling the convergence criterion for the electronic self-consistency cycle
+was set to 10-6 eV, and the maximum force convergence threshold was fixed to 0.05 eV/Å. An electronic
+Fermi-Dirac smearing with a width of 0.026 eV was used, but given the large band-gap of the materials
+studied, the smearing had no impact on the converged electronic structure. All relative and reaction
+energies discussed in this study refer to electronic energies. Calculation of free energies requires a
+
+3
+https://doi.org/10.26434/chemrxiv-2025-wnfmp-v2 ORCID: https://orcid.org/0000-0002-2777-356X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+phonon computation, which is prohibitively expensive for the largest systems studied herein (1344
+atoms), and an estimate of the configurational entropy at different REY concentrations.
+FAp crystallizes in the hexagonal system with the P63/m space group,12 and the unit cell has 10
+calcium (Ca), 6 phosphorus (P), 24 oxygen (O), and 2 fluorine (F) atoms. The REY concentration was
+varied by changing the size of the FAp cell. A single unit cell was used for the high concentration of
+about 100,000 ppm (Ca8REY1Na1(PO4)6F2 and Ca9REY1(PO4)5(SiO4)F2) (Figure S1a), a 2 x 2 x 2
+supercell for the intermediate concentration of about 12,500 ppm (Ca78REY1Na1(PO4)48F16 and
+Ca79REY1(PO4)47(SiO4)F16), as in our previous study24 (Figure S1b), and a 4 x 4 x 2 supercell for a
+concentration of about 3,125 ppm (Ca318REY1Na1(PO4)192F64 and Ca319REY1(PO4)191(SiO4)F64) (Figure
+S1c). The unit cell is described by 3 x 3 x 3 K-points, and the supercells are probed at the gamma point.
+We verified that energies obtained with the unit cell and super-cell models were very similar (Table S1).
+The dispersion-corrected PBE-dDsC functional was chosen over the Perdew-Wang34 functional (PW91)
+used by Bertolus and Defranceschi15 in their Nd-FAp study based on the comparison of the cell
+parameters for FAp obtained experimentally12 and theoretically (Table S2). This is also in agreement
+with our previous study on Ce-doped FAp.24 The deviation of the calculated a and c parameters relative
+to experiment is 0.5-0.6% with PW91 and <0.1% with PBE-dDsC. The accuracy on geometry is clearly
+better with PBE-dDsC. We note that after completion of the computations reported herein, a benchmark
+study has been published, recommending the use of dispersion corrections for simulating apatites35
+and that dispersion corrections have a long history in being used for apatites.36 Additional spin-polarized
+DFT+U computations are included to the Supporting Information (Figures S2) which overall show
+similar results to the ones presented herein, but are plagued by difficult-to-converge wave functions
+and, thus, numerical noise. The effective Hubbard parameter (U-J) of 4 eV was applied to the REY forbitals as recommended by the open quantum materials database (OQMD).
+
+4
+https://doi.org/10.26434/chemrxiv-2025-wnfmp-v2 ORCID: https://orcid.org/0000-0002-2777-356X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+REY1
+
+REY2
+
+a) Na close
+
+b) Na close
+
+c) Na far
+
+d) Na far
+
+e) Si close
+
+f) Si close
+
+g) Na far
+
+h) Na far
+
+Figure 2: REY1 (left column) and REY2 (right column) models for “close” and “far” configurations. Specifically:
+Nd1,Na1 close (a) Nd2,Na1 close (b), Nd1,Na1 far (c), Nd2,Na1 far (d) Nd1,Si close (e), Nd2,Si close (f), Nd1,Si
+far (g), Nd2,Si far (h). Colorcode: purple: PO43- groups, green: F, ochre: Ca, grey: Na, blue: Si, red: O.
+
+RESULTS AND DISCUSSION
+Charge Compensation. Previous DFT computations on Nd15 and Ce24 showed that the positive
+charge resulting from the REY3+ for Ca2+ substitution is balanced locally by a coupled Ce3+-Na+ or Ce3+Si4+ substitution. This prior analysis was extended to all REY by calculating the difference in electronic
+energy between the “close” association of the REY and Na/Si dopants (distance <4 Å) and the well-
+
+5
+https://doi.org/10.26434/chemrxiv-2025-wnfmp-v2 ORCID: https://orcid.org/0000-0002-2777-356X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+separated arrangement “far” (distance of ~9 Å and ~17 Å in the 2x2x2 and 4x4x2 supercells,
+respectively). The location of REY and the co-dopant are depicted in Figure 2 for the 2x2x2 cell. Results
+are shown in Figure 3 with the two models denoted “close” and “far” at a constant concentration of
+12,500 ppm. The difference is always negative, meaning that the most stable arrangement is obtained
+when the REY and its co-substituent are in close contact, in agreement with the previous theoretical
+reports for Nd and Ce.15,24 The gain in energy between the far and the close models is highest when
+REY occupy the Ca2 site (denoted REY2) with Si as co-dopant. When Na provides the charge-balance,
+it is the REY1 (REY in Ca1 site) substitution that gains the most energy. However, the additional stability
+procured for REY1 when Na is displaced from 9 Å (far) to the close position is generally not large
+enough to counterbalance the intrinsic preference of REY for the Ca2 site (seen in all well-separated
+arrangements, Figure S3). In addition, in absolute terms Na provides less stability than Si. This finding
+means that charge compensation is more efficient with Si than with Na, regardless of the REY site
+occupancy. A main reason for the difference between Si and Na is that the Si tetrahedron allows for
+charge compensation at shorter distance to the REY (d(REY1-Si)= 3.08 Å for a shared corner), d(REY2Si)= 2.99 Å for a shared edge) than does Na (d(REY1-Na)= 3.41 Å, d(REY2-Na)= 3.96 Å)). Hence, Si
+maximizes the Coulombic interactions. The shorter REY1-Na distance compared to REY2-Na distance
+is also well in line with Na stabilizing the REY1 site. In summary, local charge compensation by Na
+partially counteracts the intrinsic Ca2 preference of REY, whereas Si further enhances it. In the
+following, all discussed coupled Na↔Ca and Si↔P substitutions refer to the “close” arrangement
+(distance < 4 Å), unless otherwise stated.
+0.00
+
+La Ce Pr Nd Pm Sm Eu Gd Tb Dy Y Ho Er Tm Yb Lu
+
+[E(close)-E(far)] (eV)
+
+-0.10
+
+-0.20
+
+-0.30
+
+-0.40
+
+-0.50
+
+REY1,Na
+
+REY2,Na
+
+REY1,Si
+
+REY2,Si
+
+Figure 3: Energetic gain when moving the Na or Si co-dopant from ~9 Å (far) to close contact with REY at a REY
+concentration of 12,500 ppm. Dark and light grey bars indicate energetic gains for Na on either the REY1 or
+REY2 sites, while blue and green bars indicate those for Si on either the REY1 and REY2 sites, respectively.
+
+Variation in Bond Distance and Cell Volume. The average REY1-O distances are greater than
+the average REY2-O distances, as observed for the Ca-O distances in FAp (d(Ca1-O) = 2.55 Å, d(Ca2O) = 2.44 Å)12 (Figure 4). In agreement with expectations, d(REY1-O) and d(REY2-O) decrease
+approximately linearly with IR along the REY series (R2 = 0.84 and 0.89, respectively). Consistent with
+the IR values of the respective cations, substitution of REY for Ca enlarges the polyhedra volume for
+La and Ce whereas other REYs contract it. The REY1 and REY2 regression lines have a slope of 0.6
+and 1.1, respectively, and 2.53 and 2.45 Å intersects. These values are the same for the Na and Si cosubstitutions, within uncertainty of the regression. The two intersects agree well with the expectation
+that their values, corresponding to a zero difference in IR, match the size of the Ca sites. In other words,
+
+6
+https://doi.org/10.26434/chemrxiv-2025-wnfmp-v2 ORCID: https://orcid.org/0000-0002-2777-356X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+the +II vs +III oxidation states of Ca and REY marginally influence the size of the site. Another significant
+result is that our computations reproduce the relative slopes of approximately 2:1 for the REY1 and
+REY2 sites obtained experimentally by Fleet and Pan based for four REY single-crystal X-ray diffraction
+measurements.37 Clearly, the Ca1 site is “stiffer” than the Ca2 site (smaller slope of the linear
+regression), i.e., it does not adjust as easily to a change in the size of the dopant compared to the Ca2
+site. This point will be of importance when discussing below the relative site preference and the
+connection to Onuma diagrams.
+Fleet and Pan (1995)37 observed that the unit-cell volume decreases when the average bond
+distance decreases in synthetic (La,Nd,Gd,Dy)-substituted FAp.37 Consistent with this observation, we
+found that the difference of volume between the REY substituted and pure Ca FAp is strongly correlated
+(R2 = 0.97) with the difference of IR between REY and Ca through the REY series (Figure S4). In
+contrast to the bond distance-IR relationship discussed previously, the intersect of the linear regression
+deviates significantly from zero (which would indicate identical volumes for REY and Ca FAp), especially
+for the Si co-substitution, suggesting non-negligible “dilation” compared to unsubstituted FAp for equal
+REY and Ca IR. This is likely related to the longer Si-O (~1.64 Å) vs P-O (~1.55 Å) bond. These findings
+attest to the physical soundness of the DFT analysis.
+
+a)
+
+REY(Ca1)
+
+REY(Ca2)
+
+2.61
+
+y = 0.6287x + 2.5302
+R² = 0.8436
+La
+
+Ce Ca
+
+2.54
+
+Pr Nd
+
+d(REY-O) Å
+
+La
+
+Pm
+
+Ce
+
+2.47
+
+Sm Gd
+
+Pr
+
+Ca
+
+Dy Ho
+
+Eu
+Nd
+
+Tb
+
+Pm
+
+Tm Yb
+
+Sm
+2.4
+
+Gd
+Tb
+
+Dy Y
+Er
+
+2.33
+
+0.04
+
+0.00
+
+Tm
+Yb
+
+Ho
+
+Eu
+
+y = 1.1153x + 2.4584
+R² = 0.8957
+2.26
+
+Lu
+
+Er
+Y
+
+Lu
+
+-0.04
+
+-0.08
+
+-0.12
+
+-0.16
+
+[IR(REY) - IR(Ca)] Å
+
+b)
+
+REY(Ca1)
+
+REY(Ca2)
+
+2.61
+y = 0.5819x + 2.5295
+R² = 0.8418
+
+La
+CeCa
+Pr
+Nd
+
+2.54
+
+d(REY-O) Å
+
+La
+
+Pm
+
+Ce
+
+Sm
+
+Gd
+
+Pr
+Nd
+
+2.47
+
+Tb Dy
+
+Yb
+Lu
+
+Pm Eu
+Sm
+
+Ca
+
+Ho Er
+Y
+
+Tm
+
+Gd Tb
+
+2.4
+
+Dy
+Eu
+
+Ho Er
+Tm
+
+Yb
+
+2.33
+
+Lu
+y = 1.0842x + 2.4656
+R² = 0.8687
+
+2.26
+0.04
+
+0
+
+Y
+-0.04
+
+-0.08
+
+-0.12
+
+-0.16
+
+[IR(REY) - IR(Ca)] Å
+
+7
+https://doi.org/10.26434/chemrxiv-2025-wnfmp-v2 ORCID: https://orcid.org/0000-0002-2777-356X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Figure 4: Variation of the average REY-O distances with the effective ionic radius in FAp for the Na (a) and Si (b)
+co-dopants at REY concentration of 12,500 ppm. All IR values are for the six-fold coordination. For reference
+purpose, the Ca-O distances are also reported on the graph, but are not included in the linear regressions.
+
+Site Preference and effect of REY concentration. The preferred site occupancy of REY was
+assessed from the difference in energy between the Ca2 and Ca1 site occupancies (E(REY2) –
+E(REY1)). The energy difference, reported in Figure S5 for 12,500 ppm REY, shows that REY are
+always preferably incorporated in Ca2 with Si as co-substituent. Charge compensation with Na also
+favors REY entering Ca2, except for Ce, Pr, Nd, Pm, Sm and Eu, which weakly prefer Ca1. To assess
+the influence of REY concentration on the site preference, computations were performed also at
+100,000 ppm concentration (one REY atom per unit cell) and at 3,125 ppm concentration (4 x 4 x 2
+supercell, Figure 5). As expected, a change from 12,500 ppm to 3,125 ppm marginally modifies the
+energetics of the site preference for all investigated compounds (<0.02 eV). REY2 is always the
+preferred incorporation mode regardless of the REY concentration in the case of Si charge balance.
+The REY2 preference is most pronounced at 100,000 ppm. In contrast to REY-Si co-doping, REY1 is
+preferred at 100,000 ppm for REY-Na co-doping, except for Yb and Lu for which the two sites are
+isoenergetic. The inversion of site preference for highly REY-Na doped FAp is due to the stabilization
+of the REY1 site by Na already seen at lower concentration. Results suggest that the relative site
+occupancies depend on the nature of the co-substituent at all concentrations, but that (locally) high REY
+concentrations are necessary to favor REY1 over REY2.
+
+8
+https://doi.org/10.26434/chemrxiv-2025-wnfmp-v2 ORCID: https://orcid.org/0000-0002-2777-356X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+a) 0.2
+
+3,125 ppm
+12,500 ppm
+100,000 ppm
+
+[E(REY2)- E(REY1)] (eV)
+
+0.1
+
+0
+
+-0.1
+
+-0.2
+
+[E(REY2)- E(REY1)] (eV)
+
+b)
+
+La Ce Pr Nd PmSm Eu Gd Tb Dy Y Ho Er Tm Yb Lu
+0
+
+-0.1
+
+-0.2
+
+-0.3
+
+3,125 ppm
+12,500 ppm
+100,000 ppm
+
+-0.4
+
+La Ce Pr Nd PmSm Eu Gd Tb Dy Y Ho Er Tm Yb Lu
+
+Figure 5: Effect of the concentration of REY in FAp on their site preference with Na (a) and Si (b) as cosubstituent. The Ce-Na energy difference is so close to zero at 12,500 ppm, that it is not visible on the graph.
+
+The energetics of REY clustering in FAp was estimated by calculating the reaction energy (∆E) for
+moving REY from a diluted to a more concentrated model. For the 12,500 ppm → 100,000 ppm reaction,
+the energetics is
+∆E = E(12,500 ppm) + E(FAp-unit-cell) à E(100,000 ppm) + E(2x2x2-FAp) (3)
+Figure 6 shows that ∆E is negative, which means that phase-separation is thermodynamically preferred
+at high REY concentration. The energy difference is about 0.05 eV for REY-Si, while it is about four
+times larger for REY-Na. Note that this energetic estimate does not account for configurational entropy,
+which would favor homogeneous, well-dispersed solid-solutions instead of phase separation.
+Substantial REY mobility in FAp fostered by minimization of entropic configuration requires
+temperatures of about 700 °C. At the temperature prevailing on the earth’s surface, our computational
+results predict that REY tend to be clustered in FAp above ~1% concentration and at thermodynamic
+equilibrium.
+The energetics for other reactions give a somewhat more nuanced picture. The energy difference
+between the 3,125 and 12,500 ppm models is now positive and does not significantly depend on
+whether the charge is compensated by Si or Na (Figure S6). This indicates minimal REY-REY
+interactions, as expected at relatively low concentrations. Light, and thus large in size, REY have
+
+9
+https://doi.org/10.26434/chemrxiv-2025-wnfmp-v2 ORCID: https://orcid.org/0000-0002-2777-356X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+negligible energy difference, whereas a positive difference close to 0.1 eV is observed for heavy REY.
+Two effects are in competition: (i) the “size” effect, visible at 3,125 ppm, which favors dilution to
+accommodate the size-mismatch of the REY in the substituted site, and (ii) dopant clustering, visible at
+100,000 ppm, which provides a better screening of charge-defects. The second effect is stronger for
+large, Na-compensated REYs (Figure 6). Finally, the enrichment from 3,125 ppm to 100,000 ppm
+reflects the competition between the two effects, as the reaction is essentially isoenergetic for small
+REY (typically Yb) (Figure S7). In contrast, phase separation into high concentration domains is
+preferred for the larger REY such as La and Ce.
+0.0
+
+∆E (eV)
+
+-0.1
+
+Na
+
+-0.2
+
+Si
+
+-0.3
+
+-0.4
+
+La Ce Pr Nd PmSm Eu Gd Tb Dy Y Ho Er Tm Yb Lu
+Figure 6: Reaction energy (∆E) for moving REY from the 12,500 ppm to the 100,000 ppm models.
+
+Site Occupancy Ratios. The REY site occupancy ratios at equilibrium were calculated from the
+Boltzmann distribution function at 700 °C and compared to the experimental values obtained on REYrich FAp ([REY] = 79,000 - 110,000 ppm) synthesized hydrothermally at 685-700 °C by Fleet and Pan
+(1995).37 Calculations were performed at 12,500 ppm and 100,000 ppm for direct comparison with
+experimental values and to evaluate the dependence of the REY2/REY1 ratio on the REY
+concentration.
+The analysis presented in Table S3 and S4 highlights how our theoretical models compare with
+experimental results obtained for the four measured REY (La, Nd, Gd and Dy).37 First of all, the site
+occupancy ratios for the Na and Si models at 100,000 ppm are in poor agreement with experiment: The
+predicted values for the Na models are below one (except for Yb and Lu), suggesting that Ca1 sites
+should be preferentially occupied. In contrast, the four measured REY preferred the Ca2 site. The
+reverse affinity is observed for the Si models. They predict Ca2/Ca1 site occupancy ratios of about
+eight, compared to ratios between 1-4 observed experimentally. In addition, discrepancy between
+observation and prediction is compounded by significant concentration effects, particularly for the Na
+models (Figure 5). This disagreement is, however, not entirely surprising given that elemental analysis
+of the four measured REY suggests about 40% Si and 60% Na charge compensation and that the
+concentration of REY varied between 0.5 (Dy) and 0.8 (Nd) for 9 Ca in the unit cell (our 100,000 ppm
+models correspond to 1 REY and 9 Ca). The results for the 12,500 ppm models are in better agreement
+with experiment. For La and Nd, the Si models fairly match experimental values. For Gd, a mixed
+(Na+Si) model would bring theory and experiment into agreement. Finally, for Dy, the Na models well
+match experimental values. This comparison illustrates the challenges: Intermediate concentrations
+and mixed Si/Na co-doped models could be necessary to yield good agreement between theory and
+experiment. Overall, concentration effects are found to be important, cautioning the use of concentrated
+synthetic samples to understand dilute natural samples. This becomes more important in view of the
+trends for Na and Si models that diverge at high REY concentration, as discussed previously.
+
+10
+https://doi.org/10.26434/chemrxiv-2025-wnfmp-v2 ORCID: https://orcid.org/0000-0002-2777-356X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Controls on REY Site Occupancy. The major controls on REY site occupancy have generally been
+interpreted in terms of the respective size of the Ca1 and Ca2 sites, although a thorough understanding
+is still lacking. Figure 7 shows that the site preference, expressed as the E(REY2)-E(REY1) energy
+difference, varies quadratically with IR. The second-degree polynomial coefficient of determination is
+>0.9 for both Na and Si. Interestingly, the shape of this curve is reminiscent of the Onuma diagrams,38–
+41 which are used in geochemistry to describe empirically the controlling influence of ionic radii and
+valence-state of substitutional doping atoms on partitioning coefficients during crystallization of a
+mineral from a melt or fluid. In Onuma diagrams, the parabolic shape indicates that the energetic cost
+for doping increases in both directions, i.e., larger and smaller atoms or ions are disfavored compared
+to atoms that minimize the size mismatch. Our representation is quite different from the usual Onuma
+diagrams, however, because we are not computing partitioning coefficients with respect to the melt, but
+relative site preferences for the same material and same dopant in an isovalent series. It is noteworthy
+that the maximum of the parabola in Figure 7 is roughly located near to zero on the x-axis, where the
+REY and Ca have similar size. Despite a certain degree of uncertainty, a shift of about 0.02 Å towards
+smaller REY radii is observed. This suggests that the “nominal” size difference between the Ca1 (larger)
+and Ca2 (smaller) sites does not lead to a marked site preference for REY: both larger and smaller REY
+have a preference for the Ca2 site. Still, the small shift of the maximum to smaller REY radii is in line
+with the Ca2 site being smaller.
+The physical parameters underlying explanations for Onuma diagrams are considered to be the
+excess of elastic strain energy and the dielectric polarization energy. The latter depends only weakly
+on the size of the substituent. Hence, it is mostly the elastic strain energy that is responsible for the Ca2
+site preference as a function of IR. As described previously, the O-coordination environment of the Ca2
+site is about twice as flexible as that of the Ca1 site. Hence, together with the flexible F- coordination,
+as attested by the existing solid-solutions and exchanges between fluor- (F), hydroxy- (OH), and chlor(Cl) ligands in apatite, the effective (local) elastic constant of the Ca2 site is likely lower than that of the
+Ca1 site. The lower stiffness of the Ca2 site derived from DFT calculation is explained structurally by
+the high flexibility of the corner-sharing Ca2-Ca2-Ca2 polyhedral chains (Figure 1). This finding could
+well explain the preferred incorporation of REY in the Ca2 site.
+REY,Na
+0.06
+
+R² = 0.9568
+
+Ce
+
+0.00
+
+[E(REY2)-E(REY1)] eV
+
+REY,Si
+
+y = -10.123x2 - 0.3794x + 0.0045
+Nd
+Pr Pm Eu
+Sm
+
+Preference Ca1 site
+
+Gd
+
+La
+
+Preference Ca2 site
+
+Tb
+-0.06
+Ce
+
+-0.12
+
+Pr
+
+Pm Sm
+
+Nd
+
+Dy
+Ho
+
+Tm
+
+Gd
+Eu
+
+La
+
+Ho
+
+Tb
+Dy
+
+-0.18
+
+-0.24
+0.08
+
+0.00
+
+-0.04
+
+Yb
+
+Y
+
+y = -7.3055x2 - 0.2334x - 0.0943
+R² = 0.9167
+
+0.04
+
+Y Er
+
+Tm
+Er
+Yb
+
+-0.08
+
+Lu
+
+-0.12
+
+Lu
+
+-0.16
+
+[IR(REY) - IR(Ca)] Å
+Figure 7: Variation of the site preference of REY in FAp with their effective ionic radius (IR) at REY concentration of 12,500
+ppm. All IR values are for the six-fold coordination.20,21
+
+The observation that the Ca2 site is (intrinsically) preferred even for cations with nearly the same
+size as Ca (which by definition is present in the Ca1 and the Ca2 site), such as Ce and Pr, urges for an
+
+11
+https://doi.org/10.26434/chemrxiv-2025-wnfmp-v2 ORCID: https://orcid.org/0000-0002-2777-356X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+explanation. The Ca1 and Ca2 sites differ in their degrees of ionicity (0.429 e and 0.475 e,
+respectively).24 Therefore, just like for divalent ions,24 the ionization energies of REY may also influence
+the site preference. Figure 8 shows that the site preference is linearly correlated with the sum of the
+first and second ionization energies with coefficients of determinations of R2 = 0.77 for the Na models
+and R2 = 0.73 for the Si models. The correlation is lower with the second ionization energy alone (R2 =
+0.72 for Na and R2 = 0.66 for Si, Figure S8) and weak with the sum of the first, second, and third
+ionization energies (R2 = 0.31-0.37, Figure S8). The regression slope is negative, which indicates that
+REY which are more difficult to ionize than Ca prefer the more ionic Ca2 site in FAp. In our previous
+study,24 we found the reverse relationship for divalent cations: those which are more difficult to ionize
+than Ca (e.g., Mg and Cd) prefer the Ca1 site, whereas those which are more easily ionized prefer the
+Ca2 site (e.g., Ba and Sr). The opposite trend can be rationalized by recalling that trivalent ions are
+naturally more ionic than divalent ions. Therefore, they are generally better stabilized in the most ionic
+site (Ca2). On the other hand, divalent ions, which are less prone to lose their electrons, favor the less
+ionic Ca1 site.
+REY,Na
+
+y = -0.0437x - 0.0631
+R² = 0.7626
+
+0.06
+Nd
+0.00
+
+Pm
+
+Pr
+
+Sm
+
+Eu
+Ca1 site preferred
+
+Ce
+
+[E(REY2)-E(REY1)] eV
+
+REY,Si
+
+Tb
+La
+-0.06
+
+Pr
+Ce
+
+-0.12
+
+Pm
+
+Gd Ca2 site preferred
+Dy
+Er
+
+Sm
+
+Ho
+Eu
+
+Nd
+
+Tb
+
+Gd
+Yb
+
+Dy
+
+Lu
+
+La
+
+Ho Er
+
+Y
+
+Tm
+
+-0.18
+
+Yb
+
+y = -0.0336x - 0.1468
+R² = 0.7486
+-0.24
+-2.4
+
+Y
+
+Tm
+
+-1.2
+
+0
+
+Lu
+
+1.2
+
+[IEI+II(REY) -IEI+II(Ca)] eV
+
+Figure 8: Relationship between the site preference of REY in FAp and the sum of their first and second
+ionization energies at REY concentration of 12,500 ppm.
+
+CONCLUSIONS
+This work presents a detailed theoretical study of the incorporation of REY in FAp. REY are intrinsically
+better stabilized in the more ionic and smaller Ca2 than in the Ca1 site with a Si co-dopant in close
+proximity (< 4 Å). Charge compensation with Na in a Ca1 site close to REY stabilizes the light REY in
+the Ca1 site at low and medium doping level (3,125-12,500 ppm) and all REY, except Yb and Lu, at
+high REY concentration (100,000 ppm). The enrichment reaction is exothermic from 12,500 ppm to
+100,000 ppm for all REY, suggesting that there is a thermodynamic driving force for phase-separation
+at ambient temperature. Deviation of Yb and Lu from this trend suggests a competition between
+favorable interactions among REY atoms leading to clustering, on one hand, and size-mismatch effects
+that are easier to accommodate when REY are dispersed in the FAp structure, on the other hand.
+A quadratic correlation, reminiscent of Onuma diagrams, was found between the energetics of the
+site preference and the ionic radius at 12,500 ppm. The top of the parabola, where stabilization in Ca2
+is minimum, peaks where the REY and Ca have similar effective ionic radii. The Onuma-shape of the
+ionic radius dependence of the site preference suggests that the Ca2 site is more flexible (i.e., has
+lower effective elastic constant) than the Ca1 site, which is also supported by the slope of the REY-O
+coordination distance as a function of the ionic radius. Being linked through corners, the Ca2 polyhedra
+
+12
+https://doi.org/10.26434/chemrxiv-2025-wnfmp-v2 ORCID: https://orcid.org/0000-0002-2777-356X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+are more apt to deform than the face-sharing Ca1 polyhedra. Furthermore, the Ca2 site preference was
+found to depend linearly on the ionization energy of REY. Noteworthily, the stabilization energy in the
+Ca2 site increases with the ionization energy for trivalent REY cations, whereas it decreases with the
+ionization energy for divalent cations.24 In summary, ionization energies of REY, together with the lower
+effective elastic constant of the Ca2 site compared to the Ca1 site, i.e., Ca2 is intrinsically more apt to
+stabilize differently sized ions, appear to be the two main thermodynamic driving forces for their
+partitioning between the Ca1 and Ca2 sites.
+ASSOCIATED CONTENT
+Supporting Information
+Experimental and DFT lattice parameters; Ca2/Ca1 occupancy ratio at 12,500 ppm and 100,000
+ppm; stabilization energy of REY in the Ca2 and Ca1 sites for the “far” and “close” models; site
+preference of REY for Si for P and in Na for Ca coupled substitutions in the “close” model; relationship
+between unit-cell volume and REY IR and site preference; reaction energies between the 3,125 ppm,
+12,500 ppm, and 100,000 models; variation of site preference against ionization energy; variation of
+the REY-O distance against IR. All computations are available under
+doi.org/10.17172/NOMAD/2025.04.16-1
+
+AUTHOR INFORMATION
+ACKNOWLEDGEMENTS
+Financial support was provided by the European Union (ERC, Advanced Grant DEEP-SEE,
+101052913). Views and opinions expressed are however those of the authors only and do not
+necessarily reflect those of the European Union or the European Research Council Executive Agency.
+Neither the European Union nor the granting authority can be held responsible for them. We
+acknowledge support from the CBPsmn (PSMN, Pôle Scientifique de Modélisation Numérique) of the
+ENS de Lyon for the computing resources.
+REFERENCES
+(1) Nash, W. P. Phosphate Minerals in Terrestrial Igneous and Metamorphic Rocks. In Phosphate
+Minerals; Nriagu, J. O., Moore, P. B., Eds.; Springer-Verlag, 1984; p 442.
+(2) Harlov, D. E.; Rakovan, J. F. Apatite: A Mineral for All Seasons; Elements; 2015; Vol. 11.
+(3) Liao, J.; Sun, X.; Li, D.; Sa, R.; Lu, Y.; Lin, Z.; Xu, L.; Zhan, R.; Pan, Y.; Xu, H. New Insights into
+Nanostructure and Geochemistry of Bioapatite in REE-Rich Deep-Sea Sediments: LA-ICP-MS,
+TEM, and Z-Contrast Imaging Studies. Chem. Geol. 2019, 512, 58–68.
+(4) Jiang, X.; Sun, X.; Chou, Y.; Hein, J.; He, G.; Fu, Y.; Li, D.; Liao, J.; Ren, J. Geochemistry and
+Origins of Carbonate Fluorapatite in Seamount Fe-Mn Crusts from the Pacific Ocean. Mar. Geol.
+2020, 423, n° 106135.
+(5) Bi, D.; Shi, X.; Huang, M.; Yu, M.; Zhou, T.; Zhang, Y.; Zhu, A.; Shi, M.; Fang, X. Geochemical
+and Mineralogical Characteristics of Deep-Sea Sediments from the Western North Pacific Ocean:
+Constraints on the Enrichment Processes of Rare Earth Elements. Ore Geol. Rev. 2021, 138, n°
+104318.
+(6) Liao, J.; Chen, J.; Sun, X.; Wu, Z.; Deng, Y.; Shi, X.; Wang, Y.; Chen, Y.; Koschinsky, A.
+Quantifying the Controlling Mineral Phases of Rare-Earth Elements in Deep-Sea Pelagic
+Sediments. Chem. Geol. 2022, 595, n° 120792.
+(7) Manceau, A.; Paul, S.; Simionovici, A.; Magnin, V.; Balvay, M.; Findling, N.; Rovezzi, M.; Muller,
+S.; Garbe-Schonberg, D.; Koschinsky, A. Fossil Bioapatites with Extremely High Concentrations
+of Rare Earth Elements and Yttrium from Deep-Sea Pelagic Sediments. ACS Earth Space Chem.
+2022, 6, 2093–2103.
+(8) Kato, Y.; Fujinaga, K.; Nakamura, K.; Takaya, Y.; Kitamura, K.; Ohta, J.; Toda, R.; Nakashima,
+T.; Iwamori, H. Deep-Sea Mud in the Pacific Ocean as a Potential Resource for Rare-Earth
+Elements. Nature Geosci. 2011, 4, 535–539.
+
+13
+https://doi.org/10.26434/chemrxiv-2025-wnfmp-v2 ORCID: https://orcid.org/0000-0002-2777-356X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+(9) Kon, Y.; Hoshino, M.; Sanematsu, K.; Morita, S.; Tsunematsu, M.; Okamoto, N.; Yano, N.;
+Tanaka, M.; Takagi, T. Geochemical Characteristics of Apatite in Heavy REE-Rich Deep-Sea
+Mud from Minami-Torishima Area, Southeastern Japan. Res. Geol. 2014, 64, 47–57.
+(10) Balaram, V. Rare Earth Elements: A Review of Applications, Occurrence, Exploration, Analysis,
+Recycling, and Environmental Impact. Geosci. Front. 2019, 10, 1285–1303.
+(11) Hughes, J. M.; Rakovan, J. The Crystal Structure of Apatite, Ca5(PO4)3(F,OH,Cl). In Phosphates:
+Geochemical, Geobiological, and Materials Importance; Kohn, M. J., Rakovan, J., Hughes, J. M.,
+Eds.; Rev. Miner. Geochem.; 2002; Vol. 48, pp 1–12.
+(12) Hughes, J. M.; Cameron, M.; Crowley, K. D. Structural Variations in Natural F, OH, and Cl
+Apatites. Am. Miner. 1989, 74, 870–876.
+(13) Mackie, P. E.; Young, R. A. Location of Nd Dopant in Fluorapatite, Ca5(PO4)3F:Nd. J. Appl. Cryst.
+1973, 6, 26–31.
+(14) Fleet, M. E.; Pan, Y. Site Preference of Nd in Fluorapatite [Ca10(PO4)6F2]. J. Sol. State Chem.
+1994, 112, 78–81.
+(15) Bertolus, M.; Defranceschi, M. Optimizing the Formula of Rare Earth-Bearing Materials: A
+Computational Chemistry Investigation. Int. J. Quantum Chem. 2000, 107, 712–721.
+(16) Get’man, E. I.; Loboda, S. N.; Tkachenko, T. V.; Yablochkova, N.; Chebyshev, K. Isomorphous
+Substitution of Samarium and Gadolinium for Calcium in Hydroxyapatite Structure. Russ. J. Inorg.
+Chem. 2010, 55 (3), 333–338.
+(17) Alshemary, A. Z.; Akram, M.; Goh, Y. F.; Kadir, M. R. A.; Abdolahi, A.; Hussain, R. Structural
+Characterization, Optical Properties and in Vitro Bioactivity of Mesoporous Erbium-Doped
+Hydroxyapatite. J. Alloys. Compd. 2015, 645, 478–486.
+(18) Hughes, J. M.; Cameron, M.; Mariano, A. N. Rare-Earth-Element Ordering and Structural
+Variations in Natural Rare-Earth-Bearing Apatites. Am. Miner. 1991, 76, 1165–1173.
+(19) Fleet, M. E.; Pan, Y. M. Crystal-Chemistry of Rare-Earth Elements in Fluorapatite and Some
+Calc-Silicates. Eur. J. Miner. 1995, 7, 591–605.
+(20) Shannon, R. D.; Prewitt, C. T. Effective Ionic Radii in Oxides and Fluorides. Acta Cryst. 1969,
+B25, 925–945.
+(21) Shannon, R. D. Revised Effective Ionic Radius and Systematic Studies of Interatomic Distances
+in Halides and Chalcogenides. Acta Crystallogr. 1976, B25, 925–946.
+(22) Pan, Y.; Fleet, M. Compositions of the Apatite-Group Minerals: Substitution Mechanisms and
+Controlling Factors. In Phosphates: Geochemical, Geobiological, and Materials Importance;
+Kohn, M., Rakovan, J., Hughes, J., Eds.; 2002; Vol. 48, pp 13–49.
+(23) Rønsbo, J. G. Coupled Substitutions Involving REEs and Na and Si in Apatites in Alkaline Rocks
+from the Ilimaussaq Intrusion, South Greenland, and the Petrological Implications. Am. Miner.
+1989, 74, 896–901.
+(24) Manceau, A.; Mathon, O.; Lomachenko, K. A.; Rovezzi, M.; Kvashnina, K. O.; Boiron, M. C.;
+Brossier, R.; Steinmann, S. N. Revealing the Incorporation of Cerium in Fluorapatite. ACS Earth
+Space Chem. 2024, 8, 119–128.
+(25) Sham, L. J.; Schlüter, M. Density-Functional Theory of the Energy Gap. Phys. Rev. Lett. 1983,
+51, 1888–1891.
+(26) Blochl, P. E. Projector Augmented-Waves Method. Phys. rev. B. 1994, 50, 17953–17979.
+(27) Kresse, G.; Joubert, D. From Ultrasoft Pseudopotentials to the Projector Augmented-Wave
+Method. Phys. Rev. B. 1999, 59, 1758–1775.
+(28) Kresse, G. Ab-Initio Molecular-Dynamics for Liquid Crystals. J. Non-Cryst. Solids 1995, 193, 222–
+229.
+(29) Kresse, G.; Furthmuller, J. Efficiency of Ab-Initio Total Energy Calculations for Metals and
+Semiconductors Using a Plane-Wave Basis Set. Comput. Mater. Sci. 1996, 6, 15–50.
+(30) Quemener, E.; Corvellec, M. SIDUS—the Solution for Extreme Deduplication of an Operating
+System. Linux J. 2013, 2013 (235), 3:3.
+(31) Perdew, J. P.; Ernzerhof, M. Rationale for Mixing Exact Exchange with Density Functional
+Approximations. J. Chem. Phys. 1996, 105, 9982–9985.
+(32) Steinmann, S. N.; Corminboeuf, C. Comprehensive Benchmarking of a Density-Dependent
+Dispersion Correction. J. Chem. Theory Comput. 2011, 7, 3567–3577.
+(33) Gautier, S.; Steinmann, S. N.; Michel, C.; Fleurat-Lessard, P.; Sautet, P. Molecular Adsorption at
+Pt(111). How Accurate Are DFT Functionals? Phys. Chem. Chem. Phys. 2015, 17, 28921–28930.
+(34) Perdew, J. P.; Wang, Y. Accurate and Simple Analytic Representation of the Electron-Gas
+Correlation Energy. Phys. Rev. B 1992, 45 (23), 13244–13249.
+
+14
+https://doi.org/10.26434/chemrxiv-2025-wnfmp-v2 ORCID: https://orcid.org/0000-0002-2777-356X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+(35) Roy, A.; Kanungo, B.; Patra, P. K.; Bhattacharya, B. Benchmarking DFT Approximations for
+Studying Apatites. Phys. Chem. Chem. Phys. 2024, 26 (47), 29617–29627.
+https://doi.org/10.1039/D4CP03169E.
+(36) Chiatti, F.; Delle Piane, M.; Ugliengo, P.; Corno, M. Water at Hydroxyapatite Surfaces: The Effect
+of Coverage and Surface Termination as Investigated by All-Electron B3LYP-D* Simulations.
+Theor Chem Acc 2016, 135 (3), 1–15. https://doi.org/10.1007/s00214-016-1818-8.
+(37) Fleet, M. E.; Pan, Y. M. Site Preference of Rare-Earth Elements in Fluorapatites. Am. Miner.
+1995, 80, 329–335.
+(38) Onuma, N.; Higuchi, H.; Wakita, H.; Nagasawa, H. Trace Element Partition between Two
+Pyroxenes and the Host Lava. Earth Planet. Sci. Lett. 1968, 5, 47–51.
+(39) Blundy, J.; Wood, B. Prediction of Crystal-Melt Partitioning Coefficients from Elastic Moduli.
+Nature 1994, 372 (6505), 452–454.
+(40) Blundy, J.; Wood, B. Partitioning of Trace Elements between Crystals and Melts. Earth Planet.
+Sci. Lett. 2003, 210, 383–397.
+(41) Karato, S. Physical Basis of Trace Element Partitioning: A Review. Am. Miner. 2016, 101, 2577–
+2593.
+TABLE OF CONTENT GRAPHIC
+
+15
+https://doi.org/10.26434/chemrxiv-2025-wnfmp-v2 ORCID: https://orcid.org/0000-0002-2777-356X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+

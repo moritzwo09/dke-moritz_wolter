@@ -1,0 +1,4209 @@
+Performance of survey solutions under
+single-blind controlled testing protocol
+Chiemezie Ilonze,† Rachel Day,‡ Ethan Emerson,‡ Aidan Duggan,‡ Ryan Brouwer,‡
+1
+
+and Daniel Zimmerle∗,‡
+†Department of Mechanical Engineering, Colorado State University, Fort Collins, CO
+80523, U.S.A
+‡Energy Institute, Colorado State University, Fort Collins, CO 80524, U.S.A
+E-mail: Daniel.Zimmerle@colostate.edu
+
+1
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+2
+
+Abstract
+
+3
+
+Standardized controlled testing of advanced methane detection technologies (solutions) has
+
+4
+
+been identified as a step in demonstrating the emissions mitigation equivalence between these
+
+5
+
+solutions and existing regulatory-approved leak detection and repair methods (e.g., ground-
+
+6
+
+based optical gas imaging [OGI] camera survey) in the US and Canada. In this study, 12
+
+7
+
+solutions consisting of 4 handheld OGI cameras, 4 advanced handheld systems, and 4 mobile
+
+8
+
+(automobile- and drone-based) solutions were tested under a single-blind controlled testing
+
+9
+
+protocol at different periods between 2021 and 2023 at an outdoor test facility that simu-
+
+10
+
+lates emissions from a simple, onshore North American production oil and gas (O&G) facility.
+
+11
+
+Three solutions were tested again 3–12 months after the first test, using the same test protocol
+
+12
+
+and facility to assess how performance changed over time. Results showed that handheld OGI
+
+13
+
+cameras had comparable or better performance in terms of lower 90% probability of detection
+
+14
+
+(DL90), false positive and negative fractions, and higher equipment unit-level localization
+
+15
+
+performance compared to other categories of solutions tested. Advanced handheld solutions
+
+16
+
+had comparable performance with the OGI cameras across all metrics except false positive
+
+17
+
+fraction (much higher), while mobile solutions generally had shorter survey durations com-
+
+18
+
+pared to other solutions. For solutions that tested twice, the performance of 2 of 3 solutions
+
+19
+
+generally improved, illustrating the benefit of regular, comprehensive testing in the develop-
+
+20
+
+ment of solutions. The different value propositions inferred from the various categories of
+
+21
+
+solutions tested suggest that mobile solutions can rapidly survey larger areas to inform more
+
+22
+
+targeted, follow-up inspections with handheld solutions. While advanced handheld solutions
+
+23
+
+can be as effective as OGI cameras, mobile solutions have some difficulties to overcome to
+
+24
+
+make them directly comparable or need to have a different use case.
+
+25
+
+Synopsis
+
+26
+
+To achieve further emissions reductions across the O&G industry, advanced methane detec-
+
+27
+
+tion solutions are potential alternative methods for regulatory LDAR. This study assesses
+
+28
+
+these solutions’ performance through robust, controlled testing.
+2
+
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+29
+
+Keywords
+
+30
+
+Methane, survey solutions, emissions mitigation, detection limit, source attribution, natural
+
+31
+
+gas, survey time, localization accuracy and precision, leak detection and repair
+
+32
+
+Introduction
+
+33
+
+The increase in human-induced methane emissions over the last 150 years has contributed to
+
+34
+
+climate change, and mitigating these emissions is an immediate target to limit the planetary
+
+35
+
+mean temperature rise to 1.5 ◦ C to 2.0 ◦ C above the pre-industrial level this century. 1–4
+
+36
+
+Methane, a short-lived (≈12 years) potent greenhouse gas with a 100-year global warming
+
+37
+
+potential of 28 times that of CO2 is the primary component of natural gas commonly emitted
+
+38
+
+from the oil and natural gas (O&G) industry. 4 O&G emissions are the second largest source
+
+39
+
+of methane emissions in the United States (US), and it is estimated that methane emissions
+
+40
+
+could be reduced by 75% from the O&G sector globally by implementing already established
+
+41
+
+mitigation approaches, including leak detection and repair (LDAR). 5
+
+42
+
+LDAR programs are implemented in the O&G sector to monitor and identify equipment
+
+43
+
+component leaks (fugitive emissions) to reduce emissions through leak repairs. 6,7 Current
+
+44
+
+regulations in the US and Canada require periodic ground-based LDAR using handheld
+
+45
+
+optical gas imaging (OGI) cameras or portable volatile organic compound analyzers (US
+
+46
+
+Environmental Protection Agency (EPA) Method 21) 8,9 with their emission reduction po-
+
+47
+
+tential depending on survey frequency, 10 surveyor’s experience, 11 and scale of application. 12
+
+48
+
+Although these approaches can precisely localize sources, they are labor-intensive due to
+
+49
+
+their small scope of application (component level) compared to the extensive spatial scale
+
+50
+
+of O&G infrastructure. To be regulatory-compliant in the US and Canada, LDAR must
+
+51
+
+be applied to millions of equipment components spread over large geographical areas with
+
+52
+
+variable OGI assets, which has significant time, human labor, and cost implications for O&G
+
+53
+
+operators. 12
+3
+
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+54
+
+To address some of these limitations, there has been rapid and continued development
+
+55
+
+of advanced leak detection and quantification (LDAQ) solutions and the increased use of
+
+56
+
+these solutions by O&G operators to internally supplement existing LDAR inspection meth-
+
+57
+
+ods. 12,13 These solutions are attractive given that several advanced LDAQ technologies can
+
+58
+
+detect emissions quickly and cost-effectively (when deployed to monitor large geographical
+
+59
+
+areas) with less susceptibility to human errors, thus representing a promising opportunity
+
+60
+
+to curb methane emissions from the O&G industry. 14–16 LDAQ solutions are either au-
+
+61
+
+tonomous, fixed, ground-based sensors (continuous monitors) or mobile technologies (hand-
+
+62
+
+held, drone-based, automobile-based, and aircraft-based) that require human supervision
+
+63
+
+to operate (survey solutions). Some survey solutions (e.g., aircraft-based technologies) can
+
+64
+
+screen larger spatial areas of O&G facilities to prioritize ground-based inspections of iden-
+
+65
+
+tified emissions using traditional LDAR methods (e.g., OGI camera surveys), rather than
+
+66
+
+requiring those LDAR methods to be applied to every facility. Advances in the spatial
+
+67
+
+and temporal extent of surveys is essential for emission reductions, given that emissions are
+
+68
+
+spatially and temporally variable 17–23 with a small number of facilities and emitters often
+
+69
+
+responsible for a disproportionately large amount of total emissions. 21,24–28 The recent US
+
+70
+
+EPA final New Source Performance Standards (NSPS) rules on alternative methane detec-
+
+71
+
+tion approaches have stipulated work practices for the use of advanced methane detection
+
+72
+
+technologies as an alternative to existing regulatory-approved LDAR approaches at well sites,
+
+73
+
+centralized production facilities, and compressor stations, if the technologies meet certain
+
+74
+
+performance standards and are regulatory-approved. 13 Essentially, LDAR based on advanced
+
+75
+
+survey solutions must demonstrate equivalent or better emissions reduction than that based
+
+76
+
+on traditional approaches (OGI camera surveys, etc.). A consensus framework by Fox et al.
+
+77
+
+identified rigorous controlled testing of solutions using standardized protocols as a step in
+
+78
+
+achieving this objective. 29
+
+79
+
+Previous controlled testing of survey solutions used study-specific protocols with limited
+
+80
+
+test complexity 30–35 or standardized protocols with narrow scope of application. 32 These
+4
+
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+81
+
+studies assessed the performance of aircraft-based, 30–34 drone-based, 31,35 automobile-based, 31,32
+
+82
+
+and handheld solutions. 32 Studies by Ravikumar et al. 31 and Bell et al. 32 during the ARPA-
+
+83
+
+E MONITOR 36 and the Stanford - Environment Defense Fund Mobile Monitoring Challenge
+
+84
+
+programs, respectively, are notable for testing and comparing the performance of multiple,
+
+85
+
+different survey solutions. While Ravikumar et al. used a series of non-standardized pro-
+
+86
+
+tocols with varying complexity and scope during testing, Bell et al. applied a standardized
+
+87
+
+protocol (an early version of the protocol used in this paper - SI Section S-5) that was not
+
+88
+
+representative of expected field application of survey solutions. The protocol used by Bell
+
+89
+
+et al. limited the emissions scenarios and the number of controlled gas releases conducted
+
+90
+
+during the study, influencing tested solutions’ survey methodology and pace. In addition, a
+
+91
+
+recent study by Liu et al. evaluated the quantification performance of 10 solutions composed
+
+92
+
+of mobile (drone, automobile, and aircraft), ground-based (fixed camera system), and hand-
+
+93
+
+held (OGI camera) technologies at a non-operational compressor station in Spain. While
+
+94
+
+the study tested a wide range of controlled release rates (0.01–50.0 kg CH4 /h) and emission
+
+95
+
+point heights (1–28 m), the study was partially blind (i.e., only release rate was unknown to
+
+96
+
+participants) and implemented study-specific test protocol (i.e., timing of controlled releases
+
+97
+
+was constrained to ≈2 hours, etc.) with a small number of experiments (17). 37 These stud-
+
+98
+
+ies therefore suggest the need for consensus, standardized, and field-representative testing
+
+99
+
+protocols for assessing the performance of survey solutions.
+
+100
+
+In this paper, we present results of the first controlled testing of a variety of survey
+
+101
+
+solutions using a consensus and field-representative protocol developed by the Advancing
+
+102
+
+Development of Emissions Detection (ADED) project. 38 Although the survey test protocol
+
+103
+
+has been used for aircraft-based solutions, 39–41 this study is its first implementation for
+
+104
+
+automobile-based, drone-based, and handheld (including OGI cameras) solutions. In this
+
+105
+
+study, 12 different solutions were tested at different periods between May 2021 and November
+
+106
+
+2023 (3 solutions tested twice) at the Methane Emissions Technology Evaluation Center
+
+107
+
+(METEC), Colorado State University (CSU), Fort Collins, Colorado. For each solution,
+5
+
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+108
+
+the study evaluated metrics such as the probability of detection (POD) curve, false positive
+
+109
+
+fraction (FPF), false negative fraction (FNF) (i.e., 1 - true positive fraction (TPF)), survey
+
+110
+
+time, and localization accuracy and precision, while also assessing how the performance of
+
+111
+
+solutions that were tested twice changed based on these metrics.
+
+112
+
+Methodology
+
+113
+
+Test Facility
+
+114
+
+Controlled-release testing was conducted at METEC at different periods between May 3rd ,
+
+115
+
+2021, and November 5th , 2023. METEC is an open-air test and research facility (GPS coordi-
+
+116
+
+nates: 40.59559, -105.13984) located at CSU, Fort Collins, Colorado, that simulates fugitive
+
+117
+
+and vent emissions behavior associated with typical North American production facilities
+
+118
+
+using more than 200 representative emission points (e.g., flanges, connectors, etc.). METEC
+
+119
+
+is composed of decommissioned surface O&G equipment (e.g., wellheads, separators, conden-
+
+120
+
+sate tanks, flare stacks, and a compressor and dehydrator unit) embedded with strategically
+
+121
+
+hidden emission points, which are arranged into five well pads and a small compression sta-
+
+122
+
+tion. Each equipment unit and group is identified with unique tags, respectively (SI Table
+
+123
+
+S-1). The test center defines an equipment group as a cluster of adjacent, similar equipment
+
+124
+
+units in a well pad. Controlled releases (emissions) are actuated electronically to transport
+
+125
+
+gas from onsite compressed natural gas (CNG) storage tanks through buried, small-diameter
+
+126
+
+steel tubing to the emission points. A matrix of thermal mass flow meters (OMEGA FMA-
+
+127
+
+17xx series) and manual pressure regulators downstream of the CNG storage tanks control
+
+128
+
+gas flow to emission points, and an onsite gas chromatography device is used to determine
+
+129
+
+the composition of gases released at the site at all times. METEC also has a ≈7 m stationary
+
+130
+
+3-D sonic anemometer that records meteorological data (e.g., relative humidity, wind speed,
+
+131
+
+etc.) at a frequency of 1 Hz. See Zimmerle et al., Bell et al., and Ilonze et al. for more
+
+132
+
+details about the test center and the gas transport system.
+6
+
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+133
+
+Testing Process
+
+134
+
+The controlled testing protocol used in this study was a result of the same multi-stakeholder
+
+135
+
+collaboration under the ADED project that produced the protocols used by Bell et al..
+
+136
+
+Ilonze et al. to test continuous monitors. 42,43 A protocol development committee (PDC)
+
+137
+
+consisting of more than 75 members consisting of environmental NGOs, state and federal
+
+138
+
+regulators, LDAQ technology developers, academic institutions, and O&G companies worked
+
+139
+
+on the protocol draft developed by CSU. The protocol consisted of testing methodology and
+
+140
+
+performance metrics, and went through 1 PDC review cycle to obtain the currently published
+
+141
+
+version. 44 The protocol tests and evaluates a survey solution’s system-level performance:
+
+142
+
+the performance of the methane sensor, data analytics, and deployment (e.g., number of
+
+143
+
+passes, flight speed, height, etc.) as an integrated unit. The sensor component of a solution
+
+144
+
+collects raw measurement data (e.g., ppm, ppm-m, etc.) while aboard a deployment platform
+
+145
+
+(e.g., aircraft, automobile, handheld, etc.) during a flying, walking, or driving survey at a
+
+146
+
+preplanned pace, distance, and height over or around O&G asset(s). The raw data gathered
+
+147
+
+is then processed by solutions’ data analytics/algorithm, which might be proprietary, to
+
+148
+
+produce actionable data (e.g., identifying a leak, localizing an emitter, estimating emission
+
+149
+
+rate, etc.). The survey protocol divides testing into 3 activities:
+
+150
+
+• Documentation of the system under test: Solutions were encouraged to document
+
+151
+
+descriptions of the system configuration (e.g., model number of each hardware, revi-
+
+152
+
+sion number of software, etc.), components (e.g., sensor, deployment platform, etc.),
+
+153
+
+methodology applied (e.g., number of passes, flight speed and height, etc.), and the
+
+154
+
+personnel needed to perform emissions surveys at O&G facilities. See details in Section
+
+155
+
+5.1 of the survey protocol. 44
+
+156
+
+• Emission surveys: The survey protocol divided testing into experiments conducted
+
+157
+
+during the day (i.e., typically between 8 a.m. and 5 p.m. US mountain time) for 3 to
+
+158
+
+5 days. An experiment consisted of one or multiple, simultaneous controlled releases
+7
+
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+159
+
+of CNG, each emitting at a steady emission rate for minutes to hours with longer-
+
+160
+
+duration experiments designed to investigate performance variation due to changing
+
+161
+
+meteorological conditions. Testing was single-blind, as the solutions were unaware
+
+162
+
+of the timing, location, and release rate of controlled releases. For each experiment,
+
+163
+
+METEC defined a survey area that consisted of either a single or two adjacent well
+
+164
+
+pads and initiated controlled gas releases. The well pads at METEC were divided
+
+165
+
+into 3 survey areas: well pads 1 & 2, 3, and 4 & 5 to achieve different site sizes and
+
+166
+
+operational configurations as shown in SI Figure S-1.
+
+167
+
+While testing across multiple O&G infrastructures and wellpads facilitated the evalu-
+
+168
+
+ation of survey time, a key performance metric for solutions, differences in the surface
+
+169
+
+area, layout, and equipment unit characteristics (e.g., type, count, orientation, etc.)
+
+170
+
+of the wellpads also varied testing complexity and rigor. For this study, well pad 1
+
+171
+
+& 2 (20 m × 10 m) contained 6 equipment units, well pad 3 (10 m × 60 m) had 7
+
+172
+
+equipment units, while well pad 4 & 5 (60 m × 120 m) contained 18 equipment units.
+
+173
+
+Additionally, to further vary test complexity, each experiment’s controlled release(s)
+
+174
+
+were either restricted to a well pad or was distributed across all or a portion of the
+
+175
+
+survey area defined by METEC for this study.
+
+176
+
+All controlled releases were CNG, with a mean gas composition by volume of 76.0%–88.0%
+
+177
+
+methane, 11.6%–20.1% ethane, 1.4%–3.6% propane, and trace amounts of other gases.
+
+178
+
+The release rates of gases tested match to within an order of magnitude the component-
+
+179
+
+level leak sizes previously measured by the study team at natural gas production sites
+
+180
+
+in the US, excluding liquid unloading or major failure conditions that produced ex-
+
+181
+
+ceptionally high-rate emission events, 45–47 which the type of solutions tested would
+
+182
+
+typically encounter during actual field deployments. The test center recorded the
+
+183
+
+timing, emission rate, location (i.e., emission points and GPS coordinates), and gas
+
+184
+
+composition of controlled releases. As with Ravikumar et al., the release schedules in
+
+185
+
+this study were intentionally complicated (i.e., variation in the position and number of
+8
+
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+186
+
+emission sources per experiment and the survey areas used during such experiment) not
+
+187
+
+only to improve testing complexity but to minimize scenarios where gas odor provided
+
+188
+
+consistent cues to surveyors during testing.
+
+189
+
+At the start of each test day, the study team briefed solutions’ surveyors about safety
+
+190
+
+and how the test will be conducted for the day. During each experiment, solutions
+
+191
+
+conducted emissions inspection based on their survey protocol(s), staying within the
+
+192
+
+boundary of the survey area defined for the experiment. Multiple solutions were some-
+
+193
+
+times deployed in the same survey area during an experiment and therefore had overlap-
+
+194
+
+ping survey times. In such cases, solutions alternated while surveying each equipment
+
+195
+
+unit and had instructions to avoid communicating with one another to prevent one
+
+196
+
+team from learning about emission points or rates from another team. Measurements
+
+197
+
+by solutions were sequenced to limit the impact (if any) of one system’s detection
+
+198
+
+methodology on others. The one exception to this goal was a scenario that included
+
+199
+
+both a drone-based solution and an automobile-based solution. Drone flights generate
+
+200
+
+turbulence and disturbances that can affect the formation and downwind transport of
+
+201
+
+gas plumes to be measured by the automobile-based solution typically driving at the
+
+202
+
+edge of the survey area. The end of the emissions survey by solution(s) signaled the
+
+203
+
+end of each experiment, then the test center stopped all controlled releases.
+
+204
+
+• Detection reporting: The test protocol stipulates a reporting template for solutions
+
+205
+
+to record data of experiments and detected emissions. Solutions conducted quality
+
+206
+
+control and validation of their data before reporting to the test center. Solutions were
+
+207
+
+encouraged to submit recorded data to the test center at the end of each test day
+
+208
+
+containing at minimum the detection report ID, timing of surveys, source location,
+
+209
+
+and the gas species measured to make detection (SI Section S-6). Reporting measured
+
+210
+
+gas species allowed performance analysis of solutions with either methane-specific or
+
+211
+
+multi-species sensors to be on the same basis. See sections 5.3.1 to 5.3.3 of the protocol
+
+212
+
+for comprehensive details of all the data that solutions can report during the study. 44
+9
+
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+213
+
+Performance Metrics
+
+214
+
+For data to be considered valid, solutions were required to submit their survey and detection
+
+215
+
+reports within one week of test completion. This time limit reflects common field prac-
+
+216
+
+tice. 22,48,49 The study team collated and quality controlled all data, including release rates
+
+217
+
+and meteorological data collected by the test center, and all data reported by solutions to
+
+218
+
+perform detection classification. The test center kept an operator log and a maintenance
+
+219
+
+record during the testing period to facilitate the detection classification process and the
+
+220
+
+exclusion of data (i.e., controlled releases and detection reports) invalidated by the require-
+
+221
+
+ments of the test protocol. 44 For each solution, the operator log documented the unique ID
+
+222
+
+and characteristics (i.e., timing, number of emission points, etc.) of each experiment; the
+
+223
+
+ID was communicated to the solution during testing for documentation. The ID linked the
+
+224
+
+detection and survey data reported during an experiment with the test center’s record of the
+
+225
+
+experiment. The maintenance record documented the list of controlled releases or periods to
+
+226
+
+be excluded from the result analysis, either because the controlled release was non-compliant
+
+227
+
+with the testing protocol or due to an unplanned release (i.e., venting an emission point gas
+
+228
+
+supply line). The result of the detection classification process involving pairing controlled
+
+229
+
+releases with detection reports, as summarized in SI Section S-4, was used to evaluate the
+
+230
+
+performance metrics in sections 6.2 and 6.3 of the protocol. Key performance metrics for
+
+231
+
+this study are summarized below:
+
+232
+
+• Probability of Detection (POD): This represents the probability of detecting an emis-
+
+233
+
+sion over a set of environmental and measurement conditions (e.g., wind speed, emission
+
+234
+
+rate, release duration, etc.). This is evaluated as the fraction of the count of true posi-
+
+235
+
+tive (TP) detections to the sum of the counts of TP and false negative (FN) detections
+
+236
+
+over a set of conditions as shown in equation 1.
+POD|x =
+
+NTP
+NTP + NFN x
+
+10
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+(1)
+
+237
+
+Where x is the set of measurement conditions at which the POD is assessed at.
+
+238
+
+• False Positive Fraction (FPF): This is the fraction of the count of false positive (FP)
+
+239
+
+detections to the sum of the counts of TP and FP detections as shown in equation 2.
+FPF =
+
+240
+
+241
+
+243
+
+244
+
+245
+
+(2)
+
+• False Negative Fraction (FNF): This is the fraction of the count of FN detections to
+the sum of the counts of TP and FN detections as shown in equation 3.
+FNF =
+
+242
+
+NFP
+NFP + NTP
+
+NFN
+NFN + NTP
+
+(3)
+
+• Survey Time: This is the time taken to complete a survey and is evaluated as the
+difference between the reported survey start- and end-date times.
+• Localization Precision (Equipment Unit): This is the fraction of TP detections at the
+equipment unit, equipment group, and facility levels, respectively.
+
+246
+
+• Localization Accuracy (Equipment Unit): This is the fraction of detection reports at
+
+247
+
+each localization precision level (equipment unit) or better as shown in equations 4, 5,
+
+248
+
+and 6.
+
+NTPunit
+NTP + NFP
+
+(4)
+
+NTPgroup + NTPunit
+NTP + NFP
+
+(5)
+
+NTP
+NTP + NFP
+
+(6)
+
+Correct unit (LAunit ) =
+249
+
+Correct group (LAgroup ) =
+250
+
+Correct facility (LAfacility ) =
+
+11
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+251
+
+Participating Solutions
+
+252
+
+Participating solutions were selected through contacts in the PDC and an open invitation
+
+253
+
+advertised on METEC’s website. Twelve survey solutions were tested for the first time
+
+254
+
+under the protocol at different times within the study period, with three solutions tested
+
+255
+
+again within 2 months to 1 year of their initial tests. Solutions were required to deploy
+
+256
+
+as they would in actual field measurement campaigns (i.e., number of personnel, survey
+
+257
+
+speed/pace, survey height/distance, etc.). Solutions provided all auxiliary equipment (e.g.,
+
+258
+
+anemometers, battery packs, power cables, internet connection, etc.) needed to perform
+
+259
+
+emissions survey during testing. The list of participating solutions arranged in alphabetical
+
+260
+
+order is as follows: ABB HoverGuard, ABB MicroGuard, ABB MobileGuard, ChampionX
+
+261
+
+AURA OGI, Cimarex FLIR OGI, Cimarex Ventus, Distran Ultra, Heath EyeCGas, Heath
+
+262
+
+RMLD-CS, Konica Minolta GMP02, Montrose Pergam Laser Falcon, and Xplorobot Laser
+
+263
+
+OGI. Given the confidentiality agreement between the study team and the solutions, solutions
+
+264
+
+were identified with arbitrarily selected, unique alphabetic identifiers.
+
+265
+
+For this study, participating survey solutions were grouped into three categories:
+
+266
+
+1. Mobile solutions: Survey solutions that are automobile- and unmanned aerial vehicle
+
+267
+
+(UAV)/drone-based.
+
+268
+
+2. Handheld OGI solutions: Traditional handheld OGI camera solutions.
+
+269
+
+3. Advanced handheld solutions: Includes other handheld solutions that do not detect
+
+270
+
+emissions using OGI technology alone (if at all). These include sensing techniques
+
+271
+
+like acoustic sensing, infrared absorption spectroscopy, tunable diode laser absorption
+
+272
+
+spectroscopy (TDLAS) technology, etc.
+
+273
+
+Table 1 summarizes the solutions that participated in the study with their deployment
+
+274
+
+characteristics and selected test conditions. While all solutions tested detection and source
+
+275
+
+localization capabilities, only solutions A and G quantified emissions. The SI contains reports
+
+276
+
+that comprehensively describes all the tested capabilities evaluated for each solution.
+12
+
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Table 1: Characteristics of participating solutions and testing conditions.
+Solution
+ID Platform
+
+Category
+
+Test Conditions
+Release Rate
+(g CH4/h)
+
+Solutions that participated in the first round of testing.
+Mobile
+214 [26, 895]
+5.3 [1.1, 13.4]
+
+†
+
+Vehicle
+
+D
+
+Drone
+
+Mobile
+
+73 [3, 297]
+
+F
+
+Drone
+
+Mobile
+
+I
+
+Drone
+
+B
+E
+
+A
+
+Wind speed
+(m/s)
+
+Test Year
+2021 2022 2023
+✓
+
+X
+
+X
+
+3.0 [0.9, 5.7]
+
+✓
+
+X
+
+X
+
+471 [30, 2027]
+
+2.5 [1.2, 4.1]
+
+X
+
+X
+
+✓
+
+Mobile
+
+175 [22, 586]
+
+4.5 [1.1, 9.3]
+
+✓
+
+X
+
+X
+
+Handheld
+
+Handheld OGI
+
+76 [4, 297]
+
+3.3 [1.3, 5.7]
+
+✓
+
+X
+
+X
+
+Handheld
+
+Handheld OGI
+
+198 [4, 808]
+
+3.0 [0.8, 4.6]
+
+✓
+
+X
+
+X
+
+G Handheld
+
+Handheld OGI
+
+500 [22, 2110]
+
+3.6 [0.9, 9.0]
+
+X
+
+X
+
+✓
+
+L
+
+Handheld
+
+Handheld OGI
+
+553 [23, 2586]
+
+3.6 [0.9, 8.7]
+
+X
+
+X
+
+✓
+
+C
+
+Handheld Advanced Handheld
+
+198 [4, 808]
+
+3.0 [1.1, 4.6]
+
+✓
+
+X
+
+X
+
+H‡ Handheld Advanced Handheld
+
+471 [3, 2106]
+
+3.4 [0.9, 8.8]
+
+X
+
+X
+
+✓
+
+J
+
+464 [23, 1651]
+
+2.9 [0.7, 8.0]
+
+X
+
+X
+
+✓
+
+K Handheld Advanced Handheld 194 [22, 640]
+5.2 [1.2, 12.8]
+✓
+Solutions that participated in the second round of testing.
+A† Vehicle
+Mobile
+164 [11, 982]
+4.3 [0.8, 13.3]
+X
+
+X
+
+X
+
+✓
+
+X
+
+K Handheld Advanced Handheld
+
+164 [11, 982]
+
+4.3 [0.8, 13.3]
+
+X
+
+✓
+
+X
+
+H‡ Handheld Advanced Handheld
+
+355 [4, 1934]
+
+2.6 [0.9, 3.6]
+
+X
+
+X
+
+✓
+
+†
+‡
+
+Handheld Advanced Handheld
+
+The solution tested its quantification capability in 2022.
+The solution was tested twice in 2023.
+
+277
+
+Study Limitations
+
+278
+
+The limitations of the test center in comparison to actual onshore production O&G facilities
+
+279
+
+have been extensively discussed by Zimmerle et al. and Ilonze et al.. In summary, the test
+
+280
+
+center represents near-ideal operational field conditions with little ongoing operational ac-
+
+281
+
+tivity that produces vibration, noise, heated sources, etc. For this testing, baseline emissions
+
+282
+
+– commonly defined as routine, planned emissions, including combustion slip, gas pneumat-
+
+283
+
+ics, periodic venting, and similar sources - were not included. As a result, certain failure
+
+284
+
+conditions, such as a gas pneumatic venting in excess of designed rates, were not included
+13
+
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+285
+
+as potential sources. Also, controlled testing may not completely capture the performance
+
+286
+
+of solutions at actual O&G facilities, as Day et al. demonstrated for continuous monitors.
+
+287
+
+The emissions scenarios simulated for this study did not include large emission rate events,
+
+288
+
+often responsible for a highly skewed share of total emission rates at O&G facilities. 21,24–27
+
+289
+
+This limitation was intentional. The objective of the study was to characterize the POD of
+
+290
+
+solutions, and since all solutions tested here have a high probability of detecting emitters in
+
+291
+
+excess of 3 kg/h, testing at higher rates provides little additional information. Additionally,
+
+292
+
+the US EPA OOOO(b) regulation 52 was not published prior to these tests, therefore testing
+
+293
+
+was not targeted at the rates specified in that regulation.
+
+294
+
+The test results described here are for integrated solutions, consisting of the sensor, de-
+
+295
+
+ployment method, and analytics. Field and regulatory application of these results should
+
+296
+
+not apply results from one solution developer to another using the same sensor and de-
+
+297
+
+ployment method, as differences in analytics may produce significant differences in solution
+
+298
+
+performance. As with other testing programs, 42,43 classification of excess or redundant TP
+
+299
+
+detections (detections identifying controlled releases that have been matched already, as new
+
+300
+
+and/or different emitters) for any single controlled release may be interpreted in multiple
+
+301
+
+ways. Since close-range survey solutions (e.g., handheld emissions detection technologies) are
+
+302
+
+generally used for follow-up investigations due to their high localization precision, a surveyor
+
+303
+
+could interpret an extra detection report that incorrectly identified emissions (using GPS
+
+304
+
+coordinates, etc.) from a component some distance from an actual emitter as an FP detec-
+
+305
+
+tion. Conversely, in a different application, such an extra report might not be considered an
+
+306
+
+FP detection if it correctly attributes emission to the emitting equipment unit. Given these
+
+307
+
+possible interpretations of redundant TP detections, Table S-7 in the SI breaks down the
+
+308
+
+FPF of solutions shown in Table 2 into FPs due to (1) no-ongoing controlled releases, and
+
+309
+
+(2) redundant TP detections. See Bell et al. for other potential limitations of the protocol’s
+
+310
+
+detection classification scheme.
+
+14
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+311
+
+Data Analysis
+
+312
+
+To evaluate the POD curves of solutions, three curve-fitting models (power function, binary
+
+313
+
+logistic regression function, and exponential function) were assessed and compared using the
+
+314
+
+resulting data of the detection classification framework. The exponential function (equa-
+
+315
+
+tion 7) was selected for two reasons. First, in several cases, the binary logistic regression
+
+316
+
+function predicted non-zero POD at zero controlled release rates, which is unrealistic (see
+
+317
+
+Bell et al.). Second, there were insufficient experimental points to bin data as required for a
+
+318
+
+power curve fit as used in other studies (e.g. Zimmerle et al., Ilonze et al.). For the solutions
+
+319
+
+tested, the range of valid classified data (TP and FN) points for each solution was 70 to
+
+320
+
+224, with 11 of the 15 solutions controlled testing producing less than 120 data points. The
+
+321
+
+exponential link function selected was:
+pod = 1 − exp(−a · xb ) a,b are curve fitting parameters
+
+(7)
+
+322
+
+The curve fitting parameters for the POD curve (equation 7) were selected using least squares
+
+323
+
+methods (SI Section S-3). The original data was bootstrapped 500 times to generate the
+
+324
+
+uncertainty on any POD curve, with the 95% empirical confidence interval (CI) captured
+
+325
+
+as the 2.5 and 97.5 percentiles. The study used 4 statistical tests to evaluate statistical
+
+326
+
+significance in terms of correlation between 2 variables (Rank-Biseral correlations) and the
+
+327
+
+difference between groups (2-sample T-test, Mann-Whitney U, and Kolmogorov-Smirnov
+
+328
+
+tests) as described in SI section S-3.
+
+329
+
+Results and Discussions
+
+330
+
+This section covers results and discussions about solutions’ performance and change in per-
+
+331
+
+formance (i.e., for solutions that tested multiple times) based on the following metrics:
+
+332
+
+probability of detection, emission source localization, and survey time. Analysis on emis-
+
+15
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+333
+
+sions quantification performance was excluded as only two solutions tested that capability
+
+334
+
+over two different rounds of testing. However, quantification performance and other metrics
+
+335
+
+not captured in this paper are summarized in each solution’s test report attached with the
+
+336
+
+SI.
+
+337
+
+Handheld OGI Camera Solutions vs Other Categories of Solutions
+
+338
+
+Overall, handheld OGI camera solutions had comparable or better performance than other
+
+339
+
+solution categories across most metrics assessed. Figures 1, 2, and 3 shows the POD curves of
+
+340
+
+solutions as a function of controlled release rate. A multivariable logistic regression analysis
+
+341
+
+evaluating the impact of release rate, wind speed, wind direction, and ambient temperature
+
+342
+
+on the emissions detectability (TP and FN classification → POD) of solutions indicated
+
+343
+
+that emission rate was statistically significant (p < 0.05) for 5 (C, D, E, H, and J) of
+
+344
+
+12 solutions that tested in the first round (SI Table S-4). Other variables (temperature,
+
+345
+
+wind speed, and wind direction) were separately statistically significant to just one solution
+
+346
+
+each. Measurement conditions like survey height and speed were not input parameters in
+
+347
+
+evaluating the POD curves of solutions since they were either approximately constant during
+
+348
+
+each solution’s survey or were not documented by the surveyors. The POD curves of solutions
+
+349
+
+characterized the likelihood of detecting emission at various release rates over a wide range
+
+350
+
+of environmental conditions.
+
+351
+
+In Figures 1, 2 and 3, for each solution that tested twice (A, H, and K), the POD curves
+
+352
+
+from all rounds of testing are shown in one plot to facilitate performance comparison. Each
+
+353
+
+curve is identified by the year of testing (2021, 2022, or 2023) and the round of testing for
+
+354
+
+a solution during the year (first round — 1 or second round — 2). Similar to Bell et al.
+
+355
+
+and Ilonze et al., this study evaluated the detection sensitivity of solutions by defining each
+
+356
+
+solution’s detection limit (DL90) as the minimum emission rate the solution can detect 90%
+
+357
+
+of the time across multiple observations over a wide range of weather conditions (i.e., the
+
+358
+
+emission rate the solution has 90% POD). The lower the DL90, the more likely a solution
+16
+
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+359
+
+detects a wider range of emission rates at O&G facilities, although the desired DL90 depends
+
+360
+
+on field application. For solutions intended for follow-up investigations and fugitive emissions
+
+361
+
+detections, their DL90 should be significantly lower than those used for screening purposes.
+
+17
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Figure 1: Probability of detection (POD) as a function of controlled release rate (kg CH4 /h)
+for all handheld OGI camera solutions. The blue and green colors illustrate POD curves from
+the first round of tests conducted in 2021 and 2023. The DL90 is the emission rate at which
+the solution achieves 90% POD. The uncertainty on the POD curve is illustrated by a cloud
+of curves obtained through bootstrapping, with the confidence interval evaluated as the 2.5
+and 97.5 percentiles. The value "NA" is given when the DL90 or the associated uncertainty
+is more than ×20 the maximum release rate tested or cannot be evaluated. A scatter plot
+with circular markers shows binary detection classification results: TP detections (1) and
+FN detections (0). The upper limit of the x-axis has been trimmed at 0.7 kg CH4 /h to
+maintain the same axis limit for all solutions.
+
+362
+
+Of the 5 solutions whose emissions detectability (i.e., POD) was statistically influenced by
+
+363
+
+release rate, only solution D did not have a statistically significant correlation (Rank-Biseral
+18
+
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+364
+
+correlation, p < 0.05) between release rate and emissions detectability (SI Section S-7.1).
+
+365
+
+This suggests that the solution’s POD curve will likely benefit from accounting for windspeed
+
+366
+
+(which was statistically significant to the solution’s emissions detectability), as shown in SI
+
+367
+
+Figure S-7. Similarly, the POD curves of the remaining (7 of 12) solutions that were not
+
+368
+
+statistically influenced by release rate, wind speed, or/and temperature may significantly
+
+369
+
+depend on other factors that could not be investigated (out of scope) in this study, like
+
+370
+
+variations in the survey (driving/flight) speed, height/distance from leak source, etc. For
+
+371
+
+example, von Fischer et al. showed that detection limits of automobile-based solutions tend
+
+372
+
+to increase with measurement distance. Results also indicated that the POD curves (i.e.,
+
+373
+
+the best estimate curve with the lower and upper confidence limit curves obtained through
+
+374
+
+bootstrapping as shown in Figures 1, 2, and 3) of all but solutions J and D (with that of
+
+375
+
+A and I unclear) agree closely with the curves obtained by scaling POD curves normalized
+
+376
+
+by windspeed by the mean, minimum, and maximum wind speed tested for each solution
+
+377
+
+(SI Figures S-8, S-9, and S-10). This result suggests that the POD curves of most of the
+
+378
+
+tested solutions (especially OGI camera solutions) can also be approximately expressed as a
+
+379
+
+function of emission rate normalized by windspeed as shown in SI Figures S-5, S-6, and S-7.
+
+380
+
+In general, Figures 1, 2, and 3, and Table 2 shows that the POD curves of solutions could
+
+381
+
+only predict the DL90 of 7 of 12 solutions with values ranging from 0.08 [0.00, 0.10] kg CH4 /h
+
+382
+
+to 0.81 [0.16, NA] kg CH4 /h with 6 solutions within their tested emission rate range. The
+
+383
+
+five solutions that could not predict their respective DL90s or had large DL90 values (> 70×)
+
+384
+
+relative to the maximum release rates tested consisted of all 4 mobile solutions (drone- and
+
+385
+
+automobile-based) tested in the study. Table 2 also shows that mobile solutions had some of
+
+386
+
+the largest FPF (19.2% to 50.0%) and FNF (20.3% to 48.5%) values evaluated in this study.
+
+387
+
+This result is likely due to potential difficulties at either distinguishing methane (or other
+
+388
+
+gas species of interest) signals from background noise by these solutions (increases FPF),
+
+389
+
+high detection limits (increases FNF), or redundant TP detections due to the limitations of
+
+390
+
+the test protocol (inflates FPF) (SI Table S-7).
+19
+
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Figure 2: Probability of detection (POD) as a function of controlled release rate (kg CH4 /h)
+for all Advanced handheld solutions. For solutions that tested twice, the POD curve from
+each test period is overlaid and identified by the test year (2021, 2022, or 2023) and iteration
+number (1 or 2) for solutions that tested twice within a year. The blue and red colors
+illustrate POD curves from the first round of tests conducted in 2021 and 2022, while the
+green and orange colors are for the first and second rounds of tests conducted in 2023. The
+DL90 is the emission rate at which the solution achieves 90% POD. The uncertainty on
+the POD curve is illustrated by a cloud of curves obtained through bootstrapping, with
+the confidence interval evaluated as the 2.5 and 97.5 percentiles. The value "NA" is given
+when the DL90 or the associated uncertainty is more than ×20 the maximum release rate
+tested or cannot be evaluated. A scatter plot with circular markers shows binary detection
+classification results: TP detections (1) and FN detections (0). Solution K (2021) has nearuniform POD across tested emission rates (rank-biserial correlation coefficient ≈ -0.05). The
+upper limit of the x-axis has been trimmed at 0.7 kg CH4 /h to maintain the same axis limit
+for all solutions.
+20
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+391
+
+The DL90s of 3 of the 4 handheld OGI camera solutions tested were among the top 4
+
+392
+
+lowest DL90s obtained in the study. Unlike advanced handheld solutions, emission rate and
+
+393
+
+other test conditions were not statistically significant to the emissions detectability of the 3
+
+394
+
+camera solutions which aligns with data from Zimmerle et al. that showed that the experience
+
+395
+
+level of an OGI camera surveyor had a more statistically significant impact on emissions
+
+396
+
+detection rate than other variables tested. Similarly, Ravikumar et al. identified the distance
+
+397
+
+between an OGI camera and a leak source as the most important parameter affecting the
+
+398
+
+detection effectiveness of handheld OGI camera solutions. 54 Since solution vendors conducted
+
+399
+
+the emissions surveys in this study, it is likely that surveyors sent by the solutions were highly
+
+400
+
+experienced and used that expertise to maximize solution performance; Deployment of the
+
+401
+
+same solutions in field conditions may not have access to this level of experience. Advanced
+
+402
+
+handheld solutions use instruments that measure ambient emission concentration (like mobile
+
+403
+
+solutions) but are close enough to sources that there is less dependence on favorable plume
+
+404
+
+transport (unlike mobile solutions). As a result, the POD of advanced handeld solutions is
+
+405
+
+dependent on emission rate for 3 of the 4 advanced handheld solutions tested.
+
+406
+
+Additionally, handheld OGI camera solutions had the lowest FPF values in the study
+
+407
+
+(0.0% to 4.3%) which were statistically significantly lower (T and Kolmogorov-Smirnov tests;
+
+408
+
+P< 0.05) than that of mobile solutions but comparable to advanced handheld solutions (4.8%
+
+409
+
+to 35.6%). Although the FNF values of 2 of 4 handheld OGI camera solutions were less than
+
+410
+
+10%, the FNF values of handheld OGI camera solutions were not statistically different from
+
+411
+
+that of mobile and advanced handheld solutions, respectively.
+
+21
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Figure 3: Probability of detection (POD) as a function of controlled release rate (kg CH4 /h)
+for all mobile solutions. For solutions that tested twice, the POD curve from each test period
+is overlaid and identified by the test year (2021, 2022, or 2023) and iteration number (1 or
+2) for solutions that tested twice within a year. The blue, red, and green colors illustrate
+POD curves from the first round of tests conducted in 2021, 2022, and 2023. The DL90 is
+the emission rate at which the solution achieves 90% POD. The uncertainty on the POD
+curve is illustrated by a cloud of curves obtained through bootstrapping, with the confidence
+interval evaluated as the 2.5 and 97.5 percentiles. The value "NA" is given when the DL90
+or the associated uncertainty is more than ×20 the maximum release rate tested or cannot
+be evaluated. A scatter plot with circular markers shows binary detection classification
+results: TP detections (1) and FN detections (0). Solutions A and I have near-uniform
+POD across tested emission rates (rank-biserial correlation coefficient between -0.01 and 0.05). The upper limit of the x-axis has been trimmed at 0.7 kg CH4 /h to maintain the same
+axis limit for all solutions.
+22
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+412
+
+While these results highlight why handheld OGI camera solutions are typically used,
+
+413
+
+and are anecdotally effective, for follow-up investigations and regulatory-compliant LDAR
+
+414
+
+inspections at O&G facilities, results also showed that the DL90s of all advanced handheld
+
+415
+
+solutions were within the minimum detection threshold stipulated in the EPA’s final rule
+
+416
+
+(NSPS OOOO(b) rules) for quarterly monitoring (≤ 1 kg CH4 /h) of well sites and centralized
+
+417
+
+production facilities with alternative technologies. 13 For reference, see SI Figures S-11, S-12,
+
+418
+
+and S-13 for POD curves and DL90s derived using the power function, and SI Figures S-14,
+
+419
+
+S-15, and S-16 for POD curves and DL90s based on binary logistic regression for all solutions.
+
+Figure 4: A scatterplot of equipment unit-level localization accuracy for all solutions arranged
+in increasing order. The y-axis shows the fraction of detection reports that identified a leak
+source at the correct equipment unit. The marker colors in both figures identify handheld
+OGI, advanced handheld, and mobile solutions. The circular-shaped marker represents each
+solution’s first-round test results. In contrast, the square-shaped markers identify results
+from their second round of testing (for solutions tested multiple times).
+
+420
+
+Figure 4 and Table 2 shows the equipment unit-level localization accuracy and precision
+
+421
+
+of all tested solutions from both the first round and second round of testing. For the first
+
+422
+
+round of testing (circular markers), we find that the equipment unit-level localization ac-
+
+423
+
+curacies of handheld solutions (i.e., OGI cameras and advanced handheld solutions) were
+23
+
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+424
+
+statistically significantly (T and Kolmogorov-Smirnov tests; p< 0.05) higher than those of
+
+425
+
+mobile solutions, with the two categories of handheld solutions having comparable localiza-
+
+426
+
+tion performance. Mobile solutions attributed emission sources at the equipment group level
+
+427
+
+(13m2 to 88m2 ) more than handheld solutions (SI Table S-8 and Figure S-18). These find-
+
+428
+
+ings highlight the effectiveness of handheld solutions at pinpointing leak sources for repairs
+
+429
+
+or reporting, even though cost and labor requirements are major concerns when scaled over
+
+430
+
+thousands of O&G facilities. Also, solutions showed a similar trend in localization precision
+
+431
+
+performance as observed for localization accuracy (SI Table S-8 and Figure S-17).
+
+24
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Table 2: Results of the detection classification scheme (FPF and TPFs) and the 90% POD
+predicted by each solution sorted in order of increasing 90% POD.
+Solution
+ID
+
+Category
+
+Survey Time†
+per Unit
+(minutes)
+
+Localization (Unit)
+
+Detection Classification
+
+Accuracy Precision FPF FNF
+(%)
+(%)
+(%) (%)
+
+DL90‡
+(kg CH4/h)
+
+Solutions’ results from the first round of testing.
+G
+
+5.86 [1.11, 15.0]
+
+98.5
+
+98.5
+
+0.0
+
+5.7
+
+0.08 [0.00, 0.10]
+
+H Advanced Handheld 5.09 [0.78, 14.0]
+
+91.0
+
+100.0
+
+9.0
+
+16.5
+
+0.14 [0.11, 0.67]
+
+L
+
+Handheld OGI
+
+2.3 [0.72, 4.86]
+
+95.7
+
+100.0
+
+4.3
+
+8.2
+
+0.15 [0.00, 1.70]
+
+E
+
+Handheld OGI
+
+1.91 [1.0, 6.17]
+
+97.1
+
+98.8
+
+1.7
+
+24.1
+
+0.26 [0.17, 0.39]
+
+C Advanced Handheld 1.89 [0.94, 4.39]
+
+79.5
+
+97.2
+
+18.2
+
+19.6
+
+0.36 [0.18, 1.05]
+
+J
+
+95.2
+
+100.0
+
+4.8
+
+31.0
+
+0.65 [0.36, 1.60]
+
+1.66 [0.67, 5.0]
+
+92.8
+
+96.2
+
+3.6
+
+25.2
+
+0.81 [0.16, NA]
+
+K* Advanced Handheld
+
+2.53 [1.14, 5.0]
+
+62.9
+
+97.7
+
+35.6
+
+6.6
+
+0.00 [0.00, NA]
+
+D
+
+Mobile
+
+2.02 [0.94, 8.0]
+
+62.9
+
+87.4
+
+28.0
+
+31.7
+
+NA [0.60, NA]
+
+I
+
+Mobile
+
+1.63 [0.56, 3.57]
+
+61.2
+
+78.8
+
+22.4
+
+22.4
+
+NA [0.78, NA]
+
+A
+
+Mobile
+
+0.94 [0.44, 2.57]
+
+55.0
+
+68.0
+
+19.2
+
+20.3
+
+NA [2.32, NA]
+
+F
+
+Mobile
+
+2.68 [1.56, 8.5]
+
+32.0
+
+64.0
+
+50.0
+
+48.5
+
+NA [4.44, NA]
+
+B
+
+Handheld OGI
+
+Advanced Handheld 1.03 [0.39, 2.86]
+Handheld OGI
+
+Results from the second round of testing for solutions that participated in the first round.
+K* Advanced Handheld
+
+0.51 [0.06, 1.5]
+
+92.2
+
+92.2
+
+0.0
+
+7.3
+
+0.05 [0.00, 0.27]
+
+H Advanced Handheld 2.34 [0.72, 6.67]
+
+97.9
+
+100.0
+
+2.1
+
+8.7
+
+0.11 [0.00, 0.24]
+
+A
+
+55.1
+
+71.7
+
+23.1
+
+45.5
+
+NA [6.98, NA]
+
+Mobile
+
+1.73 [0.5, 3.67]
+
+† This is time taken to survey an equipment unit in a survey area.
+
+‡ When the POD curve cannot evaluate the DL90 or the DL90 is ×20 of the maximum release rate tested,
+
+its value is "NA". Similarly, when the lower and upper empirical 95% confidence intervals on a solution’s
+DL90 could not be evaluated, they were given as 0 and NA, respectively.
+* The DL90 is 0 because the POD curve is approximately constant at POD > 90%.
+
+25
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+432
+
+One explanation for the localization performance of mobile solutions is that their data
+
+433
+
+analytics typically requires favorable wind conditions - accessed directly downwind, steady
+
+434
+
+wind direction and speed, well understood stability class - and an accurate estimate of the
+
+435
+
+emission location. Understanding of wind would be improved by averaging over enough time
+
+436
+
+to extract both mean and variability in wind direction, and to estimate stability parameters.
+
+437
+
+However, qualitative observation of solution methods indicate that during this study, most
+
+438
+
+methods did not measure long enough to extract average wind conditions from data, as the
+
+439
+
+selling point of the method is providing faster screening of facilities.
+
+440
+
+Although some mobile solutions in this study presented promising equipment unit-level
+
+441
+
+localization performance (accuracy and precision > 50% and 60%, respectively), with addi-
+
+442
+
+tional development, mobile solutions may currently be best deployed to rapidly screen for
+
+443
+
+general emissions locations, followed by investigations with handheld solutions (e.g., OGI
+
+444
+
+camera surveys) to identify emitters for repairs and reporting. In some field applications,
+
+445
+
+a high spatial resolution of detected sources might be less of a priority than the ability to
+
+446
+
+screen a large area at a time with less labor compared to surveying with handheld solutions. 12
+
+447
+
+For regulatory compliance, the EPA’s final rule on advanced methane detection technologies
+
+448
+
+has stipulated secondary inspection work practices at O&G facilities based on the spatial
+
+449
+
+resolution of emission sources by LDAQ solutions. 13
+
+450
+
+To characterize the time expended by solutions to complete emissions survey during
+
+451
+
+each experiment, reported survey times by solutions were normalized by the number of
+
+452
+
+equipment units (wellheads, separators, and tanks) in the survey areas (which are unequal
+
+453
+
+in size) defined by the study team during experiments, as summarized in Table 2 and Figure
+
+454
+
+5. Each violin plot in Figure 5 represents the distribution of the survey times per equipment
+
+455
+
+unit for each solution. While the face color of each violin indicate if a solution is categorized
+
+456
+
+as mobile, handheld OGI, or advanced handheld, the edge color shows if the result is from the
+
+457
+
+first or second round of testing of the solution. From Table 2 and Figure 5, results show that
+
+458
+
+the survey times per unit for mobile solutions as a group were statistically significantly lower
+26
+
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+459
+
+(Mann-Whitney U and Kolmogorov-Smirnov tests; p< 0.05) lower than those of handheld
+
+460
+
+OGI and advanced handheld solutions, respectively, even though there were no statistically
+
+461
+
+significant difference between the 2 categories of handheld solutions. Faster survey times,
+
+462
+
+as suggested by Fox et al., have important cost implications during field deployments; the
+
+463
+
+longer it takes to complete surveys, the more likely it is to increase an operator’s emissions
+
+464
+
+monitoring expenses when scaled over several O&G facilities.
+
+Figure 5: A violin plot showing the distribution of survey time per equipment unit arranged
+in increasing order of solutions’ first-round testing mean survey times. The survey time
+per equipment unit was evaluated by dividing the survey time by the number of equipment
+units in the survey areas (as defined by the test center) within which an experiment was
+conducted. The face color of each violin indicates if a solution is a mobile (i.e., vehicleor drone-based), a handheld OGI, or an advanced handheld solution. The violin whiskers
+represent the minimum and maximum survey times per equipment unit, while the blue
+(dashed) and orange (solid) lines indicate the median and mean survey times per equipment
+unit, respectively. The results of solutions that have been tested twice (A, H, and K) are
+also compared; second test results are differentiated from the first round test results by the
+edge color of each violin plot. The violins for the first round results have red edge colors
+while those for the second round have a dark slate gray color.
+
+465
+
+While mobile solutions had quicker survey times per equipment unit as a group compared
+
+466
+
+to handheld solutions, the reverse was true for a few individual solutions. We hypothesize
+
+467
+
+this was due to a few reasons. First, the noticeable odor and the audible sound made by gas
+27
+
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+468
+
+releases during this study could have unblinded some controlled releases in some cases (e.g.,
+
+469
+
+surveyors directly downwind of an emission source) and likely aided surveyors with handheld
+
+470
+
+technologies in narrowing down leak locations quicker than expected. Although this survey
+
+471
+
+behavior is also observed in real facilities, the test facility in this study (METEC) is not
+
+472
+
+characterized by O&G facility sensory distractions, which could make emissions survey more
+
+473
+
+challenging. Real O&G facilities are typically characterized by operational noise (e.g., the
+
+474
+
+movement of trucks or other vibrational noise sources) or background emissions due to rou-
+
+475
+
+tine venting events (i.e., from gas-driven pneumatic controllers and pumps, compressor seals,
+
+476
+
+etc.), which can produce misleading auditory and olfactory signals to surveyors, thereby in-
+
+477
+
+creasing the survey times with these solutions in the field. Second, there were cases where
+
+478
+
+surveys with drone-based solutions were suspended midway through flights to replace flat
+
+479
+
+batteries or to fix impromptu operational challenges like poor wireless communication be-
+
+480
+
+tween the drone system and the controller. It was, however, difficult to assess the extent to
+
+481
+
+which these breaks between flights (if at all) increased the survey times due to unavailable
+
+482
+
+data.
+
+483
+
+Results also showed that for the range of survey times per equipment unit obtained in
+
+484
+
+this study, the TPFs evaluated per experiment did not statistically significantly correlate
+
+485
+
+(SI section S-7.4) with the associated survey times per equipment unit (except for solu-
+
+486
+
+tion I). This indicates that high TP detection performance is possible at relatively shorter
+
+487
+
+survey times if solutions’ survey methodologies are optimized, weather and environmental
+
+488
+
+conditions are favorable (i.e., wind, road accessibility, etc.), and solutions are at high readi-
+
+489
+
+ness level for field deployment. In general, this study’s detection, localization, and survey
+
+490
+
+times data indicate that tested mobile and handheld solutions likely should have different
+
+491
+
+value propositions: perform quicker surveys and narrow down emission sources with mobile
+
+492
+
+solutions to facilitate closer inspections and measurement with handheld solutions - which
+
+493
+
+showed better detection and localization performance.
+
+28
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+494
+
+How Solutions’ Performance Changed with Repeat Testing
+
+495
+
+Our data showed that solutions’ performance tends to improve with repeat testing. Three
+
+496
+
+solutions (A, H, and K) participated in the second round of testing 3 to 12 months af-
+
+497
+
+ter they tested for the first time at the same facility with the same protocol. Our data
+
+498
+
+indicate that the performance of solutions H and K generally improved across all metrics
+
+499
+
+(i.e., DL90, FPF, FNF, equipment unit level localization accuracy and precision, and sur-
+
+500
+
+vey time per equipment unit) except localization precision for solution K. In contrast, the
+
+501
+
+performance of solution A declined across all metrics except for localization accuracy and
+
+502
+
+precision. These improvements are unsurprising as there has been rapid and continued devel-
+
+503
+
+opment of next-generation emissions detection technologies in terms of sensor type/quality,
+
+504
+
+hardware, data analytics/algorithms, and survey methodology given the growing interest
+
+505
+
+in advanced methane detection technologies by operators and regulators. 13,43 For example,
+
+506
+
+solution H maintained 100% localization precision at the equipment unit level (as with the
+
+507
+
+first round test result) while also increasing localization accuracy to 98%, suggesting likely
+
+508
+
+near-maturity of the solution’s localization algorithm.
+
+509
+
+Other possible reasons for the improvement (or lack thereof) in the performance of so-
+
+510
+
+lutions include relatively favorable (or unfavorable) test and measurement conditions. For
+
+511
+
+example, Solutions A and K were retested in December 2022 (SI section S-2) under tem-
+
+512
+
+perature conditions between 3°C and 11°C compared to 8°C and 22°C in 2021 during the
+
+513
+
+first round of testing. Surveyors with solution A (i.e., automobile-based) are less likely to
+
+514
+
+be adversely influenced by relatively cold weather, unlike solution K (i.e., handheld), since
+
+515
+
+the latter’s operationalization involves direct inspection of suspected leaking components.
+
+516
+
+This hypothesis is further supported by solution K recording the lowest survey times per
+
+517
+
+equipment unit obtained throughout the study during the second round of testing. Secondly,
+
+518
+
+some solutions might have improved their survey methodology or the implementation pro-
+
+519
+
+cess. For example, solution K’s walking procedure in the last test was a modified version of
+
+520
+
+the one they used in the first round of testing (see reports attached with the SI).
+29
+
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+521
+
+Sensitivity of Solution’s Detection Performance to Testing Complex-
+
+522
+
+ity
+
+523
+
+Study data showed that the detection capacity of mobile solutions was generally more sensi-
+
+524
+
+tive to changes in testing complexity than other solution categories. Recall that experiments
+
+525
+
+conducted during this study had 1 to 6 simultaneous controlled releases from different emis-
+
+526
+
+sions sources of different heights. Results show that mobile solutions had more difficulty
+
+527
+
+isolating and detecting individual emissions during experiments with multiple controlled re-
+
+528
+
+leases than other categories of solutions. More mobile solutions (2 of 4) had statistically
+
+529
+
+significant (Rank Biseral Correlation; p< 0.05) lower TPF per experiment for experiments
+
+530
+
+with multiple controlled releases compared to experiments with 1 controlled release (SI sec-
+
+531
+
+tion S-7.5). Additionally, there were statistically significant differences between the TPFs of
+
+532
+
+mobile solutions and handheld (i.e., OGI and advanced) solutions for all experiments with
+
+533
+
+multiple controlled releases, unlike when experiments with 1 controlled release were consid-
+
+534
+
+ered. These results highlight a key issue generally encountered by solutions that rely on wind
+
+535
+
+transport to make detections (i.e., mobile solutions and continuous monitors): the struggle
+
+536
+
+by solutions’ data analytics and algorithms to robustly isolate and differentiate individual
+
+537
+
+emission sources during experiments with multiple, simultaneous controlled releases. 32,42,43
+
+538
+
+When controlled releases for solutions were aggregated based on emission point heights
+
+539
+
+by generally categorizing them as tank (height > 12 ft) and non-tank (< 12 ft) sources,
+
+540
+
+our data showed that no group of solutions showed a statistically significant difference in
+
+541
+
+the TPFs between the source categories. However, handheld solutions showed statistically
+
+542
+
+significantly higher TPF for tank sources than mobile solutions (2 sample t-tests; p< 0.05),
+
+543
+
+which is unsurprising given that handheld solutions involved close component-level emissions
+
+544
+
+inspections, unlike mobile solutions, which were typically positioned farther away from the
+
+545
+
+emission source (e.g., the edge of a well pad). Note that in several field cases, direct, prox-
+
+546
+
+imity surveys of emitting sources can be challenging due to inaccessibility, high-temperature
+
+547
+
+surfaces, or moving parts; hence, such scenarios might require alternative emissions measure30
+
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+548
+
+ment methods such as mobile solutions. Therefore, users must understand the limitations of
+
+549
+
+solutions, consider if a solution is fit for purpose for an application during field deployment
+
+550
+
+(i.e., facility-level emissions screening, component-level inspection, etc.), and assess how the
+
+551
+
+trade-offs in the performance of the different categories of solutions can be leveraged for
+
+552
+
+effective emissions mitigation.
+
+553
+
+Implications
+
+554
+
+Recent rules and regulatory policies, such as the US EPA final NSPS rules on alternative
+
+555
+
+methane detection approaches 13 and the Inflation Reduction Act Waste Emission Charge 55
+
+556
+
+aimed at further reduction in methane emissions across the US O&G supply chain, have
+
+557
+
+spurred increased attention to advanced emissions detection solutions. With standardized
+
+558
+
+controlled testing identified as one of the steps involved in demonstrating emissions mitigation
+
+559
+
+equivalence between these solutions and traditional LDAR approaches, 29,31 this study, unlike
+
+560
+
+prior works, 31,32,37 represents a significant step forward in the controlled testing of next-
+
+561
+
+generation survey solutions using a consensus test protocol. 38
+
+562
+
+The study results have shown the following: First, while handheld OGI camera solutions
+
+563
+
+had comparable or better performance than other categories of solutions across most per-
+
+564
+
+formance metrics, no solution or category of solutions achieved all the desired performance
+
+565
+
+levels across all metrics assessed. This implies that no category of solutions tested is su-
+
+566
+
+perior as all solutions can systematically detect emissions successfully (atleast significantly
+
+567
+
+better than random guessing as shown in SI section S-7.5), albeit with varying strengths and
+
+568
+
+limitations hence the need for different value propositions for mobile solutions and handheld
+
+569
+
+solutions.
+
+570
+
+Secondly, solutions’ performance tends to improve with repeat testing, which highlights
+
+571
+
+the importance of regular, comprehensive testing to the development of solutions, as shown
+
+572
+
+in a prior similar study. 43 Regular and robust controlled testing provide quality ground
+
+573
+
+truth data used by solutions to optimize sensor performance and algorithms, and evaluate
+31
+
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+574
+
+survey/deployment methodology and the implementation processes for easier interpretation
+
+575
+
+in the field and improved detection performance
+
+576
+
+Finally, isolating and differentiating individual sources from multiple, simultaneous emit-
+
+577
+
+ters is still a persistent challenge for the data analytics/algorithm of solutions that gener-
+
+578
+
+ally rely on wind transport for detection (i.e., mobile solutions, continuous monitors, etc.).
+
+579
+
+However, given the rapid development of advanced methane detection technologies, there is
+
+580
+
+potential that this challenge could be addressed significantly in the near future.
+
+581
+
+This study’s results should be applied with caution for two reasons. First, since the test
+
+582
+
+facility used for the study mimics near-ideal real facility operational conditions, solutions’
+
+583
+
+results likely represent best-case scenario performance (unless detection performance depends
+
+584
+
+on high thermal contrast between the equipment surface and the gas plume). Second, as
+
+585
+
+shown by Day et al. for continuous monitors, field testing performance can vary substantially
+
+586
+
+from that of controlled testing; therefore, robust field testing of the solutions is needed to
+
+587
+
+validate and build confidence in assessed controlled testing performances.
+
+588
+
+Supporting Information
+
+589
+
+Zip folder of solutions’ performance reports (PDF), data tables (XLSX), and data tables
+
+590
+
+guide (XLSX). Detailed description of the test facility, solutions deployment, additional
+
+591
+
+results, guide to the performance reports, and bootstrapping methodology (PDF).
+
+592
+
+Acknowledgment
+
+593
+
+This work was funded by the Department of Energy (DOE): DE-FE0031873 which supported
+
+594
+
+the test protocol development and subsidized the cost of testing for participating solutions at
+
+595
+
+METEC. Industry partners and associations provided matching funds for the DOE contract.
+
+596
+
+The authors acknowledge that the solution vendors paid to participate in the study and we
+
+597
+
+also acknowledge their efforts and commitment in kind to the test program. The authors
+32
+
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+598
+
+acknowledge the contributions of the protocol development committee to the development
+
+599
+
+of the test protocol.The authors appreciates Clay Bell for supporting the study’s conceptual
+
+600
+
+design and execution. The authors also appreciates Ezra Levin and Anna Hodshire for
+
+601
+
+helping with the Manuscript review process.
+
+602
+
+Author Information
+
+603
+
+References
+
+604
+
+(1) Intergovernmental Panel On Climate Change (Ipcc), Climate Change 2022 – Impacts,
+
+605
+
+Adaptation and Vulnerability: Working Group II Contribution to the Sixth Assessment
+
+606
+
+Report of the Intergovernmental Panel on Climate Change, 1st ed.; Cambridge Univer-
+
+607
+
+sity Press, 2023
+
+608
+
+.
+
+609
+
+(2) Methane and Climate Change – Global Methane Tracker 2022 – Anal-
+
+610
+
+ysis. https://www.iea.org/reports/global-methane-tracker-2022/methane-and-
+
+611
+
+climate-change, (Accessed July 20, 2023)
+
+612
+
+.
+
+613
+
+(3) Greenhouse
+
+Gases
+
+Continued
+
+to
+
+Increase
+
+Rapidly
+
+in
+
+2022.
+
+https:
+
+614
+
+//www.noaa.gov/news-release/greenhouse-gases-continued-to-increase-
+
+615
+
+rapidly-in-2022, (Accessed September 3, 2023)
+
+616
+
+.
+
+617
+
+(4) Agency,
+
+U.
+
+S.
+
+E.
+
+P.
+
+Overview
+
+of
+
+Greenhouse
+
+618
+
+//www.epa.gov/ghgemissions/overview-greenhouse-gases,
+
+619
+
+2023)
+
+620
+
+.
+
+Gases.
+
+https:
+
+(Accessed July 20,
+
+33
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+621
+
+(5) Global
+
+Methane
+
+Tracker
+
+2023
+
+–
+
+Analysis.
+
+622
+
+//www.iea.org/reports/global-methane-tracker-2023,
+
+623
+
+2024)
+
+624
+
+.
+
+625
+
+2023;
+
+(Accessed
+
+https:
+March
+
+31,
+
+(6) Agency, U. S. E. P. Leak Detection and Repair: A Best Practices Guide. https:
+
+626
+
+//www.epa.gov/compliance/leak-detection-and-repair-best-practices-guide,
+
+627
+
+(Accessed July 20, 2023)
+
+628
+
+.
+
+629
+
+(7) Canadian Environment Protection Act, Consolidated federal laws of Canada, Regula-
+
+630
+
+tions Respecting Reduction in the Release of Methane and Certain Volatile Organic
+
+631
+
+Compounds (Upstream Oil and Gas Sector). 2018,
+
+632
+
+(8) METHOD
+
+21
+
+-
+
+DETERMINATION
+
+VOLATILE
+
+633
+
+POUND
+
+634
+
+08/documents/method_21.pdf, (Accessed June 26, 2024)
+
+635
+
+.
+
+636
+
+(9) Alternative
+
+LEAKS.
+
+OF
+
+Work
+
+ORGANIC
+
+COM-
+
+https://www.epa.gov/sites/default/files/2017-
+
+Practice
+
+To
+
+Detect
+
+Leaks
+
+From
+
+Equipment.
+
+https:
+
+637
+
+//www.federalregister.gov/documents/2008/12/22/E8-30196/alternative-
+
+638
+
+work-practice-to-detect-leaks-from-equipment, (Accessed June 26, 2024)
+
+639
+
+.
+
+640
+
+(10) Ravikumar,
+
+A.
+
+P.
+at
+
+oil
+
+of
+and
+
+survey
+gas
+
+frequency
+sites.
+
+on
+
+641
+
+emissions
+
+642
+
+//www.edf.org/sites/default/files/content/Appendix_D_Ravikumar_and_Lyon_Impact_of_Sur
+
+643
+
+(Accessed October 26, 2024)
+
+644
+
+.
+
+645
+
+mitigation
+
+Impact
+
+https:
+
+(11) Zimmerle, D.; Vaughn, T.; Bell, C.; Bennett, K.; Deshmukh, P.; Thoma, E. Detection
+34
+
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+646
+
+Limits of Optical Gas Imaging for Natural Gas Leak Detection in Realistic Controlled
+
+647
+
+Conditions. Environmental Science & Technology 2020, 54, 11506–11514
+
+648
+
+.
+
+649
+
+(12) Fox, T. A.; Barchyn, T. E.; Risk, D.; Ravikumar, A. P.; Hugenholtz, C. H. A review
+
+650
+
+of close-range and screening technologies for mitigating fugitive methane emissions in
+
+651
+
+upstream oil and gas. Environmental Research Letters 2019, 14, 053002
+
+652
+
+.
+
+653
+
+(13) Standards of Performance for New, Reconstructed, and Modified Sources and
+
+654
+
+Emissions Guidelines for Existing Sources:
+
+655
+
+mate
+
+656
+
+00366/standards-of-performance-for-new-reconstructed-and-modified-
+
+657
+
+sources-and-emissions-guidelines-for, (Accessed April 17, 2024)
+
+658
+
+.
+
+Review.
+
+Oil and Natural Gas Sector Cli-
+
+https://www.federalregister.gov/documents/2024/03/08/2024-
+
+659
+
+(14) Wilde, S.; Tyner, D.; Conrad, B.; Johnson, M. A Comparison of the Effectiveness
+
+660
+
+of Regulated OGI Leak Detection and Repair (LDAR) Surveys and Aerial Measure-
+
+661
+
+ments in the Real-World. https://meetingorganizer.copernicus.org/EGU24/EGU24-
+
+662
+
+6658.html
+
+663
+
+.
+
+664
+
+(15) Schwietzke, S.; Harrison, M.; Lauderdale, T.; Branson, K.; Conley, S.; George, F. C.;
+
+665
+
+Jordan, D.; Jersey, G. R.; Zhang, C.; Mairs, H. L.; Pétron, G.; Schnell, R. C. Aerially
+
+666
+
+Guided Leak Detection and Repair: A Pilot Field Study for Evaluating the Potential
+
+667
+
+of Methane Emission Detection and Cost-Effectiveness. 69, 71–88
+
+668
+
+.
+
+669
+
+(16) Kemp, C. E.; Ravikumar, A. P. New Technologies Can Cost Effectively Reduce Oil
+
+35
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+670
+
+and Gas Methane Emissions, but Policies Will Require Careful Design to Establish
+
+671
+
+Mitigation Equivalence. 55, 9140–9149, DOI: 10.1021/acs.est.1c03071
+
+672
+
+.
+
+673
+
+(17) Lavoie, T. N.; Shepson, P. B.; Cambaliza, M. O. L.; Stirm, B. H.; Conley, S.; Mehro-
+
+674
+
+tra, S.; Faloona, I. C.; Lyon, D. Spatiotemporal Variability of Methane Emissions at
+
+675
+
+Oil and Natural Gas Operations in the Eagle Ford Basin. Environmental Science &
+
+676
+
+Technology 2017, 51, 8001–8009
+
+677
+
+.
+
+678
+
+(18) Vaughn, T. L.; Bell, C. S.; Pickering, C. K.; Schwietzke, S.; Heath, G. A.; Pétron, G.;
+
+679
+
+Zimmerle, D. J.; Schnell, R. C.; Nummedal, D. Temporal variability largely explains
+
+680
+
+top-down/bottom-up difference in methane emission estimates from a natural gas pro-
+
+681
+
+duction region. Proceedings of the National Academy of Sciences 2018, 115, 11712–
+
+682
+
+11717
+
+683
+
+.
+
+684
+
+(19) Robertson, A. M.; Edie, R.; Snare, D.; Soltis, J.; Field, R. A.; Burkhart, M. D.;
+
+685
+
+Bell, C. S.; Zimmerle, D.; Murphy, S. M. Variation in Methane Emission Rates from
+
+686
+
+Well Pads in Four Oil and Gas Basins with Contrasting Production Volumes and Com-
+
+687
+
+positions. Environmental Science & Technology 2017, 51, 8832–8840
+
+688
+
+.
+
+689
+
+(20) Heimburger, A. M. F. et al. Assessing the optimized precision of the aircraft mass
+
+690
+
+balance method for measurement of urban greenhouse gas emission rates through av-
+
+691
+
+eraging. Elementa: Science of the Anthropocene 2017, 5, 26
+
+692
+
+.
+
+693
+
+(21) Zavala-Araiza, D. et al. Reconciling divergent estimates of oil and gas methane emis-
+
+694
+
+sions. Proceedings of the National Academy of Sciences 2015, 112, 15597–15602
+36
+
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+695
+
+.
+
+696
+
+(22) Wang, J. L.; Daniels, W. S.; Hammerling, D. M.; Harrison, M.; Burmaster, K.;
+
+697
+
+George, F. C.; Ravikumar, A. P. Multiscale Methane Measurements at Oil and
+
+698
+
+Gas Facilities Reveal Necessary Frameworks for Improved Emissions Accounting.
+
+699
+
+Environmental Science & Technology 2022, 56, 14743–14752
+
+700
+
+.
+
+701
+
+(23) Johnson, D.; Heltzel, R. On the Long-Term Temporal Variations in Methane Emissions
+
+702
+
+from an Unconventional Natural Gas Well Site. ACS Omega 2021, 6, 14200–14207
+
+703
+
+.
+
+704
+
+(24) Brandt, A. R. et al. Methane Leaks from North American Natural Gas Systems. Science
+
+705
+
+2014, 343, 733–735
+
+706
+
+.
+
+707
+
+(25) Zavala-Araiza, D.; Lyon, D.; Alvarez, R. A.; Palacios, V.; Harriss, R.; Lan, X.; Tal-
+
+708
+
+bot, R.; Hamburg, S. P. Toward a Functional Definition of Methane Super-Emitters:
+
+709
+
+Application to Natural Gas Production Sites. Environmental Science & Technology
+
+710
+
+2015, 49, 8167–8174
+
+711
+
+.
+
+712
+
+(26) Alvarez, R. A. et al. Assessment of methane emissions from the U.S. oil and gas supply
+
+713
+
+chain. Science 2018, eaar7204
+
+714
+
+.
+
+715
+
+(27) Schwietzke, S. et al. Improved Mechanistic Understanding of Natural Gas Methane
+
+716
+
+Emissions from Spatially Resolved Aircraft Measurements. 51, 7286–7294, DOI:
+
+717
+
+10.1021/acs.est.7b01810
+
+718
+
+.
+
+37
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+719
+
+(28) Cusworth, D. H.; Duren, R. M.; Thorpe, A. K.; Olson-Duvall, W.; Heckler, J.; Chap-
+
+720
+
+man, J. W.; Eastwood, M. L.; Helmlinger, M. C.; Green, R. O.; Asner, G. P.; Den-
+
+721
+
+nison, P. E.; Miller, C. E. Intermittency of Large Methane Emitters in the Permian
+
+722
+
+Basin. Environmental Science & Technology Letters 2021, 8, 567–573
+
+723
+
+.
+
+724
+
+(29) Fox, T. A.; Ravikumar, A. P.; Hugenholtz, C. H.; Zimmerle, D.; Barchyn, T. E.;
+
+725
+
+Johnson, M. R.; Lyon, D.; Taylor, T. A Methane Emissions Reduction Equiv-
+
+726
+
+alence Framework for Alternative Leak Detection and Repair Programs. 7, DOI:
+
+727
+
+10.1525/elementa.369
+
+728
+
+.
+
+729
+
+(30) Thorpe, A. K. et al. Mapping Methane Concentrations from a Controlled Release Ex-
+
+730
+
+periment Using the next Generation Airborne Visible/Infrared Imaging Spectrometer
+
+731
+
+(AVIRIS-NG). 179, 104–115
+
+732
+
+.
+
+733
+
+(31) Ravikumar, A. P.; Sreedhara, S.; Wang, J.; Englander, J.; Roda-Stuart, D.; Bell, C.;
+
+734
+
+Zimmerle, D.; Lyon, D.; Mogstad, I.; Ratner, B.; Brandt, A. R. Single-Blind Inter-
+
+735
+
+Comparison of Methane Detection Technologies – Results from the Stanford/EDF Mo-
+
+736
+
+bile Monitoring Challenge. 7, 37, DOI: 10.1525/elementa.373
+
+737
+
+.
+
+738
+
+(32) Bell, C. S.; Vaughn, T.; Zimmerle, D. Evaluation of next generation emission mea-
+
+739
+
+surement technologies under repeatable test protocols. Elementa: Science of the
+
+740
+
+Anthropocene 2020, 8, 32
+
+741
+
+.
+
+742
+
+(33) Sherwin, E. D.; Chen, Y.; Ravikumar, A. P.; Brandt, A. R. Single-Blind Test of
+
+38
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+743
+
+Airplane-Based Hyperspectral Methane Detection via Controlled Releases. 9, 00063,
+
+744
+
+DOI: 10.1525/elementa.2021.00063
+
+745
+
+.
+
+746
+
+(34) Johnson, M. R.; Tyner, D. R.; Szekeres, A. J. Blinded Evaluation of Airborne
+
+747
+
+Methane Source Detection Using Bridger Photonics LiDAR. 259, 112418, DOI:
+
+748
+
+10.1016/j.rse.2021.112418
+
+749
+
+.
+
+750
+
+(35) Morales, R.; Ravelid, J.; Vinkovic, K.; Korbeń, P.; Tuzson, B.; Emmenegger, L.;
+
+751
+
+Chen, H.; Schmidt, M.; Humbel, S.; Brunner, D. Controlled-Release Experiment to
+
+752
+
+Investigate Uncertainties in UAV-based Emission Quantification for Methane Point
+
+753
+
+Sources. 15, 2177–2198
+
+754
+
+.
+
+755
+
+(36) ARPA-E’s
+
+MONITOR
+
+756
+
+with
+
+757
+
+e.energy.gov/technologies/programs/monitor, (Accessed July 22, 2023)
+
+758
+
+.
+
+Innovative
+
+Program
+
+Technology
+
+|
+
+to
+
+Methane
+Obtain
+
+Observation
+
+Reductions.
+
+Networks
+
+http://arpa-
+
+759
+
+(37) Liu, Y. et al. Assessment of current methane emission quantification techniques for
+
+760
+
+natural gas midstream applications. Atmospheric Measurement Techniques 2024, 17,
+
+761
+
+1633–1649
+
+762
+
+.
+
+763
+
+(38) Bell, C.; Zimmerle, D. METEC controlled test protocol:
+
+Continuous monitor-
+
+764
+
+ing emission detection and quantification. 2022, Publisher:
+
+Mountain Scholar
+
+765
+
+tex.copyright: Copyright and other restrictions may apply. User is responsible for
+
+766
+
+compliance with all applicable laws. For information about copyright law, please see
+
+767
+
+https://libguides.colostate.edu/copyright.
+39
+
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+768
+
+(39) Bell, C.; Rutherford, J.; Brandt, A.; Sherwin, E.; Vaughn, T.; Zimmerle, D. Single-
+
+769
+
+Blind Determination of Methane Detection Limits and Quantification Accuracy Using
+
+770
+
+Aircraft-Based LiDAR. 10, DOI: 10.1525/elementa.2022.00080
+
+771
+
+.
+
+772
+
+(40) Abbadi, S. H. E.; Chen, Z.; Burdeau, P. M.; Rutherford, J. S.; Chen, Y.; Zhang, Z.;
+
+773
+
+Sherwin, E. D.; Brandt, A. R. Comprehensive Evaluation of Aircraft-Based Methane
+
+774
+
+Sensing for Greenhouse Gas Mitigation.
+
+775
+
+(41) Rutherford, J. S.; Sherwin, E. D.; Chen, Y.; Aminfard, S.; Brandt, A. R. Evaluating
+
+776
+
+Methane Emission Quantification Performance and Uncertainty of Aerial Technologies
+
+777
+
+via High-Volume Single-Blind Controlled Releases.
+
+778
+
+(42) Bell, C.; Ilonze, C.; Duggan, A.; Zimmerle, D. Performance of Continuous Emission
+
+779
+
+Monitoring Solutions under a Single-Blind Controlled Testing Protocol. Environmental
+
+780
+
+Science & Technology 2023, 57, 5794–5805
+
+781
+
+.
+
+782
+
+(43) Ilonze, C.; Emerson, E.; Duggan, A.; Zimmerle, D. Assessing the Progress of the Per-
+
+783
+
+formance of Continuous Monitoring Solutions under a Single-Blind Controlled Testing
+
+784
+
+Protocol.
+
+785
+
+786
+
+(44) Bell, C.; Zimmerle, D. METEC controlled test protocol: survey emission detection and
+quantification. 2022,
+
+787
+
+(45) Bell, C. S.; Vaughn, T. L.; Zimmerle, D.; Herndon, S. C.; Yacovitch, T. I.; Heath, G. A.;
+
+788
+
+Pétron, G.; Edie, R.; Field, R. A.; Murphy, S. M.; Robertson, A. M.; Soltis, J. Compar-
+
+789
+
+ison of methane emission estimates from multiple measurement techniques at natural
+
+790
+
+gas production pads. Elementa: Science of the Anthropocene 2017, 5, 79
+
+791
+
+.
+
+40
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+792
+
+(46) Allen, D. T.; Torres, V. M.; Thomas, J.; Sullivan, D. W.; Harrison, M.; Hendler, A.;
+
+793
+
+Herndon, S. C.; Kolb, C. E.; Fraser, M. P.; Hill, A. D.; Lamb, B. K.; Miskimins, J.;
+
+794
+
+Sawyer, R. F.; Seinfeld, J. H. Measurements of Methane Emissions at Natural Gas Pro-
+
+795
+
+duction Sites in the United States. 110, 17768–17773, DOI: 10.1073/pnas.1304880110
+
+796
+
+.
+
+797
+
+(47) Pacsi, A.; Ferrara, T.; Schwan, K.; Tupper, P.; Lev-On, M.; Smith, R.; Ritter, K.
+
+798
+
+Equipment Leak Detection and Quantification at 67 Oil and Gas Sites in the Western
+
+799
+
+United States. 7, 29
+
+800
+
+.
+
+801
+
+(48) Brown, J.; Rufael, T.; Harrison, M.; Roman-White, S.; Ross, G.; George, F.; Zim-
+
+802
+
+merle, D. Informing methane emissions inventories using facility aerial measurements
+
+803
+
+at midstream natural gas facilities; Preprint, 2023
+
+804
+
+.
+
+805
+
+(49) Kunkel, W. M.; Carre-Burritt, A. E.; Aivazian, G. S.; Snow, N. C.; Harris, J. T.;
+
+806
+
+Mueller, T. S.; Roos, P. A.; Thorpe, M. J. Extension of Methane Emission Rate Dis-
+
+807
+
+tribution for Permian Basin Oil and Gas Production Infrastructure by Aerial LiDAR.
+
+808
+
+57, 12234–12241
+
+809
+
+.
+
+810
+
+(50) Ilonze, C.; Wang, J. L.; Ravikumar, A. P.; Zimmerle, D. Methane Quantification Per-
+
+811
+
+formance of the Quantitative Optical Gas Imaging (QOGI) System Using Single-Blind
+
+812
+
+Controlled Release Assessment. 24, 4044
+
+813
+
+.
+
+814
+
+(51) Day, R.; Emerson, E.; Bell, C.; Zimmerle, D. Point Sensor Networks Struggle to Detect
+
+815
+
+and Quantify Short Controlled Releases at Oil and Gas Sites. 24, 2419
+
+816
+
+.
+41
+
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+817
+
+(52) EPA, 40 CFR Part 60 Subpart OOOOb – Standards of Performance for
+
+818
+
+Crude Oil and Natural Gas Facilities for Which Construction, Modification or
+
+819
+
+Reconstruction Commenced After December 6, 2022. 2024, Accessed:
+
+820
+
+12-16. https://www.ecfr.gov/current/title-40/chapter-I/subchapter-C/part-
+
+821
+
+60/subpart-OOOOb
+
+822
+
+.
+
+823
+
+2024-
+
+(53) von Fischer, J. C.; Cooley, D.; Chamberlain, S.; Gaylord, A.; Griebenow, C. J.;
+
+824
+
+Hamburg, S. P.;
+
+825
+
+Vehicle-Based Identification of Location and Magnitude of Urban Natural Gas
+
+826
+
+Pipeline Leaks. Environmental Science & Technology 2017, 51, 4091–4099, DOI:
+
+827
+
+10.1021/acs.est.6b06095
+
+828
+
+.
+
+829
+
+Salo, J.;
+
+Schumacher, R.;
+
+Theobald, D.;
+
+Ham, J. Rapid,
+
+(54) Ravikumar, A. P.; Wang, J.; Brandt, A. R. Are Optical Gas Imaging Technologies
+
+830
+
+Effective For Methane Leak Detection? 51, 718–724, DOI: 10.1021/acs.est.6b03906
+
+831
+
+.
+
+832
+
+(55) United States Environmental Protection Agency:
+
+Waste Emissions Charge.
+
+833
+
+https://www.epa.gov/inflation-reduction-act/waste-emissions-charge,
+
+834
+
+cessed August 18, 2024)
+
+835
+
+.
+
+42
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+(Ac-
+
+For Table of Contents Only
+
+43
+https://doi.org/10.26434/chemrxiv-2025-5ff89 ORCID: https://orcid.org/0000-0003-4231-3278 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+

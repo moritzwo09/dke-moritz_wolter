@@ -1,0 +1,1844 @@
+1
+2
+
+Quantifying Multidimensional Effects of Physicochemical Parameters on PFAS Adsorption
+Using a Hybrid Response Surface Methodology-Machine Learning Approach
+
+3
+4
+
+Harsh V. Patel1, Jazmin Green2, Hyo-Shin (John) Park3, Stephanie Luster-Teasley Pass1, Renzun
+Zhao1,*
+
+5
+6
+
+1Department of Civil, Architectural, and Environmental Engineering, North Carolina A&T State
+
+7
+8
+
+2Department of Computer Science, North Carolina A&T State University, Greensboro, NC
+
+University, Greensboro, NC 27411, USA
+27411, USA
+
+9
+10
+
+3Department of Engineering Management and Systems Engineering, Old Dominion University,
+
+11
+
+*Corresponding author. Phone: (336) 285-3684; fax: (336)-334-7540; e-mail: rzhao@ncat.edu
+
+Norfolk, VA 23529, USA
+
+12
+13
+
+Abstract
+
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+
+Per- and polyfluoroalkyl substances (PFAS) contamination has posed a significant environmental
+and public health challenge due to their ubiquitous nature. Adsorption has emerged as a
+promising remediation technique, yet optimizing adsorption efficiency remains complex due to
+the diverse physicochemical properties of PFAS and the wide range of adsorbent materials.
+Traditional modeling approaches, such as response surface methodology (RSM), struggled to
+capture nonlinear interactions, while standalone machine learning (ML) models required
+extensive datasets. This study addressed these limitations by developing hybrid RSM-ML models
+to improve the prediction and optimization of PFAS adsorption. A comprehensive dataset was
+constructed using experimental adsorption data, integrating key parameters such as pH, pH pzc,
+surface area, temperature, and PFAS molecular properties. RSM was employed to model
+adsorption behavior, while gradient boosting (GB), random forest (RF), and extreme gradient
+boosting (XGB) were used to enhance predictive performance. Hybrid models—linear, RMSEbased, multiplicative, and meta-learning—were developed and evaluated. The meta-learning
+HOP-RSM-GB model achieved near-perfect accuracy (R² = 1.00, RMSE = 10.59),
+outperforming all other models. Surface plots revealed that low pH and high pH pzc maximized
+the adsorption while increasing log Kow consistently enhanced PFAS adsorption. These findings
+establish hybrid RSM-ML modeling as a powerful framework for optimizing PFAS remediation
+strategies. The integration of statistical and machine learning approaches significantly improves
+predictive accuracy, reduces experimental costs, and provides deeper insights into adsorption
+mechanisms. This study underscores the importance of data-driven approaches in environmental
+engineering and highlights future opportunities for integrating ML-driven modeling with
+experimental adsorption research.
+
+36
+37
+
+Keywords
+1
+
+https://doi.org/10.26434/chemrxiv-2025-3wl26 ORCID: https://orcid.org/0000-0002-2723-2616 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+38
+39
+
+Per- and Polyfluoroalkyl Substance (PFAS), Machine Learning, Response Surface Methodology,
+Adsorption, Distribution Coefficient.
+
+40
+41
+42
+
+1. Introduction
+
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+
+Per- and polyfluoroalkyl substances (PFAS) are synthetic chemicals used extensively in
+industrial applications and consumer products due to their chemical stability, thermal resistance,
+and water- and oil-repellent properties. Commonly found in nonstick cookware, firefighting
+foams, and water-resistant fabrics, PFAS has become pervasive in the environment, with
+contamination detected in soil, air, and particularly water systems (McNamara et al., 2018;
+Pramanik et al., 2015; Ross et al., 2018; Rostvall et al., 2018; D. Zhang et al., 2016a). These
+“forever chemicals” are characterized by their resistance to degradation under natural conditions,
+leading to their persistence in ecosystems and accumulation in biological organisms. The health
+impacts of PFAS exposure have been widely documented, including links to immune
+suppression, hormonal disruption, developmental delays in children, and increased risks of
+cancers. As of 2024, the U.S. Environmental Protection Agency (EPA) has established stringent
+Maximum Contamination Levels (MCLs) for perfluorooctanoic acid (PFOA), perfluorooctane
+sulfonic acid (PFOS), perfluorohexane sulfonic acid (PFHxS), perfluorononanoic acid (PFNA),
+and hexafluoropropylene oxide (HFPO) dimer acid as 4, 4, 10, 10, and 10 ng/L, respectively (US
+EPA, 2024). These limits underscore the urgency of developing effective remediation strategies
+to protect public health and comply with regulatory standards.
+
+59
+60
+61
+62
+63
+64
+65
+66
+
+Among remediation techniques, adsorption has emerged as a promising approach due to its costeffectiveness, scalability, and ability to target a wide range of PFAS compounds (Ross et al.,
+2018). Adsorption involves the transfer of PFAS molecules from the aqueous phase to the
+surface of a solid adsorbent, effectively reducing their concentration in contaminated water.
+Various materials, including activated carbon, biochar, ion-exchange resins, and mineral-based
+sorbents, have been explored as potential adsorbents. The efficiency of adsorption processes
+depends on several factors, including the physicochemical properties of the adsorbent and PFAS
+molecules, as well as operational conditions such as pH, temperature, and adsorbent dose.
+
+67
+68
+69
+70
+71
+72
+73
+
+Optimizing adsorption performance is a complex task due to the interplay of these variables and
+the diversity of PFAS compounds, which vary in molecular weight, chain length, hydrophobicity,
+and functional groups. Traditional experimental approaches, such as one-factor-at-a-time (OFAT)
+studies, are insufficient for capturing multidimensional interactions between variables and
+require extensive time and resources. To overcome these challenges, advanced statistical and
+computational methods are essential for systematically modeling and optimizing adsorption
+systems.
+
+74
+75
+76
+
+Response surface methodology (RSM) is a powerful statistical tool that systematically explores
+variable interactions and optimizes processes with fewer experiments (Abraham & Walsh, 1992;
+Burg et al., 2003; Kamlet et al., 1985; Sinha et al., 2022; Sprunger et al., 2007; K. Zhang et al.,
+
+2
+https://doi.org/10.26434/chemrxiv-2025-3wl26 ORCID: https://orcid.org/0000-0002-2723-2616 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+77
+78
+79
+80
+81
+82
+83
+84
+85
+
+2020). In PFAS studies, RSM has been used to optimize degradation and adsorption processes,
+including PFOS removal via heterogeneous photocatalysis (83% removal in 8 hours) (de S.
+Furtado et al., 2021), PFOA adsorption using alginate hydrogel (94.8 ± 2.1% removal) (Naim
+Shaikh & Nawaz, 2024), and PFOA removal with layered double hydroxides and peroxydisulfate
+activation (H. Yang et al., 2022). These investigations demonstrate RSM’s effectiveness in
+optimizing operational parameters and adsorbent design for PFAS treatment under mild
+conditions. However, its reliance on polynomial regression can limit capturing complex
+nonlinear and higher-order interactions, suggesting the need for complementary approaches
+when dealing with diverse PFAS compounds and adsorbents.
+
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+
+Machine learning (ML) offers advanced capabilities for modeling complex adsorption processes
+by uncovering nonlinear relationships, variable interactions, and hidden patterns without relying
+on predefined equations. Popular algorithms such as random forest (RF), gradient boosting (GB),
+and extreme gradient boosting (XGB) show high predictive accuracy and can rank the influence
+of parameters (e.g., pH, hydrophobicity) on adsorption outcomes (Karbassiyazdi et al., 2022a).
+However, large and diverse datasets are essential for accurate training an ML model, which can
+be resource-intensive in PFAS research. Integrating response surface methodology (RSM) with
+ML in hybrid models addresses this challenge: RSM generates structured datasets and identifies
+key variables, while ML enhances predictive performance by capturing nonlinearities and higherorder interactions. Although hybrid models have been successfully applied to areas like
+wastewater treatment and heavy metal adsorption, their use in PFAS adsorption remains limited,
+highlighting a promising avenue for future research.
+
+98
+99
+100
+101
+
+In PFAS adsorption studies, hybrid RSM-ML models can: (1) accurately predict Kd across a wide
+range of adsorbents and conditions, (2) identify the most influential factors driving adsorption
+performance, (3) optimize process parameters to maximize PFAS distribution, and (4) reduce the
+need for exhaustive experimentation, saving time and resources.
+
+102
+103
+104
+105
+106
+107
+108
+109
+
+This study aims to develop a comprehensive RSM-ML framework for modeling and optimizing
+the adsorption of PFAS on various adsorbent materials. The specific objectives are to: Investigate
+the effects of adsorbent properties, PFAS characteristics, and process conditions on the
+distribution coefficient (Kd) using RSM; Implement and compare hybrid RSM-ML algorithms,
+including RF, GB, and XGB, to predict Kd and evaluate their performance relative to RSM;
+Develop hybrid models to enhance predictive accuracy and capture complex variable
+interactions; and Optimize process parameters to maximize PFAS distribution coefficient and
+provide insights into variable significance for guiding future research and development.
+
+110
+111
+112
+
+2. Methodology
+2.1 Data Mining
+
+113
+114
+115
+116
+
+To construct a comprehensive dataset for modeling PFAS adsorption, we integrated experimental
+data mining from literature with synthetic data generation derived from isotherm equations. This
+approach facilitated the development of a robust dataset encompassing distribution coefficients
+(Kd) and key physicochemical variables essential for understanding adsorption processes. The
+3
+
+https://doi.org/10.26434/chemrxiv-2025-3wl26 ORCID: https://orcid.org/0000-0002-2723-2616 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+
+primary source of data was peer-reviewed literature reporting adsorption experiments for PFAS.
+These studies included experimental details such as adsorption isotherms, BET surface area, and
+equilibrium concentration ranges (Ce). Adsorption isotherms, including widely used models such
+as the Freundlich equation (Qe = Kf * Ce1/n), provided the foundation for deriving additional data
+points. From the literature, isotherm parameters (Kf, 1/n) were extracted through regression
+fitting of experimental data. Using the established isotherm equations, equilibrium
+concentrations (Ce) spanning the reported range in each study were substituted to calculate
+corresponding Qe values, representing the amount of PFAS adsorbed per unit mass of absorbent.
+The calculated Qe values were then used to determine the distribution coefficient (K d), a critical
+parameter reflecting the equilibrium partitioning of PFAS between the solid and liquid phases
+(Kd = Qe/Ce). This process was repeated systematically to generate synthetic data, ensuring that
+each isotherm contributed at least 15 data points within its experimental range. This interpolation
+strategy enriched the dataset while maintaining consistency with the original experimental
+framework. Table S1 lists studies from which the data was mined for Kd. 2580 data points were
+collected from 172 isotherms obtained from more than 30 journal articles published on 73 unique
+adsorbents and 10 PFAS compounds (PFOS, PFOA, PFHxS, PFHxA, PFBS, PFBA, Gen-X,
+PFHpA, PFDA, and PFDoDA) between 2009 and 2025 (Ateia et al., 2018; Campos-Pereira et
+al., 2020; Chang et al., 2019, 2020; W. Chen et al., 2017; X. Chen et al., 2011a, 2011b; Deng et
+al., 2012; Fagbayigbo et al., 2017; Jian et al., 2019; Lei, Lian, et al., 2022; Lei, Yao, et al., 2022;
+L. Liu et al., 2018; T. Liu et al., 2018; Meng et al., 2019; Patel et al., 2025; Qian et al., 2017;
+Senevirathna et al., 2010; Tang et al., 2010; B. Wang et al., 2016; F. Wang et al., 2012; F. Wang
+& Shih, 2011; Xing et al., 2020; A. Yang et al., 2020; Yoon et al., 2025; Yu et al., 2009; D. Zhang
+et al., 2016b; Q. Zhang et al., 2011; Zhao et al., 2014; Zhi & Liu, 2016; Zhou et al., 2010).
+
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+
+In parallel, the physicochemical properties of PFAS and adsorbent materials were also mined
+from the literature. BET surface area (m2/g) data were directly extracted, providing insights into
+the adsorbent's structural properties. Additional PFAS molecular properties, including Abraham
+solvation parameters (A, B, S, E, V), were computed using the ACD/Labs Percepta platform.
+These parameters quantify molecular interactions, such as hydrogen bonding (A, B),
+polarity/polarizability (S, E), and molecular size/volume (V), offering a detailed understanding
+of PFAS behavior during adsorption. This comprehensive methodology ensured that the dataset
+captured critical variables influencing adsorption processes. By combining experimental
+isotherm data with computational descriptors, this study bridges empirical insights and
+theoretical modeling. The resulting dataset supports advanced computational techniques, such as
+response surface methodology (RSM) and machine learning (ML), for predicting and optimizing
+PFAS adsorption across diverse adsorbent materials and environmental conditions.
+
+152
+
+2.2 Response Surface Methodology (RSM) Framework
+
+153
+154
+155
+156
+
+The response surface methodology (RSM) was employed as a systematic and statistical approach
+to model the distribution coefficient (Kd) for PFAS compounds on various adsorbents. RSM
+provides a structured framework for identifying the relationships between key independent
+variables and the response variable, Kd. The analysis was designed to quantify the linear, non-
+
+4
+https://doi.org/10.26434/chemrxiv-2025-3wl26 ORCID: https://orcid.org/0000-0002-2723-2616 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+157
+158
+
+linear effects, and interaction effects of the independent variables, enabling a comprehensive
+exploration of the multivariable space.
+
+159
+160
+161
+162
+163
+164
+
+Quadratic and higher-order polynomial (HOP) regression was used for RSM. The independent
+variables included pH, adsorbent dose (g/L), temperature (°C), initial concentration (C 0, mg/L),
+BET surface area (m²/g), and physicochemical properties of PFAS compounds such as pK a, log
+Kow, molecular weight (mg/mmol), and Abraham solvation parameters (A, B, S, E, V). These
+variables were selected based on their relevance to adsorption mechanisms and their established
+influence on PFAS adsorption.
+
+165
+166
+167
+168
+169
+
+The response variable, Kd, was derived from the relationship Kd = Qe/Ce, where Qe represents the
+equilibrium adsorption capacity, and Ce is the equilibrium concentration of PFAS in the solution.
+Experimental data from the literature and synthetic data generated from isotherm models were
+used to populate the data matrix. The quadratic and higher-order polynomial regression RSM
+models are given as equations (1) and (2).
+
+170
+
+𝐾𝑑 = 𝛽0 ∑𝑘𝑖=1 𝛽𝑖 𝑋𝑖 + ∑𝑘𝑖=1 𝛽𝑖𝑖 𝑋𝑖2 + ∑𝑘𝑖=1 ∑𝑘𝑗=𝑖+1 𝛽𝑖𝑗 𝑋𝑖 𝑋𝑗 + 𝜖
+
+(1)
+
+171
+
+𝐾𝑑 = 𝛽0 + ∑𝑛𝑖=1 𝛽𝑖 𝑋𝑖 + ∑𝑛𝑖=1 𝛽𝑖𝑖 𝑋𝑖2 + ∑𝑖<𝑗 𝛽𝑖𝑗 𝑋𝑖 𝑋𝑗 + ∑𝑛𝑖=1 𝛽𝑖𝑖𝑖 𝑋𝑖3 + ∑𝑖<𝑗<𝑘 𝛽𝑖𝑗𝑘 𝑋𝑖 𝑋𝑗 𝑋𝑘 +∈
+
+(2)
+
+172
+173
+174
+175
+176
+
+where β0 is the intercept, βi, βii, βij, βiii, and βijk are the regression coefficients for linear,
+quadratic, and interaction terms, respectively, Xi, Xj, and Xk are the independent variables, and ϵ
+is the residual error. The adequacy of the model and significance of each linear, non-linear, and
+interactive term based on independent variables was assessed through analysis of variance
+(ANOVA), and coefficient of determination (R2).
+
+177
+
+2.3 Machine Learning (ML) Models
+
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+
+To complement the RSM framework and address its limitations in capturing nonlinear and highorder interactions, machine learning (ML) algorithms were employed. The ML models used in
+this study included random forest (RF), gradient boosting (GB), and extreme gradient boosting
+(XGB), which have demonstrated strong performance in modeling complex environmental
+processes. These models were trained to predict Kd based on the same independent variables
+used in the RSM analysis. RF is an ensemble learning method that constructs multiple decision
+trees during training and averages their predictions to enhance accuracy and reduce overfitting.
+The algorithm's ability to handle multicollinearity and nonlinear relationships makes it
+particularly suitable for adsorption studies. GB builds sequential decision trees, with each tree
+correcting the errors of its predecessor. This iterative approach enables the model to achieve high
+predictive accuracy and uncover intricate relationships within the dataset. XGB, an optimized
+implementation of gradient boosting, incorporates advanced features such as regularization to
+prevent overfitting and parallel processing to improve computational efficiency. These
+characteristics make XGB a powerful tool for high-dimensional adsorption datasets.
+
+192
+193
+
+Each ML model was trained on 80% of the dataset and validated on the remaining 20% using kfold cross-validation (k = 5) to ensure robustness and minimize overfitting. The performance of
+
+5
+https://doi.org/10.26434/chemrxiv-2025-3wl26 ORCID: https://orcid.org/0000-0002-2723-2616 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+194
+195
+
+the models was evaluated using key metrics, including the coefficient of determination (R 2), root
+mean square error (RMSE), mean absolute error (MAE), and mean square error (MSE).
+
+196
+
+2.4 Hybrid RSM-ML Models
+
+197
+198
+199
+200
+201
+
+In this study for hybrid modeling, QRSM and HOP-RSM were combined with RF, GB, and XGB
+models to optimize adsorption parameters and predict distribution coefficients (K d). QRSM
+incorporates linear, squared, and interaction terms to model adsorption behavior. At the same
+time, HOP-RSM extends this framework with higher-degree polynomial terms, allowing for
+improved precision in capturing more intricate adsorption interactions.
+
+202
+
+Several hybrid RSM-ML frameworks were employed to improve predictive accuracy:
+
+203
+204
+205
+206
+
+1. Linear Hybrid Model (LHM): This method corrects RSM predictions using ML-based
+residual adjustments, enhancing accuracy without sacrificing interpretability. However, it
+may struggle with highly nonlinear interactions that cannot be captured by simple residual
+corrections.
+
+207
+208
+209
+210
+
+2. RMSE-Based Dynamic Hybrid Model: This approach dynamically selects either the RSM or
+ML component based on Root Mean Square Error (RMSE) performance, ensuring optimal
+prediction for varying adsorption conditions. However, it requires computationally intensive
+cross-validation to determine the best model at each instance.
+
+211
+212
+213
+214
+
+3. Multiplicative Hybrid Model: Instead of additive polynomial terms, this model introduces
+multiplicative interactions between adsorption parameters, which helps in modeling
+synergistic and antagonistic adsorption effects. However, it has a more complex parameter
+space, making optimization challenging.
+
+215
+216
+217
+218
+
+4. Metal Model Hybridization: This ensemble-based approach combines multiple ML models
+(e.g., GB, XGBoost, Random Forests) with RSM to improve robustness and reduce
+overfitting. While it provides high predictive accuracy, it comes with increased
+computational cost and complexity in hyperparameter tuning.
+
+219
+
+2.4.1 Model Performance
+
+220
+221
+222
+223
+224
+
+The predictive accuracy and generalizability of the models were validated using the 20% test
+dataset. For hybrid models, the performance was compared against stand-alone RSM and ML
+models to assess their ability to capture complex variable interactions and improve prediction
+accuracy. Statistical parameters such as R-squared, RSME, MSE, and MAE were used to
+compare the prediction accuracy of each model.
+
+225
+
+2.4.2 Surface plots
+
+226
+227
+228
+
+Based on the significance determined from ANOVA analysis, surface plots were generated for
+the most significant pair of descriptors for Kd. Surface plots were used to visualize the linear,
+non-linear, and interactive effects of the descriptor pair on Kd.
+
+229
+
+2.4.1 Feature Importance Analysis
+
+6
+https://doi.org/10.26434/chemrxiv-2025-3wl26 ORCID: https://orcid.org/0000-0002-2723-2616 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+230
+231
+232
+233
+234
+235
+236
+
+Feature importance analysis was performed for the ML and hybrid models to quantify the
+relative contribution of each independent variable to the prediction of K d. For ensemble models
+such as RF, GB, and XGB, the feature importance scores were derived from the mean decrease in
+impurity (Gini index) or gain, depending on the algorithm. These scores provided valuable
+insights into the factors most strongly influencing PFAS adsorption, guiding the development of
+targeted remediation strategies. Results for feature importance are showcased in SI with Figure
+S6, S7, and S8.
+
+237
+238
+239
+
+3 Results and Discussion
+3.1 Response Surface Methodology
+
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+
+The response surface methodology (RSM) model using quadratic and higher-order polynomial
+(HOP) regression provided a detailed understanding of the relationships between key variables
+and the distribution coefficient (Kd) for PFAS adsorption. The HOP regression model captured
+linear, non-linear, and interaction effects of the variables, including surface area, pHpzc,
+molecular weight, pKa, pH, temperature, log Kow, adsorbent dose, initial concentration, and
+Abraham solvation parameters (A, B, S, E, V). The regression coefficients, standard errors (SE),
+t-statistics, and p-values were calculated to evaluate the significance and statistical soundness of
+each linear, non-linear, and interactive term. However, the significance level of these linear, nonlinear, and interactive terms was found to be different, as shown in Table 1 and Table S2. Table
+1 presents the results of a Higher-Order Polynomial Response Surface Methodology (HOPRSM) regression model, which estimates the influence of various physicochemical parameters
+on the distribution coefficient (Kd). The coefficients (Estimate) represent the magnitude and
+direction of each parameter's effect on Kd, while the standard error (SE), t-statistic (t-Stat), and pvalue (p-value) provide insight into the statistical significance of each predictor.
+
+254
+255
+256
+257
+258
+259
+260
+261
+262
+
+Among the linear terms, the Surface Area (1.366, p = 0.002) shows a positive and statistically
+significant effect on Kd, suggesting that a larger surface area enhances adsorption capacity.
+Similarly, pHpzc (302.180, p = 0.031) has a positive effect, indicating that materials with a higher
+point of zero charge (pHpzc) tend to favor PFAS adsorption, likely due to stronger electrostatic
+interactions. pKa (14.909, p = 0.040) also exhibits a positive and significant influence, implying
+that the acid dissociation constant of PFAS compounds plays a key role in their adsorption
+behavior. The pH (-1315.724, p = 0.022) term is negative, indicating that increasing pH reduces
+Kd, which aligns with expectations since higher pH values can increase electrostatic repulsion
+between PFAS and the adsorbent surface.
+
+263
+264
+265
+266
+267
+268
+269
+
+Temperature (403.035, p = 0.041) has a significant positive effect, implying that higher
+temperatures might enhance adsorption by increasing diffusion rates or favoring specific
+adsorption mechanisms. Log Kow (18.133, p = 0.007) also has a significant impact, confirming that
+hydrophobic interactions play a role in PFAS adsorption. However, molecular weight (56.610, p
+= 0.891) is not statistically significant, suggesting that molecular size alone does not strongly
+influence Kd within the studied range. Besides molecular weight, the other non-significant terms
+are given in Table S2 with detailed explanations in supporting information.
+
+7
+https://doi.org/10.26434/chemrxiv-2025-3wl26 ORCID: https://orcid.org/0000-0002-2723-2616 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+270
+271
+272
+273
+274
+275
+276
+
+One limitation of this HOP-RSM model is that it only considers linear relationships between the
+predictors and Kd. The absence of non-linear and interaction terms means that the model does not
+account for complex adsorption behaviors, such as synergistic or antagonistic effects between
+variables. For example, adsorption processes often involve non-linear dependencies on pH and
+pKa, yet these effects are not captured in the current model. Additionally, the large standard error
+for some parameters (e.g., pKa: 3224.192) suggests possible overfitting or collinearity among
+predictors, which could impact the reliability of the estimates.
+
+277
+278
+279
+
+Overall, while the model provides valuable insights into the primary factors influencing PFAS
+adsorption, further analysis incorporating machine learning model to capture non-linearity would
+improve predictive accuracy and better describe adsorption mechanisms.
+
+280
+281
+
+Table 1: Estimated coefficients for significant parameters obtained from the HOP – RSM model.
+(NaN: Not A Number)
+Row
+(Intercept)
+Surface Area
+pHpzc
+Molecular weight
+pKa
+pH
+Temperature
+Log Kow
+
+Estimate
+0.000
+1.366
+302.180
+56.610
+14.909
+-1315.724
+403.035
+18.133
+
+SE
+0.000
+0.442
+295.267
+411.968
+3224.192
+1081.786
+197.319
+1087.640
+
+t-Stat
+
+p-value
+
+3.089
+2.023
+0.137
+3.005
+-2.216
+2.043
+2.017
+
+0.002
+0.031
+0.891
+0.040
+0.022
+0.041
+0.007
+
+282
+
+3.2 Model Performance
+
+283
+284
+285
+286
+287
+288
+289
+
+The predicted versus actual Kd plot compared six modeling approaches: HOP-RSM, GB, Linear
+HOP-RSM-GB, RMSE-based HOP-RSM-GB, Multiplicative HOP-RSM-GB, and Meta HOPRSM-GB shown in Figure 1 and data for the models is given on Table S3. The distribution of
+points around the ideal y = x line revealed distinct differences in predictive accuracy among
+these models. The meta-model (Meta HOP-RSM-GB) exhibited the highest alignment with the
+ideal line, achieving an R2 of 1.00, RMSE of 10.59, MSE of 112.21, and MAE of 3.95. This
+indicated near-perfect predictive performance due to the ensemble’s ability to capture both
+
+8
+https://doi.org/10.26434/chemrxiv-2025-3wl26 ORCID: https://orcid.org/0000-0002-2723-2616 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+290
+
+global trends and local variations in adsorption behavior.
+
+291
+292
+293
+
+Figure 1: Predicted vs Actual Kd scatter plot to compare the performance of stand-alone and
+hybrid HOP-RSM-GB models.
+
+294
+295
+296
+297
+298
+299
+300
+
+The RMSE-based hybrid (RMSE-based HOP-RSM-GB) also demonstrated strong predictive
+accuracy, with an R2 of 0.99, RMSE of 488.82, MSE of 238940.5, and MAE of 52.84. While
+slightly less accurate than the meta-model, this approach significantly improved over the
+individual models by optimizing parameter selection through RMSE minimization. The standalone gradient boosting model (GB) performed well, with an R2 of 1.00, RMSE of 50.12, MSE
+of 2511.66, and MAE of 22.81, indicating that GB effectively captured nonlinearity but lacked
+the refinement introduced by hybridization with polynomial regression.
+
+301
+302
+303
+304
+305
+306
+307
+308
+
+Conversely, the linear hybrid model (Linear HOP-RSM-GB) exhibited lower predictive
+accuracy, with an R2 of 0.75, RMSE of 2421.87, MSE of 5856464.17, and MAE of 397.61. Its
+larger deviations from the ideal line were particularly pronounced at higher Kd values, suggesting
+limitations in capturing complex nonlinear interactions between process conditions and
+adsorption. The multiplicative hybrid (Multiplicative HOP-RSM-GB) performed similarly, with
+an R2 of 0.53, RMSE of 3106.61, MSE of 9651020.85, and MAE of 205.43, indicating moderate
+improvement over pure polynomial regression but an inability to fully capture adsorption
+dynamics.
+
+309
+310
+311
+312
+313
+
+The HOP-RSM model exhibited the weakest performance, with an R2 of 0.04, RMSE of
+4410.14, MSE of 19449354.35, and MAE of 830.48. The severe underestimation of higher Kd
+values and broad scatter indicated the model’s failure to generalize beyond lower adsorption
+capacities, a limitation stemming from polynomial regression's sensitivity to multicollinearity
+and overfitting in high-dimensional feature spaces. The disparities in model performance
+9
+
+https://doi.org/10.26434/chemrxiv-2025-3wl26 ORCID: https://orcid.org/0000-0002-2723-2616 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+314
+315
+316
+317
+
+suggested that standalone polynomial regression models lacked the flexibility to model nonlinear
+adsorption behaviors accurately, while hybridization with GB, particularly through RMSE-based
+and meta-learning approaches, significantly improved predictive accuracy by leveraging the
+strengths of both regression-based and tree-based methodologies.
+
+318
+319
+320
+321
+
+The hybrid HOP-RSM with GB model had the highest predictive accuracy and least error values
+compared to stand-alone models, hybrid QRSM models, and hybrid HOP-RSM with RF and
+XGB models as shown in Table S3. The predicted vs actual K d plots for the other 5 hybrid
+models are shown in Figures S1, S2, S3, S4, and S5.
+
+322
+
+3.3 Interactive Surface Plots
+
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+
+Based on the t-stat and p-value the significant parameters were selected for surface plots to
+visualize the interactive effect of these parameters on Kd. Figure 2 illustrates the interactive
+effects of surface area (m²/g) and pHpzc on the distribution coefficient (Kd) for PFAS adsorption.
+The surface exhibits a curved profile, highlighting the nonlinear relationship between these
+variables. Adsorbents with surface areas in the range of 1,000 – 2,000 m2/g demonstrate
+increased Kd, when the pHpzc is in the range of 6 – 10, indicating enhanced adsorption
+performance due to the greater availability of active binding sites. Similarly, pHpzc plays a
+significant role, where Kd increases with pHpzc until it reaches 10. When pHpzc was higher than
+10, Kd values showed a decreasing pattern. This trend reflects the ability of adsorbents with
+higher pHpzc to maintain a positively charged surface, favoring interactions with negatively
+charged PFAS molecules. However, at very high surface areas or extreme pHpzc values, the
+adsorption performance plateaus suggest potential saturation effects. The plot underscores the
+importance of optimizing both adsorbent surface area and surface charge properties to maximize
+PFAS removal efficiency under various environmental conditions.
+
+337
+338
+
+Figure 2: Response Surface plot showing the interactive effect of surface area and pHpzc on Kd.
+
+10
+https://doi.org/10.26434/chemrxiv-2025-3wl26 ORCID: https://orcid.org/0000-0002-2723-2616 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+339
+340
+341
+342
+343
+344
+345
+346
+
+The surface plot in Figure 3 illustrates the relationship between the distribution coefficient (K d,
+L/g) and two key predictor variables: Surface Area (m²/g) and pKa using the HOP-RSM XGB
+meta-model. The surface shows that Kd reaches its peak at moderate surface areas (~1000–1500
+m²/g) and higher pKa values (~0 to 4). This suggests that adsorption efficiency is highest when
+the adsorbate has a moderate to high pKa, allowing better interaction with the adsorbent surface.
+However, beyond ~1500 m²/g, Kd declines, likely due to pore blockage, diffusion limitations, or
+reduced availability of active sites, indicating that excessive surface area does not always
+enhance adsorption.
+
+347
+348
+349
+350
+351
+352
+353
+
+The effect of pKa on Kd is also significant. At low pKa values (~ -4 to 0), Kd remains low,
+suggesting weaker adsorption due to the adsorbate being in a highly ionized state. As pK a
+increases, Ka rises, indicating stronger hydrophobic or π–π interactions. The curvature of the
+surface plot highlights the interactive effect of surface area and pK a, suggesting that adsorption
+efficiency depends on achieving an optimal balance between these two factors. Simply
+increasing surface area does not guarantee higher adsorption, emphasizing the need to optimize
+both adsorbent properties and chemical interactions for effective contaminant removal.
+
+354
+355
+
+Figure 3: Surface plot showing the interactive effect of pKa and surface area on Kd.
+
+356
+357
+358
+359
+
+Figure 4 depicts the relationship between the distribution coefficient (K d, L/g) and two key
+variables: Surface Area (m²/g) and Temperature (°C), modeled using a HOP-RSM XGB metamodel. The plot demonstrates a parabolic trend, where Kd increases with surface area and
+temperature up to a certain threshold before gradually decreasing. This indicates that both factors
+
+11
+https://doi.org/10.26434/chemrxiv-2025-3wl26 ORCID: https://orcid.org/0000-0002-2723-2616 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+360
+
+contribute significantly to adsorption efficiency, but their effects are nonlinear.
+
+361
+362
+
+Figure 4: Surface plot showing the interactive effect of temperature and surface area on Kd.
+
+363
+364
+365
+366
+367
+368
+369
+370
+
+At moderate surface area (~1000–1500 m²/g) and temperature (~30–40°C), Kd reaches its
+maximum, suggesting that an optimal combination of surface properties and thermal conditions
+enhances adsorption. However, beyond ~1500 m²/g surface area and above ~40°C, adsorption
+efficiency declines, likely due to desorption effects, decreased adsorbate-adsorbent interactions,
+or structural changes in the adsorbent material. The surface plot highlights the interactive nature
+of surface area and temperature, reinforcing that excessively high temperatures may weaken
+adsorption forces, while extreme surface area values may not always improve adsorption due to
+diffusion limitations or reduced active site accessibility.
+
+371
+372
+373
+374
+375
+376
+377
+
+The surface plot in Figure 5 illustrates the relationship between the distribution coefficient (K d,
+L/g) and two key chemical parameters: pKa and pH at the point of zero charge (pHpzc). Generated
+using a HOP-RSM XGB meta-model, the plot highlights the interactive effects of these
+parameters on adsorption efficiency. The surface exhibits a nonlinear curvature, indicating that
+Kd is maximized at moderate pKa (~0 to 2) and pHpzc values (~6 to 8), suggesting optimal
+adsorption conditions when the adsorbate has moderate ionization potential, and the adsorbent
+surface charge is near neutrality.
+
+378
+379
+380
+381
+382
+383
+
+At low pKa values (~ -4 to 0), Kd remains low, likely due to the adsorbate being predominantly
+ionized, which weakens its interaction with the adsorbent. Similarly, at extreme pH pzc values (~2
+or ~10–12), Kd declines, possibly due to strong repulsive forces between the adsorbate and
+adsorbent surface. The wave-like curvature of the surface plot emphasizes the complex interplay
+between electrostatic interactions and hydrophobic adsorption mechanisms, reinforcing the
+importance of balancing adsorbate chemistry (pKa) and adsorbent surface charge (pHpzc) for
+
+12
+https://doi.org/10.26434/chemrxiv-2025-3wl26 ORCID: https://orcid.org/0000-0002-2723-2616 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+384
+
+maximizing adsorption performance.
+
+385
+386
+
+Figure 5: Surface plot showing the interactive effect of pKa and pHpzc on Kd.
+
+387
+388
+
+Figure 6: Response Surface plot showing the combined effect of pHpzc and temperature on Kd.
+
+389
+390
+391
+392
+393
+394
+
+Figure 6 illustrates the interaction between pHpzc and temperature (°C) on the distribution
+coefficient (Kd) for PFAS adsorption. The surface displays a nonlinear curvature, indicating that
+both variables significantly influence adsorption performance. Temperature has a positive effect
+on Kd, with moderate increases in temperature promoting adsorption, possibly due to enhanced
+molecular interactions and increased kinetic energy facilitating PFAS diffusion to adsorption
+sites. However, the plot also reveals a saturation effect, where the influence of temperature and
+13
+
+https://doi.org/10.26434/chemrxiv-2025-3wl26 ORCID: https://orcid.org/0000-0002-2723-2616 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+395
+396
+397
+398
+399
+
+pHpzc plateaus at higher values, suggesting that further increases in these parameters do not yield
+proportional improvements in adsorption efficiency. The interaction between temperature and
+pHpzc suggests optimal adsorption conditions at moderate temperature levels (around 30 – 35 °C)
+and higher pHpzc values. These insights highlight the need for balancing operational parameters
+to maximize PFAS removal efficiency under practical environmental conditions.
+
+400
+401
+
+Figure 7: Response Surface plot showing the combined effect of pKa and temperature on Kd.
+
+402
+403
+404
+405
+406
+407
+408
+
+Figure 7 illustrates the combined effects of pKa and temperature (°C) on the distribution
+coefficient (Kd) for PFAS adsorption. The surface demonstrates a nonlinear interaction between
+the variables, with both temperature and pKa significantly influencing adsorption performance.
+As pKa increases toward neutral or slightly acidic values, Kd also increases, indicating that PFAS
+compounds with higher pKa exhibit better adsorption under certain conditions. This may be
+attributed to enhanced molecular interactions or ionization effects that improve binding to the
+adsorbent surface.
+
+409
+410
+411
+412
+413
+414
+415
+416
+
+Similarly, higher temperatures positively affect Kd, suggesting that increased thermal energy
+facilitates PFAS diffusion and interaction with adsorption sites. The interaction between pK a and
+temperature is evident, as their combined influence creates regions of optimal adsorption
+efficiency. The highest Kd values are observed at temperatures between 30 – 35 °C and moderate
+pKa values (near -1 to 1), indicating a synergistic relationship. Conversely, lower pKa values and
+lower temperatures result in reduced adsorption efficiency, as reflected in the lower K a values.
+This analysis highlights the importance of carefully optimizing both pKa-related conditions and
+operational temperatures to achieve maximum PFAS removal efficiency in adsorption processes.
+
+417
+418
+419
+420
+
+While the RSM model captured some meaningful trends, its overall predictive performance was
+limited. The moderate R2 value of 0.031924 suggests that the model explains a portion of the
+variability in Kd, but the high p-values for many terms indicate potential overfitting or
+insufficient data diversity. These limitations are likely due to multicollinearity among variables,
+14
+
+https://doi.org/10.26434/chemrxiv-2025-3wl26 ORCID: https://orcid.org/0000-0002-2723-2616 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+421
+422
+423
+424
+425
+426
+427
+
+the inherently nonlinear nature of PFAS adsorption, and the relatively small dataset size. Despite
+these limitations, the RSM analysis provides practical insights into optimizing PFAS adsorption.
+The negative impact of pH highlights the importance of maintaining acidic conditions for
+effective adsorption, particularly for charged PFAS species. The positive effects of surface area
+and pHpzc emphasize the role of adsorbent design in achieving high Kd values. These findings
+align with established principles of adsorption science and can guide the development of tailored
+remediation strategies.
+
+428
+429
+430
+431
+432
+
+Figure 8 illustrates the non-linear relationship between Log Kow and surface area, and its
+interactive effect on Kd. Low Log Kow resulted in low Kd and high Log Kow resulted in high Kd,
+regardless of the surface area. These findings support the idea that PFAS compounds with higher
+hydrophobicity will have higher distribution coefficient and removal regardless of the adsorbent
+material.
+
+433
+434
+
+Figure 8: Response Surface plot showing the combined effect of Log Kow and surface area on Kd.
+
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+
+The surface plot in Figure 9 illustrates the relationship between the Kd, pH, and pHpzc, providing
+insight into how electrostatic interactions influence PFAS adsorption. The quadratic response
+surface model (RSM) results indicate that both pH and pHpzc significantly impact adsorption,
+with regression coefficients of -1315.724 for pH and 302.180 for pHpzc, and respective p-values
+of 0.022 and 0.031, confirming their statistical significance. The negative coefficient for pH
+suggests that increasing pH decreases Kd, which aligns with the expected electrostatic behavior
+of PFAS adsorption. At high pH, the adsorbent surface is negatively charged (pH > pHpzc),
+leading to electrostatic repulsion with the anionic PFAS species, thereby reducing adsorption
+efficiency. Conversely, at low pH, the adsorbent surface carries a positive charge (pH < pHpzc),
+promoting electrostatic attraction and enhancing PFAS adsorption. The positive coefficient for
+pHpzc indicates that materials with a higher pHpzc exhibit greater Kd, suggesting that high pHpzc
+
+15
+https://doi.org/10.26434/chemrxiv-2025-3wl26 ORCID: https://orcid.org/0000-0002-2723-2616 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+446
+447
+
+materials are more effective for PFAS adsorption. A higher pHpzc value means the material retains
+a positive charge over a wider pH range, reinforcing electrostatic attraction with anionic PFAS.
+
+448
+449
+450
+451
+452
+453
+
+The curvature of the surface plot demonstrates a strong interaction effect between pH and pHpzc.
+At low pH and high pHpzc, Kd reaches its maximum, confirming that PFAS adsorption is
+optimized under conditions where the adsorbent remains positively charged. However, at high
+pH and low pHpzc, Kd becomes highly negative, suggesting a repulsion-dominated desorption
+mechanism. The nonlinear adsorption response further highlights the complex interplay between
+electrostatic interactions and potential hydrogen bonding at intermediate pH values.
+
+454
+455
+
+Figure 9: Response Surface plot showing the combined effect of pH and pHpzc on Kd.
+
+456
+457
+458
+459
+
+These findings emphasize the critical role of pH control in PFAS adsorption and suggest that
+selecting adsorbents with a high pHpzc enhances removal efficiency, particularly under neutral to
+slightly acidic conditions. The significant p-values confirm that both pH and pHpzc should be
+considered key design parameters in optimizing adsorption materials for PFAS remediation.
+
+460
+
+3.4 Feature Importance
+
+461
+462
+463
+464
+465
+466
+
+Below is an example of how one might interpret and discuss the feature‐importance results for
+the three models (Random Forest, Gradient Boost, and XGBoost) in the context of predicting the
+PFAS distribution coefficient (Kd) and adsorption behavior. The values shown are the raw
+“importance” outputs from each algorithm rather than normalized scores, so direct comparisons
+within a single model are typically more meaningful than across models. Nevertheless, looking
+at all three can provide insights into which variables tend to be more (or less) influential overall.
+
+467
+468
+469
+470
+
+As shown in Figure 10, for the Random Forest model, surface area (176354.9), Initial
+Concentration (145460.2), and pHpzc (114315.3) have notably large importance scores. Surface
+Area often correlates strongly with adsorption capacity; a larger surface area typically enhances
+the adsorbent’s ability to bind PFAS. Initial Concentration can drive adsorption kinetics and
+16
+
+https://doi.org/10.26434/chemrxiv-2025-3wl26 ORCID: https://orcid.org/0000-0002-2723-2616 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+471
+472
+473
+
+equilibrium partitioning—higher initial PFAS levels can lead to greater sorption until saturation
+is approached. pHpzc determines the surface charge of many adsorbents; being high here suggests
+that shifts in surface charge strongly affect PFAS attraction or repulsion.
+
+474
+475
+476
+477
+478
+
+pKa (12889.1), Molecular Weight (9937.0), and Log Kow (9432.5) fall into a middle‐tier
+importance. pKa reflects the acidity of PFAS, influencing the ionization state. Molecular Weight
+(size of the PFAS compound) may affect diffusion and pore accessibility. Log Kow captures
+hydrophobicity and partially predicts how a PFAS might partition onto the solid media versus
+water.
+
+479
+480
+481
+482
+483
+
+pH (6058.0), E (5381.7), S (5285.3), and Dose (4918.7) occupy a somewhat lower tier but
+remain non‐trivial. The solution pH can affect PFAS ionization and adsorbent surface charge.
+Dose (g/L) likely matters because the mass of available adsorbent alters the total removal
+capacity. E and S (possibly parameters describing molecular structure or solvation) show
+moderate importance, suggesting a partial influence on adsorption.
+
+484
+485
+486
+487
+
+B (3676.8), A (3269.5), V (2567.8), and Temperature (229.3) have the smallest importance in
+Random Forest. While these features appear less critical, even lower‐ranked variables can still
+modulate Kd under certain conditions. Overall, Random Forest strongly underscores surface area,
+initial concentration, and pHpzc as top factors in determining PFAS adsorption and distribution.
+
+488
+489
+490
+491
+492
+493
+
+Figure 10: Feature importance plot for Random Forest model.
+Initial Concentration (13445.3) and Surface Area (6789.7) dominate the importance in the
+Gradient Boost model as shown in Figure 11. Consistent with Random Forest, the amount of
+PFAS initially present and the available surface area of the adsorbent are the largest drivers of
+the predicted Kd.
+
+17
+https://doi.org/10.26434/chemrxiv-2025-3wl26 ORCID: https://orcid.org/0000-0002-2723-2616 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+494
+495
+496
+
+Log Kow (19.1), pHpzc (10.5), pKa, and Molecular Weight (8.7) form a secondary importance
+cluster. This again indicates that hydrophobicity (Log Kow), ionization tendencies (pHpzc, pKa),
+and molecular size all play a role—albeit less crucial than surface area or initial concentration.
+
+497
+498
+499
+
+Dose (g/L) (7.3), Temperature (5.6), pH (4.7), and S (4.6) follow, showing moderate influence.
+Notably, the solution pH remains relevant but at a smaller magnitude than in the Random Forest
+result.
+
+500
+501
+502
+503
+504
+
+V (1.5), E (0.2), and especially A (0.0), B (0.0) contributed minimally or not at all in Gradient
+Boost splits. A zero importance often indicates those variables were never used in the boosted
+decision trees (or used so little that they did not improve predictive performance). Thus, Gradient
+Boost findings align generally with Random Forest: Initial Concentration and Surface Area stand
+out as top features, with some moderate roles for Log Kow, pHpzc, pKa, and Molecular Weight.
+
+505
+506
+
+Figure 11: Feature importance plot for Gradient Boost model.
+
+507
+508
+509
+
+For the XGB model, as shown in Figure 12, Initial Concentration (71252.3) and Surface Area
+(33399.1) are again the top factors by a large margin. This reaffirms the strong dependence of Kd
+on the dose of PFAS present in solution initially and the available sorption area.
+
+510
+511
+512
+
+pHpzc (44.2) appears as the third‐highest influencer, followed by pH (23.6) and Dose (15.2). This
+suggests that in XGB’s trees, surface charge conditions and the solution pH remain quite
+important for adsorption behavior.
+
+513
+514
+515
+
+Temperature (11.3), Log Kow (11.1), pKa (10.9), S (8.3), and Molecular Weight (5.1) cluster at
+moderate levels. V (1.3) again has low influence, and A (0.0), B (0.0), and E (0.0) do not
+contribute measurably to improving model performance.
+
+516
+517
+518
+
+Hence, XGB also confirms the overarching trend that Initial Concentration and Surface Area are
+pivotal to predicting Kd, with pHpzc, pH, and other chemical descriptors playing smaller but non‐
+negligible roles.
+18
+
+https://doi.org/10.26434/chemrxiv-2025-3wl26 ORCID: https://orcid.org/0000-0002-2723-2616 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+519
+520
+
+Figure 12: Feature importance plot for Extreme Gradient Boost (XGB) model.
+
+521
+522
+523
+524
+
+All three methods (RF, GB, XGB) highlight Surface Area and Initial PFAS Concentration as top
+predictors. In practice, this aligns well with adsorption science: a larger surface area provides
+more active sites for PFAS attachment, and the initial PFAS loading drives sorption kinetics,
+potentially impacting mass transfer and equilibrium capacity.
+
+525
+526
+527
+528
+
+pHpzc and pH are also significant, especially in Random Forest, implying that surface charge
+conditions strongly influence PFAS binding. Molecular descriptors like pK a, Log Kow, and
+Molecular Weight provide mid‐range importance, indicating that hydrophobicity, ionization, and
+molecular size can further modulate adsorption.
+
+529
+530
+531
+532
+533
+534
+535
+
+Other variables such as Dose, Temperature, S, and E provide lower‐tier effects, and some
+features (A, B, E) show zero importance under certain boosting algorithms. All three algorithms
+converge on the conclusion that the Surface Area of the adsorbent and the Initial Concentration
+of PFAS in solution are critical factors shaping the distribution coefficient (K d). Variables tied to
+surface chemistry (pHpzc) and PFAS properties (pKa, Log Kow, molecular weight) further refine
+predictions by capturing how electrostatics, hydrophobicity, and size modulate adsorption
+behavior.
+
+536
+
+4
+
+537
+538
+539
+540
+541
+542
+543
+
+1) Hybrid RSM-ML models significantly improved PFAS adsorption prediction accuracy, with
+the Meta HOP-RSM-GB model achieving near-perfect performance (R² = 1.00, RMSE =
+10.59, MSE = 112.21, MAE = 3.95), outperforming both standalone RSM and machine
+learning models. This demonstrated the power of combining statistical and ML-driven
+techniques in adsorption modeling.
+2) Surface area and hydrophobicity (log Kow) were identified as dominant factors influencing
+PFAS adsorption, with higher log Kow values correlating with greater Kd regardless of
+
+Conclusion
+
+19
+https://doi.org/10.26434/chemrxiv-2025-3wl26 ORCID: https://orcid.org/0000-0002-2723-2616 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+
+surface area. This highlighted the importance of PFAS physicochemical properties in
+determining adsorption efficiency.
+3) Electrostatic interactions, governed by pH and pHpzc, played a critical role in adsorption
+efficiency. Adsorption was enhanced at low pH and high pHpzc due to stronger electrostatic
+attraction, while high pH led to significant desorption, reinforcing the need for pH control in
+remediation strategies.
+4) Response surface analysis revealed significant non-linear interactions between adsorption
+parameters, indicating that one-variable-at-a-time (OFAT) approaches are insufficient for
+optimizing PFAS removal. Instead, data-driven modeling is essential for capturing complex
+adsorption behaviors in a multiparameter process.
+5) Hybrid models, particularly RMSE-based and meta-model approaches, provided the most
+accurate predictions of Kd by effectively integrating polynomial regression with ensemble
+learning. This highlighted the value of machine learning in addressing the limitations of
+traditional statistical modeling in adsorption studies.
+6) Higher-order polynomial (HOP-RSM) regression alone exhibited poor predictive
+performance (R² = 0.04), underscoring the necessity of hybrid approaches to accurately
+model PFAS adsorption across a wide range of conditions.
+7) Surface plots confirmed that adsorption optimization required balancing adsorbent surface
+chemistry and operational conditions, with the highest Kd values observed at moderate
+surface areas (1000 – 1500 m²/g), pHpzc values (6 – 10), and temperatures (30 – 35 °C).
+8) Machine learning hybridization with RSM can significantly reduce the number of
+experiments required for process optimization, offering a scalable approach for accelerating
+PFAS remediation research and minimizing experimental costs.
+9) This study established hybrid RSM-ML modeling as a powerful framework for optimizing
+PFAS adsorption, providing a pathway for improved adsorbent design, predictive adsorption
+modeling, and data-driven decision-making in environmental remediation efforts.
+10) Surface Area and Initial Concentration consistently emerge as the most influential features in
+determining the PFAS distribution coefficient (Kd), while pHpzc, pH, and molecular
+descriptors (pKa, Log Kow, Molecular Weight) provide additional insights into adsorption
+behavior. Across all three algorithms — Random Forest, Gradient Boost, and Extreme
+Gradient Boost—the data underscore that both adsorbent surface chemistry and PFAS
+properties significantly modulate Kd values.
+
+576
+577
+578
+579
+580
+581
+582
+
+20
+https://doi.org/10.26434/chemrxiv-2025-3wl26 ORCID: https://orcid.org/0000-0002-2723-2616 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+583
+
+References
+
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+
+Abraham, M. H., & Walsh, D. P. (1992). Hydrogen bonding: XXIII. Application of the new
+solvation equation to log Vg values for solutes on carbonaceous adsorbents. Journal of
+Chromatography A, 627(1), 294–299. https://doi.org/10.1016/0021-9673(92)87210-Y
+Ateia, M., Attia, M. F., Maroli, A., Tharayil, N., Alexis, F., Whitehead, D. C., & Karanfil, T.
+(2018). Rapid Removal of Poly- and Perfluorinated Alkyl Substances by
+Poly(ethylenimine)-Functionalized Cellulose Microcrystals at Environmentally Relevant
+Conditions. Environmental Science & Technology Letters, 5(12), 764–769.
+https://doi.org/10.1021/acs.estlett.8b00556
+Burg, P., Abraham, M. H., & Cagniant, D. (2003). Methods of determining polar and non-polar
+sites on carbonaceous adsorbents. The contribution of the linear solvation energy
+relationship approach. Carbon, 41(5), 867–879. https://doi.org/10.1016/S00086223(03)00018-6
+Campos-Pereira, H., Kleja, D. B., Sjöstedt, C., Ahrens, L., Klysubun, W., & Gustafsson, J. P.
+(2020). The Adsorption of Per- and Polyfluoroalkyl Substances (PFASs) onto Ferrihydrite
+Is Governed by Surface Charge. Environmental Science & Technology, 54(24), 15722–
+15730. https://doi.org/10.1021/acs.est.0c01646
+Chang, P.-H., Jiang, W.-T., & Li, Z. (2019). Removal of perfluorooctanoic acid from water using
+calcined hydrotalcite – A mechanistic study. Journal of Hazardous Materials, 368, 487–
+495. https://doi.org/10.1016/j.jhazmat.2019.01.084
+Chang, P.-H., Li, Z., & Jiang, W.-T. (2020). Calcination of hydrotalcite to enhance the removal of
+perfluorooctane sulfonate from water. Applied Clay Science, 190, 105563.
+https://doi.org/10.1016/j.clay.2020.105563
+Chen, W., Zhang, X., Mamadiev, M., & Wang, Z. (2017). Sorption of perfluorooctane sulfonate
+and perfluorooctanoate on polyacrylonitrile fiber-derived activated carbon fibers: In
+comparison with activated carbon. RSC Advances, 7(2), 927–938.
+https://doi.org/10.1039/C6RA25230C
+Chen, X., Xia, X., Wang, X., Qiao, J., & Chen, H. (2011a). A comparative study on sorption of
+perfluorooctane sulfonate (PFOS) by chars, ash and carbon nanotubes. Chemosphere,
+83(10), 1313–1319. https://doi.org/10.1016/j.chemosphere.2011.04.018
+Chen, X., Xia, X., Wang, X., Qiao, J., & Chen, H. (2011b). A comparative study on sorption of
+perfluorooctane sulfonate (PFOS) by chars, ash and carbon nanotubes. Chemosphere,
+83(10), 1313–1319. https://doi.org/10.1016/j.chemosphere.2011.04.018
+de S. Furtado, R. X., Sabatini, C. A., Zaiat, M., & Azevedo, E. B. (2021). Perfluorooctane
+sulfonic acid (PFOS) degradation by optimized heterogeneous photocatalysis (TiO2/UV)
+using the response surface methodology (RSM). Journal of Water Process Engineering,
+41, 101986. https://doi.org/10.1016/j.jwpe.2021.101986
+Deng, S., Zhang, Q., Nie, Y., Wei, H., Wang, B., Huang, J., Yu, G., & Xing, B. (2012). Sorption
+mechanisms of perfluorinated compounds on carbon nanotubes. Environmental Pollution,
+168, 138–144. https://doi.org/10.1016/j.envpol.2012.03.048
+Fagbayigbo, B. O., Opeolu, B. O., Fatoki, O. S., Akenga, T. A., & Olatunji, O. S. (2017).
+Removal of PFOA and PFOS from aqueous solutions using activated carbon produced
+from Vitis vinifera leaf litter. Environmental Science and Pollution Research, 24(14),
+13107–13120. https://doi.org/10.1007/s11356-017-8912-x
+
+21
+https://doi.org/10.26434/chemrxiv-2025-3wl26 ORCID: https://orcid.org/0000-0002-2723-2616 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+
+Jian, J.-M., Zhang, C., Wang, F., Lu, X., Wang, F., & Zeng, E. Y. (2019). Effect of solution
+chemistry and aggregation on adsorption of perfluorooctanesulphonate (PFOS) to nanosized alumina. Environmental Pollution, 251, 425–433.
+https://doi.org/10.1016/j.envpol.2019.05.025
+Kamlet, M. J., Doherty, R. M., Abraham, M. H., & Taft, R. W. (1985). Linear solvation energy
+relationships. 33. An analysis of the factors that influence adsorption of organic
+compounds on activated carbon. Carbon, 23(5), 549–554. https://doi.org/10.1016/00086223(85)90091-0
+Karbassiyazdi, E., Fattahi, F., Yousefi, N., Tahmassebi, A., Taromi, A. A., Manzari, J. Z.,
+Gandomi, A. H., Altaee, A., & Razmjou, A. (2022). XGBoost model as an efficient
+machine learning approach for PFAS removal: Effects of material characteristics and
+operation conditions. Environmental Research, 215, 114286.
+https://doi.org/10.1016/j.envres.2022.114286
+Lei, X., Lian, Q., Zhang, X., Wang, T., Gee, M., Holmes, W., Jin, S., Ponnusamy, S. K., Gang, D.
+D., & Zappi, M. E. (2022). Removal of perfluorooctanoic acid via polyethyleneimine
+modified graphene oxide: Effects of water matrices and understanding mechanisms.
+Chemosphere, 308, 136379. https://doi.org/10.1016/j.chemosphere.2022.136379
+Lei, X., Yao, L., Lian, Q., Zhang, X., Wang, T., Holmes, W., Ding, G., Gang, D. D., & Zappi, M.
+E. (2022). Enhanced adsorption of perfluorooctanoate (PFOA) onto low oxygen content
+ordered mesoporous carbon (OMC): Adsorption behaviors and mechanisms. Journal of
+Hazardous Materials, 421, 126810. https://doi.org/10.1016/j.jhazmat.2021.126810
+Liu, L., Li, D., Li, C., Ji, R., & Tian, X. (2018). Metal nanoparticles by doping carbon nanotubes
+improved the sorption of perfluorooctanoic acid. Journal of Hazardous Materials, 351,
+206–214. https://doi.org/10.1016/j.jhazmat.2018.03.001
+Liu, T., Gu, Y., Xing, D. Y., Dong, W., & Wu, X. (2018). Rapid and high-capacity adsorption of
+PFOS and PFOA by regenerable ammoniated magnetic particle. Environmental Science
+and Pollution Research, 25(14), 13813–13822. https://doi.org/10.1007/s11356-018-15781
+McNamara, J. D., Franco, R., Mimna, R., & Zappa, L. (2018). Comparison of Activated Carbons
+for Removal of Perfluorinated Compounds From Drinking Water. Journal - American
+Water Works Association, 110(1), E2–E14. https://doi.org/10.5942/jawwa.2018.110.0003
+Meng, P., Fang, X., Maimaiti, A., Yu, G., & Deng, S. (2019). Efficient removal of perfluorinated
+compounds from water using a regenerable magnetic activated carbon. Chemosphere,
+224, 187–194. https://doi.org/10.1016/j.chemosphere.2019.02.132
+Naim Shaikh, M. A., & Nawaz, T. (2024). Highly Efficient Cationic Surfactant Functionalized
+Alginate Hydrogel for Perfluorooctanoic Acid Adsorption: Optimization through
+Response Surface Methodology and Performance Evaluation for Aqueous Media. ACS
+ES&T Water, 4(7), 3078–3088. https://doi.org/10.1021/acsestwater.4c00319
+Patel, H. V., Greer, M., Brazil, B., Yu, W., Hamoush, S., Zhang, L., & Zhao, R. (2025).
+Adsorption capacity and mechanism of modified coal fly ash (CFA) for per- and
+polyfluoroalkyl substances (PFAS) in landfill leachate. Journal of Hazardous Materials,
+484, 136763. https://doi.org/10.1016/j.jhazmat.2024.136763
+Pramanik, B. K., Pramanik, S. K., & Suja, F. (2015). A comparative study of coagulation,
+granular- and powdered-activated carbon for the removal of perfluorooctane sulfonate
+and perfluorooctanoate in drinking water treatment. Environmental Technology, 36(20),
+2610–2617. https://doi.org/10.1080/09593330.2015.1040079
+
+22
+https://doi.org/10.26434/chemrxiv-2025-3wl26 ORCID: https://orcid.org/0000-0002-2723-2616 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+673
+674
+675
+676
+677
+678
+679
+680
+681
+682
+683
+684
+685
+686
+687
+688
+689
+690
+691
+692
+693
+694
+695
+696
+697
+698
+699
+700
+701
+702
+703
+704
+705
+706
+707
+708
+709
+710
+711
+712
+713
+714
+715
+716
+717
+718
+
+Qian, J., Shen, M., Wang, P., Wang, C., Li, K., Liu, J., Lu, B., & Tian, X. (2017). Perfluorooctane
+sulfonate adsorption on powder activated carbon: Effect of phosphate (P) competition,
+pH, and temperature. Chemosphere, 182, 215–222.
+https://doi.org/10.1016/j.chemosphere.2017.05.033
+Ross, I., McDonough, J., Miles, J., Storch, P., Thelakkat Kochunarayanan, P., Kalve, E., Hurst,
+J., S. Dasgupta, S., & Burdick, J. (2018). A review of emerging technologies for
+remediation of PFASs. Remediation Journal, 28(2), 101–126.
+https://doi.org/10.1002/rem.21553
+Rostvall, A., Zhang, W., Dürig, W., Renman, G., Wiberg, K., Ahrens, L., & Gago-Ferrero, P.
+(2018). Removal of pharmaceuticals, perfluoroalkyl substances and other micropollutants
+from wastewater using lignite, Xylit, sand, granular activated carbon (GAC) and
+GAC+Polonite ® in column tests – Role of physicochemical properties. Water Research,
+137, 97–106. https://doi.org/10.1016/j.watres.2018.03.008
+Senevirathna, S. T. M. L. D., Tanaka, S., Fujii, S., Kunacheva, C., Harada, H., Shivakoti, B. R.,
+& Okamoto, R. (2010). A comparative study of adsorption of perfluorooctane sulfonate
+(PFOS) onto granular activated carbon, ion-exchange polymers and non-ion-exchange
+polymers. Chemosphere, 80(6), 647–651.
+https://doi.org/10.1016/j.chemosphere.2010.04.053
+Sinha, S., Yang, C., Wu, E., & Acree, W. E. (2022). Abraham Solvation Parameter Model:
+Examination of Possible Intramolecular Hydrogen-Bonding Using Calculated Solute
+Descriptors. Liquids, 2(3), Article 3. https://doi.org/10.3390/liquids2030009
+Sprunger, L., Proctor, A., Acree, W. E., & Abraham, M. H. (2007). Characterization of the
+sorption of gaseous and organic solutes onto polydimethyl siloxane solid-phase
+microextraction surfaces using the Abraham model. Journal of Chromatography A,
+1175(2), 162–173. https://doi.org/10.1016/j.chroma.2007.10.058
+Tang, C. Y., Shiang Fu, Q., Gao, D., Criddle, C. S., & Leckie, J. O. (2010). Effect of solution
+chemistry on the adsorption of perfluorooctane sulfonate onto mineral surfaces. Water
+Research, 44(8), 2654–2662. https://doi.org/10.1016/j.watres.2010.01.038
+US EPA, O. (2024, April 10). Per- and Polyfluoroalkyl Substances (PFAS) [Reports and
+Assessments]. https://www.epa.gov/sdwa/and-polyfluoroalkyl-substances-pfas
+Wang, B., Lee, L. S., Wei, C., Fu, H., Zheng, S., Xu, Z., & Zhu, D. (2016). Covalent triazinebased framework: A promising adsorbent for removal of perfluoroalkyl acids from
+aqueous solution. Environmental Pollution, 216, 884–892.
+https://doi.org/10.1016/j.envpol.2016.06.062
+Wang, F., Liu, C., & Shih, K. (2012). Adsorption behavior of perfluorooctanesulfonate (PFOS)
+and perfluorooctanoate (PFOA) on boehmite. Chemosphere, 89(8), 1009–1014.
+https://doi.org/10.1016/j.chemosphere.2012.06.071
+Wang, F., & Shih, K. (2011). Adsorption of perfluorooctanesulfonate (PFOS) and
+perfluorooctanoate (PFOA) on alumina: Influence of solution pH and cations. Water
+Research, 45(9), 2925–2930. https://doi.org/10.1016/j.watres.2011.03.007
+Xing, D. Y., Chen, Y., Zhu, J., & Liu, T. (2020). Fabrication of hydrolytically stable magnetic
+core-shell aminosilane nanocomposite for the adsorption of PFOS and PFOA.
+Chemosphere, 251, 126384. https://doi.org/10.1016/j.chemosphere.2020.126384
+Yang, A., Ching, C., Easler, M., Helbling, D. E., & Dichtel, W. R. (2020). Cyclodextrin Polymers
+with Nitrogen-Containing Tripodal Crosslinkers for Efficient PFAS Adsorption. ACS
+Materials Letters, 2(9), 1240–1245. https://doi.org/10.1021/acsmaterialslett.0c00240
+
+23
+https://doi.org/10.26434/chemrxiv-2025-3wl26 ORCID: https://orcid.org/0000-0002-2723-2616 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+719
+720
+721
+722
+723
+724
+725
+726
+727
+728
+729
+730
+731
+732
+733
+734
+735
+736
+737
+738
+739
+740
+741
+742
+743
+744
+745
+746
+747
+748
+749
+750
+751
+752
+753
+754
+755
+756
+757
+
+Yang, H., Kang, J.-K., Jeong, S., Park, S.-J., & Lee, C.-G. (2022). Removal of perfluorooctanoic
+acid from water using peroxydisulfate/layered double hydroxide system: Optimization
+using response surface methodology and artificial neural network. Process Safety and
+Environmental Protection, 167, 368–377. https://doi.org/10.1016/j.psep.2022.09.032
+Yoon, S., Park, J., Police, A. K. R., Choe, J. K., & Bae, S. (2025). Enhanced removal of
+perfluorooctanoic acid by aluminum-based metal–organic frameworks prepared by
+bauxite residue. Journal of Hazardous Materials, 483, 136687.
+https://doi.org/10.1016/j.jhazmat.2024.136687
+Yu, Q., Zhang, R., Deng, S., Huang, J., & Yu, G. (2009). Sorption of perfluorooctane sulfonate
+and perfluorooctanoate on activated carbons and resin: Kinetic and isotherm study. Water
+Research, 43(4), 1150–1158. https://doi.org/10.1016/j.watres.2008.12.001
+Zhang, D., Luo, Q., Gao, B., Chiang, S.-Y. D., Woodward, D., & Huang, Q. (2016a). Sorption of
+perfluorooctanoic acid, perfluorooctane sulfonate and perfluoroheptanoic acid on
+granular activated carbon. Chemosphere, 144, 2336–2342.
+https://doi.org/10.1016/j.chemosphere.2015.10.124
+Zhang, D., Luo, Q., Gao, B., Chiang, S.-Y. D., Woodward, D., & Huang, Q. (2016b). Sorption of
+perfluorooctanoic acid, perfluorooctane sulfonate and perfluoroheptanoic acid on
+granular activated carbon. Chemosphere, 144, 2336–2342.
+https://doi.org/10.1016/j.chemosphere.2015.10.124
+Zhang, K., Zhong, S., & Zhang, H. (2020). Predicting Aqueous Adsorption of Organic
+Compounds onto Biochars, Carbon Nanotubes, Granular Activated Carbons, and Resins
+with Machine Learning. Environmental Science & Technology, 54(11), 7008–7018.
+https://doi.org/10.1021/acs.est.0c02526
+Zhang, Q., Deng, S., Yu, G., & Huang, J. (2011). Removal of perfluorooctane sulfonate from
+aqueous solution by crosslinked chitosan beads: Sorption kinetics and uptake mechanism.
+Bioresource Technology, 102(3), 2265–2271.
+https://doi.org/10.1016/j.biortech.2010.10.040
+Zhao, L., Bian, J., Zhang, Y., Zhu, L., & Liu, Z. (2014). Comparison of the sorption behaviors
+and mechanisms of perfluorosulfonates and perfluorocarboxylic acids on three kinds of
+clay minerals. Chemosphere, 114, 51–58.
+https://doi.org/10.1016/j.chemosphere.2014.03.098
+Zhi, Y., & Liu, J. (2016). Surface modification of activated carbon for enhanced adsorption of
+perfluoroalkyl acids from aqueous solutions. Chemosphere, 144, 1224–1232.
+https://doi.org/10.1016/j.chemosphere.2015.09.097
+Zhou, Q., Deng, S., Yu, Q., Zhang, Q., Yu, G., Huang, J., & He, H. (2010). Sorption of
+perfluorooctane sulfonate on organo-montmorillonites. Chemosphere, 78(6), 688–694.
+https://doi.org/10.1016/j.chemosphere.2009.12.005
+
+24
+https://doi.org/10.26434/chemrxiv-2025-3wl26 ORCID: https://orcid.org/0000-0002-2723-2616 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+

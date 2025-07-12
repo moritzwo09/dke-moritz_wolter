@@ -1,0 +1,3244 @@
+1
+
+Multistep Enzymatic Low-density Polyethylene
+
+2
+
+Degradation via Phenylalanine Monooxygenase
+
+3
+
+and Isocitrate Lyase in Pseudomonas aeruginosa
+
+4
+
+Hong Rae Kim1§, Ye Eun Lee 2§, Dong-Eun Suh1, Donggeun Choi1, Sukkyoo Lee2*
+
+5
+6
+
+1
+
+Department of Research and Development, Repla Inc., Suwon 16679, Republic of Korea
+
+7
+
+2
+
+Department of Brain Sciences, Graduate School, Daegu Gyeongbuk Institute of Science and
+
+8
+
+Technology (DGIST), Daegu 42988, Republic of Korea
+
+9
+10
+11
+12
+13
+
+*Corresponding author: E-mail: slee2012@dgist.ac.kr
+
+14
+
+Mailing address: Department of Brain Sciences, Daegu Gyeonbuk Institute of Science and
+
+15
+
+Technology, Daegu 42988, Republic of Korea, Phone: (+82) 53-785-6611. Fax: (+82) 53-785-
+
+16
+
+6109. E-mail: slee2012@dgist.ac.kr
+
+17
+
+§ Hong Rae Kim and Ye Eun Lee contributed equally to this paper.
+
+18
+19
+
+Keywords: Polyethylene, Biodegradation, Enzymes, Oxidation, Depolymerization
+
+1
+https://doi.org/10.26434/chemrxiv-2024-n8145 ORCID: https://orcid.org/0000-0001-9527-9689 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+20
+
+Abstract
+
+21
+
+Plastics have become indispensable in modern industries; however, their resistance to natural
+
+22
+
+degradation poses environmental challenges. Biological degradation technologies employing
+
+23
+
+microorganisms offer promising solutions. Here, we analyzed the transcriptome and proteome
+
+24
+
+of Pseudomonas aeruginosa, a plastic-degrading microorganism found in the gut of
+
+25
+
+superworms, to identify the genes and enzymes upregulated during polyethylene degradation.
+
+26
+
+Functional analyses of these upregulated genes and enzymes using the Kyoto Encyclopedia of
+
+27
+
+Genes and Genomes and Gene Ontology databases revealed an increase in lipid and
+
+28
+
+hydrophobic amino acid metabolism, suggesting their involvement in polyethylene degradation.
+
+29
+
+Based on these analyses, we identified phenylalanine monooxygenase, which is capable of
+
+30
+
+oxidizing plastics, and isocitrate lyase, which is involved in C-C bond cleavage. To investigate
+
+31
+
+the involvement of these enzymes in polyethylene degradation, phhA and aceA were
+
+32
+
+transformed into Escherichia coli, and the enzymes were produced and purified. The purified
+
+33
+
+enzymes were then reacted with polyethylene and analyzed. The results revealed the formation
+
+34
+
+of hydroxyl (-OH) and C-O groups on the polyethylene surface after treatment with
+
+35
+
+phenylalanine monooxygenase, confirming its ability to oxidize polyethylene. Isocitrate lyase
+
+36
+
+alone did not affect polyethylene production; however, when combined with phenylalanine
+
+37
+
+monooxygenase, it contributed to a reduction in molecular weight. This suggests a two-stage
+
+38
+
+process of polyethylene degradation involving oxidation and depolymerization that requires
+
+39
+
+sequential action of multiple enzymes. Thus, we identified the enzymes involved in each stage
+
+40
+
+and demonstrated the degradation ability of polyethylene using purified enzymes.
+
+41
+
+Synopsis: Polyethylene is the most commonly used plastic; however, its degradation
+
+42
+
+mechanism remains unclear. This study revealed a two-step process involving oxidation and
+
+43
+
+depolymerization during polyethylene degradation. Furthermore, enzymes involved in each
+
+44
+
+stage were identified.
+2
+
+https://doi.org/10.26434/chemrxiv-2024-n8145 ORCID: https://orcid.org/0000-0001-9527-9689 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+45
+
+1. Introduction
+
+46
+
+Plastics are widely used in various industries because of their light weight, durability, and
+
+47
+
+affordability. Despite the annual production of approximately 380 million tons of plastic, the
+
+48
+
+recycling rate is approximately 9% 1. Consequently, plastics introduced into the soil and oceans
+
+49
+
+undergo degradation, leading to microplastic pollution 2. Polyethylene accounts for 36% of the
+
+50
+
+overall plastic composition and contributes significantly to plastic pollution 3.
+
+51
+
+Biological degradation of plastics has attracted growing interest. This process is performed
+
+52
+
+at room temperature and pressure, making it environmentally friendly. Recent studies have
+
+53
+
+highlighted the ability of microorganisms to degrade plastic 4, 5. However, the efficiency of
+
+54
+
+microbial degradation in addressing plastic pollution remains relatively low.
+
+55
+
+One of the challenges in the biological degradation of plastics lies in their exceptionally high
+
+56
+
+molecular weight, which hinders their transport into cells. Generally, substances with
+
+57
+
+molecular weights below 500 Da can be transported into cells, whereas commercially used
+
+58
+
+polyethylene has a molecular weight of approximately 200,000 Da. Consequently, for
+
+59
+
+microorganisms to break down polyethylene, they need to secrete extracellular polyethylene-
+
+60
+
+degrading enzymes and transport the resulting degradation intermediates into the cell to serve
+
+61
+
+as an energy source 6.
+
+62
+
+The degradation of polyethylene is challenging because of its exclusive composition of
+
+63
+
+carbon and hydrogen, necessitating the involvement of multiple enzymes for effective
+
+64
+
+degradation 7. Initially, oxidoreductases act on polyethylene, initiating the formation of
+
+65
+
+oxygen-containing functional groups. Subsequently, depolymerizing enzymes come into play
+
+66
+
+in the second step, resulting in a reduction in molecular weight 8. Microbial oxidases, such as
+
+67
+
+alkane monooxygenase and cytochrome P450, are involved in initial oxidation 9, 10, 11. Esterases,
+
+68
+
+such as lipases, are presumed to be involved in the depolymerization process. Unlike polyester
+
+3
+https://doi.org/10.26434/chemrxiv-2024-n8145 ORCID: https://orcid.org/0000-0001-9527-9689 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+69
+
+plastics such as polyethylene terephthalate, polyethylene consists of C-C bonds, posing a
+
+70
+
+challenge for depolymerization by esterases 8, 9. Lyases, which can break bonds through
+
+71
+
+mechanisms other than hydrolysis, can also cleave C-C bonds. Therefore, lyases have the
+
+72
+
+potential to serve as depolymerization enzymes for polyethylene cleavage.
+
+73
+
+To enhance the effectiveness of plastic degradation, a comprehensive understanding of the
+
+74
+
+mechanisms underlying plastic degradation and identification of pertinent enzymes are
+
+75
+
+essential. Enhancing plastic degradation efficiency involves the discovery and optimization of
+
+76
+
+enzymes involved in the process 12. Recent studies have employed proteomic analysis to
+
+77
+
+unravel microbial polyethylene metabolic pathways and their correlations with lipid
+
+78
+
+metabolism 13, 14. However, exploration of plastic-degrading enzymes using multiomics
+
+79
+
+techniques, along with subsequent molecular biology approaches for expression and functional
+
+80
+
+analyses, remains relatively limited.
+
+81
+
+In this study, we investigated Pseudomonas aeruginosa, which is known for its capacity to
+
+82
+
+degrade polyethylene, with three main objectives: 1) to conduct a comprehensive analysis of
+
+83
+
+the transcriptomics and proteomics of P. aeruginosa to identify candidate genes involved in
+
+84
+
+plastic degradation.; 2) to produce and purify proteins from the selected genes using gene
+
+85
+
+cloning; and 3) to assess the plastic degradation ability of the enzyme at the molecular level.
+
+86
+
+Through these steps, we aimed to uncover the enzymes associated with polyethylene
+
+87
+
+degradation and elucidate the mechanism of polyethylene degradation.
+
+4
+https://doi.org/10.26434/chemrxiv-2024-n8145 ORCID: https://orcid.org/0000-0001-9527-9689 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+88
+
+2. Materials and Methods
+
+89
+
+2.1 Polyethylene Degradation by P. aeruginosa
+
+90
+
+2.1.1. Cultivation of P. aeruginosa using polyethylene as the carbon source
+
+91
+
+P. aeruginosa was cultivated using low-density polyethylene (LDPE) as the carbon source.
+
+92
+
+P. aeruginosa was inoculated into LB medium and cultured for 24 h in a shaking incubator
+
+93
+
+(28 °C, 130 rpm). After centrifuging 1 mL of the culture (13000 rpm, 5 min), a cell pellet was
+
+94
+
+obtained. The pellet was resuspended in 1 mL of liquid carbon-free basal medium (LCFBM)
+
+95
+
+and subjected to additional centrifugation to eliminate residual nutrients. This washing
+
+96
+
+procedure was repeated thrice. Subsequently, cells were cultured in 25 mL of LCFBM
+
+97
+
+containing 0.4 g of LDPE (weight-average molecular weight [Mw] ~4,000 and number-average
+
+98
+
+molecular weight [Mn] ~1,700, Sigma-Aldrich, MO) as the exclusive carbon source.
+
+99
+
+Inoculation was performed at a 1/100 dilution based on an OD of 1.0. After a 7-day incubation
+
+100
+
+period, the polyethylene degradation capability of P. aeruginosa was assessed.
+
+101
+
+2.1.2. Colony-forming units (CFU) counting
+
+102
+
+To verify microbial proliferation using LDPE as the carbon source, CFU were quantified.
+
+103
+
+One milliliter of culture sample was combined with 9 mL of LCFBM. Following six
+
+104
+
+consecutive dilutions of this solution, 100 µL was spread on LB agar plates and incubated for
+
+105
+
+24 h. CFU/mL was calculated by counting the number of colonies in the diluted solutions.
+
+106
+
+2.1.3. Weight-loss measurement
+
+107
+
+The dry weights of the plastics were measured to evaluate LDPE biodegradation. After
+
+108
+
+cultivation, the plastics were collected using a cell strainer (pore size: 40 μm, SPL, Korea) and
+
+109
+
+subjected to an overnight treatment with 2% SDS to eliminate microorganisms adhered to the
+
+110
+
+plastic surface. Subsequently, the plastics were thoroughly washed twice with deionized (DI)
+
+5
+https://doi.org/10.26434/chemrxiv-2024-n8145 ORCID: https://orcid.org/0000-0001-9527-9689 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+111
+
+water and oven-dried at 60 °C for 24 h.
+
+112
+
+2.1.4. SEM imaging
+
+113
+
+To conduct SEM imaging and FT-IR, XPS, and contact angle analyses, plastic films are
+
+114
+
+required. The LDPE films (density: 0.93 g/cm3) were cut into 2×2 cm pieces. Subsequently,
+
+115
+
+the films were subjected to the cultivation method outlined in Section 2.1.1. The surface
+
+116
+
+characteristics of the LDPE films were examined using field-emission SEM (Merlin Compact,
+
+117
+
+Zeiss, Germany). The films were securely affixed with carbon tape and coated with platinum,
+
+118
+
+and SEM images were captured. Biofilm formation and corrosion of the film surface were
+
+119
+
+evaluated using SEM to assess the biodegradation capabilities of the candidate plastic
+
+120
+
+degraders.
+
+121
+
+2.1.5. ATR FT-IR spectroscopy
+
+122
+
+The LDPE film was subjected to a 24-hour treatment with 2% SDS and washed with DI
+
+123
+
+water to eliminate the biofilm. To assess the changes in the chemical structures of the LDPE
+
+124
+
+films, an ATR FT-IR spectrometer (iS50, Thermo Fisher Scientific, MA, USA) was used to
+
+125
+
+examine alterations in the functional groups. The FT-IR analysis employed single-bounce
+
+126
+
+attenuated total reflection spectroscopy, covering wavenumbers from 400 to 4,000 cm-1.
+
+127
+
+2.1.6. X-ray photoelectron spectroscopy
+
+128
+
+X-ray photoelectron spectroscopy (XPS, K-Alpha, Thermo Electron, MA,) was used to
+
+129
+
+analyze the elements and binding energies on the surface of the LDPE film. The samples were
+
+130
+
+secured with carbon tape and subjected to measurements in the energy range of 276–300 eV
+
+131
+
+for the C1s scan and 0–1,350 eV for the survey scan.
+
+132
+
+2.1.7. Contact angle analysis
+
+133
+
+Contact angle analysis was conducted to assess changes in surface hydrophilicity resulting
+
+6
+https://doi.org/10.26434/chemrxiv-2024-n8145 ORCID: https://orcid.org/0000-0001-9527-9689 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+134
+
+from LDPE degradation. The film samples were prepared by fixing both edges of the LDPE
+
+135
+
+films to a glass slide with cellophane tape. Approximately 15 μL of water was then applied to
+
+136
+
+the surface using a contact angle analyzer (Phoenix 300, SEO, Suwon, Korea). Measurements
+
+137
+
+were taken at three different locations and the average values were calculated
+
+138
+
+2.2. Transcriptomic Analysis of P. aeruginosa during Polyethylene Degradation
+
+139
+
+2.2.1 mRNA sequencing
+
+140
+
+To unravel the alterations in the transcriptome during polyethylene biodegradation, P.
+
+141
+
+aeruginosa was cultured in minimal media with LDPE as the carbon source for 7 days, and
+
+142
+
+subsequently, RNA sequencing was performed. The control group consisted of P. aeruginosa
+
+143
+
+cultured in LB for the same duration of 7 days. Total RNA concentration was calculated using
+
+144
+
+Quant-IT RiboGreen (Invitrogen, CA) and the integrity of the total RNA was assessed. Only
+
+145
+
+high-quality RNA (RIN>7.0) was used for library construction. Libraries were prepared with
+
+146
+
+1 µg of total RNA using the Illumina TruSeq Stranded mRNA Sample Prep Kit (Illumina Inc.,
+
+147
+
+CA). Bacterial rRNA-depleted samples were generated using the NEBNext rRNA Depletion
+
+148
+
+Kit (NEB, MA,) and a cDNA library was constructed. The cDNA library was quantified using
+
+149
+
+KAPA Library Quantification kits (KAPA BIOSYSTEMS, MA) and qualified using
+
+150
+
+TapeStation D1000 ScreenTape (Agilent Technologies, CA). Indexed libraries were subjected
+
+151
+
+to paired-end (2×100 bp) sequencing using an Illumina NovaSeq system (Illumina Inc.) by
+
+152
+
+Macrogen Inc. (Seoul, Korea).
+
+153
+
+2.2.2 mRNA-Seq data analysis
+
+154
+
+Raw reads were processed to remove low-quality and adapter sequences using Trimmomatic
+
+155
+
+0.38. The reads were aligned to P. aeruginosa PAO1 using Bowtie 1.1.2 15. The reference
+
+156
+
+genome sequence of P. aeruginosa PAO1 (GCF_000006765.1) and annotation data were
+
+157
+
+downloaded
+
+from
+
+NCBI
+
+(https://www.ncbi.nlm.nih.gov/assembly/GCF_000006765.1/).
+
+7
+https://doi.org/10.26434/chemrxiv-2024-n8145 ORCID: https://orcid.org/0000-0001-9527-9689 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+158
+
+Aligned reads were assembled and the relative abundance of genes was estimated using HTSeq
+
+159
+
+v0.10.0 16. Statistical analysis was performed to identify differentially expressed genes (DEGs)
+
+160
+
+using the estimated abundance of each gene in the samples. Genes with one more than zeroed
+
+161
+
+Read Count values in the samples were excluded. The filtered data were log2-transformed and
+
+162
+
+subjected to TMM normalization. Statistical significance of the differential expression data was
+
+163
+
+determined using exactTest (EdgeR) and fold change (p-value<0.05, |log2FC| ≥ 1). Functional
+
+164
+
+annotation of DEGs was performed using DAVID (https://david.ncifcrf.gov/home.jsp) against
+
+165
+
+public databases such as the Kyoto Encyclopedia of Genes and Genomes (KEGG) and Gene
+
+166
+
+Ontology (GO). PCA was used to visualize the similarities among the samples.
+
+167
+
+2.3. Proteomic Analysis of P. aeruginosa during Polyethylene Degradation
+
+168
+
+2.3.1. Sample preparation for proteomics
+
+169
+
+To examine alterations in the proteome during polyethylene biodegradation, P. aeruginosa
+
+170
+
+was cultured in minimal media with LDPE as the carbon source for 7 days, followed by LC-
+
+171
+
+MS analysis. As a control group, P. aeruginosa cultured for the same duration of 7 days in
+
+172
+
+LCFBM supplemented with 2% glucose was used to mitigate potential interference from
+
+173
+
+extraneous proteins in the proteome data caused by LB medium.
+
+174
+
+Bacterial samples were suspended in lysis buffer (8 M urea, 0.1 M Tris-HCl buffer, pH 8.5)
+
+175
+
+containing a protease inhibitor cocktail (Roche Diagnostics, Basel, Switzerland) and sonicated.
+
+176
+
+The protein concentration was quantified using the Pierce BCA Protein Assay Kit (Thermo
+
+177
+
+Fisher Scientific). The filter-aided sample preparation method on a Microcon 30 K centrifugal
+
+178
+
+filter device (Millipore, MA,) was used for protein digestion. Reduction with Tris(2-
+
+179
+
+carboxyethyl)phosphine and alkylation with iodoacetic acid were followed by trypsin digestion.
+
+180
+
+The resulting peptides were desalted and eluted on C18 spin columns.
+
+181
+
+2.3.2. LC-MS/MS proteomic analysis
+
+8
+https://doi.org/10.26434/chemrxiv-2024-n8145 ORCID: https://orcid.org/0000-0001-9527-9689 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+182
+
+The samples were analyzed using an UltiMate 3000 RSLC nano LC system (Thermo Fisher
+
+183
+
+Scientific) coupled with a Q Exactive Plus mass spectrometer (Thermo Scientific). The
+
+184
+
+peptides were loaded onto an Acclaim PepMap 100 Trap Column (Thermo Fisher Scientific)
+
+185
+
+and subsequent peptide separation was performed using an Acclaim PepMap RSLC analytical
+
+186
+
+column (Thermo Fisher Scientific). Mass spectra were acquired in the data-dependent mode
+
+187
+
+with an automatic switch between full scan (m/z 400–2,000) and 10 data-dependent MS/MS
+
+188
+
+scans.
+
+189
+
+MS/MS raw files of each analysis were searched using Proteome Discoverer™ software (ver.
+
+190
+
+2.5) against P. aeruginosa database downloaded from UniProt. MS/MS data were analyzed
+
+191
+
+using peptide-spectrum match validation step and SEQUEST HT process. After the searching
+
+192
+
+process, data with FDR below 0.01 and at least six peptides in length were selected. Functional
+
+193
+
+annotation
+
+194
+
+(https://david.ncifcrf.gov/home.jsp) against public databases such as the KEGG and GO. PCA
+
+195
+
+was used to visualize the similarities among the samples.
+
+196
+
+2.4. Expression and Purification of Cloned Genes, phhA and aceA
+
+197
+
+2.4.1. Cloning of phenylalanine monooxygenase and isocitrate lyase genes
+
+of
+
+differentially
+
+expressed
+
+proteins
+
+was
+
+performed
+
+using
+
+DAVID
+
+198
+
+PCR was conducted using primers targeting phhA, which encodes phenylalanine
+
+199
+
+monooxygenase (also known as phenylalanine hydroxylase [PAH]), and aceA, which encodes
+
+200
+
+isocitrate lyase (ICL), in the genomic DNA of P. aeruginosa (Table S1). The gDNA served as
+
+201
+
+the template for the first-round amplification, which included approximately ±100bp regions
+
+202
+
+of the genes using phhA_F1, R1 and aceA_F1, R1 primers. Subsequently, the PCR product
+
+203
+
+from the first round was used as a template for the second round of PCR, employing phhA_F2,
+
+204
+
+R2 and aceA_F2, R2 primers to amplify the gene sequences. The PCR conditions included
+
+205
+
+initial denaturation at 95 °C for 10 min, denaturation at 95 °C for 45 s, annealing at 47 °C for
+
+9
+https://doi.org/10.26434/chemrxiv-2024-n8145 ORCID: https://orcid.org/0000-0001-9527-9689 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+206
+
+30 s, extension at 72 °C for 1 min, and a final extension at 72 °C for 5 min. Amplified phhA
+
+207
+
+and aceA were purified and ligated into a pGEM-T-easy vector (Promega, WI). The vector
+
+208
+
+containing each gene was digested with NotI and EcoRI, respectively, and ligated into the
+
+209
+
+PET28b(+) vector (Sigma-Aldrich). The resulting plasmids were then transformed into E. coli
+
+210
+
+DH5a cells and sequenced. The pET28b(+) vector containing each gene was extracted and
+
+211
+
+transformed into E. coli BL21(DE3) cells for protein purification.
+
+212
+
+2.4.2. Expression and purification of phenylalanine monooxygenase and isocitrate lyase
+
+213
+
+Recombinant E. coli BL21(DE3) cells were cultured on LB medium containing kanamycin
+
+214
+
+at 37 °C until reaching an OD600 of 0.6–0.8. Upon reaching the desired optical density, IPTG
+
+215
+
+was added at a final concentration of 1 mM and the culture was further incubated for 6 h. The
+
+216
+
+IPTG-induced bacterial culture was centrifuged (3000 rpm, 10 min) and the cell pellet was
+
+217
+
+resuspended in 40 mL binding buffer. Sonication was performed for 25 min using an ultrasonic
+
+218
+
+homogenizer and the cell lysates were centrifuged (9000 rpm, 30 min). Purification of
+
+219
+
+phenylalanine monooxygenase was conducted according to the Ni Sepharose FF Agarose
+
+220
+
+(Cat.LT22871, LifeTein, NJ) protocol (Table S2). The flow rate was controlled at 1 mL/min
+
+221
+
+and the column was filled with 5 mL His Ni Superflow resin (Code.Z5660N, TaKaRa, Tokyo,
+
+222
+
+Japan). A filter was inserted on top of the resin, and 15 mL of ddH2O was added to wash the
+
+223
+
+column. Subsequently, 15 mL binding buffer, cell lysate, another 15 mL mL binding buffer,
+
+224
+
+followed by 40 mM washing buffer, and 60 mM washing buffer were added sequentially.
+
+225
+
+Finally, 10 mL of elution buffer was added, and 1 mL fractions were collected for SDS-PAGE
+
+226
+
+analysis. ICL was purified using fast protein liquid chromatography. HisTrap HP columns (1
+
+227
+
+mL, GE Healthcare, IL) were used for purification, employing binding buffer (20 mM sodium
+
+228
+
+phosphate, 0.5 M NaCl, 20 mM imidazole, pH 7.4) for elution, followed by elution buffer (20
+
+229
+
+mM sodium phosphate, 0.5 M NaCl, 0.5 M imidazole, pH 7.4).
+
+10
+https://doi.org/10.26434/chemrxiv-2024-n8145 ORCID: https://orcid.org/0000-0001-9527-9689 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+230
+
+Proteins were analyzed following the protocol provided by the OneGel PAGE kit Plus
+
+231
+
+(Biosolution, Seoul, Korea). A mixture of 40 μL of protein solution and 10 μL of 5× reductase
+
+232
+
+buffer (containing SDS and DTT) was heated to 100 °C for denaturation. Next, 50 μL of the
+
+233
+
+protein sample and 10 μL of Precision Plus Protein Dual Color standards marker (10–250 kDa,
+
+234
+
+Bio-Rad, CA) were loaded onto the gel, which consisted of 12% acrylamide stacking and
+
+235
+
+separating gels. After electrophoresis, the gels were stained with Coomassie Brilliant Blue R-
+
+236
+
+250. Subsequently, the gels were fixed in a solution of 50% methanol and 10% glacial acetic
+
+237
+
+acid, stained, destained using a solution of 40% methanol and 10% glacial acetic acid, and
+
+238
+
+stored in 5% glacial acetic acid solution. Contaminants, including imidazole, were removed via
+
+239
+
+dialysis against 1× PBS (pH 7) by changing the buffer three times using high-retention
+
+240
+
+seamless cellulose tubing (Sigma-Aldrich). The concentrations of purified PAH and ICL were
+
+241
+
+determined using the Bradford assay.
+
+242
+
+2.5. Functional Analysis of Phenylalanine Monooxygenase and Isocitrate Lyase in
+
+243
+
+Polyethylene Degradation
+
+244
+
+To analyze the biodegradation of the enzymes on the LDPE film, based on the experimental
+
+245
+
+results from the thermal shift assay obtained under optimal expression conditions, the LDPE
+
+246
+
+film (ET31-FM-000151, Goodfellow, UK, Mw~240,000 Da) were treated with enzymes at a
+
+247
+
+concentration of 0.5 g/L, using 50 mM sodium phosphate buffer (pH 6) at 30 °C for 30 days.
+
+248
+
+2.5.1. Chemical analysis of LDPE degradation by enzymes
+
+249
+
+The LDPE film was treated with phenylalanine monooxygenase, ICL, and a mixture of the
+
+250
+
+two enzymes in a glass vial containing 50 mM sodium phosphate buffer for 30 days. The LDPE
+
+251
+
+film was subjected to a 4-hour treatment with 2% SDS and washed with DI water to remove
+
+252
+
+the residual enzyme attached to the film.
+
+253
+
+The LDPE film was subjected to FTIR analysis to assess the chemical modifications
+
+11
+https://doi.org/10.26434/chemrxiv-2024-n8145 ORCID: https://orcid.org/0000-0001-9527-9689 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+254
+
+induced by phenylalanine monooxygenase. The potassium bromide pellet method was
+
+255
+
+employed as follows: The LDPE film was dissolved in a solvent mixture containing 1,2,4-
+
+256
+
+Trichlorobenzene and 0.015% butylated hydroxytoluene, and the solution was maintained in a
+
+257
+
+glass vial at 160 °C for 10 min to achieve a final concentration of 2 mg/mL. Subsequently, the
+
+258
+
+solvent was evaporated under nitrogen gas for 6 h. The LDPE film pellets were compressed at
+
+259
+
+room temperature under a pressure of 6 MPa for 1 min using a 13 mm diameter pellet die and
+
+260
+
+digital hydraulic presser (CrushIR, Pike Technologies, WI, USA). Pellets were created by
+
+261
+
+blending 1–2 mg of each sample with 100 mg of potassium bromide. The analyses were
+
+262
+
+performed using an FT-IR spectrometer (Thermo Fisher Scientific) in the transmission mode.
+
+263
+
+Scans were conducted over the range of 4000 to 500 cm–1.
+
+264
+
+The changes in the elemental composition of the plastic surface were examined by measuring
+
+265
+
+the binding energy using X-ray photoelectron spectroscopy (Thermo Scientific). The samples
+
+266
+
+were secured with carbon tape and subjected to measurements in the energy range 276–300 eV
+
+267
+
+for the C1s scan.
+
+268
+
+Thermogravimetric (TGA) analysis was performed to assess the thermal stability of
+
+269
+
+degraded LDPE. Approximately 10 mg of the sample was heated from 50 to 600 °C at a rate
+
+270
+
+of 10 °C/min. The analysis was conducted under nitrogen at a flow rate of 60 mL/min using a
+
+271
+
+TGA analyzer (TA Instruments, DE).
+
+272
+
+2.5.2. Analysis of LDPE depolymerization by enzymes
+
+273
+
+Mw and Mn were determined using high-temperature gel permeation chromatography. The
+
+274
+
+LDPE film was dissolved in a mixed solvent of TCB and 0.04% BHT to 1.5 mg/mL and the
+
+275
+
+mixture was filtered through a 0.26 μm stainless steel mesh. The mixtures (300 μL) were
+
+276
+
+injected into a GPC operating at an eluent flow rate of 1.0 mL/min and a temperature of 160 °C
+
+277
+
+(EcoSEC HLC-8421 GPC/HT, Tosoh Bioscience, Tokyo, Japan).
+
+12
+https://doi.org/10.26434/chemrxiv-2024-n8145 ORCID: https://orcid.org/0000-0001-9527-9689 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+278
+
+3. Results and Discussion
+
+279
+
+3.1. Polyethylene Degrading Bacteria, P. aeruginosa
+
+280
+
+P. aeruginosa is widely recognized for its remarkable ability to degrade plastic 17. P.
+
+281
+
+aeruginosa proliferated using LDPE as the sole carbon source in minimal medium. The initially
+
+282
+
+inoculated P. aeruginosa at a concentration of 4.93×105 CFU/mL underwent a 100-fold
+
+283
+
+increase, reaching 5.27×107 CFU/mL by Day 4. On Day 7, the cell count reached saturation
+
+284
+
+(Table 1). Subsequently, transcriptome and proteome analyses were conducted after cultivating
+
+285
+
+P. aeruginosa for one week. As P. aeruginosa proliferated, the culture medium became turbid,
+
+286
+
+and 2.14% of LDPE was degraded over the course of 7 days (Figure 1a, 1b). SEM imaging was
+
+287
+
+conducted to inspect the LDPE film surface, revealing a smooth surface in the control sample,
+
+288
+
+whereas the P. aeruginosa-cultivated sample exhibited surface corrosion (Figure 1b).
+
+289
+
+13
+https://doi.org/10.26434/chemrxiv-2024-n8145 ORCID: https://orcid.org/0000-0001-9527-9689 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+290
+
+Figure 1. Polyethylene-degrading bacteria, P. aeruginosa. (a) Polyethylene degradation rate
+
+291
+
+over 7 days by P. aeruginosa. (b) P. aeruginosa proliferation using polyethylene as the carbon
+
+292
+
+source. (c) SEM image showing surface erosion of polyethylene by P. aeruginosa. (d) Analysis
+
+293
+
+of chemical groups on polyethylene surfaces using FT-IR. (e) Elemental analysis of
+
+294
+
+polyethylene surface using XPS. (f) Contact angle measurement on polyethylene surface.
+
+295
+296
+
+Table 1. Colony-forming unit of P. aeruginosa cultured with low-density polyethylene as the
+carbon source
+Time (days)
+CFU/mL
+Time (days)
+CFU/mL
+
+D0
+4.93 × 105
+D4
+5.27 × 107
+
+D1
+3.77 ×106
+D5
+5.03 × 107
+
+D2
+1.83 × 107
+D6
+7.17 × 107
+
+D3
+3.65 × 107
+D7
+6.67 × 107
+
+297
+298
+
+The degradation of LDPE by P. aeruginosa was chemically validated through FT-IR
+
+299
+
+measurements. Culturing P. aeruginosa resulted in the detection of peaks corresponding to -
+
+300
+
+OH (3200–3600 cm-1), C=O (1700 cm-1), and C-O (1050 cm-1) in the FT-IR spectra (Figure 1d)
+
+301
+
+18
+
+302
+
+oxygen content after P. aeruginosa cultivation (Figure 1e). Contact angle analysis revealed a
+
+303
+
+decrease in the contact angle (81.45°) compared with that of the control (88.14°), signifying an
+
+304
+
+increase in hydrophilicity. During plastic biodegradation, plastic is oxidized, enhancing
+
+305
+
+microbial biofilm formation and enzyme reactions through increased plastic hydrophilicity
+
+306
+
+(Figure 1f) 4, 19. Collectively, these analyses confirmed the utilization and proliferation of P.
+
+307
+
+aeruginosa using LDPE as the carbon source.
+
+308
+
+3.2. Transcriptomic Analysis of P. aeruginosa
+
+. This finding was further corroborated by XPS analysis, which indicated an increase in
+
+309
+
+Transcriptome analysis of P. aeruginosa cultured with LDPE as the sole carbon source
+
+310
+
+revealed the upregulation of 1170 genes and downregulation of 1023 genes (Table S3).
+
+311
+
+Principal component analysis distinctly clustered samples from the control and PE groups,
+
+312
+
+indicating transcriptional changes associated with polyethylene metabolism (Figure 2a). To
+14
+
+https://doi.org/10.26434/chemrxiv-2024-n8145 ORCID: https://orcid.org/0000-0001-9527-9689 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+313
+
+elucidate the functions of these genes, upregulated and downregulated genes were categorized
+
+314
+
+by related pathway using the KEGG database and sorted based on the number of hits (Figure
+
+315
+
+2b, 2c). ABC transporters may be involved in the transport of intermediate molecules generated
+
+316
+
+during polyethylene degradation
+
+317
+
+hydrophobic ring structures such as caprolactam and xylene contribute to polyethylene
+
+318
+
+oxidation 21.
+
+20
+
+. Additionally, enzymes responsible for degrading
+
+319
+320
+
+Figure 2. Transcriptome analysis of P. aeruginosa cultured with polyethylene as the carbon
+
+321
+
+source. (a) Changes in gene expression patterns of P. aeruginosa observed through PCA plot.
+
+322
+
+(b) Pathways associated with upregulated genes analyzed using the KEGG database. (c)
+
+323
+
+Pathways associated with downregulated genes analyzed using the KEGG database. (d)
+
+324
+
+Biological processes, cellular components, and molecular functions associated with
+
+325
+
+upregulated genes analyzed using the GO database.
+
+326
+
+15
+https://doi.org/10.26434/chemrxiv-2024-n8145 ORCID: https://orcid.org/0000-0001-9527-9689 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+327
+
+Subsequently, genes were categorized based on their associated biological processes using
+
+328
+
+the GO database (Figure 2d and S1). Transmembrane transport may be involved in the transport
+
+329
+
+of polyethylene metabolic intermediates. The lipid metabolic process was found to participate
+
+330
+
+in the intracellular metabolism of depolymerized polyethylene intermediates 22. Owing to the
+
+331
+
+structural similarity between polyethylene and lipids, polyethylene enters the TCA cycle
+
+332
+
+through lipid metabolic pathways within cells 13. Additionally, an amino acid catabolic process
+
+333
+
+was identified, and it is noteworthy that the relevant amino acids, L-phenylalanine and valine,
+
+334
+
+contained hydrophobic residues. These results suggested the potential degradation of
+
+335
+
+hydrophobic polyethylene intermediates through hydrophobic amino acid metabolism.
+
+336
+
+Analysis of genes based on their cellular component, which represents their expression location,
+
+337
+
+revealed upregulation in the membrane and downregulation in the cytoplasm. This result
+
+338
+
+suggests that enhanced expression of transport proteins is required for the transportation of
+
+339
+
+polyethylene intermediates.
+
+340
+
+Genes were categorized based on molecular function, revealing an increase in
+
+341
+
+transmembrane transporter activity, in line with KEGG and biological process analyses.
+
+342
+
+Moreover, oxidoreductase activity increased, specifically involving genes acting on the CH-
+
+343
+
+CH group. Polyethylene is a polymer composed solely of carbon and hydrogen and is directly
+
+344
+
+influenced by oxidoreductases acting on the C-H groups, playing a crucial role in plastic
+
+345
+
+degradation 23. Oxidoreductases are the enzymes involved in oxidation/reduction processes,
+
+346
+
+such as oxygenases, oxidases, and dehydrogenases. Among these, the most crucial enzyme in
+
+347
+
+the initial stages of plastic degradation is oxygenase, which incorporates oxygen into plastics
+
+348
+
+24
+
+349
+
+electron donors. Flavin adenine dinucleotide (FAD) binding signifies the activation of
+
+350
+
+oxygenases that receive electrons from flavoproteins and FADH2 during plastic oxidation
+
+351
+
+(Tables S4 and S5) 25. Additionally, oxygenases commonly feature iron-sulfur clusters in their
+
+. The upregulated genes include monooxygenases and dioxygenases, both of which require
+
+16
+https://doi.org/10.26434/chemrxiv-2024-n8145 ORCID: https://orcid.org/0000-0001-9527-9689 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+352
+
+active sites or rely on iron-sulfur proteins as electron donors 26. The upregulation of iron-sulfur
+
+353
+
+clusters and ferrous iron binding signifies the activation of these oxygenases.
+
+354
+355
+
+3.3. Proteomic Analysis of P. aeruginosa
+
+356
+
+Proteomic analysis of P. aeruginosa cultivated with LDPE as the sole carbon source revealed
+
+357
+
+upregulation and downregulation of 888 and 870 proteins, respectively (Table S6). Principal
+
+358
+
+component analysis demonstrated distinct clustering of samples from the control and PE groups
+
+359
+
+(Figure 3a). The overall protein analysis results closely resembled those of the transcriptome
+
+360
+
+analysis. KEGG database analysis highlighted the involvement of fatty acid degradation and
+
+361
+
+lipoic acid metabolism in the metabolism of polyethylene intermediate molecules (Figure 3b,
+
+362
+
+3c) 13, 27. Additionally, an increase in the degradation of hydrophobic amino acids (valine,
+
+363
+
+leucine, isoleucine, alanine, and tryptophan) was observed. These results suggested the
+
+364
+
+potential degradation of hydrophobic polyethylene intermediates through hydrophobic amino
+
+365
+
+acid metabolism.
+
+17
+https://doi.org/10.26434/chemrxiv-2024-n8145 ORCID: https://orcid.org/0000-0001-9527-9689 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+366
+367
+
+Figure 3. Proteome analysis of P. aeruginosa cultured with polyethylene as the carbon source.
+
+368
+
+(a) Changes in protein expression patterns of P. aeruginosa observed through PCA plot. (b)
+
+369
+
+Pathways associated with upregulated proteins analyzed using the KEGG database. (c)
+
+370
+
+Pathways associated with downregulated proteins analyzed using the KEGG database. (d)
+
+371
+
+Biological processes, cellular components, and molecular functions associated with
+
+372
+
+upregulated proteins analyzed using the GO database.
+
+373
+374
+
+By utilizing the GO database to categorize proteins according to biological processes, lipid
+
+375
+
+metabolic and hydrophobic amino acid catabolic processes (Leucine and L-phenylalanine)
+
+376
+
+were increased, corroborating the findings from the KEGG analysis (Figure 3d, S2).
+
+377
+
+Additionally, nitrate assimilation was upregulated. As polyethylene comprises only carbon and
+
+378
+
+hydrogen and lacks nitrogen, microorganisms can convert polyethylene metabolic
+
+379
+
+intermediates into amino acids via nitrogen fixation 28. Increased hydrophobic amino acid
+
+18
+https://doi.org/10.26434/chemrxiv-2024-n8145 ORCID: https://orcid.org/0000-0001-9527-9689 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+380
+
+transport (L-alanine, D-alanine, and L-valine) further supports this possibility. Analysis of
+
+381
+
+proteins based on cellular components revealed upregulation of proteins in the periplasmic
+
+382
+
+space, with downregulation in the cytosol and cytoplasm. Long-chain fatty acid-transporting
+
+383
+
+porin activity increased, suggesting its involvement in the intracellular transport of
+
+384
+
+polyethylene degradation intermediates 29. Furthermore, the upregulation of oxidoreductase
+
+385
+
+activity acting on the CH-CH group of donors indicates the expression of enzymes directly
+
+386
+
+engaged in polyethylene degradation. Flavin adenine dinucleotide binding suggested the
+
+387
+
+potential involvement of enzymes receiving electrons from FADH2 during polyethylene
+
+388
+
+degradation 30.
+
+389
+
+3.4. Putative Plastic Oxygenase: Phenylalanine Monooxygenase and Depolymerase:
+
+390
+
+Isocitrate Lyase
+
+391
+
+Hydrophobic amino acid and lipid metabolism emerged as commonly identified metabolic
+
+392
+
+pathways in both the transcriptome and proteome analyses (Table 2). Although lipid
+
+393
+
+metabolism is considered a key pathway for plastic degradation, our analysis suggested the
+
+394
+
+potential degradation of hydrophobic intermediates via the hydrophobic amino acid
+
+395
+
+degradation pathway 14. Examination of gene and protein functions revealed consistent
+
+396
+
+upregulation of transporter proteins and oxidoreductase activities in the CH-CH group.
+
+397
+
+Transporter proteins, such as long-chain fatty acid-transporting porins, facilitate the transport
+
+398
+
+of hydrophobic intermediate molecules into cells, whereas oxidoreductases play a crucial role
+
+399
+
+in plastic degradation 13, 22, 31.
+
+400
+401
+
+Table 2. Functional analysis of the genes and proteins upregulated during polyethylene
+degradation
+
+19
+https://doi.org/10.26434/chemrxiv-2024-n8145 ORCID: https://orcid.org/0000-0001-9527-9689 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Function
+KEGG
+Transmembrane Transcriptome ABC transporter,
+transport
+Two-component
+system
+Proteome
+Lipid
+metabolism
+
+Amino acid
+metabolism
+
+Two-component
+system
+Transcriptome Lipid metabolic
+process
+Proteome
+Fatty acid
+degradation,
+Lipoic acid
+metabolism
+Transcriptome Beta-Alanine
+metabolism
+Proteome
+
+Oxidoreductase
+activity
+
+Amino acid
+degradation (Valine,
+Leucine, Isoleucine,
+Lysine)
+Transcriptome Sulfur metabolism
+
+Proteome
+
+-
+
+GO
+Integral component of
+membrane, Transmembrane
+transporter activity, Porin
+activity
+Long-chain fatty acid
+transporting, porin activity
+Acyl-CoA dehydrogenase
+activity
+Lipid metabolic process, AcylCoA dehydrogenase activity
+Polyamide catabolic process,
+amino acid catabolic process
+(L-phenylalanine, Valine)
+Amino acid metabolism (Lphenylalanine, Leucine, Lalanine, D-alanine, L-valine),
+Nitrate assimilation
+Iron-sulfur cluster assembly,
+Oxidoreductase activity (acting
+on the CH-CH group of
+donors), Dioxygenase activity,
+Monooxygenase activity
+Oxidoreductase activity (acting
+on the CH-CH group of
+donors), Cytochrome-c
+peroxidase activity
+
+402
+403
+
+Among the 247 genes that were upregulated simultaneously in both the transcriptome and
+
+404
+
+proteome, the majority were associated with transporter functions, acyl-CoA dehydrogenase
+
+405
+
+(involved in lipid metabolism), and largely uncharacterized hypothetical proteins (Table S9).
+
+406
+
+Genes related to oxygenases that are capable of initiating the initial oxidation of polyolefin
+
+407
+
+plastics are composed of only carbon and hydrogen, including cytochrome P450, alkane
+
+408
+
+monooxygenase, and phenylalanine monooxygenase 10, 11, 22. Notably, the mRNA expression
+
+409
+
+level of phenylalanine monooxygenase increased by 3.16-fold in microbial samples degrading
+
+410
+
+PE, and the enzyme expression, analyzed through proteomic analysis, increased by 5.84-fold.
+
+411
+
+However, the role of phenylalanine monooxygenase in plastic degradation remains unclear.
+
+20
+https://doi.org/10.26434/chemrxiv-2024-n8145 ORCID: https://orcid.org/0000-0001-9527-9689 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+412
+
+Phenylalanine monooxygenase acts on the phenyl residue of L-phenylalanine, a hydrophobic
+
+413
+
+amino acid, forming a hydroxyl group and oxidizing L-phenylalanine into L-tyrosine 32. Unlike
+
+414
+
+cytochrome P450 and alkane monooxygenase, which are membrane proteins, phenylalanine
+
+415
+
+monooxygenase is a cytoplasmic enzyme 33. This characteristic renders phenylalanine
+
+416
+
+monooxygenase suitable for plastic degradation applications. Phenylalanine monooxygenase
+
+417
+
+is expressed in soluble form, which enables its mass expression and purification. Therefore,
+
+418
+
+this enzyme is well-suited for investigating functions and improving performance. Additionally,
+
+419
+
+the ease of large-scale production of phenylalanine monooxygenase makes it highly suitable
+
+420
+
+for plastic degradation.
+
+421
+
+After oxidition by oxidizing enzymes, polyethylene must be depolymerized into low
+
+422
+
+molecular weight hydrocarbons to be fully degraded by microorganisms. Unlike polyester
+
+423
+
+plastics, which are depolymerized through ester bonds, polyethylene is composed of C-C bonds.
+
+424
+
+Previous studies have suggested that esterases, such as lipases, which are involved in the
+
+425
+
+degradation of polyester plastics, may also play a role in the depolymerization of polyethylene
+
+426
+
+9
+
+427
+
+we observed a 5.18-fold increase in the expression of ICL, an enzyme that cleaves the C-C
+
+428
+
+bonds in isocitrate to produce glyoxylate and succinate 34. ICL shows great potential for
+
+429
+
+involvement in polyethylene depolymerization because of its ability to cleave C-C bonds,
+
+430
+
+which distinguishes it from previously proposed esterase candidates.
+
+431
+
+3.5. Enzymatic LDPE Degradation via Phenylalanine Monooxygenase and
+
+432
+
+Isocitrate Lyase
+
+433
+
+3.5.1. Phenylalanine monooxygenase and Isocitrate lyase purification
+
+. However, experimental evidence for polyethylene depolymerization is limited. In our study,
+
+434
+
+The proteins produced from recombinant phhA and aceA in E. coli BL21(DE3) were purified
+
+435
+
+using affinity chromatography and confirmed by SDS-PAGE (Figure S3). A protein of
+
+21
+https://doi.org/10.26434/chemrxiv-2024-n8145 ORCID: https://orcid.org/0000-0001-9527-9689 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+436
+
+approximately 30 kDa was observed, which is consistent with the known size of phenylalanine
+
+437
+
+monooxygenase, indicating successful protein expression. The protein derived from aceA was
+
+438
+
+approximately 59 kDa, matching the expected size of ICL. Moreover, no other proteins were
+
+439
+
+visible in the bands corresponding to each protein, confirming the successful purification.
+
+440
+
+3.5.2. Degradation step1: polyethylene oxidation by phenylalanine monooxygenase
+
+441
+
+Polyethylene, a polymer composed of carbon and hydrogen, undergoes oxidation as the
+
+442
+
+initial step in its biodegradation process. Phenylalanine monooxygenase can introduce a
+
+443
+
+hydroxyl (-OH) group into C-H bonds. FT-IR analysis was conducted to examine the chemical
+
+444
+
+functional groups on the surface of LDPE. When treated with PAH, C-O groups at 1050 cm-1
+
+445
+
+and hydroxyl groups (-OH) at 3000–3600 cm-1 were identified (Figure 4a) 35. Subsequently,
+
+446
+
+the surface carbon binding energies of LDPE treated with phenylalanine monooxygenase were
+
+447
+
+examined using XPS (Table S10). In the control group, only C-C bonds were detected at 284.5
+
+448
+
+eV, whereas in the PAH-treated group, C-O bonds were identified at 285.6 eV, constituting 10.6%
+
+449
+
+of the total bonds (Figure 4d, 4f) 4, 36, 37. This finding was supported by the oxygen elemental
+
+450
+
+analysis, with minimal oxygen detected in the control group (Figure 4e). Although
+
+451
+
+polyethylene is composed solely of carbon and hydrogen, XPS, which is highly sensitive, can
+
+452
+
+detect trace amounts of oxygen in a the surrounding environment of the device. In the enzyme-
+
+453
+
+treated group, significant increase in C-O bonds at 532.2, C=O bonds at 531.1, and COO- at
+
+454
+
+533.4 eV were observed, indicating the oxidation ability of phenylalanine monooxygenase on
+
+455
+
+polyethylene (Figure 4g) 38. The C-O bond observed in the C1s and O1s scans was attributed
+
+456
+
+to the formation of C-OH by PAH. This result was in line with the XPS findings, confirming
+
+457
+
+the introduction of hydroxyl groups by phenylalanine monooxygenase and the presence of C-
+
+458
+
+O bonds in LDPE. The thermal stability of LDPE was assessed using TGA, revealing thermal
+
+459
+
+decomposition at 479.3 °C in the control group (Figure 5a). Plastics exhibit distinct thermal
+
+460
+
+decomposition temperatures, and alterations in these temperatures signify plastic degradation.
+
+22
+https://doi.org/10.26434/chemrxiv-2024-n8145 ORCID: https://orcid.org/0000-0001-9527-9689 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+461
+
+In the PAH-treated group, the decomposition temperature decreased, with maximum
+
+462
+
+decomposition rates observed at 424.28 and 461.93 °C, indicating LDPE oxidation and
+
+463
+
+formation of intermediate molecules 39.
+
+464
+465
+
+Figure 4. FT-IR and XPS analyses of polyethylene surface treated with phenylalanine
+
+466
+
+monooxygenase and isocitrate lyase. Analysis of chemical functional groups using FT-IR for
+
+467
+
+(a) PAH-treated, (b) ICL-treated, and (c) PAH+ICL-treated samples. Analysis of binding
+
+468
+
+energy using XPS for (d) C1s and (e) O1s binding energy of the polyethylene control sample.
+
+469
+
+(f) C1s and (g) O1s binding energy of the PAH-treated sample. (h) C1s and (i) O1s binding
+
+470
+
+energy of the ICL-treated sample. (j) C1s and (k) O1s binding energy of the PAH+ICL-treated.
+
+23
+https://doi.org/10.26434/chemrxiv-2024-n8145 ORCID: https://orcid.org/0000-0001-9527-9689 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+471
+472
+
+Figure 5. Analysis of polyethylene degradation by PAH and ICL. Thermal stability analysis
+
+473
+
+using TGA for (d) PAH-treated, (e) ICL-treated, and (f) PAH+ICL-treated samples. (g)
+
+474
+
+Number-average molecular weight (Mn) of control, PAH, ICL, and PAH+ICL (Mix) samples.
+
+475
+
+(h) Weight-average molecular weight (Mw) of control, PAH, ICL, and PAH+ICL (Mix)
+
+476
+
+samples. (i) Z-average molecular weight (Mz) of control, PAH, ICL, and PAH+ICL (Mix)
+
+477
+
+samples. The asterisk (*) indicates a statistically significant difference (p=0.065) analyzed
+
+478
+
+using Student’s t-test.
+
+479
+
+3.5.3. Degradation step2: polyethylene depolymerization by isocitrate lyase
+
+480
+
+When ICL was applied to the LDPE film, FT-IR analysis showed results identical to those
+
+481
+
+of the control group, indicating that no oxidation occurred (Figure 4b). Additionally, XPS
+
+482
+
+analysis revealed no significant differences between the control and isocitrate lyase-treated
+24
+
+https://doi.org/10.26434/chemrxiv-2024-n8145 ORCID: https://orcid.org/0000-0001-9527-9689 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+483
+
+groups, confirming that ICL lacks the ability to oxidize plastic (Figure 4h, 4i). TGA analysis
+
+484
+
+indicated a slight increase of approximately 7 °C in the decomposition temperature but with
+
+485
+
+minimal impact compared with the PAH-treated group (Figure 5b). When both PAH and ICL
+
+486
+
+were applied simultaneously, FT-IR, XPS, and TGA results were nearly identical to those
+
+487
+
+obtained by treating LDPE with PAH alone, suggesting that PAH was responsible for the
+
+488
+
+oxidation of polyethylene (Figure 4c, 4j, 4k, 5c). The molecular weight of enzyme-treated
+
+489
+
+LDPE was analyzed to assess the role of ICL as a depolymerase (Table 3) 18. There was no
+
+490
+
+significant difference in the Mn among the control, PAH, ICL, and PAH+ICL experimental
+
+491
+
+groups (Figure 5e). While the Mw did not decrease when PAH and ICL were applied
+
+492
+
+individually, a decrease of approximately 3.5% from 238,251 to 229,864 Da was observed
+
+493
+
+when both enzymes were applied simultaneously (Figure 5f). Similarly, while the Z-average
+
+494
+
+molecular weight (Mz) did not decrease when PAH and ICL were applied individually, a
+
+495
+
+decrease of approximately 7.0% from 803,487 to 747,396 Da was observed when both enzymes
+
+496
+
+were applied simultaneously (Figure 5g). The statistical significance between the control and
+
+497
+
+PAH+ICL groups was assessed using Student's t-test, resulting in a p-value of 0.065. Biological
+
+498
+
+plastic degradation reactions often proceed via limited-extent depolymerization reactions. In
+
+499
+
+cases of broad depolymerization, where enzymes react uniformly with all molecular weights
+
+500
+
+of the material, changes are observed in the Mn, Mw, and Mz values. However, to a limited
+
+501
+
+extent, depolymerization and effective enzyme reactions with low molecular weight substances
+
+502
+
+lead to significant variations in Mn, whereas effective reactions with high molecular weight
+
+503
+
+substances result in significant variations in Mz 40. Depolymerization mediated by PAH and
+
+504
+
+ICL resulted in changes in Mz, indicating effective enzyme reactions with high molecular
+
+505
+
+weight substances in limited extent depolymerization. A limited extent of depolymerization
+
+506
+
+was also observed in the GPC curve. LDPE treated with PAH showed no significant difference
+
+507
+
+from the control, indicating that PAH did not contribute to depolymerization. However, when
+
+25
+https://doi.org/10.26434/chemrxiv-2024-n8145 ORCID: https://orcid.org/0000-0001-9527-9689 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+508
+
+treated with ICL, the curve shifted toward the higher molecular weight region, suggesting that
+
+509
+
+a limited extent of depolymerization primarily occurred in the lower molecular weight range.
+
+510
+
+However, no statistically significant difference was observed in molecular weight due to low
+
+511
+
+efficiency. In samples simultaneously treated with both PAH and ICL, a reduction in the
+
+512
+
+number of molecules was observed in the high molecular weight region. (Figure S4). Further
+
+513
+
+research on precise enzymatic reaction mechanisms is necessary to understand the underlying
+
+514
+
+causes of such phenomena.
+
+515
+516
+517
+518
+
+Table 3. Changes in molecular weight of low-density polyethylene films treated with
+phenylalanine monooxygenase and isocitrate lyase (mean±standard deviation, n=2). Mn,
+number-average molecular weight Mw, weight-average molecular weight; Mz, z-average
+molecular weight.
+Sample
+
+Mn (Da)
+
+Mn Change
+(%)
+
+Mw (Da)
+
+Mw Change
+(%)
+
+Mz (Da)
+
+Mz Change
+(%)
+
+Control
+PAH
+ICL
+PAH + ICL
+
+29373 ± 1086
+29997 ± 534
+30982 ± 967
+29216 ± 1534
+
++2.1%
++5.5%
+-0.5%
+
+238251 ± 6635
+244363 ± 1458
+249371 ± 3902
+229864 ± 2126
+
++2.6%
++4.7%
+-3.5%
+
+803487 ± 21274
+804535 ± 6147
+787503 ± 22776
+747396 ± 1508
+
++0.1%
+-2.0%
+-7.0%
+
+519
+520
+
+This result suggests that although ICL cannot effectively depolymerize polyethylene itself,
+
+521
+
+it exhibits depolymerization activity in PAH-oxidized polyethylene 36, 41. Since isocitrate is
+
+522
+
+more oxidized molecule compared to polyethylene, primary oxidation may be necessary for
+
+523
+
+ICL activity. Furthermore, while most previous studies focused on identifying a single enzyme
+
+524
+
+capable of degrading plastic, the results of this study indicate at least a two-step process of
+
+525
+
+oxidation and depolymerization during polyethylene degradation, highlighting the need for
+
+526
+
+sequential reactions involving multiple enzymes 10. Moreover, the results demonstrated that
+
+527
+
+ICL, which is capable of breaking the C-C bonds of oxidized polyethylene, can catalyze the
+
+528
+
+depolymerization of polyethylene.
+
+529
+
+26
+https://doi.org/10.26434/chemrxiv-2024-n8145 ORCID: https://orcid.org/0000-0001-9527-9689 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+530
+
+4. Conclusion
+
+531
+
+We conducted transcriptome and proteome analyses of the plastic-degrading microbe P.
+
+532
+
+aeruginosa to identify genes and enzymes with increased expression levels. Using the KEGG
+
+533
+
+and GO databases, we analyzed the associated metabolic pathways and confirmed the potential
+
+534
+
+involvement of lipid and hydrophobic amino acid metabolism in polyethylene degradation.
+
+535
+
+Subsequently, genes showing elevated expression levels in both transcriptome and proteome
+
+536
+
+analyses were selected and oxygenases involved in the initial oxidation of plastics were
+
+537
+
+identified. Remarkably, phenylalanine monooxygenase, which was previously unrecognized in
+
+538
+
+plastic degradation, was identified along with alkane monooxygenase and cytochrome P450
+
+539
+
+monooxygenase, both of which are known for their involvement in the initial oxidation of
+
+540
+
+plastics. Furthermore, among the upregulated enzymes, ICL, capable of breaking the C-C bond
+
+541
+
+in polyethylene, was identified as a potential depolymerase.
+
+542
+
+The oxidative capability of enzyme was confirmed by the formation of C-O, C=O, and -OH
+
+543
+
+functional groups on the LDPE film after treatment with phenylalanine monooxygenase. ICL
+
+544
+
+did not affect LDPE oxidation when used alone; however, it exhibited depolymerization
+
+545
+
+activity in oxidized LDPE when co-treated with phenylalanine monooxygenase. This study
+
+546
+
+delineated the degradation of polyethylene into two stages, oxidation and depolymerization,
+
+547
+
+and demonstrated degradation by purifying the enzymes involved at each stage. In particular,
+
+548
+
+lyases capable of breaking the C-C bond in polyethylene were identified and proposed as
+
+549
+
+depolymerization enzymes.
+
+550
+
+This study had limitations in qualitatively demonstrating the oxidative and depolymerization
+
+551
+
+abilities of plastic. Hence, further research, such as enzyme kinetic studies, is required to
+
+552
+
+develop quantitative measurement methods for degradation rates. Additionally, subsequent
+
+553
+
+studies are necessary to analyze the structures of phenylalanine monooxygenase and isocitrate
+
+27
+https://doi.org/10.26434/chemrxiv-2024-n8145 ORCID: https://orcid.org/0000-0001-9527-9689 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+554
+
+lyase discovered in this study and to engineer them for enhanced degradation performance,
+
+555
+
+such as directed evolution. Furthermore, exploring the potential industrial applications of
+
+556
+
+enzymes through mass production and purification can significantly contribute to addressing
+
+557
+
+plastic pollution.
+
+558
+
+28
+https://doi.org/10.26434/chemrxiv-2024-n8145 ORCID: https://orcid.org/0000-0001-9527-9689 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+559
+
+Author Contributions
+
+560
+
+§ Hong Rae Kim and Ye Eun Lee contributed equally to this paper.
+
+561
+
+Hong Rae Kim: Conceptualization, Investigation, Formal analysis, Visualization, Writing-
+
+562
+
+Original Draft; Ye Eun Lee: Investigation, Formal analysis, Visualization; Dong-Eun Suh:
+
+563
+
+Investigation, Funding acquisition; Donggeon Choi: Investigation, Writing-Review & Editing,
+
+564
+
+Sukkyoo Lee: Conceptualization, Methodology, Validation, Formal analysis, Investigation,
+
+565
+
+Project administration, Funding acquisition, Revision of draft
+
+566
+
+Acknowledgement
+
+567
+
+This study was supported by the Tech Incubator Program for Startups funded by the Ministry
+
+568
+
+of Small and Medium Enterprises and Startups, Republic of Korea (No. S3136229). This work
+
+569
+
+was also supported by the DGIST R&D Program of the Ministry of Science and ICT, Korea
+
+570
+
+(21-BRP-04 and 22-BRP-04) and the DGIST start-up fund.
+
+571
+
+Data availability
+
+572
+
+RNA sequencing data are deposited in the NCBI database under the ID codes PRJNA1100243,
+
+573
+
+SRR28677042, and SRR28677047. LC-MS/MS data are deposited in the PRIDE database
+
+574
+
+under the accession code PXD051434.
+
+29
+https://doi.org/10.26434/chemrxiv-2024-n8145 ORCID: https://orcid.org/0000-0001-9527-9689 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+575
+
+References
+
+576
+
+(1) Geyer, R.; Jambeck, J. R.; Law, K. L. Production, use, and fate of all plastics ever made. Science
+
+577
+
+advances 2017, 3 (7), e1700782.
+
+578
+
+(2) MacLeod, M.; Arp, H. P. H.; Tekman, M. B.; Jahnke, A. The global threat from plastic pollution.
+
+579
+
+Science 2021, 373 (6550), 61-65. DOI: 10.1126/science.abg5433 From NLM Medline.
+
+580
+
+(3) Ali, S. S.; Elsamahy, T.; Al-Tohamy, R.; Zhu, D.; Mahmoud, Y. A.; Koutra, E.; Metwally, M. A.; Kornaros,
+
+581
+
+M.; Sun, J. Plastic wastes biodegradation: Mechanisms, challenges and future prospects. Sci Total
+
+582
+
+Environ 2021, 780, 146590. DOI: 10.1016/j.scitotenv.2021.146590 From NLM Medline.
+
+583
+
+(4) Kim, H. R.; Lee, H. M.; Yu, H. C.; Jeon, E.; Lee, S.; Li, J.; Kim, D. H. Biodegradation of Polystyrene
+
+584
+
+by Pseudomonas sp. Isolated from the Gut of Superworms (Larvae of Zophobas atratus). Environ
+
+585
+
+Sci Technol 2020, 54 (11), 6987-6996. DOI: 10.1021/acs.est.0c01495 From NLM Medline.
+
+586
+
+(5) Yang, J.; Yang, Y.; Wu, W. M.; Zhao, J.; Jiang, L. Evidence of polyethylene biodegradation by
+
+587
+
+bacterial strains from the guts of plastic-eating waxworms. Environ Sci Technol 2014, 48 (23), 13776-
+
+588
+
+13784. DOI: 10.1021/es504038a From NLM Medline.
+
+589
+
+(6) Ahmed, T.; Shahid, M.; Azeem, F.; Rasul, I.; Shah, A. A.; Noman, M.; Hameed, A.; Manzoor, N.;
+
+590
+
+Manzoor, I.; Muhammad, S. Biodegradation of plastics: current scenario and future prospects for
+
+591
+
+environmental safety. Environ. Sci. Pollut. Res. Int. 2018, 25 (8), 7287-7298. DOI: 10.1007/s11356-
+
+592
+
+018-1234-9 From NLM Medline.
+
+593
+
+(7) Singh, R.; Mehrotra, T.; Bisaria, K.; Sinha, S. Environmental hazards and biodegradation of plastic
+
+594
+
+waste: Challenges and future prospects. Bioremediation for Environmental Sustainability 2021, 193-
+
+595
+
+214.
+
+596
+
+(8) Ghatge, S.; Yang, Y.; Ahn, J.-H.; Hur, H.-G. Biodegradation of polyethylene: a brief review. Applied
+
+597
+
+Biological Chemistry 2020, 63, 1-14.
+
+598
+
+(9) Yeom, S. J.; Le, T. K.; Yun, C. H. P450-driven plastic-degrading synthetic bacteria. Trends Biotechnol
+
+599
+
+2022, 40 (2), 166-179. DOI: 10.1016/j.tibtech.2021.06.003
+
+600
+
+(10) Yun, S.-D.; Lee, C. O.; Kim, H.-W.; An, S. J.; Kim, S.; Seo, M.-J.; Park, C.; Yun, C.-H.; Chi, W. S.; Yeom,
+
+601
+
+S.-J. Exploring a new biocatalyst from Bacillus thuringiensis JNU01 for polyethylene biodegradation.
+
+602
+
+Environmental Science & Technology Letters 2023, 10 (6), 485-492. Jeon, H. J.; Kim, M. N. Functional
+
+603
+
+analysis of alkane hydroxylase system derived from Pseudomonas aeruginosa E7 for low molecular
+
+604
+
+weight polyethylene biodegradation. International Biodeterioration & Biodegradation 2015, 103,
+
+605
+
+141-146.
+
+606
+
+(11) Yoon, M. G.; Jeon, H. J.; Kim, M. N. Biodegradation of polyethylene by a soil bacterium and AlkB
+
+607
+
+cloned recombinant cell. J Bioremed Biodegrad 2012, 3 (4), 1-8.
+
+608
+
+(12) Tournier, V.; Duquesne, S.; Guillamot, F.; Cramail, H.; Taton, D.; Marty, A.; Andre, I. Enzymes' Power
+
+609
+
+for Plastics Degradation. Chem Rev 2023. DOI: 10.1021/acs.chemrev.2c00644
+
+610
+
+(13) Zadjelovic, V.; Erni-Cassola, G.; Obrador-Viel, T.; Lester, D.; Eley, Y.; Gibson, M. I.; Dorador, C.;
+
+611
+
+Golyshin, P. N.; Black, S.; Wellington, E. M. H.; et al. A mechanistic understanding of polyethylene
+
+612
+
+biodegradation by the marine bacterium Alcanivorax. J Hazard Mater 2022, 436, 129278. DOI:
+
+613
+
+10.1016/j.jhazmat.2022.129278
+
+From NLM Medline.
+
+From NLM Publisher.
+
+From NLM Medline.
+
+30
+https://doi.org/10.26434/chemrxiv-2024-n8145 ORCID: https://orcid.org/0000-0001-9527-9689 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+614
+
+(14) Gravouil, K.; Ferru-Clement, R.; Colas, S.; Helye, R.; Kadri, L.; Bourdeau, L.; Moumen, B.; Mercier,
+
+615
+
+A.; Ferreira, T. Transcriptomics and Lipidomics of the Environmental Strain Rhodococcus ruber Point
+
+616
+
+out Consumption Pathways and Potential Metabolic Bottlenecks for Polyethylene Degradation.
+
+617
+
+Environ Sci Technol 2017, 51 (9), 5172-5181. DOI: 10.1021/acs.est.7b00846 From NLM Medline.
+
+618
+
+(15) Langmead, B.; Trapnell, C.; Pop, M.; Salzberg, S. L. Ultrafast and memory-efficient alignment of
+
+619
+
+short DNA sequences to the human genome. Genome Biol 2009, 10 (3), R25. DOI: 10.1186/gb-
+
+620
+
+2009-10-3-r25
+
+621
+
+N.; Marth, G.; Abecasis, G.; Durbin, R.; Genome Project Data Processing, S. The Sequence
+
+622
+
+Alignment/Map
+
+623
+
+10.1093/bioinformatics/btp352
+
+624
+
+(16) Anders, S.; Pyl, P. T.; Huber, W. HTSeq--a Python framework to work with high-throughput
+
+625
+
+sequencing data. Bioinformatics 2015, 31 (2), 166-169. DOI: 10.1093/bioinformatics/btu638
+
+626
+
+NLM Medline.
+
+627
+
+(17) Lee, H. M.; Kim, H. R.; Jeon, E.; Yu, H. C.; Lee, S.; Li, J.; Kim, D.-H. Evaluation of the biodegradation
+
+628
+
+efficiency of four various types of plastics by Pseudomonas aeruginosa isolated from the gut extract
+
+629
+
+of superworms. Microorganisms 2020, 8 (9), 1341. Tamnou, E. B. M.; Arfao, A. T.; Nougang, M. E.;
+
+630
+
+Metsopkeng, C. S.; Ewoti, O. V. N.; Moungang, L. M.; Nana, P. A.; Takang-Etta, L.-R. A.; Perrière, F.;
+
+631
+
+Sime-Ngando, T. Biodegradation of polyethylene by the bacterium Pseudomonas aeruginosa in
+
+632
+
+acidic aquatic microcosm and effect of the environmental temperature. Environmental Challenges
+
+633
+
+2021, 3, 100056. Kale, S. K.; Deshmukh, A. G.; Dudhare, M. S.; Patil, V. B. Microbial degradation of
+
+634
+
+plastic: a review. J. Biochem. Technol. 2015, 6 (2), 952-961.
+
+635
+
+(18) Wu, W. M.; Criddle, C. S. Characterization of biodegradation of plastics in insect larvae. Methods
+
+636
+
+Enzymol 2021, 648, 95-120. DOI: 10.1016/bs.mie.2020.12.029 From NLM Medline.
+
+637
+
+(19) Yang, Y.; Yang, J.; Wu, W. M.; Zhao, J.; Song, Y.; Gao, L.; Yang, R.; Jiang, L. Biodegradation and
+
+638
+
+Mineralization of Polystyrene by Plastic-Eating Mealworms: Part 2. Role of Gut Microorganisms.
+
+639
+
+Environ Sci Technol 2015, 49 (20), 12087-12093. DOI: 10.1021/acs.est.5b02663 From NLM Medline.
+
+640
+
+(20) Borst, P.; Zelcer, N.; van Helvoort, A. ABC transporters in lipid transport. Biochim Biophys Acta
+
+641
+
+2000, 1486 (1), 128-144. DOI: 10.1016/s1388-1981(00)00053-6
+
+642
+
+(21) Kadri, T.; Rouissi, T.; Kaur Brar, S.; Cledon, M.; Sarma, S.; Verma, M. Biodegradation of polycyclic
+
+643
+
+aromatic hydrocarbons (PAHs) by fungal enzymes: A review. J Environ Sci (China) 2017, 51, 52-74.
+
+644
+
+DOI: 10.1016/j.jes.2016.08.023
+
+645
+
+P. Degradation of n-alkanes and polycyclic aromatic hydrocarbons in petroleum by a newly isolated
+
+646
+
+Pseudomonas
+
+647
+
+10.1016/j.biortech.2010.12.064
+
+648
+
+(22) Kong, H. G.; Kim, H. H.; Chung, J. H.; Jun, J.; Lee, S.; Kim, H. M.; Jeon, S.; Park, S. G.; Bhak, J.; Ryu,
+
+649
+
+C. M. The Galleria mellonella Hologenome Supports Microbiota-Independent Metabolism of Long-
+
+650
+
+Chain
+
+651
+
+10.1016/j.celrep.2019.02.018
+
+652
+
+(23) Inderthal, H.; Tai, S. L.; Harrison, S. T. Non-hydrolyzable plastics–an interdisciplinary look at
+
+653
+
+plastic bio-oxidation. Trends Biotechnol. 2021, 39 (1), 12-23.
+
+From NLM Medline. Li, H.; Handsaker, B.; Wysoker, A.; Fennell, T.; Ruan, J.; Homer,
+format
+
+and
+
+Bioinformatics
+
+2009,
+
+25
+
+(16),
+
+2078-2079.
+
+DOI:
+
+From NLM Medline.
+From
+
+From NLM Medline.
+
+From NLM Medline. Zhang, Z.; Hou, Z.; Yang, C.; Ma, C.; Tao, F.; Xu,
+
+aeruginosa
+
+Hydrocarbon
+
+SAMtools.
+
+DQ8.
+
+Bioresour
+
+Technol
+
+2011,
+
+102
+
+(5),
+
+4111-4116.
+
+DOI:
+
+From NLM Medline.
+
+Beeswax.
+
+Cell
+
+Rep
+
+2019,
+
+26
+
+(9),
+
+2451-2464
+
+e2455.
+
+DOI:
+
+From NLM Medline.
+
+31
+https://doi.org/10.26434/chemrxiv-2024-n8145 ORCID: https://orcid.org/0000-0001-9527-9689 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+654
+
+(24) Liang, Y.; Wei, J.; Qiu, X.; Jiao, N. Homogeneous Oxygenase Catalysis. Chem Rev 2018, 118 (10),
+
+655
+
+4912-4945. DOI: 10.1021/acs.chemrev.7b00193
+
+656
+
+Mallavarapu, M.; Naidu, R. A Comprehensive Review of Aliphatic Hydrocarbon Biodegradation by
+
+657
+
+Bacteria. Appl Biochem Biotechnol 2015, 176 (3), 670-699. DOI: 10.1007/s12010-015-1603-5
+
+658
+
+NLM Medline.
+
+659
+
+(25) Morikawa, M. Dioxygen activation responsible for oxidation of aliphatic and aromatic
+
+660
+
+hydrocarbon compounds: current state and variants. Appl Microbiol Biotechnol 2010, 87 (5), 1595-
+
+661
+
+1603. DOI: 10.1007/s00253-010-2715-z From NLM Medline.
+
+662
+
+(26) Britt, R. D.; Rao, G.; Tao, L. Bioassembly of complex iron-sulfur enzymes: hydrogenases and
+
+663
+
+nitrogenases. Nat Rev Chem 2020, 4 (10), 542-549.
+
+664
+
+(27) El-Sherif, D. M.; Eloffy, M. G.; Elmesery, A.; Abouzid, M.; Gad, M.; El-Seedi, H. R.; Brinkmann, M.;
+
+665
+
+Wang, K.; Al Naggar, Y. Environmental risk, toxicity, and biodegradation of polyethylene: a review.
+
+666
+
+Environ. Sci. Pollut. Res. Int. 2022, 29 (54), 81166-81182. DOI: 10.1007/s11356-022-23382-1 From
+
+667
+
+NLM Medline.
+
+668
+
+(28) Yang, Y.; Hu, L.; Li, X.; Wang, J.; Jin, G. Nitrogen Fixation and Diazotrophic Community in Plastic-
+
+669
+
+Eating Mealworms Tenebrio molitor L. Microb Ecol 2023, 85 (1), 264-276. DOI: 10.1007/s00248-021-
+
+670
+
+01930-5 From NLM Medline. Ding, M. Q.; Yang, S. S.; Ding, J.; Zhang, Z. R.; Zhao, Y. L.; Dai, W.; Sun,
+
+671
+
+H. J.; Zhao, L.; Xing, D.; Ren, N.; et al. Gut Microbiome Associating with Carbon and Nitrogen
+
+672
+
+Metabolism during Biodegradation of Polyethene in Tenebrio larvae with Crop Residues as Co-Diets.
+
+673
+
+Environ Sci Technol 2023, 57 (8), 3031-3041. DOI: 10.1021/acs.est.2c05009 From NLM Medline.
+
+674
+
+(29) LeMoine, C. M.; Grove, H. C.; Smith, C. M.; Cassone, B. J. A very hungry caterpillar: polyethylene
+
+675
+
+metabolism and lipid homeostasis in larvae of the greater wax moth (Galleria mellonella).
+
+676
+
+Environmental science & technology 2020, 54 (22), 14706-14715. Mishra, R.; Chavda, P.; Kumar, R.;
+
+677
+
+Pandit, R.; Joshi, M.; Kumar, M.; Joshi, C. Exploring genetic landscape of low-density polyethylene
+
+678
+
+degradation for sustainable troubleshooting of plastic pollution at landfills. Science of The Total
+
+679
+
+Environment 2024, 912, 168882.
+
+680
+
+(30) Tischler, D.; Kumpf, A.; Eggerichs, D.; Heine, T. Styrene monooxygenases, indole monooxygenases
+
+681
+
+and related flavoproteins applied in bioremediation and biocatalysis. Enzymes 2020, 47, 399-425.
+
+682
+
+DOI: 10.1016/bs.enz.2020.05.011
+
+683
+
+V.; Neeraj, R. R. K.; Sharma, P. K. Polyaromatic Hydrocarbon Specific Ring Hydroxylating Dioxygenases:
+
+684
+
+Diversity, Structure, Function, and Protein Engineering. Curr Protein Pept Sci 2023, 24 (1), 7-21. DOI:
+
+685
+
+10.2174/1389203724666221108114537 From NLM Medline.
+
+686
+
+(31) Tao, X.; Ouyang, H.; Zhou, A.; Wang, D.; Matlock, H.; Morgan, J. S.; Ren, A. T.; Mu, D.; Pan, C.;
+
+687
+
+Zhu, X.; et al. Polyethylene Degradation by a Rhodococcous Strain Isolated from Naturally Weathered
+
+688
+
+Plastic
+
+689
+
+10.1021/acs.est.3c03778
+
+690
+
+(32) Joh, T. H.; Hwang, O.; Abate, C. Phenylalanine hydroxylase, tyrosine hydroxylase, and tryptophan
+
+691
+
+hydroxylase. Neurotransmitter Enzymes 1986, 1-32.
+
+692
+
+(33) Barnaba, C.; Gentry, K.; Sumangala, N.; Ramamoorthy, A. The catalytic function of cytochrome
+
+693
+
+P450 is entwined with its membrane-bound nature. F1000Research 2017, 6. Austin, R. N.; Born, D.;
+
+Waste
+
+Enrichment.
+
+From NLM Medline. Abbasian, F.; Lockington, R.;
+From
+
+From NLM PubMed-not-MEDLINE.
+
+From NLM Medline. Kaur, T.; Lakhawat, S. S.; Kumar, V.; Sharma,
+
+Environ
+
+Sci
+
+Technol
+
+2023,
+
+57
+
+(37),
+
+13901-13911.
+
+DOI:
+
+From NLM Medline.
+
+32
+https://doi.org/10.26434/chemrxiv-2024-n8145 ORCID: https://orcid.org/0000-0001-9527-9689 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+694
+
+Lawton, T. J.; Hamilton, G. E. Protocols for purifying and characterizing integral membrane AlkB
+
+695
+
+enzymes. Hydrocarbon and Lipid Microbiology Protocols: Biochemical Methods 2016, 133-147.
+
+696
+
+(34) Kretzschmar, U.; Khodaverdi, V.; Jeoung, J. H.; Gorisch, H. Function and transcriptional regulation
+
+697
+
+of the isocitrate lyase in Pseudomonas aeruginosa. Arch Microbiol 2008, 190 (2), 151-158. DOI:
+
+698
+
+10.1007/s00203-008-0381-7
+
+699
+
+(35) Jiang, S.; Su, T.; Zhao, J.; Wang, Z. Biodegradation of polystyrene by Tenebrio molitor, Galleria
+
+700
+
+mellonella, and Zophobas atratus larvae and comparison of their degradation effects. Polymers 2021,
+
+701
+
+13 (20), 3539.
+
+702
+
+(36) Nyamjav, I.; Jang, Y.; Park, N.; Lee, Y. E.; Lee, S. Physicochemical and structural evidence that
+
+703
+
+Bacillus cereus isolated from the gut of waxworms (Galleria mellonella larvae) biodegrades
+
+704
+
+polypropylene efficiently in vitro. Journal of Polymers and the Environment 2023, 31 (10), 4274-
+
+705
+
+4287.
+
+706
+
+(37) Ji, S. H.; Yoo, S.; Park, S.; Lee, M. J. Biodegradation of low-density polyethylene by plasma-
+
+707
+
+activated Bacillus strain. Chemosphere 2024, 349, 140763. DOI: 10.1016/j.chemosphere.2023.140763
+
+708
+
+From NLM Medline.
+
+709
+
+(38) Cheng, Y.; Chen, J.; Bao, M.; Li, Y. Surface modification ability of Paracoccus sp. indicating its
+
+710
+
+potential
+
+711
+
+Biodegradation 2022, 173, 105454.
+
+712
+
+(39) Peng, B. Y.; Su, Y.; Chen, Z.; Chen, J.; Zhou, X.; Benbow, M. E.; Criddle, C. S.; Wu, W. M.; Zhang, Y.
+
+713
+
+Biodegradation of Polystyrene by Dark ( Tenebrio obscurus) and Yellow ( Tenebrio molitor)
+
+714
+
+Mealworms (Coleoptera: Tenebrionidae). Environ Sci Technol 2019, 53 (9), 5256-5265. DOI:
+
+715
+
+10.1021/acs.est.8b06963
+
+716
+
+(40) Yang, L.; Gao, J.; Liu, Y.; Zhuang, G.; Peng, X.; Wu, W. M.; Zhuang, X. Biodegradation of expanded
+
+717
+
+polystyrene and low-density polyethylene foams in larvae of Tenebrio molitor Linnaeus (Coleoptera:
+
+718
+
+Tenebrionidae): Broad versus limited extent depolymerization and microbe-dependence versus
+
+719
+
+independence. Chemosphere 2021, 262, 127818. DOI: 10.1016/j.chemosphere.2020.127818
+
+720
+
+NLM Medline. Peng, B.-Y.; Li, Y.; Fan, R.; Chen, Z.; Chen, J.; Brandon, A. M.; Criddle, C. S.; Zhang, Y.;
+
+721
+
+Wu, W.-M. Biodegradation of low-density polyethylene and polystyrene in superworms, larvae of
+
+722
+
+Zophobas atratus (Coleoptera: Tenebrionidae): Broad and limited extent depolymerization.
+
+723
+
+Environmental Pollution 2020, 266, 115206.
+
+724
+
+(41) Brandon, A. M.; Gao, S. H.; Tian, R.; Ning, D.; Yang, S. S.; Zhou, J.; Wu, W. M.; Criddle, C. S.
+
+725
+
+Biodegradation of Polyethylene and Plastic Mixtures in Mealworms (Larvae of Tenebrio molitor) and
+
+726
+
+Effects on the Gut Microbiome. Environ Sci Technol 2018, 52 (11), 6526-6533. DOI:
+
+727
+
+10.1021/acs.est.8b02301
+
+for
+
+polyethylene
+
+From NLM Medline.
+
+terephthalate
+
+degradation.
+
+International
+
+Biodeterioration
+
+&
+
+From NLM Medline.
+
+From
+
+From NLM Medline.
+
+728
+
+33
+https://doi.org/10.26434/chemrxiv-2024-n8145 ORCID: https://orcid.org/0000-0001-9527-9689 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+

@@ -1,0 +1,2957 @@
+pK apredictionsfor arsonicacid derivatives.
+M irosl
+avaN edyal
+kova‡, § , DianaH eredia||, M arco L attuada§ and Joaquí nB arroso- F l
+ores†, ¶ *
+Swiss N ationalC enter for C ompetence in R esearch ( N C C R ) B io- inspired M aterial
+s, U niversity of
+F ribourg, C h emindesV erdiers4 , C H - 1 7 0 0 F ribourg, Switz erl
+and
+‡
+
+§
+
+DepartmentofC h emistry, U niversity ofF ribourg, C h eminduM usé e 9 , F ribourg1 7 0 0 , Switz erl
+and
+Sch oolofC h emicalSciencesand Engineering, Y ach ay T ech U niversity, 1 0 0 1 1 9 U rcuquí , Ecuador
+
+||
+
+C entro C onjunto de Investigació n en Q uí mica Sustentabl
+e U A EM - U N A M , C arretera T ol
+ucaA tl
+acomul
+co K m 1 4 . 5 , U nidad SanC ayetano, T ol
+uca, Estado de M é xico, 5 0 2 0 0 . M é xico
+†
+
+Instituto de Q uí mica, U niversidad N acionalA utó noma de M é xico. C ircuito Exterior S/ N C iudad
+U niversitaria, A l
+cal
+dí aC oyoacá n, C iudad de M é xico, C P 0 5 4 1 0 M é xico
+¶
+
+E- mail
+: jbarroso@ unam. mx
+
+A bstract
+F ood, water, air, and soilare regul
+arl
+y contaminated with naturaland artificial
+l
+y occurringforms
+ofarsenic, ofwh ich arsonicacid derivatives R A sO ( O H ) 2 are th e major pentaval
+entcompounds
+presentinaqueousmedia. A tagivenpH , th e resul
+tingioniz ationstate forth ese derivativesaffects
+th eir l
+ipoph il
+icity, sol
+ubil
+ity, protein binding, and th eir abil
+ity to cross pl
+asma membranes,
+potential
+l
+y increasing th eir toxicity. K nowing th eir pK a val
+ues notonl
+y ch aracteriz es th em but
+al
+so h el
+ps design a strategy for bioremediation. N umerous ch al
+l
+enges are associated with
+predicting pK a, and existing model
+s are l
+imited to specificch emicalspaces. T o l
+everage a pK a
+modelfor arsonic acids, we contrastmach ine l
+earning ( M L ) meth ods based in SupportV ector
+M ach ine and th ree DF T - based model
+s: correl
+ationto th e maximum surface el
+ectrostaticpotential
+( V S, max) atth e ωB 9 7 X D/ cc- pV T Z l
+evelofth eory; correl
+ation to carboxyl
+ate atomic ch arges in
+conjunctionwith adensity- based sol
+vationmodel( SM D) atth e l
+evelofM 0 6 L / 6 - 3 1 1 G ( d, p) ; and
+th e scal
+ed sol
+vent- accessibl
+e surface approach , wh ich yiel
+ded h igh mean unsigned errors for
+predicted pK a, and th erefore itisnotanefficientmeth od forcal
+cul
+atingth e pK asofarsenicacids,
+in contrastwith reported data for carboxyl
+ic acids, al
+iph atic amines, and th iol
+s. T h e h igh est
+agreementwasobtained with th e atomicch argescal
+cul
+ationonth e conjugated arsonate base. M L -
+
+https://doi.org/10.26434/chemrxiv-2024-lkl5t-v4 ORCID: https://orcid.org/0000-0003-0554-7569 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+based and V S, max model
+srank second and th ird, respectivel
+y, intermsofpredictionperformance.
+
+K eywords: arsenic, arsonicacid, pK a, th eoreticalcal
+cul
+ations, datascience
+
+Synopsis
+PredictingpK aval
+uesforarsonicacid derivativesimprovesth e specificdesignofbioremediation
+strategiesforth eirextractionfrom watersources. W e contrastvariouscomputationalmeth odsfor
+th eirfastand precise cal
+cul
+ation.
+
+Introduction
+T h e toxicity and contamination potentialofarsonic acids are infl
+uenced by th eir pK a val
+ues,
+wh ich determine th e rel
+ative concentrations ofneutraland ioniz ed species in th e environment.
+T h e pK a, or acid dissociation constant, is a criticalparameter th ataffects h ow th ese compounds
+beh ave undervariouspH conditions, impactingth eirmobil
+ity, bioavail
+abil
+ity, and environmental
+persistence.
+1
+
+; B y predicting th eir pK a val
+ues and th eir degree of ioniz ation is crucialfor
+
+predictingth eirbeh aviorinsoiland water, and th usdesigningstrategiesforth eirbioremediation2 –
+. F or instance, in th e naturalpH range of5 . 5 to 8 . 5 , arsenite is predominantl
+y presentin its
+4
+
+protonated, more toxic form. H owever, as pH decreases, arsonic acid derivatives deprotonate,
+acquiring a netel
+ectrostaticch arge, reducing its toxicity and enh ancing removalefficiency 1 , 5 , 6 .
+F orinstance, th e pK aval
+uesforarsonicacidsl
+ike benz oicacid, p- ch l
+oroanil
+ine, 2 - ch l
+oroph enol
+,
+2 , 4 - dich l
+oroph enol
+, 2 , 4 , 5 - trich l
+oroph enol
+, and 2 , 4 , 6 - trich l
+oroph enolfal
+lwith in th e range of
+environmental
+l
+y significantpH conditions from 6 . 5 to 9 . 5 , wh ere th e dominantarsenic species
+wil
+lbe a mixture ofH 2 A sO 4 - and H A sO 4 2 - , meaning th atmixed systems wil
+lprevailunder such
+conditions, with both species contributing to totalabsorption. T h e ch arge state ofarsonicacids
+affectsth eir adsorptionto soilparticl
+es. G eneral
+l
+y, negativel
+y ch arged species( ath igh erpH ) are
+l
+essl
+ikel
+y to absorbnegativel
+y ch arged soilparticl
+es, increasingth eirmobil
+ity and bioavail
+abil
+ity.
+In contrast, neutralspecies are more l
+ikel
+y to passivel
+y diffuse th rough cel
+lmembranes of
+
+https://doi.org/10.26434/chemrxiv-2024-lkl5t-v4 ORCID: https://orcid.org/0000-0003-0554-7569 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+microorganisms and pl
+ant roots compared to ch arged species. T h is affects th e uptake and
+bioaccumul
+ation ofarsonicacids. 7 T h e speciation ofarsonicacids al
+so affects th eir uptake by
+pl
+ants. F or exampl
+e, arsenates ( A s( V ) ) are taken up by ph osph ate transporters, wh il
+e arsenites
+( A s( III) ) are more l
+ikel
+y to be takenup by aquagl
+yceroporins. 8 Differentmicrobialspeciesh ave
+evol
+ved specifictransportsystemsforvariousarsenicspecies. T h e ionicstate ofth e arsonicacid,
+determined by its pK a and environmentalpH , infl
+uences wh ich uptake mech anism is most
+effective. 9
+Ph enyl
+arsonic acid compounds h ave been a primary componentofanimalfeed additives for
+severaldecades, primaril
+y used to promote growth and controlbacterialand parasiticdiseasesin
+l
+ivestock. N itarsone and R oxarsone ( mol
+ecul
+es 2 4 and 2 6 in th e presentstudy, respectivel
+y) are
+widel
+y used as organo- arsenic- based bird feed additives, wh ich are th en excreted as inorganic
+arsenic, causing a steep rise in th e soilconcentration of arsenic wh ich can in turn al
+so be
+transported into groundwater 1 0 –1 2 . T h ese compounds undergo minimalmetabol
+ism in animal
+bodiesand are l
+argel
+y expel
+l
+ed th rough manure and urine. Despite th e l
+ow toxicity ofth ese drugs,
+th ey candecompose into more h armfulinorganicarsenicforms, specifical
+l
+y arsenite and arsenate,
+th rough both bioticand abioticprocesses. T h erefore, pK acal
+cul
+ationsare essentialforpredicting
+and eval
+uatingth e environmentaltoxicity ofdifferenttypesand sousesforsuch acontaminant.
+T h e pK a h el
+ps predictth e sol
+ubil
+ity and mobil
+ity ofa compound in water. C ompounds with
+differentprotonation states based on th eir pK a val
+ues can dissol
+ve to differentextents, affecting
+h ow th ey spread th rough water systems. H igh l
+y sol
+ubl
+e contaminants can disperse widel
+y,
+potential
+l
+y affectingl
+argerareas.
+T h e biol
+ogicalimpactofacompound oftendependsonitsch emicalform, wh ich isinfl
+uenced by
+its pK a​ . F or exampl
+e, th e toxic effects of a compound migh tbe more pronounced in its
+dissociated form, wh ich ismore l
+ikel
+y to interactwith biol
+ogicalmol
+ecul
+es. pK acal
+cul
+ationscan
+h el
+p predictwh ich form predominates under environmentalconditions. pK a val
+ues provide
+insigh ts into th e ch emicalstabil
+ity and reactivity of contaminants. T h is is important for
+understanding h ow contaminants degrade or transform into more toxic or l
+ess toxic substances
+overtime.
+EnvironmentalpH can vary widel
+y, and th e pK a​
+
+ofa contaminantdetermines its state at
+
+differentpH l
+evel
+s. T h is interaction is vitalfor understanding h ow contaminants beh ave in
+
+https://doi.org/10.26434/chemrxiv-2024-lkl5t-v4 ORCID: https://orcid.org/0000-0003-0554-7569 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+variousenvironmentalsettings, such asacidicmine drainage oral
+kal
+ine l
+ake waters.
+U nderstandingpK a​
+
+val
+uesh el
+psinpredictingh ow compoundsinteractwith th e environment
+
+and l
+iving organisms, forming th e basis for assessing potentialrisks and th e design of
+interventions.
+H owever, accurate and quick prediction model
+s for pK a remain a ch al
+l
+enge. Severalfactors
+affectth e accuracy ofpK amodel
+s, such asth e conformationalfl
+exibil
+ity ofth e ioniz abl
+e groups,
+structuralsymmetry, unusualh eterocycl
+icstructures, mul
+tipl
+e ioniz ation centers, ch arge transfer
+inconjugated systems, tautomerism, and intra- and intermol
+ecul
+arinteractions.
+V arious computationalmeth ods h ave been devel
+oped for cal
+cul
+ating pK a val
+ues, mainl
+y
+divided into two majorcategories: macroscopicand microscopic. A sone ofth e macroscopic
+meth ods, continuum el
+ectrostaticmeth ods ( C E) used in predicting protonation states ofproteins
+rel
+y on descriptions ofel
+ectrostaticpotential
+s and parametriz ation ofknown residue val
+ues1 3 –1 6 .
+Ot
+h ersuccessfulmacroscopicempiricalmet
+h odsincl
+ude PR O pK a, al
+th ough th e residues used for
+parameteriz ation are th ose l
+ocated near th e proteinsurface and h ave pK a val
+ues th atare cl
+ose to
+th ose ofth e modelcompound 1 7 , 1 8 . C onsequentl
+y, empiricalmeth ods may notbe abl
+e to predict
+l
+arge pK a sh ifts and may onl
+y be effective wh en it comes to residues with smal
+l
+perturbations. T h e al
+ch emicalfree energy cal
+cul
+ations based on mol
+ecul
+ar dynamics ( M D)
+simul
+ations, as wel
+las th e nonequil
+ibrium ( N EQ ) free energy meth ods, h ave sh own promise in
+accuratel
+y estimating th e pK a1 9 . T h e key advantage ofM D- based approach es l
+ike constantpH
+mol
+ecul
+ardynamics( C pH M D) isth atth ey canexpl
+icitl
+y sampl
+e protonationeventsand consider
+th e effects ofth e l
+ocalenvironmenton pK a val
+ues rath er th an rel
+ying on empiricalmodel
+s.
+C pH M D useseith erM onte C arl
+o sampl
+ingor λ- dynamicsto dynamical
+l
+y update th e protonation
+statesduringth e simul
+ation, al
+l
+owingth e free energy gradientto drive th e protonationch anges2 0 –2 2 .
+A quantum mech anical( Q M ) meth od based on density functionalth eory can be used to model
+th e free energy of proton dissociation with very h igh accuracy; h owever, th ese free energy
+rel
+ationsh ipstend to be model
+ed onspecificfunctionalgroups( carboxyl
+icacids, anil
+ines, ph enol
+s,
+etc. ) and are appl
+ied to al
+imited numberofdatasetsdue to th e computationalcostofth ese h igh accuracy meth ods2 3 –2 6 . F rom semi- empiricalQ M cal
+cul
+ations to advanced DF T cal
+cul
+ations, th e
+l
+evelof th eory used in computation meth ods can significantl
+y impactth e accuracy of pK a
+predictions. H igh er- l
+evelab initio approach esprovide more rel
+iabl
+e and transferabl
+e pK aval
+ues,
+particul
+arl
+y for compl
+ex systems. U sing continuum sol
+vation modelbased on th e quantum
+
+https://doi.org/10.26434/chemrxiv-2024-lkl5t-v4 ORCID: https://orcid.org/0000-0003-0554-7569 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+mech anicalch arge density ofa sol
+ute mol
+ecul
+e interacting with a continuum description ofth e
+sol
+vent( SM D) was used by Sabuz i etal
+. 27
+
+for accuratel
+y predictpK a for carboxyl
+ic acid
+
+derivatives using B 3 L Y P and C A M - B 3 L Y P. A s a resul
+tofth ese findings, itwas demonstrated
+th atneith ercompl
+exth eory norexternalfactorsare necessary foraccurate predictionofcarboxyl
+ic
+acid pK a. C oote etal
+. 2 8 h ave demonstrated th atth ermocycl
+e- based approach esforpK aprediction
+h ave l
+imitationswh endeal
+ingwith compl
+exorganicmol
+ecul
+eswh ere al
+lmol
+ecul
+arconformations
+must be considered. T h e computationalcosts associated with th ermodynamic cycl
+e- based
+approach es for predicting pK a val
+ues can be significant. T h ese costs arise due to th e compl
+exity
+ofth e cal
+cul
+ationsnecessary to determine ach emicalreaction'ssol
+ution- ph ase G ibbsfree energy,
+wh ich invol
+vesmul
+tipl
+e steps, incl
+udingtwo geometry optimiz ationsand determiningth e ch ange
+in G ibbs free energy, Q �. T h is process can be computational
+l
+y intensive, making th em
+unattractive forsystematicconformationalsearch es.
+
+W e h ave proven th atpK a val
+ues for carboxyl
+ic compounds can be accuratel
+y predicted to
+with inh al
+fapK aunitby cal
+cul
+atingV S, max val
+uesoverth e acidich ydrogenatoms. Simil
+arl
+y,
+cal
+cul
+ating V S, min over basicnitrogen atoms al
+l
+ows us to predictpK b val
+ues for amines, and
+wh enused inconjunctionwith th e previousmodel
+, isoel
+ectricpoint val
+uescanbe accuratel
+y
+predicted for amino acids.
+
+C al
+cul
+ated atomic ch arges and experimentalpK a val
+ues of
+
+carboxyl
+ate fragments in th eir anionic form sh owed a good correl
+ation 2 9 , 3 0 T h e appl
+ied SV M
+modelwas used to predictpK a val
+ues; th e prediction rate wasl
+ower th an th atofDF T butbetter
+th anth atofESP. T o th e bestofour knowl
+edge, no systematicstudy h asused th e DF T , M L , and
+ESP approach esto cal
+cul
+ate pK aval
+uesforarsonicacids.
+A usefultoolfor studying th e ch arge distribution around th e mol
+ecul
+e is cal
+cul
+ating th e
+el
+ectrostatic potentialsurface ( EPS) . O n th e EPS, areas with h igh el
+ectron density h ave
+minimum val
+ues, th e l
+owestofwh ich , on th e confinements ofa given atom, are cal
+l
+ed V S, min.
+T h ese minimum val
+ues mean th atover th ese regions, th e el
+ectronspassmore time onaverage,
+and as th e el
+ectrons h ave a negative ch arge, th is resul
+ts in minimum val
+ues ofEPS. O n th e
+contrary, th e regionswith l
+ow el
+ectrondensity h ave maximum val
+ues, and th e l
+argerh omol
+ogous
+el
+ectrostatic val
+ues are cal
+l
+ed V S, max.
+
+In th e contextofanacid- base reaction, th e ease with wh ich th e proton isrel
+eased from th e
+
+https://doi.org/10.26434/chemrxiv-2024-lkl5t-v4 ORCID: https://orcid.org/0000-0003-0554-7569 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+acid mol
+ecul
+e isimportant. A sth e bond maintainsth e atomsjoined inamol
+ecul
+e, th e weaker
+th e bond, th e easier th e proton rel
+ease and, th erefore, th e more acidicth e mol
+ecul
+e is. F rom
+th ese facts, th e rel
+ationsh ipbetweenth e EPS val
+ue overacidich ydrogensand th e pK aval
+ue
+ofarsonicacidsisstudied.
+In recentyears, mach ine l
+earning ( M L ) tech niques h ave been appl
+ied to many scientific
+topics, incl
+uding predicting pK a val
+ues. C ai and co- workers reported a deep- l
+earning- based
+pK a predictor, DeepK a, trained on data generated by constant- pH simul
+ations3 1 . R eis and coworkers al
+so reported a deep- l
+earning- based pK a predictor, pK aI, wh ich was trained on pK a
+val
+ues cal
+cul
+ated by a continuum el
+ectrostatics meth od 3 2 . A noth er protein pK a prediction paper
+from G okcan and Isayev introduced a new empiricalsch eme based on deep representation
+l
+earning trained on experimentalpK a data 3 3 . T h e advantages ofSupportV ector M ach ine and
+C ascade DeepF orestare th atth ey coul
+d perform wel
+lonsmal
+ldatasets3 4 , 3 5 . Th isist
+h ereasonwh y
+weuset
+h eSV M forourcase. T o gainph ysicalinsigh tsfrom th e M L model
+s, we eval
+uate feature
+importance and determine th e features causing pK a sh ifts for th e expl
+ored setof3 5 arsonic
+acids.
+H erein, we reportpK a cal
+cul
+ations for 3 5 arsonic acid derivatives ( see F igure 1 ) obtained by
+four meth ods. O ne M L meth od, and th ree DF T - based meth ods, namel
+y: directth ermodynamic
+cycl
+e cal
+cul
+ationwith asol
+ventaccessibl
+e surface corrected sol
+vationmodel( SM DSA S) by Smith ;
+a mul
+tivariate regression anal
+ysis based on cal
+cul
+ations ofatomicch arges on th e carboxyl
+ate by
+M onard; al
+inearcorrel
+ationofmaximum surface potential( V S, max) onth e acidich ydrogenatom by
+C abal
+l
+ero- G arcí a. T h e resul
+tsforal
+lfourmeth odsare provided and compared.
+
+https://doi.org/10.26434/chemrxiv-2024-lkl5t-v4 ORCID: https://orcid.org/0000-0003-0554-7569 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+F igure 1
+
+C h emicalstructures ofal
+l3 5 arsonicacidsunderstudy.
+
+M eth ods
+T o cal
+cul
+ate V S, max val
+ues, th e structure ofth e th irty- five arsonicacidsin F igure 1 were
+optimiz ed atth e ωB 9 7 X D/ cc- pvT Z l
+evelofth eory usingth e G aussiansuite ofprograms3 6 .
+T o corroborate th atth e optimiz ed structures corresponded to a minimum, al
+lvibrational
+frequencieswere cal
+cul
+ated, too, and no negative frequencieswere found. T h eircorresponding
+W F X fil
+es were th en processed with M ul
+tiW F N 3 7 to cal
+cul
+ate th e el
+ectrostaticpotentialval
+ues
+around th e mol
+ecul
+es, th us obtaining V s, max val
+ues for rel
+evantatoms ( vide infra) , i. e. , acidic
+h ydrogenatomsinourcase.
+
+−
+M ul
+tiW F N uses equations 1 and 2 to quantify both � +
+o
+� and � � , wh ich correspond t
+
+th e average ofpositive and negative ESP overV dW surface3 7 , respectivel
+y:
+�+
+� =
+
+1
+
+�
+
+�
+�(�� )
+�=1
+
+(1)
+
+https://doi.org/10.26434/chemrxiv-2024-lkl5t-v4 ORCID: https://orcid.org/0000-0003-0554-7569 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+�−
+� =
+
+1
+
+�
+
+�
+�(��)
+�=1
+
+(2)
+
+wh ere i and jare indexofth e positive and negative regionsofsampl
+ingpointsoverth e EPS. T h e
+arsonic acid group h as two acidic h ydrogen atoms and th erefore al
+so h as two pK a val
+ues
+corresponding to th e firstand second deprotonation events. T h ese two val
+ues are obtained from
+experimentalmeasurements reported previousl
+y, and th ey are col
+l
+ected in T abl
+e 1 in wh ich th ey
+are l
+abel
+ed pK a1 forth e firstdeprotonationand pK a2 forth e second deprotonation.
+F or th e correl
+ation with th e atomic ch arges on th e carboxyl
+ate meth od by M onard etal
+. 3 8 , al
+l
+geometrieswere optimiz ed atth e M 0 6 - 2 X l
+evelofth eory, usingth e SDD basissetforA sand th e 6 3 1 1 G ( d, p) basis for al
+lremaining atoms ( namel
+y, C , H and O ) , using th e aforementioned suite of
+programs. O nce again, al
+lmol
+ecul
+es were ch ecked to ensure th at th ere were no imaginary
+frequencies. N aturalPopul
+ationA nal
+ysis( N PA ) wasperformed onth e resul
+tingstructuresto obtain
+th e formalch arges on th e atoms ofinterest. U sing th e h igh est, and average ofth e oxygen N atural
+A tomic C h arges of th e conjugate arsonate oxygen atoms fragment, were compared with th e
+experimentalpK a of th e corresponding mol
+ecul
+e. F rom th ese th ree, th e average N PA oxygen
+ch argesyiel
+ded th e bestagreementwith th e experimentalpK aval
+uesand were th usused th rough out
+th e study.
+A l
+inear equationis obtained by a l
+east- square fitfor th e Q descriptor sh ownin equation 3 , wh ich is
+th e average atomicch arge ofth e arsonate oxygens. T h e predicted pK a’ sare computed usingequation
+3 ( i. e. , by reportingaverage{ q( O 1 ) , q( O 2 ) , q( O 3 ) , } ofagivenmol
+ecul
+e into th e parametriz ed equation) .
+� = 푎�
+
+��1 , ��2 , ��3
+
+(3)
+
+T h e th ird DF T approach devel
+oped by L ianetal
+. 3 9 used isbased onth e optimaldescriptionofth e
+sol
+ute- sol
+ventboundary, an essentialcomponentofcontinuum sol
+vation model
+s. T o cal
+cul
+ate th e
+bul
+k el
+ectrostaticcontribution for th e defaul
+tSM D model( described as SM DDefaul
+t) , th e sol
+utesol
+ventboundary and cavity are optimiz ed, and th e scal
+ed sol
+vent- accessibl
+e surface ( sSA S) isused
+to constructth e cavity in th e SM D continuum model
+. T h is is known as SM DsSA S. T h e SC R F
+section ofSM DsSA S al
+l
+owed simul
+taneous tuning ofth e surface type and scal
+ing factor options.
+W h enSA S wasch osenasth e sol
+ute- sol
+ventboundary, th e sol
+ventradius( 1 . 3 8 5 xwater) wasadded
+to th e intrinsic C oul
+omb radii to constructth e cavity. F rom 0 . 4 to 0 . 8 , th e scal
+ing factor was
+
+https://doi.org/10.26434/chemrxiv-2024-lkl5t-v4 ORCID: https://orcid.org/0000-0003-0554-7569 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+introduced to adjustth e siz e ofth e SA S cavity, wh ich canbe used to cal
+cul
+ate th e sol
+vent- accessibl
+e
+surface area( SA SA ) ofindividualmol
+ecul
+es.
+In th e case ofth e M L meth ods sel
+ected, SV M
+
+is a supervised l
+earning approach devel
+oped by
+
+C ortesand V apnik 4 0 with sparse general
+iz ationappl
+icabil
+ity and widel
+y used in drug and material
+design4 1 –4 3 . T h e SV M , over th e oth er al
+gorith ms, h as anadvantage in th atitcan be used for smal
+l
+4 4
+datasets. A l
+lSV M cal
+cul
+ationsinth iswork were conducted by usingth e A l
+vaM odel
+. T h e testand
+
+trainsetsare sel
+ected randoml
+y with atest: trainratio equalto 1 : 4 .
+
+R esul
+tsand Discussion
+V S, max correl
+ation
+T h e two h igh estmaximum val
+ues ofth e EPS around th e acids are l
+ocated justin frontofth e
+acidich ydrogenatoms. T h e h igh estmaximum val
+ue wasl
+abel
+ed asV S, max1 , and th e second h igh est
+maximum val
+ue wasl
+abel
+ed asV S, max2 , assh owninT abl
+e1 .
+
+https://doi.org/10.26434/chemrxiv-2024-lkl5t-v4 ORCID: https://orcid.org/0000-0003-0554-7569 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+T abl
+e 1
+
+V S, max1 ( eV ) , V S, max2 ( eV ) , experimentalpK a1 and pK a2 val
+ues for al
+lth irty- five
+
+arsonicacid derivativesused inth isstudy.
+N D C om pound nam e
+
+V S, max1 ( eV )
+
+V S, max2 ( eV )
+
+pK a1 pK a2
+
+1
+
+1 - N aph th ylarsonicacid
+
+2 .1 3
+
+2 .1 0
+
+3 .6 6
+
+8 .6 6
+
+2
+
+2 - N aph th ylarsonicacid
+
+2 .2 0
+
+2 .0 7
+
+4 .2
+
+8 .4 6
+
+3
+
+2 , 4 - Dimetoxyph enylarsonicacid
+
+1 .8 6
+
+1 .8 6
+
+4 .3 5
+
+9 .5 5
+
+4
+
+2 - Chl
+oroeth ylarsonicacid
+
+2 .3 8
+
+2 .3 6
+
+3 .6 8
+
+8 .3 7
+
+5
+
+2 - Chl
+oropropylarsonicacid
+
+2 .2 8
+
+2 .0 6
+
+3 .7 6
+
+8 .3 9
+
+6
+
+2 - M eth yl
+ph enylarsonicacid
+
+2 .1 1
+
+2 .1 1
+
+3 .8 2
+
+8 .8 5
+
+7
+
+2 - M eth oxyph enylarsonicacid
+
+1 .9 4
+
+1 .9 4
+
+4 .0 8
+
+9 .4 0
+
+8
+
+2 - A minoph enylarsonicacid
+
+2 .3 2
+
+2 .0 4
+
+3 .7 9
+
+8 .9 3
+
+9
+
+2 - N itroph enylarsonicacid
+
+2 .1 3
+
+2 .1 2
+
+3 .3 7
+
+8 .5 4
+
+1 0
+
+2 - H ydroxyph enylarsonicacid
+
+1 .9 7
+
+1 .9 7
+
+4 .0 0
+
+7 .9 2
+
+1 1
+
+3 - Chl
+orobutylarsonicacid
+
+2 .2 0
+
+2 .1 9
+
+3 .9 5
+
+8 .8 5
+
+1 2
+
+3 - Chl
+oroh exyl
+- 1 - arsonicacid
+
+2 .2 0
+
+2 .1 7
+
+3 .5 1
+
+8 .3 1
+
+1 3
+
+3 - Chl
+oropentyl
+- 1 - arsonicacid
+
+2 .2 0
+
+2 .1 7
+
+3 .7 1
+
+8 .7 7
+
+1 4
+
+3 - Chl
+oropropylarsonicacid
+
+2 .2 9
+
+2 .2 5
+
+3 .6 3
+
+8 .5 3
+
+1 5
+
+3 - M eth yl
+ph enylarsonicacid
+
+2 .1 7
+
+2 .0 6
+
+3 .8 2
+
+8 .6 0
+
+1 6
+
+3 - N itroph enylarsonicacid
+
+2 .5 0
+
+2 .3 9
+
+3 .4 1
+
+7 .8 0
+
+1 7
+
+4 - A rsenobenz oicacid
+
+2 .3 4
+
+2 .2 3
+
+4 .2 2
+
+8 .4 4
+
+1 8
+
+4 - B romoph enylarsonicacid
+
+2 .3 4
+
+2 .2 2
+
+3 .2 5
+
+8 .1 9
+
+1 9
+
+4 - Chl
+oroph enylarsonicacid
+
+2 .3 3
+
+2 .2 1
+
+3 .3 3
+
+8 .2 5
+
+2 0
+
+4 - M eth yl
+ph enylarsonicacid
+
+2 .1 6
+
+2 .0 4
+
+3 .7 0
+
+8 .6 8
+
+2 1
+
+4 - M eth oxyph enylarsonicacid
+
+2 .1 4
+
+2 .0 0
+
+3 .7 9
+
+8 .9 3
+
+2 2
+
+4 - A minoph enylarsonicacid
+
+2 .0 6
+
+1 .9 2
+
+4 .1 3
+
+9 .1 9
+
+2 3
+
+4 - nitronaph th al
+en- 1 - yl
+- 1 - arsonicacid
+
+2 .4 0
+
+2 .3 9
+
+-
+
+7 .8 7
+
+2 4
+
+4 - N itroph enylarsonicacid
+
+2 .5 2
+
+2 .4 2
+
+2 .9 0
+
+7 .8 0
+
+2 5
+
+3 - acetyl
+amino- 4 - h ydroxyph enylarsonicacid
+
+2 .1 9
+
+2 .3 1
+
+3 .7 8
+
+7 .9
+
+https://doi.org/10.26434/chemrxiv-2024-lkl5t-v4 ORCID: https://orcid.org/0000-0003-0554-7569 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+2 6
+
+4 - H ydroxy- 3 - nitroph enylarsonicacid
+
+2 .4 3
+
+2 .3 2
+
+3 .4 6
+
+2 7
+
+4 - H ydroxyph enylarsonicacid
+
+2 .1 7
+
+2 .0 4
+
+3 .8 9
+
+8 .3 7
+
+2 8
+
+B enz ylarsonicacid
+
+2 .1 4
+
+2 .1 4
+
+3 .8 1
+
+8 .4 9
+
+2 9
+
+B utylarsonicacid
+
+2 .1 0
+
+2 .1 0
+
+4 .2 3
+
+8 .9 1
+
+3 0
+
+Eth ylarsonicacid
+
+2 .1 2
+
+2 .1 2
+
+3 .8 9
+
+8 .3 5
+
+3 1
+
+H exylarsonicacid
+
+2 .0 9
+
+2 .0 9
+
+4 .1 6
+
+9 .1 9
+
+3 2
+
+M eth ylarsonicacid
+
+2 .1 6
+
+2 .1 6
+
+3 .4 1
+
+8 .1 8
+
+3 3
+
+Pentylarsonicacid
+
+2 .0 9
+
+2 .1 0
+
+4 .1 4
+
+9 .0 7
+
+3 4
+
+Ph enylarsonicacid
+
+2 .2 1
+
+2 .0 9
+
+3 .4 7
+
+8 .4 8
+
+3 5
+
+Propylarsonicacid
+
+2 .1 1
+
+2 .1 1
+
+4 .2 1
+
+9 .0 9
+
+Al
+lfourcorrel
+ationsbetweenV S, max1 , V S, max2 , and pK a1 , pK a2 were eval
+uated after obtaining
+th e fitted l
+inear equation and th eirr2 correl
+ationcoefficientfor each case. N ext, th ese equations
+were used to predictth e pK a of th e same acids. T h en, compared to th e predicted pK a and
+experimentalpK a, th e absol
+ute error and th e mean absol
+ute error were cal
+cul
+ated. F inal
+l
+y, a
+cross- val
+idation testand graph icalpl
+otof residual
+s were carried outto prove th e meth od's
+robustness.
+
+T o determine wh atpK adatacorrel
+ated betterwith th e maximum val
+ue ofEPS, al
+lpossibl
+e
+correl
+ations between th em were expl
+ored, and th e resul
+ts are summariz ed in T abl
+e 2 . Th e
+second col
+umncorresponds to th e experimentalpK a1 val
+ue. In contrast, th e th ird col
+umn is
+th e cal
+cul
+ated pK a1 obtained by using th e V S, max1 , and pK a1 correl
+ation equation; th e fourth
+col
+umn is th e pK a1 cal
+cul
+ated using th e V S, max2 , and pK a1 correl
+ation equation; th e fifth
+col
+umn is th e experimentalpK a2 val
+ue; th e sixth col
+umn is th e pK a2 cal
+cul
+ated using th e
+V S, max1 and pK a2 correl
+ationequation; th e seventh isth e pK a2 cal
+cul
+ated usingth e V S, max2 and
+pK a2 correl
+ationequation.
+
+T h e absol
+ute errorbetweenth e experimentaland cal
+cul
+ated pK ah asval
+uesbetween0 . 0 0 to
+1 . 0 4 , indicating th atin some acids, th e predicted val
+ue is equalto th e experimentalval
+ue,
+and in oth er cases, th e cal
+cul
+ated val
+ues move away up to 1 . 0 4
+
+pK a units with th ese
+
+https://doi.org/10.26434/chemrxiv-2024-lkl5t-v4 ORCID: https://orcid.org/0000-0003-0554-7569 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+correl
+ations. T h e mean absol
+ute error ( M A E) tel
+l
+s us, on average, h ow far our cal
+cul
+ated
+val
+uesare from th e experimentalval
+ues. M A E forV S, max1 , and pK a1 rel
+ationsh ipis0 . 1 8 , and
+M A E forV S, max2 , and pK a1 rel
+ationsh ipis0 . 2 0 ; th erefore, th e val
+ue ofV S, max1 correl
+ated with
+pK a1 predictsbetterval
+uesforpK a1 th anth e V S, max2 with pK a1 correl
+ation. Inth e same way,
+M A E for V S, max1 , and V S, max2 correl
+ated with pK a2 is 0 . 2 5 , meaning th atboth correl
+ation
+equationspredictth e val
+uesofpK a2 with simil
+araccuracy.
+
+T abl
+e 2 ExperimentalpK a1 and pK a2 val
+ues and predicted pK a val
+ues pK a1 - caland pK a2 - cal
+foreach correl
+ation.
+N D pK a1
+1
+
+3 .6 6
+2
+
+W il
+l
+
+pK a1 calc
+
+pK a1 calc pK a2
+
+pK a2 calc
+
+pK a2 calc
+
+3 .8 7
+
+3 .8 2
+
+8 .6 6
+
+8 .7 0
+
+8 .6 5
+
+8 .4 6
+
+8 .5 5
+
+8 .7 2
+
+-
+
+-
+
+ch eck
+3
+
+4 .3 5
+
+4 .2 8
+
+4 .1 9
+
+9 .5 5
+
+9 .2 7
+
+9 .2 3
+
+4
+
+3 .6 8
+
+3 .4 8
+
+3 .4 1
+
+8 .3 7
+
+8 .1 7
+
+8 .0 3
+
+5
+
+3 .7 6
+
+3 .6 3
+
+3 .8 9
+
+8 .3 9
+
+8 .3 9
+
+8 .7 5
+
+6
+
+3 .8 2
+
+3 .8 9
+
+3 .8 0
+
+8 .8 5
+
+8 .7 4
+
+8 .6 3
+
+7
+
+4 .0 8
+
+4 .1 6
+
+4 .0 7
+
+9 .4 0
+
+9 .1 0
+
+9 .0 3
+
+8
+
+3 .7 9
+
+3 .5 7
+
+3 .9 1
+
+8 .9 3
+
+8 .2 9
+
+8 .8 0
+
+9
+
+3 .3 7
+
+3 .8 7
+
+3 .7 8
+
+8 .5 4
+
+8 .7 1
+
+8 .5 9
+
+1 0
+
+4 .0 0
+
+4 .1 1
+
+4 .0 2
+
+7 .9 2
+
+9 .0 3
+
+8 .9 6
+
+1 1
+
+3 .9 5
+
+3 .7 6
+
+3 .6 7
+
+8 .8 5
+
+8 .5 5
+
+8 .4 3
+
+1 2
+
+3 .5 1
+
+3 .7 6
+
+3 .7 2
+
+8 .3 1
+
+8 .5 6
+
+8 .4 9
+
+1 3
+
+3 .7 1
+
+3 .7 5
+
+3 .7 1
+
+8 .7 7
+
+8 .5 5
+
+8 .4 9
+
+1 4
+
+3 .6 3
+
+3 .6 2
+
+3 .5 8
+
+8 .5 3
+
+8 .3 7
+
+8 .2 8
+
+1 5
+
+3 .8 2
+
+3 .8 0
+
+3 .8 9
+
+8 .6 0
+
+8 .6 2
+
+8 .7 5
+
+1 6
+
+3 .4 1
+
+3 .2 9
+
+3 .3 7
+
+7 .8 0
+
+7 .9 2
+
+7 .9 6
+
+1 7
+
+4 .2 2
+
+3 .5 4
+
+3 .6 1
+
+8 .4 4
+
+8 .2 6
+
+8 .3 3
+
+1 8
+
+3 .2 5
+
+3 .5 4
+
+3 .6 3
+
+8 .1 9
+
+8 .2 6
+
+8 .3 7
+
+https://doi.org/10.26434/chemrxiv-2024-lkl5t-v4 ORCID: https://orcid.org/0000-0003-0554-7569 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+1 9
+
+3 .3 3
+
+3 .5 5
+
+3 .6 4
+
+8 .2 5
+
+8 .2 7
+
+8 .3 8
+
+2 0
+
+3 .7 0
+
+3 .8 2
+
+3 .9 2
+
+8 .6 8
+
+8 .6 4
+
+8 .8 0
+
+2 1
+
+3 .7 9
+
+3 .8 5
+
+3 .9 7
+
+8 .9 3
+
+8 .6 9
+
+8 .8 8
+
+2 2
+
+4 .1 3
+
+3 .9 8
+
+4 .1 0
+
+9 .1 9
+
+8 .8 5
+
+9 .0 8
+
+7 .8 7
+
+8 .1 4
+
+7 .9 5
+
+2 3
+
+-
+
+-
+
+-
+
+2 4
+
+2 .9 0
+
+3 .2 6
+
+3 .3 2
+
+7 .8 0
+
+7 .8 7
+
+7 .8 8
+
+2 5
+
+3 .7 8
+
+3 .7 8
+
+3 .4 9
+
+7 .9
+
+8 .5 8
+
+8 .1 5
+
+2 6
+
+3 .4 6
+
+3 .3 9
+
+3 .4 8
+
+2 7
+
+3 .8 9
+
+3 .8 0
+
+3 .9 1
+
+8 .3 7
+
+8 .6 2
+
+8 .7 8
+
+2 8
+
+3 .8 1
+
+3 .8 5
+
+3 .7 6
+
+8 .4 9
+
+8 .6 8
+
+8 .5 6
+
+2 9
+
+4 .2 3
+
+3 .9 1
+
+3 .8 2
+
+8 .9 1
+
+8 .7 6
+
+8 .6 5
+
+3 0
+
+3 .8 9
+
+3 .8 8
+
+3 .7 9
+
+8 .3 5
+
+8 .7 2
+
+8 .6 0
+
+3 1
+
+4 .1 6
+
+3 .9 2
+
+3 .8 3
+
+9 .1 9
+
+8 .7 8
+
+8 .6 7
+
+3 2
+
+3 .4 1
+
+3 .8 1
+
+3 .7 2
+
+8 .1 8
+
+8 .6 3
+
+8 .5 0
+
+3 3
+
+4 .1 4
+
+3 .9 2
+
+3 .8 2
+
+9 .0 7
+
+8 .7 8
+
+8 .6 6
+
+3 4
+
+3 .4 7
+
+3 .7 4
+
+3 .8 3
+
+8 .4 8
+
+8 .5 3
+
+8 .6 7
+
+3 5
+
+4 .2 1
+
+3 .9 0
+
+3 .8 1
+
+9 .0 9
+
+8 .7 5
+
+8 .6 4
+
+F igure 2 sh ows al
+ll
+inear correl
+ations graph ical
+l
+y with th eir respective fitted equations and
+correl
+ation coefficient( r2 ) val
+ues. A s previousl
+y mentioned, th ese equations are used to
+predictth e pK a, assh owninT abl
+e 2 . T h e predicted val
+ues h ave sufficientl
+y h igh accuracy
+to be used. B ased onth e M A E and th e r2 val
+ues, th e correl
+ationsbetweenV S, max1 and pK a1 ,
+and between V S, max2 and pK a2 were ch osen to continue th e anal
+ysis, because th ey h ave th e
+l
+owestM A E val
+uesand th e h igh estr2 val
+ues.
+
+https://doi.org/10.26434/chemrxiv-2024-lkl5t-v4 ORCID: https://orcid.org/0000-0003-0554-7569 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+F igure 2 C orrel
+ationofV S, max1 ( t
+oprow) and V S, max2 ( bottom row) vspK a1 and pka2 .
+
+T h e residualpl
+otswere studied to determine th e possibl
+e reasonand sol
+utionforth e l
+ow
+val
+ue ofR 2 ( see F igure 3 ) ; in th ese graph s, th e residual
+s or th e error between th e experimental
+and th eoreticalval
+ueswere pl
+otted. N o trendsor aggl
+omerate data are needed in residualpl
+ots
+to supportth e h ypoth esis ofa l
+inear correl
+ation for th e data. F ortunatel
+y, th e residualdata are
+randoml
+y dispersed in th e pl
+ot, wh ich means th e l
+inear modelis adequate for th is data.
+M oreover, inth e residual
+s, itispossibl
+e to appreciate wh atval
+uesh ave th e greatesterrorand,
+in some cases, treatth atdata as an outl
+ier and, because ofth at, del
+ete itfrom th e wh ol
+e set.
+A nadditionalstatisticaltestto ensure th e datafol
+l
+ow al
+inearcorrel
+ationisth e F test, wh ich
+anal
+yses th e fitappl
+ied to a setofdata under th e acceptance or rejection ofth e nul
+lor
+al
+ternative h ypoth esis; in th ese cases, th e cal
+cul
+ated F is h igh er th an th e criticalone,
+supporting once again th at th e data h ave a l
+inear correl
+ation wh ich is th e al
+ternative
+h ypoth esis.
+H owever, itis insufficientto prove th atth e data fol
+l
+ow a l
+inear correl
+ation to use th em as a
+modelto predictval
+ues. T h e cross- val
+idation testis very h el
+pfulin creating a robustpredictive
+
+https://doi.org/10.26434/chemrxiv-2024-lkl5t-v4 ORCID: https://orcid.org/0000-0003-0554-7569 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+model( see F igure3 ) . T h e cross- val
+idationmeth od tel
+l
+sth atifwe subtractrandoml
+y asmal
+l
+subsetofth e wh ol
+e setand do th e same procedure to predictth e val
+ues, th e new predicted val
+ues
+musth ave th e same accuracy asth e predicted val
+ueswith th e correl
+ationobtained from al
+ldata.
+T h is resul
+th el
+ps us to ensure th atth e predicted resul
+ts are independentofth e partition
+betweentrainingand testdata. T h erefore, tenofth e th irty- five val
+ueswere randoml
+y el
+iminated.
+N ext, th e data were pl
+otted, obtaining new correl
+ation equations used to predictth e pK a1 and
+pK a2 . Simil
+ar resul
+ts were found using th e compl
+ete setofdata and th e data sel
+ected on th e
+cross- val
+idationstest. T h e R 2 val
+ue, inth iscase, improves, butth e predicted val
+uesh ave
+t
+h e same accuracy.
+
+https://doi.org/10.26434/chemrxiv-2024-lkl5t-v4 ORCID: https://orcid.org/0000-0003-0554-7569 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+F igure 3 R esidualand cross- val
+idationpl
+ots.
+
+Scal
+ed sol
+vent- accessibl
+e surface ( sSA S) approach with SM D m odel
+U singth e defaul
+tSM D modelforth e arsonicacidsset, M A E wasused to eval
+uate th e accuracy of
+th e prediction rate for both aug- cc- pvdz and M 0 6 - 2 X for th e arsenic and compared with th e
+obtained cavity val
+ues. Inth e work ofSmith etal
+. 3 9 h ave sh ownth atth e accuracy ofcal
+cul
+ated pK as
+with DF T and th e SM D modelby tuning th e scal
+ed sol
+vent- accessibl
+e surface ( SA S) approach for
+constructingth e sol
+ute- sol
+ventboundary canimprove th e predictionforth e case ofcarboxyl
+icacids,
+amines, and th iol
+s. W e performed anoptimiz ationsearch to determine th e optimalval
+ue ofscal
+ing
+SA S factor - α by minimiz ing th e M A E for α ( th e range was 0 . 3 – 0 . 8 ) . T h e pK a was cal
+cul
+ated
+with th e scal
+ed val
+ue ofal
+faand aswel
+lwith outby th e directmeth od based onSM D ( defaul
+t) one
+by th e A rrh eniusequationpKa = 2.303푅
+∆�푎�
+
+https://doi.org/10.26434/chemrxiv-2024-lkl5t-v4 ORCID: https://orcid.org/0000-0003-0554-7569 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+T h e prediction performance of th e two SM D model
+s ( defaul
+tand scal
+ed based on sol
+ventaccessibl
+e surface) on th e data sets was assessed by M A E and was presented in F igure 4 .
+U nfortunatel
+y, th e prediction rate is unacceptabl
+e for neith er ofth e ch osen approach es based on
+SM D. T h e obtained pK a for th e arsonic acid data vs experimental
+l
+y measured pK a val
+ues are
+presented in th e SI. T h e SM D variants with outan effectofth e scal
+ing factor based onl
+y on SDD
+performance forth isdatasetwere better, butth ey were farfrom h avingareasonabl
+e predictionrate.
+
+F igure 4 M A E and standard deviations for pK as ofarsonicacids. T h e SDD basis setfor A rsenic
+and 6 - 3 1 + G ( d, p) basissetforH , O , and C were used foral
+lth e cal
+cul
+ations.
+T h e pK as cal
+cul
+ated with differentSM D variants sh ow no correl
+ation with th e corresponding
+experimentalval
+ues, with R 2 val
+ues of 0 . 4 5
+
+for th e SM D defaul
+tmodelwith SDD basis set.
+
+H owever, forth e setofarsonicacids, th e obtained resul
+tsare insufficientto use th e two approach es
+compared to th e publ
+ish ed resul
+tsforsome oth eracids.
+A tom icch argesonth e conjugated base
+T h e nextapproach wasl
+inkingpartialatomicch argesto pK aexperimentaldata. M onard reported a
+bench marking study based on N PA ch arges computed using th e C PC M
+
+sol
+vation modelwith th e
+
+B 3 L Y P/ 3 - 2 1 G l
+evel
+. T h is resul
+ted in th e mostaccurate combination for reproducing experimental
+pK a val
+ues for al
+coh ol
+s, th iol
+s, and amino acids. W h il
+e oth er ch arge model
+s, such as M ul
+l
+iken,
+
+https://doi.org/10.26434/chemrxiv-2024-lkl5t-v4 ORCID: https://orcid.org/0000-0003-0554-7569 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+L ö wdin, and A IM
+
+ch arges, can al
+so be used to predictpK a, th e N PA ch arge sch eme consistentl
+y
+
+outperformsth ese oth ermeth ods4 5 .
+O ur study util
+iz ed th e N PA ch arges on th e oxygen to estimate pK a val
+ues, a meth od th at
+demonstrated very h igh correl
+ation coefficients ( See F igure 5 ) . T h e model
+s for th e obtained
+correl
+ationsforth e average N PA distributiononth e oxygenatomswere presented inth e SI ( T abl
+e
+S1 ) . T h e N PA ch arges, akey aspectofourresearch , pl
+ay acrucialrol
+e inunderstandingth e acidity
+ofth e compoundsand th eirpotentialenvironmentalimpact.
+T h e N PA wasused to cal
+cul
+ate atomicch arges. T h e meth odol
+ogy forreveal
+ingth e l
+inearity ofth e
+rel
+ationsh ip between experimentalpK a's and atomicch arges was inspired by th e work ofU gur et
+al
+. 3 8 and M onard etal
+.25
+U singth e SM D impl
+icitsol
+ventmodel
+, th e average ch arge onth e oxygenofeach arsonicfragment
+wascomputed with N PA atth e M 0 6 - 2 X / SDD ( forth e A rsenicatom) .
+A ccordingto U guretal
+. 3 8 , th e negative ch arge ofcarboxyl
+ate canbe sh ared betweentwo oxygen
+atoms and two carbon atoms, as opposed to al
+coh ol
+s and th iol
+s. T h e atomic ch arges for th is
+fragmentcan be extracted invarious waysand th encompared with experimentalpK a val
+uesusing
+Equation3 .
+
+F igure 5 L inearcorrel
+ationofexperimentalpK a’ sand val
+uescal
+cul
+ated usingM 0 6 - 2 X and 6 - 3 1 1 G ( d, p) with SM D
+based on: a) average oxygench arges and b) on oxygen charges for the monoprotonated form (anion)
+
+O ur presentprotocolfor obtaining accurate and fastpK a predictions for a l
+imited setofarsonic
+acids unveil
+s a new pattern in th e ch arge extraction sch eme, setting our study apartfrom anoth er
+
+https://doi.org/10.26434/chemrxiv-2024-lkl5t-v4 ORCID: https://orcid.org/0000-0003-0554-7569 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+avail
+abl
+e research .
+
+Th e l
+inear regression was eval
+uated between th e experimentalpK a's and th e
+
+average N PA atomicch argesonth e ioniz abl
+e O H groups. T h e bestcombinationofDF T functional
+s
+and basis sets is M 0 6 - 2 X / SDD with SM D defaul
+tmodel
+. T h e nextgoalwoul
+d be to transfer th e
+suggested extracted sch eme ofch arges protocolto a setoftri- carboxyl
+ic acids by cal
+cul
+ating th e
+average atomicch arge ofth e carboxyl
+ate form into th e tricarboxyl
+icacids, such ash emimel
+l
+iticacid
+( 1 , 2 , 3 - benz ene tricarboxyl
+ic acid) , trimel
+l
+itic acid ( 1 , 2 , 4 - benz ene tricarboxyl
+ic acid) , and trimesic
+acid ( 1 , 3 , 5 - benz ene tricarboxyl
+ic acid) . T h ese tricarboxyl
+ic acids can act as environmental
+pol
+l
+utants due to th eir acidicnature and potentialtoxicity. T h e pK a val
+ues for th ese tricarboxyl
+ic
+acids vary depending on th e positions ofth e carboxylgroups on th e benz ene ring. T h e oth er test
+group wil
+lbe PF O A ( perfl
+uorooctanoicacid) , wh ich h as a significantl
+y differentpK a val
+ue atth e
+air- watersurface compared to th e reported bul
+k pK aval
+ues. F ocusingourinterestonaccurate pK a
+val
+uesofPF A S isessentialforunderstandingand model
+ingth eirenvironmentalfate and transport,
+asth e pK adeterminesth e speciationand beh aviorofth ese persistentpol
+l
+utants.
+M ach ine L earningA pproach for pK aP rediction
+T h e datasets with th e experimentalval
+ues ofth e pK a1 val
+ues were model
+ed using th e SV M
+al
+gorith m, and th e resul
+ts are sh own in F igure 6 . F or th e deprotonated form, th e setofdescriptors
+for each compound was generated by A l
+vadesc4 6 , 4 7 from a 3 - dimensionalconformation. A setof
+mol
+ecul
+ar descriptors h as been cal
+cul
+ated for th e firstioniz ation form ofth e arsonic acids. T h e
+initialdescriptor space was based on 4 , 0 0 0 descriptors, wh ich are categoriz ed into 2 2 cl
+asses,
+incl
+uding constitutionaldescriptors, topol
+ogicaldescriptors, wal
+k and path counts, connectivity
+indices, information indices, 2 D autocorrel
+ations, edge adjacency indices, B urden eigenval
+ues,
+topol
+ogicalch arge indices, eigenval
+ue- based indices, R andic mol
+ecul
+ar profil
+es, geometrical
+descriptors, R DF descriptors, 3 D- M oR SE descriptors, W H IM descriptors, G ET A W A Y descriptors,
+functionalgroup counts, G h ose- C rippen atom- centered fragments, ch arge descriptors, mol
+ecul
+ar
+properties, 2 D binary fingerprints and 2 D frequency. O ne h undred forty- five descriptors were
+sel
+ected to be used in th is Q SPR model
+ing. W e used th e genetical
+gorith m- mul
+ti l
+inear regression
+( G A - M L R ) approach to sel
+ectfeatures. T abl
+e S2 inth e Supportinginformationsectionpresentsth e
+sel
+ected mol
+ecul
+ar descriptors with th e h igh estobtained score with a maximum val
+ue for R 2 adj,
+based onvariousmol
+ecul
+ardescriptorsrangingfrom one to twenty.
+
+https://doi.org/10.26434/chemrxiv-2024-lkl5t-v4 ORCID: https://orcid.org/0000-0003-0554-7569 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+A n SV M
+
+modelwas used to predictth e pK a using th e bestcombination ofsel
+ected descriptors
+
+presented in T abl
+e S2 in SI. T h e predicted pK a val
+ues derived from th is mach ine l
+earning meth od
+are pl
+otted vs. th e experimentalval
+ues in F igure 6 . T h e appl
+ied sel
+ected setofdescriptors can
+predictth e pK a val
+ues. In th e presented pl
+ots, outl
+iers are h igh l
+igh ted with red dots for th e
+mol
+ecul
+es biased by th e main trend. T h e presented R 2 val
+ues for each ofth e combinations ofth e
+descriptorsare sh owninF igure 6 .
+
+F igure 6 C omparisonbetweenpredicted and experimentalpK aval
+uesbased onth e SV M modelfor
+th e sel
+ected combinationofth e descriptors.
+T h ese descriptors are rel
+ated to th e pK a in th e fol
+l
+owing manner. T h e M cG owanvol
+ume ( V x) is
+one ofth e parameters th atcan be used to eval
+uate and predictth e pK a val
+ues ofcompounds. Itis
+considered an A brah am descriptor, wh ich is a type of mol
+ecul
+ar descriptor used in Q SA R
+model
+ing4 8 , 4 9 . F or exampl
+e, one study used th e M cG owan vol
+ume and oth er descriptors l
+ike l
+og
+K ow to modelth e pK a val
+ues ofch l
+orinated ph enol
+s. T h e M cG owan vol
+ume appears to be a
+mol
+ecul
+ardescriptorrel
+ated to and canbe used to predictpK aval
+ues. U singth e V xdescriptorcan
+accuratel
+y predictpK a based on th e l
+everage model
+s. T h e M cG owan vol
+ume provides a compact
+and easy- to- interpretrepresentation ofmol
+ecul
+ar siz e and sh ape, wh ich can be h el
+pfulfor pK a
+prediction 5 0 . C onnectivity indices ( X 3 A v) , al
+so known as branch ing indices, are a cl
+ass of
+topol
+ogicaldescriptorsth atcapture informationaboutth e mol
+ecul
+arstructure and connectivity5 1 –5 3 .
+T h e X 3 A vX 3 ​
+
+is a numericaldescriptor th atencapsul
+ates information aboutth e mol
+ecul
+ar graph
+
+https://doi.org/10.26434/chemrxiv-2024-lkl5t-v4 ORCID: https://orcid.org/0000-0003-0554-7569 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+( th e way atoms are connected) ofacompound. T h is index h el
+ps in predictingth e ph ysicoch emical
+properties, biol
+ogicalactivities, and ch emicalreactivity ofmol
+ecul
+esbased onth eirstructure. T h ese
+indicesquantify th e degree ofbranch ing and connectivity in amol
+ecul
+e, wh ich can be rel
+evantfor
+predictingpropertiesl
+ike pK a. T h e used 2 D A utocorrel
+ations( A T S1 m) asmol
+ecul
+ardescriptorsare
+one ofth e types ofmol
+ecul
+ar descriptors th atcan capture information aboutth e distribution of
+specificproperties( e. g. , atomicproperties, bond properties) al
+ongth e 2 D mol
+ecul
+arstructure. T h is
+suggeststh at2 D autocorrel
+ationdescriptorscanprovide rel
+evantinformationforpredictingth e pK a
+val
+ues ofmol
+ecul
+es, as th ey capture structuralfeatures th atinfl
+uence th e acid- base beh avior. T h e
+2 D autocorrel
+ations and oth er mol
+ecul
+ar descriptors are commonl
+y used as inputs for devel
+oping
+Q SA R and Q SPR model
+sto predictpK aand oth erproperties.
+T PSA , or topol
+ogicalpol
+ar surface area ofa mol
+ecul
+e, is a criticalmeasure defined as th e total
+surface area ofal
+lpol
+ar atoms with in a mol
+ecul
+e 5 4 . T h e pol
+ar surface area h as been used in
+medicinalch emistry to optimiz e adrug’ spotentialto permeate cel
+l
+s5 5 , 5 6 , and itisconsidered amain
+descriptorto eval
+uate th e bl
+ood- brainbarrierpenetration5 7 . A ccordingto L ipinski'sR ul
+e ofF ive, an
+oral
+l
+y active drugtypical
+l
+y h asaT PSA l
+essth an1 4 0 Å Band apK aval
+ue th atensuresth e mol
+ecul
+e
+isnottoo ioniz ed atph ysiol
+ogicalpH . A djusting T PSA and pK a h el
+ps ach ieve abal
+ance between
+sol
+ubil
+ity and permeabil
+ity, enh ancingoralbioavail
+abil
+ity. C ompoundswith aT PSA l
+essth an9 0 Å B
+are more l
+ikel
+y to cross th e bl
+ood- brain barrier. Incorporating pK a val
+ues h el
+ps predictth e
+ioniz ationstate atph ysiol
+ogicalpH , wh ich affects
+F urth ermore, th e M L O G P 5 8 descriptor pl
+ays a significantrol
+e in quantitative structure- activity
+rel
+ationsh ip ( Q SA R ) model
+s, wh ere it is frequentl
+y empl
+oyed to predict th e permeabil
+ity of
+compounds across th e bl
+ood- brain barrier. T h is is particul
+arl
+y importantfor devel
+oping drugs to
+treatneurol
+ogicalconditions, asith el
+psresearch erspredicth ow effectivel
+y amol
+ecul
+e can del
+iver
+th erapeutic effects to th e brain. B y using M L O G P and oth er mol
+ecul
+ar descriptors, scientists can
+betterunderstand th e ph armacokineticpropertiesofnew drugcandidates, l
+eadingto more effective
+and targeted drug th erapies. T h e oth er group ofdescriptors is A tom- C entred F ragments ( C - 0 0 2 ) ,
+wh ich are a type of mol
+ecul
+ar descriptor th atcan capture information aboutth e environment
+
+surrounding each atom in a mol
+ecul
+e 5 9 . T h ese descriptors can store detail
+s abouta mol
+ecul
+e's
+ch emicalenvironment, connectivity, and substructures, wh ich are rel
+evantfor predictingproperties
+
+https://doi.org/10.26434/chemrxiv-2024-lkl5t-v4 ORCID: https://orcid.org/0000-0003-0554-7569 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+l
+ike pK a. T h e atom- centered fragments and oth er mol
+ecul
+ar descriptors in our modelare wel
+l
+suited forconstructingQ SA R and Q SPR model
+s, incl
+udingth ose aimed atpredictingpK aval
+ues. In
+summary, th e combination ofdifferenttypes ofmol
+ecul
+ar descriptorscan be effectivel
+y util
+iz ed in
+devel
+opingpredictive model
+s for pK a val
+ues, l
+everaging th e detail
+ed informationth ey can provide
+aboutth e ch emicalenvironmentsurroundingeach atom inamol
+ecul
+e.
+C oncl
+usions
+F our computationalmodel
+s were contrasted to assess th irty- five arsonic acids pK a quickl
+y; th ree
+were based onDF T cal
+cul
+ations, and th e fourth wasbased onanSV M . A ccurate predictionofth ese
+val
+uesfor arsonicacid derivativesisessentialinpl
+anning th eirextractionstrategies. H owever, th is
+h as proven to be a more el
+usive task th an organic mol
+ecul
+es such as carboxyl
+ic acids or th iol
+s.
+C ontrary to our initialexpectations, neith er M L nor correl
+ation to V S, max cal
+cul
+ations provided
+acceptabl
+e M A E val
+ues, and instead, th e meth od proposed by Smith etal
+. forth e scal
+ed SA S SM D
+sol
+vation modelyiel
+ds th e bestpredictions for th e presentfamil
+y ofarsonic acids.
+
+W h il
+e DF T
+
+model
+sprovide h igh l
+y detail
+ed and accurate predictions, th e SV M modeloffersapotential
+l
+y faster
+and more efficiental
+ternative, provided itiswel
+l
+- trained onrel
+evantdata. T h e comparisonaimed to
+identify th e bestmeth od forrel
+iabl
+e and expedientpredictions.
+
+A cknowl
+edgm ents
+M L and M N grateful
+l
+y acknowl
+edge financialsupportfrom th e N C C R B ioinspired M aterial
+s. W e
+th ank DG T IC - U N A M
+
+for granting access to th e supercomputer ‘M iztl
+i’ and to M s. C itl
+al
+it
+
+M artí nez - Soto forkeepingl
+ocalcomputingfacil
+itiesrunning.
+SupportingInform ationA vail
+abl
+e
+T h e SupportingInformationisavail
+abl
+e free ofch arge at
+● A tomic ch arges on th e deprotonated A rsonate and th e val
+ue of pK a1 to wh ich th ey were
+correl
+ated ( PDF )
+●
+
+B estR 2 adjforG A al
+gorith m atdifferentnumbersofmol
+ecul
+ardescriptors( PDF )
+
+● X Y Z coordinatesforal
+loptimiz ed compoundsinth e V S, max study atth e B 9 7 X D/ cc- pV DZ l
+evel
+
+https://doi.org/10.26434/chemrxiv-2024-lkl5t-v4 ORCID: https://orcid.org/0000-0003-0554-7569 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+ofth eory. F irstnumberonth e h eaderdescribesth e numberofatomsineach mol
+ecul
+e. Energies
+inatomicunits. ( PDF )
+● M L descriptorsand obtained model
+s( X L SX )
+
+R eferences
+(1)
+
+Reid, M. S.; Hoy, K. S.; Schofield, J. R. M.; Uppal, J. S.; Lin, Y.; Lu, X.; Peng, H.; Le, X. C. Arsenic Speciation
+Analysis: A Review with an Emphasis on Chromatographic Separations. TrAC Trends in Analytical
+Chemistry 2020, 123, 115770.
+
+(2)
+
+Kong, L.; Zhao, J.; Hu, X.; Zhu, F.; Peng, X. Reductive Removal and Recovery of As(V) and As(III) from
+Strongly Acidic Wastewater by a UV/Formic Acid Process. Environ Sci Technol 2022, 56 (13), 9732–9743.
+
+(3)
+
+Tian, C.; Zhao, J.; Ou, X.; Wan, J.; Cai, Y.; Lin, Z.; Dang, Z.; Xing, B. Enhanced Adsorption of p -Arsanilic Acid
+from Water by Amine-Modified UiO-67 as Examined Using Extended X-Ray Absorption Fine Structure, X-Ray
+Photoelectron Spectroscopy, and Density Functional Theory Calculations. Environ Sci Technol 2018, 52
+(6), 3466–3475.
+
+(4)
+
+Hasan, M. H.; McCrum, I. T. pKa as a Predictive Descriptor for Electrochemical Anion Adsorption.
+Angewandte Chemie International Edition 2024, 63 (13).
+
+(5)
+
+Banerjee, C.; Singh, A.; Raman, R.; Mazumder, S. Calmodulin–CaMKII Mediated Alteration of Oxidative
+Stress: Interplay of the CAMP/PKA–ERK 1/2-NF-ΚB–NO Axis on Arsenic-Induced Head Kidney Macrophage
+Apoptosis. Toxicol Res (Camb) 2013, 2 (6), 413.
+
+(6)
+
+Fendorf, S.; Nico, P. S.; Kocar, B. D.; Masue, Y.; Tufano, K. J. Arsenic Chemistry in Soils and Sediments;
+Lawrence Berkeley National Laboratory: Berkeley, 2009.
+
+(7)
+
+Bolan, N.; Mahimairaja, S.; Kunhikrishnan, A.; Naidu, R. Sorption–Bioavailability Nexus of Arsenic and
+Cadmium in Variable-Charge Soils. J Hazard Mater 2013, 261, 725–732.
+
+(8)
+
+Zhao, F. J.; Ma, J. F.; Meharg, A. A.; McGrath, S. P. Arsenic Uptake and Metabolism in Plants. New
+Phytologist 2009, 181 (4), 777–794.
+
+(9)
+
+De Francisco, P.; Martín-González, A.; Rodriguez-Martín, D.; Díaz, S. Interactions with Arsenic: Mechanisms
+of Toxicity and Cellular Resistance in Eukaryotic Microorganisms. Int J Environ Res Public Health 2021,
+18 (22), 12226.
+
+(10)
+
+Fisher, D. J.; Yonkos, L. T.; Staver, K. W. Environmental Concerns of Roxarsone in Broiler Poultry Feed and
+Litter in Maryland, USA. Environ Sci Technol 2015, 49 (4), 1999–2012.
+
+(11)
+
+Chen, J.; Zhang, J.; Rosen, B. P. Role of ArsEFG in Roxarsone and Nitarsone Detoxification and Resistance.
+Environ Sci Technol 2019, 53 (11), 6182–6191.
+
+(12)
+
+Yang, Z.; Peng, H.; Lu, X.; Liu, Q.; Huang, R.; Hu, B.; Kachanoski, G.; Zuidhof, M. J.; Le, X. C. Arsenic
+Metabolites, Including N-Acetyl-4-Hydroxy-m-Arsanilic Acid, in Chicken Litter from a Roxarsone-Feeding
+Study Involving 1600 Chickens. Environ Sci Technol 2016, 50 (13), 6737–6743.
+
+(13)
+
+Rocchia, W.; Alexov, E.; Honig, B. Extending the Applicability of the Nonlinear Poisson−Boltzmann
+Equation: Multiple Dielectric Constants and Multivalent Ions. J Phys Chem B 2001, 105 (28), 6507–6514.
+
+https://doi.org/10.26434/chemrxiv-2024-lkl5t-v4 ORCID: https://orcid.org/0000-0003-0554-7569 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+(14)
+
+Holst, M.; Baker, N.; Wang, F. Adaptive Multilevel Finite Element Solution of the Poisson-Boltzmann Equation
+I. Algorithms and Examples. J Comput Chem 2000, 21 (15), 1319–1342.
+
+(15)
+
+Feig, M.; Brooks, C. L. Recent Advances in the Development and Application of Implicit Solvent Models in
+Biomolecule Simulations. Curr Opin Struct Biol 2004, 14 (2), 217–224.
+
+(16)
+
+Feig, M.; Onufriev, A.; Lee, M. S.; Im, W.; Case, D. A.; Brooks, C. L. Performance Comparison of Generalized
+Born and Poisson Methods in the Calculation of Electrostatic Solvation Energies for Protein Structures. J
+Comput Chem 2004, 25 (2), 265–284.
+
+(17)
+
+Alexov, E.; Mehler, E. L.; Baker, N.; M. Baptista, A.; Huang, Y.; Milletti, F.; Erik Nielsen, J.; Farrell, D.;
+Carstensen, T.; Olsson, M. H. M.; Shen, J. K.; Warwicker, J.; Williams, S.; Word, J. M. Progress in the
+Prediction of pKa Values in Proteins. Proteins: Structure, Function, and Bioinformatics 2011, 79 (12),
+3260–3275.
+
+(18)
+
+Olsson, M. H. M.; Søndergaard, C. R.; Rostkowski, M.; Jensen, J. H. PROPKA3: Consistent Treatment of
+Internal and Surface Residues in Empirical pKa Predictions. J Chem Theory Comput 2011, 7 (2), 525–
+537.
+
+(19)
+
+Wilson, C. J.; Karttunen, M.; de Groot, B. L.; Gapsys, V. Accurately Predicting Protein pKa Values Using
+Nonequilibrium Alchemy. J Chem Theory Comput 2023, 19 (21), 7833–7845.
+
+(20)
+
+Vila-Viçosa, D.; Reis, P. B. P. S.; Baptista, A. M.; Oostenbrink, C.; Machuqueiro, M. A PH Replica Exchange
+Scheme in the Stochastic Titration Constant-PH MD Method. J Chem Theory Comput 2019, 15 (5),
+3108–3116.
+
+(21)
+
+Hofer, F.; Kraml, J.; Kahler, U.; Kamenik, A. S.; Liedl, K. R. Catalytic Site pKa Values of Aspartic, Cysteine,
+and Serine Proteases: Constant PH MD Simulations. J Chem Inf Model 2020, 60 (6), 3030–3042.
+
+(22)
+
+Buslaev, P.; Aho, N.; Jansen, A.; Bauer, P.; Hess, B.; Groenhof, G. Best Practices in Constant PH MD
+Simulations: Accuracy and Sampling. J Chem Theory Comput 2022, 18 (10), 6134–6147.
+
+(23)
+
+Fujiki, R.; Matsui, T.; Shigeta, Y.; Nakano, H.; Yoshida, N. Recent Developments of Computational Methods
+for pKa Prediction Based on Electronic Structure Theory with Solvation Models. J (Basel) 2021, 4 (4), 849–
+864.
+
+(24)
+
+Pezzola, S.; Tarallo, S.; Iannini, A.; Venanzi, M.; Galloni, P.; Conte, V.; Sabuzi, F. An Accurate Approach for
+Computational pKa Determination of Phenolic Compounds. Molecules 2022, 27 (23), 8590.
+
+(25)
+
+Haslak, Z. P.; Zareb, S.; Dogan, I.; Aviyente, V.; Monard, G. Using Atomic Charges to Describe the pKa of
+Carboxylic Acids. J Chem Inf Model 2021, 61 (6), 2733–2743.
+
+(26)
+
+Khalili, B.; Rimaz, M. Theoretical Calculations of the Relative pKa Values of Some Selected Aromatic Arsonic
+Acids in Water Using Density Functional Theory. Current Chemistry Letters 2016, 7–18.
+
+(27)
+
+Pezzola, S.; Venanzi, M.; Galloni, P.; Conte, V.; Sabuzi, F. Easy to Use DFT Approach for Computational p Ka
+Determination of Carboxylic Acids. Chemistry – A European Journal 2024, 30 (1).
+
+(28)
+
+Haworth, N. L.; Wang, Q.; Coote, M. L. Modeling Flexible Molecules in Solution: A pKa Case Study. J Phys
+Chem A 2017, 121 (27), 5217–5225.
+
+(29)
+
+Caballero-García, G.; Mondragón-Solórzano, G.; Torres-Cadena, R.; Díaz-García, M.; Sandoval-Lira, J.;
+Barroso-Flores, J. Calculation of VS, Max and Its Use as a Descriptor for the Theoretical Calculation of pKa
+Values for Carboxylic Acids. Molecules 2018, 24 (1), 79.
+
+https://doi.org/10.26434/chemrxiv-2024-lkl5t-v4 ORCID: https://orcid.org/0000-0003-0554-7569 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+(30)
+
+Sandoval-Lira, J.; Mondragón-Solórzano, G.; Lugo-Fuentes, L. I.; Barroso-Flores, J. Accurate Estimation of
+pKb Values for Amino Groups from Surface Electrostatic Potential (V S,min) Calculations: The Isoelectric
+Points of Amino Acids as a Case Study. J Chem Inf Model 2020, 60 (3), 1445–1452.
+
+(31)
+
+Cai, Z.; Luo, F.; Wang, Y.; Li, E.; Huang, Y. Protein pKa Prediction with Machine Learning. ACS Omega 2021,
+6 (50), 34823–34831.
+
+(32)
+
+Reis, P. B. P. S.; Bertolini, M.; Montanari, F.; Rocchia, W.; Machuqueiro, M.; Clevert, D.-A. A Fast and
+Interpretable Deep Learning Approach for Accurate Electrostatics-Driven pKa Predictions in Proteins. J
+Chem Theory Comput 2022, 18 (8), 5068–5078.
+
+(33)
+
+Gokcan, H.; Isayev, O. Prediction of Protein pKa with Representation Learning. Chem Sci 2022, 13 (8),
+2462–2474.
+
+(34)
+
+Xiong, Y.; Liu, J.; Wei, D. An Accurate Feature‐based Method for Identifying DNA‐binding Residues on Protein
+Surfaces. Proteins: Structure, Function, and Bioinformatics 2011, 79 (2), 509–517.
+
+(35)
+
+Mansouri, K.; Cariello, N. F.; Korotcov, A.; Tkachenko, V.; Grulke, C. M.; Sprankle, C. S.; Allen, D.; Casey, W.
+M.; Kleinstreuer, N. C.; Williams, A. J. Open-Source QSAR Models for pKa Prediction Using Multiple Machine
+Learning Approaches. J Cheminform 2019, 11 (1), 60.
+
+(36)
+
+Frisch, M. J.; Trucks, G. W.; Schlegel, H. B.; Scuseria, G. E.; Robb, M. A.; Cheeseman, J. R.; Scalmani, G.;
+Barone, V.; Petersson, G. A.; Nakatsuji, H.; Li, X.; Caricato, M.; Marenich, A. V.; Bloino, J.; Janesko, B. G.;
+Gomperts, R.; Mennucci, B.; Hratchian, H. P.; Ortiz, J. V.; Izmaylov, A. F.; Sonnenberg, J. L.; Williams-Young,
+D.; Ding, F.; Lipparini, F.; Egidi, F.; Goings, J.; Peng, B.; Petrone, A.; Henderson, T.; Ranasinghe, D.;
+Zakrzewski, V. G.; Gao, J.; Rega, N.; Zheng, G.; Liang, W.; Hada, M.; Ehara, M.; Toyota, K.; Fukuda, R.;
+Hasegawa, J.; Ishida, M.; Nakajima, T.; Honda, Y.; Kitao, O.; Nakai, H.; Vreven, T.; Throssell, K.; Montgomery,
+J. A. , Jr.; Peralta, J. E.; Ogliaro, F.; Bearpark, M. J.; Heyd, J. J.; Brothers, E. N.; Kudin, K. N.; Staroverov, V. N.;
+Keith, T. A.; Kobayashi, R.; Normand, J.; Raghavachari, K.; Rendell, A. P.; Burant, J. C.; Iyengar, S. S.; Tomasi,
+J.; Cossi, M.; Millam, J. M.; Klene, M.; Adamo, C.; Cammi, R.; Ochterski, J. W.; Martin, R. L.; Morokuma, K.;
+Farkas, O.; Foresman, J. B.; Fox, D. J. Gaussian 16, Revision C.01. Gaussian, Inc.: Wallingford CT 2016.
+
+(37)
+
+Lu, T.; Chen, F. Multiwfn: A Multifunctional Wavefunction Analyzer. J Comput Chem 2012, 33 (5), 580–
+592.
+
+(38)
+
+Ugur, I.; Marion, A.; Parant, S.; Jensen, J. H.; Monard, G. Rationalization of the pKa Values of Alcohols and
+Thiols Using Atomic Charge Descriptors and Its Application to the Prediction of Amino Acid pKa’s. J Chem
+Inf Model 2014, 54 (8), 2200–2213.
+
+(39)
+
+Lian, P.; Johnston, R. C.; Parks, J. M.; Smith, J. C. Quantum Chemical Calculation of pKa’s of Environmentally
+Relevant Functional Groups: Carboxylic Acids, Amines, and Thiols in Aqueous Solution. J Phys Chem A
+2018, 122 (17), 4366–4374.
+
+(40)
+
+Cortes, C.; Vapnik, V. Support-Vector Networks. Mach Learn 1995, 20 (3), 273–297.
+
+(41)
+
+Borislavov, L.; Nedyalkova, M.; Tadjer, A.; Aydemir, O.; Romanova, J. Machine Learning-Based Screening for
+Potential Singlet Fission Chromophores: The Challenge of Imbalanced Data Sets. J Phys Chem Lett 2023,
+14 (45), 10103–10112.
+
+(42)
+
+Nedyalkova, M.; Vasighi, M.; Azmoon, A.; Naneva, L.; Simeonov, V. Sequence-Based Prediction of Plant
+Allergenic Proteins: Machine Learning Classification Approach. ACS Omega 2023, 8 (4), 3698–3704.
+
+(43)
+
+Nedyalkova, M.; Paluch, A. S.; Vecini, D. P.; Lattuada, M. Progress and Future of the Computational Design
+of Antimicrobial Peptides (AMPs): Bio-Inspired Functional Molecules. Digital Discovery 2024, 3 (1), 9–22.
+
+https://doi.org/10.26434/chemrxiv-2024-lkl5t-v4 ORCID: https://orcid.org/0000-0003-0554-7569 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+(44)
+
+Mauri, A.; Bertola, M. Alvascience: A New Software Suite for the QSAR Workflow Applied to the Blood–Brain
+Barrier Permeability. Int J Mol Sci 2022, 23 (21), 12882.
+
+(45)
+
+Gross, K. C.; Seybold, P. G.; Hadad, C. M. Comparison of Different Atomic Charge Schemes for Predicting
+pKa Variations in Substituted Anilines and Phenols. Int J Quantum Chem 2002, 90 (1), 445–458.
+
+(46)
+
+Mauri, A. AlvaDesc: A Tool to Calculate and Analyze Molecular Descriptors and Fingerprints; 2020; pp 801–
+820.
+
+(47)
+
+Mauri, A.; Bertola, M. Alvascience: A New Software Suite for the QSAR Workflow Applied to the Blood–Brain
+Barrier Permeability. Int J Mol Sci 2022, 23 (21), 12882.
+
+(48)
+
+Soriano-Meseguer, S.; Fuguet, E.; Port, A.; Rosés, M. Suitability of Skin-PAMPA and Chromatographic
+Systems to Emulate Skin Permeation. Influence of PH on Skin-PAMPA Permeability. Microchemical Journal
+2023, 190, 108567.
+
+(49)
+
+Lončarski, M.; Tubić, A.; Apostolović, T.; Nikić, J.; Agbaba, J. Modelling of the Adsorption of Chlorinated
+Phenols on Polyethylene and Polyethylene Terephthalate Microplastic 2020, 85.
+
+(50)
+
+Sun, N.; Avdeef, A. Biorelevant PKa (37°C) Predicted from the 2D Structure of the Molecule and Its pKa at
+25°C. J Pharm Biomed Anal 2011, 56 (2), 173–182.
+
+(51)
+
+Pompe, M.; Randić, M. Variable Connectivity Model for Determination of PKa Values for Selected Organic
+Acids Variable Connectivity Model for Determination of pKa Values for Selected Organic Acids. Acta
+Chimica Slovenica 2007, 54.
+
+(52)
+
+Miličević, A.; Šinko, G. Use of Connectivity Index and Simple Topological Parameters for Estimating the
+Inhibition Potency of Acetylcholinesterase. Saudi Pharmaceutical Journal 2022, 30 (4), 369–376.
+
+(53)
+
+Ščavničar, A.; Balaban, A. T.; Pompe, M. Application of Variable Anti-Connectivity Index to Active Sites.
+Modelling pKa Values of Aliphatic Monocarboxylic Acids. SAR QSAR Environ Res 2013, 24 (7), 553–563.
+
+(54)
+
+Ertl, P.; Rohde, B.; Selzer, P. Fast Calculation of Molecular Polar Surface Area as a Sum of Fragment-Based
+Contributions and Its Application to the Prediction of Drug Transport Properties. J Med Chem 2000, 43
+(20), 3714–3717.
+
+(55)
+
+Pajouhesh, H.; Lenz, G. R. Medicinal Chemical Properties of Successful Central Nervous System Drugs.
+NeuroRX 2005, 2 (4), 541–553.
+
+(56)
+
+Hitchcock, S. A.; Pennington, L. D. Structure−Brain Exposure Relationships. J Med Chem 2006, 49 (26),
+7559–7583.
+
+(57)
+
+Gupta, M.; Lee, H. J.; Barden, C. J.; Weaver, D. F. The Blood–Brain Barrier (BBB) Score. J Med Chem 2019,
+62 (21), 9824–9836.
+
+(58)
+
+Shaker, B.; Yu, M.-S.; Song, J. S.; Ahn, S.; Ryu, J. Y.; Oh, K.-S.; Na, D. LightBBB: Computational Prediction
+Model of Blood–Brain-Barrier Penetration Based on LightGBM. Bioinformatics 2021, 37 (8), 1135–1139.
+
+(59)
+
+Carracedo-Reboredo, P.; Liñares-Blanco, J.; Rodríguez-Fernández, N.; Cedrón, F.; Novoa, F. J.; Carballal, A.;
+Maojo, V.; Pazos, A.; Fernandez-Lozano, C. A Review on Machine Learning Approaches and Trends in Drug
+Discovery. Comput Struct Biotechnol J 2021, 19, 4538–4558.
+
+https://doi.org/10.26434/chemrxiv-2024-lkl5t-v4 ORCID: https://orcid.org/0000-0003-0554-7569 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+T O C G raph ic
+Some journals require a graphical entry for
+the Table of Contents. This should be laid out
+“print ready” so that the sizing of the text is
+correct. Inside the tocentry environment, the
+font used is Helvetica 8 pt, as required by
+Journalofth eA mericanC h emicalSociety.
+The surrounding frame is 9 cm by 3.5 cm, which
+is the maximum permitted for Journalofth e
+A mericanC h emicalSociety graphical table of
+
+contententries. T h e box wil
+lnotresiz e ifth e
+contentis too big: instead itwil
+loverfl
+ow th e
+edge ofth e box.
+Th is box and th e associated titl
+e wil
+lal
+ways be
+printed on a separate page atth e end of th e
+document.
+
+https://doi.org/10.26434/chemrxiv-2024-lkl5t-v4 ORCID: https://orcid.org/0000-0003-0554-7569 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+

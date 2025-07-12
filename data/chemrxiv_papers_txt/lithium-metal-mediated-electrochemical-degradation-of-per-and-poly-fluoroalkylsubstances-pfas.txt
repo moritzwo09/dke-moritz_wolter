@@ -1,0 +1,778 @@
+Lithium metal-mediated electrochemical degradation of per- and polyfluoroalkylsubstances (PFAS)
+Bidushi Sarkar1, Rameshwar L. Kumawat2, Peiyuan Ma1, Ke-Hsin Wang1, Matin Mohebi1, George C.
+Schatz2, and Chibueze V. Amanchukwu1*
+Pritzker School of Molecular Engineering, The University of Chicago, Chicago, IL 60637 USA
+
+1
+
+Department of Chemistry, Northwestern University, Evanston, IL 60208, USA
+
+2
+
+*Corresponding author
+Email: chibueze@uchicago.edu
+
+Abstract
+Per- and poly-fluoroalkyl substances (PFAS) have significant environmental and health
+hazards. Unfortunately, current PFAS degradation routes require higher temperatures or highly
+corrosive conditions and/or lead to incomplete defluorination and generation of shorter alkyl
+chains. Fortunately, fluorinated compounds are highly vulnerable to reduction. Inspired by the
+lithium metal battery literature, we develop an ambient temperature and pressure
+electrochemical degradation process that takes advantage of reactive metals and highly
+reducing environments. We show that electrodeposited lithium metal can enable 95%
+degradation and 94% defluorination of a long chain PFAS, perfluorooctanoic acid (PFOA)
+without forming any shorter C2-C7 PFAS as end products. More importantly, we show
+mineralization to LiF. Using density functional theory (DFT) and ab initio molecular dynamics
+(AIMD), we reveal the degradation mechanism and show that electron transfer from Li to
+PFOA leads to rapid C-F bond cleavage, the formation of fluoride, and carbon chain fragments.
+We expand the scope to other PFAS compounds and of the 33 PFAS compounds tested, 22
+demonstrated degradation amounts exceeding 70% (with some degradation up to 99%), and
+complete mineralization to inorganic fluorides. Finally, we use the mineralized F− as a fluorine
+source for the synthesis of fluorinated non-PFAS compound such as ethane sulfonyl fluoride
+to complete a circular fluorine loop from waste to valuable product. Our work showcases a
+novel electrochemical approach that borrows from the battery literature to solve challenges in
+environmental remediation.
+
+https://doi.org/10.26434/chemrxiv-2025-sqtq5 ORCID: https://orcid.org/0000-0002-6573-1213 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Introduction
+Per- and poly- fluoroalkyl substances (PFAS) are a class of thousands of man-made chemicals
+that are ubiquitously used in consumer and industrial applications.1 These contain at least one
+perfluorinated carbon (-CF3 or -CF2 with no H) and have a wide range of special properties
+such as high chemical stability, water resistance, and more. Unfortunately, they are persistent
+in the environment and are colloquially known as ‘forever chemicals.’ 2 Furthermore, they have
+been implicated in a wide range of health-related concerns including cancer and immune
+impairment.3, 4 Therefore, across the world, new regulations have been proposed or
+implemented to curtail their use and limit their concentration in drinking water.5 Addressing
+the PFAS challenge requires sensing, capture, and destruction. There are many sensing
+approaches based on nanotechnology, biotechnology etc. that have been developed to sense
+PFAS compounds at concentrations as low as 1 ppt.6, 7 Furthermore, carbon, and other sorbents
+can capture a range of PFAS compounds.8-10 However, there are limited approaches to
+permanently degrade and mineralize these PFAS compounds to fluoride.
+PFAS degradation is of utmost importance because many of the environmental and health
+exposures are a result of improper disposal and limited degradation technologies. Degradation
+approaches have lagged because of the strength of the C-F bond. Several approaches such as
+thermal, photo, chemical, and electrochemical approaches to PFAS destruction have been
+studied.11-13 Perfluorooctanoic acid (PFOA) is one pollutant of great interest as it is ranked
+among the US EPA (Environmental Protection Agency) top 10 and consistently observed in the
+environment and in almost all humans.14 In addition, there are several legacy and current PFAS
+compounds in wide production.
+Electrochemical approaches are of great interest because they can be done under ambient
+temperature and pressure conditions and take advantage of renewable electrons from solar and
+wind.15 Electrochemical oxidation – not reduction – has been heavily explored. Electrodes such
+as boron doped diamond (BDD) are state-of-the-art for electrochemical oxidation and are
+primarily used not because it is an active catalyst for PFAS degradation but because it has a
+high overpotential for oxygen evolution.16, 17 Hence, when electrochemical oxidation is
+performed under aqueous conditions, the higher potentials required for PFAS oxidation can be
+accessed. Unfortunately, BDD is very expensive.18
+Fluorine is the most electronegative element known. Therefore, C-F bonds are highly resistant
+to oxidation. In contrast, fluorinated compounds are vulnerable to reduction. In the field of
+nonaqueous batteries such as lithium metal, fluorinated solvents and salts are state-of-the-art
+due to their non-flammability, high thermal resistance, and oxidative stability.19, 20 At reductive
+conditions and/or in contact with reactive metals such as lithium or sodium, these compounds
+are known to degrade to form the solid electrolyte interface.21 Chemical and surface
+characterization techniques show mineralization to F−.22 Furthermore, these reactive metals can
+corrode at rest upon contact with these fluorinated solvents.23 In In the battery literature,
+continuous reactivity between the fluorinated electrolyte and the metal electrode is highly
+undesired and leads to poor battery cycling.24, 25 However, this is exactly what is desired for
+PFAS degradation! Therefore, the challenges of fluorinated electrolyte instability and reaction
+that plague metal batteries open a new approach and opportunity for pollutant degradation.
+Inspired by the lithium metal battery21, 26, 27 and lithium mediated ammonia synthesis
+literature,28, 29 we propose the investigation of PFAS degradation under reductive conditions
+
+https://doi.org/10.26434/chemrxiv-2025-sqtq5 ORCID: https://orcid.org/0000-0002-6573-1213 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+and in the presence of a reactive metal. There are fewer studies on electrochemical reduction
+of PFAS that take advantage of the inherent reductive vulnerability of fluorinated compounds.
+The generation of aqueous electrons (aq e-) for reductive degradation of PFAS in water
+typically requires complex and energy-intensive methods such as plasma discharge, UV
+irradiation or radiolysis.30 A major challenge is that these aq e- are highly reactive and can be
+easily scavenged by H+ or O2 present in the water. This scavenging effect significantly limits
+the availability of aq e- for effective PFAS degradation and often necessitates the use of
+anaerobic conditions to mitigate this issue.31 We speculate that another reason for the dearth in
+the literature is that if the reduction reaction is performed under aqueous conditions, the
+hydrogen evolution reaction (HER) would occur before the potentials needed for PFAS
+reduction.32 In addition, reactive metals such as lithium and sodium react violently with water.
+However, while PFAS is often present in the environment in water or in soil, it can be captured,
+concentrated and then destroyed in a different media. Therefore, to take advantage of reactive
+metals and reduction potentials for PFAS degradation requires nonaqueous electrolytes.
+
+Figure 1. Schematic of the proposed Li mediated PFOA degradation approach.
+There have been some papers that explored the influence of nonaqueous solvents on PFAS
+degradation. McCord et al. showed that different nonaqueous solvents such as dimethyl
+sulfoxide (DMSO) facilitate the decarboxylation of PFOA, which is often reported as the
+gateway to degradation.33 Dichtel et al. used 30 M NaOH dissolved in a DMSO/water mixture
+and showed that at elevated temperatures (120°C), decarboxylation can occur with subsequent
+defluorination to fluoride.34 However, high temperatures are required, at least for the initial
+decarboxylation step. Additionally, a highly corrosive NaOH electrolyte is necessary. Liu et al.
+demonstrated PFOA degradation into shorter alkyl chains in aprotic solvents like N-Ndimethylformamide and acetonitrile using a Rh/Ni cathode.35 However, a reductive metal
+mediated electrochemical method to degrade PFOA to inorganic fluorides at ambient
+conditions without generating smaller chain PFAS remains unknown. While it is important to
+degrade PFAS compounds, it is important to note that fluorine has been listed as a critical
+element by the Department of Energy.36 Furthermore, there are numerous fluorinated
+compounds that are not classified as PFAS. Therefore, mineralizing PFAS to F− and valorizing
+the F− to synthesize non-PFAS fluorinated compounds would enable a circular fluorine
+economy and upcycling to valuable products.
+
+https://doi.org/10.26434/chemrxiv-2025-sqtq5 ORCID: https://orcid.org/0000-0002-6573-1213 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+In this work, we develop a reactive metal-assisted degradation via electroreduction (ReMADE)
+process for the remediation of halogenated compounds (Figure 1). The process occurs at
+ambient temperature and pressure in a single chamber membrane-and-catalyst-free
+electrochemical cell. We show that upon lithium metal electrodeposition, up to 95% PFOA
+degradation and 94% defluorination can be achieved. More importantly, we reveal that no short
+chain PFAS compounds are formed and almost complete mineralization to fluoride is achieved.
+Our findings showcase a new process for the efficient and selective degradation of PFAS deeply
+inspired by the lithium metal battery literature. We use the confluence of DFT (density
+functional theory), AIMD (ab initio molecular dynamics), and spectroscopic tools to
+understand the degradation mechanism. We also expand the ReMADE process scope by
+probing other reactive metals and other PFAS compounds. Finally, we use the F− obtained from
+PFAS degradation as the fluorine source for the synthesis of a non-PFAS fluorinated compound
+(ethane sulfonyl fluoride, ESF) that has seen applications as an additive or solvent for batteries
+as well as for pharmaceuticals.37, 38 The ReMADE process cleverly takes advantage of the
+degradation challenges that batteries face and unleashes them for other electrochemical
+transformations such as electrosynthesis, electrocatalysis, and environmental remediation.
+Results and discussion
+
+Fig 2. Proof-of-concept chemical reaction between PFOA and Li. (a) Structure of PFOA,
+and different solvents tested for PFOA degradation, (b) Image of Li metal in different solvents
+containing PFOA, (c) F 1s and (d) Li 1s HRXPS of Li metal in different solvents containing
+PFOA, and (e) 19F NMR of fluorinated compounds after exposure of lithium metal to PFOA in
+different solvents after 24 h. Cross (x) denotes the internal standard LiTFSI.
+
+https://doi.org/10.26434/chemrxiv-2025-sqtq5 ORCID: https://orcid.org/0000-0002-6573-1213 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Rationale for process and proof-of-concept
+The reactivity of ‘reactive’ metals such as lithium towards PFOA was first studied chemically.
+We focus on PFOA as it is the most prevalent of PFAS compounds. Lithium metal was added
+to a solution containing 10 mM of dissolved PFOA. As Figure 1 (a) shows, we choose solvents
+such as dimethyl sulfoxide (DMSO), ethers, and carbonates that are relatively stable against
+lithium metal and have been studied in the lithium metal battery literature.39-42 In contrast,
+acetonitrile reacts violently with lithium metal and was not explored.43 After 24 hours of
+exposure of the lithium metal piece to PFOA in the different solvents (Figure 1 (b)), the lithium
+metal surface was studied using XPS. Across all the solvents studied, mineralization to LiF was
+observed as shown in the F 1s XPS (Figure 1 (c, d)).44, 45 A Cu foil was also examined in
+DMSO as a control that shows the presence of C-F2 and Cu-F peak46 indicating that these
+interactions are arising by residual PFOA on the surface. Residual PFOA can also be seen at
+the lithium surface for the carbonate-based solvents. For DMSO, it appears that the fraction of
+LiF seen is much higher compared to the other solvents.
+The supernatant was also studied using 19F solution NMR (Figure 1 (e)). Interestingly,
+dissolved LiF was also observed when DMSO is used as the solvent. We assign the fluoride
+peak at 166.6 ppm following a LiF in DMSO control (Figure S1). There were no observations
+of smaller chain fluorinated compounds. Although the XPS data in other aprotic solvents like
+EC/DEC and PC show LiF formation, there is no observation of F− in solution. We attribute
+this to lower LiF solubility in carbonate solvents compared to DMSO and the absolute lower
+amount of LiF formed (as seen in the XPS data).47, 48 The combination of XPS and NMR
+irrefutably show that reactive metals such as lithium can enable PFOA degradation and
+mineralization to fluoride. However, as a surface driven reaction, fresh new lithium metal
+surface will always be needed. Therefore, an electrochemical process was developed.
+Electrochemical degradation of PFOA
+An ambient temperature, pressure, electrochemical process was developed to enhance PFAS
+degradation. As Figure S2 shows, the electrochemical cell consists of an organic solvent,
+dissolved salt, a Cu working electrode, a Pt or graphite counter electrode, and an Ag/Ag+
+leakless reference electrode. For lithium metal batteries, fluorinated salts such as LiFSI (lithium
+bis(fluorosulfonyl)imide) and LiTFSI (lithium bis(trifluoromethane)sulfonimide) are state-ofthe-art as they have been shown to enable high Coulombic efficiencies (stripping
+capacity/deposition capacity).37 However, since we are interested in PFOA degradation, we
+avoid any other fluorine source. Hence, salts such as ClO4- and NO3- were studied. These salts
+limit the type of solvents that can be explored to ensure sufficient salt dissolution and high
+ionic conductivity. Hence, a range of electrolytes were explored and compositions that yielded
+ionic conductivities > 3 mS/cm were studied (Table S1). Regardless, an interesting
+philosophical question that guides the proposed approaches and distinguishes it starkly from
+lithium metal batteries: do we want electrolytes that support high lithium metal Coulombic
+efficiency or not? High CE electrolytes often have low surface area and limited reaction with
+lithium metal. However, we do want large surface area and greater reactivity with PFAS.
+Hence, the guiding principles for lithium metal batteries will differ from reactive metal
+mediated reactions.
+
+https://doi.org/10.26434/chemrxiv-2025-sqtq5 ORCID: https://orcid.org/0000-0002-6573-1213 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+First, TBAClO4 (tetrabutylammonium perchlorate) salt was used to ascertain the impact of the
+applied potential and current density by direct electroreduction (DE) without the presence of
+lithium. Using a current density of 50 mA/cm2 with a catalyst-free Cu working electrode,
+significant degradation of PFOA and mineralization to F− is observed at ambient conditions
+(Figure 3). Using a combination of a fluoride ion selective electrode (ISE, Supplementary
+note 1) and 19F NMR (Supplementary note 2), over 69 % of PFOA degrades and 70 %
+defluorination occurs to F−. This observation further reinforces the promise of reductive
+potentials for dehalogenation reactions in contrast to conventional oxidative processes that are
+used. Jiang et al. also recently explored a molecular catalyst for reductive PFAS degradation
+and mineralization.49 However, the process requires the synthesis of a new catalyst. In addition,
+the molecular catalyst was dissolved in the same solution as the PFAS making it difficult to
+separate the catalyst from the final fluorinated products.
+Lithium metal-mediated degradation
+When LiClO4 is added as the salt and lithium metal is allowed to deposit, the degradation
+process is significantly enhanced by lithium-mediated electroreduction, LME (Figure 3 (a-c)).
+Figure S3 shows that lithium metal is electrodeposited at these current densities as a shiny
+luster is present. Furthermore, the electrochemical profile shows the nucleation and growth
+overpotentials associated with lithium metal electrodeposition. As the 19F NMR spectra in
+Figure 3 (d) shows, almost all the PFOA is converted to F−. The degradation increases to 95%
+for PFOA and defluorination conversion up to 94 % (Figure S4-5). There are minute
+concentrations of TFA (trifluoroacetate) and no other smaller chain fluorinated compounds. Ion
+chromatography (IC) analysis identified formate as another degradation product, with no other
+detectable products observed (Supplementary Note 4, Figure S6-8).
+For simplicity and future scalability, we use a single chamber membraneless cell. To
+demonstrate that PFOA is the sole source of fluorine in the reaction, it was conducted in the
+absence of any other potential fluorine sources, such as PTFE stir bars or Teflon-coated
+electrodes. Figure S9 illustrates the degradation of PFOA and the formation of LiF both in the
+electrolyte and on the electrode surface, confirming that PFOA degradation is the exclusive
+source of fluoride ions. However, there is a need to clearly show that it is the lithium metal and
+the reductive process that leads to PFOA degradation and not oxidation. Therefore, we
+fabricated an H-Cell consisting of a Nafion cation exchange membrane to segregate the
+catholyte and anolyte chambers. Figure S10-11 shows that the Nafion membrane can
+substantially limit PFOA and LiF crossover. When PFOA is added to the catholyte chamber,
+F− is readily observed. In contrast, when PFOA is added to the anolyte chamber, F− is not
+observed in the anolyte chamber, but only again in the catholyte chamber where we assume
+that some PFOA crossed over and degraded. Interestingly, regardless of whether PFOA was
+added to the catholyte or anolyte, LiF was observed on the surface of working electrode. This
+indicates that PFOA interacts with the Li surface, leading to the formation of LiF at the
+interface. For the single chamber experiments, we estimate the Coulombic efficiency
+(Supplementary Note 3) for PFOA degradation and conversion to fluorides in DMSO to be
+~7.7%, which is higher than other reported electrochemical approaches (reductive or
+oxidative).49, 50 To further improve this would involve optimization of the electrochemical cell,
+electrolyte composition, electrodes, and operating conditions.
+
+https://doi.org/10.26434/chemrxiv-2025-sqtq5 ORCID: https://orcid.org/0000-0002-6573-1213 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+The interfacial composition of the lithium metal and electrode surface was probed using XPS.
+For TBA-based electrolytes, the copper electrode was studied. Figure 3 (e-g) shows little/no
+degradation products on the copper surface for TBA indicating that the Cu doesn’t participate
+directly in the reaction and serves primarily as a shuttle for electrons. All the fluorinated
+degradation products such as TBA-F are known to have high solubilities in organic media and
+are not present on the electrode surface but only in solution (see NMR data, Figure S12). In
+contrast, the electrodeposited lithium shows breakdown and defluorination of PFOA to F− on
+the surface, mirroring some of the observations made in the proof-of-concept.
+
+Fig 3. Role of negative bias and Li in PFOA degradation (a) Schematic of the degradation
+in presence and absence of Li, (b) PFOA degradation in presence (0.5 M LiClO4) and absence
+of Li (0.5 M TBAClO4) in DMSO with time at applied current density of 50 mA/cm2, (c)
+Defluorination (fluoride recovery) with time, (d) 19F NMR showing almost complete PFOA
+degradation, inset: depicting the trace amount of PFOA left and the formation of TFA as
+product, XPS data of (e) C 1s, (f) F 1s, and (g) Li 1s for TBA vs Li system.
+
+https://doi.org/10.26434/chemrxiv-2025-sqtq5 ORCID: https://orcid.org/0000-0002-6573-1213 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Probing electrochemical reaction space
+The influence of electrochemical variables such as current density, electrolyte, and electrode
+was further explored. The influence of reductive current on PFOA degradation was studied by
+varying the applied current density from 10 to 50 mA/cm2 (Figure S13). As Figure 4(a) shows,
+current density plays an important role in the PFOA degradation. Even current densities as low
+as 10 mA/cm2 show mineralization to F− while the degradation at 40 mA/cm2 largely mirrors
+that at 50 mA/cm2. The 19F NMR analysis reveals a progressive increase in the formation of
+LiF as a product, accompanied by a reduction in PFOA concentration (Figure 4 (b)). The
+reaction follows a pseudo first order reaction (Supplementary note 5, Figure 4 (c)) with a rate
+constant of 0.096 h-1. An important observation for the degradation reactions in DMSO across
+all these current densities is that no smaller chain fluorinated residues are observed (which are
+typically reported in thermal and oxidative pathways).51-53 Since the total amount of time is
+fixed while the current density varies, the amount of charge varies (Figure S14). As the total
+amount of charge applied increases, the PFOA degradation extent increases as shown in Figure
+4 (d). At the same fixed charge, there do appear to be differences in degradation extents, which
+we attribute to differences in the observed voltages. The influence of the anode was also studied
+with platinum and graphite showing similar overall cell voltages and no effect on the overall
+degradation (Figure S15). The anodic reaction was not optimized and is currently solvent
+oxidation. Future work can incorporate water for anodic oxygen evolution reaction (OER) or
+use a boron doped diamond (BDD) electrode to enable simultaneous reductive and oxidative
+PFAS destruction. It has been widely reported that electrolyte selection plays an important role
+in controlling lithium metal deposition efficiency, morphology, interfacial composition and
+more.21, 54-57 Therefore, the influence of electrolyte selection on the electrochemical
+degradation process was explored. Figure 4 (e) shows that there is a significant electrolyte
+dependence, with PC showing the poorest degradation efficiencies while the EC: DG mixture
+is much closer to the DMSO-based system.
+We also fabricated lithium metal batteries using these electrolytes to probe their influence on
+lithium metal CE (Supplementary Note 5). As Figure S16 qualitatively shows, electrolytes
+that support low Li metal CE have higher PFOA degradation efficiencies. Although we do not
+want solvent competition with PFOA, we also do not want excellent electrolytes. These
+findings upend the heuristics for lithium metal batteries; hence electrolytes that have been
+discarded due to poor battery cycling – of which there are a multitude – can be resurrected for
+reactive metal degradation reactions. The influence of electrolyte selection on the lithium metal
+deposition morphology was also probed. Figure 4 (f-k) shows SEM images of lithium
+deposited at different current densities and with different electrolytes. In DMSO, the SEM of
+the samples reveal decrease in Li particle size with increasing current (Figure 4 (f-h)). As
+expected, the deposited lithium is highly porous with large active surface area for reaction with
+PFOA.
+
+https://doi.org/10.26434/chemrxiv-2025-sqtq5 ORCID: https://orcid.org/0000-0002-6573-1213 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+l
+
+Fig. 4. Effect of reaction parameters on PFOA degradation. (a) Influence of current density
+on degradation of PFOA, (b) 19F NMR showing PFOA degradation after 24 h at different
+current densities, selected region is zoomed 50x , (c) Plot of ln ([A/A0]) vs. time where A0 is
+the starting PFOA conc. (1 mM) and A is the conc. at time=t for a reaction carried out in DMSO
+at 50 mA/cm2, SEM of electrodeposited Li at different J in DMSO, (d) Variation of degradation
+of PFOA with amount of charge passed, (e) influence of electrolyte selection, (f) 10 mA/cm2,
+(g) 30 mA/cm2 (h) 50 mA/cm2. SEM of electrodeposited Li in different electrolytes at J = 50
+mA/cm2 (i) ethylene carbonate: diglyme (EC: DG), (j) ethylene carbonate: diethyl carbonate
+(EC: DEC), (k) propylene carbonate (PC). All depositions for SEM are done at a constant
+capacity of 2 mAh/cm2, (l) Degradation of PFOA molecule near a Li surface in DMSO implicit
+solvents and in the gas phase, as determined by DFT calculations.
+
+DFT investigation to understand degradation mechanism
+
+https://doi.org/10.26434/chemrxiv-2025-sqtq5 ORCID: https://orcid.org/0000-0002-6573-1213 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Density functional theory (DFT) was performed to garner mechanistic insight into the
+degradation process (Supplementary Note 7). The calculations refer to PFOA near a small
+lithium crystal – Li (110) – in the presence of solvents whose influence is treated implicitly,
+and with all atoms free to move except for the Li’s which are assumed fixed. The geometry of
+the PFOA molecule that is obtained from energy minimization of the starting structure is shown
+in Figure 4 (l) and S18. Figure 4 (l) shows significant fragmentation of the PFOA, with the
+results significantly altered in some solvent environments compared to others (Figure S19). In
+DMSO (dielectric constant (ε) ≈ 46.7), PC (≈ 64), and EC (≈ 89.78), the PFOA molecule is
+pushed away from the Li surface during the geometry relaxation process, with all C-F bonds
+degraded and the carbon chain becoming linear. The carbon chain structures are similar to the
+known structures of small anionic polyacetylenic carbon clusters with the same number of
+atoms,58, 59 although in this case the carboxylate group (which has a Bader charge of 1.24 e) is
+not dissociated from the chain. In contrast, in low dielectric constant solvents, DG (≈ 7.2) and
+DEC (≈ 2.805), and in the gas phase, the PFOA molecule is attracted to the Li surface, and only
+roughly half of the C-F bonds are broken (Figure S19). To understand this behavior, the charge
+transfer dynamics was analyzed in both the gas phase and DMSO solvent systems. The results
+show (Figure S19) that the number of electrons transferred (ΔQ) is significantly higher when
+PFOA is solvated in DMSO, with 15.8 electrons transferred from the Li surface to the PFOA
+molecule, while the gas phase charge transfer is ~ 12.0 electrons. For both DMSO and vacuum,
+the high number of electrons transferred leads to substantial C-F bond degradation, but only
+DMSO result leads to complete defluorination, similar to the experimental observations. While
+this model is oversimplified compared to the experiment, these calculations suggest the
+conditions needed to remove all fluorines from PFOA. Note that the transfer of ~16 electrons
+to PFOA and degradation of 12 F− leave the carbon fragment negatively charged such that it is
+repelled by F− near the Li surface. Also, many of the F− end up solvated in the DMSO, while
+others enter the lattice.
+The effects of other solvent environments were investigated, including PC, DEC, EC, and DG.
+In the PC and EC solvents, we observed similar 100% C-F bond degradation, with charge
+transfers of 19.5 e and 17.0 e, respectively. These solvents, like DMSO, have relatively high
+dielectric constants, which likely contribute to the efficient charge transfer and subsequent CF bond degradation. In the DEC and DG solvents, the lower dielectric constants lead to less
+stabilization of charged intermediates, less charge transfer and bond degradation. In DEC, we
+observed a lower C-F bond degradation fraction of 53.3%, with the corresponding charge
+transfer is 10.1 e. In DG, the C-F bond degradation fraction is 73.3%, similar to the gas phase,
+with a charge transfer of 13.9 e.
+Overall, the DFT results show that these solvents are capable of supporting PFOA degradation
+to some extent, but only allow DMSO, PC, and EC allow for complete degradation. The
+superior performance of DMSO compared to the other solvents must therefore be interpreted
+in terms of the other factors mentioned earlier (solubility of LiF and Li porosity) that are not
+included in our modeling.
+
+AIMD studies to understand the effect of electric field
+
+https://doi.org/10.26434/chemrxiv-2025-sqtq5 ORCID: https://orcid.org/0000-0002-6573-1213 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+To simulate the influence of an applied electrochemical potential on PFOA degradation, AIMD
+simulations were conducted at 0 K for 5 ps with and without an electric field perpendicular to
+a Li surface. The simulations aimed to understand the degradation mechanisms under different
+electric field conditions, specifically under a +0.5 eV/Å (reductive environment) and a -0.5
+eV/Å (oxidative environment) electric field in DMSO solvent. Under a reductive environment
+(+0.5 eV/Å) in DMSO solvent, significant degradation was observed, with the breaking of eight
+C-F bonds and formation of Li-F bonds and F¯ ions at 0.025 ps (Figure S20 (a)), and further
+bond degradations leading to a variety of fragments by 0.5 ps, similar to the energy-minimized
+result in Figure 4(l). However, due to implicit solvent effects, only the short-term results (up
+to 0.0325 ps) are expected to be representative of actual experiments. The positive electric field
+enhances electron transfer from the Li surface to PFOA, corresponding to reductive conditions.
+The enhanced charge transfer (9.3 e) under the positive field correlates with higher PFOA
+defluorination (86.7%), accelerating degradation (Figure S19 (b)).
+In contrast, a negative electric field (-0.5 eV/Å, oxidation) resulted in slower and less complete
+degradation, with bond breakages and fragment formation observed more gradually. This
+corresponds to oxidative conditions, where an oxidative process involves the loss of electrons
+from PFOA. Charge transfer from the Li surface to PFOA was lower (7.0 e) under the negative
+field, correlating with less defluorination (26.7%). The reduced rate of C-F bond degradation
+and fragmentation is consistent with the lower electron transfer to PFOA under these
+conditions.
+The difference in degradation efficiency between positive and negative electric fields is
+attributed to charge transfer dynamics. The significant electronegativity difference between Li
+and PFOA atoms facilitates electron transfer from Li, weakening C-F bonds and promoting
+degradation. Under reductive conditions with a positive electric field, this process is more
+pronounced, leading to greater and faster PFOA degradation compared to oxidative conditions
+with a negative electric field.
+Expanding reaction scope
+Reactive metal mediated electrochemical reactions hold promise beyond lithium metal and
+beyond PFOA. Tackling the challenge of breaking down a wide variety of PFAS compounds
+requires methods that are both effective and versatile. Beyond the well-known PFAS like PFOA
+and GenX, the EPA has identified 40 PFAS across different structural categories.60 These PFAS
+compounds are commonly found in wastewater, groundwater, soil, sediments, and fish tissue
+and EPA developed the popular Method 1633 to detect these 40 PFAS in various sources.
+The application of the LME (lithium-mediated electroreduction) and DE (Direct
+Electroreduction) methods to these PFAS reveals promising trends. For perfluoroalkyl
+carboxylic acids (CnF(2n+1)CO2H, where n = 3 to 12), both methods demonstrate greater
+degradation efficiency for longer-chain PFAS compared to shorter-chain ones (Figure S21).
+For example, the degradation is 99.1 % for PFUnA (n = 10) compared to 4 % for PFBA (n=3)
+as shown in Figure 5. This chain-length-dependent degradation has been observed in the
+literature, attributed to the more hydrophobic nature of longer-chain PFAS. Their increased
+hydrophobicity facilitates easier adsorption onto the reactive interface, in contrast to shorterchain PFAS.61, 62 Perfluorosulfonic acids, fluorotelomer carboxylic and sulfonic acids exhibit
+a similar trend, with higher degradation efficiencies observed for longer-chain PFAS.
+
+https://doi.org/10.26434/chemrxiv-2025-sqtq5 ORCID: https://orcid.org/0000-0002-6573-1213 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 5. Scope of degradation. Structures of PFAS belonging to different classes. The first
+value represents the degradation %, while the second indicates the defluorination % achieved
+using the LME and DE methods, respectively
+Additionally, the LME method effectively degrades other PFAS classes, including
+perfluorooctane sulfonamide ethanols, sulfonamides, and per- and polyfluoroether carboxylic
+acids as shown in Figure 5. Notably, in all cases, the degradation percentage and defluorination
+efficiency achieved through LME consistently outperform those obtained with DE,
+highlighting the potential of LME for broader applicability and superior outcomes in PFAS
+mitigation efforts.
+
+https://doi.org/10.26434/chemrxiv-2025-sqtq5 ORCID: https://orcid.org/0000-0002-6573-1213 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+The modular nature of the process allows a different reactive metal to be studied if the relevant
+salt is available. Beyond lithium, we experimentally explored other reactive metals such as
+potassium by incorporating a potassium salt. Figure S23 shows that K can enable 34 %
+degradation of PFOA to KF. Differences between Li and K primarily involve differences in the
+higher K electrolyte solution resistance (compared to Li) in the electrolytes studied here.
+Further optimization of the K-based electrolyte will be needed.
+Valorization of degraded PFAS to non-PFAS product
+
+The Department of Energy has listed fluorine as a critical element for energy; however, PFAS
+as discussed so far is a waste product. Therefore, recovering the fluorides obtained from PFAS
+degradation and converting them to non-PFAS fluorinated products can close the fluorine loop.
+We focus on KF since it has been reported widely as a reagent for fluorination reactions, and
+the synthesis of ethane sulfonyl fluoride (as an exemplar) because of its use in battery
+applications as well as in drug discovery. 37, 38 More importantly, ESF is not considered a PFAS
+by any definition. We first conduct the synthesis of ESF using commercial KF, following
+literature procedure for synthesizing sulfonyl fluorides (Figure S24).63, 64 This served as a
+reference. After the degradation of PFOA, the resulting KF is separated from the DMSO
+
+Figure 6. (a) Schematic showing the workflow from mineralization of PFAS to separation of
+fluorides and valorization to non-PFAS product, (b) 1H NMR depicting the formation of ESF
+from ESCl over 2 days (2 D), (c) 19F NMR showing formation of ESF and % yield after 2 D
+calculated with respect to 2, 2 difluoroethanol (denoted by x, internal standard).
+electrolyte using multiple methods; either washing the cathode surface or ion exchange
+chromatography (Figure 6(a), Figure S25, Supplementary note 9). The collected fluoride is
+washed with water and concentrated using a rotary evaporator to obtain a saturated KF solution.
+This solution is then reacted with ethane sulfonyl chloride (ESCl), as a biphasic mixture. As
+shown in Figure 6 (b), the 1H NMR spectra reveal a gradual decrease in the ESCl peaks and a
+
+https://doi.org/10.26434/chemrxiv-2025-sqtq5 ORCID: https://orcid.org/0000-0002-6573-1213 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+corresponding increase in the ESF peaks, indicating the successful conversion of ESCl to ESF
+over two days. By the end of the reaction, only the ESF peak is observed with 82% yield
+(Figure 6 (c)). This process demonstrates a successful upcycling pathway, converting PFAS
+degradation products into ESF, a valuable non-PFAS fluorinated compound.
+Our work on reactive metal-mediated electrochemical reactions provides an ambient
+temperature, pressure process that can take advantage of renewable electrons (solar, wind) in a
+modular manner. Future work will take advantage of other reactive metals (e.g., Na, Mg) with
+more positive reduction potentials (compared to Li) that have been shown in the battery
+literature to lead to defluorination. 65, 66 Furthermore, other compounds such as halogenated
+products (e.g., chloro-, bromo-) and polymers (e.g., chloro and fluoro-polymers) will be
+pursued. Finally, the confluence of reductive degradation and reactive metals enabled by
+careful electrolyte engineering changes the paradigm of electrochemical reactions ranging from
+electrocatalysis to electrosynthesis to environmental degradation.
+Conclusions
+A novel Li metal mediated electrochemical route was developed for PFOA degradation as part
+of a broader process we term ReMADE (reactive metal-assisted degradation reactive metalassisted degradation via electroreduction). The ambient temperature, pressure, catalyst-free
+system led to up to 94 % defluorination of PFOA after 24 hours under highly reductive
+environment in DMSO. Notably, in the absence of Li, the degradation proceeds partially on a
+pristine Cu surface, which indicates that reductive conditions are important. LiF is the major
+degradation product and no shorter alkyl chain compounds were seen apart from trace amounts
+of TFA (trifluoroacetate). Increase in reductive current enhances the degradation due to
+improved availability of the Li active surface area with decrease in Li nucleation size. We show
+that electrolyte choice is important with DMSO supporting high defluorination and LiF
+solubility. DFT and AIMD results provide further insight and show that the degradation is
+associated with degradation of C-F bonds that occurs because of electron transfer from Li to
+the PFOA in DMSO, leaving behind F-, LiF and a carboxylated carbon chain. We study the
+influence of lithium metal mediated degradation with other fluorinated compounds and show
+degradation. The degradation % achieved through LME consistently surpass those obtained
+with DE and out of the 33 PFAS tested, 22 demonstrated degradation exceeding 70%, with
+PFUnA and PFDA achieving a remarkable degradation of 99%. Furthermore, we explore other
+alkali metals such as potassium. Finally, we valorize the inorganic fluorides from PFOA
+degradation for the synthesis of fluorinated non-PFAS products. Inspired by the battery
+literature, we take the disadvantages that plague electrolyte development for reactive metalbased batteries and exploit them for desired halogenated compound degradation. Our findings
+are relevant for several electrochemical transformations such as electrocatalysis,
+electrosynthesis, and environmental remediation.
+
+https://doi.org/10.26434/chemrxiv-2025-sqtq5 ORCID: https://orcid.org/0000-0002-6573-1213 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Materials and methods
+PFOA (Perfluorooctanoic acid, 95 %), Lithium perchlorate (99%), dimethyl sulfoxide
+(anhydrous, 99.9%), ethylene carbonate (anhydrous, 98 %), diglyme (anhydrous, 99.5%),
+diethyl carbonate (99 %), propylene carbonate (anhydrous, 99 %), and 4 Å molecular sieves
+were purchased from Sigma-Aldrich. Gen X (95 %) is purchased from Sigma Aldrich and
+LiTFA (97 %) from Thermo Scientific. Tetrabutylammonium perchlorate (99 %) was
+purchased from Alfa Aesar. Ethane sulfonyl chloride (> 98 % purity) is purchased from TCI.
+Deuterated DMSO (≥ 99.8 atom % D) was purchased from Cambridge Isotope Laboratories.
+PFBA (Perfluorobutanoic acid), PFPeA (Perfluoropentanoic acid), PFHxA (Perfluorohexanoic
+acid), PFHpA (Perfluoroheptanoic acid), PFOA (Perfluorooctanoic acid), PFNA
+(Perfluorononanoic acid), PFDA (Perfluorodecanoic acid), PFUnA (Perfluoroundecanoic
+acid), PFTrDA (Perfluorotridecanoic acid), PFTeDA (Perfluorotetradecanoic acid), PFBS
+(Perfluorobutanesulfonic acid), PFHpS (Perfluoroheptanesulfonic acid),4:2 FTS
+(1H,1H,2H,2H-Perfluorobutane sulfonic acid), 6:2 FTS (1H,1H,2H,2H-Perfluorohexane
+sulfonic acid), 8:2 FTS (1H,1H,2H,2H-Perfluorooctane sulfonic acid), PFOSA
+(Perfluorooctane sulfonamide), NMeFOSA (N-Methyl perfluorooctane sulfonamide),
+NMeFOSE (N-Methyl perfluorooctane sulfonamidoethanol), PFMPA (Perfluoro-4methoxypropanoic acid), PFMBA (Perfluoro-4-methoxybutanoic acid), NFDHA
+(Nonafluorodimethylhexane acid), 5:3 FTCA (5:3 Fluorotelomer carboxylic acid), 7:3 FTCA
+(7:3 Fluorotelomer carboxylic acid) were purchased from Sigma Aldrich. 9Cl-PF3ONS (9Chlorohexadecafluoro-3-oxanonane-1-sulfonic acid), 1Cl-PF3OUdS (1-Chlorotridecafluoro3-oxaundecane-1-sulfonic acid), PFEESA (Perfluoroethyl ethyl sulfonamide) were purchased
+from LGC standards. ADONA (4,8-Dioxa-3H-perfluorononanoic acid), 3:3 FTCA (3:3
+Fluorotelomer carboxylic acid), NEtFOSE (N-Ethyl perfluorooctane sulfonamidoethanol),
+NMeFOSAA (N-Methyl perfluorooctane sulfonamidoacetic acid), PFPeS (Perfluoropentane
+sulfonic acid), PFHxS (Perfluorohexane sulfonic acid), PFOS (Perfluorooctane sulfonic acid),
+PFNS (Perfluorononane sulfonic acid), PFDS (Perfluorodecane sulfonic acid), PFDoS
+(Perfluorododecane sulfonic acid) were purchased from Cayman Chemicals. The different
+solvents were dried and stored with 4 Å molecular sieves overnight inside an Ar-filled glovebox
+(VigorTech, O2 and H2O < 1 ppm). All the PFAS and salts used were vacuum dried overnight
+before transferring to the glovebox. The Cu working electrode (0.28 cm2, 99.99%) was
+purchased from McMaster-Carr and designed by taking the polycrystalline Cu rod and mounted
+into a PTFE tube. Ag/AgCl reference electrodes were purchased from eDAQ and graphite rod
+counter electrode was purchased from Sigma Aldrich.
+Electrochemical characterization
+All electrochemical characterizations were carried out using a Bio-Logic VSP-300 potentiostat
+inside an Ar-filled glovebox, utilizing a typical three-electrode polypropylene cell. The setup
+included a Cu rod (0.28 cm²) as the working electrode, a leakless Ag/AgCl as the reference
+electrode, and a graphite rod as the counter electrode (Figure S2) at room temperature. The Cu
+electrode was soaked in a 0.1 M aqueous sulfuric acid solution for 30 minutes to remove any
+organic contaminants and passivation layer. It was then polished on a cloth pad with alumina
+suspension, rinsed with Milli-Q water (18.4 MΩ·cm), and sonicated for 15 minutes.
+Chronopotentiometry (CP) experiments were conducted at a constant applied current density
+ranging from 10 to 50 mA/cm² for 24 hours at room temperature with magnetic stirring at 400
+
+https://doi.org/10.26434/chemrxiv-2025-sqtq5 ORCID: https://orcid.org/0000-0002-6573-1213 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+rpm. The initial PFOA concentration was 1 mM with 0.5 M LiClO4 or TBAClO4 in 5 mL of
+DMSO, unless otherwise specified.
+Nuclear magnetic resonance (NMR)
+NMR spectra were recorded on a Bruker Ascend instrument (400 MHz) using a capillary setup
+inside a Wilmad NMR tube. An internal standard (2 mM LiTFSI) in deuterated DMSO was
+placed inside a capillary tube and capped with a PTFE cover. For analysis, 400 μL of the sample
+was used, and the capillary with the internal standard in DMSO-d6 was added.
+X-ray photoelectron spectroscopy (XPS)
+All the XPS measurements were carried out using the Physical Electronics, PHI 5000
+VersaProbe II System equipped with an Al Ka radiation (hν = 1,486.6 eV) beam (100 μm, 25
+W). Cu foil (0.5*6 cm2) is used as the working electrode for investigating XPS which is masked
+with tape to have an exposed surface area of 0.5*0.5 cm2 immersed in the electrolyte. The
+electrodeposition of Li is done inside an Ar-filled glovebox. After electrodeposition, the area
+with Li deposition on the foil is cut and rinsed three times with dimethoxy ethane (DME) and
+transferred to a glass vial. The foil is dried in glovebox antechamber for 30 minutes under
+vacuum to get rid of any residual solvent. The data was fitted using CasaXPS software67 with
+C-C peak in C 1s referenced at 284.8 eV.
+Scanning electron microscopy (SEM)
+SEM images are taken on a Carl Zeiss Merlin field emission SEM with an accelerating voltage
+of 15 kV. Cu foil is used as the working electrode to deposit Li (similar to sample preparation
+mentioned above for XPS). The deposition capacity for all the samples was fixed to 2
+mAh/cm2. After electrodeposition, the samples were washed with DME three times, transferred
+into a vial and moved to the glovebox antechamber for drying.
+Ion chromatography (IC)
+A Shimadzu LC-20Ai IC system consisting of a conductivity detector (CDD-10AVP) was used
+to obtain all ion chromatograms. 10 µL sample was injected into the column using an
+autosampler (SIL-20AC). Separations were carried out on an analytical column (Shodex IC
+NI-424, anion-specific) coupled with a guard column (Shodex IC IA-G). The column was
+maintained at 40°C, with a run time of 20 minutes. For optimal peak separation of various
+anions, two mobile phases were utilized. The first mobile phase consisted of 8 mM 4Hydroxybenzoic acid, 1.9 mM Bis-Tris, 2 mM Phenylboronic acid, and 0.005 mM trans-1,2Diaminocyclohexane-N, N, N’, N’-tetraacetic acid in aqueous solution. The second mobile
+phase was identical, except for the exclusion of Bis-Tris. Data collection and processing were
+performed using the LabSolutions software.
+Gas chromatography mass spectrometry (GCMS)
+A Shimadzu GCMS-QP2020 NX single quadrupole mass spectrometer, equipped with an HS20 Headspace autosampler, was employed to analyze post-degradation samples. Separation
+was achieved using an SH-Q-BOND column (30 m × 0.32 mm × 10 μm) with helium as the
+carrier gas. The detector temperature was maintained at 40 °C, and 1 mL of undiluted sample
+was used for analysis.
+
+https://doi.org/10.26434/chemrxiv-2025-sqtq5 ORCID: https://orcid.org/0000-0002-6573-1213 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Liquid chromatography mass spectrometry (LCMS)
+LCMS data was collected using a Shimadzu Nexera LC-40DXR UHPLC coupled with a
+LCMS-2050 single quadrupole detector. Separation was carried out with two mobile phases:
+mobile phase A consisted of acetonitrile, while mobile phase B was 5 mM aqueous ammonium
+acetate. A Shimadzu Nexcol C18 column (1.8 μm, 50 × 2.1 mm) was used for the separation,
+with an Agilent Eclipse Plus C18 guard column (1.8 μm, 3 × 5 mm). The column temperature
+was maintained at 40 °C. Samples were diluted to a total volume of 500 μL using a 1:1 mixture
+of water and acetonitrile, with 5 μL of injection volume for each run.
+Conflicts of Interest
+There are no conflicts of interest to declare.
+Acknowledgments
+This work was supported by the Advanced Materials for Energy-Water Systems (AMEWS)
+Center, an Energy Frontier Research Center funded by the U.S. Department of Energy, Office
+of Science, Basic Energy Sciences under Contract No. DE-AC02-06CH11357. The GCMS
+used in this research was also supported by the AMEWS EFRC. Computational research was
+supported in part through the Quest high-performance computing facility at Northwestern
+University. The authors also thank Northwestern University for its support. SEM was done at
+the shared facility at the University of Chicago Materials Research Science and Engineering
+Center (MRSEC), supported by the National Science Foundation under award number DMR2011854. NMR was performed at the UChicago Chemistry NMR facility.
+References
+1.
+2.
+3.
+4.
+5.
+6.
+7.
+8.
+9.
+10.
+11.
+12.
+13.
+
+J. Glüge, M. Scheringer, I. T. Cousins, J. C. DeWitt, G. Goldenman, D. Herzke, R. Lohmann, C.
+A. Ng, X. Trier and Z. Wang, Environmental Science: Processes & Impacts, 2020, 22, 23452373.
+S. E. Fenton, A. Ducatman, A. Boobis, J. C. DeWitt, C. Lau, C. Ng, J. S. Smith and S. M. Roberts,
+Environmental Toxicology and Chemistry, 2021, 40, 606-630.
+J. J. Shearer, C. L. Callahan, A. M. Calafat, W.-Y. Huang, R. R. Jones, V. S. Sabbisetti, N. D.
+Freedman, J. N. Sampson, D. T. Silverman, M. P. Purdue and J. N. Hofmann, JNCI: Journal of
+the National Cancer Institute, 2020, 113, 580-587.
+What are the health eﬀects of PFAS?, https://www.atsdr.cdc.gov/pfas/healtheﬀects/index.html).
+EPA - Final PFAS National Primary Drinking Water Regulation, 2024.
+Y. Wang, S. B. Darling and J. Chen, ACS Applied Materials & Interfaces, 2021, 13, 6078960814.
+R. F. Menger, E. Funk, C. S. Henry and T. Borch, Chemical Engineering Journal, 2021, 417,
+129133.
+B. Cantoni, A. Turolla, J. Wellmitz, A. S. Ruhl and M. Antonelli, Science of The Total
+Environment, 2021, 795, 148821.
+F. Dixit, R. Dutta, B. Barbeau, P. Berube and M. Mohseni, Chemosphere, 2021, 272, 129777.
+L. Xiao, C. Ching, Y. Ling, M. Nasiri, M. J. Klemes, T. M. Reineke, D. E. Helbling and W. R.
+Dichtel, Macromolecules, 2019, 52, 3747-3752.
+J. N. Meegoda, B. Bezerra de Souza, M. M. Casarini and J. A. Kewalramani, Journal, 2022, 19.
+Y. Wu, Y. Li, C. Fang and C. Li, ChemCatChem, 2019, 11, 2297-2303.
+N. B. Üner, P. Baldaguez Medina, J. L. Dinari, X. Su and R. M. Sankaran, Langmuir, 2022, 38,
+8975-8986.
+
+https://doi.org/10.26434/chemrxiv-2025-sqtq5 ORCID: https://orcid.org/0000-0002-6573-1213 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+14.
+15.
+16.
+17.
+18.
+19.
+20.
+21.
+22.
+23.
+24.
+25.
+26.
+27.
+28.
+29.
+30.
+31.
+32.
+33.
+34.
+35.
+36.
+37.
+38.
+39.
+40.
+41.
+
+https://epa.gov/pfas).
+Y. Li, N. Che, N. Liu and C. Li, Chemical Engineering Journal, 2023, 478, 147443.
+J. N. Uwayezu, I. Carabante, T. Lejon, P. van Hees, P. Karlsson, P. Hollman and J. Kumpiene,
+Journal of Environmental Management, 2021, 290, 112573.
+C. E. Schaefer, C. Andaya, A. Burant, C. W. Condee, A. Urtiaga, T. J. Strathmann and C. P.
+Higgins, Chemical Engineering Journal, 2017, 317, 424-432.
+R. Bansal, R. Verduzco, M. S. Wong, P. Westerhoﬀ and S. Garcia-Segura, Journal of
+Electroanalytical Chemistry, 2022, 907, 116028.
+M. Bolloli, J. Kalhoﬀ, F. Alloin, D. Bresser, M. L. Phung Le, B. Langlois, S. Passerini and J.-Y.
+Sanchez, The Journal of Physical Chemistry C, 2015, 119, 22404-22414.
+Y. Wang, Z. Wu, F. M. Azad, Y. Zhu, L. Wang, C. J. Hawker, A. K. Whittaker, M. Forsyth and C.
+Zhang, Nature Reviews Materials, 2024, 9, 119-133.
+P. Ma, P. Mirmira and C. V. Amanchukwu, ACS Central Science, 2021, 7, 1232-1244.
+P. Ma, P. Mirmira, P. J. Eng, S.-B. Son, I. D. Bloom, A. S. Filatov and C. V. Amanchukwu, Energy
+& Environmental Science, 2022, 15, 4823-4835.
+D. T. Boyle, W. Huang, H. Wang, Y. Li, H. Chen, Z. Yu, W. Zhang, Z. Bao and Y. Cui, Nature
+Energy, 2021, 6, 487-494.
+Y. Zhao, T. Zhou, T. Ashirov, M. E. Kazzi, C. Cancellieri, L. P. H. Jeurgens, J. W. Choi and A.
+Coskun, Nature Communications, 2022, 13, 2575.
+Y. Rao, X. Li, S. Zhao, P. Liu, F. Wu, X. Liu, N. Zhou, S. Fang and S. Passerini, Nano Energy, 2024,
+123, 109362.
+S.-J. Park, J.-Y. Hwang, C. S. Yoon, H.-G. Jung and Y.-K. Sun, ACS Applied Materials & Interfaces,
+2018, 10, 17985-17993.
+P. Ma, R. Kumar, M. C. Vu, K.-H. Wang, P. Mirmira and C. V. Amanchukwu, Journal of
+Materials Chemistry A, 2024, 12, 2479-2490.
+B. H. R. Suryanto, K. Matuszek, J. Choi, R. Y. Hodgetts, H.-L. Du, J. M. Bakker, C. S. M. Kang, P.
+V. Cherepanov, A. N. Simonov and D. R. MacFarlane, Science, 2021, 372, 1187-1191.
+K. Steinberg, X. Yuan, C. K. Klein, N. Lazouski, M. Mecklenburg, K. Manthiram and Y. Li,
+Nature Energy, 2023, 8, 138-148.
+M. J. Bentel, Y. Yu, L. Xu, Z. Li, B. M. Wong, Y. Men and J. Liu, Environmental Science &
+Technology, 2019, 53, 3718-3728.
+S. Biswas, X. Wang and B. M. Wong, Current Opinion in Chemical Engineering, 2024, 44,
+101017.
+J. F. King and B. P. Chaplin, Current Opinion in Chemical Engineering, 2024, 44, 101014.
+H. K. Liberatore, S. R. Jackson, M. J. Strynar and J. P. McCord, Environmental Science &
+Technology Letters, 2020, 7, 477-481.
+B. Trang, Y. Li, X.-S. Xue, M. Ateia, K. N. Houk and W. R. Dichtel, Science, 2022, 377, 839-845.
+J. Zhu, Y. Chen, Y. Gu, H. Ma, M. Hu, X. Gao and T. Liu, Journal of Hazardous Materials, 2022,
+422, 126953.
+2023 DOE Critical Materials List, https://www.iea.org/policies/17976-2023-doe-criticalmaterials-list).
+K. S. Jiang, G. M. Hobold, R. Guo, K.-H. Kim, A. M. Melemed, D. Wang, L. Zuin and B. M.
+Gallant, ACS Energy Letters, 2022, 7, 3378-3385.
+C. V. M. Kumar R, Ma P, Amanchukwu C. , ChemRxiv. 2024; doi:10.26434/chemrxiv-2024vqtc7 This content is a preprint and has not been peer-reviewed.
+S. Wei, Z. Li, K. Kimura, S. Inoue, L. Pandini, D. Di Lecce, Y. Tominaga and J. Hassoun,
+Electrochimica Acta, 2019, 306, 85-95.
+M. Morita, F. Tachihara and Y. Matsuda, Electrochimica Acta, 1987, 32, 299-305.
+Y. Xie, H. Xiang, P. Shi, J. Guo and H. Wang, Journal of Membrane Science, 2017, 524, 315320.
+
+https://doi.org/10.26434/chemrxiv-2025-sqtq5 ORCID: https://orcid.org/0000-0002-6573-1213 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+42.
+43.
+44.
+45.
+46.
+47.
+48.
+49.
+50.
+51.
+52.
+53.
+54.
+55.
+56.
+57.
+58.
+59.
+60.
+61.
+62.
+63.
+64.
+65.
+66.
+67.
+
+A. J. Louli, A. Eldesoky, R. Weber, M. Genovese, M. Coon, J. deGooyer, Z. Deng, R. T. White, J.
+Lee, T. Rodgers, R. Petibon, S. Hy, S. J. H. Cheng and J. R. Dahn, Nature Energy, 2020, 5, 693702.
+Y. Yamada, K. Furukawa, K. Sodeyama, K. Kikuchi, M. Yaegashi, Y. Tateyama and A. Yamada,
+Journal of the American Chemical Society, 2014, 136, 5039-5046.
+F. Zhao, Z. Jing, X. Guo, J. Li, H. Dong, Y. Tan, L. Liu, Y. Zhou, R. Owen, P. R. Shearing, D. J. L.
+Brett, G. He and I. P. Parkin, Energy Storage Materials, 2022, 53, 638-645.
+Y. Gao, T. Rojas, K. Wang, S. Liu, D. Wang, T. Chen, H. Wang, A. T. Ngo and D. Wang, Nature
+Energy, 2020, 5, 534-542.
+L. Sun, C. Peng, L. Kong, Y. Li and W. Feng, ENERGY & ENVIRONMENTAL MATERIALS, 2023, 6,
+e12323.
+N. Xin, Y. Sun, M. He, C. J. Radke and J. M. Prausnitz, Fluid Phase Equilibria, 2018, 461, 1-7.
+J. Jones, M. Anouti, M. Caillon-Caravanier, P. Willmann and D. Lemordant, Fluid Phase
+Equilibria, 2009, 285, 62-68.
+S. Sinha, A. Chaturvedi, R. K. Gautam and J. J. Jiang, Journal of the American Chemical
+Society, 2023, 145, 27390-27396.
+C. E. Schaefer, S. Choyke, P. L. Ferguson, C. Andaya, A. Burant, A. Maizel, T. J. Strathmann and
+C. P. Higgins, Environmental Science & Technology, 2018, 52, 10689-10697.
+N. H. Weber, L. J. Dixon, S. P. Stockenhuber, C. C. Grimison, J. A. Lucas, J. C. Mackie, M.
+Stockenhuber and E. M. Kennedy, Chemical Engineering Science, 2023, 278, 118924.
+F. Xiao, P. C. Sasi, B. Yao, A. Kubátová, S. A. Golovko, M. Y. Golovko and D. Soli, Environmental
+Science & Technology Letters, 2020, 7, 343-350.
+S. Barisci and R. Suri, Chemosphere, 2020, 243, 125349.
+S. Ko, T. Obukata, T. Shimada, N. Takenaka, M. Nakayama, A. Yamada and Y. Yamada, Nature
+Energy, 2022, 7, 1217-1224.
+G. M. Hobold, C. Wang, K. Steinberg, Y. Li and B. M. Gallant, Nature Energy, 2024, 9, 580-591.
+C. V. Amanchukwu, Z. Yu, X. Kong, J. Qin, Y. Cui and Z. Bao, Journal of the American Chemical
+Society, 2020, 142, 7393-7403.
+Z. Yu, P. E. Rudnicki, Z. Zhang, Z. Huang, H. Celik, S. T. Oyakhire, Y. Chen, X. Kong, S. C. Kim, X.
+Xiao, H. Wang, Y. Zheng, G. A. Kamat, M. S. Kim, S. F. Bent, J. Qin, Y. Cui and Z. Bao, Nature
+Energy, 2022, 7, 94-106.
+G. von Helden, P. R. Kemper, N. G. Gotts and M. T. Bowers, Science, 1993, 259, 1300-1302.
+J. M. L. Martin and P. R. Taylor, The Journal of Physical Chemistry, 1996, 100, 6047-6056.
+Clean Water Act Analytical Methods - EPA, https://www.epa.gov/cwa-methods/cwaanalytical-methods-and-polyﬂuorinated-alkyl-substances-pfas#method-1633).
+N. Loganathan and A. K. Wilson, Environmental Science & Technology, 2022, 56, 8043-8052.
+T. Shende, G. Andaluri and R. Suri, Chemical Engineering Journal Advances, 2023, 15, 100509.
+W. Davies and J. H. Dick, Journal of the Chemical Society (Resumed), 1932, DOI:
+10.1039/JR9320000483, 483-486.
+R. Alan Aitken, M. J. Drysdale, G. Ferguson and A. J. Lough, Journal of the Chemical Society,
+Perkin Transactions 1, 1998, DOI: 10.1039/A707948F, 875-880.
+Q. Yi, Y. Lu, X. Sun, H. Zhang, H. Yu and C. Sun, ACS Applied Materials & Interfaces, 2019, 11,
+46965-46972.
+X. Zheng, Z. Gu, X. Liu, Z. Wang, J. Wen, X. Wu, W. Luo and Y. Huang, Energy & Environmental
+Science, 2020, 13, 1788-1798.
+N. Fairley, V. Fernandez, M. Richard-Plouet, C. Guillot-Deudon, J. Walton, E. Smith, D. Flahaut,
+M. Greiner, M. Biesinger, S. Tougaard, D. Morgan and J. Baltrusaitis, Applied Surface Science
+Advances, 2021, 5, 100112.
+
+https://doi.org/10.26434/chemrxiv-2025-sqtq5 ORCID: https://orcid.org/0000-0002-6573-1213 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+

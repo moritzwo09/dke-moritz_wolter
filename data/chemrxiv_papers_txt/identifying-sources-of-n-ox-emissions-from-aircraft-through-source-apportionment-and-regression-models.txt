@@ -1,0 +1,1970 @@
+Manuscript Submitted to:
+Environmental Science & Technology – Air
+for Peer-Review on May 1, 2024
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+Identifying Sources of NOx emissions from Aircraft through Source Apportionment and
+Regression Models
+Daniel Goldberg1, Benjamin de Foy2, M. Omar Nawaz1, Jeremiah Johnson3, Greg Yarwood3,
+Laura Judd4
+
+11
+
+1
+
+12
+
+Washington, DC, 20052, USA
+
+13
+
+2
+
+Saint Louis University, St. Louis, Missouri, 63103, USA
+
+14
+
+3
+
+Ramboll, Novato, California, 94945, USA
+
+15
+
+4
+
+NASA Langley Research Center, Hampton, Virginia, 23681, USA
+
+16
+
+Abstract
+
+17
+
+Air quality managers in areas exceeding air pollution standards are motivated to understand where there
+
+18
+
+are further opportunities to reduce NOx emissions to improve ozone and PM2.5 air quality. In this project,
+
+19
+
+we use a combination of aircraft remote sensing (i.e., GCAS), source apportionment models (i.e., CAMx),
+
+20
+
+and regression models to investigate NOx emissions from individual source-sectors in Houston, TX. In prior
+
+21
+
+work, GCAS column NO2 was shown to be close to the “truth” in validating column NO2 in model
+
+22
+
+simulations. Column NO2 from CAMx was substantially low biased compared to Pandora (–20%) and
+
+23
+
+GCAS measurements (–31%), suggesting an underestimate of local NOx emissions. We applied a flux
+
+24
+
+divergence method to the GCAS and CAMx data to distinguish the linear shape of major highways and
+
+25
+
+identify NO2 underestimates at highway locations. Using a multiple linear regression model, we isolated
+
+26
+
+on-road, railyard, and “other” NOx emissions as the likeliest cause of this low bias, and simultaneously
+
+27
+
+identified a potential overestimate of shipping NOx emissions. We modified on-road and shipping NOX
+
+28
+
+emissions in a new CAMx simulation and increased the background NO2, and better agreement was found
+
+29
+
+with GCAS measurements: bias improved from –31% to –10% and r2 improved from 0.78 to 0.80. This
+
+30
+
+study outlines how remote sensing data, including fine spatial information from newer instruments such as
+
+31
+
+TEMPO, can be used in concert with chemical transport models to provide actionable information for air
+
+32
+
+quality managers to identify further opportunities to reduce NOx emissions.
+
+Department of Environmental and Occupational Health, George Washington University,
+
+https://doi.org/10.26434/chemrxiv-2024-g65lr ORCID: https://orcid.org/0000-0003-0784-3986 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+33
+
+Introduction
+
+34
+
+Nitrogen oxide (NOx = NO + NO2) emissions are directly harmful to human health and a critical participant
+
+35
+
+in ozone formation. Many North American cities already have NOx-limited ozone formation during the
+
+36
+
+warm season1–3, and the remaining cities should have primarily NOx-limited conditions in the coming years4.
+
+37
+
+Further reducing ozone pollution in metropolitan areas will therefore require improved quantification of
+
+38
+
+NOx emissions. Exposure to NOx is also directly associated with asthma exacerbation in vulnerable
+
+39
+
+groups5,6 and premature death7,8. One major limitation of our current observing network is the inability to
+
+40
+
+accurately quantify NOx emissions on a sector-by-sector basis in a timely fashion, with the exception of
+
+41
+
+continuous emissions monitoring systems (CEMS) on electricity generating units. Additionally, many non-
+
+42
+
+road sources of NOx emissions, such as industrial or construction emissions, have large uncertainties9.
+
+43
+
+Typically, air pollutant emission rates for chemical species such as NOx are estimated using a “bottom-up”
+
+44
+
+approach, which uses fuel consumption information, spatial surrogates (e.g., road density, population
+
+45
+
+density, locations of known stack emissions), temporal surrogates (e.g., traffic patterns, industrial work
+
+46
+
+schedules) and emission factors (mass of pollutant per mass of fuel burned) to estimate the spatiotemporal
+
+47
+
+patterns of emissions across regions10,11. With investments in technology to better understand the
+
+48
+
+spatiotemporal patterns of pollutants (e.g. incorporating real-time traffic data using speed and type of
+
+49
+
+vehicle) and laboratory studies to better estimate the emission factors in a wide range of conditions, these
+
+50
+
+“bottom-up” estimates can be improved12. These new and improved estimates can then be incorporated into
+
+51
+
+a chemical transport model and evaluated against observations from ground monitors. Based on this
+
+52
+
+comparison, the emission estimates can be further adjusted and improved if necessary. However, given the
+
+53
+
+complexity of this cycle, “bottom-up” emission estimates typically take many years to compile by a large
+
+54
+
+team of scientists, and subsequently, are delayed in time by several years from the actual emission time.
+
+55
+
+A complementary method to estimate air pollutant emissions is in using a “top-down” approach. With this
+
+56
+
+method, emissions are back calculated from pollutant measurements acquired across an entire airshed. This
+
+57
+
+is typically done with a remote sensing instrument – in orbit13–15 or on an aircraft16–18. Analyses have been
+
+58
+
+conducted for global megacities19–23 and power plants24,25 using the Tropospheric Monitoring Instrument
+
+59
+
+(TROPOMI) and a complementary satellite instrument, the Ozone Monitoring Instrument (OMI). The
+
+60
+
+emission rates are inferred by analyzing the concentration maps over a large region and incorporating the
+
+61
+
+lifetime (chemical and dispersion lifetime) of the pollutant to back-calculate the emission rate at the source.
+
+62
+
+The advantage of a “top-down” technique is that it is independent of the complex datasets needed to
+
+63
+
+estimate “bottom-up” emissions rates. Typically these aggregated “top-down” estimates agree with the
+
+64
+
+“bottom-up” estimates within 40% in North American cities (well within the uncertainty associated with
+
+https://doi.org/10.26434/chemrxiv-2024-g65lr ORCID: https://orcid.org/0000-0003-0784-3986 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+65
+
+the ‘top-down’ method)13,26. Given TROPOMI’s spatial resolution (3.5 × 5.5 km2 at nadir) and temporal
+
+66
+
+resolution (once daily), TROPOMI is most often used to calculate total emissions aggregated over the entire
+
+67
+
+metropolitan area and seasonal/annual timescales, and assumptions are needed to infer emissions rate
+
+68
+
+during morning and evening hours. Therefore, very limited, if any, sectoral or hourly information can be
+
+69
+
+gleaned from an analysis using polar-orbiting satellite datasets, such as TROPOMI.
+
+70
+
+In this project we used fine spatial resolution nitrogen dioxide (NO2) information (250 × 560 m2) from the
+
+71
+
+Geostationary Coastal and air pollution events Airborne Simulator (GCAS) instrument27,28, available during
+
+72
+
+the September 2021 NASA/TCEQ Tracking Aerosol Convection ExpeRiment – Air Quality (TRACER-
+
+73
+
+AQ) field campaign29, to better understand the fine-scale structure of NOx emissions in the Houston
+
+74
+
+metropolitan area including a sector-by-sector analysis. Complementing the airborne observations, we
+
+75
+
+perform a simulation using the Comprehensive Air Quality Model with Extensions (CAMx) at fine spatial
+
+76
+
+resolution (444 × 444 m2). The model output has already been compared to data from GCAS and TROPOMI
+
+77
+
+in a complementary paper30. In this project, we push further by using source-tagged NO2 information from
+
+78
+
+CAMx and GCAS data to estimate more accurate contributions from different NOx emission sectors. We
+
+79
+
+do this by using flux divergence methods on the GCAS data and by training a multiple linear regression
+
+80
+
+model to the airborne retrievals, with the CAMx source-tagged NO2 as the independent variables.
+
+https://doi.org/10.26434/chemrxiv-2024-g65lr ORCID: https://orcid.org/0000-0003-0784-3986 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+81
+
+Methods
+
+82
+
+GCAS. The GCAS instrument was installed on the NASA G-V aircraft during the Tracking Aerosol
+
+83
+
+Convection. ExpeRiment – Air Quality (TRACER-AQ) field campaign in Houston, Texas during
+
+84
+
+September 2021. The GCAS instrument employs charge-coupled device array detectors to observe
+
+85
+
+backscattered light. These data can be used to calculate column densities of gases, such as NO2, below the
+
+86
+
+aircraft using differential optical absorption spectroscopy (DOAS)31.
+
+87
+
+During TRACER-AQ, GCAS collected data over the Houston metropolitan area across 12 days during late
+
+88
+
+August and throughout September 2021. The flight strategy of the aircraft included flying the plane in a
+
+89
+
+‘lawnmower’ fashion with flight lines spaced 6.3 km apart, ensuring overlap at flight altitude (28,000 feet)
+
+90
+
+with the instrument field of view of 45 degrees creating one gapless map of NO2 up to three times per flight
+
+91
+
+day. GCAS has a native pixel resolution of approximately 250 m × 250 m at flight altitude. Observations
+
+92
+
+from two of the flight days – a test flight (August 30) and a flight over the Gulf of Mexico (September 27)
+
+93
+
+are excluded from this study because they provided no meaningful data over Houston. Given the relatively
+
+94
+
+short timeframe of flight data collection; meteorological conditions have an influence on the fine-scale
+
+95
+
+patterns in NO2 columns observations.
+
+96
+
+Air mass factors use modeled scattering weights and vertical profile information to account for altitude-
+
+97
+
+dependent sensitivities in remote-sensing observations32,33. The original vertical profiles in the dataset were
+
+98
+
+derived from a global model, GEOS-CF34, that had a coarser spatial resolution (0.25° × 0.25°), but in this
+
+99
+
+study we only show GCAS column NO2 measurements processed with vertical profile information from
+
+100
+
+CAMx. To directly compare GCAS measurements to the CAMx NO2 column concentrations we re-grid
+
+101
+
+them to the fine-scale WRF-CAMx grid. Only cloud-free GCAS data is considered in this analysis. An
+
+102
+
+example of daily and monthly averaged GCAS data is shown in Figure 1. The differences in these two
+
+103
+
+timescales highlights the complexity of NO2 variance in cities, such as Houston. Diurnal column NO2
+
+104
+
+patterns are shown in Figure S1.
+
+105
+106
+107
+
+Figure 1. GCAS Column NO2 measurements during the September 2021 Houston TRACER-AQ field
+campaign. Left panel showing all GCAS measurements during ten flight days between September 1 – 26,
+
+https://doi.org/10.26434/chemrxiv-2024-g65lr ORCID: https://orcid.org/0000-0003-0784-3986 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+108
+109
+
+2021 averaged together. Right panel showing all measurements during the September 8, 2021 flight day
+averaged together. Areas of large NOx emissions are labeled on both panels.
+
+110
+
+Pandora. Observations from three Pandora monitoring sites were available during the TRACER-AQ field
+
+111
+
+campaign to validate the GCAS, satellite, and model column NO2 measurements. Critical to this project,
+
+112
+
+we found in previous work30 that the GCAS measurements of column NO2 during the TRACER-AQ
+
+113
+
+campaign had an excellent correlation (r2 = 0.79) and minimal normalized mean bias (NMB = +3.4%) when
+
+114
+
+compared to measurements of the same quantity from Pandora instruments, suggesting that the GCAS
+
+115
+
+measurements acquired during the TRACER-AQ campaign are very close to the “truth”. The Pandora
+
+116
+
+instruments were located in the suburban and urban neighborhoods.
+
+117
+
+WRF-CAMx simulation. For this study, a set of simulations were conducted employing version 4.3.3
+
+118
+
+of the Advanced Research Weather Research and Forecasting (WRF) model35 jointly with the
+
+119
+
+Comprehensive Air Quality Model with Extensions (CAMx) v7.2036 with the CB6r5 chemical mechanism
+
+120
+
+for a simulation period that matched the September 2021 TRACER-AQ domain and timeframe. The
+
+121
+
+36/12/4/1.33/0.444 km model domains can be seen in Figure S2. Prior work evaluated this WRF simulation
+
+122
+
+and found minimal systematic biases in surface-level wind speed, direction, temperature, and water vapor
+
+123
+
+mixing ratio compared to observations from sixteen ground-level monitors30. A longer description of the
+
+124
+
+WRF-CAMx model options is included in the supplemental including the WRF physics options (Table S1),
+
+125
+
+vertical layer mapping from WRF to CAMx (Table S2), and CAMx science options (Table S3). For
+
+126
+
+emissions in CAMx, we start with an emissions inventory developed by the TCEQ for the Dallas-Fort
+
+127
+
+Worth (DFW) and Houston-Galveston-Brazoria (HGB) Attainment Demonstration (AD) SIP revisions and
+
+128
+
+implement further minor changes as discussed in the Supplemental.
+
+129
+
+Source Apportionment. We used the CAMx OSAT source apportionment tool to track NO2 from several
+
+130
+
+emission source sectors as listed in Table S4. To select individual electric generating units (EGUs) in our
+
+131
+
+0.444 km CAMx domain for NO2 tracking we used a threshold of 0.8 tons per day of NOx emissions. This
+
+132
+
+threshold identified nine EGUs shown in the first nine rows of Table S4. We also selected on-road mobile,
+
+133
+
+railyards, shipping and the George Bush Intercontinental (KIAH) and William P. Hobby (KHOU) airports
+
+134
+
+for NO2 tracking. All remaining NOx emissions were tracked together in the “other” category. Relevant for
+
+135
+
+this project, average weekday NOx emissions for the 0.444 m domain were 372.9 tons per day (123 Gg/yr).
+
+136
+
+The total amount of NOx emissions in each sector can be seen in Table S5 and Figures S3 and S4. Examples
+
+137
+
+of the NO2 source apportionment can be seen in Figure 2.
+
+https://doi.org/10.26434/chemrxiv-2024-g65lr ORCID: https://orcid.org/0000-0003-0784-3986 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+138
+139
+140
+141
+142
+
+Figure 2. Examples of six of the CAMx tagged surface NO2 concentrations at 8:00 AM local time on
+September 8, 2021.
+
+143
+
+sources in the TROPOMI NO2 retrievals with higher resolution than averaged vertical column densities.
+
+144
+
+The method was first applied over Riyadh, Germany and South Africa to estimate NOx emissions from
+
+145
+
+large point sources15,25. Due to TROPOMI’s higher spatial resolution compared with OMI, the flux
+
+146
+
+divergence method can identify emissions within individual urban areas26,37–39.
+
+147
+
+The flux divergence method works best with long temporal averages; for TROPOMI analyses, annual or
+
+148
+
+multi-year averages are used. We adapted the method for the current project to handle GCAS data from 27
+
+149
+
+individual scenes spanning 10 days. We found that the method worked best when the GCAS data was
+
+150
+
+oversampled to the 444 × 444 m2 CAMx grid. Only pixels with an aircraft roll angle below 0.5° were used.
+
+151
+
+We interpolated the WRF-CAMx winds to the time of the GCAS overpass. We used second-order
+
+152
+
+differences and performed the flux divergences along the x/y axes (i.e., using the cells to the north, south,
+
+153
+
+east, and west of the central cell). We also calculated the flux divergence for the cross-terms (i.e., using the
+
+154
+
+cells to the north-east, south-east, south-west and north-west of the central cell). Averaging both the x/y
+
+155
+
+estimate and the cross-estimate led to smoother divergence fields with less noise.
+
+156
+
+The method was initially performed using the GCAS standard retrievals and the ERA5 wind reanalysis
+
+157
+
+product40. While this gave good results, we found that the level of noise was reduced and the known sources
+
+158
+
+were better identified when we used the GCAS retrievals that were corrected using the CAMx air mass
+
+159
+
+factors, and when we used the WRF-CAMx meteorology. These sensitivity tests revealed that CAMx
+
+160
+
+simulations can be used to yield clear improvements in the flux divergence method.
+
+Flux divergence top-down emissions quantification. The flux divergence method can identify point
+
+https://doi.org/10.26434/chemrxiv-2024-g65lr ORCID: https://orcid.org/0000-0003-0784-3986 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+161
+
+Multiple linear regression model. For this study, we built a multiple linear regression (MLR) model
+
+162
+
+to find the optimal combination of the sectoral emissions simulated by CAMx that matches the GCAS
+
+163
+
+tropospheric vertical columns. CAMx simulations were made in Source Apportionment mode to separate
+
+164
+
+the NO2 vertical column densities associated with the 15 individual sources (e.g., EGU) and groups of
+
+165
+
+sources (on-road mobile) (Table S4). In practice, some of the emission sources in OSAT are too close
+
+166
+
+together to be able to be clearly distinguished from each other. We therefore merged the following: 1.
+
+167
+
+Channelview Cogeneration Facility and Odyssey Energy Altura Cogen, LLC; 2. Deer Park Energy Center
+
+168
+
+and Pasadena Power Plant; 3. Texas City Cogeneration, South Houston Green Power Site, and the “other”
+
+169
+
+category. Equation 1 shows the MLR model: the tropospheric vertical column density of GCAS is
+
+170
+
+represented as an optimal combination of the CAMx VCD from the 10 contributing sectors with a residual
+
+171
+
+given by ε. . In seeking an optimal match to the GCAS columns, it is important to apply a regularization
+
+172
+
+term to prevent unphysical results41. The optimal parameters (β) were determined by minimising the cost
+
+173
+
+function in Equation 2. The residual ε is minimised subject to the regularization parameter λ applied to the
+
+174
+
+magnitude of the scale factors (β). Equation 2 can be solved in a single Least Squares inversion41. We
+
+175
+
+applied the MLR model to the entire field campaign, and we also performed simulations separately for
+
+176
+
+weekdays and for weekends.
+)*
+
+177
+
+𝑉𝐶𝐷!"#$ = %%+) β% 𝑉𝐶𝐷"#&',% + 𝜀
+
+(1)
+
+178
+
+𝐽 = ‖𝜀‖, + 𝜆, ‖𝛽‖,
+
+(2)
+
+179
+
+The regularization term, λ in Equation 2, imposes a cost on the departure of the posterior emissions from
+
+180
+
+the prior emissions. In this work, we chose a value of 25 because it balances the desire to maximize the
+
+181
+
+improvements in the model (lower grid residuals) while minimizing the departure from the prior (lower
+
+182
+
+emission residuals). By selecting this value, we achieve most of the improvements in the correlation
+
+183
+
+coefficient of the model without ending up with unrealistic scaling factors. The algorithm then balances the
+
+184
+
+cost in the change of the emissions with the cost of the mismatch between the GCAS retrievals and the sum
+
+185
+
+of the scaled fields from the source apportionment simulations. We assume as a prior that all scaling factors
+
+186
+
+are 1.
+
+https://doi.org/10.26434/chemrxiv-2024-g65lr ORCID: https://orcid.org/0000-0003-0784-3986 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+187
+
+Results and Discussion
+
+188
+
+The first step in this project is to qualitatively compare the GCAS column NO2 measurements with
+
+189
+
+coincident measurements from TROPOMI and model output from CAMx. Spatial plots of column NO2 in
+
+190
+
+the early afternoon at the TROPOMI overpass time are shown in Figure 3 for a 10-day average and a single
+
+191
+
+day. By observing the 10-day average (top row), we can see that GCAS measurements are generally larger
+
+192
+
+than both the TROPOMI measurements and CAMx model output. TROPOMI captures the broad spatial
+
+193
+
+patterns observed by GCAS with a notable low bias. The TROPOMI low bias is partially driven by the 3.5
+
+194
+
+x 5.5 km2 spatial resolution which is unable to capture the peaks of the NO2 pollution, especially the NO2
+
+195
+
+in narrow point source plume42. Previous work shows that the air mass factor is a small contributor to this
+
+196
+
+low satellite bias in this area30, but this can vary by region43. The low satellite bias is consistent with
+
+197
+
+comparisons completed by the TROPOMI Cal-Val team44.
+
+198
+
+The GCAS versus CAMx intercomparison suggests that the point source plumes are captured by the model
+
+199
+
+with decent accuracy, but that NO2 is severely underestimated in the downtown area of Houston, as well as
+
+200
+
+in the outer portions of the model domain. This suggests two issues with the NO2 in CAMx: an
+
+201
+
+underestimate of NOx emissions near downtown Houston, and an underestimate of NO2 advected into the
+
+202
+
+model domain from the boundary conditions. In following sections, we explore these model biases
+
+203
+
+quantitatively.
+
+204
+205
+206
+207
+208
+
+Figure 3. Column NO2 over Houston from two remote sensing observational platforms, and CAMx model
+simulation in the early afternoon: 12 – 3 PM local time. Left column shows measurements from TROPOMI,
+center column shows measurements from GCAS, and right column shows the CAMx model. Top row shows
+measurements during all 10 flight days in September 2021, while bottom row shows September 8, 2021 only.
+
+https://doi.org/10.26434/chemrxiv-2024-g65lr ORCID: https://orcid.org/0000-0003-0784-3986 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+209
+
+NOx emissions using Flux divergence applied to GCAS. The flux divergence (FD) method applied
+
+210
+
+to the GCAS aircraft data quantified NO2 fluxes (μg/m2). To our knowledge, this paper is the first to quantify
+
+211
+
+NO2 fluxes by applying the FD method to aircraft remote sensing data. We identified many of the major
+
+212
+
+NOx sources individually in the Houston CAMx domain: power plants and refineries as well as the IAH
+
+213
+
+international airport (Figure 4 left panel). In addition, the method identified the area of the ship channel as
+
+214
+
+well as the route of the ships sailing through the Galveston Bay. Finally, the method clearly identified the
+
+215
+
+major highways in the region. The center panel of Figure 4 shows the flux divergence method applied to
+
+216
+
+the CAMx simulation. In this case, the sources are known and so these simulations serve to evaluate the
+
+217
+
+accuracy of the method. The method clearly recovers the main point and line sources used in the CAMx
+
+218
+
+simulations. The right panel of Figure 4 shows the ratio of the NO2 flux divergence (i.e., (CAMx-
+
+219
+
+GCAS)/GCAS) for the GCAS grid cells exceeding 0.2 μg-m2-s-1. Over the large point sources near the ship
+
+220
+
+channel, the values are a mix of positive and negative values suggesting that the emissions inventory is
+
+221
+
+relatively accurate in this location. Over highways, the values are strongly negative suggesting that actual
+
+222
+
+on-road emissions may be underestimated in the current inventory used as input to the CAMx model. In
+
+223
+
+theory, the 444 m spatial resolution model should be capturing the near-road NO2 concentrations with the
+
+224
+
+same precision as the GCAS which has similar spatial resolution. Over the ship paths, especially closer to
+
+225
+
+the Gulf of Mexico, the values are positive suggesting that some of the ship NOx emissions may be
+
+226
+
+overestimated in the inventory.
+
+227
+228
+229
+230
+231
+232
+
+Figure 4. Left panel shows the net NO2 fluxes (μg/m2-s) using the FD method applied to all GCAS
+measurements. Fluxes are positive when there are NOx emissions originating from a grid cell, fluxes are
+negative if there is a net NOx sink in a grid cell. Center panel shows the net NO2 fluxes (ug/m2) using the
+FD method applied to all coincident CAMx output. Right panel is the ratio (CAMx-GCAS)/GCAS in
+areas where the GCAS NO2 fluxes are >0.2 ug/m2-s.
+
+https://doi.org/10.26434/chemrxiv-2024-g65lr ORCID: https://orcid.org/0000-0003-0784-3986 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+233
+
+Use of machine learning to estimate emission factors for individual sectors. We applied the
+
+234
+
+MLR model to CAMx source apportionment NO2 sectoral output and GCAS NO2 data, as shown in
+
+235
+
+Equations 1 and 2, to estimate scaling factors for the sectoral NO2. All median scaling factors were between
+
+236
+
+a value of 0.5 and 2.5 as shown in Figure 5. A median value below 1 indicates the sector needs a NOx
+
+237
+
+decrease, while a median value greater than 1 indicates the sector needs a NOx increase. The box-and-
+
+238
+
+whisker plots represent the uncertainties of the scaling factors quantified by bootstrapping on two different
+
+239
+
+levels. The most important level for bootstrapping was randomly selecting, with replacement, the GCAS
+
+240
+
+rasters included in the optimization. For the full time series, there were 27 rasters over 10 days. In addition
+
+241
+
+to performing the simulations for these 27 rasters, we performed 100 simulations with random selections
+
+242
+
+of the 27 rasters. The second level for bootstrapping was to randomly select grid blocks within each raster
+
+243
+
+for use in the analysis. We randomly select 7 x 7 blocks of cells within the CAMx grid cells and include
+
+244
+
+them until we have the same number of points as in the initial grid. We did this 100 times for each selection
+
+245
+
+of rasters, leading to a total of 10,000 simulations.
+
+246
+
+The box-and-whisker plots in Figure 5 show that on-road mobile NOx emissions representing 19% of
+
+247
+
+domain emissions may be underestimated in the model and need to be scaled up by a median factor of 1.68,
+
+248
+
+which is consistent with findings using the FD method. Similarly, the MLR found railyard NOx emissions
+
+249
+
+should by increased by a median factor of 1.5. In contrast, the shipping NOx emissions representing 17%
+
+250
+
+of domain emissions may be overestimated and should be scaled by a median factor of 0.77, which is also
+
+251
+
+consistent with findings using the FD method, though it should be noted that the sign of the shipping
+
+252
+
+adjustment changes with the regularization factor. The EGU point sources are close to a scale factor of one,
+
+253
+
+which is expected given the use of emissions obtained from CAMPD measurements. The “other” sources
+
+254
+
+representing 54% of domain NOx emissions are underestimated, although this factor is particularly sensitive
+
+255
+
+to the regularization factor because it encompasses a diverse set of point and nonpoint sources. Finally, the
+
+256
+
+boxplot suggests that the NO2 background concentration is underestimated by CAMx by a median value of
+
+257
+
+0.7 x 1015 molec/cm2, which equates to a scaling factor of 2.2, and is consistent with qualitative findings
+
+258
+
+discussed earlier.
+
+https://doi.org/10.26434/chemrxiv-2024-g65lr ORCID: https://orcid.org/0000-0003-0784-3986 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Emission adjustments by source sector
+
+MLR Scale Factor
+
+3
+
+Baseline
+
+2
+
+1
+
+nd
+
+)
+
+ou
+
+%
+
+ck
+gr
+
+er
+th
+O
+
+ur
+So
+Pt
+
+Ba
+
+(5
+4
+
+(7
+s
+ce
+
+or
+rp
+Ai
+
+IA
+H
+
+%
+
+2%
+t(
+
+(1
+rd
+s
+
+)
+
+)
+
+)
+%
+
+7%
+lya
+R
+
+ai
+
+pi
+ip
+Sh
+
+259
+260
+261
+262
+263
+
+O
+
+n
+
+R
+
+oa
+
+d
+
+ng
+
+(1
+
+(1
+
+9%
+
+)
+
+)
+
+0
+
+Figure 5. Box-and-whisker plot of scaling factors obtained from the Multi Linear Regression Model with
+100 bootstrapped selection of rasters each consisting of 100 bootstrapped selection of grid blocks included
+in the analysis. Percentages show the fraction of domain-wide NOx emissions from each sector.
+
+https://doi.org/10.26434/chemrxiv-2024-g65lr ORCID: https://orcid.org/0000-0003-0784-3986 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+264
+
+Results from an “Optimized NOx” CAMx simulation. We then performed a new “Optimized NOx”
+
+265
+
+CAMx simulation with on-road mobile and shipping NOx emissions adjusted to be in alignment with
+
+266
+
+findings from using the MLR. On-road mobile NOx emissions were increased by a factor of 1.68, and
+
+267
+
+shipping NOx emissions were decreased by multiplying by a factor of 0.77. Despite a large change to the
+
+268
+
+on-road NOx, the total NOx emissions in the domain only increased by 8.6% from 373 to 405 tons per day
+
+269
+
+(Table S5). We chose not to adjust the railyards and airport sectors because combined they represent less
+
+270
+
+than 3% of domain NOx emissions. We chose not to adjust the “other” sector or background / boundary
+
+271
+
+NO2 since there is no straightforward modification for those contributions.
+
+272
+
+When comparing the column NO2 from the Baseline and “Optimized NOx” simulations to the GCAS
+
+273
+
+measurements, we found better agreement and an improvement in bias, albeit a smaller improvement than
+
+274
+
+we had expected (Figure 6). The column NO2 low bias improved from –30.6% to –25.2% with a small
+
+275
+
+increase in correlation from r2=0.78 to r2=0.80. When we further add an artificial 0.7 x 1015 molec/cm2
+
+276
+
+column NO2 enhancement domain-wide – value acquired from the MLR – the NO2 low bias improves
+
+277
+
+further to –10.0%. The remaining low bias is likely due to not adjusting the “other” NOx emissions, which
+
+278
+
+represented 54% of domain NOx emissions in the Baseline simulation.
+
+279
+280
+281
+282
+283
+
+Figure 6. CAMx column NO2 evaluated against the same quantity from GCAS measurements. Left panel
+is the baseline simulation. Center panel is the “Optimized NOx” simulation (1.68x on-road mobile and 0.77x
+shipping). Right panel is “Optimized NOx” simulation + an additional 0.7 x 1015 column NO2 background
+NO2 using scaling factor from the MLR.
+
+284
+
+When comparing the column NO2 from the Baseline and “Optimized NOx” simulations to the Pandora
+
+285
+
+measurements, we found better agreement and an improvement in bias, albeit a smaller improvement than
+
+286
+
+we had expected (Figure 7). The column NO2 low bias improved from -20.2% to -17.8% with a small
+
+287
+
+increase in correlation from r2=0.39 to r2=0.41. However, much of the apparent low bias appears to be
+
+288
+
+driven by the large Pandora measured values. When then exclude values exceeding 10e15 molec/cm2 –
+
+289
+
+which approximate fine-scale NO2 plumes that we cannot expect CAMx to recreate in space due to the need
+
+290
+
+to match wind speed and direction. For moderately polluted scenes (values <10e15), the NO2 low bias is
+
+https://doi.org/10.26434/chemrxiv-2024-g65lr ORCID: https://orcid.org/0000-0003-0784-3986 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+291
+
+only -6.8%. When evaluating the new model simulation improved from -6.8% to -3.4%; the correlation is
+
+292
+
+notably poor in both scenarios due to the smaller range of values.
+
+293
+294
+295
+296
+297
+298
+299
+
+Figure 7. CAMx vs. Pandora total column NO2 intercomparisons. Left column shows intercomparisons
+during all conditions. Right column shows intercomparisons during moderately polluted and clean
+conditions (< 10 x 1015 molec/cm2). Top row shows the baseline CAMx simulation. Middle row shows the
+“Optimized NOx” CAMx simulation. Bottom row shows the “Optimized NOx” CAMx simulation +
+Background NO2 correction (a uniform addition of 0.7 x 1015 molec/cm2). Different colors represent the
+three Pandora measurement sites as discussed in Nawaz et al., 2024.
+
+https://doi.org/10.26434/chemrxiv-2024-g65lr ORCID: https://orcid.org/0000-0003-0784-3986 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+300
+
+Figure 8 shows a ratio difference plot of modeled column NO2 between the Baseline and “Optimized NOx”
+
+301
+
+simulations. The largest NO2 enhancements in the “Optimized NOx” simulation occurred in areas of west
+
+302
+
+Houston where there were no Pandora measurements (denoted as square boxes on the figure). The
+
+303
+
+maximum change in column NO2 was an increase of 29.6% in west Houston near a major highway
+
+304
+
+intersection, with a median column NO2 enhancement of +4.2% across the full model domain. Although
+
+305
+
+the model domain NOx emissions increased +8.6%, column NO2 only increased +4.2% because a
+
+306
+
+substantial amount of NO2 originates beyond the model domain.
+
+307
+308
+309
+
+Figure 8. Column NO2 ratio plot between the CAMx “Optimized NOx” simulation vs. CAMx baseline
+simulation during the early afternoon (12:00 – 15:00 local time).
+
+310
+
+When comparing the MLR results between the Baseline and Optimized NOx simulations, we see substantial
+
+311
+
+improvement in the coefficients attributed to on-road and shipping emissions (Figure 9), while all other
+
+312
+
+coefficients remain largely steady. This indicates both the robustness of the method as well as a strong
+
+313
+
+indication that the adjustments made to the NOx emissions were appropriate. The on-road NOx emissions
+
+314
+
+may have been slightly overcorrected, and the “other” NOx emissions still need an adjustment up. As
+
+315
+
+expected, the coefficient attributed to the background NO2 did not change, and this would be more difficult
+
+316
+
+to control without modifying the boundary conditions or the NO2 lifetime. A longer discussion on the
+
+317
+
+influence of NO2 long-range transport on the MLR can be found in the supporting information.
+
+https://doi.org/10.26434/chemrxiv-2024-g65lr ORCID: https://orcid.org/0000-0003-0784-3986 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+318
+319
+320
+321
+
+Figure 9. Box-and-whisker plot of scaling factors of the baseline and updated CAMx simulation obtained
+from the Multi Linear Regression Model with 100 bootstrapped selection of rasters and 100 bootstrapped
+selection of grid blocks to include in the analysis.
+
+322
+
+Discussion. In this project, we were able to conduct a thorough analysis of NOx emissions in Houston,
+
+323
+
+Texas during September 2021 during the TRACER-AQ campaign. Prior work found column NO2 from
+
+324
+
+GCAS to have excellent agreement with Pandora measurements (r2=0.79 and NMB of +2.4%)30, suggesting
+
+325
+
+it can be used as the “truth” in validating the column NO2 CAMx model simulation. Column NO2 from
+
+326
+
+CAMx showed a substantial low bias when compared with Pandora (–20%) and GCAS measurements (–
+
+327
+
+31%), suggesting an underestimate of local NOx emissions.
+
+328
+
+This study expands upon previous work30 by applying additional measures to identify and quantify the
+
+329
+
+magnitude of NOx emissions. The FD method was able to distinguish the linear shape of major highways,
+
+330
+
+many of the large point sources, and the Galveston Bay ship track. The NO2 FD comparison between
+
+331
+
+CAMx and GCAS shows underestimates at highway locations. Through a multiple linear regression
+
+332
+
+model, we were able to isolate on-road, railyard, and “other” NOx emissions as the likeliest cause of this
+
+333
+
+low bias, while simultaneously finding that shipping NOx emissions may be overestimated. A new
+
+334
+
+“Optimized NOx” simulation was performed with on-road NOx emissions increased by a factor of 1.68
+
+335
+
+and shipping NOx emissions decreased by a factor of 0.77, and confirmed that these NOx adjustments
+
+336
+
+made to the inventory were reasonable and yielded better agreement with NO2 measurements acquired
+
+337
+
+during the TRACER-AQ campaign.
+
+338
+
+To our knowledge, this is the first time a source apportionment model was coupled with aircraft
+
+339
+
+measurements to identify uncertainties in the gridded NOx emissions inventory. Our analyses were
+
+https://doi.org/10.26434/chemrxiv-2024-g65lr ORCID: https://orcid.org/0000-0003-0784-3986 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+340
+
+primarily conducted using column NO2 instead of surface NO2 to diagnose NOx emissions since vertical
+
+341
+
+mixing can be a source of error in a surface-only comparison. With finer spatial resolution and more
+
+342
+
+numerous NO2 measurements now available from TEMPO starting in August 2023, it is feasible that a
+
+343
+
+similar analysis could be conducted using satellite data. This project provides actionable information to
+
+344
+
+policymakers looking to understand where there are further opportunities to reduce NOx emissions and
+
+345
+
+improve ozone and PM2.5 air quality in metropolitan areas.
+
+https://doi.org/10.26434/chemrxiv-2024-g65lr ORCID: https://orcid.org/0000-0003-0784-3986 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+346
+
+Acknowledgements. The authors of this paper would like to acknowledge the NASA Tropospheric
+
+347
+
+Composition Program and the Texas Commission on Environmental Quality for TRACER-AQ support,
+
+348
+
+and the TRACER-AQ science team for their useful contributions. The preparation of this manuscript was
+
+349
+
+funded by a grant from the Texas Air Quality Research Program (AQRP) at The University of Texas at
+
+350
+
+Austin through the Texas Emission Reduction Program (TERP) and the Texas Commission on
+
+351
+
+Environmental Quality (TCEQ). The findings, opinions and conclusions are the work of the authors and
+
+352
+
+do not necessarily represent findings, opinions, or conclusions of the AQRP or the TCEQ. The authors
+
+353
+
+also acknowledge funding from the NASA Atmospheric Composition Modelling and Analysis Program
+
+354
+
+(ACMAP) (80NSSC23K1002) and the NASA Health and Air Quality Applied Sciences Team
+
+355
+
+(HAQAST) (80NSSC21K0511). This work contains modiﬁed Copernicus Sentinel-5 Precursor data
+
+356
+
+processed by KNMI and post-processed by George Washington University.
+
+357
+
+Description of author's responsibilities. D.G., L.J., B.D. and G.Y. developed the project design. J.J.
+
+358
+
+and G.Y. set-up and conducted the WRF-CAMx simulations. L.J. and the TRACER-AQ science team
+
+359
+
+measured and processed the GCAS and Pandora Data. D.G downloaded and processed the TROPOMI NO2
+
+360
+
+data and re-gridded all data to the WRF-CAMx grid. B.D. performed the flux divergence and ran the
+
+361
+
+regression model. D.G., B.D., and M.O.N developed figures for the manuscript. D.G. and B.D. wrote the
+
+362
+
+paper. All authors edited the manuscript.
+
+363
+364
+
+Data availability. NO2 observations from GCAS are available here:
+
+365
+
+https://doi.org/10.5067/ASDC/SUBORBITAL/TRACERAQ/DATA001/GV/AircraftRemoteSensing/GC
+
+366
+
+AS_1. The publicly available GCAS measurements (version R2) include a version of the dataset with
+
+367
+
+reprocessed AMFs to include NO2 vertical profile estimates from the fine-scale (444 × 444 m2) WRF-
+
+368
+
+CAMx simulation used in this analysis. TROPOMI NO2 column data are publicly available from the
+
+369
+
+Copernicus Data Space Ecosystem: https://dataspace.copernicus.eu. Pandora NO2 data are available here:
+
+370
+
+https://asdc.larc.nasa.gov/project/TRACER-AQ/TRACERAQ_Pandora_Data_1. WRF-CAMx output for
+
+371
+
+NO2 and O3 are available upon request.
+
+https://doi.org/10.26434/chemrxiv-2024-g65lr ORCID: https://orcid.org/0000-0003-0784-3986 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+
+References
+(1)
+
+(2)
+(3)
+
+(4)
+
+(5)
+
+(6)
+
+(7)
+
+(8)
+(9)
+(10)
+
+(11)
+
+Jin, X.; Fiore, A.; Boersma, K. F.; Smedt, I. De; Valin, L. Inferring Changes in
+Summertime Surface Ozone–NO x –VOC Chemistry over U.S. Urban Areas from Two
+Decades of Satellite and Ground-Based Observations. Environ Sci Technol 2020, 54 (11),
+6518–6529. https://doi.org/10.1021/acs.est.9b07785.
+Simon, H.; Reff, A.; Wells, B.; Xing, J.; Frank, N. Ozone Trends across the United States
+over a Period of Decreasing NOx and VOC Emissions. Environ Sci Technol 2015, 49 (1),
+186–195. https://doi.org/10.1021/es504514z.
+Simon, H.; Hogrefe, C.; Whitehill, A.; Foley, K. M.; Liljegren, J.; Possiel, N.; Wells, B.;
+Henderson, B. H.; Valin, L. C.; Tonnesen, G.; Appel, K. W.; Koplitz, S. Revisiting Dayof-Week Ozone Patterns in an Era of Evolving US Air Quality. Atmos Chem Phys 2024,
+24 (3), 1855–1871. https://doi.org/10.5194/acp-24-1855-2024.
+Koplitz, S.; Simon, H.; Henderson, B.; Liljegren, J.; Tonnesen, G.; Whitehill, A.; Wells,
+B. Changes in Ozone Chemical Sensitivity in the United States from 2007 to 2016. ACS
+Environmental Au 2021, 2, 206–222.
+https://doi.org/10.1021/ACSENVIRONAU.1C00029.
+Achakulwisut, P.; Brauer, M.; Hystad, P.; Anenberg, S. C. Global, National, and Urban
+Burdens of Paediatric Asthma Incidence Attributable to Ambient NO₂ Pollution:
+Estimates from Global Datasets. Lancet Planet Health 2019.
+https://doi.org/10.1016/S2542-5196(19)30046-4.
+Anenberg, S. C.; Mohegh, A.; Goldberg, D. L.; Kerr, G. H.; Brauer, M.; Burkart, K.;
+Hystad, P.; Larkin, A.; Wozniak, S.; Lamsal, L. Long-Term Trends in Urban NO2
+Concentrations and Associated Paediatric Asthma Incidence: Estimates from Global
+Datasets. Lancet Planet Health 2022, 6 (1), e49–e58. https://doi.org/10.1016/S25425196(21)00255-2.
+Huang, K.; Zhu, Q.; Lu, X.; Gu, D.; Liu, Y. Satellite-Based Long-Term Spatiotemporal
+Trends in Ambient NO2 Concentrations and Attributable Health Burdens in China From
+2005 to 2020. Geohealth 2023, 7 (5), e2023GH000798.
+https://doi.org/10.1029/2023GH000798.
+Camilleri, S. F.; Kerr, G. H.; Anenberg, S. C.; Horton, D. E. All-Cause NO2-Attributable
+Mortality Burden and Associated Racial and Ethnic Disparities in the United States.
+Environ Sci Technol Lett 2023. https://doi.org/10.1021/acs.estlett.3c00500.
+Zawacki, M.; Baker, K. R.; Phillips, S.; Davidson, K.; Wolfe, P. Mobile Source
+Contributions to Ambient Ozone and Particulate Matter in 2025. Atmos Environ 2018,
+188, 129–141. https://doi.org/10.1016/j.atmosenv.2018.04.057.
+McDuffie, E. E.; Smith, S. J.; O’Rourke, P.; Tibrewal, K.; Venkataraman, C.; Marais, E.
+A.; Zheng, B.; Crippa, M.; Brauer, M.; Martin, R. V. A Global Anthropogenic Emission
+Inventory of Atmospheric Pollutants from Sector- and Fuel-Specific Sources (1970–
+2017): An Application of the Community Emissions Data System (CEDS). Earth Syst Sci
+Data 2020, 12 (4), 3413–3442. https://doi.org/10.5194/essd-12-3413-2020.
+Crippa, M.; Guizzardi, D.; Muntean, M.; Schaaf, E.; Dentener, F.; van Aardenne, J. A.;
+Monni, S.; Doering, U.; Olivier, J. G. J.; Pagliari, V.; Janssens-Maenhout, G. Gridded
+Emissions of Air Pollutants for the Period 1970--2012 within EDGAR v4.3.2. Earth Syst
+Sci Data 2018, 10 (4), 1987–2013. https://doi.org/10.5194/essd-10-1987-2018.
+
+https://doi.org/10.26434/chemrxiv-2024-g65lr ORCID: https://orcid.org/0000-0003-0784-3986 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+
+(12)
+
+(13)
+
+(14)
+(15)
+(16)
+
+(17)
+
+(18)
+
+(19)
+
+(20)
+
+(21)
+
+(22)
+
+Crippa, M.; Guizzardi, D.; Pisoni, E.; Solazzo, E.; Guion, A.; Muntean, M.; Florczyk, A.;
+Schiavina, M.; Melchiorri, M.; Hutfilter, A. F. Global Anthropogenic Emissions in Urban
+Areas: Patterns, Trends, and Challenges. Environmental Research Letters 2021, 16 (7),
+074033. https://doi.org/10.1088/1748-9326/AC00E2.
+Goldberg, D. L.; Lu, Z.; Streets, D. G.; de Foy, B.; Griffin, D.; McLinden, C. A.; Lamsal,
+L. N.; Krotkov, N. A.; Eskes, H. J. Enhanced Capabilities of TROPOMI NO2: Estimating
+NOx from North American Cities and Power Plants. Environ Sci Technol 2019, 53 (21),
+12594–12601. https://doi.org/10.1021/acs.est.9b04488.
+Beirle, S.; Boersma, K. F.; Platt, U.; Lawrence, M. G.; Wagner, T. Megacity Emissions
+and Lifetimes of Nitrogen Oxides Probed from Space. Science (1979) 2011, 333 (6050),
+1737–1739. https://doi.org/10.1126/science.1207824.
+Beirle, S.; Borger, C.; Dörner, S.; Li, A.; Hu, Z.; Liu, F.; Wang, Y.; Wagner, T.
+Pinpointing Nitrogen Oxide Emissions from Space. Sci Adv 2019, 5 (11), eaax9800.
+https://doi.org/10.1126/sciadv.aax9800.
+Kuhlmann, G.; Chan, K. L.; Donner, S.; Zhu, Y.; Schwaerzel, M.; Dörner, S.; Chen, J.;
+Hueni, A.; Nguyen, D. H.; Damm, A.; Schütt, A.; Dietrich, F.; Brunner, D.; Liu, C.;
+Buchmann, B.; Wagner, T.; Wenig, M. Mapping the Spatial Distribution of NO2 with in
+Situ and Remote Sensing Instruments during the Munich NO2 Imaging Campaign. Atmos
+Meas Tech 2022, 15 (6), 1609–1629. https://doi.org/10.5194/AMT-15-1609-2022.
+Meier, A. C.; Schönhardt, A.; Bösch, T.; Richter, A.; Seyler, A.; Ruhtz, T.; Constantin,
+D.-E.; Shaiganfar, R.; Wagner, T.; Merlaud, A.; Van Roozendael, M.; Belegante, L.;
+Nicolae, D.; Georgescu, L.; Burrows, J. P. High-Resolution Airborne Imaging DOAS
+Measurements of NO2 above Bucharest during AROMAT. Atmos Meas Tech 2017, 10
+(5), 1831–1857. https://doi.org/10.5194/amt-10-1831-2017.
+Souri, A. H.; Choi, Y.; Pan, S.; Curci, G.; Nowlan, C. R.; Janz, S. J.; Kowalewski, M. G.;
+Liu, J.; Herman, J. R.; Weinheimer, A. J. First Top-Down Estimates of Anthropogenic
+NOx Emissions Using High-Resolution Airborne Remote Sensing Observations. Journal
+of Geophysical Research: Atmospheres 2018, 123 (6), 3269–3284.
+https://doi.org/10.1002/2017JD028009.
+Goldberg, D. L.; Lu, Z.; Oda, T.; Lamsal, L. N.; Liu, F.; Griffin, D.; McLinden, C. A.;
+Krotkov, N. A.; Duncan, B. N.; Streets, D. G. Exploiting OMI NO2 Satellite Observations
+to Infer Fossil-Fuel CO2 Emissions from U.S. Megacities. Science of The Total
+Environment 2019, 695, 133805. https://doi.org/10.1016/j.scitotenv.2019.133805.
+Lu, Z.; Streets, D. G.; de Foy, B.; Lamsal, L. N.; Duncan, B. N.; Xing, J. Emissions of
+Nitrogen Oxides from US Urban Areas: Estimation from Ozone Monitoring Instrument
+Retrievals for 2005-2014. Atmos Chem Phys 2015, 15 (18), 10367–10383.
+https://doi.org/10.5194/acp-15-10367-2015.
+Liu, F.; Beirle, S.; Joiner, J.; Choi, S.; Tao, Z.; Knowland, K. E.; Smith, S. J.; Tong, D. Q.;
+Ma, S.; Fasnacht, Z. T.; Wagner, T. High-Resolution Mapping of Nitrogen Oxide
+Emissions in Large US Cities from TROPOMI Retrievals of Tropospheric Nitrogen
+Dioxide Columns. Atmos Chem Phys 2024, 24 (6), 3717–3728.
+https://doi.org/10.5194/acp-24-3717-2024.
+Goldberg, D. L.; Anenberg, S. C.; Lu, Z.; Streets, D. G.; Lamsal, L. N.; E McDuffie, E.;
+Smith, S. J. Urban NOx Emissions around the World Declined Faster than Anticipated
+between 2005 and 2019. Environmental Research Letters 2021, 16 (11), 115004.
+https://doi.org/10.1088/1748-9326/ac2c34.
+
+https://doi.org/10.26434/chemrxiv-2024-g65lr ORCID: https://orcid.org/0000-0003-0784-3986 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+
+(23)
+
+(24)
+(25)
+(26)
+
+(27)
+
+(28)
+
+(29)
+(30)
+
+(31)
+(32)
+
+(33)
+
+(34)
+
+Goldberg, D. L.; Saide, P. E.; Lamsal, L. N.; de Foy, B.; Lu, Z.; Woo, J.-H.; Kim, Y.;
+Kim, J.; Gao, M.; Carmichael, G. R.; Streets, D. G. A Top-down Assessment Using OMI
+NO2 Suggests an Underestimate in the NOx Emissions Inventory in Seoul, South Korea,
+during KORUS-AQ. Atmos Chem Phys 2019, 19 (3), 1801–1818.
+https://doi.org/10.5194/acp-19-1801-2019.
+de Foy, B.; Lu, Z.; Streets, D. G.; Lamsal, L. N.; Duncan, B. N. Estimates of Power Plant
+NOx Emissions and Lifetimes from OMI NO2 Satellite Retrievals. Atmos Environ 2015,
+116 (2), 1–11. https://doi.org/10.1016/j.atmosenv.2015.05.056.
+Beirle, S.; Borger, C.; Jost, A.; Wagner, T. Improved Catalog of NOx Point Source
+Emissions (Version 2). Earth Syst Sci Data 2023, 15 (7), 3051–3073.
+https://doi.org/10.5194/essd-15-3051-2023.
+Goldberg, D. L.; Harkey, M.; de Foy, B.; Judd, L.; Johnson, J.; Yarwood, G.; Holloway,
+T. Evaluating NOx Emissions and Their Effect on O3 Production in Texas Using
+TROPOMI NO2 and HCHO. Atmos Chem Phys 2022, 22 (16), 10875–10900.
+https://doi.org/10.5194/acp-22-10875-2022.
+Janz, S.; Kowalewski, M. G.; Lamsal, L. N.; Nowlan, C.; Judd, L. M. Airborne
+Hyperspectral Trace Gas Sensors as Testbeds for Geostationary Air Quality Missions. In
+Sensors, Systems, and Next-Generation Satellites XXIII; Neeck, S. P., Kimura, T.,
+Martimort, P., Eds.; SPIE, 2019; Vol. 11151, p 86. https://doi.org/10.1117/12.2533765.
+Nowlan, C. R.; Liu, X.; Janz, S. J.; Kowalewski, M. G.; Chance, K. V.; Follette-Cook, M.
+B.; Fried, A.; González Abad, G.; Herman, J. R.; Judd, L. M.; Kwon, H.-A. A.; Loughner,
+C. P.; Pickering, K. E.; Richter, D.; Spinei, E.; Walega, J.; Weibring, P.; Weinheimer, A.
+J. Nitrogen Dioxide and Formaldehyde Measurements from the GEOstationary Coastal
+and Air Pollution Events (GEO-CAPE) Airborne Simulator over Houston, Texas. Atmos
+Meas Tech 2018, 11 (11), 5941–5964. https://doi.org/10.5194/amt-11-5941-2018.
+TRACER-AQ – TRacking Aerosol Convection ExpeRiment – Air Quality. https://wwwair.larc.nasa.gov/missions/tracer-aq/ (accessed 2022-08-09).
+Omar Nawaz, M.; Johnson, J.; Yarwood, G.; de Foy, B.; Judd, L.; Goldberg, L. An
+Intercomparison of Satellite, Airborne, and Ground-Level Observations with WRF-CAMx
+Simulations of NO2 Columns over Houston, TX during the September 2021 TRACERAQ Campaign. Atmos Chem Phys 2024. https://doi.org/10.5194/egusphere-2023-2844.
+Platt, U.; Stutz, J. Differential Optical Absorption Spectroscopy. Differential Optical
+Absorption Spectroscopy 2008. https://doi.org/10.1007/978-3-540-75776-4.
+Judd, L. M.; Al-Saadi, J. A.; Janz, S. J.; Kowalewski, M. G.; Pierce, R. B.; Szykman, J. J.;
+Valin, L. C.; Swap, R.; Cede, A.; Mueller, M.; Tiefengraber, M.; Abuhassan, N.;
+Williams, D. Evaluating the Impact of Spatial Resolution on Tropospheric NO2 Column
+Comparisons within Urban Areas Using High-Resolution Airborne Data. Atmos. Meas.
+Tech 2019, 12, 6091–6111. https://doi.org/10.5194/amt-12-6091-2019.
+Judd, L. M.; Al-Saadi, J. A.; Szykman, J. J.; Valin, L. C.; Janz, S. J.; Kowalewski, M. G.;
+Eskes, H. J.; Veefkind, J. P.; Cede, A.; Mueller, M.; Gebetsberger, M.; Swap, R.; Pierce,
+R. B.; Nowlan, C. R.; Abad, G. G.; Nehrir, A.; Williams, D. Evaluating Sentinel-5P
+TROPOMI Tropospheric NO2 Column Densities with Airborne and Pandora
+Spectrometers near New York City and Long Island Sound. Atmos Meas Tech 2020, 13
+(11), 6113–6140. https://doi.org/10.5194/amt-13-6113-2020.
+Keller, C. A.; Knowland, K. E.; Duncan, B. N.; Liu, J.; Anderson, D. C.; Das, S.;
+Lucchesi, R. A.; Lundgren, E. W.; Nicely, J. M.; Nielsen, E.; Ott, L. E.; Saunders, E.;
+
+https://doi.org/10.26434/chemrxiv-2024-g65lr ORCID: https://orcid.org/0000-0003-0784-3986 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+
+(35)
+(36)
+(37)
+(38)
+
+(39)
+(40)
+
+(41)
+
+(42)
+
+(43)
+
+(44)
+
+Strode, S. A.; Wales, P. A.; Jacob, D. J.; Pawson, S. Description of the NASA GEOS
+Composition Forecast Modeling System GEOS‐CF v1.0. J Adv Model Earth Syst 2021,
+e2020MS002413. https://doi.org/10.1029/2020MS002413.
+Skamarock, W. C.; Klemp, J. B.; Dudhia, J.; Gill, D. O.; Liu, Z.; Berner, J.; Wang, W.;
+Powers, J. G.; Duda, M. G.; Barker, D. M.; Huang, X.-Y. A Description of the Advanced
+Research WRF Model Version 4; 2021. http://library.ucar.edu/research/publish-technote.
+Ramboll. CAMx User’s Guide Version 6.50.
+http://www.camx.com/files/camxusersguide_v6-50.pdf.
+de Foy, B.; Schauer, J. J. An Improved Understanding of NOx Emissions in South Asian
+Megacities Using TROPOMI NO2 Retrievals. Environmental Research Letters 2022, 17
+(2), 024006. https://doi.org/10.1088/1748-9326/ac48b4.
+Lonsdale, C. R.; Sun, K. Nitrogen Oxides Emissions from Selected Cities in North
+America, Europe, and East Asia Observed by the TROPOspheric Monitoring Instrument
+(TROPOMI) before and after the COVID-19 Pandemic. Atmos Chem Phys 2023, 23 (15),
+8727–8748. https://doi.org/10.5194/acp-23-8727-2023.
+Sun, K. Derivation of Emissions from Satellite-Observed Column Amounts and Its
+Application to TROPOMI NO2 and CO Observations. Geophys Res Lett 2022,
+e2022GL101102. https://doi.org/10.1029/2022GL101102.
+Hersbach, H.; Bell, B.; Berrisford, P.; Hirahara, S.; Horányi, A.; Muñoz‐Sabater, J.;
+Nicolas, J.; Peubey, C.; Radu, R.; Schepers, D.; Simmons, A.; Soci, C.; Abdalla, S.;
+Abellan, X.; Balsamo, G.; Bechtold, P.; Biavati, G.; Bidlot, J.; Bonavita, M.; Chiara, G.;
+Dahlgren, P.; Dee, D.; Diamantakis, M.; Dragani, R.; Flemming, J.; Forbes, R.; Fuentes,
+M.; Geer, A.; Haimberger, L.; Healy, S.; Hogan, R. J.; Hólm, E.; Janisková, M.; Keeley,
+S.; Laloyaux, P.; Lopez, P.; Lupu, C.; Radnoti, G.; Rosnay, P.; Rozum, I.; Vamborg, F.;
+Villaume, S.; Thépaut, J. The ERA5 Global Reanalysis. Quarterly Journal of the Royal
+Meteorological Society 2020, 146 (730), 1999–2049. https://doi.org/10.1002/qj.3803.
+de Foy, B.; Cui, Y. Y.; Schauer, J. J.; Janssen, M.; Turne, J. R.; Wiedinmyer, C.
+Estimating Sources of Elemental and Organic Carbon and Their Temporal Emission
+Patterns Using a Least Squares Inverse Model and Hourly Measurements from the St.
+Louis-Midwest Supersite. Atmos Chem Phys 2015, 15 (5), 2405–2427.
+https://doi.org/10.5194/acp-15-2405-2015.
+Wagner, T.; Warnach, S.; Beirle, S.; Bobrowski, N.; Jost, A.; Pukite, J.; Theys, N.
+Investigation of Three-Dimensional Radiative Transfer Effects for UV-Vis Satellite and
+Ground-Based Observations of Volcanic Plumes. Atmos Meas Tech 2023, 16 (6), 1609–
+1662. https://doi.org/10.5194/amt-16-1609-2023.
+Douros, J.; Eskes, H. J.; van Geffen, J. H. G. M. Comparing Sentinel-5P TROPOMI NO2
+column observations with the CAMS-regional air quality ensemble. EGUsphere.
+https://egusphere.copernicus.org/preprints/2022/egusphere-2022-365/ (accessed 2022-0704).
+Lambert, J.-C.; Claas, J.; Stein-Zweers, D.; Ludewig, A.; Loyola, D.; Sneep, M.; Dehn, A.
+Quarterly Validation Report of the Copernicus Sentinel-5 Precursor Operational Data
+Products #19; 2023.
+
+https://doi.org/10.26434/chemrxiv-2024-g65lr ORCID: https://orcid.org/0000-0003-0784-3986 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+

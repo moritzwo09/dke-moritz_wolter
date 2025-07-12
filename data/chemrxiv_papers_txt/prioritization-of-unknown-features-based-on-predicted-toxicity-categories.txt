@@ -1,0 +1,3249 @@
+Prioritization of unknown features based on
+predicted toxicity categories
+Viktoriia Turkina,∗,† Jelle T. Gringhuis,† Sanne Boot,† Annemieke Petrignani,†
+Garry Corthals,† Antonia Praetorius,‡ Jake W. O’Brien,¶,† and Saer
+Samanipour∗,†,§,∥
+†Van ‘t Hoff Institute for Molecular Sciences (HIMS), University of Amsterdam, 1090 GD,
+Amsterdam, the Netherlands
+‡Institute for Biodiversity and Ecosystem Dynamics (IBED), University of Amsterdam,
+1090 GE, Amsterdam, the Netherlands
+¶Queensland Alliance for Environmental Health Sciences (QAEHS), The University of
+Queensland, 20 Cornwall Street, Woolloongabba, QLD, 4102, Australia
+§UvA Data Science Center, University of Amsterdam, Amsterdam
+∥Queensland Alliance for Environmental Health Sciences (QAEHS), 20 Cornwall Street,
+Woolloongabba, QLD, 4102, Australia
+E-mail: v.turkina@uva.nl; s.samanipour@uva.nl
+
+1
+
+Abstract
+
+2
+
+Complex environmental samples contain a diverse array of known and unknown
+
+3
+
+constituents. While Liquid Chromatography coupled with High-Resolution Mass Spec-
+
+4
+
+trometry (LC-HRMS) Non-Targeted Analysis (NTA) has emerged as an essential tool
+
+5
+
+for the comprehensive study of such samples, the identification of individual con-
+
+6
+
+stituents remains a significant challenge, primarily due to the vast number of detected
+
+1
+https://doi.org/10.26434/chemrxiv-2024-h8kbq ORCID: https://orcid.org/0000-0002-7153-2333 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+7
+
+features in each sample. To address this, prioritization strategies are frequently em-
+
+8
+
+ployed to narrow the focus to the most relevant features for further analysis.
+
+9
+
+In this study, we developed a novel prioritization strategy that directly links frag-
+
+10
+
+mentation and chromatographic data to aquatic toxicity categories, bypassing the
+
+11
+
+need for individual compound identification. Given that features are not always well-
+
+12
+
+characterized through fragmentation, we created two models: 1) a Random Forest Clas-
+
+13
+
+sification (RFC) model, which classifies fish toxicity categories based on MS1, reten-
+
+14
+
+tion, and fragmentation data—expressed as cumulative neutral losses (CNLs)—when
+
+15
+
+fragmentation information is available, and 2) a Kernel Density Estimation (KDE)
+
+16
+
+model that relies solely on retention time and MS1 data when fragmentation is absent.
+
+17
+
+Both models demonstrated accuracy comparable to structure-based prediction meth-
+
+18
+
+ods. We further tested the models on a pesticide mixture in a tea extract measured by
+
+19
+
+LC-HRMS, where the CNLs-based RFC model achieved 0.76 accuracy and the KDE
+
+20
+
+model reached 0.61, showcasing their robust performance in real-world applications.
+
+21
+
+Synopsis
+
+22
+
+This study presents a novel prioritization strategy for LC-HRMS NTA, which directly links
+
+23
+
+chromatographic and fragmentation data to the activity of unknown features, bypassing the
+
+24
+
+need for their identification
+
+25
+
+Introduction
+
+26
+
+The increasing number and variety of produced chemicals hinders the investigation and
+
+27
+
+assessment of their exposure levels and impacts on human and environmental health. 1–3
+
+28
+
+Only specific groups of chemicals are routinely monitored as a regulatory measure, therefore,
+
+29
+
+limiting the exposure assessment by excluding a diverse mixture of chemicals. 4,5 In order to
+
+30
+
+investigate chemical exposure realistically, accounting for the diversity of structures and their
+
+2
+https://doi.org/10.26434/chemrxiv-2024-h8kbq ORCID: https://orcid.org/0000-0002-7153-2333 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+31
+
+properties in samples necessitates the application of unbiased approaches. 5–7
+
+32
+
+A major portion of contaminants of emerging concern (CECs) is covered by semi-polar
+
+33
+
+and polar organic compounds. 8,9 High-resolution tandem mass spectrometry coupled with
+
+34
+
+reverse phase liquid chromatography (LC-HRMS) is a well-known technique to analyze such
+
+35
+
+chemicals. 9,10 To limit the bias towards a small set of standardized analytes, the LC-HRMS
+
+36
+
+nontargeted (NTA) approach has been successfully developed and employed in environmen-
+
+37
+
+tal studies. 11–16 NTA does not require prior knowledge of the chemicals present in a sample
+
+38
+
+and enables the analysis of all detectable compounds. However, the complex nature of en-
+
+39
+
+vironmental samples results in highly convoluted data, requiring careful and robust prepro-
+
+40
+
+cessing. 17–20 Generally the number of detected features in NTA—data points constructed by
+
+41
+
+retention time, chromatographic peak intensity, and m/z of precursor ions—often counts in
+
+42
+
+the hundreds or thousands, though typically fewer than 5% of these can be identified. 19,21–23
+
+43
+
+Confident identification of detected features requires considerable computational and
+
+44
+
+research resources. 17,23,24 Therefore, prioritization is used as strategy to focus the available
+
+45
+
+resources on the most relevant features for a given study’s objectives. 25 The prioritized
+
+46
+
+species of interest undergo more detailed and thorough investigation. There are two ways of
+
+47
+
+prioritization: online and offline. Online prioritization refers to a variety of parameters to
+
+48
+
+acquire the data, e.g. to perform data-dependent acquisition, 25 consequently, limiting the
+
+49
+
+acquired data according to predefined parameters. 21 On the other hand, offline prioritization
+
+50
+
+strategies employ post hoc analysis of MS1 and MS2 (both data-dependent (DDA) and
+
+51
+
+data-independent (DIA) acquisition) data, including intensity-based prioritization, statistical
+
+52
+
+analysis, structural, and quantitative structure-activity relationship (QSAR) evaluation. 6
+
+53
+
+The online approach results in a cleaner dataset for further processing with the risk of losing
+
+54
+
+valuable information about highly relevant features. Thus, the offline approach is more
+
+55
+
+advantageous for environmental studies and can also be used for retrospective studies. 26
+
+56
+
+Environmental studies primarily focus on the properties and potential activities of de-
+
+57
+
+tected chemicals, including their ecological toxicity. 27,28 As a result, prioritization strategies
+
+3
+https://doi.org/10.26434/chemrxiv-2024-h8kbq ORCID: https://orcid.org/0000-0002-7153-2333 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+58
+
+often aim to highlight features that may pose significant (eco)toxicological risks. 29 For ex-
+
+59
+
+ample, Peets et al. developed the MS2Tox R package, which uses a regression model to
+
+60
+
+predict toxicity (-[LOG(mM)]) for organisms like fish, water fleas, and algae. 30,31 Similarly,
+
+61
+
+Rahu et al.. developed an algorithm to predict endocrine-disrupting activity using binary
+
+62
+
+or multi-label classification, 32 while Arturi and Hollender created MLinvitroTox, a tool to
+
+63
+
+classify chemicals as toxic or non-toxic based on nearly 400 target-specific and over 100
+
+64
+
+cytotoxic endpoints. 33
+
+65
+
+All these studies rely on predicting molecular formulas and fingerprints from MS2 spectra
+
+66
+
+using tools like CSI:FingerID/SIRIUS. 34 Therefore, the accuracy of these models is closely
+
+67
+
+tied to the precision of the predicted molecular fingerprints. Incorrectly calculated finger-
+
+68
+
+prints can significantly distort the predictions, and this accuracy can be compromised by var-
+
+69
+
+ious experimental factors, such as incomplete fragment detection, false positive fragments, or
+
+70
+
+missing characteristic fragments due to instrumental noise. Bypassing the molecular finger-
+
+71
+
+print prediction and instead predicting chemical activity directly from chromatographic and
+
+72
+
+MS data potentially reduces this uncertainty and enhances the interpretability of results.
+
+73
+
+Aquatic toxicity has been shown to be related to hydrophobicity of the chemicals, their
+
+74
+
+molecular weights and structural alerts. 35–37 Each detected feature indirectly includes struc-
+
+75
+
+tural information: chromatographic retention times and mass spectral (MS) information,
+
+76
+
+like accurate mass (MS1) and fragmentation spectra (MS2). Therefore, this information can
+
+77
+
+be used to assess the toxicity of the chemicals without any knowledge of molecular structure,
+
+78
+
+formula or fingerprint.
+
+79
+
+In this study, we developed a prioritization strategy based on acute aquatic toxicity using
+
+80
+
+chromatographic and fragmentation information of unknown features. Instead of identify-
+
+81
+
+ing each feature, we directly described their activity without any knowledge of molecular
+
+82
+
+structure. We constructed two models: a Random Forest Classification (RFC) model to
+
+83
+
+assign toxicity categories based on fragmentation data, and a Kernel Density Estimation
+
+84
+
+(KDE) model to determine the probability of features belonging to specific toxicity classes.
+
+4
+https://doi.org/10.26434/chemrxiv-2024-h8kbq ORCID: https://orcid.org/0000-0002-7153-2333 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+85
+
+These algorithms allow us to characterize unknown features at both the mass spectral and
+
+86
+
+chromatographic levels. The performance of the constructed models was evaluated both on
+
+87
+
+spectra from databases with measured toxicity values and on tea extracts spiked with 253
+
+88
+
+pesticide standards.
+
+89
+
+Methods
+
+90
+
+Since fragmentation information in NTA is often incomplete, we developed a probabilistic
+
+91
+
+algorithm to predict toxicity categories that relies solely on chromatographic data, specifi-
+
+92
+
+cally retention time and MS1 spectra. This algorithm uses KDE in both the retention and
+
+93
+
+mass domains to identify regions of chromatograms that are more likely to correspond to
+
+94
+
+higher or lower toxicity, effectively mapping toxicity. Additionally in the presence of reliable
+
+95
+
+fragmentation data, the CNLs-based RFC model can be applied to categorize toxicity based
+
+96
+
+on detected fragments.
+
+97
+
+Overall workflow
+
+98
+
+To develop the models we employed a semi-supervised approach. First, a structure-based
+
+99
+
+classification model was built using an experimentally generated acute fish toxicity dataset
+
+100
+
+and molecular fingerprints. This model was then used to expand toxicity knowledge by
+
+101
+
+predicting the toxicity category for chemicals from large, existing spectral and environmen-
+
+102
+
+tally relevant databases. The CompTox dataset 38 was used to develop a KDE model, while
+
+103
+
+for the CNLs-based model, HRMS spectra were collected from sources such as MassBank,
+
+104
+
+MoNa, GNPS, and NIST. 39–42 Finally, the results of the developed models were compared
+
+105
+
+and validated using an experimentally acquired pesticide mixture in a tea extract (Figure
+
+106
+
+1).
+
+5
+https://doi.org/10.26434/chemrxiv-2024-h8kbq ORCID: https://orcid.org/0000-0002-7153-2333 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 1: Overall workflow. A structure-based model was developed using a fish toxicity
+dataset and molecular fingerprints (FPs). This FPs-based model was then applied to the
+CompTox and Spectral databases, incorporating additional information such as molecular
+weight (MW) and retention indices (RI). A KDE-based model was constructed based on
+this data. Furthermore, fragmentation information (i.e., characteristic neutral losses,
+CNLs) was integrated to develop a CNLs-based model.
+
+107
+
+Datasets
+
+108
+
+For the model development, validation, and testing we employed four different datasets
+
+109
+
+namely: a set of experimental acute fish toxicity values - referred to as the fish toxicity data
+
+110
+
+set, the CompTox dataset, a Cumulative Neutral Loss (CNL) dataset, and experimentally
+
+111
+
+acquired LC-HRMS chromatogram of standard pesticide mixture in tea extracts - referred
+
+112
+
+to as pesticide mixture dataset.
+
+113
+
+Fish toxicity dataset
+
+114
+
+The fish toxicity dataset used in this study was compiled from two sources: Cassotti et al. 43
+
+115
+
+and Schür et al. 44 These sources are themselves compilations of numerous empirical studies,
+
+116
+
+relying on data collected from a wide range of experiments. The dataset includes concen-
+
+117
+
+tration values, expressed in LOG(mg/L), representing the dose that causes 50% mortality
+
+6
+https://doi.org/10.26434/chemrxiv-2024-h8kbq ORCID: https://orcid.org/0000-0002-7153-2333 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+118
+
+in fathead minnows (Pimephales promelas) over a 96-hour exposure period (LC50). In total
+
+119
+
+1047 chemicals in the dataset come from various chemical families, including pharmaceuti-
+
+120
+
+cals, pesticides, conventional persistent organic pollutants, and industrial chemicals. 45 Due
+
+121
+
+to the inherent variability in in vivo experiments, where results can vary even under identi-
+
+122
+
+cal conditions, the dataset includes multiple repeated measurements for each chemical. The
+
+123
+
+median value from these repetitions was used as the reference LC50 value for each compound.
+
+124
+
+The CompTox dataset
+
+125
+
+The CompTox Chemicals Dashboard, developed by the U.S. Environmental Protection Agency
+
+126
+
+(EPA), is a vast database that has been curated over 15 years through both manual and
+
+127
+
+automated efforts as part of the EPA’s DSSTox project. It contains detailed information
+
+128
+
+on 764,590 chemicals (as of March 2024), including identifiers such as CAS numbers and
+
+129
+
+SMILES, synonyms, and key properties like solubility, logKow, and molecular weight. Ad-
+
+130
+
+ditionally, it provides data on physicochemical characteristics, environmental fate, exposure,
+
+131
+
+usage, and available toxicity results from both in vivo and in vitro studies. For our purposes,
+
+132
+
+the CompTox dataset was filtered to exclude salts, metalloids, and compounds containing
+
+133
+
+elements not typically found in fish toxicity datasets or not analyzable via reverse phased
+
+134
+
+liquid chromatography (RPLC), leaving only chemicals composed of H, B, C, N, O, F, Si,
+
+135
+
+P, S, Cl, Br, and I.
+
+136
+
+CNLs dataset
+
+137
+
+The CNLs were used in place of fragments to reduce the dimensionality of the dataset
+
+138
+
+while retaining the structural information embedded in the spectra. The CNLs dataset was
+
+139
+
+generated from entries in the MassBank EU, MoNA, GNPS, and NIST20 databases. These
+
+140
+
+entries were obtained using electrospray ionization (positive mode) with a mass resolution of
+
+141
+
+≥ 5000, proton adducts, and included data from various mass analyzers (e.g., Q-TOF and
+
+142
+
+Orbitrap) with different collision energies. To ensure data quality, only spectra with at least
+
+7
+https://doi.org/10.26434/chemrxiv-2024-h8kbq ORCID: https://orcid.org/0000-0002-7153-2333 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+143
+
+three recorded fragments were included. When multiple spectra were available for a single
+
+144
+
+compound, they were merged using a ±0.01 Da mass window, yielding 21026 unique spectra.
+
+145
+
+Rare fragments, present in only a single instance across multiple entries, were discarded to
+
+146
+
+focus on more representative data.
+
+147
+
+For each compound, the CNLs were calculated by subtracting the fragment m/z values
+
+148
+
+from the precursor ion mass. These CNLs were then converted into bit vectors representing
+
+149
+
+masses from 0 to 1000 Da with a step size of 0.01 Da (± 5 mDa mass tolerance). In this
+
+150
+
+representation, a value of 1 indicated the presence of a CNL in the spectrum, while a value
+
+151
+
+of 0 indicated its absence. To further refine the dataset, CNLs that occurred in fewer than
+
+152
+
+100 spectra were removed, resulting in a final dataset of 2440 common CNLs, with mass
+
+153
+
+values ranging from 1.03 to 382.19 Da.
+
+154
+
+In addition to the CNL bit vectors, the monoisotopic mass and predicted retention index
+
+155
+
+were added as continuous features. To calculate monoisotopic mass, the mass of proton, 1.008
+
+156
+
+Da, was subtracted from the measured m/z value of the proton adduct. To predict retention
+
+157
+
+indices the previously reported by van Herwerden et al. model based on molecular fingerprints
+
+158
+
+and retention indices calculated on the cocamide scale was employed. 47 This combination of
+
+159
+
+features allowed us to incorporate key structural and chromatographic information into the
+
+160
+
+model while minimizing the number of variables. To interpret the importance of individual
+
+161
+
+CNLs, a search was conducted in the CompTox Chemicals Dashboard to identify relevant
+
+162
+
+substructures. The prominent substructures frequently identified in the search results were
+
+163
+
+used to inform model interpretation.
+
+164
+
+Pesticide mixture dataset
+
+165
+
+The prioritization models were further tested on experimentally acquired datasets of varying
+
+166
+
+levels of tea extract matrix spiked with 253 pesticide standards. The samples were analysed
+
+167
+
+by the previously reported RPLC-ESI-Q-TOF method. 48 The three standard mixtures of
+
+168
+
+pesticides from Neochema were diluted with filtered water/ethanol solution (50%:50%, v/v,
+
+8
+https://doi.org/10.26434/chemrxiv-2024-h8kbq ORCID: https://orcid.org/0000-0002-7153-2333 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+169
+
+Blank) or filtered tea extract that was further diluted 1:10 or 1:100 with Blank to final analyte
+
+170
+
+concentrations of 100 µg/L. Each sample was analysed twice. A detailed description of the
+
+171
+
+samples, acquisition method, and data processing is provided in Supporting Information,
+
+172
+
+section S1.
+
+173
+
+To obtain features and fragmentation information of detected pesticides, suspect screen-
+
+174
+
+ing was performed by applying the Universal Library Search Algorithm (ULSA). 49 A suspect
+
+175
+
+list of the pesticides was compiled from the MS2 spectra found in the MassBank EU, MoNA,
+
+176
+
+and NIST20 databases with a resolution higher than 5000 for each of these chemicals. To
+
+177
+
+minimize detection of false positive fragments a mass tolerance of 0.010 Da and a minimum
+
+178
+
+MS1 intensity of 2000 were applied for matching acquired fragments with suspects. Addi-
+
+179
+
+tionally, to increase the confidence of correctly detected fragments, a retention time tolerance
+
+180
+
+of 0.5 min was employed for comparison of MS1 and fragments profiles.
+
+181
+
+To convert retention times in retention indices based on the cocamide series a linear
+
+182
+
+regression model was built between retention time of 18 detected pesticides in all six chro-
+
+183
+
+matograms and their predicted retention indices (Figure S1. The model was applied to the
+
+184
+
+rest of the detected pesticides (Equation S1). Finally, the developed models were applied
+
+185
+
+to the detected suspects to assign toxicity categories. Since 96h LC50 mortality of fathead
+
+186
+
+minnows were unknown for detected pesticides, the predicted toxicity categories based on the
+
+187
+
+structure presented via molecular fingerprints were used as benchmark toxicity categories.
+
+188
+
+Modeling
+
+189
+
+Assigning toxicity categories
+
+190
+
+A previous study demonstrated the advantage of using clustering algorithms as an alterna-
+
+191
+
+tive to expert-based toxicity categorization, which typically relies on fixed LC50 or EC50
+
+192
+
+thresholds. 45 These expert-defined thresholds often fail to account for the uncertainty in
+
+193
+
+LC50 measurements or the structural similarities between chemicals. The k-means clus-
+
+194
+
+tering algorithm, an unsupervised iterative method, clusters data based on the distances
+9
+
+https://doi.org/10.26434/chemrxiv-2024-h8kbq ORCID: https://orcid.org/0000-0002-7153-2333 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+195
+
+between measurements and a set of user-defined centroids. This approach takes advantage
+
+196
+
+of structural similarities between chemicals when forming clusters.
+
+197
+
+In this study, we applied k-means clustering to categorize chemicals from a fish toxicity
+
+198
+
+dataset, using scaled LC50 values [LOG(mg/L)], monoisotopic mass, and six elemental mass
+
+199
+
+defects (EMDs): CO, CCl, CN, CS, CF, and CH as input features. 50 Since LC50 values
+
+200
+
+primarily determine toxicity while structural information captures relationships between
+
+201
+
+chemical structures, we assigned a weight of 1/7 to each of the monoisotopic mass and the
+
+202
+
+six EMDs. This ensured that LC50 values and structural information contributed equally.
+
+203
+
+The algorithm converged after 12 iterations with an inertia of 323, forming three distinct
+
+204
+
+clusters (Figure S2). These clusters were then labeled as low, moderate, and high toxicity,
+
+205
+
+based on their positions along the y-axis (LC50 values). The final clustering allowed clear
+
+206
+
+differentiation between low toxicity (n=238), high toxicity (n=202), and moderate toxicity
+
+207
+
+(n=467) chemicals, providing a robust categorization informed by both toxicity data and
+
+208
+
+structural characteristics.
+
+209
+
+Classification models
+
+210
+
+For modeling, a Random Forest Classifier (RFC) algorithm was implemented in Julia with
+
+211
+
+scikit-learn. 51 Random Forest is a supervised algorithm that constructs several unique deci-
+
+212
+
+sion trees from bootstrap data. After model development, the major voting of predictions
+
+213
+
+resulting from the individual trees is used to produce the final RFC model prediction. 52
+
+214
+
+Fingerprint-based model: To train the fingerprint-based (FPs-based) model, the fish tox-
+
+215
+
+icity dataset (n = 1047) was split into a training set (n = 854), test set (n = 95), and global
+
+216
+
+test set (n = 98) via stratified sampling (Figure S2). The input for the classification model
+
+217
+
+was the optimizied fingerprint 53 and the output was toxicity categories. The molecular fin-
+
+218
+
+gerprints were calculated based on six different non-hashed molecular fingerprints, namely,
+
+219
+
+Atom Pair 2D Count (AP2DC), 54 Electrotopological state (E-state), 55 Klekotha-Roth Count
+
+220
+
+(KRC), 56 Molecular Access Systems (MACCS), 57 PubChem, 58 and Substructure Keys Count
+
+10
+https://doi.org/10.26434/chemrxiv-2024-h8kbq ORCID: https://orcid.org/0000-0002-7153-2333 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+221
+
+(SSC) FPs. 59 340 bits out of combined 7073 were selected based on relevance to acute fish
+
+222
+
+toxicity prediction. 53 The model was optimized on a training set, validated with a test set
+
+223
+
+and finally tested with a global test set. Hyperparameter optimisation for the toxicity ran-
+
+224
+
+dom forest classification models consisted of a number of estimators varying between 100
+
+225
+
+and 400 with a step of 100, minimum samples leaf between 2 and 10 with a step of 2, a
+
+226
+
+maximum number of features of sqrt, log2, a maximum depth between 10 and 20 with a
+
+227
+
+step of 2. Cross-validation of the hyperparameter optimisation was 3-fold. This FPs-based
+
+228
+
+model then was utilized to predict the toxicity categories for CompTox and CNLs datasets.
+
+229
+
+CNLs-based model: To train the CNLs-based model the CNLs dataset was randomly
+
+230
+
+split into a training set (n = 18835), test set (n = 2093), and global test set (n = 98). The
+
+231
+
+input for the classification model was the CNL values converted to a bit vector, monoisotopic
+
+232
+
+mass, and predicted retention indices. The output of the CNL-based model was predicted
+
+233
+
+probability of assignment to toxicity categories. The probability was further converted into
+
+234
+
+predicted category based on the defined threshold. The threshold was calculated based on the
+
+235
+
+difference in probabilities between all three categories using test set only. Hyperparameter
+
+236
+
+optimisation was performed in the same manner as described in section ”Fingerprint-based
+
+237
+
+model”. Furthermore, to account for a class imbalance the weighted version of RFC was
+
+238
+
+employed.
+
+239
+
+KDE based model
+
+240
+
+The KDE algorithm 60 was used for toxicity categories mapping on chromatographic dimen-
+
+241
+
+sions using monoisotopic mass, predicted retention indices, and toxicity categories. Given
+
+242
+
+fitted KDE, we calculated the probability for each chemical to belong to one of the prede-
+
+243
+
+termined toxicity categories using the formula;
+
+fˆ(x; H) =
+
+n
+X
+
+1
+K H−1/2 (x − Xi )
+1/2
+n|H|
+i=1
+
+11
+https://doi.org/10.26434/chemrxiv-2024-h8kbq ORCID: https://orcid.org/0000-0002-7153-2333 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(1)
+
+244
+
+where fˆ(x) represents the estimated density at point x, n is the number of data points,
+
+245
+
+d is the number of dimensions, H is the d × d bandwidth matrix, K is the multivariate
+
+246
+
+kernel function, |H| is the determinant of the bandwidth matrix H, and H−1/2 is the matrix
+
+247
+
+square root of the inverse of H. Because the classification data is unbalanced, the number
+
+248
+
+of samples in each class was used as weights. This effectively cancels out the 1/n in the
+
+249
+
+formula and allows for comparison between the kernel densities.
+
+250
+
+Bandwidth selection was carried out using Silverman’s rule of thumb;
+
+sigmaj =
+
+4σ̂j5
+3nk
+
+ 15
+(2)
+
+251
+
+where σj denotes the standard deviation of the j-th feature in class Ck . This method
+
+252
+
+ensures a smooth estimation of the density function, aiding in the effective prediction of
+
+253
+
+toxicity classifications.
+
+254
+
+To evaluate the performance of the KDE based model, densities for all three toxicity
+
+255
+
+classes were calculated for the fish toxicity dataset as only available experimentally mea-
+
+256
+
+sured values. The toxicity category was assigned based on the highest calculated probability
+
+257
+
+(density).
+
+258
+
+Applicability domain calculations
+
+259
+
+The Applicability Domain (AD) defines the parameter space within which a predictive model
+
+260
+
+is expected to make reliable predictions. In this study, we utilized the leverage approach to
+
+261
+
+define and evaluate the AD of our predictive model. 61 The AD was assessed by calculating
+
+262
+
+the leverage for each sample using the equation;
+
+⊤
+−1
+hi = x⊤
+i (X X) xi
+
+(3)
+
+263
+
+where xi is the vector of predictor variables for the i-th sample, and X is the matrix of
+
+264
+
+predictor variables for all training samples. The leverage values indicate the influence of
+12
+
+https://doi.org/10.26434/chemrxiv-2024-h8kbq ORCID: https://orcid.org/0000-0002-7153-2333 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+265
+
+each sample on the model’s predictions.
+
+266
+
+The warning leverage threshold h∗ is determined to identify samples that have high
+
+267
+
+leverage and may lead to unreliable predictions. The threshold is typically set to three times
+
+268
+
+the average leverage in the training set;
+
+h∗ = 3 × havg
+
+(4)
+
+269
+
+Thus, predictions for samples with leverage values greater than these thresholds are consid-
+
+270
+
+ered less reliable and are flagged as outside the AD. To ensure these do not affect the kernel
+
+271
+
+density estimation, the weights for each sample were set at 1/h.
+
+272
+
+Performance assessment
+
+273
+
+For the evaluation of the performance of the multiclass classification model, several metrics
+
+274
+
+were computed, including precision, recall, F1 score, and accuracy. The classification metrics
+
+275
+
+provide an overview of the model’s performance for each class. The calculations for these
+
+276
+
+metrics are as follows:
+
+277
+
+278
+
+Precision: The ratio of correctly predicted positive observations to the total predicted
+positives.
+Precision =
+
+279
+
+280
+
+(5)
+
+Recall (Sensitivity): The ratio of correctly predicted positive observations to all observations in the actual class.
+Recall =
+
+281
+
+TP
+TP + FP
+
+TP
+TP + FN
+
+(6)
+
+F1 Score: The weighted average of Precision and Recall.
+
+F1 Score = 2 ·
+
+Precision · Recall
+Precision + Recall
+
+13
+https://doi.org/10.26434/chemrxiv-2024-h8kbq ORCID: https://orcid.org/0000-0002-7153-2333 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(7)
+
+282
+
+Accuracy: The ratio of correctly predicted observations to the total observations
+
+Accuracy =
+
+TP + TN
+TP + TN + FP + FN
+
+(8)
+
+283
+
+To further validate the classification models, the confusion matrix was computed, which
+
+284
+
+provided a detailed breakdown of the model’s predictions compared to the actual class labels.
+
+285
+
+Because of the class imbalance, the confusion matrix was normalized to represent fractions,
+
+286
+
+making it easier to interpret the proportion of correct and incorrect predictions for each
+
+287
+
+class.
+
+288
+
+Calculations
+
+289
+
+All calculations were performed on a personal computer (PC) with an Intel Core i7-1260P
+
+290
+
+central processing unit and 32 GB of RAM operating Windows 10 Education version 22H2.
+
+291
+
+All of the data processing and statistical analyses were performed using Julia language
+
+292
+
+version 1.6.7. The computational algorithms were computed using the ScikitLearn.jl version
+
+293
+
+0.7 library. The fish toxicity data set, the filtered CompTox data set, and the pesticide
+
+294
+
+mixture dataset are publicaly available at https://doi.org/10.5281/zenodo.14188167.
+
+295
+
+Additionally, a script to perform the calculations can be accessed at athttps://bitbucke
+
+296
+
+t.org/viktoriiaturkina/toxmap_prioritization.jl/src/main.
+
+297
+
+Results and Discussion
+
+298
+
+In this study we developed two classification algorithms, machine learning and probabilistic,
+
+299
+
+to predict fish toxicity categories based only on the chromatographic and fragmentation
+
+300
+
+without identified structural information. Additionally, to assign the toxicity categories we
+
+301
+
+trained the classification model based on the molecular FPs. For the probabilistic algorithm,
+
+302
+
+the CompTox database was mapped on RPLC-HRMS space and KDE was fitted to each
+
+303
+
+toxicity category assigned based on the known chemical structures (FPs). For the machine
+14
+
+https://doi.org/10.26434/chemrxiv-2024-h8kbq ORCID: https://orcid.org/0000-0002-7153-2333 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+304
+
+learning algorithm, the RFC model was trained on precursor ion mass (proton adduct),
+
+305
+
+retention indices, and fragmentation information in the form of CNLs bit vector.
+
+306
+
+FPs-based model
+
+307
+
+The fingerprint-based model developed in this study was an RFC model trained on 900
+
+308
+
+structures described with optimized molecular fingerprint 53 and their experimental LC50
+
+309
+
+[LOG(mg/L)] values. 43–45 Optimized hyperparameters of the model were determined as 300
+
+310
+
+estimators, a minimum of 10 samples split, a maximum depth of 20, and sqrt as the number
+
+311
+
+of features for split. To assess the performance of the model confusion matrix, accuracy,
+
+312
+
+precision, recall, and f1-score for each toxicity category were calculated (Table 1).
+
+313
+
+The accuracy of the optimized model was 0.86 for the training set, 0.75 for the test set
+
+314
+
+and 0.70 as a mean accuracy of 3-fold cross-validation, which was comparable to previously
+
+315
+
+reported QSAR models for toxicity predictions. 62,63 Performance assessment of the prediction
+
+316
+
+results for chemicals from the test set showed that the model consistently performed well
+
+317
+
+for low and moderate toxicity categories with an F1-Score 0.80 and 0.73 correspondingly.
+
+318
+
+However, the F1-Score for the high toxicity category was lower compared to the other two
+
+319
+
+categories, 0.54. Based on the confusion matrix and leverage analysis (Figure S4), the lower
+
+320
+
+recall for the high-toxicity class in the test set was primarily due to the misclassification of
+
+321
+
+compounds with relatively low leverage values into the moderate-toxicity class. Compounds
+
+322
+
+with lower leverage generally have lower monoisotopic mass and show greater similarity to
+
+323
+
+compounds in the moderate and low-toxicity categories, that influences the accuracy of high-
+
+324
+
+toxicity category predictions. Moreover, the chemicals assigned to the high-toxicity category
+
+325
+
+exhibited greater variability in the structural representation with the smallest number of
+
+326
+
+chemicals included, 145 for the training set and 13 for the test set.
+
+327
+
+To ensure a broader applicability domain for predictive purposes, the final fingerprint-
+
+328
+
+based classification model was trained using a combination of the training and test sets.
+
+329
+
+A separate global test set, containing measured toxicity values and available LC-HRMS
+15
+
+https://doi.org/10.26434/chemrxiv-2024-h8kbq ORCID: https://orcid.org/0000-0002-7153-2333 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+330
+
+data, was reserved for the final model assessment. The validated model was then used to
+
+331
+
+predict toxicity categories for the CompTox and CNLs datasets, expanding the dataset and
+
+332
+
+supporting the development of a probabilistic approach and the training of a CNLs-based
+
+333
+
+model.
+
+Class
+
+Precision
+
+Recall
+
+F1-Score
+
+Support
+
+Training
+set
+
+Low
+
+0.90
+
+0.83
+
+0.87
+
+263
+
+Moderate
+
+0.83
+
+0.94
+
+0.88
+
+446
+
+High
+
+0.92
+
+0.66
+
+0.77
+
+145
+
+Test set
+
+Low
+
+0.72
+
+0.75
+
+0.73
+
+24
+
+Moderate
+
+0.81
+
+0.79
+
+0.80
+
+58
+
+High
+
+0.54
+
+0.54
+
+0.54
+
+13
+
+Combined
+dataset
+
+Table 1: The performance assessment of the fingerprint-based classification model.
+
+Low
+
+0.88
+
+0.83
+
+0.85
+
+287
+
+Moderate
+
+0.83
+
+0.93
+
+0.87
+
+504
+
+High
+
+0.88
+
+0.65
+
+0.75
+
+158
+
+Accuracy
+
+0.86
+
+0.75
+
+0.85
+
+334
+
+KDE-based model
+
+335
+
+To create a KDE algorithm the toxicity categories and retention indices were predicted for
+
+336
+
+each chemical from the CompTox dataset based on their structures. This information was
+
+337
+
+then used to map toxicity regions within the RPLC-MS domain, linking toxicity categories
+
+338
+
+to features in the chromatogram.
+
+339
+
+Out of the 764,590 chemicals of the filtered Comptox database, 83,969 chemicals (10.9%)
+
+340
+
+were classified as low toxicity, 458,302 chemicals (59.9%) as moderate toxicity, and 222,319
+
+341
+
+chemicals (29.0%) as high toxicity class. However, only 20.8% of the CompTox dataset is
+
+342
+
+well represented by the training set, meaning the calculated leverage for these chemicals is
+
+343
+
+less than the leverage threshold, 3 times of the mean value of leverage in the training set,
+
+344
+
+1.02. To decrease the uncertainty of KDE we used calculated leverage values as weights to
+16
+
+https://doi.org/10.26434/chemrxiv-2024-h8kbq ORCID: https://orcid.org/0000-0002-7153-2333 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+345
+
+account for the less certain prediction of the fingerprint-based model. Therefore, chemicals
+
+346
+
+that were well represented in the training set, gave more weights for the density estimation
+
+347
+
+and more accurately represented the results. The weights used were 1/h with h being the
+
+348
+
+leverage of a compound (Figure 2a).
+
+349
+
+The CompTox dataset contains a wide variety of structures, with the range of monoiso-
+
+350
+
+topic mass between 12.0 and 5,628.0 Da, and the predicted retention indices from 178.6 to
+
+351
+
+1,530.5 RI value. (Figure S3) A partion of this space cannot be analysed with RPLC, either
+
+352
+
+due to insufficient retention (e.g., highly hydrophilic chemicals, often with low masses, i.e.,
+
+353
+
+< 70 Da) or excessive retention (e.g., highly hydrophobic chemicals with high mass and high
+
+354
+
+retention indices). Several recent studies investigated algorithms for assigning chemicals to
+
+355
+
+be analyzable with RPLC or other types of chromatography. 46,64–66 We applied the machine
+
+356
+
+learning algorithm developed by van Herwerden et al. to the CompTox dataset to filter out
+
+357
+
+chemicals that will not be analysed and therefore detected using RPLC. Of the 671,395
+
+358
+
+chemicals predicted to fall within the RPLC space, 78,087 (11.6%) were classified as low tox-
+
+359
+
+icity, 431,089 (64.2%) as moderate toxicity, and 162,219 (24.2%) as high toxicity category.
+
+360
+
+Thus, mainly compounds predicted as highly toxic fell outside of RPLC space (Figure 2b).
+
+361
+
+Overall accuracy of the algorithm was 0.69. Similar results were observed for overall
+
+362
+
+precision, recall and f1-score. The metrics of predictions for moderate and high toxicity cat-
+
+363
+
+egories showed comparable performance with precision 0.75-0.76, recall 0.6-0.64, and f1-score
+
+364
+
+0.67-0.70. Results for low-toxicity group with 0.58 for precision and 0.84 for recall, differed
+
+365
+
+from the results for the rest of the categories. Overall, the algorithm showed consistently
+
+366
+
+good performance among all categories.
+
+367
+
+Only 1.3% of chemicals from low-toxicity group were classified as highly toxic chemicals
+
+368
+
+and 9.4% of high-toxicity chemicals were classified as low-toxicity chemicals. This indi-
+
+369
+
+cated that low toxicity compounds generally do not occupy the region of high toxicity class
+
+370
+
+compounds. The larger error occurs in misclassification between moderate and low toxicity
+
+371
+
+groups (28%) and between high and moderate toxicity groups (30%) (Figure S5). The de-
+
+17
+https://doi.org/10.26434/chemrxiv-2024-h8kbq ORCID: https://orcid.org/0000-0002-7153-2333 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+372
+
+veloped algorithm based on KDE was as accurate as the FPs-based model, even though no
+
+373
+
+actual structural information was provided to it.
+
+(a)
+
+(b)
+
+Figure 2: KDE joint plots of filtered on RPLC space Comptox dataset (a), and applied to
+KDE weights based on calculated leverage (b)
+
+374
+
+CNLs-based model
+
+375
+
+For CNLs-based model construction, we predicted toxicity categories and retention indices
+
+376
+
+for the CNLs dataset. Out of 20,928 chemicals in the dataset 3,152 chemicals were predicted
+
+377
+
+as low-toxicity chemicals, 12,662 as moderate, and 5,114 as high toxicity. The number of
+
+378
+
+chemicals assigned to different groups shows an imbalance in the dataset; therefore to train
+
+379
+
+the model, the weighted version of RFC was employed.
+
+380
+
+The optimized the CNLs-based model showed an overall accuracy of 0.76 for training set
+
+381
+
+and 0.72 for test set. Therefore, the final model showed a high level of accuracy, comparable
+
+382
+
+to fingerprint-based classification model. Moreover, precision, recall, and F1-score for train-
+
+383
+
+ing and test set show consistent result for all three toxicity groups (Table S2), indicating
+
+384
+
+excellent performance of the model regardless of the class imbalance.
+
+385
+
+This model consisted of 600 trees, a minimum of two samples in each leaf, a maximum
+18
+
+https://doi.org/10.26434/chemrxiv-2024-h8kbq ORCID: https://orcid.org/0000-0002-7153-2333 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+386
+
+depth of 20, and ”sqrt” as a maximum number of features. A difference in probability
+
+387
+
+threshold of 0.08 was applied to the classification results: if the difference in predicted
+
+388
+
+probabilities across all three toxicity categories was less than 0.08 (or 8%), the chemical
+
+389
+
+was assigned to the moderate toxicity category. This is because, in the KDE model, the
+
+390
+
+moderate toxicity category is the most uncertain and tends to overlap with both the low and
+
+391
+
+high toxicity categories.
+
+392
+
+The model explained 85% of the variance using 592 variables, including CNLs with masses
+
+393
+
+ranging from 2.01 Da to 354.19 Da. Based on impurity decrease across trees, the largest
+
+394
+
+contributions to the model came from retention index (RI) and accurate mass, cumulatively
+
+395
+
+accounting for 36%. These were followed by contributions from CNLs with masses such
+
+396
+
+as 17.03 Da (1.7%), likely corresponding to NH3 , 45.01 Da (CH3 NO), 27.01 Da (HCN),
+
+397
+
+and 63.03 Da (HNO2 or CH2 SO), each contributing around 1%. While these structures
+
+398
+
+are plausible, alternative small molecules corresponding to these masses cannot be disre-
+
+399
+
+garded. Higher mass CNLs had an additional contribution, including 294.11 Da, potentially
+
+400
+
+representing multiple aromatic rings and/or benzyloxy substructures, 216.13 Da, possibly
+
+401
+
+linked to aromatic heterocycles like indole or quinoline, and 174.11 Da, which may cor-
+
+402
+
+respond to a thiocarboxylic ester. This indicates that the model primarily relies on MS1
+
+403
+
+data, supplemented by structural information that linked to the potentially toxicity-relevant
+
+404
+
+substructures.
+
+405
+
+Comparison of the KDE and CNLs-based models
+
+406
+
+Based on the confusion matrices for training and test set the comparable performance to KDE
+
+407
+
+algorithm was observed. The main misclassifications occur for a moderate toxicity group,
+
+408
+
+while low toxicity barely ever classified as high toxicity group (1%) and vice versa (0%)
+
+409
+
+(Figure S6). However, the test and training set for the KDE model and CNLs based model
+
+410
+
+were different therefore one-to-one comparison cannot be performed using these datasets.
+
+411
+
+Thus, to further evaluate and compare prediction power between all three generated models
+19
+
+https://doi.org/10.26434/chemrxiv-2024-h8kbq ORCID: https://orcid.org/0000-0002-7153-2333 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+412
+
+we used a global test set. These 98 entries had both the CNL bit vector and fish toxicity
+
+413
+
+experimentally determined values and were completely unknown to any of the models.
+
+414
+
+When comparing KDE and CNLs-based models with the FPs-model, the confusion ma-
+
+415
+
+trices indicate that the FPs-based model produced comparable results in predicting low and
+
+416
+
+high toxicity categories. This is a significant outcome, given that the KDE and CNLs-based
+
+417
+
+models do not account for the structural representation of the compounds and are directly
+
+418
+
+linked to chromatographic and mass spectrometry data. However, FPs-based model outper-
+
+419
+
+formed the other models in predicting the moderate toxicity group, achieving an accuracy
+
+420
+
+of 0.88 compared to 0.47 for the KDE model and 0.43 for the CNL model (Figure S6). This
+
+421
+
+can be explained by the substantial overlap in the RPLC-MS space assigned to the moderate
+
+422
+
+toxicity category, which has a mass range of 110.11 to 336.30 and retention indices between
+
+423
+
+285.28 and 1139.23, with the regions for low and high toxicity categories.
+
+424
+
+To further demonstrate the applicability of the developed approach, we applied it to an
+
+425
+
+experimentally acquired dataset of a standard pesticide mixture at varying concentrations
+
+426
+
+in a tea extract. Between 141 and 155 pesticides were detected out of 253 in the standard
+
+427
+
+mixture across all three levels of the tea matrix (no tea, 100-fold dilution, and 10-fold di-
+
+428
+
+lution). The minimum number of 141 pesticides was detected in the 100-fold diluted tea,
+
+429
+
+while 155 were detected in the 10-fold diluted tea. No clear trend was observed between the
+
+430
+
+number of detected pesticides and the matrix dilution. Additionally, the number of detected
+
+431
+
+and matched fragments was compared across the three matrices. The median number of
+
+432
+
+fragments per pesticide was 12 to 13, with the 25th and 75th percentiles ranging from 7 to
+
+433
+
+21-23. Overall, no significant influence of the matrix level was observed on the number of
+
+434
+
+detected pesticides or the number of corresponding fragments. Since matrix effects and other
+
+435
+
+parameters can influence not only the number but also the quality of detected fragments,
+
+436
+
+the CNLs-based model was applied independently to each chromatogram (Table S3, Figure
+
+437
+
+S7).
+
+438
+
+To keep prediction results comparable between the models based on KDE and CNLs,
+
+20
+https://doi.org/10.26434/chemrxiv-2024-h8kbq ORCID: https://orcid.org/0000-0002-7153-2333 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+439
+
+we retained only the features corresponding to the standard pesticide mixture detected in
+
+440
+
+all samples. As part of the ULSA workflow, Suspect Screening was applied to identify
+
+441
+
+corresponding features at both the chromatographic and fragmentation levels. In total 84
+
+442
+
+pesticides were detected in all three different matrices, 18 of which were used to establish
+
+443
+
+a correlation between retention time and retention indices, yielding an R2 = 0.91. The
+
+444
+
+remaining 66 pesticides were used for further testing. Based on molecular structure, the FPs-
+
+445
+
+based model classified the 66 pesticides as follows: 3 assigned to the low toxicity category,
+
+446
+
+48 to moderate toxicity, and 15 to high toxicity.
+
+447
+
+When applied to the detected pesticides, the CNLs-based model achieved an average
+
+448
+
+accuracy of 0.76-0.80, while the KDE model had a lower accuracy of 0.61. Additionally, the
+
+449
+
+accuracy of the CNLs model was not significantly influenced by different matrix levels, as
+
+450
+
+variations in accuracy across repeated measurements were within 3%, similar to the vari-
+
+451
+
+ation between different matrices. This suggests that the CNLs model maintains stability
+
+452
+
+and reliability across diverse experimental conditions, making it particularly useful for com-
+
+453
+
+plex environmental matrices. We examined chemicals that were misclassified by either the
+
+454
+
+KDE-based or CNLs-based models, meaning they were assigned to a different toxicity cat-
+
+455
+
+egory compared to the benchmark (FPs-based) model. For instance, Metsulfuron-methyl
+
+456
+
+(INCHIKEY: RSMUVYRMZCOLBH-UHFFFAOYSA-N) was predicted to belong to the
+
+457
+
+high toxicity category by the KDE-based model, while both the CNLs-based and FPs-based
+
+458
+
+models classified it as moderate toxicity. While there are no measured LC50 values avail-
+
+459
+
+able for fathead minnows, experimental LC50 values for Bluegill Sunfish and Rainbow Trout
+
+460
+
+reported in the Pesticide Ecotoxicity Database from the EPA indicate LC50 values greater
+
+461
+
+than 2 [LOG(mg/L)] for a 96-hour exposure. Based on classification criteria, chemicals with
+
+462
+
+LC50 values above 2 [LOG(mg/L)] and a monoisotopic mass of 381.07 Da typically fall into
+
+463
+
+the moderate or low toxicity categories for fathead minnows. The CNLs and FPs models,
+
+464
+
+therefore, offered a more accurate classification in this case, reflecting the expected behavior
+
+465
+
+of Metsulfuron-methyl in aquatic species. On the other hand, Thiabendazole (INCHIKEY:
+
+21
+https://doi.org/10.26434/chemrxiv-2024-h8kbq ORCID: https://orcid.org/0000-0002-7153-2333 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+466
+
+WJCNZQLZVWNLKY-UHFFFAOYSA-N) was assigned to the moderate toxicity category
+
+467
+
+by the CNLs-based model, while the KDE- and FPs-based models classified it as low toxicity.
+
+468
+
+Again, no data were available for fathead minnows, but the LC50 values for Bluegill Sunfish
+
+469
+
+and Rainbow Trout, as recorded by the EPA, range between -0.25 and 1.8 [LOG(mg/L)].
+
+470
+
+With an accurate mass of 201.04 Da, this chemical is typically assigned to either moderate
+
+471
+
+or low toxicity categories. The discrepancy in classification highlights the challenges of clas-
+
+472
+
+sifying compounds that fall near the boundary between toxicity classes. In this case, the
+
+473
+
+CNLs model’s assignment of moderate toxicity may be more reflective of the compound’s
+
+474
+
+potential toxicity, given the reported LC50 values and structural characteristics.
+
+475
+
+Both models performed well on experimental and global test datasets. Overall, the CNLs-
+
+476
+
+based model outperformed the KDE-based model in the pesticide dataset, demonstrating
+
+477
+
+superior predictive power and more consistent classification.
+
+Figure 3: KDE map of RPLC space with the predicted toxicity categories for the
+detected pesticides based on KDE model (a), and CNLs based model (b).
+
+478
+
+Several recent studies have focused on linking high-resolution accurate mass tandem mass
+
+22
+https://doi.org/10.26434/chemrxiv-2024-h8kbq ORCID: https://orcid.org/0000-0002-7153-2333 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+479
+
+spectrometry (MS2) data to EC50 and LC50 values. These studies primarily aim to pre-
+
+480
+
+dict LC50 or EC50 values, which are then converted into toxicity categories. 30–33 Typically,
+
+481
+
+this process involves converting the spectra into estimated molecular formulas and predicted
+
+482
+
+probabilistic molecular fingerprints using tools like SIRIUS. The generated probabilistic fin-
+
+483
+
+gerprints are then used for LC50 or EC50 prediction. As a result, the performance of these
+
+484
+
+models depends on the accuracy of the molecular formula and fingerprint predictions. In
+
+485
+
+contrast, our approach bypasses the need for molecular structure prediction by directly link-
+
+486
+
+ing mass spectral signals to toxicity categories. Instead of using a regression model to predict
+
+487
+
+continuous EC50 or LC50 values, we apply a classification algorithm that assigns compounds
+
+488
+
+directly into toxicity categories. By relying solely on chromatographic and fragmentation
+
+489
+
+data, our CNL- and KDE-based algorithms present a unique approach that differs from the
+
+490
+
+structure-dependent models used in previous studies, making direct comparisons challenging.
+
+491
+
+Implications
+
+492
+
+In this study, we showed a novel feature prioritization approach based on predicting toxicity
+
+493
+
+categories, by employing two algorithms: a probabilistic KDE-based model and a machine
+
+494
+
+learning-based CNLs model. Due to the complex nature of environmental samples and the
+
+495
+
+highly convoluted data, fragmentation information is not consistently available for all fea-
+
+496
+
+tures. To mitigate the influence of the MS2 signal availability we developed KDE-based
+
+497
+
+algorithm, which relies solely on MS1 and retention of the features. On the other hand the
+
+498
+
+combination of retention and MS1 and fragmentation patterns or CNLs enhances the predic-
+
+499
+
+tion accuracy. Our approach connects chromatographic and fragmentation data directly to
+
+500
+
+toxicity categories, bypassing the need for compound identification, a common requirement
+
+501
+
+in the currently available prioritization strategies. Moreover, our models demonstrated accu-
+
+502
+
+racy comparable to those that depend on structural information (FPs-based model), enabling
+
+503
+
+effective toxicity predictions even for compounds with unknown structures. This makes our
+
+23
+https://doi.org/10.26434/chemrxiv-2024-h8kbq ORCID: https://orcid.org/0000-0002-7153-2333 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+504
+
+models not only valuable for potential prioritization of unknown features in current NTA
+
+505
+
+studies but also suitable for enhancing retrospective analyses of historical datasets.
+
+506
+
+One of the current limitations of the developed approach is the limited number of mea-
+
+507
+
+sured toxicity values, retention indices, and high-resolution mass spectra, which reduces the
+
+508
+
+model’s applicability domain. Furthermore, the model is currently developed based on data
+
+509
+
+from a single trophic level and acute toxicity. More specific mode of action models can
+
+510
+
+give more insight into hazard scores and risk assessment. Another challenge arises from the
+
+511
+
+fact that the model was trained on clean spectra obtained from publicly available spectral
+
+512
+
+databases. In real LC-HRMS measurements, co-eluted compounds, instrumental artifacts,
+
+513
+
+and background noise can introduce false positive fragments, potentially reducing prediction
+
+514
+
+accuracy. As a result, robust and reliable data preprocessing is critical especially for DIA
+
+515
+
+experiments to ensure the accuracy of the model.
+
+516
+
+Acknowledgement
+
+517
+
+The authors are thankful to the members of Environmental Modeling & Computational Mass
+
+518
+
+Spectrometry (www.emcms.info). S.S., A.P., and V.T. are thankful to the UvA Data Science
+
+519
+
+Center and ChemistryNL TKI for the financial support (projects Edified and SCOPE). The
+
+520
+
+authors thank Denice van Herwerden for her help in setting up the calculations of elemental
+
+521
+
+mass defects. J.W.O. is the recipient of a National Health and Medical Research Council
+
+522
+
+(NHMRC) Investigator Grant (EL12009209) funded by the Australian Government. K.V.T,
+
+523
+
+and S.S. also acknowledge funding support from the Australian National Health and Medical
+
+524
+
+Research Council (NHMRC; APP1185347). The Queensland Alliance for Environmental
+
+525
+
+Health Sciences (QAEHS), The University of Queensland (UQ), gratefully acknowledges the
+
+526
+
+financial support of Queensland Health. This research was funded in whole or in part by
+
+527
+
+NHMRC Emerging Leadership Fellowship EL1 2009209. For the purposes of open access,
+
+528
+
+the author has applied a Creative Commons Attribution (CC BY) license to any Author
+
+24
+https://doi.org/10.26434/chemrxiv-2024-h8kbq ORCID: https://orcid.org/0000-0002-7153-2333 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+529
+
+Accepted Manuscript version arising from this submission.
+
+530
+
+Notes
+
+531
+
+The script to perform the calculations is available at https://doi.org/10.5281/zeno
+
+532
+
+do.14188167. The datasets used for the development of the algorithms are available at
+
+533
+
+https://bitbucket.org/viktoriiaturkina/toxmap_prioritization.jl/src/main
+
+534
+
+Supporting Information Available
+
+535
+
+The Supporting Information is available at XXX.
+
+536
+
+References
+
+537
+
+538
+
+(1) Landrigan, P. J. et al. The Lancet Commission on pollution and health. The Lancet
+2018, 391, 462–512.
+
+539
+
+(2) Arp, H. P. H.; Aurich, D.; Schymanski, E. L.; Sims, K.; Hale, S. E. Avoiding the Next
+
+540
+
+Silent Spring: Our Chemical Past, Present, and Future. Environmental Science and
+
+541
+
+Technology 2023, 57, 6355–6359.
+
+542
+
+(3) Wang, Z.; Walker, G. W.; Muir, D. C.; Nagatani-Yoshida, K. Toward a Global Un-
+
+543
+
+derstanding of Chemical Pollution: A First Comprehensive Analysis of National and
+
+544
+
+Regional Chemical Inventories. Environmental Science and Technology 2020, 54, 2575–
+
+545
+
+2584.
+
+546
+
+(4) Rudén, C.; Hansson, S. O. Registration, Evaluation, and Authorization of Chemicals
+
+547
+
+(REACH) Is but the First Step–How Far Will It Take Us? Six Further Steps to Improve
+
+548
+
+the European Chemicals Legislation. Environmental Health Perspectives 2010, 118, 6.
+
+25
+https://doi.org/10.26434/chemrxiv-2024-h8kbq ORCID: https://orcid.org/0000-0002-7153-2333 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+549
+
+550
+
+(5) Hernández, F. et al. The role of analytical chemistry in exposure science: Focus on the
+aquatic environment. Chemosphere 2019, 222, 564–583.
+
+551
+
+(6) Ciccarelli, D.; Samanipour, S.; Rapp-Wright, H.; Bieber, S.; Letzel, T.; O’Brien, J. W.;
+
+552
+
+Marczylo, T.; Gant, T. W.; Vineis, P.; Barron, L. P. Bridging knowledge gaps in human
+
+553
+
+chemical exposure via drinking water with non-target screening. Critical Reviews in
+
+554
+
+Environmental Science and Technology 2024,
+
+555
+
+(7) Samanipour, S.; Barron, L. P.; van Herwerden, D.; Praetorius, A.; Thomas, K. V.;
+
+556
+
+O’Brien, J. W. Exploring the Chemical Space of the Exposome: How Far Have We
+
+557
+
+Gone? JACS Au 2024, 4, 2412–2425.
+
+558
+
+559
+
+560
+
+561
+
+(8) Gosetti, F.; Mazzucco, E.; Gennaro, M. C.; Marengo, E. Contaminants in water: nontarget UHPLC/MS analysis. Environ. Chem. Lett. 2016, 14, 51–65.
+(9) Richardson, S. D.; Manasfi, T. Water Analysis: Emerging Contaminants and Current
+Issues. Analytical Chemistry 2024, 96, 8184–8219.
+
+562
+
+(10) Krauss, M.; Singer, H.; Hollender, J. LC-high resolution MS in environmental analysis:
+
+563
+
+From target screening to the identification of unknowns. Analytical and Bioanalytical
+
+564
+
+Chemistry 2010, 397, 943–951.
+
+565
+
+(11) Sobus, J. R.; Wambaugh, J. F.; Isaacs, K. K.; Williams, A. J.; McEachran, A. D.;
+
+566
+
+Richard, A. M.; Grulke, C. M.; Ulrich, E. M.; Rager, J. E.; Strynar, M. J.; Newton, S. R.
+
+567
+
+Integrating tools for non-targeted analysis research and chemical safety evaluations at
+
+568
+
+the US EPA. Journal of Exposure Science & Environmental Epidemiology 2017 28:5
+
+569
+
+2017, 28, 411–426.
+
+570
+
+(12) Overdahl, K. E.; Sutton, R.; Sun, J.; Destefano, N. J.; Getzinger, G. J.; Ferguson, P. L.
+
+571
+
+Assessment of emerging polar organic pollutants linked to contaminant pathways within
+
+572
+
+an urban estuary using non-targeted analysis. Environmental Science: Processes &
+
+573
+
+Impacts 2021, 23, 429–445.
+26
+
+https://doi.org/10.26434/chemrxiv-2024-h8kbq ORCID: https://orcid.org/0000-0002-7153-2333 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+574
+
+(13) Creusot, N.; Huba, K.; Borel, C.; Ferrari, B. J.; Chèvre, N.; Hollender, J. Identification
+
+575
+
+of polar organic chemicals in the aquatic foodweb: Combining high-resolution mass
+
+576
+
+spectrometry and trend analysis. Environment International 2024, 183, 108403.
+
+577
+
+(14) Kutarna, S.; Tang, S.; Hu, X.; Peng, H. Enhanced Nontarget Screening Algorithm Re-
+
+578
+
+veals Highly Abundant Chlorinated Azo Dye Compounds in House Dust. Environmental
+
+579
+
+Science and Technology 2021, 55, 4729–4739.
+
+580
+
+(15) Szabo, D.; Fischer, S.; Mathew, A. P.; Kruve, A. Prioritization, Identification, and
+
+581
+
+Quantification of Emerging Contaminants in Recycled Textiles Using Non-Targeted
+
+582
+
+and Suspect Screening Workflows by LC-ESI-HRMS. Analytical Chemistry 2024, 96,
+
+583
+
+14150–14159.
+
+584
+
+(16) Braun, G.; Herberth, G.; Krauss, M.; König, M.; Wojtysiak, N.; Zenclussen, A. C.;
+
+585
+
+Escher, B. I. Neurotoxic mixture effects of chemicals extracted from blood of pregnant
+
+586
+
+women. Science 2024, 386, 301–309.
+
+587
+
+(17) Petrie, B.; Barden, R.; Kasprzyk-Hordern, B. A review on emerging contaminants in
+
+588
+
+wastewaters and the environment: Current knowledge, understudied areas and recom-
+
+589
+
+mendations for future monitoring. Water Research 2015, 72, 3–27.
+
+590
+
+(18) Hohrenk, L. L.; Itzel, F.; Baetz, N.; Tuerk, J.; Vosough, M.; Schmidt, T. C. Comparison
+
+591
+
+of Software Tools for Liquid Chromatography-High-Resolution Mass Spectrometry Data
+
+592
+
+Processing in Nontarget Screening of Environmental Samples. Analytical Chemistry
+
+593
+
+2020, 92, 1898–1907.
+
+594
+
+(19) Hollender, J.; Schymanski, E. L.; Singer, H. P.; Ferguson, P. L. Nontarget Screening
+
+595
+
+with High Resolution Mass Spectrometry in the Environment: Ready to Go? Environ.
+
+596
+
+Sci. Technol. 2017, 51, 11505–11512.
+
+597
+
+(20) Lennon, S. et al. Harmonized quality assurance/quality control provisions to assess
+
+598
+
+completeness and robustness of MS1 data preprocessing for LC-HRMS-based suspect
+27
+
+https://doi.org/10.26434/chemrxiv-2024-h8kbq ORCID: https://orcid.org/0000-0002-7153-2333 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+599
+
+screening and non-targeted analysis. TrAC Trends in Analytical Chemistry 2024, 174,
+
+600
+
+117674.
+
+601
+
+(21) Hulleman, T.; Turkina, V.; O’Brien, J. W.; Chojnacka, A.; Thomas, K. V.; Sama-
+
+602
+
+nipour, S. Critical Assessment of the Chemical Space Covered by LC-HRMS Non-
+
+603
+
+Targeted Analysis. Environmental Science and Technology 2023, 57, 14101–14112.
+
+604
+
+(22) González-Gaya, B.; Lopez-Herguedas, N.; Bilbao, D.; Mijangos, L.; Iker, A. M.; Etxe-
+
+605
+
+barria, N.; Irazola, M.; Prieto, A.; Olivares, M.; Zuloaga, O. Suspect and non-target
+
+606
+
+screening: the last frontier in environmental analysis. Analytical Methods 2021, 13,
+
+607
+
+1876–1904.
+
+608
+
+(23) Schymanski, E. L.; Jeon, J.; Gulde, R.; Fenner, K.; Ruff, M.; Singer, H. P.; Hollender, J.
+
+609
+
+Identifying small molecules via high resolution mass spectrometry: Communicating
+
+610
+
+confidence. Environ. Sci. Technol. 2014, 48, 2097–2098.
+
+611
+
+612
+
+(24) Kind, T.; Fiehn, O. Advances in structure elucidation of small molecules using mass
+spectrometry. Bioanalytical Reviews 2010 2:1 2010, 2, 23–60.
+
+613
+
+(25) Szabo, D.; Falconer, T. M.; Fisher, C. M.; Heise, T.; Phillips, A. L.; Vas, G.;
+
+614
+
+Williams, A. J.; Kruve, A. Online and Offline Prioritization of Chemicals of Interest in
+
+615
+
+Suspect Screening and Non-targeted Screening with High-Resolution Mass Spectrome-
+
+616
+
+try. Analytical Chemistry 2024, 96, 3707–3716.
+
+617
+
+(26) Rilievo, G.; Boscolo, S.; Pettenuzzo, S.; Matozzo, V.; Fabrello, J.; Roverso, M.; Bo-
+
+618
+
+gialli, S. From a validated targeted method to a retrospective UHPLC-HRMS non-
+
+619
+
+targeted analysis unveiling COVID-19-related contaminants in clams. Have we bias in
+
+620
+
+marine model organisms for ecotoxicological studies? Chemosphere 2024, 364, 142994.
+
+621
+
+(27) Silva, M.; Capps, S.; London, J. Community-Engaged Research and the Use of Open
+
+622
+
+Access ToxVal/ToxRef In Vivo Databases and New Approach Methodologies (NAM)
+
+28
+https://doi.org/10.26434/chemrxiv-2024-h8kbq ORCID: https://orcid.org/0000-0002-7153-2333 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+623
+
+to Address Human Health Risks From Environmental Contaminants. Birth Defects
+
+624
+
+Research 2024, 116, e2395.
+
+625
+
+(28) Vermeulen, R.; Schymanski, E. L.; Barabási, A. L.; Miller, G. W. The exposome and
+
+626
+
+health: where chemistry meets biology. Science (New York, N.Y.) 2020, 367, 392.
+
+627
+
+(29) Meekel, N.; Vughs, D.; Béen, F.; Brunner, A. M. Online Prioritization of Toxic Com-
+
+628
+
+pounds in Water Samples through Intelligent HRMS Data Acquisition. Analytical
+
+629
+
+Chemistry 2021, 93, 5071–5080.
+
+630
+
+(30) Peets, P.; Wang, W. C.; Macleod, M.; Breitholtz, M.; Martin, J. W.; Kruve, A. MS2Tox
+
+631
+
+Machine Learning Tool for Predicting the Ecotoxicity of Unidentified Chemicals in Wa-
+
+632
+
+ter by Nontarget LC-HRMS. Environmental Science and Technology 2022, 56, 15508–
+
+633
+
+15517.
+
+634
+
+(31) Peets, P.; Rian, M. B.; Martin, J. W.; Kruve, A. Evaluation of Nontargeted Mass
+
+635
+
+Spectral Data Acquisition Strategies for Water Analysis and Toxicity-Based Feature
+
+636
+
+Prioritization by MS2Tox. Environmental Science and Technology 2024, 58, 17406–
+
+637
+
+17418.
+
+638
+
+(32) Rahu, I.; Kull, M.; Kruve, A. Predicting the Activity of Unidentified Chemicals in
+
+639
+
+Complementary Bioassays from the HRMS Data to Pinpoint Potential Endocrine Dis-
+
+640
+
+ruptors. Journal of Chemical Information and Modeling 2024, 64, 3093–3104.
+
+641
+
+(33) Arturi, K.; Hollender, J. Machine Learning-Based Hazard-Driven Prioritization of Fea-
+
+642
+
+tures in Nontarget Screening of Environmental High-Resolution Mass Spectrometry
+
+643
+
+Data. Environmental Science and Technology 2023, 57, 18067–18079.
+
+644
+
+(34) Dührkop, K.; Fleischauer, M.; Ludwig, M.; Aksenov, A. A.; Melnik, A. V.; Meusel, M.;
+
+645
+
+Dorrestein, P. C.; Rousu, J.; Böcker, S. SIRIUS 4: a rapid tool for turning tandem
+
+646
+
+mass spectra into metabolite structure information. Nature Methods 2019 16:4 2019,
+
+647
+
+16, 299–302.
+29
+
+https://doi.org/10.26434/chemrxiv-2024-h8kbq ORCID: https://orcid.org/0000-0002-7153-2333 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+648
+
+649
+
+(35) Zushi, Y.; Hanari, N.; Nabi, D.; Lin, B. L. Mixture Touch: A Web Platform for the
+Evaluation of Complex Chemical Mixtures. ACS Omega 2020, 5, 8121–8126.
+
+650
+
+(36) Zhang, R.; Guo, H.; Hua, Y.; Cui, X.; Shi, Y.; Li, X. Modeling and insights into the
+
+651
+
+structural basis of chemical acute aquatic toxicity. Ecotoxicology and Environmental
+
+652
+
+Safety 2022, 242, 113940.
+
+653
+
+(37) Yang, H.; Lou, C.; Li, W.; Liu, G.; Tang, Y. Computational Approaches to Identify
+
+654
+
+Structural Alerts and Their Applications in Environmental Toxicology and Drug Dis-
+
+655
+
+covery. Chemical Research in Toxicology 2020, 33, 1312–1322.
+
+656
+
+(38) Williams, A. J.; Grulke, C. M.; Edwards, J.; McEachran, A. D.; Mansouri, K.;
+
+657
+
+Baker, N. C.; Patlewicz, G.; Shah, I.; Wambaugh, J. F.; Judson, R. S.; Richard, A. M.
+
+658
+
+The CompTox Chemistry Dashboard: A community data resource for environmental
+
+659
+
+chemistry. Journal of Cheminformatics 2017, 9, 1–27.
+
+660
+
+661
+
+(39) MassBank — MassBank Europe Mass Spectral DataBase. https://massbank.eu/Ma
+ssBank/.
+
+662
+
+(40) MassBank of North America. https://mona.fiehnlab.ucdavis.edu/downloads.
+
+663
+
+(41) Reference Spectral Libraries - GNPS Documentation. https://ccms-ucsd.github.i
+
+664
+
+o/GNPSDocumentation/downloadlibraries/.
+
+665
+
+(42) NIST20: Updates to the NIST Tandem and Electron Ionization Spectral Libraries —
+
+666
+
+NIST. https://www.nist.gov/programs-projects/nist20-updates-nist-tande
+
+667
+
+m-and-electron-ionization-spectral-libraries.
+
+668
+
+(43) Cassotti, M.; Ballabio, D.; Todeschini, R.; Consonni, V. A similarity-based QSAR
+
+669
+
+model for predicting acute toxicity towards the fathead minnow (Pimephales promelas).
+
+670
+
+SAR and QSAR in Environmental Research 2015, 26, 217–243.
+
+30
+https://doi.org/10.26434/chemrxiv-2024-h8kbq ORCID: https://orcid.org/0000-0002-7153-2333 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+671
+
+(44) Schür, C.; Gasser, L.; Perez-Cruz, F.; Schirmer, K.; Baity-Jesi, M. A benchmark dataset
+
+672
+
+for machine learning in ecotoxicology. Scientific Data 2023 10:1 2023, 10, 1–20.
+
+673
+
+(45) Samanipour, S.; O’Brien, J. W.; Reid, M. J.; Thomas, K. V.; Praetorius, A. From
+
+674
+
+Molecular Descriptors to Intrinsic Fish Toxicity of Chemicals: An Alternative Approach
+
+675
+
+to Chemical Prioritization. Environmental Science and Technology 2023, 57, 17950–
+
+676
+
+17958.
+
+677
+
+(46) van Herwerden, D.; Nikolopoulos, A.; Barron, L. P.; O’Brien, J. W.; Pirok, B. W.;
+
+678
+
+Thomas, K. V.; Samanipour, S. Exploring the chemical subspace of RPLC: A data
+
+679
+
+driven approach. Analytica Chimica Acta 2024, 1317, 342869.
+
+680
+
+(47) Aalizadeh, R.; Nikolopoulou, V.; Thomaidis, N. S. Development of Liquid Chromato-
+
+681
+
+graphic Retention Index Based on Cocamide Diethanolamine Homologous Series (C(n)-
+
+682
+
+DEA). Analytical Chemistry 2022, 94, 15987–15996.
+
+683
+
+(48) van Herwerden, D.; O’Brien, J. W.; Lege, S.; Pirok, B. W. J.; Thomas, K. V.; Sama-
+
+684
+
+nipour, S. Cumulative Neutral Loss Model for Fragment Deconvolution in Electrospray
+
+685
+
+Ionization High-Resolution Mass Spectrometry Data. Anal. Chem. 2023,
+
+686
+
+(49) Samanipour, S.; Reid, M. J.; Bæk, K.; Thomas, K. V. Combining a Deconvolution and
+
+687
+
+a Universal Library Search Algorithm for the Nontarget Analysis of Data-Independent
+
+688
+
+Acquisition Mode Liquid Chromatography-High-Resolution Mass Spectrometry Re-
+
+689
+
+sults. Environmental Science and Technology 2018, 52, 4694–4701.
+
+690
+
+(50) van Herwerden, D.; O’Brien, J. W.; Choi, P. M.; Thomas, K. V.; Schoenmakers, P. J.;
+
+691
+
+Samanipour, S. Naive Bayes classification model for isotopologue detection in LC-
+
+692
+
+HRMS data. Chemometrics and Intelligent Laboratory Systems 2022, 223, 104515.
+
+693
+
+(51) Pedregosa FABIANPEDREGOSA, F. et al. Scikit-learn: Machine Learning in Python
+
+694
+
+Gaël Varoquaux Bertrand Thirion Vincent Dubourg Alexandre Passos PEDREGOSA,
+
+31
+https://doi.org/10.26434/chemrxiv-2024-h8kbq ORCID: https://orcid.org/0000-0002-7153-2333 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+695
+
+VAROQUAUX, GRAMFORT ET AL. Matthieu Perrot. Journal of Machine Learning
+
+696
+
+Research 2011, 12, 2825–2830.
+
+697
+
+(52) Svetnik, V.; Liaw, A.; Tong, C.; Christopher Culberson, J.; Sheridan, R. P.;
+
+698
+
+Feuston, B. P. Random Forest: A Classification and Regression Tool for Compound
+
+699
+
+Classification and QSAR Modeling. Journal of Chemical Information and Computer
+
+700
+
+Sciences 2003, 43, 1947–1958.
+
+701
+
+(53) Turkina, V.; Messih, M. R.; Kant, E.; Gringhuis, J.; Petrignani, A.; Corthals, G.;
+
+702
+
+O’Brien, J. W.; Samanipour, S. Molecular Fingerprints Optimization for Enhanced
+
+703
+
+Predictive Modeling. 2024,
+
+704
+
+(54) Smith, D. H.; Carhart, R. E.; Venkataraghavan, R. Atom Pairs as Molecular Features
+
+705
+
+in Structure-Activity Studies: Definition and Applications. Journal of Chemical Infor-
+
+706
+
+mation and Computer Sciences 1985, 25, 64–73.
+
+707
+
+(55) Hall, L. H.; Kier, L. B. Electrotopological State Indices for Atom Types: A Novel
+
+708
+
+Combination of Electronic, Topological, and Valence State Information. Journal of
+
+709
+
+Chemical Information and Computer Sciences 1995, 35, 1039–1045.
+
+710
+
+711
+
+(56) Klekota, J.; Roth, F. P. Chemical substructures that enrich for biological activity.
+Bioinformatics (Oxford, England) 2008, 24, 2518–2525.
+
+712
+
+(57) Durant, J. L.; Leland, B. A.; Henry, D. R.; Nourse, J. G. Reoptimization of MDL keys
+
+713
+
+for use in drug discovery. Journal of chemical information and computer sciences 2002,
+
+714
+
+42, 1273–1280.
+
+715
+
+716
+
+(58) PubChem Substructure Fingerprint V1.3. 2009; https://ftp.ncbi.nlm.nih.gov/p
+ubchem/specifications/pubchem_fingerprints.pdf.
+
+717
+
+(59) Yap, C. W. PaDEL-descriptor: An open source software to calculate molecular descrip-
+
+718
+
+tors and fingerprints. Journal of Computational Chemistry 2011, 32, 1466–1474.
+32
+
+https://doi.org/10.26434/chemrxiv-2024-h8kbq ORCID: https://orcid.org/0000-0002-7153-2333 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+719
+
+(60) Wȩglarczyk, S. Kernel density estimation and its application. 2018,
+
+720
+
+(61) Gramatica, P. Principles of QSAR models validation: internal and external. QSAR &
+
+721
+
+722
+
+723
+
+Combinatorial Science 2007, 26, 694–701.
+(62) Yu, X. Global classification models for predicting acute toxicity of chemicals towards
+Daphnia magna. Environmental Research 2023, 238, 117239.
+
+724
+
+(63) Sheffield, T. Y.; Judson, R. S. Ensemble QSAR Modeling to Predict Multispecies Fish
+
+725
+
+Toxicity Lethal Concentrations and Points of Departure. Environmental Science and
+
+726
+
+Technology 2019, 53, 12793–12802.
+
+727
+
+728
+
+(64) Black, G. et al. Exploring chemical space in non-targeted analysis: a proposed
+ChemSpace tool. Analytical and bioanalytical chemistry 2022, 415, 35.
+
+729
+
+(65) Lowe, C. N.; Isaacs, K. K.; McEachran, A.; Grulke, C. M.; Sobus, J. R.; Ulrich, E. M.;
+
+730
+
+Richard, A.; Chao, A.; Wambaugh, J.; Williams, A. J. Predicting compound amenabil-
+
+731
+
+ity with liquid chromatography-mass spectrometry to improve non-targeted analysis.
+
+732
+
+Analytical and bioanalytical chemistry 2021, 413, 7495.
+
+733
+
+(66) Alygizakis, N.; Konstantakos, V.; Bouziotopoulos, G.; Kormentzas, E.; Slobodnik, J.;
+
+734
+
+Thomaidis, N. S. A Multi-Label Classifier for Predicting the Most Appropriate Instru-
+
+735
+
+mental Method for the Analysis of Contaminants of Emerging Concern. Metabolites
+
+736
+
+2022, 12, 199.
+
+33
+https://doi.org/10.26434/chemrxiv-2024-h8kbq ORCID: https://orcid.org/0000-0002-7153-2333 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Rel.Intensity
+
+tr, MS1, MS2
+
+m/z
+
+tr, MS1
+
+TOC for Review.
+
+34
+https://doi.org/10.26434/chemrxiv-2024-h8kbq ORCID: https://orcid.org/0000-0002-7153-2333 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+

@@ -1,0 +1,2895 @@
+1
+
+Machine Learning for Enhanced Identification in RPLC/HRMS Non-Targeted
+
+2
+
+Workflows
+
+3
+
+Hiu-Lok Ngan,† Viktoriia Turkina,‡ Denice van Herwerden,‡ Hong Yan,† Zongwei Cai,*,† and
+
+4
+
+Saer Samanipour*,‡,§
+
+5
+
+†State Key Laboratory of Environmental and Biological Analysis, Department of Chemistry,
+
+6
+
+Hong Kong Baptist University, Hong Kong, P. R. China
+
+7
+
+‡
+
+8
+
+1098 XH, the Netherlands
+
+9
+
+§
+
+Van ’t Hoff Institute for Molecular Sciences (HIMS), University of Amsterdam, Amsterdam,
+
+UvA Data Science Center, University of Amsterdam, Amsterdam, 1012 WP, the Netherlands
+
+10
+11
+
+*Corresponding authors: Drs. Zongwei Cai and Saer Samanipour
+
+12
+
+E-mails: zwcai@hkbu.edu.hk; s.samanipour@uva.nl
+
+-1-
+
+https://doi.org/10.26434/chemrxiv-2024-mdl4q-v2 ORCID: https://orcid.org/0000-0002-6002-9660 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+13
+
+Abstract Graphic
+
+14
+15
+
+Abstract
+
+16
+
+In HRMS-based non-targeted analysis (NTA) without access to any retention information of
+
+17
+
+unknown compounds, spectral matching is one of the most employed approaches for the
+
+18
+
+assessment of chemical identification probability (IP). Recently, within the metabolomics
+
+19
+
+community, the use of true positive (TP) probability has been proposed as an alternative to the
+
+20
+
+conventional confidence assessment approaches. In this study, a combination of information
+
+21
+
+extracted from the MS/MS spectra and calibrant-free predicted retention time indices (RTIs)
+
+22
+
+yielded the probability of TP for each chemical annotation by integrating 3 machine learning
+
+23
+
+(ML) models. Firstly, they include a molecular fingerprint (MF)-to-RTI model trained by 4,713
+
+24
+
+calibrants. Then a cumulative neutral loss (CNL)-to-RTI model was trained by 485,577
+
+25
+
+experimental spectra. Finally, a binary classification model was trained by 1,686,319 TP and
+
+26
+
+true negative (TN) annotations. Our results demonstrated a high correlation (training: R2 = 0.96;
+
+27
+
+testing: R2 = 0.88) between MF-derived and CNL-derived RTI values, suggesting reduced RTI
+
+28
+
+error for TP annotations. By incorporating the output parameters from a previously developed
+
+29
+
+library search algorithm, monoisotopic mass, and RTI error for TP determination, the k-nearest
+
+30
+
+neighbors algorithm achieved a weighted F1 score of 0.65 and a Matthews correlation
+
+31
+
+coefficient of 0.30 for the annotations with their spectral matching scores ≥50% of total score.
+
+32
+
+The attained ML models were applied to RPLC/HRMS NTA of pesticide mixtures that were
+
+-2-
+
+https://doi.org/10.26434/chemrxiv-2024-mdl4q-v2 ORCID: https://orcid.org/0000-0002-6002-9660 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+33
+
+spiked in solvent blank and 100× and 10× diluted black tea matrix. The chemical IPs of TP
+
+34
+
+candidates were increased by 54.5%, 52.1%, and 46.7%, respectively. This work demonstrates
+
+35
+
+the application of ML at large-scale model training to enhance chemical IP of unknown
+
+36
+
+compounds.
+
+37
+
+Keywords
+
+38
+
+Non-targeted screening, Identification confidence, Quantitative structure-retention relationship
+
+39
+
+(QSRR), MS/MS spectral reference library, Supervised learning, Model transferability
+
+40
+
+Scientific Contribution
+
+41
+
+Three supervised machine learning models were developed to improve the identification
+
+42
+
+probabilities of unknown compounds in non-targeted RPLC/HRMS. Our work provided a
+
+43
+
+higher confidence in silico analysis solution for the early-stage data analytics, aiding to shortlist
+
+44
+
+chemicals-of-interest for further chemical identification by reference standards.
+
+-3-
+
+https://doi.org/10.26434/chemrxiv-2024-mdl4q-v2 ORCID: https://orcid.org/0000-0002-6002-9660 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+45
+
+1.
+
+Introduction
+
+46
+
+Mass spectrometry (MS)-based non-targeted analysis (NTA) is a high-throughput technique
+
+47
+
+for profiling sample analytes, distinguishing itself from targeted analysis through its discovery-
+
+48
+
+oriented approach, which does not require prior knowledge of compound structures. The
+
+49
+
+combination of reversed-phase liquid chromatography (RPLC) with high-resolution MS
+
+50
+
+(HRMS) has become a prominent methodology for conducting NTA of the chemical exposome
+
+51
+
+[1, 2], including contaminants such as pesticides [3], and per- and polyfluoroalkyl substances
+
+52
+
+(PFAS) [4]. Researchers investigating human exposure to environmental chemicals not only
+
+53
+
+focus on the exposome but also examine pollutant-induced alterations in the metabolome.
+
+54
+
+Consequently, RPLC/HRMS-based NTA is increasingly employed for uncovering biological
+
+55
+
+insights in environmental toxicology [5].
+
+56
+
+Accurate molecular annotation is crucial for compound identification. In LC/MS-based
+
+57
+
+NTA, each deconvoluted two-dimensional (2D) LC/MS tensor is characterized by the
+
+58
+
+information from the retention time (RT) and the mass-to-charge ratio (m/z) domains. To
+
+59
+
+communicate confidence of compound identification, the Chemical Analysis Working Group
+
+60
+
+at the Metabolomics Standards Initiative proposed a minimum metadata requirement for non-
+
+61
+
+novel metabolite identification in 2007 [6]. For each annotated LC/MS tensor, its identification
+
+62
+
+can only be putative if its measured m/z value and tandem MS (MS/MS) spectrum are just
+
+63
+
+matched with its reference spectra from external libraries while the verification by chemical
+
+64
+
+standard data acquired on the same platform is missed. Since 2014, similar criteria have been
+
+65
+
+introduced in environmental analysis [7–9], emphasizing the necessity of further experimental
+
+66
+
+effort [10], such as at least matching the retention behavior of reference standard on the same
+
+67
+
+instrumental setting to achieve higher confidence match [7].
+
+68
+
+Although applying an in-house database of standard RT and MS/MS spectrum is the only
+
+69
+
+efficient way to reach the highest identification confidence (IC) in RPLC/HRMS-based NTA,
+
+-4-
+
+https://doi.org/10.26434/chemrxiv-2024-mdl4q-v2 ORCID: https://orcid.org/0000-0002-6002-9660 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+70
+
+expanding the database requires significant resources. Accurate in silico analysis at the early
+
+71
+
+stage can aid to screen out a panel of chemicals whose annotated identities require further
+
+72
+
+validation by reference standard. Practically, it involves spectral matching against the m/z
+
+73
+
+values of molecular ions and their associated fragment ions [11, 12]. Several approaches have
+
+74
+
+been introduced for determining matching tolerance, including false discovery rate (FDR)
+
+75
+
+estimation [13], modified cosine, and neutral loss-based spectral alignment [14]. Additionally,
+
+76
+
+novel software solutions, such as DeepMASS [15], MAW [16], and ULSA [12], have been
+
+77
+
+developed to rank candidate compounds based on spectral similarity or spectral entropy
+
+78
+
+similarity [17]. However, these approaches only handle information in the m/z domain.
+
+79
+
+Considering multiple hits resulted for each MS/MS spectrum during reference library search,
+
+80
+
+incorporating retention behavior into a computational process is necessary. Recently, the
+
+81
+
+concept of “identification probability” (IP) was proposed by Metz et al [18], advocating for the
+
+82
+
+measurement of ambiguity rather than confidence to improve transferable annotation results
+
+83
+
+across analytical platforms. In our study, we aim to investigate whether incorporating chemical
+
+84
+
+retention informatics with the information extracted from mass spectrum through machine
+
+85
+
+learning (ML) modeling techniques enhance the compound IP in RPLC chemical space.
+
+86
+
+Model transferability is the ability of a model to accurately predict beyond the data it was
+
+87
+
+originally trained on [19]. It requires diverse data sources and substantial volume during
+
+88
+
+statistical modeling. Previous studies have reported on ML models for RT prediction in LC-
+
+89
+
+based analyses of chemicals, such as the chemical exposome [20–24]. However, the
+
+90
+
+transferability of these models is often limited by the specific chromatographic conditions [25–
+
+91
+
+29], as RT can vary significantly with individual chromatographic methods. A harmonized RT
+
+92
+
+index (RTI) scale is therefore necessary to offer a chromatographical method-independent
+
+93
+
+alternative, although there are different schemes of RT index (RTI). It has its potentials of RTI
+
+94
+
+model transferability and of integration with spectral information to enhance IC [30–33].
+
+-5-
+
+https://doi.org/10.26434/chemrxiv-2024-mdl4q-v2 ORCID: https://orcid.org/0000-0002-6002-9660 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+95
+
+Herein, we present a computational approach to achieve calibrant-free transferable
+
+96
+
+prediction of RTI value on a harmonized scale and integrate it with reference spectral match
+
+97
+
+for compound IP enhancement in RPLC/HRMS-based NTA through statistical modeling.
+
+98
+
+Compounds-of-interest with high predicted IP thus are suggested to have further experimental
+
+99
+
+validation. Among the 3 ML models involved in our identification workflow, there are 2 models
+
+100
+
+built on the quantitative structure-retention relationship (QSRR) to horizontally compute
+
+101
+
+expected RTI values separately for the chemicals beyond the calibrants’ data. Upon MS/MS
+
+102
+
+information being extracted through reference library search, a binary classification model that
+
+103
+
+incorporates information from both retention and m/z domains is used to determine true positive
+
+104
+
+(TP) annotations. The integrative use of our models is demonstrated by RPLC/HRMS data on
+
+105
+
+various pesticides-spiked blanks and black tea samples. Incorporation of the developed ML
+
+106
+
+models increased the IP of the chemical exposome by half on average, showing this
+
+107
+
+computational approach benefits from non-targeted screening in scoping chemical compounds
+
+108
+
+that require further identification.
+
+109
+
+2.
+
+110
+
+2.1. Overall Roadmap
+
+Materials and Methods
+
+111
+
+In this work, 3 ML models and the MS/MS spectral matching algorithm, ULSA [12], were
+
+112
+
+employed. As the roadmap illustrated in Figs. 1A and S01, the first model (Model 1) is a
+
+113
+
+random forest (RF) regression model that correlates molecular fingerprint (MF) to the true RTI
+
+114
+
+values of calibrants from 3 comparable scales. The second model (Model 2) is another RF
+
+115
+
+regression model that utilizes experimental MS/MS spectra from various external spectral
+
+116
+
+databases to predict the expected RTI values on a harmonized scale without knowledge about
+
+117
+
+the extract structure. During modeling Models 1 and 2, train/test split were performed based
+
+118
+
+on MF leverage rather than RTI to ensure the model was trained and tested on structurally
+
+119
+
+diverse compounds. The third model (Model 3) is a k-nearest neighbors (KNN) binary
+
+-6-
+
+https://doi.org/10.26434/chemrxiv-2024-mdl4q-v2 ORCID: https://orcid.org/0000-0002-6002-9660 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+120
+
+classification model designed to predict the acceptance of matched compound annotations from
+
+121
+
+ULSA or any other spectral matching algorithms with the spectral matching scores ≥50% of
+
+122
+
+total score. This model integrates feature deviations from both the RTI and m/z domains. The
+
+123
+
+computational method was validated using both internal train/test splits and external
+
+124
+
+independent datasets, including RPLC/HRMS data from pesticide analyses in blank spike and
+
+125
+
+tea extracts.
+
+126
+
+2.2. Model 1: Molecular Fingerprint-Based Regression Model
+
+127
+
+A previously reported RF model for predicting molecular RTI was retrained for this study
+
+128
+
+with some modifications [33]. In brief, this model correlates the pre-selected MF features to
+
+129
+
+calibrant RTI for transferable prediction of expected RTI value. For each canonical simplified
+
+130
+
+molecular-input
+
+131
+
+AtomPairs2DFingerprintCount (APC2D) and 881 PubChem Fingerprinter (PubChem) MF
+
+132
+
+features were computed using PaDEL [34]. From the features in the PubChem system, only
+
+133
+
+148 bits (i.e., from the 115th to the 262nd)—specifically those describing cyclic structure—were
+
+134
+
+selected and condensed as 10 features to complement with the APC2D features used to describe
+
+135
+
+non-cyclic structure as previously described [33]. Co-correlation among features was examined
+
+136
+
+to consider the portion of features used for each tree’s training (discussed in Supplementary
+
+137
+
+Information). As a result, each compound was represented by a 790-bit MF vector.
+
+line-entry
+
+system
+
+(SMILES)-identified
+
+molecule,
+
+780
+
+138
+
+Different from the previous study, stratification based on the calibrants’ MFs was involved
+
+139
+
+in work. Transferable prediction of RTI values was achieved by training a model on 4,713
+
+140
+
+calibrants across 3 comparable scales of RTI in RPLC: the C3–14 n-alkylamide system (Amide)
+
+141
+
+[35], the RTI system developed by Aalizadeh et al. from the University of Athens (UoA) [31],
+
+142
+
+and the C0–23 cocamide diethanolamine homologous series (Cocamide) [36]. Details on model
+
+143
+
+training and validation are discussed in Supplementary Information. To assess model
+
+144
+
+transferability, accuracy of the predicted RTI value on the harmonized scale was tested by the
+
+-7-
+
+https://doi.org/10.26434/chemrxiv-2024-mdl4q-v2 ORCID: https://orcid.org/0000-0002-6002-9660 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+145
+
+true values of 1,237 untrained calibrants in terms of mean absolute error. The list of compounds
+
+146
+
+used to train and test this MF-to-RTI RF regression model was available online (see file 1 on
+
+147
+
+10.5281/zenodo.14752891).
+
+148
+
+2.3. Model 2: Cumulative Neutral Loss-Based Regression Model
+
+149
+
+In addition to predicting expected RTI values on a harmonized scale from 2D chemical
+
+150
+
+descriptors, a second RF regression model was established to correlate empirical positive
+
+151
+
+electrospray ionization (ESI+) MS/MS spectral data to the RTI values predicted from Model 1,
+
+152
+
+following a strategy similar to a prior study [32]. Feature for this Model 2 was based on
+
+153
+
+cumulative neutral loss (CNL), a method recently applied for matching analog molecules [14,
+
+154
+
+37, 38]. This approach has proven advantageous for chemical componentization [14, 39].
+
+155
+
+Based on the previous results [32, 40], a list of 15,961 high probability masses-of-interest
+
+156
+
+(MOIs) was pre-selected as features. The list is available online (see file 2 on
+
+157
+
+10.5281/zenodo.14752891). Moreover, monoisotopic mass was included as an additional
+
+158
+
+feature, as it was previously reported to be one of the most discriminative to CNL-based model
+
+159
+
+due to its intrinsic relationship with molecular weight [32].
+
+160
+
+Model 2’s training dataset was compiled from various MS/MS reference spectral data from
+
+161
+
+known compounds that have chemical identifiers, specifically InChIKeys and SMILES IDs.
+
+162
+
+Databases including MassBank EU, MoNA, and NIST LC-MS/MS provided multiple spectra
+
+163
+
+for specific compounds. In total, there were 27,211 distinct molecules, consisting of 693,685
+
+164
+
+MS/MS spectra used for training (the list is available online, see file 3 on
+
+165
+
+10.5281/zenodo.14752891). Each spectrum contains at least 2 MOIs. To address the occurrence
+
+166
+
+of multiple compounds, Hao Guo et al. implemented a random train/test split strategy, reserving
+
+167
+
+only 1 spectrum for training and testing while using others for validation [41]. This approach
+
+168
+
+effectively manages sample balance, ensuring each compound carries equal weight in the
+
+169
+
+model, which is particularly important for regression modeling. However, the output labels of
+
+-8-
+
+https://doi.org/10.26434/chemrxiv-2024-mdl4q-v2 ORCID: https://orcid.org/0000-0002-6002-9660 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+170
+
+Model 2, the predicted expected RTI values generated by Model 1, were primarily localized in
+
+171
+
+the center rather than scattered in the margin regions (around RTI values of 0 and 1,500),
+
+172
+
+making edge case overloading neglectable. In our study, we aimed to include as many
+
+173
+
+molecules as currently available in the relevant spectral databases. This CNL-to-RTI RF
+
+174
+
+regression model was trained on 485,577 query MS/MS spectra. Details on model training and
+
+175
+
+validation are discussed in Supplementary Information. To evaluate the exchangeability
+
+176
+
+between Model 1 and Model 2, exploratory data analysis (EDA) and quartile analysis were
+
+177
+
+performed to study the similarity in distribution and the closeness of the predicted RTI values
+
+178
+
+with the true RTI values of the compound calibrants used to train Model 1. Predictive power
+
+179
+
+of Model 2 was tested on 208,104 query spectra by using R2 value and root mean square error
+
+180
+
+(RMSE, calculated according to eq1) as the performance metrics.
+
+181
+
+2.4. Spectral Reference Library and Universal Library Search Algorithm
+
+182
+
+ULSA, a previously developed MS/MS spectral matching algorithm [12], was employed in
+
+183
+
+this study to annotate compounds by matching MS/MS spectra from various public spectral
+
+184
+
+databases, including MassBank EU, MoNA, and GNPS. During the execution of ULSA, 7
+
+185
+
+different parameters were summed to derive a final performance score using the formula
+
+186
+
+outlined in eq2. The final scores ranged from 0 to 7, with higher values indicating increased
+
+187
+
+reliability of the assigned annotation based on spectral matching. “FinalScoreRatio” (𝑆8 ) was
+
+188
+
+then calculated by dividing the final score by 7. In eq2, 𝑀𝑆𝑡𝑜𝑙 represents the user-defined m/z
+
+189
+
+tolerance in Daltons for an ion to be accepted as a positive match. The 7 features (𝑆1−7) that
+
+190
+
+were extracted from the spectra for feature selection in Model 3 included: 𝑆1−2, the fractions
+
+191
+
+of matched fragments to the reference spectra (denoted as 𝑓𝑚𝑎𝑡𝑐ℎ𝑒𝑑 ⁄𝑓𝑟𝑒𝑓𝑒𝑟𝑒𝑛𝑐𝑒 in eq2) and to
+
+192
+
+the total fragments in the user spectrum (𝑓𝑚𝑎𝑡𝑐ℎ𝑒𝑑 ⁄𝑓𝑢𝑠𝑒𝑟 ); 𝑆3 , the observed mass error in the
+
+193
+
+precursor ion (𝑀𝑆𝑒𝑟𝑟,𝑝𝑟𝑒 ); 𝑆4 , the absolute average mass error of all matched fragment ions
+
+194
+
+(|𝑀𝑆𝑒𝑟𝑟,𝑓𝑟𝑎𝑔 |); 𝑆5 , the standard deviation of mass error for matched fragments (𝑆𝑇𝐷𝑒𝑟𝑟,𝑓𝑟𝑎𝑔 );
+-9-
+
+https://doi.org/10.26434/chemrxiv-2024-mdl4q-v2 ORCID: https://orcid.org/0000-0002-6002-9660 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+195
+
+and 𝑆6−7, the forward (𝑀𝐹𝑓𝑜𝑟𝑤𝑎𝑟𝑑 ) and reverse (𝑀𝐹𝑟𝑒𝑣𝑒𝑟𝑠𝑒 ) match factors calculated via dot
+
+196
+
+product. Importantly, these output parameters are from statistical calculations that can be
+
+197
+
+computed directly from the spectra, making it rather independent from ULSA implementation.
+
+198
+
+Also, the publicly available spectral libraries are separated to ULSA. For any reference MS/MS
+
+199
+
+spectral data that is newly acquired, uploading it to these databases allowing them to be
+
+200
+
+matched. That is particularly valuable for annotating the chemicals of emerging concern.
+
+201
+
+2.5. Model 3: Predicting Acceptance of Molecular Annotation
+
+202
+
+Model 3 is a binary classification model aimed at determining whether a molecular
+
+203
+
+annotation suggested by ULSA was TP and should be accepted (the outputs were labeled as
+
+204
+
+“1”), or it was indicates true negative (TN) and should be rejected (labeled as “0”). The features
+
+205
+
+for this model include the RTI difference between the RTI values derived from Models 1
+
+206
+
+(𝑅𝑇𝐼𝑀𝐹 ) and 2 (𝑅𝑇𝐼𝐶𝑁𝐿 ), along with monoisotopic mass and 8 candidate features obtained from
+
+207
+
+ULSA. We hypothesize that a larger RTI error indicates TN annotations, while a smaller error
+
+208
+
+correlates with TP annotations. Some features as discussed in Supplementary Information
+
+209
+
+exhibit right-skewed distribution were log-transformed, yet all data were scaled by mean
+
+210
+
+normalization for model selection and optimization. Several ML algorithms, including logistic
+
+211
+
+regression (LR), decision tree (DT), RF, and KNN, were evaluated. Pearson correlation was
+
+212
+
+applied to eliminate redundant features that have less feature importance and r values >0.80
+
+213
+
+for fair comparison among models. Further feature selection focuses on the model’s sensitivity
+
+214
+
+to excluded features, prioritizing those with the most negative contribution to predictions.
+
+215
+
+Details information on model selection and models’ hyper-parameter tuning are discussed in
+
+216
+
+Supplementary Information. A set of semi-synthetic MS/MS spectra was prepared following
+
+217
+
+methodologies from prior research [12]. In short, HRMS spectra with a mass resolution >5,000,
+
+218
+
+acquired using an ESI+ source, were randomly selected from databases such as MassBank EU,
+
+219
+
+MoNA, GNPS, and NIST. To mimic false negative (FN) ions (i.e., loss ions) caused by ion
+- 10 -
+
+https://doi.org/10.26434/chemrxiv-2024-mdl4q-v2 ORCID: https://orcid.org/0000-0002-6002-9660 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+220
+
+suppression or acquisition defects, 10% fragments were removed randomly. Data augmentation
+
+221
+
+was applied by adding noise to simulate false positive (FP) ions. For instance, if the mass
+
+222
+
+tolerance for MS/MS spectral matching was set to ±20 mDa, FP ions with random mass errors
+
+223
+
+in a range of ±30 mDa were incorporated to the accurate masses of each fragment ion. These
+
+224
+
+semi-synthetic sample spectra were then analyzed by ULSA, yielding 4,368,902 annotated
+
+225
+
+MS/MS spectra. Since all annotated spectra with a “FinalScoreRatio” (𝑆8 ) <0.50 are in 100%
+
+226
+
+of TNs, ML was deemed unnecessary for distinguishing TP from TN. Ultimately, 1,686,319
+
+227
+
+spectra were used for training and 421,381 for testing. Among the training samples, 1,535,009
+
+228
+
+spectra were TN (label “0”), while 151,310 instances represented TP (label “1”). Nine
+
+229
+
+additional replicates of TP spectra were used to balance the training dataset. The optimal binary
+
+230
+
+classification model was tested on an external independent dataset, which comprised of
+
+231
+
+experimental data of pesticides spiked into blank samples at varying concentrations (1, 2.5, 5,
+
+232
+
+10, 25, 50, 100, and 1,000 ppb). Because both TP and TN are known in the blank spikes, the
+
+233
+
+optimal model was primarily assessed based on the Matthews correlation coefficient (MCC)
+
+234
+
+score (eq3) and secondarily by weighted F1 score (eq4).
+
+235
+
+2.6. Application of the Models in the Identification Workflow: NTA of Pesticides-Spiked
+
+236
+
+Black Tea Samples
+
+237
+
+After developing all the predictive models, they were integrated into the NTA pipeline for
+
+238
+
+aiding pesticide annotation as a real-world application. Their overall effectiveness in enhancing
+
+239
+
+compound IPs was evaluated using a set of RPLC-MS/MS data from pesticides-spiked black
+
+240
+
+tea extract samples, as previously reported in a CNL model development study [40]. The
+
+241
+
+pesticide standards were part of the LC/MS Pesticide Comprehensive Mix Kit (Part Number
+
+242
+
+5190-0551) from Agilent Technologies. Pesticide mixtures were spiked in solvent blank and
+
+243
+
+10× and 100× diluted black tea matrix respectively, resulting 1 ppm final solutions. The details
+
+244
+
+of data acquisition were outlined in the prior CNL model study [40].
+- 11 -
+
+https://doi.org/10.26434/chemrxiv-2024-mdl4q-v2 ORCID: https://orcid.org/0000-0002-6002-9660 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Data Pre-Processing
+
+245
+
+-
+
+246
+
+To extract HRMS information required as the model input, a user interface, namely “jHRMS
+
+247
+
+ToolBox”, was previously developed for no-code application [42]. Detailed descriptions of its
+
+248
+
+component modules and their modules’ input/output were summarized in Table S1 for
+
+249
+
+facilitating MS community to reassemble the pipeline. To introduce, firstly, the upstream
+
+250
+
+processing of LC/HRMS files requiring the open MS format, “.mzXML”. Raw data files
+
+251
+
+conversion was accomplished using the “MS_Import” module, built on MSConvertGUI (64-
+
+252
+
+bit, ProteoWizard [43]). Secondly, this ecosystem also incorporates the self-adjusting feature
+
+253
+
+detection
+
+254
+
+componentization was achieved by executing the “CompCreate” module, which correlates the
+
+255
+
+extracted features with the probabilistic CNL model [40]. Finally, the resultant MS/MS spectra
+
+256
+
+were then analyzed using ULSA for compound annotation [12]. It returned a spreadsheet that
+
+257
+
+contains necessary information for the identification workflow, including the suggested
+
+258
+
+compound, m/z value of the molecular ion, a list of m/z values of the correlated fragments, and
+
+259
+
+the scores 𝑆1−8.
+
+(SAFD)
+
+algorithm
+
+for
+
+extracting
+
+LC-MS/MS
+
+features
+
+[44].
+
+Thirdly,
+
+Models Application
+
+260
+
+-
+
+261
+
+In Figs. 1B and S01, the resultant spreadsheet was fed into Models 1 and 2 to calculate RTI
+
+262
+
+error (as defined by eq5). Subsequently, Model 3 was deployed for each annotated
+
+263
+
+RPLC/HRMS tensor, utilizing the necessary ULSA-returning scores, monoisotopic mass, and
+
+264
+
+RTI error to predict whether the suggested chemical annotation was acceptable.
+
+265
+
+Model 1 (the MF-to-RTI model) was deployed for obtaining the annotated compounds’ RTI
+
+266
+
+values (considered as measured values). Leverage ( ℎ𝑖𝑖 ) was used to assess whether an
+
+267
+
+annotated compound was in the applicability domain (AD, the 95% leverage threshold) of
+
+268
+
+Model 1 (0.275) based on the training dataset. It is calculated by the equation shown in eq6,
+
+269
+
+where 𝑋 represents the matrix of training data, and 𝑥𝑖 is the 790-bit vector for an individual
+- 12 -
+
+https://doi.org/10.26434/chemrxiv-2024-mdl4q-v2 ORCID: https://orcid.org/0000-0002-6002-9660 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+270
+
+data query. If the leverage value of a suggested annotation is within AD, the obtained RTI value
+
+271
+
+has low uncertainty and can be treated as a ULSA-measured value. Similar, Model 2 (the CNL-
+
+272
+
+to-RTI model) was deployed for obtaining the actual RTI values if and only if a RPLC/HRMS
+
+273
+
+tensor’s spectral data was within the AD of Model 2 (ℎ𝑖𝑖 <0.146). Upon computing the RTI
+
+274
+
+values from both Models 1 and 2, RTI error, the difference between measured and actual RTI
+
+275
+
+values, was then calculated and proceeded to Model 3 as one of the features, namely “DeltaRi”.
+
+276
+
+Model 3 was deployed for TP annotation determination. A script for its application is
+
+277
+
+available (see Section Computations and Code Availability). In short, the RPLC/HRMS
+
+278
+
+tensors with the values of 𝑆8 ≥0.50 and within the ADs of Models 1 and 2 were considered.
+
+279
+
+Independent variables included logarithm of 𝑆1, 𝑆3 , 𝑆5 , logarithm of 𝑆8 , logarithm of a value
+
+280
+
+of monoisotopic mass/1000, and “DeltaRi”. They were normalized by mean before Model 3
+
+281
+
+implementation. For real sample analyses, recall (as defined by eq7) was chosen as the primary
+
+282
+
+performance metric since TN and FP are always unknown in real sample.
+Identification Probability Calculation
+
+283
+
+-
+
+284
+
+In ambiguity measurement of a candidate RPLC/HRMS tensor, a collection of reference
+
+285
+
+spectra can be matched. For each compound hit, multiple spectra of the same compound may
+
+286
+
+correspond. Hence, a weighted probability of TP (P(TP)) was calculated for each hit. A decision
+
+287
+
+threshold of 0.50 was then applied to determine whether one should retain or exclude that hit.
+
+288
+
+The shortlisted hits for each RPLC/HRMS tensor were then used to calculate the IP according
+
+289
+
+to eq8. In other words, if ULSA implementation yielded 5 hits, the probability of TP from
+
+290
+
+ULSA determination (P(ULSA)) was calculated as 1/5. Since different numbers of reference
+
+291
+
+spectra (1, 5, 10, 20, and 50) were matched for the respective hits, the weighted P(TP) for each
+
+292
+
+hit was calculated as the summation of P(TP) values for each spectrum-specific annotation
+
+293
+
+derived from Model 3, followed by a division of the number of spectra. Thus, the calculations
+
+294
+
+would be (P(TP of the 1st hit))/1, (P(TP of the 2nd hit))/5, (P(TP of the 3rd hit))/10, (P(TP
+- 13 -
+
+https://doi.org/10.26434/chemrxiv-2024-mdl4q-v2 ORCID: https://orcid.org/0000-0002-6002-9660 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+295
+
+of the 4th hit))/20, and (P(TP of the 5th hit))/50. If only 2 hits remained from the 5, the IP
+
+296
+
+would then be 1/2.
+
+297
+
+2.7. Computations and Code Availability
+
+298
+
+All scripts for ML modeling and data visualization were written in Julia v.1.6 using Visual
+
+299
+
+Studio Code (Microsoft), while some data visualization was conducted in Python v.3.10 on
+
+300
+
+Jupyter Notebook (Anaconda3). The scripts (with step-by-step instructions) for models
+
+301
+
+application and IP determination and also the developed models are available in the following
+
+302
+
+repositories respectively: git@github.com:TommyNHL/exposomeIDproba.git (scripts); and
+
+303
+
+git@bitbucket.com:hiulokngan/modelsExposomeProjUvA.git (models). Details regarding
+
+304
+
+computational power and packages used can be found in Table S2. Any updates will be
+
+305
+
+published on both repositories with a citation of the final DOI for this work.
+
+306
+
+3.
+
+307
+
+3.1. Performance of Model 1 (the Molecular Fingerprint-to-Retention Time Index Model)
+
+Results and Discussion
+
+308
+
+The first model developed in this study was utilized to predict 𝑅𝑇𝐼𝑀𝐹 (considered as
+
+309
+
+measured RTI for each suggested annotation) on a harmonized scale. It was trained by 4,713
+
+310
+
+compound calibrants with 5,048 true TRI values across 3 similar RTI scale systems. The mean
+
+311
+
+absolute error of the predicted values of the trained calibrant was 89.52. Contrasting to the
+
+312
+
+mean absolute difference (78.56) among true RTI values from different scales of individual
+
+313
+
+calibrants with publicly available MS/MS spectra (the list is available online, see file 4 on
+
+314
+
+10.5281/zenodo.14752891), similar uncertainty might exist for the predicted values from
+
+315
+
+Model 1. The uncertainty (with a mean absolute error of 111.15) was slightly increased when
+
+316
+
+the model tested by 1,263 true values of 1,237 calibrants. In the histograms depicted in Figs.
+
+317
+
+2A and 2B, the true RTI values (colored in purple-blue) and 𝐶𝑁𝐿𝑀𝐹 (in sky-blue) exhibited
+
+318
+
+similar distributions among the data used for training and beyond modeling respectively. Hence,
+
+319
+
+the retrained MF-to-RTI model has been validated to be transferable in this study.
+- 14 -
+
+https://doi.org/10.26434/chemrxiv-2024-mdl4q-v2 ORCID: https://orcid.org/0000-0002-6002-9660 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+320
+
+3.2. Model 2 (the Cumulative Neutral Loss-to-Retention Time Index Model)
+
+321
+
+The second model established in this study was employed to predict 𝑅𝑇𝐼𝐶𝑁𝐿 (considered
+
+322
+
+as actual RTI for each suggested annotation) on a harmonized scale that was defined in Model
+
+323
+
+1. Model 2 was trained to correlate the pre-selected CNL masses with 𝑅𝑇𝐼𝑀𝐹 by 485,577 query
+
+324
+
+MS/MS spectra and tested by 208,104 spectra. Both Models 1 and 2 were used to compute RTI
+
+325
+
+error of each chemical annotation upon universal library search. It was calculated by the
+
+326
+
+difference between 𝑅𝑇𝐼𝑀𝐹 and 𝑅𝑇𝐼𝐶𝑁𝐿 . If a chemical annotation is TP, both predicted RTI
+
+327
+
+values should be similar and thus the resultant error is close to 0. Wrong annotation gives a
+
+328
+
+large different in 𝑅𝑇𝐼𝑀𝐹 (measured value) from 𝑅𝑇𝐼𝐶𝑁𝐿 (actual value), resulting larger RTI
+
+329
+
+error in a TN annotation.
+Model Performance
+
+330
+
+-
+
+331
+
+Due to QSRR, distribution of 𝑅𝑇𝐼𝐶𝑁𝐿 (green bars) were similar to 𝑅𝑇𝐼𝑀𝐹 (sky-blue bars)
+
+332
+
+and the true RTI values (purple-blue bars) of chemical calibrants used to train (Fig. 2A) and
+
+333
+
+test (Fig. 2B) Model 1. Variances of RTI error from Model 1 (sky-blue box) was smaller than
+
+334
+
+that from Model 2 (green box, Fig. 2C) for the data it was originally trained on Model 1.
+
+335
+
+However, both models showed similar RTI error variance for the extended data (data not used
+
+336
+
+to train Model 1, see Fig. 2D). These similar deviation patterns demonstrated the
+
+337
+
+exchangeability of RTI values that were computed from Models 1 and 2.
+
+338
+
+For the model trained with a 7:3 train/test split, the RMSEs were 51.8 and 92.8, with R2
+
+339
+
+values of 0.96 and 0.88 for the training and testing datasets (Table 1 and Figs. 2E and 2F).
+
+340
+
+These results were comparable to the predictive power of the CatBoost model that was trained
+
+341
+
+on NORMAN dataset by different descriptors by Boelrijk et al. [32]. Our retrained RF model
+
+342
+
+demonstrated the predicted values had better correlation with MF-derived RTIs (train: R2 =
+
+343
+
+0.94; test: 0.85 in Boelrijk et al.’s work). Larger RMSEs were observed in our study (train:
+
+344
+
+44.0; test: 67.0 in Boelrijk et al.’s work) might be due to the RTI scale adopted in this study
+- 15 -
+
+https://doi.org/10.26434/chemrxiv-2024-mdl4q-v2 ORCID: https://orcid.org/0000-0002-6002-9660 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+345
+
+was across 3 comparable RTI scaling systems. The comparable predictive performance with
+
+346
+
+the previous work confirming that this newly constructed Model 2 was transferable and could
+
+347
+
+effectively predict expected RTI values based on QSRR.
+Feature Interpretation
+
+348
+
+-
+
+349
+
+In this study, the spectral data collected showed mass distribution of the CNL masses during
+
+350
+
+ESI+ MS/MS analysis lying into range between 0–500 Da (see Fig. S02), consistent with the
+
+351
+
+findings from van Herwerden et al. [40]. CNL masses with lower weight showed higher
+
+352
+
+frequency than the higher masses (the list of counts for each CNL mass is available online, see
+
+353
+
+file 2 on 10.5281/zenodo.14752891). Similar distribution also can be seemed in the semi-
+
+354
+
+synthetic data (see Fig. S03).
+
+355
+
+3.3. Model 3: Binary Classification Model
+Model Performance
+
+356
+
+-
+
+357
+
+Model 3 was a KNN model that incorporated 6 features, namely “RefMatchFragRatio”,
+
+358
+
+“MS1Error”, “MS2ErrorStd”, “FinalScoreRatio”, monoisotopic mass, and RTI error. This
+
+359
+
+model only applied to the individual spectral matching results with the scores of ≥50% for
+
+360
+
+TP/TN annotation determination. Our optimized model was a RTI error inclusive model. The
+
+361
+
+area under the receiver operating characteristics curve (AUROC) and the area under the
+
+362
+
+precision-recall curve (AUPRC) were 0.95 and 0.93 in training and testing datasets,
+
+363
+
+respectively (Fig. 3A). RTI error inclusive model exhibited slightly greater AUROC and
+
+364
+
+AUPRC values than the values of RTI error exclusive model (train: AUROC = 0.94, AUPRC
+
+365
+
+= 0.92; test: AUROC = 0.94, AUPRC = 0.91). If only considered positive results, the recalls
+
+366
+
+were 0.99 for training and testing datasets (see Table 1). Our KNN model achieved a weighted
+
+367
+
+F1 score of 0.65 and a MCC score of 0.30 for pesticides-spiked blank samples, with a recall of
+
+368
+
+0.66 (Table 1). Notably, the predictive power of RTI error inclusive model resulted in better
+
+369
+
+recall (0.60) for determining acceptance of the chemical exposome annotation when the
+
+- 16 -
+
+https://doi.org/10.26434/chemrxiv-2024-mdl4q-v2 ORCID: https://orcid.org/0000-0002-6002-9660 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+370
+
+samples presented with 10× and 100× diluted black tea matrix than the RTI error exclusive
+
+371
+
+model (recall = 0.54). We demonstrated that ML modeling by adopting semi-synthetic data was
+
+372
+
+feasible to achieve acceptable model transferability, annotating RPLC/HRMS tensors in higher
+
+373
+
+IC.
+
+374
+
+By deploying Model 3, the default probability threshold for accepting an annotation as TP
+
+375
+
+was set at 0.50, resulting in TP and FP rates of 98.8% and 23.4%, respectively (Fig. 3C), with
+
+376
+
+a FDR of 19.1%. FDR-controlled cut-offs for the probability of accepting an annotation as TP
+
+377
+
+were 0.89 and 0.78, respectively (Fig. 3D). These decision thresholds could be applied to
+
+378
+
+calculate recalls for individual samples in different levels of IC. For 1 ppm samples, their
+
+379
+
+recalls increased as the matrix effect decreased (Fig. 3E). When the matrix effect was absent,
+
+380
+
+as solution concentrations increased, so did the number of deconvoluted RPLC/HRMS tensor
+
+381
+
+and the number of positive candidates to be identified by our identification workflow. However,
+
+382
+
+Model 3 exhibited no predictive power for the analyses of 1 ppb solution, while it functioned
+
+383
+
+stably for the analyses of chemical contaminants with concentrations of 2.5 ppb or above.
+Feature Interpretation
+
+384
+
+-
+
+385
+
+Since the developed binary classification model indicated discriminative power to TP/TN
+
+386
+
+chemical annotations, we conducted permutation analysis to evaluate feature importance. All
+
+387
+
+KNN models with MCC scores >0.30 on validation dataset (the experimental pesticides-spiked
+
+388
+
+blanks) during model selection and hyperparameter tuning were examined. Our results
+
+389
+
+confirmed that the excluded features, logarithm of 𝑆2 (“UsrMatchFragRatio”) and the
+
+390
+
+difference between 𝑆6 (“DirectMatch”) and 𝑆7 (“ReverseMatch”), were one of the factors
+
+391
+
+contributing to the models’ predictive power on experimental data. The most significant feature
+
+392
+
+was 𝑆3 , “MS1Error” (Fig. 3F), while the remaining features indicating importances
+
+393
+
+occasionally with positive and negative contributions that were close to 0.00. These findings
+
+394
+
+were only specific to the binary classification models we attained, while they did not reflect
+- 17 -
+
+https://doi.org/10.26434/chemrxiv-2024-mdl4q-v2 ORCID: https://orcid.org/0000-0002-6002-9660 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+395
+
+the intrinsic predictive values of features. Hence, Model 3 was significantly sensitive to the
+
+396
+
+differences between the measured molecular ion mass and its actual m/z values reported from
+
+397
+
+public reference spectra. Incorporation of other least discriminative features was still critical
+
+398
+
+for Model 3 to exhibit its predictive power on experimental data.
+
+399
+
+3.4. Performance Comparison with Solely MS/MS Spectral Library Search
+
+400
+
+To examine the extent of improvement achieved by deploying our models (Models 1, 2, and
+
+401
+
+3) accompanying with MS/MS spectral reference library search, we calculated the IP of
+
+402
+
+molecular features based on spectral matching and ML-assisted determination of annotation
+
+403
+
+acceptance or rejection. Performance comparison was based on 2 different definitions of “hit”.
+
+404
+
+The first definition of hit refers to a collection of reference spectra matched for measuring
+
+405
+
+the ambiguity of a candidate compound. We averaged the IPs of all positive results to facilitate
+
+406
+
+overall performance comparison. As shown in Fig. 3G, for 1 ppm sample solutions, integration
+
+407
+
+of our 6-component KNN model (Model 3) enhanced average IPs from 44% to 68% (24%
+
+408
+
+difference) for the blank spike and from 48% to 73% (25% difference) in samples presented
+
+409
+
+with 100× diluted tea matrix, representing increments of 54.5% and 52.1%, respectively. The
+
+410
+
+presence of 10× diluted tea matrix slightly affected the improvement from ML incorporation,
+
+411
+
+which revealed a 21% higher IP than singly ULSA alone (from 45% to 66%), equivalent to
+
+412
+
+46.7% increase.
+
+413
+
+Molecular annotation via spectral library search typically ranks based on score of matched
+
+414
+
+reference spectra to measure annotation confidence [12, 16]. We also compared the
+
+415
+
+performance by defining a hit as a single reference spectrum match upon ranking by matching
+
+416
+
+score. Ranking was performed for library search-suggested annotations and ML-assisted
+
+417
+
+annotations using “FinalScoreRatio” and by “P(TP)” without a defined acceptance threshold.
+
+418
+
+An alternative IP, as defined in eq8 for ranking analysis, represented the occurrence frequency
+
+419
+
+of TP annotations in the top-ranked hits. As shown in Fig. 4, IPs were improved slightly (1–
+
+- 18 -
+
+https://doi.org/10.26434/chemrxiv-2024-mdl4q-v2 ORCID: https://orcid.org/0000-0002-6002-9660 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+420
+
+3%) on average for samples with tea matrices due to ML incorporation, while remaining
+
+421
+
+comparable for spiked blanks. This finding emphasized the importance of considering
+
+422
+
+identification ambiguity of a candidate compound from a collection of reference spectral and
+
+423
+
+multiple platforms rather than a single reference spectrum hit [18]. TP hit rates were calculated
+
+424
+
+as the ratio of RPLC/HRMS tensors with any TP hit at least once in the top ranks to the total
+
+425
+
+identified spectra. Library search achieved TP hit rates of 87–88%, 83–87%, and 76–81% for
+
+426
+
+top-5, top-3, and top-1 hits, respectively. Our assessments found that ML incorporation
+
+427
+
+improved these rates to 89–95%, 87–90%, and 78–83%.
+
+428
+
+Collectively, chemical IP could be enhanced by applying our developed models. The
+
+429
+
+improvement would be greater if the number of reference spectra increased. This observation
+
+430
+
+was supported by our results of top-1, top-3, top-5 analyses and the ambiguity analyses that
+
+431
+
+included a collection of matched reference spectra (i.e., top-many analyses).
+
+432
+
+3.5. Potentials and Limitations
+
+433
+
+In this work, we demonstrated a novel approach of integrative ML models to enhance
+
+434
+
+chemical IP in RPLC/HRMS-based NTA. Our results demonstrated the effectiveness of our
+
+435
+
+developed models, particularly Model 3, which integrates RTI error computed by the RTI
+
+436
+
+values on a harmonized scale from 2 QSRR-based models to enhance molecular annotation IPs.
+
+437
+
+Model 1 (the MF-to-RTI model) exhibited transferable RTI prediction and its exchangeability
+
+438
+
+with Model 2 (the CNL-to-RTI model). Model 2 showed strong predictive power for the
+
+439
+
+expected RTIs, capable to predict RTI values of chemical compounds beyond the data used to
+
+440
+
+modeling. The integration of ML incorporation with reference spectral library searches in our
+
+441
+
+identification workflow for the measurement of ambiguity not only improved recall in real
+
+442
+
+samples with and without tea matrices but also increased the confidence of annotation
+
+443
+
+acceptance compared to single library searches. Application of Model 3 resulted in acceptable
+
+444
+
+weighted F1 and MCC scores for the blank spike samples, alongside notable increases in IPs
+
+- 19 -
+
+https://doi.org/10.26434/chemrxiv-2024-mdl4q-v2 ORCID: https://orcid.org/0000-0002-6002-9660 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+445
+
+with diluted tea matrix. Greater IP improvements were observed as the number of reference
+
+446
+
+spectra increased. In our work, for both tea matrix-containing and matrix-free samples,
+
+447
+
+computing a chemical IP from its corresponding collection of all available reference MS/MS
+
+448
+
+spectra improved half in annotation confidence. Our work provided a higher confidence in
+
+449
+
+silico analysis solution for the early-stage data analytics, aiding to shortlist chemicals-of-
+
+450
+
+interest for further chemical identification by reference standards.
+
+451
+
+However, a primary limitation inherent in our approach is the reliance on the quality and
+
+452
+
+diversity of the spectral reference libraries. Incomplete or biased libraries may hinder the
+
+453
+
+identification of highly structurally diverse compounds or those with limited accessible
+
+454
+
+reference spectral data. To address this challenge, it is essential to continuously update and
+
+455
+
+expand the spectral libraries, ensuring they encompass a broad spectrum of compounds
+
+456
+
+encountered in real-world samples. Furthermore, ongoing validation with various real-world
+
+457
+
+samples of TP and TN MS/MS spectra will be essential to fine-tune the models and ensure their
+
+458
+
+reliability across various analytical conditions.
+
+459
+
+Abbreviations
+2D
+AD
+Amide
+APC2D
+AUPRC
+AUROC
+CNL
+Cocamide
+CV
+DT
+EDA
+ESI+
+FDR
+FN
+FP
+HRMS
+
+Two-dimensional
+Applicability domain
+C3–14 n-Alkylamide system
+AtomPairs2DFingerprintCount
+Area under the precision-recall curve
+Area under the receiver operating characteristics curve
+Cumulative neutral loss
+C0–23 Cocamide diethanolamine homologous series
+Cross-validation
+Decision tree
+Exploratory data analysis
+Positive electrospray ionization
+False discovery rate
+False negative
+False positive
+High-resolution mass spectrometry
+- 20 -
+
+https://doi.org/10.26434/chemrxiv-2024-mdl4q-v2 ORCID: https://orcid.org/0000-0002-6002-9660 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+IC
+IP
+KNN
+LR
+m/z
+MCC
+MF
+ML
+MOIs
+MoNA
+MS/MS
+NTA
+P(TP)
+P(ULSA)
+PFAS
+PubChem
+QSRR
+R2
+RF
+RI
+RMSE
+RPLC
+RT
+RTI
+SAFD
+SMILES
+TN
+TP
+ULSA
+UoA
+
+Identification confidence
+Identification probability
+k-Nearest neighbors
+Logistic regression
+Mass-to-charge ratio
+Matthews correlation coefficient
+Molecular fingerprint
+Machine learning
+Masses-of-interest
+MassBank of North America
+Tandem mass spectrometry
+Non-targeted analysis
+Probability of true positive
+Probability of true positive from ULSA determination
+Per- and polyfluoroalkyl substances
+PubChem Fingerprinter
+Quantitative structure-retention relationship
+Coefficient of correlation
+Random forest
+Retention index
+Root mean square error
+Reversed-phase lipid chromatography
+Retention time
+Retention time index
+Self-adjusting feature detection
+Simplified molecular-input line-entry system
+True negative
+True positive
+Universal Library Search Algorithm
+the RI system developed at the University of Athens
+
+460
+461
+
+Supplementary Information
+
+462
+
+A word file with details regarding modeling, identification workflow, computational
+
+463
+
+power, libraries used, and the additional figures and tables for the supporting text.
+
+464
+
+Author Information
+
+465
+
+▪
+
+Disclosure
+
+- 21 -
+
+https://doi.org/10.26434/chemrxiv-2024-mdl4q-v2 ORCID: https://orcid.org/0000-0002-6002-9660 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+466
+
+The authors declare that they have no conflicts of interest or personal relationships that
+
+467
+
+could influence the work reported in this paper.
+
+468
+
+▪
+
+469
+
+Conceptualization, H.-L.N., V.T., and S.S.; resources, H.-L.N., V.T., D.v.H., Z.C.,
+
+470
+
+and S.S.; data curation, H.-L.N., V.T., and D.v.H.; writing-original draft preparation,
+
+471
+
+H.-L.N.; writing-review and editing, H.-L.N., V.T., Y.H., and S.S.; visualization, H.-
+
+472
+
+L.N. and Y.H.; supervision, Y.H., Z.C., and S.S.; project administration, Z.C. and
+
+473
+
+S.S.; funding acquisition, Z.C. and S.S. All authors have read and agreed to the
+
+474
+
+published version of the manuscript.
+
+Author Contributions
+
+475
+
+Acknowledgements
+
+476
+
+H.-L. Ngan acknowledges the University Grant (UG) Studentship (R20PSCI000679),
+
+477
+
+the sponsorship from the Graduate School of Hong Kong Baptist University (HKBU),
+
+478
+
+the Environmental Monitoring and Computational Mass Spectrometry (EMCMS,
+
+479
+
+www.emcms.info) group for their insights and feedback, and Dr. S. Samanipour for his
+
+480
+
+host of overseas research experience program. S. Samanipour and V. Turkina thank the
+
+481
+
+ChemistryNL for financial support. H. Yan thanks the Start-up Grant for New
+
+482
+
+Academics – YAN Hong (165520). The authors from HKBU thank the financial support
+
+483
+
+from the Kwok Chung Bo Fun Charitable Fund for the establishment of the Kwok Yat
+
+484
+
+Wai Endowed Chair of Environmental and Biological Analysis.
+
+485
+
+References
+
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+
+1.
+2.
+3.
+4.
+5.
+
+Manz KE, Feerick A, Braun JM, et al (2023) Non-targeted analysis (NTA) and suspect screening
+analysis (SSA): A review of examining the chemical exposome. J Expo Sci Environ Epidemiol
+33:524–536.
+Samanipour S, Barron LP, van Herwerden D, et al (2024) Exploring the chemical space of the
+exposome: How far have we gone? JACS Au 4:2412–2425.
+Guo Z, Zhu Z, Huang S, Wang J (2020) Non-targeted screening of pesticides for food analysis using
+liquid chromatography high-resolution mass spectrometry-a review. Food Additives and
+Contaminants - Part A 37:1180–1201.
+Zweigle J, Bugsel B, Zwiener C (2022) FindPFΔS: Non-target screening for PFAS-comprehensive
+data mining for MS2 fragment mass differences. Anal Chem 94:10788–10796.
+Chen Y, Ngan HL, Song Y, et al (2024) Chronic real-ambient PM2.5 exposure exacerbates
+cardiovascular risk via amplifying liver injury in mice fed with a high-fat and high-cholesterol diet.
+
+- 22 -
+
+https://doi.org/10.26434/chemrxiv-2024-mdl4q-v2 ORCID: https://orcid.org/0000-0002-6002-9660 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+
+6.
+7.
+8.
+9.
+10.
+11.
+12.
+13.
+14.
+15.
+16.
+17.
+18.
+19.
+20.
+21.
+22.
+23.
+24.
+25.
+26.
+27.
+28.
+
+Environment & Health 2:221–232.
+Sumner LW, Amberg A, Barrett D, et al (2007) Proposed minimum reporting standards for chemical
+analysis: Chemical Analysis Working Group (CAWG) Metabolomics Standards Initiative (MSI).
+Metabolomics 3:211–221.
+Schymanski EL, Jeon J, Gulde R, et al (2014) Identifying small molecules via high resolution mass
+spectrometry: Communicating confidence. Environ Sci Technol 48:2097–2098.
+Hollender J, Schymanski EL, Ahrens L, et al (2023) NORMAN guidance on suspect and non-target
+screening in environmental monitoring. Environ Sci Eur 35:75.
+Alygizakis N, Lestremau F, Gago-Ferrero P, et al (2023) Towards a harmonized identification scoring
+system in LC-HRMS/MS based non-target screening (NTS) of emerging contaminants. TrAC Trends in Analytical Chemistry 159:116944.
+Ciccarelli D, Samanipour S, Rapp-Wright H, et al (2024) Bridging knowledge gaps in human
+chemical exposure via drinking water with non-target screening. Crit Rev Environ Sci Technol
+55:190.
+Hulleman T, Turkina V, O’Brien JW, et al (2023) Critical assessment of the chemical space covered
+by LC-HRMS non-targeted analysis. Environ Sci Technol 57:14101–14112.
+Samanipour S, Reid MJ, Bæk K, Thomas K V. (2018) Combining a deconvolution and a universal
+library search algorithm for the nontarget analysis of data-independent acquisition mode liquid
+chromatography-high-resolution mass spectrometry results. Environ Sci Technol 52:4694–4701.
+Scheubert K, Hufsky F, Petras D, et al (2017) Significance estimation for large scale metabolomics
+annotations by spectral matching. Nat Commun 8:1494.
+Bittremieux W, Schmid R, Huber F, et al (2022) Comparison of cosine, modified cosine, and neutral
+loss based spectrum alignment for discovery of structurally related molecules. J Am Soc Mass
+Spectrom 33:1733–1744.
+Ji H, Xu Y, Lu H, Zhang Z (2019) Deep MS/MS-aided structural-similarity scoring for unknown
+metabolite identification. Anal Chem 91:5629–5637.
+Zulfiqar M, Gadelha L, Steinbeck C, et al (2023) MAW: The reproducible Metabolome Annotation
+Workflow for untargeted tandem mass spectrometry. J Cheminform 15:32.
+Li Y, Kind T, Folz J, et al (2021) Spectral entropy outperforms MS/MS dot product similarity for
+small-molecule compound identification. Nat Methods 18:1524–1531.
+Metz TO, Chang CH, Gautam V, et al (2024) Introducing “identification probability” for automated
+and transferable assessment of metabolite identification confidence in metabolomics and related
+studies. Anal Chem 97:1–11.
+Assis J, Serrão EA, Fragkopoulou E, et al (2024) Misconception of model transferability precludes
+estimates of seagrass community reorganization in a changing climate. Nat Plants 10:1071–1074.
+Munro K, Miller TH, Martins CPB, et al (2015) Artificial neural network modelling of
+pharmaceutical residue retention times in wastewater extracts using gradient liquid chromatographyhigh resolution mass spectrometry data. J Chromatogr A 1396:34–44.
+McEachran AD, Mansouri K, Newton SR, et al (2018) A comparison of three liquid chromatography
+(LC) retention time prediction models. Talanta 182:371–379.
+Aalizadeh R, Nika MC, Thomaidis NS (2019) Development and application of retention time
+prediction models in the suspect and non-target screening of emerging contaminants. J Hazard Mater
+363:277–285.
+Feng C, Xu Q, Qiu X, et al (2021) Evaluation and application of machine learning-based retention
+time prediction for suspect screening of pesticides and pesticide transformation products in LCHRMS. Chemosphere 271:129447.
+Song D, Tang T, Wang R, et al (2024) Enhancing compound confidence in suspect and non-target
+screening through machine learning-based retention time prediction. Environmental Pollution
+347:123763.
+Bonini P, Kind T, Tsugawa H, et al (2020) Retip: Retention time prediction for compound annotation
+in untargeted metabolomics. Anal Chem 92:7515–7522.
+Stanstrup J, Neumann S, Vrhovšek U (2015) PredRet: Prediction of retention time by direct mapping
+between multiple chromatographic systems. Anal Chem 87:9421–9428.
+Ruttkies C, Schymanski EL, Wolf S, et al (2016) MetFrag relaunched: Incorporating strategies
+beyond in silico fragmentation. J Cheminform 8:3.
+Bach E, Szedmak S, Brouard C, et al (2018) Liquid-chromatography retention order prediction for
+metabolite identification. Bioinformatics 34:i875–i883.
+
+- 23 -
+
+https://doi.org/10.26434/chemrxiv-2024-mdl4q-v2 ORCID: https://orcid.org/0000-0002-6002-9660 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+
+29.
+30.
+31.
+32.
+33.
+34.
+35.
+36.
+37.
+38.
+39.
+40.
+41.
+42.
+43.
+44.
+
+Kretschmer F, Harrieder EM, Hoffmann MA, et al (2024) RepoRT: A comprehensive repository for
+small molecule retention times. Nat Methods 21:153–155.
+Rigano F, Arigò A, Oteri M, et al (2021) The retention index approach in liquid chromatography: An
+historical review and recent advances. J Chromatogr A 1640:461963.
+Aalizadeh R, Alygizakis NA, Schymanski EL, et al (2021) Development and application of liquid
+chromatographic retention time indices in HRMS-based suspect and nontarget screening. Anal Chem
+93:11601–11611.
+Boelrijk J, van Herwerden D, Ensing B, et al (2023) Predicting RP-LC retention indices of
+structurally unknown chemicals from mass spectrometry data. J Cheminform 15:28.
+van Herwerden D, Nikolopoulos A, Barron LP, et al (2024) Exploring the chemical subspace of
+RPLC: A data driven approach. Anal Chim Acta 1317:342869.
+Yap CW (2011) PaDEL-descriptor: An open source software to calculate molecular descriptors and
+fingerprints. J Comput Chem 32:1466–1474.
+Hall LM, Hill DW, Menikarachchi LC, et al (2015) Optimizing artificial neural network models for
+metabolomics and systems biology: An example using HPLC retention index data. Bioanalysis
+7:939–955.
+Aalizadeh R, Nikolopoulou V, Thomaidis NS (2022) Development of liquid chromatographic
+retention index based on cocamide diethanolamine homologous series (C(n)-DEA). Anal Chem
+94:15987–15996.
+Xue J, Guijas C, Benton HP, et al (2020) METLIN MS2 molecular standards database: A broad
+chemical and biological resource. Nat Methods 17:953–954.
+Aisporna A, Benton HP, Chen A, et al (2022) Neutral loss mass spectral data enhances molecular
+similarity analysis in METLIN. J Am Soc Mass Spectrom 33:530–534.
+Mohanty I, Mannochio-Russo H, Schweer J V., et al (2024) The underappreciated diversity of bile
+acid modifications. Cell 187:1801–1818.
+van Herwerden D, O’Brien JW, Lege S, et al (2023) Cumulative neutral loss model for fragment
+deconvolution in electrospray ionization high-resolution mass spectrometry data. Anal Chem
+95:12247–12255.
+Guo H, Xue K, Sun H, et al (2023) Contrastive learning-based embedder for the representation of
+tandem mass spectra. Anal Chem 95:7888–7896.
+Herwerden D van, Kant E, Jackson M, et al (2024) Modular open-access and open-source julia
+language toolbox for processing of HRMS data: jHRMSToolBox
+Chambers MC, MacLean B, Burke R, et al (2012) A cross-platform toolkit for mass spectrometry
+and proteomics. Nat Biotechnol 30:918–920.
+Samanipour S, O’Brien JW, Reid MJ, Thomas K V. (2019) Self adjusting algorithm for the
+nontargeted feature detection of high resolution mass spectrometry coupled with liquid
+chromatography profile data. Anal Chem 91:10800–10807.
+
+593
+
+- 24 -
+
+https://doi.org/10.26434/chemrxiv-2024-mdl4q-v2 ORCID: https://orcid.org/0000-0002-6002-9660 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+594
+
+Formulae and Equations
+Eq1
+
+𝑁
+
+1
+𝑅𝑀𝑆𝐸 = √ ∑(𝑦𝑖 − 𝑦̂𝑖 )2
+𝑁
+𝑖=1
+
+Eq2
+
+𝑓𝑚𝑎𝑡𝑐ℎ𝑒𝑑 𝑓𝑚𝑎𝑡𝑐ℎ𝑒𝑑 𝑀𝑆𝑡𝑜𝑙 − 𝑀𝑆𝑒𝑟𝑟,𝑝𝑟𝑒
++
++
+𝑓𝑢𝑠𝑒𝑟
+𝑓𝑟𝑒𝑓𝑒𝑟𝑒𝑛𝑐𝑒
+𝑀𝑆𝑡𝑜𝑙
+
+𝑆8 =
+
++
+
+𝑓𝑚𝑎𝑡𝑐ℎ𝑒𝑑 𝑀𝑆𝑡𝑜𝑙 − |𝑀𝑆𝑒𝑟𝑟,𝑓𝑟𝑎𝑔 | 𝑓𝑚𝑎𝑡𝑐ℎ𝑒𝑑 2 ∙ 𝑀𝑆𝑡𝑜𝑙 − 𝑆𝑇𝐷𝑒𝑟𝑟,𝑓𝑟𝑎𝑔
+∙
++
+∙
+𝑓𝑟𝑒𝑓𝑒𝑟𝑒𝑛𝑐𝑒
+𝑀𝑆𝑡𝑜𝑙
+𝑓𝑟𝑒𝑓𝑒𝑟𝑒𝑛𝑐𝑒
+2 ∙ 𝑀𝑆𝑡𝑜𝑙
+
++𝑀𝐹𝑓𝑜𝑟𝑤𝑎𝑟𝑑 + 𝑀𝐹𝑟𝑒𝑣𝑒𝑟𝑠𝑒
+= 𝑆1 + 𝑆2 +
+Eq3
+
+Eq4
+
+𝑀𝐶𝐶 =
+
+𝐹1 =
+
+𝑀𝑆𝑡𝑜𝑙 − 𝑆3
+𝑀𝑆𝑡𝑜𝑙 − 𝑆4
+2 ∙ 𝑀𝑆𝑡𝑜𝑙 − 𝑆5
++ 𝑆2 ∙
++ 𝑆2 ∙
++ 𝑆6 + 𝑆7
+𝑀𝑆𝑡𝑜𝑙
+𝑀𝑆𝑡𝑜𝑙
+2 ∙ 𝑀𝑆𝑡𝑜𝑙
+𝑇𝑃 ∙ 𝑇𝑁 − 𝐹𝑃 ∙ 𝐹𝑁
+
+√(𝑇𝑃 + 𝐹𝑃)(𝑇𝑃 + 𝐹𝑁)(𝑇𝑁 + 𝐹𝑃)(𝑇𝑁 + 𝐹𝑁)
+𝑇𝑃
+
+1
+𝑇𝑃 + 2 (𝐹𝑃 + 𝐹𝑁)
+
+Eq5
+
+𝑅𝑇𝐼 𝑒𝑟𝑟𝑜𝑟 = 𝑅𝑇𝐼𝑀𝐹 − 𝑅𝑇𝐼𝐶𝑁𝐿
+
+Eq6
+
+ℎ𝑖𝑖 = 𝑥𝑖𝑇 (𝑋 𝑇 𝑋)−1 𝑥𝑖
+
+Eq7
+Eq8
+Eq9
+
+𝑅𝑒𝑐𝑎𝑙𝑙 =
+
+𝑇𝑃
+𝑇𝑃 + 𝐹𝑁
+
+𝑃(𝐸𝑥𝑝𝑜𝑠𝑜𝑚𝑒 𝐼𝑑𝑒𝑛𝑡𝑖𝑓𝑖𝑐𝑎𝑡𝑖𝑜𝑛 𝑓𝑜𝑟 𝑒𝑎𝑐ℎ 𝑅𝑃𝐿𝐶/𝐻𝑅𝑀𝑆 𝑡𝑒𝑛𝑠𝑜𝑟) =
+
+1
+𝑁
+
+𝑃(𝐸𝑥𝑝𝑜𝑠𝑜𝑚𝑒 𝐼𝑑𝑒𝑛𝑡𝑖𝑓𝑖𝑐𝑎𝑡𝑖𝑜𝑛 𝑓𝑜𝑟 𝑒𝑎𝑐ℎ 𝑅𝑃𝐿𝐶/𝐻𝑅𝑀𝑆 𝑡𝑒𝑛𝑠𝑜𝑟 𝑖𝑛 𝑇𝑜𝑝
+− 𝑋 𝑜𝑓 𝐻𝑖𝑡𝑠 𝑜𝑓 𝑟𝑒𝑓𝑒𝑟𝑒𝑛𝑐𝑒 𝑠𝑝𝑒𝑐𝑡𝑟𝑎) =
+
+𝑁
+𝑋
+
+595
+
+- 25 -
+
+https://doi.org/10.26434/chemrxiv-2024-mdl4q-v2 ORCID: https://orcid.org/0000-0002-6002-9660 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+596
+
+Figure Legends:
+
+597
+
+Figure 1: A diagram of the roadmap in this study. (A) Three models were developed
+
+598
+
+in this study. Model 1 was a random forest (RF) regression (reg.) model for predicting
+
+599
+
+molecular fingerprint (MF)-derived retention time index (RTI). Model 2 was a RF reg.
+
+600
+
+model for predicting cumulative neutral loss (CNL)-derived RTI. A set of semi-synthetic
+
+601
+
+MS/MS data was prepared. Models 1 and 2 were deployed to predict the expected RTI
+
+602
+
+values for the semi-synthetic data. These data were processed by library search,
+
+603
+
+outputting spectral matching scores for Model 3 training. Model 3 was a k-Nearest
+
+604
+
+neighbors (KNN) binary classification (class.) model was trained by incorporating
+
+605
+
+features from retention and m/z domains to predict true positive (TP) true negative (TN)
+
+606
+
+chemical annotation. (B) The 3 developed models were applied to analyze reversed-
+
+607
+
+phase liquid chromatography/high-resolution mass spectrometry (RPLC/HRMS)-based
+
+608
+
+non-targeted analysis (NTA) data. By incorporating the models, the chemical
+
+609
+
+identification
+
+610
+
+AtomPairs2DFingerprintCount; PubChem, PubChem Fingerprinter.
+
+611
+
+Figure 2: Performance assessment of the quantitative structure-retention
+
+612
+
+relationship (QSRR)-based models. Histograms illustrating the distributions of true
+
+613
+
+retention time indices (RTIs) of calibrants used to (A) train and (B) test Model 1 and the
+
+614
+
+values predicted from Models 1 and 2. Boxplots presenting the variances of the
+
+615
+
+predicted values to the true values of calibrants used to (C) train and (D) test Model 1.
+
+616
+
+Correlation plots showing correspondence between molecular fingerprint (MF)-derived
+
+617
+
+and cumulative neutral loss (CNL)-derived RTIs for (E) training and (F) testing datasets
+
+618
+
+of Model 2. Green dots representing compounds used in Model 1’s training, yet sky-
+
+619
+
+blue dots indicating new compounds within the RPLC chemical space after applicability
+
+620
+
+domain filtering.
+
+probability
+
+could
+
+be
+
+enhanced.
+
+Abbreviations:
+
+- 26 -
+
+https://doi.org/10.26434/chemrxiv-2024-mdl4q-v2 ORCID: https://orcid.org/0000-0002-6002-9660 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+APC2D,
+
+621
+
+Figure 3: Performance assessment of the true positive/true negative annotation
+
+622
+
+binary classification model. (A) Receiver operating characteristics curves and (B)
+
+623
+
+precision-recall curves for the retention time error (RTI) inclusive and exclusive models.
+
+624
+
+(C) True positive (TP) and false negative rates and (D) false discovery rates (FDR)
+
+625
+
+across various probability of true positive (P(1) or P(TP)) thresholds. (E) Recalls of
+
+626
+
+individual LC-MS/MS samples at different P(TP) cut-off thresholds. Pesticide standards
+
+627
+
+were part of the LC/MS Pesticide Comprehensive Mix Kit (Part Number 5190-0551)
+
+628
+
+from Agilent Technologies (PestMix). Pesticide mixtures that were spiked in solvent blank
+
+629
+
+and 10× and 100× diluted black tea matrix respectively to result 1 ppm final solutions were
+
+630
+
+analyzed. For blank spike (No Tea) samples, various final solution concentrations (1, 2.5,
+
+631
+
+5, 10, 25, 50, 100, and 1,000 ppb) were analyzed. (F) Feature permutation importance
+
+632
+
+analysis for all k-nearest neighbors models with Matthews correlation coefficient scores
+
+633
+
+>0.30 on blank spike dataset during model selection and hyperparameter tuning. (G)
+
+634
+
+Integration of machine learning (ML) with Universal Library Search Algorithm (ULSA)
+
+635
+
+enhanced the average identification probabilities by 24% and 25% for the blank spike
+
+636
+
+and the samples with the presence of 100× diluted tea matrix, equivalent to 54.5% and
+
+637
+
+52.1% increments than solely ULSA implementation, yet the presence of 10× tea matrix
+
+638
+
+reduced this improvement to and 21%, equivalent to 46.7% increment. Abbreviations:
+
+639
+
+nd, not detected.
+
+640
+
+Figure 4: Performance assessment by ranking. Integration of machine learning (ML)
+
+641
+
+with Universal Library Search Algorithm (ULSA) slightly enhanced the average
+
+642
+
+identification probability by 1–3% in top-5, top-3, and top-1 hits. True positive (TP) hit
+
+643
+
+rates were the ratio of molecular annotations with any TP hit at least once in the top ranks to
+
+644
+
+the total identified spectra. Abbreviations: nd, not detected.
+
+- 27 -
+
+https://doi.org/10.26434/chemrxiv-2024-mdl4q-v2 ORCID: https://orcid.org/0000-0002-6002-9660 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+645
+
+Figure 1
+
+646
+
+- 28 -
+
+https://doi.org/10.26434/chemrxiv-2024-mdl4q-v2 ORCID: https://orcid.org/0000-0002-6002-9660 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+647
+
+Figure 2
+
+648
+
+- 29 -
+
+https://doi.org/10.26434/chemrxiv-2024-mdl4q-v2 ORCID: https://orcid.org/0000-0002-6002-9660 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+649
+
+Figure 3
+
+650
+
+- 30 -
+
+https://doi.org/10.26434/chemrxiv-2024-mdl4q-v2 ORCID: https://orcid.org/0000-0002-6002-9660 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+651
+
+Figure 4
+
+652
+
+- 31 -
+
+https://doi.org/10.26434/chemrxiv-2024-mdl4q-v2 ORCID: https://orcid.org/0000-0002-6002-9660 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+653
+
+Table 1: Summary of the Machine Learning Models’ Predictive Power.
+MLa model
+
+Model 1
+
+Model 2
+
+Model 3 (with feature "DeltaRi"; without "DeltaRi")
+
+Function
+
+to predict
+RTIb from
+MFc
+
+to predict RTIb from CNLd
+
+to predict acceptance/rejection decision of a ULSAesuggested molecular annotation from a MS/MS
+spectrum
+
+Performance
+metric
+
+R2
+
+RMSEf
+
+Weighted F1 score
+
+MCCg
+
+Recall
+
+Training
+
+0.9634
+
+51.8
+
+0.89; 0.90
+
+0.77; 0.79
+
+0.99; 1.00
+
+Testing
+
+0.8824
+
+92.8
+
+0.89; 0.89
+
+0.77; 0.79
+
+0.99; 0.99
+
+0.65; 0.65
+
+0.30; 0.30
+
+0.66; 0.66
+
+Validation
+Real Sample
+
+654
+
+a
+
+Machine learning.
+
+655
+
+b
+
+Retention time index.
+
+656
+
+c
+
+Molecular fingerprint.
+
+657
+
+d
+
+Cumulative neutral loss.
+
+658
+
+e
+
+Universal Library Search Algorithm.
+
+659
+
+f
+
+Root mean square error.
+
+660
+
+g
+
+Matthews correlation coefficient.
+
+0.60; 0.54
+
+- 32 -
+
+https://doi.org/10.26434/chemrxiv-2024-mdl4q-v2 ORCID: https://orcid.org/0000-0002-6002-9660 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+

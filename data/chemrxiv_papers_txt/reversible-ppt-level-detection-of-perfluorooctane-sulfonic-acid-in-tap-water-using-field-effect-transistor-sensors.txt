@@ -1,0 +1,1029 @@
+Reversible ppt-Level Detection of Perfluorooctane Sulfonic Acid in
+Tap Water using Field-Effect Transistor Sensors
+
+Yuqin Wang1,2,3, Hyun-June Jang1,2, Max Topel1, Siva Dasetty1, Yining Liu1,2,3, Mohamed Ateia4,5,
+Aaron Tam6, Vepa Rozyyev1,3,7, Ellie Ouyang1, Wen Zhuang1,2, Haihui Pu1,2, Sang Soo Lee2,
+Jeffrey W. Elam3,7, Andrew L. Ferguson1*, Seth B. Darling1,2,3* and Junhong Chen1,2*
+1
+
+Pritzker School of Molecular Engineering, University of Chicago, Chicago, IL, USA.
+
+2
+
+Chemical Sciences and Engineering Division, Physical Sciences and Engineering Directorate, Argonne
+
+National Laboratory, Lemont, IL, USA.
+3
+
+Advanced Materials for Energy-Water Systems Energy Frontier Research Center, Argonne National
+
+Laboratory, Lemont, IL, USA.
+4
+
+Center for Environmental Solutions & Emergency Response, U.S. Environmental Protection Agency,
+
+Cincinnati, OH, USA.
+5
+
+Department of Chemical and Biomolecular Engineering, Rice University, Houston, TX, USA.
+
+6
+
+Oak Ridge Institute for Science and Education (ORISE), Oak Ridge, Tennessee, USA
+
+7
+
+Applied Materials Division, Argonne National Laboratory, Lemont, IL, USA.
+
+*Corresponding authors: junhongchen@uchicago.edu, darling@anl.gov, andrewferguson@uchicago.edu
+
+1
+
+https://doi.org/10.26434/chemrxiv-2024-6q6q5 ORCID: https://orcid.org/0000-0003-4444-2487 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Abstract
+Widespread, persistent, and toxic per- and polyfluoroalkyl substances (PFAS) pose a major threat
+to both water systems and human health. Current PFAS detection methods are relatively expensive,
+slow, and complex. To combat PFAS contamination and meet increasingly stringent regulations of
+PFAS in drinking water, the development of highly sensitive and selective PFAS sensing
+techniques is urgently needed. Herein, we present an ultrasensitive sensing platform for
+perfluorooctane sulfonic acid (PFOS) detection in tap water with a reporting limit (~250 ppq)
+lower than the maximum contaminant level (4 ppt) set by the U.S. Environmental Protection
+Agency, using remote gate field-effect transistor (RGFET) sensors featuring β-cyclodextrin (βCD)-modified reduced graphene oxide as the sensing membrane. The sensor exhibits excellent
+selectivity against common inorganic ions (e.g., Na+, K+, Ca2+, Cl-, HPO42-, SO42- ) and select
+organic pollutants (e.g., trichloroacetic acid) in tap water. Importantly, the reversible and rapid
+response (< 2 min) indicates the potential of RGFET for continuous inline monitoring of PFAS.
+Quartz crystal microbalance results emphasize the important roles of both analyte adsorption and
+charge properties of analytes and buffers in generating sensing signals. The binding nature between
+β-CD probe and PFOS or interferent molecules, as well as the spatially resolved selectivity
+revealed by molecular dynamics simulations, suggest rational probe engineering strategies for
+future selective capture probe design.
+
+Introduction
+Per- and polyfluoroalkyl substances (PFAS) represent a large family of fluorinated chemicals, with
+an
+
+expanding
+
+database
+
+of
+
+identified
+
+family
+
+members
+
+larger
+
+than
+
+8,000
+2
+
+https://doi.org/10.26434/chemrxiv-2024-6q6q5 ORCID: https://orcid.org/0000-0003-4444-2487 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+(https://comptox.epa.gov/dashboard/chemical-lists/PFASSTRUCTV3).
+
+They
+
+have
+
+been
+
+frequently used in industrial manufacturing and are present in various consumer products, owing
+to their unique properties including high resistance to heat and chemicals, surfactant nature,
+hydrophobicity, and lipophobicity1-3. Throughout the lifecycle of PFAS-containing products, PFAS
+molecules are released into the environment, transported within and across various media, and
+eventually enter human bodies3, 4. Because of the exceptionally strong carbon-fluorine bond (CF), PFAS resist degradation under natural or biological conditions, and therefore tend to
+accumulate in the environment and inside human bodies5, 6. Extensive epidemiological studies
+have revealed the correlation between PFAS exposure and many adverse health effects such as
+compromised immune system, thyroid disease, liver damage, reproductive and developmental
+defects, and even cancers6, 7.
+Drinking water is a common and important pathway through which people can directly be
+exposed to and ingest PFAS. Multiple PFAS species have been detected in drinking water/tap water
+at concentrations ranging from a few ppt (ng/L) to hundreds of ppt all over the world8, 9. Several
+regulatory agencies have set guidelines and standards for certain PFAS chemicals in drinking water
+in response to ongoing PFAS exposure8. On April 10, 2024, the U.S. Environmental Protection
+Agency (USEPA) announced the final National Primary Drinking Water Regulation for six PFAS
+and established their maximum contaminant levels (MCLs) in drinking water, with an MCL of 4
+ppt for perfluorooctanoic acid (PFOA) and perfluorooctane sulfonic acid (PFOS), two
+predominant legacy PFAS molecules (https://www.epa.gov/sdwa/and-polyfluoroalkyl-substancespfas). The ongoing water crisis caused by PFAS pollution, and the increasingly stringent
+regulations emphasize the urgent need for effective monitoring of PFAS concentrations in water.
+
+3
+
+https://doi.org/10.26434/chemrxiv-2024-6q6q5 ORCID: https://orcid.org/0000-0003-4444-2487 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+PFAS detection in tap water is challenging due to the complexity of water matrices and the
+relatively low concentrations of PFAS compared with co-existing ions and organic water
+constituents. High sensitivity and selectivity for sensors are the key requirements to achieve
+effective PFAS detection10, 11. Currently, the standard detection method based on solid-phase
+extraction (SPE)-enabled liquid chromatography-tandem mass spectrometry (LC-MS/MS) defined
+by USEPA (EPA Methods 533 and 537.1)12, 13 can meet both requirements. However, this technique
+requires expensive and sophisticated instruments, well-trained personnel, and tedious procedures,
+which limits its prevalence in both PFAS research and real-world applications. Developing
+accessible and rapid PFAS sensors with satisfactory performance has become a major goal14. To
+date, most PFAS sensors presented in publications are either based on fluorescent or
+electrochemical sensing mechanisms10. Fluorescent sensors15-17 with simple systems and large
+design space can render certain selectivity by designing selective probes, but their detection limit
+(~ppb) is typically insufficient for PFAS monitoring at environmentally relevant concentrations
+(~ppt). By contrast, electrochemical sensors18-20 can measure PFAS concentrations down to subppb levels; however, the PFAS sensing selectivity as a major challenge has seldom been
+demonstrated or achieved10, 21. Moreover, few of these explored sensors have shown the potential
+for real-time continuous sensing. Field-effect transistor (FET) sensors belonging to the electronic
+sensor family22, another important category of water sensors, have been extensively studied in the
+detection of diverse water pollutants, including heavy metal ions23, 24, nutrients25, 26, and bacteria27,
+28
+
+. The high sensitivity and readily tunable selectivity together with other advantages like fast
+
+response and portability22 have placed FET sensors as strong candidates in water sensing compared
+with fluorescent or electrochemical sensors. However, to the best of our knowledge, FET sensors
+have never been applied to PFAS detection.
+
+4
+
+https://doi.org/10.26434/chemrxiv-2024-6q6q5 ORCID: https://orcid.org/0000-0003-4444-2487 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+In this work, we demonstrate the use of a remote gate FET (RGFET) sensor to detect PFOS
+in tap water. With this platform, we have achieved ultra-high sensitivity for PFOS detection in tap
+water, excellent selectivity against inorganic ions and certain organic pollutants, and promising
+sensing reversibility. Quartz crystal microbalance (QCM) studies were performed to help
+understand the analyte adsorption at the sensing surface. To elucidate the sensing mechanism and
+strategize for the further improvement on the specific detection, molecular dynamics (MD)
+simulations were conducted to obtain a molecular level understanding of the interactions between
+β-CD, PFOS, and several exemplary interferent molecules. The resulting proof-of-concept,
+reversible FET-based PFAS sensor demonstrates the potential of using FET sensors to meet the
+urgent need for ultrasensitive, real-time, and continuous PFAS monitoring.
+
+Results
+Sensor Design & Characterization
+Our RGFET sensing platform consists of three major components (Fig. 1a): a commercial metaloxide-semiconductor field-effect transistor (MOSFET, n-type) as the transducer for sensing signals,
+a sensing layer on the SiO2/Si substrate called a remote gate (RG, remotely connected with the
+gate electrode of the MOSFET) where the sensing events occur, and an Ag/AgCl reference
+electrode for stabilizing the global gate potential (cf. Supplementary Fig. 1 for the real
+experimental set-up). Compared with conventional back gate FET sensors, RGFET sensors have
+fewer side reactions by avoiding direct contact of sample solutions with the transducing channels29,
+31
+
+. Two-dimensional (2D) reduced graphene oxide (rGO) with high specific surface area and
+
+desirable probe anchoring sites was used as the sensing membrane. β-cyclodextrin (β-CD), a
+proven effective probe for PFAS capture via host-guest interactions32-34, was chosen to modify the
+5
+
+https://doi.org/10.26434/chemrxiv-2024-6q6q5 ORCID: https://orcid.org/0000-0003-4444-2487 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+rGO surface with the help of a 1-pyrenebutyric acid N-hydroxysuccinimide ester (PBASE) linker
+to enhance the sensor specificity to PFOS. The structures of PFOS and mono-NH2-β-CD-PBASE
+(β-CD probe + PBASE linker) as well as the equivalent circuit of this platform are shown in Fig.
+1a. We quantify the shifts in FET transfer curve as our sensing signals (Fig. 1b), which can be
+changed by the surface potential ϕs at the solution/sensing membrane interface during the sensing
+process.
+
+Fig. 1|Sensor design & characterization of remote gate (RG) electrodes. a, Illustration of
+RGFET sensor structure (left), chemical structures of PFOS, β-CD probe linked with PBASE
+linker (middle), and equivalent circuit of RGFET29, 30 (right) where the only factor that is supposed
+to change during the sensing process is ϕs (surface potential at the solution/sensing membrane
+interface). b, Sensing mechanism of RGFET sensors. Sensing starts with analyte adsorption onto
+surface probes on the sensing membrane. The accumulation of analytes induces a potential change
+6
+
+https://doi.org/10.26434/chemrxiv-2024-6q6q5 ORCID: https://orcid.org/0000-0003-4444-2487 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+at the interface (Δϕs), which is transduced and detected by the metal-oxide-semiconductor FET
+(MOSFET) and leads to shifts in the FET transfer curves characterized by the FET threshold
+voltage (Vth). c, Comparison of the water contact angles (WCA) of rGO RG electrodes before and
+after functionalization with mono-NH2-β-CD probe (the top labels represent the chemistry of the
+outmost layer of the electrodes). d, XPS C1s peak of rGO and β-CD RG electrodes. e, XPS O1s
+peak of rGO and β-CD RG electrodes. The data in c, d, and e are presented as mean values ± the
+standard error of the mean (S.E.M.) for n = 3.
+The fabrication of RG electrodes followed a step-by-step process (Supplementary Fig. 2
+and Methods). The successful preparation of the desired RG electrodes was confirmed by water
+contact angle (WCA) measurement, Raman spectroscopy, and X-ray photoelectron spectroscopy
+(XPS) (Supplementary Fig. 3 and Fig. 1c-e). The effective surface modification with β-CD probes
+was validated by the significant decrease in the WCA (Fig. 1c) from rGO RG surface (78.1±3.8°)
+to β-CD RG surface (19.5±1.6°) owing to the abundant hydroxyl groups in β-CD probes, and the
+discernible increase (from rGO RG to β-CD RG) in the ratio of C-O bond, which is a major feature
+of the β-CD molecule, to C=C/C–C bond (from 0.37±0.03 to 0.60±0.03) and C=O bond (from
+4.51±1.21 to 7.67±0.80) from the XPS C 1s peak (Fig. 1d) and O 1s peak (Fig. 1e). Higher
+hydrophilicity is also beneficial to create a stable water/solid interface, which can increase signal
+stability and reduce the sensor stabilization time during the measurement. A continuous film
+formed by modified rGO flakes and some aggregates can be seen in the scanning electron
+microscopy (SEM) image for β-CD RG surface (Supplementary Fig. 4a). The resulting sensing
+layer had a thickness of ~9.3 nm and a surface roughness of ~3.0 nm according to atomic force
+microscopy (AFM) analyses (Supplementary Fig. 4b,c).
+
+7
+
+https://doi.org/10.26434/chemrxiv-2024-6q6q5 ORCID: https://orcid.org/0000-0003-4444-2487 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Characteristics of RGFET sensors & PFOS responses in tap water
+After assembling the prepared β-CD RG electrode with MOSFET to construct the RGFET sensing
+system, a careful stabilization process was performed before testing any water samples to minimize
+the influence of background drift (Supplementary Fig. 5). The threshold voltage (Vth) of RGFET
+sensors is sensitive to surface materials due to their work function differences (Fig. 2a and
+Supplementary Fig. 6) resulting either from different material types (e.g., SiOx vs. GO) or charge
+transfer after surface conjugation (e.g., pristine rGO vs. β-CD-modified rGO). Surface materials
+also have an impact on the transconductance (Gm) of the RGFET (Supplementary Fig. 6) since
+their surface charges affect the stabilization process. The β-CD-coated RGFET could maintain a
+similar Gm (~88 µS) to that of the pristine MOSFET, suggesting that these surface functionalization
+processes didn’t impact the intrinsic sensitivity of the MOSFET device. Prior to the PFOS
+detection, our RGFET sensors were first benchmarked against pH interference (Supplementary
+Fig. 7). This pH or proton sensitivity (~36 mV/pH) comes from both rGO membranes and monoNH2-β-CD-PBASE groups and cannot be eliminated for this material system. Therefore, a pH
+buffer is necessary for sample preparation to ensure a stable pH value during the sensing process.
+We observed that our tap water acts as a natural buffer, maintaining a stable pH that does not
+change with different concentrations of spiked analytes considered here or during ~one week
+sample storage (Supplementary Table 1), and thus the tap water was used to prepare test sample
+solutions. The potential applications of six other buffers were also explored, but they were not as
+effective as the fresh tap water in terms of generating measurable sensing signals likely due to the
+resulting relatively high baseline Vth of the RGFET (Supplementary Discussions 1,2,
+Supplementary Figs. 8,9, and Supplementary Tables 1,2).
+
+8
+
+https://doi.org/10.26434/chemrxiv-2024-6q6q5 ORCID: https://orcid.org/0000-0003-4444-2487 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Fig. 2|Characteristics of RGFET sensors & PFOS responses in tap water. a, Representative
+transfer curves (20th cycle) corresponding to various RG surfaces exposed to the same sample
+(pH=7 buffer) with Vth defined at a drain-source current of 1×10-6 A and used to quantify the
+transfer curve shifts (as ΔVth) caused by Δϕs. b, Representative transfer curves (20th cycle) of PFOS
+solutions with different concentrations in tap water on β-CD-functionalized RG surface. c, Sensor
+response curve of PFOS in tap water (the reporting limit (RL) is 250 ppq). It should be noted that
+the concentrations in b and c refer to the additional PFOS concentrations spiked into the blank tap
+water. The real PFOS concentration is the sum of the background PFOS in the blank tap water and
+the additionally spiked PFOS. The sensor response ΔVth reported here is derived from the
+differential response between spiked and blank tap water samples. The data in c are presented as
+mean values ± S.E.M. for n = 3-6.
+The accuracy of PFOS concentrations is critical to obtaining a reliable calibration curve.
+To this end, the standard EPA methods (see Methods section) for drinking water (LC-MS/MS) was
+used to check the real concentrations of prepared PFOS samples and the results show that the
+measured concentrations of most samples are close to the targeted concentrations (Supplementary
+Table 3). Although there are low background PFOS concentrations in the blank tap water (~ 2 ppt
+measured by LC-MS/MS), their interactions with the sensing surface have already been
+9
+
+https://doi.org/10.26434/chemrxiv-2024-6q6q5 ORCID: https://orcid.org/0000-0003-4444-2487 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+equilibrated after the sensor stabilization process, and adding blank tap water does not produce
+any further sensing signal (Supplementary Fig. 10). Thus, we attribute the observed sensor
+responses to the adsorption of additionally spiked PFOS.
+Fig. 2b shows the representative transfer curves for PFOS at different concentrations,
+where we can see the transfer curves shift to the higher VG direction when relative PFOS
+concentrations increase from zero (blank tap water) to a saturation point around 100 ppt, and then
+shift back after saturation (from 100 ppt to 10 ppb). The decreasing signals after saturation are
+typical of FET device, which could be attributed to the synergistic effects of the increased ion
+concentrations, multilayer analyte adsorption, and the decreased Δσ (surface charge density
+change)-dependence of the Δϕs in certain regions of the σ-ϕs curve after the saturation point
+according to the Grahame equation35 (Supplementary Discussion 2).
+The sensor’s response curve for PFOS in tap water is presented in Fig. 2c. The detection
+range of this device is from a few hundred of ppq to around 100 ppt, which matches well with the
+realistic concentration range of PFOS in natural waters8. The reporting limit (RL, defined as the
+reported lowest PFOS concentration that can be detected in this work) of this device is around 250
+ppq and reaches a level lower than the USEPA’s MCL for PFOS (4 ppt), suggesting the superior
+sensitivity of the sensors.
+
+Selectivity and reversibility
+To better evaluate the application potential of our sensing platform, the selectivity of our RGFET
+sensing devices against structural analogues (OA, OSA, PFO, and PFOA), representatives of
+organic dyes (MB), disinfection byproducts (TCAA), and common inorganic ions (Na2SO4,
+10
+
+https://doi.org/10.26434/chemrxiv-2024-6q6q5 ORCID: https://orcid.org/0000-0003-4444-2487 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+K2HPO4, CaCl2) in tap water was measured at the same molar concentrations (0.2 nM) for all
+analytes (Fig. 3a). The results show that our sensors possess outstanding selectivity (i.e., no
+response) against inorganic ions, moderate selectivity (~20-30% of the PFOS signal) against MB,
+TCAA, and PFOA, and relatively poor selectivity (~50% of the PFOS signal) against some
+structural analogues like OSA. Sensor testing at higher interferent concentrations (0.2 nM – 2000
+nM for organic interferents; 100 ppb – 10 ppm for inorganic ions) and environmentally relevant
+PFOS concentrations (1–100 ppt) were also performed as a stress test (Supplementary Fig. 11).
+The signal for PFOS at 10 ppt (20 pM) was compared to the responses for organics at 20 nM and
+inorganic ions at 1 ppm (environmentally relevant concentrations of these ions36), and the results
+indicated our sensors can maintain moderate selectivity against all these interferents even when
+their concentrations are more than 103 times higher than the PFOS concentration (Supplementary
+Fig. 12). Sensor response of a common co-existing surfactant, sodium dodecyl sulfate (SDS), was
+recorded as well in the range of 100 ppt to 1 ppm. Our devices showed strong responses to SDS,
+and there was almost no selectivity between PFOS and SDS (Supplementary Fig. 13), which
+indicates that we need to either modify the β-CD probe to introduce more favorable interactions
+towards PFAS such as fluorophilic interaction32, 37, 38 or find better surface capture probes to
+enhance the sensor selectivity against especially challenging interferents like SDS.
+
+11
+
+https://doi.org/10.26434/chemrxiv-2024-6q6q5 ORCID: https://orcid.org/0000-0003-4444-2487 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Fig. 3|Selectivity & reversibility of RGFET sensors. a, Sensor responses to PFOS, six organic
+interferents (with chemical structures), and three inorganic ions all at 0.2 nM in terms of the
+percentage response compared to the PFOS response (100%) in tap water on β-CD RG surface.
+Octanoic acid (OA), 1-octanesulfonic acid sodium salt (OSA), perfluorooctane (PFO), and
+perfluorooctanoic acid (PFOA) were chosen as the structural analogues to PFOS. Methylene blue
+(MB) and trichloroacetic acid (TCAA) were selected as representatives of organic dyes that can
+bind with β-CD39 and disinfection byproducts, respectively. Sodium sulfate (Na2SO4), potassium
+phosphate dibasic (K2HPO4), and calcium chloride (CaCl2) were used to represent common
+12
+
+https://doi.org/10.26434/chemrxiv-2024-6q6q5 ORCID: https://orcid.org/0000-0003-4444-2487 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+inorganic ions in tap water. b, QCM curves of PFOS adsorption and desorption process (washing
+with blank buffer) in tap water (TW) and in 0.01× PBS buffer. During the desorption process, the
+blank buffer (TW or PBS) was flowed across the surface. c, Comparison of the adsorbed PFOS
+densities in TW and 0.01× PBS. d, Comparison of the surface adsorbed densities for 4 analytes
+(PFOS, SDS, TCAA, MB) in TW. e, A typical sensor response curve for the reversibility testing
+process (3 cycles). f, Sensor responses to PFOS in tap water on β-CD RG surface for 3 testing
+cycles in terms of the percentage response compared to the 1st cycle. The data in a, c, d and f are
+presented as mean values ± S.E.M. for n = 3-6.
+Sensing signals of FET devices not only depend on analyte adsorption but are also
+influenced by the charge properties of different analytes, sensing materials, and buffers. QCM with
+dissipation monitoring (QCM-D), which monitors in real time the mass changes on the surface
+through detecting resonance frequency change, can help us understand the adsorption-related
+analyte/surface interactions in buffers40, 41.To simulate the sensing surface, similar rGO films were
+deposited on QCM sensors (Supplementary Fig. 14), which have comparable surface
+hydrophobicity (~78.3°), surface roughness (~3.8 nm), and layer thickness (~7.4 nm) to that of the
+RGFET sensor surface. We monitored the surface functionalization processes of PBASE linker
+and NH2-β-CD probe and calculated their surface probe densities to be 1.7 molecules/nm2 and 1.8
+molecules/nm2, respectively (Supplementary Figs. 15,16).
+PFOS samples prepared in both PBS buffer and fresh tap water were flowed across the
+simulated sensor surface to investigate if PFOS adsorption is a determining factor for the different
+sensing signals of RGFET in PBS buffer (no signal) and in tap water (strong signals). At selected
+concentrations (0.02 mM, 0.2 mM, 1 mM), PFOS adsorption occurs in both buffers, which
+suggests that adsorption is not the cause for undetectable sensing signals in PBS. However, the
+13
+
+https://doi.org/10.26434/chemrxiv-2024-6q6q5 ORCID: https://orcid.org/0000-0003-4444-2487 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+adsorbed PFOS density in tap water is higher than that in the PBS buffer (Fig. 3b,c and
+Supplementary Fig. 17). We suspect that the enhanced PFOS adsorption in tap water could be
+related to the pre-deposited species from tap water on the QCM sensor surface during the QCM
+baseline stabilization process (Supplementary Fig. 18), because tap water has many divalent
+cations and hydrocarbons that can potentially enhance the electrostatic and hydrophobic
+interactions with PFOS42, respectively.
+The adsorption densities of four analytes in tap water, including PFOS, SDS, TCAA, and
+MB, were also compared to elucidate the mechanism behind the selectivity of our RGFET sensors
+(Supplementary Fig. 19 and Fig. 3d). PFOS and SDS have similar adsorption densities (except at
+0.02 mM where the adsorption of PFOS is greater), indicating that SDS and PFOS may have
+similar binding affinities toward the sensing surface. In contrast, adsorption of TCAA was not
+observed by QCM, which may explain the weaker sensing signal of TCAA in our RGFET sensors
+as adsorption is the first step. However, MB exhibits even higher adsorption density than PFOS
+and SDS (especially at lower concentrations) despite its much weaker sensing response. This
+suggests that the sensing signals for MB in RGFET sensors are governed by not only the adsorption
+of MB but also its charge property. Overall, the findings from the QCM studies emphasize the
+important roles of analyte adsorption, analyte charge properties, and buffer properties in registering
+enough sensing signal.
+The observed reversible adsorption/desorption process of PFOS through QCM at the
+simulated sensor surface in tap water (Fig. 3b) also suggests the reversible sensing potential of our
+RGFET sensors. This is further demonstrated using our RGFET devices with real-time responses
+to fluctuating PFOS concentrations, which indicates that PFOS sensing signals can be readily
+reversed by simply washing the surface with blank tap water (Fig. 3e). After three cycles, the
+14
+
+https://doi.org/10.26434/chemrxiv-2024-6q6q5 ORCID: https://orcid.org/0000-0003-4444-2487 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+sensors can maintain ~80-90% of the original PFOS responses in the 1st cycle (Fig. 3f), suggesting
+the potential of our RGFET sensors for on-site and continuous PFOS monitoring applications.
+
+MD simulations of the interaction between analytes and the β-CD probe
+All-atom classical MD simulations were employed to gain molecular-level insight into the
+structure and thermodynamics of the bound complex between the PFOS analyte or the interferents
+SDS and TCAA with β-CD probes, identify preferred bound configurations, and resolve the
+molecular basis for probe sensitivity and selectivity for PFOS (Fig. 4). The free energy landscape
+for binding of the PFOS, SDS, and TCAA with a β-CD probe was mapped out through the potential
+of mean force (PMF) (r, z) describing the relative free energy of different (r, z) configurations of
+the probe-target system in the radial separation r and axial separation z of the molecular centers of
+mass within a coordinate frame centered on the cyclodextrin probe (Fig. 4d and Supplementary
+Fig. 20). It can be seen from Fig. 4a-c that β-CD’s ∼0.65 nm diameter cavity is sufficiently large
+to accommodate any of PFOS, SDS, or TCAA within the cavity, and in all cases the
+thermodynamically preferred state is for the target guest to reside within the cavity of the probe
+host. For quantitative comparison, we then calculated the values of the standard state (i.e., at a
+concentration of 𝐶 𝛩 = 1 M) binding free energy ΔGΘ and binding constant Kb for each of the three
+systems (Table 1, Supplementary Fig. 21, and Supplementary Tables 4,5). 𝐾𝑏𝑃𝐹𝑂𝑆 (~106, which is
+in approximate agreement with the experimental value43 of ~105) is approximately one order of
+magnitude larger than 𝐾𝑏𝑆𝐷𝑆 and almost five orders of magnitude larger than 𝐾𝑏𝑇𝐶𝐴𝐴 . The results are
+generally consistent with the trend of surface adsorption densities observed in QCM studies where
+the adsorption of PFOS and SDS are much greater than that of TCAA on β-CD functionalized
+
+15
+
+https://doi.org/10.26434/chemrxiv-2024-6q6q5 ORCID: https://orcid.org/0000-0003-4444-2487 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+sensing surface. Although the calculated binding constant for PFOS is one order of magnitude
+greater than that of SDS, the observed similar adsorption from QCM and similar sensor signals
+from RGFET sensors for PFOS and SDS could be attributed to their non-specific adsorption onto
+the rGO membrane, averaging the adsorption behavior.
+
+Fig. 4|MD simulations of PFOS, SDS and TCAA molecules binding with a β-CD probe.
+Potential of mean force (PMF) landscapes PMF (r, z) are constructed in the radial separation r and
+16
+
+https://doi.org/10.26434/chemrxiv-2024-6q6q5 ORCID: https://orcid.org/0000-0003-4444-2487 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+axial separation z of the molecular centers of mass. PMFs (a-c, bottom) with the molecular
+snapshots (a-c, top left: top view, top right: side view) of thermodynamically preferred bound
+configurations for a, β-CD–PFOS. b, β-CD–SDS. c, β-CD–TCAA. d, Illustration of the
+cyclodextrin-centric coordinate frame. Spatially resolved selectivity map represented by the
+difference between the PFOS target and the two interferents in PMF profiles corresponding to the
+interaction with β-CD (e-f). e, ∆PMF(PFOS-SDS) (r, z) = PMFPFOS (r, z) - PMFSDS (r, z). f, ∆PMF(PFOSTCAA)
+
+(r, z) = PMFPFOS (r, z) - PMFTCAA (r, z). Large negative values of ∆PMFPFOS-interferent (r,z)
+
+indicate regions of strong selectivity for PFOS, whereas large positive values correspond to regions
+of strong selectivity for the interferent. For visualization convenience, the arbitrary additive
+constant for each PMF in a-c, reflecting our ignorance of the absolute free energy scale, is specified
+such that the free energy of the far-field, non-interacting region (s > 1.2; 𝑠 = √𝑟 2 + 𝑧 2 ) is set to
+zero. The location (r = 0 nm, z = 0 nm) corresponds to a configuration in which the target molecule
+resides within the pore of the probe and the centers of mass of the target and that of the oxygen
+and carbon atoms in the narrow-side plane of each of the 6-sided D-glucose units of the β-CD
+probe are coincident. The white region in each plot corresponds to the prohibited region due to
+excluded volume overlaps of the target molecule and the cylindrical wall of the probe. The white
+region around the edge of each plot corresponds to the far-field region that was unsampled under
+our funnel meta dynamics approach that focused computational sampling on the near-field region.
+In all cases the narrow end of the β-CD probe is oriented towards positive z values and the broader
+end towards negative z values. Molecular snapshots corresponding to the thermodynamically
+preferred bound configuration are presented for each system viewed from the side and above
+(narrow side facing up). All renderings were constructed using VMD 1.9.444.
+
+17
+
+https://doi.org/10.26434/chemrxiv-2024-6q6q5 ORCID: https://orcid.org/0000-0003-4444-2487 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Table 1. Calculated binding constants 𝑲𝒃 for the PFOS analyte and both SDS and TCAA
+interferents with the 𝜷-CD probe using enhanced sampling all-atom classical MD simulations. The
+selectivity of PFOS relative to both SDS and TCAA is quantified by the ratio of the binding
+𝒊𝒏𝒕𝒆𝒓𝒇𝒆𝒓𝒆𝒏𝒕
+
+constants 𝑲𝑷𝑭𝑶𝑺
+/𝑲𝒃
+𝒃
+
+.
+𝒊𝒏𝒕𝒆𝒓𝒇𝒆𝒓𝒆𝒏𝒕
+
+𝜷-cyclodextrin
+
+𝑲𝒃
+
+PFOS
+
+(2.15 ± 0.05) × 106
+
+N/A
+
+SDS
+
+(6.46 ± 0.04) × 104
+
+(3.32 ± 0.05) × 101
+
+TCAA
+
+(7.04 ± 0.05) × 100
+
+(3.05 ± 0.04) × 105
+
+𝑲𝑷𝑭𝑶𝑺
+/𝑲𝒃
+𝒃
+
+Spatially resolved selectivity (Fig. 4e,f) permits a greater understanding of differences in
+binding mechanisms and affinities. The fluorinated backbone of the PFOS molecule appears to
+elicit strong van der Waals interactions with the cavity walls. In comparison, the hydrogens along
+the backbone of SDS appear not to interact with the entirety of the cavity of the β-CD probe as
+efficiently as PFOS. These differences in van der Waals radii of fluorine versus hydrogen result in
+a relatively rigid PFOS molecule in the β-CD cavity, only able to access a limited number of
+strongly bound configurations and a looser fit of SDS in the cavity, and promote strong selectivity
+for PFOS near the center of the cavity (𝑠 = √𝑟 2 + 𝑧 2 < 0.4 nm) where the mean ∆PMFPFOS-SDS (r,
+z) ≈ -7.26±0.05 kJ/mol (Fig. 4e). Further away from the origin in the region 0.4 nm < s < 1.1 nm,
+binding of SDS is preferable to PFOS with a mean ∆PMFPFOS-SDS (r, z) ≈ 6.36±0.05 kJ/mol. In
+the far field regime for s > 1.1 nm, ∆PMFPFOS-SDS (r, z) approaches 0 kJ/mol as expected. We
+propose that this spatially resolved selectivity may be valuable in guiding rational engineering of
+the probe to promote stronger PFOS-β-CD interactions relative to SDS-β-CD interactions over the
+full range of binding positions.
+
+18
+
+https://doi.org/10.26434/chemrxiv-2024-6q6q5 ORCID: https://orcid.org/0000-0003-4444-2487 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+In contrast, ∆PMFPFOS-TCAA (r, z) is negative over the entire s < 1.2 nm region of bound
+configurations, indicating a global preference for PFOS relative to TCAA over all binding sites on
+the probe (Fig. 4f). This can likely be understood as the longer PFOS backbone providing stronger
+van der Waals interactions with the interior probe wall than the relatively smaller TCAA. The
+larger van der Waals radius of the chlorines on the backbone of TCAA relative to the hydrogens
+on the SDS backbone limit the ease of TCAA passing through the β-CD cavity. Consequently,
+TCAA does not benefit from the large number of possible bound configurations with the β-CD
+probe that SDS does. This effect, combined with the shortness of the TCAA chain, two carbons
+compared with eight for PFOS, produces an overall weaker binding affinity of TCAA with β-CD
+compared with PFOS.
+Finally, inspection of the PFOS/β-CD bound complex indicated that the fluorinated
+backbone tends to occupy the cavity leaving the charged head exposed into solvent. This suggests
+that there may be an opportunity to further enhance the PFOS binding constant by engineering the
+lip (especially at the broader opening side of the probe as suggested by the thermodynamically
+preferred binding conformation) of the β-CD probe to promote favorable interactions (potentially
+electrostatic interactions) with the PFOS head and/or modifying the interior wall of β-CD cavity
+to strengthen the interactions with the PFOS backbone (potentially through fluorophilic
+interactions).
+
+Conclusions
+We have demonstrated the reversible and fast detection (< 2 min) of PFOS in untreated tap water
+using an RGFET sensor with β-CD-modified rGO as the sensing surface. The RGFET sensor
+
+19
+
+https://doi.org/10.26434/chemrxiv-2024-6q6q5 ORCID: https://orcid.org/0000-0003-4444-2487 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+exhibits a reporting limit of ~250 ppq, which is much lower than the MCL of 4 ppt for PFOS set
+by the USEPA, and a detection range from 100s ppq to 100s ppt that matches well with
+environmentally relevant PFOS concentrations. The reversible adsorption of PFOS at the sensing
+surface in tap water was validated by QCM. Our sensors showed excellent selectivity against
+common inorganic ions in tap water and good-to-moderate selectivity against several organic
+interferents like TCAA. However, the limited selectivity against certain structural analogues like
+SDS suggests the need of molecular probe engineering to enhance the selectivity by hindering the
+adsorption of such interferents. The spatially resolved selectivity from all-atom MD calculations
+suggests a global binding preference of β-CD for PFOS over TCAA, and further suggests that a
+higher selectivity toward PFOS against SDS can be achieved if the binding sites for both analytes
+can be restricted to the area close to the center of the β-CD cavity. Future work should focus on
+enhancing the selectivity by rational engineering of the rim/interior wall of the β-CD, applying
+other selective probes, and/or making sensor arrays, thereby realizing the full potential of this FET
+sensing platform for ultrasensitive, selective, on-site and continuous monitoring of PFOS in water.
+
+Methods
+Fabrication and characterization of RG electrodes
+The fabrication of RG electrodes was modified from previous work29. Firstly, a silicon wafer
+(University Wafer, P-type B doped 4" Si Wafers w/ 300 nm Wet Thermal Oxide) was sonicated in
+acetone (Sigma-Aldrich) and isopropanol (Sigma-Aldrich) for 5 min sequentially. After being
+dried under N2, the wafer was treated with oxygen plasma for 120 s, and then sonicated in
+deionized (DI) water for 5 min. The cleaned wafer was immediately immersed in a 5 vol% APTES
+20
+
+https://doi.org/10.26434/chemrxiv-2024-6q6q5 ORCID: https://orcid.org/0000-0003-4444-2487 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+(Sigma-Aldrich) ethanolic solution for ~ 2 h. The resulting wafer was rinsed with ethanol and dried
+with N2. A monolayer GO dispersion (ACS Material, 10 mg/mL in water) was diluted with DI to
+form a 0.24 mg/mL solution, which was sonicated for ~ 30 min before use. After preheating the
+cleaned wafer on a hot plate at 120 °C for ~20 min, ~16.4 mL of the diluted GO dispersion was
+poured onto the wafer surface to cover the whole area of the wafer while keeping heating the wafer
+at 120 °C. After all the water in the GO dispersion evaporated, the resulting GO coatings showed
+two distinct areas with blue and black colors, corresponding to few-layer GO and GO film,
+respectively (Supplementary Figure 3a). Only the thinner area (few-layer GO) was used for further
+modification. The coated wafer was cut into small pieces (each having ≥1 cm2 surface area to
+hold sample droplets) and annealed in a tube furnace (Thermo Scientific Lindberg/Blue M MiniMite) at 400 °C under N2 for 1 h. Afterward, the rGO-coated chips were immersed in 10 mg/mL
+PBASE (Santa Cruz Biotechnology) solution in dimethylformamide (DMF, Sigma-Aldrich) for 2
+h and then rinsed with DMF and dried with N2. Finally, 10 mM NH2-β-CD (BOC Sciences) water
+solution was added onto the PBASE-modified chips and reacted overnight (~15-18 h). Rinsing the
+chips with DI and drying them using N2 gave the final β-CD RG electrodes.
+Water contact angle (WCA) measurements were conducted using a tensimeter (Biolin
+Scientific Theta Flex) to determine the surface hydrophobicity of the prepared RG electrodes.
+Raman microscopy (Renishaw inVia) was used to confirm the deposition of GO/rGO. XPS
+measurements were conducted to analyze the surface chemical compositions (Thermo Fisher kAlpha+, using the Thermo Fisher Avantage software (v.5.977, Build 06436) for data processing
+and analysis). The obtained XPS spectra were referenced to the C 1s peak at 284.8 eV. The X-ray
+source was microfocused monochromatic Al Kα (1,487 eV) with a spot size of 400 μm. A pass
+energy of 200.0 eV and a step size of 1.000 eV were used for the survey scan, and a pass energy
+21
+
+https://doi.org/10.26434/chemrxiv-2024-6q6q5 ORCID: https://orcid.org/0000-0003-4444-2487 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+of 50.0 eV and a step size of 0.100 eV were used for a high-resolution scan. The deconvolution of
+high-resolution XPS spectra was performed by the Powell peak fitting algorithm with mixed
+Gaussian–Lorentzian line shapes and a Smart background. Surface morphology was characterized
+by SEM at 3 kV (FEI Nova 600 NanoLab focused ion beam SEM). The surface roughness and
+thickness of rGO RG and β-CD RG were measured using AFM (Cypher-ES and MFP-3D models,
+Asylum Research, Oxford Instruments) in tapping mode. AC240TSA-R3 (Oxford Instruments)
+tips with a typical resonant frequency of 70 (50−90) kHz, tip radius of 7 nm, and spring constant
+of 2 (0.6–3.5) N/m were used for Cypher-ES and PPP-NCHR (NanosensorsTM) tips with a typical
+resonant frequency of 330 (204–497) kHz, tip radius of <10 nm, and spring constant of 42 (10 –
+130) N/m were used for MFP-3D.
+
+Preparation and analysis of analyte samples
+To prepare PFOS (Santa Cruz Biotechnology) samples for sensor testing, 10 mg PFOS was
+dissolved in 100 mL blank buffers in HDPE bottles (Thermo Scientific) to form a stock solution
+of 100 ppm and sonicated at 40 °C for 30 min. This stock solution was then diluted step-by-step
+to produce PFOS solutions with targeted concentrations from 1 ppq to 10 ppb in 15 mL PP tubes
+(VWR). For QCM samples, a stock solution of 1,000 ppm was made by adding 10 mg PFOS in 10
+mL blank buffers in 15 mL PP tubes (VWR), which was further diluted to form solutions from
+0.02 mM to 1 mM in 15 mL PP tubes (VWR). We note that the concentrations used in the QCM
+study are higher than those in the sensor testing due to the lower detection limit of the QCM
+instrument; yet, QCM tests provide relevant mechanistic insights by comparing the adsorption
+behavior at the same concentrations under various situations. After preparing samples at each
+concentration and before further dilution, the resulting solution was sonicated at 40 °C for 30 min.
+22
+
+https://doi.org/10.26434/chemrxiv-2024-6q6q5 ORCID: https://orcid.org/0000-0003-4444-2487 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+For the buffers, fresh tap water was collected at our labs located at Argonne National Laboratory.
+PBS, MES, and Bis-Tris buffers (0.1x or 0.01x) were prepared by diluting the stock solution or
+solids (all from Sigma-Aldrich) in DI water. The pH of each prepared sample was tested using a
+pH meter (OHAUS™ Aquasearcher™ pH Meter AB41PH) to make sure the pH is the same for all
+the samples prepared in the same buffer. All the samples were freshly prepared before sensor
+testing and would not be stored over 1 week except the one that was deliberately kept > 1 week to
+investigate the influence of tap water storage. Other analyte solutions including SDS, OA, OSA,
+PFO, PFOA, MB, TCAA, Na2SO4, K2HPO4, and CaCl2 (all from Sigma-Aldrich) were prepared
+and stored in the same way as for PFOS samples.
+PFOS concentrations were measured using LC-MS/MS. low concentration samples
+between 1-100 ppt, solid phase (SPE) extraction was used. Before SPE, the internal standard,
+MPFAC-24ES, was aliquoted to the sample containers as received to obtain an expected
+concentration of 40 ng/L. SPE was performed on the experimental samples corresponding QC
+samples (Laboratory Blank, Laboratory Fortified Blank, and Laboratory Fortified Sample Matrix).
+4 mL of 1% methanolic ammonium was passed through the WAX cartridges for final extraction
+and captured into respective 15 mL falcon tubes. Each sample was diluted to 4 mL final volumes
+using 0.3% methanolic ammonium hydroxide. 10 µL of acetic acid was aliquoted to each sample
+for pH adjustment. It was assumed that all PFOS and internal standard reached the 4 mL final
+volume extraction.
+For high concentration samples more than 100 ppt, aliquots were diluted to a final volume
+of 10 mL (1000x dilution) with the 1:1 reagent water: methanol solution. Due to the high
+concentration of the 100 ppm and 500 ppm samples, secondary dilutions were performed. The
+internal standard, MPFAC-24ES, was aliquoted to each experimental sample for an expected
+23
+
+https://doi.org/10.26434/chemrxiv-2024-6q6q5 ORCID: https://orcid.org/0000-0003-4444-2487 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+concentration of 200 ppt. After addition of internal standard, the experimental samples were
+filtered using pre-cleaned 0.2-micron filters. Finally, 10 µL of acetic acid was added to each sample
+for pH adjustment.
+Calibration standards and QC samples for LC/MS/MS analysis were prepared with the
+native standard solutions (PFAC30-PAR) and mass-labeled isotopic standard solutions (internal
+standards; MPFAC-24ES, M3HFPO-DA) from Wellington Laboratories, Guelph, Ontario, Canada.
+PFAC30-PAR contains 36 PFAS compounds at 1.0 µg/mL each. MPFAC-24ES contains 19 masslabeled PFAS compounds at 1.0 µg mL-1 each, and M3HFPO-DA contains one mass-labeled
+PFAS compound at 50 µg/mL. Calibration concentrations ranged from 5 to 10,000 ng/L (ppt) for
+each analyte present in the native standard solutions. Aliquots (200 µL) from the calibration
+standards, QC samples (calibration blanks and calibration controls), and all experimental samples
+(4 mL extracts) were transferred to LC vials directly prior to the injection sequence. All samples
+were vortexed before aliquoted to vials. Samples were analyzed on a Waters LC/MS Micro run
+time with a starting and ending eluent composition of 98% Eluent B (2 mM ammonium acetate in
+95:5 water: acetonitrile) and 2% Eluent A (HPLC grade acetonitrile). Calibration was calculated
+for all analytes with compound analysis being accepted for calibration curves of R2 (>0.99) for
+each analyte. The Minimum Reporting Limit (MRL) for the analyte was established by the lowest
+concentration calibration standard that agrees within 50% of the true concentration. All collected
+data resulted in concentrations above the MRL, satisfying the QC requirement. Final
+Concentrations of QC samples and experimental samples have passed QC requirements. Results
+are reported as Total PFOS (TPFOS).
+The selected cation concentrations in the tap water were analyzed using an inductively
+coupled plasma optical emission spectroscopy (Thermo Scientific, iCAP PRO X ICP-OES Duo).
+24
+
+https://doi.org/10.26434/chemrxiv-2024-6q6q5 ORCID: https://orcid.org/0000-0003-4444-2487 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+The carbon contents in the tap water were measured using a total organic carbon analyzer
+(Shimadzu, TOC-L). These measurements were done following the standard operating procedure
+of each instrument.
+
+Sensor testing
+A commercial Si-based n-type MOSFET (CD4007UB) was connected to the fabricated RG
+electrodes and used as a transducer. During the measurement, one drop (~30 µL) of sample solution
+was placed on the RG surface and connected with an Ag/AgCl reference electrode (Gamry
+Instruments) to apply the gate bias for all measurements (Supplementary Fig. 1c). All transfer
+curves were measured using either a Keithley 4200A or a Keysight B1500A semiconductor
+analyzer with a drain voltage set at 50 mV and gate voltages scanning from 0 to 1.5 V. Transfer
+curves of the RGFET were repeatedly measured for 20 cycles for each sample droplet. The Vth
+was calculated as the gate voltage corresponding to drain current of 1 μA in each transfer curve.
+The Vth of the 20th cycle was used for data comparison. The Gm of each RGFET was calculated at
+its maximum value.
+Sensor stabilization using the baseline solution (the blank buffer) was performed before
+any sample measurement (Supplementary Fig. 5). For the samples with the same analyte but
+different concentrations (Fig. 2b,c), a series of solutions were added onto and removed from the
+RG surfaces sequentially from lowest concentrations to highest concentrations. For the selectivity
+test at 0.2 nM, analyte solutions including PFOS and other interferents were added onto and
+removed from the same RG surfaces one-by-one with thorough washing steps using blank tap
+water between different samples (the adsorption of all organic interferents is reversible at 0.2 nM
+
+25
+
+https://doi.org/10.26434/chemrxiv-2024-6q6q5 ORCID: https://orcid.org/0000-0003-4444-2487 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+except the MB, which should be added at last in the sample sequence). For selectivity stress test,
+responses for PFOS at 1 ppt, 10 ppt and 100 ppt, organic interferents at 0.2 nM, 20 nM and 2,000
+nM and inorganic ions at 100 ppb, 1 ppm and 10 ppm were recorded individually for different
+analytes to avoid potential irreversible adsorption at high concentrations.
+
+QCM
+The preparation of rGO-coated QCM sensor chips (Supplementary Fig.14) was modified from
+previous work by Melendrez et al.41. A gold QCM sensor (Biolin Scientific) was first sonicated in
+2 wt.% SDS solutions and then in ethanol for 5 min. The chip was then treated with air plasma for
+30 min. Afterward, 200 µL of 5 mg/mL GO ethanolic dispersion was spin-coated onto the QCM
+sensor surface at 2,000 rpm for 2.5 min (Laurell Technologies Corporation, model WS-650MZ23NPP). Thermal annealing was conducted later at 180 °C for 6 h to sufficiently reduce GO to
+rGO while protecting the gold layer from destruction.
+QCM measurements were performed using a QSense Analyzer (Biolin Scientific),
+recording 7 frequencies and dissipations. A stabilization process was conducted before any QCM
+measurements using the baseline solution at a flow rate of 300 µL/min until the drifting is less than
+1 Hz/h. PBASE functionalization was monitored in-situ on rGO-coated QCM sensors using a 10
+mg/mL solution in DMF for 2 h and then was washed thoroughly with DMF until the signal became
+flat. Afterward, the flowing solution was switched to DI water for a new round of baseline
+stabilization, then the NH2-β-CD functionalization was recorded in-situ using a 0.2 mM solution
+in DI for ~ 17 h, and finally the surface was washed with copious DI flow until all the weaklybounded molecules being removed. This two-step surface functionalization was recorded at a flow
+
+26
+
+https://doi.org/10.26434/chemrxiv-2024-6q6q5 ORCID: https://orcid.org/0000-0003-4444-2487 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+rate of 25 µL/min at room temperature. The adsorption and desorption of PFOS, SDS, MB, and
+TCAA were performed at room temperature at a flow rate of 100 µL/min on β-CD-modified rGOcoated gold sensor surface. After flowing each sample solution, allow enough time for the
+adsorption to reach equilibrium state and then switch to the blank buffer solution for desorption
+until completion. The raw QCM data were fitted with various models built in the QSense Dfind
+software (all the frequencies and dissipations except the f1 and D1 were used in fitting) to obtain
+the surface mass density change curves, which were then converted to surface probe/analyte
+density curves by dividing the mass density by the molar mass of each target. The results from
+different model fitting were compared and the final model chosen for each measurement was
+determined by considering both the fitting quality and the real circumstances (material properties,
+adsorption nature, maximum allowable surface density, etc.). The maximum adsorbed analyte
+densities for different measurements were calculated and used for comparison.
+
+MD simulations
+Simulations were conducted using the GROMACS 2021.6 simulation suite45 employing the
+General Amber Force Field (GAFF2)46 and the TIP3P water model47. To improve sampling of
+complex formation, we combined funnel metadynamics48, 49 with well-tempered parallel bias
+metadynamics (PBMetaD)50 implemented within PLUMED 2.8.151. We used these calculations to
+recover an unbiased estimate of the potential of mean force, PMF(r, z), describing the relative free
+energy of various configurations of the probe-target system parameterized by the radial separation
+r and axial separation z of the molecular centers of mass within a coordinate frame centered on the
+β-CD probe (Fig. 4d, and Supplementary Fig. 20). These PMFs enable us to identify both the
+thermodynamically preferred binding locations for the PFOS analyte and SDS and TCAA
+27
+
+https://doi.org/10.26434/chemrxiv-2024-6q6q5 ORCID: https://orcid.org/0000-0003-4444-2487 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+interferents with the β-CD probes and additionally make numerical predictions of the standard
+state equilibrium binding constants Kb for quantitative comparison with previous experimental
+results. Full details of the simulations and calculation protocol are provided in the Supplementary
+Information (Supplementary Notes 1-3, Supplementary Figs. 20-23 and Supplementary Tables 4,5).
+
+Data availability
+The data supporting the findings in this study are available within the paper and its Supplementary
+Information. Source data are provided with this paper.
+
+References
+1.
+2.
+3.
+4.
+5.
+6.
+7.
+8.
+9.
+
+Gluge, J. et al. An overview of the uses of per- and polyfluoroalkyl substances (PFAS).
+Environ Sci Process Impacts 22, 2345-2373 (2020).
+Wang, Z., DeWitt, J.C., Higgins, C.P. & Cousins, I.T. A never-ending story of per- and
+polyfluoroalkyl substances (PFASs)? Environ Sci Technol 51, 2508-2518 (2017).
+Evich, M.G. et al. Per- and polyfluoroalkyl substances in the environment. Science 375,
+eabg9065 (2022).
+Lyu, X. et al. Per‐ and polyfluoroalkyl substances (PFAS) in subsurface environments:
+occurrence, fate, transport, and research prospect. Reviews of Geophysics 60 (2022).
+Jian, J.M. et al. A short review on human exposure to and tissue distribution of per- and
+polyfluoroalkyl substances (PFASs). Sci Total Environ 636, 1058-1069 (2018).
+Fenton, S.E. et al. Per- and polyfluoroalkyl substance toxicity and human health review:
+current state of knowledge and strategies for informing future research. Environ Toxicol
+Chem 40, 606-630 (2021).
+Sunderland, E.M. et al. A review of the pathways of human exposure to poly- and
+perfluoroalkyl substances (PFASs) and present understanding of health effects. Journal of
+Exposure Science & Environmental Epidemiology 29, 131-147 (2019).
+Teymoorian, T., Munoz, G., Vo Duy, S., Liu, J. & Sauvé, S. Tracking PFAS in drinking
+water: A review of analytical methods and worldwide occurrence trends in tap water and
+bottled water. ACS ES&T Water 3, 246-261 (2023).
+Sadia, M. et al. Occurrence, fate, and related health risks of PFAS in raw and produced
+drinking water. Environ Sci Technol 57, 3062-3074 (2023).
+28
+
+https://doi.org/10.26434/chemrxiv-2024-6q6q5 ORCID: https://orcid.org/0000-0003-4444-2487 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+10.
+11.
+12.
+
+13.
+
+14.
+15.
+16.
+17.
+18.
+19.
+20.
+21.
+22.
+23.
+24.
+25.
+26.
+
+Wang, Y., Darling, S.B. & Chen, J. Selectivity of per- and polyfluoroalkyl substance
+sensors and sorbents in water. ACS Appl Mater Interfaces 13, 60789-60814 (2021).
+Ryu, H., Li, B., De Guise, S., McCutcheon, J. & Lei, Y. Recent progress in the detection of
+emerging contaminants PFASs. J Hazard Mater 408, 124437 (2021).
+Rosenblum, L.W., S.C. in Method 533: Determination of per- and polyfluoroalkyl
+substances in drinking water by isotope dilution anion exchange solid phase extraction and
+liquid chromatography/tandem mass spectrometry (U.S. Environmental Protection Agency,
+2019).
+Shoemaker, J.A., Grimmett, P.E. & Boutin, B.K. in Method 537. Determination of selected
+perfluorinated alkyl acids in drinking water by solid phase extraction and liquid
+chromatography/tandem mass spectrometry (LC/MS/MS). (U.S. Environmental Protection
+Agency, 2009).
+Ateia, M., Wei, H. & Andreescu, S. Sensors for emerging water contaminants: overcoming
+roadblocks to innovation. Environmental Science & Technology 58, 2636-2651 (2024).
+Zheng, Z. et al. Guanidinocalix[5]arene for sensitive fluorescence detection and magnetic
+removal of perfluorinated pollutants. Nat Commun 10, 5762 (2019).
+He, Y. et al. Porous adaptive luminescent metallacage for the detection and removal of
+perfluoroalkyl carboxylic acids. Chem 9, 93-101 (2023).
+Concellon, A., Castro-Esteban, J. & Swager, T.M. Ultratrace PFAS detection using
+amplifying fluorescent polymers. J Am Chem Soc 145, 11420-11430 (2023).
+Cheng, Y.H. et al. Metal-organic framework-based microfluidic impedance sensor platform
+for ultrasensitive detection of perfluorooctanesulfonate. ACS Appl Mater Interfaces 12,
+10503-10514 (2020).
+Glasscott, M.W., Vannoy, K.J., Kazemi, R., Verber, M.D. & Dick, J.E. μ-MIP: molecularly
+imprinted polymer-modified microelectrodes for the ultrasensitive quantification of GenX
+(HFPO-DA) in river water. Environmental Science & Technology Letters 7, 489-495 (2020).
+Garada, M.B., Kabagambe, B., Kim, Y. & Amemiya, S. Ion-transfer voltammetry of
+perfluoroalkanesulfonates and perfluoroalkanecarboxylates: picomolar detection limit and
+high lipophilicity. Anal Chem 86, 11230-11237 (2014).
+Dasetty, S. et al. Data-driven discovery of linear molecular probes with optimal selective
+affinity for PFAS in water. Journal of Chemical & Engineering Data 68, 3148-3161 (2023).
+Chen, J., Pu, H., Hersam, M.C. & Westerhoff, P. Molecular engineering of 2D nanomaterial
+field-effect transistor sensors: fundamentals and translation across the innovation spectrum.
+Advanced Materials 34, 2106975 (2022).
+Li, Y. et al. Fully integrated graphene electronic biosensor for label-free detection of lead
+(II) ion based on G-quadruplex structure-switching. Biosens Bioelectron 89, 758-763
+(2017).
+Maity, A. et al. Scalable graphene sensor array for real-time toxins monitoring in flowing
+water. Nature Communications 14, 4184 (2023).
+Chen, X. et al. Real-time and selective detection of nitrates in water using graphene-based
+field-effect transistor sensors. Environmental Science: Nano 5, 1990-1999 (2018).
+Bhat, K.S., Ahmad, R., Mahmoudi, T. & Hahn, Y.-B. High performance chemical sensor
+with field-effect transistors array for selective detection of multiple ions. Chemical
+Engineering Journal 417, 128064 (2021).
+
+29
+
+https://doi.org/10.26434/chemrxiv-2024-6q6q5 ORCID: https://orcid.org/0000-0003-4444-2487 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+27.
+28.
+29.
+30.
+31.
+32.
+33.
+34.
+35.
+36.
+37.
+38.
+39.
+40.
+41.
+42.
+43.
+44.
+
+Yeor-Davidi, E., Zverzhinetsky, M., Krivitsky, V. & Patolsky, F. Real-time monitoring of
+bacterial biofilms metabolic activity by a redox-reactive nanosensors array. J
+Nanobiotechnology 18, 81 (2020).
+Thakur, B. et al. Rapid detection of single E. coli bacteria using a graphene-based fieldeffect transistor device. Biosensors and Bioelectronics 110, 16-22 (2018).
+Jang, H.J. et al. Remote floating-gate field-rffect transistor with 2-dimensional reduced
+graphene oxide sensing layer for reliable detection of SARS-CoV-2 spike proteins. ACS
+Appl Mater Interfaces 14, 24187-24196 (2022).
+Jang, H.J. et al. Analytical platform To characterize dopant solution concentrations, charge
+carrier densities in films and interfaces, and physical diffusion in polymers utilizing remote
+field-effect transistors. J Am Chem Soc 141, 4861-4869 (2019).
+Jang, H.J. et al. Rapid, sensitive, label-free electrical detection of SARS-CoV-2 in nasal
+swab samples. ACS Appl Mater Interfaces 15, 15195-15202 (2023).
+Xiao, L. et al. beta-Cyclodextrin polymer network sequesters perfluorooctanoic acid at
+environmentally relevant concentrations. J Am Chem Soc 139, 7689-7692 (2017).
+Weiss-Errico, M.J., Ghiviriga, I. & O'Shea, K.E. (19)F NMR characterization of the
+encapsulation of emerging perfluoroethercarboxylic acids by cyclodextrins. J Phys Chem
+B 121, 8359-8366 (2017).
+Wang, W. et al. Rapid removal of perfluoroalkanesulfonates from water by betacyclodextrin covalent organic frameworks. ACS Appl Mater Interfaces 13, 48700-48708
+(2021).
+Lowe, B.M., Skylaris, C.K., Green, N.G., Shibuta, Y. & Sakata, T. Molecular dynamics
+simulation of potentiometric sensor response: the effect of biomolecules, surface
+morphology and surface charge. Nanoscale 10, 8650-8666 (2018).
+Dinelli, E. et al. Major and trace elements in tap water from Italy. Journal of Geochemical
+Exploration 112, 54-75 (2012).
+Kumarasamy, E., Manning, I.M., Collins, L.B., Coronell, O. & Leibfarth, F.A. Ionic
+fluorogels for remediation of per- and polyfluorinated alkyl substances from water. ACS
+Central Science 6, 487-492 (2020).
+Koda, Y., Terashima, T. & Sawamoto, M. Fluorous microgel star polymers: selective
+recognition and separation of polyfluorinated surfactants and compounds in water. J Am
+Chem Soc 136, 15742-15748 (2014).
+Zhao, F. et al. EDTA-cross-linked β-cyclodextrin: an environmentally friendly bifunctional
+adsorbent for simultaneous adsorption of metals and cationic dyes. Environmental Science
+& Technology 49, 10570-10580 (2015).
+Lee, J. et al. Ultra-high capacity, multifunctional nanoscale sorbents for PFOA and PFOS
+treatment. npj Clean Water 6 (2023).
+Melendrez, D. et al. Adsorption and binding dynamics of graphene-supported phospholipid
+membranes using the QCM-D technique. Nanoscale 10, 2555-2567 (2018).
+Du, Z. et al. Adsorption behavior and mechanism of perfluorinated compounds on various
+adsorbents--a review. J Hazard Mater 274, 443-454 (2014).
+Weiss-Errico, M.J. & O'Shea, K.E. Detailed NMR investigation of cyclodextrinperfluorinated surfactant interactions in aqueous media. J Hazard Mater 329, 57-65 (2017).
+Humphrey, W., Dalke, A. & Schulten, K. VMD: Visual molecular dynamics. Journal of
+Molecular Graphics 14, 33-38 (1996).
+
+30
+
+https://doi.org/10.26434/chemrxiv-2024-6q6q5 ORCID: https://orcid.org/0000-0003-4444-2487 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+45.
+46.
+47.
+48.
+49.
+50.
+51.
+
+Abraham, M.J. et al. GROMACS: High performance molecular simulations through multilevel parallelism from laptops to supercomputers. SoftwareX 1-2, 19-25 (2015).
+He, X., Man, V.H., Yang, W., Lee, T.-S. & Wang, J. A fast and high-quality charge model
+for the next generation general AMBER force field. The Journal of Chemical Physics 153,
+114502 (2020).
+Jorgensen, W.L., Chandrasekhar, J., Madura, J.D., Impey, R.W. & Klein, M.L. Comparison
+of simple potential functions for simulating liquid water. The Journal of Chemical Physics
+79, 926-935 (1983).
+Limongelli, V., Bonomi, M. & Parrinello, M. Funnel metadynamics as accurate binding
+free-energy method. Proceedings of the National Academy of Sciences 110, 6358-6363
+(2013).
+Rizzi, V., Bonati, L., Ansari, N. & Parrinello, M. The role of water in host-guest interaction.
+Nature Communications 12, 93 (2021).
+Pfaendtner, J. & Bonomi, M. Efficient sampling of high-dimensional free-energy
+landscapes with parallel bias metadynamics. Journal of Chemical Theory and Computation
+11, 5062-5067 (2015).
+Bonomi, M. et al. PLUMED: A portable plugin for free-energy calculations with molecular
+dynamics. Computer Physics Communications 180, 1961-1972 (2009).
+
+Acknowledgements
+The computational aspects and part of sensing experiments (sensor fabrication and testing, sample
+preparation) of this work were supported with funding by the University of Chicago Center for
+Data and Computing (CDAC). The computational work was completed in part with resources
+provided by the University of Chicago Research Computing Center. We gratefully acknowledge
+computing time on the University of Chicago high-performance GPU-based cyberinfrastructure
+supported by the National Science Foundation under Grant No. DMR-1828629. QCM, XPS, and
+water analysis (TOC and ICP) were supported by the Advanced Materials for Energy-WaterSystems (AMEWS) Center, an Energy Frontier Research Center funded by the U.S. Department
+of Energy, Office of Science, Basic Energy Sciences. Part of sensor data analysis and interpretation
+was supported by the NSF Great Lakes ReNEW Water Innovation Engine (Contract No. 2315268).
+This work used resources (Oxygen plasma, SEM, Raman) at the Center for Nanoscale Materials
+(CNM), a U.S. Department of Energy Office of Science User Facility, was supported by the
+31
+
+https://doi.org/10.26434/chemrxiv-2024-6q6q5 ORCID: https://orcid.org/0000-0003-4444-2487 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+U.S.DOE, Office of Basic Energy Sciences. The submitted manuscript has been created by
+UChicago Argonne, LLC, Operator of Argonne National Laboratory (“Argonne”). Argonne, a U.S.
+Department of Energy Office of Science laboratory, is operated under Contract No. DE-AC0206CH11357. The U.S. Government retains for itself, and others acting on its behalf, a paid-up
+nonexclusive, irrevocable worldwide license in said article to reproduce, prepare derivative works,
+distribute copies to the public, and perform publicly and display publicly, by or on behalf of the
+Government. Authors would like to acknowledge EPA-ORD’s Jim Voit, Jean van Buren, Ashley
+Butzlaff and Ashton Collins and University of Chicago’s Xiaoyu Sui and Xingkang Huang for the
+helpful discussions.
+
+Author contributions
+Y.W., S.B.D. and J.C designed the project, analyzed data, and prepared the manuscript. Y.W.
+performed the sensor fabrication, majority of the surface characterization (WCA, SEM, AFM and
+Raman), sample preparation, sensor testing, QCM experiments, and analyzed the data. H.J.
+designed the RGFET sensing platform in this work, analyzed the data and revised the manuscript.
+M.T., S.D. and A.L.F. conducted the MD simulations and wrote the analysis for simulation results.
+Y.L. performed the ICP and TOC experiments and wrote Python codes for sensor data processing.
+A.T. performed the LC-MS/MS measurement and M.A. analyzed the data. V.R. and J.W.E.
+conducted the XPS measurement and analyzed the data. E.O. assisted in sensor fabrication, sample
+preparation and sensor testing. W. Z. assisted in sensor fabrication and data analysis. H.P. assisted
+in data analysis and interpretation and revised the manuscript. S.S.L. assisted in AFM measurement
+
+32
+
+https://doi.org/10.26434/chemrxiv-2024-6q6q5 ORCID: https://orcid.org/0000-0003-4444-2487 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+and analyzed the data. S.B.D. and J.C. supervised and managed the project. All authors reviewed
+and edited the manuscript.
+
+Disclaimer
+This document has been subjected to the U.S. Environmental Protection Agency's review and has
+been approved for publication. The views expressed in this article are those of the authors and do
+not necessarily represent the views or policies of the Agency. Any mention of trade names,
+products or services does not imply an endorsement by the Agency. The Agency does not endorse
+any commercial products, services, or enterprises.
+
+Competing interests
+A.L.F. is a co-founder and consultant of Evozyne, Inc. and a co-author of US Patent Applications
+16/887,710 and 17/642,582, US Provisional Patent Applications 62/853,919, 62/900,420,
+63/314,898,
+
+63/479,378,
+
+and
+
+63/521,617,
+
+and
+
+International
+
+Patent
+
+Applications
+
+PCT/US2020/035206 and PCT/US2020/050466. J.C. is a founder and consultant of NanoAffix
+Science LLC. Neither Evozyne nor NanoAffix funded the research reported here.
+
+Additional Information
+Supplementary information: The online version contains supplementary material available at xxx.
+
+33
+
+https://doi.org/10.26434/chemrxiv-2024-6q6q5 ORCID: https://orcid.org/0000-0003-4444-2487 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+

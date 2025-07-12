@@ -1,0 +1,2654 @@
+1
+
+High-resolution geospatial database: national criteria-air-pollutant concentrations in the
+
+2
+
+contiguous U.S., 2016 – 2020
+
+3
+
+Tianjun Lu1*, Sun-Young Kim2, Julian D. Marshall3
+
+4
+
+1
+
+5
+
+of Kentucky, Lexington, Kentucky 40536, United States
+
+6
+
+2
+
+7
+
+National Cancer Center, Goyang-si, Gyeonggi-do, 10408, Korea
+
+8
+
+3
+
+9
+
+Seattle, Washington 98195, United States
+
+Department of Epidemiology and Environmental Health, College of Public Health, University
+
+Department of Cancer AI and Digital Health, Graduate School of Cancer Science and Policy,
+
+Department of Civil & Environmental Engineering, University of Washington, 201 More Hall,
+
+10
+11
+
+*Corresponding author; Telephone: 1-859-218-2229; Email: tianjunlu@uky.edu; Address:
+
+12
+
+Department of Epidemiology and Environmental Health, College of Public Health, University of
+
+13
+
+Kentucky, Lexington, Kentucky 40536, United States
+
+1
+
+https://doi.org/10.26434/chemrxiv-2024-zg5f1 ORCID: https://orcid.org/0000-0001-8991-4578 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+14
+
+Abstract
+
+15
+
+Concentrations estimates for ambient air pollution are used widely in fields such as
+
+16
+
+environmental epidemiology, health impact assessment, urban planning, environmental equity,
+
+17
+
+and sustainability. This study builds on previous efforts by developing an updated high-
+
+18
+
+resolution geospatial database of population-weighted annual-average concentrations for six
+
+19
+
+criteria air pollutants (PM2.5, PM10, CO, NO2, SO2, O3) across the contiguous U.S. during a five-
+
+20
+
+year period (2016-2020). We developed Land Use Regression (LUR) models within a partial-
+
+21
+
+least-square – universal kriging framework by incorporating several land use, geospatial, and
+
+22
+
+satellite – based predictor variables. The LUR models were validated using conventional and
+
+23
+
+clustered cross-validation, with the former consistently showing superior performance in
+
+24
+
+capturing the variability of air quality. Most models demonstrated reliable performance (e.g.,
+
+25
+
+mean squared error – based R2 > 0.8, standardized root mean squared error < 0.1). We used the
+
+26
+
+best modeling approach to develop estimates by Census Block, which were then population-
+
+27
+
+weighted averaged at Census Block Group, Census Tract, and County geographies. Our database
+
+28
+
+provides valuable insights into the dynamics of air pollution, with utility for environmental risk
+
+29
+
+assessment, public health, policy, and urban planning.
+
+30
+31
+
+Keywords
+
+32
+
+Criteria air pollutant, land use regression, empirical model, exposure assessment, geospatial data,
+
+33
+
+environmental disparity, environmental hazard
+
+34
+
+2
+
+https://doi.org/10.26434/chemrxiv-2024-zg5f1 ORCID: https://orcid.org/0000-0001-8991-4578 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+35
+
+Key findings
+
+36
+
+A high-resolution geospatial database of population-weighted annual-average concentrations for
+
+37
+
+six criteria air pollutants (PM2.5, PM10, CO, NO2, SO2, O3) across the contiguous U.S. during a
+
+38
+
+five-year period (2016-2020) was created at Census Block Group, Census Tract, and County
+
+39
+
+geographies. We developed Land Use Regression (LUR) models that incorporated a variety of
+
+40
+
+land use, geospatial, and satellite – based predictor variables. Our database is publicly available
+
+41
+
+and could inform analyses and policies in risk assessment, public health, environmental justice,
+
+42
+
+and urban planning.
+
+43
+44
+
+Dataset details
+
+45
+
+Identifier: https://www.caces.us/data.
+
+46
+
+Creator: Tianjun Lu, Sun-Young Kim, Julian D. Marshall
+
+47
+
+Dataset correspondence: jdmarsh@uw.edu
+
+48
+
+Title: National Census-block-level criteria-air-pollutant concentrations in the contiguous U.S.,
+
+49
+
+2016 – 2020
+
+50
+
+Publisher: CACES
+
+51
+
+Publication year: 2024
+
+52
+
+(Resource type): web database
+
+53
+
+(Version): version 1.
+
+54
+3
+
+https://doi.org/10.26434/chemrxiv-2024-zg5f1 ORCID: https://orcid.org/0000-0001-8991-4578 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+55
+56
+
+1. Introduction
+High spatial-resolution estimates for levels of ambient (outdoor) air pollution are useful
+
+57
+
+for researchers and practitioners in epidemiology, public health and policy, health disparities,
+
+58
+
+environmental equity, urban planning, and climate change (Bonell et al., 2023; Burger et al.,
+
+59
+
+2024; Clark et al., 2014; Coleman et al., 2020; Hankey et al., 2017; Hystad et al., 2011; Nadal et
+
+60
+
+al., 2015; Wang et al., 2023). Databases of ambient air pollution can provide spatially precise
+
+61
+
+information for identifying and analyzing local pollution patterns, thereby allowing for more
+
+62
+
+accurate risk assessment, air quality management, and locally-tailored interventions and policies
+
+63
+
+(Allen & Barn, 2020; Bechle et al., 2023; Colmer et al., 2020; Lu et al., 2022; Lu et al., 2023;
+
+64
+
+Zwack et al., 2011).
+
+65
+
+Empirical models of air pollution – also called land-use regression (LUR) or Integrated
+
+66
+
+Empirical Geographic (IEG) models – are a geospatial approach that can predict, with fine
+
+67
+
+spatial resolution, concentrations at unmeasured locations (Amini et al., 2017; Di et al., 2019a;
+
+68
+
+Hankey & Marshall, 2015; Keller et al., 2015; Saha et al., 2021; Sampson et al., 2013; Van
+
+69
+
+Donkelaar et al., 2019; Young et al., 2016). While details of the methods employed have evolved
+
+70
+
+over time, LUR models exploit correlations between land use variables (e.g., the road network,
+
+71
+
+population density, industry) and levels of ambient air pollution (Beelen et al., 2013; Hoek et al.,
+
+72
+
+2008; Jerrett et al., 2005; Su et al., 2008).
+
+73
+
+Initially, LUR models were developed for single urban areas (Gilbert et al., 2005; Hankey
+
+74
+
+et al., 2019; Henderson et al., 2007; Hoek et al., 2008; Jerrett et al., 2007; Lu et al., 2019;
+
+75
+
+Marshall et al., 2008; Sanchez et al., 2018; Saraswat et al., 2013). Later, LUR was developed for
+
+76
+
+national (Clark et al., 2014; Kerckhoffs et al., 2015; Kim et al., 2020; Novotny et al., 2011),
+
+77
+
+continental (de Hoogh et al., 2016; Knibbs et al., 2016; Knibbs et al., 2018), and global scales
+4
+
+https://doi.org/10.26434/chemrxiv-2024-zg5f1 ORCID: https://orcid.org/0000-0001-8991-4578 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+78
+
+(Larkin et al., 2023; Larkin et al., 2017). Input variables have grown from land-use data, to now
+
+79
+
+include satellite-derived pollution estimates (Bechle et al., 2015; Filonchyk & Peterson, 2023;
+
+80
+
+Knibbs et al., 2018; Roy, 2021), predictions from mechanistic models (e.g., chemical transport
+
+81
+
+models) (de Hoogh et al., 2016; Goldberg et al., 2019), and microscale features (e.g., street view
+
+82
+
+and point of interest) (Lu et al., 2021; Messier et al., 2018; Qi et al., 2022; Qi & Hankey, 2021).
+
+83
+
+Methods have shifted to better allow for non-criteria pollutants (Messier et al., 2018; Saha et al.,
+
+84
+
+2022; Saraswat et al., 2013) and larger amounts of input data (i.e., more measured
+
+85
+
+concentrations, more independent variables; “big data” techniques) and more-rapid, more-
+
+86
+
+sophisticated mathematical modeling (e.g., statistical approach selection, variable prioritization,
+
+87
+
+spatial coverage expansion; “machine learning”) (Beckerman et al., 2013; Di et al., 2019b;
+
+88
+
+Goldberg et al., 2019; Hoek et al., 2015; Keller et al., 2015; Kim et al., 2020; Lu et al., 2019; Lu
+
+89
+
+et al., 2021; Masiol et al., 2019; US EPA, 2022; Van Donkelaar et al., 2019; Weichenthal et al.,
+
+90
+
+2016; Wong et al., 2021).
+
+91
+
+A recent inter-comparison of spatial predictions by six national empirical models reported
+
+92
+
+relatively close agreement among annual-average model predictions (Bechle et al., 2023). While
+
+93
+
+the inputs and methods differed among models, the dependent data were consistent: publicly-
+
+94
+
+available United States Environmental Protection Agency (US EPA) regulatory monitoring
+
+95
+
+station data. That result suggests that, among the approaches they compared, the actual methods
+
+96
+
+might not dramatically influence the resulting annual-average predictions, if the dependent
+
+97
+
+variable is EPA regulatory air pollution measurements.
+
+98
+
+Here, we extend and update our previous modeling (Kim et al., 2020): national annual-
+
+99
+
+average empirical models for criteria pollutants in the contiguous U.S. Specifically, in prior work
+
+100
+
+we developed parsimonious national annual-average LUR models to estimate air pollutant
+5
+
+https://doi.org/10.26434/chemrxiv-2024-zg5f1 ORCID: https://orcid.org/0000-0001-8991-4578 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+101
+
+concentrations for year-2015 and earlier. Here, we estimate concentrations for years-2016 to -
+
+102
+
+2020, particularly allowing for ongoing health effect studies and exposure disparity research that
+
+103
+
+would reveal evolving environmental impacts and facilitating the comparison of recent periods
+
+104
+
+with historical data (Coleman et al., 2020; Lane et al., 2022; Liu et al., 2021). Prior estimates
+
+105
+
+were publicly available for free download and have been integral to a range of applications (on
+
+106
+
+average, currently receiving ~2 downloads per day); the same holds for the current estimates.
+
+107
+
+2. Data and Methods
+
+108
+
+In general, the three steps for empirical models are (1) model building, (2) model testing,
+
+109
+
+and (3) model application. Below, we describe the dependent data (pollution concentrations), the
+
+110
+
+independent data (i.e., “predictor variables”, such as land uses and satellite data), and then the
+
+111
+
+model-building, -testing, and -application stages. The approach employed here is consistent with
+
+112
+
+prior work (i.e., years 2016-2020 here; years 2015 and earlier in prior work).
+
+113
+
+2.1. Dependent data: concentrations of criteria pollutants at regulatory monitoring stations
+
+114
+
+For regulatory purposes, such as ensuring compliance with national standards, EPA
+
+115
+
+measures ambient concentrations of criteria air pollutants at regulatory monitoring stations
+
+116
+
+throughout the U.S. Here, we employ data for year-2016 to -2020 for six criteria pollutants:
+
+117
+
+nitrogen dioxide (NO2), sulfur dioxide (SO2), carbon monoxide (CO), ozone (O3), and two types
+
+118
+
+of particulate matter (PM10 [particles with diameters 10 micrometers or smaller] and PM2.5
+
+119
+
+[particles with diameters 2.5 micrometers or smaller]). Data were obtained for all Air Quality
+
+120
+
+System (AQS) monitoring locations via the EPA data repository (https://www.epa.gov/outdoor-
+
+121
+
+air-quality-data).
+
+6
+
+https://doi.org/10.26434/chemrxiv-2024-zg5f1 ORCID: https://orcid.org/0000-0001-8991-4578 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+122
+
+The raw data are hourly for gaseous pollutants (NO2, SO2, CO, O3) and daily for
+
+123
+
+particulate matter (PM2.5 and PM10). We calculated annual-average concentrations of each
+
+124
+
+pollutant (except O3) at each site. Selection criteria, reflecting EPA criteria, are (1) a minimum of
+
+125
+
+18 hours of valid measurements per day, to be considered a valid day; (2) at least 244 valid days
+
+126
+
+per year, or at least 61 days for monitors reporting every three days, or at least 41 days for those
+
+127
+
+reporting every six days (i.e., at least 75% of intended measurements); (3) during the year, a
+
+128
+
+maximum of 45 consecutive days without any measurements (Kim et al., 2020). In contrast, for
+
+129
+
+O3, the “annual average” metric includes only the heightened O3 season from May through
+
+130
+
+September, and represent the daily highest 8-hour average. Selection criteria for O3 are (1) at
+
+131
+
+least 18 hours of measurements to be considered a valid day and (2) at least 75% of valid days
+
+132
+
+measured across the period. This process resulted in data collection from a range of 260 to 1,089
+
+133
+
+monitoring stations per pollutant strategically located across various US regions from 2016 to
+
+134
+
+2020. The breakdown by pollutant was as follows: PM2.5 from 495 to 784 stations, PM10 from
+
+135
+
+290 to 454 stations, CO from 228 to 261 stations, NO2 from 396 to 414 stations, SO2 from 407 to
+
+136
+
+450 stations, and O3 from 1,065 to 1,089 stations. Figure 1 illustrates the distribution of these
+
+137
+
+monitoring stations. For LUR modeling, annual-average pollutant concentrations were square
+
+138
+
+root transformed to adhere to the normality assumption.
+
+7
+
+https://doi.org/10.26434/chemrxiv-2024-zg5f1 ORCID: https://orcid.org/0000-0001-8991-4578 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+139
+140
+141
+142
+143
+144
+
+Figure 1. PM2.5 monitoring stations in the contiguous US, 2016. Each red dot on the map
+represents a US EPA regulatory monitoring station.
+2.2. Independent data: geographic and land use features and satellite estimates
+We used the same predictor variables as in the prior study (Kim et al., 2020). Briefly, the
+
+145
+
+variables cover ten categories: traffic, population, land use/land cover, sources, industrial
+
+146
+
+emissions, vegetation, imperviousness, elevation, position, and satellite air pollution estimates
+
+147
+
+(Table 1). These variables aim to capture various anthropogenic and natural factors that may
+
+148
+
+impact air quality. The variables were quantified as count, length, and area within varying buffer
+
+149
+
+sizes ranging from 50 meters to 15 kilometers; this approach aims to capture potential local and
+
+150
+
+regional pollution impacts. Satellite-based pollution estimates (i.e., column abundance or surface
+
+151
+
+estimates) are annual averages for NO2, PM2.5, SO2, CO, and formaldehyde (HCHO), derived
+
+152
+
+from multiple satellite products (e.g., aerosol optical depth [AOD], ozone monitoring instrument
+
+153
+
+[OMI], and estimates from chemical transport models) (Boersma et al., 2011; Deeter et al.,
+
+154
+
+2017). Consistent with Kim et al. (2020), the HCHO satellite data are a 12-year average (2005 to
+8
+
+https://doi.org/10.26434/chemrxiv-2024-zg5f1 ORCID: https://orcid.org/0000-0001-8991-4578 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+155
+
+2016) rather than annual averages. The resolution of the gridded annual satellite-based estimates
+
+156
+
+varied (NO2, PM2.5, HCHO: 0.1°×0.1°; SO2, CO: 0.25°×0.25°). Overall, we employ a total of
+
+157
+
+~360 variables. Additional details regarding data processing and variable calculation are in (Kim
+
+158
+
+et al., 2020).
+
+9
+
+https://doi.org/10.26434/chemrxiv-2024-zg5f1 ORCID: https://orcid.org/0000-0001-8991-4578 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+159
+
+160
+161
+162
+163
+
+Table 1. List of geographic and land use variables and satellite estimates used in the LUR models
+
+Category
+
+Measure
+
+Traffic
+
+Length/density in buffer (km)
+
+Population
+
+Count in buffer
+
+Spatial
+resolution
+0.05-15 km
+Block
+group
+
+Description
+
+Data sourcea
+
+Any road, truck route, intersections, etc.
+
+TeleAtlas
+
+Population in block groups (0.5-3 km)
+
+U.S. Census
+NLCD
+
+Land
+use/land
+cover
+Sources
+Emissions
+
+Area in buffer (%)
+
+30 m
+
+Built land, open space, agricultural land, etc. (0.0515 km)
+
+Length in buffer (m)
+Point in buffer (ton)
+
+Point
+Point
+
+Distance to the nearest source (e.g., railroad, airport)
+Sum of site-specific facility emissions (3-30 km)
+
+Vegetation
+
+Area in buffer
+
+30 m
+
+Normalized difference vegetation index (0.5-10 km)
+
+Impervious
+
+Area in buffer (%)
+
+30 m
+
+NEI
+NEI
+University of
+Maryland
+NLCD
+
+Impervious surface value (0.05-5 km)
+Elevation above sea levels; counts of points above
+Elevation
+Value
+30 m
+USGS NED
+or below a threshold (1-5 km)
+Position
+Coordinates
+Point
+Latitude, longitude
+EPA
+Satellite
+Column abundance or
+Satellite-based air pollution estimates (NO2, SO2,
+Multiple
+10-25 km
+estimates
+surface (µg/m3 or ppb)
+CO, HCHO, PM2.5)
+sourcesa
+Note: aSatellite-derived annual average estimates for PM2.5 (1998-2014, 0.1º * 0.1º grid), NO2 (2004-2015; 0.1º * 0.1º grid), SO2
+(2005-2016; 0.25º * 0.25º grid), and CO (2001-2016; 0.25º * 0.25º grid). Detailed information about the data sources can be found in
+Kim et al., 2020 and Lu et al., 2021. TeleAtlas provides dynamic location-based data. NLCD is National Land Cover Database; NEI is
+National Emission Inventory; USGS NED is National Elevation Dataset (NED) of the U.S. Geological Survey (USGS).
+
+10
+
+https://doi.org/10.26434/chemrxiv-2024-zg5f1 ORCID: https://orcid.org/0000-0001-8991-4578 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+164
+165
+
+2.3. Modeling -building and -testing
+Consistent with previous modeling approaches (Kim et al., 2020; Sampson et al., 2013;
+
+166
+
+Young et al., 2016), we employed a hybrid modeling approach that integrates partial least
+
+167
+
+squares (PLS) with universal kriging (PLS-UK). Specifically, the two components (1) address
+
+168
+
+variance through kriging that utilizes an exponential covariance function for the variogram and
+
+169
+
+(2) managing the mean component via PLS that reduces the dimensions of predictor variables in
+
+170
+
+the linear regression process. This combination not only encompasses a broad range of
+
+171
+
+geographic factors but also mitigates the likelihood of generating extreme predictions (Mehmood
+
+172
+
+et al., 2012). Covariance parameters in kriging and regression parameters for PLS summary
+
+173
+
+predictors were selected based on a maximum likelihood approach. We adopted two and three
+
+174
+
+PLS predictors based on cross-validation, respectively, following previous studies using a similar
+
+175
+
+modeling framework (Kim et al., 2020; Young et al., 2016).
+
+176
+
+To further investigate the model-building process, we employed forward selection to
+
+177
+
+choose an optimal subset of variables from the full set, for use in the PLS approach. That is, the
+
+178
+
+process begins by identifying the variable with the highest correlation to the dependent variable
+
+179
+
+and incrementally adding variables that yield the highest partial F-statistic in combination with
+
+180
+
+previously selected variables. This process examines how the number of selected variables
+
+181
+
+influences the model performance.
+
+182
+
+For model testing, we executed two types of 10-fold cross-validation (CV) training and
+
+183
+
+testing: (1) in conventional CV, monitoring sites are divided into 10 groups randomly; (2) in
+
+184
+
+spatially clustered CV, k-means is used to establish 10 spatial groups (clusters) spatially (Young
+
+185
+
+et al., 2016). In both CV, there are 10 iterations, each involving setting aside one group for
+
+186
+
+model-testing and using the remaining groups for model-building. Conventional CV evaluates
+11
+
+https://doi.org/10.26434/chemrxiv-2024-zg5f1 ORCID: https://orcid.org/0000-0001-8991-4578 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+187
+
+model performance at random locations; spatially clustered CV reflects model performance at
+
+188
+
+sites distant from monitoring stations.
+
+189
+
+To evaluate model performance via cross-validation comparisons, we utilized
+
+190
+
+standardized root-mean-square error (sRMSE) and a mean squared error (MSE) – based R2
+
+191
+
+metric. sRMSE, calculated as RMSE divided by the mean concentrations of all monitors, allows
+
+192
+
+for comparisons across pollutants. MSE-R2 (hereafter R2), defined as one minus the ratio of the
+
+193
+
+sum of squared prediction errors to the sum of squared deviations from the observation mean,
+
+194
+
+assesses the fit of the predictions to the 1:1 line rather than the regression line (Knibbs et al.,
+
+195
+
+2016; Wang et al., 2012).
+
+196
+
+2.4. Model application
+
+197
+
+The most effective LUR models identified through this process were then applied to our
+
+198
+
+nationwide model predictions for each pollutant and year. After we identified the best models for
+
+199
+
+each pollutant and respective year, we predicted the annual average concentrations for
+
+200
+
+approximately 7 million Census Block centroids with nonzero population throughout the
+
+201
+
+contiguous U.S. Subsequently, we calculated population-weighted averages at several
+
+202
+
+geographical levels, including Census Block Groups, Census Tracts, and Counties for years 2016
+
+203
+
+– 2020, aligning with the 2010 Census boundaries. Of the 30 models attempted (i.e., 6 pollutants,
+
+204
+
+5 years), we were unable to generate one of the models [O3, 2020] because of data constraints,
+
+205
+
+leaving 29 resulting pollutant-year models. This approach was designed to offer our estimates
+
+206
+
+across diverse spatial resolutions for all criteria pollutants, catering to a variety of application
+
+207
+
+needs. All LUR model development were carried out in R (version 4.2.1).
+
+208
+
+3. Results and discussion
+12
+
+https://doi.org/10.26434/chemrxiv-2024-zg5f1 ORCID: https://orcid.org/0000-0001-8991-4578 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+209
+
+3.1. Monitoring data
+
+210
+
+The main trend for monitoring data we investigated (Figure 2) is, with the exception of
+
+211
+
+O3, a slight decline in air pollutant concentrations. This pattern is consistent with the previous
+
+212
+
+years of regulatory monitoring data, indicating improved air quality measures or other
+
+213
+
+environmental policy impacts nationwide (Kim et al., 2020). For PM2.5 and PM10, the
+
+214
+
+concentrations slight increased from 2016 to 2018, but decreased in 2019 and 2020. NO2 was
+
+215
+
+steady from 2016 to 2019 and showed a slight decrease in concentrations in 2020. SO2 generally
+
+216
+
+demonstrated a downward trend in mean concentrations and consistent year-on-year reduction
+
+217
+
+while CO and O3 displayed minor yearly fluctuations with no apparent trend in concentrations.
+
+218
+219
+220
+221
+
+Figure 2. Boxplots of annual average concentrations of six criteria air pollutants across
+regulatory monitoring sites for 2016 – 2020 in the contiguous U.S. Each box plot displays the
+median concentration (black dot) and mean concentration (red dot) and the interquartile range
+13
+
+https://doi.org/10.26434/chemrxiv-2024-zg5f1 ORCID: https://orcid.org/0000-0001-8991-4578 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+222
+223
+224
+225
+
+(IQR, represented by the box) of pollutant concentrations for each year. The unit of PM2.5 and
+PM10 is µg/m3. The unit of CO is ppm. The unit of NO2, SO2, and O3 is ppb.
+3.2. Model evaluation
+
+226
+
+Overall, for each pollutant and across both CV methodologies, LUR models constructed
+
+227
+
+with around 30 predictor variables consistently yielded better R2 and lower sRMSE as compared
+
+228
+
+to models with more predictors (Figure 3). This pattern underscores the diminishing returns and
+
+229
+
+potential overfitting when too many variables are included (Kerckhoffs et al., 2019; Li et al.,
+
+230
+
+2017). The temporal stability from 2016 to 2020 of model performance also highlights the
+
+231
+
+robustness of the LUR models. These results imply that a more parsimonious approach to model
+
+232
+
+development, i.e., selecting only the most pertinent categories of predictor variables, can provide
+
+233
+
+more reliable models; that finding is consistent with prior research (Kim et al., 2020; Meng et al.,
+
+234
+
+2015).
+
+235
+
+In terms of the two CV approaches, LUR models validated using the conventional CV
+
+236
+
+method consistently outperformed those using the spatially clustered CV approach, as indicated
+
+237
+
+by higher R² and lower sRMSE values (Figure 3). That result is consistent with expectations and
+
+238
+
+with the previous modeling effort (Kim et al., 2020). As mentioned above, clustered CV reflect
+
+239
+
+model performance far from other monitors.
+
+14
+
+https://doi.org/10.26434/chemrxiv-2024-zg5f1 ORCID: https://orcid.org/0000-0001-8991-4578 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+240
+241
+242
+243
+244
+
+Figure 3. sRMSEs and R2s of the conventional and clustered CV of LUR models for six criteria
+air pollutants, 2016 – 2020, categorized by the number of predictor variables. The solid lines
+represent sRMSEs, and the dashed lines represent R2s.
+
+15
+
+https://doi.org/10.26434/chemrxiv-2024-zg5f1 ORCID: https://orcid.org/0000-0001-8991-4578 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+245
+
+Table 2 shows the performance of LUR models using the “best” number of predictor
+
+246
+
+variables. In general, model performance is consistently higher for PM2.5, PM10, NO2, and O3
+
+247
+
+than for CO and SO2, particularly when using conventional CV. Over the five-year span, this
+
+248
+
+trend is evident through the sustained R2 values above 0.70 for PM2.5 and PM10 and exceeding
+
+249
+
+0.80 for NO2 and O3, underscoring the robustness of the LUR models for these pollutants.
+
+250
+
+Scatterplots of the LUR models using the “best” number of predictor variables for six criteria air
+
+251
+
+pollutants in 2016 (Figure 4) illustrate the level of agreement between predicted versus measured
+
+252
+
+air pollution levels. Scatterplots reveal similar patterns as in Table 2.
+
+16
+
+https://doi.org/10.26434/chemrxiv-2024-zg5f1 ORCID: https://orcid.org/0000-0001-8991-4578 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+253
+254
+255
+
+Table 2. sRMSEs and R2s of the conventional and clustered CV of LUR models using the “best”
+number of predictor variables for six criteria air pollutants, 2016 – 2020
+Conventional CV
+Clustered CV
+2
+Pollutant Year
+sRMSE
+R
+sRMSE
+0.83
+0.14
+0.56
+0.22
+PM2.5
+2016
+0.80
+0.14
+0.5
+0.22
+PM2.5
+2017
+0.77
+0.16
+0.58
+0.22
+PM2.5
+2018
+0.83
+0.15
+0.71
+0.19
+PM2.5
+2019
+0.78
+0.21
+0.61
+0.28
+PM2.5
+2020
+0.72
+0.29
+0.50
+0.39
+PM10
+2016
+0.72
+0.27
+0.44
+0.37
+PM10
+2017
+0.72
+0.28
+0.63
+0.32
+PM10
+2018
+0.73
+0.31
+0.59
+0.38
+PM10
+2019
+0.72
+0.34
+0.55
+0.43
+PM10
+2020
+0.53
+0.24
+0.50
+0.25
+CO
+2016
+0.48
+0.26
+0.53
+0.25
+CO
+2017
+0.44
+0.25
+0.45
+0.25
+CO
+2018
+0.41
+0.23
+0.36
+0.24
+CO
+2019
+0.49
+0.24
+0.48
+0.25
+CO
+2020
+0.86
+0.26
+0.77
+0.33
+NO2
+2016
+0.83
+0.28
+0.66
+0.40
+NO2
+2017
+0.87
+0.24
+0.76
+0.33
+NO2
+2018
+0.86
+0.24
+0.70
+0.35
+NO2
+2019
+0.85
+0.26
+0.70
+0.36
+NO2
+2020
+0.28
+0.69
+0.34
+0.66
+SO2
+2016
+0.17
+0.91
+0.17
+0.92
+SO2
+2017
+0.20
+0.88
+0.15
+0.91
+SO2
+2018
+0.14
+1.65
+0.10
+1.69
+SO2
+2019
+0.17
+1.45
+0.12
+1.49
+SO2
+2020
+0.82
+0.07
+0.58
+0.10
+O3
+2016
+0.85
+0.06
+0.60
+0.11
+O3
+2017
+0.85
+0.07
+0.58
+0.12
+O3
+2018
+0.85
+0.06
+0.57
+0.10
+O3
+2019
+Note: sRMSE, calculated as RMSE divided by the mean concentrations of all monitors. R2
+represents MSE-R2, defined as one minus the ratio of the sum of squared prediction errors to the
+sum of squared deviations from the observation mean, and it assesses the fit of the predictions to
+the 1:1 line rather than the regression line. In conventional CV, monitoring sites are divided into
+10 groups randomly; in spatially clustered CV, k-means is used to establish 10 spatial groups
+(clusters) spatially (Young et al., 2016).
+R2
+
+256
+257
+258
+259
+260
+261
+
+17
+
+https://doi.org/10.26434/chemrxiv-2024-zg5f1 ORCID: https://orcid.org/0000-0001-8991-4578 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+262
+263
+264
+265
+266
+267
+268
+
+Figure 4. Scatterplots of the sRMSEs and R2s of the conventional and clustered CV of LUR
+models using the “best” number of predictor variables for six criteria air pollutants in 2016.
+Green line indicates the 1:1 line and red line indicates the fitted line.
+3.3. Model application
+After model-building and -testing, we applied the model across geographies, estimating
+
+269
+
+concentrations at each Census Block and then population-weighted averaging to the Block Group
+
+270
+
+(year-2016: Figure 5), tract, and county. The maps revealed the heterogeneous distribution of
+
+271
+
+each air pollutant. As expected, the PM2.5 concentrations were notably higher in the California
+
+272
+
+and along some urbanized areas of the East Coast, reflecting the combined impact of energy
+
+273
+
+production and dense population centers (Kelly et al., 2021). PM10 levels showed similar patterns
+18
+
+https://doi.org/10.26434/chemrxiv-2024-zg5f1 ORCID: https://orcid.org/0000-0001-8991-4578 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+274
+
+likely also reflecting the influence of both natural desert dust and anthropogenic sources (Chen et
+
+275
+
+al., 2010). SO2 levels showed slightly higher levels in Southern and Central states, potentially
+
+276
+
+near industrial sources (Nopmongcol et al., 2019). O3 concentrations demonstrated a broad
+
+277
+
+distribution, with higher levels in the Southern and Southwestern states, which could be
+
+278
+
+attributed to these regions' warmer climates, conducive to O3 formation (Jiao et al., 2016). These
+
+279
+
+maps underscore the diverse spatial patterns of air pollutant concentrations across the U.S.,
+
+280
+
+reflecting regional differences in emission sources, environmental policies, and natural factors.
+
+281
+
+The summary statistics for population-weighted annual average concentrations of air
+
+282
+
+pollutants from 2016 to 2020 revealed an upward trend in PM2.5 exposure, with both median and
+
+283
+
+mean concentrations rising over the five-year period (Table 3). In contrast, NO2 and SO2 levels
+
+284
+
+decreased, suggesting improvements in these pollutants nationwide. PM10 and O3 concentrations
+
+285
+
+fluctuated year-to-year without a clear long-term trend, indicating variability in exposure to these
+
+286
+
+pollutants across the U.S. population.
+
+19
+
+https://doi.org/10.26434/chemrxiv-2024-zg5f1 ORCID: https://orcid.org/0000-0001-8991-4578 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+287
+288
+289
+290
+
+Figure 5. Maps of Census Block Group population-weighted annual average concentrations for
+six criteria air pollutants in 2016 based on the “best” LUR models.
+
+20
+
+https://doi.org/10.26434/chemrxiv-2024-zg5f1 ORCID: https://orcid.org/0000-0001-8991-4578 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+291
+292
+
+293
+294
+295
+296
+297
+298
+
+Table 3. Summary statisticsa of population-weighted annual average concentrationsb across all
+Census Block Groups for the contiguous U.S., 2016-2020, based on the “best” LUR models
+Pollutant
+
+Year
+
+P10
+
+P25
+
+Median
+
+P75
+
+P90
+
+Mean
+
+SD
+
+PM2.5
+PM2.5
+PM2.5
+PM2.5
+PM2.5
+PM10
+PM10
+PM10
+
+2016
+2017
+2018
+2019
+2020
+2016
+2017
+2018
+
+5.49
+5.75
+5.80
+5.14
+5.27
+10.51
+10.64
+10.71
+
+6.43
+6.68
+6.69
+6.15
+6.17
+12.94
+13.03
+13.03
+
+7.49
+7.61
+7.70
+7.18
+7.19
+16.06
+15.82
+15.99
+
+8.27
+8.48
+8.72
+8.03
+8.33
+19.38
+19.44
+19.87
+
+9.07
+9.39
+10.05
+8.93
+10.00
+22.92
+22.99
+24.07
+
+7.40
+7.64
+7.86
+7.10
+7.55
+16.70
+16.71
+16.93
+
+1.56
+1.60
+1.82
+1.55
+2.37
+5.63
+5.65
+5.66
+
+PM10
+PM10
+CO
+CO
+CO
+CO
+CO
+NO2
+NO2
+NO2
+NO2
+NO2
+SO2
+SO2
+SO2
+SO2
+SO2
+O3
+O3
+O3
+O3
+
+2019
+2020
+2016
+2017
+2018
+2019
+2020
+2016
+2017
+2018
+2019
+2020
+2016
+2017
+2018
+2019
+2020
+2016
+2017
+2018
+2019
+
+9.33
+9.02
+0.16
+0.17
+0.17
+0.15
+0.16
+2.31
+2.22
+2.23
+2.29
+1.94
+0.48
+0.38
+0.34
+0.26
+0.24
+34.81
+35.24
+34.66
+35.03
+
+11.71
+12.01
+0.19
+0.19
+0.19
+0.19
+0.19
+3.61
+3.24
+3.43
+3.49
+3.19
+0.60
+0.52
+0.47
+0.40
+0.38
+39.22
+39.00
+37.81
+38.35
+
+14.54
+15.95
+0.23
+0.22
+0.23
+0.22
+0.22
+5.97
+5.33
+5.54
+5.66
+5.16
+0.76
+0.68
+0.62
+0.59
+0.55
+42.48
+41.88
+40.75
+41.55
+
+17.91
+20.86
+0.27
+0.27
+0.27
+0.25
+0.26
+8.71
+8.22
+8.07
+8.27
+7.57
+0.94
+0.85
+0.80
+0.82
+0.73
+44.64
+44.46
+42.73
+44.08
+
+21.05
+26.37
+0.31
+0.32
+0.31
+0.29
+0.30
+12.72
+12.49
+11.93
+11.80
+10.91
+1.13
+1.04
+0.99
+1.04
+0.91
+48.08
+50.05
+49.83
+48.71
+
+15.09
+16.97
+0.23
+0.23
+0.23
+0.22
+0.23
+6.81
+6.43
+6.38
+6.43
+5.83
+0.79
+0.70
+0.65
+0.63
+0.57
+42.12
+42.24
+41.15
+41.61
+
+4.99
+7.04
+0.06
+0.07
+0.06
+0.05
+0.06
+4.23
+4.31
+3.99
+3.85
+3.57
+0.28
+0.28
+0.27
+0.32
+0.27
+5.69
+6.16
+5.94
+5.68
+
+Note: aP10 represents the 10th percentile. P25 represents the 25th percentile. P75 represents the
+75th percentile. P90 represents the 90th percentile. SD represents standard deviation.
+b
+The unit on PM2.5 and PM10 is µg/m3. The unit on CO is ppm. The unit on NO2, SO2, and O3 is
+ppb.
+21
+
+https://doi.org/10.26434/chemrxiv-2024-zg5f1 ORCID: https://orcid.org/0000-0001-8991-4578 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+299
+300
+
+3.4. Comparison with the previously developed database (1979 – 2015)
+The consistent methodology across the current and historical datasets enables users to
+
+301
+
+track long-term trends in air pollution exposure with confidence. Notably, the trend of decreasing
+
+302
+
+NO2 and SO2 levels aligns with historical data, suggesting ongoing improvements in air quality.
+
+303
+
+However, the recent increase in PM2.5 and PM10 concentrations as observed in our updated
+
+304
+
+models disagreed with the previous models’ decreasing trend. This finding is consistent with
+
+305
+
+some recent studies (Bekbulat et al., 2021), which warrants further investigation into the sources
+
+306
+
+of particulate pollution. The variability observed in the O3 concentrations is consistent with the
+
+307
+
+historical dataset (Kim et al., 2020). The prediction maps further emphasized the spatial
+
+308
+
+consistency in air pollution distribution as compared to previous periods. For example, areas
+
+309
+
+historically impacted by higher concentrations of PM2.5 and PM10, such as California, continue to
+
+310
+
+show elevated levels, while regions with industrial activities remain as hotspots for SO2. These
+
+311
+
+spatial and temporal trends of consistency highlight the persistent influence of both
+
+312
+
+anthropogenic activities and natural impacts on ambient air quality.
+
+313
+
+3.5. Dataset location and format
+
+314
+
+Model predictions can be freely downloaded online at https://www.caces.us/data. The
+
+315
+
+available dataset provides population-weighted annual-average concentrations for the six criteria
+
+316
+
+air pollutants at three geographic levels (Census Block Groups; Census Tracts; Counties) during
+
+317
+
+2016 – 2020 (as noted above, O3 estimates are for summer months, and estimates for 2020 are
+
+318
+
+unavailable).
+
+319
+
+3.6. Limitations and future work
+
+22
+
+https://doi.org/10.26434/chemrxiv-2024-zg5f1 ORCID: https://orcid.org/0000-0001-8991-4578 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+320
+
+Our comprehensive high-resolution geospatial database supplements previously
+
+321
+
+developed air pollution database (1979 – 2015) and provides detailed estimates of population-
+
+322
+
+weighted annual-average concentrations for the six criteria pollutants (PM2.5, PM10, CO, NO2,
+
+323
+
+SO2, O3) across varying geographic scales, spanning the combined years 1979 – 2020.
+
+324
+
+While our model provides comprehensive geospatial estimates of air pollutant
+
+325
+
+concentrations, it is not without limitations. The reliance on regulatory monitoring data can lead
+
+326
+
+to underrepresentation of air quality in regions with sparse monitoring infrastructure, potentially
+
+327
+
+affecting the precision of estimates in rural or remote areas (deSouza & Kinney, 2021; Kelp et
+
+328
+
+al., 2022). Future enhancements could include the integration of other remote sensing products
+
+329
+
+(e.g., Google Earth Engine) and low-cost sensor networks (e.g., PurpleAir) to increase spatial
+
+330
+
+coverage, especially in under-monitored regions (Brook et al., 2018; Lee et al., 2017; Lu et al.,
+
+331
+
+2022). Modeling performance is not as strong for CO and SO2 as for other pollutants. That result
+
+332
+
+may reflect several possible aspects, including the number and placement of monitors, spatial
+
+333
+
+patterns, and the degree to which those patterns correlate with land-use or other data used in our
+
+334
+
+model. Future research might incorporate more detailed emission inventory data into the model
+
+335
+
+development, aiming to capture point sources and industrial emissions that could significantly
+
+336
+
+affect local concentrations. Our current modeling framework is PLS-UK; future modeling
+
+337
+
+approaches could include other geospatial and empirical models (e.g., machine learning,
+
+338
+
+geographically weighted regression) (Lloyd et al., 2023; Lotfata, 2022; Lu et al., 2021).
+
+339
+
+Furthermore, the temporal resolution here is confined to annual averages, which incorporates but
+
+340
+
+does not shed light on short-term variability, episodic events, or seasonal patterns (Dons et al.,
+
+341
+
+2014); future work could advance the temporal resolution of our models to capture temporal
+
+342
+
+dynamics; this approach may, potentially, inform timely and targeted air quality interventions
+23
+
+https://doi.org/10.26434/chemrxiv-2024-zg5f1 ORCID: https://orcid.org/0000-0001-8991-4578 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+343
+
+(Gladson et al., 2022; Masiol et al., 2018; Yuan et al., 2022). To be consistent with the prior
+
+344
+
+modeling efforts (Kim et al., 2020), our approach is based on regulatory monitors and so is
+
+345
+
+confined to criteria pollutants; future work could consider air toxics or emerging pollutants, if
+
+346
+
+monitoring data were available (Amini et al., 2017; Jedynska et al., 2014; Saha et al., 2021).
+
+347
+
+4. Conclusion
+
+348
+
+We developed a high-resolution geospatial database consisting of the population-
+
+349
+
+weighted annual average concentrations of six key criteria air pollutants across the contiguous
+
+350
+
+U.S. from 2016 to 2020, at several geographical levels, including Census Block Groups, Census
+
+351
+
+Tracts, and Counties. Our models were developed using a PLS-UK framework; the models
+
+352
+
+achieved reasonable performance, consistent with our earlier published models.
+
+353
+354
+
+Acknowledgements
+
+355
+
+This publication was developed as part of the Center for Air, Climate, and Energy
+
+356
+
+Solutions (CACES), which was supported under Assistance Agreement No. R835873 awarded
+
+357
+
+by the U.S. Environmental Protection Agency (EPA) for an Air, Climate, and Energy (ACE)
+
+358
+
+center. It has not been formally reviewed by the EPA. The views expressed in this document are
+
+359
+
+solely those of the authors and do not necessarily reflect those of the Agency. EPA does not
+
+360
+
+endorse any products or commercial services mentioned in this publication. We thank Amanda J.
+
+361
+
+Gassett and Logan Piepmeier from the University of Washington for the assistance in generating
+
+362
+
+the model variables. We also thank Dr. Steve Hankey from Virginia Tech for valuable comments
+
+363
+
+on the model development.
+
+364
+24
+
+https://doi.org/10.26434/chemrxiv-2024-zg5f1 ORCID: https://orcid.org/0000-0001-8991-4578 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+365
+
+CrediT Authorship Contribution Statement
+
+366
+
+Tianjun Lu: Conceptualization, Data curation, Formal analysis, Visualization, Writing – original
+
+367
+
+draft, Writing – review & editing. Sun-Young Kim: Data curation, Methodology, Writing –
+
+368
+
+review & editing. Julian D. Marshall: Conceptualization, Supervision, Funding acquisition,
+
+369
+
+Writing – review & editing.
+
+370
+371
+372
+
+Conflict of Interest Statement
+All authors have no conflict of interest to declare.
+
+373
+374
+375
+
+Data Availability Statement
+The high-resolution geographic database (estimated ambient annual-average
+
+376
+
+concentrations) can be downloaded as CSV files freely from the official website of the Center for
+
+377
+
+Air, Climate, and Energy Solutions (CACES): https://www.caces.us/data.
+
+378
+
+25
+
+https://doi.org/10.26434/chemrxiv-2024-zg5f1 ORCID: https://orcid.org/0000-0001-8991-4578 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+379
+
+References
+
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+
+Allen, R. W., & Barn, P. (2020). Individual-and household-level interventions to reduce air
+pollution exposures and health risks: a review of the recent literature. Current
+environmental health reports, 7, 424-440.
+Amini, H., Yunesian, M., Hosseini, V., Schindler, C., Henderson, S. B., & Künzli, N. (2017). A
+systematic review of land use regression models for volatile organic compounds.
+Atmospheric environment, 171, 1-16.
+Bechle, M. J., Bell, M. L., Goldberg, D. L., Hankey, S., Lu, T., Presto, A. A., Robinson, A. L.,
+Schwartz, J., Shi, L., & Zhang, Y. (2023). Intercomparison of six national empirical
+models for PM2. 5 air pollution in the contiguous US. Findings(November).
+https://doi.org/https://doi.org/10.32866/001c.89423
+Bechle, M. J., Millet, D. B., & Marshall, J. D. (2015). National spatiotemporal exposure surface
+for NO2: monthly scaling of a satellite-derived land-use regression, 2000–2010.
+Environmental science & technology, 49(20), 12297-12305.
+Beckerman, B. S., Jerrett, M., Serre, M., Martin, R. V., Lee, S.-J., Van Donkelaar, A., Ross, Z.,
+Su, J., & Burnett, R. T. (2013). A hybrid approach to estimating national scale
+spatiotemporal variability of PM2. 5 in the contiguous United States. Environmental
+science & technology, 47(13), 7233-7241.
+Beelen, R., Hoek, G., Vienneau, D., Eeftens, M., Dimakopoulou, K., Pedeli, X., Tsai, M.-Y.,
+Künzli, N., Schikowski, T., & Marcon, A. (2013). Development of NO2 and NOx land
+use regression models for estimating air pollution exposure in 36 study areas in Europe–
+The ESCAPE project. Atmospheric environment, 72, 10-23.
+Bekbulat, B., Apte, J. S., Millet, D. B., Robinson, A. L., Wells, K. C., Presto, A. A., & Marshall,
+J. D. (2021). Changes in criteria air pollution levels in the US before, during, and after
+Covid-19 stay-at-home orders: Evidence from regulatory monitors. Science of the total
+environment, 769, 144693.
+Boersma, K., Eskes, H., Dirksen, R., Van Der A, R., Veefkind, J., Stammes, P., Huijnen, V.,
+Kleipool, Q., Sneep, M., & Claas, J. (2011). An improved tropospheric NO 2 column
+retrieval algorithm for the Ozone Monitoring Instrument. Atmospheric Measurement
+Techniques, 4(9), 1905-1928.
+Bonell, A., Part, C., Okomo, U., Cole, R., Hajat, S., Kovats, S., Sferruzzi‐Perri, A. N., & Hirst, J.
+E. (2023). An expert review of environmental heat exposure and stillbirth in the face of
+climate change: Clinical implications and priority issues. BJOG: An International
+Journal of Obstetrics & Gynaecology.
+Brook, J. R., Setton, E. M., Seed, E., Shooshtari, M., Doiron, D., Awadalla, P., Brauer, M., Hu,
+H., McGrail, K., Stieb, D., Subarrao, P., Demers, P., Manuel, D., McLaughlin, J.,
+Carlsten, C., Azad, M., Atkinson, S., Burnett, R., Lou, W., . . . Consortium, C. T. C. U. E.
+H. R. (2018). The Canadian Urban Environmental Health Research Consortium – a
+protocol for building a national environmental exposure data platform for integrated
+analyses of urban form and health. BMC Public Health, 18(1), 114.
+https://doi.org/10.1186/s12889-017-5001-5
+Burger, M., Gubler, M., & Brönnimann, S. (2024). High‐resolution dataset of nocturnal air
+temperatures in Bern, Switzerland (2007–2022). Geoscience Data Journal(January).
+https://doi.org/https://doi.org/10.1002/gdj3.237
+Chen, J., Ying, Q., & Kleeman, M. J. (2010). Source apportionment of wintertime secondary
+organic aerosol during the California regional PM10/PM2.5 air quality study.
+26
+
+https://doi.org/10.26434/chemrxiv-2024-zg5f1 ORCID: https://orcid.org/0000-0001-8991-4578 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+
+Atmospheric environment, 44(10), 1331-1340.
+https://doi.org/https://doi.org/10.1016/j.atmosenv.2009.07.010
+Clark, L. P., Millet, D. B., & Marshall, J. D. (2014). National patterns in environmental injustice
+and inequality: outdoor NO2 air pollution in the United States. PloS one, 9(4), e94431.
+Coleman, N. C., Burnett, R. T., Ezzati, M., Marshall, J. D., Robinson, A. L., & Pope III, C. A.
+(2020). Fine particulate matter exposure and cancer incidence: analysis of SEER cancer
+registry data from 1992–2016. Environmental health perspectives, 128(10), 107004.
+Colmer, J., Hardman, I., Shimshack, J., & Voorheis, J. (2020). Disparities in PM2. 5 air pollution
+in the United States. Science, 369(6503), 575-578.
+de Hoogh, K., Gulliver, J., van Donkelaar, A., Martin, R. V., Marshall, J. D., Bechle, M. J.,
+Cesaroni, G., Pradas, M. C., Dedele, A., & Eeftens, M. (2016). Development of WestEuropean PM2. 5 and NO2 land use regression models incorporating satellite-derived and
+chemical transport modelling data. Environmental research, 151, 1-10.
+Deeter, M. N., Edwards, D. P., Francis, G. L., Gille, J. C., Martínez-Alonso, S., Worden, H. M.,
+& Sweeney, C. (2017). A climate-scale satellite record for carbon monoxide: the
+MOPITT Version 7 product. Atmospheric Measurement Techniques, 10(7), 2533-2555.
+deSouza, P., & Kinney, P. L. (2021). On the distribution of low-cost PM2.5 sensors in the US:
+demographic and air quality associations. Journal of Exposure Science & Environmental
+Epidemiology, 31(3), 514-524. https://doi.org/10.1038/s41370-021-00328-2
+Di, Q., Amini, H., Shi, L., Kloog, I., Silvern, R., Kelly, J., Sabath, M. B., Choirat, C., Koutrakis,
+P., & Lyapustin, A. (2019a). Assessing NO2 concentration and model uncertainty with
+high spatiotemporal resolution across the contiguous United States using ensemble model
+averaging. Environmental science & technology, 54(3), 1372-1384.
+Di, Q., Amini, H., Shi, L., Kloog, I., Silvern, R., Kelly, J., Sabath, M. B., Choirat, C., Koutrakis,
+P., & Lyapustin, A. (2019b). An ensemble-based model of PM2. 5 concentration across
+the contiguous United States with high spatiotemporal resolution. Environment
+International, 130, 104909.
+Dons, E., Van Poppel, M., Int Panis, L., De Prins, S., Berghmans, P., Koppen, G., &
+Matheeussen, C. (2014). Land use regression models as a tool for short, medium and long
+term exposure to traffic related air pollution. Science of the total environment, 476-477,
+378-386. https://doi.org/https://doi.org/10.1016/j.scitotenv.2014.01.025
+Filonchyk, M., & Peterson, M. P. (2023). An integrated analysis of air pollution from US coalfired power plants. Geoscience Frontiers, 14(2), 101498.
+Gilbert, N. L., Goldberg, M. S., Beckerman, B., Brook, J. R., & Jerrett, M. (2005). Assessing
+spatial variability of ambient nitrogen dioxide in Montreal, Canada, with a land-use
+regression model. Journal of the Air & Waste Management Association, 55(8), 10591063.
+Gladson, L., Garcia, N., Bi, J., Liu, Y., Lee, H. J., & Cromar, K. (2022). Evaluating the utility of
+high-resolution spatiotemporal air pollution data in estimating local PM2. 5 exposures in
+California from 2015–2018. Atmosphere, 13(1), 85.
+Goldberg, D. L., Gupta, P., Wang, K., Jena, C., Zhang, Y., Lu, Z., & Streets, D. G. (2019). Using
+gap-filled MAIAC AOD and WRF-Chem to estimate daily PM2. 5 concentrations at 1
+km resolution in the Eastern United States. Atmospheric environment, 199, 443-452.
+Hankey, S., Lindsey, G., & Marshall, J. D. (2017). Population-level exposure to particulate air
+pollution during active travel: planning for low-exposure, health-promoting cities.
+Environmental health perspectives, 125(4), 527-534.
+27
+
+https://doi.org/10.26434/chemrxiv-2024-zg5f1 ORCID: https://orcid.org/0000-0001-8991-4578 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+
+Hankey, S., & Marshall, J. D. (2015). Land use regression models of on-road particulate air
+pollution (particle number, black carbon, PM2. 5, particle size) using mobile monitoring.
+Environmental science & technology, 49(15), 9194-9202.
+Hankey, S., Sforza, P., & Pierson, M. (2019). Using mobile monitoring to develop hourly
+empirical models of particulate air pollution in a rural Appalachian community.
+Environmental science & technology, 53(8), 4305-4315.
+Henderson, S. B., Beckerman, B., Jerrett, M., & Brauer, M. (2007). Application of land use
+regression to estimate long-term concentrations of traffic-related nitrogen oxides and fine
+particulate matter. Environmental science & technology, 41(7), 2422-2428.
+Hoek, G., Beelen, R., De Hoogh, K., Vienneau, D., Gulliver, J., Fischer, P., & Briggs, D. (2008).
+A review of land-use regression models to assess spatial variation of outdoor air
+pollution. Atmospheric environment, 42(33), 7561-7578.
+Hoek, G., Eeftens, M., Beelen, R., Fischer, P., Brunekreef, B., Boersma, K. F., & Veefkind, P.
+(2015). Satellite NO2 data improve national land use regression models for ambient NO2
+in a small densely populated country. Atmospheric environment, 105, 173-180.
+Hystad, P., Setton, E., Cervantes, A., Poplawski, K., Deschenes, S., Brauer, M., van Donkelaar,
+A., Lamsal, L., Martin, R., & Jerrett, M. (2011). Creating national air pollution models
+for population exposure assessment in Canada. Environmental health perspectives,
+119(8), 1123-1129.
+Jedynska, A., Hoek, G., Wang, M., Eeftens, M., Cyrys, J., Keuken, M., Ampe, C., Beelen, R.,
+Cesaroni, G., Forastiere, F., Cirach, M., de Hoogh, K., De Nazelle, A., Nystad, W.,
+Declercq, C., Eriksen, K. T., Dimakopoulou, K., Lanki, T., Meliefste, K., . . . Kooter, I.
+M. (2014). Development of land use regression models for elemental, organic carbon,
+PAH, and hopanes/steranes in 10 ESCAPE/TRANSPHORM European study areas.
+Environmental science & technology, 48(24), 14435-14444.
+https://doi.org/10.1021/es502568z
+Jerrett, M., Arain, A., Kanaroglou, P., Beckerman, B., Potoglou, D., Sahsuvaroglu, T., Morrison,
+J., & Giovis, C. (2005). A review and evaluation of intraurban air pollution exposure
+models. Journal of Exposure Science & Environmental Epidemiology, 15(2), 185-204.
+Jerrett, M., Arain, M., Kanaroglou, P., Beckerman, B., Crouse, D., Gilbert, N., Brook, J.,
+Finkelstein, N., & Finkelstein, M. (2007). Modeling the intraurban variability of ambient
+traffic pollution in Toronto, Canada. Journal of Toxicology and Environmental Health,
+Part A, 70(3-4), 200-212.
+Jiao, W., Hagler, G., Williams, R., Sharpe, R., Brown, R., Garver, D., Judge, R., Caudill, M.,
+Rickard, J., Davis, M., Weinstock, L., Zimmer-Dauphinee, S., & Buckley, K. (2016).
+Community Air Sensor Network (CAIRSENSE) project: evaluation of low-cost sensor
+performance in a suburban environment in the southeastern United States. Atmos Meas
+Tech, 9(11), 5281-5292. https://doi.org/10.5194/amt-9-5281-2016
+Keller, J. P., Olives, C., Kim, S.-Y., Sheppard, L., Sampson, P. D., Szpiro, A. A., Oron, A. P.,
+Lindström, J., Vedal, S., & Kaufman, J. D. (2015). A unified spatiotemporal modeling
+approach for predicting concentrations of multiple air pollutants in the multi-ethnic study
+of atherosclerosis and air pollution. Environmental health perspectives, 123(4), 301-309.
+Kelly, J. T., Jang, C., Timin, B., Di, Q., Schwartz, J., Liu, Y., van Donkelaar, A., Martin, R. V.,
+Berrocal, V., & Bell, M. L. (2021). Examining PM2.5 concentrations and exposure using
+multiple models. Environmental research, 196, 110432.
+
+28
+
+https://doi.org/10.26434/chemrxiv-2024-zg5f1 ORCID: https://orcid.org/0000-0001-8991-4578 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+
+Kelp, M. M., Lin, S., Kutz, J. N., & Mickley, L. J. (2022). A new approach for determining
+optimal placement of PM2. 5 air quality sensors: case study for the contiguous United
+States. Environmental Research Letters, 17(3), 034034.
+Kerckhoffs, J., Hoek, G., Portengen, L. t., Brunekreef, B., & Vermeulen, R. C. (2019).
+Performance of prediction algorithms for modeling outdoor air pollution spatial surfaces.
+Environmental science & technology, 53(3), 1413-1421.
+Kerckhoffs, J., Wang, M., Meliefste, K., Malmqvist, E., Fischer, P., Janssen, N. A., Beelen, R., &
+Hoek, G. (2015). A national fine spatial scale land-use regression model for ozone.
+Environmental research, 140, 440-448.
+Kim, S.-Y., Bechle, M., Hankey, S., Sheppard, L., Szpiro, A. A., & Marshall, J. D. (2020).
+Concentrations of criteria pollutants in the contiguous US, 1979–2015: Role of prediction
+model parsimony in integrated empirical geographic regression. PloS one, 15(2),
+e0228535.
+Knibbs, L. D., Coorey, C. P., Bechle, M. J., Cowie, C. T., Dirgawati, M., Heyworth, J. S., Marks,
+G. B., Marshall, J. D., Morawska, L., & Pereira, G. (2016). Independent validation of
+national satellite-based land-use regression models for nitrogen dioxide using passive
+samplers. Environmental science & technology, 50(22), 12331-12338.
+Knibbs, L. D., Van Donkelaar, A., Martin, R. V., Bechle, M. J., Brauer, M., Cohen, D. D., Cowie,
+C. T., Dirgawati, M., Guo, Y., & Hanigan, I. C. (2018). Satellite-based land-use
+regression for continental-scale long-term ambient PM2. 5 exposure assessment in
+Australia. Environmental science & technology, 52(21), 12445-12455.
+Lane, H. M., Morello-Frosch, R., Marshall, J. D., & Apte, J. S. (2022). Historical redlining is
+associated with present-day air pollution disparities in U.S. cities. Environ Sci Technol
+Lett, 9(4), 345-350. https://doi.org/10.1021/acs.estlett.1c01012
+Larkin, A., Anenberg, S., Goldberg, D. L., Mohegh, A., Brauer, M., & Hystad, P. (2023). A
+global spatial-temporal land use regression model for nitrogen dioxide air pollution.
+Frontiers in Environmental Science, 11, 1125979.
+Larkin, A., Geddes, J. A., Martin, R. V., Xiao, Q., Liu, Y., Marshall, J. D., Brauer, M., & Hystad,
+P. (2017). Global land use regression model for nitrogen dioxide air pollution.
+Environmental science & technology, 51(12), 6957-6964.
+Lee, M., Brauer, M., Wong, P., Tang, R., Tsui, T. H., Choi, C., Cheng, W., Lai, P.-C., Tian, L.,
+Thach, T.-Q., Allen, R., & Barratt, B. (2017). Land use regression modelling of air
+pollution in high density high rise cities: A case study in Hong Kong. Science of the total
+environment, 592, 306-315. https://doi.org/https://doi.org/10.1016/j.scitotenv.2017.03.094
+Li, L., Lurmann, F., Habre, R., Urman, R., Rappaport, E., Ritz, B., Chen, J.-C., Gilliland, F. D.,
+& Wu, J. (2017). Constrained mixed-effect models with ensemble learning for prediction
+of nitrogen oxides concentrations at high spatiotemporal resolution. Environmental
+science & technology, 51(17), 9920-9929.
+Liu, J., Clark, L. P., Bechle, M. J., Hajat, A., Kim, S.-Y., Robinson, A. L., Sheppard, L., Szpiro,
+A. A., & Marshall, J. D. (2021). Disparities in air pollution exposure in the United States
+by race/ethnicity and income, 1990–2010. Environmental health perspectives, 129(12),
+127005. https://doi.org/doi:10.1289/EHP8584
+Lloyd, M., Ganji, A., Xu, J., Venuta, A., Simon, L., Zhang, M., Saeedi, M., Yamanouchi, S.,
+Apte, J., & Hong, K. (2023). Predicting spatial variations in annual average outdoor
+ultrafine particle concentrations in Montreal and Toronto, Canada: Integrating land use
+regression and deep learning models. Environment International, 178, 108106.
+29
+
+https://doi.org/10.26434/chemrxiv-2024-zg5f1 ORCID: https://orcid.org/0000-0001-8991-4578 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+
+Lotfata, A. (2022). Using geographically weighted models to explore obesity prevalence
+association with air temperature, socioeconomic factors, and unhealthy behavior in the
+USA. Journal of Geovisualization and Spatial Analysis, 6(1), 14.
+Lu, T., Bechle, M. J., Wan, Y., Presto, A. A., & Hankey, S. (2022). Using crowd-sourced low-cost
+sensors in a land use regression of PM2.5 in 6 US cities. Air Quality, Atmosphere &
+Health, 15(4), 667-678.
+Lu, T., Garcia, D. A., Garcia, A., & Liu, Y. (2023). Leveraging crowd-sourced environmental
+data to assess air pollution exposure disparity: A case of Los Angeles County.
+International Journal of Applied Earth Observation and Geoinformation, 125, 103599.
+Lu, T., Lansing, J., Zhang, W., Bechle, M. J., & Hankey, S. (2019). Land Use Regression models
+for 60 volatile organic compounds: Comparing Google Point of Interest (POI) and city
+permit data. Science of the total environment, 677, 131-141.
+Lu, T., Marshall, J. D., Zhang, W., Hystad, P., Kim, S.-Y., Bechle, M. J., Demuzere, M., &
+Hankey, S. (2021). National empirical models of air pollution using microscale measures
+of the urban environment. Environmental science & technology, 55(22), 15519-15530.
+Marshall, J. D., Nethery, E., & Brauer, M. (2008). Within-urban variability in ambient air
+pollution: comparison of estimation methods. Atmospheric environment, 42(6), 13591369.
+Masiol, M., Squizzato, S., Chalupa, D., Rich, D. Q., & Hopke, P. K. (2019). Spatial-temporal
+variations of summertime ozone concentrations across a metropolitan area using a
+network of low-cost monitors to develop 24 hourly land-use regression models. Science
+of the total environment, 654, 1167-1178.
+Masiol, M., Zíková, N., Chalupa, D. C., Rich, D. Q., Ferro, A. R., & Hopke, P. K. (2018). Hourly
+land-use regression models based on low-cost PM monitor data. Environmental research,
+167, 7-14. https://doi.org/https://doi.org/10.1016/j.envres.2018.06.052
+Mehmood, T., Liland, K. H., Snipen, L., & Sæbø, S. (2012). A review of variable selection
+methods in partial least squares regression. Chemometrics and intelligent laboratory
+systems, 118, 62-69.
+Meng, X., Chen, L., Cai, J., Zou, B., Wu, C.-F., Fu, Q., Zhang, Y., Liu, Y., & Kan, H. (2015). A
+land use regression model for estimating the NO2 concentration in Shanghai, China.
+Environmental research, 137, 308-315.
+Messier, K. P., Chambliss, S. E., Gani, S., Alvarez, R., Brauer, M., Choi, J. J., Hamburg, S. P.,
+Kerckhoffs, J., LaFranchi, B., & Lunden, M. M. (2018). Mapping air pollution with
+Google Street View cars: Efficient approaches with mobile monitoring and land use
+regression. Environmental science & technology, 52(21), 12563-12572.
+Nadal, M., Marquès, M., Mari, M., & Domingo, J. L. (2015). Climate change and environmental
+concentrations of POPs: A review. Environmental research, 143, 177-185.
+Nopmongcol, U., Beardsley, R., Kumar, N., Knipping, E., & Yarwood, G. (2019). Changes in
+United States deposition of nitrogen and sulfur compounds over five decades from 1970
+to 2020. Atmospheric environment, 209, 144-151.
+https://doi.org/https://doi.org/10.1016/j.atmosenv.2019.04.018
+Novotny, E. V., Bechle, M., Millet, D. B., & Marshall, J. D. (2011). National satellite-based land
+use regression: NO2 in the United States. Epidemiology, 22(1), S81.
+Qi, M., Dixit, K., Marshall, J. D., Zhang, W., & Hankey, S. (2022). National land use regression
+model for no2 using street view imagery and satellite observations. Environmental
+science & technology, 56(18), 13499-13509.
+30
+
+https://doi.org/10.26434/chemrxiv-2024-zg5f1 ORCID: https://orcid.org/0000-0001-8991-4578 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+
+Qi, M., & Hankey, S. (2021). Using street view imagery to predict street-level particulate air
+pollution. Environmental science & technology, 55(4), 2695-2704.
+Roy, A. (2021). Atmospheric pollution retrieval using path radiance derived from remote sensing
+data. Journal of Geovisualization and Spatial Analysis, 5(2), 26.
+Saha, P. K., Hankey, S., Marshall, J. D., Robinson, A. L., & Presto, A. A. (2021). High-spatialresolution estimates of ultrafine particle concentrations across the continental United
+States. Environmental science & technology, 55(15), 10320-10331.
+Saha, P. K., Presto, A. A., Hankey, S., Murphy, B. N., Allen, C., Zhang, W., Marshall, J. D., &
+Robinson, A. L. (2022). National exposure models for source-specific primary particulate
+matter concentrations using aerosol mass spectrometry data. Environmental science &
+technology, 56(20), 14284-14295.
+Sampson, P. D., Richards, M., Szpiro, A. A., Bergen, S., Sheppard, L., Larson, T. V., & Kaufman,
+J. D. (2013). A regionalized national universal kriging model using Partial Least Squares
+regression for estimating annual PM2. 5 concentrations in epidemiology. Atmospheric
+environment, 75, 383-392.
+Sanchez, M., Ambros, A., Milà, C., Salmon, M., Balakrishnan, K., Sambandam, S., Sreekanth,
+V., Marshall, J. D., & Tonne, C. (2018). Development of land-use regression models for
+fine particles and black carbon in peri-urban South India. Science of the total
+environment, 634, 77-86.
+Saraswat, A., Apte, J. S., Kandlikar, M., Brauer, M., Henderson, S. B., & Marshall, J. D. (2013).
+Spatiotemporal land use regression models of fine, ultrafine, and black carbon particulate
+matter in New Delhi, India. Environmental science & technology, 47(22), 12903-12911.
+Su, J. G., Brauer, M., Ainslie, B., Steyn, D., Larson, T., & Buzzelli, M. (2008). An innovative
+land use regression model incorporating meteorology for exposure analysis. Science of
+the total environment, 390(2-3), 520-529.
+US EPA. (2022). Fused Air Quality Surface Using Downscaling (FAQSD). US EPA. Retrieved 2
+October 2023 from https://www.epa.gov/hesc/rsig-related-downloadable-data-files
+Van Donkelaar, A., Martin, R. V., Li, C., & Burnett, R. T. (2019). Regional estimates of chemical
+composition of fine particulate matter using a combined geoscience-statistical method
+with information from satellites, models, and monitors. Environmental science &
+technology, 53(5), 2595-2611.
+Wang, M., Beelen, R., Eeftens, M., Meliefste, K., Hoek, G., & Brunekreef, B. (2012). Systematic
+evaluation of land use regression models for NO2. Environmental science & technology,
+46(8), 4481-4489.
+Wang, Y., Apte, J. S., Hill, J. D., Ivey, C. E., Johnson, D., Min, E., Morello-Frosch, R., Patterson,
+R., Robinson, A. L., & Tessum, C. W. (2023). Air quality policy should quantify effects
+on disparities. Science, 381(6655), 272-274.
+Weichenthal, S., Van Ryswyk, K., Goldstein, A., Bagg, S., Shekkarizfard, M., & Hatzopoulou,
+M. (2016). A land use regression model for ambient ultrafine particles in Montreal,
+Canada: A comparison of linear regression and a machine learning approach.
+Environmental research, 146, 65-72.
+Wong, P.-Y., Lee, H.-Y., Chen, Y.-C., Zeng, Y.-T., Chern, Y.-R., Chen, N.-T., Lung, S.-C. C., Su,
+H.-J., & Wu, C.-D. (2021). Using a land use regression model with machine learning to
+estimate ground level PM2. 5. Environmental Pollution, 277, 116846.
+Young, M. T., Bechle, M. J., Sampson, P. D., Szpiro, A. A., Marshall, J. D., Sheppard, L., &
+Kaufman, J. D. (2016). Satellite-based NO2 and model validation in a national prediction
+31
+
+https://doi.org/10.26434/chemrxiv-2024-zg5f1 ORCID: https://orcid.org/0000-0001-8991-4578 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+654
+655
+656
+657
+658
+659
+660
+661
+662
+
+model based on universal kriging and land-use regression. Environmental science &
+technology, 50(7), 3686-3694.
+Yuan, Z., Kerckhoffs, J., Hoek, G., & Vermeulen, R. (2022). A knowledge transfer approach to
+map long-term concentrations of hyperlocal air pollution from short-term mobile
+measurements. Environmental science & technology, 56(19), 13820-13828.
+https://doi.org/10.1021/acs.est.2c05036
+Zwack, L. M., Paciorek, C. J., Spengler, J. D., & Levy, J. I. (2011). Modeling spatial patterns of
+traffic-related air pollutants in complex urban terrain. Environmental health perspectives,
+119(6), 852-859.
+
+663
+
+32
+
+https://doi.org/10.26434/chemrxiv-2024-zg5f1 ORCID: https://orcid.org/0000-0001-8991-4578 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+

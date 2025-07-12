@@ -1,0 +1,1024 @@
+Using Prototypical Oil and Gas Sites to Model
+Methane Emissions in Colorado’s
+Denver-Julesburg Basin Using Mechanistic
+Emission Estimation Tool
+Winrose Mollel,∗ Daniel Zimmerle, Arthur Santos, and Anna Hodshire
+Energy Institute, Colorado State University, Fort Collins, CO, USA, 80524
+E-mail: winrose.mollel@colostate.edu
+Phone: 929-247-5878
+Abstract
+Traditional bottom-up (BU) methods estimate methane emissions from oil and gas
+facilities by multiplying activity data with emission factors. Top-down (TD) methods
+measure methane emissions from all sources across an entire site and often use BU
+estimates to attribute emissions specifically to natural gas, often through ethane-to-methane
+ratio analysis. However, traditional BU methods do not adequately account for variations
+in throughput and failure conditions, which can significantly impact gas composition
+and emission rates.
+The Mechanistic Air Emissions Simulator (MAES) is a computer model developed
+to estimate methane and other hydrocarbon emissions from oil and gas facilities. MAES
+employs two distinct modeling approaches: mechanistic models and traditional methods.
+MAES uses mechanistic models to estimate emissions based on fluid flow through
+equipment and equipment states, offering a detailed, process-oriented emissions representation.
+
+1
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+In contrast, the traditional methods utilized by MAES estimate emissions by applying
+activity data multiplied by emission factor distributions, offering a statistical approach
+grounded in empirical data.
+This study applies MAES to assess emission impacts on three vintages of production
+wellpads in the Denver-Julesburg (DJ) basin: a wellpad with two stages of separation
+("old" facility), one with three stages of separation ("current" facility), and a tankless
+wellpad ("future" facility). The study found that increased throughput led to higher
+methane emissions in older wellpads but not in tankless future facilities. Additionally,
+MAES also showed that failure conditions, like stuck dump valves, increased emission
+rates and affected the ethane-to-methane ratio, which could vary by 2.15 times depending
+on facility configuration. These findings underscore the importance of incorporating
+variability in facility operations into emissions estimates to improve accuracy and guide
+effective mitigation strategies.
+
+Synopsis
+Traditional inventory methods do not capture how variations in throughput and failure
+conditions impact gas composition and emission rates.
+
+Keywords
+Bottom-up inventory, Top-down inventory, Mechanistic Air Emission Simulator (MAES),
+Methane emissions, Natural gas
+
+Introduction
+Methane is the second most potent greenhouse gas (GHG), with a Global Warming Potential
+(GWP) of 25-28 CO2 e for a 100-year period. 1 As a short-lived GHG, there is increasing
+interest in controlling anthropogenic sources of methane, as a reduction in these emissions
+2
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+could have a substantial climate impact over decadal time scales. 2 Anthropogenic methane is
+emitted while producing and transporting coal, natural gas, and oil. Methane is also emitted
+from agricultural operations, principally enteric fermentation and manure management,
+and from the decay of organic waste in municipal solid waste landfills and wastewater
+treatment. 3–5 This study focuses on natural gas, as methane is its primary component.
+The natural gas supply chain is often divided into three sectors: upstream, midstream,
+and downstream. 6–8 Upstream operations deal with oil and gas exploration, production, and
+initial separation of production into gas and oil components and wastewater. Midstream
+operations then transport gas to gas processing plants, where the gas is upgraded to market
+standards. Additional midstream transmission and storage infrastructure transports the
+upgraded gas to consumers and provides short-term storage. Downstream operations distribute
+gas to consumers.
+Methane is typically co-emitted with heavier hydrocarbons and volatile organic compounds
+(VOCs), and often the ethane-methane (C2/C1) ratio is used to attribute methane emissions
+between oil and gas (O&G) and other sources when performing regional estimates where
+emissions from multiple sources are mixed. 9,10 Peischl et al. 9,11 conducted comprehensive
+studies to quantify atmospheric methane and ethane emissions, specifically focusing on
+various natural gas-producing basins in the United States. Their research found differences
+in C2/C1 ratios across various basins. Notably, the Fayetteville basin had the lowest C2/C1
+ratio of 0.007 ± 0.003 due to being a dry gas basin, with less ethane compared to methane. 12
+Conversely, the Bakken basin had the highest C2/C1 ratio on the order of 0.4–0.5 as a wet
+gas basin, with more ethane relative to methane. A dry gas basin is a geological region where
+natural gas mainly consists of methane with minimal liquid hydrocarbons, while a wet gas
+basin contains substantial amounts of liquid hydrocarbons like ethane, propane, and butanes
+in addition to methane, resulting in a mix of gas and liquid components.
+Researchers often use traditional bottom-up (BU) estimates, combined with ethane measurements,
+to attribute methane emissions to specific sources such as oil and gas activities, leveraging
+3
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+the distinct C2/C1 ratios to differentiate natural gas emissions from other anthropogenic or
+biogenic sources. 9,11–14 Traditional BU inventory methods calculate emissions by multiplying
+an emission factor and activity data for each known source. 15,16 Different levels of government
+and international bodies require GHG inventories for regulatory and reporting purposes. For
+example, in the U.S., BU inventories are commonly used for GHG reporting to programs such
+as the U.S. Environmental Protection Agency (EPA)’s Greenhouse Gas Inventory (GHGI) 17
+and Greenhouse Gas Reporting Program (GHGRP) 18 and the Colorado Department of
+Public Health and Environment (CDPHE)’s Annual Oil and Natural Gas Emissions Inventory
+Reports. 19 Internationally, the United Nations Framework Convention on Climate Change
+(UNFCCC) collects and manages global GHG inventories, which include data from various
+countries. In their simplest form, BU methods do not include variability in emission or
+activity data. For example, emission inventories submitted to the CDPHE or GHGRP use
+basic single-value emissions factors multiplied by counts of components or process activity.
+In contrast with regulatory reporting, scientific studies typically use extended BU methods
+that include probability distributions to represent the variability in emission ranges for both
+emission and activity data. 20,21 Some studies have additionally used statistical methods to
+extend or extrapolate available data to fill perceived gaps in available emissions data. 20,21
+Traditional BU methods rely on previously collected emission and activity data, typically
+derived from published field campaigns. These methods calculate emissions as averages for
+a large population of facilities over an extended period. This approach helps in generalizing
+emission estimates but may not capture facility-specific variations. The Intergovernmental
+Panel on Climate Change (IPCC) provides Tier 1 and Tier 2 activity data, which are often
+used as default options in many countries. Tier 1 factors are broad, global estimates based on
+limited data, while Tier 2 factors offer more detailed estimates based on national or regional
+data. 8,22 This produces several problems associated with traditional BU inventories: a poor
+representation of site-to-site variability in emissions; minimal scaling of emissions with the
+size, complexity, or throughput of facilities; and poor representation of temporal and spatial
+4
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+variability that has been observed in real-world operations. 6,23–28
+Methane emissions have also been estimated using top-down (TD) methods. 4,29,30 TD
+methods estimate emissions by measuring atmospheric concentrations of pollutants and using
+inverse modeling techniques to attribute those emissions to specific sources or regions. 11,31 In
+some TD methods, measurements occur during short periods by observing individual plumes
+downwind of facilities, 29 while other techniques perform mass balance at a regional scale using
+multi-hour observations. 11,14,32 "Multi-hour" refers to observations conducted over several
+hours within a single day to capture temporal variability in emissions. "Regional scale"
+encompasses a broader area than site-specific measurements, typically including multiple oil
+and gas facilities within a defined region, but it is smaller than national or global scales.
+Past studies have identified systematic differences between TD and BU estimates of
+basin-scale emissions. 10,27 One frequently-noted reason for the comparatively lower BU estimates
+is that BU emissions factors under-represent large emitters, also known as super-emitters.
+Since large emitters are infrequent, these events may be underrepresented in emission factor
+studies due to small sample sizes and the difficulty of measuring large emitters. 24,33 More
+detail in BU modeling, such as including probabilistic simulation of large emitters, could
+capture these large emitter behaviors, which are often currently not included in common BU
+models.
+The Mechanistic Air Emissions Simulator (MAES) model (formerly known as Methane
+Emissions Estimation Tool (MEET)) was developed to address the two problems identified
+above: (a) poor representation of the frequency and variability of large emitters caused
+by process failures and (b) insensitivity of traditional BU methods to variability in facility
+throughput. 15,20
+This study investigates several aspects of TD/BU emission comparisons, using three
+prototypical production facilities derived from functional facilities in the Denver-Julesburg
+(DJ) basin. Simulating these facilities with varying throughput and failure conditions informs
+gaps in TD/BU estimates and suggests the advantages of more advanced modeling for these
+5
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+estimates. "Failure conditions" refer to a condition where equipment does not operate as
+intended, for example an unlit flare or a stuck dump valve in a separator. This study is
+part of a larger research program, the Colorado Coordinated Campaign that carried out an
+intensive multi-scale methane emissions observation study in the DJ basin in northeastern
+Colorado (Figure S-1). 34,35
+
+Methods
+The objectives for the modeling in this study are to address two deficiencies from traditional
+inventories: not including failure conditions and variability in facility throughput. Additionally,
+we address how to efficiently model production complexity in a basin, i.e., how to map more
+than 4000 individual facilities into a set of models that can be simulated within reasonable
+computational and labor constraints.
+For simplicity, the study focused on production well pads. Similar methods may be
+applied to more complex facilities, such as midstream compressor stations, 20 or simpler
+facilities, such as valve sets on pipelines or metering and regulation stations in distribution.
+
+MAES
+MAES is a computer model that simulates high-resolution spatial and temporal methane,
+along with other hydrocarbon emissions from natural gas. MAES uses discrete event simulator
+(DES) and Monte Carlo (MC) methods to estimate emissions based on emission factors,
+activity data, and equipment behavior.
+
+Inputs to MAES include a data file detailing
+
+equipment behavior and counts, a factors file referencing emission factors distributions, and
+a gas compositions file with fluid compositions at different separation stages. Facility data,
+such as equipment counts and some operational conditions, were sourced from the 2021
+Annual Oil and Natural Gas Emissions Inventory Reports by the CDPHE. The behavior of
+the equipment is determined by its states and the variables that influence changes in these
+6
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+states. States represent the different conditions or modes that an equipment can be in at
+any given time; for example, a flare can have three states: operating, malfunctioning, and
+unlit. In MAES, all equipment is modeled using a finite state machine, meaning each piece
+of equipment can be in only one of several states at a time. Emission factors for compressors
+were derived from Zimmerle et al.’s 33 study on gathering and boosting facilities, while data
+for pneumatics were obtained from Allen et al.’s 36 research on pneumatics. Flare destruction
+efficiency data was sourced from Plant et al.’s 37 study on natural gas flares. See S-4 for a
+detailed description on the development of gas compositions used as MAES input.
+DES is a modeling technique used to study the behavior of complex systems where
+events occur at distinct points in time and have significant impacts on the system state.
+In MAES, DES models various behavioral states as a function of time. Each new state is
+timestamped upon initiation, and the shift to the subsequent state depends on stochastically
+based real life probabilities of equipment operation. DES synchronizes events from multiple
+simulated pieces of equipment and records them sequentially, noting the duration of each
+event. Synchronization is of particular importance to emission simulation, as peak emission
+rates often occur when two events – such as two failure modes – occur simultaneously. Once
+DES has recorded the event sequence, it is further processed by a serializer. A serializer is
+a python-based code that decodes each event and converts it into a time series of emissions
+at the required time resolution. 15
+Emissions from natural gas systems and equipment behavior are inherently stochastic,
+meaning they exhibit randomness or variability. 38 To address this, MAES employs MC
+methods to assess a range of possible emissions over a specified timeframe. Through numerous
+MC iterations, the simulation accounts for variability by randomly sampling emission factors,
+activity data, and equipment behavior. In this study, we typically ran 100 MC iterations
+per simulation. This approach generates a range of emission scenarios rather than a single
+average, enhancing the understanding of uncertainty in the estimated emissions and facilitating
+the identification of rare events like equipment failures. 15 A detailed description of the MAES
+7
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+model formerly known as MEET is available in Zimmerle et al. 20
+MAES uses two types of models:
+• Mechanistic models:
+In this study, mechanistic models are used for failure conditions where emissions are
+a function of the fluids traveling through the equipment, or when it is necessary to
+synchronize the emissions from one source with those from another source. Mechanistic
+models estimate emissions by integrating equipment-specific operational states, such
+as failure frequency, duration, and throughput. These models are applied to scenarios
+like compressor exhaust, flare combustion and slip, open tank vents or hatches, and
+overpressure in atmospheric storage tanks. Specific failure modes are detailed in the
+following section.
+• Traditional methods: This type of BU model uses activity counts multiplied by emissions
+factor distributions to estimate methane emissions in a given facility. To model when
+and for how long these emitters occur, mean time before failure (MTBF) and mean
+time to repair (MTTR) are used for leak probability and duration. 20 For example,
+traditional methods are used to estimate emissions from component leaks, pneumatic
+controllers, well completions, and compressor seal vents.
+MAES addresses the variability in emissions by using time series mechanistic modeling of
+major equipment units to tie emissions behavior to the fluids (liquid and gas) flowing through
+the equipment and the operational state of the equipment, including key failure modes.
+Failure modes, commonly called ‘abnormal process conditions’, are often the largest emission
+sources on production facilities. 39 The conditions that result in abnormal process emissions
+are typically driven by complex physical processes based upon vessel geometry, fluid flow,
+temperature and pressure, gas flashing processes, and other physical and control parameters.
+To develop mechanistic models, these behaviors are analyzed, and all independent variables
+
+8
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+except fluid flow rates are combined into a single variable—fluid flow—which serves as a
+useful driver for conditions affecting emissions.
+For example, a failure in upstream equipment may cause large gas flows to be routed to
+downstream equipment that is not designed to handle that gas. Arriving gas overloads outlet
+flows, increases pressure, and changes flashing conditions in the vessel. If substantial enough,
+the excess gas and/or flash will overpressure the vessel, causing protection systems to vent
+gas. The goal of MAES’ mechanistic models is to simplify these complex behaviors into a
+function of only fluid flow rate, while still capturing the key process conditions which result in
+emissions. Continuing the example, an analyst models the physical processes and identifies
+the flow rates at which the equipment transitions to a new emitting state – for example,
+the flow rate at which the vessel overpressured and started venting. The conversion to
+mechanistic models typically reduces non-linear behaviors to ‘breakpoints’ at which behaviors
+are likely to change. At each breakpoint, the fraction of gas flow that is emitted to the
+atmosphere changes depending on input variables and interaction between models. 40 The
+simplification from physical processes to mechanistic modeling accelerates computations,
+allowing MAES to simulate long durations - hundreds of years is common - to capture
+complex, highly variable emission behaviors.
+MAES produces time series outputs at one-second timesteps. For each MC iteration,
+all emission events are recorded along with their corresponding duration and emission rate,
+creating an emission time series. From the emission time series, emission distributions and
+the frequency of each emitter can be extracted. The primary purpose of time-series modeling
+is to assure that dependencies between emissions are retained in the modeled emissions. For
+example, many unconventional wells are cycled between extended shut-in periods to increase
+well pressure, followed by shorter flow periods for production. Cycling of the well stimulates
+cycling behavior in all downstream equipment, causing correlated emissions behavior across
+many equipment units at the well pad. This type of correlated emissions is not typically
+represented in traditional BU modeling, and the associated variability in emissions is lost or
+9
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+poorly represented.
+Simulating a facility in MAES with and without a failure mode, or with varying throughput,
+supports sensitivity analysis for emissions driven by the frequency and severity of a failure
+condition. The following example illustrates how MAES addresses large emitters caused by
+failures of key components on equipment. Referring to Figure S-2, separators - an equipment
+used to separate the different components of a well stream, which typically includes oil, gas,
+and water - have dump valves. 41 Controllers driving these valves use a float in the tank to
+sense fluid level, then open periodically to control the liquid level in the separator. In proper
+operation, the controller and dump valve drain the fluid without allowing the gas to escape
+through the valve. A typical failure mode in a separator is a ‘stuck dump valve’, where the
+valve does not close entirely due to the buildup of deposits, a controller failure, or corrosion.
+In this case, all liquid is forced from the tank, and high-pressure gas will escape downstream
+from the equipment labeled as C (low-pressure separator) to either D (water storage tank)
+or E (oil storage tank). Since atmospheric product storage tanks are rated for low pressures,
+the additional gas may overpressure the tank and actuate a pressure relief valve (PRV) on
+the tanks to vent gas to atmosphere.
+MAES simulates this failure by modeling the frequency (probability) of a stuck dump
+valve and the fraction of gas lost through the valves when stuck open. Both of these
+parameters can be estimated from field data. Tank overpressure is modeled by setting
+limits to the volume of gas that can be vented through the tank battery’s exit vent piping;
+if gas exceeds threshold limits, a PRV opens. This mechanistic method effectively replaces
+a complex physical process with simpler mechanistic drivers that provide a computationally
+efficient, realistic, simulation of complex physical behavior.
+To extend the previous example, if separator with the stuck dump valve is fed by cycling
+wells, fluid arriving at the separator will vary between ‘on’ production periods and ‘off’
+non-production periods. Emissions through the dump valve will respond as the well cycles
+on/off. Therefore, an emission source which is large on average, appears as periods with
+10
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+even larger emission rates (when the well cycles on), interspersed with zero emission periods
+(when the well cycles off). While both traditional and mechanistic models could simulate
+such a failure and produce the same average emissions, only mechanistic modeling captures
+the temporal variability in the emission source, resulting in more representative probability
+distributions of emission rates. As a result, the MAES BU model estimates not only the
+long-term average emissions but also the variability in emissions. Since MAES simulates
+at the same time scale as an aerial survey, MAES results can be directly compared on a
+probabilistic basis with estimates collected by aerial methods.
+
+Failure Modes
+Since failure conditions may result in large emitters that account for more than half of total
+emissions in a basin, mechanistic modeling focuses on simulating failure modes. 29,42 Key
+mechanistic failure models implemented in MAES include:
+1. Stuck dump valve (SDV): When a dump valve operates normally, all gas passes to
+the sales pipeline and all liquid goes to appropriate equipment downstream. When
+a dump valve is stuck open, a fraction (x%) of the gas in the vessel is passed to
+downstream equipment, (1 − x)% of gas is passed to the sales pipeline, and all liquid
+goes downstream. A stuck dump valve does not directly create emissions. However,
+since downstream equipment often cannot handle the excess gas, these failures may
+overpressure downstream tanks or other equipment, causing gas to be vented through
+a PRV.
+2. Tank battery PRV actuation: Atmospheric tanks are equipped with one or more PRVs
+to prevent tank rupture in an overpressure condition. The mechanistic model used in
+this study is driven by the rate of gas entering the tank from upstream and flashed in
+the tank. When total gas flow exceeds a threshold level, the PRV opens to vent gas
+to atmosphere. The PRV will stay open until incoming gas falls below that threshold.
+11
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Since fluid flows may be highly variable, PRV actuation may also be highly variable.
+While this study focuses on tank PRVs, these devices are present on all vessels at well
+pads, and will actuate in similar conditions on that equipment.
+3. Tank battery vent failure: As a mechanical device, a PRV may ‘stick’ open with minimal
+stimulus from upstream fluid flows. For example, deposits may accumulate on the
+working mechanism or a seal may degrade. When the vent fails, the tank stays open to
+atmosphere and any gas in tank will escape to the atmosphere. Typically, the failure
+continues until personnel detect and repair it.
+4. Tank thief hatch left open: Most atmospheric tanks have an access port used to gauge
+liquid levels in the tank, colloquially known as a ‘thief hatch.’ Thief hatches serve two
+purposes. First, thief hatches can be manually opened to provide access to the interior
+of the tank If an opened hatch is not closed after use (thief hatch left open), the tank
+is open to atmosphere, leading to emissions.
+5. Thief hatch pressure relief activation: Second, thief hatches contain features to provide
+backup pressure relief if the tank’s PRV fails to actuate in an overpressure situation.
+Depending upon design of the hatch, if pressure relief features actuate, the hatch closes
+automatically when pressure reduces or the hatch remains open until personnel identify
+the problem and close the hatch. Emissions due to automatic open/close is captured
+in the Tank battery PRV actuation model. Emissions due to automatic open/remain
+open, are captured in this model. Automatic closure designs are more common due to
+safety concerns. They prevent prolonged venting and minimize emissions.
+
+Sample Facilities
+The MAES model can estimate emissions from either a single facility or multiple facilities in
+a geographic area. 20 Current data indicate the DJ basin has approximately 20,000 actively
+producing wells supported by 4,000-5,000 wellpads. 43 The wells and wellpads in the DJ
+12
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+basin have common features based upon age, company, regulation requirements. Through
+multiple working sessions and data exchanges with Colorado Coordinated Campaign partner
+operators, 26 common prototypes representing production facility configurations, called
+prototypical sites (PSs), were developed (see S-3 for a detailed description of how the PSs
+were developed).
+Three sample facilities based on the PSs developed for the DJ basin but explicitly
+simplified for this study were selected to demonstrate how MAES addresses the deficiencies
+of traditional inventory methods. These facilities represent an ‘older’ facility, a ‘current’
+facility, and a state-of-the-art ‘future’ facility model. The models were designed to illustrate
+the evolution of production facility design in the DJ basin from 2000-2020; a similar evolution
+has occurred, and is ongoing, in other U.S. production basins.
+The old facility is a wellpad with two stages of separation and atmospheric storage tanks
+for water and oil (Figure 1).
+
+Figure 1: Facility diagram representing an old facility with an example of a stuck dump valve failure
+condition.
+
+13
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+The current facility is a wellpad with three stages of separation (Figure 2) and storage
+tanks.
+
+Figure 2: Diagram representing a current facility with an example of a stuck dump valve failure
+condition.
+
+A future facility is a tankless wellpad with three stages of separation (Figure 3) and no
+atmospheric storage tanks (i.e. a ‘tankless’ facility); oil and gas are both transported from
+the facility using pipelines.
+
+14
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 3: Diagram representing a future facility with an example of a stuck dump valve failure
+condition.
+
+For a comprehensive understanding of the old, current, and future facilities, please refer
+to S-3.1 for detailed descriptions.
+Failure modes rates, and throughput were varied to examine their impact on the facility
+emissions.
+
+Flow of fluids due to stuck dump valve failures are shown in Figures 1-3.
+
+Although field facilities would vary in the number of wells, all sample facilities were simulated
+with the same number of wells, baseline failure rate, and baseline production to support
+inter-comparisons. Therefore, a single ’old’ facility represents the averaged emissions of
+multiple older well pads, while a ’future’ facility configuration, based on representative
+equipment counts rather than the total equipment present in an actual future facility,
+captures only a fraction of the emissions from a complete ’future’ well pad. The simulations
+were run for 365 days and 100 MC iterations - representing 100 years in common.
+
+Case Studies
+MAES can be used for a plethora of analyses, including simulations of field campaigns,
+inventory program evaluation, analyzing changes to improve emissions, or processing overflight
+15
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+data. MAES can simulate a number of different facility prototypes, allowing for efficient
+modeling of large regions, such as basin scales (See S-3 for more details). We use three PSs,
+an old, current, and future facility to address two deficiencies from traditional inventories
+(a)throughput analysis and (b) failure modes analysis posed earlier. The data for these
+facilities was obtained from Colorado Coordinated Campaign partner operators and modified
+to demonstrate scaling of throughput and increased frequency of failure. 34 All box plots used
+below show the box as the inner two quartiles, the whiskers are lines extending above and
+below each box (1.5 times the inter-quartile range) and the outliers are observations beyond
+the whisker length. 44
+
+Throughput
+MAES was used to show that for the same facility, changing throughput changes emission
+profile, a behavior that is not captured in traditional inventory methods. The demonstration
+varies facility throughput by simulating the baseline (original facility’s water and oil production
+rate) production rate multiplied by 0.5, 1, and 2.
+Increasing throughput increases methane emissions for the old and current facility, but
+not the future facility (Figure 4). Eliminating atmospheric tanks for oil (and possibly water)
+and the associated control flares from the future facility lowers the corresponding risk from
+overpressure events and thief hatch failures. Lacking these failure modes, all variation in
+emission rates was due to random variations in non-mechanistic emitters (i.e. emission
+factor based emitters). Removing tanks reduces the need for flares and onsite compression,
+reducing capital costs and air permitting requirements. However, savings in costs are offset
+by extending pipelines, equipment to stabilize oil sufficiently for pipeline transport, and
+bringing in grid electricity. 45
+
+16
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 4: From left to right, the effect of changing the throughput for old, current, and future
+facility, respectively. An increase in throughput corresponds to increase in methane emissions for
+the old and current facility but not the future facility. The number on the box plots shows the mean
+methane emission.
+
+While the current facility does not eliminate atmospheric tanks, it has vapor recovery
+units (VRUs) connected to the second and third stages of separation to compress the gas
+and send it to the sales line; only the storage tanks have flares for tank vapors. As a result,
+fewer emissions are directed to flares, and there is less risk of atmospheric emissions due to
+problems with the flare or equipment upstream of the tank. In contrast, the old facility has
+a flare connected to the second stage of separation and storage tanks. Gas composition files
+for all three facilities were calculated and used as an input for MAES (see S-4 for a detailed
+description on how the table was generated). As seen in Table 1, the total amount of vapor
+mass from the final stage of separation before the tank sent to the flare in the old facility is
+21.8 times higher than in the current facility.
+
+17
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Table 1: Pressure, amount of gas, and C2/C1 ratio for all stages of separation separators
+and tanks across old, current, and future facilities. These parameters represent the gas
+compositions used as MAES input to estimate methane and ethane emissions
+1st
+stage of
+separation
+Pressure (atm)
+Old
+Current and Future
+Vapor Mass (m3 /m3 )
+Old
+Current and Future
+Ethane-Methane ratio (-)
+Old
+Current and Future
+
+2nd
+3rd
+stage of
+stage of
+separation separation
+
+Tank
+
+17.0
+17.0
+
+10.2
+10.2
+
+N/A
+0.34
+
+0
+0
+
+7,500
+7,375
+
+7.64
+7.51
+
+N/A
+29.1
+
+35.1
+1.61
+
+0.31
+0.31
+
+0.47
+0.47
+
+N/A
+1.89
+
+1.97
+4.23
+
+In Figure 4, outliers, indicated by red crosses represent data points that lie outside
+the inter-quartile range times 1.5. Since non-mechanistic emitters estimate emissions using
+emission and activity data distributions, variations between MC iterations are due to the
+selected emission and activity data from emission factor distributions. For mechanistic
+emitters, outliers in a given MC run are primarily attributed to equipment malfunctions
+or failures. Taking flare as example, operation of the flare is characterized by ‘destruction
+efficiency’, the fraction of gas that is fully oxidized by the flare. During the operating state,
+the flare operates normally, and the gas is combusted at the flare’s design efficiency of 98%.
+When the flare malfunctions, combustion continues, but destruction efficiency drops; for this
+study we assume an efficiency of 90%. For all MC iterations, the same probability of failure
+is used, but the timing and duration of failures varies substantially between iterations. As
+a result, when malfunctions occur in an MC iteration, methane emissions increase, creating
+the outliers in Figure 4. Figure S-7 illustrates a typical flare failure scenario, using one MC
+iteration on the current facility.
+Figure 5 categorizes methane emissions modeled mechanistically and by using emission
+factors. MAES models flares, tanks, and VRUs mechanistically, simulating emissions behavior
+that depends upon the gas flowing through these units. Flow, in turn, depends on the
+18
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+throughput of the facility. While simulated failure rates are the same, the current facility
+exhibits lower emission rates than the old facility because less gas is routed to flares and
+VRUs. In contrast, the future facility holds all gas in pressurized vessels, and lacks these
+failure modes.
+
+Figure 5: Mean emissions by facility type and throughput. Blue bars represent typical emissions
+modeled using traditional emission factors. Orange bars represent emissions from failure conditions
+modeled as mechanistic emitters from flares, tanks and VRUs. Yellow bars represents emissions
+from gas pneumatics. While simulated failure rates are the same, the current facility exhibits lower
+emission rates than the old facility because less gas is routed to flares and VRUs. In contrast, the
+future facility holds all gas in pressurized vessels, and lacks these failure modes.
+
+Modeling throughput with associated failure modes is of interest to regulators and other
+stakeholders, as failures are not usually reported in traditional inventories. We examine
+three key examples of interest:
+First, the current facility has more components than old facility. Using the traditional BU
+approach of activity (component count) multiplied by emission factors, the current facility
+designs would be expected to have a higher emission rate than the old facility.
+19
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Second, regulatory modeling often assumes historical facility designs – i.e.
+
+the old
+
+facility type – using traditional BU methods that do not include the common failure modes
+such as stuck dump valve and flare malfunctions modeled here. 46 As a result, the impact
+of throughput-driven emission modes is often not reflected in the analysis, and the true
+emissions from older, simpler, designs are underestimated relative to new facility designs.
+Finally, while this simulation does not model every possible failure mode, it does reflect
+high-impact failure modes and the lower probability of failure for tankless facilities. It is
+important to therefore to describe why tankless facilities lack the modeled failure modes and
+have a lower probability of other failure modes with similar emission rates. Tankless designs
+keep all production in pressurized vessels that are pressure-rated and typically smaller than
+atmospheric tanks. Higher pressure provides more static head - the pressure exerted by
+a fluid column due to gravity- to move fluids through production processes, eliminating a
+variety of failure modes exacerbated by small pressure differentials, such as back-pressure
+problems due to the small pressure difference between an atmospheric tank and its control
+flare. Additionally, pressure-rated vessels tolerate more pressure variation, allowing time
+for controls to react, and these higher pressures are more easily sensed, making controls
+easier to implement. As a result, control systems are both required to operate safely and
+can be implemented to sense failure conditions (e.g. overpressure at any stage, insufficient
+oil stabilization, etc.) and shut in the facility. Therefore, tankless operation by itself does
+not represent a breakthrough in emissions. Rather, the operational conditions in tankless
+systems are more amenable to process controls and remove some failure modes known to
+have high emissions. However, these improvements come at a cost: These facilities require
+more sensing, more sophisticated facility operation, full liquid and gas pipeline networks,
+and often need grid electricity. These factors may not be accessible to all companies in all
+production regions.
+
+20
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Failure Modes
+Although in Methods section five failure modes were described, this study chose one failure
+mode, SDV, to demonstrate that even a single failure mode can have a significant impact on
+emissions observed from a facility. For this analysis, we focus on SDV failure rates for old
+and current facilities configuration. The future facility is not included, since the tankless
+design responds differently to uncontrolled gas flow from higher to lower pressure vessels
+(see end of previous section). In both the old and current facility, this failure condition was
+simulated by setting the frequency of the SDV to occur once a year for each separator on
+the last stage of separation before the tank. The simulations were run for 365 days with 100
+MC iterations. This analysis focused on a single MC run to show in detail the mechanism
+and effect of the SDV failure mode.
+For the current facility operating normally, any gas flashing in an atmospheric tank is
+routed to a flare. The pressure differential from an atmospheric tank to a flare is low,
+typically < 1 psi (7 kPa). Since this pressure differential must drive gas flow through all
+piping runs, flame arresters, valves, and other restrictions, the amount of gas that can be
+sent to the flare without overpressuring the tank is limited. When SDV occurs on the final
+separation stage prior to an atmospheric tank, some or all of the gas flashed at that stage is
+diverted from the pipeline to the tank. Given the low pressure differential, pressure in the
+tank cannot rise far enough to push the incoming gas to the flare, which increases pressure
+in the tank and causes the tank’s PRV to open.
+MAES translates this complex behavior into mechanistic model driven by fluid flow. For
+example, the current facility flare is designed to handle 1000 scfh whole gas (470 slpm).
+Referring to Table 1, the total flash per well is 9 scf/bbl × 46.5 bbl/h, or 420 scfh (200
+slpm). If 40% of third stage gas escapes a stuck dump valve to the tank, total gas flow
+exceeds 3000 scfh (1415 slpm). Since the tank-flare system is capable of handling 1000 scfh,
+the excess 2,000 scfh of gas (≈ 3.2 kg hCH4 ) will vent to atmosphere through the tank’s PRV.
+
+21
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(a) Current facility
+
+(b) Old facility
+
+Figure 6: Effect of tank leaks and a SDV on tank and facility emissions for one MC iteration. For
+the current facility, panel (a), a leak starts on day 319, on the tank, releasing some of the flash gas
+from the tank. The gas has a high VOC content, including ethane, resulting in a high C2/C1 ratio
+but a relatively low emission rate. At day 336, the third stage dump valve sticks open, routing a
+fraction of the lower C2/C1 ratio third stage flash gas to the tank, causing the tank to overpressure
+and vent to the atmosphere. While the leak has minimal impact on the current facility emission rate,
+the SDV impacts both emission rates and C2/C1 ratio for the facility. Similarly, for the old facility,
+panel (b), at day 351, second stage dump valve sticks open, routing a fraction of lower C2/C1 ratio
+second stage flash gas to tank, causing the tank to overpressure and vent to the atmosphere. The
+impacts of SDV on emission rate and C2/C1 ratio are more significant on the old facility compared
+to the current facility.
+
+22
+
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+As shown in Table 1, the gas from the third stage of separation has more methane relative
+to ethane than the gas flashed in the tank. When a dump valve is stuck in the third stage of
+separation separator, some fraction of gas from the third stage of separation separator goes
+to the tank. For both PSs, the C2/C1 ratio decreases during an overpressure event (third
+panel on in Figure 6). However, for the old facility, this facility C2/C1 ratio drops with the
+SDV, as a result of a very large emission rate, due the amount of gas flashed in the first
+stage of separation. Therefore, old facility emission rate and C2/C1 ratio are significantly
+different than the current facility, even though both facilities are driven by the same well
+production rates and characteristics.
+
+Implications of C2/C1 ratio on methane source attribution
+Methods like aerial or drive-by surveys provide snapshots of emissions data over brief periods,
+which can be challenging to incorporate into the broader context of annual reporting. By
+using mechanistic models, these short-term measurements can be integrated into a more
+comprehensive analysis, ensuring that the variability and transient behaviors observed during
+these surveys are accurately reflected in the long-term emission estimates.
+For this analysis, we focus on stuck dump valve failure rates for the current facility
+configuration, as there is more data available for stuck dump valves on current facilities. 47
+The frequency of the stuck dump valve was set to happen once per year for each separator.
+We assume a driving and aerial mass balance survey using methane and ethane detecting
+equipment.
+Driving Survey
+Emissions from the current facility were simulated for 365 days with 500 MC iterations where
+each MC iteration represents one facility, and we present instantaneous methane emissions
+and C2/C1 ratio for 500 current facilities. This simulation demonstrates a problem in the
+facility that releases a large amount of gas in the early stages of separation. For this study,
+23
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+a stuck dump valve failure mode mechanism was used to study the effect of the failure on
+emissions and C2/C1 ratio.
+Figure 7 shows methane emissions in kg/h as a function of C2/C1 ratio. The curved
+shape of the graph is because methane emissions decrease more rapidly through stages of
+separation compared to ethane. The routine emissions are characterized by low instantaneous
+methane emissions with a wide range of C2/C1 ratios since MAES simulates routine emissions
+at each major equipment on each stage of separation. However, some emission factors
+distributions are long tailed, such as the VRU component leak emission factor distribution
+- obtained from a gathering and boosting study. 33 At some point during the simulation, a
+VRU component leak emission factor gets picked from the tail of the distribution resulting
+in high instantaneous methane emissions during that MC run; shown by the black box in
+Figure 7. During a stuck dump valve failure mode when the tank is in overpressure, high
+instantaneous methane emissions corresponding to C2/C1 ratio of between 1.10 and 2.10 are
+observed (shown by the red box on the plot) compared to low routine emissions associated
+with C2/C1 ratio between 0.31 and 4.23.
+
+24
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 7: Current facility instantaneous methane emissions in kg/h against C2/C1 ratio. The red
+box shows methane emissions and the corresponding C2/C1 ratio due to tank overpressure as result
+of stuck dump valve. The black box shows VRU component leak emissions.
+
+Figure 7 demonstrates a method that could be used during a driving survey to evaluate
+the status of the facility. If the site configuration from a given basin is known reasonably
+well, a driving survey with a methane-ethane instrument should be able identify not only
+that large emission event is taking place, but also classify likely causes of that large emitter.
+For example, during a driving survey in the DJ basin in a facility with the same configuration
+as the current facility, if high methane emissions and C2/C1 ratio between 1.10 and 2.10 are
+observed, it should indicate that there are early stages of separation failure occurring in the
+facility.
+Aerial survey
+To compare with aerial mass balance flights – a form of TD measurement – simulated
+emissions must be made comparable to air mass sampled by the aircraft downwind of the
+25
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+basin. In the DJ basin, a typical transport time for an emission plume across the basin,
+influenced by prevailing winds, is approximately 4 hours. This time frame is based on
+average wind speeds and applies to the distance that emissions are likely to travel under
+normal atmospheric conditions. Therefore, to simulate the air mass seen by the aircraft,
+data are block-averaged to 4 hours. Each MC iteration represents one year for one facility;
+these emissions were block averaged to four-hour periods, resulting in 2190 emission estimates
+for each facility. Summing each 4-hour period across the 500 MC iterations provides 2190
+time-average emissions for 500 similar facilities. While this facility count is smaller than the
+DJ basin as a whole, it is sufficiently large to illustrate shifts in C2/C1 ratio.
+As seen in Figure 8, the 4-hour average C2/C1 ratio for a case with a stuck dump failure
+mode was higher than cases with a stuck dump failure mode. The 4-hour average C2/C1
+ratio during normal routine emissions for the current facility is around 0.91 but 1.69 during
+a stuck dump valve failure mode.
+
+26
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 8: 4-hour average for C2/C1 ratio for the current facility during normal routine emissions
+and an Overpressure event. The average C2/C1 ratio increase during stuck dump valve failure
+mode.The number next to the boxes represents the mean.
+
+During aerial measurements, changes in C2/C1 ratio could inform on the failure modes on
+the facilities being surveyed. In this case, any failure in the early stages of separation before
+the tank would result in a higher C2/C1 ratio than during routine emissions. MAES could
+be used as a diagnostic tool on failure models effect on C2/C1 ratios for correct methane
+source attribution for TD measurements.
+
+Conclusion
+This study demonstrates how mechanistic modeling addresses two key deficiencies in traditional
+BU methods: facility throughput variability and failure modes. Mechanistic models enhance
+simulation accuracy, supporting design decisions like evaluating emissions trade-offs between
+adding separation stages or vapor recovery units versus flaring, or reducing emissions by
+27
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+excluding atmospheric tanks in new facilities.
+By incorporating multi-species modeling, these simulations capture the behavior of equipment
+under diverse conditions, providing essential data for downstream analyses, such as C2/C1
+ratios for basin-scale attribution or facility-level failure assessments. Mechanistic models
+also integrate short-duration, facility-scale surveys into long-duration estimates for annual
+reporting, translating survey-detected failures into data on failure frequency, duration, and
+emission rates—key for reconciling TD and BU emissions estimates.
+To be practical, mechanistic modeling must scale to basin-level complexity. This involves
+using automated tools and representative sites to classify facilities accurately by design. For
+example, with over 4,000 production sites in the DJ basin, modeling each individually would
+be costly and inefficient. Instead, prototypical sites reduce the effort by limiting simulations
+to key facility types, each modeled across different well counts and throughput rates.
+Mechanistic models face limitations in balancing simulation fidelity with computational
+efficiency. Simplifications are often necessary and must be carefully validated. Modeling all
+emission sources is also impractical; for example, MAES currently does not model working
+flash—the flash and evaporation that occur when hydrocarbon liquids are stored for extended
+periods (days). This omission is usually negligible for newer facilities, where liquids do not
+remain in atmospheric tanks for long durations, but significant for older facilities where
+truck load-outs may occur weeks apart. Ultimately, the inclusion of such models should be
+prioritized based on the simulation’s purpose. For an analysis focused on GHG emissions
+and targeting methane, excluding these emissions results in minimal error. However, for an
+ozone or hazardous pollutant analysis, these emissions would need to be included.
+In summary, mechanistic modeling modernizes emissions inventory methods for tracking
+and assessing methane emissions from oil and gas industry, aligning them with emerging
+measurement techniques, new facility designs, and expanded uses of emissions data.
+
+28
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Acknowledgement
+Supporting Information Available
+• PS Paper_SI.pdf: Supplementary information for the main paper
+
+References
+(1) Intergovernmental
+2021
+
+–
+
+Panel
+
+On
+
+Climate
+
+The Physical Science Basis:
+
+Change
+
+(Ipcc)
+
+Climate
+
+Working Group I Contribution
+
+Change
+to
+
+the
+
+Sixth Assessment Report of the Intergovernmental Panel on Climate Change, 1st
+ed.; Cambridge University Press.
+(2) Hanaoka, T.; Masui, T. Exploring Effective Short-Lived Climate Pollutant Mitigation
+Scenarios by Considering Synergies and Trade-Offs of Combinations of Air Pollutant
+Measures and Low Carbon Measures towards the Level of the 2 °C Target in Asia. 261,
+113650.
+(3) Jackson, R. B.; Saunois, M.; Bousquet, P.; Canadell, J. G.; Poulter, B.; Stavert, A. R.;
+Bergamaschi, P.; Niwa, Y.; Segers, A.; Tsuruta, A. Increasing Anthropogenic Methane
+Emissions Arise Equally from Agricultural and Fossil Fuel Sources. 15, 071002.
+(4) Saunois, M. et al. The Global Methane Budget 2000–2017. 12, 1561–1623.
+(5) Ganesan, A. L.; Schwietzke, S.; Poulter, B.; Arnold, T.; Lan, X.; Rigby, M.; Vogel, F. R.;
+Van Der Werf, G. R.; Janssens-Maenhout, G.; Boesch, H.; Pandey, S.; Manning, A. J.;
+Jackson, R. B.; Nisbet, E. G.; Manning, M. R. Advancing Scientific Understanding of
+the Global Methane Budget in Support of the Paris Agreement. 33, 1475–1512.
+(6) Brown, J. A.; Harrison, M. R.; Rufael, T.; Roman-White, S. A.; Ross, G. B.;
+
+29
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+George, F. C.; Zimmerle, D. Informing Methane Emissions Inventories Using Facility
+Aerial Measurements at Midstream Natural Gas Facilities. 57, 14539–14547.
+(7) Saji, V. S., Umoren, S. A., Eds. Corrosion Inhibitors in the Oil and Gas Industry, 1st
+ed.; Wiley.
+(8) Cooper, J.; Balcombe, P.; Hawkes, A. The Quantification of Methane Emissions and
+Assessment of Emissions Data for the Largest Natural Gas Supply Chains. 320, 128856.
+(9) Peischl, J.; Ryerson, T. B.; Aikin, K. C.; De Gouw, J. A.; Gilman, J. B.;
+Holloway, J. S.; Lerner, B. M.; Nadkarni, R.; Neuman, J. A.; Nowak, J. B.; Trainer, M.;
+Warneke, C.; Parrish, D. D. Quantifying Atmospheric Methane Emissions from the
+Haynesville, Fayetteville, and Northeastern Marcellus Shale Gas Production Regions.
+120, 2119–2139.
+(10) Mitchell, A. L.; Tkacik, D. S.; Roscioli, J. R.; Herndon, S. C.; Yacovitch, T. I.;
+Martinez, D. M.; Vaughn, T. L.; Williams, L. L.; Sullivan, M. R.; Floerchinger, C.;
+Omara, M.; Subramanian, R.; Zimmerle, D.; Marchese, A. J.; Robinson, A. L.
+Measurements of Methane Emissions from Natural Gas Gathering Facilities and
+Processing Plants: Measurement Results. 49, 3219–3227.
+(11) Peischl, J.; Karion, A.; Sweeney, C.; Kort, E. A.; Smith, M. L.; Brandt, A. R.;
+Yeskoo, T.; Aikin, K. C.; Conley, S. A.; Gvakharia, A.; Trainer, M.; Wolter, S.;
+Ryerson, T. B. Quantifying Atmospheric Methane Emissions from Oil and Natural
+Gas Production in the Bakken Shale Region of North Dakota. 121, 6101–6111.
+(12) Mielke-Maday, I. et al. Methane Source Attribution in a U.S. Dry Gas Basin Using
+Spatial Patterns of Ground and Airborne Ethane and Methane Measurements. 7, 13.
+(13) Caulton, D. R.; Shepson, P. B.; Santoro, R. L.; Sparks, J. P.; Howarth, R. W.;
+Ingraffea, A. R.; Cambaliza, M. O. L.; Sweeney, C.; Karion, A.; Davis, K. J.;
+
+30
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Stirm, B. H.; Montzka, S. A.; Miller, B. R. Toward a Better Understanding and
+Quantification of Methane Emissions from Shale Gas Development. 111, 6237–6242.
+(14) Pétron, G. et al. A New Look at Methane and Nonmethane Hydrocarbon Emissions
+from Oil and Natural Gas Operations in the Colorado Denver-Julesburg Basin. 119,
+6836–6852.
+(15) Allen, D. T.; Cardoso-Saldaña, F. J.; Kimura, Y.; Chen, Q.; Xiang, Z.; Zimmerle, D.;
+Bell, C.; Lute, C.; Duggan, J.; Harrison, M. A Methane Emission Estimation Tool
+(MEET) for Predictions of Emissions from Upstream Oil and Gas Well Sites with Fine
+Scale Temporal and Spatial Resolution: Model Structure and Applications. 829, 154277.
+(16) Stokes, S.; Tullos, E.; Morris, L.; Cardoso-Saldaña, F. J.; Smith, M.; Conley, S.;
+Smith, B.; Allen, D. T. Reconciling Multiple Methane Detection and Quantification
+Systems at Oil and Gas Tank Battery Sites. 56, 16055–16061.
+(17) family=US
+Gas
+
+EPA,
+
+g.-i.,
+
+given=OAR
+
+Emissions
+
+and
+
+Sinks.
+
+Inventory
+
+of
+
+U.S.
+
+Greenhouse
+
+https://www.epa.gov/ghgemissions/
+
+inventory-us-greenhouse-gas-emissions-and-sinks.
+(18) family=US EPA, g.-i., given=OAR Greenhouse Gas Reporting Program (GHGRP).
+https://www.epa.gov/ghgreporting.
+(19) Climate Change | Department of Public Health & Environment. https://cdphe.
+colorado.gov/environment/air-pollution/climate-change.
+(20) Zimmerle, D.; Duggan, G.; Vaughn, T.; Bell, C.; Lute, C.; Bennett, K.; Kimura, Y.;
+Cardoso-Saldaña, F. J.; Allen, D. T. Modeling Air Emissions from Complex Facilities
+at Detailed Temporal and Spatial Resolution: The Methane Emission Estimation Tool
+(MEET). 824, 153653.
+
+31
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(21) Rutherford, J. S.; Sherwin, E. D.; Ravikumar, A. P.; Heath, G. A.; Englander, J.;
+Cooley, D.; Lyon, D.; Omara, M.; Langfitt, Q.; Brandt, A. R. Closing the Methane
+Gap in US Oil and Natural Gas Production Emissions Inventories. 12, 4715.
+(22) Dawidowski, L. E.; Kolmogortseva, O.; Okazaki, T.; Person Rocha e Pinho, I.;
+Smyth, S. C.;
+
+Witi, J. 2019 Refinement to the 2006 IPCC Guidelines
+
+for National Greenhouse Gas Inventories. https://www.ipcc-nggip.iges.or.jp/
+public/2019rf/pdf/2_Volume2/19R_V2_4_Ch04_Fugitive_Emissions.pdf.
+(23) Brown, J.; Harrison, M.; Rufael, T.; Roman-White, S.; Ross, G.; George, F.;
+Zimmerle, D. Evaluating Development of Empirical Estimates Using Two Top-down
+Methods at Midstream Natural Gas Facilities. https://chemrxiv.org/engage/
+chemrxiv/article-details/652712ca45aaa5fdbbcc6934.
+(24) Festa-Bianchet, S. A.; Milani, Z. R.; Johnson, M. R. Methane Venting from
+Uncontrolled Production Storage Tanks at Conventional Oil Wells—Temporal
+Variability, Root Causes, and Implications for Measurement. 11, 00053.
+(25) Allen, D. T.; Cardoso-Saldaña, F. J.; Kimura, Y. Variability in Spatially and
+Temporally Resolved Emissions and Hydrocarbon Source Fingerprints for Oil and Gas
+Sources in Shale Gas Production Regions. 51, 12016–12026.
+(26) Vaughn, T. L.; Bell, C. S.; Pickering, C. K.; Schwietzke, S.; Heath, G. A.; Pétron, G.;
+Zimmerle, D. J.; Schnell, R. C.; Nummedal, D. Temporal Variability Largely Explains
+Top-down/Bottom-up Difference in Methane Emission Estimates from a Natural Gas
+Production Region. 115, 11712–11717.
+(27) Johnson, M. R.; Conrad, B. M.; Tyner, D. R. Creating Measurement-Based Oil and
+Gas Sector Methane Inventories Using Source-Resolved Aerial Surveys. 4, 139.
+(28) MacKay, K.; Lavoie, M.; Bourlon, E.; Atherton, E.; O’Connell, E.; Baillie, J.;
+
+32
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Fougère, C.; Risk, D. Methane Emissions from Upstream Oil and Gas Production in
+Canada Are Underestimated. 11, 8041.
+(29) Cusworth, D. H.; Duren, R. M.; Thorpe, A. K.; Olson-Duvall, W.; Heckler, J.;
+Chapman, J. W.; Eastwood, M. L.; Helmlinger, M. C.; Green, R. O.; Asner, G. P.;
+Dennison, P. E.; Miller, C. E. Intermittency of Large Methane Emitters in the Permian
+Basin. 8, 567–573.
+(30) Zhang, Y. et al. Quantifying Methane Emissions from the Largest Oil-Producing Basin
+in the United States from Space. 6, eaaz5120.
+(31) Riddick, S. N.; Mbua, M.; Santos, A.; Hartzell, W.; Zimmerle, D. J. Potential
+Underestimate in Reported Bottom-up Methane Emissions from Oil and Gas
+Operations in the Delaware Basin. 15, 202.
+(32) Barkley, Z. R.; Davis, K. J.; Feng, S.; Cui, Y. Y.; Fried, A.; Weibring, P.; Richter, D.;
+Walega, J. G.; Miller, S. M.; Eckl, M.; Roiger, A.; Fiehn, A.; Kostinek, J. Analysis of Oil
+and Gas Ethane and Methane Emissions in the Southcentral and Eastern United States
+Using Four Seasons of Continuous Aircraft Ethane Measurements. 126, e2020JD034194.
+(33) Zimmerle, D.; Vaughn, T.; Luck, B.; Lauderdale, T.; Keen, K.; Harrison, M.;
+Marchese, A.; Williams, L.; Allen, D. Methane Emissions from Gathering Compressor
+Stations in the U.S. 54, 7552–7561.
+(34) C3: Colorado Coordinated Campaign | METEC | Colorado State University. https:
+//metec.colostate.edu/c3/.
+(35) Zimmerle, D.; Dileep, S.; Quinn, C. Unaddressed Uncertainties When Scaling Regional
+Aircraft Emission Surveys to Basin Emission Estimates. 58, 6575–6585.
+(36) Allen, D. T.; Pacsi, A. P.; Sullivan, D. W.; Zavala-Araiza, D.; Harrison, M.; Keen, K.;
+Fraser, M. P.; Daniel Hill, A.; Sawyer, R. F.; Seinfeld, J. H. Methane Emissions from
+33
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Process Equipment at Natural Gas Production Sites in the United States: Pneumatic
+Controllers. 49, 633–640.
+(37) Plant, G.; Kort, E. A.; Brandt, A. R.; Chen, Y.; Fordice, G.; Gorchov Negron, A. M.;
+Schwietzke, S.; Smith, M.; Zavala-Araiza, D. Inefficient and Unlit Natural Gas Flares
+Both Emit Large Quantities of Methane. 377, 1566–1571.
+(38) Liu, Y. et al. Assessment of Current Methane Emission Quantification Techniques for
+Natural Gas Midstream Applications. 17, 1633–1649.
+(39) Zavala-Araiza, D.; Alvarez, R. A.; Lyon, D. R.; Allen, D. T.; Marchese, A. J.;
+Zimmerle, D. J.; Hamburg, S. P. Super-Emitters in Natural Gas Infrastructure Are
+Caused by Abnormal Process Conditions. 8, 14012.
+(40) Vora, P.; Zimmerle, D. J.; Duggan, J. Use of Mechanistic Modeling to Improve Failure
+Mode Representation in Emissions Studies.
+(41) Olugbenga, A. G.; Al-Mhanna, N. M.; Yahya, M. D.; Afolabi, E. A.; Ola, M. K.
+Validation of the Molar Flow Rates of Oil and Gas in Three-Phase Separators Using
+Aspen Hysys. 9, 327.
+(42) Frankenberg, C.; Thorpe, A. K.; Thompson, D. R.; Hulley, G.; Kort, E. A.; Vance, N.;
+Borchardt, J.; Krings, T.; Gerilowski, K.; Sweeney, C.; Conley, S.; Bue, B. D.;
+Aubrey, A. D.; Hook, S.; Green, R. O. Airborne Methane Remote Measurements Reveal
+Heavy-Tail Flux Distribution in Four Corners Region. 113, 9734–9739.
+(43) COGCC Data. https://cogcc.state.co.us/data.html.
+(44) Visualize Summary Statistics with Box Plot - MATLAB Boxplot. https://www.
+mathworks.com/help/stats/boxplot.html.
+(45) Benefits of The Tankless Production Facility - Halker Consulting. https://www.
+halker.com/benefits-of-the-tankless-production-facility/.
+34
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(46) Greenhouse
+Determinations
+
+Gas
+for
+
+Reporting
+Petroleum
+
+Rule:
+and
+
+Revisions
+Natural
+
+Gas
+
+and
+
+Confidentiality
+
+Systems.
+
+https:
+
+//www.federalregister.gov/documents/2023/08/01/2023-14338/
+
+greenhouse-gas-reporting-rule-revisions-and-confidentiality-determinations-for-petr
+(47) Lyon, D. R.; Alvarez, R. A.; Zavala-Araiza, D.; Brandt, A. R.; Jackson, R. B.;
+Hamburg, S. P. Aerial Surveys of Elevated Hydrocarbon Emissions from Oil and Gas
+Production Sites. 50, 4877–4886.
+
+35
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+TOC Graphic
+
+36
+https://doi.org/10.26434/chemrxiv-2024-119c9 ORCID: https://orcid.org/0009-0000-2415-7123 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+

@@ -1,0 +1,1361 @@
+H YDRATE - BASED C ARBON C APTURE VIA P RESSURE S WING IN A
+PACKED B ED OF I CE
+A P REPRINT
+Elias Eder∗
+Energy Research Centre
+Vorarlberg University of Applied Sciences
+Dornbirn, 6850, Austria.
+
+Miriam Kadinger
+Energy Research Centre
+Vorarlberg University of Applied Sciences
+Dornbirn, 6850, Austria.
+
+Sandro Hiller
+Energy Research Centre
+Vorarlberg University of Applied Sciences
+Dornbirn, 6850, Austria.
+
+Stefan Arzbacher
+Energy Research Centre
+Vorarlberg University of Applied Sciences
+Dornbirn, 6850, Austria.
+
+September 6, 2024
+
+A BSTRACT
+The formation of mixed gas hydrates for pre- or post-combustion capture of carbon dioxide is
+considered a promising alternative to conventional carbon capture technologies. Yet, to keep up
+with conventional technologies or even reduce the cost of capture associated with them, a hydratebased technology must have (1) a short induction time, (2) fast formation kinetics, and (3) moderate
+process conditions. To date, these requirements can only be met by adding promoters to the system,
+which comes at its own cost and disadvantages. Here, we show that the requirements can also be
+met without promoters by forming mixed gas hydrates in a packed bed of ice stabilized by fumed
+silica. While the high specific surface area of the packed bed warrants short induction times and
+fast kinetics, low temperatures ensure both moderate formation pressures and a high CO2 selectivity.
+The favorable properties can be maintained and even improved upon over many capture/regeneration
+cycles when operated at temperatures lower than 253 K, as this ensures a continuous formation of
+pores in the ice. We demonstrate the advantages of this route for carbon capture on a bench scale
+through batch, semi-batch, and continuous experiments. In semi-batch operation at 233 K and 40 bar,
+the mole fraction of CO2 in a synthetic flue gas is reduced from 15 mol% to 2.5 mol%. At the
+same thermodynamic conditions, a split fraction of 70% and a specific energy consumption below
+3.0 GJ/tCO2 are achieved in continuous operation. The inherent advantages and simplicity of this
+process, a specific energy consumption comparable with the state of the art even though entirely
+based on the bench-scale experiment, as well as environmental harmlessness, emphasize the potential
+of this hydrate-based process to meet the demands of the industry at a minimal cost of capture.
+Keywords Carbon Capture · Gas Hydrates · Ice · Pressure Swing · Packed Bed
+
+1
+
+Introduction
+
+Technological innovations are the single most promising tools for mitigating climate change and its associated negative
+implications. According to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change (IPCC),
+during the last decade, the average annual anthropogenic CO2 emissions reached an all-time high of 10.9±0.9 PgC,
+equivalent to 40.0±3.3 Gt of CO2 per year. With a share of 86±14% the majority originates from the combustion of
+∗
+
+Corresponding author: Elias Eder, E-mail: elias.eder@fhv.at
+Preprint submitted to Energy and Environmental Science
+
+https://doi.org/10.26434/chemrxiv-2024-tfmjn-v2 ORCID: https://orcid.org/0000-0003-3513-6859 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Hydrate-based Carbon Capture via Pressure Swing in a Packed Bed of Ice
+
+A P REPRINT
+
+fossil fuels, the principal contributor to climate change [1]. After discussions on phasing out fossil fuels repeatedly
+ended inconclusively at the United Nations Conference of the Parties (COP), a consensus in favor of transitioning away
+from fossil fuels was finally reached at COP28 [2]. However, the State of Climate Action Report 2023 shows that
+efforts to mitigate climate change fall dramatically short on a global scale and urges further action [3]. On top of that,
+annual emissions have been rising steadily across all major groups of greenhouse gases (GHGs) [4]. It is still to be
+expected that due to the coupling between economic growth and energy consumption, a relation often referred to as the
+energy-growth nexus [5], fossil fuels will remain a major source for meeting demand in many countries for years to
+come.
+Considering these alarming tendencies in anthropogenic climate change, carbon dioxide removal (CDR) methods,
+i.e., ways to directly reduce atmospheric CO2 [6], or carbon capture and storage methods (CCS), i.e., ways to capture
+and store GHG emissions directly where generated, become increasingly important [4]. Particularly in process and
+energy-related industries, emission mitigation costs are substantially higher without industrial CCS [7, 8], making it the
+economically most interesting climate change mitigation strategy in several sectors.
+In contrast to CDR methods, which currently face an atmospheric CO2 mixing ratio of only 422 ppm [9], CCS
+technologies encounter significantly higher mole fractions at emission sites, favoring the gas separation from a
+thermodynamic point of view. For instance, mole fractions of 12-14%, 11-13%, and 7-10% are found for coal-based,
+oil-based, and natural gas-based boiler operation, respectively [10]. While the mole fraction in a gas turbine cycle
+(3-4%) is even lower than that [10], significantly higher mole fractions are encountered in industrial processes such
+as cement production (30%) or natural gas processing (>96%) [11]. With an emphasis on combustion processes,
+emissions are reduced through pre-combustion, oxyfuel combustion, or post-combustion capture [12]. Pre- and oxyfuel
+combustion require extensive modifications, making them viable primarily for new plants. In contrast, post-combustion
+capture — while typically less efficient — stands out for its ability to retrofit existing plants. The actual gas separation
+is conventionally done using either absorption, adsorption, membranes, or cryogenic distillation and tailored to the
+on-site conditions [11]. Among these processes, regenerative absorption, especially with monoethanolamine (MEA), is
+the most widely used and mature method [13, 14, 11].
+Despite the technical viability and maturity of the conventional processes, the energy penalty associated with carbon
+capture (CC) is still significantly higher than the thermodynamic minimum [11]. Especially at low mixing ratios, up
+to 30% of a fossil-fueled power plant’s energy is required for capturing CO2 from a flue gas [15]. Hence, for many
+applications, the conventional processes are economically not feasible [16]. Consequently, significant research and development efforts are ongoing [17, 18] investigating unconventional methods such as chemical looping combustion [19],
+algae-based CC [20], and hybrid methods [12, 21]. Amid these methods, hydrate-based carbon capture (HBCC) has
+been gaining increased attention due to its potential for economically feasible and large-scale CO2 separation [22]. This
+can be attributed to several factors.
+(1) In HBCC, CO2 is separated from a gas mixture by being incorporated into the molecular structure of a gas hydrate,
+i.e. a solid inclusion compound where hydrogen-bonded water molecules form a host network that captures guest
+molecules like CO2 within polyhedral cages [23]. Due to cage diameters on the order of 1 nm gas hydrates exhibit an
+exceptional CO2 storage capacity of up to 9.67 mmol per gram of water [22], i.e., 1 volume of CO2 hydrate contains
+up to 164 standard volumes of CO2 gas [15]. This capacity surpasses conventional commercial solvents like Selexol,
+Rectisol, and Purisol by almost an order of magnitude [22] and is comparable or exceeds that of many adsorbents [17].
+(2) HBCC can operate under relatively moderate pressures and temperatures, making it more energy-efficient compared
+to absorption processes that need harsher conditions [22, 24]. (3) In HBCC, regenerating CO2 is cost-effective and
+energy-efficient, as it can be achieved with low-temperature waste or environmental heat [25]. (4) Utilizing primarily
+water as both the capture and the storage medium, HBCC can be considered one of the most environmentally friendly
+processes [22].
+The capture process typically involves contacting liquid water with the feed gas and raising pressure/lowering the
+temperature to values that thermodynamically permit the hydrate phase. This leads to the formation of a mixed gas
+hydrate, which, upon its growth, consumes both water and gas. For efficient CO2 separation, pressure and temperature
+are set such that the mole fraction of CO2 is significantly larger in the hydrate than in the gas phase. Eventually,
+this process transforms streams of water and CO2 -rich feed gas into streams of CO2 -rich hydrate and CO2 -depleted
+product gas. Regeneration of the captured CO2 is readily achieved by overheating or under-pressurizing regarding the
+thermodynamic stability conditions.
+The performance of HBCC inherently relies on the equilibrium conditions and the dynamics of hydrate formation,
+which ultimately govern capture rates [11]. Regarding the dynamics of formation, prolonged induction times required
+for forming hydrate nuclei of critical size, coupled with retarded growth of hydrate crystals due to mass- and heattransfer limitations [26, 27] present significant obstacles that can render HBCC impractical, if not resolved. Induction
+times are commonly reduced through the addition of kinetic promoters, i.e., predominantly surfactants, amino acids,
+
+2
+
+https://doi.org/10.26434/chemrxiv-2024-tfmjn-v2 ORCID: https://orcid.org/0000-0003-3513-6859 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Hydrate-based Carbon Capture via Pressure Swing in a Packed Bed of Ice
+
+A P REPRINT
+
+or nanoparticles that do not participate in crystal formation but facilitate its nucleation [28]. Likewise, methods
+and equipment that facilitate accelerated nucleation rates by maximizing heterogeneous nucleation sites [28], or
+those utilizing the so-called memory effect [29] are employed. Growth rates can be sustained or accelerated by
+ensuring efficient mass and heat transfer throughout hydrate formation. To this end, various methods like stirring [30],
+bubbling [31], spray injection [32, 33], or ejector loop reactors [34], are employed to maintain a high reaction surface
+area and prevent its degradation due to the formation of the hydrate, which itself can act as a barrier between the
+reactants [35]. Fixed bed reactors mitigate this effect by maximizing surface area and number of nucleation sites while
+minimizing diffusion lengths [36, 37, 38]. A more recent approach involves promoter-enhanced hydrate formation in
+un-stirred reactors [39], where hydrates develop capillaries or micro-tubular structures [40], ensuring sustained contact
+between water and gas.
+Next to hydrate formation dynamics, thermodynamic equilibrium between the gas, hydrate, and water phase plays a
+crucial role in HBCC, as it relates the process conditions with the mole fractions of CO2 in the feed, the process and
+regenerated gas, thus affecting both capital and operational expenditures. Since pressure is one of the largest cost drivers,
+the majority of studies center on shifting equilibrium to lower pressures by employing thermodynamic promoters, i.e.
+chemical additives that are integrated into the crystal structure of the hydrate for increased stability [28]. This is of
+critical importance when dealing with feed gas that is already lean in CO2 , e.g., gas emanating from the combustion
+of fossil fuels. For instance, adding minute amounts of 1-3 mol% of the thermodynamic promoter tetrahydrofuran
+to a CO2 -N2 -liquid water system with 18 mol% of CO2 can reduce the pressure requirement for hydrate formation
+from 72 bar to less than 2 bar [41]. While the pressure reduction is a major advantage for HBCC [42], the utilization
+of thermodynamic promoters often deteriorates capture capacity by substituting CO2 with promoter molecules in the
+crystal lattice [28]. Besides, at non-optimal concentrations these promoters can also negatively affect capture efficiency
+and selectivity by shifting equilibrium composition in the hydrate more towards N2 [42]. Moreover, although promoters
+can be effective even at low concentrations [42], their use invariably incurs additional chemical costs and, in many
+instances, impacts environmental benignity [28].
+Another and seemingly obvious route for pressure reduction–the reduction of formation temperature to values below
+the ice point–has not been seriously considered to date. Yet, HBCC involving formation from and dissociation into
+ice bypasses the need for forming and breaking hydrogen bonds, offering a pathway to significantly reduce reaction
+enthalpies and associated energy demand [26, 27].
+Several reasons might account for the disregard of the low-temperature approach, including (1) difficulties in processing
+solids, (2) slow dynamics owing to low-temperature kinetics and mass transfer constraints [35], (3) poor cycling
+performance, and (4) decreased uptake capacity caused by increased hydration numbers [43].
+In this paper, we address these concerns and demonstrate for the first time that all of them can be either disregarded
+or neglected when employing a pressure swing process for HBCC in a fixed bed of ice. By operating at temperatures
+as low as 233 K we are pushing the limit of residual CO2 in the product gas to record-breaking levels at pressures no
+larger than 40 bar. Kinetic limitations are effectively mitigated by the use of a large surface area that can be successfully
+restored after every capture-regeneration cycle presumably via a pore network that forms naturally as a consequence
+of small density differences between ice and hydrate [44, 45, 46]. Besides proving the feasibility of the concept in
+continuous, batch, and semi-batch cycles, novel equilibrium data for mixed N2 -CO2 hydrates of various compositions
+are provided for several temperature levels below the ice-point. Conservative estimates for attainable KPIs such as
+specific energy consumption, split fraction, and separation factor, are obtained from a high-level thermo-economic
+analysis, to highlight the competitiveness of the novel process, even at this very early stage of development.
+In this macroscopic study, we place a strong emphasis on practical applications, deliberately postponing microscopic
+details for future investigations. This approach reflects the urgency of our work and aims at advancing the technology
+swiftly while providing further refinement in future publications. For now, by compensating the lack of the microscopic
+perspective with comprehensive detail in our experimentation and data analysis this paper leaves no doubt about the
+feasibility and scalability potential of the novel route for HBCC. Thus, this work not only underscores fixed bed reactors
+as the most promising candidates for commercial HBCC [11], but also shifts the research agenda in this domain from
+pore-water to solid foams.
+
+2
+
+Methods and Materials
+
+This section outlines the setup, preparation of the packed bed, experimental procedures, data acquisition and analysis,
+and definitions of key performance indicators (KPIs) for comparison with the state of the art, making it accessible
+for the general reader. For a deeper dive into the details we refer to the electronic supplementary information (ESI†)
+published alongside this manuscript.
+3
+
+https://doi.org/10.26434/chemrxiv-2024-tfmjn-v2 ORCID: https://orcid.org/0000-0003-3513-6859 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Hydrate-based Carbon Capture via Pressure Swing in a Packed Bed of Ice
+
+2.1
+
+A P REPRINT
+
+Experimental Setup
+
+Fig. 1 shows a simplified process scheme of the bench-scale test setup used for the hydrate-based capture of CO2 in
+continuous, batch, or semi-batch mode. A more detailed process scheme is contained in the ESI†.
+The test setup consists of a gas cylinder (GC) containing synthetic flue gas, a thermally insulated high-pressure reactor
+(HPR) with a total volume of 1.9 ± 0.1 L, a separate cooling cycle (CC) with a Lauda IN 280 XT cryostat, a continuous
+operation line (COL), and a probe extraction line (PEL). The COL (dashed line in Fig. 1) connects the reactor outlet to
+all valves and sensors used for continuous operation. For batch or semi-batch operation, the reactor outlet is closed
+using the ball valve BV-COL. In these operational modes, a gas lock (GL) formed by two ball valves on the PEL is
+positioned close to the HPR to extract tiny samples of gas for subsequent analysis. With a volume of only 1.84 ± 0.1
+mL, extractions of less than 0.2 vol% of the gas contained in the reactor are possible, leaving the system practically
+unaffected.
+Concerning actuators and sensors, RS Pro PT100 resistance thermometers are installed to measure gas temperatures
+at the reactor inlet and outlet, as well as packed bed temperatures at different positions (detailed positions in the
+ESI†). Omega PXM459 pressure transducers are used to measure pressure in the reactor and feed line. Bronkhorst
+El-Flow Prestige FG-111AC flow meters determine inlet and outlet mass flow rates. The flow meter at the reactor outlet
+additionally serves as a flow controller (FIC). Both FI and FIC are pressure-compensated. The mole fraction of CO2 is
+measured using two Smartgas Flow Evo infrared CO2 sensors with ranges of 0-50 mol% and 0-100 mol%, respectively.
+These sensors can be mounted in three different positions, as shown in Fig. 1, depending on the mode of operation
+and the subject of investigation. Ball and needle valves for high-pressure applications (Swagelok, Type SS-43GS4 and
+SS-20VS4) are installed to open and close selected lines and to adjust the operating mode. Detailed process specifics
+including the valves’ positions are contained in the ESI†. The uncertainty of the relevant instruments is evaluated for all
+measurements conducted and listed together with the measurement range in Table 1. Uncertainties of derived quantities
+are determined using linear error propagation as implemented in the Python library uncertainties [47].
+2.2
+
+Data acquisition, controls, and processing
+
+All sensor data are logged using a National Instruments NI-cDAQ-9174 data acquisition module and analog input
+modules. The data are sampled in intervals of 1 s and visualized in real-time in NI LabVIEW, which also serves as
+the programmable logic control system. In parallel, relevant sensor data are recorded and saved to CSV files with a
+resolution of 10 s. We use the open programming language Python including the libraries Matplotlib, NumPy, pandas,
+SciPy, uncertainties [47], and CoolProp [48] for post-processing. To reduce the noise on time series used for computing
+
+Figure 1: Simplified process scheme of the HBCC lab-scale reactor including the most relevant sensors and actuators as
+well as the gas and cooling lines, specific system components including high pressure reactor (HPR), gas cylinder (GC),
+pressure indicators (PI), pressure indicator and controller (PIC), flow indicator (FI), flow indicator and controller (FIC),
+cooling cycle (CC), gas lock (GL), ball valves (BV), and CO2 sensors (CO2 ).
+4
+
+https://doi.org/10.26434/chemrxiv-2024-tfmjn-v2 ORCID: https://orcid.org/0000-0003-3513-6859 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Hydrate-based Carbon Capture via Pressure Swing in a Packed Bed of Ice
+
+Instrument
+
+Table 1: Measurement instruments, units, ranges and uncertainties
+Unit
+Range
+
+RS Pro PT100 resistance thermometer
+Omega PXM459 pressure transducer
+Bronkhorst El-Flow Prestige FG-111AC flow meter
+Smartgas Flow Evo CO2 sensor
+Smartgas Flow Evo CO2 sensor
+
+◦
+
+C
+bar
+slm
+mol%
+mol%
+
+-50 − 200
+0−100
+0.4−20
+0−100
+0−50
+
+A P REPRINT
+
+Uncertainty
+±[0.3 + 0.005 · T ]
+±0.08
+±[0.02+0.005· ṁ]
+±0.6
+±0.4
+
+the mass balance of the investigated system, a Savitzky-Golay filter [49], implemented in the Python library SciPy [50],
+is applied.
+2.3
+2.3.1
+
+Materials
+Gas compositions
+
+Calibrated mixtures of N2 and CO2 are utilized as synthetic flue gas. For the majority of the experiments, a CRYSTAL
+test gas mixture from Air Liquide (consisting of CO2 N45 and N2 N50) with a CO2 fraction typical of a coal-fired
+power plant [15] (15.0±0.3 mol% of CO2 , 85.0±0.3 mol% of N2 ) is used. Both CO2 sensors are validated using the
+calibrated gas mixture from the cylinder. Additional flue gas mixtures with varying mole fraction of CO2 are used to
+quantify the impact of the CO2 fraction on the process performance. These are exclusively mixtures of CO2 and N2 ,
+with CO2 mole fractions of 5.0±0.2 mol%, 10.0±0.2 mol%, and 40.0±0.8 mol%, respectively.
+2.3.2
+
+Packed bed preparation
+
+A packed bed of ice stabilized with fumed silica, i.e. dry water [51, 52] in a solidified state, is used for hydrate formation.
+The bed is designed to provide a high specific surface area and a large number of nucleation sites to enhance hydrate
+formation rates [28, 42]. A batch of dry water is prepared by blending 30 g of pyrogenic silica (Wacker Chemical
+Corporation, HDK H18) and 600 g of water for a total of 160 s. The total blending time is split in two equal periods
+of 80 seconds separated by a pause of 20 seconds. The pause has been introduced to minimize the agglomeration of
+liquid droplets which tends to occur during blending at high RPM for long periods. Since higher mixing speeds lower
+the average particle size [53], in this study, the blending is performed at the maximum RPM value of 45,000 rpm. For
+comparison, in their pioneering work on dry water hydrates, Carter et al. [51] blended for 90 seconds using an average
+of 19,000 RPM.
+To investigate the effect of two different blending durations on the droplet size distribution of liquid and solid dry
+water, a Phoenix Nanotom-m CT system (Baker and Hughes) is employed after blending. Fig. 2 shows samples of pure
+pyrogenic silica, the unblended mixture, and dry water in its final state, as well as four radially arranged tomograms
+obtained from CT scans of dry water. The dry water samples are prepared by blending for 160 seconds and 280 seconds
+with an interruption after 80 seconds and investigated for the liquid and solid state, respectively.
+As reflected in the tomograms, there is no significant difference between the particle distribution of dry water in liquid
+and solid state. A high specific surface area can be attained in both cases. However, as mentioned before, uninterrupted
+blending for 280 seconds leads to the agglomeration of liquid regions which reduces the surface area of the dry water
+(cf. Fig. 2f)).
+2.4
+
+Experimental procedures
+
+To ease the understanding of our results and to simplify the discussion, all experimental procedures used are outlined in
+the following paragraphs. For a more detailed explanation the reader is referred to the ESI†.
+2.4.1
+
+Preparatory work
+
+Prior to the first measurement run of a new packed bed, the reactor is cleaned of any residue from previous experiments.
+Subsequently, the reactor is filled with two batches of liquid dry water, each consisting of 600 g of water and 30 g of
+pyrogenic silica, and then sealed using a torque wrench. After covering the reactor top with thermal insulation, the dry
+water is solidified and cooled to the designated experimental temperature using the cryostat.
+Before each measurement run, the system is flushed in two steps at low pressure (between 1 and 4 bar) to ensure
+reproducible starting conditions. Firstly, the reactor is flushed with N2 (Air Liquide ALPHAGAZ 1 with purity
+5
+
+https://doi.org/10.26434/chemrxiv-2024-tfmjn-v2 ORCID: https://orcid.org/0000-0003-3513-6859 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Hydrate-based Carbon Capture via Pressure Swing in a Packed Bed of Ice
+
+A P REPRINT
+
+Figure 2: Samples of (a) pure pyrogenic silica, (b) pyrogenic silica and water before blending, and (c) dry water after
+blending. The tomograms (d-g) illustrate the condition of dry water post-blending for 160 seconds in the (d) liquid
+and (e) solid states, as well as after blending for 280 seconds in the (f) liquid and (g) solid states. Solid state CT scans
+conducted at 233 K. Bright and dark areas are water/ice and air, respectively.
+>99.999%) for at least 10 minutes to remove any gas residue from previous experiments. Secondly, the reactor is flushed
+with the synthetic flue gas until the CO2 mole fraction at the reactor outlet matches the value on the calibration certificate
+of the gas cylinder. Once flushing is completed, either semi-batch, batch, continuous experiments, or sequences of these
+experiments are conducted.
+2.4.2
+
+Semi-batch experiments
+
+Experiments in semi-batch mode are carried out to study the formation kinetics of the mixed hydrate at constant
+pressure and temperature. After the preparatory steps, the reactor is pressurized to a predefined pressure above the
+vapor-ice-hydrate (V-I-H) equilibrium curve using the back pressure in the gas cylinder. The crossing of the V-I-H curve
+marks the start of the capture period which is monitored in intervals ranging from 30 seconds to 2 hours by extracting
+gas samples via the gas lock. The analysis of the gas samples provides a temporal profile of the mole fraction of CO2 in
+the gas phase and allows for the study of induction times and formation kinetics. The gas cylinder remains attached to
+the reactor and is kept open throughout the experiment to compensate for any gas consumed by the forming hydrate.
+This continuous supply of gas across the system boundary of the reactor volume ensures a constant pressure and gives
+the procedure the prefix “semi". Note that the supply of fresh gas at one point of the otherwise closed reactor can be
+understood as a Dirichlet boundary condition for the mole fraction of CO2 . As the gas sampling point is far away from
+that Dirichlet boundary, its effect is negligible for the initial phase of concentration change in that region.
+2.4.3
+
+Batch experiments
+
+Experiments in batch mode are primarily conducted for the exploration of the V-I-H equilibrium curve at constant
+temperature. Contrary to the semi-batch case, batch experiments are executed in a closed system, hence, no gas is
+supplied during the experiment. Consequently, in the system considered, a net growth or decrease of the hydrate phase
+inevitably results in a reduction or increase of system pressure, respectively. Similarly, the CO2 fraction in the gas
+phase will change accordingly. Only states on the V-I-H curve exhibit no change. This absence of change is used as
+6
+
+https://doi.org/10.26434/chemrxiv-2024-tfmjn-v2 ORCID: https://orcid.org/0000-0003-3513-6859 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Hydrate-based Carbon Capture via Pressure Swing in a Packed Bed of Ice
+
+A P REPRINT
+
+the criterion for reaching equilibrium. For practical reasons, a change in the CO2 fraction of less than 0.1 mol% in 60
+minutes is used as a threshold value for meeting equilibrium. Batch experiments are typically carried out subsequently
+to semi-batch experiments by reducing the reactor pressure from values on the V-I-H curve in small steps and waiting
+for the system to attain equilibrium again. In cases where the attainment of equilibrium is slow because of small rates
+of dissociation, the reactor pressure is instead increased in small increments starting from equilibrium. Fig. 3 depicts
+these procedures with open and filled markers indicating non-equilibrium and equilibrium states, respectively.
+2.4.4
+
+Continuous experiments
+
+Continuous measurements are initialized by pressurizing the reactor with the calibration gas using the pressure gauge
+of the gas cylinder, subsequently to the preparatory flushing process. This leads to a pressure wave that propagates
+through the fixed bed until it reaches the flow controller at the reactor outlet (FIC), which is already set to a fixed value
+within the range of 0.5 to 2.0 slm. Once the reactor is fully pressurized the capture period of a pressure swing cycle
+starts. It is monitored by continuously measuring the inlet and outlet mass flows as well as the mole fraction of CO2 at
+the reactor outlet. This allows for the calculation of the CO2 capture rate, which, upon aggregation, yields the mass
+of CO2 captured in the mixed hydrate. After the capture period, which lasts for 180 minutes in our typical pressure
+swing cycles, the regeneration period is started by dissociating the mixed hydrate. To this end, the reactor inlet is closed
+while the outlet flow is maintained at the value used for capture. This results in a steady pressure drop which ultimately
+destabilizes the mixed hydrate and triggers its dissociation into gas and ice.
+For the analysis of the mass balance, the mass flow and the CO2 fraction at the outlet are monitored throughout the
+regeneration period. The monitoring is terminated once the mass flow drops below the detection limit of the flow
+sensors (< 0.2 slm). Note that due to the effect of self-preservation [54, 55], mass flow can come to an apparent halt
+although a significant amount of mixed hydrate is still preserved. This results in a mismatch in the total mass captured
+and regenerated but can be reliably detected. It has to be noted that for continuous measurements with a focus on
+closing the mass balance, an accurate knowledge of the inlet mass flow during the pressurization period is essential. In
+such cases, the reactor is pressurized in a controlled manner by adjusting a needle valve before the flow indicator at the
+reactor inlet.
+2.5
+2.5.1
+
+Calculations
+Mass balance
+
+In continuous operation of the bench-scale setup, CO2 capture rates are obtained by:
+ṁCO2 ,capt = ṁi · wCO2 ,i − ṁo · wCO2 ,o ,
+
+(1)
+
+Figure 3: Schematic of the procedures used for the determination of isothermal vapor-ice-hydrate (V-I-H) equilibrium
+curves: (1) Periodic pressure decrease leads to dissociation of mixed hydrate until a new equilibrium state is reached
+(indicated by black arrows) or (2) periodic pressure increase leads to mixed hydrate formation until equilibrium is
+reached (indicated by red arrows).
+7
+
+https://doi.org/10.26434/chemrxiv-2024-tfmjn-v2 ORCID: https://orcid.org/0000-0003-3513-6859 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Hydrate-based Carbon Capture via Pressure Swing in a Packed Bed of Ice
+
+A P REPRINT
+
+where ṁi and ṁo denote the respective inlet and outlet mass flows of gas, and wCO2 ,i and wCO2 ,o the mass fractions of
+CO2 at the reactor inlet and outlet, respectively. The mass fraction wi of species i is calculated using the measured
+mole fraction y, the molar mass Mi of the individual species i, and the molar mass of the mixture M :
+wi = yi ·
+
+Mi
+M
+
+(2)
+
+In analogy to Eq. 1, the mass flow of CO2 released during the dissociation period is calculated using
+ṁCO2 ,rel = ṁo · wCO2 ,o .
+2.5.2
+
+(3)
+
+Key performance indicators
+
+Commonly used metrics for the evaluation of CC technologies are the capture efficiency and the specific energy
+consumption (cf. [56] and [57]). The capture efficiency CE is defined as the reduction of mass flow of CO2 divided by
+the maximum reduction possible, i.e., the complete removal of any CO2 . Hence
+CE =
+
+ṁCO2 ,i − ṁCO2 ,o
+,
+ṁCO2 ,i
+
+(4)
+
+where ṁCO2 ,i and ṁCO2 ,o are mass flows of CO2 at the reactor inlet and outlet, respectively.
+Specific energy consumption SEC relates energy input to mass of CO2 captured and is ideal for comparisons with
+conventional carbon capture technologies. For the process considered,
+SEC =
+
+Pcomp + Pcool + Pform
+,
+ṁCO2 ,capt
+
+(5)
+
+with Pcomp , Pcool , and Pform denoting electrical powers needed for the compression of the flue gas, the pre-cooling
+of the flue gas to the formation temperature, and for removing the released latent heat flow of hydrate formation,
+respectively. The compression power is evaluated using the two edge cases of adiabatic and isothermal compression.
+For the adiabatic compression, an isentropic efficiency of 0.85 is assumed. When experimental data is not available,
+well-justified assumptions are used for the determination of the individual contributors to Eq. 5. These are listed in the
+ESI†.
+To account for the specialties in HBCC, two additional metrics are often used for an evaluation of the process separation
+efficiency [22]. The split fraction
+S.Fr. =
+
+nCO2 ,capt
+nCO2 ,i
+
+(6)
+
+relates the amount of CO2 captured to the total amount fed into the reactor, hence, can be interpreted as the arithmetic
+mean of the capture efficiency for an investigated period (CE = S.Fr.). The separation factor
+S.F. =
+
+nCO2 ,capt · nN2 ,o
+nN2 ,capt · nCO2 ,o
+
+(7)
+
+relates the molar ratio of CO2 and N2 captured to that in the residual gas leaving the reactor at the outlet. This term
+could reach infinity, if no N2 would occupy hydrate cages and the entire CO2 of the feed stream would be consumed in
+the process of hydrate formation. The molar ratios can be readily obtained by integrating the individual mass flows over
+the entire duration of the experiment and applying the ideal gas law.
+
+3
+
+Results and discussion
+
+In the following, key results for the hydrate-based capture and regeneration of CO2 in a packed bed of solidified dry
+water are provided. These cover the fundamental aspects of thermodynamic equilibrium and kinetics as well as factors
+crucial for the industrial application, e.g., the performance stability with respect to consecutive cycling. Eventually, a
+benchmark run is used to substantiate the KPIs of the process, thus, enabling a sound comparison with the state of the
+art.
+8
+
+https://doi.org/10.26434/chemrxiv-2024-tfmjn-v2 ORCID: https://orcid.org/0000-0003-3513-6859 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Hydrate-based Carbon Capture via Pressure Swing in a Packed Bed of Ice
+
+3.1
+
+A P REPRINT
+
+Thermodynamic equilibrium
+
+Semi-batch and batch experiments are conducted in series to investigate thermodynamic equilibria for reactor temperatures of 233 K, 243 K, and 253 K. For practical reasons, the reactor is first operated at constant pressure in semi-batch
+mode for 400 minutes before switching to batch mode and adjusting the pressure in a series of small step changes.
+Exemplary measurement runs of pressure and CO2 fraction approaching equilibrium values are shown in Fig. S2 in the
+ESI†.
+While at 233 and 243 K, stepwise depressurization leads to the attainment of new equilibria within a matter of 1-2 hours,
+dissociation rates are significantly slower at 253 K, where even waiting periods of more than 24 hours did not yield
+new equilibria. Thus, at 253 K, stepwise pressurization is the only viable route for reaching equilibrium within less
+than 2 hours. Such retarded dissociation rates at relatively higher temperatures are indicative of self-preservation. This
+phenomenon is well-established for CO2 hydrates [54, 55, 46] but rarely considered in the context of HBCC, although
+its effect complicates the regeneration of the CO2 from the hydrate significantly.
+The equilibrated values for pressure and mole fraction of CO2 measured after the individual destabilization steps are
+visualized in Fig. 4 alongside theoretical predictions and detailed in Table 2.
+
+Figure 4: Pressure and mole fraction of CO2 on the vapor-ice-hydrate (V-I-H) coexistence curve. Equilibrated states
+obtained in this work by sequences of semi-batch and batch experiments at 233 K, 243 K, and 253 K (filled markers)
+are compared to theoretical values (solid, dashed, and dash-dotted curves) calculated using CSMGem [26, 58]. For
+comparison with conventional HBCC, mixed CO2 -N2 hydrate equilibrium states at 275 K with and at 274 K without
+promoters [41] are provided using open markers.
+There are three conceivable mechanisms for CO2 separation in our system: liquefaction, adsorption, and hydrate
+formation. A comparison between the V-I-H equilibrium values for the mixed-hydrate and the liquefaction line for
+the N2 -CO2 mixture (cf. Fig. S2 in ESI†) clearly rules out the possibility of misinterpreting liquefaction for hydrate
+formation; the two equilibria are simply too far apart at all temperatures and gas compositions considered in this
+work. This divergence already displays the advantage of the HBCC process with respect to cryogenic carbon capture
+which requires significantly larger pressures to attain similar reductions in mole fraction of CO2 . Yet, at high pressures
+and mole fractions of CO2 the stability regions for the liquid and the hydrate do overlap. This potentially allows for
+a combination of the cryogenic and hydrate-based capture process and offers an additional pathway for improving
+efficiency and performance. Adsorption, on the other hand, can take place at all conditions for which hydrate growth
+can occur. Hence, a misinterpretation is possible. However, because adsorption and hydrate formation exhibit distinctly
+different dynamics and capacities for CO2 uptake, these two effects are successfully distinguished in our experiments
+and the data in Fig. 4 is clearly associated with hydrate formation.
+A comparison between the measured equilibria with those obtained using the software CSMGem [26, 58] shows
+generally good agreement with the theoretical predictions for all reactor temperatures studied (cf. Fig. 4). Hence, as the
+predictive quality of CSMGem has been already confirmed for temperatures above 270 K [59], it can now be extended
+to lower temperatures. For CO2 fractions larger than 10 mol%, deviations between the theoretical and experimental
+values are always smaller than 1 mol%. For CO2 fractions smaller than 10 mol%, deviations between experiment
+and the CSMGem model are considerably larger but do not exceed 2 mol%. Especially at such small mole fractions,
+deviations can be attributed to insufficiently long relaxation times which lead to an overestimation of the equilibrated
+mole fractions. Besides, due to the size of the reactor the formation conditions are not as ideally controlled as in
+9
+
+https://doi.org/10.26434/chemrxiv-2024-tfmjn-v2 ORCID: https://orcid.org/0000-0003-3513-6859 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Hydrate-based Carbon Capture via Pressure Swing in a Packed Bed of Ice
+
+A P REPRINT
+
+lab-scale reactors specifically designed for equilibrium measurements. Consequently, the deviation could also be linked
+to an inhomogeneous temperature distribution in the reactor.
+Disregarding the minor deficiencies of the setup for measuring accurate equilibria the data clearly illustrates the
+importance of the low temperature route for HBCC, especially in the case of small mole fractions of CO2 . An
+equilibrium value of just 1.5 mol% CO2 in the vapor phase, measured at 57.4 bar and 233 K (cf. Fig. 4) demonstrates
+that HBCC from a feed gas with as little as 5 mol% CO2 is feasible even at such moderate temperature and pressure.
+To the best of our knowledge, CO2 fractions lower than 5 mol % have so far only been achieved by Chazallon and
+Pirim [59] who were capturing minute amounts of CO2 from a 1 mol% feed gas in their in-situ Raman cell. Due to
+their use of liquid water, which translated to a formation temperature of roughly 271 K, more than 140 bar of pressure
+had to be applied for capture. This is in strong contrast to the pressure requirements shown in Fig. 4, highlighting the
+leverage gained when transitioning to sub-zero Celsius. For instance, to obtain a CO2 fraction of less than 10 mol% in
+the product gas a pressure of at least 35 bar and 13 bar is required for a temperature of 253 K and 233 K, respectively.
+Hence, by simply reducing the temperature by 20 K, the pressure can be reduced by more than half. This massive
+reduction in equilibrium pressure is evidently even more pronounced when comparing with HBCC from liquid water,
+where more than 100 bar are required for a similar product gas concentration [41, 59]. Further, at 233 K, the unpromoted
+system’s equilibrium pressures are even comparable to those of the same system at 274 K when promoted with the
+well-known and efficient thermodynamic promoter tetrahydrofuran (THF) [41].
+233 K
+p (bar)
+
+y (mol%)
+
+243 K
+p (bar)
+
+y (mol%)
+
+253 K
+p (bar)
+
+y (mol%)
+
+57.4
+41.25
+38.11
+35.04
+30.37
+24.64
+20.62
+16.79
+13.22
+7.17
+4.71
+
+1.5
+2.55
+2.78
+3.18
+3.89
+5.01
+5.78
+8.18
+10.41
+22.26
+36.66
+
+−
+41.10
+33.90
+29.36
+25.36
+22.55
+20.55
+17.88
+15.99
+12.66
+9.77
+
+−
+4.82
+6.20
+7.34
+8.73
+10.08
+11.27
+13.25
+15.19
+19.26
+26.46
+
+−
+42.62
+36.5
+32.98
+29.74
+26.38
+22.83
+20.96
+19.12
+17.82
+15.28
+
+−
+7.54
+8.96
+11.16
+12.65
+14.22
+17.29
+18.19
+21.70
+23.25
+29.1
+
+Table 2: Measured equilibrium pressure and mole fraction of CO2 in the gas phase for three temperatures.
+As the attainment of CO2 -lean product gas at minimal pressure and related energy input is highly desirable from an
+economic point of view, the low-temperature route of HBCC is tempting at first sight. However, the slower formation
+kinetics associated with lower temperatures and mass transfer limitations are drawbacks that have so far prevented
+a broader consideration of this path for HBCC. Therefore, to ensure viability of HBCC at such process conditions,
+kinetics must be promoted. In the following section, it is investigated whether the combined effect of the high surface
+area of the packed bed of solidified dry water and the promoting abilities of silica [60] are sufficient for enhancing rates
+of formation to a degree viable for the industrial application.
+3.2
+
+Formation kinetics
+
+While there are alternatives for enhancing the surface area to promote hydrate formation (e.g. polyurethane foams [61]
+and nanoparticles [28]), preparation of a packed bed of ice from dry water is an obvious choice due to several factors.
+Firstly, fumed silica is cheap, widely available, harmless, and dry water is rather simple to fabricate. Secondly, dry
+water has been subject to a few studies already [51, 53, 62], all of which confirm the kinetically promoting effect of
+the high specific surface area. Therefore, it is likely that this beneficial effect will also be found at lower temperatures.
+On the other hand, studies [51, 62, 63] also showed that formation rates cannot be sustained over multiple formationdissociation cycles and that additional stabilizers (e.g. hydrocolloid gelling agent) are helpful to maintain formation
+rates. Since a poor cycling behavior is detrimental to an economic operation of the HBCC process, in this section, both
+formation rates as well as their evolution upon continuous cycling are investigated.
+Formation kinetics are investigated in semi-batch operation for different reactor pressures and for multiple captureregeneration cycles. In these cycles, the capture phase is according to the description of a semi-batch experiment while
+for the regeneration phase the reactor vessel is depressurized and remains open for at least 12 h to ensure complete
+dissociation of the hydrate. Fig. 5 shows the mole fraction of CO2 in the gas mixture during the capture phase obtained
+10
+
+https://doi.org/10.26434/chemrxiv-2024-tfmjn-v2 ORCID: https://orcid.org/0000-0003-3513-6859 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Hydrate-based Carbon Capture via Pressure Swing in a Packed Bed of Ice
+
+A P REPRINT
+
+from consecutive cycles. Each series begins with a fresh packed bed and is designed to operate at a specific pressure
+level — specifically, either 40, 30, or 20 bar. After the start of the experiment, the CO2 fractions start to decrease from
+their initial value of 15 mol% and approach thermodynamic equilibrium. While the CO2 fraction decreases fast at the
+beginning of the experiment, the rate of change almost vanishes in the final third of it. Despite the fact that the mole
+fraction continues to decrease by the experiment’s end, Fig. 5 illustrates clearly that extending the duration further is
+simply impractical for the purpose of this study. Hence, the steady-state definition of thermodynamic equilibrium used
+in this work always overestimates the actual values which could be more accurately approximated by extending the
+duration of the experiment significantly.
+
+Figure 5: Mole fraction of CO2 during capture in semi-batch operation at (a) 40 bar, (b) 30 bar, and (c) 20 bar. All
+experiments shown are done at 233 K using a N2 -CO2 feed gas containing 15 mol% CO2 . Subscripts i in ni denote
+the number of capture-regeneration cycles of the packed bed in operation. Dashed and dash-dotted lines mark the
+equilibrium concentration according to this work (see above) and CSMGem [26, 58], respectively. The shaded regions
+in blue mark induction periods observed during the first cycle.
+For reactor pressures of 40 bar (cf. Fig. 5(a)), the mole fraction of CO2 in the gas phase decreases almost immediately
+after pressurization, regardless of the number of cycles conducted. This suggests a very brief or completely absent
+induction period, indicating almost immediate formation of mixed hydrates even in a freshly packed bed of ice.
+Conversely, with reduced pressure, i.e., smaller driving force for hydrate formation, an induction period becomes
+apparent at the beginning of the capture experiment, which seems to be restricted to the first cycle (cf. Fig. 5(b) and (c)),
+though. During the initial cycle, the mole fraction of CO2 remains quite stable for approximately 40 min and 10 min at
+20 bar and 30 bar, respectively, before gradually decreasing. A closer look at the very first few minutes still reveals a
+small drop in CO2 fraction occurring practically immediately after pressurization. This small drop, which gets more
+pronounced as the pressure increases, can be attributed to the selective adsorption of CO2 on the solidified dry water.
+Yet, the drop due to adsorption can be clearly discriminated from the subsequent and significantly larger drop occurring
+as a result of hydrate formation. Subsequent cycles do not exhibit a pronounced induction period, suggesting a much
+faster hydrate nucleation in the regenerated packed bed of ice at low formation pressures. The significant reduction
+in the induction period observed for hydrate formation when starting from ice (or liquid water) with a prior hydrate
+history [64] is a well-known phenomenon, commonly referred to as the "memory effect". Although the underlying
+mechanisms behind the memory effect are not fully understood [29], yet, our results clearly indicate its usefulness in
+the application of HBCC, where numerous formation-dissociation cycles are required. A more nuanced perspective on
+the interplay between adsorption, hydrate formation, and the memory effect at the initial phase of capture is provided in
+the following section on continuous experiments.
+Focusing again on the rate of change of CO2 fractions with time and cycle number, the semi-batch data suggest that
+kinetics improve with each cycle at all pressures studied. In every set of semi-batch experiments conducted at a specific
+pressure, the CO2 fraction approaches its equilibrium value more rapidly with each subsequent cycle, until it stabilizes
+at a maximum rate where no further changes between cycles are observed. The difference between capture rates is most
+pronounced from the first to the second cycle. As the thermodynamic conditions remain consistent across cycles and
+nucleation can be ruled out as a factor in this phase of formation, the increased rate of CO2 uptake is likely linked to
+a growing solid-gas interface area. This growing interface area can be explained by the creation and evolution of a
+pore network that forms due to local energy differences [44] and density differences between ice and the water host
+network of the hydrate [46]. This restructuring takes place every formation-dissociation cycle leading to an increase of
+the specific surface area until a stable porosity is achieved. Long-term cycling experiments are essential to confirm the
+proposed stable porosity and to assess its dependence on the initial conditions of a fresh packed bed and the operating
+parameters. If the impact of the operating conditions proves significant, this finding could lead to substantial cost
+11
+
+https://doi.org/10.26434/chemrxiv-2024-tfmjn-v2 ORCID: https://orcid.org/0000-0003-3513-6859 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Hydrate-based Carbon Capture via Pressure Swing in a Packed Bed of Ice
+
+A P REPRINT
+
+reductions in bed preparation as it could imply that regardless of the initial setup, the ultimate effectiveness of the
+process is controlled by the pore network that naturally forms through repeated cycling.
+3.3
+
+Industrial application in continuous operation
+
+The extrapolation of the capture rates obtained from semi-batch experiments to an industrial process, which is
+presumably continuous, is challenging. In semi-batch experiments not only the mode of processing differs, but also the
+mechanism of mass transfer. While mass transfer by diffusion dominates in semi-batch, convection is the main driver in
+a continuous process. To account for this fundamental difference, this section studies whether the behaviors observed
+in semi-batch operation are consistent in continuous operation. Further, KPIs of continuous operation are assessed to
+explore the feasibility of developing and scaling the low-temperature route of HBCC to power plant levels.
+3.3.1
+
+Capture
+
+To compare with formation kinetics in semi-batch experiments, Fig. 6 shows the initial phase of carbon capture in
+continuous pressure swing experiments performed using three different N2 -CO2 feed gas mixtures. All experiments are
+performed at 233 K using a formation pressure of 40 bar and a mass flow of 1.0 slm. In Fig. 7, the effect of varying
+mass flow rates is investigated in otherwise identical experiments for a single feed gas composition of 15 mol% CO2 .
+Like in the semi-batch cases, the same packed bed of solidified dry water is used for a whole series of cycles to explore
+the effect of cycle number, i.e., bed age. Cumulative masses of captured CO2 are shown in addition to the CO2 fractions
+at the reactor inlet and outlet to ease the discussion on absolute capture rates. Note that the pressurization period is
+excluded from the integration of the cumulative masses, as they are not directly associated to gas hydrate formation.
+
+Figure 6: Initial phase of HBCC in continuous runs at 233 K, 40 bar, and 1.0 slm with a N2 -CO2 feed gas with (a)
+5 mol%, (b) 10 mol%, and (c) 15 mol% of CO2 . The top and bottom row show the mole fraction of CO2 at the reactor
+outlet and the cumulative mass of captured CO2 in terms of measurement duration, respectively. Dash-dotted lines
+mark the CO2 fraction at the reactor inlet and are shown for reference. Dashed lines represent linear fits to the entire
+data from 20 to 60 minutes, excluding the primary cycles. Subscripts i in ni denote the number of capture-regeneration
+cycles of the packed bed in operation. Induction times of the first and second cycle are labeled as ti with the subscript
+indicating the cycle number.
+Mechanisms of capture. Focusing on the CO2 fraction at the reactor outlet, the same general behavior can be
+observed in all experiments. The behavior can be best explained using a superposition of two distinct phenomena
+which follow two different time scales. The first phenomenon features an immediate drop of the CO2 fraction by a
+small amount proportional to the CO2 fraction of the feed gas and to the reactor pressure and can be best explained
+12
+
+https://doi.org/10.26434/chemrxiv-2024-tfmjn-v2 ORCID: https://orcid.org/0000-0003-3513-6859 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Hydrate-based Carbon Capture via Pressure Swing in a Packed Bed of Ice
+
+A P REPRINT
+
+Figure 7: Initial phase of carbon capture in continuous runs at 40 bar, 233 K, a N2 -CO2 feed gas composition of
+15 mol% CO2 , and varying mass flow rates. (a-b) show the mole fraction of CO2 at the reactor outlet, and the captured
+mass of CO2 in terms of measurement duration, respectively. The dash-dotted line in (a) marks the CO2 fraction at
+the reactor inlet and is shown for reference. Subscripts i in ni denote the number of capture-regeneration cycles of the
+packed bed in operation. Every run is labeled using a distinct marker and accompanied with a repeated run to test for
+reproducibility. Repeated runs are labeled using identical markers but are displayed semi-transparently. Vertical dashed
+lines with labels tṁ in (a) denote theoretical residence times calculated for the inlet mass flow rate investigated.
+
+as the selective adsorption of CO2 on the gas-solid interface. The second phenomenon features a significantly larger
+decrease of the CO2 fraction. It occurs at a much later and more random time, pointing towards the stochastic nature of
+hydrate nucleation and growth. In cases of particularly long induction periods, the CO2 fraction at the outlet gradually
+increases and eventually approaches the concentration of the feed gas. This effect is most pronounced during the initial
+cycle when using a feed gas with 5 mol% of CO2 (cf. Fig. S3 in ESI†). There, no hydrate nucleation can be observed
+within the first hour. In consequence, the gas composition at the reactor outlet must approach that of the feed gas
+once all available adsorption sites are occupied. The only way the CO2 fraction can decrease again afterwards is the
+nucleation and subsequent growth of mixed hydrates, which in this case actually happened after increasing the reactor
+pressure from 40 to 50 bar, thus amplifying the driving force for hydrate nucleation. The pressure increase almost
+instantaneously triggered hydrate growth and led to a pronounced decrease in CO2 fraction at the reactor outlet, similar
+to the ones observed in subsequent cycles. For all other cases, induction times are significantly shorter and, remarkably,
+for the subsequent cycles, a pressure of 40 bar eventually becomes sufficient to trigger hydrate growth (cf. Fig. S3 in
+ESI†). Induction times decrease most significantly from the first to the second capture-regeneration cycle and remain
+nearly identical for all subsequent cycles. This behavior is similar to the observations made in semi-batch experiments
+and can again be attributed to the previously mentioned memory effect [64].
+Driving force. When examining the mass of CO2 captured, the reproducibility of the HBCC process becomes evident.
+With the exception of the first cycle, where nucleation significantly impacts the process, the mass of captured CO2
+follows an almost identical linear relation across all experiments conducted under identical conditions (cf. Fig. 6).
+Remarkably, even after 18 cycles the same relation can be observed, indicating a highly robust and stable process across
+numerous capture-regeneration cycles. The minor deviations observed between the second and later cycles can be
+13
+
+https://doi.org/10.26434/chemrxiv-2024-tfmjn-v2 ORCID: https://orcid.org/0000-0003-3513-6859 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Hydrate-based Carbon Capture via Pressure Swing in a Packed Bed of Ice
+
+A P REPRINT
+
+attributed to imperfect process control, particularly variations in the annealing periods occurring between cycles, when
+the reactor was maintained at a low temperature but not pressurized.
+Fitting a straight line to the mass of CO2 captured from 20 to 60 minutes for all cycles except the first yields capture
+rates of 0.062 ± 0.003 g/min, 0.193 ± 0.004 g/min, and 0.295 ± 0.017 g/min, for 5 mol%, 10 mol%, and 15 mol%,
+respectively. These values are based on a reactor with 1200 g of water. For larger systems with an equivalent flow path
+length, they can be simply scaled by multiplying with the volume of water used.
+The reproducibility observed under identical conditions is a direct consequence of the consistent residence time of the
+gas in the reactor and the consistent rates of formation due to similar driving forces. The effect of driving force can
+be studied by comparing the capture rates of different feed gas compositions. Our data indicates that, under studied
+conditions, the formation rates at 10 mol% and 15 mol% are 3.1 and 4.8 times, respectively, that at 5 mol%. This
+relation is strikingly similar to 1:3.1:5.1, which is the corresponding ratio between yfg − yeq , i.e., the differences
+between feedgas and equilibrium concentration in the gas. This observation suggests that formation rates are directly
+proportional to the concentration difference between feed gas and equilibrium, which agrees well with kinetic models
+using that difference as the driving force for hydrate formation [26, 65]. Consequently, process conditions that enable
+small concentrations of CO2 in the gas phase are automatically beneficial for achieving high capture rates, as are high
+CO2 concentrations in the flue gas.
+Residence time. Besides the driving force and associated formation rates, the residence time crucially determines
+the degree of CO2 depletion in the gas phase. The effect of the time it takes for a control volume of gas to flow from
+the reactor inlet to the outlet, can be investigated by varying mass flow rates while keeping all other parameters the
+same. To this end, Fig. 7 shows the gas composition at the reactor outlet together with cumulative masses of captured
+CO2 versus time for mass flow rates ranging from 0.5-2.0 slm. To allow for a good comparison with Fig. 6, the process
+conditions used are identical. This time, however, all experiments are conducted with the same packed bed of solidified
+dry water. Additionally, the packed bed has already been cycled seven times before this investigation to mitigate the
+random nature of nucleation.
+The molar ratio of CO2 at the reactor outlet exhibits a recurring behavior. Right after the capture phase is started, the
+CO2 fraction decreases rapidly until it hits a minimal concentration and rises steadily after that. The time it takes to
+reach the minimum coincides well with the theoretical residence time, which is computed by dividing the approximated
+gas mass in the reactor by the mass inflow rate. This behavior can be explained using the remaining capacity for hydrate
+formation in the packed bed. The very first control volume entering the reactor will encounter a fresh packed bed. It
+takes exactly the residence time for this volume to propagate to the outlet. Every other control volume of gas following
+after will encounter a more reacted bed which offers less sites to be occupied as well as diffusion barriers limiting the
+uptake rate. The gas already present in the reactor at the start is also exposed to a fresh packed bed, however, can react
+with the downstream fraction of the bed only.
+A comparison between residence time and minimal CO2 fraction at the outlet suggests that significantly lower CO2
+fractions of the stripped gas could be realized by increasing the residence time (cf. Fig. 7). In practice, this can be
+done by either using smaller flow rates or a larger reactor volume. Ideal reactor dimensions can thus be identified by
+weighing the increased CO2 capture rate with reactor size against the associated costs of larger reactors.
+Focusing on the mass of CO2 captured, the effect of the concentration difference as an important driving force for
+hydrate formation becomes apparent once more. Higher mass flow rate results in higher CO2 fraction in the gas along
+its path through the bed. Since a larger deviation from the equilibrium concentration implies a greater driving force, the
+driving force for hydrate formation is also larger. This effect naturally supports maintaining capture rates. A smaller
+capture rate implies a higher CO2 fraction in the gas, which in turn implies a higher driving force and stabilizes the
+capture rate. The effect of this feedback loop can be seen in Fig. 7(b), which shows an almost linear increase in captured
+CO2 over 3 hours of experiments. Likewise, capture dynamics remain highly reproducible over the full duration of the
+experiments and 15 capture-regeneration cycles. The slightly higher deviation between cycles observed in the mass
+signal is due to the amplifying effect of mass flow rates only.
+3.3.2
+
+Full cycles and regeneration
+
+Until now, the emphasis of the continuous experiments has primarily been on capture. However, in a continuous
+process, the role of regeneration is equally essential. To study the dynamics of regeneration, measurements over full
+capture-regeneration cycles are done using N2 -CO2 feed gas compositions of 5, 10, 15, and 40 mol% of CO2 . With
+the exception of the 40 mol% case, all experiments are conducted at 233 K, 40 bar, and 1.0 slm of inlet flow rate. The
+40 mol% case is done using the same temperature but at 20 bar and 0.5 slm to prevent the liquefaction of CO2 . The
+capture phase is identical to that discussed in the previous section. Regeneration is triggered by reducing the reactor
+pressure slowly to 1 atm by closing the reactor inlet while maintaining a constant flow rate at the reactor outlet. This is
+14
+
+https://doi.org/10.26434/chemrxiv-2024-tfmjn-v2 ORCID: https://orcid.org/0000-0003-3513-6859 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Hydrate-based Carbon Capture via Pressure Swing in a Packed Bed of Ice
+
+A P REPRINT
+
+preferred over a more rapid decompression to avoid self-preservation [46, 54, 55], which is assumed to play a major
+role in the regeneration phase but has not been addressed in detail.
+Exemplary, Fig. 8(a-b) shows the results obtained from the feed gas with 15 mol% CO2 . Results for the other
+compositions can be found in the ESI† (cf. Figs. S4-S7). When it comes to the capture phase, all previous observations
+recur. Focusing on the regeneration phase, the CO2 fraction at the outlet remains almost unaltered until the pressure
+drops below the equilibrium pressure. Consequently, the mixed hydrate dissociates and releases large amounts of the
+previously captured gas rich in CO2 . This process is accompanied by a sharp rise in CO2 concentration at the outlet,
+peaking at approximately 70 mol% once the reactor pressure drops to 1 atm. Since no gas is fed during the entire
+regeneration period, this concentration can be understood as an upper bound to the composition of the gas captured in
+the hydrate.
+
+Figure 8: (a-b) Complete capture-regeneration cycle at 233 K and 40 bar using a N2 -CO2 feed gas with 15 mol% of
+CO2 at a flow rate of 1.0 slm. The shaded regions in blue and gray denote the pressurization and regeneration period,
+respectively. Different line styles are used to distinguish between pressure, mole fractions, and aggregated masses. (c)
+Comparison of aggregated and released masses as well as gas compositions in the hydrate between cycles performed
+using N2 -CO2 feed gas with 5.0, 10.0, 15.0 and 40.0 mol% CO2 fraction. With the exception of the 40 mol% case
+which is executed using 233 K, 20 bar, and 0.5 slm, all other measurements are conducted at 233 K, 40 bar, and 1.0 slm.
+The error bars originate from the uncertainty of the flow and CO2 sensors and are computed using error propagation of
+independent variables. Colors red and blue are used to distinguish between aggregated and released masses of CO2 and
+N2 , respectively. Subscripts hyd, cap, and reg label total masses captured in the hydrate, aggregated in the reactor, and
+released from the reactor, respectively, and allow for the differentiation between the effect of pressurization and hydrate
+formation. Green bars and circle markers denote the steady state CO2 fraction in the hydrate and the maximum CO2
+fraction measured at the reactor outlet, respectively.
+As is shown in Fig. 8(b), the aggregated masses of CO2 and N2 are increasing during capture and decreasing during
+regeneration. After a full cycle, the aggregated masses return to nearly zero, providing a reliable indicator for the
+accuracy of our measurements. Since for all four different feed gas compositions the regeneration period is significantly
+shorter than the capture phase - when executed at these conditions - an HBCC twin process is constrained by capture
+and not regeneration rates.
+15
+
+https://doi.org/10.26434/chemrxiv-2024-tfmjn-v2 ORCID: https://orcid.org/0000-0003-3513-6859 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Hydrate-based Carbon Capture via Pressure Swing in a Packed Bed of Ice
+
+A P REPRINT
+
+The quantitative comparison in Fig. 8(c) shows that significant amounts of CO2 can be captured across the compositions
+studied over a duration of 180 minutes. The total amount of captured CO2 increases with the CO2 fraction in the feed
+gas due to a stronger driving force for hydrate formation. With approximately 80 g of captured CO2 (and approximately
+15 g of captured N2 ) in the run with the 40 mol% feed gas, almost 20 % of the theoretical maximum capacity of 510 g
+of gas uptake has already been reached. In a similar run, even 154 g of gas are captured by extending the capture period
+to 500 minutes (see ESI† Fig. S9). In both cases, capture rates remain significant towards the end of the capture period.
+Hence, the limits of CO2 uptake do not appear to have been reached. Note that the theoretical maximum capacity
+has been derived assuming a hydration number of 5.75 for the CO2 in the sI hydrate, 1200 g of water, and pure CO2
+occupancy of all cages. In reality, many of the cages will be either occupied by N2 or not occupied at all. A more
+realistic value for uptake capacity is thus significantly smaller, however, still needs to be experimentally determined for
+the systems and conditions studied in this work. Regardless of that, more than 100 g of captured CO2 per kilogram of
+water is strong evidence for capture in the volume of the ice and cannot be attributed to adsorption alone.
+The accurate time-resolved mass fluxes of individual species further allow us to estimate the composition of the gas
+captured in the hydrate. In absence of other sinks for CO2 or N2 , the steady state composition of the flow being captured
+- readily computed from the difference between inlet and outlet flow of the individual species - is identical to the steady
+state composition xhyd,ss of the mixed hydrate (cf. Fig. S8 in ESI†). As is shown in Fig. 8(c), xhyd,ss ranges from 28.2
+mol% (flue gas with 5.0 mol% of CO2 ) to 82.4 mol% (flue gas with 40.0 mol% of CO2 ) and increases steadily with
+increasing mole fraction of CO2 in the feed gas. These values are smaller than the maximum fractions of CO2 measured
+at the reactor outlet at the end of the regeneration period but lie well above those at the theoretical phase envelope
+calculated using CSMGem [26, 58] for the respective conditions. The same observations are made in a comparative
+experiment using a single feed gas with 15 mol% of CO2 but varying pressures (cf. Fig. S10 in the ESI†). Clearly,
+the majority of the hydrate forms in contact with a gas whose composition contains more CO2 than the equilibrium
+concentration on the V-I-H coexistence curve at the given pressure and temperature. Consequently, the CO2 fraction
+at the phase envelope in many cases significantly underestimates that of the gas in the hydrate and is therefore of
+limited usefulness for the planning and modeling of the HBCC process. Instead, the planning and modeling would be
+more accurately based on the ternary phase diagram of H2 O-N2 -CO2 and other systems relevant for gas separation.
+Unfortunately, to our knowledge, no such diagrams have yet been published.
+3.3.3
+
+Key performance indicators
+
+To effectively evaluate the potential of the process under investigation, it is essential to compare it with (a) other
+state-of-the-art technologies, and (b) similar hydrate-based technologies for CC. To this end, SEC, S.Fr., and S.F. are
+calculated using experimental data gathered from complete cycles conducted at 233 K, a mass flow rate of 0.5 slm, a
+feed gas CO2 fraction of 15 mol%, and across five distinct reactor pressures.
+Except for the SEC, all KPIs can be directly derived from the experimental data (refer to subsection 2.5.2). For the SEC,
+both adiabatic and isothermal compression are examined to encompass the full spectrum of conceivable values. This
+includes the more realistic adiabatic scenario with an isentropic efficiency of 0.85 and the ideal scenario of isothermal
+compression, approachable through multistage compression.
+Fig. 9 illustrates performance metrics for the low-temperature approach of HBCC being studied, depicting (a) the KPIs
+at various pressure levels, and (b) the relative power consumption of critical components as a function of pressure. The
+components analyzed are (1) the cooling necessary to remove the enthalpy associated with hydrate formation, (2) the
+pre-cooling, and (3) both isothermal and adiabatic compression of the flue gas. These figures can now be benchmarked
+against those of conventional and alternative CC technologies. For this purpose, Table 3 lists the KPIs in question for
+adsorption, absorption, membrane-based, and hydrate-based technologies. Upon analyzing the data, the following
+conclusions - grouped according to the individual KPIs - can be made.
+
+CC Technology
+
+Table 3: Comparison of KPIs critical to CC: SEC, S.Fr., and S.F.
+SEC (GJ/tCO2 )
+S.Fr. (%)
+S.F. (-)
+
+Refs.
+
+Absorption
+Adsorption
+Membrane
+HBCC
+This study (HBCC)
+
+3
+2.2-3.6
+0.26-11
+1.3-4.7
+2.9-6.9
+
+[13, 15]
+[15, 66]
+[15, 67, 68, 69]
+[15, 70, 71]
+-
+
+80-95
+74-98.5
+80-99.99
+9-67.3
+32.0-73.3
+
+2-15.7
+11.6-30.7
+
+SEC. A close examination of Fig. 9(b) reveals that the majority of the power required to operate the process is
+consumed by compression. Even in the idealized isothermal case, which requires only half of the power needed
+16
+
+https://doi.org/10.26434/chemrxiv-2024-tfmjn-v2 ORCID: https://orcid.org/0000-0003-3513-6859 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Hydrate-based Carbon Capture via Pressure Swing in a Packed Bed of Ice
+
+A P REPRINT
+
+Figure 9: Process performance metrics at 233 K using a N2 -CO2 feed gas with 15 mol% CO2 and a mass flow rate of
+0.5 slm. Panel (a) depicts SEC for adiabatic and isothermal compression, S.Fr., and S.F. for various pressures. Panel
+(b) shows the power consumption of critical process components relative to the maximum power case of adiabatic
+compression at 50 bar as a stacked area plot: cooling of flue gas, removal of latent heat of hydrate formation, and
+adiabatic or isothermal compression.
+
+for adiabatic compression, the energy used for compression still surpasses the combined total of all other process
+components. This underscores the fact that while achieving ideal isothermal compression may be practically unattainable,
+significant reductions in SEC can still be achieved through multistage compression with intermittent cooling stages.
+Not surprisingly, the SEC shown in Fig. 9(a) is significantly influenced by process pressure and the technology used for
+compression. In the cases considered, the SEC decreases with increasing reactor pressure up to about 30 bar. Beyond
+that it starts to rise again because the marginal gains in CO2 capture from 30 to 50 bar do not offset the additional power
+required for compression.
+The SEC figures in Table 3 show that the process investigated is competitive with state-of-the-art technologies, closely
+matching the performance of adsorption and absorption processes and fitting within the spectrum of alternative HBCC
+processes — which make use of promoters — when assuming isothermal compression. Membrane-based separation
+holds the potential for the lowest SEC among the technologies considered, but achieving values below 1 GJ/tCO2
+requires highly selective membranes and flue gases with more than 20 mol% CO2 [69]. Promising asymmetric
+membranes exhibiting similarly promising characteristics regarding permeability and selectivity are still in development
+and face challenges in up-scaling [72]. In general, the wide range of SECs, influenced by variations in flue gas
+composition and specific process and plant details, complicates direct comparisons. Therefore, the economic feasibility
+of our process appears promising, but must be carefully evaluated on a case-by-case basis to determine its practicability.
+S.Fr. As apparent in Fig. 9(a), higher reactor pressure enhances the S.Fr. across the entire pressure range investigated.
+Additionally, S.Fr. benefits from a higher residence time, which can be achieved by reducing the mass flow rate (as
+illustrated in Fig. 7(c)) or by increasing the reactor dimensions. In the theoretical limit, these actions yield a S.Fr. of
+100%. In practice, achieving higher values of S.Fr. typically results in a higher SEC. This trade-off between efficiency
+and energy use is a common challenge across all CC technologies, complicating direct comparisons with competing
+methods. This, again, necessitates evaluations on a case-by-case basis to accurately account for varying conditions and
+scenarios.
+S.F. The separation factor - defined for HBCC technologies specifically - exhibits a trend opposite to that of the other
+KPIs examined, demonstrating that it is enhanced by lower reactor pressure. This is best understood by examining
+the composition of the mixed hydrates forming during capture (cf. Fig. S10 of the ESI) and perfectly in line with
+theoretical predictions according to CSMGem [26, 58]. At lower pressures, mixed hydrates show a strong preference
+for incorporating CO2 molecules over N2 , with a significant margin. Conversely, as pressure increases, the captured gas
+becomes increasingly enriched with N2 . In general, S.F.s determined in this study are significantly higher than those
+reported in other HBCC studies [15, 70, 71]. This improvement can be attributed to the lower operating temperatures
+of this novel HBCC route, confirming the suspected advantage of higher selectivity within the investigated parameter
+ranges.
+17
+
+https://doi.org/10.26434/chemrxiv-2024-tfmjn-v2 ORCID: https://orcid.org/0000-0003-3513-6859 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Hydrate-based Carbon Capture via Pressure Swing in a Packed Bed of Ice
+
+4
+
+A P REPRINT
+
+Conclusion
+
+In this comprehensive study, a novel approach for the industrial separation of gas mixtures through gas hydrate
+formation was extensively investigated, specifically targeting the capture of CO2 from emissions released in combustion
+plants. Unlike other hydrate-based processes that operate with liquid water, this innovative method leverages the
+advantageous thermodynamics of hydrate formation at sub-zero temperatures, where CO2 capture and regeneration
+prove particularly energy-efficient due to the neutral energy balance in the breaking and forming of hydrogen bonds
+during ice-hydrate transitions. Main drawbacks generally associated with the low temperature and the solid state of
+the ice, e.g., difficulties in handling the solid, poor formation kinetics, cycling performance, and a reduced uptake
+capacity, have been anticipated but could be successfully addressed using a fixed bed reactor with silica-stabilized
+ice. The bed offered exceptionally high surface area which could not only be maintained but, in some instances, even
+enhanced during repeated low-temperature formation-dissociation cycles—presumably due to pore formation processes
+upon cyclic solid-solid transitions [44, 46]. To confirm the theoretical advantages and demonstrate the successful
+navigation of anticipated challenges, the process underwent thorough testing across various operational modes, focusing
+on thermodynamic equilibria, formation kinetics, and practical, continuous capture-regeneration cycles in an industrial
+setting.
+Regarding thermodynamics, equilibrated states were measured for three reactor temperatures below the ice point and
+found to agree well with theoretical values computed using CSMGem [26, 58]. To our knowledge, this is the first
+experimental data of this kind on the N2 -CO2 system for temperatures lower than 260 K. Remarkably, even though no
+chemical additives were used in these experiments, the formation pressures achieved are comparable to those obtained
+when using tetrahydrofuran, a well-known and established promoter. With equilibrium concentrations as low as 1.5%,
+the process under consideration enables post-combustion capture of CO2 from the lean gas mixtures typical of gas
+turbine emissions—a feat highly desirably for any carbon capture process.
+Regarding kinetics, the focus has been set on the capture period, i.e., the period of hydrate formation. Capture rates
+were consistently high, with 4-25 gram of CO2 captured per hour and liter of water at 233 K in the reactor used. Next
+to the residence time, which can be easily adjusted by modifying the flow rate or reactor design, capture rates appear
+to be primarily driven by the difference between the CO2 fraction in the feed gas and the equilibrium composition of
+the hydrate. Similarly, hydrate nucleation appears to be governed by the same driving force, as increases in pressure
+and feed gas concentration both lead to shorter induction times. Consequently, achieving equilibrium compositions
+that are very lean in CO2 supports both high capture rates and shorter induction times. Remarkably, induction times
+further decreased from first to second cycles and remained stable thereafter. Likewise, capture rates increased from
+first to second cycles and stayed consistent for numerous cycles after that. This suggests the so-called memory effect
+being at play and that the same bed can be reused for many capture-regeneration cycles, greatly simplifying operations.
+Regardless the cycle number, the regeneration of the captured gas from the hydrate through dissociation occurred almost
+instantaneously at low temperatures around 233 K. However, at temperatures nearing the ice point, self-preservation
+can hinder rapid regeneration and must be carefully managed.
+Regarding the industrial applicability of the process, numerous continuous capture/regeneration cycles were performed.
+These experiments allowed for the derivation of key performance indicators, enabling a thorough comparison with the
+state of the art. Even under conservative assumptions, the comparison demonstrates that our process matches current
+state-of-the-art absorption and adsorption methods and surpasses traditional liquid-water based HBCC processes in
+several metrics, particularly in terms of the split fraction and separation factor.
+These features, along with the avoidance of thermodynamic promoters, highlight the considerable potential of the
+process for hydrate-based carbon capture and underscore the urgent need for expanded research efforts. On the practical
+side, conducting sensitivity analyses at both bench-scale and pilot-scale levels is essential for effectively scaling up
+the process. From a theoretical standpoint, it is crucial to further investigate the equilibria and kinetics of various gas
+mixtures, especially those originating from diverse CO2 -rich sources. Additionally, examining the role of fumed silica
+as a stabilizing agent is imperative, aiming to reduce or completely eliminate its usage.
+In conclusion, the notable stability of the process, coupled with moderate operational conditions, straightforward
+material handling, and impressive performance metrics observed so far, strongly advocate for continued exploration
+of this technology. We believe it represents the most promising avenue for advancing hydrate-based carbon capture
+technologies to date.
+
+5
+
+Author contributions
+
+EE: Methodology, Investigation, Formal Analysis, Validation, Writing - Original Draft, Writing - Review and Editing,
+Visualization. MK: Methodology, Investigation, Writing - Review and Editing. SH: Methodology, Investigation,
+18
+
+https://doi.org/10.26434/chemrxiv-2024-tfmjn-v2 ORCID: https://orcid.org/0000-0003-3513-6859 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Hydrate-based Carbon Capture via Pressure Swing in a Packed Bed of Ice
+
+A P REPRINT
+
+Writing - Review and Editing. SA: Conceptualization, Funding Acquisition, Supervision, Formal Analysis, Validation,
+Writing - Review and Substantive Editing.
+
+6
+
+Data availability statement
+
+The data supporting this article have been published alongside this manuscript in the Electronic Supplementary
+Information (ESI†).
+
+7
+
+Conflicts of Interest
+
+The authors have no conflicts of interest to declare that are relevant to the content of this article.
+
+8
+
+Acknowledgements
+
+This research was funded in whole or in part by the Austrian Science Fund (FWF) [P 36634-N]. For the purpose of
+Open Access, the author has applied a CC BY public copyright licence to any Author Accepted Manuscript (AAM)
+version arising from this submission. While the FWF funding concerns SA only, all authors received funding by
+the Austrian Research Promotion Agency FFG via project grant e!MISSION under project name hbCC. The authors
+gratefully acknowledge Markus Preißinger for his continued support and for his goal-oriented management of resources.
+Additionally, the authors express their gratitude to Edna Fitz and Stefan Fitz-Rankl from FHV for their support in
+the intellectual property activities associated with this work. Finally, the authors would like to extend their sincere
+appreciation to Stephan Kasemann and Dieter Schöch from FHV for their invaluable technical support and hands-on
+assistance in the lab.
+
+References
+[1] P. Arias, N. Bellouin, E. Coppola, R. Jones, G. Krinner, J. Marotzke, and others, “Technical Summary,” in Climate
+Change 2021: The Physical Science Basis. Contribution of Working Group I to the Sixth Assessment Report of the
+Intergovernmental Panel on Climate Change, United Kingdom and New York: Cambridge University Press, 1 ed.,
+2021.
+[2] K. Sanderson, “COP28 climate summit signals the end of fossil fuels - but is it enough?,” Nature, 2023.
+[3] Boehm, L. Jeffery, J. Hecke, C. Schumer, J. Jaeger, C. Fyson, and others, “State of Climate Action 2023,” tech.
+rep., Bezos Earth Fund, Climate Action Tracker, Climate Analytics, ClimateWorks Foundation, NewClimate
+Institute, the United Nations Climate Change High-Level Champions, and World Resources Institute., 2023.
+[4] M. Pathak, R. Slade, P. Shukla, J. Skea, R. Pichs-Madruga, and D. Ürge Vorsatz, “Technical Summary,” in Climate
+Change 2022: Mitigation of Climate Change, pp. 51–148, United Kingdom and New York: Cambridge University
+Press, 1 ed., 2022.
+[5] M. Balcilar, Z. A. Ozdemir, B. Tunçsiper, H. Ozdemir, and M. Shahbaz, “On the Nexus among Carbon Dioxide
+Emissions, Energy Consumption and Economic Growth in G-7 Countries: New Insights from the Historical
+Decomposition Approach,” Environment, Development and Sustainability, vol. 22, no. 8, pp. 8097–8134, 2020.
+[6] T. Terlouw, C. Bauer, L. Rosa, and M. Mazzotti, “Life Cycle Assessment of Carbon Dioxide Removal Technologies:
+A Critical Review,” Energy & Environmental Science, vol. 14, no. 4, pp. 1701–1721, 2021.
+[7] T. Gilbert, A. K. Menon, C. Dames, and R. Prasher, “Heat Source and Application-Dependent Levelized Cost of
+Decarbonized Heat,” Joule, vol. 7, no. 1, pp. 128–149, 2023.
+[8] S. Paltsev, J. Morris, H. Kheshgi, and H. Herzog, “Hard-to-Abate Sectors: The Role of Industrial Carbon Capture
+and Storage (CCS) in Emission Mitigation,” Applied Energy, vol. 300, p. 117322, 2021.
+[9] E. Dlugokencky and P. Tans, “Trends in Atmospheric Carbon Dioxide, NOAA/ESRL,” 2023. Published:
+www.esrl.noaa.gov/gmd/ccgg/trends/.
+[10] X. Wang and C. Song, “Carbon Capture From Flue Gas and the Atmosphere: A Perspective,” Frontiers in Energy
+Research, vol. 8, 2020.
+[11] M. Khalid, S. A. Dharaskar, M. Silanpää, and H. Siddiqui, Emerging Carbon Capture Technologies: Towards a
+Sustainable Future. Elsevier, 2022.
+19
+
+https://doi.org/10.26434/chemrxiv-2024-tfmjn-v2 ORCID: https://orcid.org/0000-0003-3513-6859 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Hydrate-based Carbon Capture via Pressure Swing in a Packed Bed of Ice
+
+A P REPRINT
+
+[12] C. Song, Q. Liu, N. Ji, S. Deng, J. Zhao, Y. Li, and others, “Alternative Pathways for Efficient CO2 Capture by
+Hybrid Processes—A Review,” Renewable and Sustainable Energy Reviews, vol. 82, pp. 215–231, 2018.
+[13] K. Srivastava, “Carbon Capture and Sequestration: An Overview,” International Journal for Research in Applied
+Science and Engineering Technology, vol. 9, pp. 775–779, 2021.
+[14] F. M. Baena-Moreno, M. Rodríguez-Galán, F. Vega, B. Alonso-Fariñas, L. F. Vilches Arenas, and B. Navarrete,
+“Carbon Capture and Utilization Technologies: A Literature Review and Recent Advances,” Energy Sources, Part
+A: Recovery, Utilization, and Environmental Effects, vol. 41, no. 12, pp. 1403–1433, 2019.
+[15] N. N. Nguyen, V. T. La, C. D. Huynh, and A. V. Nguyen, “Technical and Economic Perspectives of Hydrate-Based
+Carbon Dioxide Capture,” Applied Energy, vol. 307, p. 118237, 2022.
+[16] S. Budinis, S. Krevor, N. M. Dowell, N. Brandon, and A. Hawkes, “An Assessment of CCS Costs, Barriers and
+Potential,” Energy Strategy Reviews, vol. 22, pp. 61–81, 2018.
+[17] D. M. D’Alessandro, B. Smit, and J. R. Long, “Carbon Dioxide Capture: Prospects for New Materials,” Angewandte Chemie International Edition, vol. 49, no. 35, pp. 6058–6082, 2010.
+[18] D. US, “Compendium of Carbon Capture Technology,” tech. rep., U.S. Department of Energy/National Energy
+Technology Laboratory, 2022.
+[19] X. Zhu, Q. Imtiaz, F. Donat, C. R. Müller, and F. Li, “Chemical Looping beyond Combustion – a Perspective,”
+Energy & Environmental Science, vol. 13, no. 3, pp. 772–804, 2020.
+[20] Q. Zheng, G. J. O. Martin, and S. E. Kentish, “Energy Efficient Transfer of Carbon Dioxide from Flue Gases to
+Microalgal Systems,” Energy & Environmental Science, vol. 9, no. 3, pp. 1074–1082, 2016.
+[21] H. Liu, B. Liu, L.-C. Lin, G. Chen, Y. Wu, J. Wang, and others, “A Hybrid Absorption–Adsorption Method to
+Efficiently Capture Carbon,” Nature Communications, vol. 5, no. 1, p. 5147, 2014.
+[22] P. Babu, P. Linga, R. Kumar, and P. Englezos, “A Review of the Hydrate Based Gas Separation (HBGS) Process
+for Carbon Dioxide Pre-Combustion Capture,” Energy, vol. 85, pp. 261–279, 2015.
+[23] E. D. Sloan, “Fundamental Principles and Applications of Natural Gas Hydrates,” Nature, vol. 426, no. 6964,
+pp. 353–359, 2003.
+[24] H. Dashti, L. Z. Yew, and X. Lou, “Recent Advances in Gas Hydrate-Based CO2 Capture,” Journal of Natural
+Gas Science and Engineering, vol. 23, pp. 195–207, 2015.
+[25] Z. Ma, P. Zhang, H. Bao, and S. Deng, “Review of Fundamental Properties of CO2 Hydrates and CO2 Capture
+and Separation Using Hydration Method,” Renewable and Sustainable Energy Reviews, vol. 53, pp. 1273–1302,
+2016.
+[26] E. D. Sloan and C. A. Koh, Clathrate Hydrates of Natural Gases, Third Edition. Boca Raton, FL, USA: CRC
+Press, 2007.
+[27] J. A. Ripmeester and S. Alavi, Clathrate Hydrates: Molecular Science and Characterization. Wiley, 2022.
+[28] A. A. A. Majid, J. Worley, and C. A. Koh, “Thermodynamic and Kinetic Promoters for Gas Hydrate Technological
+Applications,” Energy & Fuels, p. acs.energyfuels.1c02786, 2021.
+[29] J. A. Ripmeester and S. Alavi, “Some Current Challenges in Clathrate Hydrate Science: Nucleation, Decomposition
+and the Memory Effect,” Current Opinion in Solid State and Materials Science, vol. 20, no. 6, pp. 344–351, 2016.
+[30] H. P. Veluswamy, A. Kumar, R. Kumar, and P. Linga, “An Innovative Approach to Enhance Methane Hydrate
+Formation Kinetics with Leucine for Energy Storage Application,” Applied Energy, vol. 188, pp. 190–199, 2017.
+[31] Y.-T. Luo, J.-H. Zhu, S.-S. Fan, and G.-J. Chen, “Study on the Kinetics of Hydrate Formation in a Bubble Column,”
+Chemical Engineering Science, vol. 62, no. 4, pp. 1000–1009, 2007.
+[32] T. Kobayashi, N. Imura, R. Ohmura, and Y. H. Mori, “Clathrate Hydrate Formation by Water Spraying in a
+Methane + Ethane + Propane Gas Mixture: Search for the Rate-Controlling Mechanism of Hydrate Formation in
+the Presence of Methylcyclohexane,” Energy & Fuels, vol. 21, no. 2, pp. 545–553, 2007.
+[33] S. Matsuda, H. Tsuda, and Y. H. Mori, “Hydrate Formation Using Water Spraying onto a Cooled Solid Surface in
+a Guest Gas,” AIChE Journal, vol. 52, no. 8, pp. 2978–2987, 2006.
+[34] M. R. Ghaani, J. M. Schicks, and N. J. English, “A Review of Reactor Designs for Hydrogen Storage in Clathrate
+Hydrates,” Applied Sciences, vol. 11, no. 2, p. 469, 2021.
+[35] S. Arzbacher, N. Rahmatian, A. Ostermann, T. M. Gasser, T. Loerting, and J. Petrasch, “Co-deposition of gas
+hydrates by pressurized thermal evaporation,” Physical Chemistry Chemical Physics, vol. 22, no. 7, pp. 4266–4275,
+2020. Publisher: Royal Society of Chemistry (RSC).
+20
+
+https://doi.org/10.26434/chemrxiv-2024-tfmjn-v2 ORCID: https://orcid.org/0000-0003-3513-6859 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Hydrate-based Carbon Capture via Pressure Swing in a Packed Bed of Ice
+
+A P REPRINT
+
+[36] A. Adeyemo, R. Kumar, P. Linga, J. Ripmeester, and P. Englezos, “Capture of Carbon Dioxide from Flue or Fuel
+Gas Mixtures by Clathrate Crystallization in a Silica Gel Column,” International Journal of Greenhouse Gas
+Control, vol. 4, no. 3, pp. 478–485, 2010.
+[37] P. Linga, N. Daraboina, J. A. Ripmeester, and P. Englezos, “Enhanced Rate of Gas Hydrate Formation in a Fixed
+Bed Column Filled with Sand Compared to a Stirred Vessel,” Chemical Engineering Science, vol. 68, no. 1,
+pp. 617–623, 2012.
+[38] A. Kumar, D. Khatri, J. D. Lee, and R. Kumar, “Crystallization Kinetics for Carbon Dioxide Gas Hydrate in Fixed
+Bed and Stirred Tank Reactor,” Korean Journal of Chemical Engineering, vol. 33, no. 6, pp. 1922–1930, 2016.
+[39] H. P. Veluswamy, S. Kumar, R. Kumar, P. Rangsunvigit, and P. Linga, “Enhanced Clathrate Hydrate Formation
+Kinetics at near Ambient Temperatures and Moderate Pressures: Application to Natural Gas Storage,” Fuel,
+vol. 182, pp. 907–919, 2016.
+[40] Y. Zhang, J. Zhao, G. Bhattacharjee, H. Xu, M. Yang, R. Kumar, and others, “Synthesis of methane hydrate at
+ambient temperature with ultra-rapid formation and high gas storage capacity,” Energy &amp; Environmental
+Science, vol. 15, no. 12, pp. 5362–5378, 2022. Publisher: Royal Society of Chemistry (RSC).
+[41] S.-P. Kang, H. Lee, C.-S. Lee, and W.-M. Sung, “Hydrate Phase Equilibria of the Guest Mixtures Containing CO2,
+N2 and Tetrahydrofuran,” Fluid Phase Equilibria, vol. 185, no. 1-2, pp. 101–109, 2001.
+[42] Z. Cheng, S. Li, Y. Liu, Y. Zhang, Z. Ling, M. Yang, L. Jiang, and Y. Song, “Post-combustion CO2 capture
+and separation in flue gas based on hydrate technology: A review,” Renewable and Sustainable Energy Reviews,
+vol. 154, p. 111806, 2022. Publisher: Elsevier.
+[43] G. K. Anderson, “Enthalpy of Dissociation and Hydration Number of Carbon Dioxide Hydrate from the Clapeyron
+Equation,” The Journal of Chemical Thermodynamics, vol. 35, no. 7, pp. 1171–1183, 2003.
+[44] W. F. Kuhs, A. Klapproth, F. Gotthardt, K. Techmer, and T. Heinrichs, “The Formation of Meso- and Macroporous
+Gas Hydrates,” Geophysical Research Letters, vol. 27, no. 18, pp. 2929–2932, 2000.
+[45] W. F. Kuhs, G. Genov, E. Goreshnik, A. Zeller, K. S. Techmer, G. Bohrmann, and others, “The Impact of Porous
+Microstructures of Gas Hydrates on Their Macroscopic Properties,” International Journal of Offshore and Polar
+Engineering, vol. 14, no. 04, pp. 305–309, 2004.
+[46] S. Arzbacher, N. Rahmatian, A. Ostermann, B. Massani, T. Loerting, and J. Petrasch, “Macroscopic Defects
+upon Decomposition of CO2 Clathrate Hydrate Crystals,” Physical Chemistry Chemical Physics, vol. 21, no. 19,
+pp. 9694–9708, 2019.
+[47] E. O. Lebigot, “Uncertainties: A Python Package for Calculations with Uncertainties,” 2023.
+[48] I. H. Bell, J. Wronski, S. Quoilin, and V. Lemort, “Pure and Pseudo-pure Fluid Thermophysical Property Evaluation
+and the Open-Source Thermophysical Property Library CoolProp,” Industrial & Engineering Chemistry Research,
+vol. 53, no. 6, pp. 2498–2508, 2014.
+[49] A. Savitzky and M. J. E. Golay, “Smoothing and Differentiation of Data by Simplified Least Squares Procedures.,”
+Analytical Chemistry, vol. 36, no. 8, pp. 1627–1639, 1964.
+[50] P. Virtanen, R. Gommers, T. E. Oliphant, M. Haberland, T. Reddy, D. Cournapeau, and others, “SciPy 1.0:
+Fundamental Algorithms for Scientific Computing in Python,” Nature Methods, vol. 17, pp. 261–272, 2020.
+[51] B. O. Carter, W. Wang, D. J. Adams, and A. I. Cooper, “Gas Storage in “Dry Water” and “Dry Gel” Clathrates,”
+Langmuir, vol. 26, no. 5, pp. 3186–3193, 2010.
+[52] Y. Wei and N. Maeda, “Dry Water as a Promoter for Gas Hydrate Formation: A Review,” Molecules, vol. 28,
+no. 9, p. 3731, 2023. Publisher: Mdpi Ag.
+[53] W. Wang, C. L. Bray, D. J. Adams, and A. I. Cooper, “Methane Storage in Dry Water Gas Hydrates,” Journal of
+the American Chemical Society, vol. 130, no. 35, pp. 11608–11609, 2008. Publisher: American Chemical Society.
+[54] A. Falenty and W. F. Kuhs, “‘Self-Preservation’ of CO2 Gas Hydrates–Surface Microstructure and Ice Perfection,”
+The Journal of Physical Chemistry B, vol. 113, no. 49, pp. 15975–15988, 2009.
+[55] S. Circone, L. A. Stern, S. H. Kirby, W. B. Durham, B. C. Chakoumakos, C. J. Rawn, and others, “CO2 Hydrate:
+Synthesis, Composition, Structure, Dissociation Behavior, and a Comparison to Structure I CH4 Hydrate,” The
+Journal of Physical Chemistry B, vol. 107, no. 23, pp. 5529–5539, 2003.
+[56] D. Thimsen, A. Maxson, V. Smith, T. Cents, O. Falk-Pedersen, O. Gorset, and others, “Results from MEA testing
+at the CO2 Technology Centre Mongstad. Part I: Post-Combustion CO2 capture testing methodology,” Energy
+Procedia, vol. 63, pp. 5938–5958, 2014. Publisher: Elsevier BV.
+21
+
+https://doi.org/10.26434/chemrxiv-2024-tfmjn-v2 ORCID: https://orcid.org/0000-0003-3513-6859 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Hydrate-based Carbon Capture via Pressure Swing in a Packed Bed of Ice
+
+A P REPRINT
+
+[57] J. Kim, Y. Yoo, S. Kim, J. Beak, S.-D. Oh, J. Lee, and others, “Design and assessment of a novel mobile carbon
+capture system: Energy and exergy analyses,” Energy Conversion and Management, vol. 300, p. 117934, 2024.
+Publisher: Elsevier BV.
+[58] A. Ballard and E. Sloan, “The Next Generation of Hydrate Prediction: An Overview,” Journal of Supramolecular
+Chemistry, vol. 2, no. 4-5, pp. 385–392, 2002.
+[59] B. Chazallon and C. Pirim, “Selectivity and CO2 capture efficiency in CO2 -N2 clathrate hydrates investigated by
+in-situ Raman spectroscopy,” Chemical Engineering Journal, vol. 342, pp. 171–183, 2018. Publisher: Elsevier
+BV.
+[60] S.-P. Kang, J. Lee, and Y. Seo, “Pre-combustion capture of CO2 by gas hydrate formation in silica gel pore
+structure,” Chemical Engineering Journal, vol. 218, pp. 126–132, 2013. Publisher: Elsevier BV.
+[61] P. Babu, R. Kumar, and P. Linga, “A New Porous Material to Enhance the Kinetics of Clathrate Process:
+Application to Precombustion Carbon Dioxide Capture,” Environmental Science &amp; Technology, vol. 47,
+no. 22, pp. 13191–13198, 2013. Publisher: American Chemical Society (ACS).
+[62] J. Park, K. Shin, J. Kim, H. Lee, Y. Seo, N. Maeda, and others, “Effect of Hydrate Shell Formation on the Stability
+of Dry Water,” The Journal of Physical Chemistry C, vol. 119, no. 4, pp. 1690–1699, 2015. Publisher: American
+Chemical Society (ACS).
+[63] L. Yang, X. Lan, D. Liu, G. Cui, B. Dou, and J. Wang, “Multi-cycle methane hydrate formation in micro droplets
+of gelatinous dry solution,” Chemical Engineering Journal, vol. 374, pp. 802–810, 2019. Publisher: Elsevier BV.
+[64] Z. Wen, Y. Yao, W. Luo, and X. Lei, “Memory Effect of CO2-hydrate Formation in Porous Media,” Fuel, vol. 299,
+p. 120922, 2021.
+[65] Z. Yin, M. Khurana, H. K. Tan, and P. Linga, “A review of gas hydrate growth kinetic models,” Chemical
+Engineering Journal, vol. 342, pp. 9–29, 2018. Publisher: Elsevier BV.
+[66] F. Raganati, F. Miccio, and P. Ammendola, “Adsorption of Carbon Dioxide for Post-combustion Capture: A
+Review,” Energy & Fuels, vol. 35, no. 16, pp. 12845–12868, 2021.
+[67] R. Khalilpour, K. Mumford, H. Zhai, A. Abbas, G. Stevens, and E. S. Rubin, “Membrane-Based Carbon Capture
+from Flue Gas: A Review,” Journal of Cleaner Production, vol. 103, pp. 286–300, 2015.
+[68] A. Olabi, A. H. Alami, M. Ayoub, H. Aljaghoub, S. Alasad, A. Inayat, and others, “Membrane-Based Carbon Capture: Recent Progress, Challenges, and Their Role in Achieving the Sustainable Development Goals,”
+Chemosphere, vol. 320, p. 137996, 2023.
+[69] R. Bounaceur, N. Lape, D. Roizard, C. Vallieres, and E. Favre, “Membrane Processes for Post-Combustion Carbon
+Dioxide Capture: A Parametric Study,” Energy, vol. 31, no. 14, pp. 2556–2570, 2006.
+[70] N. H. Duc, F. Chauvy, and J.-M. Herri, “CO2 Capture by Hydrate Crystallization – A Potential Solution for Gas
+Emission of Steelmaking Industry,” Energy Conversion and Management, vol. 48, no. 4, pp. 1313–1322, 2007.
+[71] X. Wang, F. Zhang, and W. Lipiński, “Research progress and challenges in hydrate-based carbon dioxide capture
+applications,” Applied Energy, vol. 269, p. 114928, July 2020.
+[72] Y. Jia, K. Wong, C. Z. Liang, J. Wu, T.-S. Chung, and S. Zhang, “Recent development of membranes for carbon
+capture: From materials to asymmetric membranes,” Progress in Materials Science, vol. 146, p. 101324, Dec.
+2024.
+
+22
+
+https://doi.org/10.26434/chemrxiv-2024-tfmjn-v2 ORCID: https://orcid.org/0000-0003-3513-6859 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+

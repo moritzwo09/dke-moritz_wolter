@@ -1,0 +1,1574 @@
+Electrified Nutrient Recovery at Municipal Wastewater Facilities: Sampling, Screening
+and Multivariate Analyses
+
+Sana Heydarian1#, Lawrence Ajayi1#, Asad Syed Abbas2, Kody Wolfe2, Rida Benhaddou3, Jason
+P. Trembly2,4,5, Damilola A. Daramola1,2,5,6*
+
+1
+
+Department of Chemical Engineering, Northeastern University, Boston MA 02115
+
+2
+
+Institute for Sustainable Energy and the Environment, Department of Chemical and
+Biomolecular Engineering, Ohio University, Athens OH 45701
+3
+
+Department of Mathematics, Ohio University, Athens OH 45701
+
+4
+
+Department of Mechanical Engineering, Ohio University, Athens OH 45701
+
+5
+
+Department of Chemical and Biomolecular Engineering, Ohio University, Athens OH 45701
+
+6
+
+Department of Chemistry and Chemical Biology, Northeastern University, Boston MA 02115
+
+#
+
+These authors contributed equally
+
+*
+
+Corresponding Author: o.daramola@northeastern.edu
+
+1
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Abstract
+Municipal wastewater facilities can contain recycle streams with high nutrient content, that both
+increase the overall energy consumption in the facility and cause environmental pollution when
+not properly handled. Reducing the nutrient load of these streams through recovery is a
+promising solution that enhances the Food-Energy-Water nexus by producing sustainable
+fertilizer. In this study, the potential for nutrient recovery at municipal wastewater facilities was
+investigated through a 1-year sampling of nutrient, ionic, organic and heavy metal composition
+of three wastewater streams influent to or effluent from two types of digesters. Subsequently,
+electrochemical nutrient recovery was evaluated for these streams through multivariate screening
+of three groups of variables – operational, stream and design – and the effect of these variables
+on optimal nutrient recovery in the form of phosphorus. Results showed that Orthophosphate
+(Ortho-P) and ammonia concentrations do not show significant correlation in any tested streams.
+On the other hand, major ions exhibited interdependence with Ortho-P concentration, while the
+stream pH was found to correlate with Ortho-P and Cl- in the anaerobic digester effluent.
+Screening analyses identified 5 – anode type, cathodic potential, initial P concentration, initial
+NH4+ concentration and temperature – of the 11 variables evaluated were the variables that most
+significantly affected P recovery efficiency and specific energy consumed during this recovery.
+Finally, the optimum conditions for high phosphorus recovery and low energy consumption from
+the anaerobic digester effluent during a 2-hour experiment were a cathodic potential of -0.805 V
+vs Ag/AgClsat, an electrode area to electrolyte volume ratio of 0.145 1/cm, and a temperature of
+41.3°C, with a solid product that was predominantly struvite. Overall, the demonstrated 95% P
+recovery efficiency and 0.03 kWh/kg P are characteristic of an emerging process that could be
+competitive at scale with state-of-the-art synthetic nutrient routes, if applied to the right stream.
+2
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Graphical Abstract
+
+3
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+1
+
+Introduction
+About 35% of a municipality's total energy expenses can be attributed to the treatment
+
+systems of drinking water and wastewater 1,2. High energy consumption in wastewater treatment
+plants (WWTPs) usually results from secondary treatment processes such as aeration which
+utilizes more than 50% of the total required energy 3,4. This aeration is typically for supplying
+oxygen to microorganisms used for nitrification of ammonia (NH3), even though water has
+limited capacity to dissolve oxygen (40 mg O2/l vs 1450 mg CO2/l at 25°C) resulting in
+increased costs for aeration 4,5. Some treatment plants have integrated sludge digesters to both
+reduce the solid organic content handled at the facility, while also generating biogas that could
+be used to reduce the overall energy consumed by these facilities. However, this use of sludge
+digesters produces a supernatant with high Nitrogen (N) and Phosphorous (P) content 6. This
+supernatant, which is recycled to the primary and secondary processes at WWTPs, increases the
+amount of coagulant required for reducing P load and energy consumption by aeration for
+reducing N load. Alternatively, the supernatant is used as a direct fertilizer on agricultural lands
+in some places, which can enhance nutrient leaching through the soil to water bodies 7,8. This in
+turn, results in a surplus of nutrients in the water bodies and excessive algae growth, or
+eutrophication 7,9. Therefore, due to energy costs and environmental regulations, it is important
+to decrease the nutrient load of the supernatant stream 8,10,11. Additionally, this decreased load
+would further enhance the viability of converting wastewater treatment plants to water resource
+recovery facilities (WRRF) through the generation of water, re-usable energy and nutrients. In
+essence, this combination of wastewater treatment, energy recovery and nutrient availability is
+representative of a relevant challenge in the Food-Energy-Water nexus and the United Nations
+Sustainable Development Goals.
+4
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Different physiochemical processes have been used to decrease the nutrient load of the
+supernatant, such as NH3 stripping, CO2 stripping and membrane filtration 7,10,12–14. Forward
+osmosis is also utilized to concentrate the supernatant to decrease its volume and extract less
+polluted water, but this method does not directly remove any nutrient from the stream, thus
+forward osmosis needs to be coupled with other operations 15. Nutrients, specifically P, are
+currently removed in WWTPs through chemical precipitation, enhanced biological P removal, or
+a combination of both. Biological P removal involves either direct absorption of P by
+phosphorus-accumulating organisms (PAO), or improving the P storage capacity of the
+microorganism biomass 10,16. Even though biological treatment offers lower operation costs as
+compared to physiochemical processes 7,17, this treatment results in excess sludge with high P
+concentrations that need additional treatment steps prior to environmental discharge 10,18. On the
+other hand, chemical precipitation through the addition of metal ions such as iron (Fe) and
+aluminum (Al) coagulants removes P from wastewater 10,14,19,20, but limits P reusability as
+fertilizer due to the insoluble coagulant products 16,21. Magnesium (Mg) and calcium (Ca)-driven
+chemical precipitation enable the recovery of P as a reusable product 10,21. However, these
+chemical processes rely on pH adjustment through dosing with hydroxides, such as NaOH, and
+the costs associated with supplying the chemicals is a major drawback of these chemical P
+recovery technologies 22.
+Alternatively, solution pH adjustment can be driven through electrochemistry, thereby
+facilitating nutrient recovery from municipal wastewater 23. Water reduction (Equation 1) or
+oxygen reduction (Equation 2) at the cathode coupled with magnesium oxidation (Equation 3) at
+the anode can be used to drive the pH 24, or couple with water oxidation at the anode and
+dissolved magnesium salts in a reactor known as an electrolyzer.
+5
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Cathode:
+−
+2𝐻2 𝑂(𝑙) + 2𝑒 − → 𝐻2(𝑔) + 2𝑂𝐻(𝑎𝑞)
+
+(1)
+
+−
+𝑂2(𝑔) + 2𝐻2 𝑂(𝑙) + 4𝑒 − → 4𝑂𝐻(𝑎𝑞)
+
+(2)
+
+Anode (Sacrificial anode e.g., Magnesium)
+2+
+𝑀𝑔(𝑠) → 𝑀𝑔(𝑎𝑞)
++ 2𝑒 −
+
+(3)
+
++
+2𝐻2 𝑂(𝑙) → 𝑂2(𝑔) + 4𝐻(𝑎𝑞)
++ 4𝑒 −
+
+(4)
+
+Anode (Non-sacrificial)
+
+This Electrified Nutrient Recovery (ENR) reduces or eliminates chemical addition by
+using electricity. Furthermore, ENR creates an additional driving force for ion migration via the
+potential gradient between the electrodes, thereby, enhancing the transport conditions for nutrient
+recovery20. ENR has been studied using different reactor configurations and wastewater streams.
+Lei et al., while performing water reduction to drive pH, investigated the effect of applied
+current on P recovery from cheese wastewater and reported a recovery of 90% and energy
+consumption of 64.7 kWh/kg of P 25. Belarbi et al. simulated animal waste and evaluated the
+effect of temperature, cathodic potential and turbulence on electrochemical P recovery via
+oxygen reduction, achieving a maximum recovery of 80% at 0.5 kWh/kg of P 20. A sacrificial
+Mg anode was implemented by Kékedy-Nagy to study the effect of water chemistry on P
+recovery from poultry and municipal wastewater, obtaining a recovery range of 44.6 - 93% at
+756-1181 kWh/kg of P 23. Although these results established the prospect of ENR, integrating
+this technology in municipal WWTPs and future WRRFs requires investigating several factors
+that affect the efficiency of the system; factors not previously considered in the literature. These
+6
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+factors include composition of the treated streams, the design and operation of the electrified
+process and how these factors significantly influence the type of recovered products and the
+energy consumed during this recovery process. This combination of analyses could provide an
+enhanced connectivity between the composition of the different wastewaters and the applied
+recovery process and provide a foundation for competing with state-of-the-art synthetic
+techniques that deliver the same nutrients at an industrial level.
+In this study, we show the variability in the nutrient, ionic and heavy metal composition
+of post-digester streams based on samples collected over a one-year period and evaluate any time
+dependence of and correlation between the components assessed. This sampling assessment is
+key for identifying streams with potential value for nutrient recovery and may also provide
+additional descriptors for stream compositions based on correlated components. A recent review
+has quantified the general composition of different post-digester waste streams at various
+facilities in Europe 6. However, prior to this review, this compositional information for recycle
+streams – typically called side streams – was unavailable in literature and the data in the review
+does not describe any time series effect. Next, we conducted a multivariate screening analysis of
+eleven variables associated with the stream chemistry, electrolyzer design and electrolyzer
+operation to characterize the factors that have the most significant impact on well-defined
+engineering figures of merit. This screening assessment could be indicative of the controls
+available for efficient deployment of this emerging approach, especially considering the
+variability in WWTP operations. Finally, we propose variables needed for optimal nutrient
+recovery by the electrolyzer using water from one of the sampled streams. Overall, this study
+represents a holistic and realistic investigation into integrating electrochemical nutrient recovery
+with a municipal wastewater treatment (and future recovery) facility and demonstrates the key
+7
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+driving forces that may enable a circular nutrient recovery competitive with current
+state-of-the-art and synthetic routes.
+2
+
+Methodology
+
+2.1
+
+Wastewater Sampling and Characterization
+Wastewater was collected approximately semi-monthly for one year (November 2021 to
+
+October 2022) from two different WWTPs in Ohio, U.S.A.: the 100 million gallons per day
+(MGD) Southerly WWTP in Columbus and the 4 MGD WWTP in Athens. At the Southerly
+WWTP, a plant with an anaerobic digester as illustrated in Figure S1, samples were collected
+from streams that make up the centrate stream of the facility: liquid from the post-digester
+dewatering centrifuge and liquid from the pre-digester thickening centrifuge. At the Athens
+WWTP, a plant with an aerobic digester, samples were collected from a post-digester settling
+tank. The sampled wastewater was analyzed for physical characteristics, chemical properties and
+species composition by MASI Environmental Laboratories, Plain City, Ohio. The methods used
+for each test can be found in Table S1. The pH and conductivity of each sample was also
+measured on the field (i.e., at the point of collection) using an ultra-meter (Myron L company) to
+cross-validate with the result from MASI Lab.
+2.2
+
+Time Series Analyses
+The year-long municipal wastewater sampling results were used to investigate time-
+
+dependent trends and correlations between species within the three sampled streams. To
+determine the stationarity of each data series, for each species and stream combination, a DickeyFuller test was performed 26. Next, correlations, cross-correlations, and regressions were
+performed between species to evaluate relationships between major nutrient concentrations
+8
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(ortho-phosphate, total phosphorus, ammonia and nitrate/nitrite), competing ions (Ca and Mg),
+heavy metals (specifically Zn2+), and the effect of stream pH on major nutrients and chloride
+compositions. The correlations, cross-correlations, and regressions were completed to assess the
+degree of association between species and the presence of any dynamics between species
+(whether past levels of one is associated with present levels of another) using standard time
+series analysis techniques 27. A relationship between species within a stream was determined to
+be significant only if each coefficient in the regression model passed a t-test, the model residuals
+were stationary, and the equation yielded an R-squared or adjusted R-squared of >0.90.
+2.3
+
+Chemicals and Reactor Configuration
+All electrochemical experiments in the screening analysis were conducted using synthetic
+
+wastewater which simplifies the test by eliminating the complexities associated with real
+wastewater, such as biological contaminants, emerging pollutants, and heavy metals. The
+wastewater was synthesized based on the composition from the one-year sampling period and the
+design of experiment outlined in Table S2. 1M stock solutions of twelve salts: ammonium
+formate NH4COOH (Certified Crystalline 97 – 103%, Fisher Chemical), ammonium chloride
+NH4Cl (ACS reagent 99.5%, Sigma-Aldrich), ammonium sulfate (NH4)2SO4 (Primary Standard
+20.98 – 21.38%, Fisher Chemical), ammonium nitrate NH4NO3 (Certified ACS 98%, Fisher
+Chemical), sodium formate NaCOOH (ACS reagent 98%, Thermo Scientific), sodium chloride
+NaCl (Analytical 99.5%, Thermo Scientific), disodium sulfate decahydrate Na2SO4.10H2O
+(Analytical 99%, Thermo Scientific), sodium nitrate NaNO3 (ACS reagent 98%, 98%, Thermo
+Scientific), magnesium chloride hexahydrate MgCl2.6H2O (ACS reagent 99 – 102%, SigmaAldrich), calcium chloride CaCl2 (ACS reagent 99%, Sigma-Aldrich), sodium phosphate
+9
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+monobasic monohydrate NaH2PO4.H2O (Analytical 99+%, Acros Organics), and potassium
+phosphate dibasic K2HPO4 (ACS reagent 98%, Sigma-Aldrich), were prepared. The volume
+from each stock solution required to achieve the desired concentration of ions in the synthetic
+wastewater were determined using matrix algebra and 750 ml total of synthetic solution was
+prepared for each experimental run. The pH of each solution was adjusted to 6.25 for all runs
+using 0.4 M sodium hydroxide, NaOH (ACS grade, Pfaltz & Baner) solution to maintain the
+same initial pH for all screening experiments.
+All experiments in the optimization analysis were conducted using real wastewater
+collected from Southerly Columbus WWTP anaerobic digester due to its high nutrient strength.
+Vacuum filtration was used to separate the suspended solids in the wastewater before the
+experiments.
+All experiments – screening and optimization – were conducted using a bench-scale
+electrochemical reactor, as shown in Figure 1, operated in a batch mode. The reactor comprises a
+1-liter jacketed glass vessel (Pine Research AFCELL8U3) and a sealed lid with multiple inlets
+for electrodes, a Luggin capillary, air sparger, overhead agitator, pH probe, and temperature
+sensor. The jacket enabled a controlled temperature experiment through the circulation of a
+cooling or heating fluid from a water circulator (Julabo DYNEO DD-200F) coupled with a
+temperature sensor for feedback from the reactor liquid to the circulator set point. The air sparger
+was connected to a zero-air gas cylinder equipped with a flow meter for continual supply of
+dissolved oxygen, a pH sensor (OaktonTM pH electrode) was used to monitor the bulk solution
+throughout the experiment, and a speed rotator was used to control fluid agitation during
+experiments. A three-electrode design was utilized, consisting of either 316 or 304 stainless steel
+10
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(12″ × 36″ × 0.048″, McMaster-Carr) as the cathode, a saturated Ag/AgCl reference electrode,
+and graphite (12″ × 24″ × 0.06255″, Grainger) or AZ31 magnesium alloy foil as the anode (200
+mm × 500 mm × 1 mm, Goodfellow). The stainless steel (SS) electrode was polished with
+silicon carbide sandpaper (600 grit) to remove any surface contaminants. Following the
+mechanical polishing procedure, the SS electrode was sonicated in deionized water for ten
+minutes to remove any remaining debris on the surface and subsequently air-dried before being
+used.
+Figure 1: Schematic diagram of the electrochemical reactor.
+
+Chronoamperometric measurements – constant electrode potential, with current measured
+– was used to facilitate phosphate deposition by a pH increase at the cathode through water or
+oxygen reduction (Equations 1 and 2) depending on the potential. The cathodic potential was
+controlled using an Interface 5000E potentiostat (Gamry Instrument). The Luggin capillary
+(filled with 4M KCl) was used to position the reference electrode near the cathode to minimize
+ohmic resistance between the cathode and reference electrode. The anode either closes the
+11
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+electrical circuit and contributes magnesium ions for nutrient recovery (equation 3) or closes the
+electrical circuit and does not contribute to the recovery process (equation 4). A data acquisition
+device (USB-1808, Measurement computing) was used to measure the overall cell voltage –
+potential difference between the cathode and anode – of the electrochemical system. The
+exposed surface area of the electrodes and the electrode type varied depending on the
+experimental design.
+
+2.4
+
+Design of Experiments and Reactor Operation
+
+2.4.1 Screening Analyses
+The eleven variables in this study, categorized into three main groups of operational,
+stream and design, are presented in Table 1.
+Table 1: Variables in the screening analysis and their corresponding categories
+Variable Category
+Operational
+Design
+Stream
+
+Variable Type
+Temperature, Turbulence, Cathodic Potential, Added Mg
+Anode type, Cathode type, Cathode Area to Electrolyte Volume
+Ratio (Area-Volume Ratio)
+Initial concentrations of P, NH4, Ca and total organic carbon (TOC)
+
+These 11 variables were selected based on factors known to impact chemical nutrient
+recovery and electrochemical systems design and the variability captured from the wastewater
+sampling in this study. The aim of these experiments was to characterize the most influential
+variables affecting phosphorus recovery efficiency and specific energy consumption before
+attempting any process optimization. A Plackett-Burman (PB) design was chosen, which
+provides a first-order formulation of the system and offers the lowest number of experiments
+which is important when a high number of factors have been considered 28,29. Minitab® version
+12
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+21.1.0 was used to develop the PB design with ten variables at two levels each (shown in Table
+2) in two blocks that accounted for the variable associated with cathode type. This design
+resulted in twelve distinct experimental runs, with three replicates each, in each block. The
+complete list of these 12 distinct experiments is provided in Table S2. The high and low levels of
+the stream variables were determined based on the wastewater sampling data. The operating
+range for the electrochemical setup was based on the prior experiments conducted in the research
+group 20.
+Once the experiments were setup with electrodes and electrolyte in the reactor, the
+electrolyte was sparged with air for 30 minutes before starting the chronoamperometry
+experiment to saturate the solution with dissolved oxygen. Additionally, air sparging continued
+throughout the 6-hour experiments to sustain the dissolved oxygen level. During each
+experiment, 3 mL liquid samples were collected from the reactor every 30 minutes and analyzed
+for phosphorus content.
+Table 2: Two levels of each variable in the Plackett-Burman design
+Variable
+Temperature (°C)
+Turbulence (rpm)
+Cathodic potential (V vs Ag/AgCl)
+Area-volume ratio (1/cm)
+Anode typea
+Cathode typea
+Mg added (ppm)
+NH4 Initial Concentration (ppm)
+P Initial Concentration (ppm)
+TOC Initial Concentration (ppm)
+Ca Initial Concentration (ppm)
+a
+These are categorical variables
+
+Low level
+10
+50
+-0.8
+0.07
+Graphite
+SS 304
+0
+0
+37
+24
+28
+
+High level
+40
+400
+-1.3
+0.14
+Magnesium
+SS 316
+350
+1000
+300
+200
+162
+
+Subsequent statistical analysis was performed in Minitab using an assumed linear
+regression models with derived coefficients for each variable, representing the extent and
+13
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+direction of the change in the mean value of the response when each factor is individually
+altered, and derived coefficient variability represented by its standard deviation (SD) 30. Factors
+with a P-value lower than the significance level (𝛼) of 0.05 were important variables and the tvalue, calculated as the ratio of the coefficient to its SD is illustrated in a descending order as a
+Pareto chart of standardized effects 29–31. This chart establishes the order of the variable
+significance, with those exceeding the reference line considered as the key factors 32. The linear
+regression models were also characterized by the R-squared value, with higher values indicating
+a better model accuracy. Additionally, normal probability plot of residuals assessing the
+goodness of fit for the proposed models were also acquired, which should have a linear trend to
+verify the normal distribution of residuals 33. Finally, Kernel Density Estimation (KDE) with a
+bandwidth of 0.1 was used to compare the performance of SS316 and SS304 in each experiment
+block in terms of both responses. A KDE distribution visualizes the data spread and the
+abundance of each value compared to the other values in the population 34, and in this study, the
+performance of the two SS types in terms of the overall performance and data spread tendency
+were compared using this type of plot.
+
+2.4.2 Optimization Analysis
+The optimization analysis was conducted to determine the optimal operating conditions for
+ENR based on three down-selected variables from the screening analysis with more test points
+added for these three variables. The circumscribed version of a Box-Wilson central composite
+design (CCD) was selected, comprising 8 corner points, 6 axial points, and 6 center points with
+two replicates each. CCD is a common response surface method for second-order modeling,
+mainly due to the efficient number of experimental runs required 29 and its ability to explore
+14
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+extreme input variable values through the axial points. The second-order model captures the
+curvature in the response (i.e., the interaction between variables and quadratic effects), and was
+used in combination with the response optimizer in Minitab to quantify the conditions that
+maximize percentage phosphorus recovery and minimize specific energy consumption. The
+actual factors and levels of the experimental design are presented in Table S3 while a full list of
+the distinct experimental runs is shown in Table S4. The center point is the midpoint value
+between the high and low values from the screening analysis, the corner points are the refined
+high and low values for this analysis, while the axial points are the extreme high and low values
+calculated from the center point using an axial spacing of 1.633. The reactor operation was
+similar to the screening analysis; however, the chronoamperometry experiments were conducted
+over 2 hours, as the recovery from the real wastewater samples occurred more quickly.
+Additionally, 3 mL liquid samples were collected periodically and analyzed for phosphorus
+content.
+2.5
+
+Material Characterization
+
+2.5.1 Liquid Characterization
+All liquid samples were analyzed for phosphorus concentration with an Inductively
+Coupled Plasma – Optical Emission Spectrometer (ICP-OES, iCAP 6000 Series, Thermo
+Scientific, USA) at a wavelength of 185.891 in axial mode. The ICP-OES is an analytical
+technique that relies on ions’ ability to be excited and emit electromagnetic radiation at a
+wavelength specific to an element 35. The instrument was calibrated using a standard solution
+with concentrations within the range of the expected levels in the wastewater samples. For
+sample preparation, the liquid was centrifuged to remove any precipitated solids that could clog
+the tubes transporting the fluid in and out of the instrument. The clarified samples were then
+15
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+diluted tenfold with deionized water in a 10 ml (±0.08) volumetric flask to prepare them for
+analysis.
+2.5.2 Solid Characterization
+After each experiment, the electrodes were air-dried for 24 hours, while the precipitates
+from the bulk solution were filtered, air-dried, and stored under ambient conditions. Scanning
+Electron Microscopy (SEM, JEOL JSM 6010PLUS/LA) was used to examine the morphology of
+the solids, while X-ray Dispersive Spectroscopy (EDS) coupled with the SEM with an
+accelerating voltage of 15 kV and working distance (WD) of 11 mm, was used to determine the
+elemental composition and particle size measurements were performed using ImageJ software 36.
+X-Ray Diffraction (XRD, Rigaku miniflex 600) was used for phase identification and
+composition of the solids using Cu-Kα radiation (1.54059 Å), a 2θ range of 10-90 degrees, a
+speed of 2.5 deg/min, a step angle of 0.02°, a current of 15 mA and a voltage of 30 kV. The
+refinement of the collected diffractograms were performed via GSAS-II program 37, using the
+Rietveld method 38. Crystallographic texture, instrument parameters, sample displacement, phase
+fractions, lattice parameters and background signal are parameters that were refined from the raw
+data. A data residual value (Rw), indicating the difference between the raw and refined
+diffractograms of the sample 39 is calculated at the end of each refinement and an Rw value in or
+close to the range of 5-10 % is considered a good agreement.
+2.6
+
+Figures of Merit
+The electrolyzer’s performance was characterized by the phosphorus recovery
+
+percentage/efficiency and specific energy consumption (kWh/kg P), which are two of the critical
+
+16
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+figures of merit relevant to this nutrient recovery approach40. The equations of these responses
+are represented in Equations 5 and 6, respectively:
+
+P % recovery =
+𝐸𝑠 =
+
+C0 – C(t)
+× 100%
+C0
+
+∫ 𝐸(𝑡)𝐼(𝑡)𝑑𝑡
+V(C0 − C(t))
+
+(5)
+(6)
+
+where C0 is the initial P concentration (in ppm), C(t) is the P concentration at time t (in ppm),
+E(t) is the cell voltage at time t (in V), I(t) is the total current at time t (in A) and V is the volume
+of electrolyte or wastewater in the reactor (in L). Phosphorus concentration data obtained from
+ICP-OES was used to calculate the percentage recovery, while a combination of data from ICPOES, potentiostat and data acquisition device was used to compute the specific energy
+consumption.
+3
+
+Results and Discussion
+
+3.1
+
+Municipal Wastewater Sampling
+
+3.1.1 Concentration of Total Phosphorus
+The 1-year sampling analyses of the three streams are summarized as box plots in Figure
+2, showing the significant variations in the composition of the three wastewater streams,
+
+attributable to differences in influent composition, solids concentration fed into the digesters 41
+and treatment stages as well as the associated efficiencies of these treatment stages.
+
+17
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 2: Boxplot showing the concentration of (a) phosphorus (b) ammonia (c) nitrate-nitrite (d)
+calcium (e) magnesium (f) total organic carbon in Southerly Columbus Ohio WWTP (100 MGD)
+Anaerobic dewatering effluent and Thickening effluent together with Athens Ohio WWTP (4
+MGD) Aerobic effluent.
+
+18
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Aerobic digesters, typical of smaller WWTPs such as Athens, Ohio WWTP, use
+microorganisms in waste-activated sludge (WAS) to break down organic matter in the presence
+of oxygen. These microorganisms consume phosphorus for their growth and retain it in the
+biosolids, resulting in a lower P content in the effluent 10,41. In contrast, the anaerobic digesters in
+larger treatment plants usually produce effluent with high nutrient content. These digesters use
+methane-producing bacteria, which require less nutrients for their growth, to break down the
+sludge’s organic content in an oxygen-free environment 41. Additionally, in WWTPs with an
+enhanced biological phosphorus removal (EBPR) step such as the Southerly Columbus plant,
+anaerobic digestion releases phosphorus accumulated in the feed sludge by phosphorusaccumulating organisms (PAOs) in the EBPR process41, further increasing the P concentration in
+the supernatant. Before anaerobic digestion, thickening centrifuges are used to reduce the liquid
+volume of WAS to be fed to the digester. Therefore, the effluent from this process is expected to
+have lower P concentration.
+The phosphorus concentration in the aerobic effluent sample collected from Athens Ohio
+WWTP ranges from 6 to 63 mg/L, correlating with aerobic filtrate characteristics observed in
+some WWTPs in North Florida as reported by Hallas et al. 42. The total P content in the
+anaerobic effluent from Southerly Columbus Ohio WWTP ranges from 126-346 mg/L,
+consistent with the average concentration reported by Lee et al. and Wang et al. 43,44. Also, the
+phosphorus concentration in the thickening effluent, falls below the upper limit of 60 mg/L
+reported by Metcalf et al. 41, ranging between 1.32 - 34.24 mg/L. This slight variation from the
+upper limit might be due to lower P content in the plant's influent stream or the efficiency of P
+removal treatment before centrifuge thickening.
+
+19
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+3.1.2 Concentration of Ammonia-Nitrogen, Nitrate-Nitrite
+Nitrogenous compounds in wastewater treatment plants are usually found as free
+ammonia (NH3 and its ionized form, ammonium 𝑁𝐻4+ ), nitrate (𝑁𝑂3− ), nitrite (𝑁𝑂2− ), and organic
+nitrogen 45. Figures 2b and 2c illustrate the concentration of free ammonia and nitrate-nitrite,
+respectively, across the three wastewater samples. Typically, nearly all free ammonia exists as
+ammonium at room temperature and a pH of around 7 46. In the anaerobic effluent sample with
+an average pH of 7.16, the free ammonia concentration (Figure 2b) aligns with typical anaerobic
+supernatant ammonium levels ranging from 800 to 1300 mg/L, as reported by Metcalf et al. 41.
+This suggests that almost all free ammonia in the Columbus anaerobic sample exists as
+ammonium, making it less toxic.
+In a typical WWTP, ammonium in the mainstream is removed by oxidation to nitrate
+through nitrification, facilitated by specific bacteria in the presence of oxygen. Subsequently,
+reduction of the nitrate to nitrogen gas occurs through denitrification. However, during anaerobic
+sludge treatment, organic nitrogen in the sludge is broken down into ammonium, which does not
+nitrify due to lack of oxygen in the digesters. This explains why the anaerobic effluent
+ammonium concentration in Figure 2b is notably higher, and the nitrate-nitrite concentration in
+Figure 2c is comparatively lower than in the aerobic effluent. The ammonium and nitrate-nitrite
+concentration in the thickening effluent falls within the lower range of data reported in existing
+literature (0-45 mg-NH4/L, 0-30 mg-NOx/L) 41. These concentrations are potentially influenced
+by the amount of wash water used in the thickening centrifuges.
+
+20
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+3.1.3 Concentration of Calcium and Magnesium
+Ionic species such as Ca2+ and Mg2+, often used as indicators of water hardness, provide
+insights into the scaling potential of WWTPs 47. Furthermore, these cations play a role in
+estimating the nutrient recovery potential from wastewater due to their ability to react with
+phosphate and ammonium. Figures 2d and 2e show the concentrations of Ca and Mg,
+respectively, present in the sampled wastewater.
+The concentration of calcium in the anaerobic effluent from Southerly Columbus ranges
+from 22 to 38 mg/L, whereas in the aerobic effluent from Athens, it fluctuates between 73 and
+240 mg/L. The hardness of drinking water in the city of Athens, 146 mg/L 48 is higher, on
+average, than that in the city of Columbus 92-125 mg/L on an annual basis 49. This difference in
+water hardness may contribute to the observed differences in calcium concentration between the
+two WWTPs. The higher calcium concentration in the Athens samples, coupled with the low
+ammonium ions concentration shown in Figure 2b, suggests that phosphorus recovery via
+calcium-based phosphates, such as hydroxyapatite (Ca10(PO4)6(OH)2) is a more feasible route
+than magnesium-based phosphates e.g. struvite (NH4MgPO4.6H2O) precipitation in this
+treatment plant. Conversely, the low calcium concentration in Columbus anaerobic effluent
+indicated that the impact of Ca as a competing ion for phosphate recovery through struvite
+precipitation may be negligible, provided there is sufficient Mg available for the reaction.
+Furthermore, a Mg:Ca molar ratio of about 2 or higher is required for fast struvite growth
+and a short induction time 50. Ojoawo and Daramola have also reported the significance of a
+Mg:Ca molar ratio of 2.1 for efficient electrochemical phosphorus recovery from animal
+wastewater 24. According to Figure 2e, the magnesium concentration in the anaerobic effluent is
+21
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+lower than that in the aerobic effluent, initially suggesting that more external Mg would be
+required for struvite precipitation in the anaerobic effluent, without considering the ammonium
+content. However, a more detailed examination of the Mg:Ca molar ratios in the two samples
+shows that the anaerobic effluent has an average of 0.82 compared to 0.31 in the aerobic effluent.
+This implies that a lesser amount of Mg is required to achieve the reported Mg:Ca molar ratio
+conducive for efficient struvite recovery in the anaerobic effluent compared to aerobic effluent.
+3.1.4 Organic Content (Total Organic Carbon)
+Figure 2f presents the concentration levels of total organic carbon in the three sampled
+wastewater sources. The presence of organic matter in wastewater, such as organic carbon, can
+adversely impact the nucleation and growth of phosphate precipitate such as struvite, by blocking
+active growth sites of the struvite nuclei due to the coprecipitation of organic matter 51.
+Therefore, it is important to assess the impact of TOC on P recovery from municipal wastewater
+due to its complex matrix. Extensive literature data on the TOC concentration of post-digester
+municipal wastewater is lacking. However, untreated wastewater influent typically contains
+about 109-328 mg/L TOC, while activated sludge with biological nutrient removal (AC-BNR)
+effluent tends to have approximately 10-20 mg/L TOC 41. A comparison of this data with Figure
+2f suggests that a substantial portion of the organic carbon removed during secondary treatment
+(i.e. AC-BNR) is released after anaerobic digestion which has a supernatant with TOC
+concentration ranging from 166-270 mg/L. Columbus thickening process, which reduces
+activated sludge volume before anaerobic digestion, has an effluent TOC concentration between
+12-25 mg/L, consistent with the AC-BNR values. Athens WWTP, a conventional activated
+sludge plant, has an aerobic effluent with TOC concentration between 18-41 mg/L, similar to
+values reported by Metcalf et al. 41.
+22
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+3.1.5 Heavy Metals
+It is important to also consider that municipal wastewater contains pollutants such as
+heavy metals, which could co-precipitate with phosphate compounds, and limit its use as a
+fertilizer. Heavy metal contaminants such as arsenic, cadmium, chromium, mercury, lead, and
+others can be toxic based on continuous exposure over a long period. For instance, long-term
+exposure to lead causes mental impairment, cadmium has adverse effects on the kidney, liver,
+and gastrointestinal tract, while arsenic can lead to skin poisoning 52. Moreover, the remediation
+of soils contaminated with heavy metals is a highly costly process; therefore, prevention of
+pollution caused by heavy metals is important 52. Table S5 presents the average concentrations of
+heavy metals in the effluents in comparison with the EPA’s maximum limits for heavy metals in
+sludge intended for to soil application. The data from the table shows that the concentration of
+heavy metal pollutants in the liquid portion of the wastewater streams are within the parts per
+billion range, significantly lower than the EPA’s ppm thresholds for sludge.
+3.1.6 Time Series Analyses
+Given the variability in the wastewater compositions, time series analyses were used to
+explore correlations among pH, nutrient levels, ionic and heavy metals species, and how they
+changed with respect to each other over the one-year sampling period. Each species’ time series
+data was first tested for stationarity with stationarity defined as an integration value of zero (0)
+for a stationary data series (the mean, variation, and autocorrelation structure do not change with
+time) and integration value of one (1) for a time series that is non-stationary. A summary of the
+integration values of each species in each of the three streams is given in Table S6.
+
+23
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Based upon correlations, cross-correlations, and regressions between various stream
+species (within each individual stream), four major findings were concluded from the time series
+analyses: 1) Ortho-P and ammonia did not exhibit a significant relationship in any stream tested,
+2) there exist relationships between Ca, Mg, and Ortho-P in the Columbus anaerobic and Athens
+aerobic streams, 3) Zn2+ showed no significant relationship with respect to nutrients in any
+stream tested, and 4) stream pH is related to both Ortho-P and Cl concentrations in the Columbus
+anaerobic and Athens aerobic streams.
+In general, the Columbus thickening stream exhibited differing behavior from the two
+other streams. Equations 7 and 8 below are the regression equations found to best fit the
+relationship between Ca and Ortho-P (denoted POrtho) in the Columbus anaerobic stream and the
+Athens aerobic stream, respectively. Note that the differenced stream species concentration (∆)
+must be used when determining relationships between species with different integration values
+(Table S6), with the (∆) being applied to the species having the higher integration value. The
+time variable (t) denotes the sample time interval (two weeks in this study) and thus, t is in units
+of 2 weeks. All concentrations are in ppm and pH is reported in standard pH units.
+𝐶𝑎(𝑡) = 0.951 × 𝐶𝑎(𝑡 − 1) − 0.0882 × ∆𝑃𝑂𝑟𝑡ℎ𝑜 (𝑡) + 0.0684 × ∆𝑃𝑂𝑟𝑡ℎ𝑜 (𝑡 − 1)
+
+(7)
+
+𝐶𝑎(𝑡) = 0.644 × 𝐶𝑎(𝑡 − 1) + 2.006 × 𝑃𝑂𝑟𝑡ℎ𝑜 (𝑡)
+
+(8)
+
+The Athens aerobic stream also exhibited significant relationships between Mg and
+Ortho-P (Equation 9) and Ca and Mg (Equation 10). Similar relationships for the Columbus
+anaerobic stream were determined to be insignificant.
+𝑀𝑔(𝑡) = 0.3109 × 𝑃𝑂𝑟𝑡ℎ𝑜 (𝑡) + 0.712 × 𝑀𝑔(𝑡 − 1)
+
+(9)
+
+𝐶𝑎(𝑡) = 0.8797 × 𝐶𝑎(𝑡 − 1) + 6.36 × 𝑀𝑔(𝑡) − 5.744 × 𝑀𝑔(𝑡 − 1)
+
+(10)
+24
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+The pH values of Columbus anaerobic and Athens aerobic streams were determined to be
+dependent on both Ortho-P and Cl concentrations. Equations 11 and 12 below show these
+relationships for the Columbus anaerobic stream while Equations 13 and 14 describe the Athens
+aerobic stream. Note that the following regressions are in log-based pH units and therefore have
+small regression equation coefficients. Completing the analysis on a proton concentration basis
+did not change the resulting relationships.
+𝑝𝐻(𝑡) = 0.9959 × 𝑝𝐻(𝑡 − 1) + 0.0026 × ∆𝑃𝑂𝑟𝑡ℎ𝑜 (𝑡) − 0.0036 × ∆𝑃𝑂𝑟𝑡ℎ𝑜 (𝑡 − 1)
+𝑝𝐻(𝑡) = 0.9771 × 𝑝𝐻(𝑡 − 1) + 0.001565 × ∆𝐶𝑙(𝑡)
+𝑝𝐻(𝑡) = 1.0123 × 𝑝𝐻(𝑡 − 1) − 0.0357 × 𝑃𝑂𝑟𝑡ℎ𝑜 (𝑡) + 0.0319 × 𝑃𝑂𝑟𝑡ℎ𝑜 (𝑡 − 1)
+𝑝𝐻(𝑡) = 0.7541 × 𝑝𝐻(𝑡 − 1) + 0.01138 × 𝐶𝑙(𝑡)
+
+(11)
+(12)
+(13)
+(14)
+
+These general results can be used to frame the considerations necessary when developing
+a side-stream P recovery system for a specific WWTP. First, because Ortho-P and ammonia
+behaved independently of one another within the tested streams, a system designed for struvite
+recovery may necessitate monitoring of both nutrients. Also, if a thickening stream is to be used
+for P recovery, separate considerations will be necessary as the thickening stream had very little
+interdependence among its stream species concentrations. Finally, it was shown that major ions
+(Ca and Mg) exhibit an interdependence on nutrient concentrations (Ortho-P) and stream pH is
+interdependent with Ortho-P and Cl in both post-digester streams i.e., the Columbus anaerobic
+and Athens aerobic streams. These relationships may be leveraged to simplify sensing or process
+controls to adjust stream chemistry for efficient P recovery. Lastly, recognizing the differences
+between the digesters that these streams flow out from: anaerobic for Columbus versus aerobic
+25
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+for Athens stream, suggest further investigations into the biological processes within these
+digester types could be beneficial for understanding the compositional variability for nutrient
+recovery applications.
+3.2
+
+Evaluation of the Key Variables in Electrified Nutrient Recovery
+
+3.2.1 Screening of Significant Variables for P % Recovery
+The regression models and associated R-squared values, evaluating the relationship
+between the variables and system responses are shown in Table S7 and Table S8, for SS316 and
+SS304, respectively. The statistical parameters for these linear regression models are provided in
+Table S9 (SS316) and Table S10 (SS304), while the normal probability plots of the residuals for
+SS316 and SS304 are shown in Figure S2a and Figure S2b, respectively. The R-squared values
+are 0.98 and above, and the residual of the models follow a straight line, indicative of the model's
+reliability. After performing the statistical screening analysis, the Pareto chart of the standardized
+effects for both SS types are shown in Figure 3a and Figure 3b.
+
+26
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 3: Pareto chart of the standardized effects for a) P % recovery of SS316, b) P % recovery
+of SS304, c) ln(Es) of SS316, and d) ln(Es) of SS304. The black bars represent a variable with a
+direct proportionality to the response, while grey bars represent an inverse proportionality. In the
+case of anode type (a categorical variable), black bars represent a high response value and grey
+bars represent a low response value, both based on the magnesium anode (the reverse
+relationships would be for a graphite anode).
+
+(a)
+
+(b)
+
+(c)
+
+(d)
+
+For SS316, seven out of ten variables had a significant influence. However, the first five
+factors in Figure 3a with t-values at least three times the threshold of 2.12, had more pronounced
+27
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+effects on the P % Recovery. These variables in the order of importance are anode type, NH4
+concentration, cathodic potential, P concentration and temperature. In the SS304 block, all
+variables except for turbulence were significant. Similarly, in this block, emphasis was placed on
+the variables that have a more significant impact on the response, specifically those with a tvalue exceeding three times the threshold of 2.11. These variables are anode type, cathodic
+potential, P concentration, NH4 concentration, temperature and TOC, respectively. As it can be
+noticed from the list of the key variables in the two blocks, regardless of the order, there are five
+overlapping important factors for both SS316 and SS304. However, it is noteworthy that each
+block exhibits its unique magnitude of variable effects, and no single factor exerts identical
+influence on both SS types. Despite the difference in the magnitude of the effects, using a Mg
+anode (as opposed to a graphite anode), along with the presence of NH4, a more negative
+cathodic potential and a higher temperature each led to an increased P recovery for both SS
+cathodes. Conversely a higher initial concentration of P (300 ppm) yields a lower percentage
+recovery, although the absolute quantity of P recovery in ppm was generally higher. For
+example, a 37 ppm initial P concentration with a 100 % P recovery will give only 28 mg of
+recovered P while a 300 ppm initial P with recovery as low as 15% gives 34 mg of recovered P.
+The literature supports the higher P recovery by using an Mg anode and solutions with
+higher NH4 concentration; furthermore, high N:P ratios promote struvite precipitation, which is
+one of the methods of P recovery 19,53,54. Lui et al. showed a directly proportional relationship
+between temperature and P recovery for P concentrations below 400 ppm, which is consistent
+with the findings of this study 55. However, some studies with a focus on P recovery as struvite,
+reported a higher P recovery at lower temperatures 54,56,57. This can be explained by considering
+the presence of other P-containing products apart from struvite in the screening experiments i.e.,
+28
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+while struvite recovery is improved at lower temperatures, other P-containing solids have
+improved recovery at higher temperatures. Lastly, more negative cathodic potentials are reported
+in literature58 to result in higher P recoveries, by producing more OH- ions due to the Equation 1
+or 2, thereby increasing the pH and facilitating the precipitation of P-containing compounds.
+Apart from the five variables discussed above, initial TOC is a key factor with a directly
+proportional effect on P % recovery for SS304, however, it was found unimportant for SS316.
+One category of organic carbon is natural organic matter (NOM). This group contains
+decomposed humic and nonhumic substances with heavy, long chain molecules and several
+functional groups 59. Lei et al. showed the presence of natural organic matter (NOM) increased
+the P recovery by coprecipitation with calcium phosphate 60. Conversely, Wang et al. suggested
+that if the product of interest is struvite, organic compounds with smaller molecular weights offer
+higher P recovery with better product purity 61. Considering the TOC in this synthetic water
+analyses was the formate ion, which is smaller than a typical heavy organic carbon present in
+municipal wastewater, the directly proportionality between TOC and P recovery could be
+explained by the possibility of P mostly recovered as struvite. However, this hypothesis is more
+likely for the cases where the concentration of Mg in the stream is higher than Ca.
+3.2.2 Screening of Significant Variables for ln (Es)
+Given the substantial disparity in the Es magnitudes as seen in Figure S3, the screening
+analysis was conducted using the natural logarithm (ln) of Es instead of the original values to
+linearize the response and reduce the distance between the data points. This is beneficial
+considering the regression analyses in the screening section is based on a combination of linear
+terms and distant data values might potentially increase the error in the model’s prediction. The
+29
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+results of the statistical analysis on Es for SS316 are displayed in Figure 3c and Table S11, while
+the normal probability plot for the regression model is in Figure S2c. The same information for
+SS304 is shown in Figure 3d, Table S12, and Figure S2d. Among the ten variables evaluated,
+seven had significant impact on Es in the SS316 block, with the first five factors in the Pareto
+chart exerting the most noticeable impact, having a t-value more than three times the threshold of
+2.12. These variables were initial P concentration, anode type, temperature, cathodic potential
+and NH4 concentration, respectively. In the SS304 block, all variables were recognized to be
+influential on Es and seven of these variables were most noticeable, with a t-value greater than
+three times the threshold (2.11). Consequently, the overlapping important factors in both SS316
+and SS304 with a t-value over three times the threshold are initial P concentration, anode type,
+cathodic potential, NH4 concentration and temperature.
+A higher initial P and an Mg anode resulted in a decrease in Es. On the other hand, a
+graphite anode, a more negative cathodic potential, the presence of NH4 and a higher temperature
+increased Es. It is important to acknowledge that in Equation 6, the denominator is the mass of
+the recovered product. As explained in the previous section, a higher initial phosphorus
+concentration will most likely result in a greater mass of the product. This, in turn, increases the
+denominator value in Equation 6. On the other hand, the numerator in this formula is the actual
+energy consumed which is the integral of the product of the cell voltage and generated current.
+Therefore, increasing the concentration of phosphate ions will result in lower ionic resistance and
+higher current, therefore potentially increasing the numerator. However, it is plausible that the
+denominator has a higher order of increase in comparison to the numerator, resulting in an
+overall decrease in the Es with a higher initial P. Higher Es has also been observed in
+electrochemical nutrient recovery using streams with lower initial P concentration in literature 58.
+30
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Additionally, a smaller Es with utilization of an Mg anode could be attributed to a smaller
+magnitude of the average cell voltage using this anode (typically 2V less than the graphite
+anode), and higher mass of recovered product obtained as explained in the previous section. This
+would result in lower energy consumption as defined in Equation 6.
+A more negative applied cathodic potential is expected to increase the average cell
+voltage and generated current. On the other hand, this more negative applied potential also
+increases the P % recovery, vide supra, which does not necessarily translate to a higher amount
+of recovered P in all cases. Consequently, it is possible that the more negative potential will exert
+a more pronounced positive effect on the numerator of the Es formula, resulting in an overall
+increase in Es. Wang et al. also observed an increase in the Es with a more negative applied
+potential 58. As for the NH4 concentration, the presence of this ion increases the P % recovery,
+but not necessarily the amount of P recovered. On the other hand, the presence of 1000 ppm of
+this ion in the electrolyte could aid in increasing the generated current due to decreased
+electrolyte resistance. It is possible that this high concentration of NH4 could increase the current
+more significantly than increasing the ppm P recovered and therefore due to the Equation 6,
+causing an overall increase in Es.
+Finally, a higher temperature will result in an increased Mg corrosion in water as
+described in Equation 362, which concurrently increases the pH, based on the ability of sacrificial
+magnesium to also enhance the cathodic reaction for hydroxide generation63. This higher pH
+leads to greater precipitation by shifting the equilibrium for phosphate speciation towards anions
+that precipitate: HPO42– and PO43–. On the other hand, a higher temperature also facilitates
+improved reaction kinetics and ion mobility resulting in an increased generated current.
+Consequently, the positive effect of higher temperature on the current could be more significant
+31
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+than the recovered product, resulting in a directly proportional relationship between temperature
+and Es.
+3.2.3 Comparison of SS316 and SS304 Performances
+Figure 4a depicts P % Recovery KDE distributions for each SS type. Comparing these
+graphs reveals a comparable overall spread of data and curve behavior for both SS blocks, with a
+notable exception: in the range of approximately 40-80% recovery, SS304 showed no recovery
+activity. Furthermore, upon closer examination of the bar graph presented in Figure 4b, it is
+evident that experiment types 11 and 12 exhibit a more significant difference between the two
+cathode types with no overlap in the uncertainties and SS316 providing higher recoveries. Given
+the superiority of SS316's corrosion resistance compared to SS304 in chloride solutions due to a
+slower dissolution of the oxide passive film on the surface 64 and considering that the electrolyte
+contains more than 300 ppm of Cl- in all experiments, it is conceivable that SS304 might have
+experienced diminished stability, leading to a compromised performance in experiment types 11
+and 12.
+
+Figure 4: a) Kernel Density plots of SS316 and SS304 for P % recovery with a low bandwidth
+and b) Bar charts of P %recovery range for SS316 and SS304.
+(a)
+
+(b)
+
+32
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+In experiment type 11, temperature and cathodic potential are low, while P initial
+concentration is high. By comparing the magnitudes and direction of effects in the Pareto charts
+in Figure 3a and Figure 3b, it is evident that even though the direction of the effects for these
+three factors are the same in both SS blocks, but they have a more pronounced impact (higher tvalues) on the response for SS304. This implies that a less negative cathodic potential and lower
+temperature, along with a higher initial P, decrease SS304's P recovery to a greater extent than
+SS316’s P recovery. However, the individual factors also have interactions themselves, e.g. low
+temperature may lead to slower kinetics, and the combination of a low temperature with low
+applied potential and low agitation could introduce a much lower P recovery. Therefore, under
+conditions where all the factors have a significant effect i.e., SS304 as opposed to SS316, the
+combined effect on P recovery is more pronounced.
+On the other hand, experiment 12 involves a low cathodic potential, a small area-volume
+ratio, no NH4, and a high initial P. The same scenario applies here: factors that are inversely
+impacting the P recovery exert a more negative impact on the SS304’s response and the potential
+interaction between these variables might make this inhibition even stronger in SS304 as
+opposed to SS316. Moreover, as illustrated in Figure S4 the KDE distributions for ln (Es) of each
+SS type indicate dissimilar trends between these two cathode types, providing additional
+evidence of distinct electrochemical behaviors in each of these respective cases. As evident from
+Figure S3, SS304 has lower Es magnitudes and due to the comparable P recoveries in most cases
+for the two SS types (denominator of Equation 6), the lower Es in the SS304 case with the same
+applied potential, could be due to lower current generated. This may be attributed to a less
+current generated in this SS type due to a possible diminished electrical property in an
+environment containing Cl– 64.
+33
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+3.2.4 Screening Summary and Transitioning Toward Optimization
+Overall, regardless of the magnitude of the effects, the same five key factors emerge as
+significant for both SS types for P % recovery and Es responses: anode type, cathodic potential,
+initial P and NH4 concentration and temperature. Therefore, an optimization analyses for nutrient
+recovery with P % recovery and Es as the key responses focused on these five variables. The
+electrolyte that provides the most significant opportunity for recovery, based on high nutrient
+contents was the anaerobic digester effluent which provided a source of real wastewater but
+negates the ability to vary nutrient concentrations. Furthermore, considering the anode type is the
+most important variable and the Mg anode favors a desired outcome in both responses – high
+amount of P recovered and low energy consumption – Mg was the anode in the optimization
+experiments. SS304 was chosen as the cathode over SS316, since both cathodes yielded a
+comparable level of P recovery in over 80% of the experiments (Figure 4) and SS304 is less
+costly than SS316. These conditions simplified our number of independent factors from 5 to 2:
+temperature and cathodic potential. The electrode size was included as the third variable since it
+was a variable above the threshold of significance in both electrodes (Figure 3) and this value
+provides significance in evaluating cost analyses for the Mg anode. Therefore, the optimization
+analysis with respect to the electrode area places emphasis on identifying the optimum size rather
+than merely selecting the maximum size.
+3.3
+
+Optimization of the P Recovery from Real Wastewater
+
+3.3.1 Effect of Residence Time on P Recovery
+In contrast to the six-hour duration of the screening analysis, phosphorus recovery
+occurred significantly faster in the optimization experiments, as illustrated in Figure 5. This
+could be attributed to both the higher pH of the real wastewater (6.46 – 8.02 for the 100 MGD
+34
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+plant) in comparison to the synthetic wastewater (6.25) and the use of the magnesium alloy as
+the anode. The pH level of the wastewater is an important factor for phosphorus recovery as it
+influences both the solubility of the precipitate and the solution supersaturation 65,66. The high pH
+level in the real wastewater corresponds to a shorter time for the pH to increase to conditions
+where phosphorus recovery is most favorable, while the magnesium alloy also contributes to an
+accelerated overall pH increase in the system. These conditions are responsible for the increase
+in the bulk pH (8.28-9.10) of the wastewater after the electrochemical recovery experiment.
+As shown in Figure 5, the average phosphorus recovery for all the runs was
+approximately 30 ± 11 % at 5 minutes, 45 ± 14 % at 10 minutes, 70 ± 14 % at 20 minutes, 87 ±
+12 % at 30 minutes, 97 ± 3 % at 60 minutes, 98 ± 0.6 % at 90 minutes and 98.3 ± 0.3 % at 120
+minutes. The variation within the data points, indicated by the standard deviation, significantly
+diminished after 30 minutes, signifying that beyond this time, varying the process conditions has
+minimal impact on phosphorus recovery efficiency. However, this does not negate the need for
+process condition optimization, as these variables also influence energy consumption and
+synthesis time, which must be optimized. Kékedy-Nagy et al. in their study on electrochemical
+nutrient removal using Mg anode and various natural wastewaters with initial pH levels ranging
+from 7.9 to 10.2, similarly reported phosphate removal efficiency between 44% and 93% within
+30 minutes 23. Therefore, this present study used 30 minutes as a threshold and developed a
+model at this time mark to describe the relationships between the factors and the system
+response, while also predicting the optimum conditions for maximum phosphorus recovery and
+minimum energy consumption.
+
+35
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 5: Heatmap of P recovery under different process condition, illustrating the effect of
+residence time on electrochemical phosphorus recovery. Notably, after a residence time of 30
+minutes, P recovery approaches 100% across all tested conditions, indicating that beyond this
+threshold, the effect of the process variables becomes negligible, as the recovery efficiency nears
+its maximum potential.
+
+3.3.2 Response Surface Analyses and Model Validation
+The regression models presented in the screening phase serves the purpose of eliminating
+less significant variables but does not capture the response's curvature, i.e., any non-linearity in
+the responses since there are only two points per variable. In this section, three distinct secondorder models were constructed to characterize P recovery and Es outcomes from the optimization
+experiments at the 30-minute time mark. These models included linear and square terms (SM),
+linear and interaction terms (IM), and full quadratic terms (FM). The regression equations and
+their associated R-squared values for P recovery and Es responses are detailed in Table S13 and
+36
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Table S14, respectively. Based on these tables, the order of decreasing R-squared value of the
+models are FM, SM and IM. It is important to note that, as real wastewater was used in this set of
+experiments, the composition of ions could not be controlled in different experiments 67 and
+therefore, the responses exhibited less reproducibility, resulting in a model with smaller Rsquared values (0.55 - 0.80) compared to the screening analysis model (0.97-0.99). The Pareto
+charts illustrating standardized effects for the two responses of the optimization experiments
+(Figures S7 and S9), the normal probability plots (Figures S8 and S10) as well as the statistical
+output (Tables S16 to S21) are provided in the supporting information.
+These models combined with Minitab’s response optimizer predicted 3 distinct
+conditions for maximum P % recovery – one for each model – and 2 distinct conditions for
+minimum energy consumption – FM and IM predicted the same set of conditions. These
+predicted optimization plots are illustrated in Figure S5 and Figure S6, while the optimum
+conditions for each model and both responses are provided in Table S15. The five sets of
+conditions were scaled down to two for model validation (Table 3): one set of conditions that
+were predicted to optimize both system responses and another set with values that were most
+different from this condition. Both conditions chosen were for maximum P % recovery, with the
+rationale that a global maximum for P recovery coupled with a local minimum for energy
+consumption, would be preferable to finding a global minimum for energy consumption and a
+local maximum for P % recovery. These conditions will be referred to as the Square Model
+Optimum Condition (SMOC) and the Interaction Model Optimum Condition (IMOC), based on
+the models that were used to predict these conditions.
+
+37
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Table 3. Conditions chosen for model validation based on the predicted values for the Square
+Model Optimum Condition (SMOC) and the Interaction Model Optimum Condition (IMOC) for
+maximum P recovery at 30 minutes
+Factor
+SMOC
+IMOC
+
+Cathodic Potential
+(V vs Ag/AgCl)
+-1.29
+-0.805
+
+Area-Volume ratio
+(1/cm)
+0.129
+0.146
+
+Temperature
+(°C)
+41.3
+41.3
+
+The experimental P recoveries and their corresponding specific energies obtained at the
+SMOC and IMOC were 91.88% (0.96 kWh/kg P) and 94.60% (0.03 kWh/kg P), respectively.
+Figure 6 shows the models contour plots for phosphorus recovery and specific energy
+consumption, integrated with the experimentally obtained values. Although, the P recovery
+models (Figure 6a and b) predicted values greater than 100% at the optimum conditions, the
+experimental values are within the realistic range on the contour plots. Overall, the IMOC
+outperforms the SMOC with a higher P recovery and significantly lower specific energy
+consumption.
+
+38
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 6: Contour plots of phosphorus recovery and specific energy consumption 41.3°C and as
+a function of cathodic potential and area-volume ratio based on (a) P Recovery Square model, (b)
+P Recovery Interaction model, (c) Specific Energy Square model and (d) Specific Energy
+Interaction model. The dark region in (a) and (b) denote areas where the models predict P
+recovery >100% while the white region in (c) and (d) represents regions where the model
+predicts specific energy consumption <0 kWh/kg. The square and circle markers represent the
+optimal values predicted by P Recovery Square and Interaction Models, respectively, while the
+values under the markers correspond to the experimental measurements at the predicted optimal
+conditions.
+(a)
+
+(b)
+
+(c)
+
+(d)
+
+39
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+The Pareto charts in Figure S7 show that cathodic potential has the most significant effect
+on the specific energy consumption and is also predicted to have some effect on the P %
+recovery based on models that include interaction terms. Therefore, a cathodic potential of -1.29
+V vs Ag/AgCl, predicted by the P recovery Square Model (SM), is expected to lead to high
+polarization of the electrodes, thus increasing the energy consumption. Although this should
+result in increased reaction kinetics and higher P recovery than the -0.805 V vs Ag/AgCl of
+Interaction Model (IM), the more negative potential also increases the rate of hydrogen
+generation, based on water reduction. This could reduce the surface area of the electrode
+available for phosphorus deposition if the H2 bubbles are not quickly driven away by the
+impeller, thereby contributing to the slightly lower P recovery at the SMOC. Therefore, the
+optimum condition for high P recovery and low energy consumption, as predicted by the
+interaction model and confirmed experimentally, is at a less negative cathodic potential of -0.805
+V vs Ag/AgCl, a high electrode area-volume ratio of 0.145 cm-1, and a temperature of 41.3°C.
+To evaluate the P recovery models’ predictability and behavior of the variables, the SM
+was analyzed under both SMOC and IMOC, and a similar analysis was conducted for the IM, as
+depicted in Figure 6. The contour plot of the P recovery based on SM (Figure 6a) shows that the
+experimental P recovery at the SMOC (92%) falls below the SM predicted value (>100%),
+indicating an overprediction. Conversely, the experimentally obtained value at the IMOC (95%)
+closely aligns with the SM prediction at this condition (94%). Although the SM accurately
+predicts P recovery under the IMOC, this condition is in a region of the SM contour plot
+predicted to have a lower P recovery than SMOC. This suggests that the square model predicted
+optimum is not the true optimum region, challenging the response behavior of the variables as
+predicted by the model.
+40
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+In contrast, the interaction model predictions overestimate P recovery (>100%) at the
+IMOC (95%) and underestimates it (80%) at the SMOC (92%) as shown in Figure 6b.
+Nonetheless, the IM’s predicted optimum region aligns with experimental observation.
+Therefore, the IM proved more accurate for describing the relationship between the variables and
+P recovery. The IM indicates that at an area-volume ratio between 0.8 and 0.9, P recovery ranges
+between 85 and 90% and this recovery is consistent regardless of changes in the cathodic
+potential. However, outside this ratio, P recovery becomes more dependent on the cathodic
+potential. In the range of -0.7 to -1.1 V vs Ag/AgCl, P recovery increases with an increase in the
+area-volume ratio. Conversely, within the -1.2 to -1.4 V vs Ag/AgCl range, P recovery decreases
+as the area-volume ratio increases. These observations offer insights into the cathodic potential
+threshold for electrochemical phosphorus recovery. Particularly, these suggests that at potentials
+greater than -1.2 V vs Ag/AgCl, the increased generation of hydrogen gas, as previously
+discussed, could limit the solid-state growth of phosphate compounds.
+The specific energies obtained experimentally under optimum phosphorus recovery
+conditions were compared with the Es models in Figure 6c and d. Despite the Es models’
+predictions being inaccurate, the substantial difference in energy values obtained experimentally
+at the SMOC (0.96 kWh/kg P) and IMOC (0.03 kWh/kg P) confirms the pronounced color
+contrast observed at these two points in the models. The specific energy consumed, as described
+in Equation 6, increases as cathodic potential becomes more negative and decreases as the
+amount of recovered phosphorus increases. Interestingly, at the P recovery IM in Figure 6b, the
+less negative cathodic potential and high area-volume ratio correlates with high phosphorus
+recovery. This correlation explains the apparent inverse relationship between the phosphorus
+recovery IM in Figure 6b and the specific energy IM in Figure 6d.
+41
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+3.4
+
+Phase Identification of the Recovered Products and Process Energy comparison
+During the optimization experiments, precipitation occurred at the surfaces of the
+
+electrodes and in the bulk electrolyte. The recovered products showed multiple sharp peaks in
+the X-ray diffractograms in over 75% of the analyzed samples, which revealed that the recovered
+materials were predominantly crystalline. The remaining samples had little to no significant
+sharp diffraction peaks, an indicator of amorphous phase. Further examination of representative
+samples of the recovered crystalline products using SEM as depicted in Figure 7, showed these
+materials predominately consist of orthorhombic crystalline shapes, with a smaller portion
+having a thin platelet shape. The combination of different shapes is an indicator of a nonhomogenous morphology in these samples. Finally, the EDS analyses indicated precipitates are
+primarily composed of Mg and P, with minimal Ca presence in both crystalline and amorphous
+groups of products.
+The Rietveld refinement of the diffractograms of the mostly crystalline samples show
+struvite ICSD-60262 (ICSD web version 5.2.0) 68,69 as the major component with a volume
+fraction range of 87-91%. These samples also contained some amount of K-struvite (MgKPO4•6
+H2O), ICSD30504 (ICSD web version 5.2.0) 69,70, with a range of 9-13%. The raw and refined
+XRD pattern of a representative sample is depicted in Figure 7c, with an Rw of 10.459 after
+refinement, consisting of 91% struvite and 9% K-struvite.
+
+42
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 7: Recovered crystalline product phase identification showing SEM image and RGB
+mapping of a sample with a) smaller crystals and b) bigger crystals. Red represents Mg and
+green represents P, resulting in a yellow color in the area containing both elements. c) XRD
+pattern of a sample of the crystalline group in the 2θ range of 10-60 degrees (the full 10-90 range
+is shown in Figure S11) .
+(b)
+
+(a)
+
+0.2 mm
+
+0.1 mm
+
+Element
+
+C
+
+O
+
+Mg
+
+P
+
+Ca
+
+Element
+
+C
+
+O
+
+Mg
+
+P
+
+Ca
+
+Atom %
+
+47.68
+
+35.48
+
+7.01
+
+9.52
+
+0.31
+
+Atom %
+
+51.17
+
+34.11
+
+6.14
+
+8.31
+
+0.26
+
+(c)
+
+43
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+In addition, based on the SEM images represented in Figure 7a and b, while all these
+materials predominantly consisted of well-defined orthorhombic crystalline shapes, they had
+different sizes: there were small crystals with a length of 22 – 38 μm and larger crystals with
+lengths in the 82 – 131 μm range with a repetitive pattern in each agglomerate. Since struvite has
+a nucleation and growth type of formation 12, these length differences are probably due to the
+difference in the time the crystal has had to nucleate and grow.
+Furthermore, the smaller amorphous fraction, which consist primarily of Mg and P as
+well, are likely an amorphous magnesium phosphate precipitate. However, since amorphous
+materials are a non-equilibrium category of compounds 71, the occurrence of an amorphous phase
+could be attributed to insufficient aging, i.e., before reaching equilibrium, for the crystalline
+phase. Ziegenheim et al. and Al-Hamzah et al. showed brucite was formed in an amorphous state
+when the experiment duration was short 72,73. Additionally, literature has shown that while
+precipitating struvite or K-struvite (MgKPO4.6 H2O) 74,75, an amorphous transition state occurred
+before the final crystallization step. Therefore, it is possible that the recovered products in the
+amorphous category of this study are also struvite, but precipitated quickly and require more than
+a 2-hour length-scale for crystallization . However, this hypothesis needs to be further tested via
+approaches that correlate precipitate size with crystalline or amorphous character and
+experimental conditions in a future work.
+Lastly, the optimized electrochemical recovery process demonstrated a remarkably low
+energy consumption of 0.03 kWh/kg P, contrasting sharply with the global energy requirement
+for phosphorus fertilizer production in 2019, which stood at 1.15 kWh/kg P 76. Additionally, the
+recovered phosphorus product in this study is predominantly struvite which creates opportunities
+44
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+for further comparison with other electrochemical nutrient recovery processes that also utilize
+magnesium anodes to produce struvite. Hug and Udert reported energy consumption ranging
+from 0.1 to 2.2 kWh/kg P at 75% recovery, depending on the anodic potential 77. Another study
+with synthetic wastewater reported a specific energy consumption value of 0.031 kWh/kg P at
+500 mM Cl-, which is not typical of municipal wastewater, and a range of 0.09 to 0.18 kWh/kg P
+for 5-50 mM Cl-, a range more realistic for municipal wastewater 78. These comparisons
+highlight the potential of the optimized electrochemical process in reducing the energy
+consumption of the aeration process in wastewater treatment plant through recovery of nutrients
+from the centrate stream, and also decreasing the national/global energy requirement for fertilizer
+production.
+4
+
+Conclusion
+This comprehensive study investigated the characteristics of different municipal
+
+wastewater streams (aerobic, anaerobic dewatering and anaerobic thickening effluent) for
+nutrient recovery potential, screened out the unimportant operational, design and stream
+variables in electrochemical nutrient recovery and optimized these variables to maximize
+phosphorus recovery and minimize specific energy consumptions. The wastewater sampling
+showed a high calcium concentration in Athens aerobic, which, when coupled with its low
+ammonium concentration, suggests that phosphorus recovery via calcium phosphates, such as
+hydroxyapatite, is a more feasible route than struvite precipitation in this treatment plant. On the
+other hand, the low calcium concentration in Columbus anaerobic effluent indicated that the
+impact of calcium as a competing ion for phosphate recovery through struvite precipitation may
+be negligible, provided there is sufficient magnesium available for the reaction. Time series
+45
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+analysis of the year-long sampling data revealed that major ions such as Ca2+ and Mg2+ exhibited
+interdependence with Ortho-P concentration. Additionally, the stream pH was found to correlate
+with Ortho-P and Cl- in the anaerobic dewatering streams.
+Screening analysis of electrochemical nutrient recovery identified anode type, cathodic
+potential, initial P concentration, initial NH4 concentration and temperature to be the most
+important variables for phosphorus recovery and energy consumption, with either SS316 or
+SS304 as the cathode. However, the SS316 typically provided higher P recovery than SS304. In
+the optimization analysis, phosphorus recovery occurs significantly faster, due to the higher pH
+in the real wastewater. Consequently, phosphorus recovery peaks after 30 minutes of an
+experimental run; thus, minimizing the impact of the process variables. The optimum condition
+for high P recovery and low specific energy consumption from the anaerobic digester wastewater
+was a cathodic potential of -0.805 V vs Ag/AgCl, electrode area-volume ratio of 0.145 cm-1, and
+a temperature of 41.3°C, as predicted by the interaction model and confirmed experimentally.
+Finally, solid characterization of the recovered products from the optimization analyses revealed
+a combination of struvite (87-91%) and K-struvite (9-13%), with traces of calcium deposits.
+Future work should investigate the potential for real-world pilot demonstrations at WWTPs
+supported by cost estimation of fertilizer production at different WWTP scales.
+5
+
+Acknowledgements
+The authors acknowledge the assistance from and discussions with employees at both
+
+WWTPs during the sampling phase of this study, especially the plant managers including Darin
+Wise (former Southerly Plant Manager), Doug Dixon Junior (current Southerly Plant Manager)
+and Lisa Agriesti (City of Athens Plant Manager). We also acknowledge Dr. Babatunde I.
+Ojoawo for assistance with sampling logistics and Dr. Brian Lejeune for assistance with the
+46
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Rietveld refinement of the X-Ray Diffractograms. Furthermore, the authors acknowledge
+funding from the U.S. Department of Energy’s Office of Energy Efficiency and Renewable
+Energy (EERE) under the Industrial Efficiency and Decarbonization Office, Research and
+Development for Advanced Water Resource Recovery Systems award number DE-EE0009502.
+This report was prepared as an account of work sponsored by an agency of the United States
+Government. Neither the United States Government nor any agency thereof, nor any of its
+employees, makes any warranty, express or implied, or assumes any legal liability or
+responsibility for the accuracy, completeness, or usefulness of any information, apparatus,
+product, or process disclosed, or represents that its use would not infringe privately owned rights.
+Reference herein to any specific commercial product, process, or service by trade name,
+trademark, manufacturer, or otherwise does not necessarily constitute or imply its endorsement,
+recommendation, or favoring by the United States Government or any agency thereof. The views
+and opinions of authors expressed herein do not necessarily state or reflect those of the United
+States Government or any agency thereof.
+
+47
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+6
+
+References
+
+1. Copeland, C. & Carter, N. T. Energy-Water Nexus: The Water Sector’s Energy Use. Wash.
+DC Congr. Res. Serv. (2017).
+2. E Source. Wastewater Treatment Plants. Business Energy Advisor
+https://esource.bizenergyadvisor.com/article/wastewater-treatment-plants (2020).
+3. Pabi, S., Amarnath, A. & Goldstein, R. Electricity Use and Management in the Municipal
+Water Supply and Wastewater Industries. Water Res. Found. (2013).
+4. Crawford, G. V. & Sandino, J. Energy Efficiency in Wastewater Treatment in North
+America: A Compendium of Best Practices and Case Studies of Novel Approaches: [Final
+Report]. (Water Environment Research Foundation ; IWA Publishing, Alexandria, VA :
+London, United Kingdom, 2010).
+5. The Engineering ToolBox. Solubility of Gases in Water vs. Temperature.
+https://www.engineeringtoolbox.com/gases-solubility-water-d_1148.html.
+6. Devos, P., Filali, A., Grau, P. & Gillot, S. Sidestream characteristics in water resource
+recovery facilities: A critical review. Water Res. 232, 119620 (2023).
+7. Balaguer-Barbosa, M. Recovery of Nutrients from Anaerobically Digested Enhanced
+Biological Phosphorus Removal (EBPR) Sludge through Struvite Precipitation. USF Tampa
+Grad. Theses Diss. (2018).
+8. Campos, J. L. et al. Nitrogen and Phosphorus Recovery From Anaerobically Pretreated
+Agro-Food Wastes: A Review. Front. Sustain. Food Syst. 2, (2019).
+9. Wang, C.-C., Hao, X.-D., Guo, G.-S. & van Loosdrecht, M. C. M. Formation of pure struvite
+at neutral pH by electrochemical deposition. Chem. Eng. J. 159, 280–283 (2010).
+
+48
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+10. de-Bashan, L. E. & Bashan, Y. Recent advances in removing phosphorus from wastewater
+and its future use as fertilizer (1997-2003). Water Res. 38, 4222–4246 (2004).
+11. Guštin, S. & Marinšek-Logar, R. Effect of pH, temperature and air flow rate on the
+continuous ammonia stripping of the anaerobic digestion effluent. Process Saf. Environ.
+Prot. 89, 61–66 (2011).
+12. Le Corre, K. S., Valsami-Jones, E., Hobbs, P. & Parsons, S. A. Phosphorus Recovery from
+Wastewater by Struvite Crystallization: A Review. Crit. Rev. Environ. Sci. Technol. 39, 433–
+477 (2009).
+13. Krishnamoorthy, N. et al. Engineering principles and process designs for phosphorus
+recovery as struvite: A comprehensive review. J. Environ. Chem. Eng. 9, 105579 (2021).
+14. Münch, E. V. & Barr, K. Controlled struvite crystallisation for removing phosphorus from
+anaerobic digester sidestreams. Water Res. 35, 151–159 (2001).
+15. Ansari, A. J., Hai, F. I., Price, W. E., Drewes, J. E. & Nghiem, L. D. Forward osmosis as a
+platform for resource recovery from municipal wastewater - A critical assessment of the
+literature. J. Membr. Sci. 529, 195–206 (2017).
+16. Parsons, S. A. & Smith, J. A. Phosphorus Removal and Recovery from Municipal
+Wastewaters. Elements 4, 109–112 (2008).
+17. Malamis, S., Katsou, E., Di Fabio, S., Bolzonella, D. & Fatone, F. Biological nutrients
+removal from the supernatant originating from the anaerobic digestion of the organic fraction
+of municipal solid waste. Crit. Rev. Biotechnol. 34, 244–257 (2014).
+18. Wei, Y., Van Houten, R. T., Borger, A. R., Eikelboom, D. H. & Fan, Y. Minimization of
+excess sludge production for biological wastewater treatment. Water Res. 37, 4453–4467
+(2003).
+49
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+19. Bagastyo, A. Y. et al. Electrochemically-driven struvite recovery: Prospect and challenges
+for the application of magnesium sacrificial anode. Sep. Purif. Technol. 288, 120653 (2022).
+20. Belarbi, Z., Daramola, D. A. & Trembly, J. P. Bench-Scale Demonstration and
+Thermodynamic Simulations of Electrochemical Nutrient Reduction in Wastewater via
+Recovery as Struvite. J. Electrochem. Soc. 167, 155524 (2020).
+21. Ye, Y. et al. Insight into chemical phosphate recovery from municipal wastewater. Sci. Total
+Environ. 576, 159–171 (2017).
+22. Ghosh, S., Lobanov, S. & Lo, V. K. An overview of technologies to recover phosphorus as
+struvite from wastewater: advantages and shortcomings. Environ. Sci. Pollut. Res. 26,
+19063–19077 (2019).
+23. Kékedy-Nagy, L. et al. Electrochemical nutrient removal from natural wastewater sources
+and its impact on water quality. Water Res. 210, 118001 (2022).
+24. Ojoawo, B. I. & Daramola, D. A. Multivariate screening analyses of electrochemically
+driven nutrient recovery from wastewater using nutrient removal and energy consumption as
+responses. Resour. Conserv. Recycl. Adv. 20, 200194 (2023).
+25. Lei, Y., Zhan, Z., Saakes, M., van der Weijden, R. D. & Buisman, C. J. N. Electrochemical
+Recovery of Phosphorus from Acidic Cheese Wastewater: Feasibility, Quality of Products,
+and Comparison with Chemical Precipitation. ACS EST Water 1, 1002–1013 (2021).
+26. Dickey, D. A. & Fuller, W. A. Distribution of the Estimators for Autoregressive Time Series
+with a Unit Root. J. Am. Stat. Assoc. 74, 427–431 (1979).
+27. Brockwell, P. J. & Davis, R. A. Introduction to Time Series and Forecasting. (Springer
+International Publishing, Cham, 2016). doi:10.1007/978-3-319-29854-2.
+
+50
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+28. National Institute of Standards and Technology (NIST). 5.3.3.5. Plackett-Burman designs.
+https://www.itl.nist.gov/div898/handbook/pri/section3/pri335.htm.
+29. Montgomery, D. C., Runger, G. C. & Hubele, N. F. Engineering Statistics. (John Wiley,
+Hoboken, NJ, 2011).
+30. Minitab. Coefficients table for Analyze Definitive Screening Design.
+https://support.minitab.com/en-us/minitab/help-and-how-to/statistical-modeling/doe/howto/screening/analyze-screening-design/interpret-the-results/all-statistics-andgraphs/coefficients-table/.
+31. Minitab. Interpret the key results for Analyze Definitive Screening Design.
+https://support.minitab.com/en-us/minitab/help-and-how-to/statistical-modeling/doe/howto/screening/analyze-screening-design/interpret-the-results/key-results/.
+32. Minitab. Effects plots for Analyze Definitive Screening Design.
+https://support.minitab.com/en-us/minitab/help-and-how-to/statistical-modeling/doe/howto/screening/analyze-screening-design/interpret-the-results/all-statistics-and-graphs/effectsplots/.
+33. Minitab. Residual plots for Analyze Definitive Screening Design.
+https://support.minitab.com/en-us/minitab/help-and-how-to/statistical-modeling/doe/howto/screening/analyze-screening-design/interpret-the-results/all-statistics-and-graphs/residualplots/.
+34. Seaborn: statistical data visualization. Seaborn.kdeplot — seaborn 0.13.2 documentation.
+https://seaborn.pydata.org/generated/seaborn.kdeplot.html.
+35. Thompson, M. & Walsh, J. N. Handbook of Inductively Coupled Plasma Spectrometry.
+(Springer US, Boston, MA, 1989). doi:10.1007/978-1-4613-0697-9.
+51
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+36. Schneider, C. A., Rasband, W. S. & Eliceiri, K. W. NIH Image to ImageJ: 25 years of image
+analysis. Nat. Methods 9, 671–675 (2012).
+37. Toby, B. H. & Von Dreele, R. B. GSAS-II: the genesis of a modern open-source all purpose
+crystallography software package. J. Appl. Crystallogr. 46, 544–549 (2013).
+38. Rietveld, H. M. A profile refinement method for nuclear and magnetic structures. J. Appl.
+Crystallogr. 2, 65–71 (1969).
+39. Larson, A. C. & Dreele, R. B. V. GENERAL STRUCTURE ANALYSIS SYSTEM (GSAS).
+Los Alamos Natl. Lab. Rep. LAUR 86-748 (2004).
+40. Wolfe, K. D., Zanganeh, A., Arthur, R. N., Trembly, J. P. & Daramola, D. A. Considerations
+for Electrochemical Phosphorus Precipitation: A Figures of Merit Approach. Electrochem.
+Soc. Interface 32, 51 (2023).
+41. Metcalf & Eddy, Inc., Tchobanoglous, G., Stensel, H. D., Tsuchihashi, R. & Burton, F.
+Wastewater Engineering: Treatment and Resource Recovery. (McGraw-Hill Education, New
+York, 2014).
+42. Hallas, J. F., Mackowiak, C. L., Wilkie, A. C. & Harris, W. G. Struvite Phosphorus
+Recovery from Aerobically Digested Municipal Wastewater. Sustainability 11, 376 (2019).
+43. Integrated co-limitation kinetic model for microalgae growth in anaerobically digested
+municipal sludge centrate. Algal Res. 18, 15–24 (2016).
+44. Wang, L. et al. Cultivation of Green Algae Chlorella sp. in Different Wastewaters from
+Municipal Wastewater Treatment Plant. Appl. Biochem. Biotechnol. 162, 1174–1186 (2010).
+45. Water Reuse: Potential for Expanding the Nation’s Water Supply Through Reuse of
+Municipal Wastewater. (National Academies Press, Washington, D.C., 2012).
+doi:10.17226/13303.
+52
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+46. Hach Company. Ammonia and Ammonium. https://www.hach.com/parameters/ammonia.
+47. Drexler, I. L. C., Prieto, A. L. & Yeh, D. Wastewater Constituents. in Comprehensive Water
+Quality and Purification 7–29 (Elsevier, 2014). doi:10.1016/B978-0-12-382182-9.00043-8.
+48. City of Athens. Annual Drinking Water Consumer Confidence Report.
+https://www.athensapr.com/DocumentCenter/View/8903/2020-Consumer-ConfidenceReport?bidId= (2020).
+49. The City of Columbus. Current Consumer Confidence Report.
+https://www.columbus.gov/Services/Public-Utilities/Information-for-Customers/CurrentConsumer-Confidence-Report.
+50. Pindine, G. P., Trembly, J. P. & Daramola, D. A. Equilibrium-Based TemperatureDependent Economic Analysis of the Recovery of Phosphorus from Different Wastewater
+Streams via Chemical Precipitation. ACS EST Water 1, 2318–2326 (2021).
+51. Chen, R.-F., Liu, T., Rong, H.-W., Zhong, H.-T. & Wei, C.-H. Effect of Organic Substances
+on Nutrients Recovery by Struvite Electrochemical Precipitation from Synthetic
+Anaerobically Treated Swine Wastewater. Membranes 11, 594 (2021).
+52. United States Department of Agriculture. Heavy Metal Soil Contamination.
+https://semspub.epa.gov/work/03/2227185.pdf (2000).
+53. Daneshgar, S., Buttafava, A., Capsoni, D., Callegari, A. & Capodaglio, A. G. Impact of pH
+and Ionic Molar Ratios on Phosphorous Forms Precipitation and Recovery from Different
+Wastewater Sludges. Resources 7, 71 (2018).
+54. Capdevielle, A., Sýkorová, E., Biscans, B., Béline, F. & Daumer, M.-L. Optimization of
+struvite precipitation in synthetic biologically treated swine wastewater--determination of the
+optimal process parameters. J. Hazard. Mater. 244–245, 357–369 (2013).
+53
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+55. Liu, X., Zhong, H., Yang, Y., Yuan, L. & Liu, S. Phosphorus removal from wastewater by
+waste concrete: influence of P concentration and temperature on the product. Environ. Sci.
+Pollut. Res. 27, 10766–10777 (2020).
+56. Belarbi, Z. & Trembly, J. P. Electrochemical Processing to Capture Phosphorus from
+Simulated Concentrated Animal Feeding Operations Waste. J. Electrochem. Soc. 165, E685
+(2018).
+57. Ronteltap, M., Maurer, M., Hausherr, R. & Gujer, W. Struvite precipitation from urine –
+Influencing factors on particle size. Water Res. 44, 2038–2046 (2010).
+58. Wang, Y. et al. Electrochemically mediated precipitation of phosphate minerals for
+phosphorus removal and recovery: Progress and perspective. Water Res. 209, 117891 (2022).
+59. Tsang, D. C. W. Chapter 2 - Influence of Natural Organic Matter on Contaminant Removal
+by Permeable Reactive Barrier. in The Role of Colloidal Systems in Environmental
+Protection (ed. Fanun, M.) 19–40 (Elsevier, Amsterdam, 2014). doi:10.1016/B978-0-44463283-8.00002-8.
+60. Lei, Y., Song, B., Saakes, M., van der Weijden, R. D. & Buisman, C. J. N. Interaction of
+calcium, phosphorus and natural organic matter in electrochemical recovery of phosphate.
+Water Res. 142, 10–17 (2018).
+61. Wang, Y., Xiao, Q., Zhong, H., Zheng, X. & Wei, Y. Effect of organic matter on phosphorus
+recovery from sewage sludge subjected to microwave hybrid pretreatment. J. Environ. Sci.
+39, 29–36 (2016).
+62. Feliu, S., Veleva, L. & García-Galvan, F. Effect of Temperature on the Corrosion Behavior
+of Biodegradable AZ31B Magnesium Alloy in Ringer’s Physiological Solution. Metals 9,
+591 (2019).
+54
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+63. Rossrucker, L., Mayrhofer, K. J. J., Frankel, G. S. & Birbilis, N. Investigating the Real Time
+Dissolution of Mg Using Online Analysis by ICP-MS. J. Electrochem. Soc. 161, C115
+(2014).
+64. Kocijan, A., Donik, Č. & Jenko, M. Electrochemical and XPS studies of the passive film
+formed on stainless steels in borate buffer and chloride solutions. Corros. Sci. 49, 2083–2098
+(2007).
+65. Peng, L., Dai, H., Wu, Y., Peng, Y. & Lu, X. A comprehensive review of phosphorus
+recovery from wastewater by crystallization processes. Chemosphere 197, 768–781 (2018).
+66. Graziani, M. & McLean, D. Phosphorus Treatment and Removal Technologies. Minn.
+Pollut. Control Agency (2006).
+67. O’Flaherty, E. & Gray, N. F. A comparative analysis of the characteristics of a range of real
+and synthetic wastewaters. Environ. Sci. Pollut. Res. 20, 8813–8830 (2013).
+68. Ferraris, G., H., F. & W., J. Neutron diffraction study of MgNH4PO4.6H2O (struvite) and
+survey of water molecules donating short hydrogen bonds. Acta Crystallogr. B b42, 253–258
+(1986).
+69. Zagorac, D., Müller, H., Ruehl, S., Zagorac, J. & Rehme, S. Recent developments in the
+Inorganic Crystal Structure Database: theoretical crystal structure data and related features. J.
+Appl. Crystallogr. 52, 918–925 (2019).
+70. Mathew, M. & Schroeder, L. W. Crystal structure of a struvite analogue, MgKPO4.6H2O.
+Acta Crystallogr. Sect. B 35, 11–13 (1979).
+71. Hu, Z.-Q., Wang, A.-M. & Zhang, H.-F. Chapter 22 - Amorphous Materials. in Modern
+Inorganic Synthetic Chemistry (Second Edition) (eds. Xu, R. & Xu, Y.) 641–667 (Elsevier,
+Amsterdam, 2017). doi:10.1016/B978-0-444-63591-4.00022-7.
+55
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+72. Ziegenheim, S. et al. Differential Precipitation of Mg(OH)2 from CaSO4·2H2O Using
+Citrate as Inhibitor—A Promising Concept for Reagent Recovery from MgSO4 Waste
+Streams. Molecules 25, 5012 (2020).
+73. Al-Hamzah, A. A., Smith, E. J. & Fellows, C. M. Inhibition of Homogeneous Formation of
+Magnesium Hydroxide by Low-Molar-Mass Poly(acrylic acid) with Different End-Groups.
+Ind. Eng. Chem. Res. 54, 2201–2207 (2015).
+74. Gardner, L. J. et al. Characterization of and Structural Insight into Struvite-K,
+MgKPO4·6H2O, an Analogue of Struvite. Inorg. Chem. 60, 195–205 (2021).
+75. Hövelmann, J. et al. Struvite Crystallisation and the Effect of Co2+ Ions. Minerals 9, 503
+(2019).
+76. Daramola, D. A. & Hatzell, M. C. Energy Demand of Nitrogen and Phosphorus Based
+Fertilizers and Approaches to Circularity. ACS Energy Lett. 8, 1493–1501 (2023).
+77. Hug, A. & Udert, K. M. Struvite precipitation from urine with electrochemical magnesium
+dosage. Water Res. 47, 289–299 (2013).
+78. Sultana, R., Kékedy-Nagy, L., Daneshpour, R. & Greenlee, L. F. Electrochemical recovery
+of phosphate from synthetic wastewater with enhanced salinity. Electrochimica Acta 426,
+140848 (2022).
+
+56
+
+https://doi.org/10.26434/chemrxiv-2024-gwpw5 ORCID: https://orcid.org/0000-0002-6737-415X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+

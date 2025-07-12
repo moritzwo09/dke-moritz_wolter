@@ -1,0 +1,1663 @@
+1
+
+Multidimensional-constrained Suspect Screening of Hydrophobic Chemicals
+
+2
+
+Using Gas Chromatography-Atmospheric Pressure Chemical Ionization-Ion
+
+3
+
+Mobility-Mass Spectrometry
+
+4
+
+Xiaodi Shi1*, Anna Sobek1, Jonathan P. Benskin1
+
+5
+6
+
+Department of Environmental Science, Stockholm University, Stockholm 10691,
+
+7
+
+1.
+
+8
+
+Sweden
+
+9
+10
+
+*Address correspondence to Xiaodi Shi: Department of Environmental Science,
+
+11
+
+Stockholm University, Stockholm 10691, Sweden. Telephone: +46-073 891 2864. E-
+
+12
+
+mail: xiaodi.shi@aces.su.se. ORCID: 0009-0008-4062-4009
+
+1
+
+https://doi.org/10.26434/chemrxiv-2024-hscrk-v2 ORCID: https://orcid.org/0009-0008-4062-4009 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+13
+
+GRAPHICAL ABSTRACT:
+
+14
+
+2
+
+https://doi.org/10.26434/chemrxiv-2024-hscrk-v2 ORCID: https://orcid.org/0009-0008-4062-4009 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+15
+
+ABSTRACT：
+
+16
+
+Suspect screening strives to rapidly monitor a large number of substances in a sample
+
+17
+
+using mass spectral libraries. For hydrophobic organic chemicals (HOCs), these
+
+18
+
+libraries are primarily based on electron ionization mass spectra. To improve the
+
+19
+
+efficacy of suspect screening, new libraries and workflows are required, leveraging the
+
+20
+
+highly specific analytical data acquired by state-of-the-art mass spectrometers. In this
+
+21
+
+study, we established a new library for 1,590 suspect contaminants, including exact
+
+22
+
+mass and a combination of measured and model-predicted values for retention time (RT)
+
+23
+
+and collision cross section (CCS). The accuracy of in silico predictions was assessed
+
+24
+
+using standards for 102 environmental contaminants. Thereafter, using gas
+
+25
+
+chromatography-atmospheric
+
+26
+
+spectrometry, a suspect screening workflow constrained by full scan mass spectrum (i.e.,
+
+27
+
+MS1), RT, CCS, and fragmentation spectrum (i.e., MS2), together with a continuous
+
+28
+
+scoring system, was established to reduce false positives and improve identification
+
+29
+
+confidence. Application of the method to fortified and standard reference sediment
+
+30
+
+samples demonstrated true positive rates of 79% and 64%, respectively, with all false
+
+31
+
+positives attributed to suspect isomers, indicating that the method is highly specific.
+
+32
+
+This study offers a new workflow for improved suspect screening of HOCs using
+
+33
+
+multidimensional information, and highlights the need to enrich CCS databases and
+
+34
+
+extend the applicable chemical space of current in silico tools to non-polar substances.
+
+pressure
+
+chemical
+
+ionization-ion
+
+mobility-mass
+
+35
+36
+
+SYNOPSIS: A multidimensional-constrained suspect analysis of hydrophobic
+3
+
+https://doi.org/10.26434/chemrxiv-2024-hscrk-v2 ORCID: https://orcid.org/0009-0008-4062-4009 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+37
+
+chemicals was developed using gas chromatography-atmospheric pressure chemical
+
+38
+
+ionization coupled to ion mobility-mass spectrometry.
+
+39
+40
+
+KEYWORDS: Suspect screening; Ion mobility; Collision cross section; Hydrophobic
+
+41
+
+chemicals; Sediment
+
+4
+
+https://doi.org/10.26434/chemrxiv-2024-hscrk-v2 ORCID: https://orcid.org/0009-0008-4062-4009 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+42
+
+INTRODUCTION
+
+43
+
+The number of chemicals used in society is large and constantly increasing. For
+
+44
+
+instance, a survey of 22 chemical inventories from 19 countries revealed over 350,000
+
+45
+
+registered substances,1 while between 700 and 1,700 new chemicals are added each
+
+46
+
+year to the United States’ TSCA (Toxic Substances Control Act) and European REACH
+
+47
+
+(Registration, Evaluation, Authorization and Restriction of Chemicals) inventories
+
+48
+
+alone.2 This situation challenges our capacity for chemical monitoring and risk
+
+49
+
+assessment using conventional approaches. To address this issue, suspect screening has
+
+50
+
+emerged as a tool for rapidly detecting a large number of substances by matching data
+
+51
+
+acquired by high-resolution mass spectrometry (HRMS) to that contained in a database.
+
+52
+
+High-confidence matches guide the acquisition of standards for the final confirmation
+
+53
+
+or exclusion of the identification.3
+
+54
+
+Typically, suspect screening of hydrophobic organic chemicals (HOCs) involves
+
+55
+
+matching retention indices (RI) and mass spectral fingerprints derived from gas
+
+56
+
+chromatography (GC) with electron ionization (EI) at 70 eV.4 However, this strategy is
+
+57
+
+limited by the availability of EI mass spectra (particularly high-resolution) in
+
+58
+
+libraries.3,5 Further, the extensive fragmentation and frequent absence of molecular ions
+
+59
+
+using EI hinder structure predictions. Therefore, novel suspect lists and workflows with
+
+60
+
+high specificity using state-of-the-art mass spectrometry are required.
+
+61
+
+As a soft ionization technique for GC, atmospheric pressure chemical ionization
+
+62
+
+(APCI) can harness molecular ions for HOCs through charge/proton transfer.6 When
+
+63
+
+coupled to ion mobility (IM)-HRMS, ions are further separated based on their
+5
+
+https://doi.org/10.26434/chemrxiv-2024-hscrk-v2 ORCID: https://orcid.org/0009-0008-4062-4009 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+64
+
+interactions with neutral buffering gases under an electric field. Differences in drift time
+
+65
+
+produced from IM enhance the resolving-power of product ion scans by removing co-
+
+66
+
+eluting ions. Collision cross section (CCS) values derived from drift times are a novel
+
+67
+
+instrument-independent
+
+68
+
+multidimensional information can be acquired or predicted for each compound, namely
+
+69
+
+full scan mass spectrum (i.e., MS1), retention time (RT), CCS, and fragmentation
+
+70
+
+spectrum (i.e., MS2), thereby improving the confidence in structure assignments.
+
+71
+
+However, suspect screening of HOCs using multidimensional information has not been
+
+72
+
+fully explored, with the exception of a few studies focused on establishing CCS
+
+73
+
+databases.7
+
+property
+
+of
+
+ions
+
+for
+
+identification.7
+
+Consequently,
+
+74
+
+This study aims to establish and validate a multidimensional-constrained workflow
+
+75
+
+for suspect screening of HOCs using GC-APCI-IM-HRMS. Suspect lists were
+
+76
+
+compiled consisting of exact mass and a combination of measured and model-predicted
+
+77
+
+RT and CCS values. A continuous scoring system was established to narrow down the
+
+78
+
+number of candidates using continuous similarity information. Finally, our method was
+
+79
+
+validated using sediment samples, considering their complex matrix and function as a
+
+80
+
+sink for HOCs.
+
+81
+82
+
+MATERIALS AND METHODS
+
+83
+
+Instrumental analysis. The present work employed a Waters quadrupole-cyclic ion
+
+84
+
+mobility-time-of-flight mass spectrometer (Waters Corp., Wilmslow, U.K.) coupled to
+
+85
+
+an Agilent 8890 GC (Agilent Technologies, Santa Clara, CA, U.S.A) via APCI in
+6
+
+https://doi.org/10.26434/chemrxiv-2024-hscrk-v2 ORCID: https://orcid.org/0009-0008-4062-4009 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+86
+
+positive mode under both dry and wet conditions using previously optimized
+
+87
+
+parameters.8 The detector was operated in high-definition MSE mode with the collision
+
+88
+
+energy fixed at 6 eV in low energy mode and ramped between 15-50 eV in high energy
+
+89
+
+mode. The detailed instrumental method is described in Section A of the Supporting
+
+90
+
+Information (SI). Progenesis QI (version 3.0, Waters Corp.) was used for lockmass
+
+91
+
+correction, precursor and product ion pairing, peak picking, and alignment. MS1 and
+
+92
+
+MS2 data were exported separately and MS2 data was converted to SIRIUS format using
+
+93
+
+a custom R script (available at https://github.com/Xiaodi-Shi/4D-suspect). Further
+
+94
+
+information on software parameters is provided in Sections B of the SI.
+
+95
+96
+
+Suspect lists. We compiled two suspect lists containing information on identity (i.e.,
+
+97
+
+CAS, InChIKey, and formula), exact mass, RT, and CCS. The first list was derived from
+
+98
+
+matching contaminants from all GC-based suspect lists in the NORMAN-SLE9 with
+
+99
+
+experimentally-derived CCS values from a unified database of 23 scientific articles
+
+100
+
+published between 2016 and 2022,7 resulting in 1,060 compounds. A total of 511 of
+
+101
+
+these substances were missing RI data, requiring prediction (see below). The second
+
+102
+
+list was derived from both the Arctic Monitoring and Assessment Programme’s list of
+
+103
+
+chemicals of emerging Arctic concern, as well as the European Chemical Agency’s list
+
+104
+
+of substances of very high concern.10,11 Substances with ionizable functional groups and
+
+105
+
+substances which already occurred on the first list were removed, leaving a total of 530
+
+106
+
+chemicals of concern. For this list, only 74 contaminants had literature CCS values in
+
+107
+
+the aforementioned unified database,7 while 63 had literature RI data.
+7
+
+https://doi.org/10.26434/chemrxiv-2024-hscrk-v2 ORCID: https://orcid.org/0009-0008-4062-4009 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+108
+
+Since analytes can be ionized through charge/proton transfer using APCI,6 exact
+
+109
+
+masses of the most abundant isotope for both M+. and [M+H]+ ions were calculated. We
+
+110
+
+assumed that possible discrepancies in CCS values among M+., [M+H]+, and [M-H]-
+
+111
+
+ions fell within measurement uncertainty. For compounds lacking literature CCS values,
+
+112
+
+predictions were made for [M+H]+ ions using the AllCCS2 algorithm.12 Since alkanes
+
+113
+
+evade ionization using APCI, the Fiehn RI was adopted with fatty acid methyl esters as
+
+114
+
+references.13 For both lists, experimental Fiehn RIs were collected from the MS-DIAL
+
+115
+
+metabolomics MSP spectral kit, if available.14 Kovats RIs for the remaining compounds
+
+116
+
+were sourced from the NIST RI library, or otherwise predicted using a deep
+
+117
+
+convolutional neural network method.15 Kovats RIs were then converted to Fiehn RIs,
+
+118
+
+and thereafter RT. Conversions among RT and RIs are described in Section C and Table
+
+119
+
+S1-3 in the SI. The two suspect lists can be found in Tables S4 and S5 in the SI.
+
+120
+
+The quality of suspect list data was estimated by comparing measured and
+
+121
+
+literature/model-predicted values. MS1, RT, CCS, and MS2 were acquired for 102
+
+122
+
+environmental contaminant standards (1.44< log Kow <16.8; -9.31< log Kaw <11.3),
+
+123
+
+including polycyclic aromatic hydrocarbons (PAHs), organophosphate esters (OPEs),
+
+124
+
+polychlorinated biphenyls (PCBs), polybrominated diphenyl ethers (PBDEs), and other
+
+125
+
+organohalogens. We further predicted RTs for all 102 of these contaminants and CCS
+
+126
+
+values for a subset of 85 capable of generating M+., [M+H]+, or [M-H]+ ions as base
+
+127
+
+peaks using aforementioned models. These contaminants, together with their measured
+
+128
+
+and predicted qualitative information, are listed in Table S6 in the SI.
+
+129
+8
+
+https://doi.org/10.26434/chemrxiv-2024-hscrk-v2 ORCID: https://orcid.org/0009-0008-4062-4009 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+130
+
+Multidimensional suspect screening. Inspired by a previously developed approach for
+
+131
+
+metabolomics,16 a workflow with a continuous scoring system was established. This
+
+132
+
+approach differs from confidence level systems (e.g., the Schymanski confidence scale)
+
+133
+
+by providing continuous uncertainty/similarity information to reduce false positive
+
+134
+
+results and improve identification confidence.17,18
+
+135
+
+Peaks were matched against suspect lists by exact mass, RT, and CCS using a
+
+136
+
+custom R script (available at https://github.com/Xiaodi-Shi/4D-suspect). The error
+
+137
+
+threshold for exact mass measurements was set to <5 ppm for substances with mass-to-
+
+138
+
+charge >200 Da and <2 mDa for substances <200 Da. For RT and CCS, differences
+
+139
+
+between measured and reference values were calculated using Equations (E) 1 and 2. A
+
+140
+
+difference smaller than the high-confidence threshold (CThigh) scored 100%, while
+
+141
+
+peaks with differences larger than the low-confidence threshold were excluded (CTlow).
+
+142
+
+If a difference fell between CThigh and CTlow, a score was calculated using E3.
+
+143
+
+∆𝑅𝑇 (𝑚𝑖𝑛) = 𝑅𝑇𝑚𝑒𝑎𝑠𝑢𝑟𝑒𝑑 − 𝑅𝑇𝑟𝑒𝑓𝑒𝑟𝑒𝑛𝑐𝑒
+
+144
+
+∆𝐶𝐶𝑆 (%) =
+
+𝐶𝐶𝑆𝑚𝑒𝑎𝑠𝑢𝑟𝑒𝑑 −𝐶𝐶𝑆𝑟𝑒𝑓𝑒𝑟𝑒𝑛𝑐𝑒
+
+145
+
+𝑆𝑐𝑜𝑟𝑒 (%) = {100 −
+
+, ∆𝑅𝑇 𝑜𝑟 ∆𝐶𝐶𝑆 ≤ 𝐶𝑇ℎ𝑖𝑔ℎ
+
+(∆−𝐶𝑇ℎ𝑖𝑔ℎ )×100
+(𝐶𝑇𝑙𝑜𝑤 −𝐶𝑇ℎ𝑖𝑔ℎ )
+
+0
+
+E2
+
+× 100%
+
+𝐶𝐶𝑆𝑟𝑒𝑓𝑒𝑟𝑒𝑛𝑐𝑒
+
+100
+
+E1
+
+, 𝐶𝑇ℎ𝑖𝑔ℎ < ∆𝑅𝑇 𝑜𝑟 ∆𝐶𝐶𝑆 < 𝐶𝑇𝑙𝑜𝑤
+
+E3
+
+, ∆𝑅𝑇 𝑜𝑟 ∆𝐶𝐶𝑆 ≥ 𝐶𝑇𝑙𝑜𝑤
+
+146
+
+The thresholds were determined based on the quality of suspect lists (see discussion in
+
+147
+
+the next section). Only candidates with matches in all three dimensions were retained.
+
+148
+
+MS1 and MS2 spectra were further checked. Observation of at least one isotope ion
+
+149
+
+was required, and the geometric mean of isotopic relative intensity deviation should be
+
+150
+
+lower than 5%.19 MS2 similarity scores were acquired from SIRIUS+CSI:FingerID
+9
+
+https://doi.org/10.26434/chemrxiv-2024-hscrk-v2 ORCID: https://orcid.org/0009-0008-4062-4009 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+151
+
+(version 5.8.6).20 Since candidates were known after matches of exact mass, RT, and
+
+152
+
+CCS, we specified the formula, adduct, parent ion, and InChIKey in SIRIUS. Detailed
+
+153
+
+SIRIUS parameters are described in Section B of the SI. The performance of MS2
+
+154
+
+similarity using SIRIUS was evaluated using 63 of 102 measured contaminants with
+
+155
+
+M+./[M+H]+ ions as the base peak and at least two detected monoisotopic fragment ions
+
+156
+
+in MS2. Fragment ions of these 63 contaminants are provided in the SI in NIST MSP
+
+157
+
+library format. The final multidimensional score was calculated using E4.
+
+158
+
+𝑆𝑐𝑜𝑟𝑒 (%) = 𝑊𝑅𝑇 × 𝑆𝑐𝑜𝑟𝑒𝑅𝑇 + 𝑊𝐶𝐶𝑆 × 𝑆𝑐𝑜𝑟𝑒𝐶𝐶𝑆 + 𝑊𝑀𝑆2 × 𝑆𝑐𝑜𝑟𝑒𝑀𝑆2
+
+159
+
+The true positive rate was independent of the assignment of weights in this study, based
+
+160
+
+on testing with real sediment samples (see Figure S1 in the SI). Considering the
+
+161
+
+dependence of RT on chromatographic conditions, less weight was assigned to the RT
+
+162
+
+score (WRT=0.2) than CCS and MS2 scores (0.4 for both). The same weightings were
+
+163
+
+previously employed in a liquid chromatography (LC)-based metabolomic workflow.16
+
+164
+
+When the MS2 score could not be estimated (e.g., < two detected monoisotopic fragment
+
+165
+
+ions in MS2), accurate measurement of RT and CCS becomes essential. Thus, the cutoff
+
+166
+
+score was set at 60% for potential candidates. The highest-scored candidate for each
+
+167
+
+suspect compound was retained.
+
+E4
+
+168
+169
+
+Workflow validation. The workflow was validated in two types of sediment (both
+
+170
+
+measured in triplicate) by assessing the true positive identification rate for 37
+
+171
+
+contaminants (Table S6 in the SI) which occurred on our suspect lists and for which
+
+172
+
+standards were available. The first sediment was a NIST standard reference material
+10
+
+https://doi.org/10.26434/chemrxiv-2024-hscrk-v2 ORCID: https://orcid.org/0009-0008-4062-4009 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+173
+
+(SRM; 1941b-Organics in Marine Sediment), while the second was a fortified surface
+
+174
+
+(0-2 cm) sediment collected from a reference site (58.26º N,16.91º E) in the Baltic Sea
+
+175
+
+in January 2023.21 The NIST material was used as-received while the fortified sediment
+
+176
+
+was prepared by sieving (mesh size 1 mm), followed by addition of about 1 ng of each
+
+177
+
+contaminant. Samples were extracted three times by accelerated solvent extraction
+
+178
+
+(ASE 350; Dionex, U.S.A.) using 20 mL of acetone/n-hexane (1:1 v/v) per cycle,
+
+179
+
+following previously described procedures (for further details, see Section D of the SI).8
+
+180
+
+Instrumental analysis and data processing were carried out as described above.
+
+181
+182
+
+RESULTS AND DISCUSSION
+
+183
+
+Performance of model predictions for suspect lists. Among 102 measured
+
+184
+
+contaminants, 34 already had literature CCS values in our suspect lists, offering an
+
+185
+
+opportunity to evaluate the accuracy of our measured values. Previous interlaboratory
+
+186
+
+and interplatform comparisons reported that CCS relative deviations tend to be within
+
+187
+
+±2%.7,22-24 In the present work, relative deviations between measured and
+
+188
+
+experimentally-derived CCS values fell within ±2% for 67.6% of substances, and
+
+189
+
+within ±3% for 82.3% (Figure 1A). Based on these results, high- and low-confidence
+
+190
+
+thresholds for literature CCS values were set at ±2% and ±3%, respectively. For the
+
+191
+
+remaining 68 substances, experimentally determined CCS values are reported here for
+
+192
+
+the first time.
+
+11
+
+https://doi.org/10.26434/chemrxiv-2024-hscrk-v2 ORCID: https://orcid.org/0009-0008-4062-4009 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+
+Figure 1. Distribution of relative deviations between measured collision cross section
+(CCS) values with either literature (A) or predicted (B) values; distribution of
+differences between measured retention times (RTs) with either literature (C) or
+predicted (D) values. Using Panel A as an example, differences within high-confidence
+thresholds (denoted by green bars) score 100%, while differences outside lowconfidence thresholds (denoted by grey bars) score 0%. A continuous score was
+calculated for differences between high- and low-confidence thresholds (denoted by
+orange bars). n is the number of substances.
+The comparison between our measured and predicted CCS values for 85
+
+204
+
+contaminants capable of generating M+., [M+H]+, or [M-H]+ ions as base peaks showed
+
+205
+
+an average relative deviation (±standard deviation [SD]) of -7.03% (±5.42%),
+
+206
+
+indicating an overprediction of CCS values by the ALLCCS2 model. This considerable
+
+207
+
+discrepancy is attributed to the fact that most compounds used in the model’s training
+
+208
+
+set are non-halogenated endogenous metabolites which tend to have larger CCS values
+
+209
+
+than halogenated substances.12,25 All relative deviations in measured CCS values among
+
+210
+
+available isomers fell within 5%. To avoid misidentification at the isomeric level, high-
+
+211
+
+and low-confidence thresholds for predicted CCS values were set at ±5% and ±7%
+
+212
+
+covering 34.1% and 48.2% of 85 measured contaminants, respectively (Figure 1B).
+12
+
+https://doi.org/10.26434/chemrxiv-2024-hscrk-v2 ORCID: https://orcid.org/0009-0008-4062-4009 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+213
+
+In contrast to CCS, uncertainties associated with RT predictions (mean ± SD of
+
+214
+
+0.086 ± 1.13 min, n=102) are comparable to those of RTs converted from literature RI
+
+215
+
+values (mean ± SD of 0.15 ± 0.69 min, n=36; Figure 1C-D). This resulted from the
+
+216
+
+similarity between our measured contaminants and compounds for model training.15
+
+217
+
+For RTs from both sources, mean ± SD and mean ± 2 × SD were selected as high- and
+
+218
+
+low-confidence thresholds, respectively.
+
+219
+
+The performance of SIRIUS for HOCs was evaluated using 63 of 102 measured
+
+220
+
+contaminants with M+./[M+H]+ ions as the base peak and at least two detected
+
+221
+
+monoisotopic fragment ions in MS2. The mean ± SD of SIRIUS similarities were 72.43
+
+222
+
+± 18.0 %. (see Table S6 in the SI for detailed scores). Although this model is mainly
+
+223
+
+trained on data acquired using electrospray ionization,20 the relatively high scores
+
+224
+
+observed indicate that the mechanism of collision induced dissociation could be
+
+225
+
+independent of ionization method.
+
+226
+227
+
+Workflow validation. The number of compound hits decreased as more dimensions
+
+228
+
+were added to the screening (Figure 2). There were 63 and 66 hits in the fortified
+
+229
+
+sediment and SRM 1941b, respectively, with all exact mass, RT, and CCS matched.
+
+230
+
+These numbers are 36.3% and 40% lower than those obtained with only exact mass and
+
+231
+
+RT matched for the fortified sediment and SRM1941b, respectively. This indicates that
+
+232
+
+the analytical space for potential candidates can be effectively constrained using CCS
+
+233
+
+as an additional dimension.
+
+13
+
+https://doi.org/10.26434/chemrxiv-2024-hscrk-v2 ORCID: https://orcid.org/0009-0008-4062-4009 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+234
+235
+236
+237
+238
+239
+
+Figure 2. Number of hits in fortified- and NIST samples at different steps in the suspect
+screening workflow (from left to right): hits with molecular weight (MW) and retention
+time (RT) match; MW, RT, and collision cross section (CCS) match; four-dimensional
+(4D) score over 60%; and the highest score.
+
+240
+
+After checking mass spectra, 50 candidates in the fortified sediment and 51
+
+241
+
+candidates in SRM 1941b remained (i.e. multidimensional scores >60%; Figure 2).
+
+242
+
+According to the Schymanski confidence scale, these candidates would be classified as
+
+243
+
+level 2/3, indicating a large fraction of false positive results.17,18 Our continuous scoring
+
+244
+
+system can aid in further narrowing down the number of candidates. Finally, the
+
+245
+
+highest-scoring candidates for each suspect compound were retained (19 in the fortified
+14
+
+https://doi.org/10.26434/chemrxiv-2024-hscrk-v2 ORCID: https://orcid.org/0009-0008-4062-4009 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+246
+
+sediment and 14 in SRM 1941b). These hits included PAHs, PCBs, PBDEs, OPEs,
+
+247
+
+hexachlorobenzene, and 1,2-bis(2,4,6-tribromophenoxy)ethane. Detailed scores for
+
+248
+
+each compound are listed in the Table S7 in the SI. The true positive rates were 78.9%
+
+249
+
+and 64.3% for the fortified and standard samples, respectively (Figure 2). Notably, all
+
+250
+
+false positives were isomers of the correct compounds. These results suggest that the
+
+251
+
+combination of the exact mass of the molecular ion, isotopic distribution, and fragment
+
+252
+
+ions can effectively determine the elemental composition, particularly for halogenated
+
+253
+
+compounds, while CCS matching further constrains the general structure.
+
+254
+255
+
+Perspectives. Based on analytical data acquired by GC-APCI-IM-HRMS, a suspect
+
+256
+
+screening workflow for HOCs constrained by MS1, RT, CCS, and MS2, together with a
+
+257
+
+continuous scoring system, was established for the first time. True positive rates of 78.9%
+
+258
+
+and 64.3% for the fortified sediment and SRM 1941b were achieved, respectively, with
+
+259
+
+misidentification only at the isomeric level. CCS of (quasi-)molecular ion is a
+
+260
+
+confirmatory dimension with high reproducibility to improve identification confidence.
+
+261
+
+However, since conventional EI for GC-based characterization hampers formation of
+
+262
+
+the molecular ions, prior experimental CCS values were acquired mostly for
+
+263
+
+compounds suitable for LC measurement with soft ionization. In our suspect lists, 1,134
+
+264
+
+compounds had literature CCS values, representing only 28% of organic pollutants in
+
+265
+
+the unified CCS database, and over 20 times fewer than the number of compounds in
+
+266
+
+the METLIN-CCS database.7,26 Consequently, current CCS prediction models,
+
+267
+
+primarily trained on non-halogenated endogenous metabolites, displayed considerable
+
+268
+
+error (mean ± SD: -7.23% ± 5.32%) when predicting CCS for HOCs (which are mainly
+
+269
+
+halogenated) in this study. Harnessing molecular ions using APCI presents
+
+270
+
+opportunities to enrich CCS databases for HOCs and to extend the applicable chemical
+15
+
+https://doi.org/10.26434/chemrxiv-2024-hscrk-v2 ORCID: https://orcid.org/0009-0008-4062-4009 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+271
+
+space of current models from polar to non-polar compounds. This advancement is
+
+272
+
+crucial for keeping analytical techniques aligned with the introduction of emerging
+
+273
+
+chemicals with diverse properties.
+
+274
+275
+
+ASSOCIATED CONTENT
+
+276
+
+Supporting Information
+
+277
+
+Additional information as noted in the text is available.
+
+278
+
+Instrumental method (Section A); software parameters (Section B); conversion between
+
+279
+
+RTs and RIs (Section C); regressions among RTs and RIs (Table S1); RTs and RIs of
+
+280
+
+fatty acid methyl esters (Table S2); measured RTs of alkanes (Table S3); suspect list of
+
+281
+
+GC-amenable chemicals with experimentally-derived CCS values (Table S4); suspect
+
+282
+
+list of chemicals of concern (Table S5); qualitative information of reference standards
+
+283
+
+(Table S6); true positive rates using different weights (Figure S1); sample preparation
+
+284
+
+(Section D); highest-scoring candidates in sediment samples (Table S7) (XLSX).
+
+285
+
+MS2 library (MSP).
+
+286
+
+R scripts for exact mass, RT, CCS matching and format converting can be found at
+
+287
+
+https://github.com/Xiaodi-Shi/4D-suspect.
+
+288
+289
+
+AUTHOR INFORMATION
+
+290
+
+Corresponding Author
+
+291
+
+Xiaodi Shi - Department of Environmental Science, Stockholm University, Stockholm
+
+292
+
+10691, Sweden; ORCID: 0009-0008-4062-4009; E-mail: xiaodi.shi@aces.su.se.
+16
+
+https://doi.org/10.26434/chemrxiv-2024-hscrk-v2 ORCID: https://orcid.org/0009-0008-4062-4009 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+293
+
+Notes
+
+294
+
+The authors declare no competing financial interest.
+
+295
+296
+
+ACKNOWLEDGEMENTS
+
+297
+
+We thank Gastón Alurralde and Elena Gorokhova (both at Department of
+
+298
+
+Environmental Science, Stockholm University) for providing sediment samples. This
+
+299
+
+research was supported by a Marie Sklodowska-Curie postdoctoral fellowship under
+
+300
+
+Horizon Europe (Grant agreement number: 101150779), Ymer-80 foundation, and
+
+301
+
+faculty funding of Department of Environmental Science, Stockholm University.
+
+302
+303
+
+REFERENCE
+
+304
+
+(1) Wang, Z.; Walker, G. W.; Muir, D. C. G.; Nagatani-Yoshida, K. Toward a global
+
+305
+
+understanding of chemical pollution: A first comprehensive analysis of regulatory
+
+306
+
+industrial chemical inventories. Environ. Sci. Technol. 2020, 54, 2575−2584.
+
+307
+
+(2) Muir, D.; Getzinger, G.; McBride, M.; Ferguson, P. How many chemicals in
+
+308
+
+commerce have been analyzed in environmental media? A 50 year bibliometric analysis.
+
+309
+
+Environ. Sci. Technol. 2023, 57, 9119−9129.
+
+310
+
+(3) Hollender, J.; Schymanski, E.; Ahrens, L.; Alygizakis, N.; Béen, F.; Bijlsma, L.;
+
+311
+
+Brunner, A.; Celma, A.; Fildier, A.; Fu, Q.; Gago-Ferrero, P.; Gil-Solsona, R.; Haglund,
+
+312
+
+P.; Hansen, M.; Kaserzon, S.; Kruve, A.; Lamoree, M.; Margoum, C.; Meijer, J.; Merel,
+
+313
+
+S.; Rauert, C.; Rostkowski, P.; Samanipour, S.; Schulze, B.; Schulze, T.; Singh, R.;
+
+314
+
+Slobodnik, J.; Steininger-Mairinger, T.; Thomaidis, N.; Togola, A.; Vorkamp, K.;
+17
+
+https://doi.org/10.26434/chemrxiv-2024-hscrk-v2 ORCID: https://orcid.org/0009-0008-4062-4009 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+315
+
+Vulliet, E.; Zhu, L.; Krauss, M. NORMAN guidance on suspect and non-target
+
+316
+
+screening in environmental monitoring. Environ. Sci. Eur. 2023, 35, 75.
+
+317
+
+(4) Phillips, K.; Yau, A.; Favela, K.; Isaacs, K.; McEachran, A.; Grulke, C.; Richard, A.;
+
+318
+
+Williams, A.; Sobus, J.; Thomas, R.; Wambaugh, J. Suspect screening analysis of
+
+319
+
+chemicals in consumer products. Environ. Sci. Technol. 2018, 52, 3125−3135.
+
+320
+
+(5) Schymanski, E.; Gallampois, C.; Krauss, M.; Meringer, M.; Neumann, S.; Schulze,
+
+321
+
+T.; Wolf, S.; Brack, W. Consensus structure elucidation combining GC/EI-MS, structure
+
+322
+
+generation, and calculated properties. Anal. Chem. 2012, 84, 3287−3295.
+
+323
+
+(6) Ayala-Cabrera, J.; Montero, L.; Meckelmann, S.; Uteschil, F.; Schmitz, O. Review
+
+324
+
+on atmospheric pressure ionization sources for gas chromatography-mass spectrometry.
+
+325
+
+Part I: Current ion source developments and improvements in ionization strategies.
+
+326
+
+Anal. Chim. Acta. 2023, 1238, 340353.
+
+327
+
+(7) Song, X.; Canellas, E.; Dreolin, N.; Goshawk, J.; Lv, M.; Qu, G.; Nerin, C.; Jiang,
+
+328
+
+G. Application of ion mobility spectrometry and the derived collision cross section in
+
+329
+
+the analysis of environmental organic micropollutants. Environ. Sci. Technol. 2023, 57,
+
+330
+
+21485–21502.
+
+331
+
+(8) Shi, X.; Langberg, H.; Sobek, A.; Benskin, J. Exploiting molecular ions for
+
+332
+
+screening hydrophobic contaminants in sediments using gas chromatography-
+
+333
+
+atmospheric pressure chemical ionization-ion mobility mass spectrometry. ChemRxiv.
+
+334
+
+2024, doi:10.26434/chemrxiv-2024-ft9cl.
+
+335
+
+(9) Mohammed Taha, H.; Aalizadeh, R.; Alygizakis, N.; Antignac, J.; Arp, H.; Bade, R.;
+
+336
+
+Baker, N.; Belova, L.; Bijlsma, L.; Bolton, E.; Brack, W.; Celma, A.; Chen, W.; Cheng,
+18
+
+https://doi.org/10.26434/chemrxiv-2024-hscrk-v2 ORCID: https://orcid.org/0009-0008-4062-4009 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+337
+
+T.; Chirsir, P.; Čirka, Ľ.; D’Agostino, L.; Djoumbou Feunang, Y.; Dulio, V.; Fischer, S.;
+
+338
+
+Gago-Ferrero, P.; Galani, A.; Geueke, B.; Głowacka, N.; Glüge, J.; Groh, K.; Grosse,
+
+339
+
+S.; Haglund, P.; Hakkinen, P.; Hale, S.; Hernandez, F.; Janssen, E.; Jonkers, T.; Kiefer,
+
+340
+
+K.; Kirchner, M.; Koschorreck, J.; Krauss, M.; Krier, J.; Lamoree, M.; Letzel, M.;
+
+341
+
+Letzel, T.; Li, Q.; Little, J.; Liu, Y.; Lunderberg, D.; Martin, J.; McEachran, A.; McLean,
+
+342
+
+J.; Meier, C.; Meijer, J.; Menger, F.; Merino, C.; Muncke, J.; Muschket, M.; Neumann,
+
+343
+
+M.; Neveu, V.; Ng, K.; Oberacher, H.; O’Brien, J.; Oswald, P.; Oswaldova, M.; Picache,
+
+344
+
+J.; Postigo, C.; Ramirez, N.; Reemtsma, T.; Renaud, J.; Rostkowski, P.; Rüdel, H.; Salek,
+
+345
+
+R.; Samanipour, S.; Scheringer, M.; Schliebner, I.; Schulz, W.; Schulze, T.; Sengl, M.;
+
+346
+
+Shoemaker, B.; Sims, K.; Singer, H.; Singh, R.; Sumarah, M.; Thiessen, P.; Thomas, K.;
+
+347
+
+Torres, S.; Trier, X.; van Wezel, A.; Vermeulen, R.; Vlaanderen, J.; von der Ohe, P.;
+
+348
+
+Wang, Z.; Williams, A.; Willighagen, E.; Wishart, D.; Zhang, J.; Thomaidis, N.;
+
+349
+
+Hollender, J.; Slobodnik, J.; Schymanski, E. The NORMAN Suspect List Exchange
+
+350
+
+(NORMAN-SLE): Facilitating European and worldwide collaboration on suspect
+
+351
+
+screening in high resolution mass spectrometry. Environ. Sci. Eur. 2022, 34, 104.
+
+352
+
+(10) Candidate List of substances of very high concern for Authorisation, European
+
+353
+
+Chemical Agency. https://echa.europa.eu/candidate-list-table.
+
+354
+
+(11) Reppas-Chrysovitsinos, E.; Sobek, A.; MacLeod, M. Screening-level exposure-
+
+355
+
+based prioritization to identify potential POPs, vPvBs and planetary boundary threats
+
+356
+
+among Arctic contaminants. Emerg. Contam. 2017, 3, 85–94.
+
+357
+
+(12) Zhang, H.; Luo, M.; Wang, H.; Ren, F.; Yin, Y.; Zhu, Z. AllCCS2: Curation of ion
+
+358
+
+mobility collision cross-section atlas for small molecules using comprehensive
+19
+
+https://doi.org/10.26434/chemrxiv-2024-hscrk-v2 ORCID: https://orcid.org/0009-0008-4062-4009 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+359
+
+molecular representations. Anal. Chem. 2023, 95, 13913–13921.
+
+360
+
+(13) Kind, T.; Wohlgemuth, G.; Lee, D.; Lu, Y.; Palazoglu, M.; Shahbaz, S.; Fiehn, O.
+
+361
+
+FiehnLib: Mass spectral and retention index libraries for metabolomics based on
+
+362
+
+quadrupole and time-of-flight gas chromatography/mass Spectrometry. Anal. Chem.
+
+363
+
+2009, 81, 10038–10048.
+
+364
+
+(14) Lai, Z.; Tsugawa, H.; Wohlgemuth, G.; Mehta, S.; Mueller, M.; Zheng, Y.; Ogiwara,
+
+365
+
+A.; Meissen, J.; Showalter, M.; Takeuchi, K.; Kind, T.; Beal, P.; Arita, M.; Fiehn, O.
+
+366
+
+Identifying metabolites by integrating metabolome databases with mass spectrometry
+
+367
+
+cheminformatics. Nat. Methods. 2018, 15, 53–56.
+
+368
+
+(15) Matyushin, D.; Sholokhova, A.; Buryak, A. A deep convolutional neural network
+
+369
+
+for the estimation of gas chromatographic retention indices. J. Chromatogr. A. 2019,
+
+370
+
+1607, 460395.
+
+371
+
+(16) Zhou, Z.; Luo, M.; Chen, X.; Yin, Y.; Xiong, X.; Wang, R.; Zhu, Z. Ion mobility
+
+372
+
+collision cross-section atlas for known and unknown metabolite annotation in
+
+373
+
+untargeted metabolomics. Nat. Commun. 2020, 11, 1–13.
+
+374
+
+(17) Celma, A.; Sancho, J.; Schymanski, E.; Fabregat-Safont, D.; Ibáñez, M.; Goshawk,
+
+375
+
+J.; Barknowitz, G.; Hernández, F.; Bijlsma, L. Improving target and suspect screening
+
+376
+
+high-resolution mass spectrometry workflows in environmental analysis by ion
+
+377
+
+mobility separation. Environ. Sci. Technol. 2020, 54, 15120−15131.
+
+378
+
+(18) Schymanski, E.; Jeon, J.; Gulde, R.; Fenner, K.; Ruff, M.; Singer, H.; Hollender, J.
+
+379
+
+Identifying small molecules via high resolution mass spectrometry: Communicating
+
+380
+
+confidence. Environ. Sci. Technol. 2014, 48, 2097−2098.
+20
+
+https://doi.org/10.26434/chemrxiv-2024-hscrk-v2 ORCID: https://orcid.org/0009-0008-4062-4009 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+381
+
+(19) Kind, T.; Fiehn, O. Seven Golden Rules for heuristic filtering of molecular
+
+382
+
+formulas obtained by accurate mass spectrometry. BMC Bioinformatics. 2007, 8, 105.
+
+383
+
+(20) Dührkop, K.; Fleischauer, M.; Ludwig, M.; Aksenov, A.; Melnik, A.; Meusel, M.;
+
+384
+
+Dorrestein, P.; Rousu, J.; Böcker, S. SIRIUS 4: A rapid tool for turning tandem mass
+
+385
+
+spectra into metabolite structure information. Nat. Methods. 2019, 16, 299–302.
+
+386
+
+(21) Blomqvist, S.; Lundgren, L. A benthic sled for sampling soft bottoms. Helgoländer
+
+387
+
+Meeresunters. 1996, 50, 453–456.
+
+388
+
+(22) Hinnenkamp, V.; Klein, J.; Meckelmann, S.; Balsaa, P.; Schmidt, T.; Schmitz, O.
+
+389
+
+Comparison of CCS values determined by traveling wave ion mobility mass
+
+390
+
+spectrometry and drift tube ion mobility mass spectrometry. Anal. Chem. 2018, 90,
+
+391
+
+12042–12050.
+
+392
+
+(23) Stow, S.; Causon, T.; Zheng, X.; Kurulugama, R.; Mairinger, T.; May, J.; Rennie,
+
+393
+
+E.; Baker, E.; Smith, R.; McLean, J.; Hann, S.; Fjeldsted, J. An interlaboratory
+
+394
+
+evaluation of drift tube ion mobility–mass spectrometry collision cross section
+
+395
+
+measurements. Anal. Chem. 2017, 89, 9048–9055.
+
+396
+
+(24) Izquierdo-Sandoval, D.; Fabregat-Safont, D.; Lacalle-Bergeron, L.; Sancho, J.;
+
+397
+
+Hernández, F.; Portoles, T. Benefits of ion mobility separation in GC-APCI-HRMS
+
+398
+
+screening: From the construction of a CCS library to the application to real-world
+
+399
+
+samples. Anal. Chem. 2022, 94, 9040–9047.
+
+400
+
+(25) Macneil, A.; Li, X.; Amiri, R.; Muir, D.; Simpson, A.; Simpson, M.; Dorman, F.;
+
+401
+
+Jobst, K. Gas chromatography-(cyclic) ion mobility mass spectrometry: A novel
+
+402
+
+platform for the discovery of unknown per-/polyfluoroalkyl substances. Anal. Chem.
+21
+
+https://doi.org/10.26434/chemrxiv-2024-hscrk-v2 ORCID: https://orcid.org/0009-0008-4062-4009 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+403
+
+2022, 94, 11096−11103.
+
+404
+
+(26) Baker, E.; Hoang, C.; Uritboonthai, W.; Heyman, H.; Pratt, B.; MacCoss, M.;
+
+405
+
+MacLean, B.; Plumb, R.; Aisporna, A.; Siuzdak, G. METLIN-CCS: an ion mobility
+
+406
+
+spectrometry collision cross section database. Nat. Methods. 2023, 20, 1836–1837.
+
+22
+
+https://doi.org/10.26434/chemrxiv-2024-hscrk-v2 ORCID: https://orcid.org/0009-0008-4062-4009 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+

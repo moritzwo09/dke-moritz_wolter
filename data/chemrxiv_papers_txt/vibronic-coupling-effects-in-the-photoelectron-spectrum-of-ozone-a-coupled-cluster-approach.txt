@@ -1,0 +1,1196 @@
+Vibronic Coupling Effects in the Photoelectron Spectrum of
+Ozone: A Coupled-Cluster Approach
+Paweł Wójcika , Hanna Reislera , Péter G. Szalayb , Anna I. Krylova,† , John F. Stantonb,c,∗
+a Department of Chemistry, University of Southern California, Los Angeles, California 90089, USA
+b Laboratory of Theoretical Chemistry, Institute of Chemistry, ELTE
+
+Eötvös Loránd University, Pázmány Péter stny. 1/A, Budapest, Hungary
+c Quantum Theory Project, Departments of Chemistry and
+
+Physics, University of Florida, Gainesville, FL, USA 32611
+
+† krylov@usc.edu; ∗ jfstanton137@gmail.com
+(Dated: October 31, 2024)
+Abstract
+One of the most important areas of application for equation-of-motion coupled
+cluster (EOM-CC) theory is the prediction, simulation, and analysis of various types
+of electronic spectra. In this work, the EOM-CC method for ionized states, known
+as EOM-IP-CC, is applied to the closely lying and coupled pair of states of the
+ozone cation — X̃ 2 A1 and Ã2 B2 — using highly accurate treatments including up
+to the full single, double, triple, and quadruple excitations (EOM-IP-CCSDTQ).
+Combined with a venerable and powerful method for calculating vibronic spectra
+from the Hamiltonian produced by EOM-IP-CC calculations, the simulations yield
+a spectrum that is in good agreement with the photoelectron spectrum of ozone.
+Importantly, the calculations suggest that the adiabatic gap separating these two
+electronic states is somewhat smaller than currently thought; an assignment of the
+simulated spectrum together with the more precise band positions of the experimental measurements suggests T00 =1,368±65 cm−1 .
+
+I.
+
+INTRODUCTION
+
+Amongst the brotherhood of triatomic molecules, it cannot be denied that water (H2 O) is
+the most important, the most highly studied, and the most well-understood. Beyond H2 O,
+many triatomic molecules that have an environmental, technological or biological impor-
+
+https://doi.org/10.26434/chemrxiv-2024-2v6hg-v2 ORCID: https://orcid.org/0000-0002-8403-9097 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+2
+tance have been subjected to many studies and are understood to various levels of detail.
+Perhaps the most interesting such case is ozone (O3 ), which has a vast number of important
+properties, a very rich history of study1 , and unlike the relatively simple water molecule, a
+profound quantum-mechanical complexity2 . Structurally, while we think of ozone as having two distinct kinds of oxygen atoms (and an NMR experiment would reveal that), the
+full molecular Hamiltonian does not distinguish between them. Rather, it yields the three
+equivalent structures separated by a barrier that lies tantalizingly close to the O3 → O2 +
+O dissociation threshold (102.4 kJ/mol)3 , as shown in Fig. 1. In reality, the energy levels
+of ozone all have a near triple (e + a) degeneracy, albeit with a tunneling splitting so small
+that it can be ignored, along with a semi-infinite lifetime (despite opposing opinion4 ). More
+than a half century ago, this intriguing aspect of the ozone molecule was first discussed by
+Berry5 .
+
+FIG. 1: Two-dimensional slice of the potential energy surface of ozone in hyperspherical coordinates
+at the value of hyperradiuns ρ=4 a.u. (the lowest contour is at 1 eV below the dissociation
+limit). The slice shows three equivalent minima corresponding to C2v structures separated by large
+barriers. Reproduced with permission from Ref. 6. Copyright 2003 American Institute of Physics.
+
+Beyond the structural aspects of ozone, other mysteries surround this curious molecule.
+For example, the distribution of the eighteen distinct 16 O/17 O/18 O isotopologues in the
+Earth’s atmosphere differs from what is expected based on the natural isotopic abundance,
+
+https://doi.org/10.26434/chemrxiv-2024-2v6hg-v2 ORCID: https://orcid.org/0000-0002-8403-9097 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+3
+a puzzle that has been open for more than three decades6,7 .
+Among quantum chemists, ozone has a notorious history, owing to its strong diradical
+character causing significant difficulties in calculations of its ostensibly simple ground-state
+molecular properties. An early 1989 study8,9 by the Bartlett group and collaborators found
+that the CCSD+T(CCSD) method predicted that the molecular equilibrium structure of
+ozone would have Cs symmetry (that is, the asymmetric stretching harmonic frequency
+computed by this method is imaginary), a finding that led to a search for better treatment of
+non-iterative triple excitations, ultimately leading to the well-known CCSD(T) method10–12 .
+While CCSD(T) and higher-level coupled-cluster methods available today13–15 do a good job
+in describing the equilibrium structure and vibrational potential, an elaborate multireference
+configuration interaction calculations can describe the entire ground-state surface out to the
+dissociation limit6,16,17 , facilitating calculations of spectroscopy and chemical reactions of
+ozone. As such, the quantum chemical understanding and fidelity for the ground electronic
+state of O3 is now at a mature level.
+
+val = 4a1 1a2 1b1
+LUMO (b1)
+
+3 A1 2 B1 4 A
+
+HOMO (a2)
+
+6-31G*
+
+1 B2 4 B1 6 A
+
+EOMIP:
+A1 A2 B1 B2
+HOMO-1 (a1)
+
+A1 12.40
+A2 13.19
+B2 12.48
+
+HOMO-2 (b2)
+
+B1 18.35
+
+FIG. 2: Frontier molecular orbitals of ozone; HF/6-31G*. The lowest states of the ozone cation
+are 2 A1 and 2 B2 derived by ionization from the HOMO-1 and HOMO-2, respectively.
+
+Qualitatively, the challenge posed to electronic structure theory by ozone ultimately arises
+from its closely spaced highest-occupied (a2 ) and lowest-unoccupied (b1 ) molecular orbitals
+
+https://doi.org/10.26434/chemrxiv-2024-2v6hg-v2 ORCID: https://orcid.org/0000-0002-8403-9097 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+4
+(HOMO and LUMO, respectively; see Fig. 2), giving rise to the following wavefunction:
+X 1 A1 = C1 [core]6 (3a1 )2 (2b2 )2 (4a1 )2 (5a1 )2 (3b2 )2 (1b1 )2 (4b2 )2 (6a1 )2 (1a2 )2 (2b1 )0 +
+
+(1)
+
+C2 [core]6 (3a1 )2 (2b2 )2 (4a1 )2 (5a1 )2 (3b2 )2 (1b1 )2 (4b2 )2 (6a1 )2 (1a2 )0 (2b1 )2 .
+
+(2)
+
+The two electron configurations [· · · ]a22 b01 and [· · · ]a02 b21 mix strongly (the coefficients of these
+two leading configurations are C1 ≈0.9 and C2 ≈0.3, according to the EOM-SF-CCSD
+(EOM-CCSD with spin-flip) calculations18 ), posing the aforementioned challenges with (especially single-reference) quantum-chemical methods. A second feature consequence of the
+symmetry and energetic proximity of these two orbitals is that the ozone cation (which is
+isoelectronic to the NO2 radical) has closely lying 2 A1 and 2 B2 electronic states derived by
+ionization from the HOMO-1 and HOMO-2, respectively (see Fig. 2). Like the associated
+states in NO2 , these two states are plagued by orbital symmetry breaking19 , a problem
+that greatly complicates their quantum-chemical treatment. One of the many accomplishments of the Bartlett group has been their integral role in the development of equation-ofmotion coupled-cluster theory20–22 (EOM-CC, also known as linear response coupled-cluster
+theory23 ). These methods provide a very efficient and simple way to treat certain classes
+of electronic structure that are often termed “multireference problems”24,25 , and are ideally suited to studying reactive intermediates, radicals, diradicals, and electronically excited
+states. From a somewhat wider viewpoint, the existence of closely spaced electronic states
+always carries the potential for (possibly strong) vibronic coupling, a phenomenon that can
+play an important role in molecular dynamics and spectroscopy. Indeed, one of the great
+successes of EOM-CC methods has been in their ability — if and only if combined with
+vibronic coupling models — to enable high-quality simulations of complicated electronic
+spectra. Such work provides important insights into the nature of vibronic coupling in
+molecular systems, as has been exemplified by various application studies (for example, see
+Refs. 26 and 27). In the case of ozone cation, the two lowest electronic states separated by
+a small gap of ∼0.1 eV are coupled by the asymmetric stretch of b2 symmetry (Fig. 3).
+The photoelectron spectrum of ozone was reported28 in 1974. Later, much higher resolution of the positions of vibronic peaks was obtained with pulsed-field-ionization zero-kineticenergy (PFI-ZEKE) spectroscopy29 . From the theory side, the vibronic photoelectron spectrum of ozone was modeled with a vibronic Hamiltonian parameterized using multi-reference
+configuration interaction method by Tarroni and Carter29 .
+
+https://doi.org/10.26434/chemrxiv-2024-2v6hg-v2 ORCID: https://orcid.org/0000-0002-8403-9097 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+5
+
+Symmetric stretch (a1)
+
+Bend (a1)
+
+Asymmetric stretch (b2)
+
+1170 cm-1
+
+720 cm-1
+
+1130 cm-1
+
+FIG. 3: Three normal modes of the neutral ozone CCSDT/ANO1. Asymmetric stretching vibration
+of b2 symmetry can couple the two lowest states of the cation (2 A1 and 2 B2 ).
+
+Our contribution to this issue paying homage to the career and accomplishments of R.J.
+Bartlett consists of an application of a vibronic coupling model, parametrized by EOM-CC
+calculations, to the photoelectron spectrum of ozone. We trust that this combination of
+methodology applied to a molecule that has been extensively studied by the Bartlett group
+is an appropriate contribution.
+II.
+
+THEORETICAL MODELS AND COMPUTATIONAL DETAILS
+
+Ozone is a C2v molecule (following Mulliken’s convention30 , the molecule is placed in the
+yz-plane and the molecular symmetry axis aligns with the z-direction) with three normal
+modes: symmetric stretch, symmetric bend, and asymmetric stretch (Fig. 3). The asymmetric stretch is of b2 symmetry. The two lowest electronic states of the ozone cation, 2 A1
+and 2 B2 , are very close in energy—separated by the vertical gap (at the neutral’s geometry) of mere 0.123 eV (or 990 cm−1 , see Table 2)—and can be coupled by the b2 vibration,
+giving rise to significant vibronic effects in the photoelectron spectrum. The vertical gap
+corresponds to the difference in the energies of electronic states at the same geometry (here,
+the structure of the neutral). While vertical energy gap is easy to compute, they are not
+observable experimentally. The experimentally accessible value is the adiabatic gap T00 —the
+energy difference between the vibronic levels of the two state.
+We simulate the vibronic states of the ozone cation using the model Hamiltonian of
+Köppel, Domcke, and Cederbaum—the KDC Hamiltonian31–33 . This is a multi-state and
+multi-mode Hamiltonian defined in the basis of diabatic states. For the ozone cation, the
+basis comprises two quasi-diabatic states (related to the 2 A1 and 2 B2 states at the minimum
+of neutral ozone), coupled by one mode (asymmetric stretch, mode number 3). The model
+also includes two symmetric modes (modes number 1 and 2). The matrix elements of
+
+https://doi.org/10.26434/chemrxiv-2024-2v6hg-v2 ORCID: https://orcid.org/0000-0002-8403-9097 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+6
+the vibronic Hamiltonian are expanded around the equilibrium geometry of neutral ozone
+using the respective dimensionless normal coordinates, Qi , and the corresponding harmonic
+frequencies, ωi . The overall form of the vibronic Hamiltonian is thus:
+
+
+(1)
+V
+λ3 Q3
+,
+H = H0 1 + 
+λ3 Q3 V (2)
+
+(3a)
+
+where H0 contains kinetic energy operator and a potential energy term for the coupling
+mode
+1
+H0 =
+2
+
+3
+X
+
+∂2
+−ωi 2
+∂Qi
+i=1
+
+!
+
+1
++ ω3 Q23 ,
+2
+
+(3b)
+
+and V (1) and V (2) describe the two diabatic states expanded over Q1 and Q2
+V (α) = E (α) +
+
+X
+
+i∈{1,2}
+
+(α)
+
+κi Qi +
+
+X
+
+(α)
+
+κij Qi Qj +
+
+i,j∈{1,2}
+
+X
+
+i,j,k∈{1,2}
+
+(α)
+
+κijk Qi Qj Qk +
+
+X
+
+(α)
+
+κijkl Qi Qj Qk Ql .
+
+i,j,k,l∈{1,2}
+
+(3c)
+
+Here E (α) are the vertical ionization energies calculated at the equilibrium geometry of the
+neutral, κ are the coefficients of expansion of the potential along the fully symmetric coordinates, and λ is the linear diabatic coupling. Fig. 4 shows the resulting diabatic potential
+energy surfaces (the corresponding contour plots are shown in the SI). The displacements
+along the two symmetric normal modes are clearly visible, suggesting vibrational progressions along the bend and symmetric stretch.
+
+FIG. 4: Cuts of potential energy surfaces of the two diabatic states of the ozone cation (corresponding to the 2 A1 and 2 B2 states at the equilibrium geometry of the neutral) shown as function
+of the two symmetric modes in dimensionless normal coordinates, Q1 and Q2 , at Q3 =0.
+
+https://doi.org/10.26434/chemrxiv-2024-2v6hg-v2 ORCID: https://orcid.org/0000-0002-8403-9097 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+7
+We computed the parameters of the KDC Hamiltonian using ab initio CC and EOMCC methods.22,24,25,34–36 We considered methods in which the CC expansion was truncated
+to singles and doubles (CCSD), singles, doubles and triples (CCSDT), as well as singles,
+doubles, triples, and quadruples (CCSDTQ).15 We computed the geometry of the neutral
+ozone and its harmonic frequencies and normal coordinates with CCSDT/ANO137,38 ; the
+Cartesian coordinates are given in the SI.
+At the optimized geometry, ozone has a bond length of 1.270 Å and a bond angle of
+116.9◦ . The two symmetric normal modes have frequencies 1,170 cm−1 and 720 cm−1 , and
+the asymmetric stretch has a frequency of 1,130 cm−1 .
+We described the states of the cation using EOM-CC for ionization energies (known
+as EOM-IP-CC).39 We used the definition of quasi-diabatic states by Ichino, Gauss, and
+Stanton40 based on the EOM-IP-CC method (EOMIP-CC-QD). We computed the linear
+diabatic coupling λ and the expansion coefficients κ at the equilibrium geometry of the
+neutral; λ was computed with EOM-IP-CCSD-QD/ANO1. A grid of 17x17 points stretching
+from −0.2 to 0.2 units along the dimensionless normal coordinates of the symmetric modes
+was used to calculate the EOM-IP-CCSD/ANO1 energies that were fitted into the 4th order
+polynomial in these coordinate to extract the κ parameters. The computed value of the
+linear diabatic coupling constant λ is 1,394 cm−1 . The complete set of KDC parameters is
+given in the SI.
+We computed the vertical ionization energies at the geometry of the neutral ozone using
+a composite method. The starting value is the complete basis set (CBS) extrapolation of
+the EOM-IP-CCSDT/cc-pCVnZ energies with n = 5, 6.41 These values were augmented
+with two corrections: the ∆Q (quadrupoles) correction in the cc-pwCVTZ basis set and the
+relativistic correction calculated using EOM-IP-CCSD/cc-pwCVTZ.42 The error bars were
+estimated as follows: for the extrapolated CBS reference values, we used half of the absolute
+value of the difference between the best ab initio value and the extrapolated value, and for
+the remaining corrections (quadruples correction, ∆Q, and the relativistic correction) we
+used half of the absolute value of the correction.
+To compare the simulated photoelectron spectrum to the experimental one, we used the
+cross-section ratio A1 :B2 of 1:1.35.43 Additionally, the stick spectrum was broadened with
+
+https://doi.org/10.26434/chemrxiv-2024-2v6hg-v2 ORCID: https://orcid.org/0000-0002-8403-9097 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+8
+the Lorenzian envelopes normalized to the feature intensities
+f (x, xi , Ii ) =
+
+Ii
+,
+2
+(x − xi ) + (γ/2)2
+
+(4)
+
+where xi is the position of the spectral peak, Ii is its intensity and γ is the peak’s width.
+The spectrum was computed using the xsim module in CFOUR, with the basis of 50 harmonic states in each mode and 6,000 iterations of the Lanczos procedure, starting from the
+seed vector with no vibrational excitations, i.e, |seedi = |0 . . . 0i.44 All electrons were correlated in all CC/EOM-CC calculations. All calculations were performed using CFOUR.45,46
+III.
+
+RESULTS AND DISCUSSION
+
+We begin by discussing the accuracy of the computed electronic states. The vertical
+ionization energy for the first excited state, E (1) , computed using the composite method
+described above, is 12.827 eV. Our error estimate for this value is 30 meV (see Table 1 for
+details). We note that the convergence of the vertical gap between the two states is much
+faster and this value is estimated as 123±8 meV (see Table 2 for details).
+TABLE 1: Vertical ionization energies with the error estimates, eV.
+Contribution
+
+2A
+
+1
+
+2B
+
+2 Error estimate
+
+EOM-CCSDT/CBS
+
+12.872 12.981
+
+0.02
+
+∆Q/pwCVTZ
+
+-0.037 -0.021
+
+0.02
+
+Relativistic/CCSD/pwCVTZ -0.008 -0.010
+
+0.005
+
+Final value, eV
+
+0.03
+
+12.827 12.950
+
+Figure 5 compares the simulated spectrum to the lower-resolution experimental spectrum
+taken from Ref. 28. Peak A is known to be a hot band, and does not appear in our (0 K)
+simulation.43 The simulation reproduces well the consecutive increase in the intensities of
+peaks B, C, D, and E as well as the spacing between these peaks. The drop in the intensity
+at peak F is captured by the simulation. Starting from peak G, the simulation shows
+discrepancy with the experiment. A sudden drop in the intensity past peak H is not observed
+in the simulation. We discuss a likely source of this mismatch below.
+
+https://doi.org/10.26434/chemrxiv-2024-2v6hg-v2 ORCID: https://orcid.org/0000-0002-8403-9097 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+9
+TABLE 2: The vertical energy gap between the 2 A1 and 2 B2 states with error estimates, meV.
+Contribution
+
+Vertical gap Error estimate
+
+EOM-CCSDT/CBS
+
+108.8
+
+0.9
+
+∆Q/pwCVTZ
+
+16.5
+
+8
+
+Relativistic/CCSD/pwCVTZ
+
+-2.2
+
+1.1
+
+Final value, meV
+
+123
+
+8
+
+Final value, cm−1
+
+990
+
+65
+
+Our simulation allows for an additional element of analysis—Figure 6 shows a decomposition of the simulated spectrum from Figure 5. All lines that contribute to the spectrum
+are marked individually and are color-coded indicating which electronic state’s transition
+intensity the peak draws from. The total envelope of the spectrum is also decomposed
+showing contributions from each state. Our simulation locates the minimum of the conical
+intersection (marked as CI) at 3,174 cm−1 above the origin (12.92 eV), where origin means
+the lowest energy peak appearing in the spectrum. The adiabatic energy gap between the
+two lowest vibrational states in each of the cation states is T00 =1,368±65 cm−1 .
+We assigned the vibronic peaks by comparing to the Franck–Condon simulation. To this
+end, the spectrum is simulated once again, this time, however, setting the linear diabatic
+constant to zero (λ= 0). This yields the spectra of the two electronic states at an equivalent
+level of theory but without vibronic coupling, i.e., the combined Franck–Condon spectra of
+the two states. Figure 7 shows this spectrum. The non-coupled spectrum is easy to assign
+using the labels that mark the symmetry of the electronic state, A1 or B2 , and the vibrational
+state (ν1 ν2 ν3 ), where νi is the number of quanta in mode i (i = 1 for the symmetric stretch,
+i = 2 for the symmetric bend and i = 3 for the asymmetric stretch). The assigned spectrum
+shows progressions in the symmetric bend. There is one such progression in each electronic
+state. Additionally for each state, there is also another progression in the symmetric bend
+with one excitation in the symmetric stretch.
+The decomposition of the spectrum presented on Figure 6 provides additional insight. The
+spectrum shows that peaks B and C are almost purely of the 2 A1 electronic and a1 vibrational
+character. Starting from peak D, the contributions from two states are of equal magnitude.
+
+https://doi.org/10.26434/chemrxiv-2024-2v6hg-v2 ORCID: https://orcid.org/0000-0002-8403-9097 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+10
+
+FIG. 5: Comparison of the experimental (solid black line digitized from Ref. 28) and the simulated
+photoelectron spectra shown as electron binding energies. The simulated spectrum is blue-shifted
+by 21 meV and the peaks were broadened using γ = 30 meV. Reproduced with permission from
+Ref. 28. Copyright 1974 Royal Society of Chemistry.
+
+It is also clear that the following peaks are mixtures of many vibronic peaks. At the energy
+of about 2,000 cm−1 above the origin the density of vibronic peaks increases significantly.
+This value can be compared to the minimum of the conical intersection located at about
+1000 cm−1 higher in energy, at 3,174 cm−1 above the origin. Our Hamiltonian is not suitable
+for describing the dissociation of the molecule, therefore, we expect a discrepancy with the
+experiment as the energy gets closer to the dissociation threshold located at 4,898±3 cm−1
+above the origin.29
+Figure 8 shows the assigned spectrum and Table 3 lists the decomposition of all peaks
+in the region of up to 3100 cm−1 . We compare the resulting assignment with the highresolution PFI-ZEKE spectrum from Ref. 29. The PFI-ZEKE spectrum is the best source
+of information on the location of the peaks, especially the origin, against which the origin
+
+https://doi.org/10.26434/chemrxiv-2024-2v6hg-v2 ORCID: https://orcid.org/0000-0002-8403-9097 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+11
+
+2000 4000 6000
+cm 1 0
+D0
+B C D E F CI
+
+2000 4000 6000
+cm 1 0
+D0
+B C D E F CI
+no coupling
+
+12.4 12.6 12.8 13.0 13.2 eV
+
+12.4 12.6 12.8 13.0 13.2 eV
+
+FIG. 6: Simulated photoelectron spectrum of ozone shown as electron binding energies. Bottom
+axis shows energy scale in eV. Top axis shows energy offset from the origin in cm−1 . Stick spectrum
+shows positions and intensities of all simulated states. Blue and orange colors mark states of A1
+and B2 symmetry, respectively. Gray vertical lines with captions on top indicate positions of
+features measured by the PFI-ZEKE experiment.29 The simulated spectrum was shifted to match
+29 Gray
+the PFI-ZEKE experimental origin by 21 meV. D0 marks the dissociation threshold of O+
+3.
+
+dotted line marks the energy of the minimum of the conical intersection (CI) as located by our
+Hamiltonian. The right panel shows the uncoupled spectrum (the same as in Fig. 7 but formatted
+in a matching manner).
+
+peak of the simulation is aligned. The origin of the simulated spectrum is red-shifted by
+170 cm−1 relative to the experimental origin at 101,020.5 cm−1 .29 This discrepancy is within
+our error estimate for the vertical ionization energy (30 meV=240 cm−1 ).
+The comparison with the high-resolution spectrum (Fig. 8) reveals more details. Lines
+of the PFI-ZEKE experiment and our simulation match very well. Especially the states
+of A1 symmetry are well aligned with the experimental features. States close to the origin
+are similar to the non-coupled states. The origin peak is of A1 (0,0,0) character, the first
+two excitations in the symmetric bend, A1 (0,1,0) and A1 (0,2,0) are also very similar to
+the non-coupled states, whereas the higher excitations in this progression show significant
+mixing. The same progression with one vibrational quanta in the symmetric stretch is more
+
+https://doi.org/10.26434/chemrxiv-2024-2v6hg-v2 ORCID: https://orcid.org/0000-0002-8403-9097 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+12
+
+FIG. 7: Simulated Franck–Condon photoelectron spectrum of ozone with vibronic coupling removed.
+
+FIG. 8: Comparison of the simulated spectrum with the PFI-ZEKE experiment.29 The simulated
+spectrum was blue-shifted by 21 meV = 170 cm−1 . Color of the simulated peaks marks the
+symmetry of the vibronic states: A1 are colored blue and B2 are colored orange. See Table 3 for a
+detailed listing of state assignments. The bottom panel reproduced with permission from Ref. 29.
+Copyright 2005 American Institute of Physics.
+
+https://doi.org/10.26434/chemrxiv-2024-2v6hg-v2 ORCID: https://orcid.org/0000-0002-8403-9097 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+13
+
+FIG. 9: Comparison of the simulated spectrum to an earlier simulation by Tarroni and Carter
+(assigned lines).47
+
+interesting. The first of its peaks is very well aligned with experimentally visible feature,
+which was previously assigned as the origin of the second electronic state. The second peak
+in this series, A1 (1,1,0), has very high similarity to its uncoupled version. It is a good
+candidate to assign the experimental, unassigned feature above 102,600 cm−1 .
+States of B2 symmetry, on the other hand, do not align well with the experiment. The
+first such peak, close to the 12.64 eV mark in Figure 8, is assigned to the A1 (0,0,1) state.
+This is a vibronic state that gains intensity owing to the coupling to the electronic 2 B2
+state. This vibronic peak lies in the part of the spectrum where bands of oxygen (which is
+an impurity in the gas sample) are visible in the experiment. The origin of the 2 B2 state
+is very similar to the uncoupled B2 (0,0,0) state, but it is located in an empty area of the
+experimental spectrum. We use the difference in the energy between this peak and the origin
+peak to report the adiabatic energy gap between the two cationic states, which, according
+to our simulation, is T00 =1,368 cm−1 . This value is reported with an error estimate equal to
+the error estimate for the vertical excitation energy gap (65 cm−1 ), which is listed Table 2.
+The next peak, slightly above a 12.76 eV mark in Figure 8, corresponds to one excitation of
+the symmetric bend in the 2 B2 state, but as the label on the figure shows, it is only about
+55% similar to the uncoupled state.
+Finally, Figure 9 compares our spectrum to an earlier accurate simulation by Tarroni
+and Carter47 . This earlier work used internally contracted multi reference configuration
+interaction method in a large basis set (cc-pV5Z) to thoroughly scan the vicinity of the
+
+https://doi.org/10.26434/chemrxiv-2024-2v6hg-v2 ORCID: https://orcid.org/0000-0002-8403-9097 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+14
+minima on both potentials. Similarly to our work, Tarroni and Carter did not account for
+the potential at distances reaching the dissociation limit. In their work, Tarroni and Carter
+used a diabatization method based on the adiabatic energies and configuration interaction
+coefficients, which avoids calculation of the non adiabatic couplings.
+Figure 9 includes only the lines from the earlier simulation that were tabulated with an
+assignment in the article.47 The comparison shows that both match well with the experiment. Both simulations also agree in the assignment of the first progression in the bending
+mode. The previous simulation, however, shows smaller spacing between the remaining lines,
+yielding much higher congestion of the spectrum. Additionally, the origin of the second state
+falls at lower energy (as compared to our simulation), which makes it align well with the
+peak that was assigned in the PFI-ZEKE experiment also as the origin of the second state.
+While an additional simulation of the line intensities would allow for the most complete
+comparison to the experimental spectrum, the strong alignment of the simulated peaks of
+A1 symmetry with the experimental features leads us to believe that our simulation offers
+the best assignment of the photoelectron spectrum of ozone to date.
+IV.
+
+CONCLUSION
+
+In this exploration of the photoelectron spectrum of the ozone molecule, we have deployed cutting-edge high-order CC models together with a vibronic Hamiltonian approach
+to spectroscopy beyond the Born–Oppenheimer approximation31–33 . We parameterized the
+Hamiltonian using EOM-IP-CC calculations and the formalism of quasi-diabatic states of
+Ichino, Gauss and Stanton.40 The results of the simulation are in excellent agreement with
+the experimental spectrum from the ionization onset to about 2,500 cm−1 higher (the restriction arising from the local parametrization of the Hamiltonian). Analysis of the spectrum
+and its simulation underscore the importance of vibronic coupling effects in the ozone cation.
+Results of this work offer a state-of-the-art insight into the details of the spectrum and allows for an assignment of the experimental results. Simulated peaks that gain intensity from
+the ÃB2 state are absent in the PFI-ZEKE spectrum, which offers an interesting avenue for
+further investigations.
+
+https://doi.org/10.26434/chemrxiv-2024-2v6hg-v2 ORCID: https://orcid.org/0000-0002-8403-9097 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+15
+Supplemental Information
+
+Parameters of the KDC Hamiltonian; relevant Cartesian coordinates; additional PES
+plots.
+V.
+
+ACKNOWLEDGMENTS
+
+This project was initiated when three of the authors (P.W, P.G.S., and J.F.S) were in
+Budapest, where J.F.S. was serving as a recipient of the John von Neumann Award in STEM
+bestowed by the Fulbright Foundation. P.G.S. acknowledges support by National Research,
+Development and Innovation Fund (NKFIF) of Hungary (Grant No. 142634).
+Research at USC was supported by the NSF Center for Chemical Innovation Phase I
+(grant no. CHE-2221453) and the U.S. Department of Energy, Basic Energy Sciences (grant
+no. DE-FG02-05ER15629 to H.R.). The authors wish Prof. Bartlett a happy ninth decade
+of life and hope that he continues to stimulate others in the field with his creative insights.
+Conflicts of interest
+
+The authors declare the following competing financial interest(s): A.I.K. is the president
+and a part-owner of Q-Chem, Inc.
+Data availability
+
+The data that support the findings of this study are available within the article and the
+associated SI.
+
+https://doi.org/10.26434/chemrxiv-2024-2v6hg-v2 ORCID: https://orcid.org/0000-0002-8403-9097 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+16
+TABLE 3:
+
+Assignment and decomposition of the eigenvectors of the ozone cation. The first
+
+column shows the offset of simulated peaks from the origin in cm−1 . Note that the decomposition
+uses the basis of uncoupled states visible in Fig. 7, as such the eigenvector decomposition does not
+list components along vibronic states of a mixed symmetry, e.g., A1 (001) which might, artificially,
+appear as a lack of mixing.
+Offset Symmetry Assignment Eigenvector
+0
+
+A1
+
+A1 (000)
+
++0.99 A1 (000)
+
+618
+
+A1
+
+A1 (010)
+
++0.99 A1 (010)
+
+915
+
+B2
+
+A1 (001)
+
+1076 A1
+
+A1 (100)
+
+−0.99 A1 (100)
+
+1222 A1
+
+A1 (020)
+
++0.97 A1 (020)
+
+1368 B2
+
+B2 (000)
+
++0.97 B2 (000)
+
+1498 B2
+
++0.10 B2 (000)
+
+1684 A1
+
+A1 (110)
+
++0.96 A1 (110)
+
+1796 A1
+
+A1 (030)
+
++0.87 A1 (030) + 0.16 A1 (110) + 0.13 A1 (020) − 0.13 A1 (040)
+−0.31 A1 (030)
+
+1848 A1
+1921 B2
+
+B2 (010)
+
++0.74 B2 (010) − 0.18 B2 (020) − 0.11 B2 (000)
+
+1977 B2
+
+−0.24 B2 (010)
+
+2085 B2
+
++0.52 B2 (010)
+
+2132 A1
+
+−0.25 A1 (030) − 0.25 A1 (040) − 0.13 A1 (120) + 0.13 A1 (050)
+
+2143 A1
+2275 A1
+
+A1 (120)
+
++0.86 A1 (120) + 0.12 A1 (040)
+
+2362 A1
+
+−0.62 A1 (040) + 0.40 A1 (120) − 0.17 A1 (030) + 0.11 A1 (050)
+
+2437 A1
+
+−0.48 A1 (040) − 0.11 A1 (120)
+
+2453 B2
+
+B2 (020)
+
++0.54 B2 (020) + 0.25 B2 (010) − 0.17 B2 (030)
+
+2537 B2
+2576 B2
+
++0.27 B2 (020)
+
+2671 A1
+
+−0.48 A1 (040) − 0.26 A1 (050) − 0.19 A1 (130) − 0.14 A1 (060)
+
+2735 B2
+
++0.62 B2 (020)
+
+2743 A1
+2780 B2
+2862 A1
+
++0.22 B2 (020)
+A1 (130)
+
++0.74 A1 (130) + 0.13 A1 (120) − 0.13 A1 (050)
+
+2903 A1
+
+−0.42 A1 (130)
+
+2969 A1
+
+−0.25 A1 (130) + 0.17 A1 (050) + 0.12 A1 (040)
+
+2978 B2
+
+−0.24 B2 (110) − 0.19 B2 (020) + 0.12 B2 (010)
+
+3006 B2
+
+−0.20 B2 (030) + 0.17 B2 (110) − 0.15 B2 (020)
+
+3045 A1
+3054 B2
+
+A1 (050)
+
++0.79 A1 (050)
++0.29 B2 (110) − 0.25 B2 (030) − 0.13 B2 (020)
+
+https://doi.org/10.26434/chemrxiv-2024-2v6hg-v2 ORCID: https://orcid.org/0000-0002-8403-9097 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+17
+References
+
+1
+
+J. Chappuis, Ann. d. l’ecole Norm. Sup. 11, 159 (1882).
+
+2
+
+D. Babikov, B. K. Kendrick, R. B. Walker, R. Schinke, and R. T. Pack, Quantum origin of an
+anomalous isotope effect in ozone formation, Chem. Phys. Lett. 372, 686 (2003).
+
+3
+
+B. Ruscic and D. H. Bross, Active Thermochemical Tables (ATcT) Thermochemical Values ver.
+1.130, 2023.
+
+4
+
+P. Garcia-Fernandez, I. B. Bersuker, and J. E. Boggs, Lost topological (berry) phase factor in
+electronic structure calculations. example: The ozone molecule, Phys. Rev. Lett. 96, 163005
+(2006).
+
+5
+
+R. S. Berry, Time-dependent measurements and molecular structure: Ozone, Rev. Mod. Phys.
+32, 447 (1960).
+
+6
+
+D. Babikov, B. K. Kendrick, R. B. Walker, R. T. Pack, P. Fleurat-Lesard, and R. Schinke,
+Metastable states of ozone calculated on an accurate potential energy surface, J. Chem. Phys.
+118, 6298 (2003).
+
+7
+
+B. Schueler, J. Morton, and K. Mauersberger, Measurement of isotopic abundances in collected
+stratospheric ozone samples, Geophys. Res. Lett. 17, 1295 (1990).
+
+8
+
+J. F. Stanton, W. N. Lipscomb, D. H. Magers, and R. J. Bartlett, Highly correlated singlereference studies of the o3 potential surface. i. effects of high order excitations on the equilibrium
+structure and harmonic force field of ozone, J. Chem. Phys. 90, 1077 (1989).
+
+9
+
+D. H. Magers, W. N. Lipscomb, R. J. Bartlett, and J. F. Stanton, The equilibrium structure and
+harmonic vibrational frequencies of ozone: Coupled cluster results including triple excitations,
+J. Chem. Phys. 91, 1945 (1989).
+
+10
+
+K. Raghavachari, G.W . Trucks, J. A. Pople, and M. Head-Gordon, A fifth-order perturbation
+comparison of electron correlation theories, Chem. Phys. Lett. 157, 479 (1989).
+
+11
+
+M. Urban, J. Noga, S. J. Cole, and R. J. Bartlett, Towards a full ccsdt model for electron
+correlation, J. Chem. Phys. 83, 4041 (1985).
+
+12
+
+J. D. Watts, J. Gauss, and R. J. Bartlett, Coupled-cluster methods with noniterative triple
+excitations for restricted open-shell Hartree-Fock and other general single determinant reference
+
+https://doi.org/10.26434/chemrxiv-2024-2v6hg-v2 ORCID: https://orcid.org/0000-0002-8403-9097 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+18
+functions. Energies and analytical gradients, J. Chem. Phys. 98, 8718 (1993).
+13
+
+S. A. Kucharski and R. J. Bartlett, The coupled-cluster single, double, triple, and quadruple
+excitation method, J. Chem. Phys. 97, 4282 (1992).
+
+14
+
+M. Kállay and P. R. Surján, Higher excitations in coupled-cluster theory, J. Chem. Phys. 115,
+2945 (2001).
+
+15
+
+D. A. Matthews and J. F. Stanton, Non-orthogonal spin-adaptation of coupled cluster methods:
+A new implementation of methods including quadruple excitations, J. Chem. Phys. 142, 064108
+(2015).
+
+16
+
+R. Siebert, R. Schinke, and M. Bittererová, Spectroscopy of ozone at the dissociation threshold:
+Quantum calculations of bound and resonance states on a new global potential energy surface,
+Phys. Chem. Chem. Phys. 3, 1795 (2001).
+
+17
+
+R. Dawes, P. Lolur, A. Li, B. Jiang, and H. Guo, Communication: An accurate global potential
+energy surface for the ground electronic state of ozone, J. Chem. Phys. 139, 201103 (2013).
+
+18
+
+S. V. Levchenko and A. I. Krylov, Equation-of-motion spin-flip coupled-cluster model with
+single and double substitutions: Theory and application to cyclobutadiene, J. Chem. Phys.
+120, 175 (2004).
+
+19
+
+C. F. Jackels and E. R. Davidson, The two lowest energy 2 A0 states of NO2 , J. Chem. Phys.
+64, 2908 (1976).
+
+20
+
+J. F. Stanton and R. J. Bartlett, The equation of motion coupled-cluster method. A systematic
+biorthogonal approach to molecular excitation energies, transition probabilities, and excited
+state properties, J. Chem. Phys. 98, 7029 (1993).
+
+21
+
+M. Nooijen and R. J. Bartlett, Equation of motion coupled cluster method for electron attachment, J. Chem. Phys. 102, 3629 (1995).
+
+22
+
+R.J. Bartlett and M. Musiał, Coupled-cluster theory in quantum mechanics, Rev. Mod. Phys.
+79, 291 (2007).
+
+23
+
+H. Koch and P. Jørgensen, Coupled cluster response functions, J. Chem. Phys. 93, 3333 (1990).
+
+24
+
+A. I. Krylov, Equation-of-motion coupled-cluster methods for open-shell and electronically
+excited species: The hitchhiker’s guide to Fock space, Annu. Rev. Phys. Chem. 59, 433 (2008).
+
+25
+
+A. I. Krylov, The quantum chemistry of open-shell species, in Reviews in Comp. Chem., edited
+by A. L. Parrill and K. B. Lipkowitz, volume 30, pages 151–224. J. Wiley & Sons, 2017.
+
+26
+
+J. F. Stanton, On the vibronic level structure in the NO3 radical. I. The ground electronic state,
+
+https://doi.org/10.26434/chemrxiv-2024-2v6hg-v2 ORCID: https://orcid.org/0000-0002-8403-9097 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+19
+J. Chem. Phys. 126, 134309 (2007).
+27
+
+H. Köppel, M. Döscher, I. Baldea, H.-D. Meyer, and P. G. Szalay, Multistate vibronic interactions in the benzene radical cation. II. Quantum dynamical simulations, J. Chem. Phys. 117,
+2657 (2002).
+
+28
+
+J. M. Dyke, L. Golob, N. Jonathan, A. Morris, and M. Okuda, Vacuum ultraviolet photoelectron
+spectroscopy of transient species. Part 4.–Difluoromethylene and ozone, J. Chem. Soc., Faraday
+Trans. 2 70, 1828 (1974).
+
+29
+
+S. Willitsch, F. Innocenti, J. M. Dyke, and F. Merkt, High-resolution pulsed-field-ionization
+zero-kinetic-energy photoelectron spectroscopic study of the two lowest electronic states of the
+ozone cation O+
+3 , J. Chem. Phys. 122, 024311 (2005).
+
+30
+
+R. S. Mulliken, Report on notation for the spectra of polyatomic molecules, J. Chem. Phys.
+23, 1997 (1955).
+
+31
+
+H. Köppel, W. Domcke, and L.S. Cederbaum, Multimode molecular dynamics beyond the
+Born–Oppenheimer approximation, Adv. Chem. Phys. 57, 59 (1984).
+
+32
+
+W. Domcke, H. Köppel, and L. S. Cederbaum, Spectroscopic effects of conical intersections of
+molecular potential energy surfaces, Mol. Phys. 43, 851 (1981).
+
+33
+
+H. Köppel, W. Domcke, and L. S. Cederbaum, The multi-mode vibronic-coupling approach,
+chapter 7, pages 323–367. World Scientific Publ Co Pte Ltd, 2004.
+
+34
+
+R. J. Bartlett and I. Shavitt, Many-Body Methods in Chemistry and Physics: MBPT and
+Coupled-Cluster Theory, Cambridge Molecular Science. Cambridge University Press, 1-532,
+2009, ISBN: 978-0-511-59683-4.
+
+35
+
+K. Sneskov and O. Christiansen, Excited state coupled cluster methods, WIREs: Comput.
+Mol. Sci. 2, 566 (2012).
+
+36
+
+R. J. Bartlett, Coupled-cluster theory and its equation-of-motion extensions, WIREs: Comput.
+Mol. Sci. 2, 126 (2012).
+
+37
+
+J. Almlöf and P. R. Taylor, General contraction of Gaussian basis sets. I. Atomic natural
+orbitals for first- and second-row atoms, J. Chem. Phys. 86, 4070 (1987).
+
+38
+
+J. Almlöf, T. Helgaker, and P. R. Taylor, Gaussian basis sets for high-quality ab initio calculations, J. Phys. Chem. 92, 3029 (1988).
+
+39
+
+J. F. Stanton and J. Gauss, A simple scheme for the direct calculation of ionization potentials
+with coupled-cluster theory that exploits established excitation energy methods, J. Chem. Phys.
+
+https://doi.org/10.26434/chemrxiv-2024-2v6hg-v2 ORCID: https://orcid.org/0000-0002-8403-9097 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+20
+111, 8785 (1999).
+40
+
+T. Ichino, J. Gauss, and J. F. Stanton, Quasidiabatic states described by coupled-cluster theory,
+J. Chem. Phys. 130, 174105 (2009).
+
+41
+
+D. Woon and T. H. Dunning, Jr., Gaussian basis sets for use in correlated molecular calculations.
+V. Core-valence basis sets for boron through neon, J. Chem. Phys. 103, 4572 (1995).
+
+42
+
+K. A. Peterson and T. H. Dunning, Jr., Accurate correlation consistent basis sets for molecular
+core-valence correlation effects. the second row atoms Al-Ar, and the first row atoms B-Ne
+revisited, J. Chem. Phys. 117, 10548 (2002).
+
+43
+
+H. Müller, H. Köppel, L. S. Cederbaum, T. Schmelz, G. Chambaud, and P. Rosmus, Vibronic
+coupling effects in the ozone cation, Chem. Phys. Lett. 197, 599 (1992).
+
+44
+
+K. Sharma, O. A. Vasilyev, T. A. Miller, and J. F. Stanton, Molecules with spin and vibronic
+coupling effects: A computational perspective, in Journal of Physics: Conference Series, volume
+2769, page 012002. IOP Publishing, 2024.
+
+45
+
+J.F. Stanton, J. Gauss, M.E. Harding, and P.G. Szalay, CFOUR, with contributions from
+A.A. Auer, R.J. Bartlett, U. Benedikt, C. Berger, D.E. Bernholdt, Y.J. Bomble, L. Cheng,
+O. Christiansen, M. Heckert, O. Heun, C. Huber, T.-C. Jagau, D. Jonsson, J. Jusélius,
+K. Klein, W.J. Lauderdale, F. Lipparini, D.A. Matthews, T. Metzroth, L.A. Mück, D.P. O’Neill,
+D.R. Price, E. Prochnow, C. Puzzarini, K. Ruud, F. Schiffmann, W. Schwalbach, C. Simmons, S. Stopkowicz, A. Tajti, J. Vázquez, F. Wang, J.D. Watts; and the integral packages
+MOLECULE (J. Almlöf and P.R. Taylor), PROPS (P.R. Taylor), ABACUS (T. Helgaker,
+H.J.Aa. Jensen, P. Jørgensen, and J. Olsen), and ECP routines by A.V. Mitin and C. van
+Wüllen. For the current version, see http://www.cfour.de.
+
+46
+
+D. A. Matthews, L. Cheng, M. E. Harding, F. Lipparini, S. Stopkowicz, T.-C. Jagau, P. G.
+Szalay, J. Gauss, and J. F. Stanton, Coupled-cluster techniques for computational chemistry:
+The CFOUR program package, J. Chem. Phys. 152, 214108 (2020).
+
+47
+
+R. Tarron and S. Carter, Ab initio study of vibronic coupling in the ozone radical cation, Chem.
+Phys. Lett. 511, 201 (2011).
+
+https://doi.org/10.26434/chemrxiv-2024-2v6hg-v2 ORCID: https://orcid.org/0000-0002-8403-9097 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+21
+
+FIG. 10: TOC
+
+https://doi.org/10.26434/chemrxiv-2024-2v6hg-v2 ORCID: https://orcid.org/0000-0002-8403-9097 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Vibronic Coupling Effects in the Photoelectron Spectrum of
+Ozone: A Coupled-Cluster Approach:
+Supporting Information
+Paweł Wójcika , Hanna Reislera , Péter G. Szalayb , Anna I. Krylova,† , John F. Stantonb,c,∗
+a Department of Chemistry, University of Southern California, Los Angeles, California 90089, USA
+b Laboratory of Theoretical Chemistry, Institute of Chemistry, ELTE
+
+Eötvös Loránd University, Pázmány Péter stny. 1/A, Budapest, Hungary
+c Quantum Theory Project, Departments of Chemistry and
+
+Physics, University of Florida, Gainesville, FL, USA 32611
+
+† krylov@usc.edu; ∗ jfstanton137@gmail.com
+(Dated: October 31, 2024)
+
+S1. Parameters for the KDC Hamiltonian
+Below is an input for the xsim program, which contains all parameters used to define the
+KDC Hamiltonian.
+Units
+1
+Dataset
+1
+States
+2
+Modes
+3
+Basis Functions
+50 50 50
+Lanczos
+6000
+Transition Moment
+1. 1.35 ! Muller, Koppel, Cederbaum, et al. Chem. Phys. Lett. 197, 599 (1992)
+Vertical Energies, cm-1
+1 103456.7 ! EOMIP-CCSDT/pCVnZ/CBS n=5,6 + dQ/pwCVTZ + relativistic/CCSD/pwCVTZ
+2 104449.7 ! EOMIP-CCSDT/pCVnZ/CBS n=5,6 + dQ/pwCVTZ + relativistic/CCSD/pwCVTZ
+0 0 0 0 0 0 0 0 0 0 0 0
+Harmonic Frequencies, cm-1 ! CCSDT/ANO1 for the neutral state
+1 724.19
+2 1168.58
+3 1128.50
+0 0 0 0 0 0 0 0 0 0 0 0
+
+https://doi.org/10.26434/chemrxiv-2024-2v6hg-v2 ORCID: https://orcid.org/0000-0002-8403-9097 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Linear, cm-1 ! Everything below: EOM-CCSDT/ANO1
+1 1 2
+1178.18
+1 1 1
+1261.02
+2 2 2
+-781.75
+2 2 1
+-1303.82
+1 2 3
+1393.82
+0 0 0 0 0 0 0 0 0 0 0 0
+Quadratic, cm-1
+1 1 2 2
+802.90
+1 1 1 2
+-185.50
+1 1 1 1
+779.81
+2 2 2 2
+1276.61
+2 2 1 2
+23.56
+2 2 1 1
+369.33
+0 0 0 0 0 0 0 0 0 0 0 0
+Cubic, cm-1
+1 1 2 2 2
+-202.85
+1 1 1 2 2
+74.39
+1 1 1 1 2
+-62.49
+1 1 1 1 1
+90.19
+2 2 2 2 2
+-282.04
+2 2 1 2 2
+75.56
+2 2 1 1 2
+-0.49
+2 2 1 1 1
+71.32
+0 0 0 0 0 0 0 0 0 0 0 0
+Quartic, cm-1
+1 1 2 2 2 2
+34.17
+1 1 1 2 2 2
+-26.65
+1 1 1 1 2 2
+3.16
+1 1 1 1 1 2
+-12.25
+1 1 1 1 1 1
+3.92
+2 2 2 2 2 2
+41.58
+2 2 1 2 2 2
+-35.55
+2 2 1 1 2 2
+-7.14
+2 2 1 1 1 2
+-6.88
+2 2 1 1 1 1
+11.34
+0 0 0 0 0 0 0 0 0 0 0 0
+
+S2
+https://doi.org/10.26434/chemrxiv-2024-2v6hg-v2 ORCID: https://orcid.org/0000-0002-8403-9097 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+S2. Relevant Cartesian Coordinates
+The CCSDT/ANO1 geometry of neutral ozone (Å) (The nuclear repulsion energy:
+68.994611948499568 a.u.)
+Enuc=68.994612
+O
+0.0000
+0.0000
+O
+0.0000 -1.0817
+O
+0.0000
+1.0817
+
+0.4431
+-0.2215
+-0.2215
+
+The KDC Hamiltonian parameterization corresponds to this point.
+
+S3
+https://doi.org/10.26434/chemrxiv-2024-2v6hg-v2 ORCID: https://orcid.org/0000-0002-8403-9097 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+S3. PES of the Ozone Cation
+
+A1
+
+Q1
+
+1
+0
+
+B2
+
+1
+1
+0
+
+0
+
+Q2
+1000
+
+1
+
+1
+2000
+
+0
+
+Q2
+
+3000
+
+1
+cm 1
+
+FIG. S1: Contour maps of the two diabatic PESs of the ozone cation (see Fig. 4 in the main
+text). Q1 and Q2 are two symmetric normal coordinates.
+
+S4
+https://doi.org/10.26434/chemrxiv-2024-2v6hg-v2 ORCID: https://orcid.org/0000-0002-8403-9097 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+

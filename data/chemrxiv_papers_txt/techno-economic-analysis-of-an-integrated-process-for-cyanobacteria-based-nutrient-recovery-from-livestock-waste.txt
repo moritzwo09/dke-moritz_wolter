@@ -1,0 +1,810 @@
+Techno-Economic Analysis of an Integrated Process for
+Cyanobacteria-Based Nutrient Recovery from Livestock Waste
+Leonardo D. Gonzáleza , Brenda Cansino-Loezaa , Theodore A. Chavkina , Justin D. Gayb
+Rebecca A. Larsonb , Brian F. Pflegera , and Victor M. Zavalaa *
+a
+
+Department of Chemical and Biological Engineering
+
+University of Wisconsin-Madison, 1415 Engineering Dr, Madison, WI 53706, USA
+b
+
+Nelson Institute for Environmental Studies
+
+University of Wisconsin-Madison, Madison, WI 53706, USA
+
+Abstract
+The dairy industry largely operates as a linear economy in which large amounts of non-renewable
+energy and mining resources are used for the production of synthetic chemical fertilizers (e.g.,
+phosphate rock and ammonia). Moreover, significant greenhouse gas emissions (carbon dioxide,
+methane, nitrous oxide, ammonia) and nutrient emissions (phosphorus and nitrogen species) result from the improper management of manure waste, leading to the simultaneous degradation
+of valuable air, soil, and water resources. In this work, we present a techno-economic analysis
+(TEA) framework to investigate the viability of an integrated process that aims to recover nutrients from dairy manure. A central tenet of the proposed process (which we call ReNuAl) is that it
+uses cyanobacteria (CB) as a key integrative component that simultaneously: (i) harnesses renewable energy (solar energy via photosynthesis) to capture waste nutrients and (ii) captures carbon
+dioxide that results the anaerobic digestion of waste. Moreover, because biogas can be obtained
+via anaerobic digestion and CB biomass can be used as a concentrated biofertilizer, ReNuAl provides a pathway to a more circular fertilizer economy that helps manage air and water pollution.
+Our TEA framework is used to evaluate the phosphorus recovery costs and capital/operating expenses under varying levels of process integration. This analysis highlights key aspects of the
+process that have the most impact on economic/environmental performance and to provide performance targets for new CB strain variants.
+
+Keywords: circular economy, nutrient recovery, photosynthesis, livestock waste.
+
+* Corresponding Author: victor.zavala@wisc.edu.
+
+1
+https://doi.org/10.26434/chemrxiv-2024-hz3r3-v2 ORCID: https://orcid.org/0000-0002-2687-4385 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+http://zavalab.engr.wisc.edu
+
+1
+
+Introduction
+
+Dairy farming is a multi-billion USD industry that provides essential food products (e.g., milk, yoghurt, cheese, ice cream) and is an important socio-economic driver in several parts of the United
+States (US). At the same time, the millions of animals that this industry oversees require significant
+resources and generate a massive environmental footprint (affecting air, soil, and water quality).
+Specifically, livestock manure is a carbon and nutrient rich (nitrogen (N) and phosphorus (P)) waste
+stream that is routinely used as fertilizer. This practice enables nutrient recycling but leads to the
+release of potent greenhouse gases (GHGs), such as nitrous oxide (N2 O) and methane (CH4 ). It has
+been estimated that these emissions have a global warming potential (GWP) of 72.5 kg CO2 -eq per
+tonne of manure (Aguirre-Villegas et al., 2019). Additionally, the low nitrogen (N) to phosphorus
+ratio (N:P) of dairy manure does not match the nutrient requirements of most crops, and this promotes over-application of manure and accumulation of P in soil (Wang et al., 2019). Rain can mobilize
+excess soil P and deposit it in local waterways where it triggers harmful algal blooms (HABs), a process known as eutrophication. In addition to the severe environmental damage they cause in aquatic
+ecosystems, HABs also have significant health and economic costs on the residents living around
+eutrophic waterbodies (Sampat et al., 2021).
+Recovering manure nutrients in a scalable manner remains a grand societal challenge; the main technical difficulty is that manure is a vast, diluted (over 90% is water), and distributed waste stream. To
+give some perspective, there are 1.2 million dairy cows in Wisconsin (distributed across 9,000 dairy
+farms). A total of 24 million tonnes of manure are generated in the state annually, and this waste
+stream contains 32,000 tonnes of P. Another related issue is that large quantities of synthetic fertilizers are needed to fulfill crop nutrient needs and their production requires significant resources.
+Specifically, the production of N fertilizers consumes large amounts of energy (for ammonia production), while the production of P fertilizers consumes significant quantities of fossil rock resources
+(phosphate rock) (Cordell et al., 2009). Recent estimates indicate that, on average, the production of
+1 kg of milk requires 0.4 kg P, 2.61 kg N, and 2.7 MJ (0.75 kWh) of energy (Kim et al., 2019; Leytem
+et al., 2021). As a result, developing technologies that enable better nutrient management is critical
+to ensure the sustainable growth of the dairy industry, to enable food security, and to achieve more
+circular agroeconomies.
+Anaerobic digestion (AD) is an established technology that supports sustainable manure management. This technology was initially developed for use in wastewater treatment plants (WWTPs)
+(United States Environmental Protection Agency (EPA), 2022d), but, during the energy crisis of the
+1970s, the need to identify alternative fuel sources led to an interest in the deployment of AD systems at animal farms (Lusk, 1998). These systems produce biogas, a gas mixture largely composed
+of methane and carbon dioxide and traces of key contaminants (such as hydrogen sulfide). Manure
+processing using AD has significant environmental benefits: (i) it helps mitigate methane emissions
+that result from the application of raw manure to soil, and (ii) the generated biogas is a renewable
+fuel that can be used for electricity generation, heating, energy storage, or as a transportation fuel.
+2
+https://doi.org/10.26434/chemrxiv-2024-hz3r3-v2 ORCID: https://orcid.org/0000-0002-2687-4385 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+http://zavalab.engr.wisc.edu
+
+Despite these benefits, biogas has historically faced market-entry barriers, as it must compete with
+fossil-sourced natural gas and electricity. As a result, the adoption of on-farm ADs in the US has
+been limited; government data indicates that there are currently 322 on-farm digesters in operation
+(United States Environmental Protection Agency (EPA), 2022e). For comparison, there are currently
+more than 9,000 biogas production facilities in Germany (Thrän et al., 2020) (which can be attributed
+to higher fossil fuels costs). Recent changes in energy policy in the US and recent interest in sustainable practices is renewing interest in AD deployment in the US (Erickson et al., 2023). Unfortunately,
+it is important to note that AD does not enable balancing the N:P ratio, which remains largely unchanged in the digestate. As a result, AD systems need to be integrated with nutrient management
+technologies.
+In recent years, the development of integrated technologies for managing manure has largely centered around systems that aim to recover clean water from manure, and several of these platforms are
+already being commercialized (Livestock Water Recycling, 2018; Sedron Technologies, 2019; Digested
+Organics, 2021). These water recovery systems (WRS) can be seen as on-site wastewater treatment
+facilities that integrate solid-liquid separators (SLS), ultrafiltration (UF), and reverse osmosis (RO)
+(Larson and Aguirre-Villegas, 2022). In addition to recovering clean water from manure, a WRS also
+produces a solid fertilizer containing the majority of the total P and organic N found in manure and
+a concentrated inorganic N solution. If managed properly, these products can then be applied to the
+soil at the stoichiometric ratios that match crop nutrient needs (Ledda et al., 2013). WRS can be integrated with AD systems, as AD can provide the energy that the WRS needs to run. Unfortunately,
+these systems provide a product of limited economic value (concentrated nutrient sludge) (Beddoes
+et al., 2007; Hu et al., 2022).
+Cyanobacteria (CB) have long been organisms of interest for their potential use in various applications such as energy, chemical manufacturing, and agriculture (Biller and Ross, 2011; Knoot et al.,
+2018; Saadaoui et al., 2021). This interest has largely been driven by the higher productivity and
+nutrient density of CB compared to terrestrial plants or crops. CB cultivation is also less likely to
+compete with food production, as is it can be deployed on land that is not suitable for agriculture
+(Davis et al., 2011). Additionally, cyanobacteria are autotrophs, consuming solar energy and CO2 as
+they grow and can serve as a potential avenue for enabling carbon capture using renewable energy.
+CB are typically cultivated in open raceway ponds or bag photobioreactors (b-PBRs) and mineral
+nutrients are typically provided via a growth media (Zhu et al., 2018; Clark et al., 2018). Due to the
+fact that the media can account for almost 20% of the annual operating cost of a CB farm, replacing it
+with a less expensive nutrient stream can greatly improve the viability of these operations.
+Previous work has demonstrated that CB can be grown using nutrient-rich waste streams such as
+digested dairy manure (Wang et al., 2010). Studies have also shown that the CB biomass produced in
+this manner can serve as an effective (bio)fertilizer, especially when combined with synthetic fertilizers, resulting in similar crop yields, reduced nutrient leaching and soil acidification, and a smaller
+carbon footprint when compared to using synthetic fertilizers alone (Rupawalla et al., 2021; Mulbry
+3
+https://doi.org/10.26434/chemrxiv-2024-hz3r3-v2 ORCID: https://orcid.org/0000-0002-2687-4385 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+http://zavalab.engr.wisc.edu
+
+et al., 2005; Barak et al., 1997; Coppens et al., 2015). Furthermore, the use of CB fertilizers can also
+provide soils with an array of benefits, such as increased organic carbon content, decreased erosion,
+and improved health and diversity of microbial and fungal communities (Yilmaz and Sönmez, 2017;
+Falchini et al., 1996; Goemann et al., 2021; Gay et al., 2022).
+CB cultivation presents an alternative pathway for waste management in the dairy industry that
+can operate either independently or integrated with AD. Compared to WRS systems, CB can offer
+a higher degree of integration with AD. For instance, CB can capture the carbon dioxide produced
+from biogas purification and combustion for electricity production. This high degree of integration
+can potentially lead to higher resource utility efficiency. Moreover, CB biomass can be used for a
+variety of products such as biofuels, food, and cosmetics (thus opening a bioeconomy pathway for
+farmers) (Clippinger and Davis, 2019). There has been limited work done on the engineering required
+to develop the smaller-scale CB operations that would be required for waste management at dairy
+farms (Ma et al., 2021; Lee et al., 2021). As such, there are significant gaps in the understanding of CB
+growth potential under the conditions experienced at dairy farms, and there is limited guidance on
+the performance targets that CB strains should achieve. These knowledge gaps are important, as CB
+can be engineered (using modern tools from synthetic biology) to modify their functionalities (e.g.,
+tolerance to extreme environments and their productivity).
+In this work, we present an integrated process for the recovery of manure nutrients using CB.
+The process, which we call ReNuAl (Renewable Nutrients from Algae), is centered around the use
+of CB strains that can be potentially engineered (via synthetic biology) to have flexible N:P content
+ratios that match diverse crop nutrient requirements and that can help conduct a variety of functionalities that enable integration with AD systems (e.g., capture of carbon dioxide). We develop a
+techno-economic analysis (TEA) framework that aims to analyze configurations of varying levels of
+process integration and to identify key elements of the process that have the most impact on economic
+performance; this provides targets for CB strains and process units that help guide future research efforts. Our framework also analyzes the environmental impacts of conventional manure management
+practices and compares these with the ReNuAl process. In addition, we determine how different
+treatment service fees (externalities) can be used to improve the viability of the process. This allows
+us to identify and set performance and environmental metrics that should be measured during field
+trials. Our results indicate that by increasing the P density of the engineered CB strain, the charge
+to recover P from manure decreases significantly, making the ReNuAl process a potential alternative
+for nutrient management.
+
+2
+
+Methodology
+
+We consider a setting in which manure obtained from a 1,000 AU dairy farm is processed. The
+composition of the unprocessed manure is based on the analysis of samples collected from dairy
+farms in southern and eastern Wisconsin (Aguirre-Villegas et al., 2019). It consists of 7.8% total solids
+4
+https://doi.org/10.26434/chemrxiv-2024-hz3r3-v2 ORCID: https://orcid.org/0000-0002-2687-4385 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+http://zavalab.engr.wisc.edu
+
+(TS), 7.8 g of total P (TP)/kg of dry manure, 47 g of total N (TN)/kg of dry manure, and 21 g of total
+ammonia nitrogen (TAN)/kg of dry manure. The manure is initially processed using either an SLS
+or an AD system followed by an SLS. The extrudate from the SLS, which contains 70% of the total P
+and 87% of the total N (50% of which is TAN), serves as a growth medium for CB cultivation. The
+N:P ratio of the cultivated CB biomass is assumed to match that of corn (7:1) (Laboski et al., 2012).
+In addition, it is assumed that the CB strain used is able to self-flocculate and can thus be separated
+from water (Kebede-Westhead et al., 2004; Lv et al., 2018). The P density value of the CB is based
+on preliminary experimental results that we have performed. The costs, yield factors and utility
+requirements of the various units are based on values or correlations reported in the literature.
+
+2.1
+
+Process Description
+
+We now provide a detailed description of the proposed integrated process. We consider four process
+variants (denoted as Base Case 1, Base Case 2, ReNuAl 1 and ReNuAl 2).
+In Base Case 1 (BC1), we consider the direct land application of manure, the most common disposal method (Figure 1). The manure is sent to a solid liquid separator to recover the manure solids
+along with some of the nutrients. This process makes the liquid stream easier to manage, while also
+creating a solid product with a higher concentration of nutrients, making it easier to transport. The
+liquid stream can be applied to croplands to provide nutrients. It is important to note that the value of
+manure is closely tied to its nutrient content, particularly its nitrogen (N) and phosphorus (P) levels.
+However, the proportion of nutrients available in manure may not always align perfectly with the
+nutrient requirements of crops, potentially leading to over- or under-application of these nutrients.
+Additionally, this method produces significant greenhouse gas emissions.
+Base Case 2 (BC2) allows for the reduction of emissions and generates additional revenues. This
+scenario combines an AD system with the SLS. Biogas is generated from the raw manure via AD and
+is then sent to a pair of scrubbers. These remove any hydrogen sulfide (H2 S), a corrosive compound
+that can damage downstream units, as well as CO2 . The product stream of the scrubbing system is
+high-purity methane (CH4 ) that can be sold to the market. The digested manure (digestate) retains
+the majority of the nutrients and is sent to the SLS for further processing. As in Base Case 1, the SLS
+extrudate is land-applied as fertilizer. This configuration results in fewer methane emissions than
+non-digested manure (Base Case 1) as the digestate contains less carbon and volatile solids. However, this process still results in nutrient build-up.
+The Renewable Nutrients from Algae (ReNuAl) process provides a solution for the nutrient imbalance problem. As in BC2, ReNuAl utilizes AD to produce biogas and an SLS to recover the solids
+present in the digestate. The extrudate from the SLS is then pumped to a series of bag photobioreactors where it serves as a growth medium for cyanobacteria cultivation. The carbon dioxide generated
+from biogas purification and combustion is bubbled through the algal growth medium to meet the
+CO2 needs of the CB. A source of additional nitrogen (urea) is also fed into the b-PBRs to provide the
+5
+https://doi.org/10.26434/chemrxiv-2024-hz3r3-v2 ORCID: https://orcid.org/0000-0002-2687-4385 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+http://zavalab.engr.wisc.edu
+
+Figure 1: Process flow diagrams and basic balances for base process configurations.
+
+6
+https://doi.org/10.26434/chemrxiv-2024-hz3r3-v2 ORCID: https://orcid.org/0000-0002-2687-4385 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+http://zavalab.engr.wisc.edu
+
+additional N required to achieve the desired N:P ratio; this ensures that the nutrient content of the
+biofertilizer satisfies crop requirements. The CB growth is assumed to be light-limited and is simulated according to the model of Clark (Clark et al., 2018). Once the CB are ready for harvesting, the
+contents of b-PBRs are discharged to a dewatering train that consists of a flocculation tank, lamella
+clarifier, and a pressure filter. The culture first enters the flocculation tank where self-flocculation of
+the CB is induced. The outlet of this unit is fed to a lamella clarifier where the CB flocs settle out of
+solution and are sent to a pressure filter to produce a concentrated CB solution. This solution then
+enters a thermal dryer that completes the moisture removal and yields a dry CB biomass product.
+The CB-free water exiting the lamella clarifier and pressure filter is sent back to the b-PBRs where
+approximately 95% of it is recycled, while the remaining 5% is purged to prevent the buildup of
+impurities in the process. While the manure provides a source of water into the process, it is not
+sufficient to compensate for water losses in the purge and thermal dryer. As a result, an additional
+stream of water must be fed into the b-PBRs as make-up.
+In this work, a couple of process configurations of the ReNuAl system are evaluated. In the first
+configuration (ReNuAl1, Figure 2) all of the methane generated is sold to the market. ReNuAl2, the
+second configuration, utilizes a fraction of the recovered methane to produce electricity and exports
+the remainder. The combustion of methane produces flue gas, comprised of N2 , H2 O, and CO2 , which
+is bubbled through the CB growth medium to supply the organisms with carbon dioxide (Figure 3).
+
+2.2
+
+Economic Performance Metrics
+
+The products of the ReNuAl process can either be exported off-site or consumed on-site to reduce the
+amounts of utilities and fertilizer that are purchased from the market. We developed a TEA model
+of ReNuAl to compare its performance at varying levels of integration. The CB product is exported
+off-site along with some of the generated CH4 (export fraction varies depending on the process configuration).
+We use a linear pricing scheme to set the value of the CB biofertilizer based on its N and P content.
+Using the price and composition of diammonium phosphate (DAP), a commonly used synthetic
+fertilizer, we calculated CB price according to:
+pf =
+
+pD
+pD
+mN +
+mP
+xN D
+xP D
+
+(2.1)
+
+where pD is the price of DAP (USD/tonne), xN D and xP D are the N and P mass fractions of DAP
+(Supplementary Information), and mN and mP are the masses (tonnes) of N and P present in the CB
+product.
+The capital and operating cost estimations are described in detail in the Supplementary Information.
+The discounted return on investment (DROI) is a widely used metric in process design that allows
+for investors to determine the value of potential future returns in terms of present-day value. In this
+work, a 15% DROI was used to calculate the annualized capital costs. In addition, we assumed a
+7
+https://doi.org/10.26434/chemrxiv-2024-hz3r3-v2 ORCID: https://orcid.org/0000-0002-2687-4385 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+http://zavalab.engr.wisc.edu
+
+Figure 2: Process flow diagram and basic balances for ReNuAl1 (production of biogas).
+
+8
+https://doi.org/10.26434/chemrxiv-2024-hz3r3-v2 ORCID: https://orcid.org/0000-0002-2687-4385 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+http://zavalab.engr.wisc.edu
+
+Figure 3: Process flow diagram and basic balances for ReNuAl2 (production of biogas and electricity).
+
+9
+https://doi.org/10.26434/chemrxiv-2024-hz3r3-v2 ORCID: https://orcid.org/0000-0002-2687-4385 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+http://zavalab.engr.wisc.edu
+
+process lifespan of 15 years and assigned monetary values using 2020 USD.
+The revenues generated by the process include the sale of CB biofertilizer, CH4 , and the electricity generated. Furthermore, we considered a hypothetical additional revenue stream in the form of
+a manure processing fee, which we refer to as the phosphorus recovery charge (PRC), that is levied on
+a USD per kilogram of P extracted basis. This fee captures potential revenue of the process obtained
+from waste processing (analogous to a waste water treatment plant).
+We combined these revenues to calculate the net present value (NPV), which is defined as:
+NPV = C +
+
+T
+X
+
+P (1 + i)−t
+
+(2.2)
+
+t=1
+
+Here, C is the total capital investment (TCI) required to build the process, P is the annual after tax
+profit (AATP), i is the discount rate, and T is the project lifetime (in years). The correlations and
+data used to determine the TCI were obtained from the literature and are shown in the Supplementary
+Information. The AATP can be formulated as:
+P = (1 − x)(pf ṁf + pg ṁg + pe ẇ + pp ṁp − O − d) + d
+
+(2.3)
+
+where x is the tax rate, O is the total operating cost (TOC), and d is the process equipment depreciation. The yearly amounts of biofertilizer and methane produced (in tonnes) and electricity generated
+(in kWh) are represented by ṁf , ṁg , and ẇ respectively, and these are sold at pf (USD/tonne), pg
+(USD/tonne), and pe (USD/kWh) respectively. The phosphorus recovery cost (PRC) (pp ) is determined by finding the PRC required to get a net present value (NPV) of zero when applied to future
+cash flows. Thus, the P credit revenue is calculated as the PRC (pp ) times the P content of the biofertilizer, ṁp . A complete description of the formulation used to calculate the TOC and d can be found
+in the Supplementary Information; the value of x is set equal to the US federal corporate tax rate of 21%.
+
+2.3
+
+Environmental Performance Metrics
+
+In addition to producing commercially valuable products (i.e., biogas, electricity, biofertilizer), ReNuAl can also be seen as a waste management system that delivers environmental benefits (via reductions in nutrient and GHG emissions). By offsetting the demand for synthetic fertilizers, the process
+can have indirect environmental effects as the production of synthetic fertilizers generates significant
+amounts of P and CO2 pollution (Liu et al., 2020; Belboom et al., 2015). The GHG emissions associated with manure application can be substantially reduced as the CB are significantly less volatile
+than raw manure. Additionally, by delivering nutrients in the appropriate ratio that matches crop
+needs and storing them in a more stable medium, the produced fertilizer can reduce the occurrence
+of over-application and the severity of nutrient runoff. Sampat and collaborators estimated that the
+application of excess P to soil can have an economic impact of $74.5 per kg of P (Sampat et al., 2021).
+In addition, the methane exported off-site can be used to displace fossil-sourced fuels, particularly in
+10
+https://doi.org/10.26434/chemrxiv-2024-hz3r3-v2 ORCID: https://orcid.org/0000-0002-2687-4385 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+http://zavalab.engr.wisc.edu
+
+the transportation sector, providing an additional environmental benefit that can also be monetized
+(under proper incentives).
+Currently, the US government offers a renewable identification number (RIN) credit for biogasderived methane of $0.84/kg CH4 as part of the renewable fuel standard (RFS) program (United
+States Environmental Protection Agency (EPA), 2022b,c). At the state level, California also offers
+an additional credit as part of its low carbon fuels standard (LCFS) program. This program is designed to incentivize the use of low carbon footprint fuels within the state; the credit for bio-methane
+production is valued at $0.55/kg CH4 (California Air Resources Board (CARB), 2022). These revenue
+streams could be incorporated into the TEA model to determine their impact on the total costs. While
+existing environmental credits only permit payments associated with direct pollution reductions, this
+proposed approach permits a more holistic outlook that considers that the effects of disruptive new
+technologies are not isolated. Additionally, given that the ultimate goal of nutrient recycling solutions is to make agriculture a more sustainable and circular system, measuring the reductions in raw
+material and energy inputs is essential for determining the success of a given technology. In this
+work, we evaluated the environmental impacts associated with the utility consumption of the ReNuAl system to estimate its Global Warming Potential (GWP); electricity emissions were determined
+using a factor of 0.4795 tonnes of CO2 -eq/MWh.
+
+11
+https://doi.org/10.26434/chemrxiv-2024-hz3r3-v2 ORCID: https://orcid.org/0000-0002-2687-4385 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+http://zavalab.engr.wisc.edu
+
+3
+
+Results and Discussion
+
+In this section, we present the results of the economic and environmental analysis of the integrated
+process variants.
+
+3.1
+
+Process Design
+
+The base scenario used in this case study considers the processing of 20,832 tonnes/yr of manure at
+a hypothetical 1,000 animal unit dairy. The N:P ratio of the manure is assumed to be 6 (this content
+can be highly variable), resulting in an N and P throughput of 76.37 tonnes/yr and 12.67 tonnes/yr
+respectively. After the manure has been processed by the AD system and the SLS, the SLS extrudate
+contains 33.22 tonnes/yr of total ammonia nitrogen (TAN), which is the N available to plants, and
+8.87 tonnes/yr of P. The CB strain used requires 0.017 g of P per g of CB (P density). From this we can
+determine that processing the entire P load embedded in the extrudate would require the production
+of 522 tonnes/yr of CB biomass. The process is assumed to operate 365 days per year at an average
+light intensity of 350 µmol/m2 ·s and the CB are harvested every 3 days from the b-PBRs (Faust and
+Logan, 2018). The DROI target used to calculate the biofertilizer price is 15% (this is a typical standard industry benchmark). Monetary values are assigned in terms of USD for the year 2020.
+
+Figure 4: Nutrient imbalance of manure application is presented on the Sankey diagram on the left. On the
+right, a Sankey diagram for the ReNuAl process shows how the CB are able to integrate resources and provide
+a nutrient ratio that matches crop needs.
+
+Figures 1 through 3 illustrate the setup and mass balances of the considered processes (Base and
+ReNuAl Cases). For Base Case 1 and Base Case 2, our findings indicate that the land application of
+manure results in an excess of 4.12 tonnes/yr of P being applied to the soil as corn only requires 4.75
+tonnes/yr of P based on the TAN provided. We also observe that Base Case 2 enables the production
+of 643 tonnes/yr of CH4 . The ReNuAl process provide a pathway for addressing the nutrient imbalance of manure as well as enabling efficient mass and energy integration. The b-PBRs in ReNuAl1
+and ReNuAl2 are fed with 62 tonnes/yr of urea to provide the additional nitrogen needed for the CB
+to exhibit the desired 7:1 N:P ratio. Additionally, the CB require an additional source of CO2 beyond
+what is recovered in the biogas CO2 scrubber. As shown in Figure 2, ReNuAl 1, which exports all of
+the produced methane, requires an additional 521 tonnes/yr CO2 to meet the needs of the cyanobac12
+https://doi.org/10.26434/chemrxiv-2024-hz3r3-v2 ORCID: https://orcid.org/0000-0002-2687-4385 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+http://zavalab.engr.wisc.edu
+
+teria. Supplying this additional material from an external source costs an estimated 10 USD/tonne
+of CO2 , resulting in an additional cost of 5,218 USD (Smith et al., 2021).
+The ReNuAl2 system uses part of the methane generated to produce electricity; this results in the
+production of a flue gas stream which contains CO2 . Feeding this gas to the b-PBRs provides the CB
+with an additional carbon source and reduces the need for an external CO2 source. We can determine
+the export fraction that allows ReNuAl2 to fully produce the required CO2 on-site and minimizes the
+GHG emissions of methane combustion. We performed a sensitivity analysis to determine the net
+CO2 generation rate of this process at various CH4 export levels and CB P-uptake ratios, which is an
+indicator of CB production.
+Another key process variable of the ReNuAl process is the P density of the CB (i.e., the amount
+of P that CB can absorb). Increasing this value reduces the biofertilizer production rate as less CB
+are required to process the incoming P load. This results in a reduction in the economic and resource
+intensity of the CB cultivation and harvesting units. Given that these sections account for 74% of the
+electrical power and the entirety of the thermal energy consumed by the entire process (see Figure
+5), reductions in the energy needs of the corresponding units will results in significant overall energy
+savings. While the energy demands of the process can also be offset by increasing electricity generation, this represents a reduction in revenue, as less methane is exported, and increases the capital
+cost of the generator. Increasing the P density of the CB, meanwhile, reduces the energy needs of the
+process by decreasing the required size of the CB cultivation and harvesting sections. As a result, this
+parameter provides an important design “handle” that can be used to directly improve the circularity
+of the process without reducing export values. However, further research is needed to determine the
+extent to which the P density of CB cells can be increased (e.g., by using tools from synthetic biology).
+
+Figure 5: Yearly energy flows (in MWh) for the different sections of the ReNuAl process. Note that the circular
+flow of the electricity generation section implies that this section is a net energy producer that can offset a
+portion of the required load.
+
+13
+https://doi.org/10.26434/chemrxiv-2024-hz3r3-v2 ORCID: https://orcid.org/0000-0002-2687-4385 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+http://zavalab.engr.wisc.edu
+
+Because the ReNuAl2 system, which produces electricity, is the most integrated system evaluated in
+this work, the following sections concentrate on the economic and environmental assessments of this
+configuration.
+
+3.1.1
+
+Economic Evaluation
+
+Based on the cost of obtaining the equivalent amount of nutrients from diammonium phosphate
+(DAP), a value of $0.03/kg was assigned to the biofertilizer according to (2.1). This results in a CB
+biofertilizer revenue of $15,656. The sales associated with the CH4 and electricity generated provide
+an additional $130,592 and $90,274 respectively of income. This results in a PRC of $119/kg being
+required for this scenario to meet the desired economic benchmarks. This suggests that extracting
+phosphorus from manure using this process is 60% more costly compared to the expenses of existing
+manure management methods (based on $74.5/kg P as the socioeconomic cost of P run-off). On the
+other hand, if we considered the case were all the methane is exported off-site and no electricity is
+generated (ReNuAl1), the PRC would be $117/kg P. This highlights the importance of engineering
+CB strains to achieve a higher P density and reduce the PRC as well as resource consumption.
+It has been reported that photobioreactors involve considerable financial investment (Posten,
+2009). As a result, we explored different avenues for deploying alternative and lower cost setups than
+those that have been reported. Using published price information from distributors, we determined
+that a b-PBR assembly that uses ground solar panel racks could allow us to significantly reduce the
+total capital investment (TCI) of the reactors (Huang et al., 2017; Benner et al., 2022). Combining the
+results of this analysis with the costs of the remaining pieces of equipment, which were obtained from
+the literature (see Supplementary Information), we determined that constructing the ReNuAl2 process
+would require a TCI of approximately 4.276 MMUSD. The total operating cost (TOC) of the process
+was estimated to be 0.989 MMUSD/yr, and includes the costs of utilities and materials required by
+the process as well as operations expenditures, such as labor and maintenance. The cost of the plastic
+bags for the b-PBRs is included in the TOC as well, as these will have to be replaced continuously
+throughout the lifetime of the process. A breakdown of the TCI and TOC across the various sections
+of the process is illustrated in Figure 6.
+From Figure 6 we can see that TCI is not evenly distributed among the different sections of the
+process. For instance, the AD system and the thermal drying system account for 68% of the total capital investment. Modifying CB capabilities via synthetic biology can potentially reduce or eliminate
+the need for certain sections of the process. For example, if the process utilized a CB strain that could
+grow on raw manure (rather than digestate), then the AD system, which accounts for 29% of the TCI,
+could be removed. Similarly, while the thermal drying system is needed in biofuels applications to
+facilitate the extraction of oils from the CB, complete moisture removal may not be an essential step
+if the biofertilizer is used locally. If the CB biomass will be shipped off-farm, then drying can reduce
+transportation costs. However, it might not be necessary to completely dry the CB for the transport
+to be economical.
+14
+https://doi.org/10.26434/chemrxiv-2024-hz3r3-v2 ORCID: https://orcid.org/0000-0002-2687-4385 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+http://zavalab.engr.wisc.edu
+
+Figure 6: Distribution of the total capital investment (right), in MMUSD, and the annual total operating costs
+(left), in MMUSD, for ReNuAl2 across the different sections of the process
+
+Shifting focus to the TOC, we see that the b-PBR section accounts for 38% of the operating costs.
+The data used to estimate the TOC for this section was largely collected from literature sources that
+considered designs for biofuel applications (Clippinger and Davis, 2019; Ma et al., 2021). However,
+running at the scale proposed for ReNuAl rather than the scale usually seen in biofuel production
+facilities can have a significant impact on the operating variables. Consider mixing, which accounts
+for 24% of the operating costs and essentially all of the energy demand of the b-PBR section. The
+PBRs used in biofuels operations are fairly large due to the scale of the operation, and ensuring that
+their contents are well-mixed requires a significant amount of mechanical energy (Jones et al., 2017).
+However, the PBRs that will be used in the ReNuAl process are significantly smaller. As a result,
+aerating the reactors to provide carbon dioxide could provide the necessary mixing, greatly decreasing the mixing energy load and its associated cost. A similar argument can be made for the labor
+and bag replacement costs, which together account for 48% of its TOC. Due to the decentralized and
+low-intensity setup envisioned for ReNuAl, the process will not require the same level of technical
+expertise to operate and maintain or require bags made from the same grade of materials as a biofuels
+production facility. These results highlight that there is a significant knowledge gap in the literature
+that should be addressed.
+3.1.2
+
+Environmental Evaluation
+
+Given an annual throughput of 20,832 tonnes/yr of manure, we calculated that ReNuAl avoids 4.12
+tonnes/yr of P accumulation and 1100 tonnes CO2 -eq/yr by processing animal waste. We assumed
+that the AD system, b-PBR, and dewatering train sections are powered by electricity supplied from
+the grid, and the thermal dryer runs on natural gas. As a result, operating the process results in the
+emission of 1,221 tonnes CO2 -eq/yr, while the on-site electricity generation offsets an additional 392
+tonnes CO2 -eq/yr. This results in ReNuAl being a net emitter of 829 tonnes CO2 -eq/yr. Figure 7
+15
+https://doi.org/10.26434/chemrxiv-2024-hz3r3-v2 ORCID: https://orcid.org/0000-0002-2687-4385 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+http://zavalab.engr.wisc.edu
+
+shows the CO2 -eq/yr emitted in the different manure management systems evaluated in this work.
+The emissions quantification for Base Case 1 and 2 were calculated using the emission factors of 92.6
+and 77.2 CO2 -eq/ton of manure, that considers the manure application of systems with SLS and with
+SLS and AD units, respectively (Aguirre-Villegas et al., 2019). Note that, because it allows for the
+displacement of 454 tonnes/yr of fossil-sourced natural gas via that export of bio-methane, ReNuAl
+is eligible to receive an additional 0.629 MMUSD/yr from RIN and LCFS credits if they are applied.
+
+Figure 7: Global Warming Potential (GWP) in tonnes of CO2 per year for the evaluated scenarios.
+
+By capturing the nutrients contained in manure and keeping them from entering watersheds,
+ReNuAl is able to reduce water pollution and the occurrence of HABs in surrounding communities.
+Therefore, this process can be viewed through a similar lens as a wastewater treatment plant, which
+serves a similar purpose in urban areas. By preventing the discharge of raw sewage into the environment, WWTPs provide communities with a myriad of socio-economic benefits. However, they do
+not generate salable products and instead generate revenue by charging users a fee for treating their
+waste. The PRC can be viewed as the analog of this service fee in the context of ReNuAl. Thus, it is
+reasonable to envision a scenario where a system like ReNuAl fills a similar role in the dairy sector.
+This would likely result in the process being deployed at a larger scale and in a more centralized
+manner (similar to WWTPs), allowing it to benefit from economies of scale.
+16
+https://doi.org/10.26434/chemrxiv-2024-hz3r3-v2 ORCID: https://orcid.org/0000-0002-2687-4385 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+http://zavalab.engr.wisc.edu
+
+While the GHG emissions of the ReNuAl process are equivalent to those emitted by approximately 11 people (United States Environmental Protection Agency (EPA), 2022a), by reducing nutrient leaching, ReNuAl can reduce the occurrence of HABs and improve water quality in surrounding
+communities. However, as with the cost estimates, there is significant uncertainty surrounding these
+values. From Figure 5, we can infer that the largest contributor to the carbon footprint of ReNuAl
+is the b-PBR section, largely due to the mixing requirements that account for 60% of total emissions.
+However, we believe that the mixing energy load presented is likely an overestimate of the actual
+requirements. Experiments must be run in the future to obtain a more representative value for the
+energy needs of the process. Similarly, the CO2 and P emission offsets are likely also overestimates.
+Growth conditions in the reactors could potentially prevent the CB from consuming all of the available P and biofertilizer application could still cause some degree of nutrient leaching. Additionally,
+the application of the biofertilizer will likely also result in the emissions of GHGs associated with the
+breakdown of organic matter. Therefore, conducting field trials to generate estimates for these values
+is essential.
+
+3.2
+
+Sensitivity Analysis
+
+We conducted a sensitivity analysis of various key process parameters to identify avenues for optimization and to quantify the benefits that can be obtained. For this analysis we considered, the
+surface area to volume ratio (SA:V) of the b-PBRs (m−1 ), the light intensity (LI) used to cultivate the
+CB (µmol/m2 ·s), the fraction of the biogas exported to the market, and the P density of the CB (g
+P/g CB). These parameters were selected on the basis of their importance to process operations and
+relative ease of modification.
+
+Figure 8: Impacts of a select choice of operating parameters on the TAC of the ReNuAl process.
+
+The impact of the evaluated variables on the TAC is shown in Figure 8. We observed that the
+17
+https://doi.org/10.26434/chemrxiv-2024-hz3r3-v2 ORCID: https://orcid.org/0000-0002-2687-4385 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+http://zavalab.engr.wisc.edu
+
+variables related to the design of the b-PBR have the most impact on the TAC, shifting it between
+-9.9% to 15.7% of the baseline. Given the large fraction of the TOC that is attributed to the b-PBRs,
+and that the operating costs for this section of the process scale by acreage, these results are not surprising as these parameters strongly affect the reactor surface area required. We determined that,
+while reactors with higher SA:V values require more area, increasing this variable reduces the effects
+of shading, where the top layer of CB reduces the light that is available at lower levels of the reactor. This significantly increases the productivity of the CB, allowing them to reach higher titers and
+results in a net reduction in the surface area required as fewer reactors are needed. While the light
+intensity has a similar effect on TAC as the reactor SA:V, modifying this parameter in practice is significantly more challenging. Aside from relocating the process, the only method for controlling this
+parameter would be to use an artificial lighting system. However, these can be expensive to install
+and operate. Furthermore, if shading still occurs, the additional light will not reach the lower levels
+of the reactor. High light intensities can also result in bleaching of the CB cells which will decrease
+productivity. Thus, it is likely more effective to focus on designing a reactor geometry that minimizes
+shading and makes the most use of the available light rather than providing more light.
+In addition to providing a potential avenue for adjusting the TCI/TOC of the ReNuAl process,
+modifying the P density of the CB also allows us to change the amount of the produced fertilizer (see
+Figure 9). If the CB are able to consume more phosphorus on a per cell basis, less biomass will be
+needed to process the manure. This increases the nutrient density of the CB and, by extension, its
+value as a fertilizer. The decrease in required CB production also reduces the size of the b-PBR, dewatering, and drying sections of the process, resulting in lower capital and operating costs. Decreasing
+the amount of CB production also means that the biofertilizer will generate less revenue if it is sold
+at the same price. However, we can observe that the accompanying reductions in the TCI and TOC
+are more than enough to make up for the drop in revenue, resulting in a moderate reduction in the
+TAC of 9.9% when P density is increased by 25%. Meanwhile, the CB biomass is 25% more valuable
+than the base case on a nutrient content basis. It is important to note that increasing the P density of
+the CB also leads to lower water and energy consumption as well as lower land use. This is mainly a
+result of the decrease in CB production, which causes a reduction in the size of the units of the ReNuAl process. In the scenario evaluated in this work (0.017 g P/g CB biomass), ReNuAl has a fresh
+water consumption of 23,882 ton/year which is equivalent to roughly 9.6 Olympic-sized swimming
+pools. In addition, the evaluated system occupies 23 acres of land, which is roughly equivalent to
+about 184 tennis court, and has an energy demand of 2549 MWh/year, or approximately the energy
+consumption of 238 households for a year. Results show that at a P density of 0.041 g P/g CB biomass
+the system can operate without the need of a fresh water supply, since the water contained in the digested manure is enough to overcome the losses in the purge and dryer. If the P density is increased
+further to 0.046 g P/g CB, the PRC is reduced to $74.5/kg, making the economic impact of ReNuAl
+equivalent to that of current manure management practices. Finally, at a P density grater than 0.0426
+g P/g CB, the CB do not require additional CO2 beyond what is generated from biogas production,
+and on-site combustion of methane to supply additional CO2 is no longer necessary. Thus, all of the
+CH4 produced is exported off-site. Further reductions in the PRC and resource use can be achieved
+18
+https://doi.org/10.26434/chemrxiv-2024-hz3r3-v2 ORCID: https://orcid.org/0000-0002-2687-4385 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+http://zavalab.engr.wisc.edu
+
+from additional increases in the P density as shown in Figure 9. This analysis provides insights on
+the impacts of P density on resource consumption and suggests objectives for genetically modifying
+the CB.
+
+Figure 9: Impacts of P density on resources consumption (left) and CB production and PRC (right).
+
+Outside of the CB growth and harvesting sections of the process, we determined that the most
+important parameter we could easily control was the fraction of methane exported off-site. While using the CH4 to generate electricity can be beneficial, we observed that maximizing methane exports
+is a more profitable option due to low value of electricity. Not only does this allow the process to
+generate more revenue, but it also can eliminate, or at least reduce, the capital and operating costs
+associated with the electricity generator. This has the added benefit of potentially removing a whole
+unit from the process which can simplify its operation.
+The parameters we analyzed open various avenues for process optimization that can significantly
+reduce the process TCI and TOC. However, it is important to note that there are factors that can limit
+the degree to which these variables can be modified. The rate at which CB consume the phosphorus
+from the manure and the dewatering equipment limit how short the batch time can be. If CB are
+harvested too quickly, a significant amount of P can be left behind and eventually lost via the purge
+stream. Similarly, if the culture titer is too low, it is possible that the current separations equipment
+would be unable to recover the CB, resulting in the need for a more advanced and expensive dewatering system. As the SA:V of the reactors increases, heat transfer with the environment becomes a
+greater concern, and more advanced monitors and actuators would likely be needed to regulate the
+culture temperature. Additionally, the bags would likely need to be replaced more frequently as the
+increase in area exposed to direct sunlight would make them degrade faster. LI-based improvements
+are, as previously stated, largely limited by reactor design and cell bleaching limits. Methane export
+rates are largely only limited by process needs. ReNuAl would likely be able to inject as much of the
+generated CH4 into the grid as desired, as the demand for it exists. Finally, if the goal is to use the
+produced biomass as fertilizer, then increasing the P concentration per cell to the highest value possible, as long as the selected N:P ratio can be maintained, would be desirable. However, if the CB will
+be used for some other application (e.g., fuels), then having a high P content might be detrimental to
+the value of the product.
+19
+https://doi.org/10.26434/chemrxiv-2024-hz3r3-v2 ORCID: https://orcid.org/0000-0002-2687-4385 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+http://zavalab.engr.wisc.edu
+
+4
+
+Conclusions and Future Work
+
+This study presents a techno-economic analysis (TEA) framework for evaluating processes for recovery of nutrients from livestock waste via the production of a sustainable cyanobacteria biofertilizer.
+We propose an integrated process variant that we call the Renewable Nutrients from Algae (ReNuAl)
+process. ReNuAl provides a pathway towards sustainability for the dairy industry by integrating different technologies to produce different value-added products (bio-methane, electricity, biofertilizer)
+from dairy manure. The system uses CB to produce a stoichiometrically balanced (in terms of N and
+P) fertilizer that better matches crop needs. The process can also avoid the over-application of nutrients seen in current manure management practices that leads to nutrient runoff events that severely
+damage aquatic ecosystems. We evaluated the economic and environmental performance of ReNuAl
+using alternative configurations of the process and various metrics to assess the impacts of key process parameters and government policies.
+Our analysis reveals that the capital and operating costs of ReNuAl result in a TAC of 1.72
+MMUSD. We found that the PRC needed to operate the process is $119/kg. However, this charge
+can be reduced if the P density of the strain is increased. We also observed that we can deploy different configurations of ReNuAl to cut capital and operating costs, which can make these systems more
+accessible. A parameter sensitivity analysis revealed that the base design has significant room for improvement. This indicates that a potential direction for our future work is to develop fast-growing CB
+strains that quickly consume as much P as possible and determining the reactor geometry that maximizes CB productivity. Results show that higher P densities result in lower resource requirements
+and decreased process costs which, in turn, reduce the PRC. If a CB strain is genetically modified to
+achieve a P density of 0.041 g P/g CB, the process can operate without supplying additional water to
+the b-PBR. Similarly, at a P density 0.046 g P/g CB the resultant PRC of ReNuAl is equivalent to the
+reported socioeconomic cost of P runoff ($74.5/kg P).
+We found that the ReNuAl process has a high energy demand. However, the GWP of 829 tonnes
+CO2 -eq/yr of this process is 57% lower than that generated by the land-application of manure (1929
+tonnes CO2 -eq/yr). Furthermore, as autotrophs, CB can pull CO2 out of the atmosphere. If field trials
+can show that some of this carbon is sequestered in the soil, then the process can potentially serve
+as a carbon sink. In addition to reducing the release of greenhouse gases, ReNuAl can also mitigate
+nutrient runoff and reduce the phosphorus-based pollution that is associated with the production of
+synthetic P fertilizers by reducing demand for these products. The local production of a stoichiometrically balanced fertilizer made from recycled nutrients can also alleviate the strain that increasing
+food production places on scarce phosphate rock resources and also increase access to these essential
+elements.
+In our future work, we will aim to use the proposed framework to help guide the experimental
+design of CB strains that can reduce overall process costs and environmental impacts. In addition, we
+will use the framework to explore the impact of various externalities such as credits for the recovery
+20
+https://doi.org/10.26434/chemrxiv-2024-hz3r3-v2 ORCID: https://orcid.org/0000-0002-2687-4385 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+http://zavalab.engr.wisc.edu
+
+of nutrients and production of renewable energy. We are also interested in exploring how the proposed process can be used to deploy a supply chain that balances nutrients across large geographical
+regions.
+
+References
+Horacio A Aguirre-Villegas, Rebecca A Larson, and Mahmoud A Sharara. Anaerobic digestion, solidliquid separation, and drying of dairy manure: Measuring constituents and modeling emission.
+Science of the total environment, 696:134059, 2019.
+Philip Barak, Babou O. Jobe, Armand R. Krueger, Lloyd A. Peterson, and David A. Laird. Effects of
+long-term soil acidification due to nitrogen fertilizer inputs in Wisconsin. Plant and Soil, 197:61–69,
+1997.
+Jenifer C. Beddoes, Kelsi S. Bracmort, Robert T. Burns, and William F. Lazarus. An analysis of energy
+production costs from anaerobic digestion systems on US livestock production facilities. Technical
+report, United States Department of Agriculture, 2007.
+Sandra Belboom, Carl Szöcs, and Angélique Léonard. Environmental impacts of phosphoric acid
+production using di-hemihydrate process: A Belgian case study. Journal of Cleaner Production, 108:
+978–986, 2015.
+Philipp Benner, Lisa Meier, Annika Pfeffer, Konstantin Krüger, José Enrique Oropeza Vargas, and
+Dirk Weuster-Botz. Lab-scale photobioreactor systems: principles, applications, and scalability.
+Bioprocess and Biosystems Engineering, 45(5):791–813, 2022.
+P. Biller and A.B. Ross. Potential yields and properties of oil from the hydrothermal liquefaction of
+microalgae with different biochemical content. Bioresource Technology, 102(1):215–225, 2011. Special
+Issue: Biofuels - II: Algal Biofuels and Microbial Fuel Cells.
+California Air Resources Board (CARB). Weekly LCFS Credit Transfer Activity Reports, 2022. Data
+retrieved from Programs: Low Carbon Fuel Standard, https://ww2.arb.ca.gov/resources
+/documents/weekly-lcfs-credit-transfer-activity-reports.
+Ryan L Clark, Laura L McGinley, Hugh M Purdy, Travis C Korosh, Jennifer L Reed, Thatcher W Root,
+and Brian F Pfleger. Light-optimized growth of cyanobacterial cultures: growth phases and productivity of biomass and secreted molecules in light-limited batch growth. Metabolic engineering,
+47:230–242, 2018.
+Jennifer N. Clippinger and Ryan E. Davis. Techno-economic analysis for the production of algal
+biomass via closed photobioreactors: Future cost potential evaluated across a range of cultivation
+system designs. Technical report, National Renewable Energy Laboratory, 2019.
+J Coppens, O Grunert, S Van Den Hende, I Vanhoutte, N Boon, G Haesaert, and L De Gelder. The
+use of microalgae as a high-value organic slow-release fertilizer results in tomatoes with increased
+carotenoid and sugar levels. Journal of Applied Phycology, 28:2367–2377, 2015.
+21
+https://doi.org/10.26434/chemrxiv-2024-hz3r3-v2 ORCID: https://orcid.org/0000-0002-2687-4385 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+http://zavalab.engr.wisc.edu
+
+Dana Cordell, Jan Olof Drangert, and Stuart White. The story of phosphorus: Global food security
+and food for thought. Global Environmental Change, 19(2):292–305, 2009.
+Ryan Davis, Andy Aden, and Philip T. Pienkos. Techno-economic analysis of autotrophic microalgae
+for fuel production. Applied Energy, 88(10):3524–3531, 2011. Special Issue of Energy from algae:
+Current status and future trends.
+Digested Organics. Nutrient Concentration & Water Reclamation System, 2021. Data retrieved from
+Digested Organics Solutions, https://digestedorganics.com/wp-content/uploads/2
+021/03/Digested-Organics-NCWR-Flow-Diagram.pdf.
+Evan D. Erickson, Philip A Tominac, and Victor M Zavala. Biogas production in United States dairy
+farms incentivized by electricity policy changes. Nature Sustainability, pages 1–9, 2023.
+L Falchini, E Sparvoli, and L Tomaselli. Effect of Nostoc (Cyanobacteria) inoculation on the structure
+and stability of clay soils. Biology & Fertility of Soils, 23:346–352, 1996.
+James E. Faust and Joanne Logan. Daily light integral: A research review and high-resolution maps
+of the United States. HortScience, 53(9):1250–1257, 2018.
+Justin D. Gay, Hannah M. Goemann, Bryce Currey, Paul C. Stoy, Jesper R. Christiansen, Perry Miller,
+Benjamin Poulter, Brent M. Peyton, and E. N. J. Brookshire. Climate mitigation potential and soil
+microbial response of cyanobacteria-fertilized bioenergy crops in a cool semi-arid cropland. GCBBioenergy, 14(12):1303–1320, 2022.
+Hannah M. Goemann, Justin D. Gay, Rebecca C. Mueller, E. N. J. Brookshire, Perry Miller, Benjamin
+Poulter, and Brent M. Peyton. Aboveground and belowground responses to cyanobacterial biofertilizer supplement in a semi-arid, perennial bioenergy cropping system. GCB-Bioenergy, 13(12):
+1908–1923, 2021.
+Yicheng Hu, Horacio Aguirre-Villegas, Rebecca A. Larson, and Victor M. Zavala. Managing conflicting economic and environmental metrics in livestock manure management. ACS ES&T Engineering,
+2(5):819–830, 2022.
+Qingshan Huang, Fuhua Jiang, Lianzhou Wang, and Chao Yang. Design of photobioreactors for mass
+cultivation of photosynthetic organisms. Engineering, 3(3):318–329, 2017.
+SMJ Jones, TM Louw, and STL Harrison. Energy consumption due to mixing and mass transfer in a
+wave photobioreactor. Algal Research, (24):317–324, 2017.
+Elizabeth Kebede-Westhead, Carolina Pizarro, and Walter W. Mulbry. Treatment of dairy manure effluent using freshwater algae: Elemental composition of algal biomass at different manure loading
+rates. Journal of Agricultural and Food Chemistry, 52(24):7293–7296, 2004.
+Daesoo Kim, Nick Stoddart, C. Alan Rotz, Karin Veltman, Larry Chase, Joyce Cooper, Pete Ingraham,
+R. César Izaurralde, Curtis D. Jones, Richard Gaillard, Horacio A. Aguirre-Villegas, Rebecca A.
+22
+https://doi.org/10.26434/chemrxiv-2024-hz3r3-v2 ORCID: https://orcid.org/0000-0002-2687-4385 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+http://zavalab.engr.wisc.edu
+
+Larson, Matt Ruark, William Salas, Olivier Jolliet, and Gregory J. Thoma. Analysis of beneficial
+management practices to mitigate environmental impacts in dairy production systems around the
+Great Lakes. Agricultural Systems, 176:102660, 2019.
+C. J. Knoot, J. Ungerer, P. P. Wangikar, and H. B. Pakrasi. Promising biocatalysts for sustainable
+chemical production. Journal of Biological Chemistry, 293(14):5044–5052, 2018.
+Carrie AM Laboski, John B Peters, and Larry Bundy. Nutrient application guidelines for field, vegetable, and fruit crops in Wisconsin (a2809). Univ. of Wisconsin-Ext., Cooperative Extension. Madison,
+WI, 2012.
+Rebecca A. Larson and Horacio Aguirre-Villegas. Treating manure to produce clean water. Technical
+report, University of Wisconsin-Extension, University of Wisconsin-Madison Nelson Institute for
+Environmental Studies, 2022.
+C. Ledda, A. Schievano, S. Salati, and F. Adani. Nitrogen and water recovery from animal slurries by
+a new integrated ultrafiltration, reverse osmosis and cold stripping process: A case study. Water
+Research, 47(16):6157–6166, 2013.
+Jae Cheol Lee, Boreum Lee, Hyun Woo Kim, Byong Hun Jeon, and Hankwon Lim. Techno-economic
+analysis of livestock urine and manure as a microalgal growth medium. Waste Management, 135:
+276–286, 2021.
+April B. Leytem, Paula Williams, Shan Zuidema, Audrey Martinez, Yen Leng Chong, Alyssa Vincent, Aaron Vincent, Daniel Cronan, Andrew Kliskey, J. D. Wulfhorst, Lilian Alessa, and David
+Bjorneberg. Cycling phosphorus and nitrogen through cropping systems in an intensive dairy
+production region. Agronomy, 11(5):1005, 2021.
+Xinyu Liu, Amgad Elgowainy, and Michael Wang. Life cycle energy use and greenhouse gas emissions of ammonia production from renewable resources and industrial by-products. Green Chemistry, 22(17):5751–5761, 2020.
+Livestock Water Recycling. First Wave, 2018. Data retrieved from LWR – The System, https://ww
+w.livestockwaterrecycling.com/uploads/pdf/First_Wave_System_2018.pdf.
+Philip D. Lusk. Methane recovery from animal manures: The current opportunities casebook. Technical report, National Renewable Energy Laboratory, Resource Development Associates, 1998.
+Junping Lv, Xuechun Wang, Wei Liu, Jia Feng, Qi Liu, Fangru Nan, Xiaoyan Jiao, and Shulian Xie. The
+performance of a self-flocculating microalga Chlorococcum sp. GD in wastewater with different
+ammonia concentrations. International Journal of Environmental Research and Public Health, 15(3):434,
+2018.
+Jiaze Ma, Philip Tominac, Brian F. Pfleger, and Victor M. Zavala. Infrastructures for phosphorus
+recovery from livestock waste using cyanobacteria: Transportation, techno-economic, and policy
+implications. ACS Sustainable Chemistry & Engineering, 9(34):11416–11426, 2021.
+23
+https://doi.org/10.26434/chemrxiv-2024-hz3r3-v2 ORCID: https://orcid.org/0000-0002-2687-4385 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+http://zavalab.engr.wisc.edu
+
+Walter Mulbry, Elizabeth Kebede Westhead, Carolina Pizarro, and Lawrence Sikora. Recycling of
+manure nutrients: Use of algal biomass from dairy manure treatment as a slow release fertilizer.
+Bioresource Technology, 96(4):451–458, 2005.
+Clemens Posten. Design principles of photo-bioreactors for cultivation of microalgae. Engineering in
+Life Sciences, 9(3):165–177, 2009.
+Zeenat Rupawalla, Nicole Robinson, Susanne Schmidt, Sijie Li, Selina Carruthers, Elodie Buisset,
+John Roles, Ben Hankamer, and Juliane Wolf. Algae biofertilisers promote sustainable food production and a circular nutrient economy – An integrated empirical-modelling study. Science of the
+Total Environment, 796:148913, 2021.
+Imen Saadaoui, Rihab Rasheed, Ana Aguilar, Maroua Cherif, Hareb Al Jabari, Sami Sayadi, and
+Schonna R. Manning. Microalgal-based feed: Promising alternative feedstocks for livestock and
+poultry production. Journal of Animal Science and Biotechnology, 12(76), 2021.
+Apoorva M. Sampat, Andrea Hicks, Gerardo J. Ruiz-Mercado, and Victor M. Zavala. Valuing economic impact reductions of nutrient pollution from livestock waste. Resources, Conservation and
+Recycling, 164:105199, 2021.
+Sedron Technologies. Varcor System, 2019. Data retrieved from Sedron, https://www.sedron.c
+om/varcor/.
+Erin Smith, Jennifer Morris, Haroon Kheshgi, Gary Teletzke, Howard Herzog, and Sergey Paltsev.
+The cost of CO2 transport and storage in global integrated assessment modeling. International
+Journal of Greenhouse Gas Control, 109:103367, 2021.
+Daniela Thrän, Kay Schaubach, Stefan Majer, and Thomas Horschig. Governance of sustainability in
+the German biogas sector – Adaptive management of the Renewable Energy Act between agriculture and the energy sector. Energy, Sustainability and Society, 10(3), 2020.
+United States Environmental Protection Agency (EPA). U.S. Greenhouse Gas Emissions, 2022a. Data
+retrieved from Climate Change Indicators, https://www.epa.gov/climate-indicators/
+climate-change-indicators-us-greenhouse-gas-emissions.
+United States Environmental Protection Agency (EPA). RIN Trades and Price Information, 2022b.
+Data retrieved from Fuels Registration, Reporting, and Compliance Help, https://www.epa.
+gov/fuels-registration-reporting-and-compliance-help/rin-trades-and-pri
+ce-information.
+United States Environmental Protection Agency (EPA). Information about Renewable Fuel Standard
+for Landfill Gas Energy Projects, 2022c. Data retrieved from Landfill Methane Outreach Program
+(LMOP), https://www.epa.gov/lmop/information-about-renewable-fuel-stand
+ard-landfill-gas-energy-projects.
+24
+https://doi.org/10.26434/chemrxiv-2024-hz3r3-v2 ORCID: https://orcid.org/0000-0002-2687-4385 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+http://zavalab.engr.wisc.edu
+
+United States Environmental Protection Agency (EPA). Types of Anaerobic Digesters, 2022d. Data
+retrieved from Anaerobic Digestion, https://www.epa.gov/anaerobic-digestion/types
+-anaerobic-digesters#DigesterDisc.
+United States Environmental Protection Agency (EPA). Anaerobic Digester Facts and Trends, 2022e.
+Data retrieved from AgSTAR Data and Trends, https://www.epa.gov/agstar/agstar-dat
+a-and-trends.
+Hui Wang, Horacio A. Aguirre-Villegas, Rebecca A. Larson, and Asli Alkan-Ozkaynak. Physical
+properties of dairy manure pre- and post-anaerobic digestion. Applied Sciences, 9(13):2703, 2019.
+Liang Wang, Yecong Li, Paul Chen, Min Min, Yifeng Chen, Jun Zhu, and Roger R. Ruan. Anaerobic digested dairy manure as a nutrient supplement for cultivation of oil-rich green microalgae
+Chlorella sp. Bioresource Technology, 101(8):2623–2628, 2010.
+Erdem Yilmaz and Mehmet Sönmez. The role of organic/bio–fertilizer amendment on aggregate
+stability and organic carbon content in different aggregate scales. Soil & Tillage Research, 168:118–
+124, 2017.
+Yunhua Zhu, Susanne B. Jones, and Daniel B. Anderson. Algae farm cost model: Considerations for
+photobioreactors. Technical report, Pacific Northwest National Laboratory, 2018.
+
+25
+https://doi.org/10.26434/chemrxiv-2024-hz3r3-v2 ORCID: https://orcid.org/0000-0002-2687-4385 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+

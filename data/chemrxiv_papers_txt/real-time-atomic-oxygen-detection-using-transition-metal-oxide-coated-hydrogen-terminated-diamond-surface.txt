@@ -1,0 +1,1147 @@
+Real-time Atomic Oxygen Detection Using Transition Metal Oxide Coated
+Hydrogen-Terminated Diamond Surface
+Asaf Bolker1, Irina Gouzman1, Moshe Tordjman2, Nurit Atar1, Brian E. Riggs3, Yakov Carmiel1,
+Ronen Verker1, Eitan Grossman1, Rafi Kalish2, Timothy K. Minton3
+1
+
+Soreq NRC, Space Environment Department, Yavne 81800, Israel
+2
+
+Technion IIT, Solid State Institute, Haifa 3200, Israel
+
+3
+
+University of Colorado Boulder, Ann and H.J Smead Aerospace Engineering Sciences, Boulder, CO
+80303, USA
+
+Abstract
+Atomic oxygen (AO) is a major cause for the deterioration of spacecraft materials, such as
+polymers, composites and optical coatings, in low Earth orbit (LEO). AO exposure can degrade
+thermal, mechanical, or optical system performance, potentially leading to premature mission
+failure. Future missions, especially for remote sensing, are designed for very low Earth orbit
+(VLEO) where the variations of thermospheric density and AO flux are more significant than in
+higher orbits. Therefore, accurate real-time assessment of the AO fluence impinging upon
+spacecraft surfaces becomes a crucial issue for mission success, as well as for improving current
+thermospheric density models.
+We present a compact, solid-state sensor with high sensitivity and fast response to AO. The
+sensor is based on two semiconductor components that exhibit unique electrical properties when
+assembled together: hydrogenated diamond substrate and transition-metal oxide (TMO) coating.
+The Diamond:H-Transitional Metal Oxide AO sensor (DiMO) was characterized using RF plasmabased and laser detonation AO facilities. Tungsten oxide, WO3, with thickness ranging from 6 nm
+1
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+to 30 nm was used as TMO coating of choice. The results showed a linear increase in electrical
+resistance as a function of AO fluence of up to 2×1020 O-atoms∙cm-2, as tested in a laser detonation
+AO beam facility. The sensitivity of the sensor was found to be tunable, ranging from 10-14 to 1015
+
+Ω∙O-atoms-1∙cm2, and inversely dependent on the coating thickness. This work demonstrates the
+
+potential usage of diamond-based devices for VLEO real-time AO flux monitoring. Furthermore,
+compact dimensions and minimal power consumption of the DiMO sensor make it an ideal lowcost solution for the emerging "new-space" era, including nanosatellites applications.
+Keywords: Atomic oxygen, Real-time sensing, Low Earth Orbit, Diamond, Metal Oxide Coating
+
+1.
+
+Introduction
+
+1.1 Low and very low Earth orbit environment
+In low and very low Earth orbit (LEO and VLEO, respectively) altitudes, ranging from 200
+to 700 km, the hazardous space environment includes atomic oxygen (AO), UV radiation, ionizing
+radiation (electrons and protons), ultra-high vacuum, thermal cycles, as well as micrometeoroids
+and debris. However, AO, formed by UV-induced molecular oxygen dissociation, is considered to
+be the most hazardous for external satellite surfaces, due to its oxidative and erosive potential. The
+AO that constitutes the VLEO/LEO environment has a density of 107 -1010 cm-3 and a relatively
+low kinetic temperature of 800-1000 K (70-90 meV), depending on altitude and solar activity 1.
+Thus, the external surfaces of any spacecraft orbiting at LEO/VLEO altitudes will be exposed to
+collisions with AO. The typical orbiting speed of a spacecraft in LEO orbit is roughly 8 km∙s-1,
+hence the impact energy and flux of the AO on the surface can be as high as ~4.5 - 5 eV and 10131015 O-atoms∙cm-2∙s-1, respectively 2. The AO density, and, consequently, flux depend on the
+2
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+altitude, the solar activity variation, the orbital inclination and the time of year, thus it is
+particularly challenging to predict and measure. Advances in spacecraft propulsion systems, such
+as the development of efficient ion engines, make VLEO accessible for prolonged space missions.
+Ion engines allow satellites to sustain VLEOs below 400 km for extended periods of time,
+overcoming the residual atmosphere drag. At these heights the typical AO flux is high (up to 1015
+O-atoms∙cm-2∙s-1) 2 further exacerbating erosion and oxidation damage compared to higher orbits,
+making essential the need for monitoring AO in real-time.
+AO is the major consideration for the protection of the external spacecraft surface since it
+causes a significant deterioration of polymer-based materials and optical coatings 2-5. Ground and
+space-borne experiments have shown that prolonged exposure of sensitive spacecraft materials to
+the LEO environment causes degradation of thermal, mechanical, and optical properties, which
+can significantly affect mission performance and may even result in premature mission failure 2, 47
+
+. In addition, AO is the major contributor to spacecraft drag in LEO and VLEO orbits 8, 9. Thus,
+
+the assessment of the total AO fluence a spacecraft surfaces and subsystems will be exposed to
+during the mission is crucial for reliability of the whole mission. AO fluence is routinely estimated
+during the spacecraft design and mission planning stages by applying computer simulation models
+6, 10
+
+. These models base their calculations on data observations from atmospheric, weather, and
+
+solar activity conditions 11, 12. However, the lack of AO prediction accuracy might cause
+considerable additional expenses for external surfaces protection. Therefore, any new data
+obtained in-flight regarding the dependence of the AO flux on the various parameters, and
+specifically the dependence on solar activity, will significantly improve quality of the AO density
+calculations. This will allow accurate forecasting of spacecraft lifetime which leads to a more costeffective spacecraft design. Furthermore, real-time AO monitoring during the mission can be used
+
+3
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+to estimate exposure levels of sensitive equipment and manage its protection from AO in case of
+unexpected high solar activity. Moreover, it can also help to evaluate the atmospheric drag
+experienced by the spacecraft. Additionally, real time AO measurements may be used as a source
+of mapping information for solar activity 13, 14.
+1.2 AO sensing methods
+During the past years, several AO sensing methods have been proposed for real-time
+monitoring of the AO fluence 15-22. The earliest approach used a space-borne mass spectrometer
+and was applied extensively in LEO-material interaction experiments performed by NASA 7, 16, 23,
+24
+
+. This method is inherently expensive due to the size and complexity of such devices. Therefore,
+
+it was used only in specific experiments where the mass spectrometer versatility was required to
+examine material interactions with the LEO environment. In these experiments mass spectrometers
+were used to measure both the AO flux and the surface reaction products.
+Another method is based on Quartz Crystal Microbalance (QCM) 25. In this method, a
+quartz crystal is coated with a thin layer of a material with known AO erosion yield (such as
+KaptonTM, carbon, or silver). The resonant frequency of the quartz crystal depends on its mass, so
+any reduction in the mass of the material on its surface due to erosion will affect the frequency.
+Thus, as erosion occurs, the change in frequency is related to the AO flux 15, 16, 25, 26. QCMs are
+relatively small, lightweight, and highly accurate. However, they require a complex and expensive
+electronic control unit. Additionally, the measurement dynamic range is limited by the thickness
+of the reference material: once the reference material is fully eroded, the AO flux can no longer be
+measured.
+A more cost-effective method is the use of optical based sensors 17-19. These sensors rely
+on the measurement of the light intensity passing through a material with known erosion yield
+
+4
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+such as KaptonTM or VespelTM in order to detect AO fluence. The detected light intensity can be
+correlated to the material thickness and, therefore, the AO fluence can be estimated. However, this
+method is highly affected by light scattering from the etched surface of the exposed material 17, 18.
+Therefore, in order to increase the accuracy of the measurement, the use of a dedicated light source
+with a known and constant intensity, in addition to calibration and analysis using different light
+frequencies, are required 19.
+Another cost-effective method includes the use of actinometers 15, 16. Actinometer is a
+sensor that changes its electric resistance when its conductive element is exposed to AO. The
+change in resistance is caused either by erosion of the conductive element, conversion to a nonconducting oxide, or by changes to the material’s electronic structure. Knowledge of the element’s
+electrical characteristics and its response to AO exposure provides the means for converting
+resistance measurements into AO flux/fluence values. Actinometers are usually more compact and
+require low power to operate compared to other sensing methods 16, 22, 27. Hence, actinometer based
+sensors are well suited for future “new space” missions involving nano and micro satellites where
+the size, weight, and power requirements of the sensor are the major limiting factors.
+The most used sensing materials to date are silver and carbon, because they have a
+relatively high reaction rate with AO, they are reasonably inexpensive and are easy to handle.
+However, much like the QCM method, carbon and silver film actinometers are restricted to
+missions of limited duration, as the material becomes permanently eroded and/or oxidized by AO.
+Alternatively, solid-state actinometers that detect changes in electronic properties caused by
+oxygen interaction processes, other than erosion, have the potential to offer both increased
+detection sensitivity and higher saturation limits. An actinometer based on graphene was reported
+22
+
+and a ZnO-semiconductor-based actinometer has been proposed with regeneration capability,
+
+5
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+making repeated measurements of the AO flux 27 possible. However, it reaches saturation at a
+relatively low AO fluence, and the regeneration process requires heating for a prolonged period of
+time (15 hours at 80 °C) 27. An actinometer based on the etching of boron-doped diamond has also
+been proposed and shown to be capable of measuring AO fluences as high as 4×1020 O-atoms∙cm2 28
+
+. Due to the requirement to detect relatively small changes in resistance, the device uses several
+
+Wheatstone bridge elements in a specific configuration, which complicates the accurate analysis.
+
+1.3 Transition metal oxide coated hydrogen-terminated diamond
+In this work we propose a novel actinometer, based on the electronic properties of a
+diamond surface coated with a thin layer of transition metal oxide (TMO). This sensor, further
+denoted as DiMO, has several potential advantages such as long active lifetime, high durability to
+the space environment, and low power consumption. These advantages make it a highly effective,
+low-cost solution for real-time AO fluence measurements in LEO and VLEO missions, as well as
+in ground simulation systems.
+DiMO is based on the ability to render the diamond surface as p-type conductive by a
+process of surface transfer doping (TD) and the ability to affect this process through exposure to
+oxygen species 29-33. TD is the result of a charge-exchange between a hydrogen terminated
+diamond (Diamond:H) and a lower energetic surface acceptor. So far, Diamond:H is the only
+semiconductor for which a true negative electron affinity (NEA) can be achieved 34. The C-H bond
+on the terminated surface is polarized with a positive charge on the H atom and a negative charge
+on the C atom. This potential step pulls the vacuum level below the conduction band minimum
+(CBM) over the distance of the C-H bond length. The maximum NEA measured in hydrogen
+terminated (100)-oriented diamond by a combination of photoemission and Kelvin probe
+
+6
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+experiments was -1.3 eV 35. The NEA induces p-type surface conductivity in air-exposed
+Diamond:H through an electrochemical charge-exchange with moisture adsorbates on the diamond
+surface 35. The effect of this charge-exchange on the electronic properties of the diamond surface
+was thoroughly investigated and the resulting band bending was effectively measured using
+scanning tunneling microscopy (STM) and scanning tunneling spectroscopy (STS) among other
+spectroscopic methods 29.
+Superior surface conductivity and more stable TD of Diamond:H have been demonstrated
+with various TMOs, yielded the highest yet reported p-type surface conductivity, and enabled the
+development of several attractive electronic devices 32, 33, 36-38. TMOs, such as MoO3, WO3, V2O5,
+and ReO3, are highly interesting semiconductors (Eg~3eV) due to their deep-lying conduction band
+and high work function values. Work function is crucial for determining the energetic requirements
+of transferring electrons to and from a solid until electrodynamic equilibrium is reached. Therefore,
+TMOs serve as efficient low-lying electron acceptors, and are extensively used for TD of
+Diamond:H. The TD process in this case involves electrons transferring from the energy levels of
+diamond valence band maximum (VBM) to the CBM of the TMO coating which is located at a
+lower energy level, as seen in Figure 1 (a) and (b). This favorable band alignment is due to the
+combination of the Diamond:H surface's NEA and the large work function of the TMO. The TMO
+work function can be reduced upon exposure to oxygen and residual moisture, or alternatively, it
+can increase with increasing TMO layer thickness. This phenomenon is attributed to the tendency
+of the exposed TMO to alter its O-vacancy concentration, which acts as electronic donors when
+exposed to oxygen species 39-41.
+The reduction in the TMO work function was found to be the cause of a reduction in the
+diamond p-type conductivity. As the reduction in TMO work function alters the electronic energy
+
+7
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+band alignment between the TMO CBM and the VBM of the diamond surface, it initiates a
+reduction in charge transfer, as seen schematically in Figure 1(c) 31. Although this is an unwanted
+effect when designing diamond/TMO electronic devices based on TD 36-38, DiMO takes advantage
+of this effect to detect impinging oxygen. The decrease in electrical conductivity of the diamond
+surface can be correlated with the oxygen fluence during the exposure. Thus, by monitoring
+changes in conductivity and using a pre-measured calibration function, DiMO-based sensor can
+be used to deduce the oxygen flux and fluence in real time. In addition, it is possible to regenerate
+the TMO work function to its pre-exposed value by an annealing process 42, potentially increasing
+the AO detection lifetime.
+
+Figure 1: Schematic presentation of energy-level diagram of the surface TD for WO3-coated
+diamond (Diamond:H/WO3): (a) before Diamond:H - WO3 charge exchange, (b) after equilibrium,
+and (c) after exposure to oxygen. Ec is the diamond CBM (diamond left, WO3 right), Ev is the
+VBM (diamond left, WO3 right), EF is the Fermi energy level, EVAC is the vacuum level, EA is the
+
+8
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+WO3 electron affinity, ϕA is the WO3 work function before (yellow) and after (green) oxygen
+exposure, χ is the diamond electron affinity (negative due to H surface termination).
+In this work, we demonstrate the correlation between DiMO resistance and AO fluence
+through exposure to (i) ozone, generated by a standard ozone generator, (ii) atomic oxygen,
+produced by a modified RF oxygen plasma source, and (iii) hyperthermal 5 eV oxygen atoms
+generated by a laser detonation AO source. Two types of the TMO coating were tested. MoO3 was
+chosen for the evaluation tests using ozone exposure due to its well documented role in inducing
+TD p-type conductivity in diamond, as well as its sensitivity to oxygen exposure 32, 40. However,
+the TMO coating of choice for further studies was tungsten trioxide, WO3, which induces a p-type
+conductive surface layer with electrical properties being superior to those induced by other TMOs
+33
+
+, enabling higher initial conductivity than the MoO3 coated samples used for the preliminary
+
+ozone exposure. At the first stage, MoO3-coated Diamond:H was exposed to ozone in UV ozone
+generator. The observed changes in the charge carrier concentration allowed to determine the
+appropriate minimal TMO coating thickness. Following these experiments, DiMO sensors with
+thicker TMO coating made of WO3 were exposed to oxygen generated by RF plasma and laser
+detonation AO source. The assessed AO fluence was compared to the LEO equivalent AO fluence,
+calculated from the erosion of a KaptonTM reference sample. The sensitivity of the WO3-based
+DiMO sensor to AO exposure as a function of the TMO coating thickness was studied.
+
+2. Materials and Methods
+2.1 DiMO sensor fabrication
+The DiMO device is composed of a Diamond:H substrate, coated with a thin layer of TMO
+containing four contacts which enable surface resistance measurement, as depicted schematically
+9
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+in Figure 2. The fabrication of the DiMO sensor consists of several stages, including hydrogenation
+of diamond surface, application of TMO coating, and sensor wiring. The diamond substrates are
+commercially available chemical vapor deposition (CVD) grown type IIa diamonds, purchased
+from Element SixTM. The substrates are rectangular with dimensions of 3 mm × 3 mm × 0.25 mm
+and polished surfaces with roughness of Rq<30 nm. They are highly pure and electrically
+insulating, with a nitrogen concentration lower than 1 ppm and boron concentration lower than
+0.05 ppm. In addition, the crystal orientation of the substrate faces is <100> which was chosen due
+to its high durability to AO and its ability to achieve high NEA when hydrogen terminated,
+enabling high p-type conductivity via TD 35, 43, 44.
+The diamond substrates were hydrogen-terminated by exposure to pure hydrogen plasma
+in a microwave chemical vapor deposition (MW-CVD) system. The MW-CVD reactor that was
+used is an Applied Science and Technology (ASTeX) AX5010 reactor. The diamond substrates
+were exposed to hydrogen plasma induced by a microwave power of 900 W at a temperature of
+640 °C and a pressure of 60 Torr for 40 min. Following surface hydrogenation, the diamond
+substrates were coated with TMO. The coating was performed using thermal evaporation system.
+For both MoO3 and WO3 coatings, the diamond substrates were heated to 350 °C, in-situ,
+to desorb any moisture and contaminants from the surface. The thickness of MoO3 was between
+1.5 nm to 3.8 nm, while the thickness of WO3 layer varied between 6 nm to 30 nm. The coated
+surface of the electrically conductive Diamond:H/WO3 samples was characterized using scanning
+electron microscope (SEM) (Zeiss Sigma 300 VP SEM) using a low energy, 1 keV electron beam.
+SEM was equipped with the energy dispersive X-ray spectroscopy (EDS) detector (Bruker Xflash
+1|60). In addition, atomic force microscope (AFM) (Nanoscope IV MultiMode from Veeco) was
+used to assess surface roughness. The measurements were performed in tapping mode using a
+10
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+silicon cantilever with a resonance frequency of 79-94 kHz. The AFM image analysis was
+performed using Gwyddion SPM data visualization and analysis software 45.
+
+Figure 2: Schematic representation of the DiMO sensor, based on a 3 mm × 3 mm diamond coated
+with TMO.
+Schematic diagram of the coated diamond wiring is shown in Figure 3. The coated DiMO
+diamond substrates were fixed to a standard printed circuit board (PCB) using a double-sided
+adhesive carbon tape. Four wire poles (Gore™ AO durable wires) were soldered to the PCB
+through holes via connectors. These wires were connected to the diamond sample using delicate
+45 m Au coated molybdenum wires attached to the diamond surface in a square configuration
+using silver paint, see Figure 3(a). In order to prevent damage to the oxygen-sensitive silver
+contacts, a bismaleimide - based dielectric coating (Designer Molecules, BMI 689) 46 was used as
+a cover layer, as shown in Figure 3 (b) and (c). In addition, a 125 m-thick Kapton™ mask was
+used to cover the front of the PCB, leaving a 2 mm-diameter opening to expose the center of the
+DiMO sensor to the oxygen flux. The final PCB setup can be seen in Figure 3(d).
+
+11
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 3: (a) Schematic diagrams of the coated diamond wiring. (b) BMI contact protective
+coating. (c) Diamond sample electrically connected to four wire poles using Au coated
+molybdenum wires and silver paint covered with BMI polymer. (d) The entire PCB covered using
+a Kapton™ mask with a 2 mm diameter opening allowing oxygen exposure of the DiMO surface.
+2.2 Ozone exposure
+Three MoO3-coated diamond samples were prepared with a thickness of 1.5 nm, 2.8 nm,
+and 3.8 nm, respectively. The samples were exposed to ozone for 180 hours using a Novascan
+Technologies PSDP UV Ozone generator. The surface charge carrier concentration and sheet
+resistance were measured periodically using a Van der Pauw (VDP) Hall effect system. During the
+measurements the sample temperature was stabilized at 25 °C using a THMS600 Linkam stage.
+The current was supplied using a Keithley 220 programmable current source and measured using
+a Keithley 485 pico-amperemeter. Each of the four contacts was connected to a very high input
+impedance (TΩ) Keithley 6514 electrometer designed for voltage measurements in high resistivity
+samples. The voltage difference between each of the two electrometers was measured using a
+Keithley 2000 multimeter. The current source, electrometers, multimeter and sample contacts were
+12
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+connected to a Keithley 7001 switch. Hall effect carrier concentration measurements were
+performed under a magnetic field of 8000 Gauss induced on the sample. All elements in the system
+were connected to a PC using a General Purpose Interface Bus (GPIB) interface and controlled
+using the Keithley Testpoint software.
+
+2.3 RF oxygen plasma exposure
+The WO3-based DiMO sensors were exposed to an RF oxygen plasma source,
+schematically shown in Figure 4, and described in our prior works 47, 48. The source is based on a
+Litmas RPS RF plasma reactor, a Tylan FC-260 mass flow controller valve regulating the oxygen
+flow, and an Adixon dry vacuum pump. The exposure was performed with an oxygen flow of 5
+standard cubic centimeter per minute (SCCM) resulting in a pressure of 2.5×10-2 Torr in the
+exposure chamber. The plasma was ignited by applying RF radiation with a power of 1000 W. The
+exposure chamber is located down the pumping stream, away from the plasma source. At this
+position, the sample is exposed to ground state and electronically excited AO species, and to a
+relatively low current of ions and electrons originated from the plasma 47. The system is equipped
+with a temperature-controlled QCM. 6 MHz gold-plated QCM crystals were spin-coated with
+poly(pyromellitic dianhydride-co-4,4-oxidianiline) (PMDA-ODA) films using a polyamic acid
+(Pyralin® PI 2545 from HD MicroSystems), as described in 49. Chemical structure of the deposited
+polyimide (PI) films is similar to that of KaptonTM 49. The LEO equivalent of AO fluence was
+calculated from the mass loss of a PI layer deposited on the QCM as per ASTM E2089, using the
+following equation:
+(1)
+
+F=∆m/AρE
+
+13
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+where ∆m is the mass loss (g), A is the exposed area (cm2), ρ is the density of PI (1.42 g·cm-3), F
+is the AO fluence (O-atoms∙cm-2), and E is the erosion yield of Kapton H PI (3×10-24 cm3∙O-atom1 50
+
+) .
+The DiMO sensor was mounted close to the QCM, as shown in Figure 4(a). The four-point
+
+resistance measurement was performed using a Keithley 2400 Source Measure Unit (SMU). The
+SMU served as a current source and as a voltmeter connected to the DiMO in a square contact
+configuration. The resistance measurement was performed by applying a current of 20 A to two
+of the contacts and by monitoring of voltage drop between the other two. A National Instruments
+(NI) 9205 16 bit analog-to-digital converter (ADC) was connected in parallel to the SMU in order
+to provide real-time data acquisition of the voltage measurement during the experiment, as shown
+in Figure 4(b).
+During the experiment both the PI mass loss data and changes in the voltage, induced on
+DiMO sensor, were measured and logged simultaneously. This was achieved by connecting the
+QCM Sycon STM-100/MF controller output to an NI 6008 ADC and the DiMO sensor voltage to
+an NI 9205 ADC. As seen in Figure 4(a), the DiMO sensor was located about 1 cm behind the
+QCM crystal plane which is perpendicular to the pump flow. Thus, the fluence measured using the
+QCM can serve as a good estimate of the fluence impinging on the sensor surface. During the
+experiment, the voltages of the two NI 9205 inputs were logged using a LabVIEW Signal Express
+software and the QCM voltage signal was converted to thickness values.
+
+14
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 4: (a) Schematics of the RF oxygen plasma source and the exposure chamber containing
+the QCM and DiMO sensor. (b) Schematics of the real-time four-point resistance measurement
+configuration.
+2.4 Laser detonation AO facility
+Two DiMO sensors were exposed to the well-characterized hyperthermal AO beam in a
+facility with a laser detonation source, described in detail previously 51-53, and shown schematically
+in Figure 5(a). In this source, a pulsed valve is coupled to an expanding conical nozzle and a pulsed
+CO2 TEA laser (Compact 05/50, PaR Systems), operating at ~9 J pulse and 2 Hz repetition rate.
+The source is capable of producing beams containing 70 − 85% O(3P) atoms, with the rest being
+molecular oxygen 54. The characterization of the O/O2 beam was performed during the exposure
+by a time-of-flight (TOF) measurements using a custom modified Extrel MAX120 quadrupole
+mass spectrometer. The mass spectrometer signal is collected for species with m/z of 16 for O, 32
+15
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+for O2, and 23 for a background check where no signal is expected. These measurements yield a
+number density distribution as a function of time N(t). The probability density distributions for
+velocity and energy, P(v) and P(E), respectively, are determined from the N(t) distributions using
+the total flight distance, defined from the nozzle throat to the ionizer of the mass spectrometer, and
+the relations P(V) ∝ t N(t) and P(E) ∝ t2 N(t) 55. A typical velocity and translational energy
+distributions of O and O2, obtained in the present work, are represented in Figure 5(b). The mole
+ratios of O and O2 in the hyperthermal beam are approximately 0.74 and 0.26, respectively. The
+average velocity of the beam is around 7500 m·s-1 and the translational energy of the O atoms is
+approximately 4.7 eV.
+Two DiMO sensors were mounted on the sample holder edge, located at a distance of 40
+cm from the nozzle throat, as shown in Figure 6(a). A reference Kapton H sample, covered with a
+metal mesh screen and mounted in the center position of the sample holder, was used for
+measurements of the total AO fluence based on Kapton H erosion depth 52. The DiMO sensor
+resistance was measured using two Keithley 2000 Digital Multimeter (one for each sample) in a
+simplified two-point method, as shown schematically in Figure 6(b). The two multimeters were
+connected to a PC and their data were collected using a dedicated MATLAB script with sampling
+intervals of 15-60 s.
+
+16
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 5: (a) Top view schematic diagram of the AO laser detonation system setup. The CO2 TEA
+laser beam is marked in red and the AO beam is marked in blue. A mass spectrometer is used to
+measure the mole fractions of the constituents in the beam and determine their velocity
+distributions. (b) The probability density distributions for velocity (left graph) and energy (right
+graph) of the beam during an exposure experiment.
+20
+
+The LEO equivalent AO fluence was ~2×10 O-atoms∙cm-2, as calculated at the end of the
+exposure by measuring the erosion depth of Kapton H reference sample with a Dektak3 surface
+profiler (Veeco Metrology Group, Santa Barbara, CA), using Eq. (1). The beam was stable
+throughout the experiment, hence the exposure time can be used to calculate the average AO flux.
+This was done by dividing the total AO fluence by the total exposure time, obtaining LEO
+equivalent AO flux of 4.4×1015 O-atoms∙cm-2∙s-1.
+
+17
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 6: (a) Laser detonation AO source sample holder with two DiMO sensors, mounted on the
+right edge. A reference Kapton H sample was mounted in the center position, under a metal mesh.
+(b) Schematic representation of the two-point measurement.
+
+3. Results
+3.1. DiMO surface characterization
+The key step of the DiMO sensor fabrication is the deposition of a thin, uniform TMO
+coating on a hydrogenated diamond surface. In the main experiments of the DiMO sensor, we used
+thermally-evaporated WO3 coatings with thickness ranging from 6 to 30 nm. Figure 7 shows a
+SEM image of the surface of a diamond substrate before and after deposition of a 20 nm WO3
+coating. Rectangular pits and triangular features are clearly seen on the hydrogenated diamond
+surface in Figure 7(a). These features are typical to CVD grown diamond 56. The fine grains seen
+in Figure 7(b) are the grains of the WO3 surface coating. Overall surface roughness increased upon
+coating, as seen in the images. The presence of the WO3 coating on the diamond surface was
+confirmed by EDS (not shown), as indicated by the presence of tungsten (~1.3 at. %), oxygen (~0.5
+at. %), along with carbon (98.2 at. %) characteristic X-Ray lines. Further evidence of the coating
+18
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+uniformity and roughness was obtained using AFM measurements, see Figure 7(c). The RMS
+roughness, Rq, of the Diamond:H/WO3 sample was found to be 6 nm.
+
+Figure 7: (a) SEM images of the clean Diamond:H surface, and (b) the Diamond:H surface, coated
+with 20 nm of WO3. (c) AFM 3D surface topography image of the Diamond:H surface, coated
+with 20 nm of WO3 (× m) showing the RMS roughness of 6 nm.
+3.2 Ozone exposure
+Diamond:H samples coated with 1.5 nm, 2.8 nm, and 3.8 nm of MoO3 were exposed to
+ozone for 180 hours and their charge carrier concentration and sheet conductivity were measured
+periodically using the VDP measurement technique. The results, depicted in Figure 8, show a
+significant reduction in carrier concentration and electrical conductance with increasing exposure
+19
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+for all exposed samples. These results clearly indicate that the reduction in the diamond surface
+conductivity is the result of reduction in the carrier (hole) concentration at the surface. The
+reduction in carrier concentration can be associated with reduced TD due to changes of the
+electronic properties at the TMO – H:Diamond interface induced by oxygen exposure. The 1.5 nm
+coated sample exhibited the most rapid change in its electronic properties, reducing its carrier
+concentration and sheet conductance by two orders of magnitude after approximately 50 hours of
+exposure, while apparently reaching saturation by the end of the exposure. Similarly, the 2.8 nm
+coated sample showed a rapid reduction in conductivity by one order of magnitude after ~50 hours
+of exposure, gradually approaching saturation at the end of the 180 hours exposure. In contrast,
+the 3.8 nm coated sample showed a moderate and roughly linear reduction in electrical
+conductivity, achieving a reduction by one order of magnitude after 180 hours of exposure.
+Moreover, unlike the 1.5 nm and 2.8 nm coated samples, the reduction in electrical conductivity
+of the 3.8 nm coated sample did not approach saturation after 180 hours of exposure. These results
+correlate well with the observation that oxygen exchange and diffusion in TMOs rapidly reaches
+a maximum depth of a 1 nm to 2.5 nm, irrelevant of the oxide structure 41. Therefore, during the
+exposure of both the 1.5 nm and 2.8 nm MoO3-coated samples, the entire layer thickness was
+quickly affected, including the TMO at the diamond interface, resulting in the maximum change
+in conductivity. However, in the case of the 3.8 nm coated sample, the TMO - diamond interface
+area was affected gradually, leading to a slower change in its electrical properties, and
+consequently to slower changes in the TD-induced diamond conductivity. Therefore, a TMO
+coating thickness greater than 4 nm was chosen for the DiMO sensors fabricated for the AO
+exposure in the RF plasma and in the laser detonation source facility.
+
+20
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 8: Diamond:H/MoO3 carrier concentration and surface conductivity as a response to ozone
+exposure for different thicknesses layers of MoO3 ranging from 1.5 nm to 3.8 nm.
+3.3 DiMO exposure to RF Oxygen plasma
+As mentioned above, WO3 was selected as the choice of TMO due to its ability to induce
+higher TD surface conductivity compared to MoO3, potentially increasing DiMO sensitivity and
+measurement range. Two DiMO sensors, coated with 6 nm and 20 nm thick layers of WO3, were
+exposed to RF oxygen plasma in the afterglow region with a reduced concentration of ions and
+charged oxygen molecular species 47. Using DiMO sensor electrical resistance data and the AO
+fluence as measured by the QCM for each exposure experiment, a plot of the diamond resistance
+as a function of the LEO-equivalent AO fluence was generated for each sample and is depicted in
+Figure 9. The resistance changes during the exposure of the DiMO sample coated with 6 nm WO3
+are shown in Figure 9(a). These changes can be categorized into three main regimes. First, the
+
+21
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+conductivity starts to increase gradually after exposure to 5×1017 O-atoms∙cm-2. Then, roughly at
+a fluence equivalent to 1.9×1018 O-atoms∙cm-2 the diamond surface resistance increases linearly
+with AO fluence. Finally, after exposure to approximately 3.4×1018 O-atoms∙cm-2, the diamond
+resistance reaches saturation. The saturation step was observed in all samples tested in the RF
+plasma source. It is attributed to the protective BMI coating and KaptonTM cover mask shown in
+Figure 3(d): the KaptonTM cover mask allows for only a circular area at the center of the diamond
+surface to be exposed to oxygen species, while the rest of the diamond surface is left unexposed
+and electrically conductive.
+
+Figure 9: DiMO surface resistance as a function of the accumulated LEO equivalent AO fluence
+for (a) the 6 nm WO3-coated Diamond:H, and (b) the 20 nm WO3-coated Diamond:H.
+Figure 9(b) depicts the change in resistance of the 20 nm WO3-coated DiMO sample as a
+function of exposure up to AO fluence of 1×1020 O-atoms∙cm-2. In this case, we observed the linear
+dependence of the DiMO resistance on the LEO equivalent AO fluence from the start of the
+exposure up to saturation at approximately 9×1019 O-atoms∙cm-2 while overall resistance was more
+22
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+than twice lower. This value was one and a half order of magnitude higher than the AO fluence
+saturation value measured for the 6 nm WO3-coated DiMO sample.
+Using simple linear fitting procedure, a linear calibration function between the WO3-coated
+diamond resistance and the LEO equivalent AO fluence was extracted from the linear part of the
+data gathered during the exposure experiments of both samples:
+(2)
+
+[Fluence (O-atoms∙cm-2)] = A× [Resistance (Ω)] – B
+
+Here parameter A represents the AO fluence that will induce a change in resistance of 1 Ω and thus
+is inversely proportional to the sensitivity of the DiMO surface conductivity to the AO flux.
+Parameter A was found to be equal to 1.2×1014 O-atoms·cm-2∙Ω-1 and 8.7×1015 O-atoms∙cm-2∙Ω-1
+for the 6 nm and 20 nm WO3-coated samples, respectively. Parameter B represents a baseline AO
+fluence to be subtracted due to the initial resistance of the unexposed DiMO sensor and the
+resistance of the contacts. Parameter B was found to be equal to 2.7×1018 O-atoms∙cm-2 and
+1.28×1020 O-atoms∙cm-2 for the 6 nm and 20 nm WO3-coated samples, respectively. These results
+indicate that the AO fluence saturation level and the calibration parameters A and B depend on the
+thickness of the WO3 coating layer. Most notable is parameter A, which is inversely proportional
+to the sensitivity of the sensor and increases as the WO3 thickness is increased.
+At the next stage, we examined the effect of a variable AO flux on the conductivity of the
+WO3-coated diamond surface. For this purpose, another 20 nm WO3-coated diamond was exposed
+to RF oxygen plasma while the oxygen gas flow was gradually decreased during the exposure in
+order to cause the change in the AO flux. The gas flow was changed slowly in the first phase of
+experiment, but after 5 hours, the gas flow was gradually reduced to 0 SCCM, resulting in a
+reduction of flux as the oxygen in the system is slowly depleted. The DiMO resistance
+23
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+measurement was converted into AO fluence using the linear calibration function, according to the
+Eq. (2), with parameters A and B measured for the similar 20 nm WO3 coated DiMO in the previous
+exposure. The fluence detected by DiMO was then compared to the fluence detected by the QCM,
+as shown in Figure 10(a). As seen in this figure, the DiMO-detected AO fluence is in a good
+agreement with the AO fluence-detected by the QCM. Furthermore, the AO flux was calculated
+by differentiating the measured fluence with respect to time for both detectors, DiMO and QCM.
+AO flux values were plotted on the same graph, as shown in Figure 10(b). The results clearly show
+that the QCM and DiMO flux measurements are in a good agreement, indicating that the DiMO
+
+19
+
+8.0×10
+
+19
+
+6.0×10
+
+(a)
+Slow flow change
+
+Fast flow change
+
+4.0×1019
+
+2.0×1019
+
+QCM
+DiMO
+
+0.0
+10000
+
+20000
+
+Flux (O-atoms cm-2sec-1)
+
+Fluence (O-atoms cm-2)
+
+resistance follows the AO flux change with reasonably good accuracy.
+
+5×1015
+
+(b)
+15
+
+4×10
+
+Fast flow change
+
+3×1015
+2×1015
+1×1015
+
+0
+
+30000
+
+Slow flow change
+
+QCM, df/dt
+DiMO, df/dt
+10000
+
+20000
+
+30000
+
+Exposure Time (sec)
+
+Exposure Time (sec)
+
+Figure 10: (a) The LEO equivalent AO fluence as measured by QCM (black) and DiMO (red)
+detectors. (b) The AO flux calculated from the fluence measurements of the QCM (black) and
+DiMO (red) detectors.
+The results of the exposure of WO3-coated DiMO sensors to RF oxygen plasma show that
+it is possible to detect AO flux with good accuracy. However, detection saturation was observed
+
+24
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+at a fluence of approximately 9×1019 O-atom∙cm-2 using 20 nm WO3-coated sensor. This value can
+be considered low for typical LEO missions. Nevertheless, it is well-known that RF oxygen plasma
+produces significantly more severe exposure conditions compared to the LEO space environment,
+mostly due to the presence of oxygen ions and charged molecular species 47, 49. These charged
+oxygen species carry a kinetic energy that can reach as high as 278 eV in RF plasma-based system
+57
+
+while the kinetic energy of AO impact on the spacecraft in LEO is substantially lower, about ~
+
+4.5 eV 2. Furthermore, the plasma species are also much more reactive than neutral ground state
+O(3P) AO in LEO. Therefore, in order to examine the effect of the true hyperthermal AO on the
+electronic properties of the TMO diamond interface, further exposure experiments were performed
+using a laser detonation AO source capable of producing hyperthermal O(3P) atoms.
+3.4 DiMO exposure in laser detonation AO source
+Two DiMO samples, coated by 10 nm and 30 nm thick layers of WO3, were exposed to a
+pulsed beam of oxygen atoms with an average translational energy of ~4.7 eV and an average flux
+of 4.4  1015 O-atoms∙cm-2∙s-1 using the laser detonation AO source schematically shown in Figure
+5(a). The WO3 coating thickness in the range of 10 nm to 30 nm was chosen in order to obtain
+higher saturation limit while preserving good linearity, based on the resistance change of the 20
+nm coated DiMO sample during the RF oxygen plasma exposure. As shown in Figure 6, the
+samples were mounted on the edge of the sample holder to ensure maximum exposure to the AO
+beam, which expands around the chamber’s center axis, as seen in Figure 5(a).
+The results of the resistance measurements, taken during the exposure for both the 10 nm
+and 30 nm WO3-coated diamond samples, were plotted as a function of the AO fluence, as seen in
+Figure 11. The measured resistance shows an abrupt increase which settles into a linear response
+
+25
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+for the 10 nm sample and a near linear response for the 30 nm coated sample. Neither sample
+reached saturation up to an accumulated AO fluence of 2×1020 O-atoms∙cm-2. These results
+indicate a significantly higher DiMO lifetime in similar-to-LEO conditions with hyperthermal AO
+compared with that obtained in RF plasma-based exposure experiments.
+
+(a)
+Resistance (kW)
+
+Resistance (kW)
+
+300
+250
+200
+150
+100
+50
+0
+0.0
+
+18
+
+(b)
+
+16
+
+14
+
+10 nm WO3
+5.0×1019
+
+1.0×1020
+
+1.5×1020
+
+30 nm WO3
+
+2.0×1020
+
+12
+0.0
+
+-2
+
+5.0×1019
+
+1.0×1020
+
+1.5×1020
+
+2.0×1020
+
+-2
+
+Fluence (O-atoms cm )
+
+Fluence (O-atoms cm )
+
+Figure 11: The measured resistance as a function of the accumulated AO fluence for the (a) 10
+nm WO3-coated sample and (b) the 30 nm WO3-coated sample.
+Using the simple linear fit described in Eq. (2), parameter A, which represents the AO
+fluence that will induce a change in resistance of 1 Ω was found to be 7.7×1014 O-atoms∙cm-2·Ω-1
+and 2.7×1016 O-atoms∙cm-2·Ω-1 for the 10 nm and 30 nm WO3-coated diamonds, respectively.
+Similarly, parameter B for the 10 nm and 30 nm WO3-coated diamonds was found to be 2.9×1019
+O-atoms∙cm-2 and 3.3×1020 O-atoms∙cm-2, respectively.
+4. Discussion
+The results of DiMO sensor exposure to ozone, and to oxygen atoms produced by RF
+oxygen plasma and a laser detonation AO source show that it is possible to detect AO flux in realtime and with good accuracy while supplying low currents of 20 µA resulting in a low power
+26
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+consumption ranging from 1µW to 100 µW, depending on DiMO resistance. Furthermore, the
+obtained results indicate that both the DiMO sensor lifetime (AO fluence saturation level) and
+detection sensitivity depend strongly on the thickness of the TMO coating layer. Exposure of
+MoO3-coated DiMO to ozone showed that diamond substrates with TMO coating thickness values
+lower than 2.8 nm reduced their charge carrier concentration and sheet conductance upon exposure
+by two orders of magnitude after ~50 hours, reaching saturation at the end of 180-hour exposure.
+In contrast, a DiMO coated with 3.8 nm MoO3 showed a much slower reduction in conductivity
+and did not reach saturation after the 180-hour exposure. Moreover, DiMO exposure to RF oxygen
+plasma and to a laser detonation AO source also indicate that the accumulated fluence saturation
+level and the calibration parameters, A and B, depend on the thickness of the WO3 coating layer.
+Parameter A, which is inversely proportional to the sensitivity of diamond surface conductivity to
+AO, increases with the increased thickness of WO3, as shown in Figure 12(a). In other words, the
+sensitivity of the DiMO sensor to the impinging AO flux is higher as the TMO coating gets thinner,
+as depicted in Figure 12(b). Therefore, DiMO sensor fabricated using thinner TMO layer is
+expected to have higher detection sensitivity to AO. On the other hand, RF oxygen plasma
+exposure results show a fluence detection saturation value of 3.4×1018 O-atoms∙cm-2 for the 6 nm
+WO3-coated DiMO, roughly 26 times lower than that detected for the 20 nm WO3-coated DiMO,
+9×1019 O-atoms∙cm-2. Hence, similarly to the ozone exposure results, DiMO coating thickness is
+proportional to the detection lifetime.
+
+27
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 12: (a) Parameter A as a function of WO3 coating thickness, as extracted from the RF
+oxygen plasma exposure experiments (black squares) and the hyperthermal AO exposure
+experiments (red circles). (b) Plot of the reaction sensitivity (depicted by 1/A), as a function of
+WO3 coating thickness as extracted from the RF oxygen plasma exposure experiments (black
+squares) and the hyperthermal AO exposure experiments (red circles).
+This effect can be related to the fact that the coating thickness determines the rate at which
+the AO affects the diamond-TMO interface. The diamond conductivity depends on charge transfer
+from the diamond surface to the WO3 coating layer 33. Hence, it is mainly affected by the electronic
+state at the diamond-TMO interface. Therefore, the onset of conductivity change happens when
+oxygen atoms reach this interface. The interaction of oxygen with various TMOs and its effect on
+TMO’s electronic properties have been studied extensively and shown to involve different
+processes such as adsorption, oxygen exchange, charge exchange, O2 formation and desorption,
+O-vacancy creation, thermal and field induced diffusion, interaction with residual moisture, and
+more 39-41. The oxygen initially affects the top layer of the TMO and then gradually begins to
+
+28
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+impact the TMO structure and electronic properties at the interface with the diamond as it
+propagates through the coating via various diffusion and exchange processes. Once the maximum
+amounts of AO, O-vacancies, and charge reach the interface layer, the TMO work function — and,
+consequently, the conductivity of the diamond — will be reduced to their minimum values.
+This effect can be seen in the ozone exposure results which correspond well with the
+reported data on oxygen exchange and diffusion in AO-exposed TMOs, where AO rapidly reaches
+a depth of 1 nm to 2.5 nm, irrelevant of the oxide structure 41. Hence, during the exposure of both
+the 1.5 nm and 2.8 nm MoO3-coated samples, the entire layer was affected within the exposure
+time, including the TMO-diamond interface, and the maximum reduction in conductivity was
+achieved. However, during the exposure of the 3.8 nm coated sample, the TMO-diamond interface
+area was not entirely affected, allowing for a much slower change to its electrical properties and,
+therefore, to a slower change in the TD-induced diamond conductivity. Thus, a thinner coating
+will reduce time to onset of conductivity change, it will make the detector more sensitive to lower
+AO fluxes and will cause the detector to reach saturation at a lower accumulated fluence. In
+contrast, use of a thicker TMO layer enables the detection of higher AO fluence, albeit with
+reduced detection sensitivity.
+A rough assessment of the DiMO lifetime as a function of coating thickness can be made
+assuming a simple diffusion process, e.g. a constant exposure to specific concentration of AO and
+a diffusion coefficient of 5.5×10-22 m2∙s-1 for AO in TMO, which is the lowest value of the AO
+diffusion coefficient measured for MoO3 and ZrO2 thin films 41. The ratio of the AO concentration
+reaching the TMO-diamond interface area to the concentration of AO at the exposed TMO surface
+was calculated as a function of time for different TMO coating thicknesses, using the simple
+solution to diffusion equation in the form of Eq (3).
+29
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(3)
+
+𝐶𝑖
+𝐶0
+
+= 𝑒𝑟𝑓𝑐 (
+
+𝑥𝑖
+
+2√𝐷𝑡
+
+)
+
+Here C0 is the constant AO concentration at the TMO outer surface, Ci is the AO concentration at
+the interface as a function of time, erfc denotes the complimentary error function, xi is the TMO
+coating thickness, marking the position of the TMO-diamond interface, t is the time and D is the
+coefficient of AO in TMO diffusion, taken to be 5.5×10-22 m2∙s-1. The calculated Ci/C0 ratio (in
+percentage) as a function of exposure days can be seen in Figure 13 for coating thickness ranging
+from 1.5 nm to 30 nm.
+
+Figure 13: The ratio (%) of the AO concentration at the TMO diamond interface to the AO
+concentration at the external TMO surface as a function of exposure time (shown for up to 100
+days), calculated using Eq. (3) for TMO coating thickness of 1.5 nm (black), 2.8 nm, (red), 3.8 nm
+(blue), 6 nm (pink), 10 nm (green), 20 nm (dark blue), and 30 nm (purple).
+
+30
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Note that this simple calculation is for thermal AO and does not include changes in Ovacancy concentrations, charge accumulation and various additional processes that can affect
+electronic properties of the TMO-diamond interface. Nevertheless, the calculation results show the
+increase in expected DiMO lifetime for thicker TMO coating thicknesses. The plots in Figure 13
+show that DiMO devices lifetime increases gradually from less than 10 days of exposure for 1 nm
+thick coatings to more than 100 days of exposure for 30 nm thick coatings, allowing the detection
+of higher AO fluences. Thus, the TMO coating thickness can be tailored for specific requirements,
+trading detection sensitivity for high saturation level required for longer detection lifetime.
+In order to use DiMO sensor as an effective AO measurement tool, further research and
+development are required. As seen by the analysis of the various exposure results, the TMO layer
+properties are the key for enabling AO detection using DiMO. However, as discussed, this layer
+is also susceptible to atmospheric O2 and moisture 40. The effect of O2 is expected to be relatively
+small; the oxygen diffusion coefficient calculated for TMO (ZrO2) exposed to O2 was found to be
+in the range of 10-30 m2∙s-1, roughly 8 orders of magnitude lower than that found for AO, indicating
+a much slower degradation process 58. Nevertheless, an appropriate temporary encapsulation layer
+should be developed and implemented in order to prevent degradation during storage in a similar
+manner as to other diamond-based electronic devices 31. This thin protective layer should be
+composed of a material that is impermeable to O2 and moisture, but unlike the encapsulating layer
+in other diamond electronic device, is sufficiently susceptible to AO erosion. This is required in
+order to allow the encapsulating layer to be rapidly and completely eroded when exposed to AO
+in the LEO environment, exposing the TMO layer and allowing AO detection to begin. Several
+candidate polymers such as BMI, are considered and they will be tested as encapsulating layer in
+future studies. Moreover, the TD-induced conductivity in diamond is known to be relatively stable
+
+31
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+at temperatures below 200 °C 31; however the temperatures DiMO might be exposed to in LEO
+and VLEO missions may exceed this value. In order to maintain a constant TD-induced
+conductivity in diamond at higher temperatures, various thermal stabilization and control methods
+will be tested. Furthermore, TMOs are capable of regenerating their work function through
+annealing in air 42. This ability can potentially increase DiMO detection lifetime and make DiMO
+detectors serve as fully recyclable devices for AO detection in ground-based systems. The ability
+of the DiMO sensor to regenerate its original pre-exposed conductivity through annealing will be
+tested in future studies.
+
+4. Conclusions
+A novel AO sensor based on the electronic properties of a diamond surface coated with a
+thin layer of TMO, denoted as DiMO, is presented. The DiMO sensor is a simple, small in size (a
+few millimeters), solid-state device with very low power consumption of less than 0.1 mW, as was
+demonstrated by ground-based AO exposure experiments.
+The sensor performance was tested both in RF oxygen plasma and in a laser detonation AO
+source. A linear correlation between the diamond surface resistance and the AO fluence for a
+diamond device coated with 6 − 30 nm thick WO3 was observed. In addition, exposure to
+hyperthermal AO shows that the device is capable of measuring fluences in excess of 2×1020 Oatoms∙cm-2. Furthermore, the electrical resistance sensitivity to AO was found to be tunable in the
+range of 10-14 – 10-15 Ω∙O-atoms-1∙cm2, inversely dependent on the coating thickness. At the same
+time, the fluence in which the device resistance reaches saturation was also found to be directly
+
+32
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+dependent on TMO coating thickness. Hence, by changing the TMO coating thickness the device
+could be tailored for specific requirements, trading detection sensitivity for longer sensor lifetime.
+The presented work demonstrates the ability of a novel actinometer based on DiMO
+technology to be used effectively as a tunable AO sensor, capable of measuring a wide range of
+AO fluxes in real time. With the increased interest in both low-cost “new space” applications and
+VLEO missions, DiMO AO detectors can serve as an affordable and simple solution in both
+spacecraft and ground-based AO simulation systems.
+
+References
+(1) U.S. Standard Atmosphere, 1976. 1976, NASA-TM-X-74335.
+(2) Tribble, A. The Space Environment. Princeton University Press, New Jersey: 1995.
+(3) Bedingfield, K. L.; Leach, R. D. Spacecraft system failures and anomalies attributed to the natural space
+environment. NASA-RP-1390 1996.
+(4) De Rooij, A. Encyclopedia of Aerospace Engineering. John Wiley and Sons Ltd: 2010.
+(5) Grossman, E.; Gouzman, I. Space environment effects on polymers in low earth orbit. Nuclear
+Instruments and Methods in Physics Research Section B: Beam Interactions with Materials and Atoms
+2003, 208, 48-57.
+(6) Bourassa, R. J.; Gillis, J. R. Atomic oxygen flux and fluence calculation for Long Duration Exposure
+Facility (LDEF); 1991.
+(7) Hilchenbach, M. Space-borne mass spectrometer instrumentation. International Journal of Mass
+Spectrometry 2002, 215 (1-3), 113-129.
+
+33
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(8) Ashruf, A. M.; Vineeth, C.; Pant, T. K. On the variability of the atomic oxygen density in the upper
+atmosphere under different solar activity and geomagnetic conditions and its impacts on satellite drag.
+Advances in Space Research 2024, 73 (9), 4499-4518. DOI: https://doi.org/10.1016/j.asr.2024.01.059.
+(9) Crowley, G.; Pilinski, M.; Azeem, S. Tutorial: The neutral atmosphere and the satellite drag
+environment. In Advances in the Astronautical Sciences, 2012.
+(10) Storz, M. F.; Bowman, B. R.; Branson, M. J. I.; Casali, S. J.; Tobiska, W. K. High accuracy satellite
+drag model (HASDM). Advances in Space Research 2005, 36 (12), 2497-2505. DOI:
+https://doi.org/10.1016/j.asr.2004.02.020.
+(11) Mahmoud, W. M.; Elfiky, D.; Robaa, S. M.; Elnawawy, M. S.; Yousef, S. M. A standalone prediction
+model for atomic oxygen and coronal mass ejections. Astrophysics and Space Science 2023, 368 (3),
+20. DOI: 10.1007/s10509-023-04170-w.
+(12) Berger, T. E.; Dominique, M.; Lucas, G.; Pilinski, M.; Ray, V.; Sewell, R.; Sutton, E. K.; Thayer, J.
+P.; Thiemann, E. The Thermosphere Is a Drag: The 2022 Starlink Incident and the Threat of
+Geomagnetic Storms to Low Earth Orbit Space Operations. Space Weather 2023, 21 (3). DOI:
+10.1029/2022SW003330.
+(13) Fuller-Rowell, T. J.; Rees, D. Numerical simulations of the distribution of atomic oxygen and nitric
+oxide in the thermosphere and upper mesosphere. Advances in Space Research 1996, 18 (9), 255-305.
+DOI: https://doi.org/10.1016/0273-1177(96)00062-2.
+(14) Lednyts'kyy, O.; von Savigny, C.; Weber, M. Sensitivity of equatorial atomic oxygen in the MLT
+region to the 11-year and 27-day solar cycles. Journal of Atmospheric and Solar-Terrestrial Physics
+2017, 162, 136-150. DOI: https://doi.org/10.1016/j.jastp.2016.11.003.
+(15) Holmes, B. E. A.; Oiko, V. T. A.; Roberts, P. C. E. A review of satellite-based atomic oxygen sensing
+methods.
+
+Progress
+
+in
+
+Aerospace
+
+Sciences
+
+2023,
+
+137,
+
+100886.
+
+DOI:
+
+https://doi.org/10.1016/j.paerosci.2023.100886.
+(16) Osborne, J.; Harris, I.; Roberts, G.; Chambers, A. Satellite and rocket-borne atomic oxygen sensor
+techniques. Review of Scientific Instruments 2001, 72 (11), 4025-4041.
+34
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(17) Verker, R.; Bolker, A.; Carmiel, Y.; Gouzman, I.; Grossman, E.; Minton, T. K.; Remaury, S. Ground
+testing of an on-orbit atomic oxygen flux and ionizing radiation dose sensor based on material
+degradation by the space environment. Acta Astronautica 2020, 173, 333-343. DOI:
+https://doi.org/10.1016/j.actaastro.2020.04.065.
+(18) Verker, R.; Keren, E.; Refaeli, N.; Carmiel, Y.; Bolker, A.; David, D.; Katz, S.; Sagi, E.; Bashi, D.;
+Finkelstein, I.; Nahum, T.; Haran, A.; Shemesh Sadeh, A.; Ariel, M.; Gouzman, I.; Amrani, O.;
+Simhony, Y.; Murat, M. Measurements of material erosion in space by atomic oxygen using the onorbit
+
+material
+
+degradation
+
+detector.
+
+Acta
+
+Astronautica
+
+2023,
+
+211,
+
+818-826.
+
+DOI:
+
+https://doi.org/10.1016/j.actaastro.2023.07.020.
+(19) Yukumatsu, K.; Goto, A.; Tsuchiya, Y.; Miyazaki, E.; Kimoto, Y. Evaluation of atomic oxygen
+fluences by analyzing transmitted light images of polyimide obtained at SLATS/MDM. Acta
+Astronautica 2024, 214, 781-789. DOI: https://doi.org/10.1016/j.actaastro.2023.11.024.
+(20) Eberhart, M.; Löhle, S.; Steinbeck, A.; Binder, T.; Fasoulas, S. Measurement of atomic oxygen in the
+middle atmosphere using solid electrolyte sensors and catalytic probes. Atmospheric Measurement
+Techniques 2015, 8 (9), 3701-3714. DOI: https://doi.org/10.5194/amt-8-3701-2015 ProQuest Central.
+(21) Zheludkevich, M. L.; Yasakau, K. A.; Gusakov, A. G.; Voropaev, A. G.; Vecher, A. A. Two
+thermodynamics-based approaches to atomic oxygen sensing. Journal of spacecraft and rockets 2006,
+43 (2), 426-430. DOI: 10.2514/1.15051.
+(22) Sultana, M.; Herrero, F.; Khazanov, G. Graphene chemical sensors for heliophysics applications.
+Radiation effects and defects in solids 2013, 168 (10), 805-811. DOI: 10.1080/10420150.2013.831853.
+(23) Hunton, D.; Trzcinski, E.; Cross, J.; Spangler, L.; Hoffbauer, M.; Archuleta, F.; Visentine, J. Mass
+spectrometers and atomic oxygen. In Jet Propulsion Lab., Proceedings of the NASA Workshop on
+Atomic Oxygen Effects, 1987.
+(24) Visentine, J.; Leger, L. Material interactions with the low earth orbital environment Accurate reaction
+rate measurements. In Shuttle Environment and Operations II Conference, 1985; p 7019.
+
+35
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(25) Dirri, F.; Palomba, E.; Longobardo, A.; Zampetti, E.; Saggin, B.; Scaccabarozzi, D. A review of quartz
+crystal microbalances for space applications. Sensors and Actuators A: Physical 2019, 287, 48-75. DOI:
+https://doi.org/10.1016/j.sna.2018.12.035.
+(26) QCM Research. QCM Research, http://www.qcmresearch.com (accessed August 2024).
+(27) Osborne, J. J.; Roberts, G. T.; Chambers, A. R.; Gabriel, S. B. Initial results from ground-based testing
+of an atomic oxygen sensor designed for use in earth orbit. Review of Scientific Instruments 1999, 70
+(5), 2500-2506. DOI: 10.1063/1.1149782.
+(28) Haenni, W.; Baumann, H.; Comninellis, C.; Gandini, D.; Niedermann, P.; Perret, A.; Skinner, N.
+Diamond-sensing microdevices for environmental control and analytical applications. Diamond and
+Related Materials 1998, 7 (2), 569-574. DOI: https://doi.org/10.1016/S0925-9635(97)00253-7.
+(29) Bolker, A.; Saguy, C.; Tordjman, M.; Gan, L.; Kalish, R. Two-dimensional and zero-dimensional
+quantization of transfer-doped diamond studied by low-temperature scanning tunneling spectroscopy.
+Physical Review B 2011, 83 (15), 155434.
+(30) Crawford, K. G.; Maini, I.; Macdonald, D. A.; Moran, D. A. J. Surface transfer doping of diamond: A
+review. Progress in surface science 2021, 96 (1), 100613. DOI: 10.1016/j.progsurf.2021.100613.
+(31) Crawford, K. G.; Qi, D.; McGlynn, J.; Ivanov, T. G.; Shah, P. B.; Weil, J.; Tallaire, A.; Ganin, A. Y.;
+Moran, D. A. Thermally stable, high performance transfer doping of diamond using transition metal
+oxides. Scientific Reports 2018, 8 (1), 3342.
+(32) Tordjman, M.; Saguy, C.; Bolker, A.; Kalish, R. Superior surface transfer doping of diamond with
+MoO3. Advanced Materials Interfaces 2014, 1 (3), 1300155.
+(33) Tordjman, M.; Weinfeld, K.; Kalish, R. Boosting surface charge-transfer doping efficiency and
+robustness of diamond with WO3 and ReO3. Applied Physics Letters 2017, 111 (11).
+(34) Ristein, J. Surface science of diamond: Familiar and amazing. Surface Science 2006, 600 (18), 36773689.
+(35) Maier, F.; Riedel, M.; Mantel, B.; Ristein, J.; Ley, L. Origin of surface conductivity in diamond.
+Physical review letters 2000, 85 (16), 3472.
+36
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(36) Yin, Z.; Tordjman, M.; Vardi, A.; Kalish, R.; Alamo, J. A. d. A Diamond:H/WO 3 Metal–Oxide–
+Semiconductor Field-Effect Transistor. IEEE Electron Device Letters 2018, 39 (4), 540-543. DOI:
+10.1109/LED.2018.2808463.
+(37) Yin, Z.; Tordjman, M.; Lee, Y.; Vardi, A.; Kalish, R.; del Alamo, J. A. Enhanced transport in transistor
+by tuning transition-metal oxide electronic states interfaced with diamond. Science Advances 2018, 4
+(9), eaau0480. DOI: doi:10.1126/sciadv.aau0480.
+(38) Vardi, A.; Tordjman, M.; Alamo, J. A. d.; Kalish, R. A Diamond:H/MoO3 MOSFET. IEEE Electron
+Device Letters 2014, 35 (12), 1320-1322. DOI: 10.1109/LED.2014.2364832.
+(39) Greiner, M. T.; Chai, L.; Helander, M. G.; Tang, W. M.; Lu, Z. H. Transition metal oxide work
+functions: the influence of cation oxidation state and oxygen vacancies. Advanced Functional Materials
+2012, 22 (21), 4557-4568.
+(40) Irfan; Ding, H.; Gao, Y.; Small, C.; Kim, D. Y.; Subbiah, J.; So, F. Energy level evolution of air and
+oxygen exposed molybdenum trioxide films. Applied Physics Letters 2010, 96 (24), 243307. DOI:
+10.1063/1.3454779.
+(41) Stilhano Vilas Boas, C. R.; Sturm, J. M.; Milov, I.; Phadke, P.; Bijkerk, F. Room temperature oxygen
+exchange and diffusion in nanometer-thick ZrO2 and MoO3 films. Applied Surface Science 2021, 550,
+149384. DOI: https://doi.org/10.1016/j.apsusc.2021.149384.
+(42) Irfan, I.; Turinske, A. J.; Bao, Z.; Gao, Y. Work function recovery of air exposed molybdenum oxide
+thin films. Applied Physics Letters 2012, 101 (9), 093305. DOI: 10.1063/1.4748978.
+(43) Shpilman, Z.; Gouzman, I.; Grossman, E.; Shen, L.; Minton, T.; Hoffman, A. Resistance of diamond
+(100) to hyperthermal atomic oxygen attack. Applied Physics Letters 2009, 95 (17), 174106.
+(44) Shpilman, Z.; Gouzman, I.; Grossman, E.; Shen, L.; Minton, T. K.; Paci, J. T.; Schatz, G. C.;
+Akhvlediani, R.; Hoffman, A. Oxidation and Etching of CVD Diamond by Thermal and Hyperthermal
+Atomic Oxygen. Journal of physical chemistry. C 2010, 114 (44), 18996-19003. DOI:
+10.1021/jp1073208.
+
+37
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(45) Gwyddion. Free SPM (AFM, SNOM/NSOM, STM, MFM) data analysis software, http://gwyddion.net/.
+(accessed August 2024).
+(46) Gouzman, I.; Atar, N.; Grossman, E.; Verker, R.; Bolker, A.; Pokrass, M.; Sultan, S.; Sinwani, O.;
+Wagner, A.; Lück, T.; Seifarth, C. 3D Printing of Bismaleimides: From New Ink Formulation to Printed
+Thermosetting Polymer Objects. Advanced materials technologies 2019, 4 (10), 1900368. DOI:
+10.1002/admt.201900368.
+(47) Shpilman, Z.; Gouzman, I.; Lempert, G.; Grossman, E.; Hoffman, A. rf plasma system as an atomic
+oxygen exposure facility. Review of scientific instruments 2008, 79 (2), 025106-025106-025106. DOI:
+10.1063/1.2885044.
+(48) Gotlib-Vainstein, K.; Gouzman, I.; Girshevitz, O.; Bolker, A.; Atar, N.; Grossman, E.; Sukenik, C. N.
+Liquid Phase Deposition of a Space-Durable, Antistatic SnO2 Coating on Kapton. ACS applied
+materials & interfaces 2015, 7 (6), 3539-3546. DOI: 10.1021/am5072817.
+(49) Grossman, E.; Gouzman, I.; Lempert, G.; Noter, Y.; Lifshitz, Y. Assessment of Atomic-Oxygen Flux
+in Low-Earth-Orbit Ground Simulation Facilities. Journal of Spacecraft and Rockets 2004, 41 (3), 356359. DOI: 10.2514/1.10890.
+(50) ASTM-E-2089. Standard Practices for Ground Laboratory Atomic Oxygen Interaction Evaluation of
+Materials for Space Applications; American Society for Testing and Materials, 2002.
+(51) Minton, T. K.; Garton, D. J. Dynamics of atomic-oxygen-induced polymer degradation in low earth
+orbit. In Chemical Dynamics in Extreme Environments, Advanced Series in Physical Chemistry, Vol.
+Volume 11; WORLD SCIENTIFIC, 2001; pp 420-489.
+(52) Buczala, D. M.; Brunsvold, A. L.; Minton, T. K. Erosion of Kapton H® by Hyperthermal Atomic
+Oxygen. Journal of Spacecraft and Rockets 2006, 43 (2), 421-425. DOI: 10.2514/1.16402.
+(53) Geistfeld, E. C.; Schwartzentruber, T. E.; Riggs, B. E.; Xu, C.; Gouzman, I.; Minton, T. K.
+Characterization of the Table-Top Shock Tunnel Facility Using Kapton Erosion Experiments and
+Direct Simulation Monte Carlo. In AIAA SCITECH 2023 Forum, AIAA SciTech Forum, American
+Institute of Aeronautics and Astronautics, 2023.
+38
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(54) Garton, D. J.; Minton, T. K.; Maiti, B.; Troya, D.; Schatz, G. C. A crossed molecular beams study of
+the O(3P)+H2 reaction: Comparison of excitation function with accurate quantum reactive scattering
+calculations. J. Chem. Phys. 2003, 118 (4), 1585-1588. DOI: 10.1063/1.1539043.
+(55) Giapis, K. P.; Moore, T. A.; Minton, T. K. Hyperthermal neutral beam etching. Journal of Vacuum
+Science & Technology A 1995, 13 (3), 959-965. DOI: 10.1116/1.579658 (acccessed 4/29/2024).
+(56) Tallaire, A.; Kasu, M.; Ueda, K.; Makimoto, T. Origin of growth defects in CVD diamond epitaxial
+films.
+
+Diamond
+
+and
+
+Related
+
+Materials
+
+2008,
+
+17
+
+(1),
+
+60-65.
+
+DOI:
+
+https://doi.org/10.1016/j.diamond.2007.10.003.
+(57) Kearns, D. M.; Gillen, D. R.; Voulot, D.; McCullough, R. W.; Thompson, W. R.; Cosimini, G. J.;
+Nelson, E.; Chow, P. P.; Klaassen, J. Study of the emission characteristics of a rf plasma source for
+atomic oxygen: Measurements of atom, ion, and electron fluxes. Journal of Vacuum Science &
+Technology A 2001, 19 (3), 993-997. DOI: 10.1116/1.1367263 (acccessed 8/31/2024).
+(58) Yang, J.; Youssef, M.; Yildiz, B. Oxygen self-diffusion mechanisms in monoclinic ZrO2 revealed and
+quantified by density functional theory, random walk analysis, and kinetic Monte Carlo calculations.
+Physical Review B 2018, 97 (2), 024114. DOI: 10.1103/PhysRevB.97.024114.
+
+39
+
+https://doi.org/10.26434/chemrxiv-2025-qh9rh ORCID: https://orcid.org/0000-0002-8219-9134 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+

@@ -1,0 +1,857 @@
+Reparameterization of GFN1-xTB for
+Atmospheric Molecular Clusters: Applications to
+Multi-Acid–Multi-Base Systems
+Yosef Knattrup, Jakub Kubečka, Haide Wu, Frank Jensen, and Jonas Elm∗
+Department of Chemistry, Aarhus University, Langelandsgade 140, 8000 Aarhus C,
+Denmark
+E-mail: jelm@chem.au.dk
+Phone: +45 28938085
+
+1
+https://doi.org/10.26434/chemrxiv-2024-vnh4k ORCID: https://orcid.org/0000-0003-3736-4329 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Abstract
+Atmospheric molecular clusters, the onset of secondary aerosol formation, are a major part of the current uncertainty in modern climate models. Quantum chemical (QC)
+methods are usually employed in a funneling approach to identify the lowest free energy
+cluster structures. However, the funneling approach highly depends on the accuracy of
+low-cost methods to ensure that important low-lying minima are not missed. Here we
+present a reparameterized GFN1-xTB model based on the Clusteromics I–V datasets
+for studying atmospheric molecular (AMC) clusters, denoted AMC-xTB. The AMCxTB model reduces the mean of electronic binding energy errors from 7–11.8 kcal/mol
+to roughly 0 kcal/mol and the root mean square deviation from 7.6–12.3 kcal/mol to
+0.81–1.45 kcal/mol. In addition, the minimum structures obtained with AMC-xTB
+are closer to the ωB97X-D/6-31++G(d,p) level of theory compared to GFN1-xTB. We
+employ the new parameterization in two new configurational sampling workflows that
+include an additional meta-dynamics sampling step using CREST with the AMC-xTB
+model. The first workflow, denoted the “independent workflow”, is a commonly used
+funneling approach with an additional CREST step, and the second, the “improvement
+workflow”, where the best configuration currently known in the literature is improved
+with a CREST+AMC-xTB step. Testing the new workflow we find configurations
+lower in free energy for all the literature clusters with the largest improvement being
+up to 21 kcal/mol.
+Lastly, employing the improvement workflow we massively screened 288 multi-acid–
+multi-base clusters containing up to 8 different species. For these new multi-acid–multicluster systems we observe that the improvement workflow finds configurations lower
+in free energy for 245 out of 288 (85.1%) cluster structures. Most of the improvements
+are within 2 kcal/mol, but we see improvements up to 8.3 kcal/mol. Hence, we can
+recommend this new workflow based on the AMC-xTB model for future studies on
+atmospheric molecular clusters.
+
+2
+https://doi.org/10.26434/chemrxiv-2024-vnh4k ORCID: https://orcid.org/0000-0003-3736-4329 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+1
+
+Introduction
+
+Molecular clusters, formed through the aggregation of various atmospheric species, play
+a central role in aerosol particle formation, cloud nucleation, and chemical reactions, thus
+influencing climate, air quality, and environmental chemistry. 1 The key species in cluster formation are believed to be inorganic molecules such as sulfuric acid, ammonia, and amines,
+enhanced by other species such as water, methanesulfonic acid, nitric acid, formic acid, and
+highly oxygenated organic molecules. 2–4 Theoretical studies typically aim to elucidate the
+thermodynamics, kinetics, and molecular interactions governing cluster formation and its
+evolution. The main challenge for studying atmospheric molecular clusters is their complex configurational spaces, which require advanced configurational sampling techniques and
+computationally demanding quantum chemistry methods to evaluate the cluster properties
+accurately. 2 Furthermore, atmospheric clustering is believed to be a multi-species process, 5
+adding another dimension of chemical complexity.
+Thoroughly exploring the configurational space of atmospheric molecular clusters using,
+for instance, metadynamics simulations 6,7 or genetic algorithms 8–10 at a high level of theory is
+extremely computationally demanding. Hence, usually, a funneling approach 2,4,11 is applied,
+where the configurational space is initially explored at a low level of theory such as force-field
+or semiempirical methods, and only a subset of low energy structures is selected, reoptimized,
+and reexamined at a higher level of theory. This process is repeated with an increasing
+level of theory until only a few structures remain for evaluation at the desired high level.
+Schematically, the process can be given as:
+1. Generate initial cluster configurations
+ABCluster/OGOLEM/Basin hopping or similar
+2. Semi-empirical calculations
+Optimization at the PM6/PM7/GFN1-xTB/GFN2-xTB or similar level
+3. DFT calculations
+3
+https://doi.org/10.26434/chemrxiv-2024-vnh4k ORCID: https://orcid.org/0000-0003-3736-4329 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+DFT optimization and vibrational frequency calculations
+4. Single point energy refinement
+Single-point energy calculation at coupled cluster level on the DFT optimized geometry
+Between each step in the funneling approach, filtering can be applied to reduce the number
+of structures that need to be handled. This can either be based on an energy threshold or a
+set number of cluster structures. Eventually, we end up with a handful of structures at the
+highest obtainable level.
+The first step in the funneling procedure is the generation of a large number of configuration candidates. The key idea is sampling a large part of the potential energy surfaces at
+a low level of theory to get estimates for the global free energy minimum. This is usually
+carried out using force-field methods in combination with genetic algorithms such as in ABCluster 9,10,12–15 and OGOLEM, 8,16–19,19–21 by random/manual sampling or using dynamic
+methods such as basin hopping. 22–26 The major issue at this step is that most force-field
+methods are unable to describe bond-breaking, such as proton transfer reactions, which are
+important for atmospherically relevant molecular clusters, requiring the sampling to include
+monomers where the hydrogens have been transferred to get adequate sampling. Furthermore, the accuracy of force-field methods is also insufficient to determine a subsample of the
+conformer candidates and all the candidates have to be taken to the higher level of theory.
+The next step is semi-empirical calculations as these are a better description of the
+chemistry and filtering can be applied. Of the common semiempirical methods, GFN1xTB, 27 GFN2-xTB, 28 PM6, 29 and PM7 30 are the most used in configurational sampling
+procedures for atmospheric molecular clusters. 2–4 Of these methods, GFN1-xTB has shown to
+have the highest correlation with electronic binding energies at a higher level of theories 31,32
+and have been shown to have a higher correlation with DFT trajectories for molecular
+dynamics than GFN2-xTB. 33 The reason GFN2-xTB performs worse than GFN1-xTB for
+atmospheric molecular clusters (often involving sulfuric acid) is that there is a decrease in
+the number of d -functions for sulfur in the basis set for the newer GFN2-xTB model.
+4
+https://doi.org/10.26434/chemrxiv-2024-vnh4k ORCID: https://orcid.org/0000-0003-3736-4329 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+The third step is the subsequent optimization and vibrational frequency calculation of
+the structures with DFT. This is the main bottleneck in the sampling methodology as limited computational resources only allow a fixed number of DFT structures to be optimized.
+Therefore some form of filtering is required, often based on structural properties or electronic
+energies from the semiempirical calculations. To circumvent the inaccuracies of semiempirical methods an intermediate step can be included, involving single-point energy calculations
+at the DFT level on as many structures as possible. Another option for an intermediate step
+is the utilization of machine learning (ML) methods. One can calculate a subset of the structures at a desired DFT level and train an ML model to predict the energies of the remaining
+structures. 33,34 However, to mimic accurate DFT energies, kernel-based ML methods become
+computationally demanding 34–36 and neural-network will require an extensive set of training
+data hyperparameter optimization. 37 Moreover, ML methods often fail when predicting on
+structures different from the training set.
+Overall, the funneling approach is never more efficient than its weakest link given by the
+semiempirical step in 2, in which accuracy determines the number of structures that have
+to be optimized/have single points calculated at the DFT level. In this paper, we focus on
+reparameterizing the GFN1-xTB method based on DFT energies of atmospherically relevant molecular clusters yielding a GFN1-xTB model reparametrized based on ωB97X-D/631++G(d,p) for ‘atmospheric molecular clusters’ denoted AMC-xTB. This new parameterization is used to sample 288 large multi-acid–multi-base clusters containing AM equivalent
+to the clusters studied by Knattrup et al. 38
+
+2
+
+Methodology
+
+2.1
+
+Computational Details
+
+Single-point energies, gradients, and geometries for the reparameterization, configurational
+sampling, and comparisons were calculated using the xtb 6.4.0 program using the GFN15
+https://doi.org/10.26434/chemrxiv-2024-vnh4k ORCID: https://orcid.org/0000-0003-3736-4329 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+xTB 27 and AMC-xTB parameterizations. A modified version of ArbAlign 39 available in
+the JKCS program 40 was used to calculate the root-mean-square differences (RMSD) between molecular structures. Gaussian 16, version B.01 41 was used for the DFT calculations.
+CREST 2.12 6,7 with an energy window of 15 kcal/mol and in noncovalent interaction mode
+and ABCluster 2.0 9,10 with a population of SN = 3000, number of generations of gmax = 200,
+and gen. survival of glimit = 4 were used for additional configurational sampling.
+
+2.2
+
+Cluster Data Sets
+
+For reparameterization of GFN1-xTB, we used the Clusteromics I–V data sets 42–46 containing (acid)0−2 (base)0−2 clusters of the following atmospherically relevant species: sulfuric
+acid (SA), methanesulfonic acid (MSA), nitric acid (NA), formic acid (FA), ammonia (AM),
+methylamine (MA), dimethylamine (DMA), trimethylamine (TMA) and ethylenediamine
+(EDA). All structures are optimized at the ωB97X-D/6-31++G(d,p) level of theory and we
+used the up to three lowest electronic energy configurations found per each cluster as the optimization set for GFN1-xTB reparametrization. This leads to an optimization set comprising
+a total of 1073 clusters. The GFN1-xTB reparameterization based on this optimization set
+will be denoted as the AMC-xTB model.
+All new data calculated are freely available in the Atmospheric Cluster DataBase 47 along
+with the new AMC-xTB parameter file (see Section 2).
+
+2.3
+
+Optimization Strategy
+
+The GFN1-xTB model contains 15 global parameters, 2 element-pair-specific parameters,
+and 32 element-specific parameters of relevance to the species present in the optimization
+sets (H, C, N, O and S atoms). Initially, the Hessian was generated to probe the sensitivity of
+the parameters, however, we found it computationally feasible to employ a similar optimization strategy to the original GFN1-xTB paper, 27 where we optimize all relevant parameters
+simultaneously. We utilize a modified version of an in-house pseudo-Newton–Raphson op6
+https://doi.org/10.26434/chemrxiv-2024-vnh4k ORCID: https://orcid.org/0000-0003-3736-4329 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+timizer by Jensen et al. 48 for the optimization of a target function (T ) containing a linear
+combination of the difference in electronic binding energies (∆E b in kcal/mol and gradient
+norms (g norm ) in Hartree/Bohr radius at the current GFN1-xTB parameterization and the
+target ωB97X-D/6-31++G(d,p) level of theory:
+
+T=
+
+1
+Nconf
+
+Nconf
+
+∆E b
+
+i
++ ginorm ).
+∑ ( N atoms
+
+(1)
+
+i
+
+i
+
+Here, Nconf is the total number of structures in the optimization set, Niatoms is the number
+of atoms in the i’-th structure. We normalized by the number of atoms in each structure to
+prevent “overfitting” to the larger clusters.
+We chose the electronic binding energies as the target properties to get a better tool
+for filtering based on energies in configurational sampling procedures. The gradients were
+included directly in the target function. We use equilibrium structures at the given level of
+theory, which are supposed to have near-zero gradients. However, the upper limit is set by
+the accuracy threshold within the xtb program during the optimization, which makes the
+gradients non-zero in the calculations.
+Including only the electronic bindings energies in the target function yields a much better
+fit for the energies but causes the gradients to “explode”, effectively rendering the optimization functionality of AMC-xTB useless for our target species. Giving higher weight to the
+gradient norms in the target function makes the optimized structures more similar to the
+target ωB97X-D/6-31++G(d,p) level of theory, however, we found that it causes problems
+in the configurational sampling procedure where the decreased accuracy in determining the
+binding energies causes our configurational sampling to yield high-energy conformers at the
+DFT level. Overall, we found that including the gradient norms and difference in electronic
+bindings energies in a 1:1 ratio is the best compromise between the two properties.
+
+7
+https://doi.org/10.26434/chemrxiv-2024-vnh4k ORCID: https://orcid.org/0000-0003-3736-4329 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+2.4
+
+Updated Configurational Sampling Workflows
+
+The strength of the new AMC-xTB model is that it can be used directly in configurational
+sampling programs such as ABCluster and CREST. Here, we will test two different new
+workflows for applying the reparameterized models in cluster configurational sampling.
+
+2.4.1
+
+Original Workflow
+
+The workflow usually employed in studying atmospheric molecular clusters can be summarized as:
+opt
+ABCluster → GFN1-xTBopt
+all → DFTN lowest
+
+Here the number of configurations N that have to be optimized at the DFT level is a severe
+bottleneck in the number of new cluster systems that can be studied. Usually, 50–100
+configurations are optimized at the DFT level.
+
+2.4.2
+
+Independent Workflow
+
+The independent workflow refers to configurational sampling from scratch using the wellestablished funneling approach using AMC-xTB instead of GFN1-xTB. 2,11 As the aim for
+the approach is to be generally applicable, we also included an additional CREST step, as
+it should be better at handling flexible organic compounds:
+
+opt
+ABCluster → AMC-xTBopt
+all → CREST(AMC-xTB)lowest → DFT50 lowest
+
+Here, ABCluster, a genetic algorithm for sampling clusters, is used for the initial sampling of
+all possible neutral/ionic combinations of monomers that yield overall neutral clusters. The
+xtb 6.4.0 program was then used to optimize all the configurations at the AMC-xTB level.
+The cluster lowest in electronic energy was then taken as the input structure for CREST in
+non-covalent interaction mode, again using our new AMC-xTB model. The initial ABCluster
+sampling is needed because we found CREST to be quite sensitive to the input structure and,
+8
+https://doi.org/10.26434/chemrxiv-2024-vnh4k ORCID: https://orcid.org/0000-0003-3736-4329 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+therefore, needs a good guess for a starting structure. The 50 structures lowest in electronic
+energy are then optimized at the DFT level.
+
+2.4.3
+
+Improvement Workflow
+
+The improvement workflow refers to using the best structure currently known at the corresponding level of theory as the input structure for CREST using the AMC-xTB model.
+
+Best Structure → CREST(AMC-xTB) → DFTopt
+50 lowest
+
+From here on, the workflow is the same as the independent workflow, where the 50 structures
+lowest in electronic energy are optimized at the corresponding DFT level.
+
+3
+
+Results and Discussion
+
+3.1
+
+Extension of the Multi-Acid–Multi-Base Dataset
+
+To gain a more complete test set we extended the multi-acid–multi-base clusters systems by
+Knattrup et al. 38 using the same workflow for a total of 288 new AM-containing clusters.
+With the acids being SA, MSA, FA and NA and the bases being AM, MA, DMA and TMA.
+This is the first sampling of multi-component clusters containing up to 8 different species
+yielding a data set where synergistic effects in cluster formation between different species
+of bases 35 and acids 38 and mixes thereof can be studied. Such clusters could be relevant
+for modeling polluted coastal environments. Figure 1 presents the molecular structure of a
+newly sampled 8-component cluster. It is seen that all the acids have transferred a proton
+to all the bases.
+
+9
+https://doi.org/10.26434/chemrxiv-2024-vnh4k ORCID: https://orcid.org/0000-0003-3736-4329 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+(SA)1(MSA)1(NA)1(FA)1(AM)1(MA)1(DMA)1(TMA)1
+Figure 1: The (SA)1 (MSA)1 (NA)1 (FA)1 (AM)1 (MA)1 (DMA)1 (TMA)1 cluster structure lowest in Gibbs free energy at the ωB97X-D/6-31G++(d,p) level of theory with the quasiharmonic approximation (cutoff of 100 cm−1 ) for the initial sampling. Yellow = sulfur, red
+= oxygen, cyan = nitrogen, brown = carbon. and white = hydrogen.
+The initial sampling yields binding free energies ranging from −28.43 kcal/mol
+[(MSA)1 (NA)1 (FA)1 (AM)2 ] to −104.0 kcal/mol [(SA)3 (NA)1 (AM)1 (MA)1 (DMA)2 ] for the
+cluster configurations lowest in free energy at the ωB97X-D/6-31++G(d,p) level of theory.
+
+3.2
+
+Assessment of the AMC-xTB Binding Energies
+
+We reparameterized GFN1-xTB to obtain a new tight-binding semiempirical reparameterization denoted as AMC-xTB. Figure 2 shows the error in electronic binding energies before
+(GFN1-xTB) and after (AMC-xTB) reparameterization. The models have been tested on
+the entire Clusteromics I–V 42–46 data sets (56436 data points), the sulfuric acid–multi-base
+(SA)1−4 (AM/MA/DMA/TMA/EDA)1−4 cluster data set (684 data points) by Kubečka et
+al. 35 and the multi-acid–muti-base (SA/FA/MSA/NA)1−4 (MA/DMA/TMA)1−4 by Knattrup
+et al. 38 including the new AM-containing clusters (1629 data points). All the tested structures are equilibrium structures at the ωB97X-D/6-31++G(d,p) level of theory. Although
+the Gaussian version and integration grid used for optimization differ for some structures,
+it was found to have a negligible effect on this comparison as we are studying the binding
+
+10
+https://doi.org/10.26434/chemrxiv-2024-vnh4k ORCID: https://orcid.org/0000-0003-3736-4329 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+energies and not the absolute energies.
+
+GFN1-xTB
+AMC-xTB
+
+Error in el. binding energy [kcal/mol]
+
+20
+15
+10
+5
+0
+5
+Clusteromics
+
+Kube ka et al.
+
+Knattrup et al.
+
+Figure 2: Error in the electronic binding energies for the GFN1-xTB and AMC-xTB methods
+compared with the ωB97X-D/6-31++G(d,p) level of theory. The Clusteromics I–V 42–46 sets
+have (SA/FA/MSA/NA)0−2 (AM/MA/DMA/TMA/EDA)0−2 clusters, the Kubečka et al. 35
+set has sulfuric acid–multi-base (SA)1−4 (AM/MA/DMA/TMA/EDA)1−4 clusters, Knattrup
+et al. 38 set has the multi-acid–muti-base (SA/FA/MSA/NA)1−4 (MA/DMA/TMA)1−4 clusters including the new AM-containing clusters sampled in this work.
+
+For all the data sets shown in Figure 2 the reparameterization results in near-zero means of
+the energy errors. This is a reduction from error means of 3.7–11.8 kcal/mol for GFN1-xTB.
+In addition, the AMC-xTB model achieves a more narrow error distribution with the root
+mean square deviations decreasing from 7.6–12.3 kcal/mol to 0.81–1.45 kcal/mol, implying
+that there will be fewer outliers. The error span on the larger clusters for the Knattrup
+et al. 38 and Kubečka et al. 35 sets are similar to the error span for the smaller clusters
+in the optimization set. This shows that reparameterizing on smaller clusters is adequate
+for calculations on larger-sized clusters as the model gets some of the underlying chemistry
+correct and scales effectively with system size. The new AMC-xTB model reduces the number
+of structures needed to pass from the semiempirical step to the DFT step in configurational
+sampling. For atmospheric molecular clusters, this implies that the AMC-xTB model is
+11
+https://doi.org/10.26434/chemrxiv-2024-vnh4k ORCID: https://orcid.org/0000-0003-3736-4329 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+unequivocally better to apply in the configurational sampling funneling workflow compared
+to GFN1-xTB.
+
+GFN1-xTB
+AMC-xTB
+
+Gradient Norm [Eh/ ]
+
+0.08
+0.06
+0.04
+0.02
+Clusteromics
+
+Kube ka et al.
+
+Knattrup et al.
+
+Figure 3:
+The gradient norms for the GFN1-xTB and AMC-xTB
+methods.
+α is the Bohr radius.
+The Clusteromics 42–46 set is
+(SA/FA/MSA/NA)0−2 (AM/MA/DMA/TMA/EDA)0−2 clusters, the Kubečka et al. 35
+set is sulfuric acid–multi-base (SA)1−4 (AM/MA/DMA/TMA/EDA)1−4 clusters, Knattrup
+et al. 38 is the multi-acid–muti-base (SA/FA/MSA/NA)1−4 (MA/DMA/TMA)1−4 clusters
+including the new AM-containing clusters sampled in this work.. The structures are
+equilibrium structures at the ωB97X-D/6-31++G(d,p) level of theory.
+
+3.3
+
+Assessment of the AMC-xTB Geometries and Gradients
+
+The gradient norms were also a part of the optimization scheme (Equation 1). Figure 3
+shows the gradient norms given by the xtb program for the two parameterizations. The
+structures are equilibrium structures at the ωB97X-D/6-31++G(d,p) level of theory, so
+the ideal gradient norms should be below the default gradient convergence thresholds of
+10−3 Eh/α. None of the methods manages to be below this threshold, but the AMC-xTB
+model is close. This does not directly mean the model is closer to the correct structure, as the
+new parameters might just have flattened the potential energy surface at this point without
+moving closer to the minimum. However, including the gradients in the target function avoids
+12
+https://doi.org/10.26434/chemrxiv-2024-vnh4k ORCID: https://orcid.org/0000-0003-3736-4329 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+numerical instability, and yields reasonable optimized structures. To test if the structures
+are closer to a minimum at the DFT level, the initial DFT structures of all three datasets
+were optimized using the different parameterizations, and the RMSD was computed between
+the initial DFT structure and the GFN1-xTB/AMC-xTB optimized structures (see Table 1).
+Table 1:
+Comparison of the mean, median, and standard deviation (std) of
+the root-mean-squared differences (RMSD) between the initial DFT structure
+and the optimized structure at the given parameterization.
+The Clusteromics
+I–V 42–46 sets includes the (SA/FA/MSA/NA)0−2 (AM/MA/DMA/TMA/EDA)0−2
+clusters,
+the Kubečka et al. 35 set comprise the sulfuric acid–multi-base
+(SA)1−4 (AM/MA/DMA/TMA/EDA)1−4 clusters and Knattrup et al. 38 set has the
+multi-acid–muti-base (SA/FA/MSA/NA)1−4 (MA/DMA/TMA)1−4 clusters including the
+new AM-containing clusters sampled in this work. The lowest errors are shown in bold.
+method / data set
+
+mean
+
+median
+
+std
+
+GFN1-xTB / Clusteromics
+
+0.484
+
+0.387
+
+0.330
+
+AMC-xTB / Clusteromics
+
+0.355
+
+0.242
+
+0.282
+
+GFN1-xTB / Knattrup et al.
+
+0.378
+
+0.367
+
+0.138
+
+AMC-xTB / Knattrup et al.
+
+0.235
+
+0.193
+
+0.125
+
+GFN1-xTB / Kubečka et al.
+
+0.376
+
+0.361
+
+0.140
+
+AMC-xTB / Kubečka et al.
+
+0.189
+
+0.164
+
+0.094
+
+We find that the AMC-xTB model reduces the mean RMSD of the full Clusteromics set
+from 0.484 Å to 0.355 Å and a similar reduction is seen for the Knattrup et al. 38 and Kubečka
+et al. 35 sets with RMSDs being reduced from 0.378 Å to 0.235 Å and from 0.376 Å to 0.189 Å,
+respectively. This, coupled with the smaller gradients, suggests that the reparameterized
+model is closer to a minimum at the DFT level. This implies that the preoptimization step
+in a funneling approach with the AMC-xTB model compared to GFN1-xTB yields structures
+closer to the DFT structure and will likely reduce the subsequent optimization time at the
+DFT level.
+
+13
+https://doi.org/10.26434/chemrxiv-2024-vnh4k ORCID: https://orcid.org/0000-0003-3736-4329 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+3.4
+
+Test of New Configurational Sampling Workflows
+
+To further test how the new AMC-xTB model fares in cluster configurational sampling, we
+tested the independent and improvement workflow for several previously studied (acid)4 (base)4
+cluster systems. Hence, the workflow is tested on clusters up to twice the size of those used
+
+Difference in free energy [kcal/mol]
+
+in the reparameterization.
+
+0.00
+0.25
+0.50
+0.75
+1.00
+1.25
+1.50
+16
+17
+
+Improvement Workflow
+Independent Workflow
+a) (SA)4(EDA)4
+b) (SA)4(AM)4
+c) (SA)4(AM)1(MA)1(DMA)1(TMA)1
+d) (SA)1(NA)1(MSA)1(FA)1(AM)4
+e) (SA)1(NA)1(MSA)1(FA)1(AM)1(MA)1(DMA)1(TMA)1
+
+18
+19
+20
+21
+a)
+
+b)
+
+c)
+
+d)
+
+e)
+
+Figure 4: Comparison of the lowest free energy conformer found by the independent and
+improvement configurational workflows compared to the configurations found by Kubečka
+et al. 35 (a, b, and c) and two new multi-component AM clusters sampled in the same
+way as Knattrup et al. 38 (d and e). Gibbs free energies are calculated at the ωB97X-D/631++G(d,p) level of theory with the quasi-harmonic approximation (cutoff of 100 cm−1 ) and
+vib. frequencies scaled by 0.996 in accordance with Kubečka et al. 35
+Figure 4 shows the difference in binding free energy for the lowest free-energy configuration found by employing the independent and improvement workflows for the (SA)4 (EDA)4 ,
+(SA)4 (AM)4 , and (SA)4 (AM)1 (MA)1 (DMA)1 (TMA)1 clusters compared to Kubečka et al. 35
+and the (SA)1 (MSA)1 (NA)1 (FA)1 (AM)4 and the new
+(SA)1 (MSA)1 (NA)1 (FA)1 (AM)1 (MA)1 (DMA)1 (TMA)1 clusters sampled in this work. The
+SA–AM clusters have been extensively studied previously 3,49–54 and are therefore believed
+
+14
+https://doi.org/10.26434/chemrxiv-2024-vnh4k ORCID: https://orcid.org/0000-0003-3736-4329 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+to be well-sampled using the original configurational sampling procedure and thereby difficult to improve. Still, the new CREST+AMC-xTB methodology manages to find cluster
+structures lower in free energy by 0.21 kcal/mol compared to the previous works.
+In the case of the (SA)4 (AM)4 and (SA)1 (MSA)1 (NA)1 (FA)1 (AM)1 (MA)1 (DMA)1 (TMA)1
+clusters, the independent/improvement workflows perform similar and yield similar free energy improvements. However, for the (SA)4 (AM)1 (MA)1 (DMA)1 (TMA)1 clusters, the independent workflow works slightly better, finding a cluster 0.85 kcal/mol lower in free energy
+compared to the improvement workflow. This illustrates that the sampling is very sensitive
+to the configuration used as input for CREST, although it might also be due to the randomness of the dynamic processes in CREST. The reason for the difference might be that the
+original work’s configurational sampling was worse than the independent workflow, yielding
+a worse starting structure for the CREST sampling within the improvement workflow. We
+see a massive improvement in the configurational sampling of the (SA)4 (EDA)4 clusters by
+−18/−21 kcal/mol. This is caused by the flexibility of the EDA molecule, which makes it
+difficult to sample the full configurational space using only ABCluster with rigid molecules.
+This improvement should primarily be attributed to the inclusion of metadynamics sampling
+in CREST and not purely the parameterization of AMC-xTB as it allows the EDA to rotate
+around its bond and find a structure with more/better paired intermolecular interactions
+as seen in Figure 5. It should also be noted that the main improvements are the electronic
+binding energy and the thermal contribution varies very little between the clusters.
+
+(SA)4(EDA)4 before improvement
+
+(SA)4(EDA)4 after improvement
+15
+
+https://doi.org/10.26434/chemrxiv-2024-vnh4k ORCID: https://orcid.org/0000-0003-3736-4329 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure 5: The (SA)4 (EDA)4 cluster structure lowest in Gibbs free energy at the ωB97XD/6-31G++(d,p) level of theory with the quasi-harmonic approximation (cutoff of 100 cm−1 )
+before and after the improvement workflow. Yellow = sulfur, red = oxygen, cyan = nitrogen,
+brown = carbon, and white = hydrogen.
+However, this shows the strength of the presented workflows as they can be used for
+clusters containing more flexible organic molecules.
+
+3.5
+
+Massive Improvement Test
+
+Based on the previous sections, it is clear that the improvement workflow could locate more
+stable clusters. As the potential energy surface of multi-acid–multi-base clusters becomes
+very complicated, here we test this new approach for such systems. These 288 new AMcontaining clusters were used as a massive test set for the improvement workflow using
+the newly parameterized AMC-xTB model. The improvement workflow manages to find
+configurations lower in free energy at the ωB97X-D/6-31++G(d,p) for 245 out of the 288
+clusters (85.1 %) as can be seen in Figure 6.
+
+35
+30
+Counts
+
+25
+20
+15
+10
+5
+0
+
+8
+
+6
+
+4
+2
+Gmin (kcal/mol)
+
+0
+
+16
+https://doi.org/10.26434/chemrxiv-2024-vnh4k ORCID: https://orcid.org/0000-0003-3736-4329 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+2
+
+Figure 6: Comparison of the lowest free energy conformer found by the improvement configurational workflow compared to the original workflow. Gibbs free energies are calculated at
+the ωB97X-D/6-31++G(d,p) level of theory with the quasi-harmonic approximation (cutoff
+of 100 cm−1 ).
+In most cases, the improvement is between 0–2 kcal/mol. However, for the
+(SA)1 (MSA)1 (NA)1 (FA)1 (AM)1 (DMA)2 (TMA)1 , (SA)3 (NA)1 (AM)1 (MA)3 , and
+(SA)3 (FA)1 (AM)1 (MA)1 (DMA)2 clusters a massive improvement of 8.3, 5.2 and 3.9 kcal/mol
+is observed, respectively.
+Comparing the conformer index at the AMC-xTB level of theory with the final ωB97XD/6-31++G(d,p) level of theory with the quasi-harmonic approximation (cutoff of 100 cm−1 )
+the Gibbs free energy minimum at the DFT level is also the electronic energy minimum at
+the AMC-xTB level of theory for 66 of the clusters (See Figure 1). If 10 conformers are
+included from the AMC-xTB level of theory, the free energy minimum energy is captured
+for 155 out of the 288 clusters with improvements found for 209 (Se Figure 1). Furthermore,
+the maximum error is 2 kcal/mol with a mean of 0.12 kcal/mol when reducing from 50 to
+10 conformers.
+This highlights the need for including dynamics-based sampling procedures for atmospheric clusters even though the system might seem fairly rigid.
+
+It can also be envi-
+
+sioned that the improvement workflow will be quite important when studying much larger
+(SA)1−20 (base)1−20 clusters as recently done by Engsvang et al. 36,55 and Wu et al. 32 For large
+clusters, the global minimum is tricky to locate, and adding dynamics-based configurational
+sampling might aid in the process.
+
+4
+
+Conclusions
+
+We have reparameterized the GFN1-xTB model to yield better binding electronic energies
+and gradient norms for atmospherically relevant clusters composed of the following species:
+sulfuric acid (SA), methanesulfonic acid (MSA), nitric acid (NA), formic acid (FA), ammo-
+
+17
+https://doi.org/10.26434/chemrxiv-2024-vnh4k ORCID: https://orcid.org/0000-0003-3736-4329 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+nia (AM), methylamine (MA), dimethylamine (DMA), triethylamine (TMA), and ethylenediamine (EDA). The reparameterization, denoted AMC-xTB, for use in the xtb/CREST
+program, is based on the ωB97X-D/6-31++G(d,p) level of theory. The model shows a substantial decrease in the error of the binding electronic energies compared to the original
+GFN1-xTB parameterization and the gradient norms of the equilibrium structures are closer
+ωB97X-D/6-31++G(d,p) level of theory compared to GFN1-xTB. The reparameterization
+strategy is general and can be used to reparameterize other methods such as GFN2-xTB.
+We tested two new configurational sampling procedures with the new parameterizations
+being employed in the xtb and CREST programs. The first workflow, denoted as “improvement workflow,” is based on improving the best structure currently known in the literature
+with CREST and then doing the DFT calculations. The second workflow, denoted the
+“independent workflow,” starts by configurational sampling using ABCluster, followed by
+xtb, CREST, and then DFT. Using the two workflows, we find cluster structures lower in
+free energy for the following (SA)4 (EDA)4 , (SA)4 (AM)4 ,(SA)4 (AM)1 (MA)1 (DMA)1 (TMA)1 ,
+(SA)1 (MSA)1 (NA)1 (FA)1 (AM)4 and (SA)1 (MSA)1 (NA)1 (FA)1 (AM)1 (MA)1 (DMA)1 (TMA)1
+systems in all cases compared to the best-known value in the literature.
+Testing the improvement workflow on 288 large multi-acid–multi-base cluster systems,
+the workflow finds improvements for 85.1 % of the clusters, showing the need for dynamicsbased sampling.
+
+Acknowledgement
+Funded by the European Union (ERC, ExploreFNP, project 101040353 and MSCA, HYDROCLUSTER, project 101105506). Views and opinions expressed are however those of the
+authors only and do not necessarily reflect those of the European Union, the European
+Research Executive Agency, or the European Research Council Executive Agency. Neither
+the European Union nor the granting authority can be held responsible for them.
+
+18
+https://doi.org/10.26434/chemrxiv-2024-vnh4k ORCID: https://orcid.org/0000-0003-3736-4329 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+The authors thank the Independent Research Fund Denmark grant number 9064-00001B
+and for financial support. This work was funded by the Danish National Research Foundation
+(DNRF172) through the Center of Excellence for Chemistry of Clouds.
+The numerical results presented in this work were obtained at the Centre for Scientific
+Computing, Aarhus https://phys.au.dk/forskning/faciliteter/cscaa/.
+
+Supporting Information Available
+The following is available as supporting information:
+• Figure showing the conformer index at the AMC-xTB level of theory out of the 50
+conformers optimized at the DFT level.
+• Figure showing the comparison of the lowest free energy conformer found by the improvement configurational workflow compared to the original workflow if only 10 conformers are selected.
+• Guide to downloading the AMC-xTB parameter file and the structures/calculations
+generated in this work.
+
+Author Information
+Corresponding Author
+Jonas Elm - Department of Chemistry, Langelandsgade 140, Aarhus University, 8000 Aarhus
+C, Denmark; Phone: +45 28938085; Email: jelm@chem.au.dk
+Authors
+Yosef Knattrup - Department of Chemistry, Langelandsgade 140, Aarhus University, 8000
+Aarhus C, Denmark; Email: yosef@chem.au.dk
+Jakub Kubečka - Department of Chemistry, Langelandsgade 140, Aarhus University, 8000
+Aarhus C, Denmark; Email: ja-kub-ecka@chem.au.dk
+Haide Wu - Department of Chemistry, Langelandsgade 140, Aarhus University, 8000 Aarhus
+19
+https://doi.org/10.26434/chemrxiv-2024-vnh4k ORCID: https://orcid.org/0000-0003-3736-4329 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+C, Denmark; Email: hwu@chem.au.dk
+Frank Jensen - Department of Chemistry, Langelandsgade 140, Aarhus University, 8000
+Aarhus C, Denmark; Email: frj@chem.au.dk
+
+References
+(1) Canadell, J. G.; Monteiro, P. M. S.; Costa, M. H.; Cotrim da Cunha, L.; Cox, P.;
+Eliseev, A. V.; Henson, S.; Ishii, M.; Jaccard, S.; Koven, C. et al. In Climate Change
+2021: The Physical Science Basis. Contribution of Working Group I to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change; Masson-Delmotte, V.,
+Zhai, P., Pirani, A., Connors, S. L., Péan, C., Berger, S., Caud, N., Chen, Y., Goldfarb, L., Gomis, M. I. et al. , Eds.; Cambridge University Press: Cambridge, United
+Kingdom and New York, NY, USA, 2021; pp 673–816.
+(2) Elm, J.; Kubečka, J.; Besel, V.; Jääskeläinen, M. J.; Halonen, R.; Kurtén, T.;
+Vehkamäki, H. Modeling the Formation and Growth of Atmospheric Molecular Clusters: A Review. J. Aerosol. Sci. 2020, 149, 105621.
+(3) Engsvang, M.; Wu, H.; Knattrup, Y.; Kubečka, J.; Jensen, A. B.; Elm, J. Quantum
+Chemical Modeling of Atmospheric Molecular Clusters Involving Inorganic Acids and
+Methanesulfonic acid. Chem. Phys. Rev. 2023, 4 .
+(4) Elm, J.; Ayoubi, D.; Engsvang, M.; Jensen, A. B.; Knattrup, Y.; Kubečka, J.;
+Bready, C. J.; Fowler, V. R.; Harold, S. E.; Longsworth, O. M. et al. Quantum Chemical Modeling of Organic Enhanced Atmospheric Nucleation: A Critical Review. WIREs
+Comput. Mol. Sci. 2023, 13, e1662.
+(5) Lehtipalo, K.; Yan, C.; Dada, L.; Bianchi, F.; Xiao, M.; Wagner, R.; Stolzenburg, D.;
+Ahonen, L. R.; Amorim, A.; Baccarini, A. et al. Multicomponent New Particle Formation from Sulfuric Acid, Ammonia, and Biogenic Vapors. Sci. Adv. 2018, 4 .
+20
+https://doi.org/10.26434/chemrxiv-2024-vnh4k ORCID: https://orcid.org/0000-0003-3736-4329 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+(6) Pracht, P.; Grimme, S.; Bannwarth, C.; Bohle, F.; Ehlert, S.; Feldmann, G.; Gorges, J.;
+Müller, M.; Neudecker, T.; Plett, C. et al. CREST—A Program for the Exploration of
+Low-Energy Molecular Chemical Space. J. Chem. Phys. 2024, 160 .
+(7) Pracht, P.; Bohle, F.; Grimme, S. Automated Exploration of the Low-Energy Chemical
+Space with Fast Quantum Chemical Methods. Phys. Chem. Chem. Phys. 2020, 22,
+7169–7192.
+(8) Dieterich, J. M.; Hartke, B. OGOLEM: Global Cluster Structure Optimisation for
+Arbitrary Mixtures of Flexible Molecules. A Multiscaling, Object-Oriented Approach.
+Mol. Phys. 2010,
+(9) Zhang, J.; Dolg, M. ABCluster: The Artificial Bee Colony Algorithm for Cluster Global
+Optimization. Phys. Chem. Chem. Phys. 2015, 17, 24173–24181.
+(10) Zhang, J.; Dolg, M. Global Optimization of Clusters of Rigid Molecules using the
+Artificial Bee Colony Algorithm. Phys. Chem. Chem. Phys. 2016, 18, 3003–3010.
+(11) Kubečka, J.; Besel, V.; Kurtén, T.; Myllys, N.; Vehkamäki, H. Configurational Sampling
+of Noncovalent (Atmospheric) Molecular Clusters: Sulfuric Acid and Guanidine. J.
+Phys. Chem. A 2019, 123, 6022–6033.
+(12) Hou, G.-L.; Zhang, J.; Valiev, M.; Wang, X.-B. Structures and Energetics of Hydrated
+Deprotonated Cis -Pinonic Acid Anion Clusters and their Atmospheric Relevance. Phys.
+Chem. Chem. Phys. 2017, 19, 10676–10684.
+(13) Li, H.; Kupiainen-Määttä, O.; Zhang, H.; Zhang, X.; Ge, M. A Molecular-Scale Study
+on the Role of Lactic Acid in New Particle Formation: Influence of Relative Humidity
+and Temperature. Atmos. Environ. 2017, 166, 479–487.
+(14) Ling, J.; Ding, X.; Li, Z.; Yang, J. First-Principles Study of Molecular Clusters Formed
+by Nitric Acid and Ammonia. J. Phys. Chem. A 2017, 121, 661–668.
+21
+https://doi.org/10.26434/chemrxiv-2024-vnh4k ORCID: https://orcid.org/0000-0003-3736-4329 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+(15) Zhang, H.; Kupiainen-Määttä, O.; Zhang, X.; Molinero, V.; Zhang, Y.; Li, Z. The
+Enhancement Mechanism of Glycolic Acid on the Formation of Atmospheric Sulfuric
+Acid–Ammonia Molecular Clusters. J. Chem. Phys. 2017, 146 .
+(16) Odbadrakh, T. T.; Gale, A. G.; Ball, B. T.; Temelso, B.; Shields, G. C. Computation
+of Atmospheric Concentrations of Molecular Clusters from ab initio Thermochemistry.
+JoVE 2020, e60964.
+(17) Ball, B. T.; Vanovac, S.; Odbadrakh, T. T.; Shields, G. C. Monomers of Glycine and
+Serine Have a Limited Ability to Hydrate in the Atmosphere. J. Phys. Chem. A 2021,
+125, 8454–8467.
+(18) Harold, S. E.; Bready, C. J.; Juechter, L. A.; Kurfman, L. A.; Vanovac, S.; Fowler, V. R.;
+Mazaleski, G. E.; Odbadrakh, T. T.; Shields, G. C. Hydrogen-Bond Topology Is More
+Important Than Acid/Base Strength in Atmospheric Prenucleation Clusters. J. Phys.
+Chem. A 2022, 126, 1718–1728.
+(19) Bready, C. J.; Vanovac, S.; Odbadrakh, T. T.; Shields, G. C. Amino Acids Compete
+with Ammonia in Sulfuric Acid-Based Atmospheric Aerosol Prenucleation: The Case
+of Glycine and Serine. J. Phys. Chem. A 2022, 126, 5195–5206.
+(20) Longsworth, O. M.; Bready, C. J.; Shields, G. C. The Driving Effects of Common
+Atmospheric Molecules for Formation of Clusters: the Case of Sulfuric Acid, Formic
+Acid, Hydrochloric Acid, Ammonia, and Dimethylamine. Environ. sci. Atmos. 2023,
+3, 1335–1351.
+(21) Longsworth, O. M.; Bready, C. J.; Joines, M. S.; Shields, G. C. The Driving Effects of
+Common Atmospheric Molecules for Formation of Clusters: the Case of Sulfuric Acid,
+Nitric acid, Hydrochloric Acid, Ammonia, and Dimethylamine. Environ. sci. Atmos.
+2023, 3, 1585–1600.
+
+22
+https://doi.org/10.26434/chemrxiv-2024-vnh4k ORCID: https://orcid.org/0000-0003-3736-4329 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+(22) Wales, D. J.; Doye, J. P. K. Global Optimization by Basin-Hopping and the Lowest
+Energy Structures of Lennard-Jones Clusters Containing up to 110 Atoms. J. Phys.
+Chem. A 1997, 101, 5111–5116.
+(23) Zhu, Y.-P.; Liu, Y.-R.; Huang, T.; Jiang, S.; Xu, K.-M.; Wen, H.; Zhang, W.-J.;
+Huang, W. Theoretical Study of the Hydration of Atmospheric Nucleation Precursors
+with Acetic Acid. J. Phys. Chem. A 2014, 118, 7959–7974.
+(24) Peng, X.-Q.; Liu, Y.-R.; Huang, T.; Jiang, S.; Huang, W. Interaction of Gas Phase
+Oxalic Acid with Ammonia and its Atmospheric Implications. Phys. Chem. Chem.
+Phys. 2015, 17, 9552–9563.
+(25) Miao, S.-K.; Jiang, S.; Chen, J.; Ma, Y.; Zhu, Y.-P.; Wen, Y.; Zhang, M.-M.; Huang, W.
+Hydration of a Sulfuric Acid–Oxalic Acid Complex: Acid Dissociation and its Atmospheric Implication. RSC Adv. 2015, 5, 48638–48646.
+(26) Lv, S.-S.; Miao, S.-K.; Ma, Y.; Zhang, M.-M.; Wen, Y.; Wang, C.-Y.; Zhu, Y.-P.;
+Huang, W. Properties and Atmospheric Implication of Methylamine–Sulfuric Acid–
+Water Clusters. J. Phys. Chem. A 2015, 119, 8657–8666.
+(27) Grimme, S.; Bannwarth, C.; Shushkov, P. A Robust and Accurate Tight-Binding Quantum Chemical Method for Structures, Vibrational Frequencies, and Noncovalent Interactions of Large Molecular Systems Parametrized for All spd-Block Elements (Z =
+1–86). J. Chem. Theory Comput. 2017, 13, 1989–2009.
+(28) Bannwarth, C.; Ehlert, S.; Grimme, S. GFN2-xTB—An Accurate and Broadly
+Parametrized Self-Consistent Tight-Binding Quantum Chemical Method with Multipole Electrostatics and Density-Dependent Dispersion Contributions. J. Chem. Theory
+Comput. 2019, 15, 1652–1671.
+(29) Stewart, J. J. P. Optimization of Parameters for Semiempirical Methods V: Modification
+
+23
+https://doi.org/10.26434/chemrxiv-2024-vnh4k ORCID: https://orcid.org/0000-0003-3736-4329 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+of NDDO Approximations and Application to 70 Elements. J. Mol. Model. 2007, 13,
+1173–1213.
+(30) Stewart, J. J. P. Optimization of Parameters for Semiempirical Methods VI: More
+Modifications to the NDDO Approximations and Re-Optimization of Parameters. J.
+Mol. Model. 2013, 19, 1–32.
+(31) Jensen, A. B.; Kubečka, J.; Schmitz, G.; Christiansen, O.; Elm, J. Massive Assessment
+of the Binding Energies of Atmospheric Molecular Clusters. J. Chem. Theory Comput.
+2022, 18, 7373–7383.
+(32) Wu, H.; Engsvang, M.; Knattrup, Y.; Kubečka, J.; Elm, J. Improved Configurational
+Sampling Protocol for Large Atmospheric Molecular Clusters. ACS Omega 2023, 8,
+45065–45077.
+(33) Knattrup, Y.; Kubečka, J.; Ayoubi, D.; Elm, J. Clusterome: A Comprehensive Data
+Set of Atmospheric Molecular Clusters for Machine Learning Applications. ACS Omega
+2023, 8, 25155–25164.
+(34) Kubečka, J.; Rasmussen, F. R.; Christensen, A. S.; Elm, J. Quantum Machine Learning
+Approach for Studying Atmospheric Cluster Formation. Environ. Sci. Technol. Lett.
+2022, 9, 239–244.
+(35) Kubečka, J.; Neefjes, I.; Besel, V.; Qiao, F.; Xie, H.-B.; Elm, J. Atmospheric Sulfuric Acid–Multi-Base New Particle Formation Revealed through Quantum Chemistry
+Enhanced by Machine Learning. J. Phys. Chem. A 2023, 127, 2091–2103.
+(36) Engsvang, M.; Kubečka, J.; Elm, J. Toward Modeling the Growth of Large Atmospheric
+Sulfuric Acid–Ammonia Clusters. ACS Omega 2023, 8, 34597–34609.
+(37) Kubečka, J.; Knattrup, Y.; Engsvang, M.; Jensen, A. B.; Ayoubi, D.; Wu, H.; Chris-
+
+24
+https://doi.org/10.26434/chemrxiv-2024-vnh4k ORCID: https://orcid.org/0000-0003-3736-4329 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+tiansen, O.; Elm, J. Current and Future Machine Learning Approaches for Modeling
+Atmospheric Cluster Formation. Nat. Comput. Sci. 2023, 3, 495–503.
+(38) Knattrup, Y.; Kubečka, J.; Elm, J. Nitric Acid and Organic Acids Suppress the Role
+of Methanesulfonic Acid in Atmospheric New Particle Formation. J. Phys. Chem. A
+2023, 127, 7568–7578.
+(39) Temelso, B.; Mabey, J. M.; Kubota, T.; Appiah-Padi, N.; Shields, G. C. ArbAlign: A
+Tool for Optimal Alignment of Arbitrarily Ordered Isomers Using the Kuhn–Munkres
+Algorithm. J. Chem. Inf. Model 2017, 57, 1045–1054.
+(40) Kubečka, J.; Besel, V.; Neefjes, I.; Knattrup, Y.; Kurtén, T.; Vehkamäki, H.; Elm, J.
+Computational Tools for Handling Molecular Clusters: Configurational Sampling, Storage, Analysis, and Machine Learning. ACS Omega 2023, 8, 45115–45128.
+(41) Gaussian 16, Revision A.03, M. J. Frisch, G. W. Trucks, H. B. Schlegel, G. E. Scuseria,
+M. A. Robb, J. R. Cheeseman, G. Scalmani, V. Barone, G. A. Petersson, H. Nakatsuji,
+et al., Gaussian, Inc., Wallingford CT, 2016.
+(42) Elm, J. Clusteromics I: Principles, Protocols and Applications to Sulfuric Acid - Base
+Cluster Formation. ACS Omega 2021, 6, 7804–7814.
+(43) Elm, J. Clusteromics II: Methanesulfonic Acid-Base Cluster Formation. ACS Omega
+2021, 6, 17035–17044.
+(44) Elm, J. Clusteromics III: Acid Synergy in Sulfuric Acid-Methanesulfonic Acid-Base
+Cluster Formation. ACS Omega 2022, 7, 15206–15214.
+(45) Knattrup, Y.; Elm, J. Clusteromics IV: The Role of Nitric Acid in Atmospheric Cluster
+Formation. ACS Omega 2022, 7, 31551–31560.
+(46) Ayoubi, D.; Knattrup, Y.; Elm, J. Clusteromics V: Organic Enhanced Atmospheric
+Cluster Formation. ACS Omega 2023, 8, 9621–9629.
+25
+https://doi.org/10.26434/chemrxiv-2024-vnh4k ORCID: https://orcid.org/0000-0003-3736-4329 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+(47) Elm, J. An Atmospheric Cluster Database Consisting of Sulfuric Acid, Bases, Organics,
+and Water. ACS Omega 2019, 4, 10965–10974.
+(48) Jensen, F. Polarization Consistent Basis Sets: Principles. J. Chem. Phys. 2001, 115,
+9113–9125.
+(49) Besel, V.; Kubečka, J.; Kurtén, T.; Vehkamäki, H. Impact of Quantum Chemistry
+Parameter Choices and Cluster Distribution Model Settings on Modeled Atmospheric
+Particle Formation Rates. J. Phys. Chem. A 2020, 124, 5931–5943.
+(50) Leverentz, H. R.; Siepmann, J. I.; Truhlar, D. G.; Loukonen, V.; Vehkamäki, H. Energetics of Atmospherically Implicated Clusters Made of Sulfuric Acid, Ammonia, and
+Dimethyl Amine. J. Phys. Chem. A 2013, 117, 3819–3825.
+(51) Ortega, I. K.; Kupiainen, O.; Kurtén, T.; Olenius, T.; Wilkman, O.; McGrath, M. J.;
+Loukonen, V.; Vehkamäki, H. From Quantum Chemical Formation Free Energies to
+Evaporation Rates. Atmos. Chem. Phys. 2012, 12, 225–235.
+(52) Myllys, N.; Kubečka, J.; Besel, V.; Alfaouri, D.; Olenius, T.; Smith, J. N.; Passananti, M. Role of Base Strength, Cluster Structure and Charge in Sulfuric-AcidDriven Particle Formation. Atmos. Chem. Phys. 2019, 19, 9753–9768.
+(53) Nadykto, A. B.; Yu, F. Strong Hydrogen Bonding between Atmospheric Nucleation
+Precursors and Common Organics. Chem. Phys. Lett. 2007, 435, 14–18.
+(54) Kurtén, T.; Torpo, L.; Sundberg, M. R.; Kerminen, V.; Vehkamäki, H.; Kulmala, M.
+Estimating the NH3 :H2 SO4 Ratio of Nucleating Clusters in Atmospheric Conditions
+using Quantum Chemical Methods. Atmos. Chem. Phys. 2007, 7, 2765–2773.
+(55) Engsvang, M.; Elm, J. Modeling the Binding Free Energy of Large Atmospheric Sulfuric
+Acid–Ammonia Clusters. ACS Omega 2022, 7, 8077–8083.
+
+26
+https://doi.org/10.26434/chemrxiv-2024-vnh4k ORCID: https://orcid.org/0000-0003-3736-4329 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+

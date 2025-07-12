@@ -1,0 +1,748 @@
+Unraveling the Meaning of Effective Uptake Coefficients in
+Multiphase and Aerosol Chemistry
+Ryan Reynolds1,2 and Kevin R. Wilson1,*
+1
+
+Chemical Sciences Division, Lawrence Berkeley National Laboratory, Berkeley CA 94720
+2
+Department of Chemistry, University of California, Berkeley, CA 94720
+
+Conspectus:
+Reactions of gas phase molecules with
+surfaces play key roles in atmospheric
+and environmental chemistry. Reactive
+uptake coefficients (γ), the fraction of
+gas-surface collisions that yield a
+reaction, are used to quantify the kinetics
+in these heterogeneous and multiphase
+systems. Unlike rate coefficients for
+homogeneous gas or liquid phase
+reactions, uptake coefficients are
+emergent quantities that depend upon a
+multitude of underlying elementary
+steps. As such, uptake coefficients adopt
+complex scaling behavior with reactant concentrations and other physicochemical properties of
+the interface, making predictions of γ particularly challenging.
+Typically, γgas is obtained by measuring the loss rate of a gas phase molecule above a liquid or
+solid surface relative to its collision frequency. By definition, γgas ≤ 1. Highly efficient reactions
+proceed at or near the gas-surface collision frequency and exhibit values of γgas near unity.
+Alternatively, heterogeneous kinetics are often measured using the consumption rate of a
+condensed phase reactant normalized to the gas-surface collision frequency, yielding instead an
+effective uptake coefficient (γeff). In many cases, γeff and γgas are not equal, yielding additional
+insights into the nature of the reaction. For example, substantial diffusive limitations in the
+condensed phase may inhibit reactivity, yielding γeff << γgas. In contrast, γeff > γgas in the presence
+of condensed phase secondary reactions, with values of γeff often exceeding 1 for the case of radical
+chain reactions.
+In this account, we will discuss how measurements of γeff in aerosol reveal the origins of complex
+physical and chemical behavior in multiphase reactions that can be uniquely observed and
+understood through the lens of effective uptake coefficients. For example, the scaling of γeff with
+water vapor in aqueous systems, or shell thickness in core-shell aerosol, yields insight into relative
+transport and reaction timescales of gaseous oxidants, while the scaling of γeff with oxidant and
+trace gas concentrations provides a distinctive signature of the underlying competition between
+1
+
+https://doi.org/10.26434/chemrxiv-2024-5bjnw ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+free radical propagation and termination mechanisms. Further, changes in γeff induced by careful
+selection of the molecular structure of the condensed-phase reactants help identify new reaction
+pathways and indirectly report on the reaction kinetics of short-lived species, including Criegee
+Intermediates. Through these examples we will show how proper experimental design and accurate
+measurements of an effective uptake coefficient can be used to interrogate complex multiphase
+reaction mechanisms.
+
+Key References
+•
+
+Davies, J. F.; Wilson, K. R. Nanoscale Interfacial Gradients Formed by the Reactive Uptake
+of OH Radicals onto Viscous Aerosol Surfaces. Chem. Sci. 2015, 6 (12), 7020–7027.
+Utilizes the nonlinear dependence of the effective uptake coefficient with relative humidity
+to quantify changes in reacto-diffusive length in viscous aerosols.
+
+•
+
+Richards-Henderson, N. K.; Goldstein, A. H.; Wilson, K. R. Large Enhancement in the
+Heterogeneous Oxidation Rate of Organic Aerosols by Hydroxyl Radicals in the Presence
+of Nitric Oxide. J. Phys. Chem. Lett. 2015, 6 (22), 4451–4455. Effective uptake
+coefficients are shown to increase with the availability of NO, which initiates alkoxyradical secondary chemistry.
+
+•
+
+Zeng, M.; Heine, N.; Wilson, K. R. Evidence That Criegee Intermediates Drive
+Autoxidation in Unsaturated Lipids. PNAS 2020.
+
+Decreases in effective uptake
+
+coefficients with the addition of scavenger molecules show that Criegee intermediates are
+formed during radical-initiated lipid autoxidation.
+•
+
+Reynolds, R.; Ahmed, M.; Wilson, K. R. Constraining the Reaction Rate of Criegee
+Intermediates with Carboxylic Acids during the Multiphase Ozonolysis of Aerosolized
+Alkenes. ACS Earth Space Chem. 2023. Uses effective uptake coefficients to monitor the
+rates of Criegee Intermediate-scavenging reactions and radical chain cycling chemistry.
+
+2
+
+https://doi.org/10.26434/chemrxiv-2024-5bjnw ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Introduction
+Multiphase reactions are often quantified in terms of a reactive uptake coefficient (𝛾). 𝛾 is
+defined as the net loss of gas-phase molecules entering the condensed phase, divided by their
+collision rate with the surface.1,2 This definition developed in the context of reactions on aqueous
+interfaces, e.g. cloud droplets in the atmosphere, by expanding on notions of mass accommodation
+coefficients (𝛼).3,4 Measuring 𝛾 can be straightforward for many reaction systems, such as by use
+of a Knudsen cell or coated flow tube, given that it only requires monitoring relative changes in
+the flux of gas and not absolute concentrations,1 and thus can account for the effects of evaporation,
+desorption, diffusion, and reaction.5
+However, interpreting the physical meaning of 𝛾 has been shown to be an increasing
+challenge over several decades of measurement and analysis. For aerosol reactions, simple
+frameworks, such as the resistor model,4 which assumes that the particle is well-mixed and all
+processes contributing to gas uptake are independent, often break down when applied to systems
+where reaction and diffusion are strongly coupled.6,7 As attention in aerosol research has shifted
+toward particles of primarily organic constituents, such descriptions of the kinetics have been
+stretched to the edges of their useful working ranges8 for organic aerosols with semisolid and
+highly viscous phase states, in which high concentrations and slow mixing of reactants prove
+troublesome for analysis in terms of limiting kinetic cases.9,10 Additionally, for reactions involving
+gas-phase radicals, 𝛾 is often hard to measure, as radical concentrations are generally low, difficult
+to detect, and can induce significant amounts of chemistry in the particle phase that is not directly
+reflected in gas-phase measurements.
+
+3
+
+https://doi.org/10.26434/chemrxiv-2024-5bjnw ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Alternately, heterogeneous reactions on aerosols with primarily organic constituents can
+be described in terms of the effective uptake coefficient, 𝛾𝑒𝑓𝑓 , defined as the consumption rate of
+a condensed-phase reactant relative to the collision rate of the impinging gas (Figure 1).11 In such
+a measurement (typically by an aerosol mass spectrometer), the collision rate of a trace gas with
+the particle surface is used as a clock against which the reaction time can be measured. For an
+aerosol with an arbitrary condensed-phase reactant R undergoing reaction with a gas X, 𝛾𝑒𝑓𝑓 is
+defined in terms of the loss of R,
+𝑑[𝑅]
+𝑑𝑡
+
+𝑅
+= −𝑘𝑅−𝑋 [𝑅][𝑋] = −𝛾𝑋,𝑒𝑓𝑓
+⋅ (𝐶𝑝 ⋅ 𝐴) ⋅ 𝑓 ⋅ 𝐽𝑐𝑜𝑙𝑙,𝑋
+
+Eq. (1)
+
+where kR-X is the phenomenological 2nd-order rate constant for the reaction of R with X, Cp and A
+are the number concentration of the aerosol and surface area of a single aerosol particle,
+respectively. 𝑓 is the fraction of R remaining in the aerosol at any point during the reaction, and
+Jcoll,X is the flux of X onto the particle surface,
+𝐽𝑐𝑜𝑙𝑙,𝑋 =
+
+𝑐̅[𝑋]
+
+Eq. (2)
+
+4
+
+where 𝑐̅ is the mean molecular speed of X. For single-component well-mixed spherical particles
+this expression reduces to,
+𝑅
+𝛾𝑋,𝑒𝑓𝑓
+=
+
+4𝑘𝑅−𝑋 𝐷𝑠𝑢𝑟𝑓 𝜌0 𝑁𝐴
+6𝑐̅𝑀𝑅
+
+Eq. (3)
+
+with Dsurf the surface-weighted particle diameter, 𝜌0 the density of R, MR its molar mass, and NA
+Avogadro’s number.
+
+4
+
+https://doi.org/10.26434/chemrxiv-2024-5bjnw ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 1. Schematic illustrating the effects of chain cycling chemistry on the measurement of 𝛾𝑔𝑎𝑠
+and 𝛾𝑒𝑓𝑓 .
+Since 𝛾𝑒𝑓𝑓 is measured from the perspective of the condensed phase reactant, it is often not
+equivalent to the uptake coefficient measured from the gas phase (𝛾𝑔𝑎𝑠 , Figure 1). For example, in
+the presence of diffusive limitations, which inhibit reaction, 𝛾𝑒𝑓𝑓 ≪ 𝛾𝑔𝑎𝑠 , or when secondary
+reactions in the condensed phase provide additional sinks for reactants, 𝛾𝑒𝑓𝑓 > 𝛾𝑔𝑎𝑠 , potentially
+exceeding unity, such as in the case of radical chain reactions with long chain lengths. 𝛾𝑔𝑎𝑠 , in
+contrast, cannot exceed 1 by definition. Thus, 𝛾𝑒𝑓𝑓 is an emergent property of each reaction system,
+and through careful measurement and interpretation can be used to interrogate multiple facets of a
+multiphase reaction mechanism.
+In the following Account, we will discuss the versatility of 𝛾𝑒𝑓𝑓 as an experimental
+observable by examining its role in our group’s studies of model organic aerosols under laboratory
+conditions (e.g., in flow tube reactors). These measurements under controlled conditions
+demonstrate how 𝛾𝑒𝑓𝑓 can report on diffusion coefficients and the timescales of reactant mixing in
+semisolid aerosol,12–14 elucidate competitions between radical propagation and termination
+mechanisms in chemical reactions,11,15–17 and help identify new chemical mechanisms involving
+
+5
+
+https://doi.org/10.26434/chemrxiv-2024-5bjnw ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+short-lived reactive intermediates.18–20 We conclude by discussing how information gained from
+measurements of 𝛾𝑒𝑓𝑓 can be applied to the chemistry of atmospheric particles and other systems
+of interest.
+
+Insights Into the Relative Timescales of Transport and Reaction
+
+Figure 2. Schematic illustrating the relationship between 𝛾𝑒𝑓𝑓 and reactant transport in ozone
+reactions with core-shell particles having (a) diffusive and (b) reactive-diffusive organic shells,
+and (c) in OH radical reactions with citric acid (CA) particles of varying viscosity.
+Organic aerosols in the atmosphere can exist in a wide variety of phase states, with particle
+viscosities ranging from liquid to semisolid (tar-like) and solids,10,21–23 and recent studies have
+emphasized how phase state can determine both the transport of gaseous reactants into aerosol
+particles and the mixing behavior of the particle constituents themselves. Determining the
+6
+
+https://doi.org/10.26434/chemrxiv-2024-5bjnw ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+characteristic length- and timescales that govern transport and mixing can be experimentally
+challenging, especially when these processes are inextricably linked with particle-phase chemical
+reactions. However, given proper experimental technique, measurements of 𝛾𝑒𝑓𝑓 can be used to
+quantify key transport parameters in aerosol particles.
+
+Figure 3. The scaling of 𝛾𝑒𝑓𝑓 with the thickness of purely diffusive and reactive-diffusive shells
+in model core-shell aerosol upon ozone exposure. Reprinted with permission from Lee et al.12.
+Copyright 2016 American Chemical Society.
+One such technique was demonstrated by Lee et al.,12 who generated core-shell aerosols
+with cores of trans-aconitic acid (an unsaturated tricarboxylic acid, Figure 2) that react with a
+known rate (𝛾𝑒𝑓𝑓 = 𝛾0) upon exposure to ozone (O3). The reactive cores were coated with a thin
+layer of lipid-like, liquid organic, creating a phase-separated shell whose thickness could be
+determined within ±1 nm by particle size measurements. Depending on whether the shell was a
+saturated hydrocarbon (Squalane (Sqa), C30H62) or an unsaturated hydrocarbon (Squalene (Sqe),
+C30H50), an O3 molecule colliding with the particle surface would be subject to either diffusion
+(Figure 2A) or both diffusion and reaction (Figure 2B) as it transits through the shell, increasing
+the time required to reach and react with the core. As the shell thickness was increased from 0 up
+7
+
+https://doi.org/10.26434/chemrxiv-2024-5bjnw ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+to 12 nm, 𝛾𝑒𝑓𝑓 for the aconitic acid core was observed to decrease, and the barrier coefficient (the
+ratio of 𝛾𝑒𝑓𝑓 to the 𝛾0 of the uncoated core) was plotted as a function of coating thickness (Figure
+3).
+Since the particle morphology and coating thicknesses were known, each set of barrier
+coefficients in Figure 3 could be fit using a single parameter related to the transport of O3 through
+the shell. In the case of aerosol with purely diffusive shells (Figure 2A), the decrease in 𝛾𝑒𝑓𝑓 is
+directly related to the diffusion coefficient, 𝐷𝑂3 , of ozone in Squalane, with a value of 𝐷𝑂3 =
+1.6x10-6 cm2 s-1 estimated by fitting. However, in the case of reactive-diffusive shells (Figure 2B),
+the transit time through the shell additionally depends on the chemical lifetime of O3 in Squalene,
+estimated by 𝜏𝑟𝑥𝑛 = 1/𝑘𝑆𝑞𝑒 [𝑆𝑞𝑒]0 . The relative effects of both diffusion and reaction can be
+expressed as one parameter, the reacto-diffusive length 𝐿𝑂3 = √𝐷𝑂3 𝜏𝑟𝑥𝑛 . This length is the average
+distance an O3 molecule diffuses in the shell before reacting with an Sqe molecule, with the fitted
+value of L = 1.03 nm corresponding roughly to the e-folding thickness of the barrier coefficient in
+Figure 3. Additionally, by assuming that the value of 𝐷𝑂3 is the same for both shell types, the
+chemical lifetime of O3 in Sqe was found to be on the order of 7 ns. Thus, by analyzing how 𝛾𝑒𝑓𝑓
+is modulated, the transport properties of a gaseous reactant could be investigated even when
+reaction and diffusion are coupled.
+
+8
+
+https://doi.org/10.26434/chemrxiv-2024-5bjnw ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 4. Scaling of 𝛾𝑒𝑓𝑓 (panels A–B) and the accessible depth L (panels C–D) with citric acid
++ OH radical oxidation (panels A-D). Adapted from Davies et al.13 with permission from the
+PCCP Owner Societies.
+While this phase-separated system proved useful for controlled experiments, another
+challenge lies in understanding how reactivity changes when the particle phase state is in a
+transitional regime, for example beginning in a solid or semi-solid state and becoming more liquidlike.6,7,13 Davies et al. explored such a transition by reacting submicron citric acid (CA) aerosol
+with gas-phase hydroxyl radicals (OH) in a flow tube reactor (Figure 2C).13 CA is a hygroscopic,
+amorphous solid whose viscosity depends on the relative humidity (RH): below 50% RH, CA is a
+diffusion-limited semi-solid, while at 50% RH and above, CA aerosols behave like well-mixed
+aqueous solutions. From the known viscosity at each RH, a self-diffusion coefficient of CA (𝐷𝑜𝑟𝑔 )
+can be estimated using the Stokes-Einstein relation.
+The decay kinetics of CA upon OH exposure were then monitored using mass
+spectrometry. 𝛾𝑒𝑓𝑓 was calculated under each set of conditions, showing an expected dependence
+on RH (Figure 4A), and therefore on 𝐷𝑜𝑟𝑔 (Figure 4B): below 50% RH, 𝛾𝑒𝑓𝑓 increases with
+9
+
+https://doi.org/10.26434/chemrxiv-2024-5bjnw ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+increasing diffusion rates, reaching an inflection point at 50% RH. Beyond 50% RH, the dilution
+effect of added water leads to a decrease in uptake. However, the reacto-diffusive length of OH in
+the CA aerosol yields is calculated to be less than 1 nm over all values of 𝐷𝑜𝑟𝑔 , indicating that the
+reaction takes place primarily at the particle surface. Surface-sensitive measurements supported
+this conclusion, as the reaction kinetics in the near-surface region appeared well-mixed at all RH
+values, while whole-particle measurements indicated a fraction of the aerosol remained unreacted
+below 50% RH.
+These results are explained using an accessible-volume model, which relates 𝛾𝑒𝑓𝑓 to the
+reaction depth, L (Figure 2C), which is the depth of a surface shell of the particle in which the CA
+appears well-mixed on the timescale of OH reaction. By fitting this model to the observed values
+of 𝛾𝑒𝑓𝑓 , values of L can be found as a function of RH (Figure 4C). Similar to a reacto-diffusive
+length, L is roughly proportional to the square root of 𝐷𝑜𝑟𝑔 (red line, Figure 4D) until L exceeds
+the particle radius (Rp) and the entire particle is well-mixed and available for reaction. However,
+instead of the transport of the gas-phase reactant limiting the reaction as with core-shell aerosols,
+it is the timescale of CA diffusion in the particle phase, which controls its ability to replenish the
+surface region and therefore controls value of 𝛾𝑒𝑓𝑓 . These experiments nicely illustrate how 𝛾𝑒𝑓𝑓
+encodes information about the transport timescales of not only incoming gas-phase reactants, but
+also the subsurface mixing time of particle phase reactants.
+In addition to directly modulating the uptake, varying transport times can also have indirect
+effects on the reactivity in complex reactions. Houle et al.14 conducted detailed reaction-diffusion
+simulations of the OH oxidation of hydrocarbons under various diffusion limitations and showed
+that characteristic length scales can exist for individual particle-phase reaction steps. When
+diffusive limitations restrict the mobility of particle-phase reactants to within these characteristic
+10
+
+https://doi.org/10.26434/chemrxiv-2024-5bjnw ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+lengths, changes can occur in the reaction mechanism. While further work is still needed to extend
+these methods to the complex behavior observed in atmospheric organic aerosol, measurements of
+𝛾𝑒𝑓𝑓 can provide mechanistic insight into how transport and reaction are coupled together across
+phases.
+
+Insights into Competing Mechanisms During Radical Reactions
+We turn now to a more explicit treatment of the relationship between 𝛾𝑒𝑓𝑓 and chemistry
+in the particle phase, where reactions between free radicals and organic molecules often involve
+complex mechanisms with many competing processes (Scheme 1). After the reaction is initiated
+by an incoming radical abstracting a hydrogen atom from a C–H bond (Reaction R1), the reaction
+can either propagate, by forming new radical species that are in turn capable of H-abstraction, or
+terminate through radical-radical recombination reactions. To understand the behavior of these
+radical mechanisms under a variety of conditions, one must inquire as to the key steps and species
+responsible for propagating the radical chain chemistry, as well as the major reactions which
+compete with each of these steps. Measurements of 𝛾𝑒𝑓𝑓 are uniquely suited to address these
+questions since values of 𝛾𝑒𝑓𝑓 > 1 are clear signatures of radical chain chemistry. Thus, by
+examining how 𝛾𝑒𝑓𝑓 scales with the concentrations of key reactants, crucial mechanistic steps can
+be inferred.
+
+11
+
+https://doi.org/10.26434/chemrxiv-2024-5bjnw ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Scheme 1. Summary of the radical-initiated reaction pathways discussed in this section. The
+“resources” at the heart of the key kinetic competition in each example are highlighted and colorcoded.
+For example, Richards-Henderson et al. examined reactions of OH radicals with aerosols
+composed of alkanes, particularly Sqa.15,16 Under atmospheric conditions, where molecular
+oxygen (O2) is abundant, once an alkyl radical R· is formed (R1) it quickly reacts with O2 to
+produce a peroxy radical, (RO2, reaction R2).24 Hydrogen abstraction by RO2 is relatively slow, so
+under most laboratory conditions (where radical densities are high), recombination reactions are
+favored (e.g., RO2 + RO2). Recombination yields either chain terminating products (aldehydes,
+ketones, and alcohols—reaction R3), or alkoxy (RO) radicals, which in turn can propagate the
+reaction.25–27 In the particle phase, however, the RO-formation channel does not appear as
+competitive with chain-terminating recombination, so that an OH reaction with an alkane aerosol
+under pristine conditions does not exhibit chain cycling (𝛾𝑒𝑓𝑓 ≤ 1).28,29
+
+12
+
+https://doi.org/10.26434/chemrxiv-2024-5bjnw ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 5. Scaling behavior of 𝛾𝑒𝑓𝑓 during OH radical-initiated oxidation of Squalane in the
+presence of trace NO (a, c) and SO2 (b, d). Adapted with permission from Richards-Henderson, et
+al.15,16. Copyright 2016 American Chemical Society.
+
+However, when OH radical oxidation is conducted in the presence of NO and SO2 (Figure
+5), 𝛾𝑒𝑓𝑓 > 1, signaling the onset of radical chain cycling. As seen in Figure 5A–B, 𝛾𝑒𝑓𝑓 scales
+directly with the concentration of the trace gas, since both NO and SO2 can undergo oxidation by
+RO2 to yield an RO radical (reaction R4, Scheme 1), which propagates the reaction via hydrogen
+abstraction (Label A, Scheme 1). Additionally, for each trace gas, 𝛾𝑒𝑓𝑓 exhibits an inverse
+dependence on the radical concentration [OH], with increased reaction probabilities at low
+concentrations. At high [OH], the increased production of RO2 radicals favors chain termination
+(R3), since the recombination rate scales as [RO2]2, effectively out-competing RO formation (R4).
+Conversely, at low [OH], the reaction between RO2 and NO/SO2 dominates the kinetics, leading
+to RO radicals and subsequent chain cycling. These results demonstrated that, in the presence of
+13
+
+https://doi.org/10.26434/chemrxiv-2024-5bjnw ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+SO2 and NO, the lifetimes of alkanes in atmospheric aerosol could be equivalent to or shorter than
+the corresponding gas-phase lifetimes. Thus, measurements of 𝛾𝑒𝑓𝑓 helped identify mechanisms
+by which particle phase chemistry in polluted conditions could accelerate atmospheric aging.
+
+Figure 6. Scaling of 𝛾𝑒𝑓𝑓 with (A) [Cl2] in the absence of oxygen and (B) [O2] at constant Cl2
+concentration for the Cl-initiated reaction of Squalane (Sqa) and Squalene (Sqe). Adapted with
+permission from Zeng et al.30. Copyright 2022 American Chemical Society.
+In addition to OH oxidation, Liu et al. studied the reaction of chlorine gas with aerosols of
+the same saturated hydrocarbon (Sqa).11 In these experiments, highly reactive chlorine atoms (Cl·)
+are produced by photolyzing molecular chlorine (Cl2), and thus both species are present during
+reaction. As with OH, the reaction is initiated by abstraction of a hydrogen from a C–H bond of
+Sqa (R1), but in the absence of atmospheric oxygen (O2), the reaction exhibits 𝛾𝑒𝑓𝑓 ≥ 1, indicating
+chain cycling (Figure 6A, blue open circles). While Cl2 is unreactive towards saturated
+hydrocarbons, increases in Cl2 concentration lead to an increase in 𝛾𝑒𝑓𝑓 under these anoxic
+conditions, as the reaction between Cl2 and an alkyl radical R· regenerates a Cl· (Reaction R5,
+Scheme 1), which can initiate hydrogen abstraction and propagate the chain reaction (Label B,
+Scheme 1). By comparing the values of 𝛾𝑒𝑓𝑓 to the primary uptake coefficient (i.e., 𝛾𝑔𝑎𝑠 ) inferred
+
+14
+
+https://doi.org/10.26434/chemrxiv-2024-5bjnw ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+from kinetic modeling, it was estimated that an upper bound of 6 Sqa molecules were consumed
+by secondary reactions for each reactive collision of gas phase Cl·.11
+When O2 is reintroduced, however, the chain-propagating step (R5) must compete with the
+formation of RO2 radicals (R2).11 When [O2] is at atmosphere concentrations (~20%), it is orders
+of magnitude more abundant than either Cl2 or Cl· in the experiment, leading to high RO2
+concentrations. Again, since the recombination rate scales as [RO2]2, this leads to the formation of
+oxygenated products and termination of the radical chain (R3). Therefore, the presence of O2 shuts
+down reaction, giving rise to the inverse relationship of [O2] and 𝛾𝑒𝑓𝑓 (Figure 6B, blue open
+circles). Thus, by analyzing the scaling of 𝛾𝑒𝑓𝑓 with the concentrations of key reactants (O2 and
+Cl2), a rational mechanism for the complex kinetic behavior could be formulated.
+However, simple changes in the functional groups available for reaction in the condensed
+phase can lead to unexpected changes in the reaction mechanism and drastic increases in reactivity,
+as seen in the chlorination of Sqe aerosols studied by Zeng et al.17 The structure of Sqe is nearly
+identical to that of Sqa, except for 6 alkene functional groups (C=C bonds), which allows
+electrophilic addition of Cl2 to the molecule (Reaction R6, Scheme 1). While this reaction is quite
+slow for pure Sqe aerosols, the presence of particle-phase additives containing oxygenated
+functional groups enhanced the effective Cl2 addition rate by 12-23 times over 𝛾𝑔𝑎𝑠 .31 While the
+precise mechanism of this acceleration is under investigation, it was hypothesized that the
+oxygenated molecules act as phase transfer catalysts by increasing the Cl2 residence time at the
+particle surface.
+As a result, when Sqe aerosols were reacted with Cl· in the presence of Cl2, the combination
+of Cl2 electrophilic addition chemistry and the radical cycling mechanism described previously led
+to an extremely rapid reaction, with 𝛾𝑒𝑓𝑓 for Sqe (green triangles, Figure 6A) that is roughly two
+15
+
+https://doi.org/10.26434/chemrxiv-2024-5bjnw ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+orders of magnitude larger than for Sqa. But surprisingly, when [O2] was increased the reaction
+was accelerated (green triangles, Figure 6B), displaying the opposite the trend in 𝛾𝑒𝑓𝑓 than that
+measured previously for Sqa. In addition, the reaction products under high [O2] were almost
+entirely chlorinated, not the oxygenated products characteristic of RO2 recombination and chain
+termination (R3).
+The magnitude of the increase in 𝛾𝑒𝑓𝑓 therefore eliminates Cl· chain propagation as the
+source of the accelerated reactivity, as the rate of R5 would not be expected to change so
+dramatically between Sqa and Sqe. Instead, a catalytic mechanism promoting Cl2 electrophilic
+addition chemistry (R6) was proposed.30 Despite the rapid reaction between Sqe and Cl2, the
+radical mechanism described previously is still operative in the presence of high [O2], leading to
+RO2 recombination (R3) and chain termination products. However, these termination products
+contain the same functional groups as the additives previously observed to catalyze Cl2
+electrophilic addition.31 Thus, increased [O2] increases the abundance of these products by
+generating a Cl2 phase-transfer catalyst in situ in the aerosol (Label C, Scheme 1), which explains
+the unexpected and dramatic increase of 𝛾𝑒𝑓𝑓 with [O2] shown in Figure 6B.
+As before, investigation of the behavior of 𝛾𝑒𝑓𝑓 provided insights into a previously
+unknown process with significant impacts beyond atmospheric chemistry, such as in
+heterogeneous catalysis. The observation of catalytic behavior during electrophilic addition
+chemistry raises new questions to be investigated regarding the role of particle interface in
+controlling these reaction dynamics. The usefulness of 𝛾𝑒𝑓𝑓 as a probe for discovering novel
+reaction mechanisms thus extends beyond radical chemistry, as explored further in the following
+section.
+
+16
+
+https://doi.org/10.26434/chemrxiv-2024-5bjnw ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Insights into Reactive Intermediates in the Condensed Phase
+
+Scheme 2. The interconnected reaction pathways of ozone, free radicals, and stabilized Criegee
+Intermediates (sCI). Adapted with permission from Zeng et al.19. Copyright 2020 American
+Chemical Society.
+In addition to examining the scaling behavior of 𝛾𝑒𝑓𝑓 with gas-phase reactants, modifying
+the structure of particle-phase reactants can also help elucidate complex reaction mechanisms. One
+example is the peroxidation of unsaturated lipids, which typically proceeds via abstraction of a
+labile allylic hydrogen adjacent to a C=C bond, followed by addition of O2 to form an unsaturated
+RO2 radical (Scheme 2). Although slow, these species can perform intramolecular hydrogen
+abstraction from another allylic site, yielding a hydroperoxide (ROOH) and regenerating a R·
+radical, which propagates the chemistry (known as autoxidation or lipid peroxidation).32 However,
+
+17
+
+https://doi.org/10.26434/chemrxiv-2024-5bjnw ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+experiments on lipid oxidation have traditionally been performed in the bulk condensed phase
+using radical initiators, instead of realistic radical species such as OH.33,32
+To probe this reaction mechanism in aerosols, radical oxidation experiments were again
+conducted on aerosols of Sqe, a common component of human skin oil, with oxidation initiated
+by OH.18 The scaling of 𝛾𝑒𝑓𝑓 with [OH] shows increased chain cycling at low oxidant
+concentrations (Figure 7). The unsaturated sites play a role in the mechanism, as decreasing the
+number of C=C bonds in the particle phase reactant from 6 (Sqe) to 1 (cis-9-tricosene, Tri) leads
+to a decrease in 𝛾𝑒𝑓𝑓 . By contrast, saturated molecules with a single oxygenated functional group
+all have 𝛾𝑒𝑓𝑓 < 1, indicating the absence of chain cycling.
+
+Figure 7. (a) Scaling of 𝛾𝑒𝑓𝑓 with [OH] for various particle-phase organics shown in (b), both
+unsaturated (Sqe, AA, LA, OA, and Tri) and saturated (Sqa, 2-Decyl-1-tetradecanol, 2-Octyl-1dodecanol). Figure adapted with permission from Zeng et al.18 Copyright 2020 National Academy
+of Sciences
+
+These kinetics could be interpreted as consistent with a typical lipid peroxidation
+mechanism, however upon analysis, the reaction products were found not to be hydroperoxides
+
+18
+
+https://doi.org/10.26434/chemrxiv-2024-5bjnw ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(ROOH), but rather secondary ozonides (SOZs), which are typically only observed during
+ozonolysis (Scheme 2).34 These species form from the reaction of aldehydes and stabilized Criegee
+Intermediates (sCI, not to be confused with Chlorine/Cl·), which are highly reactive molecules
+formed during ozonolysis. As first shown by Beauchamp and coworkers,35 sCIs appear to be
+formed during radical-initiated oxidation of unsaturated lipids. To test this hypothesis, saturated
+alcohols, which can act as sCI scavengers, were incorporated into the particle phase with Sqe.18
+The result was the formation of characteristic sCI + alcohol hydroperoxide ether products (Scheme
+2), a gradual decrease in the 𝛾𝑒𝑓𝑓 of Sqe as alcohol was added, and a drastic enhancement in the
+𝛾𝑒𝑓𝑓 of the alcohol above its value in pure droplets (Figure 8A). These results imply that sCIs are
+not only generated during OH oxidation, but are in fact the species responsible for its chain
+propagation, as sCIs can regenerate OH radicals via unimolecular decomposition channels.
+The precise mechanism by which sCIs are produced remains under investigation, though
+several mechanisms have been proposed18,35–37 each involving the β-hydroxy peroxy radical (βRO2) formed after OH addition to the alkene (Scheme 2). A recent modeling study of the OH
+oxidation of Sqe evaluated the kinetic viability of 3 possible mechanisms,38 but further combined
+theoretical and experimental efforts are needed to establish a comprehensive description of this
+step.
+
+19
+
+https://doi.org/10.26434/chemrxiv-2024-5bjnw ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 8. Scaling of 𝛾𝑒𝑓𝑓 with the concentration of sCI scavenger (saturated alcohol) in the
+condensed phase during (a) OH-radical initiated Sqe oxidation. (Figure adapted with permission
+from Zeng et al.18 Copyright 2020 National Academy of Sciences) and (b) ozonolysis of Tri aerosol
+(Figure adapted with permission from Zeng and Wilson.19 Copyright 2020 American Chemical
+Society.) The value of 𝛾𝑒𝑓𝑓 is corrected for the mole fraction of the reactant in these mixture
+experiments to account for dilution effects.
+Regardless of the specific mechanism by which they are generated, sCIs have been shown
+to constitute a new link between two typically distinct chemical mechanisms, namely secondary
+chemistry resulting from ozonolysis and OH-initiated radical oxidation (Scheme 2). As a result,
+radical chain cycling can be initiated by ozonolysis in addition to OH oxidation, as further explored
+by Zeng et al. using cis-9-tricosene (Tri) aerosols.19 Tri has a single C=C bond, which simplifies
+the reaction mechanism and potential products of ozonolysis, and it has no oxygenated functional
+groups, which act as sCI scavengers. Additionally, the aldehydes formed from ozonolysis of Tri
+are volatile and preferentially evaporate from the particle, thereby removing another potential sink
+of the CI in the particle phase. These properties make Tri an excellent candidate for observing CIpropagated chain cycling.
+During ozonolysis, the 𝛾𝑒𝑓𝑓 of Tri during was measured to be 5.2x10-4, which is an order
+of magnitude larger than previous measurements of 𝛾𝑔𝑎𝑠,𝑂3 .39 Even though the 𝛾𝑒𝑓𝑓 is less than 1,
+substantial chain cycling can still be inferred by comparison of these two measurements.
+Incorporating a particle-phase saturated alcohol, which is unreactive toward O3, resulted in the
+decrease of 𝛾𝑒𝑓𝑓 (Figure 8B), as was observed for the OH + Sqe reaction (Figure 8A). In addition,
+a decrease in the radical chain termination products of Tri (Scheme 2) was observed in the presence
+of alcohol. Surprisingly, kinetic modeling suggests that radical chain cycling is the dominant
+oxidation pathway for Tri during ozonolysis, accounting for nearly 70% of the reactivity.19 Thus,
+this pathway could be kinetically quite significant during ozonolysis chemistry.
+20
+
+https://doi.org/10.26434/chemrxiv-2024-5bjnw ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+However, assessing the significance of this radical chain cycling to atmospheric aerosol
+aging requires knowledge of the precise rate constants of reactions between sCIs and the various
+functional groups, such as carboxylic acids, that might be present in these environments.40 In
+particular, gas-phase measurements of reactions between small sCIs and carboxylic acids yield a
+rate constant (kacid) with values at or exceeding the limit for collision-controlled processes,41,42 but
+the applicability of this rate to particle-phase sCI is in need of evaluation.
+
+Figure 9. Scaling of 𝛾𝑒𝑓𝑓 for Tri during ozonolysis as a function of mole fraction of acid sCI
+scavenger (HDA). Lines correspond to model predictions with differing values of kacid: a slower
+rate competitive with unimolecular processes (solid line) and the diffusion-limited rate analogous
+to the collision limit in the gas phase (dashed line). Figure adapted with permission from Reynolds
+et al.20. Copyright 2023 American Chemical Society.
+Building on previous ozonolysis studies with Tri, an experimental approach involving
+aerosol mixtures allows the value of kacid in the particle phase to be constrained.20 Varying amounts
+of a saturated liquid carboxylic acid, 2-hexyldecanoic acid (HDA), are incorporated into Tri
+aerosols undergoing ozonolysis where, similar to the behavior with saturated alcohols, the 𝛾𝑒𝑓𝑓 of
+Tri decreased. Since HDA is unreactive toward O3, any decay of HDA observed during ozonolysis
+
+21
+
+https://doi.org/10.26434/chemrxiv-2024-5bjnw ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+is attributable to sCI chemistry, primarily resulting in a hydroperoxide ester product (Scheme 2).
+These decay kinetics can be explained in terms of a simple model of the competition between
+bimolecular reaction of sCIs with HDA, which is chain-terminating, and the unimolecular
+decomposition reactions of sCIs to initiate radical chemistry, as shown in Figure 9.20 By fitting this
+model to the HDA decay profiles observed during Tri ozonolysis, a relative ratio of these rate
+constants could be obtained. However, measurements of 𝛾𝑒𝑓𝑓 also constrain the value of the rate
+constant kacid in kinetic simulations. If the sCI + HDA reaction is extremely fast, it would be
+expected to proceed at the diffusion limit in the condensed phase, but simulations corresponding
+to this rate shut off the radical chain cycling too quickly. This leads to a rapid falloff in 𝛾𝑒𝑓𝑓 with
+HDA concentration (dashed line, Figure 9) that is inconsistent with experimental observations.
+Thus, an upper bound can be established on kacid, suggesting a more reasonable rate that keeps this
+reaction channel competitive with the unimolecular reactions of sCIs.
+Through careful experimental design, including changes to the particle-phase composition
+and molecular structure of the reactants, measurements of 𝛾𝑒𝑓𝑓 can be used to establish new links
+between different branches of oxidation chemistry. Applications of this approach thus extend
+beyond their typical application to heterogeneous reactions on atmospheric aerosols and into
+research fields such as oxidative stress in biological systems or the design of antioxidants for
+reducing food spoilage.18
+
+Summary and Conclusions
+Studies designed around the measurement and interpretation of 𝛾𝑒𝑓𝑓 have the potential to help
+explain the complex behavior of chemical systems controlled by reaction and diffusion. By
+examining the relationship between 𝛾𝑒𝑓𝑓 and reactant transport parameters, insight is gained into
+the effects of diffusion limitations on heterogeneous oxidation. By examining the relationship
+22
+
+https://doi.org/10.26434/chemrxiv-2024-5bjnw ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+between 𝛾𝑒𝑓𝑓 and various gas-phase reactants, the mechanisms of radical reactions can be
+determined. And by measuring 𝛾𝑒𝑓𝑓 , while selectively modifying the constituents of the particle
+phase, new links between disparate reaction mechanisms can be uncovered. We hope it is evident
+through the examples shown here that the insights gained from these studies have broad
+applicability both in the field of heterogeneous chemistry and beyond. There are many possible
+reaction parameters to be explored using 𝛾𝑒𝑓𝑓 besides those explored in the examples presented
+here, including studies of 𝛾𝑒𝑓𝑓 as a function of surface area (e.g., particle size in aerosols) and
+ambient temperature, which can provide a molecular-level understanding of interfacial processes
+and reaction thermodynamics. Fundamental insights such as these are crucial to unraveling the
+behavior of any complex chemical system, from atmospheric aerosols to cellular membranes.
+Biographies
+Ryan S. Reynolds received his B.A. in Chemistry from Biola University in 2019 and is currently
+a graduate student at the University of California, Berkeley and Lawrence Berkeley National
+Laboratory. His research focuses on understanding the role of reactive intermediates in multiphase
+reaction kinetics using aerosol mass spectrometry techniques.
+Kevin R. Wilson is a Senior Scientist in the Chemical Sciences Division of Lawrence Berkeley
+National Laboratory. He received a B.A. in Chemistry from Willamette University, a M.A. in
+Liberal Studies from St. John’s College and a Ph.D. from the University of California Berkeley.
+Wilson’s research is aimed at understanding the mechanism of multiphase reactions in droplets
+and aerosols.
+Acknowledgements: This work was supported by the Gas Phase Chemical Physics Program
+(GPCP), in the Chemical Sciences Geosciences and Biosciences Division of the Office of Basic
+Energy Sciences of the U.S. Department of Energy under Contract No. DE-AC02-05CH11231.
+
+23
+
+https://doi.org/10.26434/chemrxiv-2024-5bjnw ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+References
+(1) Finlayson-Pitts, B. J.; Pitts, J. N. Chemistry of the Upper and Lower Atmosphere: Theory,
+Experiments, and Applications; Academic Press: San Diego, 2000.
+(2) Seinfeld, J. H.; Pandis, S. N. Atmospheric Chemistry and Physics: From Air Pollution to
+Climate Change, Third edition.; Wiley: Hoboken, New Jersey, 2016.
+(3) Worsnop, D. R.; Zahniser, M. S.; Kolb, C. E.; Gardner, J. A.; Watson, L. R.; Van Doren, J.
+M.; Jayne, J. T.; Davidovits, P. The Temperature Dependence of Mass Accommodation of
+Sulfur Dioxide and Hydrogen Peroxide on Aqueous Surfaces. J. Phys. Chem. 1989, 93 (3),
+1159–1172. https://doi.org/10.1021/j100340a027.
+(4) Davidovits, P.; Kolb, C. E.; Williams, L. R.; Jayne, J. T.; Worsnop, D. R. Mass
+Accommodation and Chemical Reactions at Gas−Liquid Interfaces. 32.
+(5) Kolb, C. E.; Cox, R. A.; Abbatt, J. P. D.; Ammann, M.; Davis, E. J.; Donaldson, D. J.;
+Garrett, B. C.; George, C.; Griffiths, P. T.; Hanson, D. R.; Kulmala, M.; McFiggans, G.;
+Pöschl, U.; Riipinen, I.; Rossi, M. J.; Rudich, Y.; Wagner, P. E.; Winkler, P. M.; Worsnop,
+D. R.; O’ Dowd, C. D. An Overview of Current Issues in the Uptake of Atmospheric Trace
+Gases by Aerosols and Clouds. Atmos. Chem. Phys. 2010, 10 (21), 10561–10605.
+https://doi.org/10.5194/acp-10-10561-2010.
+(6) Berkemeier, T.; Huisman, A. J.; Ammann, M.; Shiraiwa, M.; Koop, T.; Pöschl, U. Kinetic
+Regimes and Limiting Cases of Gas Uptake and Heterogeneous Reactions in Atmospheric
+Aerosols and Clouds: A General Classification Scheme. Atmos. Chem. Phys. 2013, 13 (14),
+6663–6686. https://doi.org/10.5194/acp-13-6663-2013.
+(7) Steimer, S. S.; Berkemeier, T.; Gilgen, A.; Krieger, U. K.; Peter, T.; Shiraiwa, M.; Ammann,
+M. Shikimic Acid Ozonolysis Kinetics of the Transition from Liquid Aqueous Solution to
+Highly Viscous Glass. Phys. Chem. Chem. Phys. 2015, 17 (46), 31101–31109.
+https://doi.org/10.1039/C5CP04544D.
+(8) Jimenez, J. L.; Canagaratna, M. R.; Donahue, N. M.; Prevot, A. S. H.; Zhang, Q.; Kroll, J.
+H.; DeCarlo, P. F.; Allan, J. D.; Coe, H.; Ng, N. L.; Aiken, A. C.; Docherty, K. S.; Ulbrich,
+I. M.; Grieshop, A. P.; Robinson, A. L.; Duplissy, J.; Smith, J. D.; Wilson, K. R.; Lanz, V.
+A.; Hueglin, C.; Sun, Y. L.; Tian, J.; Laaksonen, A.; Raatikainen, T.; Rautiainen, J.;
+Vaattovaara, P.; Ehn, M.; Kulmala, M.; Tomlinson, J. M.; Collins, D. R.; Cubison, M. J.; E;
+Dunlea, J.; Huffman, J. A.; Onasch, T. B.; Alfarra, M. R.; Williams, P. I.; Bower, K.; Kondo,
+Y.; Schneider, J.; Drewnick, F.; Borrmann, S.; Weimer, S.; Demerjian, K.; Salcedo, D.;
+Cottrell, L.; Griffin, R.; Takami, A.; Miyoshi, T.; Hatakeyama, S.; Shimono, A.; Sun, J. Y.;
+Zhang, Y. M.; Dzepina, K.; Kimmel, J. R.; Sueper, D.; Jayne, J. T.; Herndon, S. C.;
+Trimborn, A. M.; Williams, L. R.; Wood, E. C.; Middlebrook, A. M.; Kolb, C. E.;
+Baltensperger, U.; Worsnop, D. R. Evolution of Organic Aerosols in the Atmosphere.
+Science 2009, 326 (5959), 1525–1529. https://doi.org/10.1126/science.1180353.
+(9) Shiraiwa, M.; Ammann, M.; Koop, T.; Pöschl, U. Gas Uptake and Chemical Aging of
+Semisolid Organic Aerosol Particles. PNAS 2011, 108 (27), 11003–11008.
+https://doi.org/10.1073/pnas.1103045108.
+(10) Koop, T.; Bookhold, J.; Shiraiwa, M.; Pöschl, U. Glass Transition and Phase State of
+Organic Compounds: Dependency on Molecular Properties and Implications for Secondary
+Organic Aerosols in the Atmosphere. Phys. Chem. Chem. Phys. 2011, 13 (43), 19238–
+19255. https://doi.org/10.1039/C1CP22617G.
+24
+
+https://doi.org/10.26434/chemrxiv-2024-5bjnw ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(11) Liu, C.-L.; Smith, J. D.; Che, D. L.; Ahmed, M.; Leone, S. R.; Wilson, K. R. The Direct
+Observation of Secondary Radical Chain Chemistry in the Heterogeneous Reaction of
+Chlorine Atoms with Submicron Squalane Droplets. Phys. Chem. Chem. Phys. 2011, 13
+(19), 8993. https://doi.org/10.1039/c1cp20236g.
+(12) Lee, L.; Wilson, K. The Reactive–Diffusive Length of OH and Ozone in Model Organic
+Aerosols. J. Phys. Chem. A 2016, 120 (34), 6800–6812.
+https://doi.org/10.1021/acs.jpca.6b05285.
+(13) Davies, J. F.; Wilson, K. R. Nanoscale Interfacial Gradients Formed by the Reactive Uptake
+of OH Radicals onto Viscous Aerosol Surfaces. Chem. Sci. 2015, 6 (12), 7020–7027.
+https://doi.org/10.1039/C5SC02326B.
+(14) Houle, F. A.; Wiegel, A. A.; Wilson, K. R. Changes in Reactivity as Chemistry Becomes
+Confined to an Interface. The Case of Free Radical Oxidation of C 30 H 62 Alkane by OH. J.
+Phys. Chem. Lett. 2018, 9 (5), 1053–1057. https://doi.org/10.1021/acs.jpclett.8b00172.
+(15) Richards-Henderson, N. K.; Goldstein, A. H.; Wilson, K. R. Large Enhancement in the
+Heterogeneous Oxidation Rate of Organic Aerosols by Hydroxyl Radicals in the Presence
+of Nitric Oxide. J. Phys. Chem. Lett. 2015, 6 (22), 4451–4455.
+https://doi.org/10.1021/acs.jpclett.5b02121.
+(16) Richards-Henderson, N. K.; Goldstein, A. H.; Wilson, K. R. Sulfur Dioxide Accelerates the
+Heterogeneous Oxidation Rate of Organic Aerosol by Hydroxyl Radicals. Environ. Sci.
+Technol. 2016, 50 (7), 3554–3561. https://doi.org/10.1021/acs.est.5b05369.
+(17) Zeng, M.; Liu, C.-L.; Wilson, K. R. Catalytic Coupling of Free Radical Oxidation and
+Electrophilic Chlorine Addition by Phase-Transfer Intermediates in Liquid Aerosols. J.
+Phys. Chem. A 2022, 126 (19), 2959–2965. https://doi.org/10.1021/acs.jpca.2c00291.
+(18) Zeng, M.; Heine, N.; Wilson, K. R. Evidence That Criegee Intermediates Drive
+Autoxidation in Unsaturated Lipids. PNAS 2020. https://doi.org/10.1073/pnas.1920765117.
+(19) Zeng, M.; Wilson, K. R. Efficient Coupling of Reaction Pathways of Criegee Intermediates
+and Free Radicals in the Heterogeneous Ozonolysis of Alkenes. J. Phys. Chem. Lett. 2020,
+11 (16), 6580–6585. https://doi.org/10.1021/acs.jpclett.0c01823.
+(20) Reynolds, R.; Ahmed, M.; Wilson, K. R. Constraining the Reaction Rate of Criegee
+Intermediates with Carboxylic Acids during the Multiphase Ozonolysis of Aerosolized
+Alkenes. ACS Earth Space Chem. 2023.
+https://doi.org/10.1021/acsearthspacechem.3c00026.
+(21) Reid, J. P.; Bertram, A. K.; Topping, D. O.; Laskin, A.; Martin, S. T.; Petters, M. D.; Pope,
+F. D.; Rovelli, G. The Viscosity of Atmospherically Relevant Organic Particles. Nature
+Communications 2018, 9 (1), 1–14. https://doi.org/10.1038/s41467-018-03027-z.
+(22) Slade, J. H.; Knopf, D. A. Multiphase OH Oxidation Kinetics of Organic Aerosol: The Role
+of Particle Phase State and Relative Humidity. Geophysical Research Letters 2014, 41 (14),
+5297–5306. https://doi.org/10.1002/2014GL060582.
+(23) Slade, J. H.; Ault, A. P.; Bui, A. T.; Ditto, J. C.; Lei, Z.; Bondy, A. L.; Olson, N. E.; Cook,
+R. D.; Desrochers, S. J.; Harvey, R. M.; Erickson, M. H.; Wallace, H. W.; Alvarez, S. L.;
+Flynn, J. H.; Boor, B. E.; Petrucci, G. A.; Gentner, D. R.; Griffin, R. J.; Shepson, P. B.
+Bouncier Particles at Night: Biogenic Secondary Organic Aerosol Chemistry and Sulfate
+Drive Diel Variations in the Aerosol Phase in a Mixed Forest. Environ. Sci. Technol. 2019,
+53 (9), 4977–4987. https://doi.org/10.1021/acs.est.8b07319.
+(24) Denisov, E. T.; Afanas’ev, I. B. Oxidation and Antioxidants in Organic Chemistry and
+Biology.; Taylor & Frances: Oxford, 2005.
+25
+
+https://doi.org/10.26434/chemrxiv-2024-5bjnw ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(25) Russell, G. A. Deuterium-Isotope Effects in the Autoxidation of Aralkyl Hydrocarbons.
+Mechanism of the Interaction of PEroxy Radicals1. J. Am. Chem. Soc. 1957, 79 (14), 3871–
+3877. https://doi.org/10.1021/ja01571a068.
+(26) Howard, J. A.; Ingold, K. U. Self-Reaction of Sec-Butylperoxy Radicals. Confirmation of
+the Russell Mechanism. J. Am. Chem. Soc. 1968, 90 (4), 1056–1058.
+https://doi.org/10.1021/ja01006a037.
+(27) Bennett, J. E.; Summers, R. Product Studies of the Mutual Termination Reactions of Sec Alkylperoxy Radicals: Evidence for Non-Cyclic Termination. Can. J. Chem. 1974, 52 (8),
+1377–1379. https://doi.org/10.1139/v74-209.
+(28) Docherty, K. S.; Ziemann, P. J. Reaction of Oleic Acid Particles with NO 3 Radicals:
+Products, Mechanism, and Implications for Radical-Initiated Organic Aerosol Oxidation. J.
+Phys. Chem. A 2006, 110 (10), 3567–3577. https://doi.org/10.1021/jp0582383.
+(29) George, I. J.; Abbatt, J. P. D. Heterogeneous Oxidation of Atmospheric Aerosol Particles by
+Gas-Phase Radicals. Nature Chem 2010, 2 (9), 713–722.
+https://doi.org/10.1038/nchem.806.
+(30) Zeng, M.; Liu, C.-L.; Wilson, K. R. Catalytic Coupling of Free Radical Oxidation and
+Electrophilic Chlorine Addition by Phase-Transfer Intermediates in Liquid Aerosols. J.
+Phys. Chem. A 2022, 126 (19), 2959–2965. https://doi.org/10.1021/acs.jpca.2c00291.
+(31) Zeng, M.; Wilson, K. R. Experimental Evidence That Halogen Bonding Catalyzes the
+Heterogeneous Chlorination of Alkenes in Submicron Liquid Droplets. Chem. Sci. 2021, 12
+(31), 10455–10466. https://doi.org/10.1039/D1SC02662C.
+(32) Yin, H.; Xu, L.; Porter, N. A. Free Radical Lipid Peroxidation: Mechanisms and Analysis.
+Chem. Rev. 2011, 111 (10), 5944–5972. https://doi.org/10.1021/cr200084z.
+(33) Niki, E. Free Radical Initiators as Source of Water- or Lipid-Soluble Peroxyl Radicals. In
+Methods in Enzymology; Elsevier, 1990; Vol. 186, pp 100–108.
+https://doi.org/10.1016/0076-6879(90)86095-D.
+(34) Heine, N.; Houle, F. A.; Wilson, K. R. Connecting the Elementary Reaction Pathways of
+Criegee Intermediates to the Chemical Erosion of Squalene Interfaces during Ozonolysis.
+Environ. Sci. Technol. 2017, 51 (23), 13740–13748.
+https://doi.org/10.1021/acs.est.7b04197.
+(35) Zhang, X.; Barraza, K. M.; Beauchamp, J. L. Cholesterol Provides Nonsacrificial Protection
+of Membrane Lipids from Chemical Damage at Air–Water Interface. PNAS 2018, 115 (13),
+3255–3260. https://doi.org/10.1073/pnas.1722323115.
+(36) Wagner, J. P. Criegee Intermediates in Autoxidation Reactions: Mechanistic Considerations.
+J. Phys. Chem. A 2021, 125 (1), 406–410. https://doi.org/10.1021/acs.jpca.0c09971.
+(37) Chen, L.; Huang, Y.; Xue, Y.; Jia, Z. Molecular Insights into the Formation of Criegee
+Intermediates from β-Hydroxyperoxy Radicals. Atmospheric Environment 2024, 338,
+120828. https://doi.org/10.1016/j.atmosenv.2024.120828.
+(38) Zeng, M.; Wilson, K. R. Evaluating Possible Formation Mechanisms of Criegee
+Intermediates during the Heterogeneous Autoxidation of Squalene. Environ. Sci. Technol.
+2024, 58 (26), 11587–11595. https://doi.org/10.1021/acs.est.4c02590.
+(39) Wells, J. R.; Morrison, G. C.; Coleman, B. K.; Spicer, C.; Dean, S. W. Kinetics and
+Reaction Products of Ozone and Surface-Bound Squalene. J. ASTM Int. 2008, 5 (7),
+101629. https://doi.org/10.1520/JAI101629.
+(40) Berkemeier, T.; Mishra, A.; Mattei, C.; Huisman, A. J.; Krieger, U. K.; Pöschl, U.
+Ozonolysis of Oleic Acid Aerosol Revisited: Multiphase Chemical Kinetics and Reaction
+26
+
+https://doi.org/10.26434/chemrxiv-2024-5bjnw ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Mechanisms. ACS Earth Space Chem. 2021, 5 (12), 3313–3323.
+https://doi.org/10.1021/acsearthspacechem.1c00232.
+(41) Taatjes, C. A. Criegee Intermediates: What Direct Production and Detection Can Teach Us
+About Reactions of Carbonyl Oxides. Annu. Rev. Phys. Chem. 2017, 68 (1), 183–207.
+https://doi.org/10.1146/annurev-physchem-052516-050739.
+(42) Welz, O.; Eskola, A. J.; Sheps, L.; Rotavera, B.; Savee, J. D.; Scheer, A. M.; Osborn, D. L.;
+Lowe, D.; Murray Booth, A.; Xiao, P.; Anwar H. Khan, M.; Percival, C. J.; Shallcross, D.
+E.; Taatjes, C. A. Rate Coefficients of C1 and C2 Criegee Intermediate Reactions with
+Formic and Acetic Acid Near the Collision Limit: Direct Kinetics Measurements and
+Atmospheric Implications. Angewandte Chemie 2014, 126 (18), 4635–4638.
+https://doi.org/10.1002/ange.201400964.
+
+27
+
+https://doi.org/10.26434/chemrxiv-2024-5bjnw ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+

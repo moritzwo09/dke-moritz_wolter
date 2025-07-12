@@ -1,0 +1,1413 @@
+Characterization and integration of a new oxidative flow reactor for use in
+in vitro and human exposure systems with diesel exhaust and other aerosol
+Vikram Choudhary1, Yu Xi1, Cynthia Pham2, Yuetong Zhang2, Kristen Hardy, Christopher F
+Rider1, Julia Zaks3, Allan K. Bertram3, Arthur Chan4, William H. Brune5 *, Chris Carlsten1 *
+
+1
+
+Air Pollution Exposure Laboratory, Division of Respiratory Medicine, Department of
+
+Medicine, Vancouver Coastal Health Research Institute, The University of British Columbia,
+British Columbia, Vancouver, V5Z1W9, Canada
+2
+
+Department of Mechanical Engineering, The University of British Columbia, British
+
+Columbia, Vancouver, V6T1Z4, Canada
+3
+
+Department of Chemistry, The University of British Columbia, British Columbia, Vancouver,
+
+V6T1Z1, Canada
+4
+
+Department of Chemical Engineering and Applied Chemistry, University of Toronto, Ontario,
+
+M5S3E5, Canada
+5
+
+Department of Meteorology and Atmospheric Science, College of Earth and Mineral Sciences,
+
+The Pennsylvania State University, Pennsylvania, 16802, USA
+
+*
+
+Corresponding
+
+authors:
+
+William
+
+H.
+
+Brune
+
+(whb2@psu.edu);
+
+Chris
+
+(carlsten@mail.ubc.ca)
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Carlsten
+
+Abstract
+Freshly emitted air pollutants may not represent real-world exposure conditions in human
+studies, especially for communities exposed to aged air pollutants. This study presents the
+design and characterization of a new oxidative flow reactor (OFR), named the Fast-oxidation
+Box (FoxBox, volume of 1019 L). Our aim is to simulate atmospheric aging of diesel exhaust
+(DE) with this system for cellular (in vitro) and controlled human studies, a unique capability
+globally. We measured: (a) residence time distribution (RTD) for DE-derived CO2, SO2, and
+particles, (b) DE particle transmission efficiency, (c) low-volatility organic compounds
+(LVOC) losses, and (d) particle size distribution, secondary organic aerosol (SOA) formation,
+and aerosol mass spectra of DE during photochemical oxidation (from OH exposure of (1.9 to
+9.5)×1011 molec cm-3 s). Our results demonstrate turbulent flow-like conditions in FoxBox with
+narrower RTD for particles than gases. The particle transmission efficiency was nearly 100%
+for mobility diameters between 15 and 615 nm. LVOC losses to FoxBox walls were minimal.
+The changes in particle size distributions (e.g., formation of ultrafine particles) and chemical
+composition (e.g., SOA formation, increased O:C, etc.) during photochemical oxidation in
+FoxBox were like those observed in the atmosphere and other OFRs. Our preliminary study on
+cell viability found that photochemical oxidation significantly reduced cell viability, supporting
+observations that communities distant from air pollution sources are affected and vulnerable.
+The controlled human exposures with more realistic aerosol characteristics, such as those
+produced by FoxBox, may provide critical insight in this regard that has been lacking to date.
+Keywords: Residence time distribution, particle transmission efficiency, diesel exhaust, lowvolatile organic compounds, secondary organic aerosol, photochemical oxidation, cell viability.
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+1. Introduction
+Aerosol are fundamental to air pollution and have a significant impact on Earth’s climate
+and public health. Aerosol perturb the Earth’s climate system by scattering and absorption of
+solar and terrestrial radiation. They also act as cloud condensation nuclei (CCN) and ice nuclei,
+affecting the lifetime and precipitation of clouds. Increasing evidence from epidemiological
+and toxicological research indicates that global exposure to atmospheric air pollution,
+especially PM2.5 (particulate matter with aerodynamic diameter ≤ 2.5 µm), has increased by
+20% between 1990 and 2013 (Brauer et al. 2016), and is strongly linked with adverse health
+outcomes such as respiratory and cardiovascular diseases (Cohen et al. 2017; Pope and
+Dockery 2006).
+Atmospheric PM2.5 includes inorganic and organic species such as ammonium (NH4+ ),
+−
+sulphate (SO−
+4 ), nitrate (NO3 ), chloride (Cl ), organic aerosol (OA), elemental carbon (EC),
+
+etc., and trace metals (Jimenez et al. 2009; Zhang et al. 2000). OA constitute a dominant
+fraction (~20 to 90%) of PM2.5 on a global scale and are directly emitted from combustion
+sources, such as burning wood and traffic-related (vehicular) activities, in particle phase as
+primary organic aerosol (POA) (Jimenez et al. 2009; Kanakidou et al. 2005; Pöschl 2005).
+They can also form as secondary organic aerosol (SOA) through a variety of gas-phase and
+multiphase heterogeneous reactions, resulting in gas-to-particle transformations (Lee Ng et al.
+2017; Papapostolou et al. 2013; Hallquist et al. 2009; Jimenez et al. 2009; Kanakidou et al.
+2005). The gas-phase reactions, involving oxidants (such as OH radicals, ozone (O3), and
+nitrate (NO3) radicals, etc.) and volatile organic compounds (VOCs), produce products of
+diverse volatility. A large fraction of these products condenses (multiphase process) onto
+existing particles (Ylisirniö et al. 2020; Palm et al. 2016). Products having sufficiently lower
+volatility than parent VOC can partition into the particle phase directly, forming SOA (Donahue
+et al. 2006; Pankow 1994). SOA formation can also occur through aqueous-phase oxidation in
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+fog and cloud droplets (Choudhary et al. 2024; Ervens 2015; Zhao et al. 2015; Ervens et al.
+2011; Lim et al. 2010).
+The physicochemical characteristics of POA and SOA are different (Srivastava et al.
+2022; Delfino et al. 2010), and thus, there will likely be corresponding differences in toxicity.
+So far, most research on cellular toxicity (in vitro) of air pollutants has focused on those directly
+emitted into the atmosphere, primarily as POA. In this regard, previous studies reported that
+exposure to POA from sources such as wood burning (Wang et al. 2021; McCarthy et al. 2017;
+Longhin et al. 2016) and traffic-related activities (Rossner et al. 2021; Wang et al. 2021; Pang
+et al. 2020; Longhin et al. 2016) can induce oxidative stress and inflammatory responses in
+human lung cells, resulting in cell damage. The few recent studies (such as Chowdhury et al.
+2018) that have investigated the effects of SOA exposure on cells, observed remarkably
+enhanced oxidative stress and inflammatory responses. Controlled human exposures, using
+facilities such as the Air Pollution Exposure Laboratory (APEL) (Birger et al. 2011), have also
+been based on air pollutants directly emitted from combustion sources (Long et al. 2022; Wu
+et al. 2018; Rider et al. 2016; Peretz et al. 2008; Mills et al. 2007; Nordenhäll et al. 2000).
+However, these exposures do not fully represent the real-world ambient air pollution
+composition, as ambient air exposures are influenced by atmospheric aging, which includes the
+formation of SOA. To the best of our knowledge, except for Schuck and Rogers 1959, no study
+has used aged air pollution, either from wood burning or traffic-related activities ̶ two primary
+sources of particle-rich air pollution globally ̶ during controlled human exposures (Weitekamp
+et al. 2020). Schuck and Rogers 1959 found that exposure to UV-irradiated automobile exhaust
+causes eye irritation in humans.
+Major approaches to studying the SOA formation mechanisms and evolution in the
+chemical composition include environmental “smog” chambers and oxidative flow reactors
+(OFRs). Environmental chambers have been used extensively to simulate atmospheric
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+oxidation (Yazdani et al. 2021; Weitkamp et al. 2007; Odum et al. 1997). However, recent
+studies have highlighted limitations, such as loss of particles and semi-volatile compounds to
+chamber walls, especially with longer (> 1 day) residence times (Krechmer et al. 2015, 2016;
+Ye et al. 2016; Pathak et al. 2007). Besides these limitations, environmental chambers usually
+have large volumes (2 to 256 m3) making them unsuitable for fieldwork and only allow
+atmospheric aging equivalent to a maximum of a few days (Wu et al. 2007; Mentel et al. 1996).
+OFRs are much smaller (1 L to 1 m3) than environmental chambers (Wu et al. 2023; Xu and
+Collins 2021; Huang et al. 2017; Keller and Burtscher 2012; Lambe et al. 2011; Ezell et al.
+2010; Kang et al. 2007) and usually employ higher oxidant concentrations, allowing hours to
+months of equivalent atmospheric aging in a very short residence time (seconds to minutes),
+with reduced wall interactions. Furthermore, the portability of OFRs ensures their applicability
+in both laboratory and field studies. However, OFRs can be subjected to unusual aging
+reactions compared to the ambient atmosphere, due to different regimes of oxidation processes
+(Peng and Jimenez 2020; Peng et al. 2016). OFR design parameters, such as flow profile,
+residence time distribution (RTD), wall losses, vapor losses, and oxidation reactions, can
+influence these different regimes in OFRs. Regardless of these limitations, OFRs for SOA
+formation are well-established, and numerous previous studies have used OFRs to simulate the
+formation of SOA from wood smoke (Wu et al. 2023; Wang et al. 2022; Ortega et al. 2013) and
+traffic-related emissions (Ihalainen et al. 2019; Simonen et al. 2017) in the laboratory. A few
+studies also used OFRs to investigate SOA formation in the ambient atmosphere (Xu and
+Collins 2021; Palm et al. 2016).
+In the present study, we demonstrate the design and characterization of a new custombuilt OFR called the Fast-oxidation Box (hereafter referred to as FoxBox), devised to achieve
+a more realistic air pollution composition for controlled human and cell exposures. FoxBox's
+design aimed to ensure a narrow RTD, a short residence time, limited contact of the sample
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+with reactor walls, and real-time measurements to track physicochemical changes in the
+sample. The goal of this work is to test the effectiveness and utility of the FoxBox for
+laboratory-based photochemical aging and highlight its potential in furthering our
+understanding of how atmosphere-like aging of aerosol may alter molecular signaling pathways
+in human lung cells.
+
+2. Experimental
+The following experiments were conducted to evaluate the performance of FoxBox: (a)
+RTD measurements corresponding to CO2, SO2 and particles present in diesel exhaust (DE),
+(b) particle transmission efficiency measurements, (c) fates of low-volatile organic compounds
+(LVOC) in the FoxBox, including losses to the reactor walls, and (d) measurements of size
+distribution, SOA formation, and aerosol mass spectra of DE during OH exposures. In addition,
+a case study was carried out to examine the viability of human lung cells after in vitro exposure
+to fresh and aged DE. All these experiments were performed with DE particles generated within
+our laboratory.
+Fig. 1 shows a schematic of the experimental setup used in this study. The diesel engine
+(Euro-Stage 5 compliant, 4.5kW 1B30E Hatz engine) was used as the source of gases and
+particles. The engine produces an exhaust flow of 580 LPM through an engine exhaust line,
+most of which is vented to the outdoor atmosphere because it is in excess of what is needed for
+our experiments (Birger et al. 2011). A small amount of DE is diluted with HEPA filtered air
+and is connected to the booth directly (via a bypass flow pipe) or through the FoxBox. The
+amount of DE fed into the booth depends on speed of the exhaust fan controlled at the exit of
+the booth. A 3-way valve was placed upstream of the booth and FoxBox to switch flows.
+Several gas and particle measurement instruments were operated at the FoxBox exit (point A)
+and the booth (point B). The flow rates of DE injections into the FoxBox were controlled at the
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+exit of the booth by regulating the speed of the exhaust fan (point C) using a remote controller
+(thus, we have referred to it as exhaust flow rate in this study). More details about the
+experimental setup, such as FoxBox design, experiments carried out for FoxBox
+characterization, and instruments used, are discussed in the following sections.
+2.1. Description of FoxBox
+The FoxBox is a custom-built OFR at APEL, based on the principle of Potential Aerosol
+Mass (PAM) (Kang et al. 2007). The FoxBox was constructed using sheets of aluminum alloy,
+a conductive and corrosion-resistant material under real-world atmospheric conditions,
+including a pH range from 4 to 7 (Kutz 2012). These characteristics inhibit electrostatic losses
+in OFRs (Lambe et al. 2011). The reactor is 182.9 cm tall, 61.0 cm deep and 91.4 cm wide. It
+has a total volume of 1.019 m3 (1019 L) and a surface-area-to-volume ratio of 2 m-1, much
+lower than other operational OFRs, e.g., Caltech (24 m-1) (Huang et al. 2017), TPOT (56 m-1)
+(George et al. 2007), and PAM (25 m-1) (Lambe et al. 2011).
+The FoxBox houses four pairs of UV lamps (Atlantic Ultraviolet Ster-L-Ray Germicidal
+Lamp), as shown in Fig. 1, with each pair equally spaced 42 cm apart and 31 cm separating the
+lamps in each pair. Moreover, each pair comprises one 185 and one 254 nm UV lamp. The
+lamps are 84 cm long and housed in 91-cm-long Teflon tubes. One pair (Pair I, Fig. 1) of lamps
+is wrapped in Teflon tape to decrease the intensities of 185 nm UV-light, compared to 254 nm.
+The 185 nm UV-lamps in the FoxBox are responsible for the production of O3 and some OH
+whereas the 254 nm lamps dissociate O3 to form an excited-state O atom, which reacts with
+H2O to form most of the OH radicals. The production of O3 and OH radicals can be controlled
+by regulating UV irradiation (photon flux) inside the FoxBox. To control the extent of UV
+irradiation, the four pairs of lamps (3 normal pairs, 1 with Teflon tape) can be activated
+independently. A compressed nitrogen gas tank (Praxair) is connected to the reactor, and was
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+used to purge the space around the UV lamps within the Teflon tubes to prevent O3 formation
+around the lamps. The purging process also helps to minimize the heat generated by UV lamps,
+which warms the OFR walls and the air inside.
+2.2. FoxBox residence time distributions
+RTDs of gases and particles for the FoxBox were characterized by injecting 20s pulses
+of DE into the reactor. DE-derived CO2 and SO2, surrogates for wall-inert and wall-adhering
+species, respectively, were used to characterize RTDs of gases, whereas DE particles were used
+for the condensed-phase species. Prior to RTD measurements, the FoxBox walls were
+passivated with DE until steady concentrations were achieved for the above-mentioned species,
+at which time the DE injection into the FoxBox was stopped and the concentrations returned
+to near background levels. The flow rates used for RTD measurements were those needed to
+maintain a suitable air exchange in the booth during controlled human exposures, which is
+crucial for the comfort of the participant (Birger et al. 2011). It is noted that the booth at the
+APEL has a total volume of 4760 L (4.76 m3, 121.9 cm wide × 182.9 cm deep × 213.4 cm tall).
+Thus, the flow rate of air pollutants (e.g., DE) into the booth was >1300 LPM, providing an air
+exchange time of < 3.5 minutes within the booth. As a result, the RTDs were measured at three
+flow rates, 1300, 1850, and 2450 LPM in this study, to determine the optimized flow rate for
+photochemical aging in the FoxBox (Reynolds number (Re) > 4340, turbulent flow conditions)
+and their effect on the FoxBox residence time. CO2, SO2 and optical particle sizer (OPS)derived total particle number concentrations were measured at the immediate FoxBox outlet
+(point A in Fig. 1). All experiments were repeated thrice, and the concentrations were
+background corrected.
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Background corrected RTD measurements were used to determine RTD-weighted mean
+time (RTDmean), an approximation of residence time, of the FoxBox using the following
+equation (Cao et al. 2020):
+1
+
+RTDmean = C × ∑Tt=2(t × Ci,t )
+
+(1)
+
+Ci = ∑Tt=2 Ci,t
+
+(2)
+
+i
+
+where RTDmean is the residence time of FoxBox (s), Ci is the total concentration of species i
+(ppbv or cm-3), Ci, t is the concentration of species i at time t (ppbv or cm-3), t is the time at
+which Ci is measured, and T is the total time length of the pulse from injection to return to
+baseline.
+2.3. Particle transmission efficiency
+Size-dependent particle transmission efficiencies in the FoxBox were examined using
+polydisperse DE particles with mobility diameters of 14.6 to 615.3 nm. Transmission efficiency
+was calculated from measurements of particle number size distribution at the inlet and at the
+outlet of the FoxBox. The particle number size distribution at the inlet was measured by
+switching a steady DE flow directly into the booth (via bypass flow pipe, at point B in Fig. 1),
+whereas the measurements at the FoxBox outlet were obtained by switching the DE flow to the
+booth chamber via the FoxBox (point B in Fig. 1). Furthermore, the size-dependent particle
+transmission efficiency was calculated as the ratio of background-corrected particle number
+concentrations measured at the outlet (i.e., via FoxBox) and inlet (i.e., bypass) of the FoxBox.
+The transmission efficiency measurements were repeated thrice, each at a steady total particle
+number concentration ranging from 50000 to 60000 cm-3. The equivalent PM2.5 concentration
+ranged from 35 to 55 µg m-3 (standard deviation was within ±5 µg m-3 for each repetition).
+2.4. Chamber wall index (CWI)
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Controlled aging experiments in atmospheric environmental enclosures, such as
+environmental chambers, OFRs, etc., are susceptible to wall influence that can alter the aging
+chemistry. Many different sizes, shapes, and flow characteristics of enclosures are operational
+worldwide (Table S1 of the supplementary file); however, it is very difficult to determine which
+enclosure design has less wall influence on the chemistry. Chamber wall index (CWI; Brune
+2019) is a simple metric which represents the degree to which the chemistry in an enclosure is
+free from unwanted wall effects (e.g., uptake, surface chemistry, etc.) as governed by sampled
+gas-phase chemical constituents related to SOA formation. In this study, CWI was determined
+using the following equation (Brune 2019):
+
+V
+
+CWI = A × τ
+
+1
+
+RTD_mean
+
+k
+Dg
+
+arctan(δc ×√ e )
+
+×(
+
+√ke ×Dg
+
+4
+
++ a ×ω)
+w
+
+(3)
+
+where V is the volume of the enclosure (m3), A is the surface area (m2), τRTD_mean is the
+weighted-mean residence time (s), Dg is the gas-phase diffusion coefficient of the species (m2
+s-1), ke is the eddy diffusion frequency (s-1), δc is the chemical boundary layer depth (m), aw is
+the accommodation coefficient for the chemical species on the wall, and ω is the molecular
+speed of the chemical species. We have determined the CWI for the FoxBox in this study and
+compared it with several other widely used environmental chambers and OFRs worldwide. The
+detailed information on V, A, τRTD_mean and δc of these enclosures is shown in Table S1. Dg, aw
+and ω values of 5×10-6 m2 s-1, 1 and 180 m s-1 were adopted from previous studies (Brune
+2019). The ke was calculated using the following equation (Brune 2019; Krechmer et al. 2016;
+Palm et al. 2016):
+k e = 0.004 + 10−2.25 × V 0.74
+2.5. OH exposure levels
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(4)
+
+OH exposure (OHexp), indicating OH radical concentration integrated over time, is a key
+parameter for interpreting photochemical aging in an OFR. Several previous studies (Wu et al.
+2023; Lambe et al. 2011, 2015; Li et al. 2015) have used the decay of SO2 during photochemical
+oxidation in the OFR to determine the OHexp levels. In this study, a steady DE flow was
+introduced into the FoxBox under distinct UV-light exposures and the decay in SO2 (present in
+DE) was monitored at the FoxBox exit (point A as shown in Fig. 1) to quantify OHexp levels.
+In total, five different combinations of UV-lamps (Pair I, Pair II, Pairs I+II, Pairs I+II+III, and
+Pairs I+II+III+IV lamps) produced distinct UV-light exposures. The measurements were
+conducted in triplicates for each UV-light exposure. The following equation was used to
+calculate OHexp:
+OHexp = k
+
+1
+OH_SO2
+
+[SO ]
+
+ln ( [SO2 ]0)
+2 f
+
+(5)
+
+where k OH_SO2 is the reaction rate constant of SO2 with OH, and [SO2]0 and [SO2]f are the
+concentrations of SO2 before and after photochemical oxidation in the FoxBox, respectively.
+The 𝑘𝑂𝐻+𝑆𝑂2 of 9.2 × 10-13 cm3 molec-1 s-1 was used in equation 5 in this study (Peng et al. 2015;
+Sander et al. 2011). Furthermore, OHexp was normalized to the daily average OH concentration
+to calculate the photochemical age of aged aerosol. We used a daily average OH concentration
+of 1.5 × 106 molec cm-3 to convert the OHexp to atmospheric equivalent photochemical age (Mao
+et al. 2009).
+These photochemical oxidation measurements at different UV-light exposures were
+based on a steady DE flow, equivalent to PM2.5 concentration varying from 280 to 350 µg m-3.
+The O3, PM2.5, organic carbon (OC), EC, particle number size distribution, and aerosol mass
+spectra measured along with SO2 monitoring during the photochemical oxidation. More details
+on these measurements are discussed in section 2.7.
+2.6. Low-volatile organic compound (LVOC) fates
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+SOA formation as a function of age in OFRs depends on the timescales of distinct
+competing processes and their relative importance compared to the atmosphere. During
+photochemical oxidation in OFRs, organic vapors (also referred to as VOCs) are oxidized,
+forming low-volatility VOCs (LVOCs). These LVOC compounds effectively condense onto
+existing particles irreversibly. In the atmosphere, the dominant fate (loss) of LVOCs is
+condensation onto particles (atmospheric lifetime of ~ minutes) (Knote et al. 2015; Nguyen et
+al. 2015). However, due to different timescales and experimental conditions in OFRs (e.g.,
+short residence times of ~ seconds to minutes, high oxidant concentrations, etc.), the LVOCs
+formed can have other fates besides condensation onto aerosol (Palm et al. 2016). These other
+fates include condensational losses to the surface of OFR walls, further reaction with OH
+radicals to produce highly volatile gas-phase products (e.g., CO2), and exiting the OFR in the
+gas phase (in that case LVOCs will entirely condense on the sampling tube walls due to the
+large surface-area-to-volume ratio). The OFR measurements must be corrected for these other
+fates to closely relate SOA formation processes in OFRs, with real atmospheric processes.
+In this regard, (Palm et al. 2016) discussed a method to estimate LVOC fates in OFRs,
+including condensation onto particles, condensation on the surface of reactor walls, reaction
+with OH, and the fraction of LVOC exiting the OFR. In this study, we examined LVOC fates
+corresponding to high condensation sink (CS) and low CS scenarios. The high CS scenario (>
+3.5×105 s-1) was based on photochemical oxidation of DE at PM2.5 concentrations of 280 to
+350 µg m-3, whereas low CS (< 2.0×105 s-1) was based on photochemical oxidation of DE at
+PM2.5 of 80 to 100 µg m-3. A detailed description of the method used to estimate LVOC fates
+for the FoxBox is given in section S1 of the supplementary file. We also used same method to
+estimate LVOC losses for the FoxBox in the absence of CS and oxidants, to determine the
+upper limit of LVOC wall losses.
+2.7. Gas and particle generation and their monitoring
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+The production of DE followed a standardized process developed in the APEL (Birger et
+al. 2011) to simulate on-road highway conditions. This process includes loading the engine
+from idle up to 4kW with increments of 0.5kW at ~5 min intervals, followed by a simulated
+cruising condition at 3kW where the engine remains for the duration of the experiment. A small
+amount of DE was drawn from the engine tailpipe, diluted, and fed into the booth either directly
+or via the FoxBox, as shown in Fig. 1. The exhaust flow rates of DE injections were measured
+by a flowmeter (Dwyer, VFC-121) at point C (Fig. 1).
+A multitude of instruments were placed at the exit of the FoxBox (point A) and booth
+(point B) to monitor the gases and aerosol in DE (Fig. 1). For monitoring gases, CO2 (Thermo
+ScientificTM Model 410i), CO (Thermo ScientificTM Model 48i-TLE), SO2 (Thermo ScientificTM
+Model 43i), NOx (Thermo ScientificTM Model 42i-LS), and O3 (Thermo ScientificTM Model 49i)
+analyzers were used to measure the CO2, CO, SO2, NO/NO2/NOx and O3 concentrations,
+respectively. A tapered element oscillating microbalance (TEOM) (Rupprecht & Patashnick
+Co. Series 1400a) was used to measure PM2.5 mass concentrations. An OPS (TSI Model 3330)
+was used to measure total particle number concentration from 0.3 to 10 µm diameter. All the
+above-mentioned parameters were measured at two-second intervals. Furthermore, a Graywolf
+TG-503 probe, set up within the booth, measured the total VOC (TVOC) concentrations,
+temperature and relative humidity (RH, %) at one-minute intervals. A humidifier (Nortec)
+maintained sufficient RH (approximately 40%) inside the FoxBox and booth. A scanning
+mobility particle sizer (SMPS; TSI Model 3936) measured the number and mass size
+distribution of aerosol particles from a mobility diameter of 14.6 to 615.3 nm at a sample flow
+rate of 0.3 LPM and a sheath flow rate of 3 LPM. The SMPS consists of two units: an
+electrostatic classifier (TSI Series 3080) and a condensation particle counter (TSI Model 3775).
+The data from the SMPS were recorded at 3-minute intervals.
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+A High Resolution Time-of-Flight Aerosol Mass Spectrometer (HR-ToF AMS;
+Aerodyne) operating in V-mode (DeCarlo et al. 2006; Jimenez et al. 2003) measured the aerosol
+mass spectra to look for signs of aerosol aging and SOA formation. Data analysis was
+performed using SQUIRREL 1.66G and PIKA 1.26G. Elemental ratios (O:C and H:C) were
+determined with the improved ambient method (Canagaratna et al. 2015). A few other wellestablished AMS parameters that were explored included f43 (the fraction of carbon with m/z
+43) (Ng et al. 2010), f44 (the fraction of carbon with m/z 44) (Ng et al. 2010), and f57 (the
+fraction of carbon with m/z 57). These parameters retrieved from the unit mass data, and
+represents all the fragments at m/z 43 (mainly C3 H7+ and C2H3O+)), m/z 44 (mainly CO+
+2 ) and
+m/z 57 (mainly C4 H9+ and C3H5O+), respectively. All these data were recorded in real-time
+during the experiment so that the operator could effectively control the system. Additionally,
+eighteen particle-laden quartz filters (Blanks = 3, fresh DE = 3, aged DE = 12) were collected
+at the exit of the booth at 10 LPM flow rate using a Harvard impactor, for offline measurements
+of EC/OC. EC/OC were measured using the National Institute of Occupational Safety and
+Health (NIOSH) 5040 protocol based on thermal optical transmittance on a total carbon
+analyzer (Sunset Laboratory Inc.).
+2.7. In vitro cell exposure and cell viability measurements
+In this study, we used the human alveolar epithelial cell line A549 for in vitro exposures.
+A detailed description of culture conditions and the exposure system is given in section S2 of
+supplementary file. Briefly, cultured A549 cells (initial seeding concentration of 5 × 104
+cells/mL), at in lab passages 5-20, were subjected to fresh or aged DE exposures equivalent to
+~350 µg m-3 PM2.5 concentration for 1 h using the CULTEX® RFS exposure system
+(Aufderheide et al. 2013; Aufderheide 2005). In parallel, identical cells were exposed to lab air
+passed through HEPA activated carbon filters (FA). One set of these cells were left within the
+incubator (INC) as an additional control. All three sets were collected for each DE exposure.
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+We repeated each cell exposure (fresh DE and aged DE) twice in triplicate inserts (total six
+inserts collected). After each exposure, cell inserts were stored in the incubator at 37°C with
+5% CO2 for 24 hours.
+After 24 h, DE (fresh and aged) exposed cells and their respective FA and INC controls
+were analyzed for cell viability using MTT (3-(4, 5-dimethylthiazolyl-2)-2, 5-diphenyl
+tetrazolium bromide) assays, according to the manufacturer’s instructions (Sigma Aldrich).
+This method is based on the dissolution of MTT to formazan in the presence of viable cells or
+active cellular metabolic activity (Hansen et al. 1989). For MTT assay measurements, firstly,
+we prepared the reagent mixture (consisting of thiazolyl blue tetrazolium bromide) at a 1
+mg/mL concentration in Hank’s Balanced Salt Solution (HBSS) with calcium chloride and
+magnesium chloride (Gibco™, Thermo Fischer Scientific). The apical media was aspirated,
+and the cells were washed one time using 100 µL same HBSS solution. Subsequently, 50 µL
+of MTT reagent solution was added to each Transwell (apical), and the cells were incubated at
+37°C with 5% CO2 for 30 min. After 30 min, the MTT reagent solution was aspirated from the
+Transwells. Subsequently, 55 µL of DMSO was added to each well for cell lysis, after which
+the Transwells were placed on a shaker until a homogeneous solution was formed. Thereafter,
+50 µL of DMSO/cell lysate mixture from each well was transferred onto a 96-well plate, along
+with a couple of DMSO-only blanks. The absorbance at 584 nm was measured using a plate
+reader (SpectraMax i3x). These absorbance measurements were then used to calculate % cell
+viability using the formula:
+% cell viability =
+
+Asample
+AINC
+
+× 100
+
+(6)
+
+where Asample indicates absorbance at 584 nm (corrected for blank, DMSO only, absorbance)
+for fresh DE, aged DE, and FA exposed cells, and AINC is blank corrected absorbance for
+incubator controls.
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+3. Results and discussion
+3.1. Residence time distributions (RTDs) of the FoxBox
+The RTDs of the FoxBox were experimentally characterized with a wall-inert gas (CO2),
+a wall-adhering gas (SO2), and physiochemically heterogeneous (atmospherically relevant) DE
+particles, with UV lamps turned off. Figs. 2a and 2b show representative RTDs measured for
+CO2 (produced from the engine) and particles with pulsed input (20s) into the FoxBox,
+respectively. Fig. S1 in the supplementary file shows RTDs measured with SO2. The same pulse
+(of DE) introduced to the FoxBox, as discussed in section 2.2, was used to obtain RTDs for all
+these species.
+The first result is that the shape and width of the RTDs are all invariant as a function of
+flow rates from 1300 to 2450 LPM for CO2 (Fig. 2a), SO2 (Fig. S1), and particles (Fig. 2b).
+RTDmean, an approximation of the average residence time of the FoxBox, also reflects these
+observations (Table S2). The RTDmean values were 59s, 58s, and 59s measured with CO2, 195s,
+187s, and 190s measured with SO2, and 30s, 30s, and 28s measured with particles at 1300,
+1850, and 2450 LPM flow rates, respectively (Table S2). The residence times being the same
+at the different flow rates may look surprising, as ideally, with the increase in the flow rate, the
+air must have moved through the FoxBox faster, reducing the residence time of an individual
+molecule/species by the inverse of the mass flow rate. However, as discussed above, the amount
+of DE fed into the booth (and FoxBox) depends on the speed of the exhaust fan controlled at
+the exit of the booth (point C shown in Fig. 1). We fed a 20s pulse of the DE to the FoxBox.
+While the pulse length in time was the same, for a slower flow rate, the pulse length was shorter
+in terms of the amount of DE (or length along the tube (pipe) occupied by DE) to which the
+flow was added. For higher flow rates, the amount of DE added to the flow was much greater
+(a longer length along the tube/pipe occupied by DE). As a result, the amount of time taken to
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+clear the FoxBox is the same for all flow rates. The fact that the residence times were the same
+for all flow rates in this study, and that the actual residence time for a molecule depends linearly
+on the inverse of the flow rate, suggests that the flow pattern (turbulent flow) inside the FoxBox
+does not change substantially at the different flow rates.
+The second result is that the RTDs for particles (Fig. 2b) were narrowest, followed by
+CO2 (Fig. 2a) and SO2 (Fig. S1) in that order, demonstrating that the particles passed through
+the FoxBox more quickly than CO2, with SO2 being the slowest. The average residence time
+estimates for particles, CO2, and SO2, were 30s, 58s, and 190s, respectively (Table S2),
+consistent with these observations. This difference is plausibly due to either (a) comparatively
+poorer mixing of particles into the carrier gas (HEPA filtered air) flow than CO2 and SO2 before
+entry into the FoxBox or (b) greater losses of particles to the FoxBox walls (discussed in section
+3.2) due to entrainment in eddy currents. Furthermore, RTDs for SO2 were delayed relative to
+CO2, as discussed above. The delay indicates enhanced interactions of SO2 with the FoxBox
+walls, due to its sticky nature in comparison to CO2. Without wall interactions, RTDs for both
+SO2 and CO2 would be expected to be the same. These observations highlight wall effects,
+especially on gas-phase precursors, in the FoxBox.
+Figs. 3a and 3b show probability distribution functions of residence time for gases (i.e.,
+CO2) and particles, respectively. Reporting the RTD measurements as normalized distribution
+functions enables the comparison of one OFR’s flow characteristics with others with different
+shapes and sizes. RTDs of an idealized device (laminar flow) (Huang et al. 2017) and those
+observed or reported for the FoxBox (this study), PAM (Lambe et al. 2011), and CPOT (Huang
+et al. 2017) are shown in Figs. 3a and 3b for comparison (PAM Wiki). The residence time
+probability distribution function is defined as the normalized measured concentration (Cout (t))
+divided by the total area of the normalized pulse (Simonen et al. 2017; Fogler and Gürmen
+1999), as given below:
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+PDF (t) =
+
+Cout (t)
+∞
+∫0 Cout (t)𝑑𝑡
+
+(7)
+
+where t is the residence time normalized to the average residence time (RTDmean) of the OFR.
+We observed the residence time probability distribution function of CO2 and particles in the
+FoxBox OFR, as shown in Figs. 3a and 3b, respectively, resembled those expected for ideal
+laminar flow. Yet, the pulses were slightly broader for CO2 compared to laminar flow.
+Additionally, both pulses (CO2 and particles) for the FoxBox were similar to PAM and CPOT
+(Fig. 3). Previous studies reported that the heat generated by UV lamps can warm up the OFR
+walls and enhance convection inside the OFR, which may broaden the RTD (Simonen et al.
+2017). However, we did not observe any such effect on RTDs of both CO2 and particles under
+UV exposure, compared to when UV turned off (Fig. 3), indicating that the heat generated by
+UV lamps had either no, or minimal, effects on the RTDs. Circulation of N2 gas through the
+housing around the UV lamps is likely to have minimized convective mixing in the FoxBox by
+quickly replacing air surrounding the UV lamps.
+3.2. Transmission efficiency of particles
+As stated above, particle transmission efficiency is defined as the ratio of the particle
+number concentration exiting the reactor to that exiting the bypass flow pipe. The particle
+number size distributions of DE exiting the FoxBox and bypass flow pipe are shown in Fig.
+S2. Fig. 4 shows the transmission efficiency of DE particles as a function of mobility diameters
+ranging from 15 to 615 nm. We observed that the particle transmission efficiency was slightly
+lower for smaller sized particles, ~95% for particles < 40 nm (i.e., ~5% loss of < 40 nm
+particles). Moreover, particles with a mobility diameter > 40 nm could transmit through the
+FoxBox with ~100% efficiency. These observations indicate that particle losses in the FoxBox
+are negligible. Thus, no correction of particle losses to the walls is required during
+photochemical aging (of DE, wood smoke, etc.) studies in the FoxBox.
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+We compared the particle transmission efficiency of FoxBox with other OFRs, such as
+CPOT (Huang et al. 2017), TPOT (Lambe et al. 2011), and PAM (Lambe et al. 2011) (Fig. 4).
+Monodisperse ammonium sulfate (AS) particles were used to determine particle transmission
+efficiency of CPOT, whereas bis(2-ethylhexyl) sebacate (BES) particles were used for the
+TPOT and PAM reactors. As shown in Fig. 4, significant particle losses were reported for these
+reactors, compared to the FoxBox. For example, both the PAM (Lambe et al. 2011) and CPOT
+(Huang et al. 2017) reactors have been reported to undergo significant particle losses not only
+for smaller mobility diameters but also for large particles (~20%) with diameters > 100 nm.
+For the TPOT reactor, the particle losses at smaller mobility diameters were highest among all
+the reactors, whereas losses were similar to CPOT and PAM at larger diameters. The critical
+factor behind the almost negligible particle losses found in the FoxBox is the very high flow
+rate used (lower residence time = ~30s) for measurements compared to the other reactors (~100
+to 600s). Another key factor could be that the FoxBox is made of aluminum alloy sheet,
+whereas all the reactors mentioned above are made of glass. In this context, a previous study
+(Lambe et al. 2011) has reported that conductive materials (e.g., aluminum) are less prone to
+particle losses than glass and all more recent PAM reactors are now coated with aluminum
+(Aerodyne 2019).
+3.3. Fate of low-volatile organic gases in FoxBox
+Earth’s oxidizing atmosphere dictates the fate of thousands of chemically distinct air
+pollutants emitted into the atmosphere via several aging processes (e.g., heterogenous OH
+oxidation, photolysis, etc.) involving the production of oxidative reactants such as O3, OH
+radicals, etc., and SOA. As discussed above, OFRs can simulate the chemical processes
+occurring in the atmosphere; however, OFRs are susceptible to wall influences that can alter
+the chemistry of these processes. The CWI metric (Brune 2019) indicates the degree to which
+the OFR is free from potential unwanted wall losses of gas-phase air pollutants, especially
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+organics which are associated with SOA formation. Overall, the mean CWI values for OFRs
+were higher than those for environmental chambers, indicating that walls alter the chemistry
+less in OFRs than in environmental chambers (Fig. S3). Furthermore, we found that the CWI
+of FoxBox, estimated at ~50, was very high in comparison to all the other OFRs (varying from
+~0.5 to 2.5) and environmental chambers (varying from 0.1 to 0.2). These observations signify
+that wall losses of gas-phase air pollutants (e.g., semi- and low-volatile VOCs) in the FoxBox
+are negligible compared to the existing OFRs and environmental chambers, due primarily to
+its lower residence time (~58s) in comparison to the other reactors (~100 to 600s) and
+environmental chambers (hours).
+The dominant fate of LVOCs in the atmosphere is condensation onto aerosol particles
+(Palm et al. 2016; Knote et al. 2015; Nguyen et al. 2015). However, LVOC fates in the OFR
+include condensational losses to the OFR walls, losses due to reaction with OH to produce
+highly volatile gas-phase products, and a fraction exiting the OFR in the gas phase (completely
+lost to sampling tube walls) along with condensation onto aerosol (Palm et al. 2016). We
+estimate the upper limit of LVOC losses to the FoxBox walls in the absence of CS and oxidants
+to be around 6%. The FoxBox LVOC losses were significantly lower than those of other OFRs.
+The estimated upper limit of LVOC losses was around 20% for the RAAD OFR (Wu et al.
+2023), and approximately 30% for the PFA OFR (Xu and Collins 2021). These findings indicate
+that the FoxBox is a highly efficient reactor, with negligible susceptibility to gas and particle
+losses.
+3.4. Photochemical oxidation of DE in the FoxBox: Evolution of physicochemical
+characteristics
+Photochemical oxidation of DE in the FoxBox was carried out under five different UV
+exposure conditions, as discussed in section 2.5. The oxidation process is known to be
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+influenced by RH conditions in the reactor. Therefore, we maintained nearly consistent RH and
+temperature levels of (40 ± 5)% and (24 ± 1)°C, respectively, during the oxidation. The
+equivalent
+
+water
+
+mixing
+
+ratio
+
+at
+
+1.3%,
+
+estimated
+
+using
+
+RH
+
+values
+
+in
+
+OFR_Exposures_Estimater_v3.1 (PAM Wiki), was greater than the 0.8% prescribed for safer
+(atmospherically relevant) photochemical oxidation (Peng and Jimenez 2020; Peng et al. 2015,
+2016). The maximum OHexp achieved was approximately 1×1012 molecules per cubic
+centimeter second (molec cm-3 s), equivalent to approximately 8 days of atmospheric aging. It
+varied from about 0.2×1012 molec cm-3 s for no output O3 to 1×1012 molec cm-3 s for 600 ppbv
+of output ozone (Fig. S4). As 8 days of equivalent photochemical age generally meets the
+requirements of most aging experiments, we did not measure the maximum OHexp that can be
+produced in the FoxBox.
+As discussed earlier, the OHexp calculations in this study were based on SO2 decay
+measurements. The OHexp determined by SO2 decay may or may not be a good indicator of
+true OHexp. In this context, previous studies (Peng and Jimenez 2020; Richards-Henderson et
+al. 2016; Kan et al. 1981) have reported that peroxyl radicals (RO2), primarily form as a result
+of a reaction between OH and VOCs in OFRs, can react with SO2. The reaction rate of RO2 +
+SO2 depends quadratically on RO2 concentration (Richards-Henderson et al. 2016; Kan et al.
+1981). However, the production of RO2 in OFR is limited by the OH oxidation of VOCs (Peng
+and Jimenez 2020). In simple words, the RO2 + SO2 reaction would significantly contribute to
+SO2 decay only if the OH reactivity of all VOCs (OHRVOC) is very high in OFRs (in the order
+of hundreds of s-1) (Peng and Jimenez 2020). In this study, the OHRVOC varied from 27 to 61
+(43 ± 17) s-1 (Table S3), indicating a very limited or negligible role of RO2 in SO2 decay. Thus,
+SO2 decay observed during photochemical oxidations in FoxBox is likely due to OH radicals
+only, signifying the reliability of OHexp calculations in this study.
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+In addition, we have estimated the fates of LVOC in the FoxBox based on the given OHexp
+values under both high and low CS conditions (Fig. S5). We found that at least 99.8% of LVOCs
+in the FoxBox were lost due to condensation onto exiting aerosol particles, similar to the actual
+atmosphere. The contribution of other fates to LVOC losses was less than 0.2%. All these
+observations demonstrate the high suitability of the FoxBox for laboratory-based
+photochemical oxidation of air pollutants. The impact of photochemical oxidation of DE in the
+FoxBox on its physicochemical characteristics (e.g., particle size distribution, SOA formation,
+aerosol mass spectra, etc.) is examined in the following section.
+3.4.1. Particle size distribution
+Fig. 5 depicts the changes in the SMPS based particle number size distribution of DE
+photochemically oxidized in the FoxBox over a range of OHexp levels, from 3.0×1011 to
+9.5×1011 molec cm-3 s (equivalent photochemical ages: 2.3 to 7.6 days), compared to fresh DE.
+An initial observation of fresh DE revealed a unimodal particle size distribution with a median
+size of 119 nm. Distinct bimodal size distributions were observed at different OHexp levels for
+aged DE. In fact, the median size of the particulate emissions decreased as OHexp levels
+increased, dropping from 119 nm for fresh DE to 48 nm for aged DE at an OHexp of 9.5×1011
+molec cm-3 s. This decrease was due to substantial new ultrafine particle formation and their
+growth in nucleation mode (from 20 to 50 nm) with increased OHexp levels during
+photochemical oxidation. In simpler terms, higher OHexp levels led to an increase in ultrafine
+particle concentrations in nucleation mode. Based on previous studies (Akherati et al. 2020),
+we believe that the observed nucleation likely resulted from aromatic compounds present in
+DE being oxidized under OHexp and rapidly forming SOA.
+Additionally, from Fig. 5, we observed that the size of the ultrafine particles (nucleation
+mode) largely increased with higher OHexp levels. For instance, the particle diameter in the
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+nucleation mode was approximately 25 nm at an OHexp of 3.0×1011 molec cm-3 s, and increased
+to about 40 nm at 9.5×1011 molec cm-3 s. The particle diameter in the accumulation mode
+increased until an OHexp of 3.0×1011 molec cm-3 s and slightly decreased afterwards. However,
+we did not observe nucleation mode in particle mass size distribution, and the mass
+concentration and diameter in accumulation mode largely increased with higher OHexp (Fig.
+S6). These observations suggest that most of the oxidized VOCs (semi- and low-volatility)
+likely condensed onto particles in accumulation mode. In nucleation mode, either less-oxidized
+(semi-volatility) VOCs or, a small fraction of low-volatility VOCs or, a combination of both
+may have condensed onto the newly formed particles, resulting in a negligible addition to the
+mass concentration compared to accumulation mode. These findings are consistent with the
+LVOC fate model discussed above, where VOCs rapidly oxidize to semi- or low-volatility
+VOCs (at all OHexp levels used in this study) that can condense. Furthermore, the nucleation
+observed during photochemical oxidation in FoxBox may not necessarily be representative of
+the atmosphere. In this context, previous studies have reported that a higher concentration of
+condensable species and oxidants in OFRs favors increased nucleation (Guo et al. 2020; Bruns
+et al. 2015). Thus, nucleation mode particles are a common sight in OFR-based studies (Wu et
+al. 2023; Zhao et al. 2021; Ihalainen et al. 2019; Simonen et al. 2017; Palm et al. 2016).
+3.4.2. Evolution of aerosol mass spectra as a result of SOA formation
+To investigate the formation of SOA during photochemical oxidation, the change in PM2.5
+and OC mass concentrations (also referred to as PM2.5ER and OCER, respectively) as a result of
+OHexp was examined along with AMS measurements. The PM2.5 and OC data were then used
+in the following equation to demonstrate SOA formation:
+(OC/EC)𝑂𝐻
+
+OCER = (OC/EC) 𝑒𝑥𝑝
+fresh
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(8)
+
+where OCER is the mass enhancement ratio of OC, (OC/EC)OHexp is the background corrected
+OC/EC ratio at a given OHexp, and (OC/EC)fresh is the background corrected OC/EC ratio for
+fresh (unaged) emissions. PM2.5ER , the mass enhancement ratio of PM2.5, was calculated by
+using background corrected PM2.5 mass concentration in equation 8 instead of OC/EC ratio.
+Fig. 6 illustrates the changes in PM2.5 and OC concentrations at different photochemical ages
+(Fig. 6a) and OHexp levels (Fig. 6b), relative to fresh DE. We observed that the concentrations
+of both OC and OA increased with photochemical age and OHexp (Fig. 6 and Fig. S7,
+respectively), indicating formation of SOA during photochemical oxidation in FoxBox. OCER
+increased from 1.3 ± 0.1 at an OHexp of (1.9 ± 0.2)×1011 molec cm-3 s to 1.6 ± 0.1 at an OHexp
+of (7.0 ± 0.5)×1011 molec cm-3 s (corresponds to photochemical age of 1.5 and 5.4 days,
+respectively) (Fig. 6).
+The OA concentration-based mass enhancement ratio was higher, increased from ~1.5 at
+an OHexp of 1.9×1011 molec cm-3 s to ~3.5 at an OHexp of approximately 7×1011 molec cm-3 s,
+than OCER (Fig. S7). This difference between the ratios was likely due to comparatively higher
+enhancement in organic mass (OM) than OC during OH exposure (Hayes et al. 2013).
+−
+Furthermore, the mass concentrations of NH4+ , SO−
+4 , and NO3 also increased with OHexp (Fig.
+
+S7a-b). The highest increment was observed in NO3− concentration (9 to 26 times) followed by
+NH4+ (3 to 16 times) and S0−
+4 (1 to 2 times) (Fig. S7c). Despite a wide variability in mass
+enhancement ratios of different constituents of PM2.5 as discussed above, the overall PM2.5ER
+was similar to OCER (Fig. 6), probably because a dominant fraction (~60 to 70%) of PM2.5 in
+fresh DE is refractory in nature and non-refractory fraction is predominantly OA (Fig. S7a).
+These observations ascertain that the photochemical oxidation process leads to the secondary
+formation of aerosol, particularly SOA. Previous studies have also reported comparable mass
+enhancement ratios (~1.3 and 1.5) for biomass-burning derived organic aerosol after
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+approximately 3 and 5 days of photochemical aging in the RAAD (Wu et al. 2023), and the
+PAM (Ortega et al. 2013) OFR, respectively.
+To investigate the chemical transformations of DE resulting from SOA formation during
+photochemical oxidation, aerosol mass spectra were monitored using an AMS. While the mass
+spectrum of fresh DE comprised almost all ions (CxHx) that are characteristics of hydrocarbons
+(e.g., C3 H7+ , C4 H9+ , etc.) (Fig. S8a), substantial changes (such as enhanced signal for ion types
+that are characteristics of oxidation (CxHxO, CxHxO2+)) were observed (e.g., C2H3O+, CO+
+2 , etc.)
+in the mass spectrum of aged DE (Fig. S8b).
+To further evaluate chemical transformation during photochemical oxidation, we
+examined fraction of certain well-established AMS-derived organic fragment (ion type) signals
+(m/z) to the total OA mass (fm/z). f43 (C3 H7+ ) and f57 (C4 H9+ ) are commonly employed as proxies
+for freshly emitted hydrocarbon-like OA (Rajeev et al. 2022; Cubison et al. 2011; Ng et al.
+2011). In addition, f43 (C2H3O+) is also commonly used as a proxy for fresh SOA or less
+oxidized OA (Rajeev et al. 2022; Cubison et al. 2011; Ng et al. 2011). On the other hand, f44
+(CO+
+2 ) represents greater oxidation (Rajeev et al. 2022; Cubison et al. 2011; Ng et al. 2011). In
+Fig. 7, f44 is plotted against f43 (Fig. 7a) and f57 (Fig. 7b) as a function of OHexp levels. We
+found an increase in f44 and a decrease in f43 and f57 consistently with higher OHexp levels. The
+f44 for fresh DE varied from 0.01 to 0.02 and f43 varied from 0.10 to 0.12. Upon photochemical
+oxidation, the f44 values consistently increased, and f43 decreased with higher OHexp levels
+(~0.04 and ~0.07, respectively, at OHexp = 9.5×1011 molec cm-3 s) (Fig. 7a). Furthermore, f57
+fraction decreased from ~0.11 for fresh DE to ~0.03 for aged DE (Fig. 7b).
+A few previous studies (Ihalainen et al. 2019; Presto et al. 2014) have looked at
+photochemical oxidation of DE in an OFR and an environmental chamber. In OFR, f44
+increased from 0.08 to 0.15, whereas f43 remain unchanged at ~0.07 at OHexp of 8×1011 molec
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+cm-3 s (Ihalainen et al. 2019). In the environmental chamber, the f44 increased from 0.04 to 0.15
+and the f43 values decreased from ~0.08 to 0.04 at OHexp of 5.4×1010 molec cm-3 s (Presto et al.
+2014). Summarily, the values of f43 and f44 observed in this study may look different from
+previous studies as discussed above, but, overall, the f43 and f44 values observed (or reported)
+in this study for fresh DE were similar to ambient hydrocarbon-like OA (f43: 0.06 to 0.12; f44:
+0.01 to 0.04), whereas the values for aged DE were similar to ambient semi-volatile oxygenated
+OA (f43: 0.06 to 0.15; f44: 0.02 to 0.14) (Ng et al. 2011). We also examined evolution in
+elemental ratios of DE particles to follow oxygenation as a function of OHexp levels in FoxBox,
+as shown in the Van Krevelen diagram (H:C versus O:C) in Fig. S9 of the supplementary file.
+The O:C ratio for fresh DE was ~0.07 and increased to ~0.19 for OHexp of 1.9×1011 molec cm3
+
+s and ~0.23 for OHexp of (7.4 to 9.5)×1011 molec cm-3 s. These O:C values for photochemically
+
+aged DE from FoxBox were similar to ambient semi volatility oxygenated OA (varied from 0.1
+to 0.6) (Ng et al. 2011); however, they were lower than O:C values reported for low volatility
+oxygenated OA (varied from 0.4 to 1.0) from OHexp of (3 to 10)×1011 molec cm-3 s by previous
+ambient (Ng et al. 2011) and DE-based OFR (Lambe et al. 2012) studies.
+This difference is likely due to the high mass loadings (280 to 350 µg m-3 fresh DE) used
+during photochemical oxidation in FoxBox, and as a result, even high volatility (low O/C)
+species could condense. Most species (VOCs) condensing were likely semi volatility rather
+than low volatility, resulting in the lower O:C values during OHexp of DE in FoxBox. Moreover,
+the Van Krevelen slope for photochemical oxidation of DE in FoxBox varied from -1.6 to -1.8
+and was comparable to Van Krevelen slopes reported in ambient atmosphere (including urban
+atmosphere enriched with vehicular pollution) (-0.8 to -1.1) (Roig Rodelas et al. 2019; Hayes
+et al. 2013; Heald et al. 2010). These observations and the consistency of the trend of changes
+in f43 and f44 during photochemical oxidation in FoxBox with other OFRs, environmental
+chambers, and ambient data (discussed above) indicate the atmospheric relevance of the
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+observations. Overall, this study of DE indicates that the FoxBox can simulate atmospherically
+relevant photochemical oxidation comparable to other OFRs and environmental chambers.
+3.5. Cell viability of freshly emitted versus photochemically aged DE
+In vitro cell exposure studies are helpful in anticipation of the integration of the FoxBox
+into human exposure studies. Preliminary findings from such exposures are discussed herein,
+focusing on cell viability, with additional details of effects at lower mass concentrations
+forthcoming in future publications. Thus, these cellular studies are preliminary to the suite of
+tests necessary before human studies can proceed. Cell viability measures the proportion of
+live and healthy cells within a population. A549 cells were exposed to freshly emitted and
+photochemically aged DE at an OHexp of 7.4×1011 molec cm-3 s (atmospheric equivalent
+photochemical age: 5.7 ± 0.4 days) in this study. Fig. 8 shows the % cell viability (relative to
+INC controls) after exposure to FA, fresh DE, and photochemically aged DE. The cell viability
+for FA (HEPA and activated carbon filtered room air) at ~97% was very similar to INC, as
+envisaged. The cell viability for fresh diesel exhaust was only slightly lower at 93%; however,
+for photochemically aged DE was much lower at 29% (Fig. 8).
+A nonparametric t-test (unpaired) was used to statistically compare the cell viability of
+FA, fresh DE, and photochemically aged DE with INC controls. The difference in cell viability
+after photochemically aged DE exposures was significant (p < 0.0001), whereas no significant
+difference was identified for fresh DE. This is intriguing considering that the PM2.5
+concentrations were very similar during fresh (339 ± 18 µg m-3) and photochemically aged DE
+(357 ± 10 µg m-3) exposures. PM2.5 is well known to be a major contributor to air pollutionassociated adverse health effects. In this context, a recent study (Chowdhury et al. 2018) also
+reported that the cell viability of A549 cells decreases upon exposure to aged naphthalene- and
+α-pinene-derived SOA compared to fresh naphthalene and α-pinene SOA. Similar findings
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+have been obtained for toluene SOA as well (Yu et al. 2017). Thus, the chemical changes within
+PM2.5, notably the formation of SOA (ultrafine particles) due to photochemical aging, are likely
+responsible for decreased cell viability.
+However, photochemical aging also changed the fresh gaseous composition, suggesting
+that photochemically produced gases could also decrease cell viability. Particularly, NO
+decreased from 3716 ± 160 ppbv to 660 ± 107 ppbv, but NO2 increased from 532 ± 44 ppbv to
+2665 ± 43 ppbv, and O3 increased from 22 ± 3 ppbv to 177 ± 32 ppbv (Table S4). In one study,
+2500 ppbv of NO2 exposure decreased viability of A549 cells to about 90% (Bakand et al.
+2007). In another, 400 ppbv of O3 exposure decreased cell viability to about 88% (Kosmider et
+al. 2010). These studies indicate that little of our observed decrease in cell viability is likely
+due to gas-phase NO2 and O3 and is primarily due to aged PM2.5 or could be due to co-exposure
+(synergistic) effects. The cell viability will be checked for gases (filtering air pollution sample
+through HEPA), particles, and their whole mixture (gas + particles) separately in the next
+FoxBox experiments to determine their individual and co-exposure effects (if any).
+
+4. Conclusions and implications for environmental respiratory research
+This study introduces the FoxBox, a large oxidative flow reactor at the Air Pollution
+Exposure Laboratory, and diagnoses its ability to simulate atmospheric aging of DE. It is
+capable of OH exposures up to 1012 molec cm-3 s, which is equivalent to almost 8 days in the
+atmosphere, with a flow rate 1300 to 2450 LPM that is necessary for eventual human exposure
+experiments. Its short residence times for gases and particles results in almost 100%
+transmission of particles of mobility diameters between 15 nm and 615 nm. The changes in DE
+particle size distributions and chemical composition with photochemical aging are consistent
+with those observed in the atmosphere and in other oxidative flow reactors. Thus, we have
+demonstrated that the FoxBox is capable of simulating, in a few minutes, many, if not most, of
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+the characteristics of DE aging in the atmosphere, signifying its suitability and applicability for
+aerosol aging studies in the APEL.
+The vast majority of the global population is regularly exposed to levels of gases and
+PM2.5 exceeding WHO guidelines. It is noted that the chemical and physical characteristics of
+air pollutants change when they are transported long distances from their source locations to
+faraway locations due to atmospheric chemical processes, such as photochemical oxidation.
+Our preliminary study on cell viability found that photochemical aging significantly reduced
+cell viability, supporting observations that communities distant from air pollution sources are
+affected and vulnerable.
+Controlled human exposure studies are a critical part of the set of interdisciplinary tools
+required to establish plausibility for the negative health effects of DE and other pollutant
+particles (Carlsten and Georas 2014). Yet the effects of inhaling more realistic photochemically
+aged aerosol particles has rarely been studied in controlled human exposures. This situation is
+concerning, especially given the potential of underappreciated health effects for communities
+exposed to photochemically aged particles. We contend that the integration of the FoxBox with
+a controlled human exposure system, albeit after a sufficient suite of tests at lower mass
+concentrations (to allow for a margin of safety) in our next set of in vitro experiments, will help
+address these concerns.
+
+Acknowledgments
+The authors thank Agnes Yuen, Cedric Chou, Carley Schwartz, and Andrew Lee for
+managerial and logistical support to the Air Pollution Exposure Laboratory. We are also grateful
+to the Vancouver Coastal Health Research Institute and The University of British Columbia for
+institutional support.
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+References
+Aerodyne (2019). PAM Users Manual. Aerodyne Research Inc., Billerica, MA.
+Akherati, A., He, Y., Coggon, M.M., Koss, A.R., Hodshire, A.L., Sekimoto, K., Warneke, C.,
+De Gouw, J., Yee, L., Seinfeld, J.H., Onasch, T.B., Herndon, S.C., Knighton, W.B.,
+Cappa, C.D., Kleeman, M.J., Lim, C.Y., Kroll, J.H., Pierce, J.R., and Jathar, S.H. (2020).
+Oxygenated Aromatic Compounds are Important Precursors of Secondary Organic
+Aerosol in Biomass-Burning Emissions. Environ. Sci. Technol. 54 (14):8568–8579.
+doi:10.1021/acs.est.0c01345.
+Aufderheide, M. (2005). Direct exposure methods for testing native atmospheres. Exp. Toxicol.
+Pathol. 57 (SUPPL. 1):213–226. doi:10.1016/j.etp.2005.05.019.
+Aufderheide, M., Halter, B., Möhle, N., and Hochrainer, D. (2013). The CULTEX RFS: A
+Comprehensive Technical Approach for the In Vitro Exposure of Airway Epithelial Cells
+to the Particulate Matter at the Air-Liquid Interface. Biomed Res. Int. 2013 (1):1–15.
+doi:10.1155/2013/734137.
+Bakand, S., Winder, C., and Hayes, A. (2007). Comparative in vitro cytotoxicity assessment
+of selected gaseous compounds in human alveolar epithelial cells. Toxicol. Vitr. 21
+(7):1341–1347. doi:10.1016/j.tiv.2007.04.013.
+Birger, N., Gould, T., Stewart, J., Miller, M.R., Larson, T., and Carlsten, C. (2011). The Air
+Pollution Exposure Laboratory (APEL) for controlled human exposure to diesel exhaust
+and other inhalants: Characterization and comparison to existing facilities. Inhal. Toxicol.
+23 (4):219–225. doi:10.3109/08958378.2011.562256.
+Brauer, M., Freedman, G., Frostad, J., Van Donkelaar, A., Martin, R. V., Dentener, F.,
+Dingenen, R. Van, Estep, K., Amini, H., Apte, J.S., Balakrishnan, K., Barregard, L.,
+Broday, D., Feigin, V., Ghosh, S., Hopke, P.K., Knibbs, L.D., Kokubo, Y., Liu, Y., Ma,
+S., Morawska, L., Sangrador, J.L.T., Shaddick, G., Anderson, H.R., Vos, T., Forouzanfar,
+M.H., Burnett, R.T., and Cohen, A. (2016). Ambient Air Pollution Exposure Estimation
+for the Global Burden of Disease 2013. Environ. Sci. Technol. 50 (1):79–88.
+doi:10.1021/acs.est.5b03709.
+Brune, W.H. (2019). The Chamber Wall Index for Gas-Wall Interactions in Atmospheric
+Environmental
+Enclosures.
+Environ.
+Sci.
+Technol.
+53
+(7):3645–3652.
+doi:10.1021/acs.est.8b06260.
+Bruns, E.A., El Haddad, I., Keller, A., Klein, F., Kumar, N.K., Pieber, S.M., Corbin, J.C.,
+Slowik, J.G., Brune, W.H., Baltensperger, U., and Prévôt, A.S.H. (2015). Intercomparison of laboratory smog chamber and flow reactor systems on organic aerosol yield
+and composition. Atmos. Meas. Tech. 8 (6):2315–2332. doi:10.5194/amt-8-2315-2015.
+Canagaratna, M.R., Jimenez, J.L., Kroll, J.H., Chen, Q., Kessler, S.H., Massoli, P., Hildebrandt
+Ruiz, L., Fortner, E., Williams, L.R., Wilson, K.R., Surratt, J.D., Donahue, N.M., Jayne,
+J.T., and Worsnop, D.R. (2015). Elemental ratio measurements of organic compounds
+using aerosol mass spectrometry: Characterization, improved calibration, and
+implications. Atmos. Chem. Phys. 15 (1):253–272. doi:10.5194/acp-15-253-2015.
+Cao, J., Wang, Q., Li, L., Zhang, Y., Tian, J., Chen, L.W.A., Ho, S.S.H., Wang, X., Chow,
+J.C., and Watson, J.G. (2020). Evaluation of the Oxidation Flow Reactor for particulate
+matter emission limit certification. Atmos. Environ. 224 (November 2019).
+doi:10.1016/j.atmosenv.2019.117086.
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Carlsten, C. and Georas, S.N. (2014). Update in environmental and occupational lung diseases
+2013. Am. J. Respir. Crit. Care Med. 189 (9):1037–1043. doi:10.1164/rccm.2014010108UP.
+Choudhary, V., Mandariya, A.K., Zhao, R., and Gupta, T. (2024). Field evidence of brown
+carbon absorption enhancement linked to organic nitrogen formation in Indo-Gangetic
+Plain.
+Sci.
+Total
+Environ.
+930
+(August
+2023):172506.
+doi:10.1016/j.scitotenv.2024.172506.
+Chowdhury, P.H., He, Q., Lasitza Male, T., Brune, W.H., Rudich, Y., and Pardo, M. (2018).
+Exposure of Lung Epithelial Cells to Photochemically Aged Secondary Organic Aerosol
+Shows Increased Toxic Effects. Environ. Sci. Technol. Lett. 5 (7):424–430.
+doi:10.1021/acs.estlett.8b00256.
+Cohen, A.J., Brauer, M., Burnett, R., Anderson, H.R., Frostad, J., Estep, K., Balakrishnan, K.,
+Brunekreef, B., Dandona, L., Dandona, R., Feigin, V., Freedman, G., Hubbell, B., Jobling,
+A., Kan, H., Knibbs, L., Liu, Y., Martin, R., Morawska, L., Pope, C.A., Shin, H., Straif,
+K., Shaddick, G., Thomas, M., van Dingenen, R., van Donkelaar, A., Vos, T., Murray,
+C.J.L., and Forouzanfar, M.H. (2017). Estimates and 25-year trends of the global burden
+of disease attributable to ambient air pollution: an analysis of data from the Global Burden
+of Diseases Study 2015. Lancet 389 (10082):1907–1918. doi:10.1016/S01406736(17)30505-6.
+Cubison, M.J., Ortega, A.M., Hayes, P.L., Farmer, D.K., Day, D., Lechner, M.J., Brune, W.H.,
+Apel, E., Diskin, G.S., Fisher, J.A., Fuelberg, H.E., Hecobian, A., Knapp, D.J., Mikoviny,
+T., Riemer, D., Sachse, G.W., Sessions, W., Weber, R.J., Weinheimer, A.J., Wisthaler,
+A., and Jimenez, J.L. (2011). Effects of aging on organic aerosol from open biomass
+burning smoke in aircraft and laboratory studies. Atmos. Chem. Phys. 11 (23):12049–
+12064. doi:10.5194/acp-11-12049-2011.
+DeCarlo, P.F., Kimmel, J.R., Trimborn, A., Northway, M.J., Jayne, J.T., Aiken, A.C., Gonin,
+M., Fuhrer, K., Horvath, T., Docherty, K.S., Worsnop, D.R., and Jimenez, J.L. (2006).
+Field-deployable, high-resolution, time-of-flight aerosol mass spectrometer. Anal. Chem.
+78 (24):8281–8289. doi:10.1021/ac061249n.
+Delfino, R.J., Staimer, N., Tjoa, T., Arhami, M., Polidori, A., Gillen, D.L., George, S.C.,
+Shafer, M.M., Schauer, J.J., and Sioutas, C. (2010). Associations of primary and
+secondary organic aerosols with airway and systemic inflammation in an elderly panel
+cohort. Epidemiology 21 (6):892–902. doi:10.1097/EDE.0b013e3181f20e6c.
+Donahue, N.M., Robinson, A.L., Stanier, C.O., and Pandis, S.N. (2006). Coupled partitioning,
+dilution, and chemical aging of semivolatile organics. Environ. Sci. Technol. 40 (8):2635–
+2643. doi:10.1021/es052297c.
+Ervens, B. (2015). Modeling the Processing of Aerosol and Trace Gases in Clouds and Fogs.
+Chem. Rev. 115 (10):4157–4198. doi:10.1021/cr5005887.
+Ervens, B., Turpin, B.J., and Weber, R.J. (2011). Secondary organic aerosol formation in cloud
+droplets and aqueous particles (aqSOA): A review of laboratory, field and model studies.
+Atmos. Chem. Phys. 11 (21):11069–11102. doi:10.5194/acp-11-11069-2011.
+Ezell, M.J., Johnson, S.N., Yu, Y., Perraud, V., Bruns, E.A., Alexander, M.L., Zelenyuk, A.,
+Dabdub, D., and Finlayson-Pitts, B.J. (2010). A new aerosol flow system for
+photochemical and thermal studies of tropospheric aerosols. Aerosol Sci. Technol. 44
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(5):329–338. doi:10.1080/02786821003639700.
+Fogler, H.S. and Gürmen, M.N. (1999). Elements of Chemical Reaction Engineering. 2005.
+Search PubMed 813–866.
+George, I.J., Vlasenko, A., Slowik, J.G., Broekhuizen, K., and Abbatt, J.P.D. (2007).
+Heterogeneous oxidation of saturated organic aerosols by hydroxyl radicals: Uptake
+kinetics, condensed-phase products, and particle size change. Atmos. Chem. Phys. 7
+(16):4187–4201. doi:10.5194/acp-7-4187-2007.
+Guo, S., Hu, M., Peng, J., Wu, Z., Zamora, M.L., Shang, D., Du, Z., Zheng, J., Fang, X., Tang,
+R., Wu, Y., Zeng, L., Shuai, S., Zhang, W., Wang, Y., Ji, Y., Li, Y., Zhang, A.L., Wang,
+W., Zhang, F., Zhao, J., Gong, X., Wang, C., Molina, M.J., and Zhang, R. (2020).
+Remarkable nucleation and growth of ultrafine particles from vehicular exhaust. Proc.
+Natl. Acad. Sci. U. S. A. 117 (7):3427–3432. doi:10.1073/pnas.1916366117.
+Hallquist, M., Wenger, J.C., Baltensperger, U., Rudich, Y., Simpson, D., Claeys, M., Dommen,
+J., Donahue, N.M., George, C., Goldstein, A.H., Hamilton, J.F., Herrmann, H., Hoffmann,
+T., Iinuma, Y., Jang, M., Jenkin, M.E., Jimenez, J.L., Kiendler-Scharr, A., Maenhaut, W.,
+McFiggans, G., Mentel, T.F., Monod, A., Prévôt, A.S.H., Seinfeld, J.H., Surratt, J.D.,
+Szmigielski, R., and Wildt, J. (2009). The formation, properties and impact of secondary
+organic aerosol: Current and emerging issues. Atmos. Chem. Phys. 9 (14):5155–5236.
+doi:10.5194/acp-9-5155-2009.
+Hansen, M.B., Nielsen, S.E., and Berg, K. (1989). Re-examination and further development of
+a precise and rapid dye method for measuring cell growth/cell kill. J. Immunol. Methods
+119 (2):203–210. doi:10.1016/0022-1759(89)90397-9.
+Hayes, P.L., Ortega, A.M., Cubison, M.J., Froyd, K.D., Zhao, Y., Cliff, S.S., Hu, W.W.,
+Toohey, D.W., Flynn, J.H., Lefer, B.L., Grossberg, N., Alvarez, S., Rappenglück, B.,
+Taylor, J.W., Allan, J.D., Holloway, J.S., Gilman, J.B., Kuster, W.C., De Gouw, J.A.,
+Massoli, P., Zhang, X., Liu, J., Weber, R.J., Corrigan, A.L., Russell, L.M., Isaacman, G.,
+Worton, D.R., Kreisberg, N.M., Goldstein, A.H., Thalman, R., Waxman, E.M., Volkamer,
+R., Lin, Y.H., Surratt, J.D., Kleindienst, T.E., Offenberg, J.H., Dusanter, S., Griffith, S.,
+Stevens, P.S., Brioude, J., Angevine, W.M., and Jimenez, J.L. (2013). Organic aerosol
+composition and sources in Pasadena, California, during the 2010 CalNex campaign. J.
+Geophys. Res. Atmos. 118 (16):9233–9257. doi:10.1002/jgrd.50530.
+Heald, C.L., Kroll, J.H., Jimenez, J.L., Docherty, K.S., Decarlo, P.F., Aiken, A.C., Chen, Q.,
+Martin, S.T., Farmer, D.K., and Artaxo, P. (2010). A simplified description of the
+evolution of organic aerosol composition in the atmosphere. Geophys. Res. Lett. 37 (8).
+doi:10.1029/2010GL042737.
+Huang, Y., Coggon, M.M., Zhao, R., Lignell, H., Bauer, M.U., Flagan, R.C., and Seinfeld, J.H.
+(2017). The Caltech Photooxidation Flow Tube reactor: Design, fluid dynamics and
+characterization. Atmos. Meas. Tech. 10 (3):839–867. doi:10.5194/amt-10-839-2017.
+Ihalainen, M., Tiitta, P., Czech, H., Yli-Pirilä, P., Hartikainen, A., Kortelainen, M., Tissari, J.,
+Stengel, B., Sklorz, M., Suhonen, H., Lamberg, H., Leskinen, A., Kiendler-Scharr, A.,
+Harndorf, H., Zimmermann, R., Jokiniemi, J., and Sippula, O. (2019). A novel highvolume Photochemical Emission Aging flow tube Reactor (PEAR). Aerosol Sci. Technol.
+53 (3):276–294. doi:10.1080/02786826.2018.1559918.
+Jimenez, J.L., Canagaratna, M.R., Donahue, N.M., Prevot, A.S.H., Zhang, Q., Kroll, J.H.,
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+DeCarlo, P.F., Allan, J.D., Coe, H., Ng, N.L., Aiken, A.C., Docherty, K.S., Ulbrich, I.M.,
+Grieshop, A.P., Robinson, A.L., Duplissy, J., Smith, J.D., Wilson, K.R., Lanz, V.A.,
+Hueglin, C., Sun, Y.L., Tian, J., Laaksonen, A., Raatikainen, T., Rautiainen, J.,
+Vaattovaara, P., Ehn, M., Kulmala, M., Tomlinson, J.M., Collins, D.R., Cubison, M.J.,
+Dunlea, E.J., Huffman, J.A., Onasch, T.B., Alfarra, M.R., Williams, P.I., Bower, K.,
+Kondo, Y., Schneider, J., Drewnick, F., Borrmann, S., Weimer, S., Demerjian, K.,
+Salcedo, D., Cottrell, L., Griffin, R., Takami, A., Miyoshi, T., Hatakeyama, S., Shimono,
+A., Sun, J.Y., Zhang, Y.M., Dzepina, K., Kimmel, J.R., Sueper, D., Jayne, J.T., Herndon,
+S.C., Trimborn, A.M., Williams, L.R., Wood, E.C., Middlebrook, A.M., Kolb, C.E.,
+Baltensperger, U., and Worsnop, D.R. (2009). Evolution of organic aerosols in the
+atmosphere. Science (80-. ). 326 (5959):1525–1529. doi:10.1126/science.1180353.
+Jimenez, J.L., Jayne, J.T., Shi, Q., Kolb, C.E., Worsnop, D.R., Yourshaw, I., Seinfeld, J.H.,
+Flagan, R.C., Zhang, X., Smith, K.A., Morris, J.W., and Davidovits, P. (2003). Ambient
+aerosol sampling using the Aerodyne aerosol mass spectrometer. J. Geophys. Res. Atmos.
+108 (7):1–13. doi:10.1029/2001jd001213.
+Kan, C.S., Calvert, J.G., and Shaw, J.H. (1981). Oxidation of sulfur dioxide by methylperoxy
+radicals. J. Phys. Chem. 85 (9):1126–1132. doi:10.1021/j150609a011.
+Kanakidou, M., Seinfeld, J.H., Pandis, S.N., Barnes, I., Dentener, F.J., Facchini, M.C., Van
+Dingenen, R., Ervens, B., Nenes, A., Nielsen, C.J., Swietlicki, E., Putaud, J.P., Balkanski,
+Y., Fuzzi, S., Horth, J., Moortgat, G.K., Winterhalter, R., Myhre, C.E.L., Tsigaridis, K.,
+Vignati, E., Stephanou, E.G., and Wilson, J. (2005). Organic aerosol and global climate
+modelling: A review. Atmos. Chem. Phys. 5 (4):1053–1123. doi:10.5194/acp-5-10532005.
+Kang, E., Root, M.J., Toohey, D.W., and Brune, W.H. (2007). Introducing the concept of
+Potential Aerosol Mass (PAM). Atmos. Chem. Phys. 7 (22):5727–5744. doi:10.5194/acp7-5727-2007.
+Keller, A. and Burtscher, H. (2012). A continuous photo-oxidation flow reactor for a defined
+measurement of the SOA formation potential of wood burning emissions. J. Aerosol Sci.
+49:9–20. doi:10.1016/j.jaerosci.2012.02.007.
+Knote, C., Hodzic, A., and Jimenez, J.L. (2015). The effect of dry and wet deposition of
+condensable vapors on secondary organic aerosols concentrations over the continental
+US. Atmos. Chem. Phys. 15 (1):1–18. doi:10.5194/acp-15-1-2015.
+Kosmider, B., Loader, J.E., Murphy, R.C., and Mason, R.J. (2010). Apoptosis induced by
+ozone and oxysterols in human alveolar epithelial cells. Free Radic. Biol. Med. 48
+(11):1513–1524. doi:10.1016/j.freeradbiomed.2010.02.032.
+Krechmer, J.E., Coggon, M.M., Massoli, P., Nguyen, T.B., Crounse, J.D., Hu, W., Day, D.A.,
+Tyndall, G.S., Henze, D.K., Rivera-Rios, J.C., Nowak, J.B., Kimmel, J.R., Mauldin, R.L.,
+Stark, H., Jayne, J.T., Sipilä, M., Junninen, H., St. Clair, J.M., Zhang, X., Feiner, P.A.,
+Zhang, L., Miller, D.O., Brune, W.H., Keutsch, F.N., Wennberg, P.O., Seinfeld, J.H.,
+Worsnop, D.R., Jimenez, J.L., and Canagaratna, M.R. (2015). Formation of Low
+Volatility Organic Compounds and Secondary Organic Aerosol from Isoprene
+Hydroxyhydroperoxide Low-NO Oxidation. Environ. Sci. Technol. 49 (17):10330–
+10339. doi:10.1021/acs.est.5b02031.
+Krechmer, J.E., Pagonis, D., Ziemann, P.J., and Jimenez, J.L. (2016). Quantification of GasWall Partitioning in Teflon Environmental Chambers Using Rapid Bursts of Low-
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Volatility Oxidized Species Generated in Situ. Environ. Sci. Technol. 50 (11):5757–5765.
+doi:10.1021/acs.est.6b00606.
+Kutz, M. (2012). Handbook of Environmental Degradation of Materials (Second Edition),
+William Andrew Publishing. Elsevier, Oxford.
+Lambe, A.T., Ahern, A.T., Williams, L.R., Slowik, J.G., Wong, J.P.S., Abbatt, J.P.D., Brune,
+W.H., Ng, N.L., Wright, J.P., Croasdale, D.R., Worsnop, D.R., Davidovits, P., and
+Onasch, T.B. (2011). Characterization of aerosol photooxidation flow reactors:
+Heterogeneous oxidation, secondary organic aerosol formation and cloud condensation
+nuclei activity measurements. Atmos. Meas. Tech. 4 (3):445–461. doi:10.5194/amt-4-4452011.
+Lambe, A.T., Chhabra, P.S., Onasch, T.B., Brune, W.H., Hunter, J.F., Kroll, J.H., Cummings,
+M.J., Brogan, J.F., Parmar, Y., Worsnop, D.R., Kolb, C.E., and Davidovits, P. (2015).
+Effect of oxidant concentration, exposure time, and seed particles on secondary organic
+aerosol chemical composition and yield. Atmos. Chem. Phys. 15 (6):3063–3075.
+doi:10.5194/acp-15-3063-2015.
+Lambe, A.T., Onasch, T.B., Croasdale, D.R., Wright, J.P., Martin, A.T., Franklin, J.P., Massoli,
+P., Kroll, J.H., Canagaratna, M.R., Brune, W.H., Worsnop, D.R., and Davidovits, P.
+(2012). Transitions from functionalization to fragmentation reactions of laboratory
+Secondary Organic Aerosol (SOA) generated from the OH oxidation of alkane precursors.
+Environ. Sci. Technol. 46 (10):5430–5437. doi:10.1021/es300274t.
+Lee Ng, N., Brown, S.S., Archibald, A.T., Atlas, E., Cohen, R.C., Crowley, J.N., Day, D.A.,
+Donahue, N.M., Fry, J.L., Fuchs, H., Griffin, R.J., Guzman, M.I., Herrmann, H., Hodzic,
+A., Iinuma, Y., Kiendler-Scharr, A., Lee, B.H., Luecken, D.J., Mao, J., McLaren, R.,
+Mutzel, A., Osthoff, H.D., Ouyang, B., Picquet-Varrault, B., Platt, U., Pye, H.O.T.,
+Rudich, Y., Schwantes, R.H., Shiraiwa, M., Stutz, J., Thornton, J.A., Tilgner, A.,
+Williams, B.J., and Zaveri, R.A. (2017). Nitrate radicals and biogenic volatile organic
+compounds: Oxidation, mechanisms, and organic aerosol. Atmos. Chem. Phys. 17
+(3):2103–2162. doi:10.5194/acp-17-2103-2017.
+Li, R., Palm, B.B., Ortega, A.M., Hlywiak, J., Hu, W., Peng, Z., Day, D.A., Knote, C., Brune,
+W.H., De Gouw, J.A., and Jimenez, J.L. (2015). Modeling the radical chemistry in an
+oxidation flow reactor: Radical formation and recycling, sensitivities, and the OH
+exposure estimation equation. J. Phys. Chem. A 119 (19):4418–4432.
+doi:10.1021/jp509534k.
+Lim, Y.B., Tan, Y., Perri, M.J., Seitzinger, S.P., and Turpin, B.J. (2010). Aqueous chemistry
+and its role in secondary organic aerosol (SOA) formation. Atmos. Chem. Phys. 10
+(21):10521–10539. doi:10.5194/acp-10-10521-2010.
+Long, E., Schwartz, C., and Carlsten, C. (2022). Controlled human exposure to diesel exhaust:
+a method for understanding health effects of traffic-related air pollution. Part. Fibre
+Toxicol. 19 (1):1–22. doi:10.1186/s12989-022-00454-1.
+Longhin, E., Gualtieri, M., Capasso, L., Bengalli, R., Mollerup, S., Holme, J.A., Øvrevik, J.,
+Casadei, S., Di Benedetto, C., Parenti, P., and Camatini, M. (2016). Physico-chemical
+properties and biological effects of diesel and biomass particles. Environ. Pollut.
+215:366–375. doi:10.1016/j.envpol.2016.05.015.
+Mao, J., Ren, X., Brune, W.H., Olson, J.R., Crawford, J.H., Fried, A., Huey, L.G., Cohen, R.C.,
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Heikes, B., Singh, H.B., Blake, D.R., Sachse, G.W., Diskin, G.S., Hall, S.R., and Shetter,
+R.E. (2009). Airborne measurement of OH reactivity during INTEX-B. Atmos. Chem.
+Phys. 9 (1):163–173. doi:10.5194/acp-9-163-2009.
+McCarthy, C.E., Duffney, P.F., Wyatt, J.D., Thatcher, T.H., Phipps, R.P., and Sime, P.J.
+(2017). Comparison of in vitro toxicological effects of biomass smoke from different
+sources of animal dung. Toxicol. Vitr. 43:76–86. doi:10.1016/j.tiv.2017.05.021.
+Mentel, T.F., Bleilebens, D., and Wahner, A. (1996). A study of nighttime nitrogen oxide
+oxidation in a large reaction chamber - The fate of NO2, N2O5, HNO3, and O3 at different
+humidities. Atmos. Environ. 30 (23):4007–4020. doi:10.1016/1352-2310(96)00117-3.
+Mills, N.L., Törnqvist, H., Gonzalez, M.C., Vink, E., Robinson, S.D., Söderberg, S., Boon,
+N.A., Donaldson, K., Sandström, T., Blomberg, A., and Newby, D.E. (2007). Ischemic
+and Thrombotic Effects of Dilute Diesel-Exhaust Inhalation in Men with Coronary Heart
+Disease. N. Engl. J. Med. 357 (11):1075–1082. doi:10.1056/nejmoa066314.
+Ng, N.L., Canagaratna, M.R., Jimenez, J.L., Chhabra, P.S., Seinfeld, J.H., and Worsnop, D.R.
+(2011). Changes in organic aerosol composition with aging inferred from aerosol mass
+spectra. Atmos. Chem. Phys. 11 (13):6465–6474. doi:10.5194/acp-11-6465-2011.
+Ng, N.L., Canagaratna, M.R., Zhang, Q., Jimenez, J.L., Tian, J., Ulbrich, I.M., Kroll, J.H.,
+Docherty, K.S., Chhabra, P.S., Bahreini, R., Murphy, S.M., Seinfeld, J.H., Hildebrandt,
+L., Donahue, N.M., Decarlo, P.F., Lanz, V.A., Prévôt, A.S.H., Dinar, E., Rudich, Y., and
+Worsnop, D.R. (2010). Organic aerosol components observed in Northern Hemispheric
+datasets from Aerosol Mass Spectrometry. Atmos. Chem. Phys. 10 (10):4625–4641.
+doi:10.5194/acp-10-4625-2010.
+Nguyen, T.B., Crounse, J.D., Teng, A.P., Clair, J.M.S., Paulot, F., Wolfe, G.M., and Wennberg,
+P.O. (2015). Rapid deposition of oxidized biogenic compounds to a temperate forest.
+Proc. Natl. Acad. Sci. U. S. A. 112 (5):E392–E401. doi:10.1073/pnas.1418702112.
+Nordenhäll, C., Pourazar, J., Blomberg, A., Levin, J.O., Sandström, T., and Ädelroth, E.
+(2000). Airway inflammation following exposure to diesel exhaaust: A study of time
+kinetics using induced sputum. Eur. Respir. J. 15 (6):1046–1051. doi:10.1034/j.13993003.2000.01512.x.
+Odum, J.R., Jungkamp, T.P.W., Griffin, R.J., Flagan, R.C., and Seinfeld, J.H. (1997). The
+atmospheric aerosol-forming potential of whole gasoline vapor. Science (80-. ). 276
+(5309):96–99. doi:10.1126/science.276.5309.96.
+Ortega, A.M., Day, D.A., Cubison, M.J., Brune, W.H., Bon, D., De Gouw, J.A., and Jimenez,
+J.L. (2013). Secondary organic aerosol formation and primary organic aerosol oxidation
+from biomass-burning smoke in a flow reactor during FLAME-3. Atmos. Chem. Phys. 13
+(22):11551–11571. doi:10.5194/acp-13-11551-2013.
+Palm, B.B., Campuzano-Jost, P., Ortega, A.M., Day, D.A., Kaser, L., Jud, W., Karl, T., Hansel,
+A., Hunter, J.F., Cross, E.S., Kroll, J.H., Peng, Z., Brune, W.H., and Jimenez, J.L. (2016).
+In situ secondary organic aerosol formation from ambient pine forest air using an
+oxidation flow reactor. Atmos. Chem. Phys. 16 (5):2943–2970. doi:10.5194/acp-16-29432016.
+PAM Wiki (2024). Available at https://sites.google.com/site/pamwiki/.
+Pang, Y., Huang, W., Luo, X.-S., Chen, Q., Zhao, Z., Tang, M., Hong, Y., Chen, J., and Li, H.
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(2020). In-vitro human lung cell injuries induced by urban PM2.5 during a severe air
+pollution episode: Variations associated with particle components. Ecotoxicol. Environ.
+Saf. 206:111406. doi:10.1016/j.ecoenv.2020.111406.
+Pankow, J.F. (1994). An absorption model of gas/particle partitioning of organic compounds
+in the atmosphere. Atmos. Environ. 28 (2):185–188. doi:10.1016/1352-2310(94)90093-0.
+Papapostolou, V., Lawrence, J.E., Ferguson, S.T., Wolfson, J.M., Diaz, E.A., Godleski, J.J.,
+and Koutrakis, P. (2013). Development and characterization of an exposure generation
+system to investigate the health effects of particles from fresh and aged traffic emissions.
+Air Qual. Atmos. Heal. 6 (2):419–429. doi:10.1007/s11869-012-0178-3.
+Pathak, R.K., Stanier, C.O., Donahue, N.M., and Pandis, S.N. (2007). Ozonolysis of α ‐pinene
+at atmospherically relevant concentrations: Temperature dependence of aerosol mass
+fractions (yields). J. Geophys. Res. Atmos. 112 (D3). doi:10.1029/2006JD007436.
+Peng, Z., Day, D.A., Ortega, A.M., Palm, B.B., Hu, W., Stark, H., Li, R., Tsigaridis, K., Brune,
+W.H., and Jimenez, J.L. (2016). Non-OH chemistry in oxidation flow reactors for the
+study of atmospheric chemistry systematically examined by modeling. Atmos. Chem.
+Phys. 16 (7):4283–4305. doi:10.5194/acp-16-4283-2016.
+Peng, Z., Day, D.A., Stark, H., Li, R., Lee-Taylor, J., Palm, B.B., Brune, W.H., and Jimenez,
+J.L. (2015). HOx radical chemistry in oxidation flow reactors with low-pressure mercury
+lamps systematically examined by modeling. Atmos. Meas. Tech. 8 (11):4863–4890.
+doi:10.5194/amt-8-4863-2015.
+Peng, Z. and Jimenez, J.L. (2020). Radical chemistry in oxidation flow reactors for atmospheric
+chemistry research. Chem. Soc. Rev. 49 (9):2570–2616. doi:10.1039/c9cs00766k.
+Peretz, A., Kaufman, J.D., Trenga, C.A., Allen, J., Carlsten, C., Aulet, M.R., Adar, S.D., and
+Sullivan, J.H. (2008). Effects of diesel exhaust inhalation on heart rate variability in
+human volunteers. Environ. Res. 107 (2):178–184. doi:10.1016/j.envres.2008.01.012.
+Pope, C.A. and Dockery, D.W. (2006). Health effects of fine particulate air pollution: Lines
+that
+connect.
+J.
+Air
+Waste
+Manag.
+Assoc.
+56
+(6):709–742.
+doi:10.1080/10473289.2006.10464485.
+Pöschl, U. (2005). Atmospheric aerosols: Composition, transformation, climate and health
+effects. Angew. Chemie - Int. Ed. 44 (46):7520–7540. doi:10.1002/anie.200501122.
+Presto, A.A., Gordon, T.D., and Robinson, A.L. (2014). Primary to secondary organic aerosol:
+Evolution of organic emissions from mobile combustion sources. Atmos. Chem. Phys. 14
+(10):5015–5036. doi:10.5194/acp-14-5015-2014.
+Rajeev, P., Choudhary, V., Chakraborty, A., Singh, G.K., and Gupta, T. (2022). Light
+absorption potential of water-soluble organic aerosols in the two polluted urban locations
+in
+the
+central
+Indo-Gangetic
+Plain.
+Environ.
+Pollut.
+314.
+doi:10.1016/j.envpol.2022.120228.
+Richards-Henderson, N.K., Goldstein, A.H., and Wilson, K.R. (2016). Sulfur Dioxide
+Accelerates the Heterogeneous Oxidation Rate of Organic Aerosol by Hydroxyl Radicals.
+Environ. Sci. Technol. 50 (7):3554–3561. doi:10.1021/acs.est.5b05369.
+Rider, C.F., Yamamoto, M., Günther, O.P., Hirota, J.A., Singh, A., Tebbutt, S.J., and Carlsten,
+C. (2016). Controlled diesel exhaust and allergen coexposure modulates microRNA and
+gene expression in humans: Effects on inflammatory lung markers. J. Allergy Clin.
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Immunol. 138 (6):1690–1700. doi:10.1016/j.jaci.2016.02.038.
+Roig Rodelas, R., Chakraborty, A., Perdrix, E., Tison, E., and Riffault, V. (2019). Real-time
+assessment of wintertime organic aerosol characteristics and sources at a suburban site in
+northern
+France.
+Atmos.
+Environ.
+203
+(June
+2018):48–61.
+doi:10.1016/j.atmosenv.2019.01.035.
+Rossner, P., Cervena, T., and Vojtisek-Lom, M. (2021). In vitro exposure to complete engine
+emissions – a mini-review. Toxicology 462:152953. doi:10.1016/j.tox.2021.152953.
+Sander, S.P., Friedl, R.R., Abbatt, J., Barker, J.R., Burkholder, J.B., Kolb, C.E., Kurylo, M.J.,
+Moortgat, G.K., Wine, P.H., Huie, R.E., and Orkin, V.L. (2011). Chemical kinetics and
+photochemical data for use in atmospheric studies: Evaluation number 17, Jet Propulsion
+Laboratory.
+Schuck, E.A. and Rogers, L.H. (1959). Eye irritation from irradiated automobile exhaust (effect
+of irradiation intensity; half-life studies). J. Air Pollut. Control Assoc. 8 (4):310–313.
+doi:10.1080/00022470.1959.10467858.
+Simonen, P., Saukko, E., Karjalainen, P., Timonen, H., Bloss, M., Aakko-Saksa, P., Rönkkö,
+T., Keskinen, J., and Dal Maso, M. (2017). A new oxidation flow reactor for measuring
+secondary aerosol formation of rapidly changing emission sources. Atmos. Meas. Tech.
+10 (4):1519–1537. doi:10.5194/amt-10-1519-2017.
+Srivastava, D., Vu, T. V., Tong, S., Shi, Z., and Harrison, R.M. (2022). Formation of secondary
+organic aerosols from anthropogenic precursors in laboratory studies. npj Clim. Atmos.
+Sci. 5 (1). doi:10.1038/s41612-022-00238-6.
+Wang, B., Chen, H., Xenaki, D., Liao, J., Cowie, C., and Oliver, B.G. (2021). Differential
+inflammatory and toxic effects in-vitro of wood smoke and traffic-related particulate
+matter from Sydney, Australia. Chemosphere.
+Wang, H., Guo, S., Wu, Z., Qiao, K., Tang, R., Yu, Y., Xu, W., Zhu, W., Zeng, L., Huang, X.,
+He, L., and Hallquist, M. (2022). Secondary organic aerosol formation from straw burning
+using an oxidation flow reactor. J. Environ. Sci. (China) 114:249–258.
+doi:10.1016/j.jes.2021.08.049.
+Weitekamp, C.A., Stevens, T., Stewart, M.J., Bhave, P., and Gilmour, M.I. (2020). Health
+effects from freshly emitted versus oxidatively or photochemically aged air pollutants.
+Sci. Total Environ. 704:135772. doi:10.1016/j.scitotenv.2019.135772.
+Weitkamp, E.A., Sage, A.M., Pierce, J.R., Donahue, N.M., and Robinson, A.L. (2007). Organic
+aerosol formation from photochemical oxidation of diesel exhaust in a smog chamber.
+Environ. Sci. Technol. 41 (20):6969–6975. doi:10.1021/es070193r.
+Wu, C., Brown, R.A., Brown, Z.E., Trounce, H., Horchler, E.J., Wang, L., Miljevic, B., Zhang,
+C., Wang, H., Wang, B., Ristovski, Z., and Stevanovic, S. (2023). A new oxidation flow
+reactor for the measurements of secondary aerosol formation: Characterisation and a case
+study.
+Atmos.
+Environ.
+309
+(December
+2022):119886.
+doi:10.1016/j.atmosenv.2023.119886.
+Wu, S., Lü, Z., Hao, J., Zhao, Z., Li, J., Takekawa, H., Minoura, H., and Yasuda, A. (2007).
+Construction and characterization of an atmospheric simulation smog chamber. Adv.
+Atmos. Sci. 24 (2):250–258. doi:10.1007/s00376-007-0250-3.
+Wu, W., Jin, Y., and Carlsten, C. (2018). Inflammatory health effects of indoor and outdoor
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+particulate
+matter.
+J.
+Allergy
+doi:10.1016/j.jaci.2017.12.981.
+
+Clin.
+
+Immunol.
+
+141
+
+(3):833–844.
+
+Xu, N. and Collins, D.R. (2021). Design and characterization of a new oxidation flow reactor
+for laboratory and long-term ambient studies. Atmos. Meas. Tech. 14 (4):2891–2906.
+doi:10.5194/amt-14-2891-2021.
+Yazdani, A., Dudani, N., Takahama, S., Bertrand, A., Prévôt, A.S.H., El Haddad, I., and
+Dillner, A.M. (2021). Characterization of primary and aged wood burning and coal
+combustion organic aerosols in an environmental chamber and its implications for
+atmospheric aerosols. Atmos. Chem. Phys. 21 (13):10273–10293. doi:10.5194/acp-2110273-2021.
+Ye, P., Ding, X., Hakala, J., Hofbauer, V., Robinson, E.S., and Donahue, N.M. (2016). Vapor
+wall loss of semi-volatile organic compounds in a Teflon chamber. Aerosol Sci. Technol.
+50 (8):822–834. doi:10.1080/02786826.2016.1195905.
+Ylisirniö, A., Buchholz, A., Mohr, C., Li, Z., Barreira, L., Lambe, A., Faiola, C., Kari, E., YliJuuti, T., Nizkorodov, S.A., Worsnop, D.R., Virtanen, A., and Schobesberger, S. (2020).
+Composition and volatility of secondary organic aerosol (SOA) formed from oxidation of
+real tree emissions compared to simplified volatile organic compound (VOC) systems.
+Atmos. Chem. Phys. 20 (9):5629–5644. doi:10.5194/acp-20-5629-2020.
+Yu, Z., Jang, M., Sabo-Attwood, T., Robinson, S.E., and Jiang, H. (2017). Prediction of
+delivery of organic aerosols onto air-liquid interface cells in vitro using an electrostatic
+precipitator. Toxicol. Vitr. 42 (April):319–328. doi:10.1016/j.tiv.2017.05.011.
+Zhang, Y., Seigneur, C., Seinfeld, J.H., Jacobson, M., Clegg, S.L., and Binkowski, F.S. (2000).
+A comparative review of inorganic aerosol thermodynamic equilibrium modules:
+Similarities, differences, and their likely causes. Atmos. Environ. 34 (1):117–137.
+doi:10.1016/S1352-2310(99)00236-8.
+Zhao, R., Lee, A.K.Y., Huang, L., Li, X., Yang, F., and Abbatt, J.P.D. (2015). Photochemical
+processing of aqueous atmospheric brown carbon. Atmos. Chem. Phys. 15 (11):6087–
+6100. doi:10.5194/acp-15-6087-2015.
+Zhao, R., Zhang, Q., Xu, X., Zhao, W., Yu, H., Wang, W., Zhang, Y., and Zhang, W. (2021).
+Effect of experimental conditions on secondary organic aerosol formation in an oxidation
+flow reactor. Atmos. Pollut. Res. 12 (3):205–213. doi:10.1016/j.apr.2021.01.011.
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Fig. 1. Schematic diagram of the experimental setup used in this study. The engine produces a
+large amount of exhaust through an engine exhaust line, most of which is unnecessary for
+experiments and thus, vented to the outdoor atmosphere. A small portion of diluted diesel
+exhaust (DE) was fed into the booth directly (via the bypass flow pipe) and via the FoxBox,
+with a 3-way valve placed upstream to switch flows. A number of gas and particle monitors
+were operated at the FoxBox exit (point A) and booth exit (point B). Point C is the location
+where exhaust flow rates were measured.
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Fig. 2. Residence time distribution (RTD) measurements of: (a) CO2, and (b) particles in
+twenty-second pulses of DE (normalized to pulse height), at the immediate outlet of the
+FoxBox, at different flow rates. UV lamps were turned off during these measurements.
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Fig. 3. Comparison of the probability density functions of residence times for the FoxBox (this
+study), PAM (Lambe et al. 2011), CPOT (Huang et al. 2017), and laminar flow (Huang et al.
+2017), as a function of normalized residence time for: (a) CO2, and (b) particles. Here, DE is
+diesel exhaust, AS is ammonium sulphate (AS), and BES is bis(2-ethylhexyl) sebacate (BES)
+particles. The FoxBox comparison was performed for both UV on (w/ UV) and UV off (w/o
+UV) conditions.
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Fig. 4. Comparison of particle transmission efficiency of the FoxBox (this study) with CPOT
+(Huang et al. 2017), TPOT (Lambe et al. 2011) and PAM (Lambe et al. 2011) reactors. The
+particle transmission efficiency of the FoxBox was based on diesel exhaust (DE), CPOT on
+ammonium sulphate (AS), and TPOT and PAM on bis(2-ethylhexyl) sebacate (BES) particles.
+Error bars represent standard deviations. Pink dashed line corresponds to when all the particles
+are transmitted through the reactor.
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Fig. 5. Evolution in particle number size distribution (dN/dlogDp) of DE as a function of OH
+exposure (OHexp) during photochemical aging in the FoxBox. Here, Dp, m represents median
+diameter ± standard deviation.
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Fig. 6. Relative change in (a) PM2.5 and (b) organic carbon (OC) concentrations as a function
+of OH exposures and atmospheric equivalent photochemical age in the FoxBox. Error bars
+represent standard deviations.
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Fig. 7. Scatter plots of (a) f44 versus f43, and (b) f44 versus f57, for fresh and aged DE as a
+function of OH exposure (OHexp) in the FoxBox. The f43 represents mainly 𝐶3 𝐻7+ and C2H3O+
+fragments, f44 represents mainly 𝐶𝑂2+ fragment and f57 represents mainly 𝐶4 𝐻9+ and C3H5O+
+fragments. Higher f44 indicates greater oxidation of organic aerosols.
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Fig. 8. Percent cell viability (relative to incubator control (INC)) of filtered air (FA), fresh and
+photochemically aged diesel exhaust (DE) at an OHexp of 7.3×1011 molec cm-3 s (atmospheric
+equivalent photochemical age: 5.7d). Error bars represent standard deviation in measurements.
+
+https://doi.org/10.26434/chemrxiv-2024-wwt9k ORCID: https://orcid.org/0000-0001-9344-2737 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+

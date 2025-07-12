@@ -1,0 +1,339 @@
+The increasing uncontrollable anthropogenic activities, and geogenic intervention have majorly
+depleted the groundwater quality globally. Dimapur district, India is one such case polluted by
+the significant excess presence of iron concentration. Data reports on the assessment of
+groundwater quality are unfathomable in the region. Thus, our prime objective sets up What
+amount of iron concentration is present? How many of those data points possess a high
+concentration? and how the prediction model works in a particular area of Dimapur town. We
+then used a spatial non-parametric regression method on the experimental results to further
+predict the water parameters in areas where no water samples could be collected. Finally, we
+compare these contours for different water parameters and connect them with the geographic
+and functional properties of various locations in the studied region.
+
+Keywords: Dimapur; water quality; iron pollution; statistics; regression; distribution
+1. Introduction
+Groundwater is the major freshwater resource for the nation's development and sustenance.
+The global population of about one-third entirely depends on groundwater and accounts to 7%,
+36%, and 42% of groundwater water are used for manufacturing, household, and irrigation
+purposes. As such in India, around 90% of the groundwater accounts for irrigation purposes
+which is much higher in proportion than the global average usage of 40%, and an estimated
+value of 90 million rural households primarily dependent on irrigation supported by
+groundwater supplies. According to United Nation World Water Development Report 2022
+(UN WWDR 2022), India has been considered the largest groundwater user with an evaluated
+groundwater withdrawal of 251 km3/year. Over the past few decades, the increasing population
+(1.3 billion) in India and demands for use in domestic, irrigation, industrial, and recreational
+purposes have promoted unfathomable stress on the groundwater resources. Thus, the overgrowing demand directly or indirectly leads to unsustainable, improper management, and
+overexploitation of water resources depleting the groundwater quality.
+Various studies confirm the increasing rapid urbanization, fast-growing industrial activities,
+climate change, and agricultural practices have found to possess serious threats to groundwater
+quality/ resources in many countries. However, groundwater quality can be significantly
+influenced by natural events and geogenic leaching of inorganic ions bearing rocks, minerals,
+and soil depending from place to place. Such uncontrolled anthropogenic activity, improper
+management of waste, and natural events can severely increase the levels of organic
+contaminants, toxic metal ions metals, pesticides, nanoparticles, and emerging contaminants in
+groundwater in the long run. Among such contaminants, iron contamination in groundwater
+has been of great concern in many countries such as China, USA, Bangladesh, Africa and
+European countries. Iron constitutes the 4th most abundant element in the earth crust mostly
+occurring in the combined state as oxides. Although iron is an essential element for many
+metabolic processes and functions, its overload in the human body can lead to lung cancer,
+breast cancer, diabetes, infertility, etc. Additionally, the presence of high iron concentration
+can lead to staining of materials, clothes, corrosion of water pipelines, and metallic taste/ foul
+smell (Kumar et al., 2017). Unscientific human activities and management may have directly
+or indirectly added up to the levels of iron content in the natural water resources/ aquifers.
+Numerous studies suggest the iron bearing rocks and minerals can prematurely sip through the
+process of leaching, dissolution, residential time, anionic and cationic exchange, and
+percolation, which significantly control the flow and hydrochemical quality of groundwater.
+Such distribution and occurrence are highly evident depending on the rainfall, geomorphology
+and geology of the area.
+Nagaland lies in the Northeastern part of India sharing its common borders with Arunachal
+Pradesh, Assam, Manipur, and Myanmar. At present, there are 16 districts in Nagaland, among
+which Dimapur is the fastest developing in terms of industrialization, urbanization, overall
+economic activities, etc. The demand for industrial commodities such as chemical fertilizers,
+inorganic compounds, various household chemical products, etc. has been particularly high in
+the Dimapur district over the years. Groundwater is an important resource of Dimapur area
+with the majority being dependent for drinking and recreational purposes, especially in the lowlying region. As per the 2011 census, Dimapur itself accounts for 34% of the urban pollution
+in the state. Such changes/increases in the demography in a small area can significantly increase
+the dependency on groundwater and result in a colossal pressure on the groundwater resources.
+Additionally, the rate of deforestation due to urbanization has led to a loss of 4.75 kha of
+relative tree cover equivalent to a 2.0% of the global total tree covers in the region (shown in
+the supplementary information, Fig. S1a - 1c) as reported in ‘India State of Forest Report
+2021’(Forest Survey of India, 2021). Such loss in the tree covers can significantly lead to a
+reduction in infiltration capacity and change the course of discharge, and physicochemical
+properties of surface and groundwater flowing through the watershed. Further, the overexploitation caused by rampant dumping and burning of waste on the land resources can also
+leave a negative impact on the water quality.
+However, with the increasing urbanization and population, reports of pollution data or water
+quality data in the Dimapur area either groundwater or surface water sources are hard to come
+by. Such over-lying conditions can be attributed to a lack of proper infrastructure, slow
+economic growth, and less scientific temperament (Kibami et al., 2013). With the available
+data/ literature on groundwater quality as reported by researchers and Groundwater Pollution
+Board, metal ion especially iron is the major key pollutant in the area owing to their presence
+of high concentration in the groundwater exceeding the WHO threshold limits in the region
+(Peseyie and Rao, 2017). It is evident that the pervasive anthropogenic activities may have
+directly added up to the levels of iron content in the natural water resources/ aquifers of the
+area (shown in the supplementary information, Fig. S2). Nonetheless, geogenic events can be
+the primary factors resulting in the higher concentration of iron as evident by the
+geomorphology and geogenic setting (soil/ rock/ mineral composition) of the area as per the
+literature survey.
+Hence, though few water quality data on iron concentration are available that throw a light,
+most of the available data on groundwater in the region used a few sampling sites which
+resulted in high variability of their estimates (Naleo et al., 2020). Thus, a detailed study with
+data collected from a larger region is required to understand the level of contamination in the
+groundwater aquifers. In this present study, the groundwater quality in a vast area covering the
+Dimapur town where the growing problem is of concern was carried out. The key objective of
+this study is to investigate the level of iron from tube wells/boring wells, hand pump tubes, and
+dug wells. We focus on the other parameters like pH, electrical conductivity (EC), and total
+dissolved solids (TDS) which play a crucial role in determining the groundwater quality. This
+study also focuses on the spatial distribution pattern of the iron concentration and the other
+parameters based on the experimental data to connect the parameter values to the geographic
+and economic characteristics of the corresponding locations. Furthermore, we specialized
+moving average method to predict the parameters in non-collected water sample areas. The
+distribution pattern and prediction model applied in our study can also be used on a larger data
+point more rigorously and effectively to connects how each parameter behaves among
+themselves or at different seasons. Hence. the analysis results from the study have greater
+importance which can provide evidence of the groundwater problems in the region, bring forth
+remedial solutions, and sustainable management to protect the public health from associated ill
+effects of iron.
+
+Materials and Methods
+
+2.1. Study area
+Dimapur district has an area of 927 km2 with an average elevation of 260 m above sea level.
+The state receives an average rainfall of 1504.7 mm and with the temperature ranging from 2138 ֯C during summer. The area enjoys a subtropical humid climate with an average temperature
+of around 26.8 ֯C during summer (July) and a minimum of about 7.0 ֯C in winter.
+Geographically it is located within the coordinates of 25.84’N latitude to 93.47’E longitude
+with a population density of 410/km2 as per the 2011 census. The entire district can be
+categorized into four physiographic units viz alluvial plains, low to a moderate linear ridge,
+moderate hills, and high hills. The most common type of soil found in the studied region is red
+clay soil (tertiary group of rocks containing a high amount of iron oxide). The geomorphic
+units of the region study are mostly covered by structural hills and an alluvial plain. Generally,
+the area represents a sub-montane valley fill of quaternary sediments consisting mainly of clays
+and pebbles which essentially provide infiltration and replenishment of groundwater. While
+the tertiary rocks (which form the structural hills and residual hill) consist of shales and
+sandstone act as runoff zones with less potential for groundwater replenishment. Hydrogeology
+of the groundwater of the region occurs both in semi-consolidated and unconsolidated
+formations. The semi-consolidated formation represents the structure of the hilly terrain
+comprising sedimentary rocks belonging to Barail, Surma, and Tipam of the Tertiary age
+comprising ferruginous compact sandstone, clay, shale, boulder beds, pebbles, and siltstone.
+The rocks are usually joint and fractured where the course of runoff character and groundwater
+occurrence is water is manifested in the form of springs due to the development of secondary
+porosity like fractures, faults, joints, etc. While the unconsolidated formation occurs in the
+intermountain valley fill and piedmont plains areas along the foothills of DimapurMedziphema areas with aquifer thickness varying from place to place. The lithology unit in the
+lower-lying foothill is made up of gravels, clay, pebbles, slit, boulders, sand, and conglomerate
+beds of recent alluvial deposits. In brief, hydrogeology of the region indicates that joints,
+lineaments, faults, and fractures are the major controlling factors for the distribution and
+occurrence of groundwater.
+
+2.2. Sampling and analysis of the groundwater sample
+The water samples were collected randomly from 50 deep groundwater wells (tube well /boring
+well/shallow well, dug well displayed in Fig. 1a) with a depth ranging between10-150 m during
+the pre-monsoon season along with their GPS coordinates. The groundwater sample was
+collected in polyethylene terephthalate (PET) and high-density polyethylene (HDPE). The
+bottles were firstly cleaned with distilled water, dried and a known amount of chemical solution
+was used for storage of the water sample to avoid loss of the original concentration. Water
+parameters like electrical conductivity (EC), total dissolved solids (TDS), pH, and temperature
+were measured during field sampling using specialized test meters (HM Digital AP-2, HM
+Digital AP-1, and HANNA HI-98127). The iron concentration was analyzed by the ironphenanthroline complexation spectrophotometric method using UV-VIS spectrophotometer
+Agilent Cary 100. In short, the absorbance of the complex iron species ([Fe(phen)3]2+, ferroin)
+at 510 nm in presence of excess phenanthroline was measured using 1.00 cm quartz cells. The
+overall reaction steps for the complexation of Fe2+ can be summarized as:
+𝑝ℎ𝑒𝑛 + Fe2+ ⇌ [Fe(𝑝ℎ𝑒𝑛)]2+
+𝑝ℎ𝑒𝑛 + [Fe(𝑝ℎ𝑒𝑛)]2+ ⇌ [Fe(𝑝ℎ𝑒𝑛)2 ]2+
+𝑝ℎ𝑒𝑛 + [Fe(𝑝ℎ𝑒𝑛)2 ]2+ ⇌ [Fe(𝑝ℎ𝑒𝑛)3 ]2+
+𝐻 + + 𝑝ℎ𝑒𝑛 ⇌ 𝑝ℎ𝑒𝑛H +
+𝑝ℎ𝑒𝑛H + + [Fe(𝑝ℎ𝑒𝑛)2 ]2+ ⇌ [Fe(𝑝ℎ𝑒𝑛)3 ]2+ + H +
+The final product, ferroin is dark orange/red (in color) with an absorption maximum of 510
+nm. The spectral diagrams of ferroin formation are displayed in Supplementary Information
+(Fig. S3). All sampling and analysis protocols were done using APHA 23rd edition, 2017
+(Baird et al., 2017).
+
+2.3. Statistical analysis of the groundwater
+Various descriptive statistics were computed to collect the quantitative data into simple
+summaries (Supplementary, Table S1). Pearson’s correlation coefficient was used to study the
+correlation between the two measured variables to understand the closeness of the relationship
+between variables. Both Pearson’s correlation and descriptive statistics were performed using
+SPSS software (IBM SPSS Statistics 25). A spatial non-parametric moving average regression
+method was employed to monitor and understand the patterns of pollution in the region for iron
+concentration. A moving average method is an effective tool where the main function is to
+create a series of average values of different subsets of the full data set and was performed
+using the R software version 3.3.3. Briefly, the spatial distribution of the iron concentration in
+the groundwater was estimated via spatial nonparametric regression. To that goal, the ranges
+of latitude and longitude were divided into ten grids. At each of these hundred grid points, the
+iron concentration was estimated by the average of the iron concentrations in the water sample
+collected from wells within a circle of radius 0.01 centered at that grid point (Supplementary
+Fig. S4). The contours were drawn based on these estimated concentrations. The spatial
+distribution for other contaminants was estimated similarly.
+
+3. Results and Discussion
+
+3.1 Experimental analysis of collected groundwater sample
+The data along with the levels of pH, EC, TDS, and the iron concentration obtained from the
+experimental analysis of the collected 50 groundwater samples are presented in Supplementary
+is presented in Table 1a.
+The pH measures the acidity and basicity of an aqueous solution and fundamentally determines
+the solubility and biological availability of chemical constituents. For example, at low pH, there
+is an increment of hydrogen ions which solubilize the heavy metals (present in rocks and soil
+as minerals) thereby increasing the metals cations and their toxicity in groundwater or surface
+water. While at pH above 7, essential plant nutrient is drastically affected leading to lesser
+production of nutrients. Whereas at high pH (pH>8.5), the taste of water turns more bitter and
+smelly which notably represents the build-up of magnesium and calcium carbonate in water.
+Thus, a higher pH can provoke skin dryness, and gastrointestinal and eye irritation.
+Additionally, pH also determines whether aquatic species can survive depending on how much
+amount of phosphorus is available in the water. The more vulnerable a species to the change in
+pH to the surrounding environment, the lesser chances for its survival/ production/population.
+Many studies confirm the synergistic effects on aquatic species where the chances of survival
+are fatal due to the presence of additional foreign components in water. As such, a fish that can
+stand at pH < 4.5 may lose the chances of survival at pH 5 if the same water contains arsenic
+as low as 0.1 mg/L. The pH of the deep well groundwater in the studied area was mostly acidic
+out of which 40% of the collected water sample exceeds the WHO guidelines (6.5 - 8.0) for
+Drinking water quality. The pH ranged from a minimum of 5.80 and a maximum of 8.20 with
+a mean of 6.75 ± 0.086.
+An electrical conductivity test can be used as a build to understand the typical range for the
+various water body. This can be used as a criterion for monitoring and identifying significant
+changes in conductivity. This can potentially be used as a viable indicator for the discharge of
+contaminants entering the water bodies/aquifers. The conductivity value varies depending on
+the water source which may be severely increased through agricultural and industrial runoff,
+rainfall, and municipal wastewater. An important constituent for change in groundwater
+conductivity ideally is attributed to the seepage of organic material/ chemical components,
+anthropogenic activities, and sewage leaks. The EC of water plays a critical influence on
+aquatic life before their mobility to maximum tolerance level. An important parameter such as
+salts and other substances affect the water quality for irrigation, drinking, and recreational
+purposes. In our present study, the EC measurement ranged from 86 to 579 µS/cm with the
+mean value of 216.96 ± 15.314 with the mean value of 216.96 ± 15.314. All the collected water
+more or less showed no tolerance limit on the collected water sample.
+Total dissolved solids (TDS) are the amount of inorganic and organic and materials (such as
+salts, metals, minerals, and ions) dissolved in a particular volume of water. TDS are essentially
+a measure of any soluble substances/particles disintegrated in water or are absorbed into the
+water. TDS come from various sources including natural and man-made. Natural sources of
+increased TDS accounts to adsorption of mineral (such as calcium, magnesium and potassium
+from rocks/ mineral composites) during the flow discharge of soil, rivers, springs, lakes, etc.
+While, anthropogenic human activity can also enhance the level of total dissolved solids in
+water. Such example includes chemical pesticides, fungicides, herbicides, and chlorine which
+proceeds as agricultural runoff, and from water treatment plants. Increased level of dissolved
+solids can generate technical effects visibly in the form of hard water leaving deposits/ films
+on fixtures, hot water boilers and water pipes, corrode pipes, and leaves a metallic taste on
+water. Based on the experimental results obtained from our study, the values of TDS were also
+within the tolerance limit with the maximum value to be 579 ppm. This result was in
+accordance with the EC value due to their direct relationship with each other.
+Physiologically, iron is an important source for the body metabolism from oxygen transporter
+(haemoglobin) to storage and release of oxygen (myoglobin). It is an essential for various
+physiological processes such as erythropoiesis, cellular activities (oxidation/reduction of
+proteins), immune function, and act as a host defence mechanism. However, the excess iron
+in the body which is stored in heart, liver, and pancreas can lead to detrimental health effects
+causing diabetes, heart and liver disease. The overload of iron can be attributed to a higher
+amount of iron in dietary source or from contaminated water. As such, most of the health issues
+due to iron are from contaminated water bodies. Iron is a naturally occurring metals in the
+combined state in the form of ores/ minerals (oxides) as hematite (Fe2O3) and magnetite
+(Fe3O4). The minerals/ores containing iron are mined for industrial use and various other
+applications. During mining, some of iron containing minerals into the natural aqueous
+environment caused by anthropogenic activities. Likewise, iron in many regions (rural and
+suburban area) is a common problem, where its concentration is peaked more than the tolerance
+limit of 0.3 mg/L (WHO and EPA guidelines). Geogenic origin of iron contamination can add
+up the factors for its higher concentration in water, while other could be attributed to the
+dissolution from iron handpumps or borehole. This could be well-explained by the presence of
+iron eating bacteria which can combines with the free oxygen and convert the ferrous ion (Fe2+)
+into an insoluble ferric ion (Fe3+) leaving a filamentous/ sticky/ slimy gel on the metal surface.
+The iron-bearing groundwater is brownish-orange in colour, causing stanning of clothes and
+pipes along with vexatious smell and metallic taste. Apparently, our study investigates the
+presence of iron and confirms the pretentious high amount in the groundwater system.
+Evidently, the experimental analysis depicts out of the 50-water sample collected,
+approximately about 80% accounts to cross the barrier of 0.3 mg/L tolerance limit. This can be
+evident by the presence of iron-bearing rock/ minerals (red clay soil / sedimentary rocks) and
+the presence of iron-eating bacteria (shown in the supplementary information, Fig. S2).
+3.2 Statistical methods on the experimental data
+The range and standard deviation give information about the spread of a given variable. The
+range in the case for pH EC, TDS, and iron is 2.40, 493, 272, 1.00138 which gives some
+information about the degree of maximum variability. Standard deviation measures the average
+deviation of the observations from their mean. The standard deviation value for pH, EC, TDS,
+and Fe were found to be 0.6118, 108.28, 60.33, and 0.2709 respectively. To objectively
+compare the spread of the four variables, we compute their coefficient of variation, which is
+the ratio of their standard deviations to their means. It appears that by a coefficient of variation,
+EC, TDS, and Fe show more variability with values of 0.499, 0.485, and 0.496 respectively (all
+close to 0.5), which is much larger than that of pH, which turns out to be 0.091.
+
+Skewness describes the extent of asymmetry in a given distribution. The skewness value can
+be positive, negative, or zero. In positive skewness, the distribution extends with a long tail
+towards the right and similarly negative skewness towards the left (Čisar and Čisar, 2010).
+From Table 1a, the skewness value indicates that pH, EC, TDS, and Fe all show positive
+skewness with pH and Fe showing more symmetric distribution. The Excess Kurtosis gives
+information about the peakedness of a probability distribution ( as compared to the bell curve)
+as well as the nature of its tail (Westfall, 2014). The results obtained (Table 1a) show both pH
+and Fe are of negative value (-0.821, -0.710) which explains the distribution is light tail
+presenting a platykurtic distribution. However, EC and TDS show a good positive value (2.136,
+1.966) indicating the distribution has heavier tails depicting a leptokurtic distribution.
+Pearson’s correlation coefficients were used to establish the significance of relationships of the
+monitored water parameters in the groundwater (Table 1b). The pH shows a near-zero
+correlation with EC and TDS and a very strong negative correlation with Fe. This complies
+with the observation that the presence of metallic pollutants can change the pH in groundwater.
+Electrical conductivity (EC) shows a strong positive nearly perfect correlation (almost equal to
+1) with TDS. Both EC and TDS show poor correlation with Fe with a value of 0.166 and 0.154.
+The primary focus of this article is laid on iron concentration and its correlation with other
+measures of pollution. The resultant value crossing the permissible limit with a higher iron
+concentration from the collected groundwater samples, a broader estimate of the spatial
+distribution of iron concentration in the groundwater of the Dimapur area would be beneficial
+in evaluating the degree of iron pollution. We employ the spatial moving average regression
+method described above to predict concentrations of the parameters under consideration in the
+areas where no data was collected.
+
+The contour plots of the concentrations of various parameters under consideration are presented
+in Fig 2. The GPS coordinates for the sample points are given in a spherical black dot. For the
+iron concentration (Fig. 2a), the various predicted values ranged from a minimum of 0.23 mg/L
+to a maximum of 0.81 mg/L with a majority beyond the permissible limit of 0.3 mg/L.
+Likewise, the predicted values for pH (Fig. 2b) ranged from a minimum of 5.95 and a maximum
+of 8.20 with a few values beyond the permissible guidelines. The area within 25.92-25.93
+latitude and 93.739-93.756 longitude shows a significant change of pH from 5.95- 6.9 (Fig. 2b)
+which may be due to the municipal waste dumping site lying adjacent to the Dhansiri river and
+the Dhobinala drainage that flows towards the area which later joins the river at the end. This
+explains the significant change in the pH in that small area. The contour plot (Fig. 2c) for TDS
+shows the majority of the predicted values are well within the permissible limit with only a few
+values (75, 80, 85, and 90 mg/L) beyond the WHO guidelines. The predicted values for
+electrical conductivity also show a significant distribution pattern with a minimum of 120
+µS/cm and a maximum of 300 µS/cm (Fig. 2d).
+
+The contour plots are further studied to gauge the match between the spatial concentration
+patterns between different variables. The contour plot between Fe and pH (Fig. 2e) shows
+intersecting contours, especially in Dimapur town and along the Dhansiri river. They are mostly
+parallel to each other on the higher grounds. However, the contours of Fe and TDS are mostly
+non-parallel (Fig. 2f). The same is true for the contours of pH and TDS (Supplementary Fig.
+S5a). Additionally, the contour plot for three parameters (Supplementary Fig. S5b & S5c) can
+give us information on how the distribution differs from each other. Herein, the contour plot
+between three parameters (Supplementary Fig. S5c), shows the EC and TDS follow almost the
+same distribution pattern which is not the same for pH.
+Our brief study shows evidence of high iron concentration in groundwater of Dimapur city and
+its surrounding areas which in most places exceed the maximum threshold limits prescribed by
+WHO. This is also evident from the observed samples as well as our statistical estimate of the
+iron concentration and other parameters for the regions where no sample could be collected.
+The cause of such high iron content can be attributed to geogenic, caused by weathering of
+mineral-containing rocks as evident by the geomorphology setting of the region. However,
+unscientific human activity and rapid deforestation in the studied region possibly have
+enhanced and contributed to the level of pollution and resulted in the reduction of infiltration
+capacity, and the pivotal link catering to the source of underground aquifers. This piece of
+research work with the detailed statistical treatment is being done for Dimapur, Nagaland, for
+the first time and the striking results show the importance of such work. It is invariably visible
+from our study, that more detailed surveys, exploration, experiments, analyses, and remedial
+measures are urgently required to avoid the resulting health hazards among the population
+living in the studied area.
+Considering the adverse effects of excess iron pollution in mind, it is, therefore, essential to
+monitor the groundwater seasonally to determine the levels of contamination in this studied
+area. Furthermore, the physicochemical parameters of other trace elements (such as As, Cr, Co,
+Mn, etc.) need to be monitored with a major geospatial/geomapping
+
+study to uncover the
+
+potential link from point to non-point sources of groundwater contamination. Studies with more
+resources and a larger sample size which can give more accurate insight into the levels of
+contaminants need to be undertaken urgently. It is to be noted that unplanned and unscientific
+development of groundwater resources, mostly driven by individual initiatives has led to the
+decline and degradation of the water quality in many places. The proper management of
+groundwater resources is a prerogative of the concerned government agencies and
+stakeholders. However, the absence of a knowledge-driven support system and lack of
+information are key barriers to sound strategies and planning for sustainable management of
+groundwater resources (conservation, regulation of extraction, and protection from pollution).
+Thus, with an alarming fast population, urbanization, and uncontrol human activity, necessary
+efforts for implementing suitable groundwater management strategies by all the stakeholders
+are urgently needed.
+The financial support from DRDO, Govt. of India for funding through North East Science &
+Technology Center, Mizoram University (Project no. DFTM/ 07/3603/NESTC/EWM/P-04) is
+thankfully acknowledged
+
+Ethics approval
+This study did not involve human participants, their data, or biological material.
+

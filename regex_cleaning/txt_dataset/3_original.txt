@@ -1,0 +1,1461 @@
+2
+
+A comprehensive approach to analyzing
+environmental data with non-detects
+
+3
+
+Benjamin F. Trueman,* Madison Gouthro, Amina K. Stoddart, and Graham A. Gagnon
+
+4
+5
+6
+7
+8
+9
+10
+
+Centre for Water Resources Studies, Department of Civil & Resource Engineering,
+Dalhousie University, 1360 Barrington St., Halifax, Nova Scotia, Canada B3H 4R2
+
+11
+
+Abstract
+
+12
+
+Non-detects—measurements reported as “below the detection limit”—are ubiquitous in
+
+13
+
+environmental science and engineering. They are frequently replaced with a constant,
+
+14
+
+but this biases estimates of means, regression slopes, and correlation coefficients.
+
+15
+
+Omitting non-detects is worse, and has led to serious errors. Simple alternatives are
+
+16
+
+available: rank-based statistics, maximum likelihood estimation, and re-purposed
+
+17
+
+survival analysis routines. But many environmental datasets do not align well with the
+
+18
+
+assumptions these methods make—it is often necessary to account for hierarchy (e.g.,
+
+19
+
+measurements nested within lakes), sampling strategy (e.g., measurements collected
+
+20
+
+as time series), heterogeneity (e.g., site-dependent variance), and measurement error.
+
+21
+
+Bayesian methods offer the flexibility to do this; incorporating non-detects is also easy
+
+22
+
+and does not bias model parameter estimates as substitution does. Here we discuss
+
+23
+
+Bayesian implementations of common bivariate and multivariate statistical methods
+
+24
+
+relevant to environmental science. We use a dataset comprising time series of Ag, As,
+
+25
+
+Cd, Ce, Co, Sb, Ti, U, and V concentrations in municipal biosolids that includes many
+
+26
+
+non-detects. The models can be reproduced and extended to new problems using the
+
+27
+
+data and code accompanying this paper.
+
+1
+
+*Corresponding author
+E-mail: benjamin.trueman@dal.ca
+Tel: 902.494.6070
+Fax: 902.494.3105
+
+1
+https://doi.org/10.26434/chemrxiv-2024-m2h4h ORCID: https://orcid.org/0000-0002-1539-3092 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+28
+
+Graphical abstract
+
+29
+
+30
+
+Introduction
+
+31
+
+Non-detects—measurements recorded as less than a detection or reporting limit—are
+
+32
+
+ubiquitous in environmental science and engineering. In the statistical literature, they
+
+33
+
+are known as left-censored observations. A popular method of representing them in
+
+34
+
+statistical routines is to replace them with one-half, or some other fraction, of the
+
+35
+
+detection limit. But while common, this strategy can severely bias estimates based on
+
+36
+
+the data when the censoring rate is high. Worse still is omission—leaving out non-
+
+37
+
+detects has led to serious and well-documented errors.1
+
+38
+
+For basic tasks like comparing two groups or estimating a mean, linear regression
+
+39
+
+slope, or correlation coefficient, there are simple alternatives to substitution and
+
+40
+
+omission. These include rank-based methods, maximum likelihood estimation, and re-
+
+41
+
+purposed survival analysis routines.1 But many environmental datasets require more
+
+42
+
+complex models that account for hierarchy, sampling strategy, heterogeneity, and
+
+43
+
+measurement error. For instance, measurements may be collected across multiple
+
+44
+
+lakes with different characteristics or they may be recorded as time series (i.e., serially
+
+45
+
+dependent data). The standard toolbox for censored data analysis does not always
+
+46
+
+accommodate these features.
+
+47
+
+Bayesian methods excel in this context—since the sampling techniques they rely on
+
+48
+
+provide a near-universal approach to parameter estimation, they can be very flexible. In
+
+49
+
+particular, it is straightforward to account for non-detects in almost any model. Here, we
+
+2
+https://doi.org/10.26434/chemrxiv-2024-m2h4h ORCID: https://orcid.org/0000-0002-1539-3092 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+50
+
+provide examples of common statistical models in environmental science and
+
+51
+
+engineering whose Bayesian versions can easily accommodate non-detects. They are
+
+52
+
+reproducible via the code and data that accompany this paper.
+
+53
+
+Materials and methods
+
+54
+
+Data collection
+
+55
+
+We fit models to a dataset comprising concentrations of Ag, As, Cd, Ce, Co, Sb, Ti, U,
+
+56
+
+and V in municipal biosolids. Biosolids samples were collected from the clarifiers of
+
+57
+
+three wastewater treatment facilities in 125 mL polypropylene bottles. Samples were
+
+58
+
+autoclaved, desiccated by baking at 105°C for approximately 60 hours, digested
+
+59
+
+according to EPA Method 3050B,2 diluted serially, and quantified by inductively coupled
+
+60
+
+plasma mass spectrometry according to Standard Method 3125.3 A summary of the
+
+61
+
+data is available in Table 1.
+
+62
+63
+
+Table 1. A summary of element concentrations in biosolids samples collected at three
+wastewater treatment facilities.
+Element
+
+Median (µg g-1)
+
+Lower quartile (µg g-1)
+
+Upper quartile (µg g-1)
+
+% censored
+
+Ag
+
+0.8
+
+0.6
+
+1.1
+
+6.4
+
+As
+
+4.9
+
+3.7
+
+6.8
+
+1.7
+
+Cd
+
+0.7
+
+0.5
+
+1.0
+
+6.4
+
+Ce
+
+12.2
+
+8.4
+
+22.2
+
+1.2
+
+Co
+
+2.3
+
+1.6
+
+3.1
+
+1.7
+
+Sb
+
+0.2
+
+0.1
+
+0.2
+
+77.5
+
+Ti
+
+30.1
+
+17.3
+
+47.1
+
+1.2
+
+U
+
+0.7
+
+0.5
+
+1.0
+
+9.2
+
+V
+
+4.4
+
+3.2
+
+5.9
+
+1.7
+
+64
+
+Data analysis
+
+65
+
+The data and code necessary to reproduce the main results from this paper are
+
+66
+
+available at https://github.com/bentrueman/censored-env-data-analysis; several
+
+67
+
+functions used to fit the models in Stan are available in a separate R package.4 We
+
+68
+
+used R version 4.3.3 throughout,5 along with a collection of contributed packages.6–12
+
+3
+https://doi.org/10.26434/chemrxiv-2024-m2h4h ORCID: https://orcid.org/0000-0002-1539-3092 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+69
+
+Results and discussion
+
+70
+
+Bayesian modeling
+
+71
+
+Bayesian inference entails fitting a probability model to data, then summarizing it as the
+
+72
+
+joint distribution of the model parameters, 𝜃.13 The model starts as a prior, 𝑃(𝜃),
+
+73
+
+quantifying the plausibility of all possible parameter values. The prior reflects
+
+74
+
+background knowledge and practical considerations.14
+
+75
+
+The data, 𝑥, are used to update the prior via Bayes’ theorem. It relates the posterior or
+
+76
+
+updated joint parameter distribution, 𝑃(𝜃|𝑥), with the prior and the likelihood. The
+
+77
+
+likelihood, 𝑃(𝑥|𝜃), quantifies the compatibility of the data with the proposed model.
+
+78
+
+In practice, model fitting follows these basic steps:
+
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+
+1.
+2.
+3.
+4.
+
+Assign a probability distribution to the data.
+Choose a model for each of the distributional parameters.
+Choose a distribution of prior probability for each parameter.
+Iterate the following steps to obtain a sample from the posterior:
+(a) Propose values for all parameters.
+(b) Quantify their plausibility without reference to the data (via the prior distributions).
+(c) Quantify the plausibility of each data point given the assumed data distribution and the
+proposed parameter values (i.e., the likelihood).
+(d) Obtain the relative posterior probability as the product of the likelihood and the prior (i.e.,
+Bayes’ theorem).
+
+89
+
+Iterating over steps 4 (a–d) may require searching a high-dimensional parameter space,
+
+90
+
+which is often accomplished via the Hamiltonian Monte Carlo algorithm.14 Fortunately,
+
+91
+
+software packages make this straightforward: the R package brms7, for instance, fits a
+
+92
+
+huge variety of Bayesian regression models—including censored data models—with a
+
+93
+
+standard and familiar syntax. Further customization is possible using Stan,15 a
+
+94
+
+programming platform for Bayesian statistics written in C++.
+
+95
+
+Substitution biases parameter estimates
+
+96
+
+Replacing non-detects with a constant can bias parameter estimates substantially,
+
+97
+
+especially when the censoring rate is high. We show this using a small simulation study
+
+98
+
+that compares substitution at one-half the detection limit with a parameter estimation
+
+99
+
+strategy that relies on the cumulative distribution function.
+4
+
+https://doi.org/10.26434/chemrxiv-2024-m2h4h ORCID: https://orcid.org/0000-0002-1539-3092 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+100
+
+When the dependent variable in a linear regression model includes left-censored
+
+101
+
+observations, one method of accounting for them is to construct the likelihood for every
+
+102
+
+censored observation using the appropriate cumulative distribution function in place of
+
+103
+
+the probability density function. Here, the cumulative distribution function quantifies the
+
+104
+
+probability that a data point is less than the detection limit—that is, the compatibility of a
+
+105
+
+non-detect with the proposed model. The likelihood, then, becomes 𝑃(𝑥|𝜃) =
+
+106
+
+𝐹(𝑥!"#$%&$' |𝜃)𝐺(𝑥($)#!%$' |𝜃), where 𝐹 and 𝐺 are the probability density and cumulative
+
+107
+
+distribution functions, respectively.
+
+108
+
+We simulated from a simple linear regression model, 𝑦* ∼ 𝑁(𝜇* = 3 + 0.15𝑥* , 𝜎 = 0.5),
+
+109
+
+where the dependent variable was partially censored—here, 𝑁 represents the normal
+
+110
+
+distribution with mean 𝜇* and standard deviation 𝜎. We fit a censored regression using
+
+111
+
+brms where the simulated non-detects were modeled using the normal cumulative
+
+112
+
+distribution function. We compared it to a naive model where the non-detects were
+
+113
+
+replaced with one-half the detection limit.
+
+114
+
+Specifically, the 𝑖 simulated observations, 𝑦* , were modeled as follows. Except for the
+
+115
+
+special handling of left-censored observations (𝑦* |𝑐𝑒𝑛𝑠𝑜𝑟𝑒𝑑* = 1), the naive model was
+
+116
+
+identical.
+likelihood:
+𝑦* |𝑐𝑒𝑛𝑠𝑜𝑟𝑒𝑑* = 0 ∼ 𝑁(𝜇* , 𝜎) [𝑜𝑏𝑠𝑒𝑟𝑣𝑒𝑑 ]
+𝑦* |𝑐𝑒𝑛𝑠𝑜𝑟𝑒𝑑* = 1 ∼ 𝑁-𝐶𝐷𝐹(𝜇* , 𝜎) [𝑙𝑒𝑓𝑡-𝑐𝑒𝑛𝑠𝑜𝑟𝑒𝑑 ]
+
+117
+
+(1)
+
+model for 𝜇:
+𝜇* = 𝛽+ + 𝛽, 𝑥*
+priors:
+𝛽- ∼ 𝑇J𝜇. = 0, 𝜎. = 2.5, 𝜈. = 3M, for j = 0,1
+𝜎 ∼ 𝑇(𝜇/ = 0, 𝜎/ = 2.5, 𝜈/ = 3)
+
+118
+
+In equation (1), 𝑐𝑒𝑛𝑠𝑜𝑟𝑒𝑑* is a binary variable (0 = 𝑜𝑏𝑠𝑒𝑟𝑣𝑒𝑑, 1 = 𝑙𝑒𝑓𝑡-𝑐𝑒𝑛𝑠𝑜𝑟𝑒𝑑), and
+
+119
+
+𝑁-𝐶𝐷𝐹 is the normal cumulative distribution function (i.e., 𝑃(𝑋 ≤ 𝑥), the probability that
+
+120
+
+a random variable 𝑋 is less than or equal to some value 𝑥).14,15 The parameters 𝛽+ and
+
+5
+https://doi.org/10.26434/chemrxiv-2024-m2h4h ORCID: https://orcid.org/0000-0002-1539-3092 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+121
+
+𝛽, define the linear model for 𝜇* , and 𝑇 denotes the t distribution with degrees of
+
+122
+
+freedom—which controls probability density in the tails—parameterized by 𝜈.
+
+123
+124
+125
+126
+127
+128
+129
+130
+
+Figure 1. (a) One iteration of the linear regression simulation. The model that accounts
+for left-censoring via the cumulative distribution function recovered the true model
+parameters well, whereas the naive model that used substitution at one-half the
+detection limit was biased. Points represent observations, and vertical dashed grey lines
+represent left-censored values. (b) The same pattern was evident across the entire
+simulation: the censored regression model recovered the true parameters well and the
+naive model was biased.
+
+131
+
+The censored regression model recovered the true parameter values much more
+
+132
+
+accurately than the naive model (Figure 1). That is, the censored model yielded 95%
+
+133
+
+credible intervals on the intercept, slope, and residual standard deviation that included
+
+134
+
+the true parameter values 96, 98, and 97% of the time, respectively. The naive model
+
+135
+
+yielded intervals that included the true values just 2, 14, and 1% of the time.
+
+6
+https://doi.org/10.26434/chemrxiv-2024-m2h4h ORCID: https://orcid.org/0000-0002-1539-3092 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+136
+
+Accounting for non-detects in a more complex model
+
+137
+
+The same strategy can be incorporated into more complex models: here, we use a
+
+138
+
+dataset of metals concentrations in municipal biosolids to demonstrate fitting a
+
+139
+
+smoothing spline, a popular method for characterizing environmental time series and
+
+140
+
+other problems.16–19 It was fitted using bgamcar1,4 an extension of brms that
+
+141
+
+accommodates continuous-time autoregression—accounting for the dependence of one
+
+142
+
+observation on the previous one in unequally spaced time series.16,20 Titanium
+
+143
+
+concentrations at three wastewater treatment facilities (Sites 1–3) were modeled as
+
+144
+
+follows:
+likelihood:
+[
+]
+[
+)|𝑐𝑒𝑛𝑠𝑜𝑟𝑒𝑑
+𝑙𝑜𝑔( 𝑇𝑖 0
+0 = 0 ∼ 𝑇(𝜇0 , 𝜎, 𝜈) 𝑜𝑏𝑠𝑒𝑟𝑣𝑒𝑑 ]
+𝑙𝑜𝑔([𝑇𝑖]0 )|𝑐𝑒𝑛𝑠𝑜𝑟𝑒𝑑0 = 1 ∼ 𝑇-𝐶𝐷𝐹(𝜇0 , 𝜎, 𝜈) [𝑙𝑒𝑓𝑡-𝑐𝑒𝑛𝑠𝑜𝑟𝑒𝑑]
+
+145
+
+(2)
+
+model for 𝜇0 :
+𝜇0 = 𝛼 + 𝛽#*0$ 𝑋#*0$ + 𝑓 (𝑡) + 𝜙 # 𝑟01#
+𝑟01# = 𝑙𝑜𝑔([𝑇𝑖]01# ) − 𝛼 − 𝑓(𝑡 − 𝑠)
+priors:
+𝜎 ∼ 𝐻𝑎𝑙𝑓-𝑇(𝜇/ = 0, 𝜎/ = 2.5, 𝜈/ = 3)
+𝛽#*0$ ∼ 𝑇J𝜇. = 0, 𝜎. = 2.5, 𝜈. = 3M
+𝜈 ∼ 𝐺𝑎𝑚𝑚𝑎 (𝜇2 = 2, 𝛼2 = 0.1)
+𝜙 ∼ 𝑁J𝜇3 = 0.5, 𝜎3 = 0.5M
+𝛼 ∼ 𝑇(𝜇4 = 0, 𝜎4 = 2.5, 𝜈4 = 3)
+
+146
+
+where, in addition to the symbols defined above, 𝐻𝑎𝑙𝑓-𝑇 represents the positive-valued t
+
+147
+
+distribution and 𝐺𝑎𝑚𝑚𝑎 the gamma distribution, parameterized by mean 𝜇 and shape
+
+148
+
+parameter 𝛼. The linear model 𝛽#*0$ 𝑋#*0$ estimates a separate intercept for each site,
+
+149
+
+where 𝑋#*0$ is the design matrix and 𝛽#*0$ the coefficients. The autocorrelation
+
+150
+
+coefficient, 𝜙 # , and the residual at time 𝑡 − 𝑠, 𝑟01# , define the dependence of each
+
+151
+
+observation on the previous one, where 𝑠 is the spacing between adjacent
+
+152
+
+observations.16,20
+
+153
+
+The term 𝑓(𝑡) is a smooth spline function that captures nonlinear variation in the mean
+
+154
+
+with time. It takes the following form:
+
+7
+https://doi.org/10.26434/chemrxiv-2024-m2h4h ORCID: https://orcid.org/0000-0002-1539-3092 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+𝑓(𝑡) = 𝑋#56*)$ 𝛽#56*)$ + 𝑍𝑏
+
+155
+
+priors on spline parameters:
+(3) 𝛽#56*)$ ∼ 𝑇J𝜇. = 0, 𝜎. = 2.5, 𝜈. = 3M [𝑢𝑛𝑝𝑒𝑛𝑎𝑙𝑖𝑧𝑒𝑑 ]
+𝑏 ∼ 𝑁(0, 𝜎" ) [𝑝𝑒𝑛𝑎𝑙𝑖𝑧𝑒𝑑 ]
+𝜎" ∼ 𝐻𝑎𝑙𝑓-𝑇J𝜇/! = 0, 𝜎/! = 2.5, 𝜈/! = 3M
+
+156
+
+where 𝑍 and 𝑋#56*)$ are matrices representing the penalized and unpenalized basis
+
+157
+
+functions, while 𝛽#56*)$ and 𝑏 represent the corresponding spline coefficient vectors.21
+
+158
+159
+160
+161
+162
+163
+
+Figure 2. Titanium concentration time series representing biosolids collected at three
+locations (light lines). Model predictions are superimposed in bold, the shaded regions
+represent a 95% credible interval on the posterior mean, and non-detects are shown as
+vertical dashed lines extending to the detection limit. A single value beyond the plot
+limits is annotated.
+
+164
+
+Geometric mean titanium concentrations varied in a quasi-seasonal pattern (Figure 2),
+
+165
+
+and samples collected at one facility, Site 3, had mean concentrations approximately
+
+166
+
+20–30 µg g-1 higher than those representing the other two facilities. Observations
+
+167
+
+exhibited mild serial correlation, which quantifies the dependence of each observation
+8
+
+https://doi.org/10.26434/chemrxiv-2024-m2h4h ORCID: https://orcid.org/0000-0002-1539-3092 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+168
+
+on the previous one, after accounting for trends and site-specific variation. The serial
+
+169
+
+correlation parameter in the model, 𝜙, had a posterior median of 0.11 with a 95%
+
+170
+
+credible interval spanning 0.03–0.26. In general, accounting for serial correlation
+
+171
+
+improves the accuracy of predictions and helps avoid overfitting.16,22
+
+172
+
+A censored predictor
+
+173
+
+Left-censoring may also occur in the predictor variable. One potential application is
+
+174
+
+building a linear regression model to predict missing values in one variable using
+
+175
+
+another, partially censored, variable. Left-censored predictors, though, are not
+
+176
+
+amenable to substituting a cumulative distribution function in the likelihood—another
+
+177
+
+strategy is required.
+
+178
+179
+180
+181
+182
+183
+184
+185
+
+Figure 3. Cobalt concentrations as a function of cadmium concentrations in biosolids
+from three treatment facilities. Nondetect cadmium concentrations are represented as
+horizontal lines extending to the detection limit. A robust (Student t) linear model is
+superimposed in blue and the shaded region represents a 95% credible interval on the
+posterior mean. The equivalent non-robust model yields an extremely wide credible
+interval due to the unusually high cobalt concentration of 309 µg g-1. Coordinates
+outside the plotting limits are annotated in parentheses.
+
+186
+
+Fortunately, there is a straightforward alternative: all the non-detects can be treated as
+
+187
+
+missing values with an upper bound and represented by parameters in the model. Since
+
+188
+
+Bayesian modeling results in a set of posterior draws—vectors of plausible parameter
+
+9
+https://doi.org/10.26434/chemrxiv-2024-m2h4h ORCID: https://orcid.org/0000-0002-1539-3092 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+189
+
+values—this is similar to multiple imputation of missing values with an upper—and
+
+190
+
+optionally a lower—bound. But since it is done in one step, we get a joint distribution
+
+191
+
+that quantifies the uncertainty and interrelationships among all the parameters, including
+
+192
+
+the censored values.23 This might be important, for instance, when there is serial
+
+193
+
+dependence in the data.
+
+194
+
+Another advantage is the size of the imputed dataset: since the model is fitted to the
+
+195
+
+data just once, it is straightforward to generate several thousand imputed values, even
+
+196
+
+for complex models. This may not be practical if values are imputed before model fitting:
+
+197
+
+the conventional imputation strategy entails fitting one model for each set of imputed
+
+198
+
+values. Furthermore, it may be difficult to find a multiple imputation routine that meets all
+
+199
+
+of the needs of a particular data analysis.
+
+200
+
+Using the Bayesian approach, we can specify any predictive model we would like to
+
+201
+
+impute the censored values. Since there were only a few censored observations in this
+
+202
+
+pair of variables (Figure 3), we chose a simple intercept-only imputation model, fitted
+
+203
+
+using bgamcar14. It was defined as follows:
+likelihood:
+[𝐶𝑜]* ∼ 𝑇J𝜇[8!]" , 𝜎[8!] , 𝜈[8!] M
+[𝐶𝑑]* ∼ 𝑇J𝜇[8'] , 𝜎[8'] , 𝜈[8'] M
+
+204
+
+(4)
+
+model for 𝜇:
+𝜇[8!]" = 𝛽+[$%] + 𝛽, [𝐶𝑑]*
+𝜇[8']" = 𝛽+[$']
+priors:
+𝛽- ∼ 𝑇J𝜇. = 0, 𝜎. = 2.5, 𝜈. = 3M, for j = 0,1
+𝜎 ∼ 𝑇(𝜇/ = 0, 𝜎/ = 2.5, 𝜈/ = 3)
+𝜈 ∼ 𝐺𝑎𝑚𝑚𝑎(𝜇2 = 2, 𝛼2 = 0.1)
+
+205
+
+When the model was fitted with a Gaussian likelihood, the extreme cobalt concentration
+
+206
+
+of 309 µg g-1 yielded a posterior mean with an extremely wide credible interval (Figure
+
+207
+
+3). The robust model, fitted with a Student t likelihood, yielded a much narrower credible
+
+10
+https://doi.org/10.26434/chemrxiv-2024-m2h4h ORCID: https://orcid.org/0000-0002-1539-3092 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+208
+
+interval and a posterior mean that was much less heavily influenced by the extreme
+
+209
+
+value. A disadvantage of both models is that simulating from them may generate
+
+210
+
+negative concentrations, even though the posterior mean remains positive over its
+
+211
+
+range. This could be solved by modeling log-transformed Co concentrations instead,
+
+212
+
+resulting in a slightly different interpretation: the model would then predict geometric
+
+213
+
+mean concentrations on the scale of measurement.24
+
+214
+
+Multivariate models
+
+215
+
+In a multivariate context, the one-step multiple imputation strategy is often simpler to
+
+216
+
+apply, since multivariate cumulative distribution functions can be difficult to implement.
+
+217
+
+Two multivariate models with applications in environmental science are the intercept-
+
+218
+
+only model, used to estimate a correlation matrix, and principal component analysis.
+
+219
+
+A Bayesian correlation matrix
+
+220
+
+In addition to handling non-detects, Bayesian correlation has the advantage that it can
+
+221
+
+be readily applied to variables that are best described using distributions other than the
+
+222
+
+Gaussian. A relevant example for environmental sciences is robust correlation, where a
+
+223
+
+Student t distribution is assigned to each variable and its parameters estimated. This
+
+224
+
+tends to limit the influence of extreme values, which might otherwise exert undue
+
+225
+
+influence on the estimated correlation coefficients.
+
+226
+
+Given 𝑦, an 𝑁 × 𝐷 matrix containing 𝑁 concentrations of 𝐷 elements, we can estimate
+
+227
+
+the pairwise correlations as follows:
+
+11
+https://doi.org/10.26434/chemrxiv-2024-m2h4h ORCID: https://orcid.org/0000-0002-1539-3092 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+(5)
+
+228
+
+likelihood:
+𝜇,
+𝑦 ∼ 𝑀𝑢𝑙𝑡𝑖𝑣𝑎𝑟𝑖𝑎𝑡𝑒𝑁𝑜𝑟𝑚𝑎𝑙 _` … b , 𝛴d
+𝜇:
+𝜎, … 0
+𝜎, … 0
+𝛴 = ` ⋮ ⋱ ⋮ b𝑅` ⋮ ⋱ ⋮ b
+0 … 𝜎:
+0 … 𝜎:
+priors:
+𝜇- ∼ 𝑇J𝜇; = 0, 𝜎; = 10, 𝜈; = 3M, for j = 1, . . , 𝐷
+𝜎- ∼ 𝑇(𝜇/ = 0, 𝜎/ = 10, 𝜈/ = 3), for j = 1, . . , 𝐷
+𝑅 ∼ 𝐿𝐾𝐽𝑐𝑜𝑟𝑟(2)
+
+229
+
+where the 𝜇,...: are the column means of 𝑦, 𝛴 is the covariance matrix, the 𝜎,...: are the
+
+230
+
+column standard deviations of 𝑦, and 𝑅 is the correlation matrix. 𝐿𝐾𝐽𝑐𝑜𝑟𝑟(2) is a
+
+231
+
+regularizing prior that encodes mild skepticism of extreme correlation coefficients near -
+
+232
+
+1 or 1.14
+
+12
+https://doi.org/10.26434/chemrxiv-2024-m2h4h ORCID: https://orcid.org/0000-0002-1539-3092 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+233
+234
+235
+236
+237
+
+Figure 4. (a) Pairwise Bayesian correlations among the elemental concentrations in the
+dataset, estimated using Student t and Gaussian likelihoods. (b) The robust model—
+fitted with Student t likelihoods—identifies more correlation than the non-robust model
+fitted with Gaussian likelihoods.
+
+238
+
+Arsenic, vanadium, and cadmium concentrations were most strongly correlated in
+
+239
+
+biosolids (Figure 4). And overall, the robust model—incorporating Student t
+
+240
+
+likelihoods—identified more correlation among the variables than the conventional, non-
+
+241
+
+robust model fitted with Gaussian likelihoods. This is due to the much smaller influence
+
+242
+
+that extreme values have on the robust model.
+13
+
+https://doi.org/10.26434/chemrxiv-2024-m2h4h ORCID: https://orcid.org/0000-0002-1539-3092 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+243
+
+Probabilistic principal components analysis
+
+244
+
+Principal component analysis is a method for summarizing a multivariate dataset using
+
+245
+
+a subset of derived variables that capture the majority of the data’s variance.25 Here we
+
+246
+
+implement probabilistic principal component analysis, a Bayesian generalization of the
+
+247
+
+classical approach.26 Our model is modified from the approach described in a recent
+
+248
+
+paper27 to accommodate left-censoring of the data and is written in Stan8,15. Given 𝑦, a
+
+249
+
+𝐷 × 𝑁 matrix containing 𝑁 concentrations of 𝐷 elements,
+𝑙𝑖𝑘𝑒𝑙𝑖ℎ𝑜𝑜𝑑:
+𝑌 ∼ 𝑀𝑢𝑙𝑡𝑖𝑣𝑎𝑟𝑖𝑎𝑡𝑒𝑁𝑜𝑟𝑚𝑎𝑙(𝑊𝑧 + 𝜇, 𝜎𝐼)
+
+250
+
+(6)
+
+𝑝𝑟𝑖𝑜𝑟𝑠:
+𝑧 ∼ 𝑁(0, 𝐼)
+𝑊 ∼ 𝑁(0, 𝜎𝛼)
+𝜇 ∼ 𝐿𝑜𝑔𝑛𝑜𝑟𝑚𝑎𝑙J𝜇; = 2.5, 𝜎; = 1M
+𝜎 ∼ 𝐿𝑜𝑔𝑛𝑜𝑟𝑚𝑎𝑙(𝜇/ = 0, 𝜎/ = 1)
+𝛼 ∼ 𝐼𝑛𝑣𝑔𝑎𝑚𝑚𝑎(𝛼4 = 1, 𝛽4 = 1)
+
+251
+
+where 𝑧 is a 𝑘 × 𝑁 matrix of latent (i.e., unobserved) variables with 𝑘 ≤ 𝐷, 𝑊 is a 𝐷 × 𝑘
+
+252
+
+transformation matrix mapping from the latent space to the data space, 𝜎 is the
+
+253
+
+standard deviation of the error (also a latent parameter), 𝐼 is the identity matrix, and
+
+254
+
+𝐼𝑛𝑣𝐺𝑎𝑚𝑚𝑎 is the inverse gamma distribution.13
+
+14
+https://doi.org/10.26434/chemrxiv-2024-m2h4h ORCID: https://orcid.org/0000-0002-1539-3092 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+255
+256
+257
+258
+259
+
+Figure 5. (a) The dataset projected onto the first two probabilistic principal components
+(z in equation (6)). Values appearing outside the extents of the plot are annotated in
+parentheses at the margins. (b) The first two principal axes; that is, the orthonormalized
+columns of the transformation matrix 𝑊.
+
+260
+
+Differences in metals concentrations among the three sites are apparent in Figure 5a. In
+
+261
+
+particular, Site 3 scored differently on the two principal components, resulting in
+
+262
+
+substantial separation in the two-component space from the data representing the other
+
+263
+
+two sites. Differences in titanium concentrations among treatment facilities play a strong
+
+264
+
+role here: the principal axes—that is, the orthonormalized columns of the transformation
+
+265
+
+matrix 𝑊 (equation 6)—load titanium concentrations heavily. And titanium
+
+266
+
+concentrations were high in biosolids from Site 3 relative to Sites 1 and 2 (Figure 2).
+
+15
+https://doi.org/10.26434/chemrxiv-2024-m2h4h ORCID: https://orcid.org/0000-0002-1539-3092 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+267
+
+Conclusion
+
+268
+
+Replacing non-detects with a constant—often one-half the detection limit—biases
+
+269
+
+estimates of means, regression slopes, and correlation coefficients. Simple alternatives
+
+270
+
+exist, but they are limited and not always applicable to complex environmental datasets
+
+271
+
+that exhibit hierarchy, complex dependence structures, and heterogeneity. Bayesian
+
+272
+
+methods have the flexibility to model all of these features, and they can easily
+
+273
+
+accommodate left-censoring by either modifying the likelihood or one-step multiple
+
+274
+
+imputation as a part of model fitting.
+
+275
+
+Acknowledgements
+
+276
+
+This work was supported by NSERC through an Alliance Grant (ALLRP 568507–21).
+
+277
+
+We acknowledge utility staff for facilitating sample collection at the treatment facilities
+
+278
+
+and Heather Daurie, Alyssa Chiasson, Evelyne Doré, Jorginea Bonang, Genevieve
+
+279
+
+Erjavec, Sebastian Munoz, and Bofu Li for laboratory assistance.
+
+280
+281
+282
+
+References
+
+283
+284
+285
+
+(2)
+US Environmental Protection Agency. Method 3050B: Acid Digestion of
+Sediments, Sludges, and Soils. Test methods for evaluating solid waste,
+physical/chemical methods 1996.
+
+286
+287
+288
+
+(3)
+American Public Health Association. 3125 Metals by Inductively Coupled
+Plasma—Mass Spectrometry. In Standard methods for the examination of water and
+wastewater; 2018. https://doi.org/10.2105/SMWW.2882.048.
+
+289
+290
+
+(4)
+Trueman, B. bgamcar1: Fit bayesian GAMs with CAR(1) errors to censored data.
+https://github.com/bentrueman/bgamcar1.
+
+291
+292
+
+(5)
+R Core Team. R: A language and environment for statistical computing.
+https://www.R-project.org/.
+
+293
+294
+295
+
+(6)
+Wickham, H.; Averick, M.; Bryan, J.; Chang, W.; McGowan, L. D.; François, R.;
+Grolemund, G.; Hayes, A.; Henry, L.; Hester, J.; Kuhn, M.; Pedersen, T. L.; Miller, E.;
+Bache, S. M.; Müller, K.; Ooms, J.; Robinson, D.; Seidel, D. P.; Spinu, V.; Takahashi,
+
+(1)
+Helsel, D. R. Statistics for Censored Environmental Data Using Minitab and R,
+2nd ed.; Wiley series in statistics in practice; Wiley: Hoboken, N.J, 2012.
+
+16
+https://doi.org/10.26434/chemrxiv-2024-m2h4h ORCID: https://orcid.org/0000-0002-1539-3092 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+296
+297
+
+K.; Vaughan, D.; Wilke, C.; Woo, K.; Yutani, H. Welcome to the tidyverse. Journal of
+Open Source Software 2019, 4 (43), 1686. https://doi.org/10.21105/joss.01686.
+
+298
+299
+
+(7)
+Bürkner, P.-C. brms: Bayesian regression models using stan.
+https://github.com/paul-buerkner/brms.
+
+300
+301
+
+(8)
+Gabry, J.; Češnovar, R.; Johnson, A. cmdstanr: R interface to CmdStan.
+https://mc-stan.org/cmdstanr/.
+
+302
+303
+
+(9)
+Fischetti, T. assertr: Assertive programming for R analysis pipelines.
+https://docs.ropensci.org/assertr/.
+
+304
+
+(10)
+
+305
+306
+
+(11) Pedersen, T. L. patchwork: The composer of plots. https://patchwork.dataimaginist.com.
+
+307
+308
+
+(12) Lawlor, J. PNWColors: Color palettes inspired by nature in the US pacific
+northwest. https://github.com/jakelawlor/PNWColors.
+
+309
+310
+311
+
+(13) Gelman, A.; Carlin, J. B.; Stern, H. S.; Dunson, B., David; Vehtari, A.; Rubin, D.
+B. Bayesian Data Analysis, Third edition.; Chapman & Hall/CRC texts in statistical
+science; CRC Press: Boca Raton, 2014.
+
+312
+313
+314
+
+(14) McElreath, R. Statistical Rethinking: A Bayesian Course with Examples in R and
+Stan; Chapman & Hall/CRC texts in statistical science series; CRC Press/Taylor &
+Francis Group: Boca Raton, 2016.
+
+315
+316
+
+(15) Stan Development Team. Stan modeling language users guide and reference
+manual, version 2.34. http://mc-stan.org/.
+
+317
+318
+319
+
+(16) Simpson, G. L. Modelling Palaeoecological Time Series Using Generalised
+Additive Models. Frontiers in Ecology and Evolution 2018, 6, 149.
+https://doi.org/10.3389/fevo.2018.00149.
+
+320
+321
+322
+
+(17) Murphy, R. R.; Perry, E.; Harcum, J.; Keisman, J. A Generalized Additive Model
+Approach to Evaluating Water Quality: Chesapeake Bay Case Study. Environmental
+Modelling & Software 2019, 118, 1–13. https://doi.org/10.1016/j.envsoft.2019.03.027.
+
+323
+324
+325
+326
+
+(18) Beck, M. W.; De Valpine, P.; Murphy, R.; Wren, I.; Chelsky, A.; Foley, M.; Senn,
+D. B. Multi-Scale Trend Analysis of Water Quality Using Error Propagation of
+Generalized Additive Models. Science of The Total Environment 2022, 802, 149927.
+https://doi.org/10.1016/j.scitotenv.2021.149927.
+
+327
+328
+329
+
+(19) Chen, T. Y.-J.; Guikema, S. D. Prediction of Water Main Failures with the Spatial
+Clustering of Breaks. Reliability Engineering & System Safety 2020, 203, 107108.
+https://doi.org/10.1016/j.ress.2020.107108.
+
+Müller, K. here: A simpler way to find your files. https://here.r-lib.org/.
+
+17
+https://doi.org/10.26434/chemrxiv-2024-m2h4h ORCID: https://orcid.org/0000-0002-1539-3092 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+330
+331
+332
+333
+
+(20) Trueman, B. F.; James, W.; Shu, T.; Doré, E.; Gagnon, G. A. Comparing
+Corrosion Control Treatments for Drinking Water Using a Robust Bayesian Generalized
+Additive Model. ACS ES&T Engineering 2022, acsestengg.2c00194.
+https://doi.org/10.1021/acsestengg.2c00194.
+
+334
+335
+
+(21) Wood, S. N. Generalized Additive Models: An Introduction with R, 2nd ed.;
+Chapman; Hall/CRC, 2017.
+
+336
+337
+338
+
+(22) Abokifa, A. A.; Sela, L. Integrating Spatial Clustering with Predictive Modeling of
+Pipe Failures in Water Distribution Systems. Urban Water Journal 2023, 20 (4), 465–
+476. https://doi.org/10.1080/1573062X.2023.2180393.
+
+339
+340
+341
+342
+
+(23) Hopke, P. K.; Liu, C.; Rubin, D. B. Multiple Imputation for Multivariate Data with
+Missing and Below‐Threshold Measurements: Time‐Series Concentrations of Pollutants
+in the Arctic. Biometrics 2001, 57 (1), 22–33. https://doi.org/10.1111/j.0006341X.2001.00022.x.
+
+343
+344
+345
+
+(24) Helsel, D. R.; Hirsch, R. M.; Ryberg, K. R.; Archfield, S. A.; Gilroy, E. J. Statistical
+Methods in Water Resources; U.S. Department of the Interior; U.S. Geological Survey,
+2020; Vol. Techniques and Methods 4–A3.
+
+346
+347
+348
+
+(25) Hastie, T.; Tibshirani, R.; Friedman, J. The Elements of Statistical Learning;
+Springer Series in Statistics; Springer New York: New York, NY, 2009.
+https://doi.org/10.1007/978-0-387-84858-7.
+
+349
+350
+
+(26) Bishop, C. M. Pattern Recognition and Machine Learning; Information science
+and statistics; Springer: New York, 2006.
+
+351
+352
+353
+
+(27) Kucukelbir, A.; Tran, D.; Ranganath, R.; Gelman, A.; Blei, D. M. Automatic
+Differentiation Variational Inference. Journal of Machine Learning Research 2017, 18
+(14), 1–45.
+
+18
+https://doi.org/10.26434/chemrxiv-2024-m2h4h ORCID: https://orcid.org/0000-0002-1539-3092 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+

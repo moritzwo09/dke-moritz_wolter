@@ -1,0 +1,3726 @@
+Automated Reaction Exploration of Ozonation
+Processes for Model Olefins in Water
+Enric Petrus,†,‡ Livia A. Hunkeler,‡ Markus Reiher,‡ Urs von Gunten,†,¶ and
+Thomas B. Hofstetter∗,†,§
+†Eawag, Swiss Federal Institute of Aquatic Science and Technology, 8600 Dübendorf,
+1
+
+Switzerland
+‡Department of Chemistry and Applied Biosciences, ETH Zürich, Vladimir-Prelog-Weg 2,
+8093 Zürich, Switzerland
+¶School of Architecture, Civil and Environmental Engineering (ENAC), École
+Polythecnique Fédéral de Lausanne (EPFL), 1015 Lausanne, Switzerland
+§Institute of Biogeochemistry and Pollutant Dynamics (IBP), ETH Zürich, 8092 Zürich,
+Switzerland
+E-mail: thomas.hofstetter@eawag.ch
+
+1
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Abstract
+
+2
+
+3
+
+The comprehensive evaluation of pollutant abatement during chemical oxidation
+
+4
+
+processes and identification of potentially hazardous transformation products are a fun-
+
+5
+
+damental challenge in water and wastewater treatment. Here, we demonstrate how high-
+
+6
+
+throughput computational chemistry enables the elucidation of reaction pathways via
+
+7
+
+automated, quantum-chemistry-based chemical reaction network (CRN) explorations.
+
+8
+
+We evaluated the predictive capabilities of this computational approach using the Soft-
+
+9
+
+ware for Chemical Interaction Networks (SCINE) for studying the reactions of ozone
+
+10
+
+with two olefins, ethene and tetramethylethene, in aqueous solution. Following a bench-
+
+11
+
+marking of the quantum chemical methodology for structure optimization and energy
+
+12
+
+calculations, we generated CRNs containing hundreds of compounds and thousands
+
+13
+
+of reactions, identified reaction mechanisms, and evaluated product formation kinetics
+
+14
+
+through microkinetic modeling. These CRN explorations led to the correct reproduc-
+
+15
+
+tion of experimental evidence for mechanisms and products of olefin ozonolysis for
+
+16
+
+reactions of ozone and ethene based solely on defining the reactants and their initial
+
+17
+
+concentrations. The study of reactions of ozone and tetramethylethene also matched
+
+18
+
+experimental data for the main products but revealed consequences of limited explo-
+
+19
+
+ration depth and shortcomings of the implicit solvation model. We envision that CRN
+
+20
+
+explorations not only offer novel means for predicting pollutant transformation path-
+
+21
+
+ways but will also support chemical analysis and the assessment of effects on human
+
+22
+
+and environmental health.
+
+23
+
+Keywords: water treatment, ozonation, chemical reaction network, quantum chemistry,
+
+24
+
+high-throughput computational chemistry microkinetic modeling, reaction pathway identifi-
+
+25
+
+cation
+
+2
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+26
+
+Introduction
+
+27
+
+The use of chemical oxidants including ozone, chlorine, and chlorine dioxide in water treat-
+
+28
+
+ment processes is essential to mitigate waterborne diseases and abate inorganic and organic
+
+29
+
+micropollutants. 1,2 Chemical oxidants have been used successfully for decades for the pro-
+
+30
+
+vision of safe drinking water and, more recently, for wastewater treatment. 2 Their reac-
+
+31
+
+tions with matrix components and organic pollutants create transformation and disinfection
+
+32
+
+(by)products which can cause adverse effects on human and environmental health. 3–12 Pro-
+
+33
+
+viding efficient disinfection/oxidation while minimizing toxic product formation is particu-
+
+34
+
+larly challenging for wastewater treatment and potable water reuse purposes where concen-
+
+35
+
+trations of dissolved organic matter and organic pollutants are typically much higher. 13–15
+
+36
+
+Evaluating the efficacy of pollutant abatement during chemical oxidation processes and iden-
+
+37
+
+tifying potentially hazardous transformation products are thus paramount for the implemen-
+
+38
+
+tation of adequate water treatment strategies. 16,17
+
+39
+
+To date, there is a large data base on reactions and mechanisms of oxidation reactions,
+
+40
+
+however, comprehensive experimental descriptions of all reaction pathways pertinent to ox-
+
+41
+
+idative water treatment would be extremely laborious and experimental evidence remains
+
+42
+
+inherently incomplete. 1 Computational support is therefore required to complement the ex-
+
+43
+
+perimental characterizations of oxidation processes. In fact, chemoinformatic (i.e., data-
+
+44
+
+driven) pathway prediction tools and first-principles quantum chemical calculations have
+
+45
+
+already assisted the experimental elucidation of kinetics and reaction pathways. Previously,
+
+46
+
+empirical reaction rules for reactive functional groups of compounds with unknown reactiv-
+
+47
+
+ity towards oxidants were applied to predict the formation of transformation products. 18,19
+
+48
+
+Furthermore, quantum chemical descriptors for structure activity relationships were estab-
+
+49
+
+lished, allowing access to chemical structures, their Gibbs energies, and barrier heights for
+
+50
+
+the characterization of reaction pathways. 20–25 However, quantum chemical construction of
+
+51
+
+potential energy surfaces (PES) requires significant manual input and guidance, limiting
+
+52
+
+computational analyses to specific reaction coordinates. These circumstances have so far
+3
+
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+53
+
+prevented a more expansive, systematic, and possibly predictive evaluation of reactions in-
+
+54
+
+volving chemical oxidants and organic micropollutants.
+
+55
+
+These restrictions can now be overcome with high-throughput computational chemistry
+
+56
+
+which offers new avenues to elucidate reaction pathways and mechanisms through chemical
+
+57
+
+reaction network (CRN) explorations. 26–29 Supported by the steady increase of computing
+
+58
+
+power and availability of high performance computing clusters, quantum chemistry based re-
+
+59
+
+action network explorations are developing rapidly and they make extensive use of algorithms
+
+60
+
+for their automated and autonomous execution. Several mechanism-exploration procedures
+
+61
+
+have been implemented in recent years (see compilation in ref 30 ). In the Software for Chemi-
+
+62
+
+cal Interaction Networks (SCINE), 26 which we will use in this study, such CRN explorations
+
+63
+
+are carried out in three principle steps. First, the reaction space is explored by searching
+
+64
+
+elementary steps which interconnect the molecular structures of reactants, intermediates,
+
+65
+
+transition states and products. To do so, first-principle heuristics, that is features of the
+
+66
+
+electronic wave function, facilitate the generation of reaction coordinates and thus predic-
+
+67
+
+tion of reactive sites in molecular structures for uni- and bimolecular reactions. Not only are
+
+68
+
+these algorithms agnostic to the functional groups in the studied molecules, but they also
+
+69
+
+allow for exploring all possible reactive combinations to obtain a comprehensive picture of
+
+70
+
+the reaction network. Second, the minimum and transition-state structures and correspond-
+
+71
+
+ing energies generated during the initial CRN explorations may require a refinement given
+
+72
+
+that these explorations are typically carried out with fast electronic structure methods such
+
+73
+
+as semipirical ones (e.g., xTB 31,32 ) and density functional theory (DFT). These quantum
+
+74
+
+chemical characterizations of the CRN can involve computationally more demanding cou-
+
+75
+
+pled cluster (CC) methods for electronic energy calculations. 27 Third, the obtained reaction
+
+76
+
+Gibbs energies need to be evaluated modeling experimental conditions in terms of shortest
+
+77
+
+reaction path to determine reaction mechanisms, 33 and microkinetic simulations to predict
+
+78
+
+the concentrations of all the compounds in the CRN. 34 Most recent developments address the
+
+79
+
+need for efficient navigation of CRN explorations and restrict the combinatorial explosion of
+
+4
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+80
+
+reaction paths by allowing user-defined interventions (e.g., by expert knowledge, on-the-fly
+
+81
+
+evaluation of concentration fluxes, interactive structure manipulation). 35–37
+
+82
+
+The goal of this study was to evaluate how automated CRN explorations can support
+
+83
+
+the elucidation of mechanisms and pathways of reactions of chemical oxidants with organic
+
+84
+
+compounds and provide a conceptual basis for future applications. We focused our study
+
+85
+
+on reactions of ozone with olefins in aqueous solution for purposes of both practical rele-
+
+86
+
+vance and systematic development of the computational methodology for CRN explorations.
+
+87
+
+Reactions of ozone with ethenes through the 1,3-dipolar cycloaddition (Criegee) mechanism
+
+88
+
+are furthermore prototypical for reactions of electron-rich olefins and aromatic compounds
+
+89
+
+in water treatment and their kinetics and mechanisms are well-documented with experi-
+
+90
+
+mental data. 20,38,39 Moreover, ozone has biradical and thus multireference character 40 and
+
+91
+
+its computational identification and optimization of molecular structures and predicting the
+
+92
+
+reaction energies may not be accurate with fast DFT methods, as illustrated in studies
+
+93
+
+of the Criegee mechanism. 22 Instead, single-reference coupled cluster methods are recom-
+
+94
+
+mended, 41,42 though they can be challenging to use given the large number of molecular
+
+95
+
+structures in CRNs. The specific objectives of this study were threefold. (i) We identified
+
+96
+
+the optimal computational methodology for automated CRN explorations with the Chemo-
+
+97
+
+ton software 30 through systematic evaluation of the Criegee mechanism for ozone and ethene
+
+98
+
+against benchmark studies of Wheeler et al. 41 (ii) We tested the predictive capabilities of
+
+99
+
+automated CRN explorations by investigating two model reactions of ozone with ethene and
+
+100
+
+tetramethylethene, respectively. These processes were selected as benchmarks because they
+
+101
+
+both proceed through the Criegee mechanism but generate different stable products under
+
+102
+
+identical experimental conditions. 38 Here, we performed the CRN evaluation with methods
+
+103
+
+identified in specific objective (i) and evaluated their utility for future automated CRN ex-
+
+104
+
+plorations involving ozone and organic compounds. (iii) Finally, we analysed the outcome
+
+105
+
+for the lowest energy path reaction mechanism between the reactants and the experimentally
+
+106
+
+observed products with Pathfinder 33 as well as through microkinetic modeling. 34
+
+5
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+107
+
+Computational Methodology
+
+108
+
+Quantum Chemical Calculations
+
+109
+
+Density functional theory and coupled cluster calculations were performed with the ORCA
+
+110
+
+software package version 5.0.3. 43 We also tested three semiempirical methods, namely DFTB3, 44
+
+111
+
+PM6 45 and GNF2-xTB. 32 We have not considered the application of multireference configu-
+
+112
+
+ration interaction methods because of the two following limitations. First, molecular orbitals
+
+113
+
+that form the complete active space must be consistent for all the molecular structures along
+
+114
+
+a reaction path, hence new methodologies are currently under development to provide direct
+
+115
+
+orbital selection mapping. 46 Second, multireference methods are notorious for being among
+
+116
+
+the most time-demanding calculations in quantum chemistry. 47 Given that pioneering studies
+
+117
+
+demonstrated that CC succeeded in both optimizing the molecular structures and predicting
+
+118
+
+the reaction energies of the Criegee mechanism for ozone and ethene, we have followed their
+
+119
+
+recommendation. 41,42 DFT structure optimizations were done with Perdew-Becke-Ernzerhof
+
+120
+
+PBE, 48,49 the hybrid PBE0, 50 and the long-range LC-PBE 51 density functionals, with the
+
+121
+
+Ahlrichs def2-TZVP basis set. 52 Grimme’s D3 dispersion correction was employed for the
+
+122
+
+PBE and PBE0 calculations. 53,54 Single point calculations were performed with canonical
+
+123
+
+coupled cluster, CCSD(T), 55 and the Domain-based Local Pair Natural Orbital approxi-
+
+124
+
+mation of coupled cluster, DLPNO-CCSD(T) 56 with the correlation consistent basis sets. 57
+
+125
+
+Because the reaction network contains both open- and closed-shell compounds, we employed
+
+126
+
+the DLPNO approach, instead of the DPNO, to ensure that we can combine their absolute
+
+127
+
+electronic energies when calculating reaction energies. We employed the default protocol
+
+128
+
+in ORCA, where UHF alpha and beta orbitals are transformed to quasi-restricted orbitals,
+
+129
+
+thus removing much of the spin contamination. Solvation in water was introduced using
+
+130
+
+the Conductor-like Polarizable Continuum Model, CPCM, both for structure optimization
+
+131
+
+and single point calculations. 58 Stationary points were characterized with analytic frequency
+
+132
+
+calculations. Gibbs energy corrections were computed using LC-PBE, at 298.15 K and 1
+
+6
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+133
+
+atm, and using the ideal gas-rigid rotor-harmonic oscillator (IGRRHO) model. Final Gibbs
+
+134
+
+energies were calculated combining the electronic energy from DLPNO-CCSD(T), and the
+
+135
+
+Gibbs energy corrections from the DFT method. In order to employ molar concentrations in
+
+136
+
+the rate constant, the reference state was modified to 298.15 K and 1.0 M (standard state in
+
+137
+
+solution). Given that the temperature remains constant between both states, this was done
+
+138
+
+by simply increasing the barrier by 7.90 kJ·mol−1 . 59
+
+139
+
+Reaction Network Exploration
+
+140
+
+We carried out autonomous reaction network explorations with ethene and ozone as well as
+
+141
+
+tetramethylethene and ozone using the SCINE Chemoton module. 60 An introduction to
+
+142
+
+the terminology, the principles of CRN construction, and the characterization of CRNs is
+
+143
+
+provided in Section S1 of the Supporting Information. Briefly, CRN explorations generate
+
+144
+
+four datasets. (i) A structure is a single identity defined by a set of atoms distributed in the
+
+145
+
+three-dimensional space with a determined spin and charge. (ii) A compound is a group of
+
+146
+
+structures with same number of atoms, charge and spin but different electronic energies. (iii)
+
+147
+
+The elementary step represents a rearrangement of chemical bonds and electrons between
+
+148
+
+two structures connected via a transition state (TS). Finally, (iv) reactions comprise a group
+
+149
+
+of elementary steps connecting two compounds through a transition state (Figure S1).
+
+150
+
+To generate transition state guesses for uni- and bimolecular reactions, we employed the
+
+151
+
+algorithm implemented in Chemoton named Newton Trajectory scan (NT2), which is in-
+
+152
+
+spired by the Artificial Force Induced Reaction (AFIR), 61 and the use of Newtonian forces for
+
+153
+
+computing an effective PES. 62 We restricted the size of the compounds in the two networks
+
+154
+
+as follows. NT2 trials that led to activation barriers greater than 250 kJ·mol−1 (according to
+
+155
+
+the method which was used for the exploration) were dismissed, as the subsequent reaction
+
+156
+
+would be unlikely to happen. The activation barrier threshold was set relatively high to ac-
+
+157
+
+count for two phenomena. First, electronic structure methods can overestimate experimental
+
+158
+
+barrier heights. Too low thresholds could lead to reactions being overlooked. Second, the
+7
+
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+159
+
+identification of barriers occurs regardless of the direction in which they might be crossed.
+
+160
+
+Endergonic reactions with high barriers can still represent exergonic reactions in the oppo-
+
+161
+
+site direction. The chemical reaction network of ethene and ozone (CRN-E) contained a
+
+162
+
+maximum of 2 carbon atoms, 4 hydrogen atoms, and 3 oxygen atoms (i.e., the ozonide) to
+
+163
+
+reduce the computational cost of the exploration (see further discussion below and Section
+
+164
+
+S2.2). CRN-T for reactions of tetramethylethene and ozone was made up of a maximum of
+
+165
+
+6 carbon atoms, 14 hydrogen atoms, and 3 oxygen atoms. This threshold has two hydrogen
+
+166
+
+atoms more than the tetramethylethene-ozonide, in order to allow the search for the relevant
+
+167
+
+transformation product, 2,3-dimethylbutane-2,3-diol. We stopped the explorations once the
+
+168
+
+expected, experimentally confirmed products were found.
+
+169
+
+All calculations were handled by SCINE Puffin instances 63 and stored and processed
+
+170
+
+in the SCINE Database. 64 These instances interface three additional SCINE packages:
+
+171
+
+ReaDuct, 65 for communicating with ORCA’s generation of input and output files, Mo-
+
+172
+
+lassembler, 66 for handling molecular structures, and Utilities 67 which contains a broad
+
+173
+
+variety of functionalities essential for all SCINE modules. We monitored the progress of
+
+174
+
+the reaction exploration with the open-source graphical user interface Heron, 68,69 and the
+
+175
+
+reaction networks can be interactively visualized as standalone HTML files generated with
+
+176
+
+VizChemoton. 70 A detailed description of the parameters employed in the exploration is
+
+177
+
+provided in Section S2.2.
+
+178
+
+CRN Characterization
+
+179
+
+CRN-E and CRN-T were characterized with reaction pathway identification and kinetic anal-
+
+180
+
+yses. An analysis of equilibrium species distributions based on thermodynamic stability was
+
+181
+
+not conducted, as ozonation of olefins is driven by fast kinetics. We employed Pathfinder
+
+182
+
+and its built-in cost function to determine the most favorable reaction mechanisms. 33 For
+
+183
+
+the kinetics analyses we used microkinetic simulations with KiNetX’s original Matlab code
+
+184
+
+(see parameters in Section S2.7). 34 Initial concentrations for both the pathway identification
+8
+
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+185
+
+and kinetic analysis were set to 4.97·10−5 M of ozone, 4.97·10−3 M of the model olefin, and
+
+186
+
+excess of water.
+
+187
+
+Results and Discussion
+
+188
+
+Choice of Quantum Chemistry Methodology
+
+189
+
+Reference Reaction
+
+190
+
+To determine the adequate quantum chemistry method for the reaction exploration, we
+
+191
+
+evaluated the performance of a broad range of methods, focusing on the first step of the
+
+192
+
+ozonolysis reaction. The 1,3-dipolar cycloaddition of ozone to the double bond of the olefin
+
+193
+
+leads to an ozonide intermediate. Figure 1 shows the mechanism of the ozonolysis, known
+
+194
+
+as the Criegee mechanism, 71 for the two olefins, ethene and tetramethylethene, selected in
+
+195
+
+this study. We used as reference the data reported by Wheeler et al. 41 on the 1,3-dipolar
+
+196
+
+cycloaddition reactions, which consisted of the molecular structures of ozone, ethene, and
+
+197
+
+the TS, as well as the corresponding activation energy (14.2 kJ·mol−1 ). Moreover, Figure
+
+198
+
+1 depicts the expected products for the aqueous ozonolysis of ethene (formaldehyde and α-
+
+199
+
+hydroxymethylhydroperoxide) and tetramethylethene (acetone and hydrogen peroxide). The
+
+200
+
+final products of the ozonolysis and their yields reported in Dowideit and von Sonntag 38 are
+
+201
+
+used in the final section of this study to validate the outcome of the CRN exploration in
+
+202
+
+kinetic simulations.
+
+203
+
+Transition State Structure Optimization
+
+204
+
+We tested three semiempirical methods, DFTB3, PM6 and GFN2-xTB, and three versions
+
+205
+
+of the Perdew-Becke-Ernzerhof functional, PBE, PBE0, and LC-PBE, to optimize the tran-
+
+206
+
+sition state structure leading to the ozonide in the first part of the method benchmarking
+
+207
+
+step. We did not employ CC methods to optimize molecular structures because calculations
+
+208
+
+would become too slow. Figure 2 shows the the results of structure and energy benchmarks
+9
+
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure 1: Ozonolysis of ethene and tetramethylethene through the ozonide intermediate
+(1). The Criegee mechanism 71 proceeds either directly with a heterolytic cleavage forming a
+carbonyl compound and an alkyliumperoxolate (3) or via a zwitterionic intermediate (2), the
+latter leading to aldehyde and α-hydroxyl-alkylperoxide (5) in presence of water as solvent,
+and to the Criegee ozonide (4) in apolar solvents. 38
+209
+
+that we conducted to identify the optimal quantum chemistry methodology for ensuing CRN
+
+210
+
+explorations. The data in Figure 2 demonstrate that no single quantum chemistry method si-
+
+211
+
+multaneously offers low deviations in molecular structures and electronic energies. Therefore,
+
+212
+
+it is necessary to define a composite approach, where molecular structures are optimized first
+
+213
+
+with one method, and electronic energies are subsequently calculated with a second method.
+
+214
+
+Figure 2A shows the root mean squared deviation (RMSD) of the TS structures optimized
+
+215
+
+with the aforementioned methods, with respect to the reference TS structure of Wheeler
+
+216
+
+et al. 41 DFTB3 provides a molecular structure with a RMSD above 1.04 Å, followed by PM6
+
+217
+
+(0.59 Å). GFN2-xTB outperforms the two previous semiempirical methods with a RMSD of
+
+218
+
+0.20 Å. Neither PBE nor PBE0 succeeded in converging the TS structure, whereas LC-PBE
+
+219
+
+not only locates the TS structure, but also provides the lowest RMSD (0.03 Å). Considering
+
+220
+
+that commonly used RMSD thresholds range from 0.5 to 2.0 Å, 72 only GFN2-xTB and
+
+10
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure 2: Benchmark of 14 quantum chemistry methods sorted from the fastest (top) to
+the slowest calculation (bottom). RMSD of the optimized structures are shown with respect
+to the reference TS structure (panel A) and single point energy deviations relative to the
+reference activation energy of the ozonide formation (panel B), both provided by of Wheeler
+et al. 41 (14.2 kJ·mol−1 ). The green rectangle depicts the range of chemical accuracy of ±4.18
+kJ·mol−1 .
+221
+
+LC-PBE are meaningful candidates for running the reaction exploration. The former is
+
+222
+
+on average 100 times faster than the latter, however, LC-PBE is approximately 10 times
+
+223
+
+more accurate than GFN2-xTB. The excellent performance of LC-PBE is explained by the
+
+224
+
+accurate electronic structures for zwitterionic compounds predicted with range-separated
+
+225
+
+functionals. 73 This point is particularly relevant since not only does ozone exhibit partly
+
+226
+
+zwitterionic character, 74 but also many products of the reaction network are zwitterions.
+
+227
+
+Considering that standard quantum chemistry methods (PBE and PBE0) failed to locate the
+
+228
+
+TS and that semiempirical methods are persistently inaccurate for complex bond-breaking
+
+229
+
+processes, we employed LC-PBE for finding and optimizing the molecular structures in our
+
+230
+
+CRN explorations.
+
+231
+
+Accuracy of Transition State Energies
+
+232
+
+We have evaluated the performance of 14 quantum chemistry methods (3 semiempirical
+
+233
+
+methods, 3 DFT functionals, 4 DLPNO CC, and 4 canonical CC) to predict the activation
+
+11
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+234
+
+energy of the ozonide. Figure 2B shows how the electronic energies calculated with the 14
+
+235
+
+methods, using single point calculations with the reference structures from Wheeler et al. 41 ,
+
+236
+
+deviate from the reference value of 14.2 kJ·mol−1 . 41 Deviations vary substantially for the 3
+
+237
+
+semiempirical methods from −83.6 kJ·mol−1 for GFN2-xTB to 0.08 kJ·mol−1 for PM6. We
+
+238
+
+attribute PM6’s high accuracy to its parametrization with CC energy data of its non-covalent
+
+239
+
+interactions. 75 The energy deviations of DFT calculations, that is PBE, PBE0 and LC-PBE
+
+240
+
+are −29.9, −19.1, and −10.1 kJ·mol−1 , respectively. This energy trend follows the Jacob’s
+
+241
+
+ladder principle by which a more precise treatment of the exchange-correlation term enhances
+
+242
+
+the prediction of the electronic energy. 76 However, none of the activation energies calculated
+
+243
+
+with these methods are within the chemical accuracy range of ±4.18 kJ·mol−1 . 77 The poor
+
+244
+
+accuracy of TS energy calculations with DFT functionals in this type of reactivity agrees with
+
+245
+
+a previous benchmark study. 22 Only data obtained from DLPNO and canonical CC resulted
+
+246
+
+in reliable TS activation energies, as depicted with a green rectangle in Figure 2B. Despite
+
+247
+
+the fact that DLPNO is an approximation of the canonical CC, the former demonstrates a
+
+248
+
+similar accuracy to the latter, even when pvtz CCSD(T) is approximately three times slower
+
+249
+
+than pvtz DLPNO-CCSD(T) (Figure S4). In fact, the wall clock time of the canonical
+
+250
+
+CC rapidly scales exponentially for molecules with more than 20 atoms, whereas DLPNO
+
+251
+
+CC scales linearly even with molecules up to 1000 atoms. 78 Moreover, complete basis set
+
+252
+
+extrapolations (CBS) shows a higher deviation than the triple and quadruple zeta basis sets.
+
+253
+
+Data in Figure S4 also illustrates that pvqz DLPNO-CCSD(T) is 4.1 times more accurate
+
+254
+
+than pvtz DLPNO-CCSD(T), however, it is also 4.7 times more expensive. Based on this
+
+255
+
+evidence, electronic energies in our CRN explorations were calculated with pvtz DLPNO-
+
+256
+
+CCSD(T).
+
+12
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+257
+
+Generation of Chemical Reaction Networks for Ozone and Reference
+
+258
+
+Olefins
+
+259
+
+Exploration Outcomes
+
+260
+
+The CRN exploration initiated through the reaction of ethene with ozone, with LC-PBE for
+
+261
+
+structures and DLPNO-CCSD(T) for energies, generated 595 compounds and 1350 reactions
+
+262
+
+(Table 1). The serial computing time for the CRN-E exploration, that is the time invested
+
+263
+
+in all the calculations of the CRN exploration on a hypothetical single processor core, 35
+
+264
+
+was 28500 days (Table 1). Given that computations are run in parallel, the effective total
+
+265
+
+computing time using an average of 250 cores was 114 days.
+
+266
+
+We assessed the plausibility of structures generated for CRN-E in analogy to the compu-
+
+267
+
+tational benchmarking process with experimental evidence for the detected reaction prod-
+
+268
+
+ucts. 20,38 Table 1 shows that the exploration for CRN-E found the the key compounds
+
+269
+
+pertinent to the ozonolysis reactions, namely the ozonide, formaldehyde, methyliumper-
+
+270
+
+oxolate, α-hydroxymethylhydroperoxide, and hydrogen peroxide. Chemoton successfully
+
+271
+
+deduced the intermediates of the 1,3-dipolar cycloaddition mechanism summarized in Figure
+
+272
+
+1 without any expert intervention. Water, which is essential for the reaction of the alkyli-
+
+273
+
+umperoxolate (3 in Figure 1), was not included at the start of the exploration but generated
+
+274
+
+by Chemoton. Lastly, water was found to be involved in 59 reactions, thus demonstrating
+
+275
+
+the consistency of the autonomous exploration procedure.
+
+276
+
+Representing the complete network of CRN-E in a single yet meaningful Figure is not
+
+277
+
+doable given the large number of reactions and compounds (Table 1). Here, we illustrate the
+
+278
+
+initial steps with the involved compounds, flasks, and transition states (Figures 3 and S7)
+
+279
+
+leading to the ozonide and the reactions of the ozonolysis reaction path (Figures S5 and S6).
+
+280
+
+A complete representation of the CRNs with all compounds and reactions is available in the
+
+281
+
+HTML files generated with the browser-based visualization module VizChemoton. 70 Note
+
+282
+
+that the identification of a compound a priori does not imply relevance. The latter requires
+
+13
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+283
+
+the evaluation of the complete reaction network for reaction mechanisms and kinetics as is
+
+284
+
+done below.
+
+285
+
+Figure 3 depicts the three initial reactions of CRN-E (orange arrows), one association
+
+286
+
+(yellow arrow), five compounds (green circles) and one flask (blue circle). The exploration
+
+287
+
+starts by pushing together ozone and ethene to form flask A1, which was already found by
+
+288
+
+Wheeler et al. 41 as vdW complex. This pre-reactant complex forms three different com-
+
+289
+
+pounds through three distinct transition states. The three-dimensional structures of the
+
+290
+
+transition states are depicted in the orange boxes of Figure 3. The exploration procedure
+
+291
+
+identified the most critical compound, the ozonide, C3, through reaction R1, in good agree-
+
+292
+
+ment with experiments 71 and previous theoretical investigations. 23 Figure 3 also depicts
+
+293
+
+a second reaction, R2, which leads to the formation of the known secondary zwitterion
+
+Figure 3: Schematic representation of the initial part of CRN-E constructed by Chemoton.
+Labels of reactions (R) with representations of transition state structures, compounds (C)
+and flasks (F) named in clockwise order.
+
+14
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Table 1: Features of the three studied chemical reaction network explorations for ozone
+and ethene (CRN-E) as well as ozone and tetramethylethene (CRN-T and CRN-T-xTB).
+Total serial computing time, total number of compounds and reactions, number of reactions
+involving each relevant compound, and classification of reaction types.
+Serial computing time (days)
+Total number of reactions
+Total number of compounds
+Compounds
+Ozonide
+Formaldehyde
+Methyliumperoxolate
+α-Hydroxymethylhydroperoxide
+Water
+Hydrogen Peroxide
+Acetone
+Tetroxane
+2-Hydroxy-2-propylhydroperoxide
+Reaction classification
+Associations
+Dissociations
+Bond rearrangements
+a
+
+CRN-E CRN-T CRN-T-xTB
+28505
+11653
+1436
+1350
+441
+133426
+595
+388
+68721
+Number of reactions
+5
+13
+31
+118
+5
+897
+29
+217
+6
+3
+35
+59
+12
+7741
+18
+9
+1872
+-a
+12
+241
+a
+11
+a
+4
+12
+Number of reactions
+1710
+538
+24405
+520
+158
+28028
+470
+134
+81003
+
+not found because of the stoichiometry filter for the CRN-E exploration.
+
+294
+
+in the Criegee mechanism (2 in Figure 1). 71 Reaction, R3 shows the formation of the 1-
+
+295
+
+ethenyltrioxidane, C5, which has not been proposed for ozonolysis of ethene.
+
+296
+
+The exploration for tetramethylethene and ozone, CRN-T, generated 388 compounds
+
+297
+
+and 441 reactions (Table 1). The serial computing time for the CRN-T exploration was
+
+298
+
+11600 days, and the total computing time, using an average of 250 cores, was reduced
+
+299
+
+to approximately 47 days. We compared some structures generated for CRN-T with the
+
+300
+
+initial steps leading to the tetramethylethene ozonide intermediate in analogy to the CRN-E
+
+301
+
+evaluation. CRN-T contains the key compounds depicted in Figure 1, thus confirming that
+
+302
+
+the product hypothesis is also met for this exploration. The CRN-T exploration also found
+
+303
+
+water as compound. Figure S7 shows an analogous representation of Figure 3 for CRN-T,
+
+304
+
+where the key ozonide compounds and their transition states were successfully identified.
+
+305
+
+However, one experimentally reported transformation product was not found, corresponding
+15
+
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+306
+
+to the product of the partial oxidation of tetramethylethene: 2,3-dimethylbutane-2,3-diol. 38
+
+307
+
+In fact, the reaction exploration did not find any diol compound.
+
+308
+
+We hypothesize that the CRN-T did not find any diol and, presumably, other intermedi-
+
+309
+
+ates and products because of the inherently vast chemical space. This chemical space would
+
+310
+
+not be accessible within the time frame of our computations with LC-PBE based struc-
+
+311
+
+ture searches. To that end, we ran a separate, reaction exploration starting from tetram-
+
+312
+
+ethylethene and ozone using GFN2-xTB instead of LC-PBE (abbreviated CRN-T-xTB in
+
+313
+
+Table 1). The computing time running on 250 cores was approximately 6 days (1436 days
+
+314
+
+of serial computing), and during that short period of calculation time, it found 133426 re-
+
+315
+
+actions and 68721 compounds. Chemoton indeed generated eight different diols (Figure
+
+316
+
+S8), but only after CRN-T-xTB included over 40000 reactions vs. 441 reaction with CRN-T,
+
+317
+
+that is a 100-fold increased depth of the exploration. Further qualitative evidence for the
+
+318
+
+operational limitations of LC-PBE-based CRN explorations was obtained from the consider-
+
+319
+
+ation of typical intermediates of the aqueous ozone chemistry. CRN-T-xTB found additional
+
+320
+
+important products associated with the general decay of ozone not included in CRN-T such
+
+321
+
+as the hydroxyl radical, the superoxide radical and the ozonide radical (Figure S9). Further-
+
+322
+
+more, Figure S9 illustrates that singlet and triplet dioxygen, hydrogen peroxide, and water
+
+323
+
+were also present in CRN-T, but involved in a 2- to almost 400-fold lesser frequency than
+
+324
+
+in reactions of CRN-T-xTB. These intermediates did not matter for the reaction of ethene
+
+325
+
+and tetramethylethene with ozone studied here but would do so in ozonation processes with
+
+326
+
+substrates with lower ozone reactivities than olefins. The exploration of the reactions of
+
+327
+
+these ozone decay intermediates, however, was beyond the scope of this study.
+
+328
+
+Reaction Rate Constants
+
+329
+
+The DLPNO-CCSD(T) energy calculations for the 1350 reaction in CRN-E enabled us to
+
+330
+
+obtain 2700 forward and backward reaction rates constants for the reactions of 595 com-
+
+331
+
+pounds in the network. Figure 4A shows the unimodal exponential distribution of reaction
+
+16
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure 4: Frequency distribution of activation energies in kJ·mol−1 for (A) CRN-E and
+(B) CRN-T. Bar colors indicate the reaction type, association (blue), dissociation (orange)
+and bond rearrangement (green). The three color lines depict rate constants in s−1 for
+Exp
+unimolecular steps and M−1 s−1 for bimolecular steps. Experimental value in red, kO
+, and
+3
+QC
+theoretical values in purple and brown, kO3 . Reactions QC-R1 and QC-R2 are shown to
+Figures 3 and S7. Dashed vertical line indicates that only a lower limit of the experimental
+second-order rate was reported in Dowideit and von Sonntag 38 .
+332
+
+rate constants according to their activation energies as confined by the initial boundary
+
+333
+
+conditions of the CRN exploration. The distribution covers a range of approximately 250
+
+334
+
+kJ·mol−1 , which is equivalent to 44 orders of magnitude in reaction rate constants. The peak
+
+335
+
+of the distribution is roughly at 25 kJ·mol−1 and the majority of reactions have an energy
+
+336
+
+of <80 kJ·mol−1 . Consequently, most reactions have half-lives, t1/2 , of 12 seconds at room
+
+337
+
+temperature (eq. 1).
+17
+
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+
+t1/2 = ln(2)
+
+kB T −∆G‡ /(RT )
+·e
+h
+
+−1
+(1)
+
+338
+
+where kB , h and R are Boltzmann’s, h Planck’s, and the gas constant, respectively, ∆G‡ is
+
+339
+
+the activation free energy, and T is the temperature.
+
+341
+
+We have divided the reaction types in three main groups according to whether the stoP
+P
+ichiometry of the reaction (i.e.,
+νreactants − νproducts ) is positive (indicative of an asso-
+
+342
+
+ciation reaction), negative (dissociation) or zero (bond rearrangement). Table 1 shows that
+
+343
+
+CRN-E has 1710 associations, 520 dissociations and 470 bond rearrangements.
+
+340
+
+344
+
+A similar ratio between the three reaction types, that is the predominance of association
+
+345
+
+reactions was also found for CRN-T despite the smaller number of compounds and reactions.
+
+346
+
+Figure 4B depicts the bimodal exponential distribution of reaction rate constants according
+
+347
+
+to the activation energies. The two peaks of maximum counts of activation energies in Figure
+
+348
+
+4B are centered at 8 and 75 kJ·mol−1 , respectively. Because the peak at 8 kJ·mol−1 is the
+
+349
+
+highest, we deduce that CRN-T contains a relative larger share of fast reactions compared
+
+350
+
+to CRN-E.
+
+351
+
+While Chemoton allows for the autonomous construction of CRNs, the large uncer-
+
+352
+
+tainty of quantum chemistry methods for predicting absolute values of rate constants still
+
+353
+
+remains. 79 To exemplify issues with absolute rate constants for the CRNs studied here, we
+
+354
+
+Exp
+have depicted two sets of the experimental and quantum chemical rate constants, kO
+and
+3
+
+355
+
+QC
+kO
+, for the reaction of ozone with ethene and tetramethylethene, perspectively, in Figure
+3
+
+356
+
+Exp
+4. The experimentally determined value of kO
+for ethene is shown as a red vertical line,
+3
+
+357
+
+Exp
+QC
+kO
+at 1.6 · 105 M−1 s−1 in Figure 4A. 38 The value of the theoretical kO
+for reactions R1
+3
+3
+
+358
+
+and R2 of Figure 3, however, are three and two orders of magnitude different (brown and
+
+359
+
+purple lines in Figure 4A). The mismatch in the absolute value of the rate constants is
+
+360
+
+also observed in the exponential decrease of ozone, as it reacts slower than expected from
+
+361
+
+experimental data (Figure S10). The mismatch between experimental and theoretical data
+
+362
+
+is even more pronounced for tetramethylethene. Because only a lower limit of this second18
+
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+363
+
+Exp
+order rate constant was previously reported, 38 the kO
+is shown as a dashed red vertical
+3
+
+364
+
+QC
+line in Figure 4B. kO
+corresponds to reactions R1 and R2 of ozone and tetramethylethene
+3
+
+365
+
+(Figure S7) to yield the vdW flask and the ozonide, depicted as purple and a red verti-
+
+366
+
+cal lines, respectively. Another important consideration is that association reactions suffer
+
+367
+
+QC-R1
+from an entropic penalty. 80 On the one hand, the formation of the vdW flask, kO
+, is
+3
+
+368
+
+entropically unfavorable, as two reactants, ozone and the olefin, are transformed into one
+
+369
+
+QC-R2
+product, the vdW flask. On the other hand, for kO
+, that is the reaction of vdW flask
+3
+
+370
+
+R2
+to form the ozonide compound (brown vertical line for kO
+in Figure 4B), the outcome is re3
+
+371
+
+versed. These pieces of evidence highlight the fundamental challenge of predicting accurate
+
+372
+
+absolute reaction rate constants with quantum chemistry methods. It thus cannot be the
+
+373
+
+goal of CRN explorations to provide and evaluate individual activation barriers for selected
+
+374
+
+reactions in terms of bimolecular rate constants. Instead, rate constants calculated with the
+
+375
+
+same method (here DLPNO-CCSD(T)), can be used as relative values because they benefit
+
+376
+
+from error cancellation. 59 Relative activation energies are thus consistent and enable one to
+
+377
+
+carry out reaction pathway and mechanisms evaluations as well as microkinetic modeling
+
+378
+
+which we will present in the next section.
+
+379
+
+Reaction Mechanisms and Kinetics
+
+380
+
+Reaction Pathway Identification
+
+381
+
+Figure 5 shows two sets of the 25 most probable reaction mechanisms generated with
+
+382
+
+Pathfinder for CRN-E and CRN-T in panels A and B, respectively, using initial con-
+
+383
+
+centrations from Dowideit and von Sonntag 38 (4.97 · 10−5 M of ozone and 4.97 · 10−3 M of
+
+384
+
+olefin). The most likely mechanism, deduced from a compound cost function that stands
+
+385
+
+for the compound’s availability for a reaction, 33 is highlighted in dark blue color, while all
+
+386
+
+other reaction pathways are depicted in grey. The cost has arbitrary units and it is inversely
+
+387
+
+related to the likelihood of the mechanism. In this reaction pathway identification, ozone
+
+388
+
+with ethene and tetramethylethene, respectively, were defined as sources whereas the hy19
+
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure 5: Reaction mechanism prediction by Pathfinder: (A) from ozone and ethene to
+α-hydroxymethylhydroperoxide and from (B) ozone and tetramethylethene to 2-hydroxy-2propylhydroperoxide. The mechanism with the lowest cost is depicted in dark blue color.
+Grey bars and lines represent alternative reaction mechanisms with higher compound costs.
+389
+
+droxyalkylhydroperoxides were defined arbitrarily as targets which will further decompose
+
+390
+
+in water. 81 The selection of the same type of target for both CRNs allows for a direct com-
+
+391
+
+parison of the reaction mechanisms with experimental evidence (i.e., for reactions leading to
+
+392
+
+compound 5 in Figure 1).
+
+393
+
+Figure 5A shows the most favorable mechanism from the reaction of ozone and ethene
+
+394
+
+(source) to α-hydroxymethylhydroperoxide (target). The other 24 alternative mechanisms
+
+395
+
+are depicted in grey because Pathfinder classifies them as unlikely due to their greater
+
+396
+
+compound costs (see elementary steps of reaction paths in Section S2.6.1). Mechanism 1
+
+397
+
+depicted in Figure 5A is spontaneous, with a total reaction Gibbs energy of –365 kJ·mol−1 .
+20
+
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+398
+
+This reaction pathway starts with the barrierless formation of the vdW complex (Int1 in Fig-
+
+399
+
+ure 5). The subsequent 1,3-dipolar cycloaddition through TS1 exhibits an activation barrier
+
+400
+
+of 34 kJ·mol−1 . As a result, the ozonide (Int2) is formed, with a favorable reaction energy of
+
+401
+
+–258 kJ·mol−1 . Next, the ozonide decomposes through heterolytic O–O bond cleavage in TS2
+
+402
+
+with a barrier of +32 kJ·mol−1 to generate a flask composed by formaldehyde and methyli-
+
+403
+
+umperoxolate. After the dissociation of the flask, Int4, methyliumperoxolate reacts with
+
+404
+
+water to generate a new flask, Int5. In the final reaction step, Int5 evolves through TS3,
+
+405
+
+with an activation barrier of 27 kJ·mol−1 , to yield α-hydroxymethylhydroperoxide (Int6).
+
+406
+
+Despite the fact that the Pathfinder mechanism is not the lowest in energy (there are
+
+407
+
+other pathways in Figure 5 with lower energy), it is indeed the shortest and the most favor-
+
+408
+
+able when considering both the activation barriers (i.e., kinetics) and initial concentrations
+
+409
+
+of the reactants. Moreover, the alternative mechanisms show that there is a consistent trend
+
+410
+
+in terms of total reaction Gibbs energy. For example, mechanism 25 (see Section S2.6.1)
+
+411
+
+has a cost of 159.9 compared to 124.8 for mechanism 1. The difference stems from the fact
+
+412
+
+that mechanism 25 includes an additional reaction step. For CRN-E, the formation of the
+
+413
+
+α-hydroxymethylhydroperoxide is exergonic for all the reaction pathways shown in Figure
+
+414
+
+5A.
+
+415
+
+The most favorable reaction mechanism from ozone and tetramethylethene to 2-hydroxy-
+
+416
+
+2-propylhydroperoxide is shown in Figure 5B. 24 alternative mechanisms are depicted in
+
+417
+
+grey and exhibit greater compound costs. For instance, mechanism 25 illustrated in Section
+
+418
+
+S2.6.2 has a cost of 288.5 as compared to 104.4 for mechanism 1. This large difference is
+
+419
+
+not only caused by the extra reaction step of mechanism 25, but also by the formation of
+
+420
+
+hydrogen which is not observed in experiments. 38 Mechanism 1 starts with the barrierless
+
+421
+
+formation of the vdW complex (Int1) and then undergoes a 1,3-dipolar cycloaddition through
+
+422
+
+TS1 with an activation energy of 4 kJ·mol−1 to generate the Criegee ozonide (Int2). Note
+
+423
+
+that the activation barrier for TS1 from tetramethylethene is 30 kJ·mol−1 lower than TS1
+
+424
+
+from ethene, in good agreement with the higher reactivity of tetramethylethene reported in
+
+21
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+425
+
+exp
+experiments 38 (see kO
+-values in Figure 4). The ozonide decomposes through the heterolytic
+3
+
+426
+
+cleavage reaction, via TS2, to form a flask composed by acetone and 2-peroxopropylate. The
+
+427
+
+flask dissociates to form Int4. Subsequently, 2-peroxopropylate forms yet a new flask with
+
+428
+
+water, Int5 which yields 2-hydroxy-2-propylhydroperoxide through TS3 with an activation
+
+429
+
+barrier of 28 kJ·mol−1 . This reaction mechanism is not spontaneous because the ozonide
+
+430
+
+(Int2) is 71 kJ·mol−1 more stable than the final product 2-hydroxy-2-propylhydroperoxide.
+
+431
+
+Alternative reaction pathways found by Pathfinder also show the same endergonic trend
+
+432
+
+towards the formation of the 2-hydroxy-2-propylhydroperoxide. This observation reveals
+
+433
+
+the principle difference between the reaction mechanisms of ozone with tetramethylethene
+
+434
+
+and ethene, respectively. While the formation of hydroxyalkylhydroperoxides is favored for
+
+435
+
+CRN-E, it is not for CRN-T. This interpretation perfectly agrees with the experimental
+
+436
+
+data, as α-hydroxymethylhydroperoxide is one of the main products whereas 2-hydroxy-2-
+
+437
+
+propylhydroperoxide is not. 38
+
+438
+
+Microkinetic Analyses
+
+439
+
+While the reaction pathway identification relies on an explicit definition of source and target
+
+440
+
+compounds, microkinetic simulations are literally exploratory within the network of gen-
+
+441
+
+erated compounds, flasks, and transition states. Here, we employed KiNetX 34 to carry
+
+442
+
+out microkinetic analyses for CRN-E and CRN-T and the outcome is depicted in Figure 6.
+
+443
+
+The initial conditions are identical to those used for reaction pathway identification from
+
+444
+
+experiments of Dowideit and von Sonntag 38 with excess of olefins and water. The kinetic
+
+445
+
+parameters and initial concentrations are compiled in Table S2.
+
+446
+
+Figure 6A shows the reaction kinetics of compounds exceeding femto-molar concentra-
+
+447
+
+tions in CRN-E that included all compounds and reactions included in Table 1. Typical inter-
+
+448
+
+mediates of ethene ozonolysis (i.e., the ozonide, α-hydroxymethyl hydroperoxide, methylium
+
+449
+
+peroxolate) are formed continuously until they decrease as ozone is consumed completely
+
+450
+
+(between 1 to 100 seconds). Formaldehyde and α-hydroxymethyl hydroperoxide are the fi-
+
+22
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+451
+
+nal products of this reaction and they form in the correct equimolar yields. This accurate
+
+452
+
+reproduction of experimental transformation products 38 was obtained even though reaction
+
+453
+
+QC
+rate constants, such as those for the ozone consumption (kO
+in Figure 4), deviate orders of
+3
+
+454
+
+magnitude from measured rate constants. Our data thus confirms the error cancellation in
+
+455
+
+transition state energy calculations invoked above.
+
+456
+
+Note that we combined DLPNO-CCSD(T) electronic energies with LC-PBE entropy
+
+457
+
+corrections in our microkinetic simulations to calculate Gibbs energies. 82,83 When reaction
+
+458
+
+rates are exclusively calculated with LC-PBE Gibbs energies, the resulting kinetic simula-
+
+459
+
+tions lead to the formation of the Criegee ozonide as predominant final product (Figures
+
+460
+
+S11A and S12A for CRN-E and CRN-T, respectively). None of these calculations match
+
+461
+
+experimental evidence. 38 These observations reinforces results from our QC method bench-
+
+462
+
+marking (Figure 2B) which show that LC-PBE electronic energies do not ensure chemical
+
+463
+
+accuracy in simulations of ozone chemistry. When reaction rate constants are calculated us-
+
+Figure 6: Concentration–time plots derived from the microkinetic simulations of (A) CRN-E
+and (B) CRN-T. Only compounds at concentrations exceeding concentrations of 10−10 M at
+any time of the simulation are shown in color lines.
+
+23
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+464
+
+ing DLPNO-CCSD(T) electronic energies only, the microkinetic simulations form the correct
+
+465
+
+compounds but in flasks instead of compounds (Figures S11B and S11B). Electronic energies
+
+466
+
+do not favor dissociation reactions of flasks due to the lack of the entropic contribution.
+
+467
+
+Figure 6B shows the kinetics of compounds in CRN-T from a microkinetic simulation
+
+468
+
+carried out in analogous fashion as for CRN-E (see Table 1 for number of compounds and
+
+469
+
+reactions and Table S2 for simulation parameters). This microkinetic analysis is based on
+
+470
+
+exploration data with a confined set of identified compounds (see above). Even though the
+
+471
+
+lower depth of CRN-T is a limitation to the network’s evaluation, these results allow for
+
+472
+
+critical insights into the interpretation of automatic CRN explorations. In CRN-T, tetram-
+
+473
+
+ethylethene and ozone react to acetone as primary product through decomposition of the
+
+474
+
+tetramethylethene-ozonide via heterolytic O–O bond cleavage in agreement with experi-
+
+475
+
+ments. 38 The fact that the hydroxy-alkyl hydroperoxide (2-hydroxypropyl-2-hydroperoxide)
+
+476
+
+does not become the predominant product is also consistent with experiments. However,
+
+477
+
+formation of two unexpected compounds, 3,3,6,6-tetramethyl-1,2,4,5-tetroxane, simply re-
+
+478
+
+ferred to as tetroxane (Gibbs energy of –227 kJ·mol−1 , Figure S13A) and propenylperoxy-
+
+479
+
+propaneperoxol (–277 kJ·mol−1 , Figure S13B) vs. –218 kJ·mol−1 for the ozonide (Figure
+
+480
+
+5) hint at limited extent of reaction progress or lacking depth of CRN-T exploration. We
+
+481
+
+hypothesize that this outcome is also due to an artifact with regard to the role that water
+
+482
+
+plays in the hydrolysis of the alkyliumperoxolate (i.e., the 2-peroxo propylate zwitterion in
+
+483
+
+CRN-T) to hydrogen peroxide and acetone (3 in Figure 1).
+
+484
+
+As discussed in Section S2.11, the transition state leading to the formation of hydrogen
+
+485
+
+peroxide from 2-peroxopropylate strongly depends on the position of the attacking water
+
+486
+
+(Figure S15). The need for aligning water to the hydrolysis reaction coordinate artificially
+
+487
+
+increases the activation energy thus ultimately hindering the reaction. We note that this
+
+488
+
+issue does not systematically affect reaction of water in general. For example, in the hy-
+
+489
+
+drolysis reaction with 2-peroxopropylate to form 2-hydroxy-2-propylhydroperoxide, water
+
+490
+
+attacks from an optimal angle, leading to a smooth trajectory on the potential energy sur-
+
+24
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+491
+
+face (Figure S17). Our observations point to intrinsic limitations of the implicit solvation
+
+492
+
+model (CPCM) to describe local solvation effects. 84 Developments for the implementation
+
+493
+
+of updated solvation methodology 85,86 into Chemoton are currently underway. 87
+
+494
+
+Significance
+
+495
+
+Our study demonstrates how quantum chemistry-based CRN exploration offers novel avenues
+
+496
+
+to elucidate reactions of ozone with organic compounds in aqueous solution. Insights from
+
+497
+
+the evaluation of reactions of tetramethylethene with ozone, however, revealed bottlenecks
+
+498
+
+that need to be addressed in improved computational and data processing workflows for
+
+499
+
+more expansive CRN exploration of chemical oxidation processes. Examples include the
+
+500
+
+efficient combination of fast semiempirical electronic structure calculations with DFT and
+
+501
+
+CC methods to arrive at reliable structures and minimum/TS energies of structurally more
+
+502
+
+complex compounds than substituted ethenes, the management of the ensuing large datasets
+
+503
+
+for evaluation and visualization, as well as the handling of water as both solvent and reactant.
+
+504
+
+Once established, CRN evaluations of chemical oxidation processes can support the re-
+
+505
+
+evaluation of reactions of many organic compounds of concern in oxidative water and wastew-
+
+506
+
+ater treatment processes. Even though sophisticated chemical analyses, such as non-target
+
+507
+
+analysis by high resolution mass spectrometry, generates numerous structural features of
+
+508
+
+organic transformation products, 88 such approaches are unable to provide a comprehensive
+
+509
+
+view of the identity of the numerous intermediates and products (e.g., from drinking water
+
+510
+
+ozonation processes 15 ). The numerous compounds acquired in CRN databases might prove
+
+511
+
+highly beneficial for prediction of high resolution mass spectra, for example if combined with
+
+512
+
+deep learning-based approaches developed for this purpose. 89
+
+513
+
+Moreover, (eco)toxicity evaluations recommend circumventing the assignment of the ob-
+
+514
+
+served toxicity to chemicals in polluted and treated waters because only a minor fraction
+
+515
+
+of the observed toxicity can be allocated to individual compounds in mixtures of pollu-
+
+516
+
+tants and their transformation products. 90 The prediction of transformation products and
+25
+
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+517
+
+coupling this information to biodegradability assessment is a critial step in the evaluation of
+
+518
+
+their abatement in biofilters, which are common after ozonation. Chemical reaction networks
+
+519
+
+generated through high-throughput computational chemistry have great potential to address
+
+520
+
+knowledge gaps in (eco)toxicity evaluations by providing atomistic evidence on transient
+
+521
+
+chemical species and potentially overlooked transformation products. Finally, we envision
+
+522
+
+that predictions of potentially harmful or toxic compounds or compound (sub)structures
+
+523
+
+from CRN explorations of oxidative water treatment could become pivotal for the evaluation
+
+524
+
+of environmental impacts of chemicals in early design phases. 91
+
+525
+
+Data Availability Statement
+
+526
+
+Reaction network data is available at Zenodo, 92 and can be downloaded as (i) MongoDB
+
+527
+
+files to then import them using SCINE, and (ii) self-contained HTML files for interactive
+
+528
+
+data visualization directly in a browser. In addition, molecular structures of the CRNs are
+
+529
+
+accessible at ioChem-BD, 93 via the associated collection. 94
+
+530
+
+Supporting Information Available
+
+531
+
+Short introduction to automated chemical reaction network explorations, additional results
+
+532
+
+for computational method development, reaction network exploration outcomes, reaction
+
+533
+
+pathways identification, and microkinetic modeling.
+
+534
+
+Acknowledgments
+
+535
+
+We are grateful to Jan P. Unsleber and Thomas Weymuth for introducing SCINE to the
+
+536
+
+first author at the start of the project. We also thank Miguel Steiner and Paul L. Türtscher
+
+537
+
+for their helpful discussions on the use of Chemoton.
+
+26
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+538
+
+539
+
+540
+
+541
+
+542
+
+References
+(1) von Gunten, U. Oxidation processes in water treatment: Are We on track? Environ.
+Sci. Technol. 2018, 52, 5062–5075, https://doi.org/10.1021/acs.est.8b00586.
+(2) Von Gunten, U. Oxidation processes and me. Water Research 2024, 253, 121148,
+https://doi.org/10.1016/j.watres.2024.121148.
+
+543
+
+(3) Li, X.-F.; Mitch, W. A. Drinking water disinfection byproducts (DBPs) and human
+
+544
+
+health effects: Multidisciplinary challenges and opportunities. Environ. Sci. Technol.
+
+545
+
+2018, 52, 1681–1689, https://doi.org/10.1021/acs.est.7b05440.
+
+546
+
+547
+
+548
+
+549
+
+(4) Sedlak, D. L.; von Gunten, U. The chlorine dilemma. Science 2011, 331, 42–43,
+https://doi.org/10.1126/science.119639.
+(5) Lee, Y.; Sedlak, D. L.; von Gunten, U. Oxidative water treatment: the track ahead. Environ. Sci. Technol. 2023, 57, 18391–18392, https://doi.org/10.1021/acs.est.3c07785.
+
+550
+
+(6) Lim, S.; Shi, J. L.; von Gunten, U.; McCurry, D. L. Ozonation of organic com-
+
+551
+
+pounds in water and wastewater: A critical review. Water Res. 2022, 213, 118053,
+
+552
+
+https://doi.org/10.1016/j.watres.2022.118053.
+
+553
+
+(7) Prasse, C.; Ford, B.; Nomura, D. K.; Sedlak, D. L. Unexpected transformation of
+
+554
+
+dissolved phenols to toxic dicarbonyls by hydroxyl radicals and UV light. Proceedings
+
+555
+
+of the National Academy of Sciences of the United States of America 2018, 115, 2311–
+
+556
+
+2316, https://doi.org/10.1073/pnas.1715821115.
+
+557
+
+(8) Prasse, C.; von Gunten, U.; Sedlak, D. L. Chlorination of phenols revisited: Unex-
+
+558
+
+pected formation of α, β-unsaturated C4 -dicarbonyl ring cleavage products. Environ.
+
+559
+
+Sci. Technol. 2020, 54, 826–834, https://doi.org/10.1021/acs.est.9b04926.
+
+560
+
+(9) Mitch, W. A.;
+
+Richardson, S. D.;
+
+Zhang, X.;
+
+Gonsior, M. High-molecular-
+
+27
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+561
+
+weight by-products of chlorine disinfection. Nature Water 2023, 1, 336–347,
+
+562
+
+https://doi.org/10.1038/s44221-023-00064-x.
+
+563
+
+(10) Marron, E. L.; Prasse, C.; Buren, J. V.; Sedlak, D. L. Formation and fate of car-
+
+564
+
+bonyls in potable water reuse systems. Environ. Sci. Technol. 2020, 54, 10895–10903,
+
+565
+
+https://doi.org/10.1021/acs.est.0c02793.
+
+566
+
+(11) Houska, J.; Manasfi, T.; Gebhardt, I.; von Gunten, U. Ozonation of lake water
+
+567
+
+and wastewater: Identification of carbonous and nitrogenous carbonyl-containing
+
+568
+
+oxidation byproducts by non-target screening. Wat. Res. 2023, 232, 119484,
+
+569
+
+https://doi.org/10.1016/j.watres.2022.119484.
+
+570
+
+(12) Manasfi, T.; Houska, J.; Gebhardt, I.; von Gunten, U. Formation of carbonyl com-
+
+571
+
+pounds during ozonation of lake water and wastewater: Development of a non-target
+
+572
+
+screening method and quantification of target compounds. Wat. Res. 2023, 237, 119751,
+
+573
+
+https://doi.org/10.1016/j.watres.2023.119751.
+
+574
+
+(13) Marron, E. L.;
+
+Mitch, W. A.;
+
+von Gunten, U.;
+
+Sedlak, D. L. A tale of
+
+575
+
+two treatments:
+
+576
+
+taminants during potable water reuse. Acc. Chem. Res. 2019, 52, 615–622,
+
+577
+
+https://doi.org/10.1021/acs.accounts.8b00612.
+
+The multiple barrier approach to removing chemical con-
+
+578
+
+(14) Formation of transformation products during ozonation of secondary wastewater efflu-
+
+579
+
+ent and their fate in post-treatment: From laboratory- to full-scale. Water Res. 2021,
+
+580
+
+200, 117200, https://doi.org/10.1016/j.watres.2021.117200.
+
+581
+
+(15) Gulde, R.; Clerc, B.; Rutsch, M.; Helbing, J.; Salhi, E.; McArdell, C. S.; von Gun-
+
+582
+
+ten, U. Oxidation of 51 micropollutants during drinking water ozonation: Formation
+
+583
+
+of transformation products and their fate during biological post-filtration. Water Res.
+
+584
+
+2021, 207, 117812, https://doi.org/10.1016/j.watres.2021.117812.
+
+28
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+585
+
+(16) Ferraro, P. J.; Prasse, C. Reimagining safe drinking water on the basis of twenty-first-
+
+586
+
+century science. Nat Sustain 2021, 4, 1032–1037, https://doi.org/10.1038/s41893-021-
+
+587
+
+00760-0.
+
+588
+
+(17) Rosario-Ortiz, F.; Rose, J.; Speight, V.; von Gunten, U.; Schnoor, J. How do you like
+
+589
+
+your tap water? Science 2016, 351, 912–914, https://doi.org/10.1126/science.aaf0953.
+
+590
+
+(18) Lee, M.; Blum, L. C.; Schmid, E.; Fenner, K.; von Gunten, U. A computer-based
+
+591
+
+prediction platform for the reaction of ozone with organic compounds in aqueous so-
+
+592
+
+lution: kinetics and mechanisms. Environ. Sci.: Processes Impacts 2017, 19, 465–476,
+
+593
+
+https://doi.org/10.1039/C6EM00584E.
+
+594
+
+(19) Kamath, D.; Mezyk, S. P.; Minakata, D. Elucidating the elementary reaction
+
+595
+
+pathways and kinetics of hydroxyl radical-induced acetone degradation in aqueous
+
+596
+
+phase advanced oxidation processes. Environ. Science Technol. 2018, 52, 7763–7774,
+
+597
+
+https://doi.org/10.1021/acs.est.8b00582.
+
+598
+
+(20) von Sonntag, C.; von Gunten, U. Chemistry of ozone in water and wastew-
+
+599
+
+ater treatment:
+
+from basic principles to applications; IWA Publishing, 2012;
+
+600
+
+https://doi.org/10.2166/9781780400839.
+
+601
+
+(21) Guo, X.; Minakata, D.; Niu, J.; Crittenden, J. Computer-based first-principles
+
+602
+
+kinetic modeling of degradation pathways and byproduct fates in aqueous-
+
+603
+
+phase advanced oxidation processes. Environ. Sci. Technol. 2014, 48, 5718–5725,
+
+604
+
+https://doi.org/10.1021/es500359g.
+
+605
+
+(22) Tentscher, P. R.; Lee, M.; von Gunten, U. Micropollutant oxidation studied
+
+606
+
+by quantum chemical computations: methodology and applications to thermody-
+
+607
+
+namics, kinetics, and reaction mechanisms. Acc. Chem. Res. 2019, 52, 605–614,
+
+608
+
+https://doi.org/10.1021/acs.accounts.8b00610.
+
+29
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+609
+
+(23) Trogolo, D.; Arey, J. S.; Tentscher, P. R. Gas-phase ozone reactions with a structurally
+
+610
+
+diverse set of molecules: barrier heights and reaction energies evaluated by coupled
+
+611
+
+cluster and density functional theory calculations. J. Phys. Chem. A 2019, 123, 517–
+
+612
+
+536, https://doi.org/10.1021/acs.jpca.8b10323.
+
+613
+
+(24) Trogolo, D.; Mishra, B. K.; Heeb, M. B.; von Gunten, U.; Arey, J. S. Molecular mech-
+
+614
+
+anism of NDMA formation from N,N -dimethylsulfamide during ozonation: quantum
+
+615
+
+chemical insights into a bromide-catalyzed pathway. Environ. Sci. Technol. 2015, 49,
+
+616
+
+4163–4175, https://doi.org/10.1021/es504407h.
+
+617
+
+(25) Minakata, D.; von Gunten, U. Predicting transformation products during aqueous ox-
+
+618
+
+idation processes: current state and outlook. Environ. Sci. Technol. 2023, 57, 18410–
+
+619
+
+18419, https://doi.org/10.1021/acs.est.3c04086.
+
+620
+
+(26) Weymuth, T.; Unsleber, J. P.; Türtscher, P. L.; Steiner, M.; Sobez, J.-G.; Müller, C. H.;
+
+621
+
+Mörchen, M.; Klasovita, V.; Grimmel, S. A.; Eckhoff, M.; Csizi, K.-S.; Bosia, F.; Bens-
+
+622
+
+berg, M.; Reiher, M. SCINE—Software for chemical interaction networks. J. Chem.
+
+623
+
+Phys. 2024, 160, 222501, https://doi.org/10.1063/5.0206974.
+
+624
+
+(27) Unsleber, J. P.; Liu, H.; Talirz, L.; Weymuth, T.; Mörchen, M.; Grofe, A.;
+
+625
+
+Wecker, D.; Stein, C. J.; Panyala, A.; Peng, B.; Kowalski, K.; Troyer, M.; Rei-
+
+626
+
+her, M. High-throughput ab initio reaction mechanism exploration in the cloud
+
+627
+
+with automated multi-reference validation. J. Chem. Phys. 2023, 158, 084803,
+
+628
+
+https://doi.org/10.1063/5.0136526.
+
+629
+
+(28) Baiardi, A.; Grimmel, S. A.; Steiner, M.; Türtscher, P. L.; Unsleber, J. P.; Weymuth, T.;
+
+630
+
+Reiher, M. Expansive quantum mechanical exploration of chemical reaction paths. Acc.
+
+631
+
+Chem. Res. 2022, 55, 35–43, https://doi.org/10.1021/acs.accounts.1c00472.
+
+632
+
+(29) Unsleber, J. P.; Reiher, M. The exploration of chemical reaction networks. Annu. Rev.
+
+30
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+633
+
+Phys. Chem. 2020, 71, 121–142, ,https://doi.org/10.1146/annurev-physchem-071119-
+
+634
+
+040123.
+
+635
+
+(30) Unsleber, J. P.; Grimmel, S. A.; Reiher, M. Chemoton 2.0: Autonomous explo-
+
+636
+
+ration of chemical reaction networks. J. Chem. Theory Comput. 2022, 18, 5393–5409,
+
+637
+
+https://doi.org/10.1021/acs.jctc.2c00193.
+
+638
+
+(31) Bannwarth, C.; Ehlert, S.; Grimme, S. GFN2-xTB - An accurate and broadly
+
+639
+
+parametrized self-consistent tight-binding quantum chemical method with multipole
+
+640
+
+electrostatics and density-dependent dispersion contributions. J. Chem. Theory Com-
+
+641
+
+put. 2019, 15, 1652–1671, https://doi.org/10.1021/acs.jctc.8b01176.
+
+642
+
+(32) Bannwarth, C.; Caldeweyher, E.; Ehlert, S.; Hansen, A.; Pracht, P.; Seibert, J.;
+
+643
+
+Spicher, S.; Grimme, S. Extended tight-binding quantum chemistry methods. WIRES
+
+644
+
+Comp. Mol. Sci. 2021, 11, e1493, https://doi.org/10.1002/wcms.1493.
+
+645
+
+(33) Türtscher, P. L.; Reiher, M. Pathfinder - Navigating and analyzing chemical reaction
+
+646
+
+networks with an efficient graph-based approach. J. Chem. Inf. Model. 2023, 63, 147–
+
+647
+
+160, https://doi.org/10.1021/acs.jcim.2c01136.
+
+648
+
+(34) Proppe, J.; Reiher, M. Mechanism deduction from noisy chemical reaction networks. J.
+
+649
+
+Chem. Inf. Model. 2019, 15, 357–370, https://doi.org/10.1021/acs.jctc.8b00310.
+
+650
+
+(35) Steiner, M.; Reiher, M. A human-machine interface for automatic exploration of chem-
+
+651
+
+ical reaction networks. Nat. Comm. 2024, 15, 3680, https://doi.org/10.1038/s41467-
+
+652
+
+024-47997-9.
+
+653
+
+(36) Bensberg, M.; Reiher, M. Concentration-flux-steered mechanism exploration with
+
+654
+
+an organocatalysis application. Israel Journal of Chemistry 2023, 63, e202200123,
+
+655
+
+10.1002/ijch.202200123.
+
+31
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+656
+
+(37) Csizi, K.-S.;
+
+Steiner, M.;
+
+Reiher, M. Nanoscale chemical reaction explo-
+
+657
+
+ration with a quantum magnifying glass. Nat. Comm. 2024,
+
+658
+
+https://doi.org/10.1038/s41467-024-49594-2.
+
+15,
+
+5320,
+
+659
+
+(38) Dowideit, P.; von Sonntag, C. Reaction of ozone with ethene and its methyl- and
+
+660
+
+chlorine-substituted derivatives in aqueous solution. Environ. Sci. Technol. 1998, 32,
+
+661
+
+1112–1119, https://doi.org/10.1021/es971044j.
+
+662
+
+663
+
+(39) Bailey, P. S. The reactions of ozone with organic compounds. Chem. Rev. 1958, 58,
+925–1010, https://doi.org/10.1021/cr50023a005.
+
+664
+
+(40) Miliordos, E.; Xantheas, S. S. On the bonding nature of ozone (O3 ) and Its
+
+665
+
+sulfur-substituted analogues SO2 , OS2 , and S3 : Correlation between their biradi-
+
+666
+
+cal character and molecular properties. J. Am. Chem. Soc. 2014, 136, 2808–2817,
+
+667
+
+https://doi.org/10.1021/ja410726u.
+
+668
+
+(41) Wheeler, S. E.; Ess, D. H.; Houk, K. N. Thinking out of the black box: accurate barrier
+
+669
+
+heights of 1,3-dipolar cycloadditions of ozone with acetylene and ethylene. J. Phys.
+
+670
+
+Chem. A 2008, 112, 1798–1807, https://doi.org/10.1021/jp710104d.
+
+671
+
+(42) Zhao, Y.; Tishchenko, O.; Gour, J. R.; Li, W.; Lutz, J. J.; Piecuch, P.; Truhlar, D. G.
+
+672
+
+Thermochemical kinetics for multireference systems: addition reactions of ozone. J.
+
+673
+
+Phys. Chem. A 2009, 113, 5786–5799, https://doi.org/10.1021/jp811054n.
+
+674
+
+675
+
+(43) Neese, F. Software update: the ORCA program system—Version 5.0. WIREs Comput
+Mol Sci. 2022, 12, e1606, https://doi.org/10.1002/wcms.1606.
+
+676
+
+(44) Gaus, M.; Cui, Q.; Elstner, M. DFTB3: Extension of the Self-Consistent-Charge
+
+677
+
+Density-Functional Tight-Binding Method (SCC-DFTB). J. Chem. Theory Comput.
+
+678
+
+2011, 7, 931–948, https://doi.org/10.1021/ct100684s.
+
+32
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+679
+
+(45) Stewart, J. J. P. Optimization of parameters for semiempirical methods V: Modification
+
+680
+
+of NDDO approximations and application to 70 elements. J. Mol. Model. 2007, 13,
+
+681
+
+1173–1213, https://doi.org/10.1007/s00894-007-0233-4.
+
+682
+
+(46) Bensberg,
+
+M.;
+
+Reiher,
+
+M.
+
+Corresponding
+
+active
+
+reaction
+
+paths.
+
+J.
+
+Phys.
+
+Lett.
+
+683
+
+chemical
+
+Chem.
+
+684
+
+https://doi.org/10.1021/acs.jpclett.2c03905.
+
+orbital
+2023,
+
+spaces
+14,
+
+along
+
+2112–2118,
+
+685
+
+(47) Szalay, P. G.; Müller, T.; Gidofalvi, G.; Lischka, H.; Shepard, R. Multiconfiguration self-
+
+686
+
+consistent field and multireference configuration interaction methods and applications.
+
+687
+
+Chem. Rev. 2012, 112, 108–181, https://doi.org/10.1021/cr200137a.
+
+688
+
+(48) Perdew, J. P. Density-functional approximation for the correlation energy
+
+689
+
+of the inhomogeneous electron gas. Phys. Rev. B
+
+690
+
+https://doi.org/10.1103/PhysRevB.33.8822.
+
+1986,
+
+33,
+
+8822–8824,
+
+691
+
+(49) Perdew, J. P. Erratum: Density-functional approximation for the correlation en-
+
+692
+
+ergy of the inhomogeneous electron gas. Phys. Rev. B 1986, 34, 7406–7406,
+
+693
+
+https://doi.org/10.1103/PhysRevB.34.7406.
+
+694
+
+(50) Adamo, C.; Barone, V. Toward reliable density functional methods without adThe PBE0 model. J. Chem. Phys. 1999, 110, 6158–6170,
+
+695
+
+justable parameters:
+
+696
+
+https://doi.org/10.1063/1.478522.
+
+697
+
+698
+
+(51) Vydrov, O. A.; Scuseria, G. E. Assessment of a long-range corrected hybrid functional.
+J. Chem. Phys. 2006, 125, 234109, https://doi.org/10.1063/1.2409292.
+
+699
+
+(52) Schäfer, A.; Huber, C.; Ahlrichs, R. Fully optimized contracted gaussian basis sets of
+
+700
+
+triple zeta valence quality for atoms Li to Kr. J. Chem. Phys. 1994, 100, 5829–5835,
+
+701
+
+https://doi.org/10.1063/1.467146.
+
+33
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+702
+
+(53) Grimme, S.; Antony, J.; Ehrlich, S.; Krieg, H. A consistent and accurate ab initio
+
+703
+
+parametrization of density functional dispersion correction (DFT-D) for the 94 elements
+
+704
+
+H-Pu. J. Chem. Phys. 2010, 132, 154104, https://doi.org/10.1063/1.3382344.
+
+705
+
+(54) Grimme, S.; Ehrlich, S.; Goerigk, L. Effect of the damping function in disper-
+
+706
+
+sion corrected density functional theory. J Comput Chem 2011, 32, 1456–1465,
+
+707
+
+https://doi.org/10.1002/jcc.21759.
+
+708
+
+(55) Raghavachari, K.; Trucks, G. W.; Pople, J. A.; Head-Gordon, M. A fifth order per-
+
+709
+
+turbation comparison of electron correlation theories. Chem. Phys. Lett. 1989, 157,
+
+710
+
+479–483, https://doi.org/10.1016/S0009-2614(89)87395-6.
+
+711
+
+(56) Riplinger, C.; Sandhoefer, B.; Hansen, A.; Neese, F. Natural triple excitations in local
+
+712
+
+coupled cluster calculations with pair natural orbitals. J. Chem. Phys. 2013, 139,
+
+713
+
+134101, https://doi.org/10.1063/1.4821834.
+
+714
+
+(57) Dunning, J., Thom H. Gaussian basis sets for use in correlated molecular calculations.
+
+715
+
+I. The atoms boron through neon and hydrogen. J. Chem. Phys. 1989, 90, 1007–1023,
+
+716
+
+https://doi.org/10.1063/1.456153.
+
+717
+
+(58) Cossi, M.; Rega, N.; Scalmani, G.; Barone, V. Energies, structures, and electronic
+
+718
+
+properties of molecules in solution with the C-PCM solvation model. J Comput Chem
+
+719
+
+2003, 24, 669–681, https://doi.org/10.1002/jcc.10189.
+
+720
+
+721
+
+(59) Besora, M.; Maseras, F. Microkinetic modeling in homogeneous catalysis. WIRES
+Comp. Mol. Sci. 2018, 8, 1–13, https://doi.org/10.1002/wcms.1372.
+
+722
+
+(60) Bensberg, M.; Grimmel, S. A.; Lang, L.; Simm, G. N.; Sobez, J.-G.; Steiner, M.;
+
+723
+
+Türtscher, P.; Unsleber, J. P.; Weymuth, T.; Reiher, M. qcscine/chemoton: Release
+
+724
+
+3.0.0. 2023-05-12; https://doi.org/10.3929/ethz-b-000611922.
+
+34
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+725
+
+(61) Maeda, S.;
+
+Harabuchi, Y.;
+
+Takagi, M.;
+
+Taketsugu, T.;
+
+Morokuma, K. Ar-
+
+726
+
+tificial force induced reaction (AFIR) method for exploring quantum chem-
+
+727
+
+ical potential energy surfaces. The Chemical Record 2016,
+
+728
+
+https://doi.org/10.1002/tcr.201600043.
+
+729
+
+(62) Quapp,
+
+W.;
+
+Bofill,
+
+J.
+
+M.
+
+Some
+
+mathematical
+
+reasoning
+
+16,
+
+2232–2248,
+
+on
+
+the
+
+artifi-
+
+730
+
+cial force induced reaction method. J. Comput. Chem 2020, 41, 629–634,
+
+731
+
+https://doi.org/10.1002/jcc.26115.
+
+732
+
+(63) Bensberg, M.; Brunken, C.; Csizi, K.-S.; Grimmel, S. A.; Gugler, S.; Sobez, J.-
+
+733
+
+G.; Steiner, M.; Türtscher, P. L.; Unsleber, J. P.; Weymuth, T.; Reiher, M.
+
+734
+
+qcscine/puffin:
+
+735
+
+https://doi.org/10.5281/zenodo.7928099.
+
+736
+
+737
+
+Release 1.2.0. 2023; https://doi.org/10.5281/zenodo.7928099,
+
+(64) Bensberg, M.; Grimmel, S. A.; Sobez, J.-G.; Steiner, M.; Unsleber, J. P.; Reiher, M. qcscine/database: Release 1.1.0. 2022-08-15; https://doi.org/10.3929/ethz-b-000563724.
+
+738
+
+(65) Bensberg, M.; Brunken, C.; Csizi, K.-S.; Grimmel, S.; Gugler, S.; Sobez, J.-G.;
+
+739
+
+Steiner, M.; Türtscher, P. L.; Unsleber, J. P.; Vaucher, A. C.; Weymuth, T.; Reiher, M.
+
+740
+
+qcscine/readuct: Release 5.1.0. 2023; https://doi.org/10.5281/zenodo.10159561,
+
+741
+
+https://doi.org/10.5281/zenodo.10159561.
+
+742
+
+(66) Bensberg, M.; Grimmel, S. A.; Sobez, J.-G.; Steiner, M.; Unsleber, J. P.; Rei-
+
+743
+
+her, M. qcscine/molassembler:
+
+744
+
+zenodo.7928074, https://doi.org/10.5281/zenodo.7928074.
+
+745
+
+746
+
+Release 2.0.0. 2023; https://doi.org/10.5281/
+
+(67) Baiardi, A. et al. qcscine/utilities: Release 8.0.0. 2023; https://doi.org/10.5281/
+zenodo.7928050, https://doi.org/10.5281/zenodo.7928050.
+
+747
+
+(68) Müller, C. H.; Steiner, M.; Unsleber, J. P.; Weymuth, T.; Bensberg, M.; Csizi, K.-
+
+748
+
+S.; Mörchen, M.; Türtscher, P. L.; Reiher, M. Heron: Visualizing and Controlling
+
+35
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+749
+
+Chemical Reaction Explorations and Networks. J. Phys. Chem. A 2024, 128, 9028–
+
+750
+
+9044, https://doi.org/10.1021/acs.jpca.4c03936.
+
+751
+
+(69) Bensberg, M.; Brandino, G. P.; Can, Y.; Del, M.; Grimmel, S. A.; Mesiti, M.;
+
+752
+
+Müller, C. H.; Steiner, M.; Türtscher, P. L.; Unsleber, J. P.; Weberndorfer, M.; Wey-
+
+753
+
+muth, T.; Reiher, M. qcscine/heron: Release 1.0.0. 2022; https://doi.org/10.5281/
+
+754
+
+zenodo.7038388.
+
+755
+
+756
+
+757
+
+758
+
+(70) Petrus, E.; Garay-Ruiz, D.; Bo, C.; Reiher, M.; Hofstetter, T. VizChemoton v1.0.0.
+2025; https://doi.org/10.5281/zenodo.14803803.
+(71) Criegee, R. Mechanism of ozonolysis. Angew. Chem. Int. Ed. 1975, 14, 745–752,
+https://doi.org/10.1002/anie.197507451.
+
+759
+
+(72) Friedrich, N.-O.; de Bruyn Kops, C.; Flachsenberg, F.; Sommer, K.; Rarey, M.;
+
+760
+
+Kirchmair, J. Benchmarking commercial conformer ensemble generators. J. Chem. Inf.
+
+761
+
+Model. 2017, 57, 2719–2728, https://doi.org/10.1021/acs.jcim.7b00505.
+
+762
+
+(73) Jakobsen, S.; Kristensen, K.; Jensen, F. Electrostatic potential of insulin: exploring
+
+763
+
+the limitations of density functional theory and force field methods. J. Chem. Theory
+
+764
+
+Comput. 2013, 9, 3978–3985, https://doi.org/10.1021/ct400452f.
+
+765
+
+(74) Braïda, B.; Galembeck, S. E.; Hiberty, P. C. Ozone and Other 1,3-Dipoles: Toward a
+
+766
+
+Quantitative Measure of Diradical Character. J. Chem. Theory Comput. 13, 3228–3235.
+
+767
+
+(75) Řezáč, J.; Fanfrlík, J.; Salahub, D.; Hobza, P. Semiempirical quantum chemical PM6
+
+768
+
+method augmented by dispersion and H-bonding correction terms reliably describes
+
+769
+
+various types of noncovalent complexes. J. Chem. Theory Comput. 2009, 5, 1749–1760,
+
+770
+
+https://doi.org/10.1021/ct9000922.
+
+771
+
+(76) Perdew, J. P.;
+
+Schmidt, K. Jacob’s ladder of density functional approxima-
+
+36
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+772
+
+tions for the exchange-correlation energy. AIP Conf. Proc 2001, 577, 1–20,
+
+773
+
+https://doi.org/10.1063/1.1390175.
+
+774
+
+775
+
+(77) Pople, J. A. Nobel Lecture: Quantum chemical models. Rev. Mod. Phys. 1999, 71,
+1267–1274, https://doi.org/10.1103/RevModPhys.71.1267.
+
+776
+
+(78) Guo, Y.; Riplinger, C.; Becker, U.; Liakos, D. G.; Minenkov, Y.; Cavallo, L.; Neese, F.
+
+777
+
+An improved linear scaling perturbative triples correction for the domain based lo-
+
+778
+
+cal pair-natural orbital based singles and doubles coupled cluster method [DLPNO-
+
+779
+
+CCSD(T)]. J. Chem. Phys. 2018, 148, 011101, https://doi.org/10.1063/1.5011798.
+
+780
+
+(79) Proppe, J.;
+
+Kircher, J. Uncertainty Quantification of Reactivity Scales**.
+
+781
+
+ChemPhysChem 2022, 23, e202200061, https://doi.org/10.1002/cphc.202200061.
+
+782
+
+(80) Ariai, J.; Gellrich, U. The entropic penalty for associative reactions and their physical
+
+783
+
+treatment during routine computations. Phys. Chem. Chem. Phys. 2023, 25, 14005–
+
+784
+
+14015, https://doi.org/10.1039/D3CP00970J.
+
+785
+
+(81) Qiu, J.; Tonokura, K.; Enami, S. Proton-catalyzed decomposition of α-Hydroxyalkyl-
+
+786
+
+hydroperoxides in water. J. Chem. Theory Comput. 2020, 54, 10561–10569,
+
+787
+
+https://doi.org/10.1021/acs.est.0c03438.
+
+788
+
+(82) Kurfman, L. A.; Odbadrakh, T. T.; Shields, G. C. Calculating Reliable Gibbs Free
+
+789
+
+Energies for Formation of Gas-Phase Clusters that Are Critical for Atmospheric Chem-
+
+790
+
+istry: (H2SO4)3. The Journal of Physical Chemistry A 2021, 125, 3169–3176, PMID:
+
+791
+
+33825467.
+
+792
+
+(83) Afify, N. D.; Sweatman, M. B. Solvent-mediated modification of thermodynam-
+
+793
+
+ics and kinetics of monoethanolamine regeneration reaction in amine-stripping car-
+
+794
+
+bon capture: Computational chemistry study. J. Chem. Phys. 2024, 160, 014501,
+
+795
+
+https://doi.org/10.1063/5.0169382.
+
+37
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+796
+
+(84) Basdogan, Y.; Maldonado, A. M.; Keith, J. A. Advances and challenges in modeling
+
+797
+
+solvated reaction mechanisms for renewable fuels and chemicals. WIREs Computational
+
+798
+
+Molecular Science 2020, 10, e1446.
+
+799
+
+(85) Simm, G. N.; Türtscher, P. L.; Reiher, M. Systematic microsolvation approach with
+
+800
+
+a cluster-continuum scheme and conformational sampling. J. Comp. Chem. 2020, 41,
+
+801
+
+1144–1155, https://doi.org/10.1002/jcc.26161.
+
+802
+
+(86) Bensberg, M.; Türtscher, P. L.; Unsleber, J. P.; Reiher, M.; Neugebauer, J. Solvation
+
+803
+
+free energies in subsystem density functional theory. J. Chem. Theory Comput. 2022,
+
+804
+
+18, 723–740, https://doi.org/10.1021/acs.jctc.1c00864.
+
+805
+
+806
+
+(87) Türtscher, P. L.; Reiher, M. Automated Microsolvation for Minimum Energy Path
+Construction in Solution. 2025; https://arxiv.org/abs/2502.07965.
+
+807
+
+(88) Hollender, J. et al. NORMAN guidance on suspect and non-target screening in envi-
+
+808
+
+ronmental monitoring. Environ Sci. Eur. 2023, 35, 75, https://doi.org/10.1186/s12302-
+
+809
+
+023-00779-4.
+
+810
+
+(89) Overstreet, R.; King, E.; Clopton, G.; Nguyen, J.; Ciesielski, D. QC-GN2oMS2: a graph
+
+811
+
+neural net for high resolution mass spectra prediction. J. Chem. Inf. Model. 2024, 64,
+
+812
+
+5806–5816, https://doi.org/10.1021/acs.jcim.4c00446.
+
+813
+
+(90) Escher, B. I. et al. Modernizing persistence–bioaccumulation–toxicity (PBT) assess-
+
+814
+
+ment with high throughput animal-free methods. Arch. Toxicol. 2023, 97, 1267–1283,
+
+815
+
+https://doi.org/10.1007/s00204-023-03485-5.
+
+816
+
+(91) Zimmerman,
+for
+
+J.
+
+B.;
+a
+
+Anastas,
+
+green
+
+P.
+
+T.;
+
+817
+
+Designing
+
+chemistry
+
+818
+
+https://doi.org/10.1126/science.aay3060.
+
+Erythropel,
+
+future.
+
+Science
+
+H.
+
+C.;
+
+2020,
+
+38
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Leitner,
+367,
+
+W.
+
+397–400,
+
+819
+
+(92) Petrus, E.; Hunkeler, L. A.; von Gunten, U.; Reiher, M.; Hofstetter, T. B. Ozonation
+
+820
+
+exploration data set: ethene and tetramethylethene in water. 2024; https://zenodo.
+
+821
+
+org/records/14448899.
+
+822
+
+(93) Álvarez-Moreno, M.; De Graaf, C.; López, N.; Maseras, F.; Poblet, J. M.; Bo, C.
+
+823
+
+Managing the computational chemistry big data problem: The ioChem-BD platform.
+
+824
+
+J. Chem. Inf. Model. 2015, 55, 95–103, https://doi.org/10.1021/ci500593j.
+
+825
+
+(94) Petrus, E. Automated reaction exploration of ozonation processes for model olefins in
+
+826
+
+water. 2024; http://dx.doi.org/10.19061/iochem-bd-6-430, Accessed: 2024-12-13.
+
+39
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+827
+
+TOC Graphic
+
+Reactant Product
+
+R
+
+P
+
+Product
+Reaction
+
+Concentration
+
+828
+
+Gibbs Energy
+
+Reactant
+
+Time
+
+40
+https://doi.org/10.26434/chemrxiv-2025-cf5pg-v2 ORCID: https://orcid.org/0000-0003-1906-367X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+

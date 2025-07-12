@@ -1,0 +1,409 @@
+Impact of Sensor Placement on Indoor Air Quality Monitoring: A
+Comparative Analysis
+A. A. Adelodun1, M. Rezaei1, S. Ardkapan2, N. N. Jakobsen1, M. S. Johnson1,2
+1) Department of Chemistry, University of Copenhagen, Copenhagen, Denmark
+2) Rensair, Copenhagen, Denmark
+Indoor air quality, particulate matter, sensor placement, air purifier, real-time monitoring, PM1, PM2.5
+
+ABSTRACT: This study investigates the impact of sensor placement on the accuracy and responsiveness of indoor air
+quality (IAQ) monitoring focusing on particulate matter concentrations. Measurements were conducted in a controlled
+environment using three intercalibrated sensors positioned at different locations: a wall-mounted sensor installed at 1.2
+meters above the ground, a sensor placed at the inlet of an air purifier, and a sensor located at breathing height in the
+center of the room. A particle source was introduced at four different points within the room to simulate varying pollution
+scenarios. The results revealed that the wall-mounted sensor exhibited delays of up to 200 seconds in detecting peak
+pollutant concentrations compared to the sensor near the air purifier. Additionally, the wall-mounted sensor consistently
+recorded lower pollutant levels compared to the other two sensors. The findings underscore the critical importance of
+strategic sensor placement for accurate and real-time IAQ monitoring. Placing sensors closer to breathing zones and
+pollution sources provides data that more accurately reflects human exposure risks. The study concludes that
+wall-mounted sensors may not provide real-time air quality data in dynamic indoor environments. Further research,
+including computational fluid dynamics (CFD) simulations, is recommended to optimize sensor placement strategies.
+
+INTRODUCTION
+Indoor air quality (IAQ) is a critical component of public
+health, affecting productivity, comfort, and well-being.
+Poor IAQ can result in significant health impacts such as
+respiratory diseases, headaches, fatigue, allergies, and
+cognitive impairment. These issues are exacerbated by
+the fact that modern humans spend the majority of their
+time indoors. Indoor air pollution levels are often two to
+five times higher than outdoor air due to confined spaces
+and sources like furniture, electronics, and human
+emissions (1).
+The increasing awareness of the adverse health
+effects of air pollutants has driven the need to monitor
+indoor air quality status. Indoor sensors are
+indispensable for IAQ monitoring because they provide
+continuous and real-time data, ensuring that indoor
+spaces remain safe and comfortable, especially in
+commercial and public buildings where large numbers of
+people are present (2). Advances in sensor technology
+have enabled the development of low-cost, highly
+sensitive devices capable of detecting various air
+pollutants (3). Accurate sensor readings are essential for
+maintaining healthy indoor environments and provide
+practical guidelines to adjust HVAC systems and their
+energy use (4,5). However, the accuracy of IAQ sensors
+is highly dependent on their placement within a space,
+as environmental factors, airflow patterns, and other
+
+variables can significantly affect sensor performance.
+Hence, the strategic positioning of sensors plays a
+critical role in ensuring accurate and real-time IAQ data
+collection (4).
+Studies have shown that improper sensor placement
+can lead to data inaccuracies, which may compromise
+the overall IAQ monitoring strategy (3,5). For example,
+placing a sensor too close to a pollution source or an air
+vent can result in over- or under-estimation of pollutant
+concentrations.
+Related studies:
+Yun & Licina (4) explored the importance of
+strategically placing stationary air quality sensors in
+office environments to monitor better personal exposure
+to pollutants like CO2, PM2.5, and PM10. Controlled
+experiments found that proximity to occupants and
+ventilation strategies significantly influence exposure
+detection accuracy. They showed placements near the
+occupant's breathing zone, can improve the prediction of
+inhalation exposure, especially during different activity
+levels. Rackes et al. (3) simulated the impacts of the
+placement of CO2 and volatile organic compounds
+(VOCs) sensors, their accuracy, and the numbers
+required for effective IAQ monitoring in four typical
+offices. The spatial variation of concentrations for both
+sensors was not large, (standard deviation CO2= 3–10%
+and VOCs= 21% when its emissions sources were highly
+variable across the space). Errors due to sensor
+
+https://doi.org/10.26434/chemrxiv-2024-3d1rj ORCID: https://orcid.org/0000-0002-3645-3955 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+accuracy were found to be more significant than the
+spatial distribution of sensors, suggesting that improving
+sensor quality is more critical than increasing the number
+of sensors. Azizi et al. (5) examined the effects of 18
+bundled multi-sensor devices (CO2 and passive infrared
+(PIR) radiation) positioned in three single-occupant
+offices (six sensors in each office) on the sensor data.
+They found the PIR sensors on the ceiling resulted in
+unreliable data, with 60% accuracy. Installing sensors
+under office desks can boost accuracy to 84%. Filios et
+al. (6) focused on using virtual sensing and machine
+learning techniques to continuously adjust gas sensor
+locations in two indoor settings (with HVAC and naturally
+ventilated room). The method reduced the need for
+excess hardware and improved real-time air quality
+assessment by predicting less valuable sensor data.
+Their results demonstrated that improvements in data
+coverage and machine learning inputs could enhance
+prediction accuracy. Xiang et al. (7) proposed a hybrid
+network combining stationary sensors for accuracy and
+mobile sensors for coverage. Using pollutant prediction
+models, their approach reduces network error by 40.4%
+and improves exposure measurement accuracy by
+35.8% compared to stationary networks. Borodinecs et
+al. (2) evaluated the importance of proper ventilation in
+ensuring accurate CO2 sensor measurements in indoor
+spaces and found the sensors perform reliably in
+mechanically ventilated buildings, but inaccuracies in
+naturally ventilated spaces, particularly where room
+occupancy fluctuates. Cheng et al. (8) optimized
+temperature and CO2 sensor placement for multi-zone
+thermal comfort and IAQ monitoring using building
+information modeling (BIM), computational fluid
+dynamics (CFD), and genetic algorithms (GA). The study
+emphasizes that traditional sensor placement guidelines
+are insufficient for capturing critical spatial variations,
+and more sensors, especially in areas like corridors
+without HVAC systems, are needed to enhance thermal
+comfort and indoor air quality.
+Despite the growing attention to IAQ monitoring, there
+is still a lack of studies that explore the placement of
+sensors indoors in conjunction with simulation surveys.
+To our knowledge, only three studies (2,4,5) have
+experimentally investigated this topic. By combining
+experimental data, computational fluid dynamics (CFD)
+simulations, and advanced optimization algorithms, this
+study provided new insights to this extent. We evaluated
+the effect of positioning of particle and gas sensors (total
+VOCs) on their accuracy and reliability in different office
+settings. The CFD method has become one of the most
+used tools in optimizing the placement of IAQ sensors.
+By simulating different airflow conditions, CFD models
+can identify zones where pollutant concentrations are
+likely to be higher or lower, guiding the placement of
+sensors for more accurate measurements. This is
+particularly important for particle sensors, as particulate
+matter follows complex airflow paths, often settling in
+areas that are not immediately obvious (8). Furthermore,
+CFD models can simulate the impact of various factors
+such as ventilation rates, temperature gradients, and
+
+occupant movement on indoor pollutant distribution. This
+allows for more precise sensor placement, ensuring that
+the sensors capture a representative sample of the
+indoor air environment (9). Bulot et al. have investigated
+the performance of the sensor elements themselves,
+including their accuracy for different particle types.
+Significantly they find that certain sensors have a
+significant time delay, up to 90 s, built into the device
+(10).
+One could characterize error in terms of a time delay
+between the change of concentration in the breathing
+zone and the measurement point. Another error would
+be if there was a constant offset in concentration, for
+example, if the sensor was placed next to a source of
+pollution or clean air. Both types of error will be
+discussed in this article. To better understand the
+question of sensor placement we carried out a study in
+which sensors were placed at different locations.
+Several guidelines have been set in place for IAQ
+monitoring. They mostly include placing the monitors in
+the height of a typical breathing zone and away from
+openable doors and windows. The US EPA guide states
+that the ideal placement would be at a height of 0.9 – 1.8
+m and away from pollution sources and sinks. Rapid
+changes in temperature and relative humidity should be
+avoided near the sensors and one should make sure the
+sensors are not tucked away behind furniture(11).
+.
+Materials and Methods
+Study Environment and Data Collection
+The study was conducted in a controlled environment—a
+sealed room with a volume of approximately 82.2 m³,
+located at the H. C. Ørsted Institute at the University of
+Copenhagen. FIGURE 1 shows the setup room. The room
+was undisturbed during the study, and baseline conditions
+were recorded before air purifier activation. PM1 and PM2.5
+concentrations were measured using time-stamped
+readings at regular intervals. Sensors were first placed 1 cm
+apart to correlate proximity and were intercalibrated
+according to the results.
+
+FIGURE 1. Room setup in this study.
+
+https://doi.org/10.26434/chemrxiv-2024-3d1rj ORCID: https://orcid.org/0000-0002-3645-3955 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Results and Discussion
+Three intercalibrated particulate matter sensors were used
+to count particle concentrations simultaneously. The
+locations of the sensors are highlighted by the red circles in
+FIGURE 2.
+- Wall-mounted sensor: Installed at a standard height of 1.2
+meters above the ground for monitoring air quality.
+- Device sensor: Placed at the inlet of an air purifier, where
+real-time air quality data is expected to reflect conditions as
+air enters the device for filtration.
+
+PM1 and PM2.5 Concentration
+The background numbers were very similar for all three
+sensors. After a few minutes to record the background, the
+particles were released at point 1. FIGURE 4 shows the
+particle concentrations at the three locations when the
+pollution source was placed at Point 1. The device and
+center sensors showed more similar readings than the
+wall-mounted sensor. The horizontal axis shows time in
+minutes.
+
+- Center sensor: Placed at breathing level in the room
+center.
+
+FIGURE 4. Measured particle concentrations (µg/m³) by the
+three sensors at Point 1
+FIGURE 2. Locations of the sensors
+
+The particle sources (incense) were placed at four different
+points 1, 2, 3, and 4 as shown in FIGURE 3.
+
+All three sensors showed similar numbers where the
+particle source was placed at Point 2, as shown in FIGURE
+5. However, the device sensor is still more aligned with the
+center sensor. The horizontal axis shows time in minutes.
+
+Data were analyzed by comparing the PM1 and PM2.5
+concentration trends between the wall-mounted, center, and
+device sensors. Delays between sensors were noted,
+particularly between the wall-mounted and center sensors.
+
+FIGURE 5. Measured particle concentrations (µg/m³) by the
+three sensors at Point 2
+
+FIGURE 3. Locations of the particle source in the room
+
+FIGURE 6 shows the PM2.5 concentrations measured by
+the three sensors, with the particle source located at Point
+3. The readings from both the device and the center sensor
+peak at approximately 20 µg/m³, while the wall sensor
+registers a peak of around 12 µg/m³.
+
+https://doi.org/10.26434/chemrxiv-2024-3d1rj ORCID: https://orcid.org/0000-0002-3645-3955 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+staying away from the polluted area. Device sensors,
+placed at the inlet of air purifiers, offer a better solution for
+immediate tracking of air quality and pollutant levels.
+Two main phenomena cause on dispersion of pollutants in
+the air. One is diffusion and the other is turbulence. The
+turbulence effect is minimal near the walls, due to the
+boundary layers. This effect can be seen here as well for
+the wall sensor. The pollutants that can reach the sensor at
+the wall are less than the pollutants at the center and the
+device. After several minutes all sensors show similar
+numbers since the mixing happens during this time. The air
+purifier fan adds turbulence to the room which helps to have
+mixing. More CFD simulation studies can be done to
+scrutinize this condition.
+FIGURE 6. Measured particle concentrations (µg/m³) by the
+three sensors at Point 3
+The concentrations when the particle source is at Point 4
+are shown in FIGURE 7. The device and the center sensor
+showed a pick of around 15 µg/m³, while the wall sensor
+shows a pick of about 5 µg/m³, i.e. one-third of the exposed
+concentration.
+
+A room is not a well-mixed reactor and concentrations will
+vary depending on the location of pollution sources and
+ventilation. But the concentration in the breathing zone is
+the most important concentration to be determined
+accurately, since this is directly linked to pollution exposure.
+These results indicate that future IAQ monitoring systems
+must carefully consider the location of sensors to ensure
+timely and accurate pollutant detection. Placing sensors, far
+from the walls, closer to breathing zones and pollutant
+sources yields data that more accurately reflects human
+exposure risks.
+
+Conclusion
+
+FIGURE 7. Measured particle concentrations (µg/m³) by the
+three sensors at Point 4.
+
+Discussion
+The study’s findings underscore the critical importance of
+sensor placement in IAQ monitoring. Although useful for
+long-term installations, wall-mounted sensors may not
+provide real-time sensitivity in environments with rapidly
+changing air quality. The wall-mounted sensor shows both
+concentration differences and time delay regarding the
+particle concentrations. All measurements show more than
+a 30% discrepancy between the peaks of the wall sensor
+maximum numbers and the maximum numbers of the two
+other sensors, except for Point 2 measurement, where the
+point source is near the center of the room.
+The peak concentration of the wall sensor, when the particle
+source was at Point 4, had a delay of more than three
+minutes. Detecting pollution fast results in reacting fast to
+remove the pollution by removing the pollution source, using
+a local air purifier, using the central ventilation system, or
+
+This study highlights significant differences in air quality
+data obtained from wall-mounted and device sensors. The
+findings suggest that the sensor placed at the inlet of the air
+purifier provides more accurate and immediate readings,
+particularly in environments with fluctuating air quality. In
+contrast, the wall-mounted sensor may introduce delays,
+reducing their effectiveness for real-time monitoring. These
+results have important implications for designing indoor air
+quality monitoring systems, where sensor placement should
+be prioritized to ensure accurate assessments of human
+exposure to pollutants. More studies are needed to visualize
+the relationship between the concentrations of wall-mounted
+particle sensors, ventilation exhaust sensors, and the
+sensor placed at a local air purifier inlet. This could be done
+by using CFD simulations.
+
+References
+1.
+US EPA O. Why Indoor Air Quality is Important to
+Schools [Internet]. 2015 [cited 2024 Sep 20]. Available from:
+https://www.epa.gov/iaq-schools/why-indoor-air-quality-impo
+rtant-schools
+2.
+Borodinecs A, Palcikovskis A, Jacnevs V. Indoor
+Air CO2 Sensors and Possible Uncertainties of
+Measurements: A Review and an Example of Practical
+Measurements. Energies [Internet]. 2022 Sep 22 [cited
+2024
+Sep
+20];15(19):6961.
+Available
+from:
+https://www.mdpi.com/1996-1073/15/19/6961
+
+https://doi.org/10.26434/chemrxiv-2024-3d1rj ORCID: https://orcid.org/0000-0002-3645-3955 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+3.
+Rackes A, Ben-David T, Waring MS. Sensor
+networks for routine indoor air quality monitoring in
+buildings: Impacts of placement, accuracy, and number of
+sensors. Science and Technology for the Built Environment
+[Internet]. 2018 Feb 7 [cited 2024 Sep 20];24(2):188–97.
+Available
+from:
+https://www.tandfonline.com/doi/full/10.1080/23744731.201
+7.1406274
+4.
+Yun S, Licina D. Optimal sensor placement for
+personal inhalation exposure detection in static and
+dynamic office environments. Building and Environment
+[Internet]. 2023 Aug [cited 2024 Sep 20];241:110459.
+Available
+from:
+https://linkinghub.elsevier.com/retrieve/pii/S0360132323004
+869
+5.
+Azizi S, Rabiee R, Nair G, Olofsson T. Effects of
+Positioning of Multi-Sensor Devices on Occupancy and
+Indoor Environmental Monitoring in Single-Occupant
+Offices. Energies [Internet]. 2021 Oct 2 [cited 2024 Sep
+20];14(19):6296.
+Available
+from:
+https://www.mdpi.com/1996-1073/14/19/6296
+6.
+Filios G, Nikoletseas S, Stivaros I. IAQ Monitoring
+System Optimizing Data-Driven Sensor Placement. In: 2024
+20th International Conference on Distributed Computing in
+Smart Systems and the Internet of Things (DCOSS-IoT)
+[Internet]. Abu Dhabi, United Arab Emirates: IEEE; 2024
+[cited 2024 Sep 20]. p. 408–15. Available from:
+https://ieeexplore.ieee.org/document/10621498/
+7.
+Xiang Y, Piedrahita R, Dick RP, Hannigan M, Lv Q,
+Shang L. A Hybrid Sensor System for Indoor Air Quality
+Monitoring. In: 2013 IEEE International Conference on
+Distributed Computing in Sensor Systems [Internet].
+Cambridge, MA, USA: IEEE; 2013 [cited 2024 Sep 20]. p.
+96–104.
+Available
+from:
+http://ieeexplore.ieee.org/document/6569414/
+8.
+Cheng JCP, Kwok HHL, Li ATY, Tong JCK, Lau
+AKH. BIM-supported sensor placement optimization based
+on genetic algorithm for multi-zone thermal comfort and IAQ
+monitoring. Building and Environment [Internet]. 2022 May
+[cited 2024 Sep 20];216:108997. Available from:
+https://linkinghub.elsevier.com/retrieve/pii/S0360132322002
+396
+9.
+Yang L, Ye M, he BJ. CFD simulation research on
+residential indoor air quality. Science of The Total
+Environment [Internet]. 2014 Feb 15 [cited 2024 Sep
+20];472:1137–44.
+Available
+from:
+https://www.sciencedirect.com/science/article/pii/S0048969
+713014228
+10.
+Bulot, F.M.J., Russell, H.S., Rezaei, M., Johnson,
+M.S., Ossont, S.J.J., Morris, A.K.R., Basford, P.J., Easton,
+N.H.C., Foster, G.L., Loxham, M. and Cox, S.J., 2020.
+Laboratory comparison of low-cost particulate matter
+sensors to measure transient events of pollution. Sensors,
+20(8), p.2219.
+11. Williams, R., Kilaru, V., Snyder, E., Kaufman, A., Dye, T.,
+Rutter, A., Russell, A., Hafner, H. Air sensor guidebook. US
+Environmental Protection Agency 2014.
+
+https://doi.org/10.26434/chemrxiv-2024-3d1rj ORCID: https://orcid.org/0000-0002-3645-3955 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+

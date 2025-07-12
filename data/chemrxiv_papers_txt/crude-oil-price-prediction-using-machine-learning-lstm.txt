@@ -1,0 +1,623 @@
+Crude Oil Price Prediction Using Machine Learning LSTM.
+Etinosa Osaro1, Samuel Salufu2, Rita Onolemhemhen1*.
+1. Department of Chemical and Petroleum Engineering, University of Lagos, Lagos, Nigeria.
+2. Department of Geophysics, Ambrose Alli University, Ekpoma, Edo, Nigeria.
+*Corresponding author; email: ritaonos@gmail.com.
+
+Abstract.
+This research paper explores the innovative application of Long Short-Term Memory (LSTM) neural
+networks with minimal input features for crude oil price forecasting. The research encompasses a
+comprehensive examination of the model's architecture, training process, data preprocessing, and
+comparative analysis against actual values. The use of date as the sole input feature challenges conventional
+practices and highlights the model's ability to capture intricate temporal dependencies and seasonality. The
+research emphasizes the LSTM model's accuracy, robustness, adaptability, and data efficiency,
+demonstrating its potential for wider applicability across financial markets. This work advances the role of
+deep learning in financial forecasting, introduces a minimalist approach to modeling, and fosters the fusion
+of minimalism and deep learning. The overarching contribution lies in shaping the future of predictive
+modeling and decision-making in the complex and dynamic world of financial markets.
+Keywords: Long Short-Term Memory (LSTM), Neural Networks, Crude Oil Price Forecasting.
+
+Introduction
+Crude oil occupies a central and irreplaceable role in shaping the economic landscape of nations
+worldwide1,2. This hydrocarbon resource, extracted from deep within the Earth's crust, serves as the primary
+source of energy for transportation, heating, and electricity generation. Beyond fuel, crude oil is the
+elemental building block for an extensive array of products, including plastics, chemicals, and
+pharmaceuticals. As such, the significance of crude oil transcends mere commodity trade; it is deeply
+intertwined with the well-being and stability of economies and societies across the globe.
+
+1.1. Energy Backbone of Modern Civilization
+Crude oil plays an unparalleled role in powering the modern world. It serves as the lifeblood of
+transportation, ships, airplanes, and industrial vehicles.3–7 Without it, global supply chains would stutter,
+impacting the movement of goods and people, and hampering international trade. Moreover, the aviation
+and maritime industries, which are pivotal for connecting distant regions, heavily rely on a consistent and
+
+https://doi.org/10.26434/chemrxiv-2025-4rntj ORCID: https://orcid.org/0000-0003-2744-339X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+cost-effective supply of crude oil-derived fuels. This interconnectivity between oil and transportation
+underscores the inextricable bond between crude oil prices and the functioning of the global economy.
+In addition to transportation, crude oil provides a significant share of the world's electricity and heat
+generation. Many power plants and heating systems depend on oil to ensure the availability of electricity
+and warmth for households and industries.8,9 Sudden disruptions in the oil supply chain can lead to energy
+shortages, driving up energy costs and affecting both domestic and industrial consumers.
+Crude oil's utility is not confined solely to the energy sector. It is a foundational source of petrochemicals,
+which are fundamental to the production of plastics, synthetic rubber, pharmaceuticals, and a wide range of
+chemical products.10–12 The plastics industry is heavily dependent on crude oil derivatives. This sector
+produces materials used in packaging, construction, electronics, medical devices, and countless consumer
+products. Consequently, the fluctuations in crude oil prices have a far-reaching impact on the cost structure
+of numerous industries.
+
+1.2. Economic Implications and Macroeconomic Significance
+The crude oil market has a profound influence on the macroeconomic stability of nations13–15. Fluctuations
+in oil prices can affect a nation's balance of payments, inflation rates, fiscal policies, and exchange rates16–
+18
+
+. It plays a role in shaping fiscal policies, as governments often rely on revenues generated from oil exports
+
+to fund public spending. Conversely, when oil prices plummet, countries that are heavily dependent on oil
+exports can face economic challenges.
+Oil price volatility, stemming from geopolitical tensions, supply disruptions, or shifts in global demand,
+introduces an element of uncertainty in global financial markets. The impact is felt by investors, businesses,
+and policymakers, as these fluctuations can lead to market turmoil and economic uncertainty.
+Considering its pivotal role in various sectors, the economic impact of crude oil prices extends beyond
+specific industries to influence the overall economic health of nations. Consequently, understanding and
+predicting crude oil price movements has profound implications for economic stability, national security,
+and the welfare of societies.
+Given the presence of crude oil in modern civilization and its far-reaching economic ramifications, this
+research embarks on a journey to harness machine learning techniques, specifically Long Short-Term
+Memory (LSTM) neural networks19–24, to enhance the accuracy of crude oil price predictions. In doing so,
+it aims to address the critical need for reliable forecasting in an increasingly dynamic and interconnected
+global economy.
+
+https://doi.org/10.26434/chemrxiv-2025-4rntj ORCID: https://orcid.org/0000-0003-2744-339X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+The motivation behind this research stems from the dire need for more accurate and reliable crude oil price
+forecasts. Efforts have been made in the development of models for oil production rates25–28. Accurate
+predictions of crude oil prices can facilitate prudent decision-making, benefiting industries, governments,
+and individuals alike. Moreover, the unprecedented volatility experienced in the oil market in recent years,
+often driven by a confluence of geopolitical, economic, and environmental factors, has amplified the
+demand for advanced forecasting methods. Traditional time series analysis, while valuable, may not
+adequately capture the nuances of the modern crude oil market. Machine Learning (ML), particularly
+LSTM neural networks, offers a promising avenue for improving predictive accuracy. Additionally, the
+innovative approach of using only the date as an input feature is intriguing, as it challenges conventional
+wisdom and may present a novel path to enhanced prediction. Gaussian process regression models have
+also been useful in ML studies29–32 but are better used for data with more than one input feature.
+
+Methodology
+2.1. Data Collection and Preprocessing
+The foundation of our research lies in the acquisition of high-quality historical crude oil price data as
+collected from https://www.cbn.gov.ng/rates/dailycrude.asp. The historical price data comprises a period
+that enables us to capture a wide range of market conditions, spanning several years. This diverse dataset
+is instrumental in training our LSTM neural network for accurate price predictions. The dataset consists of
+two primary variables: date and crude oil price. Each data point is associated with a specific date and its
+corresponding crude oil price.
+The date variable is formatted in the month/day/year (MM/DD/YYYY) style. It was extracted directly from
+the historical data source and remained in this format throughout the preprocessing steps. The price variable
+represents the closing price of crude oil on the given date. This variable is recorded in the dataset as a
+continuous numerical value. No further preprocessing was required for this variable, as it was already in a
+suitable format for training the LSTM model.
+
+2.2. Data Transformation and Preprocessing
+To prepare the data for training the LSTM neural network, several preprocessing steps were undertaken:
+i.
+
+Conversion of Date Variables: The date variables were transformed into datetime objects,
+utilizing Python's datetime library. This conversion allowed for the utilization of date data as a
+numerical feature, crucial for the LSTM model's comprehension of the chronological aspect of
+the data.
+
+https://doi.org/10.26434/chemrxiv-2025-4rntj ORCID: https://orcid.org/0000-0003-2744-339X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+ii.
+
+Transformation to Ordinal Numbers: Following the conversion to DateTime objects, the dates
+were further transformed into ordinal numbers. This numerical representation of dates was
+crucial in facilitating the LSTM model's ability to process the temporal aspect of the data.
+
+iii.
+
+Data Splitting: The dataset was divided into training and testing subsets. In this research, 80%
+of the data was allocated for training, while the remaining 20% was reserved for testing. This
+partitioning of the data allowed for an objective evaluation of the model's predictive
+performance on unseen data.
+
+iv.
+
+Scaling with MinMaxScaler: To ensure that the date and price variables were within a
+consistent and uniform numerical range, the data was scaled using the MinMaxScaler from the
+sklearn library 33,34. This scaling process transformed the variables into a range between 0 and
+1, ensuring that they did not dominate the model's training process due to differing numerical
+magnitudes.
+
+v.
+
+Data Reshaping: Given the LSTM model's requirement of a 3D input shape, the date and price
+variables were reshaped to match this format. Specifically, the NumPy arrays representing these
+variables were transformed to be 2D, and then an additional dimension was added to achieve a
+3D shape, suitable for LSTM processing.
+
+The culmination of these data transformation and preprocessing steps set the stage for training the LSTM
+neural network to forecast crude oil prices accurately. The chronological aspect of the date data, in
+combination with the scaled and reshaped input features, is pivotal in enabling the LSTM model to capture
+complex temporal patterns in the crude oil price dataset.
+Certainly, here's content for the section on the architecture of the LSTM neural network, including the
+number of units, layers, and the use of dropout:
+
+2.3. Architecture of the LSTM Neural Network
+The heart of this research lies in the design and configuration of an LSTM neural network, a specialized
+deep learning model renowned for its ability to effectively capture temporal dependencies within sequential
+data. The architecture of the LSTM model plays a pivotal role in shaping the model's predictive capabilities.
+In this section, we provide a comprehensive overview of the architecture, including the number of units,
+layers, and the incorporation of dropout for regularization.
+
+https://doi.org/10.26434/chemrxiv-2025-4rntj ORCID: https://orcid.org/0000-0003-2744-339X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+2.3.1. Number of Units
+The LSTM model consists of multiple units within each layer. These units, often referred to as cells, are the
+fundamental building blocks responsible for capturing and storing information from previous time steps. In
+our model, each LSTM layer is equipped with 50 units. This selection is guided by a balance between model
+complexity and the capacity to capture intricate temporal patterns. A higher number of units in each layer
+can lead to greater model expressiveness, but it may also increase the risk of overfitting if not appropriately
+regularized.
+
+2.3.2. Layer Configuration
+The LSTM model employed in this research is designed with a total of four LSTM layers. These layers are
+stacked on top of each other, creating a deep neural network architecture. The choice of having multiple
+LSTM layers allows the model to capture hierarchical and increasingly complex temporal relationships in
+the data.
+i.
+
+The first three LSTM layers are configured to return sequences, ensuring that the output of
+each time step is used as input for the subsequent layer. This configuration is essential for
+preserving the sequential nature of the data and facilitates the model's ability to capture intricate
+temporal patterns.
+
+ii.
+
+The fourth and final LSTM layer, which does not return sequences, serves as the output layer
+of the model. It receives the processed information from the preceding layers and produces the
+final output, which is the predicted crude oil price.
+
+2.3.3. Use of Dropout network
+To mitigate overfitting, a common challenge in deep learning35,36, we use dropout for the LSTM model37,38.
+Dropout is a regularization technique that randomly deactivates a fraction of the neurons during training.
+In our model, a dropout rate of 0.2 is employed. This means that, during each training iteration, 20% of the
+neurons are deactivated, preventing any single neuron from becoming overly reliant on specific features
+and patterns in the training data.
+The use of dropout introduces an element of randomness and diversity into the training process,
+encouraging the model to generalize effectively to unseen data. This regularization technique is
+instrumental in improving the model's robustness and preventing it from memorizing the training data,
+ensuring that it captures meaningful temporal patterns without overfitting.
+The LSTM neural network architecture outlined in this section is specifically tailored to leverage the
+chronological aspect of the date data and facilitate accurate predictions of crude oil prices. The combination
+
+https://doi.org/10.26434/chemrxiv-2025-4rntj ORCID: https://orcid.org/0000-0003-2744-339X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+of LSTM layers, units, and dropout is designed to enable the model to capture intricate temporal
+dependencies and enhance its ability to forecast price trends effectively.
+Certainly, here's the content for the section on the model configuration, including the choice of the Adam
+optimizer and mean squared error (MSE) as the loss function:
+
+2.4. Model Configuration and Optimization
+The configuration of the LSTM neural network is a crucial step in the development of a predictive model
+for crude oil prices. In this section, we detail the specific choices made regarding the model's configuration,
+including the selection of the Adam optimizer39 and the use of mean squared error (MSE) as the loss
+function.
+
+2.4.1. Choice of the Adam Optimizer
+The optimizer is a fundamental component of the model's configuration, as it determines how the model
+updates its internal parameters during training to minimize the chosen loss function. In this research, the
+Adam optimizer was selected for its effectiveness in handling complex, high-dimensional data and dynamic
+learning rates. Adam combines the advantages of both the AdaGrad40 and RMSprop41 optimizers, offering
+efficient and adaptive learning.
+The choice of the Adam optimizer was motivated by its ability to effectively handle the temporal dynamics
+of the crude oil price dataset. Its adaptive learning rate mechanisms make it particularly well-suited for
+financial time series data, where patterns and trends can evolve. The use of the Adam optimizer facilitates
+faster convergence during training and, in many cases, better overall performance.
+
+2.4.2. Mean Squared Error (MSE) as the Loss Function
+The selection of an appropriate loss function is critical in training a regression model. For this research, the
+mean squared error (MSE) was chosen as the primary loss function. MSE calculates the average squared
+difference between the model's predictions and the actual crude oil prices. This loss function is particularly
+well-suited for regression tasks, where the goal is to minimize the error between predicted and actual
+continuous values.
+The choice of MSE aligns to create a model that accurately forecasts crude oil prices. By minimizing the
+squared differences between predicted and actual prices, the model is trained to reduce the overall prediction
+error, resulting in predictions that closely match the real-world data. This metric offers a straightforward
+and interpretable measure of the model's performance, quantifying the accuracy of its predictions.
+The configuration of the LSTM neural network, coupled with the choice of the Adam optimizer and the
+MSE loss function, represents a deliberate and informed approach to creating a predictive model for crude
+
+https://doi.org/10.26434/chemrxiv-2025-4rntj ORCID: https://orcid.org/0000-0003-2744-339X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+oil prices. These choices collectively contribute to the model's capacity to learn from the data, adapt to
+temporal dependencies, and generate accurate forecasts, which will be further explored and evaluated in
+the subsequent sections of this research.
+
+2.5. Training Process Details
+The training process of the LSTM neural network for crude oil price prediction is a critical aspect of this
+research. In this section, we provide an in-depth insight into the training dynamics, including the number
+of epochs and the choice of batch size, both of which are pivotal in shaping the model's learning curve and
+predictive accuracy.
+
+2.5.1. Number of Epochs
+The training process spanned a total of 1000 epochs. Each epoch represents a complete cycle through the
+training dataset, where the model updates its internal parameters based on the training data. The choice of
+the number of epochs reflects a balance between the model's capacity to learn from the data and the potential
+for overfitting. A higher number of epochs enables the model to capture intricate patterns, but excessive
+training may lead to overfitting, where the model performs well on the training data but struggles to
+generalize to unseen data. The decision to employ 1000 epochs was guided by a series of empirical trials
+and careful consideration of the training dynamics. This number allowed the model to learn from the dataset
+while retaining sufficient robustness for generalization to unseen data.
+
+2.5.2. Batch Size
+During training, the data was divided into batches, with each batch containing a subset of the training data.
+The choice of batch size impacts the training process in terms of computational efficiency and model
+convergence. Smaller batch sizes can lead to more frequent updates of the model's parameters, which may
+result in faster convergence. Larger batch sizes, on the other hand, can offer computational efficiency but
+may require more epochs for convergence.
+In this research, a batch size of 32 was employed. This intermediate-sized batch offered a balance between
+efficient parameter updates and convergence speed. It allowed the model to learn from the data in
+manageable portions, facilitating both computational efficiency and effective training.
+
+2.5.3. Training Dynamics
+Throughout the training process, the model was exposed to the training dataset for 1000 epochs. In each
+epoch, the model's parameters were updated to minimize the mean squared error (MSE) between its
+predictions and the actual crude oil prices. The training dynamics were marked by a consistent pattern of
+loss reduction, indicating that the model was learning from the data and adjusting its parameters to improve
+
+https://doi.org/10.26434/chemrxiv-2025-4rntj ORCID: https://orcid.org/0000-0003-2744-339X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+predictive accuracy. The choice of the number of epochs and batch size was carefully considered to achieve
+an optimal balance between model performance and computational efficiency. These parameters, in
+conjunction with the LSTM architecture and input feature of date data, were instrumental in shaping the
+training process, ultimately leading to the model's ability to forecast crude oil prices effectively. The results
+section will delve into the performance of the model, offering insights into the model's learning progress
+and predictive accuracy at various stages of training.
+
+Results and Discussions
+In Figure 1, we can observe the progression of the loss, specifically in terms of mean squared error (MSE),
+throughout the training process. On the x-axis, we have the number of epochs, while the y-axis represents
+the value of the loss function. As the epochs advance, the loss steadily decreases, signifying the model's
+improving capability to reduce the disparity between its predictions and the actual crude oil prices. This
+declining pattern highlights the model's learning journey and its adeptness at identifying underlying patterns
+within the training data. Notably, the initial loss in the first epoch was recorded at 0.140399, and after
+approximately 160 epochs, the model's MSE drops to 0.004925. Ultimately, at the 1000th epoch, the model
+attains a final loss of 0.001424.
+
+Fig. 1 - Loss function plot vs number of epochs.
+
+https://doi.org/10.26434/chemrxiv-2025-4rntj ORCID: https://orcid.org/0000-0003-2744-339X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+A fundamental aspect of evaluating the effectiveness of our LSTM neural network for crude oil price
+prediction is the comparative analysis of the model's predictions against the actual crude oil prices in the
+testing dataset. This analysis provides insights into the model's predictive accuracy and its ability to
+generalize its learned patterns to unseen data. A visual representation (see Figure 2) is employed to convey
+the comparative analysis, where the actual crude oil prices and the model's predictions are depicted on the
+same graph. The x-axis represents the timeline, denoted by dates in ordinal numbers, while the y-axis
+signifies the price values.
+
+Fig 2 - Graphical representation of the comparison between the real and neural network predicted
+prices.
+
+https://doi.org/10.26434/chemrxiv-2025-4rntj ORCID: https://orcid.org/0000-0003-2744-339X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+With the attainment of the final model R2, as depicted in Figure 3, we can confidently draw conclusions
+that the neural network excels at predicting crude oil prices. This success is achieved by training the model
+solely with historical data containing data and prices as input features. These results, with an R2 of 0.97
+show that the model built is accurate. The model, the codes, and the data can be found at
+https://github.com/theOsaroJ/PetroleumResearch/tree/main/CrudeOilLSTM.
+
+Fig. 3 - Correlation plot between real and predicted prices resulting in a model R2 of 0.97.
+
+https://doi.org/10.26434/chemrxiv-2025-4rntj ORCID: https://orcid.org/0000-0003-2744-339X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+One distinctive feature of our research is the utilization of the date as the sole input feature for crude oil
+price prediction. This minimalist approach challenges the conventional use of multiple complex predictors,
+highlighting the model's capacity to generate accurate forecasts with minimal input. While many existing
+models rely on a multitude of factors and features, our approach showcases the potential of harnessing deep
+learning to make accurate predictions using minimalistic input data.
+The comparative analysis with existing models and methodologies underlines the promise of the LSTM
+neural network in crude oil price prediction. Its ability to outperform traditional models, handle complex
+time series data, and adapt to changing market conditions positions it as a valuable tool for financial
+forecasting and decision-making in the context of the crude oil market.
+This section highlights the model's strengths in comparison to existing methods while also acknowledging
+the ongoing need for rigorous evaluation and validation in the complex domain of crude oil price prediction.
+The comparative plot of the actual crude oil plot and model predicted crude oil price over some time in
+Figure 4 shows that the model price follows a similar trend as that of the actual crude oil price. From the
+7th month upward, the model price becomes closest to the actual crude oil price (Figure 4)
+
+Actual Price
+
+Model Price
+
+100
+
+90
+80
+
+Price
+($/bbl)
+
+70
+60
+50
+40
+30
+
+20
+10
+0
+0
+
+2
+
+4
+
+6
+
+8
+
+time (months)
+
+10
+
+12
+
+14
+
+Fig. 4 - Comparative plots of model/predicted crude oil price and actual crude oil price
+
+https://doi.org/10.26434/chemrxiv-2025-4rntj ORCID: https://orcid.org/0000-0003-2744-339X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Conclusion
+While the minimalist input approach holds promise, it is not without limitations. The model may not fully
+capture all factors that influence crude oil prices, such as geopolitical events, economic indicators, and
+unforeseen shocks. Future research could explore ways to incorporate additional features in combination
+with data to further enhance predictive accuracy.
+Additionally, the choice of date as the sole input feature may be context-specific. Different time series may
+require varying degrees of feature complexity. Therefore, the suitability of this approach should be assessed
+in the context of the specific forecasting task.
+In conclusion, the implications of using data as the sole input feature in our research are multifaceted. The
+approach showcases the LSTM model's strengths in capturing temporal dependence, simplifying data
+requirements, and promoting robust generalization. However, it also highlights the need for a nuanced
+understanding of feature selection and the consideration of context-specific factors in time series
+forecasting.
+
+https://doi.org/10.26434/chemrxiv-2025-4rntj ORCID: https://orcid.org/0000-0003-2744-339X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+References
+(1)
+
+Cherif, R.; Hasanov, F.; Pande, A. Riding the Energy Transition: Oil Beyond 2040. IMF Work.
+Pap. 2017, 17 (120), 1. https://doi.org/10.5089/9781484301128.001.
+
+(2)
+
+Lang, K.; Auer, B. R. The Economic and Financial Properties of Crude Oil: A Review. North Am.
+J. Econ. Financ. 2020, 52 (January 2019), 100914. https://doi.org/10.1016/j.najef.2019.01.011.
+
+(3)
+
+Ramey, V. A.; Vine, D. J. Oil, Automobiles, and the U.S. Economy: How Much Have Things
+Changed?; 2010; Vol. 25. https://doi.org/10.1086/657541.
+
+(4)
+
+Zhang, Y.; Fan, S.; Liu, T.; Xiong, Q. A Review of Aviation Oil Production from Organic Wastes
+through Thermochemical Technologies. Appl. Energy Combust. Sci. 2022, 9 (January), 100058.
+https://doi.org/10.1016/j.jaecs.2022.100058.
+
+(5)
+
+Nygren, E.; Aleklett, K.; Höök, M. Aviation Fuel and Future Oil Production Scenarios. Energy
+Policy 2009, 37 (10), 4003–4010. https://doi.org/10.1016/j.enpol.2009.04.048.
+
+(6)
+
+Fei, Y.; Chen, J.; Wan, Z.; Shu, Y.; Xu, L.; Li, H.; Bai, Y.; Zheng, T. Crude Oil Maritime
+Transportation: Market Fluctuation Characteristics and the Impact of Critical Events. Energy
+Reports 2020, 6, 518–529. https://doi.org/10.1016/j.egyr.2020.02.017.
+
+(7)
+
+Jing, J.; Yin, R.; Yuan, Y.; Shi, Y.; Sun, J.; Zhang, M. Determination of the Transportation Limits
+of Heavy Crude Oil Using Three Combined Methods of Heating, Water Blending, and Dilution.
+ACS Omega 2020, 5 (17), 9870–9884. https://doi.org/10.1021/acsomega.0c00097.
+
+(8)
+
+Alola, A. A.; Özkan, O.; Usman, O. Examining Crude Oil Price Outlook amidst Substitute Energy
+Price and Household Energy Expenditure in the USA: A Novel Nonparametric Multivariate QQR
+Approach. Energy Econ. 2023, 120 (February). https://doi.org/10.1016/j.eneco.2023.106613.
+
+(9)
+
+Sorokin, L.; Balashova, S.; Gomonov, K.; Belyaeva, K. Exploring the Relationship between Crude
+Oil Prices and Renewable Energy Production: Evidence from the USA. Energies 2023, 16 (11).
+https://doi.org/10.3390/en16114306.
+
+(10)
+
+Boon, Z. H.; Teo, Y. Y.; Ang, D. T. C. Recent Development of Biodegradable Synthetic Rubbers
+and Bio-Based Rubbers Using Sustainable Materials from Biological Sources. RSC Adv. 2022, 12
+(52), 34028–34052. https://doi.org/10.1039/d2ra06602e.
+
+(11)
+
+Hess, J.; Bednarz, D.; Bae, J.; Pierce, J. Petroleum and Health Care: Evaluating and Managing
+Health Care’s Vulnerability to Petroleum Supply Shifts. Am. J. Public Health 2011, 101 (9),
+
+https://doi.org/10.26434/chemrxiv-2025-4rntj ORCID: https://orcid.org/0000-0003-2744-339X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+1568–1579. https://doi.org/10.2105/AJPH.2011.300233.
+(12)
+
+GERVET, B. The Use of Crude Oil in Plastic Making Contributes To Global Warming. Insa Lyon
+2007, No. January 2015.
+
+(13)
+
+Kumar, S. The Macroeconomic Effects of Oil Price Shocks: Empirical Evidence for India. Econ.
+Bull. 2009, 29 (1), 15–37. https://doi.org/10.2139/ssrn.900285.
+
+(14)
+
+Ratti, R. A.; Vespignani, J. L. Oil Prices and Global Factor Macroeconomic Variables. Energy
+Econ. 2016, 59, 198–212. https://doi.org/10.1016/j.eneco.2016.06.002.
+
+(15)
+
+Ahmad, I.; Iqbal, S.; Khan, S.; Han, H.; Vega-Muñoz, A.; Ariza-Montes, A. Macroeconomic
+Effects of Crude Oil Shocks: Evidence from South Asian Countries. Front. Psychol. 2022, 13
+(August). https://doi.org/10.3389/fpsyg.2022.967643.
+
+(16)
+
+Rafiq, S.; Salim, R.; Bloch, H. Impact of Crude Oil Price Volatility on Economic Activities: An
+Empirical Investigation in the Thai Economy. Resour. Policy 2009, 34 (3), 121–132.
+https://doi.org/10.1016/j.resourpol.2008.09.001.
+
+(17)
+
+Dianchun, L. J. J. The Impact of International Crude Oil Price Shocks on China's Economy: An
+Empirical Analysis Based on SVAR Model [J]. World Econ. Study 2009, 10.
+
+(18)
+
+Deyshappriya, N. P. R.; Rukshan, I. A. D. D. W.; Padmakanthi, N. P. D. Impact of Oil Price on
+Economic Growth of OECD Countries: A Dynamic Panel Data Analysis. Sustainability 2023, 15
+(6), 4888. https://doi.org/10.3390/su15064888.
+
+(19)
+
+Gonzalez, J.; Yu, W. Non-Linear System Modeling Using LSTM Neural Networks. IFACPapersOnLine 2018, 51 (13), 485–489. https://doi.org/10.1016/j.ifacol.2018.07.326.
+
+(20)
+
+Wang, Y. A New Concept Using LSTM Neural Networks for Dynamic System Identification.
+Proc. Am. Control Conf. 2017, 5324–5329. https://doi.org/10.23919/ACC.2017.7963782.
+
+(21)
+
+Moghar, A.; Hamiche, M. Stock Market Prediction Using LSTM Recurrent Neural Network.
+Procedia Comput. Sci. 2020, 170, 1168–1173. https://doi.org/10.1016/j.procs.2020.03.049.
+
+(22)
+
+Zhou, Y.; Jiao, X. Intelligent Analysis System for Signal Processing Tasks Based on LSTM
+Recurrent Neural Network Algorithm. Neural Comput. Appl. 2022, 34 (15), 12257–12269.
+https://doi.org/10.1007/s00521-021-06478-6.
+
+(23)
+
+Huang, R.; Wei, C.; Wang, B.; Yang, J.; Xu, X.; Wu, S.; Huang, S. Well Performance Prediction
+Based on Long Short-Term Memory (LSTM) Neural Network. J. Pet. Sci. Eng. 2022, 208 (PD),
+
+https://doi.org/10.26434/chemrxiv-2025-4rntj ORCID: https://orcid.org/0000-0003-2744-339X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+109686. https://doi.org/10.1016/j.petrol.2021.109686.
+(24)
+
+Sagheer, A.; Kotb, M. Time Series Forecasting of Petroleum Production Using Deep LSTM
+Recurrent Networks. Neurocomputing 2019, 323, 203–213.
+https://doi.org/10.1016/j.neucom.2018.09.082.
+
+(25)
+
+Osaro, E.; Okorie, V.; Alornyo, S. Exploring the Usefulness of Gaussian Process Regression for
+the Prediction of Oil, Water and Gas Production Rates. J. Pet. Environ. Biotechnol. 2023, 14
+(1000506), 1–5.
+
+(26)
+
+An, J.; Mikhaylov, A.; Moiseev, N. Oil Price Predictors: Machine Learning Approach. Int. J.
+Energy Econ. Policy 2019, 9 (5), 1–6. https://doi.org/10.32479/ijeep.7597.
+
+(27)
+
+Behesht Abad, A. R.; Tehrani, P. S.; Naveshki, M.; Ghorbani, H.; Mohamadian, N.; Davoodi, S.;
+Aghdam, S. K. ye; Moghadasi, J.; Saberi, H. Predicting Oil Flow Rate through Orifice Plate with
+Robust Machine Learning Algorithms. Flow Meas. Instrum. 2021, 81 (September), 102047.
+https://doi.org/10.1016/j.flowmeasinst.2021.102047.
+
+(28)
+
+Han, D.; Kwon, S. Application of Machine Learning Method of Data‐driven Deep Learning Model
+to Predict Well Production Rate in the Shale Gas Reservoirs. Energies 2021, 14 (12).
+https://doi.org/10.3390/en14123629.
+
+(29)
+
+Rostami, H.; Azin, R.; Dianat, R. Prediction of Undersaturated Crude Oil Density Using Gaussian
+Process Regression. Pet. Sci. Technol. 2013, 31 (4), 418–427.
+https://doi.org/10.1080/10916466.2010.531346.
+
+(30)
+
+Kim, J. M.; Han, H. H.; Kim, S. Forecasting Crude Oil Prices with Major S&P 500 Stock Prices:
+Deep Learning, Gaussian Process, and Vine Copula. Axioms 2022, 11 (8), 1–15.
+https://doi.org/10.3390/axioms11080375.
+
+(31)
+
+Mukherjee, K.; Osaro, E.; Colón, Y. J. Active Learning for Efficient Navigation of MultiComponent Gas Adsorption Landscapes in a MOF. Digit. Discov. 2023, 1506–1521.
+https://doi.org/10.1039/d3dd00106g.
+
+(32)
+
+Osaro, E.; Mukherjee, K.; Colón, Y. J. Active Learning for Adsorption Simulations: Evaluation,
+Criteria Analysis, and Recommendations for Metal-Organic Frameworks. Ind. Eng. Chem. Res.
+2023. https://doi.org/10.1021/acs.iecr.3c01589.
+
+(33)
+
+Barupal, D. K.; Fiehn, O. Generating the Blood Exposome Database Using a Comprehensive Text
+Mining and Database Fusion Approach. Environ. Health Perspect. 2019, 127 (9), 2825–2830.
+
+https://doi.org/10.26434/chemrxiv-2025-4rntj ORCID: https://orcid.org/0000-0003-2744-339X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+https://doi.org/10.1289/EHP4713.
+(34)
+
+Deekshith, P.; Singh, R. P. Review on Advanced Machine Learning Model : Scikit-Learn. Int. J.
+Sci. Res. Eng. Dev. 2020, 3 (4), 526–529.
+
+(35)
+
+Salehinejad, H.; Sankar, S.; Barfett, J.; Colak, E.; Valaee, S. Recent Advances in Recurrent Neural
+Networks. 2017, No. March.
+
+(36)
+
+Xiao, M.; Wu, Y.; Zuo, G.; Fan, S.; Yu, H.; Shaikh, Z. A.; Wen, Z. Addressing Overfitting
+Problem in Deep Learning-Based Solutions for Next Generation Data-Driven Networks. Wirel.
+Commun. Mob. Comput. 2021, 2021. https://doi.org/10.1155/2021/8493795.
+
+(37)
+
+Merity, S.; Keskar, N. S.; Socher, R. Regularizing and Optimizing LSTM Language Models. 6th
+Int. Conf. Learn. Represent. ICLR 2018 - Conf. Track Proc. 2018, 1–13.
+
+(38)
+
+Popova, I. A.; Stepanova, N. G. Estimation of Inorganic Phosphate in Presence of
+Phosphocarbohydrates (Russian). Vopr. Meditsinskoj Khimii 1977, 23 (1), 135–139.
+
+(39)
+
+Kingma, D. P.; Ba, J. L. Adam: A Method for Stochastic Optimization. 3rd Int. Conf. Learn.
+Represent. ICLR 2015 - Conf. Track Proc. 2015, 1–15.
+
+(40)
+
+Duchi, J. C.; Bartlett, P. L.; Wainwright, M. J. Randomized Smoothing for (Parallel) Stochastic
+Optimization. Proc. IEEE Conf. Decis. Control 2012, 12, 5442–5444.
+https://doi.org/10.1109/CDC.2012.6426698.
+
+(41)
+
+Ruder, S. An Overview of Gradient Descent Optimization Algorithms. 2016, 1–14.
+
+https://doi.org/10.26434/chemrxiv-2025-4rntj ORCID: https://orcid.org/0000-0003-2744-339X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+

@@ -1,0 +1,2421 @@
+1
+
+Assessing the Performance of Continuous Methane
+
+2
+
+Monitoring Systems at Midstream Compressor Stations
+
+3
+
+Shuting (Lydia) Yang* and Arvind P. Ravikumar
+
+4
+
+Department of Petroleum and Geosystems Engineering, The University of Texas at Austin,
+
+5
+
+Austin, TX 78712
+
+6
+
+Energy Emissions Modeling and Data Lab, The University of Texas at Austin, Austin TX 78712
+
+7
+
+*Corresponding author. E-mail: shuting.yang@austin.utexas.edu
+
+8
+9
+
+ABSTRACT
+
+10
+
+Continuous Monitoring Systems (CMS) are a promising technology to detect and quantify
+
+11
+
+intermittent and high-volume methane emissions across the oil and gas supply chain. This is
+
+12
+
+particularly salient at midstream compressor stations where the contribution of short duration
+
+13
+
+emission events to total emissions make survey type technologies less suitable to develop
+
+14
+
+accurate measurement informed inventories. In this work, we report on the first concurrent and
+
+15
+
+long-term test of five CMS technologies to detect, localize, and quantify methane emission from
+
+16
+
+two major types of midstream compressor stations found in the US – a turbine-only station and
+
+17
+
+an engine-only station. We find that CMS technologies can distinguish between different
+
+18
+
+operational states of the compressor only under conditions of low background methane
+
+19
+
+emissions. Combining known events at these facilities with in-situ controlled releases, we
+
+20
+
+observe that all CMS technologies generally struggle in identifying short duration or low-
+
+21
+
+emission rate (relative to baseline) events. Critically, we find that positive event detection, based
+
+22
+
+on analysis of underlying methane signals, frequently did not translate to alerts sent to the
+
+23
+
+operators. Deployment of CMS at midstream compressor stations must proceed with caution
+
+24
+
+based on specific applications, site configuration, and the nature of baseline emissions.
+
+25
+
+Keywords: Continuous Monitoring Systems, Methane, Midstream, Compressor Station, Oil and
+
+26
+
+Gas, Inventory
+1
+
+https://doi.org/10.26434/chemrxiv-2024-qfdbh ORCID: https://orcid.org/0000-0001-8385-6573 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+27
+
+1
+
+Introduction
+
+28
+
+Methane (CH4), the primary component of natural gas, is a potent greenhouse gas with a
+
+29
+
+global warming potential 80 times that of carbon dioxide over a 20-year period. 1 The Oil and
+
+30
+
+Gas (O&G) sector is a significant source of anthropogenic CH4 emissions in the U.S. 2, 3
+
+31
+
+Concerns over the climate impacts of increased global use of natural gas has led to the
+
+32
+
+development of new regulatory actions and voluntary initiatives to reduce CH4 emissions
+
+33
+
+across the O&G supply chain. 4 They share an important feature: an emphasis on the use of
+
+34
+
+empirical or measurement-based approaches to detect, quantify, and mitigate emissions. This
+
+35
+
+is the direct result of recent studies around the world that conclusively demonstrated that
+
+36
+
+official CH4 emission inventories underestimate emissions compared to measurements. 5-8
+
+37
+
+CH4 emissions from O&G supply chain including production, midstream, and
+
+38
+
+downstream distribution sectors have been quantified by different detection technologies
+
+39
+
+deployed on platforms including handheld sensors mobile lab vehicles, drones, aircraft, and
+
+40
+
+satellites. 9-17 These multi-scale snapshot measurements have identified key features relevant
+
+41
+
+to the development of accurate emission inventories and to direct mitigation efforts. These
+
+42
+
+features include the contribution of super-emitters to total emissions, the prevalence of high-
+
+43
+
+volume and intermittent emission events, and the identification of abnormal process
+
+44
+
+conditions as a root cause for large unintended emissions.18-20 Despite progress, these
+
+45
+
+technologies and platforms only provide snapshot estimates of emissions and would require
+
+46
+
+spatial and temporal extrapolation to accurately estimate annual measurement informed
+
+47
+
+inventories.21, 22 Furthermore, snapshot measurements are challenging in basins where a large
+
+48
+
+fraction of emissions are attributable to short-duration, intermittent emission events. 23, 24
+
+49
+
+Continuous Monitoring Systems (CMS) are a promising class of technologies to detect
+
+50
+
+and quantify both routine and abnormal intermittent emissions at O&G facilities. Several
+
+51
+
+CMS technologies are now available commercially and have been deployed at O&G facilities
+
+52
+
+in limited pilot demonstration studies. 25, 26 Recent studies of CMS under controlled
+
+53
+
+conditions demonstrate challenges in emissions localization and quantification even at simple
+
+54
+
+facilities. Bell et al. presented results from single-blind testing of 11 CMS solutions using a
+
+55
+
+standardized protocol at the Methane Emissions Technology Evaluation Center (METEC)
+
+56
+
+test facility. 27 They found significant variability in performance across different
+
+57
+
+technologies, marked by unpredictable detection efficacy and high quantification uncertainty.
+2
+
+https://doi.org/10.26434/chemrxiv-2024-qfdbh ORCID: https://orcid.org/0000-0001-8385-6573 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+58
+
+Another controlled release study designed to evaluate the performance of CMS solutions in
+
+59
+
+identifying large releases found that although detection was reasonably effective,
+
+60
+
+quantification was significantly underestimated.28 Such challenges are not limited to
+
+61
+
+controlled tests. Recent work in evaluating CMS at operating O&G production facilities have
+
+62
+
+brought to light challenges in detecting and quantifying emissions. 29 Extracting useful
+
+63
+
+information from CMS deployed at simple production facilities requires extensive scientific
+
+64
+
+modeling that is currently not available from commercial vendors. 9, 30, 31 Notwithstanding
+
+65
+
+variability in real-world performance of CMS technologies, modeling efforts indicate that
+
+66
+
+CMS could reduce the need for higher frequency of snapshot surveys to achieve equivalent
+
+67
+
+emissions reductions or that CMS networks, under optimal design conditions, can detect over
+
+68
+
+90% of intermittent emission events. 32, 33 Furthermore, there is evidence that the
+
+69
+
+performance of CMS technologies, collectively, are improving rapidly and would therefore
+
+70
+
+require periodic evaluation. 34
+
+71
+
+Much of the literature on the testing and deployment of CMS has focused on their
+
+72
+
+performance at simple upstream production facilities. However, midstream O&G facilities
+
+73
+
+such as compressor stations would benefit from effective CMS-based monitoring for several
+
+74
+
+reasons. First, periodic surveys of compressor stations are challenging because of their sparse
+
+75
+
+distribution. Second, large release events at midstream facilities are often intermittent and
+
+76
+
+last only several minutes to a few hours such as blowdowns or seal vents – these would
+
+77
+
+require an impractical number of snapshot surveys to capture accurately in inventory
+
+78
+
+development. Third, technologies that provide top-down, source-level emission estimates
+
+79
+
+have some challenges in accurately detecting and quantifying sources such as compressor
+
+80
+
+exhaust slip. 35, 36 Despite this, no systematic evaluation of the performance of CMS
+
+81
+
+technologies at midstream compressor stations exists.
+
+82
+
+In this work, we report on the first concurrent test of five CMS technologies to detect,
+
+83
+
+localize, and quantify CH4 emission from two major types of midstream compressor stations
+
+84
+
+found in the US – a turbine-only station and an engine-only station. These two facility types
+
+85
+
+encompass the range of emission source types and emission rates found in the midstream
+
+86
+
+O&G sector across the US. The turbine site typically has low emissions under normal
+
+87
+
+operating conditions because of low CH4 slip from the exhaust of the compressor unit.
+
+88
+
+However, the engine site has typically high emissions under normal operating conditions,
+3
+
+https://doi.org/10.26434/chemrxiv-2024-qfdbh ORCID: https://orcid.org/0000-0001-8385-6573 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+89
+
+with a significant fraction attributable to CH4 slip from exhaust. 37, 38 This allows us to
+
+90
+
+evaluate the performance of CMS technologies under a range of background CH4 signals.
+
+91
+
+Combining known emission events at these stations with in-situ controlled releases allowed
+
+92
+
+us to identify conditions under which CMS technologies are effective in detecting, localizing,
+
+93
+
+and quantifying midstream CH4 emissions. Results from this study directly inform the
+
+94
+
+practical deployment and limits of CMS technologies at midstream O&G facilities.
+
+95
+
+2
+
+96
+
+2.1 Site and Technology Selection
+
+97
+
+Methodology
+
+A three-month field trial was conducted at two select natural gas transmission
+
+98
+
+compressor stations in NY state. Site selection was based on several factors including ease of
+
+99
+
+site access, number and type of compressor units, observed aerial CH4 emissions, operational
+
+100
+
+constraints, field test requirements, and site configuration. The two sites represent two types
+
+101
+
+of facilities commonly found across NY state and in the US – a turbine-driven only
+
+102
+
+compressor station (henceforth Turbine site) and a reciprocating-engine driven only
+
+103
+
+compressor station (henceforth Engine site). The Turbine site had one compressor unit at a
+
+104
+
+rated horsepower of 7700 and the Engine site had 5 compressor units, at a total rated
+
+105
+
+horsepower of 18400 (see Supplement Information (SI) section S1).
+
+106
+
+CMS participants were selected through a rigorous selection process based on past
+
+107
+
+performance in field campaigns, availability of controlled test data, technology readiness
+
+108
+
+level, scalability, and stakeholder interest. Five CMS were deployed contemporaneously at
+
+109
+
+selected sites for technology inter-comparison studies and to monitor CH4 emissions
+
+110
+
+continuously with a range of temporal resolution (4 s to 15 min). The location and number of
+
+111
+
+sensors installed per site are determined by prevailing wind conditions, the complexity of the
+
+112
+
+facility, the nature of the equipment, and the facility safety guidelines. The layout of two
+
+113
+
+selected facilities and the deployment of sensors of five CMS are shown in SI section S1.
+
+114
+
+The specifications of five selected CMS technologies are shown in Table 1 (also see SI
+
+115
+
+section S2).
+
+116
+
+Table 1. Specification of five selected CMS technologies tested in this study. “Sensor type”
+
+117
+
+shows the measurement technique of each system; “CH4 concentration data reporting logic”
+
+4
+
+https://doi.org/10.26434/chemrxiv-2024-qfdbh ORCID: https://orcid.org/0000-0001-8385-6573 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+118
+
+shows the frequency of CH4 concentration data to the end users; “Quantification/
+
+119
+
+Localization capability” columns show the information on whether the system quantifies and
+
+120
+
+reports emission rates, and estimated emission location, respectively; “System type”
+
+121
+
+indicates whether the technology reports an emission rate to end users; “Alert setup” shows
+
+122
+
+whether technologies have an alerting system to the end user; “#Sensor” shows the number
+
+123
+
+of sensors of each system that deployed at the Turbine site and Engine site.
+
+5
+
+https://doi.org/10.26434/chemrxiv-2024-qfdbh ORCID: https://orcid.org/0000-0001-8385-6573 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+CMS
+
+Sensor type
+
+CH4 concentration data
+reporting logic
+
+Tech A
+
+Metal-oxide
+
+All the sensors report
+values every 4 s
+
+Tech B
+
+Metal-oxide
+
+Tech C
+
+Tech D
+
+Tech E
+
+Tunable diode
+laser
+spectroscopy
+Metal-oxide
+
+Metal-oxide
+
+All the sensors report
+values every 1 min
+
+Capability
+Quantification
+
+localization
+
+Alert level
+
+Alert level
+
+No
+
+No
+
+A swinging gate
+algorithm – only one or
+Every 1 min (mscf/d)
+two sensors publish data
+that is changing
+
+System type
+
+Non-emissionrate-based
+
+Alert level
+
+“Wind triangle”
+Only one sensor reports
+Every 15 min (kg/hr) algorithm/Alert
+every 15 min
+level
+
+124
+125
+126
+127
+128
+129
+130
+131
+
+6
+
+https://doi.org/10.26434/chemrxiv-2024-qfdbh ORCID: https://orcid.org/0000-0001-8385-6573 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Alert
+setup
+
+#Sensors
+Turbine Engine
+site
+site
+
+Y
+
+10
+
+11
+
+N
+
+5
+
+8
+
+Y
+
+5
+
+6
+
+Y
+
+4
+
+4
+
+Y
+
+4
+
+5
+
+Emission-ratebased
+
+132
+133
+
+2.2 Definition of detection
+The five CMS technologies are classified into two types of systems: (1) type-1 system is
+
+134
+
+an emission-rate-based system that reports CH4 concentrations intermittently but quantifies
+
+135
+
+emission rates and monitors emission events in near-real-time. (2) type-2 system is a non-
+
+136
+
+emission-rate-based system that reports real-time high-resolution atmospheric CH4
+
+137
+
+concentration measurements with no built-in quantification.
+
+138
+
+For both types of systems, we need to define “detection”, which is a non-continuous
+
+139
+
+variable with possibility states of “yes”, “no”, and “maybe”. For the type 1 system, we
+
+140
+
+combine information from (1) near real-time emission rate estimates and (2) alert reports of
+
+141
+
+CMS - if an event is captured by both (1) and (2) data sources, then the state of “detection” is
+
+142
+
+“yes”; if none of the sources report the detection, the state is “no”; if only one data source
+
+143
+
+reports “detection”, we define it as “maybe”.
+
+144
+
+For the type 2 system, we define a metric – “time-averaged detection fraction” which
+
+145
+
+refers to the fraction of concentration data points from downwind sensors that meet or exceed
+
+146
+
+a threshold of CH4 concentration enhancement above baseline for a pre-determined duration
+
+147
+
+of known emission source. We evaluate the concentration enhancement thresholds of 1 ppm
+
+148
+
+in estimating the time-averaged detection fraction. For a particular emission event, we first
+
+149
+
+determine the upwind and downwind sensors based on the average wind direction during the
+
+150
+
+event period – sensors that are located within ± 90 degrees relative to the wind direction are
+
+151
+
+identified as the upwind sensors and the rest are classified as downwind sensors. Then, the
+
+152
+
+average CH4 concentration of all the upwind sensors is considered as the baseline CH4 value
+
+153
+
+for this emission event. We calculate the fraction of data points of downwind sensors that
+
+154
+
+meet the threshold - if the calculated “time-averaged detection fraction” of an emission event
+
+155
+
+is more than 60%, then the detection state is “Yes”; if the calculated “time-averaged detection
+
+156
+
+fraction” is less than 30%, then the detection state is “No”; if the calculated “time-averaged
+
+157
+
+detection fraction” is between 30% and 60%, then the detection state is “Maybe”. Tech D
+
+158
+
+and Tech E constitute the type 1 system, and Tech A, Tech B, and Tech C belong to the type
+
+159
+
+2 system. Tech A and Tech C also have alert systems set up but no quantification function.
+
+160
+
+Tech B has no alert system.
+
+161
+7
+
+https://doi.org/10.26434/chemrxiv-2024-qfdbh ORCID: https://orcid.org/0000-0001-8385-6573 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+162
+
+2.3 Operational data
+
+163
+
+During the three months of deployment from August 1st to October 31st, 2022, there
+
+164
+
+were 25 and 6 routine or maintenance activities reported at the Turbine site and Engine site,
+
+165
+
+respectively (see SI section S4). Major operational activities include blowdown events,
+
+166
+
+blowing drips, non-routine venting, filter changeout, and Lockout/Tagout (LOTO)
+
+167
+
+procedures for the unit. In addition, we collected throughout parameters, leak detection and
+
+168
+
+repair (LDAR) records, and other operational information to evaluate the performance of
+
+169
+
+CMS.
+
+170
+171
+
+2.4 Controlled release tests
+In-situ controlled release tests were conducted at both compressor stations in October
+
+172
+
+2022. These tests are not designed to extract probability detection curves for the
+
+173
+
+technologies, which require long-term testing at a controlled release facility across a broad
+
+174
+
+range of emission rates.27 Instead, these releases are used to evaluate the ability of CMS to
+
+175
+
+detect, quantify, and localize intermittent emission sources of similar volumes as seen at a
+
+176
+
+typical midstream compressor station.
+
+177
+
+In total, 41 controlled releases were conducted over the course of one week at two sites
+
+178
+
+(SI section S3). The duration of the controlled releases varied from 5 minutes to 2 hours,
+
+179
+
+mimicking typical intermittent emissions seen at compressor stations such as blowdown
+
+180
+
+events. Emission rates varied from 5 kg/h to about 100 kg/h, corresponding to observed
+
+181
+
+emissions at compressor stations. CH4 was sourced from pressurized tanks in a trailer system
+
+182
+
+and was metered using a micro emission flow meter with an accuracy of ±0.1%. A 100 ft
+
+183
+
+long hose was connected to the flow meter through which CH4 reached a 5 ft or 20 ft high
+
+184
+
+release pipe. A heat transfer system was used to prevent Joule Thompson effect cooling at the
+
+185
+
+release point resulting in a controlled release at ambient temperature and pressure conditions.
+
+186
+
+To allow for effective plume development through the atmosphere and potential sensor
+
+187
+
+delay, each test included a buffer time of 10 minutes between each release. The locations of
+
+188
+
+the controlled releases were based on considerations of facility layout, typical location of
+
+189
+
+emission sources, prevailing wind conditions, and the need to test all sensor solutions
+
+190
+
+installed at the facility. Controlled releases from multiple locations were also used to test the
+
+191
+
+sensitivity of sensor performance to local turbulence. There were 5 release locations at the
+8
+
+https://doi.org/10.26434/chemrxiv-2024-qfdbh ORCID: https://orcid.org/0000-0001-8385-6573 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+192
+
+Turbine site and 10 locations at the Engine site. For each location, two to three releases with
+
+193
+
+different emission rates, duration, and release heights were conducted to simulate emissions
+
+194
+
+from various equipment on sites (SI section S3). Because these controlled releases happen in
+
+195
+
+identical weather and geographic conditions as the field trials, performance will be more
+
+196
+
+representative of real-world deployment.
+
+197
+
+2.5 Baseline emissions – CH4 signals from compressor stations under normal operating
+
+198
+
+conditions
+
+199
+
+To understand the variability in CMS observations under normal operating conditions of
+
+200
+
+the compressor station, CH4 concentration signals of constant operating states of the
+
+201
+
+compressor with no intermittent emission events were determined through a screening
+
+202
+
+process. First, based on the operator-supplied daily operating hours of compressors, we
+
+203
+
+define that a compressor is “operating” when its daily operating hours are more than 2 hours,
+
+204
+
+and it is “not operating” when daily operating hours are less than 2 hours. The Turbine site
+
+205
+
+has two operational states (operating and not-operating) with one turbine compressor and the
+
+206
+
+Engine site has six operational states due to their five engine-driven compressors (0 to 5
+
+207
+
+compressors are in operation). Second, the days on which known routine operational
+
+208
+
+activities or emission events happened are filtered out to refine the CH4 signals for each
+
+209
+
+unique operational state of the compressors. Non-emission-rate-based systems have one more
+
+210
+
+step – we determine the upwind and downwind sensors of each system based on real-time
+
+211
+
+wind conditions and the location of the sensors. Upwind sensors are those that are positioned
+
+212
+
+within a ±90-degree angle of the direction of the wind, whereas the remaining sensors are
+
+213
+
+categorized as downwind sensors. The maximum CH4 concentration among all identified
+
+214
+
+downwind sensors is considered as the CH4 signals from the site.
+
+215
+
+3
+
+216
+
+3.1 Ability of CMS to distinguish between different operational states of the compressor
+
+Results and Discussion
+
+217
+
+The distributions of CH4 concentrations under normal operating status detected by five
+
+218
+
+CMS for each unique operational state at the Turbine and Engine site are shown in Figure 1
+
+219
+
+(also see SI section S5). Since compressor drivers (especially reciprocating engines) slip a
+
+220
+
+high fraction of fuel in the exhaust and the combustion slip is a major component of
+9
+
+https://doi.org/10.26434/chemrxiv-2024-qfdbh ORCID: https://orcid.org/0000-0001-8385-6573 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+221
+
+midstream facilities’ site-level emissions, 39 we investigate the CMS's ability to detect
+
+222
+
+changes in the operational status of the compressor (‘on’ and ‘off’) using a discrimination
+
+223
+
+metric called the operation ratio. The operation ratio is the fraction of the binned probability
+
+224
+
+density of observed CH4 concentrations in the ‘on’ state to that of the binned probability
+
+225
+
+density of observed CH4 concentrations across all operational states. Based on this definition
+
+226
+
+of operation ratio, there are three scenarios: (1) when the operation ratio is 1, the CH4
+
+227
+
+concentration signals are detected only when the compressor is operating, (2) when the
+
+228
+
+operation ratio equals 0, the measured CH4 concentration signals are captured only when the
+
+229
+
+compressor is not operating, (3) when the operation ratio is between 0 and 1, CH4
+
+230
+
+concentration signals are seen in both operational and non-operational states. We can then
+
+231
+
+identify “cut-off” values – the transition point in the range of operation ratio as a function of
+
+232
+
+concentration signal where different operational states of the compressors can be
+
+233
+
+unambiguously distinguished. We make several observations.
+
+234
+
+First, at the Turbine site, regardless of whether the turbine-driven compressor was in
+
+235
+
+operation, there is no significant difference in the probability density of average CH4
+
+236
+
+concentrations (CH4 signals varied between 0.1 and 1.1 ppm between idle and operational
+
+237
+
+states detected by five CMS) indicating that the five CMS technologies tested here cannot
+
+238
+
+distinguish operational and non-operational states of the compressor. This is expected as
+
+239
+
+compressor exhaust from a centrifugal turbine is not expected to be a significant contributor
+
+240
+
+to total site emissions. Technology B and C detected ambient-level CH4 (~2 ppm) most of the
+
+241
+
+time; Technology A, D, and E detected more elevated CH4 signals. At the Engine site, all the
+
+242
+
+technologies detected higher mean CH4 values when multiple engine-driven compressors
+
+243
+
+were operating (CH4 signals varied between 2 and 8.4 ppm between idle and operational (4
+
+244
+
+engines) states detected by five CMS), indicating an ability to distinguish different operational
+
+245
+
+states of the compressor station. This arises because exhaust slip is a significant contributor
+
+246
+
+to total CH4 emissions at this site, and site-level emissions are proportional to the number of
+
+247
+
+operating compressor units.38
+
+248
+
+Second, the distributions of CH4 concentrations under normal operating status across all
+
+249
+
+five CMS technologies show long tails at both sites (also see Figure S3 in SI). At the Turbine
+
+250
+
+site, except Tech D, CMS technologies detect no “cut-off” value which can be used to
+
+251
+
+identify the “on” and “off” states of the compressor. The “cut-off" value detected by Tech D
+10
+
+https://doi.org/10.26434/chemrxiv-2024-qfdbh ORCID: https://orcid.org/0000-0001-8385-6573 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+252
+
+is around 100 ppm and CH4 concentrations above the “cut-off” value are only detected when
+
+253
+
+the turbine-driven compressor is operating (operation ratio equals 1). At the Engine site, all
+
+254
+
+five CMS observe similar “cut-off” values of around 10 ppm above which CH4 concentration
+
+255
+
+levels are only detected when there is at least one compressor unit in operation.
+
+11
+
+https://doi.org/10.26434/chemrxiv-2024-qfdbh ORCID: https://orcid.org/0000-0001-8385-6573 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+256
+12
+
+https://doi.org/10.26434/chemrxiv-2024-qfdbh ORCID: https://orcid.org/0000-0001-8385-6573 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+257
+
+Figure 1. Distribution of baseline CH4 concentrations detected by five CMS ((A) – (E)) for
+
+258
+
+different operational states of “operating” and “not-operating” of the turbine-driven
+
+259
+
+compressor at the Turbine site ((a)-(e)) and “4 compressors” and “0 compressors” are
+
+260
+
+operating at the Engine site ((f)-(j)). The green line with markers is the calculated operation
+
+261
+
+ratio. The average CH4 concentrations of each state are noted in the plots.
+
+262
+
+3.2 Ability of CMS to detect, quantify, and localize known emission events
+
+263
+
+We use two datasets of known emission events to evaluate the performance of CMS,
+
+264
+
+including recorded operational activities and controlled release tests. In total, 38 and 34
+
+265
+
+known emission events happened during the survey period at the Turbine site and the Engine
+
+266
+
+site, respectively.
+
+267
+
+Probability of detection. As described in the Methods section, we use two different
+
+268
+
+principles to define the “detection”, one for the emission-rate-based system (Tech D and
+
+269
+
+Tech E) and one for the non-emission-rate-based system (Tech A, Tech B, and Tech E).
+
+270
+
+Figure 2 shows the fractions of emission events under different detection states detected by
+
+271
+
+CMS. Detailed numbers of events used to evaluate CMS detection capability are provided in
+
+272
+
+SI section S7.
+
+273
+
+Given that the operation of engines emitted considerably more engine exhaust CH4 than
+
+274
+
+turbines 37 – “background” emissions from the Turbine site are lower and the CH4 signals
+
+275
+
+from emission events should exhibit higher concentration enhancements at the sensor,
+
+276
+
+depending on favorable atmospheric conditions. Yet, our results show that most CMS
+
+277
+
+technologies (excluding Tech A) exhibit better performance at the Engine site with relatively
+
+278
+
+higher detection probabilities. This may be partly due to the different composition of the
+
+279
+
+emission events data we collected at the two sites. At the Turbine site, among 38 known
+
+280
+
+emission events, 25 events are operational activities and 13 are controlled releases. At the
+
+281
+
+Engine site, 34 emission events comprise 6 operational activities and 28 controlled releases.
+
+282
+
+Generally, controlled releases are more likely to be detected due to constant flow rates, and
+
+283
+
+longer durations compared to operational activities. Thus, CMS technologies perform better
+
+284
+
+at the Engine site with more controlled release data. This suggests complex temporal profiles
+
+285
+
+of known intermittent emission sources at compressor stations such as blowdown events may
+
+13
+
+https://doi.org/10.26434/chemrxiv-2024-qfdbh ORCID: https://orcid.org/0000-0001-8385-6573 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+286
+
+be challenging to detect in real-time for CMS technologies. Furthermore, Tech E detected
+
+287
+
+notably higher probabilities of “maybe” states at both sites which indicates that the sensors
+
+288
+
+did capture high CH4 signals that didn’t pass the thresholds of its alert system. Thus,
+
+289
+
+evaluating CMS for its ability to detect intermittent emissions should focus on two
+
+290
+
+interrelated challenges: one, accurate readings of CH4 concentration enhancements, and two,
+
+291
+
+analytics to convert concentration readings to emission event alerts to operators. Both
+
+292
+
+challenges need to be addressed for CMS systems to translate to effective mitigation.
+
+293
+294
+
+Figure 2. The fraction of the known events that are under different detection states detected
+
+295
+
+by five CMS ((A) – (E)) at two sites. The blue bar shows the fraction of “Yes”, the orange
+
+296
+
+bar is “No”, and the gray bar is “Maybe”.
+
+297
+
+Ability of CMS to quantify and localize emission events. Figure 3 shows the quantification
+
+298
+
+and localization accuracy of CMS that provides quantitative estimates (Tech A, Tech D, and
+
+299
+
+Tech E) for “detected” events. Due to a lack of data on true emission rates from operational
+
+300
+
+activities, only controlled release emissions rates are used to evaluate the quantification
+
+301
+
+capability of Tech A, Tech D, and Tech E. In general, all three technologies tend to
+
+302
+
+underestimate emission rates, among which Tech D has relatively the best performance.
+
+303
+
+However, Tech D also reported a few high estimated emission rates with relative errors of
+14
+
+https://doi.org/10.26434/chemrxiv-2024-qfdbh ORCID: https://orcid.org/0000-0001-8385-6573 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+304
+
+more than 300%. CMSs report site-level emission rates and the background site-level
+
+305
+
+emissions on the controlled release days can be estimated based on prior aerial surveys of
+
+306
+
+these sites reported in the literature.40 The turbine site was idle during the controlled test days
+
+307
+
+and the Engine site had 4 compressors in operation during the controlled test days. The
+
+308
+
+estimated site-level emissions from aerial measurements were less than 5 kg/h and 87 kg/h
+
+309
+
+for the Turbine site and Engine site, respectively, under the same operational status as that of
+
+310
+
+the controlled test days. The controlled release rates (5 to 100 kg/h) are less than or
+
+311
+
+comparable to the background site-level emissions at the Engine site and thus, the total
+
+312
+
+emission from the Engine site on the controlled release days should be higher than the
+
+313
+
+controlled release rates. If we add the site-level emissions of 87 kg/h from aerial
+
+314
+
+measurements to the emission rates of controlled releases conducted at the Engine site, the
+
+315
+
+average relative quantification error of Tech A, Tech D, and Tech E will change from -
+
+316
+
+75.4%, 18.8%, and -30.8% to -97.7%, -84.7%, and -88.7%, respectively, providing further
+
+317
+
+evidence for potential significant underestimation of emissions.
+
+318
+
+For all the emission events detected by Tech A, Tech D, and Tech E, we evaluate their
+
+319
+
+localization capability by comparing the emission equipment identified by CMS with known
+
+320
+
+source locations/equipment. If the estimated equipment is the true equipment that emits CH4,
+
+321
+
+we consider the localization results as “accurate” and calculate the fraction of emission
+
+322
+
+events with accurate localization results over all the detected emission events as shown in
+
+323
+
+Figure 3(b). Tech A and Tech E have higher localization accuracy at the Turbine site
+
+324
+
+compared to the Engine site. Given that the Turbine site is smaller with only one compressor
+
+325
+
+unit compared to the Engine site with 5 compressor units, localization is expected to be more
+
+326
+
+accurate at the Turbine site compared to the Engine site. The performance of Tech D in
+
+327
+
+localizing emission sources at two sites is similar, but the overall localization accuracy
+
+328
+
+(~35%) is lower compared to Tech A and Tech E (SI section S8).
+
+15
+
+https://doi.org/10.26434/chemrxiv-2024-qfdbh ORCID: https://orcid.org/0000-0001-8385-6573 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+329
+330
+
+Figure 3. (a) Relative quantification error (%) between CMS estimates and the controlled
+
+331
+
+release emission rates at the Turbine site (red box) and the Engine site (blue box) for Tech A,
+
+332
+
+Tech D, and Tech E. The red segment inside the box is the median. The top and bottom of the
+
+333
+
+box are the 75th and 25th percentile. Whiskers extend to the largest/smallest value within 1.5
+
+334
+
+times the interquartile range from the hinge. Jittered points are also shown as circles. (b)
+
+335
+
+Localization accuracy (%) of detected emission events by Tech A, Tech D, and Tech E, at the
+
+336
+
+Turbine site (orange bar) and the Engine site (blue bar)
+
+337
+
+Sensor up-time. Since each sensor of five CMS technologies reports data periodically (Table
+
+338
+
+1), we calculate the uptime fraction of a sensor that is operational during the three-month
+
+339
+
+deployment period. Figure 4 shows the up-time fraction of all five CMS technologies. The
+
+340
+
+metal-oxide sensors of Tech A, Tech B, Tech D, and Tech E are operational for over 90% of
+
+341
+
+the test period. However, the up-time of Tech C’s laser-based sensors varied at both sites –
+
+342
+
+at the Turbine site, the up-time fraction ranged between 76% and 90%; at the Engine site, one
+
+343
+
+sensor of Tech C was offline for nearly 30% - 40% of the survey period, and the overall up-
+
+344
+
+time fraction varied between 60% and 91%. This is relevant in the context of the recently
+
+345
+
+finalized US EPA methane rule that requires CMS to have an operational uptime of over
+
+346
+
+90% on a rolling 12-month average period.41
+
+16
+
+https://doi.org/10.26434/chemrxiv-2024-qfdbh ORCID: https://orcid.org/0000-0001-8385-6573 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+347
+348
+
+Figure 4. The fraction of time that sensors are in operation (up-time fraction) during the
+
+349
+
+three months of deployment of Tech A, Tech B, Tech C, Tech D, and Tech E.
+
+350
+
+3.3 Ability of CMS to estimate event duration at compressor stations
+
+351
+
+Three technologies (Tech A, Tech C, and Tech D) have the capability to estimate the
+
+352
+
+duration of detected emission events through alert reports. Figure 5 shows the distribution of
+
+353
+
+duration of intermittent events as detected by Tech A, Tech C, and Tech D at both
+
+354
+
+compressor stations. In addition, we also show the duration distribution of known emission
+
+355
+
+events, including controlled release tests and operational emission events provided by the
+
+356
+
+operator. Known operational emission events include blowdowns, blowing drips, filter
+
+357
+
+changeout, and Lockout/Tagout (LOTO) procedures for the unit.
+
+358
+
+First, Tech A estimated longer durations (>5 h) of emissions at both sites. Tech C and D
+
+359
+
+estimated most emission events to be between 30 and 100 minutes. Based on information
+
+360
+
+about known operational activities and controlled release tests, we estimate that known
+
+361
+
+events have an average emission duration of about 30 minutes. By comparing this
+
+362
+
+distribution with those estimated by the CMS technologies, we evaluate the effectiveness of
+
+363
+
+these systems in accurately estimating emissions duration. In general, the emission duration
+
+364
+
+estimated by Tech C and Tech D is distributed around 30 min, reasonably well matched with
+
+365
+
+the distribution of the duration of known events. Second, all three CMS tend to overestimate
+
+366
+
+the duration of emission events, among which Tech A identified some long-duration events
+
+367
+
+that are over 5 hours at both sites – conversation with site managers suggested no such long-
+
+368
+
+duration emission event occurred at either site and thus Tech A’s reading were either wrong
+
+369
+
+or misattributed a continuous source to an intermittent event. Recently, the U.S. EPA
+17
+
+https://doi.org/10.26434/chemrxiv-2024-qfdbh ORCID: https://orcid.org/0000-0001-8385-6573 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+370
+
+finalized updates to subpart W reporting that requires accurate estimates of the duration of
+
+371
+
+large release events. Our results indicate that significant improvements are needed to
+
+372
+
+attribute and estimate the duration of intermittent emission events.
+
+373
+374
+
+Figure 5. Distribution of the duration of intermittent emission events detected at (a) the
+
+375
+
+Turbine site and (b) the Engine site by Tech A (blue bar), Tech C (orange bar), and Tech D
+
+376
+
+(blue bar).
+
+377
+378
+
+3.4 Performance evaluation of non-emission-rate-based CMS under different control
+variables
+
+379
+
+The protocol for controlled release tests encompasses several variables, including
+
+380
+
+duration, emission rate, release height, and release location. We investigate the probability of
+
+381
+
+detection using the time-averaged detection fraction metric as a function of emission rate and
+
+382
+
+event duration as shown in Figure 6. Intuitively, the time-averaged detection fraction of an
+
+383
+
+emission event by CMS can be improved as the emission rate and duration of the emission
+
+384
+
+event increase.
+
+385
+386
+
+At the Turbine site, for the events with the same emission duration, higher emission rates
+events have higher probabilities of detection as shown by the increasing trend in time18
+
+https://doi.org/10.26434/chemrxiv-2024-qfdbh ORCID: https://orcid.org/0000-0001-8385-6573 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+387
+
+averaged detection fraction. Whereas there is no obvious correlation (Pearson’s correlation
+
+388
+
+coefficient = 0.02) between the time-averaged detection fraction and the emission rate at the
+
+389
+
+Engine site. Compared to the estimated site-level emissions from an aerial survey with the
+
+390
+
+same operational states of compressors at two sites,38 we find that controlled releases
+
+391
+
+conducted at the Turbine site are considerably higher than its typical site-level emission (<5
+
+392
+
+kg/h) which makes it more likely for CMS to distinguish enhancements from the controlled
+
+393
+
+release against the background; most of releases (24 out of 28) conducted at the Engine site
+
+394
+
+are lower than the site-level emissions (~87 kg/h), which is likely to make detection of
+
+395
+
+concentration enhancements against background challenging.
+
+396
+397
+
+Tech A and Tech C have higher time-averaged detection fractions across all the
+controlled releases compared to Tech B.
+
+398
+399
+
+Figure 6. The calculated mean time-averaged detection fraction (y-axis) of controlled
+
+400
+
+releases detected by Tech A (red circle), Tech B (blue circle), and Tech C (green circle) at
+
+401
+
+the Turbine site and the Engine site as a function of known emission rate (x-axis) with the
+
+402
+
+threshold of 1 ppm enhancement above the baseline. The size of the circle indicates the
+
+403
+
+duration of the emission event. The estimated site-level emissions from aerial measurements
+
+404
+
+are labeled for the two sites.
+
+405
+
+The performances of emission-rate-based CMS technologies (Tech D and Tech E) under
+
+406
+
+these controlled variables are also explored and the results are shown in SI section S9.
+
+407
+
+Briefly, on the one hand, no obvious improvement in the detection probabilities and
+19
+
+https://doi.org/10.26434/chemrxiv-2024-qfdbh ORCID: https://orcid.org/0000-0001-8385-6573 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+408
+
+quantification/localization accuracy of Tech D and Tech E are found as a function of
+
+409
+
+increasing emission rate. On the other hand, the detection probabilities and localization
+
+410
+
+accuracy are higher when the duration of the emission event is longer (~ 120 min). Thus, the
+
+411
+
+high temporal resolution of CMS measurements may compensate for the high uncertainty
+
+412
+
+when translating the raw concentration measurements into emission event identification.
+
+413
+414
+
+3.5 Inter-comparison of CH4 signals detected by co-located sensors
+Sensors of different CMS technologies located within 10 m are considered “co-located”
+
+415
+
+sensors and can provide opportunities for cross-validation and performance evaluation of
+
+416
+
+different technologies, eliminating interference from complex atmospheric dynamics. We
+
+417
+
+analyzed the correlation of CH4 measurements detected by 7 pairs of co-located sensors of
+
+418
+
+Tech A, Tech B, and Tech C at two sites during the three-month field trial. CH4
+
+419
+
+concentrations reported by Tech D and Tech E are preprocessed data and are not comparable
+
+420
+
+to the measurements of other technologies. The information on the co-located sensors and the
+
+421
+
+calculated correlation coefficient are shown in SI Figure S1 and Table S6.
+
+422
+
+Due to the limitation of the non-normally distributed dataset, we calculate the Spearman
+
+423
+
+rank-order correlation coefficient (ρ) for each pair. The interpretation of ρ are as follows (the
+
+424
+
+descriptor applies to both positive and negative relationships)42, ≥0.7 – very strong
+
+425
+
+relationship, 0.4-0.69 – strong, 0.3-0.39 – moderate, 0.2-0.29 – weak, and 0.01-0.19
+
+426
+
+negligible relationship. We calculated the correlation coefficient for raw CH4 measurements
+
+427
+
+and CH4 enhancements (background subtracted CH4 data) of each co-located sensor pair. The
+
+428
+
+CH4 enhancements are determined by subtracting the minimum CH4 concentration in each
+
+429
+
+15-minute interval from the raw data to address variation in baseline readings of different
+
+430
+
+CMS technologies due to factory settings or calibration issues.
+
+431
+
+Raw CH4 signals vs. background subtracted CH4 signals detected by co-located sensors.
+
+432
+
+Figure 7 shows the results for the five co-located pairs of Tech B and Tech C at two sites. We
+
+433
+
+find that the correlation coefficients between the raw CH4 signals detected by co-located
+
+434
+
+sensors vary from 0.15 to 0.45 (Table S6). Two pairs have strong relationships (ρ >0.4), one
+
+435
+
+pair correlate moderately, and the rest of the pairs have weak or negligible relationships (ρ
+
+436
+
+<0.3). After subtracting the background CH4 signals to focus on CH4 enhancement, in
+
+437
+
+general, the correlations between each pair become slightly stronger, increasing, on average,
+20
+
+https://doi.org/10.26434/chemrxiv-2024-qfdbh ORCID: https://orcid.org/0000-0001-8385-6573 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+438
+
+by about 2%. There are no obvious differences between the correlation coefficients in each
+
+439
+
+month.
+
+440
+
+We also investigated the relative performance of co-located sensors under different
+
+441
+
+operational statuses of the compressors (see Table S6 in SI). Background subtracted CH4
+
+442
+
+signals from compressor stations were filtered using a two-step process (as described in
+
+443
+
+section 2.5) to exclude CH4 enhancement from known operational activities and keep the
+
+444
+
+operational condition constant for different operational statuses. We have two observations.
+
+445
+
+First, correlation coefficients of CH4 signals after the filtering process for background signals
+
+446
+
+and emission event enhancements are higher than the raw CH4 signals, and only background
+
+447
+
+subtracted CH4 was detected by co-located sensors. Second, at the Turbine site, relationships
+
+448
+
+between co-located sensors are comparable regardless of the status of the compressor. At the
+
+449
+
+same time, relationships between co-located sensors at the Engine site are generally stronger
+
+450
+
+when more compressors are operating.
+
+451
+
+As shown in Figure 7, correlation coefficients of co-located pairs between the same two
+
+452
+
+technologies are independent of the distance between co-located sensors. The larger
+
+453
+
+correlation coefficient (ρ =0.52) indicates a strong relationship between the CH4
+
+454
+
+measurements detected by the co-located sensors of pair #1 at the Engine site with a distance
+
+455
+
+of 10 m. Based on the location of the two sensors at the site (see Figure S1 in SI), we find
+
+456
+
+that pair #1 is deployed in an open area of the Engine site that is downwind of major
+
+457
+
+emission sources (e.g., compressors and blowdown silencer) based on prevailing wind
+
+458
+
+direction (southwesterly) during the three-month survey period. Thus, sensors of pair #1 tend
+
+459
+
+to capture more elevated CH4 signals leading to better correlation.
+
+21
+
+https://doi.org/10.26434/chemrxiv-2024-qfdbh ORCID: https://orcid.org/0000-0001-8385-6573 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+460
+461
+
+Figure 7. Scatterplot of the relationship of CH4 concentration (ppm) detected by five pairs of
+
+462
+
+co-located sensors of Tech B and Tech, at (a) the Turbine site and (b) the Engine site. Red,
+
+463
+
+green, and blue dots indicate the measurements from August, September, and October,
+
+464
+
+respectively. Regression lines that fit the whole dataset and each month are shown by the
+
+465
+
+solid grey line, red line, green line, and blue line respectively. Light grey shaded areas show
+
+466
+
+the 95% confidence interval of the regressions. Black dashed lines are 1:1 line. Correlation
+
+467
+
+coefficients (ρ), pair numbers, and distance between each two co-located sensors are labeled.
+22
+
+https://doi.org/10.26434/chemrxiv-2024-qfdbh ORCID: https://orcid.org/0000-0001-8385-6573 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+468
+
+We conducted a comprehensive long-term study of the performance of five CMS
+
+469
+
+technologies at midstream compressor stations. The two types of stations chosen for the
+
+470
+
+study – a turbine site with low exhaust CH4 slip and an engine site with significant CH4
+
+471
+
+emissions from the exhaust – represent the range of emissions observed at midstream
+
+472
+
+facilities across the U.S. By combining known emission events and in-situ controlled
+
+473
+
+releases, we evaluate the performance of CMS technologies in detecting, quantifying, and
+
+474
+
+localizing emission events.
+
+475
+
+The analysis and results shown in this study indicate that CMS technologies need to be
+
+476
+
+employed cautiously, especially for compact and complex O&G facilities. The findings of
+
+477
+
+this work suggest that emissions from compressor stations can vary substantially over time
+
+478
+
+under different operational statuses. But even as a continuously operating monitoring system,
+
+479
+
+CMS has the potential to miss emission events with low emission rates and/or short
+
+480
+
+durations. A better understanding of the uncertainties of the quantification and localization
+
+481
+
+features of CMS will be useful for these solutions to improve performance. Furthermore, the
+
+482
+
+alert systems of CMS need to be set up with more consideration for the nature of baseline
+
+483
+
+emissions and the location of these sensors to achieve the goal of quickly detecting large
+
+484
+
+emitters. As these technologies rapidly improve, a full understanding of the performance of
+
+485
+
+CMS requires further evaluation before widespread deployment.
+
+486
+
+Acknowledgment
+
+487
+
+This study is funded by the New York State Energy Research and Development Authority
+
+488
+
+(NYSERDA) - Agreement No. 158363. We thank Kinder Morgan for providing active support
+
+489
+
+during field work and analysis.
+
+490
+
+Author contributions
+
+491
+
+A.P.R. conceived the study. S.Y. conducted the field experiments and analyzed the data. S.Y.
+
+492
+
+and A.P.R. jointly interpreted the results and contributed to the writing of the paper.
+
+493
+
+Conflicts of Interest Statement
+
+494
+
+The authors declare the following competing financial interest(s): A.P.R. is currently a member
+
+495
+
+of the Gas Pipeline Advisory Committee of the US Department of Transportation; in this role, he
+23
+
+https://doi.org/10.26434/chemrxiv-2024-qfdbh ORCID: https://orcid.org/0000-0001-8385-6573 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+496
+
+is a Special Government Employee. A.P.R. has current research support from the US Department
+
+497
+
+of Energy, Environmental Defense Fund, and sponsors of the Energy Emissions Modeling and
+
+498
+
+Data Lab (EEMDL).
+
+499
+
+4
+
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+
+(1) Miller, S. M.; Wofsy, S. C.; Michalak, A. M.; Kort, E. A.; Andrews, A. E.; Biraud, S. C.;
+Dlugokencky, E. J.; Eluszkiewicz, J.; Fischer, M. L.; Janssens-Maenhout, G.; et al. Anthropogenic
+emissions of methane in the United States. Proceedings of the National Academy of Sciences - PNAS
+2013, 110 (50), 20018-20022. DOI: 10.1073/pnas.1314392110.
+(2) National Academies of Sciences, E. a. M. Improving Characterization of Anthropogenic Methane
+Emissions in the United States; The National Academies Press, 2018. DOI: 10.17226/24987.
+(3) Saunois, M.; R. Stavert, A.; Poulter, B.; Bousquet, P.; G. Canadell, J.; B. Jackson, R.; A. Raymond,
+P.; J. Dlugokencky, E.; Houweling, S.; K. Patra, P.; et al. The global methane budget 2000-2017. Earth
+system science data 2020, 12 (3), 1561-1623. DOI: 10.5194/essd-12-1561-2020.
+(4) The Oil & Gas Methane Partnership 2.0. UN Environment Programme, https://ogmpartnership.com/
+(accessed 2024 July 5).
+(5) Alvarez, R. A.; Zavala-Araiza, D.; Lyon, D. R.; Allen, D. T.; Barkley, Z. R.; Brandt, A. R.; Davis, K.
+J.; Herndon, S. C.; Jacob, D. J.; Karion, A.; et al. Assessment of methane emissions from the U.S. oil and
+gas supply chain. Science (New York, N.Y.) 2018, 361 (6398), 186-188. DOI: 10.1126/science.aar7204.
+(6) Chan, E.; Worthy, D. E. J.; Chan, D.; Ishizawa, M.; Moran, M. D.; Delcloo, A.; Vogel, F. Eight-Year
+Estimates of Methane Emissions from Oil and Gas Operations in Western Canada Are Nearly Twice
+Those Reported in Inventories. Environmental science & technology 2020, 54 (23), 14899-14909. DOI:
+10.1021/acs.est.0c04117.
+(7) Rutherford, J. S.; Sherwin, E. D.; Ravikumar, A. P.; Heath, G. A.; Englander, J.; Cooley, D.; Lyon,
+D.; Omara, M.; Langfitt, Q.; Brandt, A. R. Closing the methane gap in US oil and natural gas production
+emissions inventories. Nature communications 2021, 12 (1), 4715-4715. DOI: 10.1038/s41467-02125017-4.
+(8) Conrad, B. M.; Tyner, D. R.; Li, H. Z.; Xie, D.; Johnson, M. R. A measurement-based upstream oil
+and gas methane inventory for Alberta, Canada reveals higher emissions and different sources than
+official estimates. Communications earth & environment 2023, 4 (1), 416-410. DOI: 10.1038/s43247023-01081-0.
+(9) Wang, J. L.; Daniels, W. S.; Hammerling, D. M.; Harrison, M.; Burmaster, K.; George, F. C.;
+Ravikumar, A. P. Multiscale Methane Measurements at Oil and Gas Facilities Reveal Necessary
+Frameworks for Improved Emissions Accounting. Environmental science & technology 2022, 56 (20),
+14743-14752. DOI: 10.1021/acs.est.2c06211.
+(10) Bell, C. S.; Vaughn, T.; Zimmerle, D. Evaluation of next generation emission measurement
+technologies under repeatable test protocols. Elementa (Washington, D.C.) 2020, 8 (4). DOI:
+10.1525/elementa.426.
+(11) Mitchell, A. L.; Tkacik, D. S.; Roscioli, J. R.; Herndon, S. C.; Yacovitch, T. I.; Martinez, D. M.;
+Vaughn, T. L.; Williams, L. L.; Sullivan, M. R.; Floerchinger, C.; et al. Measurements of Methane
+Emissions from Natural Gas Gathering Facilities and Processing Plants: Measurement Results.
+Environmental Science & Technology 2015, 49 (5), 3219-3227, Article. DOI: 10.1021/es5052809.
+(12) Churchill, J.; Wise, B.; Cooper, I.; Smith, B. Methane Emissions Quantification and Resulting
+Methane Emissions Reduction in the Permian Basin Enabled by Automated Unmanned Systems. SPE
+production & operations 2023, 1-15. DOI: 10.2118/210173-PA.
+(13) Shuting, Y.; Robert, W. T.; Michael, B. F.; Levi, M. G.; Nicholas, F. A.; Mark, A. Z.; Christopher,
+G.; James, M. Natural Gas Fugitive Leak Detection Using an Unmanned Aerial Vehicle: Measurement
+
+References
+
+24
+
+https://doi.org/10.26434/chemrxiv-2024-qfdbh ORCID: https://orcid.org/0000-0001-8385-6573 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+
+System Description and Mass Balance Approach. Atmosphere 2018, 9 (10), 383. DOI:
+10.3390/atmos9100383.
+(14) Foulds, A.; Allen, G.; Shaw, J. T.; Bateson, P.; Barker, P. A.; Huang, L.; Pitt, J. R.; Lee, J. D.;
+Wilde, S. E.; Dominutti, P.; et al. Quantification and assessment of methane emissions from offshore oil
+and gas facilities on the Norwegian continental shelf. Atmospheric chemistry and physics 2022, 22 (7),
+4303-4322. DOI: 10.5194/acp-22-4303-2022.
+(15) Sherwin, E. D.; Chen, Y.; Ravikumar, A. P.; Brandt, A. R. Single-blind test of airplane-based
+hyperspectral methane detection via controlled releases. Elementa (Washington, D.C.) 2021, 9 (1). DOI:
+10.1525/elementa.2021.00063.
+(16) Jacob, D. J.; Turner, A. J.; Maasakkers, J. D.; Sheng, J. X.; Sun, K.; Liu, X.; Chance, K.; Aben, I.;
+McKeever, J.; Frankenberg, C. Satellite observations of atmospheric methane and their value for
+quantifying methane emissions. Atmospheric Chemistry and Physics 2016, 16 (22), 14371-14396, Article.
+DOI: 10.5194/acp-16-14371-2016.
+(17) Wecht, K. J.; Jacob, D. J.; Sulprizio, M. P.; Santoni, G. W.; Wofsy, S. C.; Parker, R.; Bosch, H.;
+Worden, J. Spatially resolving methane emissions in California: constraints from the CalNex aircraft
+campaign and from present (GOSAT, TES) and future (TROPOMI, geostationary) satellite observations.
+Atmospheric Chemistry and Physics 2014, 14 (15), 8173-8184, Article. DOI: 10.5194/acp-14-8173-2014.
+(18) Zavala-Araiza, D.; Alvarez, R. A.; Lyon, D. R.; Allen, D. T.; Marchese, A. J.; Zimmerle, D. J.;
+Hamburg, S. P. Super-emitters in natural gas infrastructure are caused by abnormal process conditions.
+Nature Communications 2017, 8, 10, Article. DOI: 10.1038/ncomms14012.
+(19) Zavala-Araiza, D.; Lyon, D. R.; Alvarez, R. A.; Davis, K. J.; Harriss, R.; Herndon, S. C.; Karion, A.;
+Kort, E. A.; Lamb, B. K.; Lan, X.; et al. Reconciling divergent estimates of oil and gas methane
+emissions. Proceedings of the National Academy of Sciences of the United States of America 2015, 112
+(51), 15597-15602, Article. DOI: 10.1073/pnas.1522126112.
+(20) Tullos, E. E.; Stokes, S. N.; Cardoso-Saldaña, F. J.; Herndon, S. C.; Smith, B. J.; Allen, D. T. Use of
+Short Duration Measurements to Estimate Methane Emissions at Oil and Gas Production Sites.
+Environmental science & technology letters 2021, 8 (6), 463-467. DOI: 10.1021/acs.estlett.1c00239.
+(21) Allen, D. T.; Cardoso-Saldaña, F. J.; Kimura, Y. Variability in Spatially and Temporally Resolved
+Emissions and Hydrocarbon Source Fingerprints for Oil and Gas Sources in Shale Gas Production
+Regions. Environmental science & technology 2017, 51 (20), 12016-12026. DOI:
+10.1021/acs.est.7b02202.
+(22) Schissel, C.; Allen, D.; Dieter, H. Methods for Spatial Extrapolation of Methane Measurements in
+Constructing Regional Estimates from Sample Populations. Environmental science & technology 2024,
+58 (6), 2739-2749. DOI: 10.1021/acs.est.3c08185.
+(23) Vaughn, T. L.; Bell, C. S.; Pickering, C. K.; Schwietzke, S.; Heath, G. A.; Pétron, G.; Zimmerle, D.
+J.; Schnell, R. C.; Nummedal, D. Temporal variability largely explains top-down/bottom-up difference in
+methane emission estimates from a natural gas production region. Proceedings of the National Academy
+of Sciences - PNAS 2018, 115 (46), 11712-11717. DOI: 10.1073/pnas.1805687115.
+(24) Allen, D. T.; Sullivan, D. W.; Zavala-Araiza, D.; Pacsi, A. P.; Harrison, M.; Keen, K.; Fraser, M. P.;
+Daniel Hill, A.; Lamb, B. K.; Sawyer, R. F.; et al. Methane Emissions from Process Equipment at Natural
+Gas Production Sites in the United States: Liquid Unloadings. Environmental science & technology 2015,
+49 (1), 641-648. DOI: 10.1021/es504016r.
+(25) Methane Observation Networks with Innovative Technology to Obtain Reductions. Advanced
+Research Projects Agency - Energy, 2014. https://arpa-e.energy.gov/technologies/programs/monitor
+(accessed 2023 July 10).
+(26) Siebenaler, S. P.; Janka, A. M.; Lyon, D.; Edlebeck, J. P.; Nowlan, A. E.; Asme. METHANE
+DETECTORS CHALLENGE: LOW-COST CONTINUOUS EMISSIONS MONITORING. Proceedings
+of the 11th International Pipeline Conference, 2016, Vol 3 2017, 9, Proceedings Paper.
+(27) Bell, C.; Ilonze, C.; Duggan, A.; Zimmerle, D. Performance of Continuous Emission Monitoring
+Solutions under a Single-Blind Controlled Testing Protocol. Environmental science & technology 2023,
+57 (14), 5794-5805. DOI: 10.1021/acs.est.2c09235.
+25
+
+https://doi.org/10.26434/chemrxiv-2024-qfdbh ORCID: https://orcid.org/0000-0001-8385-6573 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+
+(28) Chen, Z.; El Abbadi, S. H.; Sherwin, E. D.; Burdeau, P. M.; Rutherford, J. S.; Chen, Y.; Zhang, Z.;
+Brandt, A. R. Comparing Continuous Methane Monitoring Technologies for High-Volume Emissions: A
+Single-Blind Controlled Release Study. ACS ES&T Air 2024. DOI: 10.1021/acsestair.4c00015.
+(29) Day, R. E.; Emerson, E.; Bell, C.; Zimmerle, D. Point Sensor Networks Struggle to Detect and
+Quantify Short Controlled Releases at Oil and Gas Sites. Sensors (Basel, Switzerland) 2024, 24 (8), 2419.
+DOI: 10.3390/s24082419.
+(30) Daniels, W. S.; Jia, M.; Hammerling, D. M. Detection, localization, and quantification of singlesource methane emissions on oil and gas production sites using point-in-space continuous monitoring
+systems. Elementa (Washington, D.C.) 2024, 12 (1). DOI: 10.1525/elementa.2023.00110.
+(31) Daniels, W. S.; Wang, J. L.; Ravikumar, A. P.; Harrison, M.; Roman-White, S. A.; George, F. C.;
+Hammerling, D. M. Toward Multiscale Measurement-Informed Methane Inventories: Reconciling
+Bottom-Up Site-Level Inventories with Top-Down Measurements Using Continuous Monitoring
+Systems. Environmental Science & Technology 2023. DOI: 10.1021/acs.est.3c01121.
+(32) Chen, Q.; Schissel, C.; Kimura, Y.; McGaughey, G.; McDonald-Buller, E.; Allen, D. T. Assessing
+Detection Efficiencies for Continuous Methane Emission Monitoring Systems at Oil and Gas Production
+Sites. Environmental science & technology 2023, 57 (4), 1788-1796. DOI: 10.1021/acs.est.2c06990.
+(33) Schissel, C.; Chen, Q.; Tullos, E.; Ravikumar, A.; Allen, D. Comparing the emission reduction
+effectiveness of continuous monitoring to periodic Optical Gas Imaging surveys for methane emissions at
+oil and gas production sites. ChemRxiv, 2023. https://chemrxiv.org/engage/chemrxiv/articledetails/63e53c7ffcfb27a31f7dd8d4 (accessed 2023 August 10).
+(34) Ilonze, C.; Emerson, E.; Duggan, A.; Zimmerle, D. Assessing the Progress of the Performance of
+Continuous Monitoring Solutions under a Single-Blind Controlled Testing Protocol. Environmental
+science & technology 2024, 58 (25), 10941-10955. DOI: 10.1021/acs.est.3c08511.
+(35) Brown, J. A.; Harrison, M. R.; Rufael, T.; Roman-White, S. A.; Ross, G. B.; George, F. C.;
+Zimmerle, D. Evaluating Development of Empirical Estimates Using Two Top-Down Methods at
+Midstream Natural Gas Facilities. Atmosphere 2024, 15 (4), 447. DOI: 10.3390/atmos15040447.
+(36) Brown, J. A.; Harrison, M. R.; Rufael, T.; Roman-White, S. A.; Ross, G. B.; George, F. C.;
+Zimmerle, D. Informing Methane Emissions Inventories Using Facility Aerial Measurements at
+Midstream Natural Gas Facilities. Environmental science & technology 2023, 57 (39), 14539-14547.
+DOI: 10.1021/acs.est.3c01321.
+(37) Subramanian, R.; Williams, L. L.; Vaughn, T. L.; Zimmerle, D.; Roscioli, J. R.; Herndon, S. C.;
+Yacovitch, T. I.; Floerchinger, C.; Tkacik, D. S.; Mitchell, A. L.; et al. Methane Emissions from Natural
+Gas Compressor Stations in the Transmission and Storage Sector: Measurements and Comparisons with
+the EPA Greenhouse Gas Reporting Program Protocol. Environmental science & technology 2015, 49 (5),
+3252-3261. DOI: 10.1021/es5060258.
+(38) Ravikumar, A.; Li, Z.; Yang, S.; Smith, M. Developing Measurement-Informed Methane Emissions
+Inventory Estimates at Midstream Compressor Stations. ChemRxiv 2024. DOI: 10.26434/chemrxiv-20248jmtn This content is a preprint and has not been peer-reviewed.
+(39) Vaughn, T. L.; Luck, B.; Williams, L.; Marchese, A. J.; Zimmerle, D. Methane Exhaust
+Measurements at Gathering Compressor Stations in the United States. Environmental science &
+technology 2021, 55 (2), 1190-1196. DOI: 10.1021/acs.est.0c05492.
+(40) Ravikumar, A.; Li, Z.; Yang, S.; Smith, M. Developing Measurement-Informed Methane Emissions
+Inventory Estimates at Midstream Compressor Stations. 2024. DOI: 10.26434/chemrxiv-2024-8jmtn This
+content is a preprint and has not been peer-reviewed.
+(41) Standards of Performance for New, Reconstructed, and Modified Sources and Emissions Guidelines
+for Existing Sources: Oil and Natural Gas Sector Climate Review. Environmental Protection
+Agency (EPA), https://www.epa.gov/system/files/documents/2023-12/eo12866_oil-and-gas-nsps-egclimate-review-2060-av16-final-rule-20231130.pdf (accessed 2023 December 4).
+(42) Dancey, C. P.; Reidy, J. Statistics without maths for psychology: using SPSS for windows; PrenticeHall, 2004.
+26
+
+https://doi.org/10.26434/chemrxiv-2024-qfdbh ORCID: https://orcid.org/0000-0001-8385-6573 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+

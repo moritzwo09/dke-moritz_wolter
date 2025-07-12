@@ -1,0 +1,923 @@
+Bridging targeted (Zeno MRM-HR) and untargeted (SWATH) LC-MS in a single run for sensitive high-resolution exposomics.
+Vinicius Verri Hernandes†,#, Benedikt Warth†,#,*
+†Department of Food Chemistry and Toxicology, Faculty of Chemistry, University of Vienna, 1090 Vienna, Austria
+#Exposome Austria, Research Infrastructure and National EIRENE Node, Vienna, Austria
+
+*Corresponding author
+
+ABSTRACT: Traditionally, chemical exposure has been assessed by low-resolution mass spectrometry via targeted approaches due to the typically extremely low concentration of such compounds in biological samples. Nevertheless, untargeted approaches are now becoming a promising tool for a broader investigation of the exposome,
+covering additional compounds, their biotransformation products and possible metabolic alterations (metabolomics). However, despite broad compound coverage, untargeted metabolomics still underperforms in ultra-trace
+biomonitoring analysis. To overcome these analytical limitations, we present the development of the first combined targeted/untargeted LC-MS method, merging MRM-HR and SWATH experiments in one analytical run, making use of the Zeno technology for improved sensitivity. MRM transitions were optimized for 135 highly diverse
+toxicants including mycotoxins, plasticizers, PFAS, personal care products ingredients and industrial side products
+as well as potentially beneficial xenobiotics such as phytohormones. As a proof of concept, standard reference
+materials of human plasma (SRM 1950) and serum (SRM 1958) were analyzed with both, Zeno MRM-HR + SWATH
+and SWATH-only methodologies. Results demonstrated a significant increase in sensitivity represented by the detection of lower concentration levels in spiked SRM materials (mean value: 2.2 times and 3 times lower concentrations for SRMs 1950 and 1958, respectively). Overall, detection frequency was increased by 68% (19 to 32
+positive detections) in MRM-HR+SWATH mode compared to the SWATH-only. This work presents a promising
+avenue for addressing the outstanding challenge in the small-molecule omics field: finding balance between high
+sensitivity and broad chemical coverage. It was demonstrated for exposomic applications but might be transferred
+to lipidomics and metabolomics workflows.
+
+1
+https://doi.org/10.26434/chemrxiv-2024-s6sw6-v2 ORCID: https://orcid.org/0000-0002-3057-6460 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+ities of identification specially for features with lower intensity that would not be selected by DDA experiments.
+As a downside, deconvolution algorithms are not 100%
+accurate and MS2 spectra become either more polluted
+(with miss assigned fragments) or less informative (with
+missing fragments assigned to a different precursor),
+which ultimately leads to worsened spectra matching.
+SWATH (sequential window acquisition of all theoretical
+fragments) is one type of DIA acquisition mode in which
+sequential ranges of precursor isolation windows are selected and fragmented, allowing for the acquisition of
+MS2 data for virtually all ions detected at MS1 level.7,8
+Fiehn and Cajka (2016)9 reviewed targeted and untargeted metabolomics data in order to evaluate the possibility of having one method with good performance for
+both using high resolution mass spectrometry (HRMS).
+As future directions, the authors highlight the efforts
+needed towards the combination of targeted and untargeted metabolomics approaches via untargeted MS1
+data acquisition and high-resolution MRM transitions for
+targeting multiple metabolites. More recently, Bird et al
+(2023)10 have introduced a new workflow based on orbitrap and/or TOF systems (SQUAD, Simultaneous Quantitation and Discovery Analysis) aiming at combining
+both targeted and untargeted with the main objective of
+finding the equilibrium between untargeted and targeted approaches in a single experiment.
+This paper describes, to the best of our knowledge, the
+first targeted/untargeted, single-injection LC-MS
+method for integrated exposomics and metabolomics,
+combining the advantages of both approaches, i.e., high
+sensitivity (targeted) and broad coverage and retrospective data analysis (untargeted). The use of the recently
+introduced Zeno technology, a linear ion trap stage prior
+to the TOF analyzer that allows for increased duty cycles
+of up to 90%11, resulting in significant increases in sensitivity. In addition to presenting the results obtained for
+different xenobiotics in targeted mode (135 compounds)
+as well as the results for the analysis of standard references materials (SRM 1950 and SRM 1958), we also describe the method development process that is expected
+to support other researchers working in the field of small
+molecule omics.
+
+Introduction
+Humans are exposed to a myriad of chemicals throughout their lifespan, including industrial pollutants, food
+nutrients and contaminants, synthetic products in cosmetics among many others. With that, an increasing interest in the measurement of known and novel chemicals
+as well as their possible effect in human health is now
+taking place specially under the recently coined idea of
+exposomics. First conceptualized by Wild1, the exposome has been defined by Miller and Jones2 as “the cumulative measure of environmental influences and associated
+biological responses throughout the lifespan, including exposures from the environment, diet, behavior, and endogenous processes”.
+When designing any small molecules “omics” such as
+exposomics or metabolomics, one of the first decisions is
+typically the choice between targeted and untargeted approaches. The first normally relies on the use of low-resolution instruments (such as quadrupoles or ion traps)
+and aims at providing quantitative data with increased
+sensitivity when compared to high-resolution instruments, usually relying on time-of-flight or orbitrap analyzers. These methods normally include tens to hundreds of compounds and are commonly used for confirming previous hypotheses. In exposomics, for example, these methods are used for large biomonitoring
+studies due to their capability to provide quantitative information for trace-level chemicals3, ultimately providing policy markers with information for the science-topolicy interface regarding chemical exposure4. Untargeted approaches, on the other hand, have the advantage
+of detecting, in principle, any compound at a given concentration that is able to be ionized and detected. For
+that reason, untargeted methodologies have gained momentum in the last years specially under the strategies
+termed suspect screening analysis (SSA) and non-targeted analysis (NTA), which enables for the screening of
+hundreds to thousands of (potentially novel and relevant) chemicals4. In addition, untargeted data acquisition approaches can be used for the assessment of the
+“effects” part of the exposure, i.e., the possible impact on
+the levels of endogenous metabolites due to a particular
+exposure pattern via metabolomics strategies.5
+When acquiring such type of data using an LC-MS or LCHRMS set ups, different acquisition modes can be selected. For targeted analysis, multiple reaction monitoring (MRM) is the common choice, and it is based on the
+detection of usually two transitions (precursor/product
+ion pairs) for each analyte, allowing for high sensitivity
+and specificity. For untargeted data, on the other hand,
+data dependent acquisition (DDA) and data independent
+acquisition (DIA) are the most commonly used approaches. The first relies on the selection of the n most
+intense m/z detected at MS1 level to further selection
+and fragmentation (MS2 acquisition), normally leading to
+good quality MS2 spectra of a few of the detected features.6 DIA, on the other hand, has the capability to fragment virtually all detected signals, later performing
+spectra deconvolution in order to assign each fragment
+to the most likely precursor. As a result, the number of
+MS2 spectra acquired is higher, leading to better possibil-
+
+Experimental Section
+Chemicals and Sample preparation
+Multi-component standard solutions containing 135
+compounds (Table S2) were prepared at six different concentrations levels. The selection of compounds was intended to represent a highly diverse and commonly observed chemical exposure panel, considering factors such
+as chemical classes, origin of exposure, exposure route,
+among others. In addition, the selection of compounds
+was based on a previous work published by our group for
+a multi-class targeted methodology12. Concentrations
+were compound-dependent and are described in details in
+Table S2.
+Standard reference materials (SRM 1950 and 1958
+from NIST) were purchased from NIST and stored at 80°C. In total, 9 replicates of each SRMs were prepared following the protocol previously described by Jamnik et al
+
+2
+https://doi.org/10.26434/chemrxiv-2024-s6sw6-v2 ORCID: https://orcid.org/0000-0002-3057-6460 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+(2022)12. For extraction, 30 µL of both SRM were mixed
+with 120 µL of extraction solution (ACN/MeOH 50:50,
+v/v) in Eppendorf tubes and sonicated for 10min on ice.
+The extraction solution contained labeled IS (Table S3)
+for accounting for the total variation (sample preparation
++ analytical). A 2 h protein precipitation step was performed at -20°C afterwards, followed by centrifugation for
+10 min at 18,000 x g at 4°C. The supernatant (120 µL) was
+transferred to a new Eppendorf tube and dried under vacuum at 4°C overnight. From the nine replicates, three were
+reconstituted using 120 µL of ACN/H2O 10:90, v/v). The
+additional 6 replicates were used to build a matrixmatched calibration curve with the same solvent composition and spiked at the same levels as the standard solutions in solvent. Samples were vortexed for 10min after
+reconstitution and centrifuged at 18,000g and 4°C. Finally,
+100 µL of the supernatant was transferred to an amber
+glass vial for data acquisition. Sample preparation protocol was chosen to maximize chemical coverage13.
+
+1958 and SRM 1950). For positive mode, on the other
+hand, MS1 accumulation time was kept the same as for
+MRM-HR + SWATH method (0.05 s) and, instead, accumulation times for SWATH-only windows were increased such as total cycle time would compare to maximum cycle time for MRM-HR + SWATH, as previously explained. For instance, maximum scan time for Zeno
+MRM-HR +SWATH method was 0.435 s while SWATHonly total cycle time was 0.25 s (0.05 s for MS1 and 0.02
+s for each of the 10 SWATH window). Therefore, at the
+maximum number of overlapping MRM windows, the total cycle time would be 0.685 s. Based on that, the
+SWATH-only method for positive mode was set as total
+scan time of 0.643 by keeping MS1 acquisition at 0.05 s
+and increasing SWATH windows accumulation time
+from 0.02 to 0.05 s. For direct comparison, key method
+parameters are also summarized in Table 1.
+Table 1. Parameters employed across the different MS methods.
+For SWATH-only, cycle time represents the total scan time (constant across the whole chromatographic run). For MRMHR+SWATH, cycle time represents the maximum scan time, since
+cycle time changes along the chromatographic run due to its dependency on the number of overlapping MRM transitions.
+
+LC-HRMS instrumentation and parameters
+A LC Infinity II 1290 (Agilent) coupled to a Zeno TOF
+7600 with a Turbo V source (SCIEX) was used. Chromatographic separation was based on the same method described by Jamnik12 et al (2022). In summary, a 20 min
+reversed-phase gradient was employed on an HSS T3
+column (Waters), with a flow rate of 0.4 mL/min and an
+injection volume of five microliters.
+LC-MS data acquisition was performed for both a
+SWATH-only method and the newly developed Zeno
+MRM-HR + SWATH methods. Ion source parameters
+were standardized across both methodologies, as follow:
+GS1 – 50 psi; GS2 – 50 psi; curtain gas – 35 psi; CAD gas
+– 9; temperature – 550 °C. In both cases, MS1 data was
+acquired from m/z 100 to 1000, with declustering potential at 80V (-80 V for negative mode) and collision energy
+at 10V (-10 V for negative mode). Spray voltage was set
+at 5500 V for positive ionization mode (ESI+) and -4500
+V for negative ionization mode (ESI-).
+For the developed Zeno MRM-HR + SWATH data, accumulation time was set at 0.05 s for individuals MRM transitions and at 0.02 s for each SWATH window (n= 10).
+SWATH windows were optimized individually for each
+SRM using the SWATH windows optimizer provided by
+SCIEX. Both SWATH-only and MRM-HR+SWATH methods had the exact same parameter for SWATH acquisition, including windows range, declustering potential
+(80 or -80V) and CE, as described in details in Table S4.
+For MRM experiment, Start/Stop option was selected,
+with TOF Start Mass at m/z 50 and TOF Stop Mass set as
+compound-dependent by adding 2 m/z units to precursor m/z. Retention time windows, declustering potentials and collision energies were adjusted for each compound (see Results section) and Zeno Pulsing was activated at a threshold of 8000 cps.
+To allow for a point of comparison, the cycle time for the
+SWATH-only method was adjusted to a similar value as
+the maximum scan time for the MRM-HR + SWATH
+method. To evaluate possible differences in increased accumulation time for MS1 or SWATH windows, two different approaches were taken. For the Zeno MRMHR+SWATH in negative mode, accumulation time for
+MS1 was increased from 0.05 s to 0.15 s (for both SRM
+
+MS1 accumulation time
+(s)
+Total number
+of SWATH
+Windows
+SWATH Window accumulation time
+(s)
+MRM Transitions
+Accumulation time
+MRM transitions (s)
+Cycle time (s)
+
+Swath
+Only
+
+NEG
+MRM-HR+
+SWATH
+
+Swath
+Only
+
+POS
+MRM-HR+
+SWATH
+
+0.15
+
+0.05
+
+0.05
+
+0.05
+
+10
+
+10
+
+10
+
+10
+
+0.06
+
+0.02
+
+0.05
+
+0.02
+
+-
+
+83
+
+-
+
+52
+
+-
+
+0.05
+
+-
+
+0.05
+
+0.843
+
+0.763
+
+0.643
+
+0.685
+
+Finally, the data acquisition sequence was set such as
+data for MRM-HR + SWATH and SWATH-only methods
+would be acquired sequentially for the same sample.
+That approach was taken in order to minimize batch effects when comparing the results for the same sample
+between the two different methodologies.
+
+Compound optimization
+Two key parameters namely collision energy (CE) and declustering potential (DP, a voltage applied to the orifice to
+minimize solvent clusters and help on desolvation of ions)
+were optimized by either direct infusion (DP) or using a
+LC-MS method (CE). For DP, sub-mixes of all compounds
+at either 10 or 100 ng/mL (depending on ionization efficiency) of all standards were constantly injected in the
+source using a syringe pump set at 5µL/min. Automatic
+DP optimization was performed in SCIEX OS in the range
+
+3
+https://doi.org/10.26434/chemrxiv-2024-s6sw6-v2 ORCID: https://orcid.org/0000-0002-3057-6460 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+from 10 to 300 V. For CE optimization, MS2 spectra was
+first acquired using DDA with inclusion list for each of the
+sub-mixes at in the range of 100 to 1000 ng/mL. MS2 spectra were acquired using the collision energy spread (CES)
+at 35±15 V. This allows for a combined (and representative) spectra of 3 collision energies: 20, 35 and 50 V. Next,
+the 5 most intense fragments (or fragments known to
+work best in our targeted approach using low-resolution
+instruments12) were selected for further optimization. Finally, an MRM-HR method was created with all selected
+transitions, and sub-mixes were injected multiple times
+using the above described LC-MS method with one specific
+CE for each injection, in the range from 15 to 60 V, with
+steps of 5 V (total of 9 injections per submix). Peak areas
+were used to select the best fragment and CE (Table S1)
+
+Negative Mode (MoNA - 47,058 spectra) and ESI(-)-MS/MS
+from authentic standards (MS-DIAL - 44,669 spectra) were
+employed. A spectral match score of 70% was used as a
+threshold, with no limitation for minimum dot and reverse
+dot-products scores (since data was manually curated afterwards). All method parameters from MS-Dial (from
+peak detection to identification) are described in Table
+S6.
+
+Results and Discussion
+Balancing accumulation time, RT window and total cycle time
+Considering the significant number of compounds included in each method, i.e., 83 in ESI- mode and 52 in
+ESI+, it is essential to optimize the total cycle time
+needed to acquire 1xMS1 + 10xSWATH windows + 1xMS1
++ 83xMRM transitions. This is related to the fact that, as
+a rule of thumb, a chromatographic peak should have at
+least between six and ten data points15 in order to
+achieve satisfactory gaussian shape and reproducibility.
+Consequently, the above-mentioned acquisition cycle
+has to be repeated at least six times along the width of
+every chromatographic peak for proper quantification.
+Therefore, accumulation time for each of the mentioned
+experiments must be fine-tuned. The parameters found
+to be the most important are the accumulation time and
+the retention time window of each MRM transition, both
+due to the high number of overlapping MRM transitions.
+To optimize RT windows, MS1 level data was acquired for
+the mixture of analytical standards at the highest concentration level. From this data, we retrieved the peak
+width for each compound, and opted for a RT window
+that would be defined by ± 0.75 * peak width. For example, methylparaben (RT = 5.55 min) was detected with a
+baseline peak width of ~6.6 s, and, therefore, RT window
+was set at ±5 s. Manual fine-adjustment was also performed after, especially for compounds which are prone
+to suffer from relatively larger RT shifts (such as
+phthalates and glucuronide conjugates). Final RT windows are described for each compound in Table S2. Figure 1 presents the final and optimized methods with extracted ion chromatograms, RT and RT windows for each
+compound of the target panel.
+
+Data analysis and quality check
+Targeted data analysis (MRM-HR) was performed using
+SCIEX OS version 3.0.0.3339. Regardless of the MS mode
+of acquisition, extracted ion chromatograms for SWATHonly (MS1 level) and MRM+SWATH (MS2 level) were extracted using the default window of 0.02 Da as recommended by SCIEX. Chromatograms were integrated by the
+AutoPeak method and smoothed using noise filter algorithm with the Low option. Concentrations were calculated for all compounds detected in non-spiked SRMs by
+the use of standard addition method.
+For quality control, peak areas of the internal standards in
+ESI- mode were inspected in MS1 mode for both SWATHonly and MRM-HR+SWATH. From the labeled IS employed, none was found to be ionized in ESI+ so, relative
+standard deviation values (RSD) were only estimated to
+be similar to ESI-. Peak areas for MRM+SWATH mode have
+presented higher RSD (Table S5), which may be explained by the lower values for peak areas. These may additionally be related to the fact that accumulation time at
+MS1 for SWATH-only in ESI- mode was set three times
+higher than MRM-HR + SWATH, therefore providing better sensitivity. Nevertheless, it is also important to highlight that this variation is likely to be considerably smaller
+for the MS2 data in MRM-HR + SWATH due to the increased
+peak areas provided by the Zeno Pulsing technique, which
+is, in fact, the data presented and evaluated along this
+work. In addition, labeled IS were added to the extraction
+solution and, therefore, account for the sum of the variances of both extraction process and analytical run. For
+PFOS for example, recovery at very low concentration was
+reported12 as 56 ± 25%, representing 50% of variance
+only related to sample preparation. As the average RSD
+was significantly below this value, we may infer that analytical variance was minimal. Total variance for recovery
+was also reported12 for genistein and estradiol at 30% and
+14%, respectively, while RSD in our analysis were at 24%
+and 23% for MRM-HR+SWATH data.
+Finally, MS2 matching for both exogenous (xenobiotics)
+and endogenous (metabolites) compounds was performed in MS-DIAL14 (version 5.2.240218.2) against Mass
+Bank of North America (MoNA) and MS-DIAL spectral libraries. For ESI+, LC-MS/MS Positive Mode (MoNA - 99,260
+spectra) and ESI(+)-MS/MS from authentic standards (MSDIAL, 324,191 spectra) were used. For ESI-, LC-MS/MS
+
+Benchmarking with SRM
+Evaluation of detection levels (sensitivity)
+One of the main parameters that allows for a sensitivity
+comparison between two methods is signal-to-noise ratio (S/N). Nevertheless, comparing S/N between different levels of MS data, i.e., MS1 for SWATH-only and MS2
+for MRM-HR+SWATH would not provide a meaningful
+
+4
+https://doi.org/10.26434/chemrxiv-2024-s6sw6-v2 ORCID: https://orcid.org/0000-0002-3057-6460 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure 1. Overview of extracted ion chromatograms, retention times and detection windows in both ESI- and ESI+ mode. A total of 135
+compounds from a variety of chemical classes were included in the MRM-HR experiments, with 83 compounds in ESI- mode and 52 in ESI+
+mode. In addition to the targeted quantification of the toxicant panel, the acquisition of SWATH data allows for the untargeted screening of
+additional xenobiotics, their biotransformation products as well as endogenous metabolites (no peaks depicted).
+
+comparison. One of the main reasons for this is the expected increase in specificity when dealing with MS2
+data, resulting, frequently in a flat (non-existent) baseline which, consequently, makes noise estimation impractical. In addition, S/N estimation algorithms included into SCIEX OS (namely Standard Deviation and
+Peak to Peak) require a noise region to be defined. Nevertheless, due to the use of very narrow RT windows for
+MRM experiments, selecting this noise region becomes
+unrealistic and, as a consequence, estimated S/N values
+turn out to be not representative. For these reasons, we
+have opted to report, for each analyte, the lowest concentration level that could be detected in the spiked matrix
+(and not detected in the non-spiked matrix) as a sensitivity comparison basis. Two criteria were considered to
+define if a peak was detected or not: a minimum intensity
+threshold of 100 counts and the visual inspection of the
+
+baseline (when possible) to estimate S/N. For a few borderline cases, we opted for a more conservative approach to avoid overestimation of the method’s performance. This approach was taken for all compounds that
+were not detected in non-spiked matrix (for compounds
+detected in non-spiked matrix, see next section). For
+SWATH-only data, MS1 level is reported since compounds could be detected at lower levels when compared to MS2 level (which may be explained for the nonspecific CE chosen for each compound). For MRM-HR
++SWATH data, on the other hand, MS2 level data showed
+larger values for peak areas when compared to MS1 data,
+as also expected due to the optimized CE and the use of
+the Zeno. In summary, mean detected concentrations in
+MRM-HR+SWATH were 2.1 and 2.3 times lower for SRM
+1950 in ESI- and ESI+ mode, respectively. For SRM 1958,
+a four times higher mean detected concentration was
+found for ESI-, while ESI+ presented a two-fold increase.
+
+5
+https://doi.org/10.26434/chemrxiv-2024-s6sw6-v2 ORCID: https://orcid.org/0000-0002-3057-6460 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+SRM 1958
+
+ESI (-)
+
+Detected Compound
+
+ESI (+)
+
+Figure 2. Extracted ion chromatograms for the lowest detection
+levels of four illustrative compounds in a) SRM 1950 – ESI+; b)
+SRM 1950 – ESI-; c) SRM 1958 – ESI+ and d) SRM 1958 ESI-. Despite not being able to detect each compound at a lower concentration level, MRM-HR+SWATH approach is able to provide
+larger peak areas and, consequently, better sensitivity.
+
+Even for compounds in which the lowest detected level
+was the same between MRM-HR + SWATH and SWATHonly, there were prevalent larger peak areas and calibration curve slopes for the first, as depicted in Figure 2 for
+four exemplary compounds. The complete description of
+the lowest detected levels for all compounds using both
+methods is reported in Table S7.
+
+ESI (+)
+
+SRM 1950
+
+ESI (-)
+
+Detection and quantification of xenobiotics
+Different xenobiotics were detected in both SRM 1958
+and SRM 1950 and are summarized in Table 2. Concentrations were calculated based on the calibration curves
+built for MRM-HR + SWATH and SWATH-only methods
+(Tables S8 and S9). Concentration values were not significantly different in almost all cases when considering
+raw p-values from a paired t-test (performed in Metaboanalyst using the individual concentrations for each replicate). Exception compounds were mono-benzyl
+phthalate and trans-3-hydroxy-cotinine for SRM 1958
+and nonylphenol and PFOS for SRM 1950. Acetaminophen was found to be different between methods for
+both SRM 1950 and SRM 1958. The results showcase the
+higher capability for compound detection. From the total
+of 17 compounds detected in SRM 1958, roughly 41% (7)
+were detected in MRM-HR+SWATH mode only, covering
+different classes (bisphenols, PFAS, phthalates, and
+herbicides/pesticides such as metribuzin). Similarly,
+44% of the compounds detected in SRM 1950 (7 out of
+16) were found only with the use of the combined
+method.
+
+TCBPA
+Ethylparaben
+Methylparaben
+5-OH-MEHP
+Mono-benzyl
+phthalate (MBeP)
+n- butylbenzolsulfonamide
+Nonylphenol
+Perfluorononanoate
+Perfluorooctanoic acid
+(PFOA)
+Perfluorooctanesulfonic acid (PFOS)
+Propylparaben
+2-hydroxy-4-methoxybenzophenone (BP3)
+Acetaminophen
+Benzyl Butyl Phthalate
+Cotinine
+Metribuzin
+Trans-3-hydroxy-cotinine
+
+Calculated Concen- p-value
+trations (ng/mL) (paired tMRM-HR SWATH- test)
++ SWATH only
+0.4
+ND
+0.05
+ND
+0.05
+0.50
+0.68
+0.20
+1.2
+1.6
+0.008*
+2.4
+7.1
+0.09
+
+33
+
+27
+
+82
+0.52
+
+85
+ND
+
+4.6
+
+4.3
+
+4.7
+
+6.1
+
+0.14
+
+0.09
+
+ND
+
+-
+
+0.35
+
+ND
+
+8.45
+0.57
+4.7
+0.15
+
+8.02
+ND
+4.4
+ND
+
+1.5
+
+1.9
+
+Bisphenol A (BPA)
+
+3.7
+
+3.8
+
+Ethylparaben
+Methylparaben
+n- butylbenzolsulfonamide
+Nonylphenol
+Perfluorononanoate
+Perfluorooctanoic acid
+(PFOA)
+Perfluorooctanesulfonic acid (PFOS)
+Propylparaben
+Acetaminophen
+Benzyl Butyl Phthalate
+
+0.1
+3.9
+
+ND
+3.6
+
+44
+
+35
+
+32
+0.72
+
+18
+ND
+
+4.3
+
+3.3
+
+4.4
+
+5.8
+
+0.11
+540
+0.8
+
+ND
+445
+ND
+
+Cotinine
+
+115
+
+92
+
+Diethylphthalate
+Metribuzin
+Trans-3-hydroxy-cotinine
+
+5.7
+0.23
+
+ND
+ND
+
+41
+
+32
+
+0.26
+0.55
+
+-
+
+0.03*
+0.56
+0.02*
+0.85
+0.09
+0.24
+0.02*
+0.15
+0.02*
+0.02*
+0.32
+0.31
+
+Annotation of endogenous metabolites for integrated
+metabolome analysis
+
+Table 2. Detected compounds with calculated average concentrations for MRM-HR+SWATH and SWATH-only (n=3) A paired
+t-test on individual concentrations for each replicate was performed to evaluate possible differences between both methods.
+
+For evaluating the performance of each method for compound annotation, the non-spiked samples of SRM 1950
+and SRM 1958 were investigated, independently, for both
+
+6
+https://doi.org/10.26434/chemrxiv-2024-s6sw6-v2 ORCID: https://orcid.org/0000-0002-3057-6460 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+MRM-HR+SWATH and SWATH-only using MS-DIAL (two
+sets of triplicate non-spiked samples see Material and
+Methods, Data analysis and quality control section for detailed information). As an initial assessment, the number
+of features obtained using the same processing method
+was evaluated. As observed in Table 3, MRM-HR+SWATH
+data retrieved a larger number of features for all experiments. When comparing the total number of MS2 matching
+retrieved from the libraries, SWATH-only data initially
+seemed to outperform the newly developed MRMHR+SWATH method.
+
+HR+SWATH data in the quality of a few spectral matches,
+more prominently for low abundance compounds (peak
+height <1000 counts). Figure 3 presents two illustrative
+cases of spectral matches. The first (phenylalanine, Figure
+3a) showcases an optimal MS2 match with the library for
+both SWATH-only and MRM-HR+SWATH, outlining the
+high MS2 spectral similarity between both methods. Figure 3b, on the other hand, intends to exemplify a case for
+which, despite the good matching score for both methods,
+spectra similarity is lower across both methods, with
+missing fragments for the deconvoluted MS2 spectrum
+from MRM-HR+SWATH. This may be explained by the
+lower accumulation time for both MS1 and MS2 data, possibly hindering the deconvolution process (i.e., matching
+fragments with precursor ions). The same trend can be observed, for instance, for citric acid (Figure S1) and tyrosine (Figure S5) as highly similar spectral matches between both methods (with peak heights all above 1500) as
+
+ESI(+)
+ESI(-)
+ESI(+)
+ESI(-)
+
+SRM 1950
+
+SRM 1958
+
+Table 3. Performance variables for MS2 matching for endogenous compounds against open-source MS2 libraries. Results
+indicate a superior matching frequency for SWATH-only data.
+Nevertheless, manual data curation evidences a similar
+matching rate/score between both methods, confirming the
+capability of the newly developed methodology to assess different parts of the metabolome.
+
+Method
+
+Detected
+features
+(Average
+± RSD)
+
+Average number of MS2
+matches (% of
+detected features)
+
+SWATH-Only
+
+2806
+(± 3%)
+
+237 (8%)
+
+MRM-HR
++SWATH
+
+3602
+(± 3%)
+
+178 (5%)
+
+SWATH-Only
+
+2236
+(± 2%)
+
+113 (5%)
+
+MRM-HR
++SWATH
+
+2610
+(± 5%)
+
+62 (2%)
+
+SWATH-Only
+
+2990
+(± 1%)
+
+179 (6%)
+
+MRM-HR
++SWATH
+
+3832
+(± 0.2%)
+
+184 (5%)
+
+SWATH-Only
+
+2477
+(± 2%)
+
+145 (6%)
+
+MRM-HR
++SWATH
+
+2902
+(± 3%)
+
+91 (3%)
+
+After manual curation of the data and removal of false positives, it was observed that annotation of compounds was,
+in fact, of high similarity between both methods. More specifically, all compounds that could be reasonably annotated (minimum of 2 matching ions and mass error below
+5 ppm for parent compound) in SWATH-only mode had
+the same suggested compound in MRM-HR+SWATH, with
+highly comparable matching scores (dot product, reverse
+dot product and total score14). Mirror plots of annotated
+compounds for SRM 1950 in both ESI+ and ESI- including
+matching scores is described in details in Tables S10 and
+S11, along with all mirror plots for both methodologies
+(Figures S1-S45). Since a large overlap was observed for
+the compounds annotated between SRM 1958 and SRM
+1950 in both ionization modes, we opted to not include
+mirror plots for the first as a way to avoid repetitive description of the data. Despite the clear similarity in MS2
+matching performance, it is important to highlight that
+SWATH-only method indeed outperformed MRM-
+
+Figure 3. Exemplary MS2 spectra matching in ESI- for
+a) phenylalanine and b) cortisol as highly and low correlated spectra (respectively) for SWATH-only and
+MRM-HR+SWATH methods. For cortisol, three fragments are not present in the deconvoluted spectrum of
+MRM-HR+SWATH (m/z 282, 189 and 125).
+
+well as for 4-nitrophenol (Figure S21) and glycocholic
+
+7
+https://doi.org/10.26434/chemrxiv-2024-s6sw6-v2 ORCID: https://orcid.org/0000-0002-3057-6460 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+ASSOCIATED CONTENT
+
+acid (Figure S22) as less reliable matches in MRMHR+SWATH due to missing fragments in the deconvoluted
+spectra and with peak heights for both compounds at
+around 300 counts
+
+Supporting Information
+Supplementary information provided in Excel (Supplementary tables S1 to S9) and in PDF Document (Supplementary
+tables S10 and S11, Figures S1 to S45) are included and provide with additional information regarding the method and
+the results
+
+Limitations
+Despite the clear method capability towards a more sensitive and comprehensive analysis combining metabolomics and exposomics as well as targeted and untargeted in
+a single run, the method is not out of its limitations. Depending on the number of compounds, optimizing chromatographic separation, collision energy and declustering
+potential and total cycle time is time-intensive, especially
+for a relatively large number of compounds as described
+herein. We also acknowledge the lack of labeled internal
+standards for absolute quantification. Despite adding such
+compounds would lead to a more accurate calculation of
+the concentrations, it should be considered that additional
+MRM transitions would be required, further elongating total cycle time. Regarding the untargeted data, there is still
+the need to evaluate the influence (if any) of different
+SWATH accumulation times in terms of signal intensity,
+quality of deconvoluted spectra and, ultimately, in the total number of annotated compounds. Moreover, total accumulation times (and consequently, cycle times) may
+still be fine-tuned. One example is the MRM accumulation
+time, which can be set as compound-dependent rather
+than as a unique value for all, depending on overlapping
+transitions and total cycle time.
+
+AUTHOR INFORMATION
+Corresponding Author
+*Corresponding author: Benedikt Warth,
+benedikt.warth@univie.ac.at, +43-1-4277-70806.
+
+Author Contributions
+The manuscript was written through contributions of all authors.
+
+DATA AVAILABILITY
+The raw data files will be provided via the Metabolights data
+repository.
+
+ACKNOWLEDGMENT
+The authors would like to acknowledge all members of the
+Warth lab for providing valuable feedback, especially Yunyun
+Gu and Max L. Feuerstein. The authors would also like to
+thank Lisa Panzenböck and Gunda Köllensperger for the fruitful discussions on method optimization. They also express
+their gratitude to the Mass Spectrometry Center of the Faculty of Chemistry, University of Vienna, for technical support
+as well as to SCIEX in the name of Rebekah Sayers and JeanBaptiste Vincendet.
+This work was supported by the University of Vienna via the
+Exposome Austria Research Infrastructure, the Austrian Federal Ministry of Education, Science and Research (project
+DigiOmics4AT); and the Austrian Federal Ministry for Climate Protection, Environment, Energy, Mobility, Innovation
+and Technology (BMK).. This project was co-funded by the
+European Union (ERC, EXPOMET 101043321). Views and
+opinions expressed are those of the authors only and do not
+necessarily reflect those of the European Union or the European Research Council Executive Agency. Neither the European Union nor the granting authority can be held responsible for them.
+
+Conclusion and Future Perspectives
+A combination of targeted and untargeted approaches for
+a single-injection LC-HRMS exposomics/metabolomics is
+described. The method is the first of its kind to make use
+of the Zeno trap in MRM-HR mode, recently developed
+with the aim to correct for duty cycle issues related to TOF
+instruments, allowing for increased sensitivity. The results highlight the method's capabilities and its potential
+to detect xenobiotics present at low concentrations that
+otherwise would not be detected (or would be poorly detected) using a SWATH-only methodology. The method
+also allows for future customized developments, not only
+in terms of which compounds to include in the targeted
+list, but also regarding the choice of a semi or absolute
+quantitation. In the field of metabolomics, for instance,
+this approach could be employed to detect poorly ionized
+and/or low concentration compounds, e.g., endogenous
+hormones. Additionally, in applications in which a limited
+amount of sample is available (such as for serum samples
+for premature infants) or sample amount is limited by the
+sample collection technique (such as dried blood spots or
+volumetric microsampling devices) may also benefit, producing targeted and untargeted data acquisition in a single
+injection. In conclusion, we demonstrated that this type of
+data acquisition shows great potential for future application in any field of small molecules “omics” and can be an
+interesting alternative for the long-time discussed compromise between sensitivity and coverage.
+
+REFERENCES
+(1)
+
+(2)
+(3)
+(4)
+
+(5)
+
+Wild, C. P. Complementing the Genome with an “Exposome”: The
+Outstanding Challenge of Environmental Exposure Measurement
+in Molecular Epidemiology. Cancer Epidemiol. Biomarkers Prev.
+2005, 14 (8), 1847–1850. https://doi.org/10.1158/10559965.EPI-05-0456.
+Miller, G. W.; Jones, D. P. The Nature of Nurture: Refining the Definition of the Exposome. Toxicol. Sci. Off. J. Soc. Toxicol. 2014, 137
+(1), 1–2. https://doi.org/10.1093/toxsci/kft251.
+Calafat, A. M. Contemporary Issues in Exposure Assessment Using
+Biomonitoring. Curr. Epidemiol. Rep. 2016, 3 (2), 145–153.
+https://doi.org/10.1007/s40471-016-0075-7.
+Bocato, M. Z.; Bianchi Ximenez, J. P.; Hoffmann, C.; Barbosa, F. An
+Overview of the Current Progress, Challenges, and Prospects of
+Human Biomonitoring and Exposome Studies. J. Toxicol. Environ.
+Health
+Part
+B
+2019,
+22
+(5–6),
+131–156.
+https://doi.org/10.1080/10937404.2019.1661588.
+Warth, B.; Spangler, S.; Fang, M.; Johnson, C. H.; Forsberg, E. M.;
+Granados, A.; Martin, R. L.; Domingo-Almenara, X.; Huan, T.; Rinehart, D.; Montenegro-Burke, J. R.; Hilmers, B.; Aisporna, A.; Hoang,
+L. T.; Uritboonthai, W.; Benton, H. P.; Richardson, S. D.; Williams,
+A. J.; Siuzdak, G. Exposome-Scale Investigations Guided by Global
+
+8
+https://doi.org/10.26434/chemrxiv-2024-s6sw6-v2 ORCID: https://orcid.org/0000-0002-3057-6460 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+(6)
+
+(7)
+
+(8)
+
+(9)
+
+(10)
+
+(11)
+
+(12)
+
+(13)
+
+(14)
+
+(15)
+
+(16)
+
+Metabolomics, Pathway Analysis, and Cognitive Computing. Anal.
+Chem.
+2017,
+89
+(21),
+11505–11513.
+https://doi.org/10.1021/acs.analchem.7b02759.
+Guo, J.; Huan, T. Comparison of Full-Scan, Data-Dependent, and
+Data-Independent Acquisition Modes in Liquid Chromatography–
+Mass Spectrometry Based Untargeted Metabolomics. Anal. Chem.
+2020, 92 (12), 8072–8080. https://doi.org/10.1021/acs.analchem.9b05135.
+Hopfgartner, G.; Tonoli, D.; Varesio, E. High-Resolution Mass Spectrometry for Integrated Qualitative and Quantitative Analysis of
+Pharmaceuticals in Biological Matrices. Anal. Bioanal. Chem.
+2012, 402, 2587–2596.
+Gillet, L. C.; Navarro, P.; Tate, S.; Röst, H.; Selevsek, N.; Reiter, L.;
+Bonner, R.; Aebersold, R. Targeted Data Extraction of the MS/MS
+Spectra Generated by Data-Independent Acquisition: A New Concept for Consistent and Accurate Proteome Analysis. Mol. Cell. Proteomics 2012, 11 (6).
+Cajka, T.; Fiehn, O. Toward Merging Untargeted and Targeted
+Methods in Mass Spectrometry-Based Metabolomics and Lipidomics.
+Anal.
+Chem.
+2016,
+88
+(1),
+524–545.
+https://doi.org/10.1021/acs.analchem.5b04491.
+Amer, B.; Deshpande, R. R.; Bird, S. S. Simultaneous Quantitation
+and Discovery (SQUAD) Analysis: Combining the Best of Targeted
+and Untargeted Mass Spectrometry-Based Metabolomics. Metabolites 2023, 13 (5). https://doi.org/10.3390/metabo13050648.
+Loboda, A. V.; Chernushevich, I. V. A Novel Ion Trap That Enables
+High Duty Cycle and Wide m/z Range on an Orthogonal Injection
+TOF Mass Spectrometer. J. Am. Soc. Mass Spectrom. 2009, 20 (7),
+1342–1348. https://doi.org/10.1016/j.jasms.2009.03.018.
+Hossain, M. Z.; Feuerstein, M. L.; Gu, Y.; Warth, B. Scaling up a Targeted Exposome LC-MS/MS Biomonitoring Method by Incorporating Veterinary Drugs and Pesticides. Anal. Bioanal. Chem.
+2024. https://doi.org/10.1007/s00216-024-05374-x.
+Jamnik, T.; Flasch, M.; Braun, D.; Fareed, Y.; Wasinger, D.; Seki, D.;
+Berry, D.; Berger, A.; Wisgrill, L.; Warth, B. Next-Generation Biomonitoring of the Early-Life Chemical Exposome in Neonatal and
+Infant Development. Nat. Commun. 2022, 13 (1), 2653.
+https://doi.org/10.1038/s41467-022-30204-y.
+Gu, Y.; Peach, J. T.; Warth, B. Sample Preparation Strategies for
+Mass Spectrometry Analysis in Human Exposome Research: Current Status and Future Perspectives. TrAC Trends Anal. Chem.
+2023, 166, 117151. https://doi.org/10.1016/j.trac.2023.117151.
+Tsugawa, H.; Cajka, T.; Kind, T.; Ma, Y.; Higgins, B.; Ikeda, K.; Kanazawa, M.; VanderGheynst, J.; Fiehn, O.; Arita, M. MS-DIAL: DataIndependent MS/MS Deconvolution for Comprehensive Metabolome Analysis. Nat. Methods 2015, 12 (6), 523–526.
+https://doi.org/10.1038/nmeth.3393.
+Gross, J. H. Mass Spectrometry: A Textbook; Springer Science &
+Business Media, 2006.
+
+9
+https://doi.org/10.26434/chemrxiv-2024-s6sw6-v2 ORCID: https://orcid.org/0000-0002-3057-6460 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+

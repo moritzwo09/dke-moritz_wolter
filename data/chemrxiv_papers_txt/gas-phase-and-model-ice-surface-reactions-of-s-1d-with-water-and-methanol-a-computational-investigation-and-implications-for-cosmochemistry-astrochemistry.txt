@@ -1,0 +1,1406 @@
+Gas-phase and model ice-surface reactions of
+S(1D) with water and methanol: a computational
+investigation and implications for
+cosmochemistry/astrochemistry
+Andrea Giustini,† Gabriella Di Genova,‡ Dimitrios Skouteris,¶ Cecilia Ceccarelli,§
+Marzio Rosi,† and Nadia Balucani∗,‡
+†Dipartimento di Ingegneria Civile e Ambientale, Università degli Studi di Perugia, 06125
+Perugia, Italy
+‡Dipartimento di Chimica, Biologia e Biotecnologie, Università degli Studi di Perugia,
+06123 Perugia, Italy
+¶Master-Tec SrL, Via Sicilia 41, 06128 Perugia, Italy
+§Université Grenoble Alpes, CNRS, Institut de Planétologie et d’Astrophysique de Grenoble
+(IPAG), 38100 Grenoble, France
+E-mail: nadia.balucani@unipg.it
+
+Abstract
+Gas-phase reactions of atomic sulfur in its first electronically excited metastable
+state, S(1 D), with water and methanol have been theoretically investigated to characterize their potential energy surfaces, the reaction mechanisms, and product branching
+fractions. According to our results, both reactions proceed with the formation of bound
+intermediates that, for the isolated systems, decompose into products because of the
+
+1
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+large energy content with which they are formed. The SO(a 1 ∆) + H2 channel is the
+only open for the S(1 D) + H2 O reaction, while many channels are open for the S(1 D)
++ CH3 OH reaction. For the latter case, statistical estimates of the product branching
+fractions indicate that the main channels are those leading to CH2 OH + SH, H2 CO +
+H2 S, H2 CS + H2 O, and CH3 + HSO. The mechanism of the related O(1 D) + CH3 SH
+reaction has also been unveiled.
+Since the reaction intermediates can be stabilized by energy loss to surrounding
+species on ice or in liquid water, to gain some insight into the possible effects of water
+molecules we have also analyzed how the two reactions behave when four additional
+water molecules are added. The conclusion is that the initial intermediates formed
+by the insertion or addition mechanism − namely HOSH (hydrogen thioperoxide) and
+H2 OS for S(1 D) + H2 O and CH2 OHSH (mercaptomethanol), CH4 OS and CH3 OSH
+(methyl thioperoxide) for S(1 D) + CH3 OH, as well as CH3 SOH (methyl sulfenic acid)
+for O(1 D) + CH3 SH − will probably be stabilized by the interaction with the additional
+water molecules.
+Our results can help in understanding sulfur chemistry in space, especially in the
+case of comets. On one side, the S(1 D) + H2 O gas-phase reaction could account for
+the additional SO source necessary to explain the observed distribution of this species
+obtained by using the Plateau de Bure interferometer of Institut de Radioastronomie
+Millimétrique (IRAM) for the Hale Bopp comet. On the other side, some of the S/Ocontaining molecules identified by ROSINA (Rosetta Orbiter Spectrometer for Ion
+and Neutral Analysis) during the enhanced dust emission events of the 67/P comet
+(e.g. species with gross formula HSO, H2 SO, and CH4 OS) could be the results of the
+chemistry occurring on ice that we have exposed in this work.
+
+1. Introduction
+Sulfur, with an atomic fraction of 16 ppm, is the tenth most abundant element in the Solar
+System. It is one of the six most common elements in living organisms (it belongs to the
+2
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+CHNOPS group − standing for carbon, hydrogen, nitrogen, oxygen, phosphorus, and sulfur
+− which together make up more than 96% of the mass of living organisms) and it is present
+in two (cysteine and methionine) of the twenty amino acids common to all life forms as well
+as in other important sulfur-bearing biomolecules.
+A handful of simple sulfur molecules (e.g. H2 S, CS, SO) have been widely detected in the
+interstellar medium. 1 Other species (e.g. SiS, HS, NS, HCS, HSC, HSCN, H2 CS, CH3 SH,
+C3 S, C4 S, C5 S, H2 CCS, HCCS, CHOSH, CH3 CH2 SH) have been more rarely observed. 2
+Detecting reduced sulfur compounds and organosulfur species in star-forming regions and
+protoplanetary disks is particularly interesting because of the implications in the chemistry
+of early Earth. However, when considering the abundance of sulfur compounds in cold
+prestellar cores, S turns out to be significantly depleted from the gas phase (the “sulfur
+depletion problem” 1,3–8 ), suggesting its presence in the small dust particles (and their icy
+mantles) that account for ca. 1% by mass of those interstellar regions. However, the main
+sulfur reservoir species in the dust particles or their icy mantles remains unknown. Currently,
+OCS is the only S-bearing molecule securely detected in interstellar ice. 9–12
+The inventory of S-containing species becomes much richer when we consider small
+objects of the Solar System. Simple species like H2 S, OCS, SO, SO2 , S2 , CS2 , and NS
+have been identified in the coma of several comets for some years. 13–23 In the case of
+the 67/P Churyumov-Gerasimenko comet, the Rosetta orbiter Spectrometer for Ion and
+Neutral Analysis (ROSINA) was able to identify other species like S3 , S4 , CH3 SH, and
+C2 H5 SH/CH3 SCH3 . 24–26 Furthermore, during several enhanced dust emission events (that
+allowed the release of semivolatile species in the proximity of the instrument) the detection of
+complex organic molecules including S-bearing species (e.g. CH3 OS, CH4 OS, C2 H4 OS) 27,28
+and even ammonium hydrosulfide salt NH4 SH 29 was achieved. Very rich is the sulfur chemical inventory of the near-Earth carbonaceous asteroid (162173) Ryugu, the surface material
+of which was brought to Earth by the Hayabusa2 mission 30–32 as well as that of meteorites
+like Murchinson and Allende. 33 Clearly, there is some unknown chemistry converting the
+
+3
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+simple S-molecules detected in star-forming regions into the more complex species seen in
+pristine small objects like comets and asteroids/meteorites. Impacts of these bodies on planets were common during the early history of Earth and may have allowed the delivery of
+organic molecules from which life emerged. 34
+Atomic sulfur is characterized by a low-lying metastable electronic state, 1 D (radiative
+lifetime of 28 s; energy content of 110.5 kJ/mol with respect to the 3 P ground state 35 ). In
+space, it is routinely produced by UV-induced photodissociation of some molecules, such as
+OCS, CS2 , and S2 , 36–39 while photodissociation at λ ≤ 155 nm (including the Lyman−α
+wavelength) of H2 S and SO2 can also produce directly S(1 D) with a significant quantum
+yield. 40–42 Given its short radiative lifetime, S(1 D) is not expected to significantly contribute
+to the chemical evolution of the most rarefied regions of our Galaxy. However, it might
+contribute in regions where the number density is higher (e.g. in internal regions of protoplanetary disks or in cometary comae and planetary atmospheres). In addition to that,
+the reactions of the electronically excited metastable state 1 D of atomic oxygen have been
+recently invoked to account for the formation of interstellar complex organic molecules in
+interstellar ice. 43–46 A similar mechanism could take place starting from the UV-induced
+photodissociation of OCS (already identified in interstellar ice) or other S-bearing species
+making S(1 D) reactions on ice a viable route toward the formation of more complex Smolecules. Finally, the reactions of S(1 D) may also be of relevance in atmospheric chemistry.
+Several reduced sulfur compounds are abundantly released from biogenic sources. Such reduced sulfur compounds are partly converted to OCS, the most abundant atmospheric sulfur
+species. 47,48 OCS is a relatively inert species that reaches the upper troposphere/lower stratosphere where it photodissociates in the window between the O2 and O3 absorption bands
+producing CO and S(3 P,1 D), with the spin allowed production of S(1 D) being the dominant
+channel. 49,50
+In previous work, we reported the study of the reaction mechanism for the systems
+S(1 D) + C2 H2 , S(1 D) + C2 H4 , and S(1 D) + CH4 . 51–55 Those reactions were investigated by
+
+4
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+means of the crossed molecular beam method with mass spectrometric detection. Electronic
+structure calculations of the potential energy surfaces (PESs) were also carried out, 51–55
+and statistical estimates of the product branching fractions (BFs) were performed for the
+multichannel S(1 D) + C2 H4 reaction. 51,55 These three reactions were also found to be very
+fast (the rate coefficients are in the gas kinetic limit also at very low temperatures - as
+low as 23 K). 51,52,54 As in the analogous O(1 D)/O(3 P) case, from our previous work we
+learned that S(1 D), besides being much more reactive than S(3 P), can undergo insertion
+reactions (in which the excited atom can position itself into one of the preexisting σ bonds
+of the reaction partner forming two new sigma bonds) as well as add to the π system of
+unsaturated hydrocarbons. In this respect, it is also similar to the case of the reactions of
+other electronically excited states of atomic species, like C(1 D) and N(2 D) (see, for instance,
+Ref.s 56–61 ).
+In this manuscript, we extend the same theoretical approach to characterizing the S(1 D)
+reactions with water and methanol. The choice of these two systems is given by the fact that
+water is the most abundant molecule in cometary comae as well as in interstellar ice, while
+CH3 OH also has a significant abundance in both cases. 9,14,62–64 Contrarily to other electronically excited atomic species (e.g. O(1 D), C(1 D), and N(2 D) 65,66 ), S(1 D) has been spectroscopically identified in cometary comae rarely (e.g. in the comet 153P/ Ikeya-Zhang 67 ).
+However, given the fact that so many processes lead to its formation 36–42 and that its radiative lifetime is not too small 35 (the number density in the proximity of the comet nucleus
+is large enough for it to undergo collisions within its decay), its gas-phase reactions have
+already been invoked to explain the formation mechanism of some sulfur species 68,69 in alternative to its physical quenching (considered to be caused mostly by collisions with water
+molecules). 70 In addition to that, the results presented here can provide some insight into
+the possible S(1 D) chemistry on interstellar ice or in atmospheric aerosols containing S(1 D)
+precursors.
+Unfortunately, we cannot investigate the S(1 D) + H2 O reaction experimentally with the
+
+5
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+crossed molecular beam method because the heavy product of the only open channel is
+SO (+ H2 ) which is largely present in our atomic sulfur beam produced by radiofrequency
+discharging a mixture of SO2 and He 51–55 and strong interference from elastic scattering is
+expected. According to our calculations, indeed, the two-product reaction channels are
+
+◦
+∆H0,r
+= −47 (−66.7) kJ/mol
+
+S(1 D) + H2 O −→ SO(a1 ∆) + H2
+
+(1a)
+
+◦
+∆H0,r
+= +32 (+30.7) kJ/mol
+
+(1b)
+
+S(1 D) + H2 O −→ HSO + H
+
+◦
+∆H0,r
+= +51 kJ/mol
+
+(1c)
+
+S(1 D) + H2 O −→ HOS + H
+
+◦
+∆H0,r
+= +65 kJ/mol
+
+(1d)
+
+S(1 D) + H2 O −→ OH + SH
+
+where the enthalpies of reaction of each channel are those resulting from our calculations at the CCSD(T)/CBS level (in parentheses the accepted values in the literature when
+available 71 ). To gain insight into the possible effects of the presence of surrounding water
+molecules (either in interstellar ice or in atmospheric aerosols), we also derived the reactive potential energy surface in the presence of four additional water molecules forming a
+small cluster (4WMC). The reaction mechanism significantly changes because of the H-bond
+interactions and the only possible two-product exit channels (both endothermic) become
+
+S(1 D) + H2 O − 4WMC −→ HOS − 4WMC + H
+
+◦
+∆H0,r
+= +63 kJ/mol
+
+(2a)
+
+S(1 D) + H2 O − 4WMC −→ HSO − 4WMC + H
+
+◦
+∆H0,r
+= +71 kJ/mol
+
+(2b)
+
+where the enthalpies of reaction of each channel are those resulting from calculations at
+the CCSD(T)/aug-cc-pV(T+d)Z) level of theory (see below).
+
+6
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+The reaction mechanism for S(1 D) + CH3 OH is much more complex and numerous twoproduct channels are open. In anticipation of possible experiments with the CMB technique,
+we have also characterized the reaction mechanism for the related system O(1 D) + CH3 SH.
+Also in these two cases, we have considered the effect of the presence of four water molecules,
+but at a lower level of calculations because of the computational cost.
+The structure of the manuscript is as follows: In Section 2, we present the methods
+employed to carry out the electronic structure calculations of the relevant stationary points
+along the PESs and RRKM estimates of the product BFs for the reaction S(1 D) + CH3 OH.
+In section 3, we present the main features of the PESs for the two isolated systems and
+the Rice-Ramsperger-Kassel-Marcus (RRKM) estimates of BFs for the S(1 D) + CH3 OH
+reaction. In section 4 we present our results for the S(1 D) reaction with water and methanol
+in the presence of four additional water molecules. In section 5, the discussion and the
+related astrophysical implications are presented. Conclusions are presented in Section 6.
+
+2. Methods
+The relevant potential energy surfaces have been investigated by localizing the stationary
+points using the ωB97XD functional 72 in conjunction with the correlation consistent valence
+polarized set aug-cc-pVTZ, 73 augmented with a tight d function with exponent 2.457 for
+the sulfur atoms to correct for the core polarization effects 74 (we denote this basis set as
+aug-cc-pV(T+d)Z). At the same level of theory, we have computed the harmonic vibrational
+frequencies. With the exception of the S(1 D) + CH3 OH reaction with 4WMC, the energy of
+all the stationary points of the PESs was then computed at the higher level CCSD(T) 75,76
+using the same basis set aug-cc-pV(T+d)Z. Both the ωB97XD and the CCSD(T) energies
+were corrected to 0 K by adding the zero point energy correction computed using the scaled
+harmonic vibrational frequencies evaluated at the ωB97XD level. All the structure optimizations and CCSD(T) calculations were performed using the Gaussian 09 program package. 77
+
+7
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Intrinsic reaction coordinate (IRC) calculations 78 at the same DFT level of theory were performed to confirm the transition states to be uniquely connected to the local minima and
+the corresponding reaction products. More accurate calculations were then performed for
+the isolated H2 OS and CH4 OS systems at the CCSD(T) level corrected with a density-fitted
+(DF) MP2 extrapolation to the complete basis set (CBS) and with corrections for core electron excitations. Using this algorithm implemented with the Molpro program package, 79 the
+energy was computed as follows:
+
+E = E(CCSD(T)/aug-cc-pV(T+d)Z) + [E(CCSD(T,core)/cc-pVTZ) −
+− E(CCSD(T)/cc-pV(T+d)Z)] + [E(DF-MP2/CBS/cc-pV(T+d)Z) −
+
+(3)
+
+− E(DF-MP2/CBS/aug-cc-pV(T+d)Z)]
+where the tight d function was added to the sulfur basis set, as suggested by Wilson
+and Dunning. 80 Martin’s two-parameter scheme 81 for extrapolation was also employed. For
+simplicity, this level of calculations will be denoted CBS in the rest of the paper. Regarding
+the electronically excited atoms, we added the experimental energy difference between the
+corresponding 3 P ground state and the 1 D excited state to compute the electronic energies of
+S(1 D) and O(1 D). The adopted values were 110.5 kJ/mol for S(3 P)−S(1 D) energy split and
+189.5 kJ/mol for O(3 P)−O(1 D) split. 35,82 Since we could not optimize the CH3 S structure
+using the ωB97XD functional, for this species we have used the B3LYP/aug- cc-pV(T+d)Z
+method. 73,74,83,84
+RRKM calculations were performed to estimate the statistical product BFs for the
+S(1 D)+CH3 OH reaction at various temperatures and zero pressure, using a home-made code
+developed for this purpose, previously employed for many systems. 51,56,58,60,61,85 This approach can be applied to bimolecular reactions when one or more bound intermediates are
+present along the minimum energy path. In the framework of the RRKM theory, a statistical
+redistribution of the available energy among all the degrees of freedom is taken into account.
+8
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+The 1-dimensional Master Equation is solved by computing all the relevant microcanonical
+rate constants and neglecting the effect of angular momentum conservation. The microcanonical rate constants for each unimolecular channel were calculated using the following
+formula:
+
+k(E) =
+
+N (E)
+hρ(E)
+
+(4)
+
+where E is the total energy available to the intermediates, N (E) corresponds to the
+sum of states of the transition state at energy E, h is the Planck constant, and ρ(E) is the
+density of states. While ρ(E) was estimated by counting the number of vibrational states
+per energy range, N (E) was computed by integrating the density of states of the transition
+state in the specific energy interval 0 − E. On the other hand, the rotational density of
+states was estimated using well-known classical expressions (as derived, for example, by
+an inverse Laplace transform of the corresponding partition functions) and subsequently
+convoluted with the vibrational ones. We also considered quantum tunneling using the
+corresponding imaginary frequency of the transition state and simulating the barrier by a
+symmetric Eckart barrier to calculate the tunneling probability. For the barrierless exit
+channels, the best treatment of ”loose” transition states (monotonic dissociation channels)
+would be a variational treatment. However, as this approach has proved too demanding
+given the complexity of the system, we have opted to assume, in these cases, a ”productlike” transition state (where product molecule rotations are treated like internal rotations).
+This approach, in accord with the variational principle, yields an upper bound to the true
+rate constant. As this transition state corresponds to the maximum energy, the rate constant
+obtained should not be too far from the true one.
+Once branching fractions have been obtained as a function of total energy, these are
+averaged assuming a prior Boltzmann distribution for the reactants (S(1 D) + CH3 OH) at
+the representative temperatures of interstellar ice and comets (10, 100 K) and at room
+temperature.
+9
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+3. Results
+3.1 The potential energy surface for the gas-phase S(1 D) + H2 O
+reaction
+The following description will refer to the energy values calculated at the CBS level. The
+energy values are reported rounded to the nearest kJ/mol considering the accuracy of the
+calculations. In Figure 1 and in the Supporting Information (SI), the values obtained at
+the CCSD(T)/aug-cc-pV(T+d)Z level of theory are also shown for comparison because the
+calculations relative to the same reaction in the presence of four additional water molecules
+could be carried out only at this level. The comparison between the two sets of values,
+therefore, is a way to assess the accuracy of the lower-level calculations. The ωB97XD
+energy values are also shown in the SI for comparison (all energies in hartrees).
+As expected, the interaction of S(1 D) with the water molecule starts with two different
+approaches: i) insertion into one of the OH bonds of water or ii) addition to one of the lone
+pairs of the oxygen atom of the water molecule. In both cases, a low-lying bound intermediate
+is formed (MIN1, located at −98 kJ/mol with respect to the reactants asymptote, for addition
+and MIN2, located at −258 kJ/mol, for insertion - see Figure 1). In principle, S(1 D) could
+also abstract one H atom, but the channel leading to OH + SH is endothermic by 32 kJ/mol
+and cannot contribute under the typical conditions of most environments.
+Once formed, MIN1 can easily rearrange to MIN2 by overcoming a barrier of 48 kJ/mol
+(associated with TS1) or dissociate to the products SO + H2 . In this case, a very high barrier
+must be overcome (243 kJ/mol), as is typical for a three-center H2 elimination channel, thus
+implying that this pathway makes a negligible contribution under common conditions (the
+associated TS4 is 145 kJ/mol above the reactants energy asymptote). As this is a singlet
+PES, SO is formed in its lowest singlet state a 1 ∆ rather than in the ground triplet state X
+3
+
+Σ− .
+Once formed (either directly by insertion or after the isomerization of MIN1), MIN2 can
+10
+
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+dissociate into the products OH + SH (an endothermic channel with ∆H0o = + 32 kJ/mol),
+HSO + H (an endothermic channel with ∆H0o = + 51 kJ/mol), HOS + H (an endothermic
+channel with ∆H0o = + 65 kJ/mol) or also isomerize to MIN3 or MIN1. The isomerization to
+MIN1 does not lead to any exit channel, while the isomerization to MIN3 (located at −188
+kJ/mol) finally leads to the only open two-product channel through an accessible exit barrier
+associated with TS3. Also in this case, the three-center elimination of H2 is characterized
+by a very large barrier of 178 kJ/mol which, however, remains below the reactants energy
+asymptote because of the depth of the potential well associated with MIN3. Therefore, the
+SO(a 1 ∆) + H2 channel is the only open two-product channel.
+
+Figure 1: Potential energy surface for the reaction S(1 D) + H2 O calculated at the CBS level
+of theory on optimized ωB97XD structures. The values obtained at the CCSD(T)/aug-ccpV(T+d)Z level of theory are also shown in parentheses. The connections with the O(1 D)
++ H2 S entrance channel are also shown in red.
+It is interesting to note that MIN2 and MIN3 are the same intermediates formed in the
+related reaction O(1 D) + H2 S which has been previously investigated at another level of
+theory. 86 If we consider the energy of the stationary points at the G2 level calculated by
+11
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Goumry et al., 86 starting from the O(1 D) + H2 S asymptote, a value of −369.3 kJ/mol was
+derived for MIN1, −535.6 kJ/mol for MIN2, and −462.5 kJ/mol for MIN3. For TS1 (TS5
+in the paper by Goumri et al. 86 ) they obtained a value of −330.6 kJ/mol, for TS2 (TS3 in
+the paper by Goumri et al. 86 ) a value of −294.2 kJ/mol, and for TS3 (TS2 in the paper
+by Goumri et al. 86 ) a value of −294.5 kJ/mol. A very good agreement is noted despite the
+different theoretical methods employed.
+◦
+In addition to that, our calculations also nicely reproduce the ∆H0,r
+value of + 30.7
+◦
+for OH
+kJ/mol for channel (1b) that can be derived by using the accepted values of ∆H0,f
+
+and SH. 71 The agreement is also good when considering the difference in energy with respect
+to the SO product in its ground triplet state (X3 Σ− ) which is - 143.75 kJ/mol (when using
+the values by Atkinson et al. 71 ) to be compared with -141 kJ/mol of the present calculations.
+However, the energy of the excited SO(a1 ∆) corresponds to 91 kJ/mol to be compared with
+the accepted value of 77.11 kJ/mol (T0 =5861 cm−1 , see Ref. 87 ). Therefore, the method
+employed confirms its problems in dealing with electronic excitation.
+The comparison between CBS and CCSD(T)/aug-cc-pV(T+d)Z energy values are in reasonably good agreement with the latter being systematically higher by ca. 10 kJ/mol. To be
+noted that TS2 and TS3, the transition states that make the SO(a 1 ∆) + H2 channel open at
+the CBS level, are slightly above the energy of the reactants asymptote at the CCSD(T)/aug◦
+cc-pV(T+d)Z level of theory while the ∆H0,r
+for the channel (1b) is significantly different
+
+with respect to the literature accepted value (-35 kJ/mol vs -66.7 kJ/mol).
+
+3.2 The CH4 OS potential energy surface
+The two reactions S(1 D) + CH3 OH and O(1 D) + CH3 SH share a common PES. For this
+reason, we will describe the reaction mechanism also for the O(1 D) + CH3 SH reaction keeping
+in mind that, in this case, higher energy TSs and products are accessible because of the
+extra 226 kJ/mol available to the system. The reaction pathways are sketched in Figures
+2 and 3. Because of the complexity of the PES, we have split it into two parts. The
+12
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+pathways originating by each intermediate are reported only once but they are present for
+both schemes. In both figures, the energy of the S(1 D) + CH3 OH reactants is assumed as
+the zero of energy.
+3.2.1 The gas-phase S(1 D) + CH3 OH reaction
+As expected, the S(1 D) + CH3 OH reaction can start with different approaches: a) S(1 D)
+can insert into one of the C−H bonds of the methyl group of methanol forming the W1
+intermediate (mercaptomethanol, W1); b) S(1 D) can add to one of the lone pairs of the oxygen
+atom of methanol forming the W2 intermediate; c) S(1 D) can insert into the O−H bond of
+methanol forming W5 (methyl thioperoxide). W1, W2, W5, and W4 (methyl sulfenic acid,
+that can be formed by the isomerization of W2 or by the O(1 D) reaction with methanethiol)
+are associated with deep wells and are singlet closed-shell species. Their structures are shown
+in Figure 4 together with those of the relevant transition states and the structures of the
+unusual molecular products that can be formed in the reaction.
+We will comment now on the possible fate of these intermediates.
+Once formed, W1 evolves through the pathways illustrated in Figure 2 (red lines) and
+reported in Table 1. In particular, by overcoming a barrier associated with either TS1, TS4,
+TS2, TS3, or TS5, W1 can i) eliminate a molecule of water forming either thioformaldehyde
+(in a very exothermic channel) or its isomer thiohydroxycarbene; ii) eliminate a molecule
+of hydrogen sulfide forming formaldehyde (in a very exothermic channel) or its isomer hydroxycarbene; iii) eliminate an H2 molecule forming thioformic acid; this channel is very
+exothermic, but it is inhibited by the presence of a very high barrier associated with a
+3-center elimination mechanism.
+Alternatively, W1 can dissociate into products in barrierless channels where one of its
+bonds smoothly weakens before breaking apart and forming iv) hydroxymethyl + SH if
+the newly formed C−S bond breaks apart; v) CH2 OSH (P1) + H if the preexisting O−H
+bond breaks apart (for the detailed structure of CH2 OSH see P1 in Figure 4); vi) CH2 SH
+
+13
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 2: Potential energy surface for the reaction S(1 D) + CH3 OH calculated at the CBS
+level of theory on optimized ωB97XD structures. The evolution of W4 and W5 is shown in
+Figure 3.
+
+Figure 3: Potential energy surface for the reaction O(1 D) + CH3 SH calculated at the CBS
+level of theory on optimized ωB97XD structures. The evolution of W1 is shown in Figure 2.
+14
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 4: ωB97XD-optimized structures of selected intermediates, TSs, and products for the
+CH4 OS system. Bond lengths are expressed in Angstrom.
+15
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(sulfanylmethyl) + OH if the preexisting C−O bond breaks apart; vii) CHOHSH (P2) + H
+if one of the preexisting C−H bonds breaks apart (for the detailed structure of CHOHSH
+see P2 in Figure 4); viii) CH2 SOH (P3) + H if the newly formed S−H bond breaks apart
+(see Figure 4 for the structure of P3). The last two channels are endothermic for the S(1 D)
++ CH3 OH reaction but are exothermic for the O(1 D) + CH3 SH (W1 can also be formed by
+the insertion of O(1 D) into one of the C−H bonds of methanethiol).
+The evolution of W2 is much simpler (see Figure 2, cyano lines). It either isomerizes to
+W5 or W4 (by overcoming a barrier of 50 kJ/mol or 121 kJ/mol, respectively) or it dissociates
+into CH3 + HOS by the breaking of the preexisting C−O bond or into CH3 OS (P4 in Figure
+4) + H by the breaking of the preexisting O−H bond (however this last channel is significantly
+endothermic). Finally, overcoming a significant barrier of 141 kJ/mol (TS7), W2 can evolve
+toward CH4 and SO(a1 ∆) in a very exothermic channel. The associated TS7 suggests that
+the methyl moiety abstracts an H atom from HOS while they separate. However, the barrier
+is above the reactants energy and this channel is not expected to contribute appreciably. A
+last possibility is associated with the formation of CH2 OHS (P5 in Figure 4) + H if one of
+the preexisting C−H bonds breaks apart. This channel is endothermic by 299 kJ/mol and
+is not shown in Figure 2.
+The evolution of W4 and W5 is shown in Figure 3 (green lines and magenta lines, respectively). W5 (which can be formed directly by the insertion of S(1 D) into the O−H bond
+of methanol or by the isomerization of W2) can: i) eliminate a molecule of hydrogen sulfide
+forming formaldehyde; ii)-iii) eliminate an H2 molecule forming either HCOSH (P10 in Figure 4) or H2 COS (P11 in Figure 4), that is, two isomers of thioformic acid; the formation of
+P10 is possible after overcoming the very high barrier associated with a 3-center elimination
+mechanism (see TS16), while the 5-center elimination of H2 requires the overcoming of a
+much smaller barrier (TS17).
+Alternatively, W5 can dissociate into products in barrierless channels where one of its
+bonds smoothly weakens before breaking apart and forming iv) methoxy + SH if the newly
+16
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Table 1: List of the reaction pathways in the CH4 OS PES with the corresponding reaction
+enthalpies at 0 K relative to S(1 D) + CH3 OH (in kJ/mol). The reaction enthalpies calculated
+◦
+are also shown. 88–90 When not available at 0 K, we indicated
+with previously published ∆H0,f
+the reaction enthalpy at 298 K.
+Intermediate
+W1
+W1
+W1
+W1
+W1
+W1
+W1
+W1
+W1
+W1
+W2
+W2
+W2
+W2
+W3
+W3
+W3
+W3
+W4
+W4
+W4
+W4
+W4
+W4
+W4
+W5
+W5
+W5
+W5
+W5
+W5
+W5
+a
+
+◦
+◦
+∆H0,r
+∆H0,r
+(CBS)
+(literature)
+TS1 −→ H2 CS (Thioformaldehyde) + H2 O
+-315
+-317.8
+TS2 −→ H2 CO (Formaldehyde) + H2 S
+-322
+-320.1
+TS3 −→ HCOHcis (Hydroxycarbene) + H2 S
+-104
+-102
+TS4 −→ HCSHtrans (Thiohydroxycarbene) + H2 O -126
+TS5 −→ HCOSH (Thioformic acid) + H2
+-315
+−→ CH2 OH (Hydroxymethyl) + SH (Sulfanyl)
+-65
+-65
+−→ CH2 OSH (P1) + H
+-4
+−→ CH2 SH (Sulfanylmethyl) + OH
++0
++5.2
+−→ CHOHSH (P2) + H
++18
+−→ CH2 SOH (P3) + H
++75
+1
+TS7 −→ CH4 + SO(a ∆)
+-161
+-186.8
+−→ CH3 OS (P4) + H
++39
+−→ CH3 + HOS
+-51
+-49.9
+−→ CH2 OHS (P5) + H
++299
+1
+TS6 −→ CH4 + SO(a ∆)
+-161
+-186.8
+−→ CH3 + HSO
+-66
+-67.1
+◦
+−→ CH3 SO (Methylsulfinyl) (P6) + H
+-42
+-41 (∆H298,r
+)
+−→ CH2 SHO (P7) + H
++138
+TS13 −→ H2 CS (Thioformaldehyde) + H2 O
+-315
+-317.8
+TS14 −→ H2 CSO (Sulfinylmethane) + H2
+-221
+-225.7
+TS12 −→ HCSOH (P8) + H2
+-97
+◦
+−→ CH3 SO (Methylsulfinyl) (P6) + H
+-42
+-41 (∆H298,r
+)
+−→ CH3 + HOS
+-51
+-49.9
+a
+◦
+−→ CH3 S (Methylsulfanyl) + OH
+-29
+-26.9 (∆H298,r
+)
+−→ CH2 SOH (P9) + H
++55
+TS15 −→ H2 CO (Formaldehyde) + H2 S
+-322
+-320.1
+TS16 −→ HCOSH (P10) + H2
++12
+TS17 −→ H2 COS (P11) + H2
+-152
+−→ CH3 + HSO
+-66
+-67.1
+−→ CH3 O (Methoxyl) + SH (Sulfanyl)
+-25
+-25.6
+−→ CH3 OS (P4) + H
++39
+−→ CH2 OSH (P12) + H
++125
+-
+
+Reaction Pathway
+
+ZPE correction of CH3 S at the B3LYP/aug-cc-pV(T+d)Z level of theory.
+
+17
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+formed O−S bond breaks apart; v) CH3 OS + H if the newly formed S−H bond breaks apart
+(this channel is endothermic for the S(1 D)+H2 O reaction); vi) CH3 + HSO if the preexisting
+C−O is broken; vii) CH2 OSH (P12, see Figure 4) + H if the preexisting C−H bond is broken.
+W4 can, instead, i) eliminate a molecule of water forming thioformaldehyde; ii) eliminate an H2 molecule forming either H2 CSO(sulfinylmethane) or HCSOH (P8 in Figure 4),
+two isomers of thioformic acid. Alternatively, W4 can dissociate into products in barrierless
+channels where one of its bonds smoothly breaks apart, thus forming iv) CH3 S (Methylsulfanyl) + OH, v) CH3 + HOS, vi) CH3 SO (P6, Figure 4) + H, and vii) CH2 SOH (P9, Figure
+4) + H.
+3.2.2 The gas-phase O(1 D) + CH3 SH reaction
+O(1 D) can a) insert into one of the C−H bonds of the methyl group of methanethiol forming
+the W1 intermediate; b) add to one of the lone pairs of the sulfur atom of methanethiol
+forming the W3 intermediate; c) insert into the S−H bond of methanethiol forming W4.
+The evolution of W1 and W4 has already been commented on above, so only the pathways
+originating from W3 are described here (see Figure 3).
+The W3 intermediate formed by the addition of O(1 D) to the sulfur atom of methanethiol
+is much more stable than W2 (the equivalent addition intermediate for the reaction S(1 D)
++ CH3 OH), being associated with a deep well of 281 kJ/mol rather than 132 kJ/mol as was
+the case of W2 (maintaining S(1 D) + CH3 OH as the zero of energy). As in the case of W2,
+isomerization to W4 and W5 are possible pathways via TS10 (located at - 327 kJ/mol with
+respect to the O(1 D)+CH3 SH initial energy) and TS6 (located at - 308 kJ/mol). W4 and
+W5 evolve in the same way described for the S(1 D)+CH3 OH reaction but the extra energy
+of 226 kJ/mol can alter the relative product branching fractions (not derived here since they
+are beyond the scope of this paper). W3 can also decompose into CH4 and SO(a1 ∆) via
+TS11 (-186 kJ/mol, see the structure in Figure 4). Alternatively, it dissociates into CH3 SO
+(Methylsulfinyl) + H by the breaking of the preexisting S−H bond in an exothermic O/H
+
+18
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+exchange channel or into CH3 + HOS by the breaking of the preexisting C−S bond. Finally,
+by the breaking of one of the preexisting C−H bonds, CH2 SHO (P7 in Figure 4) + H can
+be formed.
+
+3.3 RRKM branching fractions for the gas-phase S(1 D) + CH3 OH
+reaction
+In the case of the gas-phase S(1 D) + H2 O reaction, there is only one open channel and there
+is no need to establish the product BFs. On the contrary, the reaction with CH3 OH is quite
+complex as more than one intermediate can be formed by the initial approach of S(1 D) with
+methanol and all of them have more than one open dissociation channel. For this reason, we
+decided to analyze the reactive system with a statistical approach. Since it is impossible to
+quantify how the reactive flux is distributed among W1, W2, and W5 without some strong
+assumption, we preferred to follow the evolution of each initial intermediate separately. The
+results are summarized in Table 2, while the unimolecular decomposition (or isomerization
+when relevant) rate coefficients for W1 and W5 are shown in Figures 5 and 6, respectively.
+At all the energies considered, the dominant decomposing channels of W1 are those leading to CH2 OH + SH, H2 CO + H2 S, and H2 CS + H2 O. The rate constant of the second
+H2 S elimination channel accompanied by the formation of hydroxycarbene is not negligible.
+The rate constant for the CH2 SH + OH channel exhibits a strong increase with the total
+energy but becomes significant only above 50 kJ/mol. All the other channels make a negligible contribution, including the back-dissociation to the reactants. The resulting BFs at 10,
+100, and 300 K show a mild dependence on the temperature, with the BF of CH2 OH + SH
+increasing with the increase of the available energy. These results might seem surprising, as
+the barrierless channel leading to CH2 OH + SH (which is, actually, slightly dominant at all
+the energies/temperatures investigated) is associated with a value of reaction enthalpy which
+is much above the energy of the barriers associated with the H2 O and H2 S elimination channels (TS1 and TS2). However, the (quasi)formation of bimolecular products for monotonic
+19
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 5: W1 unimolecular decomposition rate constants for each exothermic channel as a
+function of the collision energy, Ec , of the approaching reactants (S(1 D) + CH3 OH).
+
+Figure 6: W5 unimolecular decomposition and isomerization rate constants as a function of
+the collision energy, Ec , of the approaching reactants (S(1 D) + CH3 OH).
+
+20
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+dissociation channels is entropically favored with respect to the case of well-defined TS with
+only vibrational modes because, in the first case, some vibrations turn into quasi-internal
+rotations and the density of states increases favoring the corresponding products. We remind
+that a variational treatment of this channel will provide a more reliable rate constant and
+that the present values should be seen only as upper bounds. However, we do not expect the
+importance of this channel to be significantly reduced. At very low energies/temperatures, as
+suggested by energetic considerations, the H2 CO + H2 S and H2 CS + H2 O channels become
+as important as the CH2 OH + SH channel.
+All the reactive flux associated with the formation of the W2 addition intermediate is
+channeled into W5 since the other channels (including the isomerization to W4) cannot
+compete. W5, in turn, dissociates almost exclusively into CH3 + HSO with a very small
+yield for the CH3 O + SH channel. As visible in Figure 6, the rate constant for the CH3
++ HSO channel is dominant for all the energies considered. As a consequence, the BFs are
+temperature-independent. All the other channels have a negligible BF, which is not surprising once considering the associated high energy barriers that make them non-competitive.
+In conclusion, despite the complexity of the overall PES, just a few channels are important, and these are CH2 OH + SH, H2 CO + H2 S, H2 CS + H2 O, and CH3 + HSO.
+
+4. The effects of a small cluster of water molecules
+4.1 The S(1 D) + H2 O reaction in the presence of four additional
+water molecules
+The PES relative to S(1 D) interacting with a cluster of five water molecules is shown in Figure
+7. The reported values of energy have been obtained at the CCSD(T)/aug-cc-pV(T+d)Z
+level of theory on optimized ωB97XD structures. In preliminary work, we have characterized
+
+21
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Table 2: RRKM branching fractions for the decomposition of the initial W1, W2, and W5
+initial intermediates of the S(1 D) + CH3 OH reaction at the indicated values of temperature
+(at all energies and temperature W2 was seen to completely isomerize to W5).
+W1
+Channel
+
+BF
+
+BF
+
+BF
+
+(10 K)
+
+(100 K)
+
+(300 K)
+
+CH2 OH + SH
+
+0.39
+
+0.41
+
+0.46
+
+H2 CO + H2 S
+
+0.37
+
+0.36
+
+0.33
+
+H2 CS + H2 O
+
+0.21
+
+0.20
+
+0.18
+
+HCOH + H2 S
+
+0.03
+
+0.03
+
+0.03
+
+W2, W5
+Channel
+
+BF (10 - 300 K)
+
+CH3 + HSO
+
+0.99
+
+CH3 O + SH
+
+0.01
+
+the same system at the B3LYP/aug- cc-pV(T+d)Z level of theory. A similar picture emerged
+from that work, but the energy levels are somewhat different because of the lower level of
+theory employed. 91
+We have chosen this approach to gain insight into the effect of the surrounding water
+molecules but it is a very simplified version of the real conditions that will be typical in
+the context of interstellar ice or atmospheric water droplets. Considering the S(1 D) addition
+mechanism on the lone pair of the O atom, it is immediately evident that the presence of four
+additional molecules significantly increases the stability of the addition intermediate (MIN14WMC) with respect to its reactants (here the zero energy corresponds to the separated
+S(1 D) and the cluster of five water molecules) when compared to the case of the isolated
+system (the energy levels, in this case relative to the S(1 D) + a single water molecule, are also
+shown in Figure 7 in blue for a direct comparison). Such a stabilizing effect is minimal in the
+case of MIN2-4WMC (-250 with respect to -244 kJ/mol) while it is null in the case of MIN34WMC (-171 wrt -170 kJ/mol).1 That simply means that the presence of four additional
+1
+
+For this species we have used the structure optimized at the B3LYP/aug- cc-pV(T+d)Z level of theory
+
+22
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+water molecules might stabilize both the configuration of the reactants and that of the
+intermediates at the same level. The large stabilization effect for the addition intermediate
+MIN1-4WMC can be understood if one considers the H-bonds that the added sulfur can
+form with another water molecule. A significant reduction of the relative energy of TS1 can,
+instead, be explained by the fact that at least another water molecule participates in the
+isomerization process. Similar effects are seen also for TS2/TS2-4WMC and MIN3/MIN34WMC.
+However, the most significant effects are seen in other aspects of this reactive system.
+First of all, we could not locate the transition state connecting MIN3-4WMC to the only
+exothermic channel of the isolated S(1 D) + H2 O reaction, that is the channel leading to
+SO(a1 ∆) + H2 . This can be easily rationalized by considering that the H2 elimination occurs via a 3-center mechanism that requires a huge distortion of the structure of MIN3. The
+presence of H-bonds with the additional water molecules severely contrasts the necessary
+distortion of MIN3-4WMC and the SO(a1 ∆) + H2 channel is not open in this case. Furthermore, MIN2-4WMC does not seem to undergo fission of the O−S bond toward OH + SH
+because the H-bond structure of MIN2-4WMC would need to open up. Another interesting
+effect is the inversion of stability for the two isomers HSO/HOS: in the presence of 4WMC,
+the HOS moiety is able to establish much stronger H-bonds with its O-H termination with
+respect to HSO where the H atom is bound to sulfur.
+In conclusion, when considering the S(1 D) + H2 O reaction in the presence of four additional water molecules, the system does not have any two-product exothermic exit channel.
+Therefore, our study indicates that either MIN1 or MIN2 will be stabilized in the ice or
+liquid water matrices. Considering the relative stability, HOSH (hydrogen thioperoxide)
+is expected to be the main product of the reaction when additional water molecules are
+considered.
+of Ref. 91 because we could not optimize it at the ωB97XD level
+
+23
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 7: Potential energy surface for the reaction involving S(1 D) and five water molecules
+calculated at the CCSD(T)/aug-cc-pV(T+d)Z level of theory on optimized ωB97XD structures.
+
+4.2 The S(1 D) + CH3 OH reaction in the presence of four water
+molecules
+Given the complexity of the S(1 D) + CH3 OH system, we could not perform electronic structure calculations at the CCSD(T)/aug-cc-pV(T+d)Z level for the species of interest in the
+presence of 4WMC. Therefore, we have derived the optimized structures and energies only
+at the ωB97XD level. However, to check the accuracy of the calculations, we have computed
+the energy of W1-4WMC also at CCSD(T)/aug-cc-pV(T+d)Z and CBS levels. For the relative energy with respect to the reactants, we obtained the values -369, -355, -371 kJ/mol
+at ωB97XD, CCSD(T) and CBS levels, respectively. This suggests that the ωB97XD level
+of calculation is a good compromise between accuracy and computational cost. Also for
+other systems, we have observed that ωB97XD can be preferred to CCSD(T) for some error
+compensation. 92
+
+24
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+In addition, we failed to locate any of the transition states seen for the isolated system.
+The structures of the W1, W2, W3, W4, and W5 intermediates when interacting with four
+additional water molecules are shown in Figure 8. All the other structures are shown in
+Figure S2 of the SI; the energy values are shown in Table S4 of the SI.
+
+Figure 8: ωB97XD-optimized structures of intermediates W1, W2, W3, W4, and W5 for the
+S(1 D) + CH3 OH reaction in the presence of additional four water molecules. Bond lengths
+are expressed in Angstrom. More details are available in the SI.
+Considering what we have seen in the case of the S(1 D) + H2 O system, we can suggest that
+all the exit pathways characterized by a significant energy barrier will be strongly inhibited
+if an important distortion of the structure of the intermediates is necessary because of the
+presence of stabilizing H-bonds with the additional water molecules. However, some TSs
+could also be lowered if the water molecules help in the rearrangement (in particular, if the
+water molecules participate in a proton transfer process).
+Among the channels that are not characterized by an exit barrier, the channel that was
+dominant for W1 in the gas phase (CH2 OH + SH) remains exothermic (see Table S3 in the
+SI; we have considered two possibilities: either CH2 OH remains bound to the 4WMC and
+SH is released in the gas phase or SH remains bound to the 4WMC and CH2 OH is lost: in
+both cases, the ∆H0o remains negative being - 53 kJ/mol in the first case and -47 kJ/mol in
+25
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+the second case) as well as the dominant CH3 +HSO channel for W5 (in this case only HSO4WMC + CH3 was considered since the binding energy of CH3 to water ice is quite small 93 ).
+In general, the final outcome will depend on the capability of the initial intermediates (W1,
+W2, and W5 for S(1 D) + CH3 OH; W1, W3, and W4 for O(1 D) + CH3 SH) to lose part
+of the excess energy with which they are formed by the addition/insertion process via the
+weak interactions with the surrounding water molecules. These processes might be very
+fast as recently demonstrated by a theoretical approach based on molecular dynamics. 94,95
+Therefore, even if we cannot exclude that the CH2 OH + SH (from W1) and CH3 +HSO (from
+W5) two-product channels could have a certain yield, it is reasonable to assume that W1,
+W2, and W5 (as well as W3 and W4 for the O(1 D) + CH3 SH reaction) will be stabilized as
+such in the ice or liquid water matrix. A further observation could be that the CH2 OH +
+SH channel from W1 might experience an unfavorable influence from the surrounding water
+molecules as observed for the OH + SH channel in the reaction S(1 D) + H2 O, while the
+elimination of the CH3 moiety from W5-4WMC with the production of HSO-4WMC should
+not be hindered because of the small binding energy of CH3 . 93
+
+5. Discussion
+In previous work, we have already seen that S(1 D) has the capability of inserting into σ bonds
+(see, for instance, the reaction S(1 D) + CH4 54 ) and adding to the π system of unsaturated
+hydrocarbons (see the cases of S(1 D) + C2 H2 and C2 H4 51,52 ). In both systems investigated
+here, we see that S(1 D) can also efficiently add to one of the lone pairs of oxygen. This
+was already observed with another insertive species, namely N(2 D), as in its reaction with
+H2 O and CH3 OH also the addition to the lone pair of atomic oxygen was observed 59,96,97 . It
+is interesting to compare the N(2 D) reactions with those of S(1 D). In the case of N(2 D) +
+H2 O, the characteristics of the PES are qualitatively very similar, but the reactive channels
+leading to HNO + H, HON + H, and OH + NH are all exothermic. This diminishes
+
+26
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+the importance of the H2 elimination channel which, indeed, was found not to occur. For
+that system, a quasiclassical trajectory (QCT) investigation was pursued and the dynamical
+description of the system was given. According to that study, the only fate of the H2 ON
+addition intermediate is isomerization to the insertion intermediate HONH. The QCT results
+also showed a marked deviation from the expected statistical behavior, posing a caveat to
+the uncritical application of a statistical approach for small systems despite the presence of
+deep energy wells along the minimum energy path. 59,96 In the case of the N(2 D) + CH3 OH
+reaction, a PES was derived where only the insertion into one of the C−H bonds of methanol
+or the addition to the lone pair of atomic oxygen were considered. 97 Similar exit channels
+are also present (e.g. CH3 + HNO, CH3 O + NH, CH2 OH + NH). However, the statistical
+estimate of BFs was not pursued and, therefore, we cannot compare the product branching
+fractions. Furthermore, for that system, a small entrance barrier for the insertion mechanism
+was identified. 97
+To the best of our knowledge, no rate coefficients are available for the S(1 D) + H2 O and
+S(1 D) + CH3 OH reactions. According to our calculations, they are expected to be fast, in
+the gas kinetics limit as observed for many other S(1 D) reactions 52–54,98,99 because all the
+barriers along the pathways of the main channels discussed above are below the energy of
+the reactants. In the case of the reaction with H2 O, two TSs that must be overcome to
+reach the only two-product open channel are very close to the energy of the reactants being
+located at -13 (TS2) and - 10 (TS3) kJ/mol at the highest level of calculations employed.
+Given the expected accuracy of the method (± 5 kJ/mol), both seem to lie below the zero
+energy. In addition, our calculations derive an energy too high for the product asymptote, so
+o
+that, if there is an indication that comes from the comparison with known ∆H0,f
+’s, 71,87 it is
+
+that the energy of TS3 approximates the real one from above. Nevertheless, the presence of
+high energy barriers could increase the rate of back-dissociation to the reactants thus partly
+reducing the reactive flux toward product formation.
+A final comment needs to be made about the occurrence of intersystem crossing to the
+
+27
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+triplet PES. This is certainly a possibility because the presence of sulfur increases spin-orbit
+coupling. While recent experiments on several reactions involving S-species proved the occurrence of ISC, 100–102 detailed observables from crossed molecular beam experiments on
+the related O(3 P,1 D) + H2 S reactions could not identify any signature of the occurrence
+of intersystem crossing 103,104 (as seen, instead, for other reactions involving O(3 P,1 D) and
+investigated with the same experimental approach). 105–107 However, the significantly lower
+amount of energy available to the S(1 D) + H2 O system with respect to O(1 D) + H2 S might
+still increase the probability of ISC. In the models of cometary chemistry, physical quenching to S(3 P) via ISC has always been considered the only outcome for the S(1 D) + H2 O
+collisions. 68–70 However, after contrasting indications, 98,99 the S(1 D) physical quenching does
+not seem to be competitive with two-product reactions as recently demonstrated by CRESU
+experiments on the S(1 D) + Ar collisions. 108 A conservative estimate of the rate coefficient
+to be employed in the models of cometary chemistry could be in the 5 × 10−11 − 10−10 cm3
+s−1 range in the 20 −300 K temperature range.
+In the case of the reaction with methanol, instead, we expect a fast evolution toward the
+products for any initial approach and the rate coefficient of S(1 D) + CH4 (ca. 2 × 10−10
+cm3 s−1 in the range of temperature between 23 and 298 K) can be taken as a sort of lower
+limit because methanol is a polar molecule. 54
+Motivated by the deep wells associated with the reaction intermediates, we have also
+scrutinized whether radiative association could occur for both the gas-phase S(1 D) + H2 O
+and S(1 D) + CH3 OH reactions. We have employed the method developed by Herbst 109,110
+Given the presence of exothermic two-product channels, radiative association did not result
+to be competitive and cannot give an important contribution.
+Concerning the implications in astrochemistry/cosmochemistry, we can conclude that
+these reactions in the gas phase do not lead to an increased degree of complexity of Sbearing species. The reaction with water only leads to SO while the reaction with methanol
+mostly converts S(1 D) into SH, H2 S and HSO with only a small fraction of the global yield
+
+28
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+associated with H2 CS. Considering that most of S(1 D) is produced by the photodissociation
+of CS2 , OCS, and H2 S we can conclude that it will be either recycled back to H2 S or actually
+contribute to the loss of species holding a C−S bond. Interestingly, a recent analysis of SO
+interferometric observations in Comet C/1995 O1 (Hale-Bopp) concluded that there must
+be an additional source of SO since the photodissociation of SO2 alone cannot account for
+the observed distribution. 111 This additional source has not been identified yet. Considering
+the overwhelming abundance of water and all the sources of S(1 D) (most of which are not
+properly included in the models yet), the S(1 D) + H2 O reaction could be the missing source
+of SO. The gas-phase S(1 D) + CH3 OH reaction, instead, could be the source of the detected
+HSO 28 (another important source could be the O(1 D) + H2 S reaction) 103,104 while for the
+other main products (SH, H2 S, H2 O, H2 CO, CH2 OH, and H2 CS) there are other efficient
+sources.
+The situation is more interesting if we consider the possible outcome in the presence of ice.
+In those cases, species like hydrogen thioperoxide, mercaptomethanol, methyl thioperoxide
+(and methyl sulfenic acid in the case of the related O(1 D) + CH3 SH reaction) are formed.
+These are singlet stable closed-shell species engaged in strong H-bonds with the water ice
+matrix, which might survive for a long time and accumulate in the ice. In the presence
+of a flux of H atoms (as in the case of interstellar ice) they do not undergo hydrogenation
+while possible H-abstraction processes will cause the formation of radicals that will be easily
+hydrogenated back (see, for instance, Ref. 112 ). These results could be of great importance in
+interpreting what Rosetta recorded during the famous event of dust emission from comet 67P
+on September 5, 2016. During this event, Rosetta was hit by a chunk of ice and dust that
+increased locally the gas density. ROSINA recorded, in addition to the usual sulfur-bearing
+species, a plethora of different molecules never seen before. The interpretation was that the
+sublimation of semivolatile matter inside the equilibrium chamber of ROSINA (T= 273 K)
+caused the increase of the signal of all the sulfur species already detected (only the signal
+associated with OCS and CS2 did not increase during the event) and the appearance of new
+
+29
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+species in the mass spectrum. Among them, molecules containing both sulfur and oxygen
+(that can be described by the general formula Cn Hm Ol S, where n can vary between 0 and 3,
+m between 0 and 6, and l between 1 and 2) were identified. In this group, there are SO, HSO,
+H2 SO, and CH4 SO. It is not clear if these species were in the ice as such or if they originate
+from the fragmentation of larger species. But certainly, the signal recorded at m/z= 50
+(H2 SO+ ) or 49 (HSO+ ) can be associated with the electron impact ionization of HSOH,
+while the signal attributed to species with gross formula CH4 SO (already identified also in
+the quiet coma) can be associated with mercaptomethanol, methyl thioperoxide, and methyl
+sulfenic acid formed in cometary ice. Finally, the record of SO with the same abundance
+as SO2 (alleged to be its parent molecule) clearly indicates that there must be additional
+sources of SO. Except for OCS, CHOS, CH4 OS, and CH3 O2 S, no other molecules holding O,
+C, and S atoms were observed by the same instrument in the coma before the dust emission
+event.
+
+6. Conclusions
+This work indicates that the collisions between S(1 D) and H2 O can be reactive since there
+is an open channel whose pathway evolves via intermediates and transition states below the
+reactants energy asymptote. To date, it has been included in the models of cometary comae
+only as a process inducing physical quenching. This is similar to the case of other collisions
+with water molecules, such as those of N(2 D) that still in recent works are considered to be
+non-reactive while they easily lead to HNO + H and OH + NH. The S(1 D) + H2 O reaction
+can be a prompt source of SO under the denser conditions of the coma, close to the nucleus.
+The reaction with methanol does not seam to increase the degree of complexity of S-bearing
+molecules when it occurs in the gas phase.
+To simulate the two reactions occurring in ice or liquid water, we have also considered
+them in the presence of four additional water molecules. The conclusion is that the initial
+
+30
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+intermediates formed by the insertion or addition mechanism − namely HOSH (hydrogen
+thioperoxide) and H2 OS for S(1 D) + H2 O and CH2 OHSH (mercaptomethanol), CH4 OS and
+CH3 OSH (methyl thioperoxide) for S(1 D) + CH3 OH, as well as CH3 SOH (methyl sulfenic
+acid) for O(1 D) + CH3 SH − will probably be stabilized by the interaction with surrounding
+water molecules. Since this is an oversimplified model of ice, we are now pursuing a more
+realistic characterization of the S(1 D) + H2 O reaction in ice by using the methodology
+implemented by Rimola and coworkers (see, for instance, 113,114 ).
+Our results can help in understanding the sulfur chemistry in space, especially in the case
+of comets. On one side, the gas-phase reaction S(1 D) + H2 O could account for the additional
+SO source necessary to explain its distribution in the Hale Bopp comet as resulting from
+an interferometric investigation. On the other side, some of the S/O-containing molecules
+identified by ROSINA during the enhanced dust emission events of the 67/P comet (e.g.
+species with gross formula HSO, H2 SO, and CH4 OS) could be the results of the chemistry
+occurring on ice that we have exposed in this work.
+We urge modelers dealing with cometary chemistry to consider the reactive nature of
+S(1 D) + H2 O (as well as that of N(2 D) + H2 O) in their models and to update the photodissociation schemes of S(1 D) mother molecules (especially H2 S and SO2 ) as recently established
+by Cook et al. 40 and Chang et al. 42
+
+Acknowledgement
+The authors thank the Italian MUR PRIN2020 (2020AFB3FX-Astrochemistry beyond the
+second period elements) and the European Union’s Horizon 2020 research and innovation
+program from the European Research Council (ERC) (project ‘The Dawn of Organic Chemistry’ DOC, grant agreement No 741002) for support. Support from the Italian Space Agency
+(Bando ASI Prot. n. DC-DSR-UVS-2022-231, Grant no. 2023-10-U.0 MIGLIORA) is also
+acknowledged.
+
+31
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+AG and MR acknowledge financial support under the National Recovery and Resilience
+Plan (NRRP), Mission 4, Component 2, Investment 1.1, Call for tender No. 104 published
+on 2.2.2022 by the Italian Ministry of University and Research (MUR), funded by the European Union – NextGenerationEU– Project Title 2022JC2Y93 ChemicalOrigins: linking the
+fossil composition of the Solar System with the chemistry of protoplanetary disks – CUP
+J53D23001600006 - Grant Assignment Decree No. 962 adopted on 30.06.2023 by the Italian
+Ministry of Ministry of University and Research (MUR).
+
+Supporting Information Available
+• Tables S1-S5: electronic single-point energies for the systems: S(1 D) + H2 O (isolated),
+S(1 D) + CH3 OH (isolated), S(1 D) + H2 O in the presence of four additional water
+molecules, S(1 D) + CH3 OH in the presence of four additional water molecules.
+• Cartesian and Internal coordinates of the structures of the identified intermediates,
+transition states and products.
+• Figures S1-S2: optimized structures of the identified intermediates, transition states
+and products.
+
+References
+(1) Fuente, A. et al. Gas phase Elemental abundances in Molecular cloudS (GEMS). VII.
+Sulfur elemental abundance. Astronomy & Astrophysics 2023, 670, A114.
+(2) McGuire, B. A. 2021 Census of Interstellar, Circumstellar, Extragalactic, Protoplanetary Disk, and Exoplanetary Molecules. The Astrophysical Journal Supplement Series
+2022, 259, 30.
+
+32
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(3) Jiménez-Escobar, A.; Muñoz Caro, G. M. Sulfur depletion in dense clouds and circumstellar regions. I. H2 S ice abundance and UV-photochemical reactions in the H2 Omatrix. Astronomy & Astrophysics 2011, 536, A91.
+(4) Jiménez-Escobar, A.; Muñoz Caro, G.; Chen, Y.-J. Sulphur depletion in dense clouds
+and circumstellar regions. Organic products made from UV photoprocessing of realistic
+ice analogs containing H2S. Monthly Notices of the Royal Astronomical Society 2014,
+443, 343–354.
+(5) Martı́n-Doménech, R.; Jiménez-Serra, I.; Muñoz Caro, G. M.; Müller, H. S. P.; Occhiogrosso, A.; Testi, L.; Woods, P. M.; Viti, S. The sulfur depletion problem: upper
+limits on the H2 S2 , HS2 , and S2 gas-phase abundances toward the low-mass warm core
+IRAS 16293-2422. Astronomy & Astrophysics 2016, 585, A112.
+(6) Woods, P. M.; Occhiogrosso, A.; Viti, S.; Kaňuchová, Z.; Palumbo, M. E.; Price, S. D.
+A new study of an old sink of sulphur in hot molecular cores: the sulphur residue.
+Monthly Notices of the Royal Astronomical Society 2015, 450, 1256–1267.
+(7) Laas, J. C.; Caselli, P. Modeling sulfur depletion in interstellar clouds. Astronomy &
+Astrophysics 2019, 624, A108.
+(8) Navarro-Almaida, D.; Le Gal, R.; Fuente, A.; Rivière-Marichalar, P.; Wakelam, V.;
+Cazaux, S.; Caselli, P.; Laas, J. C.; Alonso-Albi, T.; Loison, J.; others Gas phase
+Elemental abundances in Molecular cloudS (GEMS)-II. On the quest for the sulphur
+reservoir in molecular clouds: the H2 S case. Astronomy & Astrophysics 2020, 637,
+A39.
+(9) Boogert, A. A.; Gerakines, P. A.; Whittet, D. C. Observations of the Icy Universe.
+Annual Review of Astronomy and Astrophysics 2015, 53, 541–581.
+(10) Boogert, A.; Brewer, K.; Brittain, A.; Emerson, K. Survey of ices toward massive
+
+33
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+young stellar objects. I. OCS, CO, OCN− , and CH3 OH. The Astrophysical Journal
+2022, 941, 32.
+(11) McClure, M. K.; Rocha, W.; Pontoppidan, K.; Crouzet, N.; Chu, L. E.; Dartois, E.;
+Lamberts, T.; Noble, J.; Pendleton, Y.; Perotti, G.; others An Ice Age JWST inventory
+of dense molecular cloud ices. Nature astronomy 2023, 7, 431–443.
+(12) Bariosco, V.; Pantaleone, S.; Ceccarelli, C.; Rimola, A.; Balucani, N.; Corno, M.;
+Ugliengo, P. The binding energy distribution of H2 S: why it is not the major sulphur
+reservoir of the interstellar ices. Monthly Notices of the Royal Astronomical Society
+2024, 531, 1371–1384.
+(13) Smith, A. M.; Stecher, T. P.; Casswell, L. Production of carbon, sulfur, and CS in
+Comet West. Astrophysical Journal 1980, 242, 402–410.
+(14) Bockelée-Morvan, D.; Colom, P.; Crovisier, J.; Despois, D.; Paubert, G. Microwave
+detection of hydrogen sulphide and methanol in comet Austin (1989c1). Nature 1991,
+350, 318–320.
+(15) Woodney, L.; A’hearn, M.; McMullin, J.; Samarasinha, N. Sulfur chemistry at millimeter wavelengths in C/Hale-Bopp. Earth, Moon, and Planets 1997, 78, 69.
+(16) Woodney, L.; McMullin, J.; A’Hearn, M. Detection of OCS in comet Hyakutake
+(C/1996 B2). Planetary and space science 1997, 45, 717–719.
+(17) A’Hearn, M. F.; Schleicher, D. G.; Feldman, P. D. The discovery of S2 in comet IRASAraki-Alcock 1983d. Astrophysical Journal, Letters 1983, 274, L99–L103.
+(18) Bockelée-Morvan, D. et al. New molecules found in comet C/1995 O1 (Hale-Bopp).
+Investigating the link between cometary and interstellar material. Astronomy & Astrophysics 2000, 353, 1101–1114.
+
+34
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(19) Jackson, W. M.; Scodinu, A.; Xu, D.; Cochran, A. L. Using the Ultraviolet and Visible
+spectrum of Comet 122P/de Vico to Identify the Parent Molecule CS2 . Astrophysical
+Journal, Letters 2004, 607, L139–L141.
+(20) Irvine, W. M.; Senay, M.; Lovell, A. J.; Matthews, H. E.; McGonagle, D.; Meier, R.
+NOTE: Detection of Nitrogen Sulfide in Comet Hale-Bopp. Icarus 2000, 143, 412–414.
+(21) Mumma, M. J.; Charnley, S. B. The Chemical Composition of Comets—Emerging
+Taxonomies and Natal Heritage. Annual Review of Astronomy and Astrophysics 2011,
+49, 471–524.
+(22) Crovisier, J.; Bockelée-Morvan, D. Remote Observations of the Composition of
+Cometary Volatiles. Space Science Reviews 1999, 90, 19–32.
+(23) Crovisier, J.; Bockelée-Morvan, D.; Colom, P.; Biver, N.; Despois, D.; Lis, D. C.;
+Target-of-opportunity Radio Observations of Comets Team The composition of ices
+in comet C/1995 O1 (Hale-Bopp) from radio spectroscopy. Further results and upper
+limits on undetected species. Astronomy & Astrophysics 2004, 418, 1141–1157.
+(24) Le Roy, L.; Altwegg, K.; Balsiger, H.; Berthelier, J.-J.; Bieler, A.; Briois, C.; Calmonte, U.; Combi, M. R.; De Keyser, J.; Dhooghe, F.; others Inventory of the volatiles
+on comet 67P/Churyumov-Gerasimenko from Rosetta/ROSINA. Astronomy & Astrophysics 2015, 583, A1.
+(25) Calmonte, U.; Altwegg, K.; Balsiger, H.; Berthelier, J.-J.; Bieler, A.; Cessateur, G.;
+Dhooghe, F.; Van Dishoeck, E.; Fiethe, B.; Fuselier, S.; others Sulphur-bearing species
+in the coma of comet 67P/Churyumov–Gerasimenko. Monthly Notices of the Royal
+Astronomical Society 2016, 462, S253–S273.
+(26) Altwegg, K.; Balsiger, H.; Fuselier, S. A. Cometary chemistry and the origin of icy solar
+system bodies: the view after Rosetta. Annual Review of Astronomy and Astrophysics
+2019, 57, 113–155.
+35
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(27) Hänni, N.; Altwegg, K.; Combi, M.; Fuselier, S.; De Keyser, J.; Rubin, M.;
+Wampfler, S. Identification and characterization of a new ensemble of cometary organic
+molecules. Nature Communications 2022, 13, 3639.
+(28) Mahjoub, A.; Altwegg, K.; Poston, M. J.; Rubin, M.; Hodyss, R.; Choukroun, M.;
+Ehlmann, B. L.; Hänni, N.; Brown, M. E.; Blacksberg, J.; Eiler, J. M.; Hand, K. P.
+Complex organosulfur molecules on comet 67P: Evidence from the ROSINA measurements and insights from laboratory simulations. Science Advances 2023, 9, eadh0394.
+(29) Altwegg, K.; Combi, M.; Fuselier, S.; Hänni, N.; De Keyser, J.; Mahjoub, A.;
+Müller, D. R.; Pestoni, B.; Rubin, M.; Wampfler, S. Abundant ammonium hydrosulphide embedded in cometary dust grains. Monthly Notices of the Royal Astronomical
+Society 2022, 516, 3900–3910.
+(30) Schmitt-Kopplin, P.; Hertkorn, N.; Harir, M.; Moritz, F.; Lucio, M.; Bonal, L.;
+Quirico, E.; Takano, Y.; Dworkin, J. P.; Naraoka, H.; others Soluble organic matter Molecular atlas of Ryugu reveals cold hydrothermalism on C-type asteroid parent
+body. Nature communications 2023, 14, 6525.
+(31) Naraoka, H. et al. Soluble organic molecules in samples of the carbonaceous asteroid
+(162173) Ryugu. Science 2023, 379, eabn9033.
+(32) Yoshimura, T. et al. Chemical evolution of primordial salts and organic sulfur
+molecules in the asteroid 162173 Ryugu. Nature Communications 2023, 14 .
+(33) Zherebker, A.; Kostyukevich, Y.; Volkov, D. S.; Chumakov, R. G.; Friederici, L.;
+Rüger, C. P.; Kononikhin, A.; Kharybin, O.; Korochantsev, A.; Zimmermann, R.;
+Perminova, I. V.; Nikolaev, E. Speciation of organosulfur compounds in carbonaceous
+chondrites. Scientific Reports 2021, 11, 7410.
+(34) Chyba, C.; Sagan, C. Endogenous production, exogenous delivery and impact-shock
+
+36
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+synthesis of organic molecules: an inventory for the origins of life. Nature 1992, 355,
+125–132.
+(35) Schofield, K. Critically evaluated rate constants for gaseous reactions of several electronically excited species. Journal of Physical and Chemical Reference Data 1979, 8,
+723–798.
+(36) Nan, G.; Burak, I.; Houston, P. Photodissociation of OCS at 222 nm. The triplet
+channel. Chemical Physics Letters 1993, 209, 383–389.
+(37) Kitsopoulos, T. N.; Gebhardt, C. R.; Rakitzis, T. P. Photodissociation study of CS2 at
+193 nm using slice imaging. The Journal of Chemical Physics 2001, 115, 9727–9732.
+(38) McGivern, W. S.; Sorkhabi, O.; Rizvi, A. H.; Suits, A. G.; North, S. W. Photofragment
+translational spectroscopy with state-selective universal detection: The ultraviolet
+photodissociation of CS2 . The Journal of Chemical Physics 2000, 112, 5301–5307.
+(39) Sun, Z.; Farooq, Z.; Parker, D.; Martin, P.; Western, C. Photodissociation of S2 (X3 Σ−
+g,
+a1 ∆g , and b1 Σ+
+g ) in the 320–205 nm Region. The Journal of Physical Chemistry A
+2019, 123, 6886–6896.
+(40) Cook, P. A.; Langford, S. R.; Dixon, R. N.; Ashfold, M. N. An experimental and ab
+initio reinvestigation of the Lyman-α photodissociation of H2 S and D2 S. The Journal
+of Chemical Physics 2001, 114, 1672–1684.
+(41) Zhao, Y.; Luo, Z.; Chang, Y.; Wu, Y.; Zhang, S.-e.; Li, Z.; Ding, H.; Wu, G.; Campbell, J. S.; Hansen, C. S.; others Rotational and nuclear-spin level dependent photodissociation dynamics of H2 S. Nature Communications 2021, 12, 4459.
+(42) Chang, Y.; Fu, Y.; Chen, Z.; Luo, Z.; Zhao, Y.; Li, Z.; Zhang, W.; Wu, G.; Fu, B.;
+Zhang, D. H.; Ashfold, M. N. R.; Yang, X.; Yuan, K. Vacuum ultraviolet photodissoci-
+
+37
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+ation of sulfur dioxide and its implications for oxygen production in the early Earth’s
+atmosphere. Chemical Science 2023, 14, 8255–8261.
+(43) Carder, J. T.; Ochs, W.; Herbst, E. Modelling the insertion of O(1 D) into methane
+on the surface of interstellar ice mantles. Monthly Notices of the Royal Astronomical
+Society 2021, 508, 1526–1532.
+(44) Bergner, J. B.; Öberg, K. I.; Rajappan, M. Methanol formation via oxygen insertion
+chemistry in ices. The Astrophysical Journal 2017, 845, 29.
+(45) Bergner, J. B.; Öberg, K. I.; Rajappan, M. Oxygen atom reactions with C2 H6 , C2 H4 ,
+and C2 H2 in ices. The Astrophysical Journal 2019, 874, 115.
+(46) Daniely, A.; Zamir, A.; Eisenberg, H. R.; Livshits, E.; Piacentino, E.; Bergner, J. B.;
+Oberg, K.; Stein, T. Singlet Oxygen Insertion into Hydrocarbons: The Role of Firstand Second-Generation Pathways in Astronomically Relevant Ices. Theoretical and
+Computational Chemistry, doi: 10.26434/chemrxiv-2024-pddc0 2024,
+(47) Kjellström, E. A three-dimensional global model study of carbonyl sulfide in the troposphere and the lower stratosphere. Journal of Atmospheric Chemistry 1998, 29,
+151–177.
+(48) Karu, E.; Li, M.; Ernle, L.; Brenninkmeijer, C. A. M.; Lelieveld, J.; Williams, J. Carbonyl Sulfide (OCS) in the Upper Troposphere/Lowermost Stratosphere (UT/LMS)
+Region: Estimates of Lifetimes and Fluxes. Geophysical Research Letters 2023, 50,
+e2023GL105826, e2023GL105826 2023GL105826.
+(49) Kim, M. H.; Li, W.; Lee, S. K.; Suits, A. G. Probing of the hot-band excitations in
+the photodissociation of OCS at 288 nm by DC slice imaging. Canadian Journal of
+Chemistry 2004, 82, 880–884.
+
+38
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(50) Katayanagi, H.; Mo, Y.; Suzuki, T. 223 nm photodissociation of OCS. Two components in S(1 D2 ) and S(3 P2 ) channels. Chemical Physics Letters 1995, 247, 571–576.
+(51) Leonori, F.; Petrucci, R.; Balucani, N.; Casavecchia, P.; Rosi, M.; Skouteris, D.;
+Berteloite, C.; Le Picard, S. D.; Canosa, A.; Sims, I. R. Crossed-beam dynamics,
+low-temperature kinetics, and theoretical studies of the reaction S(1 D) + C2 H4 . The
+Journal of Physical Chemistry A 2009, 113, 15328–15345.
+(52) Leonori, F.; Petrucci, R.; Balucani, N.; Casavecchia, P.; Rosi, M.; Berteloite, C.; Le Picard, S. D.; Canosa, A.; Sims, I. R. Observation of organosulfur products (thiovinoxy,
+thioketene and thioformyl) in crossed-beam experiments and low temperature rate coefficients for the reaction S(1 D) + C2 H4 . Physical Chemistry Chemical Physics 2009,
+11, 4701–4706.
+(53) Leonori, F.; Petrucci, R.; Balucani, N.; Hickson, K. M.; Hamberg, M.; Geppert, W. D.;
+Casavecchia, P.; Rosi, M. Crossed-beam and theoretical studies of the S(1 D) + C2 H2
+reaction. The Journal of Physical Chemistry A 2009, 113, 4330–4339.
+(54) Berteloite, C.; Le Picard, S. D.; Sims, I. R.; Rosi, M.; Leonori, F.; Petrucci, R.;
+Balucani, N.; Wang, X.; Casavecchia, P. Low temperature kinetics, crossed beam
+dynamics and theoretical studies of the reaction S(1 D) + CH4 and low temperature
+kinetics of S(1 D) + C2 H2 . Physical Chemistry Chemical Physics 2011, 13, 8485–8501.
+(55) Balucani, N.; Leonori, F.; Petrucci, R.; Casavecchia, P.; Skouteris, D.; Rosi, M. Experimental and theoretical studies on possible formation routes of organosulfur compounds in extraterrestrial environments. Memorie della Societa Astronomica Italiana
+Supplement 2011, 16, 91.
+(56) Leonori, F.; Skouteris, D.; Petrucci, R.; Casavecchia, P.; Rosi, M.; Balucani, N. Combined crossed beam and theoretical studies of the C(1 D)+ CH4 reaction. The Journal
+of Chemical Physics 2013, 138 .
+39
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(57) Kaiser, R. I.; Nguyen, T. L.; Mebel, A. M.; Lee, Y. T. Stripping dynamics in the
+reactions of electronically excited carbon atoms, C(1 D), with ethylene and propylene—production of propargyl and methylpropargyl radicals. The Journal of Chemical
+Physics 2002, 116, 1318–1324.
+(58) Balucani, N.; Bergeat, A.; Cartechini, L.; Volpi, G. G.; Casavecchia, P.; Skouteris, D.;
+Rosi, M. Combined crossed molecular beam and theoretical studies of the N(2 D)+ CH4
+reaction and implications for atmospheric models of Titan. The Journal of Physical
+Chemistry A 2009, 113, 11138–11152.
+(59) Homayoon, Z.; Bowman, J. M.; Balucani, N.; Casavecchia, P. Quasiclassical trajectory
+calculations of the N(2 D)+ H2 O reaction elucidating the formation mechanism of HNO
+and HON seen in molecular beam experiments. The Journal of Physical Chemistry
+Letters 2014, 5, 3508–3513.
+(60) Balucani, N.; Caracciolo, A.; Vanuzzo, G.; Skouteris, D.; Rosi, M.; Pacifici, L.;
+Casavecchia, P.; Hickson, K. M.; Loison, J.-C.; Dobrijevic, M. An experimental and
+theoretical investigation of the N(2 D)+ C6 H6 (benzene) reaction with implications for
+the photochemical models of Titan. Faraday Discussions 2023, 245, 327–351.
+(61) Balucani, N.; Skouteris, D.; Leonori, F.; Petrucci, R.; Hamberg, M.; Geppert, W. D.;
+Casavecchia, P.; Rosi, M. Combined crossed beam and theoretical studies of the
+N(2 D)+ C2 H4 reaction and implications for atmospheric models of Titan. The Journal
+of Physical Chemistry A 2012, 116, 10467–10479.
+(62) Biver, N. et al. Molecular composition of short-period comets from millimetre-wave
+spectroscopy: 21P/Giacobini-Zinner, 38P/Stephan-Oterma, 41P/Tuttle-GiacobiniKresák, and 64P/Swift-Gehrels. Astronomy and Astrophysics 2021, 651, A25.
+(63) Cordiner, M. A.; Roth, N. X.; Milam, S. N.; Villanueva, G. L.; Bockelée-Morvan, D.;
+Remijan, A. J.; Charnley, S. B.; Biver, N.; Lis, D. C.; Qi, C.; Bonev, B. P.; Crovisier, J.;
+40
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Boissier, J. Gas Sources from the Coma and Nucleus of Comet 46P/Wirtanen Observed
+Using ALMA. The Astrophysical Journal 2023, 953, 59.
+(64) Lippi, M.; Podio, L.; Codella, C.; Faggi, S.; Simone, M. D.; Villanueva, G. L.;
+Mumma, M. J.; Ceccarelli, C. The Ice Chemistry in Comets and Planet-forming Disks:
+Statistical Comparison of CH3OH, H2CO, and NH3 Abundance Ratios. The Astrophysical Journal Letters 2024, 970, L5.
+(65) Opitom, C.; Hutsemékers, D.; Jehin, E.; Rousselot, P.; Pozuelos, F. J.; Manfroid, J.;
+Moulane, Y.; Gillon, M.; Benkhaldoun, Z. High resolution optical spectroscopy of the
+N2-rich comet C/2016 R2 (PanSTARRS). Astronomy and Astrophysics 2019, 624,
+A64.
+(66) Raghuram, S.; Hutsemékers, D.; Opitom, C.; Jehin, E.; Bhardwaj, A.; Manfroid, J.
+Forbidden atomic carbon, nitrogen, and oxygen emission lines in the water-poor comet
+C/2016 R2 (Pan-STARRS). Astronomy and Astrophysics 2020, 635, A108.
+(67) Lupu, R. E.; Feldman, P. D.; Weaver, H. A.; Tozzi, G.-P. The Fourth Positive System of
+Carbon Monoxide in the Hubble Space Telescope Spectra of Comets. The Astrophysical
+Journal 2007, 670, 1473.
+(68) A’Hearn, M. F.; Arpigny, C.; Feldman, P. D.; Jackson, W. M.; Meier, R.;
+Weaver, H. A.; Wellnitz, D. D.; Woodney, L. M. Formation of S2 in Comets.
+AAS/Division for Planetary Sciences Meeting Abstracts #32. 2000; p 44.01.
+(69) Rodgers, S.; Charnley, S. Sulfur chemistry in cometary comae. Advances in Space
+Research 2006, 38, 1928–1931.
+(70) Schmidt, H. U.; Wegmann, R.; Huebner, W. F.; Boice, D. C. Cometary gas and plasma
+flow with detailed chemistry. Computer Physics Communications 1988, 49, 17–59.
+
+41
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(71) Atkinson, R.; Baulch, D. L.; Cox, R. A.; Crowley, J. N.; Hampson, R. F.; Hynes, R. G.;
+Jenkin, M. E.; Rossi, M. J.; Troe, J. Evaluated kinetic and photochemical data for
+atmospheric chemistry: Volume I - gas phase reactions of Ox , HOx , NOx and SOx
+species. Atmospheric Chemistry and Physics 2004, 4, 1461–1738.
+(72) Chai, J.-D.; Head-Gordon, M. Long-range corrected hybrid density functionals with
+damped atom–atom dispersion corrections. Physical Chemistry Chemical Physics
+2008, 10, 6615.
+(73) Dunning Jr, T. H. Gaussian basis sets for use in correlated molecular calculations. I.
+The atoms boron through neon and hydrogen. The Journal of chemical physics 1989,
+90, 1007–1023.
+(74) Dunning Jr, T. H.; Peterson, K. A.; Wilson, A. K. Gaussian basis sets for use in
+correlated molecular calculations. X. The atoms aluminum through argon revisited.
+The Journal of Chemical Physics 2001, 114, 9244–9253.
+(75) Raghavachari, K.; Trucks, G. W.; Pople, J. A.; Head-Gordon, M. A fifth-order perturbation comparison of electron correlation theories. Chemical Physics Letters 1989,
+157, 479–483.
+(76) Bartlett, R. J. Many-Body Perturbation Theory and Coupled Cluster Theory for Electron Correlation in Molecules. Annual Review of Physical Chemistry 1981, 32, 359–
+401.
+(77) Frisch, M. et al. Gaussian 09, Revision A. 02, 2009, Gaussian. Inc., Wallingford CT
+2009,
+(78) Fukui, K. The path of chemical reactions-the IRC approach. Accounts of chemical
+research 1981, 14, 363–368.
+
+42
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(79) Werner, H.-J.; Knowles, P. J.; Manby, F. R.; Black, J. A.; Doll, K.; Heßelmann, A.;
+Kats, D.; Köhn, A.; Korona, T.; Kreplin, D. A.; others The Molpro quantum chemistry
+package. The Journal of chemical physics 2020, 152, 144107.
+(80) Wilson, A. K.; Dunning, T. H. The HSO-SOH Isomers Revisited: The Effect of Tight
+d Functions. The Journal of Physical Chemistry A 2004, 108, 3129–3133.
+(81) Martin, J. M. Ab initio total atomization energies of small molecules — towards the
+basis set limit. Chemical Physics Letters 1996, 259, 669–678.
+(82) Moore, C. Atomic Energy Levels, Vol. 1 ; Circular of the National Bureau of Standards
+467; U.S. Government Printing Office, 1949.
+(83) Becke, A. D. Density-functional thermochemistry. I. The effect of the exchange-only
+gradient correction. The Journal of chemical physics 1992, 96, 2155–2160.
+(84) Becke, A. D. Density-functional thermochemistry. III. The role of exact exchange. The
+Journal of Chemical Physics 1993, 98, 5648–5652.
+(85) Vanuzzo, G.; Mancini, L.; Pannacci, G.; Liang, P.; Marchione, D.; Recio, P.; Tan, Y.;
+Rosi, M.; Skouteris, D.; Casavecchia, P.; Balucani, N.; Hickson, K. M.; Loison, J.C.; Dobrijevic, M. Reaction N(2D) + CH2CCH2 (Allene): An Experimental and
+Theoretical Investigation and Implications for the Photochemical Models of Titan.
+ACS Earth and Space Chemistry 2022, 6, 2305–2321.
+(86) Goumri, A.; Rocha, J. R.; Laakso, D.; Smith, C. E.; Marshall, P. Computational
+studies of the potential energy surface for O(1 D) + H2 S: Characterization of pathways
+involving H2 SO, HOSH, and H2 OS. The Journal of Chemical Physics 1994, 101,
+9405–9411.
+(87) Borin, A. C.; Ornellas, F. R. The lowest triplet and singlet electronic states of the
+molecule SO. Chemical physics 1999, 247, 351–364.
+43
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(88) Ruscic, B.; Pinzon, R. E.; Morton, M. L.; von Laszevski, G.; Bittner, S. J.; Nijsure, S. G.; Amin, K. A.; Minkoff, M.; Wagner, A. F. Introduction to Active Thermochemical Tables: Several “Key” Enthalpies of Formation Revisited. The Journal of
+Physical Chemistry A 2004, 108, 9979–9997.
+(89) Nagy, B.; Szakács, P.; Csontos, J.; Rolik, Z.; Tasi, G.; Kállay, M. High-Accuracy Theoretical Thermochemistry of Atmospherically Important Sulfur-Containing Molecules.
+The Journal of Physical Chemistry A 2011, 115, 7823–7833.
+(90) Resende, S. M.; Ornellas, F. R. Thermochemistry of atmospheric sulfur compounds.
+Chemical Physics Letters 2003, 367, 489–494.
+(91) Giustini, A.; Di Genova, G.; Balucani, N.; Ceccarelli, C.; Rosi, M.; Lombardi, A.
+Theoretical Insights on the S(1 D) + H2 O Reaction and Implications on the Chemistry
+at the Surface of Ice in Extraterrestrial Environments. Computational Science and Its
+Applications – ICCSA 2024 Workshops. Cham, 2024; pp 274–282.
+(92) Rosi, M.; Balucani, N.; Casavecchia, P.; Mancini, L.; Pannacci, G.; Vanuzzo, G. A
+Computational Strategy for the Theoretical Investigation of the Reactions Between
+Atomic Oxygen and Aromatic Compounds. Computational Science and Its Applications – ICCSA 2024 Workshops. Cham, 2024; pp 1–13.
+(93) Enrique-Romero, J.; Rimola, A.; Ceccarelli, C.; Ugliengo, P.; Balucani, N.; Skouteris, D. Quantum mechanical simulations of the radical–radical chemistry on icy
+surfaces. The Astrophysical Journal Supplement Series 2022, 259, 39.
+(94) Pantaleone, S.; Enrique-Romero, J.; Ceccarelli, C.; Ferrero, S.; Balucani, N.; Rimola, A.; Ugliengo, P. H2 formation on interstellar grains and the fate of reaction
+energy. The Astrophysical Journal 2021, 917, 49.
+(95) Pantaleone, S.; Enrique-Romero, J.; Ceccarelli, C.; Ugliengo, P.; Balucani, N.; Ri-
+
+44
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+mola, A. Chemical desorption versus energy dissipation: Insights from ab initio molecular dynamics of HCO·formation. The Astrophysical Journal 2020, 897, 56.
+(96) Balucani, N.; Cartechini, L.; Casavecchia, P.; Homayoon, Z.; Bowman, J. M. A combined crossed molecular beam and quasiclassical trajectory study of the Titan-relevant
+N(2 D)+ D2 O reaction. Molecular Physics 2015, 113, 2296–2301.
+(97) Umemoto, H.; Kongo, K.; Inaba, S.; Sonoda, Y.; Takayanagi, T.; Kurosaki, Y. Reactions of N(22 D) with CH3 OH and Its Isotopomers. The Journal of Physical Chemistry
+A 1999, 103, 7026–7031.
+(98) Black, G. Branching ratios for quenching and reaction in the interaction of S (1 D2 )
+with various gases. The Journal of chemical physics 1986, 84, 1345–1348.
+(99) Fowles, P.; deSorgo, M.; Yarwood, A. J.; Strausz, O. P.; Gunning, H. E. The Reactions
+of sulfur Atoms. IX. The Flash Photolysis of Carbonyl Sulfide and the Reactions of
+S(1 D) Atoms with Hydrogen and Methane. Journal of the American Chemical Society
+1967, 89, 1352–1362.
+(100) Lang, J.; Foley, C. D.; Thawoos, S.; Behzadfar, A.; Liu, Y.; Zádor, J.; Suits, A. G.
+Reaction dynamics of S (3 P) with 1, 3-butadiene and isoprene: crossed-beam scattering, low-temperature flow experiments, and high-level electronic structure calculations.
+Faraday Discussions 2024,
+(101) Li, H.; Lang, J.; Foley, C. D.; Zádor, J.; Suits, A. G. Sulfur (3P) Reaction with
+Conjugated Dienes Gives Cyclization to Thiophenes under Single Collision Conditions.
+The Journal of Physical Chemistry Letters 2023, 14, 7611–7617.
+(102) Doddipatla, S.; He, C.; Goettl, S. J.; Kaiser, R. I.; Galvão, B. R.; Millar, T. J.
+Nonadiabatic reaction dynamics to silicon monosulfide (SiS): A key molecular building
+block to sulfur-rich interstellar grains. Science Advances 2021, 7, eabg7003.
+
+45
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(103) Balucani, N.; Beneventi, L.; Casavecchia, P.; Stranges, D.; Volpi, G. The effect of
+reagent electronic energy on the dynamics of chemical reactions: A high-resolution
+crossed beam study of O (3 P,1 D)+ H2 S. The Journal of Chemical Physics 1991, 94,
+8611–8614.
+(104) Balucani, N.; Stranges, D.; Casavecchia, P.; Volpi, G. G. Crossed beam studies of the
+reactions of atomic oxygen in the ground 3 P and first electronically excited 1 D states
+with hydrogen sulfide. The Journal of Chemical Physics 2004, 120, 9571–9582.
+(105) Cavallotti, C.; De Falco, C.; Pratali Maffei, L.; Caracciolo, A.; Vanuzzo, G.; Balucani, N.; Casavecchia, P. Theoretical study of the extent of intersystem crossing in the
+O(3 P)+ C6 H6 reaction with experimental validation. The Journal of Physical Chemistry Letters 2020, 11, 9621–9628.
+(106) Recio, P.; Alessandrini, S.; Vanuzzo, G.; Pannacci, G.; Baggioli, A.; Marchione, D.;
+Caracciolo, A.; Murray, V. J.; Casavecchia, P.; Balucani, N.; others Intersystem crossing in the entrance channel of the reaction of O(3 P) with pyridine. Nature Chemistry
+2022, 14, 1405–1412.
+(107) Balucani, N.; Vanuzzo, G.; Recio, P.; Caracciolo, A.; Rosi, M.; Cavallotti, C.; Baggioli, A.; Della Libera, A.; Casavecchia, P. Crossed molecular beam experiments and
+theoretical simulations on the multichannel reaction of toluene with atomic oxygen.
+Faraday Discuss. 2024, doi:10.1039/D3FD00181D.
+(108) Lara, M.; Berteloite, C.; Paniagua, M.; Dayou, F.; Launay, J.-M. Experimental and
+theoretical study of the collisional quenching of S (1 D) by Ar. Physical Chemistry
+Chemical Physics 2017, 19, 28555–28571.
+(109) Herbst, E. An approach to the estimation of polyatomic vibrational radiative relaxation rates. Chemical Physics 1982, 65, 185–195.
+
+46
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(110) Herbst, E. Unusual Chemical Processes in Interstellar Chemistry: Past and Present.
+Frontiers in Astronomy and Space Sciences 2021, 8 .
+(111) Boissier, J.; Bockelée-Morvan, D.; Biver, N.; Crovisier, J.; Despois, D.; Marsden, B.;
+Moreno, R. Interferometric imaging of the sulfur-bearing molecules HS, SO, and CS
+in comet C/1995 O1 (Hale-Bopp). Astronomy & Astrophysics 2007, 475, 1131–1144.
+(112) Góbi, S.; Csonka, I. P.; Bazsó, G.; Tarczay, G. Successive Hydrogenation of SO and
+SO2 in Solid para-H2: Formation of Elusive Small Oxoacids of Sulfur. ACS Earth and
+Space Chemistry 2021, 5, 1180–1195.
+(113) Perrero, J.; Enrique-Romero, J.; Martı́nez-Bachs, B.; Ceccarelli, C.; Balucani, N.;
+Ugliengo, P.; Rimola, A. Non-energetic formation of ethanol via CCH reaction with
+interstellar H2 O ices. A computational chemistry study. ACS Earth and Space Chemistry 2022, 6, 496–511.
+(114) Rimola, A.; Skouteris, D.; Balucani, N.; Ceccarelli, C.; Enrique-Romero, J.;
+Taquet, V.; Ugliengo, P. Can formamide be formed on interstellar ice? An atomistic perspective. ACS Earth and Space Chemistry 2018, 2, 720–734.
+
+47
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+TOC Graphic
+
+48
+https://doi.org/10.26434/chemrxiv-2024-vcsx4 ORCID: https://orcid.org/0000-0001-5121-5683 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+

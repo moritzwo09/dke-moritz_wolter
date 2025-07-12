@@ -1,0 +1,1266 @@
+Using Measurement-Informed Inventory to Assess Emissions in the
+Denver-Julesburg Basin
+Arthur Santosa,∗, Winrose Mollela , Jerry Duggana , Anna Hodshirea , Prajay Voraa , Daniel Zimmerlea
+a Energy Institute, Colorado State University, USA
+
+Abstract
+Aerial surveys, while effective in detecting emissions from upset conditions, face challenges in fully capturing CH4 emissions due to their temporal limitations, variability in measurements, and detection thresholds.
+Conversely, annual inventories submitted by operators likely don’t include emissions from failure events. This
+study introduces a novel methodology that utilizes the Mechanistic Air Emissions Simulator (MAES) to integrate two highly variable estimation methods: inventory and aerial methods. The proposed methodology
+identifies and characterizes failure events with site-specific information, thereby enhancing the accuracy of
+inventory programs through the so-called measurement-informed inventories (MIIs). Furthermore, it emphasizes the importance of carefully comparing instantaneous emission measurements from aerial surveys with
+annual average emissions reported in inventories, as they have distinct timeframes. Colorado State University (CSU) collaborated with the Colorado Department of Public Health and Environment (CDPHE) to utilize
+this approach to enhance reported emissions from the upstream sector in Colorado Denver-Julesburg (DJ)
+basin. This initiative is part of the state’s efforts to reduce emissions under the Upstream greenhouse
+gas (GHG) Intensity Program. The goal was to incorporate measured emissions from failure events conducted
+by Carbon Mapper (CM) in the simulations to derive a multiplier that rectifies for potential omissions of
+emissions from abnormal conditions within the oil and gas (O&G) sector. To simplify the simulation process,
+prototypical sites were defined in conjunction with operators and are used to represent groups of O&G facilities in the basin with similar configuration. The outcomes of this work indicate that inventories are likely
+underestimating total emissions, as an additional 16.4% of total emissions from abnormal events is estimated
+for the basin.
+Keywords: Measurement-Informed Inventories, MAES, Methane Emissions, DJ basin, CDPHE, GHG
+Intensity Verification Rule
+
+1. Introduction
+Methane is well-recognized as a powerful greenhouse gas (GHG), with a global warming potential (GWP)
+of 80.8 and 82.5 times that of CO2 over a 20-year period. Given the short in-atmosphere lifespan of methane,
+∗ Corresponding author
+
+Email address: arthur.santos@colostate.edu (Daniel Zimmerle)
+
+Preprint submitted to ChemRxiv
+
+https://doi.org/10.26434/chemrxiv-2024-g2bt9 ORCID: https://orcid.org/0000-0001-6170-2143 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+December 6, 2024
+
+changes in methane emissions produce climate impacts on decadal scales, raising interest in the identification
+5
+
+and mitigation of methane sources, particularly those of anthropogenic origin.
+In the U.S., the Methane Emissions Reduction Action Plan recommends action on plugging abandoned
+wells, reducing organic waste routed to landfills, remediating abandoned coal mines, and expanding voluntary
+programs to reduce CH4 emissions from agriculture operations [1]. This study focuses on methane emissions
+from oil and gas (O&G) operations, utilizing data from an intensive study of the Denver-Julesburg (DJ)
+
+10
+
+production basin in northeastern Colorado, USA.
+O&G is traditionally divided into three sectors. Production includes facilities that extract crude oil and
+natural gas using wells, on-site liquid-gas separation equipment, and short-term storage of liquids. The
+midstream sector comprises facilities responsible for processing, transporting and storing these commodities,
+and is typically split into four subsectors: Gathering which transports produced gas from wellpads to gas
+
+15
+
+processing plants, gas processing which upgrades gas to market standards, and long-distance transmission and
+storage which transports upgraded gas from production basins to customers. Midstream facilities typically
+include compressors to transport gas, metering, separators to remove entrained liquids, and storage tanks
+for liquids. Additionally, facilities may include gas upgrading equipment (dehydrators, acid gas removal, and
+hydrocarbon separation equipment). The third sector, distribution, comprises infrastructure to distribute gas
+
+20
+
+to individual residential and commercial customers.
+To assess GHG emissions from O&G operations, regulatory authorities in many jurisdictions require
+operators to submit comprehensive annual inventory reports. Examples include the U.S. Environmental Protection Agency (EPA) Greenhouse Gas Reporting Program (GHGRP) at the federal level or the Colorado
+Oil and Natural Gas Annual Emission Inventory Reporting (ONGAEIR) program at the state level. Addi-
+
+25
+
+tionally, many operators report to voluntary initiatives [2, 3, 4]. These programs typically require annual
+reports of total emission mass by GHG species.
+Most emission inventories utilize Intergovernmental Panel on Climate Change (IPCC) reporting methodologies [5], where emissions are calculated by multiplying a measure of activity (activity factor ) by an estimate
+of emissions from each unit of activity (emission factor ). Reporting programs vary in required detail for both
+
+30
+
+activity and emissions data, but most programs require emissions to be reported by source category, i.e. a
+list of known emission source locations. Inventories therefore require detailed facility information to provide
+the necessary activity data, including oil, water and gas throughput, lists of major equipment, component
+counts, operating hours, and similar data. Recently, several programs have encouraged reporting of measured
+data to supplement or improve emission factors [2, 23, 6, 7].
+
+35
+
+Since governmental reporting is often integrated with enforcement of air emissions regulations, emission
+sources tend to be classified by how they are treated in permit applications, namely which sources are
+planned and thus included in the permit, and which are unplanned and therefore additive to permitted
+emission levels. Focusing on methane emissions and USA reporting, emissions are categorized as vented –
+planned release of uncombusted gas, combusted – methane from fuel gas that remains uncombusted in a
+
+2
+https://doi.org/10.26434/chemrxiv-2024-g2bt9 ORCID: https://orcid.org/0000-0001-6170-2143 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+40
+
+combustion exhaust stream (‘combustion slip’), and fugitive – unplanned releases of uncombusted gas. These
+categorical definitions may be ambiguous. For example, some regulatory programs categorized excess venting
+by malfunctions of venting components as fugitive emissions, while others consider all emissions from these
+components as ‘vented.’
+Categorization plays a key role in inventory reporting. Vented and combusted sources are typically
+
+45
+
+reported, although reporting methods may vary substantially in accuracy. Calculations often assume nominal,
+‘as planned’, performance of source equipment, and fail to report failure conditions which result in excess
+emissions. Fugitive emissions are, by definition, unknown, and must be discovered to be reported. Reporting
+programs typically follow one of two methods for fugitives: (a) reporting based upon average emission factors
+from prior studies and counts of components or equipment units, or (b) reporting based upon multiplying
+
+50
+
+a count of discovered emitters with emission factors derived from prior studies. As noted earlier, recent
+programmatic changes tend to encourage measurement of emissions at the component, equipment unit, or
+facility level to improve upon outdated emission factors.
+Recently, numerous aerial and satellite estimates of emissions[8, 9, 10, 11, 12] – commonly called topdown (TD) estimates – have identified significant disagreements between inventory (bottom-up (BU)) and
+
+55
+
+TD estimates. Since BU estimates tend to estimate lower emissions than TD methods, two structural
+problems with inventory methods have been identified as possible causes of this agreement. First, fugitive
+emissions are often highly intermittent and difficult to discover, leading under-counting the number of emitters
+[13, 14, 15, 16], and error in activity data [17]. Emissions estimates for discovered emitters most often rely
+on emission factors derived from prior studies. Quality of these factors varies, with some evidence indicating
+
+60
+
+an inadequate representation of rare, large, emitters in the factors. Additionally, emission factors are, by
+definition, averages of emissions that do not capture the inherent variability for a specific source or over
+time. Second, the assumption of nominal process behavior for vented and combusted emissions omits process
+failures that have been identified as a key source of large emission events [5, 18, 19, 20, 21].
+Regulators are also interested in encouraging improved O&G facility designs that reduce emissions by
+
+65
+
+eliminating source types and failure modes, and by ‘building in’ increased surveillance into facility operations.
+For example, elimination of atmospheric tanks on production wellpads eliminates several emission sources
+and several process failures known to create large emitters [22]. To make these policy decisions, regulators
+need reported emissions to be differentiated by facility type and design, throughput, and similar factors;
+current inventory methods do not provide this type of specificity.
+
+70
+
+Regulatory authorities are approaching these two issues (inaccurate reporting and facility differentiation) in different ways; an example is useful to illustrate possible approaches. The U.S. state of Colorado
+is implementing the Upstream GHG Intensity Program for production facilities based upon an emissions
+intensity calculated as a fraction of facility production (SI Section S-1). Colorado provides two methods to
+compute the emission rate of production facilities. First, the State Default Intensity Verification (SDIV)
+
+75
+
+process utilizes typical inventory reporting methods, but multiplies reported methane emissions by a ‘SDIV
+
+3
+https://doi.org/10.26434/chemrxiv-2024-g2bt9 ORCID: https://orcid.org/0000-0001-6170-2143 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+factor’ to account for unreported or under-reported emissions. The SDIV factor can be differentiated by
+both basin and facility type, if sufficient data is available. Second, operators can chose use the Operator
+Specific Programs (OpSP), where operators develop their own verification protocol based on direct field measurement and robust auditing of both methods and results [23]. Both methods are intended to correct for
+80
+
+under-reporting while supporting differentiation between facility designs and operator practices. The OpSP
+process is similar to those encouraged by multiple voluntary reporting programs, including OGMP 2.0[2]
+and Veritas[24]. The common element in these approaches is to improve inventory reporting by blending
+(or comparing) independent facility- or equipment-scale TD observations with traditional BU inventories, an
+approach commonly known as Measurement-Informed Inventory (MII).
+
+85
+
+While MII has been proposed and analyzed in recent studies, [25, 26, 27], methodologies have not been
+standardized and there is little agreement on how to resolve temporal differences between BU and TD
+estimates [28]. O&G sites exhibit highly variable emissions due variation in site operations (e.g. natural
+cycling of production wells), changes in equipment state (e.g. compressor start/stop, malfunctions, etc.),
+episodic events (e.g. blowdowns, liquid unloading, pipeline pigging, well swabbing), diurnal and seasonal
+
+90
+
+variations [29, 30, 31], see Figure 1. While traditional inventories include many of these sources, the variability
+is averaged out in the annual results these methods generate.
+Surveillance programs or measurement and monitoring sytems (MMS) try to capture emissions originated
+from these drivers. Two common observation modes are snapshot surveys, including aerial (TD) and onsite
+(leak detection and repair (LDAR)) surveys, and continuous emission monitoring systems (CEMS). However,
+
+95
+
+these systems face limitations when calculating long-duration average emissions.
+Snapshot estimates typically capture emissions for brief periods ranging from seconds to a few hours.
+The undisputed strength of wide-area surveys is their ability to detect emissions systematically [32] and at
+lower cost per site than traditional on-site LDAR methods. However, these short-duration estimates must be
+extrapolated to longer, typically annual, inventory periods. In addition to basic issues inherent to any scaling
+
+100
+
+process, extrapolating these estimates exhibits several structural problems driven by the snapshot methods
+themselves. These methods: (1) produce single estimates with high uncertainty [33, 34, 35, 36, 37]; (2)
+provide poor estimates for transient short-duration emitters; (3) typically have high and variable detection
+thresholds that require other estimates for smaller emitters, with unknown overlap/double counting; and, (4)
+typically operate during working hours when most maintenance occurs, resulting in an over-representation
+
+105
+
+of maintenance emissions [38]. To date, the prevailing trend within the scientific community to improve
+annual emissions estimates is to increase the number of site surveys. While a large increase in surveys would
+reduce some of the uncertainties listed above, it is impracticable to measure all sites at all times, and even a
+high-frequency strategy would not correct several of the issues mentioned earlier.
+CEMS operate for longer durations but currently suffer several issues: (a) estimates are highly uncertain
+
+110
+
+and do not converge to actual emissions over extended periods [39, 40, 41], (b) systems have extended
+periods when estimate accuracy drops due to relative positioning of sensors and current wind direction, and
+
+4
+https://doi.org/10.26434/chemrxiv-2024-g2bt9 ORCID: https://orcid.org/0000-0001-6170-2143 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+(c) observations may be impossible due to lighting, topography or weather conditions. While CEMS may
+eventually develop to the point where a combination of such systems would provide data equivalent to the best
+BU inventories, data indicates such results will take years to develop, and increasing sensor count to avoid
+115
+
+periods where weather variability prevents the system from quantifying emissions may create cost issues.
+
+Figure 1: Schematic of temporal variation in emissions for an O&G site and associated measurements. Reconciliation of
+MMS with annual inventories is challenging due to the fragmented insights offered by measurement methods the difference in
+observation durations relative to the required inventory output. Aerial and onsite surveys last seconds to hours , while annual
+inventories provide estimates for emissions over the entire year. While CEMS typically run for extended periods, emission
+estimates vary in accuracy over time. Some periods have relatively high precision (solid blue areas) while others may be
+inaccurate due to factors such as wind direction and location (hatched areas) or estimates may be unavailable (white areas in
+the blue horizontal bar).
+
+Due to these constraints, replying solely on MMS approaches provides incomplete or fragmented insights
+into a site’s overall emission profile. Hence, these methods are not suitable as a direct replacement for inventories. Additionally, most MMS methods lack source-specific information needed by operators to mitigate
+emissions, and by regulators to target regulatory changes.
+120
+
+The alternative proposed in this study takes the opposite approach: Rather than increasing the frequency
+of MMS estimates, we propose to increase the time-resolution of inventories by re-calculating annual average
+inventory data to stochastically recreate minute-to-minute variability represented by the inventory data.
+Transforming inventory data provides statistical estimates that can be directly compared with short-duration
+
+5
+https://doi.org/10.26434/chemrxiv-2024-g2bt9 ORCID: https://orcid.org/0000-0001-6170-2143 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+estimates from MMS. This approach enables integration of data from multiple observation systems with
+125
+
+different temporal and spatial characteristics, maximizing the value of limited, expensive, survey observations
+and also integrating process data from operators’ on-site instrumentation.
+
+2. Methods
+The proposed MII method compares existing inventory reporting to in-field observations, and then augments the inventory results to construct a complete inventory of emissions, Figure 2. Since comparisons
+130
+
+are done at the level of a facility, the method must maintain differentiation between facilities to account for
+differences in design, size, throughput, and other factors. For each facility, or facility type, the method:
+(A) Replicates existing inventory reporting in a mechanistic inventory simulator, Mechanistic Air Emissions
+Simulator (MAES), to capture the temporal variability in emissions.
+(B) Classifies and compares field observations to the inventory simulation
+
+135
+
+(C) Constructs a separate accounting for maintenance emissions, using engineering estimates and operator
+logs.
+(D) Updates the simulation to account for differences between inventory and field observations.
+(E) Builds and uses the MII - which now contains both the best inventory knowledge and current field
+observations - to compute desired outputs, such as annual inventories or mitigation recommendations.
+
+Figure 2: Overall method description; see text for step-by-step description.
+
+140
+
+In step (A), the analyst typically uses prototypical site models (defined in sections 2.4 and S-6) to replicate
+inventory reports. While MAES outputs are stochastic, annualized results can be directly compared to annual
+reports, assuring that the initial MAES model represents inventory reporting. MAES replication of inventory
+reports often identifies issues with inventory reporting, which is useful to operators, who can update their
+inventory process, and to regulators, who can improve reporting requirements or instructions for reporting.
+6
+
+https://doi.org/10.26434/chemrxiv-2024-g2bt9 ORCID: https://orcid.org/0000-0001-6170-2143 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+145
+
+In (B), comparing TD survey data to operator records and other data typically identifies maintenance
+events that were detected by the survey. Since most survey methods cannot accurately measure highly
+transient maintenance emissions, maintenance (C) is modeled separately from both surveys and MAES
+simulations. Blowdown emissions, for instance, decreases as the vessel depressurizes, and the emissions
+quantification from a snapshot or CEMS measurement might not necessarily capture the average rate over
+
+150
+
+the entire event duration. These emissions are characterized by lists of known maintenance activities kept
+by operators, coupled with estimates of emissions from each event.
+The remaining non-maintenance detections in (B) are classified by cause, identifying some survey detections as ‘already in the MAES model’ and others as ‘additional to the MAES model.’ In (D), these data are
+integrated into the MAES model. Emitters ‘in the model’ are compared to the inventory reports and MAES
+
+155
+
+model outputs to identify differences in the frequency and emission rates, by emitter type. These data can be
+used to adjust MAES simulation parameters. Emitters that are not in the MAES model can be characterized
+by frequency and emission rate observed in the survey(s), and added to the MAES model.
+At the end of step (D), the MAES model contains both a full representation of operators’ inventory
+reports and a full representation of any additional emitters identified by surveys, minimizing the possibility
+
+160
+
+of overlap or duplication. The results is a robust MII.
+Comparisons indicated in Figure 2 are statistical. Replicating the inventory reports in MAES captures the
+temporal variability inherent in the emissions processes, which can be directly compared to the short-duration
+survey results (see Section 2.5 below).
+To further describe the proposed modeling approach, we first introduce the two data sets utilized in the
+
+165
+
+study: (1) state regulatory reporting used to model the DJ basin in Colorado, followed by a description of
+the TD data set, represented by aerial data from the Colorado Coordinated Campaign (C3) project [38, 42].
+With the data sets in hand, methods return to an overview of the modeling tool, MAES, and the proposed
+MII methodology.
+2.1. Study Area
+
+170
+
+Although the entire DJ basin expands into the southeast Wyoming and southwest of Nebraska, there is
+relatively little development in these areas. Therefore, the study team delineated the basin boundary for this
+study based on the aerial campaign, as our objective is to integrate aerial measurements into our models.
+The area of interest lies within the Colorado portion of the basin bounded by the coordinates 39.9 to 40.7
+latitude and -104.2 to -105.3 longitude; hereafter the ‘DJ basin’.
+
+175
+
+The study area includes production and a subset of midstream: compressor stations and gas processing
+plants. Production in the DJ basin is considered associated gas, indicating that the basin produces both oil
+(light, sweet, crude) and natural gas. Additionally, several communities in the study area are serviced by gas
+distribution utilities; emissions from distribution are not analyzed in this study.
+At the time of this study, the four major operators that partnered with the C3 project accounted for 81%
+
+180
+
+of all production sites in the basin. The remaining 19% are distributed among other companies.
+7
+
+https://doi.org/10.26434/chemrxiv-2024-g2bt9 ORCID: https://orcid.org/0000-0001-6170-2143 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Facility Count in the DJ Basin (CO Subpart)
+Facility Type
+
+Count
+
+Overlap
+
+Production
+
+4708
+
+-
+
+Pre-production
+
+129
+
+80 overlap with Production
+
+Midstream
+
+109
+
+-
+
+Total
+
+4866
+
+Table 1: O&G facility count in Colorado portion of DJ basin [42]
+
+Status
+
+Production
+
+Midstream
+
+Operating
+
+2775
+
+94
+
+Partial Operation
+
+136
+
+2
+
+Shut-in
+
+1539
+
+12
+
+Abandoned
+
+248
+
+0
+
+Other
+
+10
+
+1
+
+Table 2: Operating status of O&G facilities in DJ basin [42]
+
+2.2. Reported Inventory Data
+The reported inventory data for this work comprises two sources: data reported from production companies to Colorado Department of Public Health and Environment (CDPHE)’s ONGAEIR (inventory year
+2021) and additional equipment information that midstream companies provided to the Midstream Steering
+185
+
+Committee (MSC) [43], a working group assessing methods to reduce emissions from midstream facilities.
+O&G companies operating in Colorado are required to report their emissions to the ONGAEIR program[42].
+Because companies are also required to report their inventory data to this program, the information provided
+below serves as inputs for the MAES models described later in detail:
+- Facility Information (name, latitude and longitude)
+
+190
+
+- Equipment Count (wells, separators, flares, compressors, oil and water tanks)
+- Pneumatic Type (electric, instrument air, gas)
+- Annual Production Information (gas, water and oil)
+- Annual CH4 Emissions
+- Compressor information (annual operating hours, power rating)
+
+195
+
+Tables 1 and 2 show the number of O&G facilities in the DJ basin in 2021 and their operating status,
+respectively, as reported to ONGAEIR. A total of 80 facilities reported as in pre-production stage and
+8
+
+https://doi.org/10.26434/chemrxiv-2024-g2bt9 ORCID: https://orcid.org/0000-0001-6170-2143 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+converted to production later in the year, causing an overlapping count of 80 facilities in these stages. Preproduction refers to the stage of an O&G facility where drilling and other extraction processes are performed
+before the production activities begin. Excluding the overlaps, there was a total of 4866 facilities in 2021,
+200
+
+with 62.8% either in operating or partially operating state. Definitions about the facilities operating status
+can be found in S-2. Emissions from production sites categorized as shut-in, other, and abandoned were
+not considered in this study. Comprehensive information on emissions from abandoned wells in Colorado is
+available in a study by Riddick et al. [44].
+2.3. Aerial Data
+
+205
+
+Aerial surveys conducted by Carbon Mapper (CM) took place in July and September of 2021, encompassing a substantial portion of the basin [45]. The surveys were conducted on both weekdays (67%) and
+weekends (33%). Zimmerle et al. classified emissions associated with maintenance events through rigorous
+plume matching to operator-provided data on maintenance activities [38].
+Following this classification, the study team aggregated any plumes not matched as maintenance activi-
+
+210
+
+ties into a unified category to represent ”Failure-Induced Emissions”, segregated by sector (production and
+midstream). Although required, since emissions from upset conditions are, by their nature, challenging to
+detect and characterize, they are often absent from the annual GHG reports required by CDPHE and other
+environmental regulatory agencies. The recent finalized GHGRP Subpart W [6], for instance, requires operators to report emissions resulting from equipment failures, including well blowouts, gas leaks, thief hatch
+
+215
+
+releases on storage tanks, compressor seals, intermittent flare emissions, and other operational failures. If
+emissions from these upset conditions result in an instantaneous release of 100 kg/h or more of CH4 , or if they
+cumulatively exceed 250 metric tons of CO2 e, they must be reported as large release events and meet specific
+requirements. Therefore, the data collected by the aerial survey is used to determine the size, frequency, and
+duration of emissions from upset conditions, which is later integrated into the MAES models.
+
+220
+
+Failure-induced emissions primarily originate from substandard equipment maintenance or abnormal process conditions such as unlit or malfunctioning flares, open tank thief hatches, stuck dump valves, compressor
+large seal vents, and miscellaneous equipment. More details on failure events commonly found in the field,
+and how their origins, are described in Supplementary Information (SI) Section S-4. Moreover, understanding
+the mechanisms behind such events requires some background information about major equipment in oil gas
+
+225
+
+sites. Hence, section S-3, also in the SI, elaborates on the operation of major equipment where they occur.
+The frequency of failure on a particular equipment or event type is directly calculated from aerial observations: Number of emissions identified divided by total number of aerial observations on that equipment or
+event type.
+Calculated frequencies are used in MAES to set how often these failure events will occur for the equipment
+
+230
+
+or event type; see Sections S-8 and 3.1.
+
+9
+https://doi.org/10.26434/chemrxiv-2024-g2bt9 ORCID: https://orcid.org/0000-0001-6170-2143 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+2.4. MAES Overview
+Multiple modeling tools have been developed to estimate emissions from O&G sites. The first type is
+physio-chemical simulations that use equations of state, equipment design and settings, and related information to simulate process flows through a facility. In the context of production and midstream facilities
+235
+
+considered here, these tools simulate varying gas/liquid compositions seen during physical separation, dehydration, and compression of produced product, including flows to atmosphere – i.e. air emissions. Common
+physio-chemical simulators include ProMax
+
+®, widely used in upstream and midstream for facility design and
+
+diagnostics[46, 47, 48], and Aspen HYSYS, which is commonly used for optimizing hydrocarbon processes
+[49, 50, 51].
+240
+
+Physio-chemical simulation is virtually required for the design of all but the simplest facilities. Typically
+short duration, highly detailed, transient simulations are used to select equipment and set process parameters.
+Simulations require detailed equipment models - often provided by manufacturers - coupled with detailed
+interconnection between equipment units, and process data like pressures, temperatures, flow rates, etc. Little
+of this data is available publicly, as site designs are proprietary information. These simulators are used to
+
+245
+
+investigate failure conditions, by creating failure conditions and observing resulting emissions, safety issues,
+etc. Each simulation lasts a few minutes and produces highly detailed results. However, simulations are too
+computationally intensive to simulate the long durations needed to characterize the frequency and duration
+of failure events.
+A second type of simulator represents failure conditions as stochastic events with no process coupling
+
+250
+
+between equipment units such as FEAST [52] and LDAR-Sim [53]. These simulators use traditional inventory
+data - activity and emissions distributions – simulated in time. This type of stochastic simulation supports
+fast, long-duration, simulation, and can be thought of as a time-series representation of traditional inventories.
+These simulators are fast, and if the input data is strongly representative of the simulated facilities, as accurate
+on average as traditional inventories using the same inputs. However, since these simulators rely on emission
+
+255
+
+and activity distributions collected from previous studies, simulated sites lack site-specific behaviors. One
+common example is that emissions do not scale with the throughput of sites, leading to cases where a small
+site may produce unrealistically high emissions, or the inverse, where emissions are unrealistically low for a
+high-throughput site. Additionally, this type of simulation cannot readily represent failure conditions coupled
+with other failures or process conditions. For example, when wells cycle between production and shut-in (a
+
+260
+
+common production method), emissions from failure conditions typically cycle with the wells. Since these
+simulators do not simulate inter-equipment coupling, simulated emissions are unrealistically steady-state.
+MAES represents a third type of simulator blending the two previous types of simulation. MAES utilizes
+mechanistic models to simulate failure conditions. Mechanistic models reduce complex physio-chemical processes to the mechanisms which cause failures and emissions, coupled and scaled by the fluid flows through
+
+265
+
+equipment. Both fluid flows and emission rates originate with field observations and/or physio-chemical simulations. Mechanistic modeling retains the coupling between equipment units represented in physio-chemical
+
+10
+https://doi.org/10.26434/chemrxiv-2024-g2bt9 ORCID: https://orcid.org/0000-0001-6170-2143 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+models, retaining realism while gaining significant computational efficiencies. Conversely, for smaller emitters, or emitters which are not heavily impacted by mechanistic coupling, MAES utilizes time series variants
+of traditional inventory methods, similar to those used in purely stochastic simulators. SI Section S-5 de270
+
+scribes both methodologies and specifies which method was utilized for each emission type (e.g., seal vents,
+component leaks, tank thief hatch, etc.).
+MAES estimates CH4 and other hydrocarbon emissions with a 1-second resolution over simulation spans of
+hundreds of years. This extensive time frame allows modeling of rare events that occur at sub-1% frequencies.
+Modern facility design have engineered out many failure events caused by the failure of a single component
+
+275
+
+or equipment unit. Therefore, a key key goal of these simulations is to capture emission events which occur
+when two or more rare failures occur simultaneously. For example, in modern facilities with three or more
+stages of separation process, small amounts of gas flash during the last separation stage before liquid storage
+tanks. If the separator’s dump valve sticks open, the tank’s control system (typically a combustor) is likely
+to handle all of the incoming gas. However, if both valve and flare fail simultaneously, emissions may be
+
+280
+
+substantial and caught by aerial or on-site surveys.
+To simulate an O&G facility, MAES requires the following datasets: i) Site gas composition: information
+about gas flashing ratios and composition for all stages of physical separation. These parameters are calculated
+from gas-oil ratio (GOR), the American Petroleum Institute (API) gravity of oil produced or processed, and
+process conditions; ii) Site information: lists of equipment on site. iii) Site configuration: a flow diagram
+
+285
+
+illustrating the fluid interconnections (gas, oil, and water) between equipment units. Flow diagrams provide
+a visual representation of how emission drivers mechanistically link between equipment units. Figure 3
+summarizes all the inputs and outputs of MAES.
+Site-specific Site Configurations for thousands of sites in a basin would require detailed information
+for every site, which requires significant effort and engagement from site operators; this not scalable for
+
+290
+
+widespread usage. However, every production facility is not uniquely designed. Operators use common
+designs across many sites, often modifying the facility size by replicating one separation train design to
+match the number of wells connected to one facility. Further, each revision of production site designs
+typically reflect regulations in effect at the time of design, coupled with the latest in production process
+technology. After construction, production facilities are infrequently modernized in a major way. Therefore,
+
+295
+
+while there are thousands of sites in a basin, the site configuration of most sites can be categorized into a
+relatively small number of prototypes which capture the facility design in sufficient detail for highly accurate
+temporal simulation of emissions.
+For this study, multiple working sessions were conducted with operators to capture facility configurations,
+called prototypical sites (PSs), that serve as representative models for their production sites. Development
+
+300
+
+of the PSs and classification methods are described in SI Section S-6. Given a PS to represent a site,
+the scale of the site (Site Information) can be developed from regulatory reporting or similar inventory
+data. Using reported data scales individual sites to the appropriate equipment complexity and throughput
+
+11
+https://doi.org/10.26434/chemrxiv-2024-g2bt9 ORCID: https://orcid.org/0000-0001-6170-2143 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure 3: MAES Inputs and Outputs. Graphic on left lists inputs required for MAES simulation, see SI for additional detail.
+The graphic on the right illustrates the form of the simulation results and applications.
+
+parameters. Operational data can be used to enhance modeling. For example, maintenance logs identify the
+timing of blowdown emissions, and compressor run-time data constrains facility throughput. These data are
+305
+
+particularly useful during aerial measurements, as they simplify cause analysis of the emissions detected by
+the aircraft.
+Simulating a site in MAES generates time series of mechanistic behavior; see example in Figure 4. Time
+series are of direct use for some purposes; a typical example is to simulate downwind concentrations for
+on-site emission monitors[54]. More commonly, time series are processed into probability distributions: The
+
+310
+
+modeled probability that an emissions of a specified size would occur at a specified location given a specified
+observation duration. Survey methods - aerial or on-site - have varying levels of temporal and spatial
+specificity. Aggregating emissions to the appropriate spatial and time scales supports direct comparison
+between field data and modeled results. The example results in Figure 4 are aggregated at the 1-Hz level
+in Figure 5, a temporal resolution suitable for comparison to aerial methods like the method used in the C3
+
+315
+
+campaign.
+Mechanistic modeling bridges the gap between aerial data (or similar field data) and the likely cause
+of emissions from a facility. Traditional emission models provide only long-term average emissions, while
+survey methods provide short-duration snapshots of emissions. These snapshots mix normal, highly-variable,
+emission sources with abnormal process failures; the time-averaged traditional inventories provide little insight
+
+320
+
+into what the aerial method may have seen. Conversely, on sites with no aerial detections, emissions are
+12
+
+https://doi.org/10.26434/chemrxiv-2024-g2bt9 ORCID: https://orcid.org/0000-0001-6170-2143 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure 4: Example MAES simulation for a facility. The facility was simulated for 14 days for 300 iterations with all time
+variability active. Light blue lines show individual iterations. Darker blue shows the mean across all iterations.
+
+Figure 5: Results from Figure 4 converted to probability (top) and cumulative (bottom) density functions. For this facility,
+the simulated mean emission rate, and the inventory reported to regulators, is 6.6 CH4 kg/h. In contrast, the 1-Hz simulated
+emission rate varies from 1.3 to 53 CH4 kg/h.
+
+13
+https://doi.org/10.26434/chemrxiv-2024-g2bt9 ORCID: https://orcid.org/0000-0001-6170-2143 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+seldom zero and neither aerial nor inventories provide insight into peak or average emission rates of these
+facilities.
+In this study the General Aviation Operations (GAO) aircraft had a high detection limit (10s to 100s
+kg/h [55, 36]), an observation time of a few seconds and spatial resolution no better than the scale of a major
+325
+
+equipment (e.g., tanks, compressors, flares) group. Aerial detections were first classified (approximately) as
+maintenance versus failure conditions [38], then all failure-induced emissions were aggregated into a single
+category to simulate in MAES. This is equivalent to aggregating all failures to the facility level. To compare
+aerial and simulated data, MAES results were similarly binned in time (seconds) and space (facility). The
+frequency of detected emitters was calculated from the frequency observed by the aerial method, while the
+
+330
+
+estimated durations were varied from 3 to 14 days. Results of the simulation are not sensitive to the failure
+duration for the purposes used here, see SI Section S-7.
+2.5. A Methodology for Integrating MAES and Aerial Data to Construct a Robust MII
+This section describes the process used in Figure 2, step (D). In Step (A) the analyst recreates the annual
+inventory data by building Site Information and Site Configuration for each facility in MAES. Simulations
+
+335
+
+produce granular, time-varying, emission estimates for each site, which are converted into statistical representations of emissions: i.e. the probability that a survey method would see emissions of a specific size
+(Figures 4 and 5). In Step (B) and (C) maintenance emissions were separated from aerial detections for
+later processing. Therefore, entering Step (D), the MAES results represent statistics of emissions expected
+from the reported inventory (Figure 5), while aerial detections, with their uncertainty, represent statistics of
+
+340
+
+abnormal failure conditions which may or may not be in the inventory. Both data sets are also at the same
+time resolution.
+In Step (D) the two sets of statistics can be methodically compared to identify and characterize potential
+abnormal emissions that were not in the inventory and therefore not in the MAES simulated data. While in
+practice automated statistical methods could be used, Figure 6 provides an informal visual representation of
+
+345
+
+the comparison.
+
+14
+https://doi.org/10.26434/chemrxiv-2024-g2bt9 ORCID: https://orcid.org/0000-0001-6170-2143 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure 6: Overlay of a single aerial detection the simulation data. Blue lines duplicate simulation data from Figure 5, with
+a change in X-axis to reflect the larger values from th aerial method. Light red background and dotted line represent the
+uncertainty band and mean estimate from the aerial method for this detection. Aerial method uncertainty was developed from
+previous tests of the method.
+
+In this example, the aerial detection’s mean, and the preponderance of it’s uncertainty band represent
+larger emission rates than any emitter simulated in MAES. It is therefore highly unlikely that the emitter
+captured by the aerial detection was included in the MAES simulation, and by extension, in the inventory
+reported for this facility.
+350
+
+In Step (D) these abnormal emissions are used to supplement the incomplete annual inventory; i.e. we use
+the aerial measurements to inform the inventory (MII). Extending the example in Figure 6, data from this
+detection should be added to the inventory to produce a higher quality inventory, and the MAES simulation
+should be updated for future simulations to include this type of emission event. If causal data can be
+determined, the emitter type can be added to the MAES model or the frequency and/or size of an existing
+
+355
+
+emitter could be adjusted using the aerial data.
+The method described above becomes more powerful as more aerial detections are accumulated. For
+example, consider a case where an aerial method detects, over an extended survey, multiple tank venting
+emissions where none should be present. This type of failure could be enabled in MAES and the frequency
+of failure could be set to the ratio of aerial detections (of this emitter type) to the number of tanks observed.
+
+15
+https://doi.org/10.26434/chemrxiv-2024-g2bt9 ORCID: https://orcid.org/0000-0001-6170-2143 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+360
+
+Duration can then be estimated from observational data - from aerial revisits or other information - and
+emission rates adjusted to match the observed emission rates (SI Section S-7). Once these data are included
+in MAES, a future MAES simulation will reflect the combination of the inventory reporting augmented by
+the aerial detection, and results will reflect the statistics of both data sets.
+This process works consistently using any field observations with information about abnormal emissions.
+
+365
+
+For example, CEMS can estimate the frequency, size, and duration of emitters, with some spatial specificity,
+albeit with wide uncertainty bands. To make comparisons to MAES results, simulation time series would be
+aggregated to the same reporting cadence as the CEMS - typically 15 minute average emissions. Comparisons
+similar to Figure 6 are then valid: Data are in the same spatial and temporal resolution, with frequency,
+emission rate, and duration coming from repeated CEMS sampling.
+
+370
+
+Similarly, LDAR surveys provide data on the frequency and size of component leaks that are frequently
+below the detection threshold from aerial surveys and other emitter types that are frequently detected, and
+may be measured, during LDAR surveys. Since LDAR data are source-specific and most often have specific
+causal information, these data can be directly input into the MAES model for a PS site, or group of sites.
+In summary, the proposed method shifts the perspective of an annual inventory report from being a final
+
+375
+
+deliverable to being one input to a process that blends inventory with other available data, from LDAR
+or measurement surveys to process data collected by the facility’s supervisory control and data acquisition
+(SCADA) system.
+
+3. Results and Discussion
+This section presents the aerial measurements conducted by Carbon Mapper and applies the previously
+380
+
+described method to identify emissions from failure conditions. These emissions are then integrated into the
+annual reported emissions inventory for facilities located within the DJ basin, using MAES.
+The method is initially demonstrated using an example facility. Then, this process is repeated, applying
+CM’s detected abnormal emissions for all prototypical sites in the basin, and present a comparison between
+simulations conducted with and without abnormal emissions against the numbers reported in ONGAEIR
+
+385
+
+for the upstream sector. The results from simulations incorporating abnormal emissions are then utilized to
+establish the MAES multiplier factor as one of the methods for CDPHE’s Upstream Verification Intensity
+Rule.
+3.1. Carbon Mapper’s Measurements
+For production sites, there were 22 detections attributed to failure conditions observed during 43,277
+
+390
+
+overflights of production equipment susceptible to failure (i.e., separators, tanks, flares, and miscellaneous
+equipment). This figure represents the total number of overflights, and most equipment units were surveyed
+multiple times, most often two or more days later. This yields a probability of failure-induced emissions for
+
+16
+https://doi.org/10.26434/chemrxiv-2024-g2bt9 ORCID: https://orcid.org/0000-0001-6170-2143 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+failures . In the case of midstream sites, 13 probable detected failures were
+production sites of 5.1 × 10–4 overflight
+failures .
+detected during 670 equipment overflights, yielding a failure rate probability of 1.9 × 10–2 overflight
+395
+
+SI Section S-8 shows histograms of detections recorded by CM for the production and midstream sector
+in the surveyed area. For each detection, random synthetic samples were produced comprising 5000 values
+drawn from a normal distribution using the mean and standard deviation provided by CM (data provided in
+SI). All detections were then combined and binned at 1 kg/h, producing results in Figure 7 for production
+and Figure 8 for midstream. These numbers were used to build a distribution of failure-induced emissions
+
+400
+
+for each sector.
+Then, to account for emissions from upset conditions measured by CM, when the MAES models are run,
+for each Monte Carlo (MC) iteration, a random value is selected from the distribution built for that sector,
+whenever there is a probability of such an event taking place.
+
+Figure 7: Combined large CH4 emissions from production facilities. Legend shows the plume ID provided by Carbon Mapper
+
+3.2. Integrating Abnormal Emissions into Annual Inventories
+405
+
+Although required, emissions from upset conditions are likely not included in ONGAEIR due to their
+infrequent and intermittent nature, making them difficult to detect. To ensure comparability, the study team
+fine-tuned MAES models so that estimated methane emission match the ones reported in ONGAEIR under
+normal conditions through workshops with operators.
+The effectiveness of measurement-informed inventories in incorporating emissions from abnormal condi-
+
+410
+
+tions through survey data is highly dependable on the planned field campaign. A well-planned campaign is
+
+17
+https://doi.org/10.26434/chemrxiv-2024-g2bt9 ORCID: https://orcid.org/0000-0001-6170-2143 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure 8: Combined large CH4 emissions from midstream facilities. Legend shows the plume ID provided by Carbon Mapper
+
+crucial, as it ensures the accurate characterization of the likelihood, size, and duration of abnormal events
+through comprehensive ground and aerial surveys.
+As described in the previous subsection, distributions of large emitters based on detected emissions were
+developed separately for the production and midstream sectors, with corresponding probabilities of occur415
+
+rence. In MAES, these events were modeled uniformly across all sites as a single source of large emissions,
+with durations ranging from 3 to 14 days. Ideally, emissions would be categorized by specific upset conditions
+(e.g., tank overpressure, flare malfunction, compressor seal failure). However, the aerial survey’s detection
+limit for CH4 emissions (50–150 kg/h) and spatial resolution of the instrument [56] required the study team
+to group all large emissions into a single category. This limitation also restricted the ability to estimate an
+
+420
+
+upset-specific verification multiplier for each prototypical site, allowing only for the calculation of a general
+multiplier.
+To illustrate these challenges, a simulation was ran for the same example production site introduced
+in Subsection 2.5 (Facility A). The simulations exclude emissions from maintenance events and, i.e., only
+emissions due to regular operations and abnormal conditions are simulated.
+
+425
+
+Figure 9 shows the annual range of CH4 emissions for this example site, when the simulation is conducted
+for a longer time-frame (365 days) and 100 MC iterations. When abnormal conditions are not considered (as
+is commonly done in the reported inventories), the annual average CH4 emissions amounts to 44.4 metric
+tons. Conversely, when abnormal emissions are included, the annual average CH4 emissions rise to 57.8
+metric tons, a 30.2% increase.
+
+18
+https://doi.org/10.26434/chemrxiv-2024-g2bt9 ORCID: https://orcid.org/0000-0001-6170-2143 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure 9: Results from MAES simulation showing the annual average CH4 emissions for Site 1. The upper plot depicts the range
+of emissions from normal and abnormal events. In the lower plot, the blue and red bars correspond to normal and abnormal
+annual average CH4 emissions per MC iteration. Abnormal emissions are less frequent and do not appear in every iteration.
+Also shown as dotted horizontal lines are average across all MC emissions - blue the emissions excluding these abnormal events,
+red including abnormal events.
+
+430
+
+3.3. MAES Multiplier for the Upstream Verification Intensity Rule
+The study team utilized ONGAEIR inventory data from 2021 to build MAES simulations. The simulations
+were tuned to match the reported methane emissions reported in the inventory and the result stayed within
+10% when we stopped tuning the model, as seen in Table 3 (Step A in Figure 2). Then, we added (large)
+emitters classified as fugitives from CM detections to all simulated sites in the DJ basin, classified under
+
+435
+
+all prototypical sites. The simulation results are summarized and compared against emissions reported by
+operators to ONGAEIR in Table 3. Neither reported emissions or simulation results account for emissions
+resulting from the following activities: loadout, drill mud, flowback or completions, well maintenance, and
+well bradenhead.
+
+19
+https://doi.org/10.26434/chemrxiv-2024-g2bt9 ORCID: https://orcid.org/0000-0001-6170-2143 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Average Annual Emissions (Gg CH4 - Production Sector)
+With Large Emitters
+
+No Large Emitters
+
+Reported
+
+Simulated
+
+Simulated
+
+(excludes Maintenance)
+
+15.6
+
+12.0
+
+13.4
+
+Table 3: MAES simulated CH4 emissions for production sites in short tons per year. The table presents results for simulations,
+comparing scenarios with and without the incorporation of large emitters. The comparison focuses solely on the simulated
+production sites. Neither reported emissions or simulation results account for emissions resulting from maintenance activities.
+Results for midstream sector, which is currently not included in the intensity verification rule, can be seen in Section S-10
+
+When including the large fugitive emitters in the simulations, the calculated MAES multiplier dor the DJ
+440
+
+basin specifically of 1.16 (15.6/13.4) reveals that 16.4% of emissions reported to CDPHE are missing or underreported. Unplanned equipment failures are often excluded due to insufficient detection and characterization
+of their size, frequency, and duration. Improved detection and characterization through advanced monitoring
+technologies, such as aerial/ground surveys, LDAR programs and CEMS, are critical to addressing these
+gaps. In this context, the value of 16.4% likely represents a lower bound, as CM’s technology, with its high
+
+445
+
+detection limit, may fail to capture smaller failure emission events that could go unreported [55]. Examples
+include tank emissions (under normal or upset conditions), compressor seal vents, malfunctioning flares, and
+facility piping leaks. Site-specific factors, including configuration, age, and operator practices, reinforce the
+need for tailored mitigation strategies. Automated systems, like those for unlit pilots on heaters or pressure
+sensors on tanks, offer practical solutions for preventing overpressure events and reducing emissions. By
+
+450
+
+recognizing, understanding and addressing these unreported events, the scientific community, regulators and
+operators take a critical step toward more accurate emissions reporting and effective mitigation efforts.
+
+4. Conclusions
+This study presents the outcomes of advancements in assessing CH4 emissions through the use of measurementinformed inventories (MIIs) and intensive cooperation between academia, industry, and government agencies.
+455
+
+Historically, BU models have gone through a persistent oversimplification, often lacking pertinent details
+regarding gas compositions, failure events and variability in emissions within and between days, by averaging
+emissions with emission factors. Averaging emissions over many facilities overlooks facility-to-facility variation, which can be accounted for by mechanistically modeling emissions that vary with flow rates. MAES
+addresses these shortcomings by providing a correlation between major equipment’ operational states and
+
+460
+
+fluid flows to their emissions, a fine resolution to estimate emissions down to 1-second, and by enabling the
+correct integration of field measurements into a measurement-informed inventory to account for abnormal
+events.
+Representative models require accessible information to accurately reflect real-world facility operations.
+Such information often relies on operators and regulatory agencies. This underscores the importance of public
+
+20
+https://doi.org/10.26434/chemrxiv-2024-g2bt9 ORCID: https://orcid.org/0000-0001-6170-2143 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+465
+
+data – particularly activity data – that is site-specific. Colorado’s reporting program provides extensive
+data that allows most modeling to be completed with minimal non-public data from operators. As of today,
+reproducing similar outcomes in basins of other states would pose challenges and require robust collaboration
+with stakeholders, primarily due to the scarcity of available data.
+The study highlights a relevant oversight in O&G inventories: none of them include realistic representation
+
+470
+
+of emissions from upset conditions, a problem that extends beyond Colorado and the upstream sector. This
+emphasizes the need for a comprehensive intensity rule to address abnormal emissions. It is essential to
+acknowledge that integrating and comparing aerial/ground measurements with inventories must be executed
+thoughtfully, considering that measurements are typically intermittent and instantaneous while inventories
+are incomplete and built with average emissions over an annual time frames. The novel methodology proposed
+
+475
+
+in this study proposes a shift in mindset towards the idea that only by increasing the number of aerial or
+ground surveys inventories can be improved. While conducting thousands of measurements may indeed lead
+to improved MIIs, this approach is constrained by practical and financial limitations. Instead, surveys should
+be designed to adequately characterize abnormal emissions so they could be integrated with annual inventory
+data using spatially and temporal bottom-up inventories with fine time-resolution, such as MAES.
+
+480
+
+While this study marks the first basin model created with MAES, it is not without limitations, as follows:
+(i) The probability for failure events set in this study relies on CM’s detection limit which resides between
+50-150 kg/hr. The number of events below that threshold is unknown and may have a significant impact
+in the total emissions. Using alternative solutions with a lower detection limit may improve emissions
+estimates.
+
+485
+
+(ii) The study team uses a single MAES-derived intensity multiplier that applies universally to all prototypical sites. This methodology could be enhanced by gathering more specific data on failure events.
+With such data, the study team could tailor abnormal emissions to the specific prototypical sites where
+these events are applicable. However, at the time of this study, aerial survey data necessary for this
+level of specificity was unavailable.
+
+490
+
+(iii) The aerial campaign was not specifically designed to target particular failure events, which provide key
+information in the MAES models. The Site-Aerial-Basin Emissions Reconciliation (SABER) project is
+expected to commence aerial campaigns in the DJ Basin in summer 2024, which could provide tailored
+data to improve these models [57].
+(iv) Emissions from maintenance activities were excluded from the analysis, although they may represent
+
+495
+
+a potential source of inventory inaccuracies. While MAES accounts for emissions during normal and
+abnormal conditions, it does not currently simulate maintenance events.
+A suggestion for future studies is to leverage MAES to offer insights into the optimal design of ground
+and aerial surveys for detecting specific emission types and events. This approach can be tailored based on
+the frequency or duration of the emissions of interest. For instance, the aerial survey employed in this study
+
+500
+
+could potentially be optimized to provide more robust data for enhancing our models.
+21
+
+https://doi.org/10.26434/chemrxiv-2024-g2bt9 ORCID: https://orcid.org/0000-0001-6170-2143 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+5. Acknowledgments
+This study is part of the C3 project. Funding was provided to Public Project 3e, by The Mark Martinez
+and Joey Irwin Memorial Public Projects Fund, as addressed in the April 13, 2020 Administrative Order by
+Consent, Order No. 1V-709. The views expressed in the article do not necessarily represent the views of the
+505
+
+funding institution. The authors extend their gratitude to all our operator partners and to CDPHE for their
+critical contribution to this work.
+
+References
+[1] The White House Office of Domestic Climate Policy, U.s. methane emissions reduction action plan (2021).
+
+URL https://www.whitehouse.gov/wp-content/uploads/2021/11/US-Methane-Emissions-Reduction-Action-Pla
+510
+
+pdf
+[2] OGMP, The oil and gas methane partnership (2024).
+URL https://ogmpartnership.com/
+[3] Equitable Origin, Energy certification (2024).
+URL https://energystandards.org/
+
+515
+
+[4] MiQ, The miq standard (2024).
+URL https://miq.org/the-technical-standard/
+[5] IPCC, 2019 refinement to the 2006 ipcc guidelines for national greenhouse gas inventories (2024).
+
+URL https://www.ipcc.ch/report/2019-refinement-to-the-2006-ipcc-guidelines-for-national-greenhouse[6] United States Environmental Protection Agency, Subpart w rulemaking resources (2024).
+520
+
+URL https://www.epa.gov/ghgreporting/subpart-w-rulemaking-resources
+[7] G. of Canada, Technical overview of changes to british columbia’s oil and gas methane emissions (2024).
+URL
+
+https://www.canada.ca/en/environment-climate-change/services/climate-change/
+
+greenhouse-gas-emissions/inventory/technical-overview-changes-british-columbia-oil-gas-methane-emis
+html
+525
+
+[8] T. L. Vaughn, C. S. Bell, C. K. Pickering, S. Schwietzke, G. A. Heath, G. Pétron, D. J. Zimmerle,
+R. C. Schnell, D. Nummedal, Temporal variability largely explains top-down/bottom-up difference in
+methane emission estimates from a natural gas production region, Proceedings of the National Academy
+of Sciences 115 (46) (2018) 11712–11717.
+[9] D. T. Allen, A. P. Pacsi, D. W. Sullivan, D. Zavala-Araiza, M. Harrison, K. Keen, M. P. Fraser,
+
+530
+
+A. Daniel Hill, R. F. Sawyer, J. H. Seinfeld, Methane emissions from process equipment at natural
+gas production sites in the united states: Pneumatic controllers, Environmental science & technology
+49 (1) (2015) 633–640.
+22
+
+https://doi.org/10.26434/chemrxiv-2024-g2bt9 ORCID: https://orcid.org/0000-0001-6170-2143 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+[10] W. Daniels, J. L. Wang, A. Ravikumar, M. Harrison, S. Roman-White, F. George, D. Hammerling,
+Towards multi-scale measurement-informed methane inventories: reconciling bottom-up site-level inven535
+
+tories with top-down measurements using continuous monitoring systems (2023).
+[11] S. N. Riddick, M. Mbua, A. Santos, W. Hartzell, D. J. Zimmerle, Reconciling top-down and bottom-up
+methane emissions estimates in the delaware basin (2023).
+[12] D. Zavala-Araiza, D. R. Lyon, R. A. Alvarez, K. J. Davis, R. Harriss, S. C. Herndon, A. Karion, E. A.
+Kort, B. K. Lamb, X. Lan, et al., Reconciling divergent estimates of oil and gas methane emissions,
+
+540
+
+Proceedings of the National Academy of Sciences 112 (51) (2015) 15597–15602.
+[13] A. R. Brandt, G. Heath, E. Kort, F. O’Sullivan, G. Pétron, S. M. Jordaan, P. Tans, J. Wilcox, A. Gopstein, D. Arent, et al., Methane leaks from north american natural gas systems, Science 343 (6172)
+(2014) 733–735.
+[14] G. Plant, E. A. Kort, C. Floerchinger, A. Gvakharia, I. Vimont, C. Sweeney, Large fugitive methane
+
+545
+
+emissions from urban centers along the us east coast, Geophysical research letters 46 (14) (2019) 8500–
+8507.
+[15] S. Hoerning, Quantifying fugitive methane emissions in queensland, australia, in: 84th EAGE Annual
+Conference & Exhibition, Vol. 2023, European Association of Geoscientists & Engineers, 2023, pp. 1–5.
+[16] O. Schneising, J. P. Burrows, R. R. Dickerson, M. Buchwitz, M. Reuter, H. Bovensmann, Remote sensing
+
+550
+
+of fugitive methane emissions from oil and gas production in north american tight geologic formations,
+Earth’s Future 2 (10) (2014) 548–558.
+[17] S. N. Riddick, D. L. Mauzerall, Likely substantial underestimation of reported methane emissions from
+united kingdom upstream oil and gas activities, Energy & Environmental Science 16 (1) (2023) 295–304.
+[18] S. Schwietzke, W. M. Griffin, H. S. Matthews, L. M. Bruhwiler, Global bottom-up fossil fuel fugitive
+
+555
+
+methane and ethane emissions inventory for atmospheric modeling, ACS Sustainable Chemistry & Engineering 2 (8) (2014) 1992–2001.
+[19] R. A. Alvarez, D. Zavala-Araiza, D. R. Lyon, D. T. Allen, Z. R. Barkley, A. R. Brandt, K. J. Davis,
+S. C. Herndon, D. J. Jacob, A. Karion, et al., Assessment of methane emissions from the us oil and gas
+supply chain, Science 361 (6398) (2018) 186–188.
+
+560
+
+[20] D. R. Lyon, D. Zavala-Araiza, R. A. Alvarez, R. Harriss, V. Palacios, X. Lan, R. Talbot, T. Lavoie,
+P. Shepson, T. I. Yacovitch, et al., Constructing a spatially resolved methane emission inventory for the
+barnett shale region, Environmental science & technology 49 (13) (2015) 8147–8157.
+[21] S. N. Riddick, M. Mbua, A. Santos, W. Hartzell, D. J. Zimmerle, Potential underestimate in reported
+bottom-up methane emissions from oil and gas operations in the delaware basin, Atmosphere 15 (2)
+
+565
+
+(2024) 202.
+23
+
+https://doi.org/10.26434/chemrxiv-2024-g2bt9 ORCID: https://orcid.org/0000-0001-6170-2143 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+[22] W. Mollel, D. Zimmerle, A. Santos, Using prototypical sites to model methane emissions in colorado’s
+denver-julesburg basin using mechanistic emission estimation tool, On-progess (2024).
+[23] CDPHE, Air quality control commission regulations (2024).
+URL https://www.sos.state.co.us/CCR/NumericalCCRDocList.do?deptID=16&agencyID=7
+570
+
+[24] V. G. E. M. E. M. . V. Initiative, Accelerating efforts to reduce global methane emissions (2024).
+URL https://veritas.gti.energy/
+[25] J. A. Brown, M. R. Harrison, T. Rufael, S. A. Roman-White, G. B. Ross, F. C. George, D. Zimmerle,
+Informing methane emissions inventories using facility aerial measurements at midstream natural gas
+facilities, Environmental Science & Technology (2023).
+
+575
+
+[26] J. L. Wang, W. S. Daniels, D. M. Hammerling, M. Harrison, K. Burmaster, F. C. George, A. P. Ravikumar, Multiscale methane measurements at oil and gas facilities reveal necessary frameworks for improved
+emissions accounting, Environmental science & technology 56 (20) (2022) 14743–14752.
+[27] A. Ravikumar, Z. H. Li, S. L. Yang, M. Smith, Developing measurement-informed methane emissions
+inventory estimates at midstream compressor stations (2024).
+
+580
+
+[28] F. J. Cardoso-Saldaña, D. T. Allen, Projecting the temporal evolution of methane emissions from oil
+and gas production sites, Environmental Science & Technology 54 (22) (2020) 14172–14181.
+[29] T. L. Vaughn, C. S. Bell, C. K. Pickering, S. Schwietzke, G. A. Heath, G. Pétron, D. J.
+Zimmerle, R. C. Schnell, D. Nummedal, Temporal variability largely explains top-down/bottomup difference in methane emission estimates from a natural gas production region, Proceed-
+
+585
+
+ings of the National Academy of Sciences 115 (46) (2018) 11712–11717.
+
+arXiv:https:
+
+//www.pnas.org/doi/pdf/10.1073/pnas.1805687115, doi:10.1073/pnas.1805687115.
+URL https://www.pnas.org/doi/abs/10.1073/pnas.1805687115
+[30] S. Schwietzke, G. Pétron, S. Conley, C. Pickering, I. Mielke-Maday, E. J. Dlugokencky, P. P. Tans,
+T. Vaughn, C. Bell, D. Zimmerle, et al., Improved mechanistic understanding of natural gas methane
+590
+
+emissions from spatially resolved aircraft measurements, Environmental Science & Technology 51 (12)
+(2017) 7286–7294.
+[31] T. N. Lavoie, P. B. Shepson, M. O. Cambaliza, B. H. Stirm, S. Conley, S. Mehrotra, I. C. Faloona,
+D. Lyon, Spatiotemporal variability of methane emissions at oil and natural gas operations in the eagle
+ford basin, Environmental science & technology 51 (14) (2017) 8001–8009.
+
+595
+
+[32] E. Sherwin, J. Rutherford, Z. Zhang, Y. Chen, E. Wetherley, P. Yakovlev, E. Berman, B. Jones,
+A. Thorpe, A. Ayasse, et al., Quantifying oil and natural gas system emissions using one million aerial
+site measurements (2023).
+
+24
+https://doi.org/10.26434/chemrxiv-2024-g2bt9 ORCID: https://orcid.org/0000-0001-6170-2143 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+[33] C. Bell, J. Rutherford, A. Brandt, E. Sherwin, T. Vaughn, D. Zimmerle, Single-blind determination of
+methane detection limits and quantification accuracy using aircraft-based lidar, Elem Sci Anth 10 (1)
+600
+
+(2022) 00080.
+[34] L. Dubey, J. Cooper, A. Hawkes, Minimum detection limits of the tropomi satellite sensor across north
+america and their implications for measuring oil and gas methane emissions, Science of the Total Environment 872 (2023) 162222.
+[35] R. S. Heltzel, M. T. Zaki, A. K. Gebreslase, O. I. Abdul-Aziz, D. R. Johnson, Continuous otm 33a analysis
+
+605
+
+of controlled releases of methane with various time periods, data rates and wind filters, Environments
+7 (9) (2020) 65.
+[36] B. M. Conrad, D. R. Tyner, M. R. Johnson, Robust probabilities of detection and quantification uncertainty for aerial methane detection: Examples for three airborne technologies, Remote Sensing of
+Environment 288 (2023) 113499.
+
+610
+
+[37] E. D. Sherwin, Y. Chen, A. P. Ravikumar, A. R. Brandt, Single-blind test of airplane-based hyperspectral
+methane detection via controlled releases, Elem Sci Anth 9 (1) (2021) 00063.
+[38] D. Zimmerle, S. Dileep, C. Quinn, Unaddressed uncertainties when scaling regional aircraft emissions
+surveys to basin emission estimates (2023).
+[39] R. E. Day, E. Emerson, C. Bell, D. Zimmerle, Point sensor networks struggle to detect and quantify
+
+615
+
+short controlled releases at oil and gas sites, Sensors 24 (8) (2024) 2419.
+[40] C. Ilonze, E. Emerson, A. Duggan, D. Zimmerle, Assessing the progress of the performance of continuous monitoring solutions under a single-blind controlled testing protocol, Environmental Science &
+Technology (2024).
+[41] C. Bell, C. Ilonze, A. Duggan, D. Zimmerle, Performance of continuous emission monitoring solutions
+
+620
+
+under a single-blind controlled testing protocol, Environmental Science & Technology 57 (14) (2023)
+5794–5805.
+[42] CDPHE, Oil and natural gas annual emission inventory reporting (2023).
+URL https://cdphe.colorado.gov/ongaeir
+[43] Colorado Department of Public Health and Environment, Greenhouse gas reduction planning for oil and
+
+625
+
+gas midstream fuel combustion equipment (2024).
+URL https://cdphe.colorado.gov/midstreamGHGplanning
+[44] S. Riddick, M. Mbua, A. Santos, E. W. Emmerson, F. Cheptonui, C. Houlihan, A. L. Hodshire, A. Anand,
+W. Hartzell, D. J. Zimmerle, Methane emissions from abandoned oil and gas wells in colorado, Available
+at SSRN 4639539.
+25
+
+https://doi.org/10.26434/chemrxiv-2024-g2bt9 ORCID: https://orcid.org/0000-0001-6170-2143 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+630
+
+[45] Carbon Mapper, Co2 data — global open portal — carbon mapper (2023).
+URL https://carbonmapper.org/data/
+[46] D. Tikadar, A. M. Gujarathi, C. Guria, Towards retrofitting based multi-criteria analysis of an industrial
+gas sweetening process: Further insights of co2 emissions, Process Safety and Environmental Protection
+175 (2023) 259–271.
+
+635
+
+[47] J. A. Wilson, Y. Wang, J. Carroll, J. Raush, G. Arkenberg, E. Dogdibegovic, S. Swartz, D. Daggett,
+S. Singhal, X.-D. Zhou, Hybrid solid oxide fuel cell/gas turbine model development for electric aviation,
+Energies 15 (8) (2022) 2885.
+[48] U. E. Okure, V. E. Okure, U. G. Etokakpan, N. Johnson, Dynamic design simulation of acidic natural gas sweetening analysis and the utilization of hybrid amine membrane, ASRIC JOURNAL ON
+
+640
+
+ENGINEERING SCIENCES 11.
+[49] M. El Maghraby, N. El Moniem, A. Abdelghany, Controlling hydrocarbon dew point and water dew
+point of natural gas using aspen hysys, Journal of Engineering and Applied Science 69 (1) (2022) 1–10.
+[50] D. Ivanov, E. Cherkasova, Optimization and mathematical simulation of associated petroleum gas treatment unit in aspen hysys, in: AIP Conference Proceedings, Vol. 2784, AIP Publishing, 2023.
+
+645
+
+[51] J. Cooper, L. Dubey, A. Hawkes, Methane detection and quantification in the upstream oil and gas
+sector: the role of satellites in emissions detection, reconciling and reporting, Environmental Science:
+Atmospheres 2 (1) (2022) 9–23.
+[52] EEMDL, Fugitive emissions abatement simulation toolkit (feast) (2024).
+URL https://www.eemdl.utexas.edu/feast
+
+650
+
+[53] LDAR-Sim, What is ldar-sim? (2024).
+URL https://ldarsim.ca/
+[54] D. Zimmerle, G. Duggan, T. Vaughn, C. Bell, C. Lute, K. Bennett, Y. Kimura, F. J. Cardoso-Saldana,
+D. T. Allen, Modeling air emissions from complex facilities at detailed temporal and spatial resolution:
+The methane emission estimation tool (meet), Science of the Total Environment 824 (2022) 153653.
+
+655
+
+[55] W. M. Kunkel, A. E. Carre-Burritt, G. S. Aivazian, N. C. Snow, J. T. Harris, T. S. Mueller, P. A. Roos,
+M. J. Thorpe, Extension of methane emission rate distribution for permian basin oil and gas production
+infrastructure by aerial lidar, Environmental Science & Technology 57 (33) (2023) 12234–12241.
+[56] Carbon Mapper, Technology (2024).
+URL https://carbonmapper.org/our-mission/technology/
+
+660
+
+[57] The Zimmerle Research Group, Site-aerial-basin emissions reconciliation (saber) (2023).
+URL https://energy.colostate.edu/site-aerial-basin-emissions-reconciliation-saber/
+26
+
+https://doi.org/10.26434/chemrxiv-2024-g2bt9 ORCID: https://orcid.org/0000-0001-6170-2143 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+

@@ -1,0 +1,1815 @@
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+
+An Experimental and Modeling Study of CaCO3 Nucleation and Inhibition Under a Dynamic
+Oversaturation Regime with Implications for Energy Production from Subsurface Reservoirs
+
+Authors: Amit G Reiss1*, Xin Wang1, Yuqing Ye1, Amy T Kan1, and Mason B Tomson1
+* Corresponding author: reissam@post.bgu.ac.il
+Affiliations
+1- Rice University, Department of Civil and Environmental Engineering, 6100 Main street,
+Houston, TX, USA. 77005.
+
+https://doi.org/10.26434/chemrxiv-2024-bhlvj ORCID: https://orcid.org/0000-0003-1109-1844 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+
+Abstract
+Energy production from subsurface reservoirs perturbs the equilibrium between fluids and the
+surrounding rocks. As the saturation increases, nucleation begins, forming a scale that is
+detrimental to production. Inhibitor addition for scale prevention is a common practice with
+significant economic and environmental costs. Traditional experiments to determine induction
+times (tind) and evaluate inhibitor efficiency are performed under constant oversaturation.
+Similarly, constant oversaturation is used in both the empirical and the classical nucleation theory
+modeling schemes used for scale prediction. Subsequently, experiments and models do not address
+the dynamic nature of oversaturation increase during energy production.
+We developed an experimental system for quantitative investigation of nucleation kinetics
+under a regime of dynamic oversaturation and a simple algorithm for determining tind from laser
+measurements. Using our system, we studied the precipitation kinetics of CaCO3 minerals at a pH
+of ~6.76, ionic strength of I = 1m, temperature range of 50-90 oC, and varying rates of
+oversaturation increase. We quantified the effect of a potent inhibitor (Polyamino Polyether
+Methylene Phosphonate; PAPEMP) on the tind and the forming solid phase. Finally, we developed
+a numerical model that explicitly accounts for the dynamic nature of oversaturation.
+Here, we present our experimental system, results, and modeling scheme. We show that
+for a given set of conditions, calcite induction occurs at a similar oversaturation, regardless of the
+rate at which oversaturation increases. Moreover, we show that PAPEMP retards CaCO3
+nucleation at below ppm levels and that it has a temperature-dependent effect on polymorphism.
+Lastly, we suggest that expanding existing models such that:
+𝑡𝑖𝑛𝑑 = 𝑓(∆𝑆𝐼) ∗ 𝑓(𝑠𝑡𝑎𝑡𝑖𝑐)
+Where f(ΔSI) is a function of oversaturation with time and f(static) are existing modeling schemes,
+adequately describe the dynamic nature of oversaturation and show a form of f(ΔSI) that provides
+an excellent fit with measured tind.
+
+Keywords: CaCO3 induction time, calcite induction time, metastability zone, Polyamino Polyether
+Methylene Phosphonate (PAPEMP), Nucleation kinetics, scale inhibition
+
+https://doi.org/10.26434/chemrxiv-2024-bhlvj ORCID: https://orcid.org/0000-0003-1109-1844 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+
+1. Introduction
+Subsurface brines and fluids become supersaturated and precipitate minerals during energy
+production from hydrocarbon and hydrothermal reservoirs. The precipitation of these minerals
+causes scale formation that is detrimental to production. Scaling clogs pipes, damages machinery,
+and reduces the porosity and permeability of reservoir rocks (Kamal et al., 2018; Regenspurg et
+al., 2015). Carbonate and sulfate minerals are the most common scale-forming minerals, with
+calcite being the most abundant.
+Adding scale inhibitors to prevent precipitation is a routine practice during energy
+production. Typical scale inhibitors are organic molecules with either phosphonate, sulfonate, or
+carboxylate functional groups. The addition of these chemicals, even at ppm levels and below,
+retards precipitation (Reiss et al., 2020), alters crystal habit (Reiss et al., 2020; Weber et al., 2016),
+and changes the mineral phase by stabilizing less-stable polymorphs (Gopi et al., 2013; Gopi and
+Subramanian, 2012; Sanjiv Raj et al., 2021). Subsequently, much effort has been directed towards
+determining inhibitor impact on kinetics, habit, and polymorph selection.
+Traditionally, the interplay between inhibitors and nucleation kinetics is studied under
+static setups where the initial conditions of the fluid phase are constant until crystal nucleation and
+growth alter the chemistry. However, during energy production from geological reservoirs, the
+saturation with respect to scale-forming minerals changes due to several possible processes such
+as degassing and changes in pH, temperature changes, evaporation, mixing of brines, etc.
+Subsequently, contrary to static experimental setups, scale formation during energy production
+occurs under increasing saturation.
+Filed observations show that fluids being concentrated and becoming oversaturated can
+remain metastable towards several mineral phases for extended durations before an oversaturation
+threshold is passed and nucleation begins (Rosenberg et al., 2018). The width of the ‘metastable
+zone’ (i.e., the difference between equilibrium and oversaturation at which nucleation occurs), is
+key for controlling industrial crystallization and the impact the rate of oversaturation increases due
+to various temperature gradients in crystallizers is extensively studied (Duroudier, 2016). It was
+found that for low-temperature gradients, the width of the metastable zone for highly soluble salts
+(e.g., KCl and NaCl) depends on the temperature gradient (up to several oC/h) (Nývlt, 1968).
+However, under temperature gradients that are typical of energy production and beyond (e.g., ≥
+0.5 oC/min), the width of the metastable zone is insensitive to the gradient and →0 (i.e., crystal
+formation is immediate) (Navarathna et al., 2023).
+The impact of the saturation increase rate on the width of the metastability zone for
+gypsum, barite, and some carbonate phases (witherite, strontianite) where previously determined
+for diffusion-controlled systems at ambient temperatures (Prieto et al., 1994). These experiments
+found a dependency between the rate of saturation increase and the oversaturation at which the
+nucleation occurs. However, due to the slow rate of diffusion and subsequent long induction times
+(weeks to months) compared to the duration of fluid transport and induction during energy
+production (typically up to a couple of hours) these results are not directly applicable to energy
+production scenarios.
+
+https://doi.org/10.26434/chemrxiv-2024-bhlvj ORCID: https://orcid.org/0000-0003-1109-1844 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+
+Identifying the oversaturation at which nucleation will occur during energy production will
+provide an improved assessment of scaling risk and be utilized for adjusting mitigation strategies.
+However, to date, the impact of the rate of the saturation increase on the nucleation kinetics and
+the values of oversaturation at which nucleation occurs have not been determined for major scaleforming minerals under conditions that are relevant for energy production. More importantly,
+current models of nucleation kinetics and induction time prediction for these conditions are derived
+and validated from static experiments (see discussion in section 4.4.1). Quantitatively determining
+the impact of dynamic saturation on the nucleation kinetics under relevant conditions for the major
+scale-forming minerals and developing modeling schemes to represent these effects will be a step
+forward for scale prediction and control.
+Contrary to the kinetics, inhibitor impact on polymorphism and crystal habit is often
+derived from dynamic systems where SI is gradually increased by titrations, fluid injection,
+degassing, or applying a temperature gradient (Gopi et al., 2013; Gopi and Subramanian, 2012;
+Nicoleau et al., 2019; Sanjiv Raj et al., 2021). Subsequently, the information on nucleation
+kinetics, crystal habit, and polymorph selection are often obtained under different conditions.
+The goal of this research was to study CaCO3 nucleation and inhibition under increasing
+saturation. Specifically, we aimed to 1. Develop a simple apparatus and workflow that will enable:
+a) a quantitative study of CaCO3 precipitation at the slightly acidic to acidic conditions prevailing
+in many subsurface reservoirs from which hydrocarbons (Dai et al., 2022a) or hydrothermal fluids
+(Utami et al., 2014) are produced; b. allow for a simple, accurate, determination of nucleation
+kinetics with high reproducibility; and c) determine the CaCO3 polymorph alongside the kinetics.
+2. Derive a quantitative model for predicting induction times under increasing SI under conditions
+that are relevant to energy production.
+2. Methodology
+2.1 Brine preparation
+Brines for the experiments were made with analytical grade CaCl2*2H2O (Sigma-Aldrich), NaCl
+(Sigma-Aldrich), NaHCO3 (Fischer Chemical), 1N HCl (Fischer Chemical), and Double deionized
+water (DDW; resistivity of 18 ohm/cm). The inhibitor used is a commercially available product
+with 48-52% Polyamino Polyether Methylene Phosphonic Acid (PAPEMP) active ingredient.
+Three brines were used in each experiment, cationic brine, anionic brine, and reaction cell brine.
+The reaction cell brine was a 1 m NaCl solution. The anionic brine contained 0.12 m NaHCO3
+with NaCl to adjust the ionic strength to 1 m. The cationic brine contained 0.24 m CaCl2 with NaCl
+to adjust the ionic strength to 1 m. HCl was added to the cationic brine to maintain the pH during
+the duration in which the mixed brine in the reaction cell is oversaturated during the experiments
+within ±0.03 units. The amount of acid to add was calculated with Rice Universities
+ScaleSoftPitzer (SSP) software package (see thermodynamic calculations section 2.3).
+In the inhibitor-containing experiments, PAPEMP was added to the reaction cell and
+anionic brines. The concentration of the inhibitor in the anionic brine was double the concentration
+
+https://doi.org/10.26434/chemrxiv-2024-bhlvj ORCID: https://orcid.org/0000-0003-1109-1844 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+
+in the reaction cell so that when the anionic and cationic brines were injected into the reaction cell
+(see experimental setup section 2.2) the inhibitor concentration remained constant.
+2.2 Experimental setup
+Figure 1 depicts the experimental system. The reaction cell is a customized ACE heavy-walled
+glass tub with a PTFE cap. Three holes were drilled through the cap to enable tubing for the inflow
+of the ionic brines and effluent outflow. The framework of the experimental system is a GC oven
+that was placed above a magnetic stirrer. The magnets on the stirrer were replaced by strong rare
+earth magnets enabling stirring fluids in the reaction cell inside of the oven. Two holes were drilled
+into the oven opposite each other. The reaction cell was fixed between the two drillings with an
+apparatus specifically designed for this purpose. A green laser source and a photodiode were
+situated on opposite sides of the oven, near the two drillings, so that the laser beam traveling
+between the source and photodiode passed through the reaction cell. The photodiode was
+connected to a signal amplifier and a data logger was used for recording the laser intensity at
+intervals of one second. An additional inlet, drilled in the side of the oven, was used for connecting
+the reaction cell and the ionic reservoirs situated outside the oven. The cationic and anionic
+reservoirs were 50 ml plastic syringes. These syringes were placed on top of a KD programmable
+double syringe pump. The effluent flowed out of the reaction cell via an additional tube connected
+through an opening at the top of the oven. To prevent degassing and CO2 escape, the effluent tube
+was connected to a 20 PSI backpressure regulator.
+We conducted experiments with a mass exchange rate, kw, (kw = Q/Vcell) of 0.53 at 50,
+70, and 90 oC. Plots of SI in time for all mass exchange rates and temperatures are presented in
+supplementary 1 datafile. At each temperature we performed experiments with 0, 0.25, 0.5, and
+0.7 ppm PAPEMP. In addition, to test the effect of the rate at which SI changes, we performed
+experiments at 90 oC (0 and 0.5 ppm inhibitor) under three additional flow rates that produced
+mass transfer coefficients of 0.38, 0.8, and 1.15. The pH during the 50 oC and 70 oC experiments
+was 6.78 and 6.76 for the 90 oC experiments. We performed at least three experiments under each
+combination of T, mass transfer coefficient, and inhibitor concentration. For A total of 79
+experiments
+
+190
+
+https://doi.org/10.26434/chemrxiv-2024-bhlvj ORCID: https://orcid.org/0000-0003-1109-1844 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+
+Figure 1. The experimental setup.
+The end of each experiment was determined by a change in laser intensity. At the end of each
+experiment, the crystals were separated from the solution by filtration using 0.45 μm dark filter
+Wahtman paper. XRD (Rigaku D/Max ultima II powder XRD and PDXL database) and SEM (FEI
+Quanta 400 ESEM) were used to determine the precipitating polymorph and imaging the crystals.
+2.3 Thermodynamic calculations
+The Pitzer model was used to calculate the amount of acid inflow to maintain pH, and the saturation
+index (SI, equation 1) throughout the experiment. Pitzer’s model is incorporated into several
+software packages (e.g., PHREEQC, Geochemist Workbench, etc), however, calculated SI varies
+between them and it is necessary to select a software package and thermodynamic database that
+was verified to fit the experimental conditions (Reiss et al., 2021). Here, we used the Rice SSP
+software package. SSP is specifically designed for calculating the thermodynamic properties of
+brines at elevated temperatures and was verified to be accurate for CaCO3 polymorphs under the
+conditions of our experiments (Dai et al., 2017).
+
+𝑆𝐼 = log (
+
+𝐼𝐴𝑃
+𝐾𝑠𝑝
+
+𝑎𝐶𝑎2+ ∗𝑎𝐶𝑂2−
+3
+
+) = log (
+
+(𝑎𝐶𝑎2+ ∗𝑎𝐶𝑂2− )
+3
+
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+
+)
+
+(1
+
+𝑒𝑞
+
+IAP is the ion activity product, 𝐾𝑠𝑝 is the solubility product, and ai is the activity of the ith species.
+3. Results
+The recorded measured laser intensity over the duration of all experiments are attached as
+supplementary S2.
+4. Discussion
+4.1 A simple algorithm for determining tind from laser measurements
+The induction time (tind) is defined as the time laps between the creation of supersaturation (i.e.,
+SI > 0) and the appearance of the nucleating phase. The ability to identify the appearance of crystals
+is method specific and tind for a given system varies with techniques. Using the interference to light
+travelling through a reaction cell following crystal formation is a simple way for continuously
+monitoring for mineralization. Due to its simplicity, compatibility with any transparent reactor,
+and easy application under a wide range of environmental conditions, using laser intensity as done
+here is extremely useful for studying the nucleation kinetics of scale-forming minerals. However,
+fluctuations in laser intensity is a challenge causing researchers to limit the use of this technique
+to experiments with short induction times (Westin and Rasmuson, 2005). To overcome this
+challenge, we fitted the measured laser intensity curve with a sigmoidal/logistic function (equation
+2):
+
+https://doi.org/10.26434/chemrxiv-2024-bhlvj ORCID: https://orcid.org/0000-0003-1109-1844 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+
+𝐿𝑎𝑠𝑒𝑟 𝑖𝑛𝑡𝑒𝑛𝑠𝑖𝑡𝑦(𝑡) =
+
+𝑎−𝑏
+𝑡
+
+1+(𝑐)𝑝
+
++𝑏
+
+(2
+
+where a is the laser intensity before induction time, b is the lowest laser intensity value following
+induction, t is time, c is the midpoint of the slope of the curve linking a and b, p is the curvature
+(angle) between the pre-nucleation value of the laser and the downward sloping line immediately
+after tind.
+The fitting procedure produces a calculated laser intensity curve that is not affected by the
+fluctuations in the laser source (Figure 2).
+
+Figure 2. The measured VS. calculated laser intensity. The induction time is derived from the
+calculated laser values that smooth out laser instability.
+The induction time is the time where the intensity VS. time curve sufficiently shifts from
+the pre-nucleation plateau. Mathematically, this is derived by inserting the c and p fitting
+parameters from equation 2 into equation 3:
+𝑠𝑢𝑓𝑓𝑖𝑐𝑖𝑒𝑛𝑡 𝑠ℎ𝑖𝑓𝑡
+
+𝑡𝑖𝑛𝑑
+
+1
+
+= 𝑐 ∗ 𝑐𝑟𝑖𝑡𝑒𝑟𝑖𝑜𝑛 ⁄𝑝
+
+(3
+
+The criterion in equation 3 is a value that depends on the definition of sufficient shift from the
+pre-nucleation plateau. It was recently suggested, based on the Mie light theory, that a 1%
+change in laser intensity is sufficient to determine induction (Dai et al., 2019). Under such a
+circumstance, the criterion would be 1/99 and equation 3 becomes:
+
+https://doi.org/10.26434/chemrxiv-2024-bhlvj ORCID: https://orcid.org/0000-0003-1109-1844 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+
+281
+282
+283
+284
+
+𝑓𝑜𝑟 𝑎 1% 𝑑𝑟𝑜𝑝
+
+𝑡𝑖𝑛𝑑
+
+1 1
+
+= 𝑐 ∗ ( ) ⁄𝑝
+99
+
+(4
+
+Equation 4 is a robust mathematical form that overcomes the pre-nucleation fluctuations in laser
+intensity and allows for a simple objective determination of tind in long experiments. A full
+description of the algorithm we used is presented in appendix A.
+4.2 Evaluating the experimental system
+The average induction time and SI at induction for all the experimental conditions are provided in
+Table 1. Comparing the induction times for the different temperatures, inhibitor concentrations,
+and mass transfer rates shows that: the induction time at a given temperature and mass transfer rate
+increases with inhibitor concentration, an inverse relationship exists between temperature and
+induction time for all inhibitor concentrations (Figure 3a), and that the induction time is shortened
+by faster increase in SI (Figure 3b). These trends agree with the general understanding of the role
+the environmental parameters play in nucleation kinetics and serve as an initial qualitative test of
+the system’s operation and the experimental results.
+We performed a quotient rejection test, and contrary to the measured induction times that
+vary widely with the rate of mass transfer, the SI at induction is similar at a 90% confidence level
+for the different mass exchange rates (Figure 3c) indicating that the width of the metastable zone
+is impervious to the oversaturation increase rate under the current experimental conditions.
+Recently, similar behavior was reported for halite nucleation in a cooling system (without
+inhibitors) where the induction time had an inverse relationship with the rate of cooling but the SI
+value at induction was independent of the cooling rate (Navarathna et al., 2023). Such observations
+are key for modeling nucleation kinetics in dynamic systems and are further discussed in section
+4.4.2.
+
+Figure 3. a) The average induction time as a function of inhibitor concentration at 50, 70, and 90
+o
+C. b) The average induction time at 90 oC as a function of the rate of mass transfer with no
+
+https://doi.org/10.26434/chemrxiv-2024-bhlvj ORCID: https://orcid.org/0000-0003-1109-1844 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+
+inhibitor and 0.5 ppm inhibitor. c) The SI at induction for the different values of kw with 0 and 0.5
+ppm inhibitor. The solid lines are the average SI at induction and the dashed lines are ±8% of the
+average, similar to the larger RSD on SI (table 1). A quotient rejection test shows that for a given
+concentration of inhibitor and a 90% confidence, the SI is similar for all values of kw.
+Quantitatively, the relative standard deviation (RSD) on the induction time and on the SI
+is better than 10% and compare with RSD values reported from static experimental systems
+(Rabizadeh, 2023). These results demonstrate that dynamic experimental setups, that better
+represent actual conditions of scale formation, can be adopted without increasing the uncertainty
+of the measured induction time. Consequently, the experimental design described above can be
+adopted for studying nucleation under dynamic conditions and enables a simultaneous
+determination of the kinetics, crystal habit, and polymorphism in a single experiment.
+
+o
+
+T ( C)
+90
+90
+90
+90
+90
+90
+90
+90
+
+90
+90
+70
+70
+70
+70
+
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+
+50
+50
+50
+50
+
+Table 1 - Summary of experiments
+[inhibitor]
+(ppm)
+# of experiments Tind (minutes) RSD (Tind)
+kw (Q/V) (time )
+0.38
+0
+5
+26.2
+6%
+0.53
+0
+7
+20.8
+9%
+0.80
+0
+6
+12.8
+3%
+1.15
+0
+4
+10.0
+3%
+0.53
+0.25
+7
+25.8
+5%
+0.38
+0.5
+4
+44.6
+2%
+0.53
+0.5
+3
+33.9
+1%
+0.80
+0.5
+3
+21.1
+2%
+1.15
+0.5
+4
+16.3
+3%
+0.53
+0.7
+3
+36.2
+1%
+1%
+0.53
+0
+3
+31.2
+7%
+0.53
+0.25
+3
+35.5
+-1
+
+SI
+0.77
+0.91
+0.84
+0.88
+1.07
+1.18
+1.28
+1.23
+1.25
+1.33
+1.10
+1.19
+
+0.53
+
+0.5
+
+6
+
+46.2
+
+4%
+
+1.38
+
+0.53
+0.53
+0.53
+0.53
+0.53
+
+0.7
+0
+0.25
+0.5
+0.7
+
+4
+8
+3
+3
+3
+
+49.3
+41.9
+57.0
+66.4
+69.5
+
+3%
+5%
+6%
+4%
+3%
+
+1.43
+1.16
+1.37
+1.47
+1.50
+
+RSD (SI)
+6%
+8%
+3%
+3%
+3%
+1%
+1%
+1%
+2%
+1%
+1%
+5%
+2%
+1%
+3%
+3%
+2%
+1%
+
+4.3 PAPEMP and CaCO3 Polymorphism
+CaCO3 has three naturally occurring polymorphs with distinct morphology: rhombohedral
+calcite, orthorhombic aragonite, and hexagonal vaterite. Crystal polymorphism, habit, and size
+distribution determine the ability of the forming solid to adhere to surfaces, clog pipes, and
+damage machinery and are therefore especially important in scaling processes. Generally,
+elongated crystal habits are more prone to be detrimental to production (Glade et al., 2010; Mi &
+Elimelech, 2010). Due to its importance, previous studies aimed to determine the impact
+different inhibitors have on CaCO3 polymorphism and crystal habit (Didymus et al., 1993; Gopi
+et al., 2013; Gopi and Subramanian, 2012; Sanjiv Raj et al., 2021; Tang et al., 2008; Wang et al.,
+2005; Weber et al., 2016). However, although PAPEMP has a high tolerance for calcium, is
+
+https://doi.org/10.26434/chemrxiv-2024-bhlvj ORCID: https://orcid.org/0000-0003-1109-1844 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+
+effective at inhibiting both calcium carbonates and sulfates, is effective at both high and low pH
+(Gill, 1999; Tang et al., 2008), and is the inhibitor of choice in major energy production
+companies (personal communications with flow assurance engineers), very little research has
+been done to determine this inhibitor’s effects on precipitation kinetics and polymorph selection.
+The only previous work (to our knowledge) that specifically tested PAPEMP, found that
+o
+at 60 C (and unconstrained pH) this inhibitor does not affect the formed mineral assemblage
+(Tang et al., 2008). In our study, where the pH, temperature, Ca2+/HCO3-, and ionic strength are
+held constant until induction, only calcite was detected in the solutions with no inhibitor. The
+addition of PAPEMP in concentrations of 0.25-0.7 ppm did not change the mineral assemblage
+at 70 oC and 90 oC. However, at 50 oC, with PAPEMP, a mixture of vaterite and calcite
+precipitated regardless of inhibitor concentration (Figure 4). Previous studies observed that the
+addition of inhibitors will alter the CaCO3 mineral assemblage at some temperatures while not
+affecting polymorphism at another temperature (Gopi et al., 2013; Gopi and Subramanian, 2012).
+However, their experimental protocol consisted of gradually adding a bicarbonate solution to a
+calcium solution so the pH and Ca2+/HCO3- ratio, both key for CaCO3 precipitation, were not
+constrained. Subsequently, the addition of inhibitors might not be the only cause for the observed
+change in polymorphs. The experimental system used in this study enables isolating the effect of
+the inhibitor by maintaining a constant pH and Ca2+/HCO3- ratio. Therefore, our results
+unequivocally demonstrate that the impact of PAPEMP on CaCO3 polymorph selection is
+temperature dependent.
+
+331
+
+https://doi.org/10.26434/chemrxiv-2024-bhlvj ORCID: https://orcid.org/0000-0003-1109-1844 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+
+362
+363
+364
+365
+366
+367
+368
+369
+370
+
+Figure 4. XRD analysis and SEM images of the precipitated solids showing that at 50 oC with no
+inhibitor (a) calcite is the precipitated solid and that with added PAPEMP (0.25 ppm) a mixture
+of calcite and vaterite precipitate (b). c) calcite crystal precipitated at 50 oC without inhibitor
+showing mostly rhombohedral habit, and d) the calcite and vaterite crystals precipitated at 50 oC
+in the presence of PAPEMP. Notice a combination of crystal habits. XRD and SEM images of
+other temperatures are added in supplementary 1.
+Observations of the pathway taken by dissolved Ca2+ and HCO3- ions to become calcite
+suggest that this is a stepwise process starting with the formation of an amorphous calcium
+carbonate (ACC) phase. The ACC then develops into vaterite that later transform to calcite via a
+dissolution reprecipitation process (Rodriguez-Blanco et al., 2011). To date, the impact common
+inhibitors have on this pathway are unknown. From our results we cannot conclude if at 50 oC
+PAPEMP impedes the transformation of vaterite into calcite, or alternatively, that without
+inhibitor calcite is the first phase to form and the addition of PAPEMP at 50 oC prevents its
+formation and/or facilitates the nucleation of vaterite. However, whatever the mechanism is, our
+results show that the effect of PAPEMP on CaCO3 are temperature dependent.
+4.4 Towards modeling scale formation under dynamic conditions
+4.4.1 Models for nucleation kinetics – the current state
+Models of nucleation kinetics that can predict the induction time are useful for many processes in
+natural environments, for interpreting mechanisms of geological and hydrogeological brine
+development, and for engineering applications. Due to the wide importance of nucleation kinetics,
+many studies have used induction times, derived from static experiments, to model the nucleation
+kinetics under a wide range of conditions. The two common approaches taken to model the kinetics
+are by using the framework of the classical nucleation theory (CNT), or by using a set of empirical
+equations. According to the CNT, the rate of nucleation (Js) of a mineral depends on the
+temperature, saturation state, and the interfacial tension, and is given by:
+
+𝐽𝑠 = 𝐴𝑒𝑥𝑝
+
+−
+
+3
+𝛽𝑉2
+𝑚 𝜎 𝑁𝐴 𝑓(𝜃)
+(𝑅𝑇)3 𝑙𝑛2 𝛺
+
+(5
+
+Where A is a pre-exponential factor, β is a shape factor, σ is the interfacial tension between the
+solution and the forming crystal, Vm is the molar volume of the forming crystals, NA is Avogadro’s
+number, f(θ) is a correction factor for heterogenous nucleation, R and T are the gas constant and
+temperature and Ω is the saturation ratio.
+In recent years, a growing number of experimental observations suggest that nucleation
+of the common scale-forming minerals does not follow the classical path (for a discussion of
+classical VS. non-classical nucleation the reader is referred to a recent textbook (Van Driessche
+et al., 2017)). Whether calcite nucleation proceeds via a classical pathway is still being debated
+
+https://doi.org/10.26434/chemrxiv-2024-bhlvj ORCID: https://orcid.org/0000-0003-1109-1844 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+
+(Smeets et al., 2017). However, while the theoretical validity of the classical theory to the
+nucleation of calcite is still under debate, it is generally agreed that equation 5 provides a robust
+mathematical framework for modeling nucleation whether the process is classical or not, and this
+equation has been successfully incorporated into kinetic nucleation models (Dai et al., 2022b,
+2019; Peters et al., 2024; Rendel et al., 2018; Reznik et al., 2012).
+Although mathematically equation 5 can provide good agreement with experimental
+observations it is often counter-productive for interpreting the impact of scale inhibitors. First,
+literary values of the interfacial tension term (σ) for common scale-forming minerals span over
+an order of magnitude or more (Dai et al., 2019; Reiss et al., 2021). This variety enables an
+empirical selection of a value that fits the specific observations. More importantly, at the low
+concentrations at which inhibitors are added (typically from below up to several ppm), the
+complexation of lattice-building ions by inhibitors does not alter the saturation. Subsequently,
+based on the CNT, inhibitor influence on the nucleation kinetics is often interpreted as being a
+result of an increase in the interfacial energy (Curcio et al., 2010; Hasson et al., 2003; Van Der
+Leeden et al., 1993; Vasina et al., 1996). However, as recently stated elsewhere, thermodynamic
+considerations and measurements of contact angle between inhibitor-containing fluids and
+mineral surfaces suggest the opposite (Nicoleau et al., 2019).
+An alternative approach to model nucleation kinetics and the impact of inhibitors would
+be to use empirical equations that do not pre-suppose a mechanism of nucleation and that are
+independent of parameters, such as the interfacial tension term, that their values are uncertain
+and their literary values widely vary. He et al., (He et al., 1996) developed a quantitative
+framework for treating nucleation kinetics and the impact of inhibitors on induction times.
+According to their formulation, the induction time with inhibitors is given by a nucleation
+inhibition index (NII):
+
+396
+
+𝑁𝐼𝐼 = log ( 𝑖𝑛𝑑 ) = 𝑏𝐶𝑖𝑛ℎ
+
+397
+398
+399
+400
+401
+402
+403
+
+𝑡
+
+𝑡𝑜
+
+Where tind and to are respectively the induction time with and without inhibitor and Cinh is the
+concentration of the inhibitor.
+The induction times in equation 6 without inhibitor (t0) and b are empirically fitted from
+experimental data such that:
+log(𝑡𝑜 ) = 𝑎1 +
+
+404
+405
+406
+407
+408
+409
+
+(6
+
+𝑎2
+𝑆𝐼
+
++
+
+𝑎3
+
+(7
+
+𝑇
+
+and
+log(𝑏) = 𝑏1 + 𝑏2 ∗ 𝑆𝐼 +
+
+𝑏3
+𝑇
+
+(8
+
+Substituting equations 7 and 8 into equation 6 and solving for tind gives:
+
+https://doi.org/10.26434/chemrxiv-2024-bhlvj ORCID: https://orcid.org/0000-0003-1109-1844 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+410
+𝑎2 𝑎3
+
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+
+𝑡𝑖𝑛𝑑 = 10
+
+(𝑎1+ 𝑆𝐼 + 𝑇 )
+
+∗ 10
+
+𝑏3
+𝑏1+𝑏2∗𝑆𝐼+
+𝑇 )∗𝐶𝑖𝑛ℎ
+
+(10
+
+(9
+
+Equation 9 is a general equation for the induction time as a function of SI, T, and inhibitor
+concentration. This formulation has been adopted in multiple investigations of the impact of
+inhibitors on nucleation kinetics and was found to accurately describe induction times for the
+major scale forming minerals under a wide range of conditions (Dai et al., 2021; He et al., 1999,
+1996; Zhao et al., 2021).
+It should be pointed out that while many studies found equation 9 provides great
+agreement with experimental data, it predicts that in the absence of an inhibitor (i.e., Cinh = 0),
+the induction time is reduced to a non-zero constant as SI goes to infinity.
+With their limitations described above, both CNT and empirical modeling schemes work
+well for determining nucleation kinetics, providing insights into nucleation processes, and
+predicting induction times under a wide range of conditions. In the following, we explore an
+adaptation of the model to account for dynamic SI conditions.
+4.4.2 A proposed model for tind under a regime of dynamic oversaturation
+To adjust the existing models for dynamic conditions one needs to account for SI changing with
+time. The SI values at induction are similar over the entire range of mass exchange (kw) tested in
+this study and appear to only significantly change by the concentration of inhibitor (i.e., the
+metastability zone is insensitive to the rate of SI increase but is influenced by the presence of an
+inhibitor). Consequently, replacing SI (or Ω) in the static models with a time dependent SI
+function would not allow for describing the system. Rather, one needs a functional form that
+enables accounting for different induction times at a similar SI value for a given temperature and
+inhibitor concentration. One possible solution to this conundrum is to model the induction time
+with two terms, one term for the rate of nucleation as the function of the environmental
+conditions (e.g., the static model) and an additional term accounting for the rate in which the SI
+is changing. Under such a scheme, a functional form for modeling the induction time under a
+changing SI is given by:
+𝑡𝑖𝑛𝑑,𝑑𝑦𝑛𝑎𝑚𝑖𝑐 = 𝑓(𝛥𝑆𝐼) ∗ 𝑓(𝑡𝑖𝑛𝑑,𝑠𝑡𝑎𝑡𝑖𝑐 )
+
+(10
+
+where f(tind.static) are one of the common static models (i.e., equations 5 or 9) and f(ΔSI) is a
+function that accounts for the rate of increasing SI. In the current study, SI is increased by
+injection of Ca2+ and HCO3- ions and the rate of increase depends on the rate of mass transfer.
+For such a process, f(ΔSI) will take on the form:
+𝑡𝑖𝑛𝑑,𝑑𝑦𝑛𝑎𝑚𝑖𝑐 =
+
+𝑘
+𝑘𝑤
+
+∗ 𝑓(𝑡𝑖𝑛𝑑,𝑠𝑡𝑎𝑡𝑖𝑐 )
+
+(11
+
+448
+
+https://doi.org/10.26434/chemrxiv-2024-bhlvj ORCID: https://orcid.org/0000-0003-1109-1844 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+449
+450
+451
+
+Where k is a kinetic proportionality constant, and kw is the mass transfer coefficient. Substituting
+equation 9 into equation 11 gives the following model for tind:
+
+𝑡𝑖𝑛𝑑 =
+
+452
+453
+454
+455
+456
+457
+458
+459
+
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+
+𝑘
+𝑘𝑤
+
+𝑎2 𝑎3
+
+∗ 10
+
+(𝑎1+ 𝑆𝐼 + 𝑇 )
+
+∗ 10
+
+(10
+
+𝑏3
+𝑏1+𝑏2∗𝑆𝐼+
+𝑇 )∗𝐶𝑖𝑛ℎ
+
+(12
+
+We used a minimization scheme between the measured and predicted induction times for the 50
+C and 90 oC experiments to derive the coefficients for the model. We then tested the model’s
+predictions against the 70 oC experiments. Figure 5 shows a comparison between the measured
+and calculated induction times and table 2 summarize the coefficients that provide the best fit
+between the experimental data and the model predictions.
+o
+
+Figure 5: Measured Vs. modeled induction time. NI – no inhibitor, PAPEMP – concentrations of
+0.25, 0.5, or 0.7 ppm inhibitor. The error envelope shows ±10% from the measured value.
+The difference between the measured induction times and the model predictions
+compares with the uncertainty reported for experimental measurements of induction times. This
+excellent agreement between the experiments and model indicate that the suggested modeling
+scheme adequately describes induction times under varying SI as occurs during energy
+production and other industrial processes (e.g., RO desalination).
+
+https://doi.org/10.26434/chemrxiv-2024-bhlvj ORCID: https://orcid.org/0000-0003-1109-1844 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+
+Table 2. Model coefficients
+Equation 12 Equation 13
+k
+350
+982
+a1
+-2.51 -19.15
+a2
+-0.456
+-5.81
+a3
+555.173 10679.0
+b1
+-3.292
+-1.35
+b2
+-0.003 -0.003
+b3
+832
+740
+
+While equation 12 accounts for the time variation in SI, it still suffers from the limitation
+discussed above where at infinite SI the induction time does not reduce to zero. To address this
+issue, we suggest using a power series over SI and T. In addition, the inhibitor term of the
+equation (e.g., the b dependent term) can be adjusted to eliminate the somewhat unconventional
+(𝑏….)∗𝐶𝑖𝑛ℎ
+
+1010
+
+part of the formula. Our proposed model is given by:
+𝑡𝑖𝑛𝑑 =
+
+𝑘
+𝑘𝑤
+
+∗(
+
+𝑎1
+𝑆𝐼∗𝑇
+
++
+
+𝑎2
+𝑆𝐼 2 ∗𝑇
+
++
+
+𝑎3
+𝑆𝐼∗𝑇
+
+𝑏3
+
+((𝑏1+𝑏2∗𝑆𝐼+ 𝑇 )∗𝐶𝑖𝑛ℎ )
+2) ∗ 𝑒
+
+(13
+
+As before, the model was fitted with the 50 oC and 90 oC data sets and the 70 oC dataset
+was only used for verification. Figure 6 shows the model predictions VS. the measured
+observations. Overall, this model provides a good fit (R2 = 0.969). 86% of the predictions are
+within 10% from the measured data points and all predictions are within 20%. It should be noted
+that for all experimental conditions where a prediction exceeds 10%, other data points are below
+that range. This is a result of the variation of the measured induction times. Equation 13 thus
+provides an overall model for predicting induction times under increasing SI and that satisfies the
+conditions that: when SI is infinitely large or small, tind would be infinitely the opposite.
+As demonstrated here, it is possible to model induction times under increasing SI and
+simultaneously treat the nucleation kinetics and polymorphism. Such a scheme is a step forward
+toward modeling nucleation in natural and engineered environments where SI increases with
+time.
+
+https://doi.org/10.26434/chemrxiv-2024-bhlvj ORCID: https://orcid.org/0000-0003-1109-1844 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+
+Figure 6. Measured VS. modeled induction times. NI – no inhibitor, PAPEMP – concentrations
+of 0.25,0.5, or 0.7 ppm inhibitor. Equation 13 was used for modeling the data. Black lines
+represent ±10% from the measured values. Note that for every condition where a prediction
+exceeds 10%, other calculated induction times fall below this value.
+4.4.3 Implications and prospective
+Scale and its detrimental impact on production is costly. The inhibitors used to prevent scale
+during energy production from hydrocarbon and hydrothermal reservoirs, and that are added
+during desalination are not cheap. More importantly, halting production during energy extraction
+for advanced scale prevention treatments (e.g., scale inhibitor squeeze) or to treat formed scale
+has a significant monetary cost. In addition, scale inhibitors have a potentially high
+environmental cost and some of the common inhibitors are forbidden for use by countries with
+advanced environmental regulation (Mady et al., 2018). Improving models for predicting scale
+formation can provide a better estimation of scaling risk and the development of prevention
+procedures that would help mitigate the economic and environmental costs associated with this
+phenomenon. The good fit between the experimental measurements and the models presented in
+the previous section demonstrates that the modeling scheme proposed here provides a framework
+for mathematically describing nucleation kinetics of scale-forming minerals under increasing SI.
+However, one should consider that both the f(tind,static) and the f(ΔSI) term might need
+adjustments to account for varying chemical and physical properties of the fluids for which scale
+control is necessary.
+The ratio between the lattice-building cation and anion of a mineral in solution has a
+considerable effect on precipitation kinetics (Bracco et al., 2012; Peters et al., 2024; Ruiz-Agudo
+et al., 2011) and crystal habit (Bracco et al., 2012; Mbogoro et al., 2017; Reiss et al., 2019). This
+effect causes a wide variation in induction times for a given mineral under similar SI,
+temperature, salinity, etc. Consequently, models of nucleation kinetics using both the CNT
+(equation 5) and the empirical scheme (equation 6) discussed above had to address this by
+adjusting the models to account for this (Dai et al., 2021; Peters et al., 2024). In addition, the
+
+https://doi.org/10.26434/chemrxiv-2024-bhlvj ORCID: https://orcid.org/0000-0003-1109-1844 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+
+speciation of the active functional groups on the inhibitor between fully dissociated and fully
+protonated are pH dependent. As a consequence, the retarding efficiency of inhibitors changes
+with pH (He et al., 1994). As the goal of this study was to explore the feasibility of modeling
+nucleation time under dynamic conditions, our focus was on varying SI with time and we
+conducted experiments under constant Ca2+/HCO3- and pH and the f(tind,static) term in our model
+(equation 13) does not explicitly address changes in these parameters.
+In addition, during industrial activities where scale control is key for maintaining
+production the f(ΔSI) term might be influenced by one or a combination of several processes.
+These include changes in pressure, pH, temperature (will simultaneously increase and decrease
+SI for different minerals), salinity, etc. Consequently, the f(ΔSI) term should be adjusted for
+different production scenarios. The experimental system described here (section 2.2) allows for
+an experimental determination of many of the conditions that can affect f(tind.static), f(ΔSI), or
+both. The GC oven framework enables conducting experiments under a variety of both
+decreasing or increasing temperature gradients. The inflow of cationic, anionic, or both fluids
+can be adjusted to produce different Ca2+/HCO3- ratios, applying pH gradients, and different
+salinities that can be held constant or vary during an experiment. Quantifying the effect of pH,
+Ca2+/HCO3-, and temperature gradients, and incorporating these into the model is a goal of future
+research. In addition, we are currently exploring the impact of the dynamic conditions on the
+nucleation kinetics and metastability zone of the major sulfate-scale-forming minerals.
+5. Summary
+In this work, we present an experimental system for simultaneously quantifying the nucleation
+kinetics and determining crystal habit and polymorph as SI increases, as happens during energy
+production, desalination, and other industrial systems. With this system, we studied the
+precipitation of CaCO3 at pH ~ 6.75, I = 1m, 50-90 oC, PAPEMP concentrations of 0-0.7 ppm, and
+varying rates of increasing SI. We show that: 1. The metastability zone of calcite is independent
+of the rate at which SI increases; 2. The metastability zone is increased by inhibitor; 3. PAPEMP
+inhibits calcite nucleation at below ppm concentrations; and 4. PAPEMP has a temperaturedependent effect on the forming CaCO3 polymorph. Based on our data, we developed a simple
+algorithm for determining induction time from laser measurements and a numerical model that
+provides an excellent fit between the experimental and predicted induction times over the entire
+range of temperatures, SI rate of increase, and concentration of PAPEMP.
+CRediT authorship:
+Amit G Reiss: Conceptualization, Methodology, Investigation, Analysis, Verification, Writing –
+original manuscript; Xin Wang: Investigation; Yuqing Ye: Administration, Resources; Amy T
+Kan: Administration, Resources; Mason B Tomson: Supervision, Funding, Verification, Writing
+– Review and editing
+Declaration of competing interest
+
+https://doi.org/10.26434/chemrxiv-2024-bhlvj ORCID: https://orcid.org/0000-0003-1109-1844 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+
+The authors declare no competing interest
+Acknowledgments
+The authors wish to thank Daniel Neuman from Rice University for invaluable technical
+assistance. This research was funded by members of the Rice University Brine Chemistry
+Consortium: Aegis, Bachman, Baker Hughes, Chemstream, Chevron, CNPC USA,
+ConocoPhillips, Equinor, Halliburton, Hess, Imperative Chemicals, Italmatch, Liberty Frac,
+Occidental Oil and Gas, ONGC, Petrobras, Pioneer Natural Resources, Saudi Aramco, SLB, Shell,
+SNF, TOTAL.
+Notes
+The authors declare no competing interests.
+Appendix A. A simple algorithm for determining the induction time from a laser measurement
+A flow chart representation of the simple algorithm for determining the induction time from the
+measured laser intensity is shown in figure A1.
+
+580
+581
+582
+
+https://doi.org/10.26434/chemrxiv-2024-bhlvj ORCID: https://orcid.org/0000-0003-1109-1844 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+
+Figure A1. Flow chart describing a simple algorithm for determining induction time from
+laser intensity. * The square errors (SE) is given by (measured intensity – calculated intensity)2.
+
+Bibliography
+Bracco, J.N., Grantham, M.C., Stack, A.G., 2012. Calcite Growth Rates As a Function of
+Aqueous Calcium-to-Carbonate Ratio, Saturation Index, and Inhibitor Concentration:
+Insight into the Mechanism of Reaction and Poisoning by Strontium. Crystal Growth &
+Design 12, 3540–3548. https://doi.org/10.1021/cg300350k
+Curcio, E., Ji, X., Di Profio, G., Sulaiman, A.O., Fontananova, E., Drioli, E., 2010. Membrane
+distillation operated at high seawater concentration factors: Role of the membrane on
+CaCO3 scaling in presence of humic acid. Journal of Membrane Science 346, 263–269.
+https://doi.org/10.1016/j.memsci.2009.09.044
+Dai, C., Dai, Z., Zhao, Y., Wang, X., Paudyal, S., Ko, S., Kan, A.T., Tomson, M.B., 2021.
+Prediction Models of Barite Crystallization and Inhibition Kinetics: Applications for Oil
+and Gas Industry. Sustainability 13, 8533. https://doi.org/10.3390/su13158533
+Dai, Z., Kan, A.T., Shi, W., Zhang, N., Yan, F., Bhandari, N., Zhang, Z., Liu, Y., Ruan, G.,
+Tomson, M.B., 2017. Solubility Measurements and Predictions of Gypsum, Anhydrite,
+and Calcite Over Wide Ranges of Temperature, Pressure, and Ionic Strength with Mixed
+Electrolytes. Rock Mechanics and Rock Rngineering 50, 327–339.
+Dai, Z., Ouyang, B., Wang, X., Li, W., Dai, C., Zhao, Y., Ko, S., Paudyal, S., Kan, A., Tomson,
+M., 2022a. From water analysis to scale and corrosion control improvements: A Permian
+Basin example. Chemical Geology 610, 121077.
+https://doi.org/10.1016/j.chemgeo.2022.121077
+Dai, Z., Zhang, F., Kan, A.T., Ruan, G., Yan, F., Bhandari, N., Zhang, Z., Liu, Y., Lu, A.Y.-T.,
+Deng, G., Tomson, M.B., 2019. Two-Stage Model Reveals Barite Crystallization
+Kinetics from Solution Turbidity. Ind. Eng. Chem. Res. 58, 10864–10874.
+https://doi.org/10.1021/acs.iecr.9b01707
+Dai, Z., Zhao, Y., Paudyal, S., Wang, X., Dai, C., Ko, S., Li, W., Kan, A.T., Tomson, M.B.,
+2022b. Gypsum scale formation and inhibition kinetics with implications in membrane
+system. Water Research 225, 119166. https://doi.org/10.1016/j.watres.2022.119166
+Didymus, J.M., Oliver, P., Mann, S., DeVries, A.L., Hauschka, P.V., Westbroek, P., 1993.
+Influence of low-molecular-weight and macromolecular organic additives on the
+morphology of calcium carbonate. Faraday Trans. 89, 2891.
+https://doi.org/10.1039/ft9938902891
+Duroudier, J.-P., 2016. Crystallization and crystallizers, Industrial equipment for chemical
+engineering set. ISTE Press, London.
+Gill, J.S., 1999. A novel inhibitor for scale control in water desalination. Desalination 124, 43–
+50. https://doi.org/10.1016/S0011-9164(99)00087-9
+Gopi, S., Subramanian, V.K., Palanisamy, K., 2013. Aragonite–calcite–vaterite: A temperature
+influenced sequential polymorphic transformation of CaCO3 in the presence of DTPA.
+Materials Research Bulletin 48, 1906–1912.
+https://doi.org/10.1016/j.materresbull.2013.01.048
+Gopi, S.P., Subramanian, V.K., 2012. Polymorphism in CaCO3 — Effect of temperature under
+the influence of EDTA (di sodium salt). Desalination 297, 38–47.
+https://doi.org/10.1016/j.desal.2012.04.015
+
+https://doi.org/10.26434/chemrxiv-2024-bhlvj ORCID: https://orcid.org/0000-0003-1109-1844 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+673
+
+Hasson, D., Drak, A., Semiat, R., 2003. Induction times induced in an RO system by antiscalants
+delaying CaSO4 precipitation. Desalination 157, 193–207.
+https://doi.org/10.1016/S0011-9164(03)00399-0
+He, S., Kan, A.T., Tomson, M.B., 1999. Inhibition of calcium carbonate precipitation in NaCl
+brines from 25 to 90°C. Applied Geochemistry 14, 17–25. https://doi.org/10.1016/S08832927(98)00033-X
+He, S., Kan, A.T., Tomson, M.B., 1996. Mathematical Inhibitor Model for Barium Sulfate Scale
+Control. Langmuir 12, 1901–1905. https://doi.org/10.1021/la950876x
+He, S., Oddo, J.E., Tomson, M.B., 1994. The inhibition of gypsum and barite nucleation in NaCl
+brines at temperatures from 25 to 90°C. Applied Geochemistry 9, 561–567.
+https://doi.org/10.1016/0883-2927(94)90018-3
+Kamal, M.S., Hussein, I., Mahmoud, M., Sultan, A.S., Saad, M.A.S., 2018. Oilfield scale
+formation and chemical removal: A review. Journal of Petroleum Science and
+Engineering 171, 127–139. https://doi.org/10.1016/j.petrol.2018.07.037
+Mady, M.F., Charoensumran, P., Ajiro, H., Kelland, M.A., 2018. Synthesis and Characterization
+of Modified Aliphatic Polycarbonates as Environmentally Friendly Oilfield Scale
+Inhibitors. Energy Fuels 32, 6746–6755. https://doi.org/10.1021/acs.energyfuels.8b01168
+Mbogoro, M.M., Peruffo, M., Adobes-Vidal, M., Field, E.L., O’Connell, M.A., Unwin, P.R.,
+2017. Quantitative 3D Visualization of the Growth of Individual Gypsum Microcrystals:
+Effect of Ca 2+ :SO 4 2– Ratio on Kinetics and Crystal Morphology. J. Phys. Chem. C 121,
+12726–12734. https://doi.org/10.1021/acs.jpcc.7b01566
+Navarathna, C., Leschied, C., Wang, X., Reiss, A., Ye, Y., Pimentel, D., Shen, Y.-Y., Yao, X.,
+Kan, A., Tomson, M., 2023. A Novel Experiment Setup to Model the Effects of
+Temperature on Halite Scaling and Inhibition, in: Day 2 Thu, June 29, 2023. Presented at
+the SPE International Conference on Oilfield Chemistry, SPE, The Woodlands, Texas,
+USA, p. D021S009R003. https://doi.org/10.2118/213849-MS
+Nicoleau, L., Van Driessche, A.E.S., Kellermeier, M., 2019. A kinetic analysis of the role of
+polymers in mineral nucleation. The example of gypsum. Cement and Concrete Research
+124, 105837. https://doi.org/10.1016/j.cemconres.2019.105837
+Nývlt, J., 1968. Kinetics of nucleation in solutions. Journal of Crystal Growth 3–4, 377–383.
+https://doi.org/10.1016/0022-0248(68)90179-6
+Peters, V.F.D., Baken, A., Seepma, S.Y.M.H., Koskamp, J.A., Fernández-Martínez, A., Van
+Driessche, A.E.S., Wolthers, M., 2024. Effect of Solution Stoichiometry on BaSO 4
+Crystallization from Turbidity Measurements and Modeling. Ind. Eng. Chem. Res. 63,
+78–88. https://doi.org/10.1021/acs.iecr.3c03612
+Prieto, M., Putnis, A., Fernández-Díaz, L., López-Andrés, S., 1994. Metastability in diffusingreacting systems. Journal of Crystal Growth 142, 225–235. https://doi.org/10.1016/00220248(94)90291-7
+Rabizadeh, T., 2023. Investigating the potential of hydroxyethylamino-di(methylene phosphonic
+acid) in inhibiting gypsum crystallization. CrystEngComm 25, 935–944.
+https://doi.org/10.1039/D2CE01156E
+Regenspurg, S., Feldbusch, E., Byrne, J., Deon, F., Driba, D.L., Henninges, J., Kappler, A.,
+Naumann, R., Reinsch, T., Schubert, C., 2015. Mineral precipitation during production of
+geothermal fluid from a Permian Rotliegend reservoir. Geothermics 54, 122–135.
+https://doi.org/10.1016/j.geothermics.2015.01.003
+
+https://doi.org/10.26434/chemrxiv-2024-bhlvj ORCID: https://orcid.org/0000-0003-1109-1844 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+674
+675
+676
+677
+678
+679
+680
+681
+682
+683
+684
+685
+686
+687
+688
+689
+690
+691
+692
+693
+694
+695
+696
+697
+698
+699
+700
+701
+702
+703
+704
+705
+706
+707
+708
+709
+710
+711
+712
+713
+714
+715
+716
+717
+
+Reiss, A.G., Ganor, J., Gavrieli, I., 2019. Size Distribution and Morphology of Gypsum Crystals
+Precipitating from Hypersaline Solutions. Crystal Growth & Design 19, 6954–6962.
+https://doi.org/10.1021/acs.cgd.9b00735
+Reiss, A.G., Gavrieli, I., Ganor, J., 2020. The effect of phosphonate-based antiscalant on gypsum
+precipitation kinetics and habit in hyper-saline solutions: An experimental and modeling
+approach to the planned Red Sea – Dead Sea Project. Desalination 496, 114638.
+https://doi.org/10.1016/j.desal.2020.114638
+Reiss, A.G., Gavrieli, I., Rosenberg, Y.O., Reznik, I.J., Luttge, A., Emmanuel, S., Ganor, J.,
+2021. Gypsum Precipitation under Saline Conditions: Thermodynamics, Kinetics,
+Morphology, and Size Distribution. Minerals 11, 141.
+https://doi.org/10.3390/min11020141
+Rendel, P.M., Gavrieli, I., Wolff-Boenisch, D., Ganor, J., 2018. Towards establishing a
+combined rate law of nucleation and crystal growth – The case study of gypsum
+precipitation. Journal of Crystal Growth 485, 28–40.
+https://doi.org/10.1016/j.jcrysgro.2017.12.037
+Reznik, I.J., Ganor, J., Gruber, C., Gavrieli, I., 2012. Towards the establishment of a general rate
+law for gypsum nucleation. Geochimica et Cosmochimica Acta 85, 75–87.
+https://doi.org/10.1016/j.gca.2012.02.002
+Rodriguez-Blanco, J.D., Shaw, S., Benning, L.G., 2011. The kinetics and mechanisms of
+amorphous calcium carbonate (ACC) crystallization to calcite, viavaterite. Nanoscale 3,
+265–271. https://doi.org/10.1039/C0NR00589D
+Rosenberg, Y.O., Sade, Z., Ganor, J., 2018. The precipitation of gypsum, celestine, and barite
+and coprecipitation of radium during seawater evaporation. Geochimica et Cosmochimica
+Acta 233, 50–65. https://doi.org/10.1016/j.gca.2018.04.019
+Ruiz-Agudo, E., Putnis, C.V., Wang, L., Putnis, A., 2011. Specific effects of background
+electrolytes on the kinetics of step propagation during calcite growth. Geochimica et
+Cosmochimica Acta 75, 3803–3814. https://doi.org/10.1016/j.gca.2011.04.012
+Sanjiv Raj, K., Nirmala Devi, M., Palanisamy, K., Subramanian, V.K., 2021. Individual and
+synergetic effect of EDTA and NTA on polymorphism and morphology of CaCO3
+crystallization process in presence of barium. Journal of Solid State Chemistry 302,
+122026. https://doi.org/10.1016/j.jssc.2021.122026
+Smeets, P.J.M., Finney, A.R., Habraken, W.J.E.M., Nudelman, F., Friedrich, H., Laven, J., De
+Yoreo, J.J., Rodger, P.M., Sommerdijk, N.A.J.M., 2017. A classical view on nonclassical
+nucleation. Proc. Natl. Acad. Sci. U.S.A. 114. https://doi.org/10.1073/pnas.1700342114
+Tang, Y., Yang, W., Yin, X., Liu, Y., Yin, P., Wang, J., 2008. Investigation of CaCO3 scale
+inhibition by PAA, ATMP and PAPEMP. Desalination 228, 55–60.
+https://doi.org/10.1016/j.desal.2007.08.006
+Utami, W.S., HERDIANITA, N.R., ATMAJA, R.W., 2014. The Effect of Temperature and pH
+on the Formation of Silica Scaling of Dieng Geothermal Field, Central Java, Indonesia.
+Presented at the hirty-Ninth Workshop on Geothermal Reservoir Engineering, Stanford
+University, Stanford, California.
+Van Der Leeden, M.C., Kashchiev, D., Van Rosmalen, G.M., 1993. Effect of additives on
+nucleation rate, crystal growth rate and induction time in precipitation. Journal of Crystal
+Growth 130, 221–232. https://doi.org/10.1016/0022-0248(93)90855-Q
+
+https://doi.org/10.26434/chemrxiv-2024-bhlvj ORCID: https://orcid.org/0000-0003-1109-1844 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+718
+719
+720
+721
+722
+723
+724
+725
+726
+727
+728
+729
+730
+731
+732
+733
+734
+735
+736
+737
+
+Van Driessche, A.E.S., Kellermeier, M., Benning, L.G., Gebauer, D. (Eds.), 2017. New
+Perspectives on Mineral Nucleation and Growth. Springer International Publishing,
+Cham. https://doi.org/10.1007/978-3-319-45669-0
+Vasina, L.G., Boglovsky, A.V., Koldajeva, I.L., Noev, N.V., 1996. Water-chemical regimes of
+distillation plants operating beyond the calcium sulfate dehydrate scale threshold.
+Desalination 105, 159–163. https://doi.org/10.1016/0011-9164(96)00070-7
+Wang, T., Cölfen, H., Antonietti, M., 2005. Nonclassical Crystallization: Mesocrystals and
+Morphology Change of CaCO 3 Crystals in the Presence of a Polyelectrolyte Additive. J.
+Am. Chem. Soc. 127, 3246–3247. https://doi.org/10.1021/ja045331g
+Weber, E., Weiss, I.M., Cölfen, H., Kellermeier, M., 2016. Recombinant perlucin derivatives
+influence the nucleation of calcium carbonate. CrystEngComm 18, 8439–8444.
+https://doi.org/10.1039/C6CE01878E
+Westin, K.-J., Rasmuson, Å.C., 2005. Nucleation of calcium carbonate in presence of citric acid,
+DTPA, EDTA and pyromellitic acid. Journal of Colloid and Interface Science 282, 370–
+379. https://doi.org/10.1016/j.jcis.2004.09.071
+Zhao, Y., Dai, Z., Dai, C., Paudyal, S., Wang, X., Ko, S., Kan, A.T., Tomson, M., 2021.
+Semiempirical Model for Predicting Celestite Scale Formation and Inhibition in Oilfield
+Conditions. Energy Fuels 35, 11285–11294.
+https://doi.org/10.1021/acs.energyfuels.1c01375
+
+https://doi.org/10.26434/chemrxiv-2024-bhlvj ORCID: https://orcid.org/0000-0003-1109-1844 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+

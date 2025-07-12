@@ -1,0 +1,2149 @@
+There are significant challenges in
+predicting multiphase chemical kinetics due to
+the complex coupling of reaction and mass
+transport across a phase boundary (i.e.
+interface). Here we describe a framework for
+predicting multiphase kinetics that embeds the
+elementary kinetic steps of reaction, solvation
+and diffusion into a coarse grain spatial
+description of two phases.
+
+The model is
+
+constructed to bridge the short-timescale
+interfacial dynamics observed in molecular
+simulations with the longer timescales observed in kinetic experiments. A simple set of governing
+differential equations is presented, which when solved numerically or analytically, yield accurate
+predictions of multiphase kinetics in microdroplets. Although the equations are formulated for gasliquid reactions, the underlying conceptual framework is general and can be applied to
+transformations in other two-phase systems (solid-liquid, liquid-liquid, etc.).
+I. Introduction
+Chemistry invariably invokes images of beakers and flasks filled with liquids, with the
+chemist mixing, stirring, and heating reactants in various proportions. Wet chemistry of this type,
+involving a chemical reaction in a single phase, is vanishingly rare in natural systems—from the
+environment that surrounds us to the mechanics of our own biology. On a global scale, multiphase
+processes on the Earth’s surface and in its atmosphere span an incredibly broad range, from
+familiar phenomena like the hydrologic cycle and weather patterns to more subtle effects like the
+influence of ground emissions on cloud formation and the oxidizing capacity of the atmosphere.1,
+2 Multiphase processes are central for biology, as virtually all organisms rely on gas-liquid or solid-
+
+liquid exchange with the environment to maintain homeostasis. The boundary of the cell wall
+permits the electrochemical gradient necessary for cellular function and recent work has
+highlighted an emerging understanding of liquid-liquid phase separation within the cell.3-5
+Furthermore, solute transport across polymer membranes to achieve selective separations is of
+immense technological importance for future clean energy applications.6 In all of these systems
+understanding how multiphase transformations emerge from the complex coupling of chemical
+reactions with mass transport across phase boundaries remains a substantial challenge.
+Here we present a general approach for quantifying and predicting multiphase kinetics
+using a discretized or “compartmentalized” representation of chemistry spanning two phases.
+These methods grew out of explicit kinetic simulations of multiphase chemistry in aerosols,
+emulsions7 and droplets8-12 implemented in a stochastic reaction diffusion simulator,
+Kinetiscope©.13 This work builds upon our previous efforts11, 12 to develop a simple, physically
+realistic framework for predicting multiphase aerosol chemistry. Here we expand upon this
+framework to include more sophisticated descriptions of gas and liquid phase diffusion. The result
+is a “compartmentalized” description of kinetics expressed as a simple set of coupled differential
+equations, which when solved numerically (or using approximate closed form solutions)
+accurately predict surface and bulk uptake coefficients as well as multiphase reaction kinetics in
+aerosols and droplets. Although the current work is formulated for gas-liquid reactive uptake, the
+conceptual features of the framework can be readily adapted to kinetics in liquid-liquid, liquidsolid, or gas-solid systems.
+II. A Compartmentalized Description of Multiphase Chemical Kinetics
+As illustrated in Fig. 1A, any multiphase kinetic model starts with the same basic
+framework. At equilibrium and in the absence of a reaction, X (in this case a gas phase molecule)
+is partitioned between the gas (g) and liquid (bulk) phases. The concentrations of X in the gas
+([X(g,∞)]) and liquid ([X(blk)]) are governed by differences in solvation free energies and described
+𝑔𝑏
+
+by a Henry’s Law constant, (𝐻𝑐𝑐 = [X(blk)]/ [X(g,∞)]) where cc denotes the dimensionless form. Prior
+to the widespread use of molecular dynamics (MD) simulations, the concentration of X at the
+
+Figure 1: Concentration profiles of gas phase solute X and liquid phase solute Y in a two-phase system.
+(A) For the case where there is no reaction the equilibrium concentrations of X in phase 1 (black), phase
+2 (green) and at the biphasic interface (red) are governed by Henry’s law constants (H cc). (B) Steady
+state concentration profiles and gradients in X that form in the gas (blue) and liquid phases (purple) due
+to its reaction with Y. Also shown are compartments of length (L), which are distinguished by changes
+or gradients in X.
+droplet interface (i.e., X(ads)) was assumed to be that of either the gas or liquid phase. However,
+simulations show that this is often not the case, with trace gases exhibiting negative surface
+solvation free energies relative to the gas and liquid phases and thus, as illustrated in Fig. 1A,
+𝑔𝑠
+
+increased density the interface (i.e., 𝐻𝑐𝑐 = [X(ads)]/[X(g,∞)] > 1). At equilibrium a two-phase system,
+consisting of a single mutually soluble species X, can be envisioned as three distinct spatial regions
+or compartments each with a characteristic [X] (i.e., [X(g,∞)], [X(ads)] and [X(blk)]).
+In the presence of a liquid solute Y that reacts with X, the equilibrium concentration of X
+during the reaction is perturbed as illustrated in Fig. 1B. Depending upon the surface activity of Y
+and the overall reaction rate relative to the mass transport timescales, concentration gradients of X
+(and potentially Y) can form at the gas and liquid sides of the interface. This means that
+concentrations of X in the gas and liquid phase are no longer uniform as depicted in Fig. 1 A and
+additional compartments or regions are needed to represent these gradients. For example, fast
+surface reactions readily deplete the local gas phase concentration above the interface such that
+[X(g,∞)] > [X(gs)]. Similarly, reactions that substantially attenuate the flux of X entering the liquid,
+produce gradients in X such that [X(rd)] > [X(core)].
+Rather than dividing the two phase system up into a large number of small regions or layers,
+our approach is to coarse grain the system into a few key, kinetically relevant regions or
+compartments.12 Unlike kinetic multilayer models,14-19 we consider only the average
+concentrations of X and Y within each region, rather than attempting to capture the explicit
+functional form of the concentration gradients. These “kinetically relevant” regions represent
+places where the concentrations of X or Y are distinct or where there is the potential for gradients
+in X and Y to form due to the strong coupling of reaction and diffusion. These compartments (Fig.
+1B), each with a characteristic spatial dimension, correspond to the gas phase, gas-surface region,
+the interface, the reacto-diffusive volume below the interface and the inner core of the droplet.
+The interface length or thickness (δ) is assumed to be ~ 1 nm, which approximates the
+width of the density profile in MD simulations of the air-water interface.20-22 The length of the
+reacto-diffusive compartment (Lrd) depends upon the X + Y reaction rate,
+𝑋
+𝐷(𝑎𝑞)
+
+𝐿𝑟𝑑 = √ 𝑏𝑢𝑙𝑘
+
+𝑘𝑟𝑥𝑛 ∙[𝑌𝑏𝑙𝑘 ]
+
+.
+Eq. (1)
+
+
+𝑋
+𝑏𝑙𝑘
+𝐷(𝑎𝑞)
+, 𝑘𝑟𝑥𝑛
+, and [Y(blk)] are the liquid phase diffusion constant of X, the rate coefficient for the X
+
++ Y reaction and the bulk concentration of solute Y, respectively. The length of the core region for
+a spherical aerosol with radius, r, is Lcore = r – δ – Lrd. Both Lrd and Lcore are dynamic quantities
+that evolve during a reaction as Y is consumed. For reactions that are slow relative to diffusion,
+Lrd ~ r and hence the length of the core tends to zero as Lrd → r. To account for this limit a
+“transition function” (𝐿′𝑟𝑑 ) is needed,
+𝐿
+
+𝑟𝑑
+𝐿′𝑟𝑑 = 1+𝑟 −1
+⋅𝐿
+
+𝑟𝑑
+
+Eq. (2)
+
+which closely approximates the reaction-diffusion length when 𝐿𝑟𝑑 < 𝑟 and asymptotes to 𝑟 when
+𝐿𝑟𝑑 > 𝑟, as shown in Fig. S1.
+The model described consists of three compartments: the surface (srf), reacto-diffusive (rd)
+and inner core (core) volumes, with respective subscript denotations indicated in parentheses. As
+noted above, a near-surface compartment can also be implemented if the gas dynamics near the
+surface are of interest. For simplicity we neglect this region and assume gas-phase diffusion occurs
+directly to and from the droplet interface as explored in depth in Sect. V.A, with further details
+included in Appendix A. These sections illustrate how the gas-phase itself is defined directly as
+acting upon the surface compartment, such that no explicit “gas” compartment is necessary to
+execute the model.
+As shown in Fig. 2, our model of multiphase chemistry is formulated as a sequence of
+elementary kinetic steps embedded in three compartments. These steps describe the uptake of X
+and its reaction with Y. In addition to these chemical equilibria and reaction steps, diffusion
+pathways are included that describe the transfer of X and Y between compartments. This
+description aims to connect continuum descriptions of diffusive transport23, 24 with the molecularity
+of individual kinetic steps25-28 that govern trace gas uptake and reaction.
+As illustrated in Fig. 2, trace gas uptake and reaction occurs when a gas phase molecule
+X(g,∞) diffuses to the near surface region (indicated with subscript gs) of the droplet or interface
+𝑔𝑎𝑠
+
+with a rate constant of 𝑘𝑋𝑑𝑖𝑓𝑓 , producing the species labeled X(gs). This step is modeled directly in
+the surface compartment since, as noted above, we assume that diffusion between the interface and
+the near surface is instantaneous. The backward rate constant for gas phase diffusion away from
+𝑔𝑎𝑠
+
+the near surface (i.e., X(gs) → X(g,∞)) is also 𝑘𝑋𝑑𝑖𝑓𝑓 . Once near the surface, X(gs) can adsorb to the
+
+Figure 2: Conceptual diagram of the coarse grain kinetic framework. On the left, the multiphase system
+is divided up into kinetically relevant regions: gas (g), surface (s), reacto-diffusive (rd) volume and core
+(core). Embedded within these compartments are elementary kinetic steps that describe X adsorption
+(ads), desorption (des), solvation (solv) and desolvation (desolv). In addition, there are steps that
+𝑔𝑎𝑠
+
+𝑙𝑖𝑞𝑢𝑖𝑑
+
+describe gas phase diffusion of X (𝑘𝑥𝑑𝑖𝑓𝑓 ) and liquid phase diffusion of X and Y (e.g., 𝑘𝑥𝑑𝑖𝑓𝑓 ). Hcc are
+the coupled equilibria that describe the partitioning of X between the gas, surface and bulk liquid. K eq
+described the surface partition of Y between the bulk and interface.
+interface (X(gs)→ X(ads), kads) becoming thermally accommodated (i.e., X(ads)). There is some
+probability that X(ads) can then desorb from the interface (X(ads) → X(gs), kdes) back into the gas
+phase. This pair of adsorption/desorption steps comprise the gas-surface equilibrium constant,
+𝑔𝑠
+
+𝐻𝑐𝑐 , formulated as a Henry’s law coefficient specifically connecting the gas to the surface. Instead
+of desorption, X(ads) can instead undergo solvation (X(ads) → X(sb), kXsolv). Once solvated, X(sb) may
+desolvate back to form X(ads) (X(sb) → X(ads), kXdesolv), defining a pair of reversible steps with
+corresponding rate coefficients kXsolv and kXdesolv. These coefficients make up a second Henry’s law
+𝑠𝑏
+equilibrium constant (i.e., 𝐻𝑐𝑐
+), connecting surface and bulk concentrations of X. Rather than
+
+undergo desolvation, X(sb) can diffuse into the subsurface reacto-diffusive volume (X(rd)) at a rate
+𝑟𝑑
+proportional to a diffusional rate constant, 𝑘𝑋𝑑𝑖𝑓𝑓
+. Similarly, X(rd) can diffuse out of the reacto-
+
+diffusive volume back to the surface, or into the inner core of the aerosol becoming X(core). As will
+be shown below, partitioning of X between the gas, interface and bulk liquid is described using the
+Langmuir equation and the Henry’s law constants illustrated in Fig. 2.
+For a non-volatile solute (Y) the reaction with X occurs at the interface, via a Langmuir
+Hinshelwood mechanism (X(ads) + Y(ads)), in the reacto-diffusive volume (X(rd) + Y(rd)), and in the
+core of the droplet (X(core)+ Y(core)). As discussed in Sect. V.E, the rate constant for the interfacial
+𝑠𝑟𝑓
+𝑏𝑙𝑘 ) occurring in the reactoreaction (𝑘𝑟𝑥𝑛
+) need not be the same as that for a bulk reaction (𝑘𝑟𝑥𝑛
+
+diffusive and core regions of the droplet. Partitioning of Y between the bulk (Y(rd)) and interface
+(Y(ads)) is treated identically to that of X and is described by the kinetic steps of
+solvation/desolvation in the Langmuir equation (see Sect. V.C). Here we assume diffusion of Y in
+the solvent is rapid and remains uniformly distributed throughout the bulk regions (rd and core) of
+the droplet; [Y(rd)] = [Y(core)] = [Y(blk)]. This is assumption is generally valid for reactions with
+“trace gases” where [Y] >> [X]. A similar model framework can be used to treat simultaneous
+diffusion and reaction of both X and Y, as will be explored in future work.
+In summary, in addition to the reaction (X+Y) and reversible diffusion steps there is an
+𝑔𝑠
+
+equilibrium governing the partitioning of X between the gas and interface (𝐻𝑐𝑐 ) and two additional
+𝑠𝑏
+𝑌
+equilibria that govern the partitioning X (𝐻𝑐𝑐
+) and Y (𝐾𝑒𝑞
+) between the bulk and interface (Fig.
+
+2). These equilibria are coupled and respond dynamically to the presence of the X+Y reaction in
+each compartment. These steps and the associated differential equations embedded in the
+compartmentalized representation of the two-phase system are the basis for the kinetic model
+described below.
+III. Governing Equations
+In most aerosol and droplet experiments, multiphase kinetics are quantified by either the
+loss of gas phase X or condensed phase Y. The majority of experiments don’t distinguish between
+surface and bulk concentrations, but rather only measure total concentrations of X and/or Y
+([X(total)] and [Y(total)]) versus time, which can be expressed as a bimolecular rate law,
+𝑑[Y(𝑡𝑜𝑡𝑎𝑙) ]
+𝑑𝑡
+
+=
+
+𝑑[X(𝑡𝑜𝑡𝑎𝑙) ]
+𝑑𝑡
+
+= −𝑘𝑟𝑥𝑛 ⋅ [Y(𝑡𝑜𝑡𝑎𝑙) ][X (𝑡𝑜𝑡𝑎𝑙) ] =
+
+3⋅𝑐̅⋅[X(𝑔,∞) ]⋅𝛾𝑡𝑜𝑡𝑎𝑙
+4⋅𝑟
+
+Eq. (3)
+
+For a gas-liquid reaction, the rate law in Eq. (3) is proportional to the total uptake coefficient (γtotal),
+the gas phase collision frequency computed for a droplet with radius (r), and the mean speed (𝑐̅)
+of X in the gas phase. The total rate law and uptake coefficient in Eq. (3) can be expressed as a
+sum of the contributions from the three spatial regions (srf, rd, and core) described above, each of
+which contributes [Y(total)]t and γtotal,
+𝑑[Y(𝑡𝑜𝑡𝑎𝑙) ]
+
+𝑠𝑟𝑓
+
+𝑑𝑡
+
+𝑑[Y(𝑡𝑜𝑡𝑎𝑙) ]
+
+𝑑[Y(𝑡𝑜𝑡𝑎𝑙) ]
+
+3⋅𝑐̅⋅[X(𝑔,∞) ]⋅𝛾𝑠𝑟𝑓
+4⋅𝑟
+
+𝑡𝑜𝑡𝑎𝑙
+
+𝑟𝑑
+
+𝑑𝑡
+
+𝑑𝑡
+
+𝑉
+
+𝑠𝑟𝑓
+
+= −𝑘𝑟𝑥𝑛 ⋅ [Y(𝑎𝑑𝑠) ][X(𝑎𝑑𝑠) ] (𝑉 𝑠𝑟𝑓 ) =
+𝑉
+
+𝑏𝑙𝑘
+= −𝑘𝑟𝑥𝑛
+⋅ [Y(𝑡𝑜𝑡𝑎𝑙) ][X(𝑟𝑑) ] (𝑉 𝑟𝑑 ) =
+
+3⋅𝑐̅⋅[X(𝑔,∞) ]⋅𝛾𝑟𝑑
+4⋅𝑟
+
+𝑡𝑜𝑡𝑎𝑙
+
+𝑐𝑜𝑟𝑒
+
+𝑉
+
+𝑏𝑙𝑘
+= −𝑘𝑟𝑥𝑛
+⋅ [Y(𝑡𝑜𝑡𝑎𝑙) ][X(𝑐𝑜𝑟𝑒) ] (𝑉 𝑐𝑜𝑟𝑒 ) =
+𝑡𝑜𝑡𝑎𝑙
+
+3⋅𝑐̅⋅[X(𝑔,∞) ]⋅𝛾𝑐𝑜𝑟𝑒
+4⋅𝑟
+
+Eq. (4)
+Eq. (5)
+Eq. (6)
+
+Solving Eqs. (4)-(6) for the uptake coefficient in each compartment yields,
+𝑠𝑟𝑓
+
+𝛾𝑠𝑟𝑓 =
+
+𝛾𝑟𝑑 =
+
+𝛾𝑐𝑜𝑟𝑒 =
+
+4⋅𝑟⋅𝑘𝑟𝑥𝑛 ⋅[X(𝑎𝑑𝑠) ][Y(𝑎𝑑𝑠) ]
+3⋅𝑐̅⋅[X(𝑔,∞) ]
+
+𝑏𝑙𝑘 ⋅[X
+4⋅𝑟⋅𝑘𝑟𝑥𝑛
+(𝑟𝑑) ][Y(𝑡𝑜𝑡𝑎𝑙) ]
+
+3⋅𝑐̅⋅[X(𝑔,∞) ]
+
+),
+
+Eq. (7)
+
+(𝑉 𝑟𝑑 ),
+
+Eq. (8)
+
+𝑡𝑜𝑡𝑎𝑙
+
+𝑏𝑙𝑘 ⋅[X
+4⋅𝑟⋅𝑘𝑟𝑥𝑛
+(𝑐𝑜𝑟𝑒) ][Y(𝑡𝑜𝑡𝑎𝑙) ]
+
+3⋅𝑐̅⋅[X(𝑔,∞) ]
+
+𝑉𝑠𝑟𝑓
+
+(𝑉
+
+𝑉
+
+𝑡𝑜𝑡𝑎𝑙
+
+𝑉
+
+(𝑉 𝑐𝑜𝑟𝑒 ).
+𝑡𝑜𝑡𝑎𝑙
+
+Eq. (9)
+
+whose sum is γtotal,
+𝛾𝑡𝑜𝑡𝑎𝑙 = 𝛾𝑠𝑟𝑓 + 𝛾𝑟𝑑 + 𝛾𝑐𝑜𝑟𝑒
+Eq. (10)
+
+
+𝑠𝑟𝑓
+The contributions of Eqs. (4)-(9) to [Y(𝑡𝑜𝑡𝑎𝑙) ]𝑡 and γtotal depend upon reaction rate coefficients (𝑘𝑟𝑥𝑛
+𝑏𝑙𝑘 ), compartment volumes (V
+and 𝑘𝑟𝑥𝑛
+core, Vrd and Vsrf) and reactant concentrations in each
+
+compartment (i.e., [X(𝑎𝑑𝑠) ], [Y(𝑎𝑑𝑠) ], [X(𝑟𝑑) ], [X(𝑐𝑜𝑟𝑒) ], [Y(𝑡𝑜𝑡𝑎𝑙) ]). As shown previously,12 the product
+of the concentration and volume terms in Eqs. (4)-(9) is used to compute the fractional contribution
+of each compartment to the [Y(total)]t and γtotal. For a sphere these volumes are,
+𝑉𝑠𝑟𝑓 = 3 𝜋𝑟 3 − 3 𝜋(𝑟 − 𝛿)3 ,
+Eq. (11)
+Eq. (12)
+
+𝑉𝑟𝑑 = 3 𝜋(𝑟 − 𝛿)3 − 3 𝜋(𝑟 − 𝛿 − 𝐿′𝑟𝑑 )3 ,
+𝑉𝑐𝑜𝑟𝑒 = 3 𝜋(𝑟 − 𝛿 − 𝐿′𝑟𝑑 )3 ,
+
+Eq. (13)
+Eq. (14)
+
+𝑉𝑡𝑜𝑡𝑎𝑙 = 3 𝜋𝑟 3 .
+
+The six differential equations that describe the evolution of [X] and [Y] illustrated mechanistically
+in Fig. 2 are,
+𝑑[X(𝑔𝑠) ]
+𝑑𝑡
+
+𝑔𝑎𝑠
+
+Γ
+
+𝑔𝑎𝑠
+
+= 𝑘𝑑𝑖𝑓𝑓 [X(𝑔,∞) ] + 𝑘𝑑𝑒𝑠 [X(𝑎𝑑𝑠) ] − 𝑘𝑑𝑖𝑓𝑓 [X (𝑔𝑠) ] − 𝑘𝑎𝑑𝑠 ∞(𝑋)
+[X(𝑔𝑠) ]
+𝛿
+
+Eq. (15)
+
+𝑑[X(𝑎𝑑𝑠) ]
+Γ∞(X)
+Γ∞(X)
+𝑠𝑟𝑓
+= 𝑘𝑎𝑑𝑠
+[X(𝑔𝑠) ] + 𝑘𝑋𝑑𝑒𝑠𝑜𝑙𝑣
+[X(𝑠𝑏) ] − 𝑘𝑑𝑒𝑠 [X(𝑎𝑑𝑠) ] − 𝑘𝑋𝑠𝑜𝑙𝑣 [X(𝑎𝑑𝑠) ] − 𝑘𝑟𝑥𝑛 [Y(𝑎𝑑𝑠) ][X (𝑎𝑑𝑠) ]
+𝑑𝑡
+𝛿
+𝛿
+
+Eq. (16)
+𝑑[X(𝑠𝑏) ]
+𝑑𝑡
+
+Γ
+
+𝑠𝑏
+𝑠𝑏
+= 𝑘𝑋𝑠𝑜𝑙𝑣 [X(𝑎𝑑𝑠) ] + 𝑘𝑋𝑑𝑖𝑓𝑓
+[X(𝑟𝑑) ] − 𝑘𝑋𝑑𝑒𝑠𝑜𝑙𝑣 ∞(X)
+[X(𝑠𝑏) ] − 𝑘𝑋𝑑𝑖𝑓𝑓
+[X(𝑠𝑏) ]
+𝛿
+𝑑[X(𝑟𝑑) ]
+𝑑𝑡
+
+𝑑[X(𝑐𝑜𝑟𝑒) ]
+𝑑𝑡
+
+Eq. (17)
+
+𝑟𝑑
+𝑟𝑑
+𝑏𝑙𝑘
+= 𝑘𝑋𝑑𝑖𝑓𝑓
+[X(𝑠𝑏) ] − 𝑘𝑋𝑑𝑖𝑓𝑓
+[X(𝑟𝑑) ] − 𝑘𝑟𝑥𝑛
+[Y(𝑡𝑜𝑡𝑎𝑙) ][X(𝑟𝑑) ]
+
+Eq. (18)
+
+𝑐𝑜𝑟𝑒
+𝑐𝑜𝑟𝑒
+𝑏𝑙𝑘
+= 𝑘𝑋𝑑𝑖𝑓𝑓
+[X(𝑟𝑑) ] − 𝑘𝑋𝑑𝑖𝑓𝑓
+[X(𝑐𝑜𝑟𝑒) ] − 𝑘𝑟𝑥𝑛
+[Y(𝑡𝑜𝑡𝑎𝑙) ][X(𝑐𝑜𝑟𝑒) ]
+
+Eq. (19)
+
+𝑑[𝑌(𝑡𝑜𝑡𝑎𝑙) ]
+𝑉𝑠𝑟𝑓
+𝑉𝑟𝑑
+𝑉𝑐𝑜𝑟𝑒
+𝑠𝑟𝑓
+𝑏𝑙𝑘
+𝑏𝑙𝑘
+= −𝑆 𝑘𝑟𝑥𝑛 [Y(𝑎𝑑𝑠) ][X (𝑎𝑑𝑠) ]
+− 𝑆 𝑘𝑟𝑥𝑛
+[Y(𝑡𝑜𝑡𝑎𝑙) ][X(𝑟𝑑) ]
+− 𝑆 𝑘𝑟𝑥𝑛
+[Y(𝑡𝑜𝑡𝑎𝑙) ][X (𝑐𝑜𝑟𝑒) ]
+𝑑𝑡
+𝑉𝑡𝑜𝑡𝑎𝑙
+𝑉𝑡𝑜𝑡𝑎𝑙
+𝑉𝑡𝑜𝑡𝑎𝑙
+
+Eq. (20)
+In Sect. V we discuss in detail how the rate coefficients that appear in these expressions are
+Γ
+
+obtained for a given system. The ( ∞(𝑋)
+) term in Eqs. (15)-(17) is the maximum concentration of
+𝛿
+Langmuir adsorption sites at the interface, where
+Γ∞(𝑋)
+
+is proportional to the surface area of X (cm2
+
+molec.-1) and δ is interface thickness (1 nm). A full discussion of how the Langmuir framework is
+used to describe the surface partitioning of X and Y is provided in Sects. V.B and V.C,
+respectively. Lastly, a stoichiometric factor (S) is included in Eq. (20) to provide a simple way to
+approximate the role of secondary chemistry when the loss of Y relative to X differs from 1:1. In
+Sect. VI, we numerically solve Eqs. (15)-(20) and validate the model results against prior
+experimental measurements of multiphase ozone reactions with a variety of aqueous solutes in
+microdroplets.
+IV. Analytical Solutions
+Approximate closed form solutions for both the uptake coefficients and reaction kinetics
+of [Y] can be obtained by applying steady-state approximations12 to Eqs. (15)-(19). These
+derivations are shown in Sect. SI-2 of the Supplementary Information. The final closed form
+kinetic equations, shown below, are obtained using Lambert W functions29 as previously
+reported.12 Lambert W functions can be computed in Mathematica (Productlog Function),
+MATLAB (W function) and Python (lambertw function) using built in algorithms. Although we
+refer to our expressions as “closed-form” or “analytical,” there appears to be no consensus as to
+whether Lambert W functions are strictly included in the general definition of closed-form
+solutions. Nevertheless, we adopt this convention in light of previous terminology.30
+As shown previously,12 deriving the time-dependent expressions for [Y(total)]t relies on
+computing “steady-state” expressions for the trace gas X within each compartment. The general
+method can be summarized by first applying the steady-state approximation to Eqs. (15)-(19), to
+yield an expression for the concentration of X in each region [X(region)] as a function of [Y(total)].
+These steady-state expressions [X(region)] are then substituted into Eq. (20), which can then be
+integrated by separation of variables and solved for [Y(total)]t as function of time t, radius r, gas
+concentration [X(gas,∞)], and the rate coefficients outlined in Sect. II and detailed in Sect. VI. Only
+the final equations are shown below with a full derivation provided in Sect. SI-2 of the
+Supplementary Information.
+The analytical expression for loss of Y due to reaction with X occurring only in the reactodiffusive volume is,
+𝑟𝑑
+
+[Y(𝑡𝑜𝑡𝑎𝑙) ]𝑡
+
+Γ
+𝑠𝑏
+𝑏𝑙𝑘
+( ∞(𝑋) ∙ 𝑘𝑋𝑑𝑒𝑠𝑜𝑙𝑣 + 𝑘𝑋𝑑𝑖𝑓𝑓
+) ∙ 𝑘𝑟𝑥𝑛
+∙ [Y(𝑡𝑜𝑡𝑎𝑙) ]0
+𝛿
+=
+⋅ 𝑾{
+⋅ 𝑵𝟏 }
+Γ
+Γ∞(𝑋)
+𝑠𝑏
+𝑟𝑑
+𝑏𝑙𝑘
+( ∞(𝑋) ∙ 𝑘𝑋𝑑𝑒𝑠𝑜𝑙𝑣 + 𝑘𝑋𝑑𝑖𝑓𝑓
+) ∙ 𝑘𝑟𝑥𝑛
+∙ 𝑘𝑋𝑑𝑒𝑠𝑜𝑙𝑣 ∙ 𝑘𝑋𝑑𝑖𝑓𝑓
+𝛿
+𝛿
+Γ∞(𝑋)
+𝑟𝑑
+∙ 𝑘𝑋𝑑𝑒𝑠𝑜𝑙𝑣 ∙ 𝑘𝑋𝑑𝑖𝑓𝑓
+𝛿
+
+𝑵𝟏 = 𝑒𝑥𝑝 (
+
+(
+
+Γ∞(𝑋)
+𝛿
+
+𝑠𝑏
+𝑏𝑙𝑘 [𝑌
+∙𝑘𝑋𝑑𝑒𝑠𝑜𝑙𝑣 +𝑘𝑋𝑑𝑖𝑓𝑓
+)∙𝑘𝑟𝑥𝑛
+(𝑡𝑜𝑡𝑎𝑙) ]
+𝑟𝑑
+𝑘𝑋𝑑𝑖𝑓𝑓
+∙
+
+Γ∞(𝑋)
+𝛿
+𝑔𝑠
+
+−
+
+𝑏𝑙𝑘 ∙𝑘
+𝑘𝑟𝑥𝑛
+𝑋𝑠𝑜𝑙𝑣 ∙𝐻𝑐𝑐 ∙𝑆 ∙[𝑋(𝑔,∞) ]
+Γ∞(𝑋)
+
+∙𝑘𝑋𝑑𝑒𝑠𝑜𝑙𝑣
+
+𝛿
+
+∙𝑘𝑋𝑑𝑒𝑠𝑜𝑙𝑣
+
+𝑉
+
+∙ 𝑉 𝑟𝑑 𝑡).
+𝑡𝑜𝑡𝑎𝑙
+
+Eq. (21)
+
+where [Y(𝑡𝑜𝑡𝑎𝑙) ]0 is the initial concentration of solute Y. As discussed in Sect. SI-2, Eq. (21) is
+obtained by considering reactivity in the rd region alone and neglecting the reactivity of the core
+region. This approximation is generally valid since, by definition, the majority of bulk reactivity
+occurs within the rd region. Reaction in the core accounts for up to ~10% of the total reactions for
+the special case where the 𝐿𝑟𝑑 ≈ 𝐿𝑐𝑜𝑟𝑒 .
+The time-dependent expression for [Y(total)] due to only a surface reaction is,
+𝑠𝑟𝑓
+
+[Y(𝑡𝑜𝑡𝑎𝑙) ]𝑡
+
+=
+
+𝜽
+Γ∞(𝑌) Y
+𝑠𝑟𝑓
+∙ 𝐾𝑒𝑞 ∙ 𝑘𝑟𝑥𝑛 + 𝐾𝑒𝑞
+∙𝜽
+𝛿
+
+Γ∞(𝑌) Y
+𝑠𝑟𝑓
+∙ 𝐾𝑒𝑞 ∙ 𝑘𝑟𝑥𝑛 + 𝐾𝑒𝑞
+∙𝜽
+𝛿
+⋅ 𝑾{
+[Y(𝑡𝑜𝑡𝑎𝑙) ]0 ⋅ 𝑵𝟐 }
+𝜽
+
+𝑔𝑎𝑠 Γ∞(𝑋)
+𝑘𝑑𝑖𝑓𝑓 ∙
+∙ 𝑘𝑎𝑑𝑠
+Γ
+𝑠𝑟𝑓
+𝛿
+(
+) ∙ ∞(𝑌) ∙ 𝐾𝑒𝑞
+∙ 𝑘𝑟𝑥𝑛 ∙ 𝑆 ∙ [X(𝑔,∞) ]
+Γ∞(𝑌) Y
+Γ
+𝛿
+𝑠𝑟𝑓
+𝑔𝑎𝑠
+∞(𝑋)
+∙ 𝐾𝑒𝑞 ∙ 𝑘𝑟𝑥𝑛 + 𝐾𝑒𝑞 ∙ 𝜽
+𝑘𝑑𝑖𝑓𝑓 +
+∙ 𝑘𝑎𝑑𝑠
+𝑉𝑠𝑟𝑓
+𝛿
+𝛿
+[Y(𝑡𝑜𝑡𝑎𝑙) ]0 −
+𝑵𝟐 = 𝑒𝑥𝑝
+⋅
+⋅𝑡
+𝜽
+𝜽
+𝑉𝑡𝑜𝑡𝑎𝑙
+
+(
+
+)
+
+𝜽 = 𝑘𝑑𝑒𝑠 + 𝑘𝑋𝑠𝑜𝑙𝑣 − (
+
+𝑘𝑑𝑒𝑠 ∙
+
+Γ∞(𝑋)
+
+∙𝑘
+
+𝑎𝑑𝑠
+𝛿
+𝑔𝑎𝑠 Γ∞(𝑋)
+𝑘𝑑𝑖𝑓𝑓 + 𝛿 ∙ 𝑘𝑎𝑑𝑠
+
+Γ∞(𝑋)
+
+∙ 𝑘𝑋𝑑𝑒𝑠𝑜𝑙𝑣
+𝛿
+Γ∞(𝑋)
+𝑠𝑏
+𝑘𝑋𝑑𝑖𝑓𝑓 + 𝛿 ∙ 𝑘𝑋𝑑𝑒𝑠𝑜𝑙𝑣
+
+)−(
+
+𝑘𝑋𝑠𝑜𝑙𝑣 ∙
+
+).
+
+Eq. (22)
+
+The complete expression that includes reactions at both the surface and within the rd region is
+obtained by replacing [Y(𝑡𝑜𝑡𝑎𝑙) ]0 in Eq. (22) with Eq. (21),
+
+[Y(𝑡𝑜𝑡𝑎𝑙) ]𝑡 =
+
+𝜽
+Γ∞(𝑌) Y
+𝑠𝑟𝑓
+∙ 𝐾𝑒𝑞 ∙ 𝑘𝑟𝑥𝑛 + 𝐾𝑒𝑞
+∙𝜽
+𝛿
+
+Γ∞(𝑌) Y
+𝑠𝑟𝑓
+∙ 𝐾𝑒𝑞 ∙ 𝑘𝑟𝑥𝑛 + 𝐾𝑒𝑞
+𝜽
+𝑏𝑙𝑘
+𝛿
+⋅ 𝑾{
+[Y(𝑡𝑜𝑡𝑎𝑙) ]𝑡 ⋅ 𝑵𝟑 }
+𝜽
+
+Γ∞(𝑋)
+∙ 𝑘𝑎𝑑𝑠
+Γ∞(𝑌) Y
+𝑠𝑟𝑓
+𝛿
+(
+)∙
+∙ 𝐾𝑒𝑞 ∙ 𝑘𝑟𝑥𝑛 ∙ 𝑆 ∙ [X(𝑔,∞) ]
+Γ∞(𝑌) Y
+Γ
+𝛿
+𝑠𝑟𝑓
+𝑔𝑎𝑠
+∞(𝑋)
+∙ 𝐾𝑒𝑞 ∙ 𝑘𝑟𝑥𝑛 + 𝐾𝑒𝑞 𝜽
+𝑘𝑑𝑖𝑓𝑓 +
+∙ 𝑘𝑎𝑑𝑠
+𝑉𝑠𝑟𝑓
+𝑟𝑑
+𝛿
+𝛿
+[Y(𝑡𝑜𝑡𝑎𝑙) ]𝑡 −
+𝑵𝟑 = 𝑒𝑥𝑝
+⋅
+⋅𝑡 ,
+𝜽
+𝜽
+𝑉𝑡𝑜𝑡𝑎𝑙
+𝑔𝑎𝑠
+
+𝑘𝑑𝑖𝑓𝑓 ∙
+
+(
+
+)
+Eq. (23)
+where 𝜽 is defined as in Eq. (22). While it is clear these equations are cumbersome, we show in
+Sect. VI.B that they faithfully approximate the full numerical solutions of Eqs. (15)-(20). For
+further discussion on the approximations and assumptions made in obtaining Eqs. (21)-(23), see
+Sect. SI-2 of the Supplementary Information.
+The steady state expressions for [X(𝑎𝑑𝑠) ], [X(𝑟𝑑) ], and [X(𝑐𝑜𝑟𝑒) ] derived in Sect. SI-2 and
+discussed above are substituted into the uptake equations (Eqs. (7)-(9)) to obtain the following
+expression for 𝛾𝑠𝑢𝑟𝑓 , 𝛾𝑟𝑑 , and 𝛾𝑐𝑜𝑟𝑒 ,
+𝑠𝑟𝑓
+
+𝛾𝑠𝑢𝑟𝑓 =
+
+𝛾𝑟𝑑 =
+
+4 𝑟 𝑘𝑟𝑥𝑛
+3⋅𝑐̅
+
+𝑔𝑎𝑠 Γ∞(𝑋)
+∙𝑘𝑎𝑑𝑠
+𝛿
+Γ
+𝑔𝑎𝑠
+∞(𝑋)
+𝑘𝑑𝑖𝑓𝑓 +
+∙𝑘𝑎𝑑𝑠
+𝛿
+
+⋅(
+
+𝑘𝑑𝑖𝑓𝑓 ∙
+
+)
+
+[𝑌(𝑎𝑑𝑠) ]
+𝝓
+
+𝑉𝑠𝑟𝑓
+
+⋅𝑉
+
+𝑡𝑜𝑡𝑎𝑙
+
+Eq. (24)
+
+,
+
+𝑔𝑎𝑠 Γ∞(𝑋)
+𝑘
+∙
+∙𝑘𝑎𝑑𝑠 [Y(𝑡𝑜𝑡𝑎𝑙) ]
+𝑑𝑖𝑓𝑓
+𝛿
+𝑟𝑑
+)
+𝑘𝑋𝑑𝑖𝑓𝑓 ∙𝑘𝑋𝑠𝑜𝑙𝑣 (
+Γ
+𝝓
+𝑔𝑎𝑠
+∞(𝑋)
+𝑏𝑙𝑘
+𝑘
++
+∙𝑘𝑎𝑑𝑠
+4 𝑟 𝑘𝑟𝑥𝑛
+𝑑𝑖𝑓𝑓
+𝛿
+Γ∞(𝑋)
+Γ∞(𝑋)
+3 𝑐̅
+𝑟𝑑
+𝑠𝑏
+𝑏𝑙𝑘 [Y
+𝑏𝑙𝑘
+∙𝑘𝑋𝑑𝑒𝑠𝑜𝑙𝑣 ∙𝑘𝑋𝑑𝑖𝑓𝑓
++
+∙𝑘𝑋𝑑𝑒𝑠𝑜𝑙𝑣 ∙𝑘𝑟𝑥𝑛
+(𝑡𝑜𝑡𝑎𝑙) ] +𝑘𝑋𝑑𝑖𝑓𝑓 ∙𝑘𝑟𝑥𝑛 [Y(𝑡𝑜𝑡𝑎𝑙) ]
+𝛿
+𝛿
+
+𝛾𝑐𝑜𝑟𝑒 =
+
+𝑔𝑏
+
+𝑏𝑙𝑘
+4 𝑟 𝑘𝑟𝑥𝑛
+
+𝑐𝑜𝑟𝑒
+𝑟𝑑
+𝑘𝑋𝑑𝑖𝑓𝑓
+𝑘𝑋𝑑𝑖𝑓𝑓
+𝐻𝑐𝑐 [Y(𝑡𝑜𝑡𝑎𝑙) ]
+
+3 𝑐̅
+
+𝑐𝑜𝑟𝑒 +𝑘 𝑏𝑙𝑘 [Y
+𝑟𝑑
+𝑏𝑙𝑘
+(𝑘𝑋𝑑𝑖𝑓𝑓
+(𝑡𝑜𝑡𝑎𝑙) ])∙(𝑘𝑋𝑑𝑖𝑓𝑓 +𝑘𝑟𝑥𝑛 [Y(𝑡𝑜𝑡𝑎𝑙) ])
+𝑟𝑥𝑛
+
+𝑉
+
+⋅ 𝑉 𝑟𝑑 , Eq. (25)
+
+𝑉
+
+⋅ 𝑉 𝑐𝑜𝑟𝑒 ,
+𝑡𝑜𝑡𝑎𝑙
+
+𝑡𝑜𝑡𝑎𝑙
+
+Eq. (26)
+
+where,
+𝝓=
+
+(
+
+Γ∞(𝑋)
+
+Γ∞(𝑋)
+
+𝛿
+
+𝛿
+
+𝑘𝑑𝑒𝑠 ∙
+𝑘𝑎𝑑𝑠
+𝑘𝑋𝑠𝑜𝑙𝑣 ∙
+𝑘𝑋𝑑𝑒𝑠𝑜𝑙𝑣
+𝑠𝑟𝑓
+𝛿
+𝛿
+𝑘𝑑𝑒𝑠 + 𝑘𝑋𝑠𝑜𝑙𝑣 + [Y(𝑎𝑑𝑠) ]𝑘𝑟𝑥𝑛 − ( 𝑔𝑎𝑠 Γ∞(𝑋)
+)−
+) − ( 𝑠𝑏
+Γ∞(𝑋)
+𝑘𝑑𝑖𝑓𝑓 +
+𝑘𝑎𝑑𝑠
+𝑘𝑋𝑑𝑖𝑓𝑓 +
+𝑘𝑋𝑑𝑒𝑠𝑜𝑙𝑣
+
+𝑟𝑑
+(𝑘𝑋𝑑𝑖𝑓𝑓
++
+
+𝑠𝑏
+𝑟𝑑
+𝑘𝑋𝑑𝑖𝑓𝑓
+∙𝑘𝑋𝑑𝑖𝑓𝑓
+∙
+Γ∞(𝑋)
+𝛿
+
+𝑘𝑋𝑑𝑒𝑠𝑜𝑙𝑣 )×(
+
+Γ∞(𝑋)
+𝑘𝑋𝑑𝑒𝑠𝑜𝑙𝑣 ∙𝑘𝑋𝑠𝑜𝑙𝑣
+𝛿
+
+Γ∞(𝑋)
+Γ∞(𝑋)
+𝑟𝑑
+𝑏𝑙𝑘 +𝑘 𝑠𝑏
+𝑏𝑙𝑘
+𝑘𝑋𝑑𝑒𝑠𝑜𝑙𝑣 [Y(𝑡𝑜𝑡𝑎𝑙) ] 𝑘𝑟𝑥𝑛
+𝑋𝑑𝑖𝑓𝑓 [Y(𝑟𝑑) ]𝑘𝑟𝑥𝑛 +𝑘𝑋𝑑𝑖𝑓𝑓 ∙ 𝛿 𝑘𝑋𝑑𝑒𝑠𝑜𝑙𝑣 )
+𝛿
+
+).
+
+Eq. (27)
+[𝑌(𝑎𝑑𝑠) ] in Eq. (24) is computed using the Langmuir equation as described in Sect. V.C. Although
+lengthy, these expressions are general and account for cases where trace gas uptake is limited by
+either gas or liquid phase diffusion, or when there is strong coupling between surface and bulk
+reactions. Importantly, these expressions link the macroscopic quantity of an uptake coefficient
+(i.e., the fraction of collisions that yield a reaction) with the microscopic elementary steps of gas
+accommodation, reaction and diffusion. We note that Eq. (26) expressing uptake due to reaction in
+the inner droplet core assumes that the interfacial X species denoted by (ads) and (sb) are
+𝑔𝑏
+
+equilibrated with the gas phase and equal to 𝐻𝑐𝑐 [X𝑔,∞ ]. This assumption is especially valid for the
+core uptake since for this reactivity to have much significance, the reacto-diffusive length must be
+on the order of the droplet radius, in which case the droplet interface is virtually in equilibrium
+with the gas phase. As we have shown previously,10, 12, 20 these uptake expressions become much
+simpler for limiting cases often encountered in the laboratory. In Sect. VI we validate these closed
+form expressions against the numerical solutions to Eqs. (15)-(20) as well as prior experimental
+data on multiphase ozone kinetics in microdroplets.
+V. Determination of Rate Coefficients
+Here we summarize how to derive, compute or obtain each rate coefficient used in Eqs.
+(15)-(20) and the closed form expressions, Eqs. (21)-(27).
+𝒈𝒂𝒔
+
+A. Gas Phase Diffusion of X: (𝒌𝒅𝒊𝒇𝒇 )
+The transport equation describing the diffusion of X to the boundary of a sphere of radius
+r is,31
+𝐽𝑐 (
+
+𝑚𝑜𝑙𝑒𝑐
+𝑠
+
+𝑋
+) = 4 𝜋 ⋅ 𝐷𝑔𝑎𝑠
+𝑟 ⋅ [X(𝑔,∞) ],
+
+Eq. (28)
+
+𝑋
+where 𝐷𝑔𝑎𝑠
+is the gas phase diffusion constant of X. Here, 𝐽𝑐 is the molecular flow in the
+
+“continuum” regime. We implement diffusion in the model as two reversible steps described by a
+rate coefficient,
+𝑔𝑎𝑠
+
+𝑘𝑑𝑖𝑓𝑓
+
+[X(𝑔,∞) ]
+
+→
+[X (𝑔𝑠) ],
+←𝑔𝑎𝑠
+
+(R1)
+
+𝑘𝑑𝑖𝑓𝑓
+𝑔𝑎𝑠
+
+where 𝑘𝑑𝑖𝑓𝑓 is obtained by analyzing the origin of transport equation Eq. (28) and normalizing Jc
+by a relevant volumetric term and the gas concentration [X(g,∞)].
+Jc is derived using the expression for diffusion of species X through a spherical wall with
+outer boundary b and inner boundary a as provided by Crank:32
+𝐽𝑐 (
+
+𝑚𝑜𝑙𝑒𝑐
+𝑠
+
+𝑏⋅𝑎
+
+𝑋
+) = 4 𝜋 ⋅ 𝐷𝑔𝑎𝑠
+∙ ([𝑋𝑏 ] − [𝑋𝑎 ]),
+𝑏−𝑎
+Eq. (29)
+
+
+where the inner boundary a = r and the concentrations are chosen to be [𝑋𝑏 ] = [X𝑔,∞ ] and [𝑋𝑎 ] =
+0. Setting [𝑋𝑎 ] = 0 in this way provides the upper bound for the rate of diffusive transport where
+the surface concentration at r is completely depleted. For the outer boundary b, we consider the
+limit b → ∞ to identify a limiting value for Jc where the flow of X to the spherical interface
+approaches a minimum. In the limit b → ∞, Eq. (29) becomes,
+𝐽𝑐 (
+
+𝑚𝑜𝑙𝑒𝑐
+𝑠
+
+𝑋
+) = 4 𝜋 ⋅ 𝐷𝑔𝑎𝑠
+𝑟 ⋅ [X(𝑔,∞) ],
+
+Eq. (30)
+
+which is equivalent to Eq. (28). This expression is divided by the spherical shell volume of the
+surface to obtain a rate equation,
+𝑚𝑜𝑙𝑒𝑐
+
+𝐽
+
+𝑅𝑎𝑡𝑒 ( 𝑐𝑚3 𝑠 ) = 𝑉 𝑐 = 4
+𝑠𝑟𝑓
+𝑋 𝑟
+4𝜋 𝐷𝑔𝑎𝑠
+
+𝑋 𝑟
+4𝜋 𝐷𝑔𝑎𝑠
+
+⋅ [X(𝑔,∞) ] ≈ 4𝜋 𝑟 2 𝛿 ⋅ [X(𝑔,∞) ],
+𝜋 (𝑟 3 −(𝑟−𝛿) )
+
+Eq. (31)
+
+where the surface volume can be approximated by the product of the spherical surface area and
+surface thickness δ when r >> δ. From Eq. (31), the rate of diffusion to the interface is,
+𝑚𝑜𝑙𝑒𝑐
+
+𝑔𝑎𝑠
+
+𝑅𝑎𝑡𝑒 ( 𝑐𝑚3 𝑠 ) = 𝑘𝑑𝑖𝑓𝑓 ⋅ [X(𝑔,∞) ]
+
+Eq. (32)
+
+where the gas-diffusion rate coefficient is,
+𝑔𝑎𝑠
+
+𝑋
+𝐷𝑔𝑎𝑠
+
+𝑘𝑑𝑖𝑓𝑓 = 𝑟 𝛿 .
+
+Eq. (33)
+
+This rate coefficient controls both the diffusion rate of X into the surface compartment generating
+[X (𝑔𝑠) ], but also the rate at which [X (𝑔𝑠) ] diffuses away from the surface, re-generating [X(𝑔,∞) ], as
+illustrated in Fig. 2. This rate of diffusion is inherently coupled to the rate at which X may adsorb
+to the interface. An understanding of this phenomenon and a comparison of the current treatment
+with previous derivations by Fuchs and Sutugin33 is provided in Appendix A.
+B. Trace Gas X Adsorption, Desorption, Solvation and Desolvation: (kads, kdes, kXsolv , kXdesolv)
+Describing multiphase chemical kinetics requires accounting for both diffusion that
+governs larger-scale transport between two phases, and the adsorption/desorption terms in Fig. 2
+that govern molecular-scale transport at an interface. First, we consider how the adsorption rate
+coefficient is related to the collision frequency of a gas X on the droplet interface. Appendix A
+unites this gas kinetic framework with a diffusional picture and ties this relationship back to
+macroscopic gas-transport descriptions.
+Once reactant X has diffused to the liquid surface, adsorption (i.e., thermal
+accommodation) to the surface is described by a Langmuir model,34 where adsorption occurs at
+specific sites (sitex),
+𝑘𝑎𝑑𝑠
+
+X (𝑔𝑠) + siteX
+
+→
+←
+
+(R2)
+
+X (𝑎𝑑𝑠) .
+
+𝑘𝑑𝑒𝑠
+
+The maximum volumetric site concentration, [siteX ]𝑚𝑎𝑥 , is computed from the molecular area of
+X (Γ
+∞(𝑋)
+
+, cm2 molec.-1) and the interface thickness (δ = 1 nm),
+Γ
+
+[siteX ]𝑚𝑎𝑥 = ∞(𝑋) .
+
+Eq. (34)
+
+𝛿
+
+𝑘𝑎𝑑𝑠 is computed such that the pseudo-first order adsorption rate is consistent with the collision
+frequency obtained by a simple Maxwellian picture of molecular translation,
+[siteX ]𝑚𝑎𝑥 ⋅ 𝑘𝑎𝑑𝑠 = 𝜎 ⋅
+
+𝑐̅
+4𝛿
+
+,
+
+Eq. (35)
+
+where 𝑐̅ is the average velocity of X in the gas phase and 𝜎 the sticking coefficient. The desorption
+rate coefficient, 𝑘𝑑𝑒𝑠 is related to the average molecular lifetime at the interface, 𝜏 = 𝑘
+𝑑𝑒𝑠
+
+, which
+
+is on the order of ~10-100 ps for many low-molecular weight gases on water surfaces under
+ambient atmospheric conditions. These lifetimes can be obtained through a variety of theoretical
+and experimental techniques.35 The elementary steps that describe solvation/desolvation of X into
+the liquid phase are described similarly,
+𝑘𝑋𝑑𝑒𝑠𝑜𝑙𝑣
+
+X (𝑠𝑏) + siteX
+
+→
+←
+
+(R3)
+
+X (𝑎𝑑𝑠) .
+
+𝑘𝑋𝑠𝑜𝑙𝑣
+
+The Henry’s law constant for X provides an important constraint for the rate coefficients
+𝑔𝑏
+
+in R2 and R3. The overall Henry’s law coefficient for a gas dissolving into a bulk liquid (𝐻𝑐𝑐 ) is
+a coupled equilibrium,11, 12, 20, 36, 37 which links gas, interface and bulk concentrations of X,
+𝑔𝑠
+
+𝐻𝑐𝑐 =
+
+𝑘𝑎𝑑𝑠 [siteX ]
+𝑘𝑑𝑒𝑠
+
+,
+Eq. (36)
+
+
+𝑠𝑏
+𝐻𝑐𝑐
+=
+
+𝑘𝑋𝑠𝑜𝑙𝑣
+
+,
+
+Eq. (37)
+
+𝑠𝑏
+𝐻𝑐𝑐 = 𝐻𝑐𝑐 ⋅ 𝐻𝑐𝑐
+
+𝑔𝑠
+
+Eq. (38)
+
+𝑘
+
+Eq. (39)
+
+𝑘𝑋𝑑𝑒𝑠𝑜𝑙𝑣 ∙[siteX ]
+
+where,
+𝑔𝑏
+
+and,
+𝑔𝑏
+
+𝑘
+
+𝐻𝑐𝑐 = 𝑘𝑎𝑑𝑠 ⋅ 𝑘 𝑋𝑠𝑜𝑙𝑣 .
+𝑑𝑒𝑠
+
+𝑋𝑑𝑒𝑠𝑜𝑙𝑣
+
+These “partial” Henry’s law coefficients (Eqs. (36) and (37)) are conceptually useful since
+the concentration of a X at the interface may be significantly different than both the gaseous and
+liquid-phase concentrations at equilibrium as illustrated in Fig. 1. Furthermore, they provide
+through Eqs. (36)-(39) an expression that links the forward and backward rate coefficients for
+adsorption, desorption, solvation and desolvation to the Henry’s law equilibrium constants.
+𝑘𝑋𝑠𝑜𝑙𝑣
+𝑘𝑎𝑑𝑠 [siteX ]
+),
+𝑘𝑑𝑒𝑠
+𝑋𝑑𝑒𝑠𝑜𝑙𝑣 ∙ [siteX ]
+
+Although this constrains the ratios for solvation and adsorption (i.e., 𝑘
+
+further information is needed to obtain the absolute values for 𝑘𝑎𝑑𝑠 , 𝑘𝑑𝑒𝑠 , 𝑘𝑋𝑠𝑜𝑙𝑣 and 𝑘𝑋𝑑𝑒𝑠𝑜𝑙𝑣 .
+𝑔𝑠
+
+𝑠𝑏
+𝐻𝑐𝑐 , 𝐻𝑐𝑐
+, 𝑘𝑑𝑒𝑠 , and 𝑘𝑋𝑠𝑜𝑙𝑣 can be obtained from potential of mean force calculations21 and
+
+associated trajectories in MD simulations10-12, 20, 38 thus constraining the values of 𝑘𝑎𝑑𝑠 , and
+𝑘𝑋𝑑𝑒𝑠𝑜𝑙𝑣 .
+Example Calculation O3 uptake onto microdroplets: Here we provide a concrete example
+from our recent work10, 20, 38 that illustrates how 𝑘𝑎𝑑𝑠 , 𝑘𝑑𝑒𝑠 , 𝑘𝑋𝑠𝑜𝑙𝑣𝑒 , and 𝑘𝑋𝑑𝑒𝑠𝑜𝑙𝑣 are determined.
+𝑔𝑠
+
+From prior MD simulations for O3 at the air-water interface:20 𝐻𝑐𝑐 = 4.97 and 𝑘𝑑𝑒𝑠 =
+1.93 × 1010 𝑠 −1 . As computed by Vieceli et al.,22 the molecular area (Γ
+∞(𝑋)
+
+which corresponds to a volumetric density at the interface of
+
+Γ∞(𝑋)
+𝛿
+
+) for ozone is 1.85 nm2,
+
+= 5.42 × 1021 site⁄cm3 . This
+
+yields,
+𝑔𝑠
+
+𝑘𝑎𝑑𝑠 = 𝑘𝑑𝑒𝑠 ⋅ 𝐻𝑐𝑐 ⋅
+Γ
+
+𝛿
+Γ∞(𝑋)
+
+= 1.77 × 10−11 cm3 ⁄molecule s −1 .
+𝑔𝑠
+
+𝑘𝑎𝑑𝑠 ∙ ∞(𝑋)
+= 𝑘𝑑𝑒𝑠 ⋅ 𝐻𝑐𝑐 = 9.59 × 1010 s −1 ,
+𝛿
+Eq. (40)
+Eq. (41)
+
+
+An alternative way to compute 𝑘𝑎𝑑𝑠 is from gas kinetic theory. The flux of O3 onto the
+droplet surface can be computed by dividing the molecular flow Jk (see Appendix A) by the droplet
+area to give,
+𝑚𝑜𝑙𝑒𝑐
+
+𝐽
+
+𝑐̅
+
+𝐹𝑙𝑢𝑥 ( 𝑐𝑚2 𝑠 ) = 4𝜋𝑟𝑘 2 = 4 ⋅ [O3(𝑔,∞) ].
+
+Eq. (42)
+
+The flux expression Eq. (42) is augmented to define a rate of O3 entering the interfacial volume of
+the liquid by multiplying the flux by the surface-to-volume ratio of the interfacial compartment,
+4𝜋𝑟 2
+
+𝑚𝑜𝑙𝑒𝑐
+
+𝑐̅
+
+𝑅𝑎𝑡𝑒 ( 𝑐𝑚3 𝑠 ) = 𝐹𝑙𝑢𝑥 ⋅ 4𝜋𝑟 2 ⋅𝛿 = 4⋅𝛿 ⋅ [O3(𝑔,∞) ].
+
+Eq. (43)
+
+1𝑠𝑡
+2𝑛𝑑
+The first (𝑘𝑐𝑜𝑙
+) and second-order (𝑘𝑐𝑜𝑙
+) collision rate coefficients are,
+Γ
+
+𝑐̅
+
+1𝑠𝑡
+2𝑛𝑑
+𝑘𝑐𝑜𝑙
+= 𝑘𝑐𝑜𝑙
+⋅ ∞(𝑋)
+= 4⋅𝛿
+𝛿
+
+Eq. (44)
+
+Γ∞
+
+Using 𝛿 = 5.42 × 1021 site⁄cm3 , the rate coefficients in Eq. (44) are,
+2𝑛𝑑
+𝑘𝑐𝑜𝑙
+= 4⋅Γ
+
+𝑐̅
+
+∞(𝑋)
+
+= 1.66 × 10−11 cm3 molecule-1 s-1,
+
+1𝑠𝑡
+𝑘𝑐𝑜𝑙
+= 9 × 1010 s-1.
+
+Eq. (45)
+Eq. (46)
+
+For the case where adsorption of X occurs on every collision (i.e., σ =1, 𝑘𝑎𝑑𝑠 = 𝜎 ∙ 𝑘𝑐𝑜𝑙 ). Eq. (44)
+Γ
+
+𝑔𝑠
+
+is equivalent to 𝑘𝑎𝑑𝑠 ∙ ∞(𝑋)
+. From 𝑘𝑎𝑑𝑠 and 𝐻𝑐𝑐 , 𝑘𝑑𝑒𝑠 is computed via Eq. (36). The values of
+𝛿
+𝑘𝑎𝑑𝑠 obtained by constraining kdes via MD simulations (Eqs. (40) and (41)) or alternatively using
+gas kinetic theory (Eqs. (45) and (46)) differ by only ~ 5%. This difference likely originates from
+assumptions made in defining Γ∞(𝑋) and δ. The way in which the adsorption dynamics at the
+interface are coupled with the diffusional dynamics of gas transport to the interface is explored in
+detail in Appendix A.
+𝑘𝑋𝑠𝑜𝑙𝑣 is directly obtained from MD simulations or coarse grain dynamics using the
+Fokker–Planck equation.38 The solvation rate of thermalized O3 at the air-water interface is 𝑘𝑋𝑠𝑜𝑙𝑣 =
+1.9x108 s-1.38
+
+For reference the mass accommodation coefficient38 (α = kXsolv/(kdes + kXsolv).)
+Γ
+
+obtained from MD simulations is α = 9.7 x 10-3. From Eq. (33) and ∞(𝑋)
+, 𝑘𝑋𝑑𝑒𝑠𝑜𝑙𝑣 = 2.25 x 10-12
+𝛿
+cm3 molec.-1 s-1 in this example.
+C. Surface Partitioning of Solute Y (𝑲𝒀𝒆𝒒 , 𝒌𝒀𝒅𝒆𝒔𝒐𝒍𝒗 , 𝒌𝒀𝒔𝒐𝒍𝒗 )
+The partitioning of the non-volatile solute Y to and from the interface is described in two
+elementary steps using a Langmuir adsorption model,
+𝑘𝑌𝑑𝑒𝑠𝑜𝑙𝑣
+
+Y(𝑠𝑏) + siteY
+
+→
+←
+
+Y(𝑎𝑑𝑠)
+
+(R4)
+
+𝑘𝑌𝑠𝑜𝑙𝑣
+
+where [Y(𝑎𝑑𝑠) ] is,
+𝑌 ∙[Y
+𝐾𝑒𝑞
+(𝑏𝑢𝑙𝑘) ]
+
+[Y(𝑎𝑑𝑠) ] = [siteY ]𝑚𝑎𝑥 1+𝐾𝑌 ∙[Y
+𝑒𝑞
+
+(𝑏𝑢𝑙𝑘) ]
+
+Eq. (47)
+
+and,
+𝑘
+
+𝑌
+𝐾𝑒𝑞
+= 𝑘𝑌𝑑𝑒𝑠𝑜𝑙𝑣
+
+Eq. (48)
+
+𝑌𝑠𝑜𝑙𝑣
+
+and,
+[siteY ]𝑚𝑎𝑥 =
+
+Γ∞(𝑌)
+𝛿
+
+.
+
+Eq. (49)
+
+We note that while adsorption of Y is described in step (R4) by the near-interfacial species Y(sb),
+in the current model this is equivalent to the adsorption of Y(total) since we have assumed
+instantaneous mixing of species Y throughout the droplet and hence, not formally distinguished
+𝑌
+𝑠𝑏
+species Y(sb),Y(rd), and Y(core). The Langmuir equilibrium constant (𝐾𝑒𝑞
+) is analogous to 𝐻𝑐𝑐
+for X
+𝑌
+described above (Eq. (37)). Values 𝐾𝑒𝑞
+and Γ∞(𝑌) can be obtained by a number of experimental
+
+and theoretical methods. Static and dynamic surface tension measurements are used to obtain
+𝑌
+values of 𝐾𝑒𝑞
+, Γ∞(𝑌) , 𝑘𝑌𝑠𝑜𝑙𝑣 and 𝑘𝑌𝑑𝑒𝑠𝑜𝑙𝑣 . For example, Bleys and Joos39 found that for small
+
+acids and alcohols values of 𝑘𝑌𝑠𝑜𝑙𝑣 were all around ~ 100 s-1, whereas values of 𝑘𝑌𝑑𝑒𝑠𝑜𝑙𝑣 varied by
+orders of magnitude and depend upon molecular structure. Nonlinear optical studies of air-water
+𝑌
+interfaces40 can also constrain values of 𝐾𝑒𝑞
+through determinations of the Gibbs Adsorption free
+
+energy. Furthermore, MD simulations provide density profiles of solutes at the air-water interface
+𝑌
+that can constrain 𝐾𝑒𝑞
+. We note that all these determinations generally rely on model assumptions
+
+within a Langmuir framework, the consequences of which have been discussed elsewhere.40-42
+𝒓𝒅
+𝒄𝒐𝒓𝒆
+D. Liquid Phase Diffusion of X: (𝒌𝒔𝒃
+𝑿𝒅𝒊𝒇𝒇 , 𝒌𝑿𝒅𝒊𝒇𝒇 , 𝒌𝑿𝒅𝒊𝒇𝒇 )
+In addition to the microscopic kinetic steps that describe solvation and desolvation
+described above, a diffusional description is used to describe the larger-scale transport of X and Y
+in the liquid phase. As shown below for the species X, we formulate liquid phase diffusion in a
+way that is analogous to a kinetic rate law. This description follows the same method used in
+Kinetiscope©13 to calculate diffusion between two adjacent compartments.
+The diffusive flux between two compartments from Fick’s First Law is,
+([X ]−[X2 ])
+
+𝑚𝑜𝑙𝑒𝑐.
+𝑋
+𝑋
+𝐹𝑙𝑢𝑥 ( 𝑐𝑚2 ∙𝑠 ) = −𝐷𝑙𝑖𝑞𝑢𝑖𝑑
+∇[X] = −𝐷𝑙𝑖𝑞𝑢𝑖𝑑
+∙(𝐿1 +𝐿2 )
+
+,
+
+Eq. (50)
+
+where [X1] and [X2] are the concentrations of X in compartments 1 and 2, respectively. L1 and L2
+refer to the lengths of the respective, adjacent compartments (e.g., δ and Lrd or Lrd and Lcore) and
+𝑋
+𝐷𝑙𝑖𝑞𝑢𝑖𝑑
+is the liquid phase diffusion constant of X. Multiplying Eq. (50) by the cross-sectional area
+
+A between the two compartments gives an expression for the molecular flow, or the number of
+molecules transferred per second,
+𝐹𝑙𝑜𝑤 (
+
+𝑚𝑜𝑙𝑒𝑐.
+𝑠
+
+𝑋
+) = −2 ∙ 𝐷𝑙𝑖𝑞𝑢𝑖𝑑
+∙
+
+([X1 ]−[X2 ])
+(𝐿1 +𝐿2 )
+
+∙ 𝐴.
+
+Eq. (51)
+
+Dividing Eq. (51) by a volume yields a rate equation,
+𝑚𝑜𝑙𝑒𝑐.
+
+𝑋
+𝑅𝑎𝑡𝑒 ( 𝑠 𝑐𝑚3 ) = −2 ∙ 𝐷𝑙𝑖𝑞𝑢𝑖𝑑
+∙
+
+([X1 ]−[X2 ]) 𝐴
+∙𝑽
+(𝐿1 +𝐿2 )
+
+Eq. (52)
+
+where V corresponds to either compartment 1 or 2 (i.e., V1 = A L1 or V2 = A L2), and depends upon
+the specific process considered. As shown below, the choice of V is determined by which process
+Eq. (52) is intended to describe.
+To fully describe diffusion between two adjacent compartments, four kinetic steps are
+required as outlined in the two processes in Fig. 3.
+𝐹1
+𝑘𝑑𝑖𝑓𝑓
+
+𝑅1
+𝑘𝑑𝑖𝑓𝑓
+
+𝐹2
+𝑘𝑑𝑖𝑓𝑓
+
+𝑅2
+𝑘𝑑𝑖𝑓𝑓
+
+Figure 3: Liquid diffusion between two compartments shown schematically as two elementary
+processes. In (1, left panel), X moves from compartment 1 to compartment 2 and species X1 is lost (at
+𝐹1
+𝐹2
+a rate proportional to coefficient 𝑘𝑑𝑖𝑓𝑓
+) to produce X2 (at a rate proportional to coefficient 𝑘𝑑𝑖𝑓𝑓
+). In
+𝑅1
+𝑅2
+(2, right panel), the reverse process is shown with proportional constants 𝑘𝑑𝑖𝑓𝑓
+and 𝑘𝑑𝑖𝑓𝑓
+.
+
+In actuality, the two processes illustrated in Fig. 3 occur simultaneously as the system equilibrates.
+Regardless of the initial conditions, the rate equations for concentrations [X1] and [X2] are,
+𝑑[X1 ]
+𝑑𝑡
+𝑑[X2 ]
+𝑑𝑡
+
+𝐹1
+𝑅1
+[X1 ] + 𝑘𝑑𝑖𝑓𝑓
+[X 2 ],
+= 𝑘𝑑𝑖𝑓𝑓
+
+Eq. (53)
+
+𝑅2
+𝐹2
+[X 2 ] + 𝑘𝑑𝑖𝑓𝑓
+[X1 ].
+= 𝑘𝑑𝑖𝑓𝑓
+
+Eq. (54)
+
+𝐹1
+To calculate a specific term (e.g. 𝑘𝑑𝑖𝑓𝑓
+) we use Eq. (52) and assuming [X 2 ] = 0,
+([X ]−0)
+
+𝐴
+
+𝐹1
+𝑋
+[X1 ] = 𝑅𝑎𝑡𝑒 = −2 ∙ 𝐷𝑙𝑖𝑞𝑢𝑖𝑑
+𝑘𝑑𝑖𝑓𝑓
+∙ (𝐿 1+𝐿 ) ∙ 𝑽 ,
+Eq. (55)
+
+where,
+2∙𝐷𝑋
+
+𝑙𝑖𝑞𝑢𝑖𝑑
+𝐹1
+𝑘𝑑𝑖𝑓𝑓
+= − (𝐿 +𝐿
+.
+)∙𝐿
+Eq. (56)
+𝐹1
+Importantly, V1 is selected as the relevant volume in Eq. (55) since the coefficient in question 𝑘𝑑𝑖𝑓𝑓
+
+is defined by the derivative in Eq. (53) and represents the concentration change of X within V1.
+𝑅1
+Following the same derivation for 𝑘𝑑𝑖𝑓𝑓
+yields,
+(0−[X ])
+
+𝐴
+
+𝑅1
+𝑋
+[X 2 ] = 𝑅𝑎𝑡𝑒 = −2 ∙ 𝐷𝑙𝑖𝑞𝑢𝑖𝑑
+𝑘𝑑𝑖𝑓𝑓
+∙ (𝐿 +𝐿2 ) ∙ 𝑽 ,
+𝑋
+2∙𝐷𝑙𝑖𝑞𝑢𝑖𝑑
+𝑅1
+𝑘𝑑𝑖𝑓𝑓 = (𝐿
++𝐿 )∙𝐿
+𝐹1
+= −𝑘𝑑𝑖𝑓𝑓
+.
+Eq. (57)
+Eq. (58)
+
+
+This shows that within a given differential, e.g. Eq. (53), the forward and reverse diffusion rate
+coefficients are equal in magnitude and opposite in sign. Similarly, the forward and reverse rate
+constants in the differential for compartment 2 in Eq. (54) are,
+2∙𝐷𝑋
+
+𝑙𝑖𝑞𝑢𝑖𝑑
+𝑅2
+𝐹2
+𝑘𝑑𝑖𝑓𝑓
+= − (𝐿 +𝐿
+= −𝑘𝑑𝑖𝑓𝑓
+,
+)∙𝐿
+Eq. (59)
+
+which is obtained using the same procedure albeit using V2 instead.
+Using this formalism, the specific equations that govern the liquid phase diffusion rate of
+X (𝑠𝑏) and X (𝑟𝑑) shown in Fig. 2 are,
+𝑑[X(𝑠𝑏) ]
+𝑑𝑡
+𝑑[X(𝑟𝑑) ]
+𝑑𝑡
+
+𝑠𝑏
+𝑠𝑏
+= −𝑘𝑋𝑑𝑖𝑓𝑓
+[X(𝑠𝑏) ] + 𝑘𝑋𝑑𝑖𝑓𝑓
+[X (𝑟𝑑) ],
+
+Eq. (60)
+
+𝑟𝑑
+𝑟𝑑
+= −𝑘𝑋𝑑𝑖𝑓𝑓
+[X (𝑟𝑑) ] + 𝑘𝑋𝑑𝑖𝑓𝑓
+[X (𝑠𝑏) ],
+
+Eq. (61)
+
+where,
+2∙𝐷𝑋
+
+𝑠𝑏
+𝑘𝑋𝑑𝑖𝑓𝑓
+= (𝐿 𝑙𝑖𝑞𝑢𝑖𝑑
++𝛿)∙𝛿
+𝑟𝑑
+
+𝑋
+2∙𝐷𝑙𝑖𝑞𝑢𝑖𝑑
+
+𝑟𝑑
+𝑘𝑋𝑑𝑖𝑓𝑓
+= (𝐿
+
+𝑟𝑑 +𝛿)∙𝐿𝑟𝑑
+
+𝑐𝑜𝑟𝑒
+𝑘𝑋𝑑𝑖𝑓𝑓
+=
+
+𝑋
+2∙𝐷𝑙𝑖𝑞𝑢𝑖𝑑
+
+𝑟∙(𝑟−𝐿𝑟𝑑 )
+
+Eq. (62)
+Eq. (63)
+Eq. (64)
+
+Eq. (64), the diffusion rate into the core, is obtained using the methods outlined above. This same
+formalism can be applied to represent the diffusion rate of Y to and from the liquid interface. This
+case is not explicitly considered in the derivations shown above since we have broadly assumed
+the mixing time for species Y to be much faster than the reaction. However, for cases where
+depletion of Y near the interface is possible, an additional set of rates equations can be used, as we
+will demonstrate in future work.
+𝒃𝒍𝒌
+E. Surface and Bulk Reaction Rate Coefficients: (𝒌𝒔𝒓𝒇
+𝒓𝒙𝒏 , 𝒌𝒓𝒙𝒏 )
+
+The surface and bulk rate coefficients for the X + Y reaction are key quantities for
+predicting multiphase reaction kinetics. Bulk rate coefficients used in this multiphase model are
+usually obtained from beaker-scale experiments or theoretical calculations usually under dilute
+conditions. As illustrated in Fig. 2, linking reactivity in beaker scale solutions of X and Y with the
+analogous multiphase reaction requires understanding all of the non-reactive steps that govern the
+partitioning of X and Y between various phases (i.e., gas, interface, and bulk). In previous models12
+using a similar framework, we generally assume (in the absence of evidence to the contrary) that
+𝑠𝑟𝑓
+
+𝑏𝑙𝑘
+the surface reaction rate coefficient is equivalent to the bulk (i.e., 𝑘𝑟𝑥𝑛 = 𝑘𝑟𝑥𝑛
+). However, there are
+
+good reasons to expect that this might not always be the case since the partial solvation at an
+interface can lower reaction barriers or induce more favorable molecular orientations for a reaction
+to occur. For example, recent work suggests that rate coefficients for condensation reactions are
+100-10000 times faster at air-water and oil-water interfaces than in bulk solutions.43-46
+Furthermore, as demonstrated recently by comparing model predictions and experiments, surface
+rate coefficients can be estimated for those cases where the partitioning of X and Y between phases
+can be adequately constrained.8, 10, 44
+VI. Model Validation with Experimental Measurements
+A. Numerical Solutions
+Eqs. (15)-(20) are numerically solved and compared to previously published experimental
+kinetic measurements for three different systems. For this comparison, O3 oxidation reactions are
+analyzed on levitated microdroplets. The oxidation kinetics of aqueous droplets of maleic acid
+(MA),47 nitrite (NO2-),48 and iodide (I-)10, 20 are selected to illustrate a number of different
+Figure 4: Kinetic model results compared to measurements for three reactive systems. The left
+column shows kinetics for the ozone oxidation of aqueous (A) maleic acid, (B) nitrite and the (C)
+iodide. Model results include the full model in black (i.e., total = surface and bulk) along with the
+bulk-only model (bulk = rd and core) in blue and the surface-only model in red. The right column
+(D-F) shows for each the predicted time-dependent of [O3(bulk)] in the droplet. See Table SI for a
+complete set of experimental and model parameters.
+
+scenarios. These reactants span a large range of reactivities with ozone, with aqueous rate
+coefficients (see Table S1) ranging from k = 1.7 × 103 M-1 s-1 for MA to k =3.4 × 105 M-1 s-1 for
+NO2- and k = 1.2 × 109 M-1 s-1 for I-. For each reaction, numerical solutions to the Eqs. (15)-(20)
+are obtained using the ND solve algorithm in Mathematica,49 with the output compared to
+experimental results shown in Fig. 4. Table S1 in the Supplementary Information provides the
+relevant experimental conditions and coefficients used for each reaction. References for and a
+discussion of the values in Table S1 can be found in Sec. SI-3.
+To highlight the relative roles of the surface and bulk reaction for each case shown in Fig.
+3, the full set of Eqs. (15)-(20) is evaluated and labeled “total” in Fig. 4. Total includes surface
+and bulk (rd and core) reactions In each case, the numerical predictions replicate the observed
+decay kinetics for maleic acid, nitrite and iodide. To ascertain the surface and bulk contributions
+to the total observed kinetics, a modified set of predictions are shown in Fig. 4, where only surface
+reactions (labeled “surface”) and only the bulk reactions (labeled “bulk”) are computed. The
+𝑏𝑙𝑘
+“surface” set is computed by removing all terms with 𝑘𝑟𝑥𝑛
+from Eq. (15)-(20) and the “bulk” is
+𝑠𝑟𝑓
+
+computed by removing terms with 𝑘𝑟𝑥𝑛 . This comparison demonstrates that the maleic acid
+reaction is predicted to have only a minor surface contribution, whereas the nitrite and iodide
+reactions display comparable reactive contributions from both the surface and the bulk. Due to the
+differences in the nitrite and iodide reactivities and surface propensities, however, the bulk reaction
+is slightly more favored in the case of NO2- whereas the surface is for I-. We note that in previous
+studies, which did not include an explicit rd compartment, we underestimated the contribution of
+the bulk reaction to the multiphase kinetics of nitrite.11, 12
+The right column in Fig. 4 shows the time-evolution of O3 within the droplet. This
+concentration is a weighted sum of the O3 concentration within the reactive-diffusion region and
+the core region, providing an average concentration throughout the entire droplet. For each system,
+𝑔𝑏
+
+O3 is significantly depleted relative to its Henry’s law value (𝐻𝑐𝑐 = [X(g,∞)]), unlike “phase-mixed”
+kinetics which dominate for much slower reactions.27 For the MA reaction, [O3] recovers to its
+Henry’s law value during the reaction. For the faster rates of nitrite and iodide, ozone remains
+depleted throughout the entire reaction, with a moderate recovery observed in the NO2- reaction
+and virtually no recovery for the I- case. Intuitively, the degree of O3 depletion scales with the
+reaction-diffusion length of ozone at a given time, with severe depletion occurring for scenarios
+where the reaction-diffusion length is significantly smaller than the droplet radius throughout the
+reaction.
+B. Evaluation of the Closed Form Expressions
+The closed form expression in Eq. (23) is used to calculate the time-dependence of iodide
+loss from the example discussed above. Predictions of Eq. (23) are compared in Fig. 5 with the
+exact numerical solutions and the experimental iodide data shown in Fig. 4. We also include
+
+Figure 5: Closed form time-dependent expressions for [I-]t calculated using Eq. (23) (total)
+and Eq. (21) (bulk reaction only). Analytical expressions are compared to the numerical
+evaluations described above and shown in Fig. 4. Two sets of experimental kinetics are
+included here, the first for the standard I- + O3 reaction (●) shown in Fig. 3, and another set
+including 1.6 mM of Triton-X100 (○). The presence of the surfactant completely inhibits the
+surface reaction in this case, demonstrated by agreement with the bulk-only models. For both
+sets of kinetics, [O3(g,∞)] = 500 ppb, r = 17 um, and [I-]0 = 795 mM.
+
+predictions of the “bulk” only (i.e., rd compartment) closed form expression (Eq. (21)) and
+compare it with measurements of O3 + I- reaction in the presence of surfactant Triton-X 100,50
+which effectively shuts off the surface reaction. The comparison shown in Fig. 5 confirms that the
+closed form expressions closely replicate both the experimental data and the numerical solutions,
+and thus validates the approximations used in deriving these analytic functions.
+VI. Conclusions
+The general approach described above establishes a framework for evaluating multiphase
+chemical kinetics. Unlike previous models (see review by Kolb et al.51 and discussion in Wilson
+et. al.12), which use flux-based descriptions, our approach seeks to distill multiphase chemistry
+into a simple set of physically realistic elementary kinetic steps and equilibria. This kinetic
+description incorporates the interfacial dynamics and solvation free energies observed in MD
+simulations as well as continuum descriptions of mass transport. The resulting set of differential
+equations and expressions for uptake are embedded in a coarse grain description of kinetically
+relevant spatial regions in a two-phase system. The simple set of coupled differential equations,
+which when solved numerically or analytically, produce predictions that can be directly compared
+to experimental observations. The model provides a novel way to evaluate the contribution of
+interfacial and bulk phase reactions to uptake coefficients and the overall reaction kinetics, thus
+providing deeper insight into the multiphase mechanism, which is often not possible when
+considering experimental results alone. This framework appears to be general and likely
+transferrable to, for example, problems involving the transport of solutes across
+electrolyte/membrane interfaces or chemical reactions in coacervates.52
+Appendix A: Molecular and Continuum Descriptions of Gas Diffusion to an Interface
+In the kinetic model described above we derive expressions that account for the diffusive
+and kinetic mass transfer of X to the gas-liquid surface. The rate equation describing diffusional
+transport is,
+𝑚𝑜𝑙𝑒𝑐
+
+𝐽
+
+𝑔𝑎𝑠
+
+𝑅𝑎𝑡𝑒 ( 𝑐𝑚3 𝑠 ) = 𝑉 𝑐 = 𝑘𝑑𝑖𝑓𝑓 ⋅ [X(𝑔,∞) ]
+𝑠𝑟𝑓
+
+Eq. (A1)
+
+where 𝐽𝑐 indicates the molecular flow in the “continuum” regime as previously defined in Eq. (30),
+𝐽𝑐 (
+
+𝑚𝑜𝑙𝑒𝑐
+𝑠
+
+𝑋
+) = 4 𝜋 ⋅ 𝐷𝑔𝑎𝑠
+𝑟 ⋅ [X(𝑔,∞) ],
+
+Eq. (A2)
+
+which is transformed into a first-order rate coefficient by normalizing by the approximate surface
+volume 4𝜋𝑟 2 𝛿 and gas concentration (see Sect. V.A):
+𝑋
+𝐷𝑔𝑎𝑠
+
+𝑔𝑎𝑠
+
+𝑘𝑑𝑖𝑓𝑓 (𝑠 −1 ) = 𝑟 𝛿 .
+
+Eq. (A3)
+
+The analogous rate equation describing kinetic or “collisional” mass transport to the interface is,
+𝑚𝑜𝑙𝑒𝑐
+
+𝐽
+
+𝑅𝑎𝑡𝑒 ( 𝑐𝑚3 𝑠 ) = 𝑉 𝑘 = 𝑘𝑐𝑜𝑙 ⋅ [X𝑔,∞ ]
+𝑠𝑟𝑓
+Eq. (A4)
+
+
+where 𝐽𝑘 indicates the molecular flow in the kinetic regime,
+𝐽𝑘 (
+
+𝑚𝑜𝑙𝑒𝑐
+𝑠
+
+𝑐̅
+
+Eq. (A5)
+
+) = 4 𝜋 𝑟 4 ⋅ [X(𝑔,∞) ],
+
+which is similarly recast as a first-order rate coefficient by normalizing by the approximate surface
+volume:
+𝑐̅
+
+𝑘𝑐𝑜𝑙 (𝑠 −1 ) = 4 𝛿.
+
+Eq. (A6)
+
+Written out in kinetic steps, we describe the overall process using two reversible steps,
+𝑔𝑎𝑠
+
+𝑘𝑑𝑖𝑓𝑓
+
+[X(𝑔,∞) ]
+
+→
+[X (𝑔𝑠) ],
+←𝑔𝑎𝑠
+
+(AR1)
+
+𝑘𝑑𝑖𝑓𝑓
+
+𝑘𝑎𝑑𝑠
+
+[X (𝑔𝑠) ] + [𝑠𝑖𝑡𝑒𝑋 ]
+
+→
+←
+
+(AR2)
+
+[X (𝑎𝑑𝑠) ],
+
+𝑘𝑑𝑒𝑠
+
+where siteX denotes a surface site for X, with maximum coverage given by Γ𝑋∞ ⁄𝛿 as previously
+discussed. The collision rate coefficient 𝑘𝑐𝑜𝑙 is equal to the pseudo-first order adsorption rate
+Γ∞
+
+𝑘𝑐𝑜𝑙 = 𝑘𝑎𝑑𝑠 𝛿𝑋 , assuming σ =1 (see Sect. V.B).
+During the net-adsorption process the diffusional transport (AR1) described above and the
+interfacial adsorption process (AR2) occur simultaneously, and therefore, the concentration of
+near-surface species [X (𝑔𝑠) ] has both diffusional and adsorption contributions to its steady-state
+value. In the limit of complete surface loss after surface adsorption, the steady-state concentration
+of [X (𝑔𝑠) ] is,
+𝐷𝑋
+𝑔𝑎𝑠
+
+𝑔𝑎𝑠
+
+[X𝑔𝑠 ] =
+
+𝑘𝑑𝑖𝑓𝑓
+Γ∞
+𝑔𝑎𝑠
+𝑘𝑎𝑑𝑠∙ 𝑋 +𝑘𝑑𝑖𝑓𝑓
+𝛿
+
+[X(𝑔,∞) ] =
+
+𝑟𝛿
+𝑋
+𝑐̅ 𝐷𝑔𝑎𝑠
++
+4𝛿
+𝑟𝛿
+
+𝐽
+
+[X(𝑔,∞) ] = 𝐽 [X(𝑔,∞) ].
+𝑘
+
+Eq. (A7)
+
+Eq. (A7) denotes the “effective” concentration of X from the perspective of the interface. During
+adsorption and loss of X, the near-surface concentration [X (𝑔𝑠) ] resembles [X(𝑔,∞) ] when the radius
+r is small but becomes significantly depleted when r is large—since the loss of X due to interfacial
+adsorption becomes faster than what can be “replenished” by diffusional transport, which slows
+with increasing r as seen in Eq. (A3). From an alternative point of view, Eq. (A7) expresses that
+the near-surface gas concentration is related to the true gas concentration by a transport fractional
+term that expresses how much the near-surface gas behavior resembles the “molecularity”
+expected by the purely collisional description used for adsorption. As included in Eq. (A7), this
+can be expressed by a simple ratio of flux terms, where the true gas flux (J) divided by a reference
+flux (the molecular flux Jk in this case) provides the fractional term.
+This first observation is equivalent to that of Fuchs & Sutugin33 using the method of fluxmatching to a boundary sphere of radius r + Δ for the elementary case where Δ = 0, expressed in
+terms of the Knudsen number Kn =
+
+𝑋
+3 𝐷𝑔𝑎𝑠
+
+𝑐̅ 𝑟
+
+:
+𝐽
+𝑘
+1+ Kn−1
+𝑘
+𝐹Δ=0
+=𝐽 =
+
+Eq. (A8)
+
+.
+
+Note that Eq. (A8) can instead be represented as the fraction of the diffusional flux rather than
+kinetic flux, which applies under the continuum regime where:
+𝐽
+𝑐
+
+1+ Kn
+
+𝑐
+𝐹Δ=0
+=𝐽 =
+Eq. (A9)
+
+,
+
+given the relation
+𝐽𝑐
+𝐽𝑘
+Eq. (A10)
+
+= 3 Kn.
+
+Although the gas-transport term in Eq. (A7) and Fuchs’ expression for Δ = 0 agree exactly, the
+transport Eq. (A7) can be slightly modified to agree with Fuchs’ general expression for a general
+boundary sphere of r + Δ. To accomplish this, we set up a simple expression that is in fact
+equivalent to Fuchs’ continuous description of boundary-sphere flux matching. We define a fluxmatching boundary condition by recognizing that the number of molecules that diffuse from the
+gas phase into the near-surface region must equal the sum of the number of molecules colliding
+with the droplet surface and diffusing back out into the outer gas phase,
+𝑐̅
+
+𝑋 (𝑟
+𝑋 (𝑟
+4𝜋 𝐷𝑔𝑎𝑠
++ Δ)[X(𝑔,∞) ] = 4𝜋 𝐷𝑔𝑎𝑠
++ Δ)[X (𝑔𝑠) ] + 4𝜋 𝑟 2 4 [X (𝑔𝑠) ],
+
+Eq. (A11)
+
+which can be rearranged to express the steady state concentration of near-surface gas
+concentration, analogous to Eq. (A7):
+[X (𝑔𝑠) ] =
+
+𝑋 (𝑟+ Δ)
+4𝜋 𝐷𝑔𝑎𝑠
+𝑐̅
+𝑋 (𝑟+ Δ)
+4𝜋 𝑟 2 +4𝜋 𝐷𝑔𝑎𝑠
+
+[X(𝑔,∞) ].
+
+Eq. (A12)
+
+The gas-transport term in Eq. (A12) can be rearranged using the definition of the Knudsen number
+Kn to yield,
+𝑋 (𝑟+ Δ)
+4𝜋 𝐷𝑔𝑎𝑠
+
+𝐽
+
+𝑐̅
+𝑋 (𝑟+ Δ)
+4𝜋 𝑟 2 +4𝜋 𝐷𝑔𝑎𝑠
+=𝐽 =
+
+where λ is the mean free path defined here as 𝜆 =
+
+𝑘
+
+𝑋
+3 𝐷𝑔𝑎𝑠
+
+𝑐̅ 𝑟
+
+1+KnΔ⁄𝜆
+,
+1+0.75 Kn−1 +KnΔ⁄𝜆
+
+Eq. (A13)
+
+. This shows that the “compartmentalized”
+
+or coupled-equilibria approach for describing near-gas concentrations within a shell of length Δ
+results in exactly the results of Fuchs & Sutugin33 when integrating the steady-state condition for
+the concentration profile at position r + Δ with boundary conditions set by an equivalent flux
+matching condition.
+Given that Eq. (A13) maps onto the description of Fuchs & Sutugin,33 this description
+agrees with the “Fuchs correction” used to account for diffusional “resistance” in the widelyapplied resistor formulation of multiphase kinetics.27, 53, 54 We note, however, that the Fuchs
+correction follows the expanded method outlined by Fuchs & Sutugin33 in which Eq. (A13) is
+slightly adapted to agree with numerical solutions to the Boltzmann equation across the Kn range.
+For completeness, we include this adapted transport term,
+𝐽
+
+=
+𝐽
+𝑘
+
+1+KnΔ⁄𝜆
+= 𝛾𝑓𝑢𝑐ℎ𝑠 ,
+1+0.283+0.75 Kn−1 +KnΔ⁄𝜆
+
+Eq. (A14)
+
+which includes an additional constant 0.283. We note that typically, the boundary sphere distance
+Δ is typically chosen to equal approximately the mean free path 𝜆 which further simplifies Eq.
+(A12). As shown in Fig. 6A, the transport terms found in Eq. (A7), Eq. (A12), and Eq. (A14) are
+all numerically close to each other, differing only modestly in the transition regime.
+To summarize, our standard method for treating diffusion yields the following coefficients,
+𝑔𝑎𝑠
+
+𝑋
+𝐷𝑔𝑎𝑠
+
+Eq. (A15)
+
+𝑘𝑑𝑖𝑓𝑓 = 𝑟 𝛿 ,
+Γ∞
+
+𝑐̅
+
+𝑘𝑐𝑜𝑙 = 𝑘𝑎𝑑𝑠 𝛿𝑋 = 4 𝛿,
+Eq. (A16)
+
+
+which, when analyzed in light of mechanistic steps AR1 and AR2, yields an identical gas-tosurface transport efficiency as described by the simplest case from Fuchs & Sutugin33 with the
+boundary sphere distance Δ = 0. To account for a nonzero boundary-sphere thickness Δ, the rate
+coefficient for the diffusional process above can be modified to include the flux at distance r + Δ,
+respective to the surface region by dividing by the surface volume:
+𝑔𝑎𝑠
+
+𝑘𝑑𝑖𝑓𝑓 =
+
+𝑋 (𝑟+Δ)
+4𝜋 𝐷𝑔𝑎𝑠
+
+4𝜋 𝑟 2 𝛿
+4𝜋 𝑟 2 𝑐̅⁄
+
+=
+
+𝑋 (𝑟+Δ)
+𝐷𝑔𝑎𝑠
+
+𝑟2 𝛿
+𝑐̅
+
+𝑘𝑐𝑜𝑙 = 4𝜋 𝑟 2 𝛿4 = 4 𝛿.
+
+Eq. (A17)
+Eq. (A18)
+
+Fig. 6A summarizes these observations, providing results from Eqs. (A7) and (A12) compared to
+the Fuchs Correction Eq. (A14). For reference, Fig. 6B evaluates the radial dependence of 𝑘𝑐𝑜𝑙
+𝑔𝑎𝑠
+
+𝑋
+and 𝑘𝑑𝑖𝑓𝑓 with 𝑐̅ = 360 m/s, 𝐷𝑔𝑎𝑠
+= 0.18 cm2/s, and 𝛿 = 1 nm.
+Figure 6: (A) Comparison of diffusional descriptions, showing the fraction of collisional-type flux vs.
+droplet radius for the three descriptions in Eqs. (A7), (A12), and (A14). (B) Radial dependence of the
+kinetic coefficients kdiff and kcol.
+
+SYMBOLS AND NOTATION
+𝑔
+
+Subscript denoting gas
+Subscript denoting gas-surface
+Subscript denoting surface-bulk
+
+𝑏𝑙𝑘
+
+Bulk Liquid
+
+𝑠𝑟𝑓
+
+Superscript denoting surface
+Subscript denoting adsorbed species at interface
+Subscript denoting reacto-diffusive dimension
+Subscript denoting adsorbed species in core of the droplet
+
+𝑐̅
+
+Mean speed of X (cm/s)
+Trace gas
+Solute in droplet
+𝑔𝑏
+
+Dimensionless Henry’s Law constant linking gas and bulk
+concentrations of X.
+
+𝐻𝑐𝑐
+
+𝑔𝑠
+
+Dimensionless Henry’s Law constant linking gas and interface
+concentrations of X.
+
+𝑠𝑏
+𝐻𝑐𝑐
+
+Dimensionless Henry’s Law constant linking surface and bulk
+concentrations of X.
+
+𝑌
+𝐾𝑒𝑞
+
+Langmuir Equilibrium Constant for Y (cm3 molec.-1)
+
+𝐷𝑋
+
+Diffusion constant of X (cm2 s-1)
+
+𝑘𝑎𝑑𝑠
+
+Adsorption rate coefficient (cm3 molec.-1 s-1) for X
+
+𝑘𝑑𝑒𝑠
+
+Desorption rate coefficient (s-1) for X
+
+𝑘𝑋𝑑𝑒𝑠𝑜𝑙𝑣
+
+Desolvation rate coefficient (cm3 molec.-1 s-1) for X
+
+𝑘𝑌𝑑𝑒𝑠𝑜𝑙𝑣
+
+Desolvation rate coefficient (cm3 molec.-1 s-1) for Y
+
+𝑘𝑋𝑠𝑜𝑙𝑣
+
+Solvation rate coefficient (s-1) for X
+
+𝑘𝑌𝑠𝑜𝑙𝑣
+
+Solvation rate coefficient (s-1) for Y
+
+𝑘𝑟𝑥𝑛
+
+Reaction rate coefficient (cm3 molec.-1 s-1)
+
+𝑘𝑋𝑑𝑖𝑓𝑓
+
+Diffusion rate constant of X (s-1)
+
+𝛤∞(𝑋/𝑌)
+
+Maximum surface concentration (molec. cm-2) of X or Y
+
+𝛿
+
+Interface thickness (cm)
+
+𝐿𝑟𝑑
+
+Reacto-diffusive length (cm)
+
+𝐿′𝑟𝑑
+
+Transition function (cm)
+
+𝛾
+
+Uptake coefficient
+
+𝐻𝑐𝑐
+𝑟
+
+Radius (cm)
+
+𝑉
+
+Volume (cm3)
+
+𝑾{𝑥}
+
+Lambert W function
+

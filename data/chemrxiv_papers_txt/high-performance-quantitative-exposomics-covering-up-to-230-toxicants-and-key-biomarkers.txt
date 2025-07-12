@@ -1,0 +1,978 @@
+High-performance quantitative exposomics covering up to >230 toxicants and key biomarkers
+Yunyun Gua,b, Max L. Feuersteina,c, Caroline H. Johnsond, Benedikt Wartha,b,c*
+aDepartment of Food Chemistry and Toxicology, Faculty of Chemistry, University of Vienna, Vienna, Austria
+bVienna Doctoral School of Chemistry, University of Vienna, Währinger Straße 42, 1090 Vienna, Austria
+cExposome Austria, Research Infrastructure and National EIRENE Node, Austria
+dDepartment
+
+of Environmental Health Sciences, Yale School of Public Health, New Haven, CT 06510,
+United States of America
+
+CORRESPONDING AUTHOR: Benedikt Warth, E-mail: benedikt.warth@univie.ac.at, Phone: +43 1 4277 70806, Department of Food Chemistry and Toxicology, Faculty of Chemistry, University of Vienna, Währinger Straße 38, 1090 Vienna,
+Austria.
+KEYWORDS. Next-generation human biomonitoring, Mass spectrometry, Early-life chemical exposure, Exposome wide association study (ExWAS), Public and environmental health
+
+ABSTRACT: The exposome encompasses environmental exposures throughout life and significantly impacts health and disease. Exposure chemicals, typically present at trace levels, are mostly quantified using targeted LC-MS/MS. However, many
+existing methods are limited to a narrow range of analyte classes or lack sufficient sensitivity for exposomic analyses and the
+applicability to large sample cohorts for exposome-wide association studies (ExWAS) remains to be demonstrated. Here, we
+present a scalable workflow for analyzing >230 biomarkers in urine, plasma, and serum using solid-phase extraction in 96well plates and LC-MS/MS. Moreover, a new conceptual framework for validation criteria of assays designed to analyze highly
+diverse compounds at trace levels is proposed. Method robustness was evaluated, demonstrating suitable extraction recovery
+and matrix effects (SSE) within 60-130%, inter-/intra-day precision (RSD) <30%, and exceptional sensitivity (limit of detection, 0.015-50 pg/mL) for 60-80% of the analytes across the investigated matrices. To showcase the method's applicability in
+epidemiological studies, 200 urine samples from pregnant women in a longitudinal cohort were analyzed, with more than
+130 biomarkers detected in the real-life samples, several for the first time in US urine. With its broad analyte coverage, excellent sensitivity, robustness, and exceptionally high sample throughput, this method offers the necessary performance for
+large-scale ExWAS studies in the future.
+
+Individuals are exposed to thousands of chemicals through dietary
+intake and other environmental sources. Exposomics aims to comprehensively assess these environmental exposures and to identify
+potential links to adverse health effects, including chronic diseases
+or cancer (Koual et al., 2020; Wild, 2005). Liquid chromatography
+coupled to mass spectrometry (LC-MS) is currently the most relevant technique in exposome-wide association studies (ExWAS)
+and can be used for targeted and non-targeted analysis (Lai et al.,
+2024). Targeted assays focus on quantifying a pre-defined set of
+compounds with high sensitivity, accuracy, and precision (Jagani et
+al., 2022; Jamnik et al., 2022). In contrast, non-targeted analysis
+and suspect screening, aim to identify and characterize chemicals
+without a priori knowledge of the sample composition and can lead
+to discovery of novel or unexpected exposures (Manz et al., 2023).
+Due to favorable assay robustness, sensitivity and quantitative capabilities, multi-analyte targeted LC-MS/MS methods are often the
+preferred choice. This allows detection and quantification of a wide
+range of compounds at trace concentration levels and provides the
+basis for exposomics (Braun et al., 2020; Krausová et al., 2024).
+Suitable sample preparation protocols are essential, as sample
+
+matrix components can substantially impact signal intensities, particularly for trace level compounds (Preindl et al., 2019). In addition, limited duty cycle can hamper data quality in large-scale LCMS/MS assays targeting hundreds of analytes in a single run (Cai &
+Yan, 2021). Various sample preparation protocols, including protein precipitation (PPT) and solid phase extraction (SPE), are commonly used to extract exposure biomarkers from diverse human
+matrices and aim to provide best assay sensitivity and robustness,
+while reducing unwanted instrumental contaminations at the
+same time. PPT protocols are widely used in omics studies due to
+their broad analyte coverage (Huang et al., 2023; Jamnik et al.,
+2022), whereas SPE methods are traditionally tailored to extract
+and analyze a smaller number of analytes or analyte classes. Yet,
+SPE is increasingly popular for exposome-scale studies due to its
+efficient cleanup of complex biological samples (Gu et al., 2023).
+Recently, a generic SPE protocol for extracting 94 exposure compounds with diverse physicochemical properties was developed
+and demonstrated its applicability to targeted and non-targeted
+exposomics (Gu et al., 2025). Analyte coverage was compared to a
+generic PPT protocol and results showed a substantial overlap of
+1
+
+https://doi.org/10.26434/chemrxiv-2025-sb0nl ORCID: https://orcid.org/0000-0001-5853-7431 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+identified analytes of the PPT and SPE method in urine and plasma.
+Broad analyte coverage is critical for targeted multi-class analysis,
+but SPE protocols for >200 compounds remain rare. One of the key
+benefits of SPE methods is the capability to perform high-throughput sample extraction in 96-well plates. Time requirements and
+consumption of single-use labware substantially impacts the economic and environmental footprint of sample preparation, which
+is especially relevant for ExWAS where hundreds to thousands of
+samples need to be analyzed (Gu et al., 2023; Lin et al., 2022).
+
+chemicals were used as internal standards: 13C12-bisphenol A,
+13C6-butylparaben, 13C15-deoxynivalenol, 2H3-erythromycin,
+13C6-ethylparaben,
+13C2-mono-butyl
+phthalate,
+13C6methylparaben, 13C8-perfluorooctanoic acid, 13C8-perfluorooctanesulfonic acid, 13C6-propylparaben and 13C18-zearalenone.
+To account for variations in the SPE process and instrumental analysis, 13C18-zearalenone (100 ng/mL) was added before sample
+preparation, while all other internal standards (referred to as
+“ISTD mix”) were added after SPE to track instrumental performance and matrix effects. Used concentrations are provided in Table S2 and product numbers and suppliers are listed in Table S3.
+Oasis PRiME HLB 96-well plates (30 mg, 2 mL) were purchased
+from Waters. Further details regarding the preparation of stocks,
+mixtures, solvents, and the spiking process are presented in the
+Supplementary Information (SI).
+
+To ensure suitable data quality, rigorous method validation is essential. This is especially important when analytes are present at
+trace levels. The latest update of the guideline from European Commission (EC) No. 2021/808 provides systematic criteria (referred
+to as “EC criteria”) for method validation in terms of trueness (evaluated via extraction recovery, RE), precision (intermediate precision, RSDR), and repeatability (RSDr), over a wide range of concentrations (EC, 2021). However, the EC criteria only provide limited
+applicability for exposome-scale LC-MS/MS methods, because of
+the complex nature of large-scale multianalyte methods and the extremely low concentrations of most exposure compounds in human matrices. In particular, the EC criteria do not provide clear
+limits for precision and repeatability for analyte concentrations below 120 µg/kg and do not account for the large number of analytes
+in extreme multi-analyte methods required for exposomics. Therefore, new systematic validation criteria for large-scale exposomics
+assays for trace analysis are required to address these challenges
+and to further complement EC criteria. Finally, applicability for
+large-scale studies needs to be tested to showcase the robustness
+of exposomics workflows, which is of special relevance when for
+populations with low-level exposures like pregnant women are
+targeted (Krausová et al., 2024).
+
+Samples. Urine samples (n = 200) were collected from 50 pregnant
+women in Connecticut (U.S.) participating in the Yale Pregnancy
+Outcome Prediction Study (YPOPS). Participants self-collected
+samples at gestational weeks (GW) 12, 20, 28, and 36 during a single-day visit. Urine was collected into sterile cups, kept on ice, and
+sent to a collection center, where 1.5 mL aliquots were transferred
+to cryovials, stored at -80°C, and shipped on dry ice to the Global
+Exposomics and Biomonitoring Laboratory at the University of Vienna for analysis. Previously, these samples have been analyzed for
+biomarkers of mycotoxin exposure (Krausová et al., 2024). The
+study was approved by the Yale University Human Investigation
+Committee (#1601017004), and samples were banked by the Yale
+University
+Reproductive
+Sciences
+(YURS)
+Biobank
+(HIC#1309012696).
+Pooled urine, plasma, and serum samples were used for method
+development and validation. The pooled urine was collected from
+a female volunteer following a two-day period of abstaining from
+foodstuff and beverages stored in plastic containers, phytoestrogen-rich foods, and cosmetics containing parabens (Preindl et al.,
+2019). Pooled plasma was purchased from Innovative Research
+(IPLAWBLIH-31982) (Novi, MI, USA), and serum from Sigma-Aldrich (H4522, Sigma-Aldrich, Germany). All samples were aliquoted and stored at - 80 °C until analysis.
+
+In this study, a multi-analyte LC-MS/MS method for 234 highly diverse chemicals covering a wide range of polarities (LogP between
+-4.6-9.6) with detection limits (LOD) in the pg/mL-range was developed. To enhance sample cleanup, assay sensitivity and sample
+throughput, a recently developed SPE protocol for exposomics in
+96-well plates was used and the workflow was validated for common human sample matrices like urine, plasma, and serum. Based
+on empirical data extracted from relevant literature and generated
+within this study, we propose a systematic conceptual framework
+for method validation in exposomics. The new approach was used
+together with criteria set by the European Commission to assess
+fitness-for-purpose. Finally, validation results were used to systematically classify assay compounds in order to report results as
+quantitative, semi-quantitative, or qualitative. To assess the feasibility of the assay, it was applied to 200 urine samples obtained
+from pregnant US females during gestation (12th, 20th, 28th, and
+36th week).
+
+Sample preparation. An optimized SPE protocol utilizing 96-well
+plates was used according to a recently developed protocol (Gu et
+al., 2025). In short, the SPE was conditioned with methanol (MeOH)
+followed by water (H2O). Subsequently, 400 μL of sample was
+mixed with 4 μL of 13C18-zearalenone (100 ng/mL), diluted with
+396 μL of phosphate-buffered saline (PBS) before loading on the
+SPE plates. Plates were washed with H2O and eluted with 2 x 200
+μL of MeOH. 4 μL of the ISTD mix were added, and extracts were
+diluted with 396 μL of H2O resulting in a total volume of 800 μL.
+Method details are provided in the SI.
+UHPLC-MS/MS. LC separation was performed using a generic LC
+method (Jamnik et al., 2022; Preindl et al., 2019) with the detailed
+parameters presented in the SI and Table S4. In brief, an Agilent
+1290 Infinity II UPLC system was equipped with an Acquity HSS T3
+reversed-phase column (1.8 μm, 2.1 × 100 mm) and a VanGuard
+pre-column (1.8 μm), both purchased from Waters (Vienna). Retention times (RTs) for single compounds and potential RT shifts
+were determined by injecting standard solutions of single compounds or compound mixtures using concentrations of 0.5 ng/mL,
+1 ng/mL, and 3 ng/mL.
+
+EXPERIMENTAL SECTION
+Chemicals and materials. The diverse analyte panel consisted of
+234 compounds and was developed based on previous work
+(Braun et al., 2022; Hossain et al., 2024; Jamnik et al., 2022; Preindl
+et al., 2019). Furthermore, 58 additional endocrine disrupting
+chemicals (EDCs) were selected based on relevant databases, i.e.
+compounds listed by the U.S. Environmental Protection Agency
+(EPA), European Human Biomonitoring Initiative (HBM4EU),
+Comparative Toxicogenomics Database (CTD), and relevant human biomonitoring (HBM) studies (see Table S1). In total, this
+panel included 13 classes of compounds including perfluorinated
+alkylated substances (PFAS), medical drugs, personal care products, air pollutants, pesticides, flame retardants, mycotoxins, industrial products, food processing by-products, plastics-related
+chemicals, disinfection and by-products, phytotoxins/-estrogens,
+and endogenous estrogens. Working stock solutions of all analytes
+(referred to as “STD mix”) were created by diluting individual stock
+solutions with acetonitrile. The following isotope-labeled
+
+Method optimization for multiple reaction monitoring (MRM)
+transitions included precursor ion (Q1) and product ion (Q3) selection, optimization of entrance potential (EP), collision energy
+(CE), and collision cell exit potential (CXP). Values of Q1, Q3, EP and
+CE were optimized for many compounds on a new Qtrap 7500 instrument (Sciex, Vienna) using method parameters of our previously published methods on a Qtrap 6500+ (Sciex, Vienna) as the
+basis (Braun et al., 2022; Hossain et al., 2024; Jamnik et al., 2022;
+Preindl et al., 2019). MRM parameters for all other analytes were
+2
+
+https://doi.org/10.26434/chemrxiv-2025-sb0nl ORCID: https://orcid.org/0000-0001-5853-7431 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+optimized using direct infusion of standard solutions (5–10
+ng/mL) with a syringe pump at a flow rate of 7 µL/min. Analytes
+were introduced either as mixtures or as individual solutions (see
+Table S5). Poorly ionizing compounds were re-analyzed individually and optimization was repeated. Two fragment ions were selected per compound as quantifier and qualifier ions. To ensure optimum data quality, dwell times were optimized for all targets to
+ensure enough datapoints per chromatographic peak. Fast polarity
+switching was used in scheduled MRM mode. More details, including ion source parameters and MRM transitions are listed in Table
+S6.
+
+whereas acceptable REs are in the range of 50%-120% for concentrations <1 μg/kg. In analogy, acceptable values for RSDR and
+RSDr, determined as CV of RE, are also concentration-dependent.
+Following the guideline, CVs <16% are required for concentrations
+>1000 μg/kg, while RSDs <22% is required for concentrations between 120 μg/kg and 1000 μg/kg. For concentrations <120 μg/kg,
+the guideline recommends minimizing CVs for both RSDr and
+RSDR to technically feasible level. In the subsequent description,
+units of μg/kg have been approximated to ng/mL, using the density
+of human urine/plasma as a basis for the conversion (more details
+presented in Table S15).
+
+Quality control and quantification. A system suitability test (SST)
+was performed before and after each analytical sequence to track
+instrument performance (Table S7, and S8 and S9). External calibration with a multianalyte standard was used to quantify analytes
+and standards were prepared in 50% MeOH in H2O (v/v, 1/1) at
+nine concentration levels (Table S10). Linear range and coefficient
+of determination (R²) are reported in Table S11. Water was used
+as sample for the preparation of process blanks and 50% MeOH
+was used as solvent blank to control background concentrations
+and carryover. Three types of quality control (QC) samples were
+used including pooled samples (“non-spiked QC”), pooled samples
+spiked after extraction (“post-spiked QC”) and before extraction
+(“pre-spiked QC”). Furthermore, eleven isotopically labeled internal standards were used to track method performance during the
+analysis of 200 urine samples (details presented in the SI). Sciex OS
+software (version 4.1, Sciex, Vienna) was used to integrate peaks
+using the MQ4 algorithm, to build calibration curves and for quantification (more details presented in the SI). Further data evaluation and visualization was done in Microsoft Excel (v16.0; Microsoft Office), PowerPoint (v16.0; Microsoft Office), Origin 2021b
+(v 9.8; OriginLab Corporation), and Inkscape (version 1.2.2;
+Inkscape).
+
+Conceptual framework of validation criteria in exposome-scale studies. While current EC criteria provide criteria for trueness, precision, and repeatability for analyte concentrations >120 ng/mL, a
+comprehensive framework for trace analysis in exposomic-scale
+investigations is still missing. However, the high number of analytes per assay and the required ultimate method sensitivity in the
+pg-ng/mL range warrant tailed adjustment of analytical figures of
+merit. To address this challenge, we propose novel tailored validation criteria based on empirical data. Validation criteria for
+exposomics were developed using published validation data of
+exposomics assays for large analyte panels (i.e., >90 analytes) covering a wide range of physicochemical properties (i.e., covering a
+logP range of >5) and results from our experiments as a rational
+basis (see Table S16) (Huang et al., 2023; Jamnik et al., 2022). Subsequently, the expected ranges for key parameters including RE,
+RSDR and RSDr values were derived as 5th and 95th percentiles of
+reported data and were established as new criteria for assessment
+and comparison in exposomic-type LC-MS investigations.
+
+RESULTS AND DISCUSSION
+Analyte selection. To ensure broad analyte coverage and to push
+the method to the edge of technical feasibility, diverse classes of
+environmental and food-related contaminants, other xenobiotics,
+and biotransformation products thereof were targeted. The analyte panel was based on our previous work and included PFAS
+chemicals, medical drugs, personal care products, air pollutants,
+pesticides, flame retardants, mycotoxins, industrial products, food
+processing by-products, plastic related chemicals, disinfectants
+and by-products, phytotoxins and phytoestrogens, and endogenous estrogens (Table S17). To complement the analyte panel,
+listed EDCs were selected to complement the analyte panel (Table
+S1). This includes the four disinfectants 2,4,5-trichlorophenol, 2,5dichlorophenol, 2- and 4-phenylphenol, which are listed in the
+EPA’s Endocrine Disruptor Screening Program (EPA|EDSP,
+www.epa.gov/comptox-tools). Previous studies reported low levels of these analytes in urine samples of adolescents and children
+with median concentrations of 0.02–4.64 ng/mL (Frederiksen et
+al., 2020; Guo et al., 2019). Ten additional personal care productrelated compounds were selected based on EPA|EDSP, EPA’s Ecotoxicology knowledgebase (EPA|ECOTOX) and the Comparative
+Toxicogenomics Database (CTD). Furthermore, 23 plastic related
+compounds, five bisphenols and 18 phthalates, were selected
+based on the EPA|EDSP, EPA|ECOTOX, Toxicity Values database
+(EPA|ToxValDB), EPA’s Multimedia Monitoring Database
+(EPA|MMDB), and Chemicals of Emerging Concern (CEC) listed in
+the HBM4EU database (HBM4EU|CECscreen). These chemicals
+were previously reported in urine and serum from pregnant
+women, children and adolescents with median concentrations in
+the range of 0.09 – 46 ng/mL (Caballero-Casero et al., 2021; Frederiksen et al., 2020; Frigerio et al., 2020; Guo et al., 2021; Gys et al.,
+2021; Jala et al., 2022; Varghese et al., 2022). Five flame retardants,
+tri-n-butyl phosphate, triphenyl phosphate, tris(2-chlorethyl)phosphate, bis(1,3-dichloro-2-propyl)phosphate, and bis(1chloro-2-propyl)phosphate, were selected based on EPA|EDSP and
+EPA|ECOTOX lists and due to reports in human urine and blood
+samples (Gao et al., 2020; Li et al., 2020; Siddique et al., 2020).
+
+In-house validation. Following the European Commission Decision
+(EC) No. 2021/808 (Commission, 2021) performance parameters
+were evaluated over three days, including linearity, selectivity, matrix effects (signal suppression/enhancement, SSE), sensitivity
+(LOD and LOQ), trueness (extraction recovery, RE), intermediate
+precision (inter-day RSD, RSDR), and repeatability (intra-day RSD,
+RSDr). Sample preparation, measurements and data analysis were
+performed for each batch individually. Method linearity was evaluated by standards in solvent, and selectivity was tested by inspection of pooled urine and plasma samples for interferences. Matrixmatched calibration standards were prepared by spiking urine and
+plasma extracts at seven levels (Table S12). SSE (%) was calculated
+as the ratio of slopes of the matrix-matched and solvent calibration
+and was calculated for three batches (Matuszewski et al., 2003).
+LODs and LOQs were determined by analyzing spiked urine and
+plasma samples at low concentrations as replicates (n=9; see Table
+S13). LOD and LOQ were calculated as 3 and 10 times the standard
+deviation of the measured concentrations divided by the square
+root of the number of replicates (Cantwell, 2025).
+RE was calculated based on determined concentrations in prespiked samples and using matrix matched calibration. RE was determined for two concentration levels, approximately 3× and 30×
+LOQ (n=3 each, see Table S14). Blank correction was performed
+and concentrations determined in non-spiked samples (n=4) was
+subtracted for RE calculation. RSDR and RSDr were determined as
+coefficient of variation (CV) of the RE within a single batch (n = 9)
+and within three validation batches. Full details of the validation
+approach are presented in the SI.
+Validation criteria for trueness, precision, and repeatability based on
+EC guidelines. The EC criteria specifies performance criteria for analytical method validation. For trueness (RE), acceptable ranges
+depend on the spiked concentrations. For concentrations >10
+μg/kg, RE should be between 80% and 120%, 70%-120% is acceptable for concentrations between 1 μg/kg and 10 μg/kg,
+3
+
+https://doi.org/10.26434/chemrxiv-2025-sb0nl ORCID: https://orcid.org/0000-0001-5853-7431 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Finally, five PFAS substances (perfluorobutane sulfonic acid, perfluorodecanoic acid, perfluorohexanoic acid, perfluorononanoic
+acid, and perfluoroundecanoic acid), three drugs (duloxetine, tramadol and venlafaxine), three bioactive phytochemicals (chrysin,
+chalcone, and kaempferol), and five pesticides (glyphosate, vinclozolin, propiconazole, tebuconazole, and metribuzin) listed in
+EPA ECOTOX or EPAEDSP database were added.
+
+spanning a broad logP range of >5. Together with the data presented herein, these results were used as the basis for the implementation of new criteria for method validation of exposomicsscale multianalyte assays using 5th and 95th percentiles of empirical validation data. Figure 2A-C show the distribution of RE and
+RSD reported in two published methods (Huang et al., 2023;
+Jamnik et al., 2022) and results from the study at hand. The 5th and
+95th percentiles of RE were calculated as 42% and 134%, respectively, highlighting certain limitations in terms of analyte recovery
+for currently used LC-MS workflows in case of sets of extremely diverse analytes at trace concentrations. These empirically determined limits were subsequently proposed as the acceptable range
+for RE in quantitative exposomics (Figure 2A). In analogy, acceptable limits for assay repeatability and precision were determined as
+RSDr <37% and RSDR <42% (Figure 2B and Figure 2C). These custom validation criteria were then used to complement the EC criteria for the relevant concentration range in exposome research (i.e.,
+<1 ng/mL), and were integrated into our proposed method validation framework (see Figure 2D and Table S15). Figure 2 illustrates
+a schematic representation of the criteria provided in the EC guideline and proposed new data-derived criteria for exposomics including relevant concentration ranges. Furthermore, a simple
+three-level scheme is proposed to categorize targeted analytes
+based on validation results: quantitative data is reported as data
+quality category A, semi-quantitative data is reported as data quality category B, and qualitative data as data quality category C. Detailed definitions for A, B and C are described below (section Classification of data quality)
+
+LC-MS method optimization. To ensure favorable method performance, RT windows and dwell times for all scheduled MRM transitions were optimized based on observed peak widths and RT shifts
+in biological matrices. Optimization of window width and dwell
+times is essential to balance total cycle time, number of datapoints
+per peak, RT stability and the method sensitivity. Based on empirical observation of the chromatographic peak widths, method development aimed for a total cycle time <850 ms which could be
+achieved for the majority of all analytes (see Figure 1b). Due to unstable RTs in matrix samples, diethyl dithiophosphate, ibuprofen,
+perfluorodecanoic acid and perfluorononanoic acid, as well as six
+phthalates were monitored during the entire runtime. After
+method optimization, the number of datapoints per peak was investigated in spiked samples (n=3) to ensure sufficient data quality
+for quantification with 91% of the analytes having >7 datapoints
+per peak (Table S18 and Figure S2(B)) which can be regarded as
+sufficient for quantification (Zeng & Bateman, 2023).
+
+Results of the in-house validation. Excellent method linearity was
+achieved, with 88% of compounds achieving R2 values exceeding
+0.99 in pure solvents (see Table S11). Sensitivity was also excellent
+for the majority of analytes with LOD values below 1.0 ng/mL observed for 73% of compounds in urine and 74% in plasma. Approximately 10% of the analytes showed exceptionally low LODs (<
+0.001 ng/mL) in both sample matrices (Figure 2E). For approximately 70% of the analytes, RE values were in the range of 42%134% in both sample matrices (Figure 3A) and 80% and 77% of
+the analytes showed RSDr <37% in plasma and urine, respectively.
+Notably, 63% displayed RSDr values below 20% (Figure 3B). RSDR
+was determined with 67% of all compounds showing RSDR <37%,
+and 38% and 57% of compounds performing RSDR<20% in
+plasma and urine, respectively (Figure 3C). Matrix effects were
+evaluated and effective sample cleanup with SPE was demonstrated as previously reported for a smaller subset of the analyte
+panel (Gu et al., 2025). In total, 61% of the analytes in urine and
+70% in plasma showed SSE within 60%-140% (Figure 3D). Full
+validation results are provided in Table S14 and Table S19.
+
+Figure 1. Scheduled Multiple Reaction Monitoring (MRM) windows
+(A) and MRM cycle time (ms, B) as function of the chromatographic
+retention time (min) of the optimized LC-MS/MS method. Extraction
+recovery (RE, %, C) and signal suppression and enhancement (SSE,
+%, D) in dependence of chromatographic retention time (min) for analytes in urine and plasma. Four analytes (2,5-dichlorophenol, xanthohumol, bisphenol M, and triclosan) are not shown in panel (C) due
+to high RE caused by interferences and/or matrix effects.
+
+Classification of data quality: requirements for quantification, semiquantification and qualification in quantitative exposomics. To be in
+line with the EC criteria, analytes need to meet the following requirements for at least one spiking level to be reported as quantitative data (category A): 1.) RE within 50%–120% for concentrations ≤ 1 ng/mL, between 70%–120% for concentrations between
+1–10 ng/mL and 80%–120% for concentrations between 10–120
+ng/mL or higher. 2.) RSDR and RSDr ≤22% are required for concentrations within 120–1000 ng/mL, RSDR and RSDr ≤16% for
+concentrations >1000 ng/mL, whereas no clear limit is defined for
+RSDR and RSDr for compounds at trace and ultra-trace levels (see
+Figure 2D). Using the tailored criteria, data was reported as quantitative if the following requirements were met for at least one
+spiking level: 1.) RE in the range of 42%–134% and 2.) RSDr ≤37%
+and RSDR ≤42%, respectively (see Figure 2D). To implement a
+clear scheme for reporting quantitative, semi-quantitative and
+qualitative data in exposomics, two additional categories were introduced for the classification of the data quality: data was classified as semi-quantitative (category B) if either RE or RSD values
+failed to meet quality criteria for quantitative data described
+above. Qualitative data (category C) was reported for compounds
+
+Development of tailored validation criteria for exposomics. Several
+different guidelines for analytical method validation provide valuable frameworks of criteria for method validation in diverse applications. The choice of the used criteria typically depends on the
+specific research area. Among them, the EC guidelines provide a
+comprehensive set of criteria (EC criteria) for various application
+fields, however, they do not address key challenges inherent to
+exposome-scale LC-MS/MS analysis. In particular, the methodological complexity and the extreme sensitivity requirements needed
+to detect large mixtures of highly diverse analytes at trace levels
+within a single assay is not covered. To address this gap, tailored
+validation criteria were developed and are proposed herein, based
+on published validation data from a set of exposomics-scale LCMS/MS methods quantitatively assessing >90 analytes and
+4
+
+https://doi.org/10.26434/chemrxiv-2025-sb0nl ORCID: https://orcid.org/0000-0001-5853-7431 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+.
+
+Figure 2. Distribution of extraction recovery (RE, %, A), repeatability (RSDr, %, B), and precision (RSDR, %, C) reported in two previously published exposome-scale targeted LC-MS/MS studies (Huang et al., 2023; Jamnik et al., 2022) and data generated in the study at hand. Empirical
+data was used to derive tailored validation criteria for exposome-type method validation to complement and extend EC criteria (EC No.
+2021/808) for extremely low-abundance analyte concentrations in multianalyte assays (D). Panel (E) shows the distribution of the LOD values
+in the present study, highlighting the need to extend the considered concentration range of validation guidelines to <1 ng/mL when measuring
+toxic and bioactive chemicals. NA, not available data, i.e., LODs not determined.
+
+with stable RT and signal intensity, but accuracy and repeatability could not be evaluated due to poor sensitivity or high background.
+
+or quality control samples) is used. Given the complementary nature of both approaches and the complex nature of large-scale
+multi-analyte LC-MS/MS assays, compounds meeting quality criteria of either of the validation schemes were considered as suitable for quantification. In total, 76% and 75% of all analytes met
+requirements for quantification (category A) in urine and
+plasma, respectively. Another 10% and 15% of all analytes met
+requirements for semi-quantification (category B), whereas the
+remaining 14% and 10% can only be reported as qualitative data
+(i.e., detected and non-detected, category C) in urine and plasma,
+respectively (see Figure 3E).
+
+In Figure 3F the number of analytes meeting data quality criteria
+in the EC guidelines and using our newly proposed approach are
+compared. Using the EC criteria, 170 analytes were classified as
+“quantitative” in urine, whereas application of the tailored criteria results in 163 quantifiable analytes. In plasma, the EC criteria
+resulted in 162 quantifiable analytes, compared to 159 using our
+tailored criteria. Noteworthy, most analytes (155 in urine and
+146 in plasma) met the quantification requirements of both validation schemes. A subset of compounds (15 in urine and 16 in
+plasma) met quantification level A under the EC criteria, yet were
+classified as level B when using the tailored criteria, primarily
+due to relatively high RSDR and RSDr values at concentrations
+below 120 ng/mL, which is effectively not defined in the EC criteria. This difference reflects the EC criteria's greater tolerance
+for poor precision and repeatability at extremely low analyte
+concentrations. In contrast, another subset of analytes (8 in urine
+and 13 in plasma) was classified as semiquantitative (category B)
+using EC criteria but as quantitative (category A) using the tailored classification scheme due to a higher tolerance in regards
+of RE. Here, the tailored criteria allow higher tolerance for trueness, due to the complexity of large-scale exposome-scale assay.
+This takes into consideration that correction for “trueness” (i.e.,
+lower RE) is often possible if the method’s precision is acceptable
+and a suitable correction approach (e.g., using internal standards
+
+Benchmarking coverage, sensitivity, and throughput. The presented and fully validated exposomics workflow allows analyzing diverse exposure chemicals covering a wide range of polarities and concentrations. To benchmark its performance, method
+performance and coverage were compared to three relevant published LC-MS/MS protocols (see Table S16 for full details). Noteworthy, we could present the dataset covering the widest range
+of analyte polarities and achieved comparable or better sensitivity for the majority of analytes (Figure 4). Especially, the fraction
+of extremely sensitive analytes (LOQ <0.0033 ng/mL) was approximately two times higher than in previously published studies (see Figure 4B) (Huang et al., 2023; Jamnik et al., 2022; Zhu et
+al., 2021).
+While the absolute number of analytes was highest in the method
+presented by Huang et al. (2023) (n=325), the presented
+5
+
+https://doi.org/10.26434/chemrxiv-2025-sb0nl ORCID: https://orcid.org/0000-0001-5853-7431 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+workflow includes the most diverse set of analytes (n=234) in
+terms of analyte polarity. This is a critical metric to show sufficient coverage and scalability potential for exposomics applications and highlights competitive coverage with other state-ofthe-art LC-
+
+sample preparation in 96-well plates is time efficient. It was estimated that the total required laboratory time of 3 days for processing 1000 samples including SPE cleanup is sufficient whereas
+the same number of samples would need roughly 30 working
+days using a traditional PPT protocols in Eppendorf tubes (Gu et
+al., 2025; Jamnik et al., 2022).
+
+Figure 4. (A) Coverage of the chemical space of multi-analyte
+exposomics assays in terms of octanol-water partition coefficient
+(LogP) values for analytes in this study (n=234) and three published papers: Zhu et al. (2021; n=121), Jamnik et al. (2022; n=96),
+and Huang et al. (2023; n=325). (B) Limit of quantification (LOQ,
+ng/mL) for analytes in plasma (n=206) and urine (n=208) in this
+study, in urine (n=114) in Zhu et al. (2021), serum (n=92) and urine
+(n=87) in Jamnik et al. (2022), and plasma (n=295) in Huang et al.
+(2023). Note: Due to the lack of reported LOQ values in Zhu et al.
+(2021), we estimated LOQs as 3.33x the reported LODs in (B); The
+LOQ value of di-2-propylheptyl phthalate (DPHP) in this study was
+excluded from panel B due to high background levels in the nonspiked samples. LogP values listed in PubChem were used for panel
+(A).
+
+Figure 3. Results of the in-house method validation based on performance: analytes with RE (%, A), RSDr (B, %), RSDR (C, %), and
+SSE (%, D) within the range required for quantitative exposomics.
+Classified validation results following EC criteria and proposed tailored validation criteria using three categories: quantification,
+semi-quantification, and qualification (E). Number of analytes
+meeting quantification criteria for at least one spiking level following the European Commission guideline (EC, No. 2021/808) and
+the proposed tailored set of criteria (F). The results show that the
+majority of quantitative analytes in the present study fully comply
+with the established EC criteria.
+MS/MS-based workflows for exposomics (Figure 4A) (Huang et
+al., 2023; Jamnik et al., 2022; Zhu et al., 2021). Clearly, it demonstrates further possibilities to scale up the developed workflow.
+Assay sensitivity was benchmarked by comparing method LOQs
+with other relevant literature and a special focus on analytes with
+good method sensitivity and LOQs <3.3 ng/mL. In general, this
+number was comparable to other assays, however, outstanding
+method sensitivity was demonstrated for 10% of the assay compounds with LOQs <0.0033 ng/mL in both, urine and plasma. In
+contrast, only 4%-7% of the analytes had comparable LOQs in
+other published work (see Figure 4B and Table S16). The applicability of the develop method for high-throughput exposomics
+was assessed and compared to other protocols in terms of sample requirements, solvent consumption and total analysis time
+(Table S20). Using the SPE method presented herein, 1.4 mL of
+solvents are required per sample, compared to 0.8 mL estimated
+for a previously published PPT protocol (Jamnik et al., 2022).
+Similar calculations were performed for other published work
+resulting in even higher solvent consumption of approximately 6
+mL per sample calculated for the sample preparation protocol of
+Huang et al. (2023). While these estimations include some uncertainties, this further highlights the high efficiency of our workflow which would result in a theoretical reduction of 4.6 L solvents calculated for the extraction of 1000 samples. Finally,
+
+Real-life exposure patterns in pregnant women from the YPOPS
+cohort. To demonstrate favorable sensitivity and general performance of the new workflow and its applicability to real-life research questions, 200 urine samples of women (n=50) from a US
+pregnancy cohort were analyzed. Pregnant women present a
+highly vulnerable population group and expected exposure levels
+are typically lower than in the average population. Yet, 143 out
+of 234 target analytes were detected with 37 exposure compounds present with very high detection frequencies (DF) above
+70% (Figure 5). The detected and quantified biomarkers of exposure included chemicals from various exposure routes, application fields and compound classes including antibiotics, mycotoxins, medical drugs, pesticides, personal care products, phytotoxins, phytoestrogens, plasticizers, and PFAS chemicals.
+Examples of selected toxicants are briefly discussed below. The
+very data-rich detailed results including the classification of the
+data quality based on the obtained validation data is presented
+in Tables S21 and S22. A comprehensive discussion of the comprehensive exposure patterns is beyond the scope of this work.
+Urinary cotinine, a biomarker for cigarette smoke, was determined in 60% of the samples (median 0.22 ng/mL, range 0.1-23
+ng/mL), demonstrating again the high sensitivity with a LOD
+6
+
+https://doi.org/10.26434/chemrxiv-2025-sb0nl ORCID: https://orcid.org/0000-0001-5853-7431 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+value of 0.03 ng/mL. A phase-I-metabolite of cotinine, trans-3hydroxycotinine, was quantified in 74% of the samples at a lower
+median concentration (median 0.16 ng/mL, range 0.07-25
+ng/mL). Importantly, these levels typically indicate environmental smoke exposure rather than active smoking.
+
+deoxynivalenol after enzymatic deconjugation of glucuronide
+and sulfate conjugates, was reported as 23 ng/mL. Given the fact
+that the vast majority of deoxynivalenol is present conjugated in
+human urine (Turner et al., 2011; Warth et al., 2013), this demonstrated comparable performance. The same is true for the Alternaria toxin alternariol. Alternariol-monomethylether were in
+line with quantitative results from this cohort analyzed before
+and a cohort of primary school children in Austria (Ayeni et al.,
+2023). Ochratoxin A demonstrated very similar results with reported median concentrations of 0.21 ng/mL (this study) and 0.2
+ng/mL (Krausová et al., 2024). For citrinin, a nephrotoxic mycotoxin, the sensitivity of the presented assay was even enhanced,
+so that a low number of samples indicated exposure while the
+previously published, tailored HBM assay was unable to detect
+this food contaminant in urine. The same was true of enniatin B,
+a Fusarium toxin, that was quantified in a low number of samples
+at 0.0019 ng/mL. Beauvericine was quantified in human urine for
+the first time to the best of our knowledge (Table S21).
+
+Several PFAS chemicals including perfluorooctanoic acid (PFOA;
+median 0.024, range 0.024 – 0.12) and perfluorooctanesulfonic
+acid (PFOS; median 0.0065, range 0.0035 – 0.014) were quantified in up to 67% of the samples. Typically, PFASs are assessed in
+serum for HBM purpose, however, highly sensitive approaches
+are also able to determine them in urine samples (Zhang et al.,
+2015).
+Nine out of 12 monitored bisphenol derivatives or metabolites
+were quantified. As expected, BPA-glucuronide was by far the
+most frequently detected analyte of this class, however, only level
+C data quality (qualitative results) was generated. Accordingly,
+the parent molecule BPA was frequently detected (73%) (median
+0.11 ng/mL, range 0.09 – 0.53 ng/mL). For bisphenols other than
+BPA, no glucuronide or sulfate conjugates were directly accessed,
+consequently, the comparison of total exposure levels is not
+straight forward. However, these results clearly demonstrate the
+feasibility of this broad method to also accurately and directly
+quantify highly polar xenobiotic metabolites such as glucuronides.
+
+In addition, many other natural toxins and bioactives have been
+identified and quantified. Some of them are reported in the urine
+of US citizens for the first time to the best of our knowledge, while
+others, especially those occurring at higher concentrations, have
+been reported before (Warth et al., 2017). The first time identifications include Aristolactam I, a nephrotoxic plant toxin and scopolamine, a tropane alkaloid that was recently quantified in
+pooled US serum (NIST SRM 1958; Verri Hernandes & Warth,
+2024) but not yet in urine.
+
+The pesticides, acetamiprid, imidacloprid (Figure 5), and the pesticide metabolite 2-isopropyl-4-methyl-6-hydroxypyrimidine
+(IMPY) were detected in most samples. The results were compared to other published datasets of pesticide exposure in pregnant women from Asia and Europe. For acetamiprid and imidacloprid, DFs of 91% and 96% were observed in our study with
+concentration levels ranging <0.00023-0.044 ng/mL and 0.0251.8 ng/mL, respectively. Lower DFs (18% and 26%) and comparable urinary concentrations (<0.0025-1.3 ng/mL and <0.0250.95 ng/mL) were reported for 617 urine samples collected from
+62 pregnant women in Japan (Suwannarin et al., 2024). Similarly,
+IMPY, which is a key metabolite of the organophosphate pesticide
+diazinon, was detected at concentration levels between <0.00862.1 ng/mL (DF=72%) in the present study. In a study from Spain,
+IMPY was present at concentrations between <1.6-744.2 ng/mL
+and was detected in 12% of urine samples from pregnant women
+(n=573) in Valencia (Llop et al., 2017).
+
+The exposome is defined as the totality of the exposure to the
+(chemical) environment over the lifespan and longitudinal studies are of special relevance. In the investigated sample cohort of
+the YPOPS study, 50 pregnant women were sampled at four
+timepoints during pregnancy. Figure 6 illustrates observed time
+trends of urinary concentrations for ten biomarkers across the
+four gestational periods. The trends included a continuous increase of a monitored hormone (estradiol), an increase across
+the first three periods followed by a decrease in the final period
+(hormone metabolite, estradiol-3-sulfate), stable (pesticide, 2,4
+dichlorphenoxyacetic acid), and decrease across the first three
+periods followed by an increase in the final period for diet related
+product (enterolactone), drug metabolite (ibuprofen glucuronide), personal cared product (methylparaben), perfluorooctanoic acid, plastic related product (mono-(2-ethyl-5-hydroxyhexyl) phthalate and bisphenol A glucuronide), and UV filter
+(benzophenone 1). More detailed illustrations for the urinary
+concentrations are presented in Figure 5. Detailed results and descriptive statistics for all analytes are summarized in Table S22.
+
+The data obtained from this high-performance multi-analyte assay also demonstrated proper performance when comparing it to
+a more tailored HBM assay covering multiple mycotoxins that
+was applied to the same set of sample before (Krausová et al.,
+2024). The most concentrated and prevalent fungal toxin, deoxynivalenol was determined in 50% of the samples at a median
+concentration of 3.2 ng/mL (Table S21), notably in its native
+form. The median in the tailored HBM assay that measured total
+1000
+
+Concentration (ng/mL)
+
+100
+
+0.1
+
+tr
+an
+s3
+
+-H
+yd
+
+ro
+xy
+c
+Bi otin
+sp in
+he e
+n
+2- ol
+Et Na A
+M
+et
+hy ph
+hy
+t
+l
+l p Me par ol
+ro thy ab
+to
+lp en
+ca ar
+te
+c ab
+Pr hu en
+op i c
+yl aci
+p
+d
+I m a ra
+id be
+ac n
+lo
+pr
+Ib
+id
+up
+ro
+2
+fe ,4M
+n
+D
+on
+G
+o- 5-O LC
+be H
+n z -M A
+yl
+E
+ph HP
+th
+a
+M la t e
+C
+M
+H
+M P
+EC
+M PP
+EO
+G HP
+ly
+ci
+t
+D ein
+ai
+En dze
+En ter in
+te o d
+r
+i
+Fo ola ol
+rm cto
+on ne
+on
+G etin
+en
+is
+Be Tr tein
+n z ic
+op los
+he an
+no
+ne
+1
+
+1E-4
+0.0001
+
+7
+
+https://doi.org/10.26434/chemrxiv-2025-sb0nl ORCID: https://orcid.org/0000-0001-5853-7431 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure 5. Concentrations of frequently detected compounds (DF>70% and data quality level A) in urine samples from pregnant women in the
+YPOPS cohort. Note: Concentrations below the limit of quantification (LOQ) were imputed with LOQ/2. 2,4-D, 2,4 Dichlorphenoxyacetic acid;
+GLCA, glucuronide; 5-OH-MEHP, Mono-(2-ethyl-5-hydroxyhexyl) phthalate; MCMHP, Mono-[(2-carboxymethyl) hexyl] phthalate; MECPP, Mono(2-ethyl-5-carboxypentyl) phthalate; MEOHP, Mono-(2-ethyl-5-oxohexyl) phthalate.
+1
+
+Figure 6. Longitudinal concentration profiles of frequently detected compounds (DF>70%) in urine samples from 50 pregnant females
+across four gestational periods in the Yale Pregnancy Outcome Prediction Study (YPOPS). Some exposures are highly stable throughout
+pregnancy while others are dynamic and exhibit changing concentration levels. Here, concentrations below the limit of quantification
+(LOQ) were replaced with a value of LOQ/2. PFAS, per- and polyfluoroalkyl substances; 2,4-D, 2,4 dichlorphenoxyacetic acid; GLCA,
+glucuronide; 5-OH-MEHP, mono-(2-ethyl-5-hydroxyhexyl) phthalate.
+scale LC-MS/MS assays. Further integration of additional datasets would be needed before claiming to provide a comprehensive framework for method validation in exposomics-scale HBM.
+
+LIMITATIONS
+While the robustness, sensitivity as well as time and cost-efficiency of the developed workflow were clearly demonstrated,
+several limitations remain. Although the presented analyte panel
+was well designed and aims for high diversity and representativeness, still only a limited subset of the chemical exposome can
+be covered in a single assay. For a comprehensive assessment of
+the human exposome, even wider chemical coverage or combinations of complementary methods are required. Furthermore,
+several very polar compounds have been lost during the SPE process due to weak retention with the sorbent and substantial matrix effects were observed for several analytes. Combinations of
+different orthogonal approaches might address these limitations,
+yet it would be time-consuming and costly. Clearly, broad coverage exposome-type assays need to find a well-balanced compromise between analyte coverage, efficient sample cleanup, assay
+sensitivity and time requirements. The overall performance of
+the method in the real-life case study yielded highly informationrich exposure patterns, indicating that the chosen pragmatic approach seems fit-for-purpose.
+
+CONCLUSION AND OUTLOOK
+In summary, a high-performance workflow for exposome analysis characterized by broad chemical coverage and excellent
+method sensitivity across diverse human matrices was developed. The analytical pipeline was validated based on existing
+guidelines and using a conceptionally new and tailored framework of validation criteria designed for exposomics. This is necessary to face typically observed challenges in exposomics, such
+as broad exposome-scale analyte coverage and compounds present at trace concentrations. Method performance was characterized and offers a robust foundation for quantifying numerous priority exposures in population-scale studies. The versatile assay
+extends analyte coverage beyond traditional food and environmental toxicants and includes biotransformation products, medical drugs and microbiome-related compounds besides typically
+monitored toxins and CECs. Sample throughput presents one of
+the critical bottlenecks in large-scale exposomics and we could
+reduce the required laboratory work by approximately a factor
+of ten using SPE in 96-well plates. The scalability of the method
+was demonstrated and now offers the required capacities to perform large-scale population-based studies for ExWAS. Such
+large-scale studies are finally needed to enhance our understanding of the chemical exposome, which is prerequisite to improve
+disease prevention in public health and personalized medicine.
+Due to the excellent method sensitivity and sample throughput,
+our validated workflow offers tools to increase our understanding of the chemical exposome and will be used for in large-scale
+population studies. Such studies will be crucial for unraveling the
+
+Traditionally used criteria for analytical method validation show
+limited applicability for exposome research because of the required ultimate sensitivity and the method complexity. Our
+newly established, validation criteria aim to propose a conceptionally novel and evidence-based framework to systematically
+extend established guidelines for analytical method validation to
+meet requirements of quantitative exposomics. This is of great
+relevance to ensure comparable reporting standards and method
+performance. Yet, our proposed tailored validation criteria rely
+on data derived from only a small number of published exposome-scale studies (n=3) due to limited availability of exposome8
+
+https://doi.org/10.26434/chemrxiv-2025-sb0nl ORCID: https://orcid.org/0000-0001-5853-7431 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+relationships between (co-)exposure to diverse environmental
+chemicals and human health in the future.
+
+substances used in food-producing animals and on the
+interpretation of results as well as on the methods to be used for
+sampling and repealing Decisions 2002/657/EC and 98/179/EC.
+Off. J. Eur. Union, 180, 84-109.
+
+ASSOCIATE CONTENT
+
+Frederiksen, H., Nielsen, O., Koch, H. M., Skakkebaek, N. E., Juul,
+A., Jørgensen, N., & Andersson, A.-M. (2020). Changes in urinary
+excretion of phthalates, phthalate substitutes, bisphenols and
+other polychlorinated and phenolic substances in young Danish
+men; 2009–2017. International journal of hygiene and
+environmental health, 223(1), 93-105.
+
+Supplementary information (SI) provided in the PDF Document
+is included and provided with additional information regarding
+the method and the results.
+
+ETHICS DECLARATIONS
+Competing interests
+
+Frigerio, G., Campo, L., Mercadante, R., Santos, P. M., Missineo, P.,
+Polledri, E., & Fustinoni, S. (2020). Development and validation of
+a liquid chromatography/tandem mass spectrometry method to
+quantify metabolites of phthalates, including di-2-ethylhexyl
+terephthalate (DEHTP) and bisphenol A, in human urine. Rapid
+Communications in Mass Spectrometry, 34(13), e8796.
+
+The authors declare no competing interests.
+
+ACKNOWLEDGMENT
+The authors would like to thank all members of Warth Laboratory for providing valuable feedback and discussions, especially
+Maren Kirchner for her assistance during sample pretreatment.
+They express their gratitude to the Mass Spectrometry Center of
+the Faculty of Chemistry at the University of Vienna for technical
+support during the measurements. Moreover, the authors greatly
+acknowledge the Yale University Reproductive Sciences (YURS)
+Biobank (HIC#1309012696), especially Jane O’Bryan, Lauren
+Perley, and Michelle Silasi and all the women who donated samples.
+
+Gao, D., Yang, J., Bekele, T. G., Zhao, S., Zhao, H., Li, J., Wang, M., &
+Zhao, H. (2020). Organophosphate esters in human serum in
+Bohai Bay, North China. Environmental Science and Pollution
+Research, 27, 2721-2729.
+Gu, Y., Feuerstein, M. L., & Warth, B. (2025). High-Throughput
+Solid Phase Extraction for Targeted and Nontargeted
+Exposomics.
+analytical
+Chemistry.
+https://doi.org/10.1021/acs.analchem.4c06177
+Gu, Y., Peach, J. T., & Warth, B. (2023). Sample preparation
+strategies for mass spectrometry analysis in human exposome
+research: Current status and future perspectives. TrAC Trends in
+Analytical Chemistry, 117151.
+
+This work was supported by the University of Vienna, the China
+Scholarship Council (CSC), the Austrian Science Fund (FWF,
+P33188), the European Research Council, ERC, (EXPOMET,
+101043321), and Exposome Austria, the national Node of the EIRENE research infrastructure. Views and opinions expressed are
+those of the authors only and do not necessarily reflect those of
+the ERC or CSC Executive Agency. None of the granting authorities can be held responsible for them.
+
+Guo, C., Zhao, X., Jin, J., Wang, L., Tan, D., Chen, J., & Ni, Y. (2021).
+The dose effect of dansyl chloride on the derivative products of
+bisphenols and its application for the determination of
+bisphenols in human serum by high-performance liquid
+chromatography–tandem mass spectrometry. Journal of
+Separation Science, 44(16), 3052-3060.
+
+REFERENCES
+
+Guo, J., Wu, C., Zhang, J., Jiang, S., Lv, S., Lu, D., Qi, X., Feng, C., Liang,
+W., & Chang, X. (2019). Anthropometric measures at age 3 years
+in associations with prenatal and postnatal exposures to
+chlorophenols. Chemosphere, 228, 204-211.
+
+Ayeni, K. I., Jamnik, T., Fareed, Y., Flasch, M., Braun, D., Uhl, M.,
+Hartmann, C., & Warth, B. (2023). The Austrian children's biomonitoring survey 2020 part B: Mycotoxins, phytotoxins, phytoestrogens and food processing contaminants. Food and Chemical Toxicology, 182, 114173.
+
+Gys, C., Bastiaensen, M., Malarvannan, G., Bamai, Y. A., Araki, A., &
+Covaci, A. (2021). Short-term variability of bisphenols in spot,
+morning void and 24-hour urine samples. Environmental
+Pollution, 268, 115747.
+
+Braun, D., Abia, W. A., Šarkanj, B., Sulyok, M., Waldhoer, T., Erber,
+A. C., Krska, R., Turner, P. C., Marko, D., Ezekiel, C. N., & Warth, B.
+(2022). Mycotoxin-mixture assessment in mother-infant pairs in
+Nigeria: From mothers' meal to infants' urine. Chemosphere,
+287(Pt
+2),
+132226.
+https://doi.org/10.1016/j.chemosphere.2021.132226
+
+Hossain, M. Z., Feuerstein, M. L., Gu, Y., & Warth, B. (2024). Scaling
+up a targeted exposome LC-MS/MS biomonitoring method by
+incorporating veterinary drugs and pesticides. Analytical and
+Bioanalytical Chemistry, 1-14.
+Huang, W., Pan, X.-F., Tang, S., Sun, F., Wu, P., Yuan, J., Sun, W., Pan,
+A., & Chen, D. (2023). Target Exposome for Characterizing Early
+Gestational Exposure to Contaminants of Emerging Concern and
+Association with Gestational Diabetes Mellitus. Environmental
+science & technology, 57(36), 13408-13418.
+
+Braun, D., Schernhammer, E., Marko, D., & Warth, B. (2020).
+Longitudinal assessment of mycotoxin co-exposures in
+exclusively breastfed infants. Environment International, 142,
+105845.
+Caballero-Casero, N., Castro, G., Bastiaensen, M., Gys, C., van
+Larebeke, N., Schoeters, G., & Covaci, A. (2021). Identification of
+chemicals of emerging concern in urine of Flemish adolescents
+using a new suspect screening workflow for LC-QTOF-MS.
+Chemosphere,
+280,
+130683.
+https://doi.org/10.1016/j.chemosphere.2021.130683
+
+Jagani, R., Pulivarthi, D., Patel, D., Wright, R. J., Wright, R. O., Arora,
+M., Wolff, M. S., & Andra, S. S. (2022). Validated single urinary
+assay designed for exposomic multi-class biomarkers of common
+environmental exposures. Analytical and bioanalytical
+chemistry, 414(19), 5943-5966.
+Jala, A., Varghese, B., Dutta, R., Adela, R., & Borkar, R. M. (2022).
+Levels of parabens and bisphenols in personal care products and
+urinary concentrations in Indian young adult women:
+implications for human exposure and health risk assessment.
+Chemosphere, 297, 134028.
+
+Cai, J., & Yan, Z. (2021). Re-Examining the Impact of Minimal
+Scans in Liquid Chromatography–Mass Spectrometry Analysis.
+Journal of the American Society for Mass Spectrometry, 32(8),
+2110-2122.
+Cantwell (ed.) Eurachem Guide: The Fitness for Purpose of
+Analytical Methods: A Laboratory Guide to Method Validation
+and Related Topics: Third edition (2025), (2025).
+http://www.eurachem.org
+
+Jamnik, T., Flasch, M., Braun, D., Fareed, Y., Wasinger, D., Seki, D.,
+Berry, D., Berger, A., Wisgrill, L., & Warth, B. (2022). Nextgeneration biomonitoring of the early-life chemical exposome in
+neonatal and infant development. Nat Commun, 13(1), 2653.
+https://doi.org/10.1038/s41467-022-30204-y
+
+Commission, E. (2021). Commission Implementing Regulation
+(EU) 2021/808 of 22 March 2021 on the performance of
+analytical methods for residues of pharmacologically active
+
+Koual, M., Tomkiewicz, C., Cano-Sancho, G., Antignac, J.-P., Bats,
+A.-S., & Coumoul, X. (2020). Environmental chemicals, breast
+9
+
+https://doi.org/10.26434/chemrxiv-2025-sb0nl ORCID: https://orcid.org/0000-0001-5853-7431 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+cancer progression and drug resistance. Environmental Health,
+19, 1-25.
+
+global metabolomics, pathway analysis, and cognitive
+computing. Analytical Chemistry, 89(21), 11505-11513.
+
+Krausová, M., Ayeni, K. I., Gu, Y., Borutzki, Y., O’Bryan, J., Perley, L.,
+Silasi, M., Wisgrill, L., Johnson, C. H., & Warth, B. (2024).
+Longitudinal biomonitoring of mycotoxin exposure during
+pregnancy in the Yale pregnancy Outcome Prediction study.
+Environment International, 109081.
+
+Warth, B., Sulyok, M., Berthiller, F., Schuhmacher, R., & Krska, R.
+(2013). New insights into the human metabolism of the Fusarium
+mycotoxins deoxynivalenol and zearalenone. Toxicology letters,
+220(1), 88-94.
+Wild, C. P. (2005). Complementing the genome with an
+"exposome": the outstanding challenge of environmental
+exposure measurement in molecular epidemiology. Cancer
+Epidemiol
+Biomarkers
+Prev,
+14(8),
+1847-1850.
+
+Lai, Y., Koelmel, J. P., Walker, D. I., Price, E. J., Papazian, S., Manz,
+K. E., Castilla-Fernández, D., Bowden, J. A., Nikiforov, V., & David,
+A. (2024). High-resolution mass spectrometry for human
+exposomics: Expanding chemical space coverage. Environmental
+Science & Technology, 58(29), 12784-12822.
+
+https://doi.org/10.1158/1055-9965.Epi-05-0456
+Zeng, W., & Bateman, K. P. (2023). Quantitative LC–MS/MS. 1.
+Impact of Points across a Peak on the Accuracy and Precision of
+Peak Area Measurements. Journal of the American Society for
+Mass Spectrometry, 34(6), 1136-1144.
+
+Li, Y., Li, D., Chen, J., Zhang, S., Fu, Y., Wang, N., Liu, Y., & Zhang, B.
+(2020). Presence of organophosphate esters in plasma of
+patients with hypertension in Hubei Province, China.
+Environmental Science and Pollution Research, 27, 2405924069.
+
+Zhang, T., Sun, H., Qin, X., Gan, Z., & Kannan, K. (2015). PFOS and
+PFOA in paired urine and blood from general adults and pregnant
+women: assessment of urinary elimination. Environmental
+Science and Pollution Research, 22, 5572-5579.
+
+Lin, J., Ding, J., Di, X., Sun, W., Chen, H., & Zhang, H. (2022).
+Association between prenatal antibiotics exposure and measures
+of fetal growth: A repeated-measure study. Ecotoxicology and
+Environmental Safety, 244, 114041.
+
+Zhu, H., Chinthakindi, S., & Kannan, K. (2021). A method for the
+analysis of 121 multi-class environmental chemicals in urine by
+high-performance liquid chromatography-tandem mass
+spectrometry.
+J
+Chromatogr
+A,
+1646,
+462146.
+
+Llop, S., Murcia, M., Iñiguez, C., Roca, M., González, L., Yusà, V.,
+Rebagliato, M., & Ballester, F. (2017). Distributions and
+determinants of urinary biomarkers of organophosphate
+pesticide exposure in a prospective Spanish birth cohort study.
+Environmental Health, 16, 1-15.
+
+https://doi.org/10.1016/j.chroma.2021.462146
+
+Manz, K. E., Feerick, A., Braun, J. M., Feng, Y.-L., Hall, A., Koelmel,
+J., Manzano, C., Newton, S. R., Pennell, K. D., & Place, B. J. (2023).
+Non-targeted analysis (NTA) and suspect screening analysis
+(SSA): a review of examining the chemical exposome. Journal of
+Exposure Science & Environmental Epidemiology, 33(4), 524536.
+Matuszewski, B. K., Constanzer, M., & Chavez-Eng, C. (2003).
+Strategies for the assessment of matrix effect in quantitative
+bioanalytical methods based on HPLC− MS/MS. analytical
+Chemistry, 75(13), 3019-3030.
+Preindl, K., Braun, D., Aichinger, G., Sieri, S., Fang, M., Marko, D., &
+Warth, B. (2019). A Generic Liquid Chromatography-Tandem
+Mass Spectrometry Exposome Method for the Determination of
+Xenoestrogens in Biological Matrices. Anal Chem, 91(17), 1133411342. https://doi.org/10.1021/acs.analchem.9b02446
+Siddique, S., Harris, S. A., Kosarac, I., Latifovic, L., & Kubwabo, C.
+(2020). Urinary metabolites of organophosphate esters in
+women and their relationship with serum lipids: An exploratory
+analysis. Environmental Pollution, 263, 114110.
+Suwannarin, N., Isobe, T., Nishihama, Y., Ito, Y., Kamijima, M.,
+Ebara, T., Sugiura-Ogasawara, M., Nishikawa, N., Nakai, K., &
+Minamikawa, Y. (2024). Concentrations of neonicotinoid
+insecticides and their metabolites in multiple urine samples
+collected from pregnant women in Japan. Environmental
+Research, 240, 117506.
+Turner, P. C., Hopton, R. P., White, K. L., Fisher, J., Cade, J. E., &
+Wild, C. P. (2011). Assessment of deoxynivalenol metabolite
+profiles in UK adults. Food and Chemical Toxicology, 49(1), 132135.
+Varghese, B., Jala, A., Das, P., Borkar, R. M., & Adela, R. (2022).
+Estimation of parabens and bisphenols in maternal products and
+urinary concentrations in Indian pregnant women: daily intake
+and health risk assessment. Environmental Science and Pollution
+Research, 1-14.
+Verri Hernandes, V., & Warth, B. (2024). Bridging targeted (Zeno
+MRM-HR) and untargeted (SWATH) LC–HRMS in a single run for
+sensitive exposomics. Analytical Chemistry, 96(31), 1271012717.
+Warth, B., Spangler, S., Fang, M., Johnson, C. H., Forsberg, E. M.,
+Granados, A., Martin, R. L., Domingo-Almenara, X., Huan, T., &
+Rinehart, D. (2017). Exposome-scale investigations guided by
+10
+
+https://doi.org/10.26434/chemrxiv-2025-sb0nl ORCID: https://orcid.org/0000-0001-5853-7431 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+

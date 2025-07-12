@@ -1,0 +1,1155 @@
+Investigating fine particulate matter transport in a multi-story house using
+low-cost sensor measurements and different modeling approaches
+Andrew B. Martina, Stephen M. Zimmermanb, Liora Maelc,1, Dustin Poppendieckd, Delphine K.
+Farmere, Marina E. Vancef,*
+a
+
+Environmental Engineering Program, University of Colorado Boulder, 1111 Engineering Drive, Boulder,
+CO 80309-0428, USA, andrew.b.martin@colorado.edu
+b
+
+National Institute of Standards and Technology, 100 Bureau Drive, Gaithersburg, MD 20899, USA,
+stephen.zimmerman@nist.gov
+c Department of Mechanical Engineering, University of Colorado Boulder, 1111 Engineering Drive,
+
+Boulder, CO 80309-0427, USA, liora.mael@colorado.edu
+d
+
+National Institute of Standards and Technology, 100 Bureau Drive, Gaithersburg, MD 20899, USA,
+dustin.poppendieck@nist.gov
+e
+
+Department of Chemistry, Colorado State University, Fort Collins, CO 80523, USA,
+delphine.farmer@colostate.edu
+f Department of Mechanical Engineering, University of Colorado Boulder, 1111 Engineering Drive,
+
+Boulder, CO 80309-0427, USA, marina.vance@colorado.edu
+*Corresponding Author.
+1 Now at Winterthur Museum, Garden and Library, University of Delaware, Newark, DE, USA
+
+1
+https://doi.org/10.26434/chemrxiv-2025-3x72f ORCID: https://orcid.org/0000-0003-0940-0353 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Abstract
+This work investigates the transport of fine particulate matter (PM2.5) in a multi-story test house
+using cooking emissions as a point source. The test house was instrumented with 13 PM2.5
+monitors, and the particle sources included pan cooking and air frying, as well as ambient PM2.5
+penetration during periods of no indoor activity. In the absence of indoor sources, we observed
+about 10 % of ambient PM2.5 concentrations penetrating indoors with a time lag of 1 h. Similar
+peak PM2.5 concentrations were observed for pan frying and air frying of the same food
+ingredients. A cross-correlation analysis showed that it took 2 to 4 min for kitchen peak
+concentrations to reach other sensors on the first floor and about 8 min to reach the second floor.
+PM2.5 concentrations were heterogeneous on the first floor, with non-kitchen areas peaking at 45
+% ± 9 % of kitchen levels. Second-floor concentrations were more homogeneous, peaking at 18
+% ± 2 % of kitchen levels. Using a typical occupancy scenario, the highest estimated personal
+PM2.5 exposure (44 %) was experienced in the kitchen/dining area, which accounted for 9 % of
+the time spent at home. We used three modeling approaches to analyze particle transport
+throughout the house, with increasing input requirements: a multi-box model, an empirical
+model, and the NIST CONTAM model. All models predicted time integrated PM2.5
+concentrations on the 1st and 2nd floors, with R2 between 0.57 and 0.82 and RMSE from 6 µg m-3
+to 11 µg m-3.
+
+Keywords
+Indoor air quality, indoor transport, aerosols, indoor particles, PM2.5, modeling, infiltration.
+
+2
+https://doi.org/10.26434/chemrxiv-2025-3x72f ORCID: https://orcid.org/0000-0003-0940-0353 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Graphical Abstract
+
+1. Introduction
+Airborne pollutants enter the indoor environment from two major sources: (1) outdoor air entry
+and (2) emissions from indoor processes and activities. In efforts to become more energy
+efficient, building envelopes are designed and constructed to be more airtight. This reduced
+infiltration results in a decrease in air change rates (ACR). While this can limit exposure to
+outdoor contaminants, without adequate mechanical ventilation, reduced infiltration can also
+exacerbate exposure from indoor sources since the emissions may have a longer indoor residence
+time. Such indoor sources include cooking, emissions from building materials, heating and
+cooling systems, household cleaning products, and a variety of building occupant behaviors [1].
+Other energy saving methods or climate adaption techniques in houses can have negative impacts
+on indoor air quality. Increased thermal insulation or increased cooling equipment may increase
+the likelihood of condensation and indoor humidity levels, which can lead to potential biological
+growth [2].
+
+3
+https://doi.org/10.26434/chemrxiv-2025-3x72f ORCID: https://orcid.org/0000-0003-0940-0353 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+While there is a wide variety of potential contaminants in indoor air [3], particulate matter (PM)
+is one of great concern. Two of the main contributors to indoor PM are cooking and heating
+using biofuels [4]. While combustion for heating purposes is more prevalent in some developing
+regions, indoor PM generation from cooking is prevalent everywhere due to high heat levels
+emitting solid and liquid particles [5]. In a study investigating cooking in 15 different Australian
+houses, He et al. observed peak PM2.5 concentrations in the order of 750 µg m-3 during frying
+activities [6].
+Residential exposure to PM2.5 is dependent on the time spent in different indoor
+microenvironments by each occupant. Concentrations of cooking emissions, for example, are
+likely to peak in the kitchen and then decrease as particles are transported throughout the indoor
+environment. Concentrations decrease primarily due to dilution with the indoor air, dilution with
+outdoor air, and depositional losses to indoor surfaces [7,8]. Ultimately, in a home with closed
+external doors and windows, a small fraction of particles is expected to leave to outdoors via
+exfiltration, while the majority of particles deposit indoors [7,9].
+Low-cost, or consumer-oriented PM sensors are becoming increasingly frequent in applications
+of indoor air quality and exposure assessment. They allow for citizen science and also research
+applications where many measurements are required, such as investigations of spatiotemporal
+trends of pollutants both indoors and outdoors. However, low-cost sensor use comes with a
+tradeoff in data quality. Studies have shown that the Plantower PMS sensor, a common particle
+counter used in many low-cost PM2.5 monitors, can present significant differences in
+concentration when compared to laboratory-grade instrumentation, partially due to their principle
+of operation using a miniaturized optical detection system based on light scattering [10,11].
+Concentration measurements through particle light scattering are dependent on particle density,
+hygroscopicity, refraction index, and composition [12]. Variations in environmental conditions
+(e.g., temperature, relative humidity) have also been shown to skew the concentration readings
+from these instruments [13,14]. However, if used in an informed manner, the benefits of low-cost
+sensors have the potential to outweigh their limitations.
+This work presents results from concurrent measurements using over a dozen PurpleAir monitors
+that use Plantower sensors deployed inside a three-level test house to investigate the transport of
+
+4
+https://doi.org/10.26434/chemrxiv-2025-3x72f ORCID: https://orcid.org/0000-0003-0940-0353 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+PM2.5 emissions from cooking activities, along with transport modeling for the measurement
+periods. Specific objectives were to (1) Investigate PM2.5 concentration gradients and transport
+time; (2) Compare three different modeling approaches to predict PM2.5 concentrations
+throughout a house; and (3) Calculate the potential PM2.5 exposure for an everyday activity
+pattern. These results can be leveraged to inform indoor PM2.5 exposure from point sources in
+residential indoor environments.
+
+2. Materials and methods
+2.1. The CASA field campaign
+Measurements for this work were performed during the Chemical Assessments of Surfaces and
+Air (CASA) field campaign, which took place from February 25th to April 2nd, 2022, at the NetZero Energy Residential Test Facility (NZERTF) at the US National Institute of Standards and
+Technology (NIST) in Gaithersburg, Maryland.
+The 1100 m3 NZERTF test house was designed to be ≈60 % more energy efficient than houses
+built to meet the requirements of the 2012 International Energy Conservation Code and, as such,
+yields a low infiltration rate (≈0.05 h-1). It is a 393 m2 (4,227 ft2) 3-story, 4-bedroom and 3bathroom house that has an open-floor concept kitchen/dining area on the first floor. The first
+floor has an area of 141 m2 (1,518 ft2) while the second floor has a 111 m2 (1,191 ft2) area. There
+are 3 bedrooms and 2 bathrooms on the second floor. The house also has an unfinished basement
+and an attic within the thermal envelope. The heating, ventilating, and air conditioning (HVAC)
+consists of two independently operated heating and cooling air conditioning systems: a large duct
+(low velocity) and a small diameter (high velocity) system. There is also a dedicated outdoor
+mechanical ventilation system that can be operated as an Energy Recovery Ventilation (ERV)
+system or a Heat Recovery Ventilation (HRV) system with a total mechanical ventilation rate of
+≈0.19 h-1. The HRV/ERV combined with infiltration result in a total ACR of ≈0.24 h-1
+(supplemental Table S1) The basement has no air conditioning return air, only air conditioning
+supply, and there are passive vents connecting the basement to the first floor and the attic to the
+second floor of the house. The air conditioning fan was constantly on through the experiments.
+The mechanical ventilation system supply vents are located in the kitchen, southwest bedroom,
+southeast bedroom, and main bedroom while return vents are located on the bathroom ceilings.
+
+5
+https://doi.org/10.26434/chemrxiv-2025-3x72f ORCID: https://orcid.org/0000-0003-0940-0353 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+The CASA study was an intensive indoor air and surface chemistry experimental investigation
+with participation of over a dozen research groups from United States and Canada. Additional
+details about CASA are described elsewhere [15]. While CASA lasted for 49 days and
+encompassed several types of perturbations to the house, the work presented here includes only
+two types of datasets: cooking experiments and ambient PM penetration into the house. Briefly,
+eight cooking experiments (CE1 - CE8) were performed over the course of three experimental
+days (March 13-15), involving the same ingredients and preparation. Six of these were done
+using a frying pan while the other two (CE4 and CE7) used an air fryer. The cooking process
+consisted of heating up the pan/air fryer with canola oil, then adding sliced green bell peppers,
+followed with tater tots, and bacon. Food items were cooked sequentially with each having a
+cooking time of ≈ 10 min. The peak oil temperature for the six pan events were 238 °C to 277 °C
+(460 °F to 531 °F). While not remaining at this high of temperature for the full duration of the
+cooking period, this maximum temperature range reached the smoke point for canola oil (220 °C
+to 230 °C, 428 °F to 446 °F).
+The first two cooking experiments (CE1 and CE2) were performed under high indoor relative
+humidity (RH, 60 % to 80 % on the first floor, slightly lower upstairs), which was generated
+using a whole-house humidifier. The remaining experiments experienced lower RH (30 % to
+50 %), with no humidity control. The temperature inside the house remained consistent during
+these days with a gradient between the four floors (supplemental Table S2). The HRV exhaust,
+outdoor, and return flows had an average airflow rate of 231 ± 21 m3 h-1 (136 ± 13 scfm) during
+the experimental cooking days. The HVAC supply flowrate was higher than the other three flows
+with a value of 1950 m3 h-1 (1150 scfm), but it was reduced to around 1360 m3 h-1 (800 scfm)
+from 1:00 pm to 11:50 pm on March 14th and 11:50 am to 11:59 pm on March 15th. This constant
+HVAC flow recirculated air throughout the house at a rate defined henceforth as the recirculation
+rate (RR, of 1.04 h-1). The outdoor ACR was 0.24  0.01 h-1 during the experimental days
+included in this work, as determined by the decay of daily sulfur hexafluoride injections.
+Additional house conditions for this experimental period are found in Figure S1 and Figure S2.
+There were other cooking-related experiments performed during CASA (e.g., boiling a vinegar
+glaze and cooking popcorn in a microwave oven), but those are not included in this work
+
+6
+https://doi.org/10.26434/chemrxiv-2025-3x72f ORCID: https://orcid.org/0000-0003-0940-0353 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+because particle production was low for vinegar cooking and the microwave cooking was
+performed closely with other activities.
+
+2.2. Instrumentation and their locations
+This work used PM2.5 measurements made with 13 units of the PurpleAir PM monitor (PA-II,
+PurpleAir, Inc.). These instruments were distributed as follows: five on the first floor, five on the
+second floor, and one each in the basement, attic, and outdoors (Figure 1 and Table S3). The
+kitchen sensor was located ≈ 1 m above the kitchen counter where cooking was performed. Each
+PurpleAir contains two Plantower particle sensors (PMS-5003, Plantower).
+
+Figure 1. Different views of the NZERTF test house including instrument locations (purple
+circles): first floor (A), second floor (B), side (C), and front (D).
+
+2.3. Laboratory collocation and data corrections
+For quality assurance, the 13 PurpleAir sensors used in this study were collocated with an
+aerodynamic particle sizer (APS) and a scanning mobility particle sizer (SMPS) using a butanolbased condensation particle counter in a 38 m3 (1342 ft3) well-mixed test room in which cooking
+activities were performed. The same food cooked at CASA was prepared for these experiments,
+although amounts were reduced due to the smaller size of the test room. In short, experiments
+
+7
+https://doi.org/10.26434/chemrxiv-2025-3x72f ORCID: https://orcid.org/0000-0003-0940-0353 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+encompassed four emission events where olive oil was heated on a pan by an electric hot plate
+and then small amounts of bell peppers, tater tots, and bacon were cooked. The chamber
+temperature was ≈ 27 C and the relative humidity was ≈ 30 %, which is within the range
+observed during the low-RH cooking experiments at CASA. To convert number-based
+measurements by the SMPS and APS into mass-based concentrations, we assumed spherical
+particles and a density of 1 g cm-3. Results from the SMPS and APS were then combined to
+calculate PM2.5 concentrations.
+Average PM2.5 concentrations on six-minute intervals were compared between the two sets of
+instruments and a linear regression was performed to determine a correction factor for the
+PurpleAir sensors. The linear regression showed that the PurpleAir tends to overestimate PM2.5
+concentrations, as previously reported for indoor and outdoor sources [16–19]. PurpleAir
+concentrations were about two times higher than those measured by the comparison instruments.
+Then, this correction factor was applied to the CASA cooking events, where PM2.5, corrected = 0.49
+ PM2.5, PurpleAir (a ≈ 5 g m-3 intercept of the regression curve was ignored). Peak corrected
+injection concentrations ranged from 30 to 250 g m-3. The time series for the collocation
+experiment, and comparison within PurpleAir instruments and between them and the reference
+instrumentation is presented in supplemental Figures S3 through Figure S8 and accompanying
+text. Although the use of laboratory calibrations to correct field data is generally discouraged
+[20], we strived to approximate the aerosol emission characteristics (size, composition, lack of
+aging) as well as the environmental conditions (temperature, RH, and lack of direct solar
+radiation) of the low-RH cooking experiments performed during CASA. We did not use field
+data for corrections due to missing field data from the APS instrument.
+
+2.4. Time series analysis of particle transport
+To investigate the temporal behavior of indoor transport of cooking emissions, we measured the
+time lag between the peak PM2.5 concentration observed by the kitchen sensor and by the
+remaining 11 sensors distributed throughout the house. The time lag between each sensor and the
+kitchen sensor was determined through a cross-correlation analysis, and only time lags with a
+correlation coefficient greater than 0.8 were used. The height of the peak PM 2.5 concentrations
+were also compared directly. The fractions of source peak values were calculated by dividing the
+
+8
+https://doi.org/10.26434/chemrxiv-2025-3x72f ORCID: https://orcid.org/0000-0003-0940-0353 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+sensor concentration at its respective lag time by the peak concentration observed by the kitchen
+sensor.
+
+2.5. Modeling PM2.5 concentrations throughout the house
+We used the opportunity of real-time measurements in a dozen locations in the house to compare
+three different modeling approaches, with varying levels of difficulty and input requirements, to
+predict PM2.5 concentrations throughout the house. These three approaches consist of (1) a multibox model in which the house is represented as four inter-connected continuously stirred tank
+reactors (CSTR), (2) an empirical model adapted from the literature based on indoor distances,
+and (3) a multizone model developed in CONTAM [21]. Table 1 describes the main inputs and
+outputs of each model.
+Table 1. Inputs and primary output of each modeling approach used in this study.
+Approach #1: MultiApproach #2:
+Approach #3:
+Input category
+box model
+Empirical model
+CONTAM
+Source PM2.5
+concentration
+
+Kitchen PM2.5
+concentration (PA3).
+
+Kitchen PM2.5
+concentration (PA3).
+
+PM2.5 mass generation
+rates.
+
+Particle losses
+
+Depositional losses to
+surfaces ().
+
+-
+
+NZERTF average
+depositional lose rates.
+
+Physical distances
+or volumes
+
+Zone volumes.
+
+Distances between
+particle source and
+modeled locations.
+
+Room volumes.
+
+Airflow
+
+Internal air recirculation
+rate due to HVAC
+airflows (RR) and house
+ACR.
+
+-
+
+RR, ACR, HRV flow rate,
+leakage area between
+rooms and outdoors.
+
+-
+
+Average particle transport
+time from the kitchen to
+each modeled location
+(tlag).
+
+-
+
+Other
+
+-
+
+Model coefficients (a, b,
+c, d, determined using
+experimental training
+data).
+
+Temperature of each
+room and outdoors.
+
+Model output
+
+Average PM2.5
+concentration for zones
+on the first floor, second
+floor, and basement.
+
+PM2.5 concentration in 4
+specific locations on the
+1st floor and 5 locations
+on the 2nd floor.
+
+PM2.5 concentration for
+each room.
+
+Temporal
+behavior of
+particle transport
+
+9
+https://doi.org/10.26434/chemrxiv-2025-3x72f ORCID: https://orcid.org/0000-0003-0940-0353 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+The number of inputs, or the difficulty to obtain them, increases with each model. While the box
+model is arguably the most generalizable, the main output is simpler: an average concentration
+for each zone of the house. The empirical model requires parallel measurements in several indoor
+locations in order to determine its coefficients, so it cannot be transferred to other homes without
+using multiple sensors, and it outputs location-specific concentrations. CONTAM requires
+several home-specific inputs, including leakage areas, temperatures, and room volumes, as well
+as PM2.5 mass generation rates, but it is capable of estimating the PM2.5 concentrations in each
+room of the house.
+2.5.1. Approach #1: Multi-box model
+This approach is based on a fundamental Continuously-Stirred-Tank-Reactor (CSTR) massbalance equation (Eq. 1), applied to four control volumes, or zones: (1) the kitchen/dining area,
+where emissions were measured and assumed to quickly spread through the entire volume and
+then disperse to the rest of the first floor; (2) the remaining air volume of the first floor
+(excluding the kitchen/dining area), for which an average concentration is estimated and
+assumed to then transport to the second floor and the basement; and (3) the air volume of the
+second floor, and (4) the air volume of the basement.
+𝑑𝑀
+𝑑𝑡
+
+= 𝑄𝐶𝑖𝑛 − 𝑄𝐶 + 𝑆 − 𝐿
+
+Eq. 1,
+
+where dM/dt is the PM2.5 mass accumulation in the control volume (also described as VdC/dt), Q
+is the airflow rate through the modeled space, Cin is the PM2.5 concentration entering the space, C
+is the PM2.5 concentration in the modeled space, S is the PM2.5 source within the modeled space,
+and L is the PM2.5 loss within the modeled space.
+The schematic in Figure 2 shows the modeled spaces with airflow paths considered for each
+space. Airflow between spaces was primarily driven by the continuously operating HVAC fan.
+The total airflow rate in and out of each zone (Qk, Q1, Q2, and Qb) were assumed to equal   V,
+where  = ACR + RR (1.40 h-1), and V is the air volume of each space (excluding cabinetry). In
+this model, not all airflow carries particles, so airflows that carry a concentration of zero particles
+(e.g., coming from outside) were excluded from the model. In order to balance internal airflows,
+it was assumed that the airflow from the first floor is split between the second floor (70 %) and
+
+10
+https://doi.org/10.26434/chemrxiv-2025-3x72f ORCID: https://orcid.org/0000-0003-0940-0353 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+the basement (30 %), which was supported by air condition system supply flow balometer
+measurements performed by NIST (data not shown here). We also assumed that the outflow from
+the second floor is split between the first floor (32 %) and the basement (68 %), to enable some
+recirculation of air into the first floor.
+
+Figure 2. Multi-box model developed to describe the PM2.5 mass flows through four
+compartments in the test house: the kitchen/dining area (Vkitchen), the first floor excluding the
+kitchen/dining area (V1), the second floor (V2), and the basement (Vb). Flowrates into and out of
+each space are assumed to be promoted by the ventilation rate  (RR + ACR).
+The discrete solution for Eq. 1 for the PM2.5 mass accumulation C during a period t is shown
+in Eq. 2 for the first floor, with similar solutions for the second floor and the basement
+(Supplemental Eq. S1 and Eq. S2 and accompanying text). The inputs for the second floor and
+the basement are the modeled concentrations on the first floor outputted by Eq. 2. As such, the
+only experimental concentrations used in the model are those measured in the kitchen.
+𝐶1,𝑡 = 𝐶1,𝑡−1 + (𝑄𝑘 𝐶𝑘,𝑡−1 + 0.32𝑄2 𝐶2,𝑡−1 − 𝑄1 𝐶1,𝑡−1 − 𝛽𝑉1 𝐶1,𝑡−1 )
+
+∆𝑡
+𝑉1
+
+Eq. 2,
+
+Where C1,t and C1,t-1 are the average PM2.5 concentrations of the first floor (excluding the kitchen/dining
+area) at times t and t - 2 min; Ck is the concentration measured in the kitchen; C2 is the concentration
+modeled for the second floor (Eq. S1); Qk is the air flow through the kitchen (Vk) and Vk is the air
+volume of the kitchen/dining area (excluding cabinetry); Q1 and Q2 are the total flow rates through of the
+first and second floors, respectively (Q1= V1 and Q2= V2), where V1 and V2 are the volumes of the
+
+11
+https://doi.org/10.26434/chemrxiv-2025-3x72f ORCID: https://orcid.org/0000-0003-0940-0353 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+first floor (excluding the kitchen/dining area) and the second floor, respectively.  is the particle
+depositional losses to surfaces for the first floor, measured experimentally during particle decay periods
+minus ACR and RR (0.21 h-1, Table S4); and t is the time step for the model, set to be equal to the
+PurpleAir time resolution of 2 min.
+
+Due to recirculation of air from the second floor to the first floor and basement, this model was
+run in an iterative fashion. The model equations are run sequentially to determine concentrations
+on the first floor, then second floor, then basement. During the first iteration, all particle inputs
+are zero except for the kitchen. Then, second-floor results of the previous iteration are used as an
+additional input for subsequent iterations on the first floor and basement, as shown by Equation 2
+and the arrows in Figure 2. We found that after 3 iterations, the results changed by less than
+0.2 g m-3, so this model was run for a total of 4 iterations for each zone. Additional descriptions
+and model assumptions are described in the supplemental file.
+2.5.2. Approach #2: Empirical model
+Shen et. al. proposed a model for the temporal and spatial variation of PM2.5 in a single-floor
+apartment in Beijing, China [22]. In their apartment setting, there were two windows that
+promoted significant PM2.5 infiltration from outdoors, and one PM2.5 source from the kitchen.
+They developed the relationship described by Eq. 3:
+𝐶
+
+𝐶
+
+𝐶
+
+log(𝐶𝑖,𝑡 ) = 𝑎 ∗ log ( 𝑜,𝑡−𝑙𝑎𝑔−𝑜1
+) + 𝑏 ∗ 𝑙𝑜𝑔 ( 𝑜,𝑡−𝑙𝑎𝑔−𝑜2
+) + 𝑐 ∗ 𝑙𝑜𝑔 ( 𝑘,𝑡−𝑙𝑎𝑔−𝑘
+)+𝑑
+𝐿
+𝐿
+𝐿
+𝑜1
+
+𝑜2
+
+𝑘
+
+Eq. 3
+
+Where Ci,t-lag-i is the concentration (µg m-3) at the outdoor and indoor source sensor at given lag
+times; Lis the pathway distance (m) from a given indoor site to the outdoor (Lo1 and Lo2) and
+source sensor (Lk) (Table S5); a, b, c, and d are the regression coefficients. Shen et. al. found the
+respective regression coefficients for a, b, c, and d to be 0.181 ± 0.005, 0.190 ± 0.004, 0.437 ±
+0.004, and 0.794 ± 0.002.
+The NZERTF test house used for CASA has a tight building envelope and low ACR. So, unlike
+Shen et al., we opted to include just one infiltration term that represents the distance from each
+sensor to its closest HRV duct, which is expected to be the main point of injection of ambient PM
+into the house. Lag times of ambient PM penetration to each room was determined from three
+
+12
+https://doi.org/10.26434/chemrxiv-2025-3x72f ORCID: https://orcid.org/0000-0003-0940-0353 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+instances of high ambient (outdoor) concentration events (Figure S9). Indoor/outdoor regressions
+for this period and average time lag times used for the ambient term are available in Table S6.
+For the distance between each sensor and the indoor PM source in the kitchen, we used straightline distances to the kitchen sensor (ignoring any physical barriers) for the first floor and
+explored three options for the second floor to investigate how this model can be adapted to a
+multi-floor residence: (1) the straight-line distance, accounting for the height differences between
+floors, (2) the vertical distance between the first and second floors, (3) a vertical path from the
+cooking surface to the second floor, then horizontally to each sensor, again by straight-line
+distances and not pathway distance (Figure S10, Table S5). The model adjusted for this work is
+as follows (Eq. 4).
+𝐶
+
+𝐶
+
+log(𝐶𝑖,𝑡 ) = 𝑎 ∗ log ( 𝑜,𝑡−𝑙𝑎𝑔−ℎ𝑟𝑣
+) + 𝑏 ∗ 𝑙𝑜𝑔 ( 𝑘,𝑡−𝑙𝑎𝑔−𝑘
+)+𝑐
+𝐿
+𝐿
+𝐻𝑅𝑉
+
+𝑘
+
+Eq. 4
+
+Where Ci,t is the PM2.5 concentration at a given location and time; Co,t-lag-HRV is the concentration
+at the outdoor location at time t minus the lag time of indoor transport; LHRV is the distance from
+the respective location to its nearest HRV supply duct and Lk is the distance to the kitchen
+sensor; Ck,t-lag-k is the PM2.5 concentration at the kitchen sensor at t minus the lag time; a, b, and c
+are the regression coefficients.
+2.5.3. Approach #3: CONTAM model
+CONTAM is a multizone airflow and contaminant transport software model developed by NIST
+to determine airflow rates, contaminant concentrations, and personal exposure [21]. CONTAM is
+used to construct a digital idealization of a building and virtually recreate the environment. The
+model uses measured temperatures, HVAC airflow, and HRV airflow to determine pressure
+differences, airflows and contaminant migration between adjacent zones.
+The NZERTF model comprises individual zones for each room and closet in the test house.
+Throughout the test period, measurements for the following model parameters were recorded:
+indoor and outdoor temperatures, wind speed and direction, total HRV airflow rates, total HVAC
+airflow rate, and CO2 concentrations. All values, shown in Table S7, were recorded every minute
+and used as inputs in the model. Zone volumes are shown in Table S8.
+
+13
+https://doi.org/10.26434/chemrxiv-2025-3x72f ORCID: https://orcid.org/0000-0003-0940-0353 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+The previously developed detailed CONTAM model for the NZERTF [23] was modified for this
+effort as summarized the supplementary information (SI section 1.8). In brief, modifications for
+this work include breaking the single zone open floor plan living/dining volume into two zones,
+breaking the single zone two-story entry foyer into two zones, and adding leakage flows into and
+out of the basement from the HRV ventilation system and HVAC system as described in the
+Supplementary Information. In addition, five assumptions were made in the modeling effort.
+These assumptions include smoothing the measured data over gaps, CO2 injection flows rates, a
+balanced HVAC system, closets with the same temperatures as adjoining rooms, and the fraction
+of the HVAC flow delivered to the basement.
+Before modeling the cooking events the model was validated. The updated CONTAM model was
+run using inputs from days where CO2 was injected as a non-reactive tracer during the postCASA test period. CO2 was injected on six occasions and at three locations (basement, first floor,
+second floor). Two of these injections were used to adjust duct leakage areas in the model
+reflecting the NZERTF environment during CASA, and the other four injections used for
+validation. While modeling the CO2 injections, the need for three of the previously mentioned
+model adjustments became apparent. First, the separation of the living room into its own zone
+was required due to mixing issues. The living room was the only first floor location where the
+CO2 concentration was measured. Separating the living room from the kitchen, where CO2 was
+injected on the first floor, was necessary to produce a realistic CO2 concentration peak shape for
+the CO2 measurement in the living room. This is due to the uniform concentration assumption for
+each zone. Second, the separation of the foyer into two zones was needed to better capture the
+thermal stratification of the two-story space and the resulting airflows. The foyer was
+horizontally separated into two zones y floor. Third, the transport of the CO2 to the basement was
+faster than the HVAC supply air in the model could provide. Hence, leakage in the amount of 10
+% total HVAC airflow was diverted to the basement through both the supply and return.
+After confirming the CO2 concentrations produced by the updated NZERTF model reasonably fit
+measured CO2 concentrations during the other four CO2 injections, the updated NZERTF model
+was used to simulate indoor particulate matter, specifically PM2.5, resulting from the cooking
+events using the appropriate measured parameters for each cooking day. There were four
+assumptions for this model:
+
+14
+https://doi.org/10.26434/chemrxiv-2025-3x72f ORCID: https://orcid.org/0000-0003-0940-0353 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+1. The PM2.5 measurement in the kitchen did not increase until the first food item was added
+to the hotplate. As a result, the simulated cooking event start time was set to the time at
+which measured PM2.5 began to increase.
+2. The dining room sensor was located within the same zone that the cooking took place but
+with more physical separation from the cooktop than the kitchen sensor. Hence, it was
+assumed that the dining room sensor was more representative of the entire kitchen
+volume PM2.5 concentration and was used as the reference point for the mass of PM 2.5
+emitted into the NZERTF during each cooking event.
+3. Since the mass of PM2.5 that was produced during each cooking event was unknown, a
+constant simulated PM2.5 mass generation rate was generated from the kitchen zone data.
+The PM2.5 mass generation rate was set to an amount such that the peak simulated
+concentration in the dining room matched the peak measured concentration in the dining
+room (to within 1 %). The simulated PM2.5 mass generation rate for each cooking event is
+shown in Table 2. This generation rate was assumed to be constant from the time the
+cooking event started to the peak concentration time. For some cooking events (e.g.,
+CE6) this constant source rate assumption was not ideal.
+Table 2. Simulated mass generation rates for PM2.5 in each cooking event.
+PM2.5 mass generation rate
+Cooking event
+(µg/min)
+1
+1 210
+485
+2
+3
+768
+4
+2 440
+700
+5
+6
+7
+8
+
+1 110
+347
+525
+
+4. The median PM2.5 particle size by mass was assumed to be 0.7 m, based upon data from
+
+similar cooking (stir fry) events during the HOMEChem study [24]. As such this value
+was used to determine the HVAC filter efficiency (0.2 filter efficiency as defined in
+
+15
+https://doi.org/10.26434/chemrxiv-2025-3x72f ORCID: https://orcid.org/0000-0003-0940-0353 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+CONTAM) and room deposition value 0.11 h-1 [25]. The deposition value was applied to
+every zone in the model as the PM2.5 depositional loss rate.
+5. Modeled initial PM2.5 values were the measured values in each zone prior to the cooking
+
+event. Each cooking event was modeled independently of other events.
+
+2.6. Indoor microenvironmental PM2.5 exposure
+To explore the implications of cooking for house inhabitants we performed a PM 2.5 exposure
+analysis using a typical schedule throughout a house which included two cooking events. This
+exposure scenario was adapted from Klepeis [26,27], and includes a total of 16.5 hours in the
+house. Time spent indoors includes: 10 h in the bedroom, 3 h in the living room, 1.5 h in the
+kitchen/dining room, 1 h in the bathroom, and 1 h in the home office (first floor bedroom).
+For this analysis, we combined datasets from cooking events, including post-cooking decay
+periods throughout the house, as well as datasets for outdoor PM2.5 penetration during
+background periods. This was necessary because the test house did not experience any PM2.5
+penetration during the experimental cooking days (observed by a decay period to near-zero
+indoor PM2.5 concentrations and further discussed in the empirical modeling results, below).
+Background concentrations were used from Sunday, March 6th. The house remained closed and
+unoccupied throughout that day, so the concentrations observed indoors were due to penetration
+from outdoor particles. On that day, the 24-h average ambient PM2.5 concentration was
+14.9 µg m-3, peaking at 33.7 µg m-3. Indoor concentrations peaked at 18 µg m-3 and averaged
+8 µg m-3 in the main spaces of the house (Figure S9b). Exposure periods following cooking
+events encompassed the summed ambient and cooking concentrations and accounted for the
+average decay periods observed for cooking events CE1-CE8.
+
+3. Results and discussion
+3.1. Indoor PM2.5 concentrations during cooking events
+For the three cooking days, the first floor (excluding the kitchen sensor) had a 24-hr average
+PM2.5 concentration of 3.5 ± 0.4 µg m-3, while the second floor had an average of 2.0 ± 0.2 µg m3. The 24-hr average values for the attic, basement, and outside sensors were 0.1, 2.3, and 0.9
+
+16
+https://doi.org/10.26434/chemrxiv-2025-3x72f ORCID: https://orcid.org/0000-0003-0940-0353 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+µg m-3, respectively (Figure 3). Hourly average concentrations for each sensor in the first and
+second floors are shown in Figure S11. Figure 4 presents time series of PM2.5 concentrations for
+each cooking event throughout the house.
+
+Figure 3. The 24-hr average PM2.5 concentrations throughout the house during the cooking
+experiment days at CASA. Colors represent the different floors of the house. The measurements
+in the staircase between the 1st and 2nd floors was performed at the 2nd floor level. Boxes
+represent the interquartile range (25th, 50th, and 75th percentiles) and whiskers represent the range
+of data within 1.5 the interquartile range from the first and third quartiles, excluding outliers.
+
+17
+https://doi.org/10.26434/chemrxiv-2025-3x72f ORCID: https://orcid.org/0000-0003-0940-0353 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 4. PM2.5 concentrations throughout the house during the 8 cooking events used in this
+work (March 13, 2022 through March 16, 2022), measured by PurpleAir sensors (µg m-3).
+Concentrations presented here were corrected using post-calibration experiments (PM2.5, corrected =
+0.49PM2.5, PurpleAir). Cooking events 4 and 7 were performed in an air fryer, all others on a pan
+on electric cooktop. Note that the y-axis scale is different for each panel and the legend in the
+first panel applies to all panels.
+Although the researchers strived to replicate cooking experiments exactly, there was variability
+in observed concentrations and temporal behavior from cooking the same meals, for both air
+fryer and pan cooking. This was also the case during the HOMEChem study [24]. Differences in
+emissions are expected as they depend on many factors including cooking oil type, food being
+cooked, temperature, additives, and the room air volume as well as local airflow conditions [28].
+18
+https://doi.org/10.26434/chemrxiv-2025-3x72f ORCID: https://orcid.org/0000-0003-0940-0353 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+The peak PM2.5 concentrations for the cooking experiments ranged from 31 µg m-3 (CE7, air
+fryer) to 240 µg m-3 (CE6, pan frying), as recorded by the source (kitchen) sensor. The peak
+concentrations resulting from pan frying were lower than those reported in other studies [6,29].
+The second highest concentration peak recorded by the kitchen sensor was for air frying during
+CE4 (226 µg m-3). Some events produced only one prominent concentration peak (CE1, CE3,
+CE4, and arguably CE7), while others produced multiple discernible peaks (notably CE2, CE5,
+and CE8). The start of each concentration peak in the kitchen coincided with adding new
+ingredients or flipping or stirring them in the pan.
+
+3.2. PM2.5 transport through the house: peak time lags
+The overall time lags for each sensor as well as their peak magnitudes with respect to the
+measurements in the kitchen for all cooking events are presented in Figure 5. At no point during
+the cooking experiments did the attic sensor detect a change in PM2.5 concentration, so it was
+omitted from further analysis. More detailed cross-correlation results are presented in Figure S12
+and Figure S13, and Table S9 through Table S11.
+
+Figure 5. (A) Cooking emission time lag between concentration peaks (min). (B) Fraction of
+peak concentration relative to source peak. Whiskers represent the range of data within 1.5 the
+interquartile range from the first and third quartiles, excluding outliers. Average values are
+presented in Table S9.
+The first-floor sensors generally saw small time lags from the cooking emissions. The dining
+room saw a median time lag of two minutes, while the living room and first floor bathroom saw
+median time lags of four minutes. As a reminder, the time resolution of the PurpleAir instruments
+
+19
+https://doi.org/10.26434/chemrxiv-2025-3x72f ORCID: https://orcid.org/0000-0003-0940-0353 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+used in this study is two minutes. The short lag experienced in the bathroom is explained by the
+fact that the HRV exhaust is located in that space, resulting in a strong impact of the HRV
+airflows on the indoor contaminant transport for that zone. Of all the sensors on the first floor,
+the bedroom saw the longest time lag, with a median lag time of five minutes. This sensor was
+the farthest from the cooking area. This suggests that the airflow pattern to this location took a
+path correlating to the pathway distance. The particles were transported to the second floor more
+quickly than what would be expected by following an airflow pathway through doors and stairs.
+The median time lag for the east bedroom, main bedroom, and the west bedroom were 5.5, 9, and
+7 min respectively. The second-floor bathroom and stairwell saw the longest time lags among the
+second-floor sensors, with median time lags of 10 and 10.5 minutes; the stairwell transport likely
+followed a non-direct airflow pathway or was impacted by thermal stratification. The basement
+sensor experienced the longest time delay between all the in-house sensors with a median time
+lag of 22 min. The attic saw none to minimal increase in particulate matter concentration and
+seemed to be largely unaffected by indoor sources. The attic is only connected to the rest of the
+house via short passive ducts and air leakage in the attic floor.
+The PM concentration decreasing as particles travel through the house is consistent with what
+was expected considering the time lags between each sensor and the source. The first-floor
+sensors observed about half of PM2.5 concentrations observed in the kitchen. Next, the second
+floor as well as the basement sensors observed about half of the PM 2.5 concentrations observed
+on the first floor. The living room, dining room, and first floor bathroom sensors all experienced
+the shortest time lags, and subsequently the smallest reduction in concentration from the source.
+Their median peak magnitude with respect to the source were 44 %, 49 %, and 53 %,
+respectively. The first-floor bedroom experienced the smallest concentration fraction (33 %)
+from all sensors on the first floor.
+Floor-to-floor transport of cooking emissions appears to homogenize PM2.5 concentrations and
+time lags across all second-floor sensors. The median second-floor peak magnitude with respect
+to the source ranged from 15 % to 19 %. This indicates that, despite the high indoor recirculation
+rate in this house that is promoted by the continuously running HVAC system, the majority of
+emitted particles from a given cooking event might initially disperse through the first floor, then
+
+20
+https://doi.org/10.26434/chemrxiv-2025-3x72f ORCID: https://orcid.org/0000-0003-0940-0353 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+are evenly transported to the second floor. The HVAC system was outfitted with a MERV 8 filter,
+which is known to have a > 20 % efficiency for particles < 3 m in size.
+
+3.3. Modeling PM2.5 transport
+3.3.1. Approach #1: Multi-box model
+The multi-box model was used to estimate particle concentration increases throughout the house
+from a kitchen source. The time series results for this modeling approach can be seen in Figure
+S14. The box model underpredicted concentration peaks (by 46 %, on average) but worked
+reasonably for predicting average, time-integrated concentrations for each cooking period, as
+discussed below. Because multiple PurpleAir sensors were offline during CE3 and CE6, those
+were omitted from analysis. A comparison of experimental measurements and modeled results is
+shown in Figure 6, with additional information on Figure S14 and Table S12.
+
+Figure 6. (a) Measured and box model PM2.5 concentrations for all cooking events. (b) timeintegrated measured and box model PM2.5 concentrations for the first floor, second floor, and
+basement of the test house (n = 18). The fit for the first and second floor combined data yielded a
+slope of 0.79, an R2 = 0.82, and RMSE = 9.4 g m-3. The linear fit for the basement yielded a
+slope of 0.40, an R2 = 0.72, and RMSE = 6.9 g m-3.
+The box model did not capture the temporal behavior of the observed concentrations, resulting in
+the arcing patterns observed in the data in Figure 6a, also seen in the time series shown in Figure
+S14. However, the box model performed well in predicting time-integrated PM2.5 concentrations
+on the first and second floors (with an average difference of -1 % compared to experimental
+values, Table S12). Integrated PM2.5 concentrations were underestimated by 46 % on the
+
+21
+https://doi.org/10.26434/chemrxiv-2025-3x72f ORCID: https://orcid.org/0000-0003-0940-0353 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+basement level. This is likely because this model assumes a uniform concentration in each zone
+and may not adequately capture air movement between zones. In reality, localized flows are
+likely to enhance PM transport throughout the house. Fabian and Levy [30] investigated the use
+of a single-box model and CONTAM to predict PM2.5 concentrations in a multi-family building
+and found that the box model was not capable of capturing important dynamics in these cases.
+They also found that CONTAM performed better than the box model. Dhiman et al. [31]
+examined PM transport between two zones in a dining facility and found that differences in ACR
+during different meals accounted for the variability in indoor PM transport.
+3.3.2. Approach #2: Empirical model
+We adapted an empirical model (Eq. 4) to recreate a time series of PM2.5 concentrations in 10
+locations throughout the test house where measurements were also made by PurpleAir sensors.
+The values for coefficients a, b, and c for the different approaches to measure distances on the
+second floor are listed in Table 3. The model performed slightly better to predict concentrations
+on the first floor (R2 = 0.90) compared to the second floor (R2 = 0.82 to 0.86).
+
+Both Floors
+
+1st Floor
+
+Table 3. Model coefficients for a, b, and c (± standard deviations); coefficient of determination
+(R2); root mean square error (RMSE), and number of data points (n). Measurements in which
+concentrations were 0 g m-3 were filtered out. Cooking events 2, 6, and 8 were also excluded
+from this analysis due to their temporal behavior having multiple prominent peaks during
+cooking.
+a
+
+b
+
+c
+
+R2
+
+RMSE
+(g m-3)
+
+n
+
+Method 1
+
+-0.017 ± 0.008
+
+0.928 ± 0.009
+
+0.704 ± 0.008
+
+0.90
+
+0.2
+
+1271
+
+Method 1
+(straight
+line)
+
+-0.001 ± 0.005
+
+0.871 ± 0.008
+
+0.718 ± 0.006
+
+0.82
+
+0.2
+
+2672
+
+Method 2a
+(vertical)
+
+-0.006 ± 0.005
+
+0.922 ± 0.007
+
+0.681 ± 0.006
+
+0.86
+
+0.2
+
+2672
+
+Method 2b
+(vertical,
+omitting
+infiltration)
+
+omitted
+
+0.853 ± 0.008
+
+0.775 ± 0.004
+
+0.82
+
+0.2
+
+2672
+
+22
+https://doi.org/10.26434/chemrxiv-2025-3x72f ORCID: https://orcid.org/0000-0003-0940-0353 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Method 3
+(vertical +
+horizontal)
+
+0.008 ± 0.005
+
+0.852 ± 0.008
+
+0.782 ± 0.006
+
+0.82
+
+0.2
+
+2672
+
+Due to the observed homogenization between the sensors’ lag time and concentration decay for
+the second floor, Method 2 performed best to account for floor-to-floor transport of PM2.5. In
+Method 2, for the first floor, the distances used were direct lines, ignoring any physical barriers
+(ranging from 4.29 to 8.10 m). For the second floor using Method 2, the distances used were a
+direct vertical line to a point above the kitchen for all sensors (4.39 m).
+The robustness of Method 2 was then evaluated by omitting one cooking event at a time as a
+training dataset and then testing it on the remaining cooking event dataset. Results from this
+analysis are shown in Table S13 and Figure S15. The training and testing analysis resulted in
+similar average a, b, and c coefficients (-0.007, 0.914, and 0.683 respectively).
+Ambient PM penetration indoors had a negligible effect in indoor PM concentrations during
+cooking periods (as evidenced by a coefficient of -0.006). When evaluating the ambient PM
+model separately, in three instances of high ambient PM2.5 concentrations (Figure S15) and no
+indoor PM sources, the average linear regression slope was 0.104, with an average lag time of 61
+min. This demonstrates that about 10 % of ambient PM2.5 concentrations were observed indoors
+about 1 h later. The ambient PM term was ignored in subsequent analyses. The resulting equation
+for the empirical model (Method 2b) during cooking periods, ignoring ambient PM penetration,
+is shown in Eq. 5.
+𝐶
+
+log(𝐶𝑖,𝑡 ) = 0.853 ∗ 𝑙𝑜𝑔 ( 𝑘,𝑡−𝑙𝑎𝑔−𝑘
+) + 0.775
+𝐿
+𝑘
+
+Eq. 5
+
+A comparison between modeled and experimental PM2.5 concentrations and integrated
+concentrations, using the empirical model (Method 2b), are presented in Figure 7, with additional
+model results shown in Figure S16. When integrating PM2.5 concentrations over each cooking
+period, the model performance was similar between the first and the second floors. Compared to
+the box model, the time integrated concentrations were more accurate (slope closer to 1), but less
+precise (lower R2 and higher RMSE).
+
+23
+https://doi.org/10.26434/chemrxiv-2025-3x72f ORCID: https://orcid.org/0000-0003-0940-0353 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 7. Measured and modeled (a) PM2.5 concentrations (n = 2672) and (b) time integrated
+PM2.5 concentrations (n = 45) using the empirical model (Method 2b) for the first floor and
+second floor of the test house. The linear fit for the first and second floor combined data yielded
+a slope of 0.95, an R2 = 0.77, and RMSE = 6.2 g m-3.
+3.3.3. Approach #3: CONTAM model
+The updated CONTAM model of the NZERTF was able to capture both the peak concentrations
+of PM2.5 as well as the particle concentration decay using the peak concentration data in the
+dining room and building parameters (zone temperatures, wind, HVAC and HRV airflows) as
+inputs (
+
+24
+https://doi.org/10.26434/chemrxiv-2025-3x72f ORCID: https://orcid.org/0000-0003-0940-0353 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 8). As with the previous two models, the measured particle concentration data was
+compared to the modeled particle concentration data for each cooking event. As seen in
+
+Figure 8a), the first-floor particle concentrations (blue dots) were higher than the second-floor
+particle concentrations (yellow dots) and are shown against a 1:1 relationship line (perfect
+agreement). The data showing consistent trends away from the 1:1 line are from situations when
+a constant emission source did not represent the varying cooking emission data (e.g. CE1 in
+Figure S17).
+The time-integrated PM concentrations in each zone were calculated for both the measured and
+modeled particle concentration data of the first and second floors over the course of an hour after
+the start of the cooking event. A majority of the differences were likely the result of the
+assumption of constant particle generation rate while cooking. For the first and second floor,
+time integrated concentrations using the CONTAM model results were less accurate relative to
+the measurements than using the empirical model, but more accurate than the box model. Due to
+the constant emission source assumption the CONTAM model was less precise than either of the
+other two models.
+
+25
+https://doi.org/10.26434/chemrxiv-2025-3x72f ORCID: https://orcid.org/0000-0003-0940-0353 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 8. Measured and CONTAM modeled PM2.5 (a) particle concentrations (n = 5280) and (b)
+time integrated PM2.5 concentrations (n = 48) from the first floor and second floor of the test
+house. The linear fit for the first and second floor combined data yielded a slope of 0.86, an R2 =
+0.57, and RMSE = 11.3 g m-3. Due to missing experimental data, CE3 and CE8 were removed
+from the time-integrated analysis.
+
+3.4. Indoor microenvironmental PM2.5 exposures
+Using an realistic activity pattern in which a person spends 16.5 hours per day at home, the PM2.5
+exposure and average PM2.5 concentrations for five locations throughout the house are presented
+in Figure 9. Detailed results for this analysis are presented in Table S14 and Table S15.
+
+Figure 9. PM2.5 exposure (bars, left axis) and average PM2.5 concentration (dots, right axis) for a
+typical day. The first-floor bedroom is listed here as the home office. Locations on the first floor
+are shown in blue bars and those on the second floor are shown in yellow bars (bed = main
+bedroom, bath = second floor bathroom).
+
+26
+https://doi.org/10.26434/chemrxiv-2025-3x72f ORCID: https://orcid.org/0000-0003-0940-0353 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Average PM2.5 concentrations ranged between 3 µg m-3 and 32 µg m-3 for quantified indoor
+microenvironments (locations of sensors), with the highest value in the kitchen (during
+mealtimes) and the lowest in the bedroom (during nighttime). This would lead to a 16.5-hr
+average concentration of 7 µg m-3. Although not encompassing the entire day, this value is below
+other studies that have reported 24-hr average home PM2.5 concentrations (around 28 µg m-3 to
+47 µg m-3 [32]).
+Of the total PM2.5 exposure in the home, 54 % originated from indoor cooking and the remaining
+46 % resulted from outdoor PM2.5 infiltration into the house. This result agrees with Lunderberg
+et al., who estimated PM2.5 infiltration factors in approximately 4,000 US homes and determined
+that about half of indoor PM2.5 originates from indoor sources [33].
+The PM2.5 exposures in the different microenvironments ranged between 3 µg m-3 h and 48 µg
+m-3 h. The total summed exposure over the 16.5-hour duration at home would be 109 µg m-3 h.
+The highest exposure was observed during the cooking periods. Although the kitchen / dining
+area only accounted for 9 % of the time spent at home, it corresponded to 44 % of the PM2.5
+exposure (48 µg m-3 h) due to relatively high PM2.5 concentrations (≈32 µg m-3). The second
+highest exposure location was in the bedroom, responsible for 61 % of the time at home at a low
+PM2.5 concentration (3 µg m-3). These results agree with other studies that suggest that the
+highest PM exposure in the home occur in the kitchen [34] and in the bedroom [35].
+
+4. Conclusions
+By taking advantage of the accessibility of low-cost sensors, we investigated particle transport
+from cooking emissions throughout a 4-level house. We have shown that, when the HVAC fan is
+on, emissions are transported relatively quickly throughout the main spaces of the house, within
+~5 min to the first floor and within ~10 min to the second floor. Cooking emissions reached the
+basement after ~22 min and they did not reach the attic at measurable concentrations. During
+indoor transport, particle concentrations decrease due to dilution with indoor air, deposition to
+surfaces, and losses to the outdoor environment. Compared to peak PM2.5 concentrations
+observed in the kitchen, the remaining areas on the first floor observed roughly half of those
+magnitudes, which dropped by roughly half again when reaching the second floor.
+
+27
+https://doi.org/10.26434/chemrxiv-2025-3x72f ORCID: https://orcid.org/0000-0003-0940-0353 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+We used three modeling approaches to describe particle transport throughout the house, with
+different input requirements: a multi-box model, an empirical model, and the CONTAM
+multizone model. While the box model reasonably predicted time integrated PM2.5
+concentrations in the first and second floors of the house, several assumptions had to be made,
+especially related to internal airflows and box volumes. The empirical model performed similarly
+but required space-resolved, concurrent measurements throughout the house to develop it, which
+is not always feasible. The CONTAM model predicted the particle decays adequately using only
+the peak concentration in the dining room for each event and building parameters as an input, but
+required a detailed house model, tuning with CO2 tracer testing, and the assumption of constant
+particle production during cooking.
+All models successfully predicted time integrated PM 2.5 concentrations on the 1st and 2nd floors,
+with R2 between 0.57 and 0.82 and RMSE from 6 to 11 µg m-3. All models, especially the box
+model and CONTAM, underpredicted PM2.5 concentrations more severely during air fryer
+experiments compared to pan frying. This was likely because air fryer experiments led to a
+single, sharp peak of emissions and these models outputted a more gradual increase and decrease
+in concentrations due to assumptions of uniform concentration within each zone. The method
+used for quantifying the PM2.5 source (i.e., concentration in the kitchen vs average from the
+kitchen-dining area vs mass-emission rates) had strong influence on the results for all models.
+While all models outputted time-resolved particle concentrations, spatial resolution varied. The
+empirical model and the CONTAM model were able to estimate particle concentrations at
+specific point locations within the house, while the box model was only able to predict average
+concentrations for certain zones in the house. Although the box model is more limited than the
+other two investigated modeling approaches, its inputs were significantly easier to obtain and its
+output may be sufficient to provide information for making decisions based on overall PM2.5
+concentrations indoors, e.g., where to place a portable air cleaner to reduce occupant exposure.
+With more detailed airflow information, box models can be further divided into more zones and
+thus approximate the capabilities of CONTAM.
+One limitation of this study is in how this test house compares to an average home in the United
+States. Due to the design goal of the NZERTF, the test house operated at a low ACR. While this
+
+28
+https://doi.org/10.26434/chemrxiv-2025-3x72f ORCID: https://orcid.org/0000-0003-0940-0353 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+allowed for a long residence time of emitted species, it also limits the interaction between the
+indoor and outdoor air. This may not currently be representative of the average US house, but it
+could become so as more houses strive for energy efficiency and tighten their building envelope.
+Additionally, due to the experimental design of CASA, the HVAC system operated continuously,
+while most residential units run less than 20 % of the time [36]. This likely enhanced internal
+mixing in this work compared to the average home. Another limitation is the operation principle
+of the low-cost sensors and their inherent measurement uncertainty, which is likely to be greater
+than with reference instruments, even after data corrections as those performed in this study.
+Both the understanding and prediction of PM2.5 concentrations throughout a house can help
+identify trends and aid in better prevention and mitigation techniques. While indoor sources of
+PM are not constrained to just cooking, the results of this work might be applicable to other
+indoor point sources such as candles, incense, and office products such as printers [37].
+
+5. Supplementary materials
+Additional figures, tables, and text describing the indoor environmental conditions during the
+study period, sensor locations, modeling conditions, equations, and assumptions, and
+supplementary result figures.
+
+6. Acknowledgments
+We thank the entire CASA team of scientists for their support and contributions. We especially
+thank the NIST NZERTF team for the hosting the CASA Campaign and for their support
+throughout the study. This project was supported by the Alfred P. Sloan Foundation Chemistry of
+Indoor Environments Program (grant number G-2020-13929) and the University of Colorado
+Boulder College of Engineering and Applied Science.
+
+7. Disclaimer
+Certain equipment, instruments, software, or materials are identified in this paper in order to
+specify the experimental procedure adequately. Such identification is not intended to imply
+recommendation or endorsement of any product or service by NIST, nor is it intended to imply
+that the materials or equipment identified are necessarily the best available for the purpose. The
+
+29
+https://doi.org/10.26434/chemrxiv-2025-3x72f ORCID: https://orcid.org/0000-0003-0940-0353 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+policy of NIST is to use the International System of Units in all publications. In this document,
+however, some units are presented in the system prevalent in the relevant discipline.
+
+8. References
+[1] Cincinelli A, Martellini T. Indoor Air Quality and Health. International Journal of
+Environmental Research and Public Health 2017;14.
+https://doi.org/10.3390/ijerph14111286.
+[2] Persily AK, Emmerich SJ. Indoor air quality in sustainable, energy efficient buildings.
+HVAC&R Research 2012;18:4–20. https://doi.org/10.1080/10789669.2011.592106.
+[3] Zhao Y, Zhao B. Emissions of air pollutants from Chinese cooking: A literature review.
+Building Simulation 2018;11:977–95. https://doi.org/10.1007/s12273-018-0456-6.
+[4] Zhang L, Ou C, Magana-Arachchi D, Vithanage M, Vanka KS, Palanisami T, et al. Indoor
+Particulate Matter in Urban Households: Sources, Pathways, Characteristics, Health Effects,
+and Exposure Mitigation. International Journal of Environmental Research and Public
+Health 2021;18. https://doi.org/10.3390/ijerph182111055.
+[5] Martins NR, Carrilho da Graça G. Impact of PM2.5 in indoor urban environments: A
+review. Sustainable Cities and Society 2018;42:259–75.
+https://doi.org/10.1016/j.scs.2018.07.011.
+[6] He C, Morawska L, Hitchins J, Gilbert D. Contribution from indoor sources to particle
+number and mass concentrations in residential houses. Atmospheric Environment
+2004;38:3405–15. https://doi.org/10.1016/j.atmosenv.2004.03.027.
+[7] Boedicker EK, Emerson EW, McMeeking GR, Patel S, Vance ME, Farmer DK. Fates and
+spatial variations of accumulation mode particles in a multi-zone indoor environment
+during the HOMEChem campaign. Environ Sci: Processes Impacts 2021.
+https://doi.org/10.1039/D1EM00087J.
+[8] Nazaroff WW. Indoor Particle Dynamics. Indoor Air 2004;14:175–83.
+[9] Patel S, Rim D, Sankhyan S, Novoselac A, Vance ME. Aerosol dynamics modeling of sub500 nm particles during the HOMEChem study. Environ Sci: Processes Impacts
+2021;23:1706–17. https://doi.org/10.1039/D1EM00259G.
+[10] Li J, Mattewal SK, Patel S, Biswas P. Evaluation of Nine Low-cost-sensor-based Particulate
+Matter Monitors. Aerosol and Air Quality Research 2020;20:254–70.
+https://doi.org/10.4209/aaqr.2018.12.0485.
+[11] Spyropoulos GC, Nastos PT, Moustris KP. Performance of Aether Low-Cost Sensor Device
+for Air Pollution Measurements in Urban Environments. Accuracy Evaluation Applying the
+Air Quality Index (AQI). Atmosphere 2021;12. https://doi.org/10.3390/atmos12101246.
+[12] Karagulian F, Barbiere M, Kotsev A, Spinelle L, Gerboles M, Lagler F, et al. Review of the
+Performance of Low-Cost Sensors for Air Quality Monitoring. Atmosphere 2019;10.
+https://doi.org/10.3390/atmos10090506.
+[13] Levy Zamora M, Xiong F, Gentner D, Kerkez B, Kohrman-Glaser J, Koehler K. Field and
+Laboratory Evaluations of the Low-Cost Plantower Particulate Matter Sensor. Environ Sci
+Technol 2019;53:838–49. https://doi.org/10.1021/acs.est.8b05174.
+[14] Zheng T, Bergin M, Johnson K, Tripathi S, Shirodkar S, Landis M, et al. Field evaluation of
+low-cost particulate matter sensors in high- and low-concentration. Atmos Meas Tech
+2018;11:4823–6. https://doi.org/10.5194/amt-11-4823-2018.
+
+30
+https://doi.org/10.26434/chemrxiv-2025-3x72f ORCID: https://orcid.org/0000-0003-0940-0353 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+[15] K. Farmer D, E. Vance M, Poppendieck D, Abbatt J, R. Alves M, C. Dannemiller K, et al.
+The chemical assessment of surfaces and air (CASA) study: using chemical and physical
+perturbations in a test house to investigate indoor processes. Environmental Science:
+Processes & Impacts 2024. https://doi.org/10.1039/D4EM00209A.
+[16] Wallace L. Intercomparison of PurpleAir Sensor Performance over Three Years Indoors and
+Outdoors at a Home: Bias, Precision, and Limit of Detection Using an Improved Algorithm
+for Calculating PM2.5. Sensors 2022;22:2755. https://doi.org/10.3390/s22072755.
+[17] Thakur AK, Gingrich J, Vance ME, Patel S. Insights into low-cost pm sensors using sizeresolved scattering intensity of cooking aerosols in a test house. Aerosol Science and
+Technology 2024;0:1–13. https://doi.org/10.1080/02786826.2024.2342722.
+[18] Sayahi T, Butterfield A, Kelly KE. Long-term field evaluation of the Plantower PMS lowcost particulate matter sensors. Environmental Pollution 2019;245:932–40.
+https://doi.org/10.1016/j.envpol.2018.11.065.
+[19] South Coast AQMD. AQ-SPEC: Air Quality Sensor Performance Evaluation Center 2020.
+http://www.aqmd.gov/aq-spec (accessed December 10, 2020).
+[20] Piedrahita R, Xiang Y, Masson N, Ortega J, Collier A, Jiang Y, et al. The next generation of
+low-cost personal air quality sensors for quantitative exposure monitoring. Atmos Meas
+Tech 2014;7:3325–36. https://doi.org/10.5194/amt-7-3325-2014.
+[21] Dols WS, Polidoro B. CONTAM User Guide and Program Documentation Version 3.4.
+NIST 2020.
+[22] Shen H, Hou W, Zhu Y, Zheng S, Ainiwaer S, Shen G, et al. Temporal and spatial variation
+of PM2.5 in indoor air monitored by low-cost sensors. Science of The Total Environment
+2021;770:145304. https://doi.org/10.1016/j.scitotenv.2021.145304.
+[23] Poppendieck D, Gong M, Zimmerman S, Ng L. Evaluation of a four-zone indoor exposure
+model for predicting TCPP concentrations in a low-energy test house. Building and
+Environment 2021;199:107888. https://doi.org/10.1016/j.buildenv.2021.107888.
+[24] Patel S, Sankhyan S, Boedicker EK, DeCarlo PF, Farmer DK, Goldstein AH, et al. Indoor
+Particulate Matter during HOMEChem: Concentrations, Size Distributions, and Exposures.
+Environ Sci Technol 2020;54:7107–16. https://doi.org/10.1021/acs.est.0c00740.
+[25] K. Lai AC, Nazaroff WW. Modeling indoor particle deposition from turbulent flow onto
+smooth surfaces. Journal of Aerosol Science 2000;31:463–76.
+https://doi.org/10.1016/S0021-8502(99)00536-4.
+[26] Klepeis N. Modeling Human Exposure to Air Pollution. Human Exposure Analysis 2006.
+https://doi.org/10.1201/9781420012637.ch19.
+[27] Klepeis NE, Nelson WC, Ott WR, Robinson JP, Tsang AM, Switzer P, et al. The National
+Human Activity Pattern Survey (NHAPS): a resource for assessing exposure to
+environmental pollutants. Journal of Exposure Science & Environmental Epidemiology
+2001;11:231–52. https://doi.org/10.1038/sj.jea.7500165.
+[28] Torkmahalleh M, Gorjinezhad S, Unluevcek HS, Hopke PK. Review of factors impacting
+emission/concentration of cooking generated particulate matter. Science of The Total
+Environment 2017;586:1046–56. https://doi.org/10.1016/j.scitotenv.2017.02.088.
+[29] Olson DA, Burke JM. Distributions of PM2.5 Source Strengths for Cooking from the
+Research Triangle Park Particulate Matter Panel Study. Environ Sci Technol 2006;40:163–
+9. https://doi.org/10.1021/es050359t.
+
+31
+https://doi.org/10.26434/chemrxiv-2025-3x72f ORCID: https://orcid.org/0000-0003-0940-0353 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+[30] Fabian P, Adamkiewicz G, Levy JI. Simulating indoor concentrations of NO2 and PM2.5 in
+multifamily housing for use in health-based intervention modeling. Indoor Air 2012;22:12–
+23. https://doi.org/10.1111/j.1600-0668.2011.00742.x.
+[31] Dhiman R, Sharma R, Jain A, Ambekar A, Thajudeen T, Guttikunda SK. Spatial and
+temporal variation of cooking-emitted particles in distinct zones using Scanning Mobility
+Particle Sizer and a Network of Low-Cost Sensors. Indoor Environments 2024:100008.
+https://doi.org/10.1016/j.indenv.2024.100008.
+[32] Morawska L, Ayoko GA, Bae GN, Buonanno G, Chao CYH, Clifford S, et al. Airborne
+particles in indoor environment of homes, schools, offices and aged care facilities: The
+main routes of exposure. Environment International 2017;108:75–83.
+https://doi.org/10.1016/j.envint.2017.07.025.
+[33] Lunderberg DM, Liang Y, Singer BC, Apte JS, Nazaroff WW, Goldstein AH. Assessing
+residential PM2.5 concentrations and infiltration factors with high spatiotemporal resolution
+using crowdsourced sensors. Proceedings of the National Academy of Sciences
+2023;120:e2308832120. https://doi.org/10.1073/pnas.2308832120.
+[34] Sankhyan S, Witteman JK, Coyan S, Patel S, Vance ME. Assessment of PM2.5
+concentrations, transport, and mitigation in indoor environments using low-cost air quality
+monitors and a portable air cleaner. Environ Sci: Atmos 2022;2:647–58.
+https://doi.org/10.1039/D2EA00025C.
+[35] Harriman L, Stephens B, Brennan T. New Guidance for Residential Air Cleaners. ASHRAE
+2019.
+[36] Touchie MF, Siegel JA. Residential HVAC runtime from smart thermostats:
+characterization, comparison, and impacts. Indoor Air 2018;28:905–15.
+https://doi.org/10.1111/ina.12496.
+[37] Destaillats H, Maddalena RL, Singer BC, Hodgson AT, McKone TE. Indoor pollutants
+emitted by office equipment: A review of reported data and information needs. Atmospheric
+Environment 2008;42:1371–88. https://doi.org/10.1016/j.atmosenv.2007.10.080.
+
+32
+https://doi.org/10.26434/chemrxiv-2025-3x72f ORCID: https://orcid.org/0000-0003-0940-0353 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+

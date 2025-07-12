@@ -1,0 +1,1561 @@
+Molecular simulation study of all-silica zeolites for the
+adsorptive removal of airborne chloroethenes
+
+Michael Fischera,b*
+
+a
+
+Faculty of Geosciences, University of Bremen, Klagenfurter Straße 2-4, 28359 Bremen,
+Germany
+
+b
+
+Bremen Center for Computational Materials Science (BCCMS) and MAPEX Center for
+Materials and Processes, University of Bremen, 28359 Bremen, Germany
+*E-mail: michael.fischer@uni-bremen.de
+
+Abstract
+Chloroethenes (C2H4-xClx with x = 1, 2, 3, 4) are produced and consumed in various industrial
+processes. As the release of these compounds into air, water, and soils can pose significant
+risks to human health and the environment, different techniques have been exploited to prevent
+or remediate chloroethene pollution. Although several previous experimental and
+computational studies investigated the removal of chloroethenes using zeolite adsorbents,
+their structural diversity in terms of pore size and pore topology has hardly been explored so
+far. In this work, molecular simulations using validated empirical force field parameters were
+used to study the gas-phase adsorption of chloroethenes in 16 structurally distinct zeolite
+frameworks. As all these frameworks are synthetically accessible in high-silica form, the
+simulations used purely siliceous zeolite models. In the most relevant concentration range (0.1
+to 10 ppm by volume), substantial uptakes of tri- and tetrachloroethene were computed for
+several zeolite frameworks, prominently EUO, IFR, MTW, MOR, and BEA. In contrast, vinyl
+chloride uptakes were always too low to be of practical relevance for adsorptive removal. For
+selected frameworks, simulation snapshots were analyzed to investigate the impact of pore
+shape and, at higher uptakes, guest-guest interactions on the adsorption behavior. Hence, this
+study not only identifies zeolites that should be prioritized in future investigations, but also
+contributes to the microscopic understanding of chloroethene adsorption in crystalline
+microporous materials.
+
+Keywords: chloroethenes, emerging atmospheric contaminants, zeolites, molecular
+simulations, adsorption
+1
+
+https://doi.org/10.26434/chemrxiv-2024-w6kxl-v2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Introduction
+Chloroethenes (abbreviated CEs throughout this article) of the general formula C2H4-xClx with
+x = 1, 2, 3, 4 are widely used in various industrial processes:1 The monosubstituted form, vinyl
+chloride (chloroethene), one of the world’s most important commodity chemicals, is primarily
+used as monomer in the production of polyvinyl chloride (PVC), a widespread and versatile
+polymer. Among the three dichloroethene isomers, 1,1-dichloroethene also finds use as
+monomer in the synthesis of polymers. The cis and trans forms of 1,2-dichloroethene, which
+occur as byproducts in some processes, are in limited demand, with niche applications as
+solvents and cleaning agents. In contrast, trichloroethene is rather widely used, primarily in the
+degreasing of metal parts and as intermediate in the production of hydrofluorocarbons and
+other chemicals, with additional applications including industrial dry cleaning and the
+production of inks and paints. Finally, tetrachloroethene is applied in similar fields, notably in
+dry cleaning, as degreasing agent, and as feedstock in industrial syntheses. IUPAC names,
+frequently used synonyms and abbreviations as well as selected thermophysical properties of
+CEs are compiled in Table 1.
+
+Table 1: Names, abbreviations, sum formulas, PubChem compound identifies (CIDs),2 boiling points Tb
+(at ambient pressure) and vapor pressures pvap (at 293 K) of chlorinated ethenes and, for comparison,
+ethene. Thermophysical properties were taken from the GESTIS property database.3
+
+Synonym(s)
+
+Abbreviation
+
+Sum
+formula
+
+PubChem
+CID
+
+Tb [K]
+
+pvap
+[kPa]
+
+Ethylene
+
+ETH
+
+C2H4
+
+6325
+
+169
+
+4,090
+(at 273 K)
+
+1-Chloroethene
+
+Vinyl chloride, vinyl
+chloride monomer
+
+VC
+
+C2H3Cl
+
+6338
+
+260
+
+343
+
+1,1-dichloroethene
+
+Vinylidene chloride
+
+1,1-DCE
+
+C2H2Cl2
+
+6366
+
+305
+
+66
+
+(Z)-1,2dichloroethene
+
+cis-1,2Dichloroethylene
+
+cis-1,2-DCE
+
+C2H2Cl2
+
+643833
+
+333
+
+21.6
+
+(E)-1,2dichloroethene
+
+trans-1,2Dichloroethylene
+
+trans-1,2-DCE
+
+C2H2Cl2
+
+638186
+
+321
+
+36.1
+
+1,1,2trichloroethene
+
+Trichloroethylene
+
+TCE
+
+C2HCl3
+
+6575
+
+360
+
+7.76
+
+1,1,2,2tetrachloroethene
+
+Tetrachloroethylene,
+perchloroethylene
+
+PCE
+
+C2Cl4
+
+31373
+
+394
+
+1.94
+
+IUPAC name
+Ethene
+
+It is established that various health hazards are associated with airborne CEs, even at relatively
+low levels. In addition to acute toxicity at high concentrations, long-term exposure may have
+negative health consequences. For example, VC has been reported to cause liver damage,
+nerve damage, and immunological dysfunction, moreover, it is known to be a human
+2
+
+https://doi.org/10.26434/chemrxiv-2024-w6kxl-v2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+carcinogen.3,4 Whereas data regarding toxicity and mutagenicity/carcinogenicity of DCE
+isomers are relatively sparse,5,6 it is established that TCE can cause both acute and chronic
+toxic effects, it has also been classified as carcinogenic.7,8 For PCE, neurotoxic effects caused
+by long-term exposure are most concerning, and carcinogenic effects are suspected.3,9 Due to
+these negative health impacts, limits for the workplace exposure to airborne CEs have been
+introduced in many countries. For example, Directive 2019/130 of the European Union sets
+the acceptable long-term exposure limits (reference timeframe: 8 hours) for VC and TCE to 1
+and 10 parts per million (ppm) by volume, respectively.10 In Australia, long-term exposure limits
+are 5 ppm for VC and 1,1-DCE, 10 ppm for TCE, 50 ppm for PCE, and 200 ppm for 1,2-DCE.11
+Indoor air pollution by CEs is of most significance in facilities where these compounds are
+produced and/or used (e.g., production plants, dry cleaners, etc.), although outgassing of CEcontaining products may also play a role. Besides, the pollution of different environmental
+compartments by CEs has raised concern with regard to potential negative effects on human
+health and the environment. The main sources of VC in the environment are emissions and
+effluents from plastic industries, with hazardous waste sites and natural gas extraction sites
+making additional contributions.4 In addition to these point sources, there have been a number
+of large-scale VC spills,6 the most notorious recent example being the derailment of a freight
+train transporting VC, among other hazardous chemicals, in East Palestine, Ohio (USA) in
+February 2023.12 Due to its high vapor pressure, most of the VC released to water or soils will
+volatilize quickly. In air, it degrades photochemically within a few days.4 While being of less
+concern due to their smaller production volumes, the DCE isomers have release pathways and
+environmental behavior similar to VC, with reductive dehalogenation of TCE and PCE to
+(mostly) cis-1,2-DCE being an additional source of DCE in the environment.5,6 TCE is primarily
+released into the atmosphere by evaporation from degreasing operations and other industrial
+uses, resulting in higher atmospheric TCE levels in industrial areas as compared to rural
+regions.7,8 Although it mostly volatilizes from water and soils, it may also enter subsurface
+areas, where it is relatively persistent. The most significant release of PCE arises from fugitive
+emissions of the dry cleaning industry, with emissions related to degreasing and other solvent
+uses also playing a role.9 Due to its long atmospheric half-life of several months, PCE has
+been detected in remote locations, far away from emission sources. Disposal of PCEcontaminated sludges and filters contributes to the pollution of soil and groundwater, where it
+is very persistent. Both TCE and PCE have been classified as “emerging outdoor airborne
+pollutants” in a recent survey that aimed to identify pollutants of particular importance for better
+monitoring and future policy development.13 Among a total of 262 emerging pollutants, TCE
+and PCE were proposed for the second-highest prioritization category, behind only acrylonitrile
+and 1,3-butadiene (and having the same priority as toluene and arsenic).
+3
+
+https://doi.org/10.26434/chemrxiv-2024-w6kxl-v2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+In industrial processes, gaseous emissions of CEs are typically collected and incinerated, and
+air- or steam-stripping are used to separate CEs from industrial wastewaters prior to
+incineration of the gas.1 For facilities where incineration is not possible, removal processes
+using adsorption, absorption, or condensation have been proposed, and a number of patents
+have been awarded in this area for VC removal in particular (see ref. 471 in [1] for an overview).
+Regarding adsorption-based processes, activated carbons (ACs) and other carbonaceous
+materials have been widely characterized as suitable adsorbents for the removal of CEs from
+the gas phase14–21 and from aqueous solution.22–30
+Zeolites, crystalline microporous materials having a tetrahedral framework structure, have
+been investigated altogether less frequently than carbons. Nevertheless, a number of
+experimental studies have addressed the adsorption of TCE and PCE using zeolites.
+Specifically, Giaya et al. compared Silicalite-1, an all-silica zeolite having the MFI framework
+type,31 a dealuminated zeolite Y (FAU framework), and an AC in terms of their TCE and PCE
+adsorption behavior, both for the gas phase and for aqueous solution.32,33 In addition to
+observing high uptakes of both species in Silicalite-1 in the ppm range, they also demonstrated
+that co-adsorption of water affected CE adsorption in the all-silica zeolite much less than in the
+other two adsorbents, a finding that was attributed to its high hydrophobicity. In an investigation
+focused on cationic zeolites, Na-containing FAU-type zeolites with low Si/Al ratios (1.2 and
+2.4) were found to be efficient adsorbents for the removal of PCE from dry gas streams.34
+However, it was also noted that humidity would have to be removed prior to PCE adsorption,
+as water adsorption had a detrimental effect on adsorbent performance. Besides adsorptive
+removal, it was proposed to employ zeolites as catalysts for the oxidative destruction of CEs
+in the gas phase.35–37
+A number of other investigations looked at gas-phase CE adsorption in zeolites from a more
+fundamental point of view.38–47 In particular, Mellot, Chihara and co-workers investigated the
+adsorption of TCE and PCE (along with other chlorinated hydrocarbons) in FAU samples
+having different Si/Al ratios and obtained via different dealumination routes.39,42 The
+experimental investigations were complemented by molecular simulations (see below). The
+impact of relative humidity on TCE and PCE adsorption capacities of FAU-type zeolites was
+also studied.41,44,45 Although it was generally observed that more hydrophobic zeolites (higher
+Si/Al ratios) possess higher uptake capacities, increasing diffusion limitations in highly
+siliceous samples were highlighted in one of the studies. Detailed investigations revealed a
+rather unusual adsorption behavior of PCE in MFI-type zeolites, with the adsorption isotherm
+showing two steps.40 Different researchers have attributed this phenomenon to the adsorption
+of PCE in distinct regions of the pore40,43 and to structural transitions of the framework with
+increasing pressure.46,47
+4
+
+https://doi.org/10.26434/chemrxiv-2024-w6kxl-v2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+The ability of zeolite adsorbents to remove CEs from aqueous solution has received
+considerable attention.48–52 To limit the co-adsorption of water, these investigations typically
+focused on highly siliceous zeolites. For example, Silicalite-1 membranes grown on steel
+supports were proposed for the removal of trans-1,2-DCE and TCE from water.50,51 Other
+authors used zeolites as “dual-function” materials that allow for a catalytic decomposition of
+the CEs after adsorption.49 In a very recent pilot-scale study by Georgi and co-workers, a Feloaded MFI-type zeolite was used together with an AC adsorber for the removal of hydrophilic
+chlorinated hydrocarbons including VC from contaminated groundwater.52 The zeolite could be
+regenerated several times by flushing with H2O2, degrading the adsorbed contaminants in a
+Fenton-like reaction. Since the zeolite removed those compounds that break through the AC
+early, the operation time of the AC adsorber could be expanded significantly. This last example
+shows that zeolites may not necessarily be attractive as a stand-alone solution for contaminant
+removal, not least due to their high cost, but that usage in conjunction with other materials
+and/or techniques may constitute an attractive option.
+In comparison to experimental studies of CE adsorption in zeolites, the number of
+investigations employing atomistic simulations is relatively limited. Complementing their
+experiments, Mellot, Chihara and co-workers used Monte Carlo (MC) simulations with
+empirical force field parameters to investigate the role of guest-guest interactions between coadsorbed TCE molecules on the heat of adsorption in FAU-type zeolites.39 In subsequent work,
+they employed different models for zeolite Y, comparing a defect-free model to models
+containing an acid site (framework proton) and a silanol nest, respectively.42 For the more
+silica-rich composition studied (Si/Al ratio = 70), the computed heats of TCE and PCE
+adsorption were almost independent of the presence of acid sites or silanol nests, differing by
+not more than 2 kJ mol−1. Adsorption isotherms were calculated using MC simulations in the
+grand-canonical ensemble (GCMC), showing satisfactory agreement with experiment.
+Ahunbay53 and Jeffroy et al.46,47 employed MC simulations to rationalize steps in the PCE
+adsorption isotherms obtained for MFI-type adsorbents, with the former author also using
+molecular dynamics (MD) simulations to predict TCE and PCE diffusion coefficients. The role
+of Si/Al ratio and of water co-adsorption on TCE adsorption was investigated, again for the
+case of MFI-type zeolites, by means of GCMC simulations.54 As in earlier studies, it was
+observed that hydrophilic areas (acid sites) in the zeolite structure have only a limited impact
+on the affinity towards TCE, while reducing the available pore space due to the preferred
+adsorption of water in these regions. A computationally efficient approach based on the
+calculation of Henry’s law constants (dubbed “Henry constants” in the following) through
+random insertion was pursued by Yazaydin and Thompson.55 These authors compared the
+affinities of four zeolites (MFI, BEA, FAU, MOR) to 1,1-DCE, proposing BEA as most promising
+adsorbent for 1,1-DCE removal due to its high Henry constant (= high affinity).
+5
+
+https://doi.org/10.26434/chemrxiv-2024-w6kxl-v2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Although a large number of topologically distinct framework types are available in high-silica
+or even all-silica form, the structural diversity of zeolites in terms of pore size and pore topology
+has hardly been explored in the context of CE adsorption. The present study aims to fill this
+gap, employing a combination of Henry constant simulations and GCMC simulations to study
+the adsorption of all species listed in Table 1 in 16 all-silica zeolites. These particular
+frameworks were selected for the following reasons: (1) They can by synthesized in pure-silica
+or high-silica form.31,56 (2) They possess different pores sizes and connectivities. (3) According
+to preliminary simulations, described below, their pore apertures are large enough to permit
+the diffusion of all CE molecules. Through GCMC simulations for very low partial pressures,
+conclusions regarding the potential suitability of zeolites to remove trace amounts (down to
+sub-ppm range) of CEs are drawn. Moreover, a closer look is taken at simulation snapshots in
+order to elucidate the microscopic origins of the observed affinities of selected frameworks.
+
+Materials and Methods
+Models of zeolites and guest molecules, force field parameters
+Throughout this work, zeolites are designated solely by their framework type code (FTC).31
+The 16 frameworks that are in the focus of this study are listed in Table 2, grouped according
+to the size of the pore apertures. Four of the frameworks have channel systems lined by 10membered rings of SiO4 tetrahedra (10MR), eight have 12MR pore openings, and two
+frameworks have pore systems consisting of both 12MR and 10MR channels. Finally, CFI and
+DON are “extra-large-pore” zeolites with 14MR channels. In addition to these 16 frameworks,
+the CHA framework was included in validation calculations for N2 and ETH. As this zeolite has
+8MR pore openings, larger CEs like PCE cannot diffuse through the pore windows. Preliminary
+simulations of CE adsorption were performed for three other zeolites having 10MR windows,
+FER, MEL, and MWW. Unlike for the 16 zeolites listed in Table 2, interaction energy maps
+derived from the calculations indicated high energy barriers to diffusion of PCE, the heaviest
+CE, through the pore openings of these three zeolites. For this reason, FER, MEL, and MWW
+were not considered further.
+All zeolite models were optimized using the GULP code57 and potential parameters developed
+by Sanders, Leslie, and Catlow (SLC).58 The majority of the SLC-optimized zeolite models
+were already used in a previous study, where information on the experimental structure data
+taken as starting points for the GULP calculations is provided.59 The newly optimized
+frameworks are listed in the following, including labels of type materials and references to
+experimental structure data: MTT (ZSM-2360), TUN (TNU-961), EUO (EU-162), MEI (ZSM-1863),
+IWR (ITQ-24 64), and MSE (MCM-6865), as well as CHA.66 The optimized cell parameters are
+6
+
+https://doi.org/10.26434/chemrxiv-2024-w6kxl-v2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+provided in Table SI of the Supplementary Information, together with the size of the supercells
+used in Henry constant and adsorption isotherm simulations. CIF files of the SLC-optimized
+zeolite models are also provided as Supplementary Information.
+Table 2: Information on zeolite pore systems. For each framework type, the dimensionality of the pore
+system (for pores ≥ 10MRs), the diameter of the largest included and largest diffusing spheres, and the
+percentage of accessible volume are given. All data were taken from the IZA database.31
+FTC
+
+Pore system
+and connectivity
+
+d(LIS) [Å]
+
+d(LDS) [Å]
+
+Vacc [%]
+
+MFI
+
+10MR, 3D
+
+6.4
+
+4.7
+
+9.8
+
+MTT
+
+10MR, 1D
+
+6.2
+
+5.1
+
+8.0
+
+TON
+
+10MR, 1D
+
+5.7
+
+5.1
+
+8.0
+
+TUN
+
+10MR, 3D
+
+8.4
+
+5.4
+
+12.9
+
+AFI
+
+12MR, 1D
+
+8.3
+
+7.4
+
+14.1
+
+BEA
+
+12MR, 3D
+
+6.6
+
+5.9
+
+20.1
+
+EUO
+
+12MR, 1D
+
+7.0
+
+5.0
+
+12.2
+
+FAU
+
+12MR, 3D
+
+11.2
+
+7.4
+
+27.4
+
+IFR
+
+12MR, 1D
+
+7.2
+
+6.4
+
+15.5
+
+MEI
+
+12MR, 3D
+
+8.1
+
+6.9
+
+21.1
+
+MOR
+
+12MR, 1D
+
+6.7
+
+6.5
+
+12.3
+
+MTW
+
+12MR, 1D
+
+6.1
+
+5.7
+
+9.4
+
+IWR
+
+10+12MR, 3D
+
+7.5
+
+5.9
+
+19.4
+
+MSE
+
+10+12MR, 3D
+
+7.1
+
+6.6
+
+16.4
+
+CFI
+
+14MR, 1D
+
+7.5
+
+7.3
+
+13.4
+
+DON
+
+14MR, 1D
+
+8.8
+
+8.1
+
+15.6
+
+The structures of ETH and all CEs were optimized using parameters of the PCFF force
+field,67,68 and the N2 molecule was optimized using COMPASS parameters (although this force
+field is proprietary, parameters for certain small molecules are freely available69,70). The
+Lennard-Jones (LJ) parameters and partial charges from these force fields were also used to
+represent these molecules in the adsorption simulations. For the framework, two different sets
+of LJ parameters and charges were compared, namely, (1) the original PCFF parameters and
+(2) the potential parameters proposed by Emami et al. for use with PCFF (labelled
+PCFF/Emami throughout this work).71 As is standard for PCFF and COMPASS, a 9-6 form of
+the Lennard-Jones potential was used, and 6th-power combination rules were employed to
+compute parameters representing interactions between non-identical atom types.72 PCFF
+parameters have been used in previous studies addressing the adsorption and diffusion of
+CEs in zeolites.54,73 Charges and LJ parameters are compiled in Table SII.
+
+7
+
+https://doi.org/10.26434/chemrxiv-2024-w6kxl-v2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Henry constant simulations
+Henry constant simulations employed the Monte Carlo (MC) method in the uniform ensemble,
+in which single guest molecules are inserted at random, and the total energies obtained for a
+sufficiently large ensemble of configurations are used to compute the Henry constant KH.74 The
+selectivity towards a binary mixture of two species A and B in the limit of infinite dilution (zero
+coverage) can be calculated from the Henry constants as:75
+𝑆=
+
+𝐾 (A)
+𝐾 (B)
+
+The isosteric heat of adsorption qst in the limit of zero coverage can also be derived from these
+simulations as detailed by June et al.74
+All Henry constant calculations were done for a temperature of 298 K, using the Sorption
+module of the DS BIOVIA Materials Studio suite. The simulations used 25 million insertion
+steps, after ensuring that a further increase of the number of steps (up to 100 million steps)
+resulted in no significant change in the Henry constants. Using partial charges and LJ
+parameters as described above, Coulomb interactions were computed using the Ewald &
+charge group summation method with a cutoff of 18.5 Å, and van der Waals (vdW) interactions
+were evaluated using a pairwise summation, employing a cutoff of 18.5 Å and a spline-based
+truncation with a spline width of 1 Å.
+
+Grand-canonical Monte Carlo simulations
+Monte Carlo simulations in the grand-canonical (µVT) ensemble (GCMC), which also used the
+Sorption module, were performed to calculate single-component adsorption isotherms for ETH
+and all CEs in a fugacity range from 10-5 kPa to 1 kPa (T = 298 K).
+In addition to delivering the average number of particles per simulation cell <N> for given
+conditions, these simulations also allow to calculate the isosteric heat of adsorption according
+to:76
+
+𝑞 ,
+
+=𝑅∙𝑇−
+
+𝜕𝑈
+𝜕𝑁
+
+In this equation, which assumes ideal gas behavior of the fluid phase, R represents the ideal
+gas constant and the term in brackets corresponds to the change in total energy U upon
+change of the number of particles. As both host-guest and guest-guest interactions contribute
+to U, the heat of adsorption is loading-dependent.
+8
+
+https://doi.org/10.26434/chemrxiv-2024-w6kxl-v2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+These simulations used 10 million equilibration steps and 20 million production steps.
+Moreover, simulations of binary mixture adsorption were performed for VC/N2, PCE/N2, and
+TCE/N2 mixtures, assuming the same fugacity range for the CEs and fixing the fugacity of N2
+to 101.325 kPa (T = 298 K). The number of equilibration and production steps was doubled in
+simulations of mixture adsorption. In all GCMC simulations, the probabilities of different types
+of MC moves were set to 2 : 1 : 1 : 0.1 for exchange (insertion/deletion) : translation : rotation
+: regrowth moves, and the amplitudes of translation and rotation moves were rescaled to arrive
+at an acceptance probability of 0.5. To generate snapshots for adsorption simulations, MC
+simulations in the canonical ensemble (NVT) were performed for relevant loadings of the guest
+molecules of interest, using otherwise analogous settings as in the GCMC simulations.
+Charges, LJ parameters, and summation methods were the same as described above in the
+Henry constant calculations. However, the cutoff distances were reduced to 12.5 Å to avoid
+the necessity to use very large supercells (the size of the supercells used in both types of
+simulations is compiled in Table SI). It was verified that a reduction of the cutoffs had only a
+small impact on the heat of adsorption, with changes in qst on the order of one to four per cent.
+In all Henry constant and MC simulations, zeolite framework atoms were held fixed and guest
+molecules were treated as rigid. To enhance the efficiency of the simulations, the insertion of
+the guest molecules was limited to the accessible part of the zeolite pores. The Create
+Segregates tool of Materials Studio was used to create a volumetric representation of the
+accessible part of the pore space.
+
+Results and discussion
+Force field validation
+Figure 1 compares the isosteric heats of adsorption qst obtained from Henry constant
+calculations using the original PCFF parameters and PCFF/Emami parameters to
+experimental values. The comparison covers N2, ETH, TCE, and PCE in FAU and MFI as well
+as N2 and ETH in all-silica CHA. As Figure 1 shows, agreement between simulation and
+experiment is good to excellent for 9 out of 10 datapoints, with the outlier being ETH@FAU
+(grey box). In this case, the calculated heats of ethene adsorption are about 30% lower than
+the experimental value. A potential origin of this discrepancy may be the use of a FAU-type
+sample dealuminated under harsh conditions in the experimental study, which is likely to
+contain a rather large amount of defects that might act as preferential adsorption sites for
+ETH.38 Since agreement between experiment and simulation is considerably better for all other
+cases, it seems reasonable to discard this datapoint. A calculation of the overall error for PCFF,
+9
+
+https://doi.org/10.26434/chemrxiv-2024-w6kxl-v2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+using the remaining datapoints, delivers a mean of signed errors (MSE) of −1.9 kJ/mol and a
+mean of unsigned errors (MUE) of 2.0 kJ/mol. For PCFF/Emami, the MSE amounts to
+0.0 kJ/mol and the MUE to 1.4 kJ/mol. Although the difference in MUE is not large, the MSE is
+significantly reduced when using PCFF/Emami parameters, indicating that, unlike for PCFF,
+there is no systematic underestimation of the heats of adsorption. In the view of the very good
+agreement, all calculations reported in the following used PCFF parameters for ethene and
+chlorinated ethenes, COMPASS parameters for N2, and parameters proposed by Emami et al.
+for Si and O atoms.
+
+Figure 1: Comparison of simulated heat of adsorption to experimental data. Experimental values are
+from the following sources (in order of increasing qst,exp): N2@FAU: ref. 77, N2@CHA and N2@MFI: ref.
+78, ETH@FAU: ref. 38, ETH@CHA: ref. 79, ETH@MFI: ref. 80, TCE@FAU and PCE@FAU: ref. 42,
+TCE@MFI: ref. 40, PCE@MFI: ref. 47. For CHA and MFI, purely siliceous samples were studied,
+whereas investigations on FAU-type systems typically involved highly dealuminated zeolite Y samples.
+
+Henry constants and heats of adsorption at zero coverage
+The full results of the Henry constant calculations are compiled in the Supplementary
+Information (Table S1.1 in EXCEL file KH_and_GCMC_results.xslx). Figure 2 illustrates
+typical trends in Henry constant KH (shown on a logarithmic scale) and in the heat of adsorption
+qst,sim for five zeolites, two with 10 MR pore systems (MFI, MTT) and three having 12MR pores
+(EUO, FAU, MOR). In addition to plotting the evolution for CH4-xClx species as a function of the
+number of Cl atoms, results for N2 are also included. It is clearly visible that the affinity towards
+all hydrocarbons is higher than for N2 and that the interaction strength increases with
+10
+
+https://doi.org/10.26434/chemrxiv-2024-w6kxl-v2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+increasing number of Cl atoms, which is straightforwardly explained with the contribution of the
+polarizable Cl atoms to attractive vdW interactions. Among the different zeolites, the variation
+in affinity also increases: While the KH values for ETH span only one order of magnitude, they
+extend over three orders of magnitude for PCE. The KH values for N2 fall close together,
+indicating that the Henry’s law selectivities for heavier CEs over N2 will vary widely, as will be
+shown in more detail in the following subsection. For most zeolite-guest combinations, a close
+correlation between ln(KH) and qst is apparent. An exception is visible for the heaviest CEs
+adsorbed in MTT, where the isosteric heat still increases when moving from TCE to PCE,
+whereas the Henry constant decreases. This can be attributed to the relatively narrow channels
+of MTT, for which the fraction that is accessible to TCE is significantly larger than for the more
+voluminous PCE molecule.
+
+Figure 2: Calculated Henry constants (top, logarithmic scale) and isosteric heats of adsorption (bottom)
+for five zeolites. Datapoints for all three DCE isomers are shown.
+
+11
+
+https://doi.org/10.26434/chemrxiv-2024-w6kxl-v2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Henry’s law selectivities
+Table S1.2 of the supplementary EXCEL file contains Henry’s law selectivities for a) ETH and
+CEs over N2, b) CEs over ETH, and c) trans-1,2-DCE over the other DCE isomers. Focus in
+this discussion will be placed on the selectivities for VC, TCE, and PCE over N2, which are
+compiled in Figure 3. For VC, a number of zeolites show selectivities on the order of 500 to
+950, with EUO and TON being most selective. Among the four zeolites that are commercially
+available in high-silica form (MFI, BEA, FAU, and MOR), MFI exhibits the highest selectivity.
+For TCE and PCE, variations are much more pronounced, with the computed selectivities
+spanning several orders of magnitude. TON, EUO, and MTW are most selective for TCE, with
+S(TCE/N2) on the order of 106, whereas MOR and MFI are the best commercially available
+zeolites with selectivities of about 3·105. PCE/N2 selectivities exceeding 107 are predicted for
+EUO, MTW, and MOR, followed by IFR.
+
+Figure 3: Henry’s law selectivities for VC (top), TCE (middle), and PCE (bottom) over N2. A logarithmic
+scale is used for TCE and PCE. From left to right, different colors are used to represent zeolites with
+10MR, 12MR, 10+12MR, and 14MR pore openings.
+
+12
+
+https://doi.org/10.26434/chemrxiv-2024-w6kxl-v2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+When looking at the pore system information listed in Table 2, it is noteworthy that the highest
+selectivities are predicted for frameworks possessing 1D pore systems of 12MR or 10MRs. A
+combination of 10+12MR pore openings does not appear to enhance the selectivity for any of
+the CEs studied. Regarding the numerical pore descriptors d(LIS), d(LDS), and Vocc, there is
+no clear-cut correlation between any of these quantities and the CE/N2 selectivities shown in
+Figure 3. When considering that the pore size descriptors d(LIS) and d(LDS) are calculated
+for spherical probe molecules, whereas the CE molecules are distinctly non-spherical, this
+observation is hardly surprising. Nevertheless, it is worth pointing out that the zeolites that are
+predicted to be most selective towards CEs typically have pore systems characterized by a
+diameter of the largest sphere that does not exceed 7.2 Å, and a diameter of the largest
+diffusing sphere that falls between 5 and 6.5 Å. However, the reverse is not true; not all zeolites
+having d(LIS) and d(LDS) values in this range achieve high selectivities. As will be shown in
+more detail later, intricate features of the pore shape are responsible for the exceptionally high
+affinity of frameworks like EUO and MTW towards CEs.
+Taking the full body of results compiled in Table S1.2 into consideration, the following
+additional observations may be useful for future work:
+
+
+Predicted selectivities for ETH over N2 are moderate, with the largest values on the
+order of 20 occurring for MTT, MTW, and EUO.
+
+
+
+The trends in CE/ETH selectivities are largely analogous to those presented above for
+CE/N2 mixtures.
+
+
+
+The EUO, TON, IFR, and MTW frameworks exhibit the highest selectivities for DCE
+isomers over nitrogen.
+
+ Regarding differences in affinity towards the DCE isomers, the 10MR zeolites MFI,
+MTT, and especially TON exhibit the highest preference for trans-1,2-DCE over other
+isomers, with TON reaching trans-1,2-DCE/1,1-DCE and trans-1,2-DCE/cis-1,2-DCE
+selectivities of 7.0 and 3.1, respectively. Since the present work considered only those
+10MR zeolites for which diffusion of larger CEs like PCE is possible, excluding several
+others like FER, MEL, and MWW, it seems worthwhile to perform a more extensive
+computational screening of 10MR zeolites when aiming to find optimized zeolite
+adsorbents for DCE isomer separation.
+
+CE uptakes at low concentrations
+As shown in the previous section, the CE/N2 selectivities in the limit of zero coverage become
+very large for large CEs like TCE and PCE. However, as the target application is the removal
+13
+
+https://doi.org/10.26434/chemrxiv-2024-w6kxl-v2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+of trace amounts, rather than bulk separation, these numbers give only limited insights into the
+potential usefulness of different zeolite frameworks for CE removal. In this regard, the uptake
+at low CE concentrations (= low fugacities) under ambient conditions is more relevant. To
+address this, adsorption isotherm simulations were performed for ETH and all CEs for a
+fugacity range from 10-5 to 1 kPa. In addition to computing single-component adsorption
+isotherms, simulations of VC/N2, TCE/N2, and PCE/N2 co-adsorption were carried out, in which
+the fugacity of N2 was set to 101.325 kPa. Assuming ideal gas behavior, the partial pressures
+of the CEs in these mixtures correspond to concentrations ranging from 0.1 ppm to 10,000
+ppm (1 vol%). Full adsorption isotherms are shown in Tables S2.1 to S2.16 of the
+supplementary EXCEL file. For the present discussion, uptakes at 10−5, 10−3, and 1 kPa are
+visualized in Figures 4 (VC) and 5 (TCE and PCE), focusing on the four commercially available
+zeolites and four frameworks exhibiting particularly high selectivities, TON, EUO, IFR, and
+MTW.
+
+Figure 4: VC uptakes at different pressures obtained from VC adsorption simulations (solid columns)
+and VC/N2 mixture adsorption simulations (shaded columns).
+
+The first thing that is worth noting when looking at the two figures is the close match of CE
+uptakes obtained from single-component adsorption simulations with those obtained from
+14
+
+https://doi.org/10.26434/chemrxiv-2024-w6kxl-v2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+CE/N2 mixture simulations, with the reduction in CE uptake induced by N2 co-adsorption never
+exceeding 20%. It can be inferred that the presence of nitrogen has only an insignificant impact
+on the attainable CE uptake, and that single-component adsorption simulations should thus be
+sufficient for the systems and conditions considered here. With this in mind, the ETH and DCE
+isotherms that are reported in the Supplementary Information, but not discussed in detail in
+this article, might be of use as starting points for future investigations.
+As shown in Figure 4, EUO and IFR, followed by TON and MFI, take up the largest amounts
+of VC at 10−5 and 10−3 kPa. Even for these frameworks, however, the adsorbed amounts are
+very small, on the order of 10−5 and 10−3 mmol g−1, respectively, at the two pressures. This
+indicates that none of the zeolites is particularly attractive for the removal of VC in the ppm
+range. At 1 kPa, most of the zeolites adsorb significant amounts of VC, with the uptake of IFR
+exceeding 1 mmol g−1. However, such a high concentration of 1 mol% is not relevant for the
+removal of trace amounts.
+
+Figure 5: TCE and PCE uptakes at different pressures obtained from single-component adsorption
+simulations (solid columns) and CE/N2 mixture adsorption simulations (shaded columns).
+
+15
+
+https://doi.org/10.26434/chemrxiv-2024-w6kxl-v2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Compared to VC, the uptakes of TCE and PCE computed for low pressures (Figure 5) are
+much higher. Although the trends for the two species are similar, the uptakes at 10−5 kPa are
+about one order of magnitude larger for PCE due to stronger host-guest interactions. EUO and
+MTW are predicted to adsorb the largest amounts of TCE and PCE at this pressure and should
+thus be best suited for their removal in the sub-ppm range. Among the commercially available
+zeolites, MFI has the most beneficial properties for TCE removal, whereas MOR should
+perform better in PCE removal. At a pressure of 10−3 kPa, IFR exhibits the highest uptakes of
+both gases, which amount to 1.0 and 1.7 mmol g−1 for TCE and PCE, respectively. EUO
+constitutes the second-best adsorbent for TCE, whereas the commercially available BEA
+adsorbs almost as much PCE as IFR. The volume concentration of 10 ppm in the CE/N2
+mixture is on the same order of magnitude as typical long-term exposure limits, indicating that
+these zeolites could find use for removal of traces of these contaminants, e.g., in a workplace
+context or in the treatment of exhaust gases. At 1 kPa, the amounts adsorbed in the different
+zeolites show a similar pattern for TCE and PCE. With few exceptions, the uptakes are well
+correlated with the accessible pore volume Vacc, indicating a complete filling of the pores by
+the guest molecules. This is corroborated by the adsorption isotherms visualized in the
+supplementary EXCEL file, which show that saturation is essentially reached for all zeolites at
+1 kPa, and, in many cases, at much lower pressures. For example, the PCE uptakes of
+EUO/IFR at 1 kPa are only 4%/10% higher than the respective uptakes at 10−3 kPa.
+The heats of TCE and PCE adsorption for the same eight zeolites are visualized in Figure 6.
+For ease of comparison with other figures, qst is shown as a function of pressure, with pressure
+on a logarithmic scale; a visualization as a function of loading would deliver qualitatively
+analogous findings. Altogether, it is apparent that the affinity towards PCE is higher than
+towards TCE, and that the isosteric heats of adsorption increase with increasing loading. While
+the former observation is straightforwardly explained with the increased vdW interactions
+between PCE and the zeolites, the latter finding points to a prominent role of attractive guestguest interactions. However, it is also noteworthy that both the quantitative differences among
+the qst values obtained for TCE and PCE as well as the magnitude of the qst increase with
+pressure vary considerably, depending on the framework type.
+
+16
+
+https://doi.org/10.26434/chemrxiv-2024-w6kxl-v2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure 6: Isosteric heats of TCE and PCE adsorption
+
+When taking a closer look at Figure 6, the following aspects are noteworthy:
+
+
+TON and EUO exhibit the highest affinities towards both species at the lowest
+pressure, but the increases in qst upon increasing pressure remain modest, on the
+order of 5 kJ mol−1. qst(PCE) is about 10 kJ mol−1 higher than qst(TCE) across the range
+of pressures.
+
+
+
+For MTW, the affinity towards both species at low pressures is also relatively high.
+While the increase of qst(TCE) with pressure is modest (as for TON and EUO), qst(PCE)
+increases more markedly, reaching almost 85 kJ mol−1 at 1 kPa.
+
+
+
+IFR shows a pronounced increase of the heats of adsorption with increasing pressure.
+Whereas the qst values at 10−5 kPa are about 10 kJ mol−1 lower than those of TON,
+they increase by 15/17 kJ mol−1 for TCE/PCE, respectively. Together with MTW, IFR
+reaches the highest affinity towards PCE at 1 kPa.
+
+
+
+For MOR, a marked increase of qst(TCE) with pressure is observed, whereas the heat
+of PCE adsorption is much less affected. The difference between the two values at
+1 kPa is unusually small, amounting to less than 3 kJ mol−1.
+
+17
+
+https://doi.org/10.26434/chemrxiv-2024-w6kxl-v2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+
+
+For MFI, intermediate values of qst are obtained for both species, and the increase with
+pressure is also moderate.
+
+
+
+For the remaining two systems, BEA and FAU, the heats of adsorption are rather low
+at low pressures, but increase significantly with increasing pressure. A qualitatively
+similar evolution has been observed experimentally for TCE in siliceous zeolite Y,39
+although the overall increase was not quite as pronounced as predicted by the
+simulations reported here. In FAU, the large cages put few constraints on the position
+and orientation of the adsorbed molecules, allowing for local arrangements that
+maximize attractive guest-guest interactions.
+
+Simulation snapshots
+Altogether, it is apparent that the framework topology not only affects the heat of adsorption in
+the limit of low coverage, but also the extent of guest-guest interactions, including – in some
+cases – intricate differences between TCE and PCE. In order to develop a more detailed
+understanding of the adsorption behavior in zeolites of particular interest, fixed-loading MC
+simulations were performed for one or two selected loadings, depending on the system, and
+representative simulation snapshots were visualized. Figures 7 and 8 show such snapshots
+for TON and EUO for two PCE loadings that correspond approximately to the uptakes at 10−5
+kPa (TON: 2 PCE per simulation cell [s.c.], EUO: 16 PCE/s.c.) and at saturation, which is
+almost reached at 10−3 kPa (TON/EUO: 24/64 PCE/s.c.). The snapshots obtained for lower
+loadings show that PCE fits very nicely into the zigzag channels of TON and into the side
+pockets of the EUO channels, with the local environments allowing short contacts of all 4 Cl
+atoms to framework atoms. This tight fit explains the strong host-guest interactions that are
+responsible for the high qst(PCE) at low pressures. Under near-saturation conditions, the
+channels of TON are gradually filled, whereas additional molecules in EUO are adsorbed in
+the main channels. In both zeolites, the adsorbed molecules lie more or less in the same plane,
+with Cl atoms of adjacent molecules pointing towards each other. While the guest-guest
+interactions felt by an individual molecule will depend on the specific local arrangement, it can
+be inferred that attractive vdW interactions are at least partially counterbalanced by repulsive
+electrostatic interactions between negatively polarized Cl atoms, especially at high guest
+loadings. Therefore, the overall contribution of guest-guest interactions is only slightly
+attractive, resulting in a modest increase of qst(PCE) with pressure.
+
+18
+
+https://doi.org/10.26434/chemrxiv-2024-w6kxl-v2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure 7: Representative snapshots from fixed-loading simulations of PCE in TON. Because the
+simulation cell (s.c.) contains channels that are not included in the shown portion of the structure, not all
+molecules are necessarily visible in this and the following figures.
+
+Figure 8: Representative snapshots from fixed-loading simulations of PCE in EUO.
+
+19
+
+https://doi.org/10.26434/chemrxiv-2024-w6kxl-v2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+For MTW, the simulation snapshot obtained for near-saturation conditions (20 PCE/s.c.),
+visualized in the left panel of Figure 9, shows that the PCE molecules fit very well into the
+pores of this system. Similar to the observations made for TON, the Cl atoms point into “bulges”
+of the undulating channels, resulting in strong host-guest interactions. Unlike in TON, however,
+the adsorbed PCE molecules do not lie in the same plane, but assume a preferred orientation
+that is somewhat tilted with respect to the running direction of the channels. This tilted
+arrangement allows for stronger attractive guest-guest interactions, for example, through
+electrostatic interactions between Cl atoms and positively polarized C atoms of adjacent PCE
+molecules. In IFR, visualized in the right panel of Figure 9, yet another scenario is observed:
+Since the channels of this zeolite are somewhat wider, the PCE molecules are displaced from
+the center of the zigzag channels, mostly interacting with one side of the pore wall. This lessthan-optimal fit explains why the heat of adsorption in IFR at low coverages is much lower than
+in the zeolites discussed so far. The strong guest-guest interactions that are responsible for
+the large increase of qst(PCE) with loading can also be understood on the basis of the
+snapshot: Across some parts of the channels that are visible in the figure, the PCE molecules
+form “chains” in which two chlorine atoms of one molecule point towards the central, positively
+polarized area of one neighboring molecule. Moreover, the intramolecular Cl···C distances are
+often close to the sum of the vdW radii.
+
+Figure 9: Representative snapshots from fixed-loading simulations of PCE in MTW and IFR.
+
+Finally, it is worth taking a look at MOR, where rather different trends in affinity were observed
+for PCE and TCE. A snapshot computed for high TCE loadings, visualized in the left panel of
+Figure 10, shows that the majority of the adsorbed molecules are oriented essentially
+perpendicular to the running direction of the channels. Across large portions of the channel,
+the stacking of the TCE molecules is largely commensurate with the slight undulation of the
+20
+
+https://doi.org/10.26434/chemrxiv-2024-w6kxl-v2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+MOR channels. In contrast, adsorbed PCE molecules are never found in such a perpendicular
+orientation, but they always lie more or less in the plane of the elliptical 12MR channels (right
+panel of Figure 10). Apparently, PCE, although being only slightly larger than TCE, is too bulky
+to assume an orientation perpendicular to the channel axis, resulting in a less efficient packing
+of the adsorbed molecules. For this reason, the attainable PCE loading is significantly smaller
+(0.9 mmol g−1, compared to 1.2 mmol g−1 for TCE), and the contribution of attractive guestguest interactions is also reduced considerably.
+
+Figure 10: Representative snapshots from fixed-loading simulations of TCE and PCE in MOR.
+
+Conclusions
+Molecular simulations were carried out to study the adsorption of CEs and ETH in a structurally
+diverse set of all-silica zeolites, with the discussion of the results focusing on VC and, most
+prominently, TCE and PCE. The Henry constant simulations performed in the first part of the
+study showed wide variations in affinity, highlighting the important influence of pore topology
+on the interaction with CEs. Due to the limited computational expense, such simulations could
+straightforwardly be extended to include other zeolite frameworks and/or other (emerging)
+environmental contaminants, such as fluorinated hydrocarbons, 1,3-butadiene, acrylonitrile,
+ethylene oxide, or others. Naturally, a key prerequisite for such extensions is the availability of
+sufficiently accurate force field parameters, whose suitability should be ascertained through a
+validation against experimental data whenever possible.
+The following GCMC simulations, which covered a wide range of pressures, showed that VC
+uptakes at ppm concentrations are too low to be practically relevant for VC removal. In
+contrast, several zeolites showed substantial uptakes of TCE and PCE in the range of 0.1 to
+21
+
+https://doi.org/10.26434/chemrxiv-2024-w6kxl-v2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+10 ppm, indicating that they might be suitable adsorbents for the removal of trace amounts of
+these species. Among the frameworks studied, the 12MR zeolites EUO, IFR, and MTW would
+be of most interest for future experimental studies; however, these zeolites are, to the author’s
+knowledge, not commercially available. Focusing on those zeolites that are actually marketed
+in high-silica form, BEA (available as zeolite beta, which shows stacking disorder of the beta
+layers31) and MOR (mordenite) appear as most promising choices. This finding is particularly
+relevant when considering that most previous experimental studies of CE adsorption have
+concentrated on MFI- and FAU-type zeolites. As shown for selected cases, a detailed analysis
+of simulation snapshots can provide insights into the role of host-guest and guest-guest
+interactions. Such insights can help to develop descriptors that may facilitate the identification
+of other zeolites (or related crystalline microporous materials) that should be of particular
+interest as adsorbents for CE removal. These could then be prioritized in future work.
+It should be noted that GCMC simulations including the co-adsorption of N2 indicate that its
+presence does not have a major impact on CE uptake. Real-world scenarios, however, would
+typically involve the adsorption of CEs from complex gas mixtures, where competitive
+adsorption of other species is likely to affect the attainable CE adsorption capacities. Such
+issues, which will depend on the specific composition of the gas feed in a given setting, should
+be addressed in future experimental and computational studies. One aspect that is of particular
+importance is the co-adsorption of water, which is ubiquitous and often strongly adsorbed due
+to its large dipole moment. While perfect all-silica zeolites are hydrophobic, the presence of
+defects tends to increase the hydrophilicity, thus promoting the competitive adsorption of
+water. Inclusion of such defects and of co-adsorbed water molecules would constitute an
+interesting task for future molecular simulation studies. Additional challenges arise when
+considering the adsorption from aqueous solution, rather than from the gas phase, in molecular
+simulations. In a recent study focusing on 1,4-dioxane adsorption in zeolites, a gauge cell MC
+approach was employed to model the adsorption from aqueous solution in the parts per billion
+(ppb) range.81 It could be very interesting to exploit this approach in simulations of CE
+adsorption from water.
+In terms of diffusion properties, only a qualitative, preliminary assessment was made in the
+context of the present study. According to this assessment, diffusion limitations should not play
+a major role, especially in zeolites with 12MR pore openings. However, numerical modelling
+of the diffusion properties could be of interest when targeting the application of zeolite
+membranes for CE removal, where the permeation selectivity of the membrane can be
+expressed as a product of the adsorption and diffusion selectivities.82
+Another aspect that has not been in the focus here is the regeneration of the zeolite adsorbent.
+In the view of the high thermal stability of high-silica zeolites, which typically exceeds 1000 °C,
+22
+
+https://doi.org/10.26434/chemrxiv-2024-w6kxl-v2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+thermal regeneration appears as a straightforward option. Beyond that, doping with
+catalytically active metals could constitute a pathway towards CE decomposition that requires
+less thermal energy. In such systems, the interplay of adsorption properties (guaranteeing
+efficient CE capture) and catalytic properties (affording complete CE decomposition) should
+be optimized in order to maximize the CE removal efficiency.
+
+Conflicts of interest
+There are no conflicts of interest to declare.
+
+Data availability
+The data supporting this article have been included as part of the Supplementary Information.
+Additional files (input structures of guest molecules and zeolites) are available from ChemRXiv
+(see below).
+
+Supplementary information
+PDF file with Table SI (zeolite structures) and SII (force field parameters), EXCEL file
+KH_and_GCMC_results.xslx containing full results of Henry constant simulations (Table
+S1.1), selectivities (Table S1.2), and GCMC simulations (Table S2.1 to S2.16). ZIP archive
+Guest_molecules_CAR.zip containing molecular structures of guest molecules (in CAR
+format) and ZIP archive Zeolites_GULP_opti_CIFs.zip containing GULP-optimised
+zeolite
+
+structures
+
+(in
+
+CIF
+
+format)
+
+are
+
+available
+
+from
+
+ChemRXiv:
+
+https://doi.org/10.26434/chemrxiv-2024-w6kxl
+
+Acknowledgments
+This research was funded by the Deutsche Forschungsgemeinschaft (German Research
+Foundation, DFG) through a Heisenberg fellowship (project no. 455871835).
+
+23
+
+https://doi.org/10.26434/chemrxiv-2024-w6kxl-v2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+References
+(1)
+
+Dreher, E.-L.; Beutel, K. K.; Myers, J. D.; Lübbe, T.; Krieger, S.; Pottenger, L. H. Chloroethanes
+and Chloroethylenes. In Ullmann’s Encyclopedia of Industrial Chemistry; Wiley‐VCH Verlag
+GmbH & Co. KGaA: Weinheim, 2014. https://doi.org/10.1002/14356007.o06_o01.pub2.
+
+(2)
+
+Kim, S.; Chen, J.; Cheng, T.; Gindulyte, A.; He, J.; He, S.; Li, Q.; Shoemaker, B. A.; Thiessen,
+P. A.; Yu, B.; Zaslavsky, L.; Zhang, J.; Bolton, E. E. PubChem 2023 Update. Nucleic Acids
+Res. 2023, 51, D1373–D1380. https://doi.org/10.1093/nar/gkac956.
+
+(3)
+
+GESTIS Substance Database, Accessible at http://www.gguv.de/Ifa/Stoffdatenbank/, Institute
+for Occupational Safety and Health of the German Social Accident Insurance (accessed 202406-18). https://gestis.dguv.de.
+
+(4)
+
+Benedict, R. T.; Szafran, B.; Haire, K.; Melia, J.; Herber, D.; Crisman, J. S.; Honey, P.; Tariq,
+S.; Coley, C.; Citra, M. Toxicological Profile for Vinyl Chloride, Agency for Toxic Substances
+and Disease Registry, U.S. Department of Health and Human Services (accessed 2024-0710). https://www.atsdr.cdc.gov/ToxProfiles/tp20.pdf.
+
+(5)
+
+Williams, M.; Fay, M.; Ingber, S. Z.; Wohlers, D. W.; Ingerman, L.; Crisman, J. S.; Coley, C.
+Toxicological Profile for 1,1-Dichloroethene, Agency for Toxic Substances and Disease
+Registry, U.S. Department of Health and Human Services (accessed 2024-07-10).
+https://www.atsdr.cdc.gov/ToxProfiles/tp39.pdf.
+
+(6)
+
+Williams, M.; Casillas, G.; Keith, S.; Fay, M.; Klotzbach, J. M.; Citra, M. Toxicological Profile for
+1,2-Dichloroethene (Draft for Public Comment), Agency for Toxic Substances and Disease
+Registry, U.S. Department of Health and Human Services (accessed 2024-07-10).
+https://www.atsdr.cdc.gov/ToxProfiles/tp87.pdf.
+
+(7)
+
+Bonvallot, N.; Harrison, P.; Loh, M. Trichloroethylene. In WHO Guidelines for Indoor Air
+Quality: Selected Pollutants; World Health Organization Regional Office for Europe:
+Kopenhagen, 2010.
+
+(8)
+
+Todd, G. D.; Ruiz, P.; Mumtaz, M.; Taylor, J. B.; Wohlers, D. W.; Klotzbach, J. M.; Diamond, G.
+L.; Coley, C.; Citra, M. Toxicological Profile for Trichloroethene, Agency for Toxic Substances
+and Disease Registry, U.S. Department of Health and Human Services (accessed 2024-0710). https://www.atsdr.cdc.gov/ToxProfiles/tp19.pdf.
+
+(9)
+
+Benedict, R. T.; Roney, N.; Faroon, O.; Williams, R. L.; Ashizawa, A.; Carlson-Lynch, H.;
+Klotzbach, J. M.; Zaccaria, K.; Salinas, K.; Johnson, H. D.; Citra, M. Toxicological Profile for
+Tetrachloroethene, Agency for Toxic Substances and Disease Registry, U.S. Department of
+Health and Human Services (accessed 2024-07-10).
+https://www.atsdr.cdc.gov/toxprofiles/tp18.pdf.
+
+(10)
+
+Directive (EU) 2019/130 of the European Parliament and of the Council of 16 January 2019
+Amending Directive 2004/37/EC on the Protection of Workers from the Risks Related to
+Exposure to Carcinogens or Mutagens at Work. Off. J. Eur. Union L 30, 112–120.
+
+(11)
+
+Safe Work Australia: Workplace exposure standards for airborne contaminants (accessed
+2024-07-07). https://www.safeworkaustralia.gov.au/doc/workplace-exposure-standardsairborne-contaminants-2024.
+
+(12)
+
+Oladeji, O.; Saitas, M.; Mustapha, T.; Johnson, N. M.; Chiu, W. A.; Rusyn, I.; Robinson, A. L.;
+Presto, A. A. Air Pollutant Patterns and Human Health Risk Following the East Palestine, Ohio,
+Train Derailment. Environ. Sci. Technol. Lett. 2023, 10, 680–685.
+https://doi.org/10.1021/acs.estlett.3c00324.
+
+(13)
+
+Robichaud, A. An Overview of Selected Emerging Outdoor Airborne Pollutants and Air Quality
+Issues: The Need to Reduce Uncertainty about Environmental and Human Impacts. J. Air
+Waste Manag. Assoc. 2020, 70, 341–378. https://doi.org/10.1080/10962247.2020.1723738.
+
+24
+
+https://doi.org/10.26434/chemrxiv-2024-w6kxl-v2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+(14)
+
+Scamehorn, J. F. Removal of Vinyl Chloride from Gaseous Streams by Adsorption on Activated
+Carbon. Ind. Eng. Chem. Process Des. Dev. 1979, 18, 210–217.
+https://doi.org/10.1021/i260070a004.
+
+(15)
+
+Fang, C. S.; Khor, S. ‐L. Reduction of Volatile Organic Compounds in Aqueous Solutions
+through Air Stripping and Gas‐phase Carbon Adsorption. Environ. Prog. 1989, 8, 270–278.
+https://doi.org/10.1002/ep.3300080422.
+
+(16)
+
+Miyake, Y.; Suzuki, M. Removal of Trichloroethylene from Air Stripping Off-Gas by Adsorption
+on Activated Carbon Fibre. Gas Sep. Purif. 1993, 7, 229–234. https://doi.org/10.1016/09504214(93)80022-O.
+
+(17)
+
+Tanada, S.; Nakamura, T.; Kawasaki, N.; Izawa, J.; Tokimoto, T.; Torii, Y.; Tamura, T.
+Adsorption Characteristics of Trichloroethylene Removal by 16 Kinds of Granular Activated
+Carbons in Gaseous Phase. Chem. Pharm. Bull. 1994, 42, 2146–2149.
+https://doi.org/10.1248/cpb.42.2146.
+
+(18)
+
+Kane, M. S.; Bushong, J. H.; Foley, H. C.; Brendley, W. H. Effect of Nanopore Size
+Distributions on Trichloroethylene Adsorption and Desorption on Carbogenic Adsorbents. Ind.
+Eng. Chem. Res. 1998, 37, 2416–2425. https://doi.org/10.1021/ie970745m.
+
+(19)
+
+Miyake, Y.; Sakoda, A.; Yamanashi, H.; Kaneda, H.; Suzuki, M. Activated Carbon Adsorption of
+Trichloroethylene (TCE) Vapor Stripped from TCE-Contaminated Water. Water Res. 2003, 37,
+1852–1858. https://doi.org/10.1016/S0043-1354(02)00564-X.
+
+(20)
+
+Carmo, P.; Ribeiro, A. M.; Rodrigues, A. E.; Ferreira, A. Vinyl Chloride Recovery in a
+Multitubular Adsorber on Maxsorb Carbon. Ind. Eng. Chem. Res. 2022, 61, 9433–9442.
+https://doi.org/10.1021/acs.iecr.2c01091.
+
+(21)
+
+Carmo, P.; Ribeiro, A. M.; Rodrigues, A. E.; Ferreira, A. Bulk Recovery and Purification of Vinyl
+Chloride/Nitrogen Mixtures by MT-TPVSA Using Activated Carbon Carbotech DGK. Fluid
+Phase Equilib. 2022, 562, 113547. https://doi.org/10.1016/j.fluid.2022.113547.
+
+(22)
+
+Sakoda, A.; Kawazoe, K.; Suzuki, M. Adsorption of Tri- and Tetra-Chloroethylene from
+Aqueous Solutions on Activated Carbon Fibers. Water Res. 1987, 21, 717–722.
+https://doi.org/10.1016/0043-1354(87)90084-4.
+
+(23)
+
+Bembnowska, A.; Pełech, R.; Milchert, E. Adsorption from Aqueous Solutions of Chlorinated
+Organic Compounds onto Activated Carbons. J. Colloid Interface Sci. 2003, 265, 276–282.
+https://doi.org/10.1016/S0021-9797(03)00532-0.
+
+(24)
+
+Karanfil, T.; Dastgheib, S. A. Trichloroethylene Adsorption by Fibrous and Granular Activated
+Carbons: Aqueous Phase, Gas Phase, and Water Vapor Adsorption Studies. Environ. Sci.
+Technol. 2004, 38, 5834–5841. https://doi.org/10.1021/es0497936.
+
+(25)
+
+Yue, Z.; Economy, J. Nanoparticle and Nanoporous Carbon Adsorbents for Removal of Trace
+Organic Contaminants from Water. J. Nanoparticle Res. 2005, 7, 477–487.
+https://doi.org/10.1007/s11051-005-4719-7.
+
+(26)
+
+Pełech, R.; Milchert, E.; Wróbel, R. Adsorption Dynamics of Chlorinated Hydrocarbons from
+Multi-Component Aqueous Solution onto Activated Carbon. J. Hazard. Mater. 2006, 137,
+1479–1487. https://doi.org/10.1016/j.jhazmat.2006.04.023.
+
+(27)
+
+Erto, A.; Andreozzi, R.; Di Natale, F.; Lancia, A.; Musmarra, D. Experimental and Statistical
+Analysis of Trichloroethylene Adsorption onto Activated Carbon. Chem. Eng. J. 2010, 156,
+353–359. https://doi.org/10.1016/j.cej.2009.10.034.
+
+(28)
+
+Erto, A.; Andreozzi, R.; Lancia, A.; Musmarra, D. Factors Affecting the Adsorption of
+Trichloroethylene onto Activated Carbons. Appl. Surf. Sci. 2010, 256, 5237–5242.
+https://doi.org/10.1016/j.apsusc.2009.12.110.
+
+25
+
+https://doi.org/10.26434/chemrxiv-2024-w6kxl-v2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+(29)
+
+Miguet, M.; Goetz, V.; Plantard, G.; Jaeger, Y. Removal of a Chlorinated Volatile Organic
+Compound (Perchloroethylene) from the Aqueous Phase by Adsorption on Activated Carbon.
+Ind. Eng. Chem. Res. 2015, 54, 9813–9823. https://doi.org/10.1021/acs.iecr.5b02364.
+
+(30)
+
+Schreiter, I. J.; Schmidt, W.; Schüth, C. Sorption Mechanisms of Chlorinated Hydrocarbons on
+Biochar Produced from Different Feedstocks: Conclusions from Single- and Bi-Solute
+Experiments. Chemosphere 2018, 203, 34–43.
+https://doi.org/10.1016/j.chemosphere.2018.03.173.
+
+(31)
+
+Baerlocher, C.; Brouwer, D. H.; Marler, B.; McCusker, L. B. Database of Zeolite Structures,
+2024. http://www.iza-structure.org/databases/.
+
+(32)
+
+Giaya, A.; Thompson, R. W.; Denkewicz, R. Liquid and Vapor Phase Adsorption of Chlorinated
+Volatile Organic Compounds on Hydrophobic Molecular Sieves. Microporous Mesoporous
+Mater. 2000, 40, 205–218. https://doi.org/10.1016/S1387-1811(00)00261-4.
+
+(33)
+
+Giaya, A.; Thompson, R. W. Single-Component Gas Phase Adsorption and Desorption Studies
+Using a Tapered Element Oscillating Microbalance. Microporous Mesoporous Mater. 2002, 55,
+265–274. https://doi.org/10.1016/S1387-1811(02)00428-6.
+
+(34)
+
+Guillemot, M.; Mljoin, J.; Mignard, S.; Magnoux, P. Adsorption of Tetrachloroethylene on
+Cationic X and Y Zeolites: Influence of Cation Nature and of Water Vapor. Ind. Eng. Chem.
+Res. 2007, 46, 4614–4620. https://doi.org/10.1021/ie0616390.
+
+(35)
+
+González-Velasco, J. R.; López-Fonseca, R.; Aranzabal, A.; Gutiérrez-Ortiz, J. I.; Steltenpohl,
+P. Evaluation of H-Type Zeolites in the Destructive Oxidation of Chlorinated Volatile Organic
+Compounds. Appl. Catal. B Environ. 2000, 24, 233–242. https://doi.org/10.1016/S09263373(99)00105-8.
+
+(36)
+
+López‐Fonseca, R.; Gutiérrez‐Ortiz, J. I.; Gutiérrez‐Ortiz, M. A.; González‐Velasco, J. R.
+Catalytic Combustion of Chlorinated Ethylenes over H‐zeolites. J. Chem. Technol. Biotechnol.
+2003, 78, 15–22. https://doi.org/10.1002/jctb.726.
+
+(37)
+
+Intriago, L.; Díaz, E.; Ordóñez, S.; Vega, A. Combustion of Trichloroethylene and
+Dichloromethane over Protonic Zeolites: Influence of Adsorption Properties on the Catalytic
+Performance. Microporous Mesoporous Mater. 2006, 91, 161–169.
+https://doi.org/10.1016/j.micromeso.2005.11.043.
+
+(38)
+
+Stach, H.; Lohse, U.; Thamm, H.; Schirmer, W. Adsorption Equilibria of Hydrocarbons on
+Highly Dealuminated Zeolites. Zeolites 1986, 6, 74–90. https://doi.org/10.1016/S01442449(86)80001-X.
+
+(39)
+
+Mellot, C. F.; Cheetham, A. K.; Harms, S.; Savitz, S.; Gorte, R. J.; Myers, A. L. Calorimetric
+and Computational Studies of Chlorocarbon Adsorption in Zeolites. J. Am. Chem. Soc. 1998,
+120, 5788–5792. https://doi.org/10.1021/ja980107a.
+
+(40)
+
+Floquet, N.; Coulomb, J. P.; Weber, G.; Bertrand, O.; Bellat, J. P. Structural Signatures of Type
+IV Isotherm Steps: Sorption of Trichloroethene, Tetrachloroethene, and Benzene in Silicalite-I.
+J. Phys. Chem. B 2003, 107, 685–693. https://doi.org/10.1021/jp025701s.
+
+(41)
+
+Farrell, J.; Manspeaker, C.; Luo, J. Understanding Competitive Adsorption of Water and
+Trichloroethylene in a High-Silica Y Zeolite. Microporous Mesoporous Mater. 2003, 59, 205–
+214. https://doi.org/10.1016/S1387-1811(03)00315-9.
+
+(42)
+
+Chihara, K.; Watanabe, M.; Sasaki, T.; Miyamoto, S.; Mellot-Draznieks, C. F.; Cheetham, A. K.
+Molecular Simulation for Adsorption of Chlorinated Hydrocarbon in Y-Type Zeolites. Stud. Surf.
+Sci. Catal. 2004, 154, 1849–1857. https://doi.org/10.1016/S0167-2991(04)80719-5.
+
+(43)
+
+Bertrand, O.; Weber, G.; Maure, S.; Bernardet, V.; Bellat, J. P.; Paulin, C. Spectroscopic
+Signatures of VOC Physisorption on Microporous Solids. Application for Trichloroethylene and
+Tetrachloroethylene Adsorption on MFI Zeolites. J. Phys. Chem. B 2005, 109, 13312–13321.
+https://doi.org/10.1021/jp048442a.
+
+26
+
+https://doi.org/10.26434/chemrxiv-2024-w6kxl-v2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+(44)
+
+Cheng, H.; Reinhard, M. Sorption of Trichloroethylene in Hydrophobic Micropores of
+Dealuminated Y Zeolites and Natural Minerals. Environ. Sci. Technol. 2006, 40, 7694–7701.
+https://doi.org/10.1021/es060886s.
+
+(45)
+
+Guillemot, M.; Mijoin, J.; Mignard, S.; Magnoux, P. Adsorption of Tetrachloroethylene (PCE) in
+Gas Phase on Zeolites of Faujasite Type: Influence of Water Vapour and of Si/Al Ratio.
+Microporous Mesoporous Mater. 2008, 111, 334–342.
+https://doi.org/10.1016/j.micromeso.2007.08.035.
+
+(46)
+
+Jeffroy, M.; Fuchs, A. H.; Boutin, A. Structural Changes in Nanoporous Solids Due to Fluid
+Adsorption: Thermodynamic Analysis and Monte Carlo Simulations. Chem. Commun. 2008,
+3275–3277. https://doi.org/10.1039/b805117h.
+
+(47)
+
+Jeffroy, M.; Weber, G.; Hostachy, S.; Bellat, J.; Fuchs, A. H.; Boutin, A. Structural Changes in
+Nanoporous MFI Zeolites Induced by Tetrachloroethene Adsorption: A Joint Experimental and
+Simulation Study. J. Phys. Chem. C 2011, 115, 3854–3865. https://doi.org/10.1021/jp109447n.
+
+(48)
+
+Alvarez-Cohen, L.; McCarty, P. L.; Roberts, P. V. Sorption of Trichloroethylene onto a Zeolite
+Accompanied by Methanotrophic Biotransformation. Environ. Sci. Technol. 1993, 27, 2141–
+2148. https://doi.org/10.1021/es00047a021.
+
+(49)
+
+Chintawar, P. S.; Greene, H. L. Adsorption and Catalytic Destruction of Trichloroethylene in
+Hydrophobic Zeolites. Appl. Catal. B Environ. 1997, 14, 37–47. https://doi.org/10.1016/S09263373(97)00010-6.
+
+(50)
+
+Ahn, H.; Lee, Y. Pervaporation of Dichlorinated Organic Compounds through Silicalite-1 Zeolite
+Membrane. J. Memb. Sci. 2006, 279, 459–465. https://doi.org/10.1016/j.memsci.2005.12.060.
+
+(51)
+
+Ahn, H.; Jeong, D.; Jeong, H. K.; Lee, Y. Pervaporation Characteristics of Trichlorinated
+Organic Compounds through Silicalite-1 Zeolite Membrane. Desalination 2009, 245, 754–762.
+https://doi.org/10.1016/j.desal.2009.02.048.
+
+(52)
+
+Georgi, A.; Köhler, R.; Woszidlo, S.; Mackenzie, K.; Schierz, A.; Schlosser, A.; Stanger, H.-J.
+Fe‐Zeolite as On‐Site Regenerable Adsorber for Chlorohydrocarbons in Groundwater – from
+Laboratory to Pilot Test. Chemie Ing. Tech. 2023, 95, 1999–2007.
+https://doi.org/10.1002/cite.202300096.
+
+(53)
+
+Ahunbay, M. G. Molecular Simulation of Adsorption and Diffusion of Chlorinated Alkenes in
+ZSM-5 Zeolites. J. Chem. Phys. 2007, 127, 044707. https://doi.org/10.1063/1.2759896.
+
+(54)
+
+Güvenç, E.; Ahunbay, M. G. Adsorption of Methyl Tertiary Butyl Ether and Trichloroethylene in
+MFI-Type Zeolites. J. Phys. Chem. C 2012, 116, 21836–21843.
+https://doi.org/10.1021/jp3067052.
+
+(55)
+
+Yazaydin, A. O.; Thompson, R. W. Computing Adsorbate/Adsorbent Binding Energies and
+Henry’s Law Constants from Molecular Simulations. Environ. Eng. Sci. 2009, 26 (2), 297–304.
+https://doi.org/10.1089/ees.2008.0025.
+
+(56)
+
+Leon, S.; Sastre, G. Zeolite Phase Selectivity Using the Same Organic Structure-Directing
+Agent in Fluoride and Hydroxide Media. J. Phys. Chem. C 2022, 126, 2078–2087.
+https://doi.org/10.1021/acs.jpcc.1c08688.
+
+(57)
+
+Gale, J. D.; Rohl, A. L. The General Utility Lattice Program (GULP). Mol. Simul. 2003, 29, 291–
+341. https://doi.org/10.1080/0892702031000104887.
+
+(58)
+
+Sanders, M. J.; Leslie, M.; Catlow, C. R. A. Interatomic Potentials for SiO2. J. Chem. Soc.
+Chem. Commun. 1984, 1271–1273. https://doi.org/10.1039/c39840001271.
+
+(59)
+
+Brauer, J.; Fischer, M. Computational Screening of Hydrophobic Zeolites for the Removal of
+Emerging Organic Contaminants from Water. ChemPhysChem 2024, 25, e202400347.
+https://doi.org/10.1002/cphc.202400347.
+
+27
+
+https://doi.org/10.26434/chemrxiv-2024-w6kxl-v2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+(60)
+
+Marler, B.; Deroche, C.; Gies, H.; Fyfe, C. A.; Grondey, H.; Kokotailo, G. T.; Feng, Y.; Ernst, S.;
+Weitkamp, J.; Cox, D. E. The Structure of Zeolite ZSM-23 (MTT) Refined from Synchrotron XRay Powder Data. J. Appl. Crystallogr. 1993, 26, 636–644.
+https://doi.org/10.1107/S0021889893002006.
+
+(61)
+
+Gramm, F.; Baerlocher, C.; McCusker, L. B.; Warrender, S. J.; Wright, P. A.; Han, B.; Hong, S.
+B.; Liu, Z.; Ohsuna, T.; Terasaki, O. Complex Zeolite Structure Solved by Combining Powder
+Diffraction and Electron Microscopy. Nature 2006, 444, 79–81.
+https://doi.org/10.1038/nature05200.
+
+(62)
+
+Briscoe, N. A.; Johnson, D. W.; Shannon, M. D.; Kokotailo, G. T.; McCusker, L. B. The
+Framework Topology of Zeolite EU-1. Zeolites 1988, 8, 74–76. https://doi.org/10.1016/S01442449(88)80033-2.
+
+(63)
+
+Lawton, S. L.; Rohrbaugh, W. J. The Framework Topology of ZSM-18, a Novel Zeolite
+Containing Rings of Three (Si,Al)-O Species. Science 1990, 247, 1319–1322.
+https://doi.org/10.1126/science.247.4948.1319.
+
+(64)
+
+Castañeda, R.; Corma, A.; Fornés, V.; Rey, F.; Rius, J. Synthesis of a New Zeolite Structure
+ITQ-24, with Intersecting 10- and 12-Membered Ring Pores. J. Am. Chem. Soc. 2003, 125,
+7820–7821. https://doi.org/10.1021/ja035534p.
+
+(65)
+
+Dorset, D. L.; Weston, S. C.; Dhingra, S. S. Crystal Structure of Zeolite MCM-68: A New ThreeDimensional Framework with Large Pores. J. Phys. Chem. B 2006, 110, 2045–2050.
+https://doi.org/10.1021/jp0565352.
+
+(66)
+
+Díaz-Cabañas, M.-J.; Barrett, P. A.; Camblor, M. A. Synthesis and Structure of Pure SiO2
+Chabazite: The SiO2 Polymorph with the Lowest Framework Density. Chem. Commun. 1998,
+1881–1882. https://doi.org/10.1039/a804800b.
+
+(67)
+
+Sun, H.; Mumby, S. J.; Maple, J. R.; Hagler, A. T. An Ab Initio CFF93 All-Atom Force Field for
+Polycarbonates. J. Am. Chem. Soc. 1994, 116, 2978–2987.
+https://doi.org/10.1021/ja00086a030.
+
+(68)
+
+Heinz, H.; Lin, T.-J.; Kishore Mishra, R.; Emami, F. S. Thermodynamically Consistent Force
+Fields for the Assembly of Inorganic, Organic, and Biological Nanostructures: The INTERFACE
+Force Field. Langmuir 2013, 29, 1754–1765. https://doi.org/10.1021/la3038846.
+
+(69)
+
+Sun, H. COMPASS: An Ab Initio Force-Field Optimized for Condensed-Phase Applications −
+Overview with Details on Alkane and Benzene Compounds. J. Phys. Chem. B 1998, 102,
+7338–7364. https://doi.org/10.1021/jp980939v.
+
+(70)
+
+Yang, J.; Ren, Y.; Tian, A.; Sun, H. COMPASS Force Field for 14 Inorganic Molecules, He, Ne,
+Ar, Kr, Xe, H2, O2, N2, NO, CO, CO2, NO2, CS2, and SO2, in Liquid Phases. J. Phys. Chem. B
+2000, 104, 4951–4957. https://doi.org/10.1021/jp992913p.
+
+(71)
+
+Emami, F. S.; Puddu, V.; Berry, R. J.; Varshney, V.; Patwardhan, S. V.; Perry, C. C.; Heinz, H.
+Force Field and a Surface Model Database for Silica to Simulate Interfacial Properties in
+Atomic Resolution. Chem. Mater. 2014, 26, 2647–2658. https://doi.org/10.1021/cm500365c.
+
+(72)
+
+Waldman, M.; Hagler, A. T. New Combining Rules for Rare Gas van Der Waals Parameters. J.
+Comput. Chem. 1993, 14, 1077–1084. https://doi.org/10.1002/jcc.540140909.
+
+(73)
+
+Liu, Y.; Johnson, N. W.; Liu, C.; Chen, R.; Zhong, M.; Dong, Y.; Mahendra, S. Mechanisms of
+1,4-Dioxane Biodegradation and Adsorption by Bio-Zeolite in the Presence of Chlorinated
+Solvents: Experimental and Molecular Dynamics Simulation Studies. Environ. Sci. Technol.
+2019, 53, 14538–14547. https://doi.org/10.1021/acs.est.9b04154.
+
+(74)
+
+June, R. L.; Bell, A. T.; Theodorou, D. N. Prediction of Low Occupancy Sorption of Alkanes in
+Silicalite. J. Phys. Chem. 1990, 94, 1508–1516. https://doi.org/10.1021/j100367a056.
+
+(75)
+
+Myers, A. L.; Prausnitz, J. M. Thermodynamics of Mixed-Gas Adsorption. AIChE J. 1965, 11,
+121–127. https://doi.org/10.1002/aic.690110125.
+
+28
+
+https://doi.org/10.26434/chemrxiv-2024-w6kxl-v2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+(76)
+
+Karavias, F.; Myers, A. L. Isosteric Heats of Multicomponent Adsorption: Thermodynamics and
+Computer Simulations. Langmuir 1991, 7, 3118–3126. https://doi.org/10.1021/la00060a035.
+
+(77)
+
+Llewellyn, P. L.; Maurin, G.; Poyet, T.; Dufau, N.; Denoyel, R.; Rouquerol, F. Do the Differential
+Enthalpies of Adsorption Vary between 77 K and 302 K? An Experimental Case Study of Argon
+and Nitrogen on Two Faujasite Type Zeolites. Adsorption 2005, 11, 73–78.
+https://doi.org/10.1007/s10450-005-5901-z.
+
+(78)
+
+Pham, T. D.; Xiong, R.; Sandler, S. I.; Lobo, R. F. Experimental and Computational Studies on
+the Adsorption of CO2 and N2 on Pure Silica Zeolites. Microporous Mesoporous Mater. 2014,
+185, 157–166. https://doi.org/10.1016/j.micromeso.2013.10.030.
+
+(79)
+
+Pham, T. D.; Lobo, R. F. Adsorption Equilibria of CO2 and Small Hydrocarbons in AEI-, CHA-,
+STT-, and RRO-Type Siliceous Zeolites. Microporous Mesoporous Mater. 2016, 236, 100–108.
+https://doi.org/10.1016/j.micromeso.2016.08.025.
+
+(80)
+
+Choudhary, V. R.; Mayadevi, S. Adsorption of Methane, Ethane, Ethylene, and Carbon Dioxide
+on High Silica Pentasil Zeolites and Zeolite-like Materials Using Gas Chromatography Pulse
+Technique. Sep. Sci. Technol. 1993, 28, 2197–2209.
+https://doi.org/10.1080/01496399308016743.
+
+(81)
+
+Sharlin, S.; Lozano, R. A.; Josephson, T. R. Monte Carlo Simulations of Water Pollutant
+Adsorption at Parts-per-Billion Concentration: A Study on 1,4-Dioxane. J. Chem. Theory
+Comput. 2024, 20, 5854–5865. https://doi.org/10.1021/acs.jctc.4c00236.
+
+(82)
+
+Krishna, R.; van Baten, J. M. In Silico Screening of Zeolite Membranes for CO2 Capture. J.
+Memb. Sci. 2010, 360, 323–333. https://doi.org/10.1016/j.memsci.2010.05.032.
+
+29
+
+https://doi.org/10.26434/chemrxiv-2024-w6kxl-v2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Table of Contents graphics
+
+30
+
+https://doi.org/10.26434/chemrxiv-2024-w6kxl-v2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+

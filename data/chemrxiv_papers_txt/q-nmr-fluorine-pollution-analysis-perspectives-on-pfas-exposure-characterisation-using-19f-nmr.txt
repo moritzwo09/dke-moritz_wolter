@@ -1,0 +1,2512 @@
+qNMR fluorine pollution analysis: perspectives on PFAS
+exposure characterisation using 19F NMR
+1
+
+1
+
+Laura Duciel , Julia Asencio Hernandez ,
+2
+1
+Marc-André Delsuc , Anne Briot-Dietsch ⋆
+iD
+
+iD
+
+iD
+
+iD
+
+1
+
+CASC4DE NMR lab, Illkirch, France
+IGBMC, Illkirch, France
+⋆
+Corresponding author: anne.briot-dietsch@casc4de.eu
+2
+
+24 April 2025
+
+Abstract
+
+The presence of anthropogenic fluorinated pollutants in the environment, particularly per- and polyfluoroalkyl substances
+(PFAS), is an increasing concern. The need for untargeted analytical methods is becoming increasingly critical to
+comprehensively assess environmental contamination. Classical approaches include targeted searches for marker molecules,
+for which standard references must be available or total fluorine estimation without individual species identification. Given
+the diversity of commercially compounds, and their possible degradation products, it appears impossible to obtain a global
+view of environmental fluorinated species.
+We present investigation to highlight the potential of liquid state 19 F-Nuclear Magnetic Resonance (NMR) using broadband
+acquisition and advocate it as a complementary untargeted routine strategy for obtaining additional information alongside
+existing methods. We introduce a repertoire of 1D and 2D NMR experiments allowing to quantify efficiently all detected
+fluorinated molecules in a given matrix. The specific problems of 19 F-NMR at high magnetic field are exposed, notably
+the difficulty of exciting and detecting a large broadband spectral width tackled thanks to adapted pulse sequences.
+Acquisition parameters have been optimized for quantification accuracy and robustness of the proposed techniques against
+miss-calibration. Despite limited sensitivity compared to others approaches, 19 F-NMR insures minimal sample treatment
+and few handling constraints.
+Through real-world case studies from consumer products to PFAS-contaminated environments, we demonstrate that
+19
+F-NMR is not only suitable for quantification, but a powerful tool for the comprehensive detection of both known and
+unexpected fluorinated species in environmental samples, with for instance LOD down to 20 µg/L for trifluoroacetic acid
+(TFA).
+Keywords
+19
+F NMR, fluorinated pollutants diagnosis, PFAS, nontarget analysis, broadband NMR, quantitative NMR, total organic
+fluorine
+Abbreviations Please note that PFAS Abbreviations stands for
+per- and polyfluoroalkyl substances, including their acid forms,
+salts, and related substances; AFFF, aqueous film forming foam;
+ANSES, agence nationale de sécurité sanitaire de l’alimentation,
+de l’environnement et du travail; AOF, adsorbable organic fluorine;
+CEC, contaminant of emerging concern; CIC, combustion ion
+chromatography; COSY, correlated spectroscopy; DMSO, dimethyl
+sulfoxide; DOSY, diffusion ordered spectroscopy; ECHA, European
+chemicals agency; EOF, extractable organic fluorine; FASA,
+perfluoroalkyl sulfonamide; FID, free induction decay; FTCA,
+fluorotelomer carboxylic acid; FTOH, fluorotelomer alcohol; FTSA,
+fluorotelomer sulfonic acid; HFPO-DA, hexafluoropropylene oxidedimer acid, 2,3,3,3-tetrafluoro-2-(heptafluoropropoxy)propanoic
+acid or chemicals from GenX trademark also known as FRD-903;
+HFPO-TA, hexafluoropropylene oxide-trimer acid, perfluoro-2,5dimethyl-3,6-dioxanonanoic acid; HFPO-TeA, hexafluoropropylene
+oxide tetramer acid; HMQC, heteronuclear multiple quantum
+correlation; LC-MS/MS, liquid chromatography coupled to tandem
+mass spectrometry; LED, longitudinal eddy delay; LOD, limit of
+detection; LOQ, limit of quantification; MS, mass spectrometry;
+
+NMR, nuclear magnetic resonance; OECD, organisation for
+economic co-operation and development; PFAS, poly- and
+perfluorinated substance; PFBA, perfluorinated butyric acid; PFCA,
+perfluorinated carboxylic acid; PFECA, perfluoropolyether carboxylic
+acid; PFG, pulsed field gradient; PFHxS, perfluorohexanesulfonic
+acid; PFMOPrA, perfluoro-3-methoxypropanoic acid; PFOA,
+perfluorooctanoic acid; PFOS, perfluorooctanesulfonic acid; PFPA,
+perfluorinated phosphonic acid; PFSA, perfluorinated sulfonic
+acid; PTFE, polytetrafluoroethylene; POP, persistent organic
+pollutant; qNMR, quantitative nuclear magnetic resonance;
+REACH, registration, evaluation, authorisation and restriction
+of chemicals; SNR, signal to noise ratio; SPIKE, spectrometry
+processing innovative kernel; SOFAST, selective optimized flip
+angle short transient; SW, spectral width; TFA, trifluoroacetic acid;
+UNEP, United Nations environment programme; USEPA, United
+States environmental protection agency.
+
+https://doi.org/10.26434/chemrxiv-2025-hdnzl-v2 ORCID: https://orcid.org/0009-0000-7993-1323 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+2
+1
+
+Briot-Dietsch et al.
+HN
+
+1.1
+
+A small but strong element
+
+Fluorine is a key element, more abundant in the Earth’s crust
+than sulfur or zinc. It is unknown to the biologist because there
+is nearly no fluorine metabolism in any living organism. To the
+chemist, it is however a favourite element, with the highest
+electronegativity and a strong C-F bound that provides specific
+properties and extreme resistance to harsh conditions.1 Due
+to these characteristics, fluorine has occupied a unique place
+in the chemist’s toolbox over the past century.2 Indeed, the
+use of fluorine in pharmaceutical, agrochemical, and repellent
+or nonstick finishes industries has been extensively developed
+since at least the 1950’s.
+Today Solvay, a major player in the chemical industry,
+estimates that "ca. 30% of drugs and 50% of crop protection
+products under development contain fluorine".3 Indeed,
+it is already present inside our houses in the form of
+drugs such as antibiotics ciprofloxacin (Ciflox® , Cipro® )
+or levofloxacin (Levaquin® , Tavanic® ), nonsteroidal antiinflammatory drugs niflumic acid (Nifluril® ) or celecoxib
+(Celebrex® ), antidepressant fluoxetine (Prozac® ), seasonal
+allergic rhinitis relieving fluticasone propionate (Dymista® )
+and the lipid lowering agent atorvastatin (Lipitor® )...
+Roughly one in five medications currently on the market
+are fluoropharmaceuticals.4; 5; 6; 7 Regarding agrochemical
+products newly developed in the last decade more than 60%
+contain a fluorine moiety.8; 9 Not to mention its historical use
+in poly- and perfluorinated substances (PFAS) and derivated
+polymer films and membranes blockbusters Teflon® , Nafion® ,
+Scotchgard® (Figure 1)...
+
+1.2
+
+O
+NH2
+S
+O
+
+Fluorine world
+
+PFAS, the « Forever Chemicals »
+
+PFAS are a class of synthetic fluorine-based chemicals10
+closely scrutinized, used in high-tech applications but now
+considered to be toxic environmental pollutants and designated
+as contaminants of emerging concern (CEC) and persistent
+organic pollutants (POP).11; 12
+Discovered in the 1930’s, their usage went largely
+unregulated until the early 2000’s.13 Due to characteristics
+of fluorine, these poly- and perfluorinated substances show
+remarkable repellent or nonstick properties which are widely
+used by the industry in everyday objects: water repellent gear,
+stain resistant fabric, food packaging, non-stick cookware,
+personal care products, Aqueous Film-Forming Foam (AFFF)
+used for firefighting.13; 14 Applications extend across multiple
+sectors.15 First used in the military field during the Second
+World War, in connection with work on the atomic bomb, PFAS
+have subsequently fuelled significant industrial development,
+with numerous civil and domestic applications.16; 17 The use
+of perfluorinated compound into materials has enhanced
+their performance providing exceptional chemical resistance
+and impermeability. They are even used in environmental
+engineering solutions such as landfill liners, storage tanks, and
+industrial barriers designed to prevent soil and groundwater
+contamination.14
+Among emblematic compounds are perfluorooctanoic acid
+(PFOA), primary ingredient in Teflon® , perfluorooctanesulfonic
+R
+acid (PFOS), historical component of Scotchgard⃝
+, and then
+the fluoroether, hexafluoropropylene oxide-dimer acid (HFPO-
+
+N
+
+F
+F
+F
+
+N
+OH
+
+F
+O
+
+N
+
+O
+
+ciprofloxacine (Ciflox®, Cipro®)
+
+celecoxib (Celebrex®)
+
+OH OH O
+O
+
+N
+
+N
+
+O
+OH
+
+O
+
+O
+
+O
+
+NH
+
+O
+S
+
+F
+
+H
+F
+
+H
+
+O
+
+F
+
+F
+
+atorvastatine (Lipitor®)
+N
+Cl
+F
+F
+
+N
+N
+Cl
+
+NH2
+
+F F
+F
+S
+O
+
+fluticasone propionate (Dymista®)
+F
+F
+
+F
+S
+N N
+
+O
+N
+
+F
+
+F
+
+fipronil (Regent®)
+
+F
+F
+
+O
+
+F F F F F F
+COOH
+F F F F F F F
+
+PFOA (Teflon® historical ingredient)
+F F
+F
+F
+
+O
+F
+
+F F
+F
+
+F
+
+F
+F
+
+F F F F F F F
+SO3H
+F F F F F F F F
+
+PFOS (Scotchgard® & fire fighting foam)
+
+O
+OH
+
+F
+
+flufenacet (Starfire®)
+
+F
+
+F
+F
+
+HPFO-DA, GenX chemical
+(PFOA alternative)
+
+F F F F F F
+
+O
+S
+OH
+F
+F
+F
+F
+O
+F
+
+PFHxS
+(PFOS alternative)
+
+Figure 1. Molecular structure of some typical man-made fluorinated
+compounds: medicines; agrochemicals; historical perfluorinated
+compounds used in polymer films applications, i.e. perfluorooctanoic
+acid (PFOA) and perfluorooctanesulfonic acid (PFOS); their shorterchain alternatives, i.e. hexafluoropropylene oxide-dimer acid (HFPODA) and perfluorohexanesulfonic acid (PFHxS).
+
+DA) and its ammonium salt referred to as “GenX chemicals”,
+developed as a safer alternative but finally more toxic than the
+PFOA they were supposed to replace18; 19 and leading to the
+so-called regrettable substitution phenomenon20 (Figure 1). It
+is estimated that "more than a megaton of PFAS is produced
+yearly, and thousands of PFAS wind up in end-use products",21
+and that "around 4.4 million tonnes of PFAS would end up
+in the environment over the next 30 years unless action is
+taken".22
+As of today, more than 10 000 highly fluorinated
+compounds have been inventoried by the United States
+environmental protection agency (USEPA)23 and proposed
+in early 2023 for restriction by European chemicals agency
+(ECHA).22 The original 2018 definition of the organisation
+for economic co-operation and development (OECD) defined
+PFAS as molecules containing three or more fully fluorinated
+carbons connected to each other or two such carbons linked by
+
+https://doi.org/10.26434/chemrxiv-2025-hdnzl-v2 ORCID: https://orcid.org/0009-0000-7993-1323 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+qNMR fluorine pollution analysis: perspectives on PFAS exposure characterisation using 19 F NMR
+an ether group. In 2021, the USEPA broadened this definition to
+also include compounds with two adjacent fluorinated carbon.
+As highly fluorinated PFAS are thermally and chemically
+stable, they are resistant to most biological and chemical
+degradation mechanisms.24 Therefore, these compounds
+have accumulated in ecosystems. They are considered as
+POP as either because they are persistent themselves or
+degrade to persistent PFAS. Environmental studies have
+already shown the presence of PFAS in soil, sediments, water
+resources and wildlife, leading to a growing awareness of their
+omnipresence.25; 26; 27 As a result of inadequate environmental
+assessment frameworks for their monitoring, their study and
+surveillance are relatively recent, even though they have
+been accumulating in the environment for a longer time.
+They are recognized as a major environmental and health
+problem of global dimension. Indeed, all these molecules share
+a common feature: they present a toxicity at relatively low
+concentrations with confirmed impacts on human health, e.g.
+carcinogenic, endocrine disrupting, reprotoxic, lowering birth
+weight, accelerating puberty, affecting immunity and thyroid
+activity, reducing vaccine response, damaging the liver and
+kidney, leading to lipid and insulin dysregulation.28; 29; 30
+Despite intensive works worldwide,31; 32; 30 the harsh reality
+remains that there is no global remediation solution right
+now, even new interesting approach to PFAS management
+have recently emerged.33 Thus, their accumulation in
+the environment and their potential for water or food
+contamination raise concerns regarding their impact on human
+health. Motivated by these concerns, regulations have emerged.
+In 2001 the Stockholm Convention initiated by the United
+Nations Environment Programme (UNEP) Governing Council
+has set guidelines to mitigate POP and has started to
+enforce restrictions on PFOS (2009), on PFOA (2020) and
+on perfluorohexanesulfonic acid (PFHxS) (2022).34 Now longchain (C9-21) perfluorinated carboxylic acids (PFCA) are also
+being considered for inclusion. At European level, regulation
+on the registration, evaluation, authorization, and restriction
+of chemicals (REACH) has occurred for C9-14 PFCA and
+derivatives in 2023 and now other PFAS are under evaluation.35
+Since August 2023 the PFHxS group has been restricted by
+the European POP Regulation. In United States, since 2021, a
+framework "PFAS Strategic Roadmap" was set by the USEPA
+detailing the agency’s regulatory plans from 2021 to 2024.36
+Although scientists have now identified key points to
+address the "PFAS problem",29; 37; 38 a real engagement of all
+stakeholders—including scientists, consumers, authorities, and
+manufacturers— is crucial to contain the magnitude of the
+issue.39
+Interestingly, the definition of PFAS remains a contentious
+issue. In 2021, the OECD further broadened the definition
+to include any compound containing at least one CF3
+(trifluoromethyl) or CF2 (difluoromethylene) group.40 This
+evolution drastically increases the number of recognized PFAS,
+now estimated at nearly 15,000 compounds with this definition.
+This reclassification means that many fluorinated pesticides,
+like flufenacet, fipronil, flurochloridone, flutianil, isoxaflutole,
+penthiopyrad, pyroxsulam... now fall within the PFAS family.
+However, some advocate for a narrower focus on molecules with
+many fluorine atoms, as these often exhibit specific properties
+that make PFAS persistent and hazardous.
+
+3
+
+known
+unknown (unexpected )
+
+Targeted
+Analysis
+focus on known references
+
+Whole content
+
+Untargeted
+Analysis
+comprehensive analysis
+
+Figure 2. Targeted versus untargeted approach for in-depth fluorine
+content exploration. Untargeted approach is appropriate to detect
+unexpected compounds and reduces biases as no prior knowledge
+about the sample is needed. It can reveal the presence of unexpected
+compounds that might be overlooked in a targeted analysis. However
+the challenge lies in the identification process.
+
+1.3
+
+Fluorine pollution challenge
+
+Fluorinated compounds, including PFAS, which have been
+introduced to the market in large numbers, have a significant
+impact on the environment. Over the past three decades,
+the detection of these compounds in ecosystems and the
+understanding of their hazardous effects have become more
+pronounced characterizing pollution issues.41; 42 Overall the
+regulatory landscape is evolving positively around the world to
+assess and mitigate their environmental and health impacts.
+However, to address existing issues, and to
+comprehensively assess and map risks, it is necessary to
+have a robust, untargeted, holistic, easy-to-handle approach
+allowing analyses in number. Pollution analysis is a complex
+issue that demands handling an extensive diversity of pollutant
+species (known, emerging, all continually being identified)
+and few scientific knowledge about their toxicity43 . This
+approach has to deal with extreme concentrations (very
+low or very high ones), requiring either highly sensitive or
+robust detection methods for heavily contaminated samples.
+Large data collections are needed as well to accurately assess
+pollution levels and sources as environmental conditions can
+significantly vary and affect dispersion and concentration.
+Finally, potential matrix effects on detection and quantification
+of the targeted pollutants may require prior complex sample
+preparation and purification techniques.44 Addressing these
+challenges is crucial for accurate pollution assessment and
+further effective remediation.
+Targeted and untargeted analysis methods are the two
+approaches in analytical chemistry, each serving distinct
+purposes in the identification and quantification of compounds
+
+https://doi.org/10.26434/chemrxiv-2025-hdnzl-v2 ORCID: https://orcid.org/0009-0000-7993-1323 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+4
+
+Briot-Dietsch et al.
+
+(Figure 2). On the one hand, targeted approach is more of
+an a priori knowledge method since it involves measuring a
+predetermined set of previously characterized analytes. While
+it facilitates the optimization of analytical protocols, it performs
+badly in adapting to the multiple potential scenarios of PFAS
+and fluorochemicals pollution. On the other hand, untargeted
+approach is a global and comprehensive measurement of both
+known and unknown compounds. It involves investigating
+pollution as a whole, even if this may necessitate making
+assumptions and raising challenging identification issues.
+Currently, there is no complete untargeted technique
+for detecting, identifying and quantifying PFAS and
+fluorochemical pollutants. Existing routines primarily rely
+on Liquid Chromatography coupled with tandem Mass
+Spectrometry (LC-MS/MS).45; 46; 47; 48; 49; 50 This targeted
+approach encounters challenges such as the limited availability
+of authentic reference standards, approximately 150 for PFAS
+as of today compared to the estimated 10,000 existing PFAS
+compounds. LC-MS/MS methods are also facing troubles
+such as time-consuming preparations, treatments that may
+alter sample content, matrix effects, sample extraction limited
+by solvents mixture compatibility or overly contaminated
+samples.44; 51 On the positive side, the Limit of Quantification
+(LOQ) of LC-MS/MS typically reaches the low-ng/L and
+low-ng/g range, except for surface water, where it is usually
+sub-50 ng/L, and for wastewater or effluents, where it is often
+sub-100 ng/L, due to interference from matrix components.
+In fact, LOQ typically depends on the instrument, the specific
+PFAS being analysed, and the sample matrix. Short-chain
+PFAS, like perfluorinated butyric acid (PFBA), often have
+higher LOQ due to their lower ionization efficiency. Regarding
+suspect screening using high-resolution mass spectrometry to
+detect known PFAS without requiring reference standards,
+the approach bridges targeted and non-targeted analysis to
+identify PFAS based on accurate mass, retention time, and
+MS/MS fragmentation patterns. It can allow for detecting
+more fluorinated compounds beyond the limited list covered
+by targeted methods.52 Nevertheless it remains suspect list
+dependent, and involves complex data processing and limited
+structural confirmation (isomers).
+In contrast, untargeted methods, relying on adsorptive
+phases like Adsorbable Organic Fluorine (AOF)53 or
+Extractable Organic Fluorine (EOF) and use combustion
+ion chromatography (CIC) to mineralize and quantify organic
+fluorine, provide a broad screening approach for detecting
+fluorinated organic compounds (and eventually residual
+inorganic fluoride not removed during preparation).54 EOF,
+using a polymeric cartridge (e.g., weak anion exchange type)
+as the adsorbing phase and suitable solvents, can offer insights
+on a broad range of fluorinated species. AOF provides a
+collective assessment of all fluorinated compounds that can
+adsorb onto activated carbon, including PFAS, and captures all
+those not specifically regulated or less studied, and is expected
+to minimize the co-extraction of inorganic fluorides. However,
+the lack of specificity of these sum parameters means that
+they cannot identify which particular PFAS or fluorinated
+compounds are present, making it impossible to provide
+detailed risk assessments. Furthermore, they are limited by
+matrix effects, such as interference from complex samples like
+wastewater or soil and are unable to detect non-adsorbable or
+volatile fluorinated compounds. The LOQ of AOF and EOF
+depends on the specific analytical method, instrumentation,
+
+Total Fluorine
+F liquid-NMR observable
+
+19
+
+Soluble Fluorine
+Organic Fluorine
+including non-PFAS
+fluorinated organics
+
+Inorganic
+Fluoride
+
+PFAS
+target
+PFAS
+
+Non Soluble
+Fluorine
+
+Inorganic
+
+Organic
+
+Figure 3. Diagram illustrating total fluorine analysis, highlighting
+the partitioning of fluorine species in a sample. Soluble fractions
+are observable by 19 F NMR, distinguishing PFAS within the soluble
+fraction and target PFAS typically analysed via LC-MS/MS.
+
+and sample preparation process. Commonly these LOQ are
+in the range of sub-µg/L in aqueous matrices (e.g., drinking
+water, groundwater, or wastewater).
+As of today, there is a critical need for a method that
+not only targets individual chemicals but allows detection of
+total fluorinated content: PFAS and eventually unexpected
+others non-PFAS fluorinated contaminants or metabolites
+present in the sample 29; 55 and quantification of total fluorine
+parameter56 (Figure 3). Ideally, this technique should be
+highly selective, i.e. targeting only PFAS while excluding
+inorganic fluoride species, and comprehensive, capable of
+detecting thousands of known and unknown PFAS with
+sufficient recovery rates. In the present work, we propose to
+consider 19 F nuclear magnetic resonance (NMR) as a possible
+approach for untargeted analysis to detect the presence of
+fluorinated and perfluorinated species. In addition, 19 F NMR
+can offer valuable structural information, offering a more
+comprehensive understanding of contamination profiles by
+revealing information about the implied species families. Such
+an approach could facilitate the identification of broader
+contamination patterns and contribute to more effective site
+prioritization and investigation strategies.
+2
+2.1
+
+NMR Approach of fluorine pollution diagnosis
+19
+
+F NMR, a powerful spectroscopy
+
+Based on the magnetic properties of certain atomic nuclei,
+NMR spectroscopy is a powerful analytical technique to unlock
+physical, chemical, and biological properties of matter,57; 58; 59
+from small organic molecules to complex biomolecules and
+advanced materials. Because of its versatility and precision,
+NMR is increasingly being recognized in the development of
+international standards.60
+NMR covers a broad range of molecules and provides
+access to the molecular diversity while being inherently
+quantitative, and naturally untargeted. While the properties of
+NMR active nuclei such as 1 H, 13 C or 31 P may be familiar to
+the reader, the 19 F was one of the very first spins studied in the
+1950s57 and 19 F spectroscopy presents some specificities which
+are presented below.
+
+https://doi.org/10.26434/chemrxiv-2025-hdnzl-v2 ORCID: https://orcid.org/0009-0000-7993-1323 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+qNMR fluorine pollution analysis: perspectives on PFAS exposure characterisation using 19 F NMR
+nifluril
+
+PFAS
+
+fluticasone propionate
+
+florfénicol
+
+140
+
+200
+
+unknown (unexpected )
+PFMOPrA
+
+60
+
+80
+
+100
+
+120
+
+160
+
+180
+
+220
+
+ppm
+
+Figure 4. The large dispersion of chemical shifts in fluorine NMR
+for example from ca. -55 ppm for -OCF3 groups of perfluoro-3methoxypropanoic acid (PFMOPrA ; among PFECA alternatives to
+historical PFAS) to around -225 ppm for -CH2 F groups of florfenicol
+(vet antibiotic). It implies strong experimental constraints to ensure
+that no signals of interest are missed.
+
+Sensitivity
+With a 1/2 spin, a high gyromagnetic ratio (94% of 1 H) and a
+100% isotopic abundance, 19 F NMR is theoretically only slightly
+less sensitive than 1 H NMR. In addition, fluorine nuclei exhibit
+relaxation times similar to those of protons, with T2 /T1 ratios
+for 19 F close to 1.0, allowing the efficient acquisition of free
+induction decays (FID). Long transverse spin-spin relaxation
+T2 insures sharp signals, and gives access to homo- and heteronuclear J-coupling values.
+This combination of high sensitivity, favourable relaxation
+properties, 100% natural abundance of the magnetically active
+fluorine-19 isotope and a total absence of natural background
+noise makes fluorine’s overall sensitivity in practice better than
+that of the proton.
+Chemical shift range, J-couplings
+Likewise, the electron-rich nature of fluorine (surrounded by 9
+electrons, instead of one for hydrogen) makes the fluorine spin,
+and its 19 F chemical shift, much more sensitive to the details
+of its local environment and the structure of the molecule.
+Therefore the range of fluorine chemical shifts is much more
+extended for fluorine than for hydrogen. 19 F resonances span
+700 ppm, with over 200 ppm specific to fluorinated organic
+compounds, as detailed in W. R. Dolbier’s Guide to Fluorine
+NMR for Organic Chemists 61 and illustrated in Figure 4.
+The combination of a large chemical shift dispersion and
+sharp signals, reduces signal overlap as compared to 1 H NMR,
+and enables spectral separation even on similar groups, such
+as the CF2 groups of long perfluoro-saturated chains of PFAS
+compounds. Similarly, the large range of homo- and heteronuclear J-couplings61 is a source of structural information.
+A drawback related to this wide spectral range is the
+fact that even in a moderate magnetic field, the complete
+range of possible 19 F signals cannot be easily covered in a
+single experiment. For instance, on the 600 MHz instrument
+used in this study, a 200 ppm range requires a spectral width
+of 113 kHz, too large to be analysed using standard procedures.
+Specificity
+One of the main strengths of the NMR technique is its high
+specificity as it only observes the signals from the studied
+atomic nuclei. Thus, a 19 F spectrum detects all the fluorine in
+a sample regardless of their chemical details but is blind to all
+
+5
+
+other elements (such as hydrogen and carbon). This is a strong
+advantage that allows the development of fully untargeted
+analyses. In addition, as most solvents do not contain fluorine,
+they will not interfere with the 19 F NMR signal, allowing the
+use of a broad variety of solvents. Thus, in contrast to 1 H
+NMR, fully deuterated solvents are not necessary, except for a
+small deuterium amount used to lock the spectrometer field.
+Quantitativity
+With proper experimental parameters, NMR allows direct
+quantitative measurements as the observed signals are
+proportional to the quantity of matter being analysed. The
+area under the peak (or integral) of the NMR signals is a
+direct determination of the molecular concentration in the
+solution, provided that the experimental parameters affecting
+accuracy and precision of the measure (e.g. delays, pulses, and
+acquisition time) have been carefully calibrated and optimized.
+Minimal sample preparation
+Liquid NMR applications benefit from minimal and rapid
+sample preparation, leading to reduced sample loss and a
+maintained integrity of the analytes. Even for complex matrices,
+a minimal filtration or a quick centrifugation after dissolution
+is sufficient to remove suspended undissolved matter without
+extensive processing. No necessary sample derivatization nor
+sample specific standard requirements make NMR really
+easy to operate. The use of disposable sample containers
+effectively prevents from cross-sample contamination. It can
+accommodate highly concentrated samples, so serial dilutions
+are not required, reducing the risk of systematic error. NMR
+stands out for its non-invasive nature as samples do not interact
+directly with the instrument and can be recovered for later
+operations. Additionally its high solvents compatibility is a
+real advantage for dissolution, allowing for greater flexibility in
+selecting solvents. This versatility is interesting when working
+with complex formulations, facilitating the breakdown and
+solubilization of challenging compounds.
+In particular, Dimethyl Sulfoxide (DMSO) is often
+a preferred option due to its excellent solvating ability.
+This solvent dissolves both polar and nonpolar compounds,
+which makes it particularly useful for extracting varieties
+of compounds with favourable recovery rate, and especially
+suitable for effective soil sample treatments, even USEPA
+researchers have highlighted in 2023 degradation phenomenon
+with 3 HPFO-DA family samples over their DMSO screening
+stock of 205 PFAS, i.e. HPFO-DA, hexafluoropropylene oxide
+trimer acid (HFPO-TA) and tetramer acid (HFPO-TeA).62
+In our experience, unless when HFPO-DA degrades, it forms
+a clean similar compound, likely Fluoroether E1, exhibiting
+a typical -CHF- signal, which should not alter the final
+quantification . Therefore, while DMSO is commonly used for
+its solubility benefits, it’s always crucial to assess whether it’s
+the most suitable choice for specific experiments and analytes.
+Efficiency
+NMR offers a comprehensive approach to quantitative and
+untargeted analysis while standing out for its non-invasive
+nature, minimal sample preparation requirements, single
+calibration point, low matrix interference.
+Most fluorine detection methods are based either on the
+fluoride ion alone or on fluorinated organic molecules only.
+19
+F NMR allows the observation of both forms by solution
+
+https://doi.org/10.26434/chemrxiv-2025-hdnzl-v2 ORCID: https://orcid.org/0009-0000-7993-1323 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Briot-Dietsch et al.
+
+NMR, provided ionic forms are soluble. In addition, insoluble
+forms can be analysed by solid-state NMR. The nature of
+inorganic fluoride species found in the environment largely
+depends on soil composition and environmental conditions
+such as pH, temperature, and moisture levels, making their
+solubility difficult to predict. Even when soluble, they differ
+from the characteristic PFAS NMR fingerprint, which allows
+clear distinction between these species.
+As there is hardly any other fluorinated organic compounds
+in the wild apart from the manufactured ones, the presence of
+a signal in the NMR spectrum is almost always the signature
+of some non-natural molecules.
+Indeed, unlike other analytical techniques, 19 F NMR will
+be able to detect all soluble fluorinated species present in
+the studied sample offering promising perspectives in the
+diagnosis of fluorinated pollutants even some sensitivity issues
+are expected and further identification challenges (Figure 3).
+In the two last decades 19 F NMR spectroscopy has gained
+recognition63 in investigation of the conformations, dynamics
+and interactions of biomacromolecules,64; 65; 66 ligand-based
+NMR screening for drug discovery,67; 68 structure determination
+of organic fluorine compounds,58 quality control69; 70 and for
+environmental measurements of total PFAS71 and especially
+recently with Camdzic72; 73 or Gauthier.74; 75 This study
+aims to present further investigation and efforts to highlight
+the potential of 19 F NMR using broadband acquisition and
+advocate it as a complementary routine analytical strategy for
+obtaining additional information alongside existing methods.
+
+3
+3.1
+
+Optimisation & improvement in 19 F qNMR
+measurements
+
+(A)
+
+(B)
+
+10
+
+Intensity
+
+6
+
+5
+
+0
+
+-5
+-100
+
+-50
+
+0
+
+50
+
+Distance from O1
+
+Figure 5. (A) OPERA-45 pulse shape designed by Coote et al..
+Amplitude (in blue) and phase (in crimson) profile of the excitation
+waveform (pulse duration of 80 µs with RF amplitude of 14 kHz);
+(B) Experimental excitation profile measured by moving the carrier
+frequency of the OPERA-45 pulse on a 1 mM PFOA sample
+in DMSO-d6 under optimized conditions. The −CF3 NMR signal
+intensity is consistent across a 120 kHz range of frequencies, meaning
+the excitation is uniform throughout the spectrum range.
+
+Large spectral range
+
+The wide range of chemical shifts of 19 F signals creates two
+difficulties: unbiased excitation and faithful detection of all the
+resonances, both make it difficult to insure reliable quantitative
+measurements, in particular at high magnetic fields.
+The major difficulty is to insure a correct excitation of a
+wide spectral width. It is well known that a square excitation
+pulse results in a limited excitation bandwidth, which is
+inversely proportional to its duration. Amplitude and phase
+distortions arise due to off-resonance effects,76; 77 becoming
+more pronounced as the signal deviates further from the pulse
+carrier. As a result, only the center of the excitation window
+can be used reliably. For instance, as a rule of thumb for
+quantitative measurements, a pulse of 15 µsec is considered
+to only faithfully excite a 25 to 50 kHz region centered on
+the pulse carrier, which is far from being sufficient for our
+purpose. Several solutions are known to circumvent this
+difficulty,78; 79; 80; 81; 82 but present deficiencies in the presence
+of fast decaying signals or large J-couplings, due to their long
+duration.
+In order to address these issues we chose to use the OPERA
+pulse approach (Optimizing Phase of Excitation Removes
+Artifacts), a recent broadband excitation scheme presented
+by Coote et al 83 (see Figure 5A). It has been designed using
+optimal control theory to reduce pulse duration while insuring
+no second order phase correction as observed with standard
+chirp pulses. The pulse has been optimized for several flip
+angles, and we chose to use the 45 degrees pulse definition
+
+which seems well adapted to quantitative studies. After phase
+correction, the flat excitation profile and the flat baseline
+permits reliable quantitative measurements (see Figure 5).
+Experimental data on the OPERA-45 excitation pulse
+show a high-fidelity excitation over a 120 kHz bandwidth and
+robustness to power miss-calibration over 100 kHz (presented in
+the Supporting Information 1). In addition, the short duration
+of the OPERA-45 pulse (80 µsec) can suppress J-modulation
+artifacts for compounds with significant F-F coupling such as
+long chain PFAS compounds.
+These features make it possible, through a one-shot
+experiment, to access the whole chemical information that
+would otherwise remain difficult to observe, as exemplified with
+a model compound in Figure 6. The single molecule Vertrel™
+exhibits a chemical shift dispersion extending to 146.7 ppm.
+Moreover a reliable quantitation is achievable on this range, the
+uniform excitation of OPERA-45 ensuring that all integrated
+peaks in the spectrum are accurate and reliable.
+In addition, on most spectrometers there is a marked loss
+of detection quality associated with the high sampling rates
+required for detection of large spectral widths, and on our 600
+MHz instrument, this happens for widths larger than 100 kHz.
+This corresponds to a 177 ppm range, and implies that at least
+two acquisitions have to be made to cover the whole range
+of 200 ppm for possible organic fluorine signals. Instead, we
+decided to select a single region spanning from -50 ppm to 227 ppm, covering most of the possible signals, and to resort
+to additional measurements when needed.
+
+https://doi.org/10.26434/chemrxiv-2025-hdnzl-v2 ORCID: https://orcid.org/0009-0000-7993-1323 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+qNMR fluorine pollution analysis: perspectives on PFAS exposure characterisation using 19 F NMR
+
+CF3
+
+CF2
+
+CHF
+
+120
+
+-60
+
+-80
+
+-100
+
+-120
+
+-140
+
+7
+
+-160
+
+-180
+
+-200
+
+110
+
+ppm
+
+100
+
+90
+
+-220
+
+ppm
+
+Figure 6. Broadband 19 F acquisition using OPERA-45 excitation,
+on 2H,3H-decafluoropentane 180 mM in DMSO-d6 (Vertrel™,
+technical grade, used as a zero ozone-depletion alternative to hydro
+chlorofluorocarbons). Primary and secondary alkyl fluorides exhibit
+significantly different shielding along the carbon backbone showing
+a chemical shifts dispersion of 146.7 ppm from -CF3 moiety at
+-74.8 ppm to -CHF- groups around -221.5 ppm. With 2 chiral
+centers, and the CF2 diastereotopic fluorines, NMR spectrum shows
+two distinct resonances profiles whose separation reflects proportion
+of some Vertrel stereoisomers. Acquisition in a single shot in
+quantitative conditions. Attributions are made using to 19 F-13 C
+HMQC experiment in Figure 8.
+
+3.2
+
+2D experiments
+
+Implementing two-dimensional NMR experiments is an
+important advantage for the characterization of unknown
+detected molecules.84; 85 Moreover, detecting fluorinated
+carbons in 13 C spectra can be challenging, especially when the
+signal-to-noise ratio is low, as their signals are spread across
+multiple lines and may blend into background noise. Figure 7
+presents 13 C spectrum of our model compound (2H,3Hdecafluoropentane, Vertrel™) revealing complex overlapping
+multiplets. An interesting approach could be to perform a 19 F13
+C HMQC experiment with 19 F–19 F decoupling (see below,
+OPERA-HMQC paragraph).
+2D NMR can reveal signals that overlap in 1D NMR
+spectroscopy because of similar resonant frequencies and is
+indicative of mutually interacting spatial arrangements. A suite
+of NMR 2D 19 F–19 F and 19 F–13 C correlation experiments was
+implemented in the goal of providing a variety of experiments
+that will help interpret the spectra and elucidate the structure
+of the carbon backbone. The collected 19 F chemical shifts,
+along with the JHF and JCF coupling constants provide a
+wealth of information as exemplified in Figure 8. With the
+instrument generation that we use, the π2 version of the
+OPERA pulse cannot be implemented because of too stringent
+timing constraints. As a consequence, we had to explore the
+possibilities left when using only the OPERA-45 version. With
+the main concern of PFAS pollution studies, in particular the
+identification of involved pollutants, we decided to principally
+implement the following 2D-experiments: 19 F-13 C correlation,
+19 19
+F- F correlation and 19 F DOSY.
+
+Figure 7. 13 C spectra of 2H,3H-decafluoropentane 180 mM in
+DMSO-d6 (Vertrel™). Fluorinated carbons in 13 C spectra can be
+difficult to assign, particularly due to J-couplings, their signals spread
+across multiple lines and may even merge with background noise.
+Assignment was made from the HMQC experiment.
+
+OPERA-HMQC
+The 19 F- 13 C 2D-correlation was implemented on the basis of
+the SOFAST HMQC (Selective Optimized Flip Angle Short
+Transient Heteronuclear Multiple Quantum Correlation)86
+experience because of its high sensitivity and restrained number
+of π2 19 F pulses resulting in shorter experimental time compared
+to conventional HSQC. 19 F π pulses were implemented
+using the CHIRP technique (Frequency-modulated pulse, see
+Supporting Information 2).79
+For our model compound the spectrum obtained is shown
+in Figure 8. Cross peaks show the various couplings along the
+backbone of the carbon chain. Both 1 JCF and 2 JCF coupling
+are observed. As expected, a carbon attached fluorine is
+characterized with a large 19 F–13 C 1 J-coupling from 194 Hz
+to 281 Hz. HMQC enables clear distinction between the two
+methyl groups by examining two-bond coupling cross-peaks,
+aiding in the structural assignment of the molecule’s various
+moieties
+OPERA-COSY 45
+The pulsed field gradient-enhanced COSY 4587 was naturally
+used to implement 19 F-19 F correlation enabling fast data
+collection while improving sensitivity and resolution
+(Frequency-modulated pulse, see Supporting Information
+4). COSY 45 present the advantage of useful cross-correlation
+patterns to identify and interpret the interactions between
+fluorines within a molecule and to decipher multiple long
+range correlations, notably in PFAS (illustrated in Supporting
+Information 5 with PFOA). It is straightforward to implement
+and to use, with no modification to the standard sequence but
+the replacement of both pulses with OPERA-45, and works as
+expected.
+Geminal homonuclear 19 F-19 F J-coupling constants are
+very large (here 288 Hz), but even though the coupling
+constants diminish very quickly with the number of bonds,
+long-range J-couplings through even up to 5 bonds (2 J, 3 J, 4 J
+or 5 J) are not uncommon, as shown in Figure 9 in our model
+compound. For this reason, we used an additional delay τ
+in the 19 F-COSY in order to tune the range of detected J-values.
+
+https://doi.org/10.26434/chemrxiv-2025-hdnzl-v2 ORCID: https://orcid.org/0009-0000-7993-1323 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+80
+
+8
+
+Briot-Dietsch et al.
+-128.4
+
+-122.0
+
+F
+
+(a)
+
+118,1
+
+-220.6
+
+F(b2) H
+
+F(b1)
+111,0
+
+82,7
+
+F (d)
+83.6
+
+F(e)
+
+121,6
+
+F(a)
+F(e) F(a)
+
+F(a)
+
+F(b2)
+-82.3
+
+F (b1)
+
+F(c)
+
+H
+
+F(e)
+
+F(e)
+
+-221.5
+
+F(e) F(a)
+F(b2)
+
+-74.8
+
+F(d) F(c)
+
+19 F
+
+F (b1)
+
+80
+
+F(d) F(c)
+
+19 F
+
+C(c)
+C(d)
+
+F(c)
+
+-220
+
+F(d)
+
+90
+
+100
+(F1) ppm
+
+(F1) ppm
+
+-180
+
+110
+
+F (b1)
+
+-140
+5
+
+J
+
+F (b2)
+
+C(b)
+-100
+
+F(a)
+
+C(a)
+C(e)
+-60
+
+-80
+
+-100
+
+-120
+
+-140
+
+-160
+
+-180
+
+-200
+
+-220
+
+OPERA-DOSY
+The 19 F DOSY experiment was implemented with the standard
+longitudinal eddy delay (LED) experiment88; 89 which does not
+require the use on π pulses (see Supporting Information 6). The
+set-up where only the final excitation pulse is implemented as
+an OPERA pulse was found to be the most sensitive.
+3.3
+
+Quantitative measure
+
+As mentioned above, a reliable quantitative experiment requires
+properly tuned experimental parameters. To this end, we
+measured the T1 relaxation values of the PFOA molecule in
+10% deuterated DMSO using both the saturation recovery
+and inversion recovery (IR) approaches (available in Supporting
+Information 8 and 9). The resulting values range from 0.35 to
+0.86 s, the slowest relaxation time being found for the terminal CF3 moiety and the -CF2 moiety located alpha to the functional
+group experiences faster longitudinal relaxation T1 at 0.35 s.
+When adding scans in a repetitive acquisition, saturation
+due to the excitation pulse reduces the intensity of the signal,
+
+19 F
+-60
+
+(F2 ) ppm
+
+Figure 8. Broadband 19 F-13 C HMQC on 2H,3H-decafluoropentane
+180 mM in DMSO-d6 (Vertrel™). Coupling patterns are enlarged
+for 1 JCF coupling. This type of coupling is relatively strong for
+fluorine-carbon bonds, making it detectable and allow to confirm
+connectivity. 1 JCF couplings were extracted from the F2-dimension:
+1J
+1
+1
+1
+CFa =281 Hz, JCFe =281 Hz, JCFb1 =273 Hz, JCFb2 =255 Hz,
+1J
+1J
+=203
+Hz,
+=194
+Hz.
+HMQC
+allows
+precise
+differentiation
+CFc
+CFd
+of the two methyl groups when we consider two-bond coupling crosspeaks circled in green between the fluorine nucleus F(a) at -82.3 ppm
+and the carbon nucleus C(b) at 111.0 ppm, between the fluorine
+nucleus F(e) at -74.8 ppm and the carbon nucleus C(d) at 83.6 ppm,
+and between the fluorine nucleus F(b) around -125 ppm and the
+carbon nucleus C(a) at 118,1 ppm. Artefact cross-peak around 100
+pm.
+
+F(e)
+
+-60
+
+13 C
+
+-80
+
+-100
+
+-120
+
+-140
+
+-160
+
+-180
+
+-200
+
+-220
+
+(F2 ) ppm
+
+Figure 9. Broadband 19 F-19 F COSY 45 on 2H,3H-decafluoropentane
+180 mM in DMSO-d6 (Vertrel™). Coupling patterns are enlarged.
+Purple zoom is showing the major and minor forms of this compound
+with two chiral centres. Long-range 19 F-19 F J-couplings occur over
+multiple bonds. While vicinal (3 J) and geminal (2 J) couplings are
+most common, long-range couplings extend over five bounds (5 J).
+
+and T1 relaxation imposes a minimal experimental repetition
+rate to recover a faithful intensity.
+This minimum repetition time depends on the T1 value
+and also on the excitation flip angle.90 For instance, with a π2
+flip angle, it is well known that a recovery time of at least 5
+times the T1 value is required to achieve an accuracy of 99%, to
+the price of a lower signal sensitivity, while the same accuracy
+is obtained with a recovery time of only 3.5×T1 with a 45°
+flip angle (see Supporting Information 10 for this relationship
+detailed).
+Here, for routine quantitation using OPERA-45, we chose
+an accuracy of 97.5% corresponding to 2.5×T1. Therefore, we
+set a relaxation delay of 1.5 s combined with an acquisition time
+of 0.66 s for a total repetition time of 2.16 s, these parameters
+allowing still a good sensitivity and a worst case accuracy of
+97.5% for PFOA -CF3 moiety.
+3.4
+
+Expressing qNMR results in mass equivalent of
+PFOA
+
+The quantitative NMR signal is proportional to the molar
+concentration of the detected species in the sample. NMR
+reporting is based on molar quantities which are meaningful and
+consistent for comparisons of substance amounts, irrespective
+of their chemical nature. However, in environmental and
+pollution contexts, the mass ratio is the standard approach.
+Since NMR is an untargeted method, it enables the universal,
+
+https://doi.org/10.26434/chemrxiv-2025-hdnzl-v2 ORCID: https://orcid.org/0009-0000-7993-1323 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+qNMR fluorine pollution analysis: perspectives on PFAS exposure characterisation using 19 F NMR
+non-specific detection of all soluble fluorinated organic
+species in a given sample. This includes mono-fluorinated
+compounds, polyfluorinated molecules, soluble polymers, and
+PFAS—without requiring prior knowledge of the compounds
+or their molecular classification. However, without detailed
+knowledge of the molecular composition, it is difficult to trace
+back to the mass. Although 19 F NMR spectra can provide
+insights into the molecular family of fluorinated compounds,
+this information alone is insufficient for estimating molecular
+mass. Factors such as partial oligomerisation, non-fluorinated
+substituents (e.g., ester groups or heteroatoms), or variations
+in fatty chain length significantly affect molecular mass without
+altering the NMR signal, apart from minor, non-predictable
+chemical shift changes.
+Given these complexities, we propose in this work three distinct
+approaches for reporting qNMR results, depending on the
+sample type and research focus:
+Known Compounds or Characteristic Signals
+When the detected compound is pre-identified or has a unique
+signal (e.g., trifluoroacetic acid), its molecular mass is known.
+This allows the weight ratio of the species to be directly
+calculated.
+Class-Specific Analysis
+For real-world samples when a specific class of compound
+is observed, the detected signal can be attributed to a
+representative compound from this class and expressed as an
+equivalent of this compound using with its molecular mass,
+representative for the entire class. For instance, when analysing
+PFAS, the detected signal can be expressed as an equivalent
+of a PFOA or PFOS, two well-characterised compounds with
+a molecular mass representative of the general PFAS family.
+For example, this approach assumes that the overall signal
+corresponds entirely to PFOA, thus yielding a content of PFAS
+in "PFOA mass equivalents".
+Total Fluorine Concentration
+Since all molecular fluorine in the sample generates an NMR
+signal directly proportional to its atomic molar concentration,
+the total amount of fluorine can be expressed as both molar
+concentration and fluorine weight ratio. This provides the total
+soluble fluorine content in the sample.
+By employing these complementary approaches, qNMR results
+can be reported effectively across diverse analytical contexts.
+
+4
+4.1
+
+Materials and methods
+Materials and sample preparation
+
+We have implemented the strategy outlined above on various
+scenarios, first with soil and water samples collected nearby
+an industrial plant producing PFAS containing materials,
+then with everyday life products either containing fluorinated
+ingredients or found to be contaminated.
+Samples sourcing
+Contaminated test samples, 3 soil samples (samples S1
+to S3) and 3 water samples from adjacent river (samples
+W1 to W5), were provided by the French Agency for
+Food, Environmental and Occupational Health & Safety ANSES’s Nancy Laboratory. They were collected by ANSES
+from an industrial plant manufacturing products containing
+
+9
+
+PFAS. Location, finished product details, volume productions
+and ingredient use rates are unknown. A sample of the
+manufactured product (referred to as sample R) was also
+provided.
+Pharmaceutical ingredients exemplified in this article were
+directly extracted from commercial tablets, capsules or spray
+medicines. Some daily life products were investigated and
+commercially purchased.
+2H,3H-perfluoropentane [138495-42-8], also known
+as Vertrel™ was purchased from Scientific Alfa Aesar as
+technical grade 90%. Perfluorooctanoic acid PFOA 95%
+[335-67-1], 1H,1H,2H,2H-Perfluorooctanol FTOH 97%
+[647-42-7], Perfluorodecanoic acid PFDA 97% [335-76-2],
+Perfluorotetradecanoic acid PFTeDA 96% [376-06-7] were also
+sourced from Scientific Alfa Aesar. Perfluorooctanesulfonic
+acid potassium salt PFOS 98% [2795-39-3], Perfluoro-3,6dioxadecanoic acid PFO2 DA [137780-69-9], Perfluoro-3,6,9trioxatridecanoic acid PFO3 TDA [330562-41-9], 1H,1H,2H,2HTridecafluorooctane-1-sulphonic acid 6:2 FTSA [27619-97-2]
+were obtained from Sigma Aldrich. Perfluoro(2-methyl-3oxahexanoic) acid GenX [13252-13-6] was acquired from
+Manchester
+Organics,
+Perfluoro(2-methylpentan-3-one)
+[756-13-8] from Apollo Scientific Ltd and Perfluoro-3methoxypropanoic acid PFMOPrA [377-73-1] from Enamine.
+No additional purification and fractionation were performed.
+All solutions for NMR measurements were prepared using
+a homemade solution of 10% DMSO-d6 in DMSO. Deuterated
+solvents (DMSO-d6, D2 O) were acquired from Eurisotop and
+DMSO from Sigma Aldrich.
+Samples preparation
+• Pharmaceutical sample references
+To extract some active ingredient from commercial tablets,
+capsules, etc. the sample was grinded into a fine powder,
+poured into DMSO - DMSO-d6 9:1(v/v), shaken for a few
+minutes and allowed to sit. Supernatant was collected and
+directly introduced into a 5 mm NMR tube for reference.
+• Polluted water samples from industrial plant
+The liquid samples are studied directly in 5 mm NMR tubes
+with 500 µL of sample and 100 µL of D2 O.
+• Polluted soil samples from industrial plant
+An exact mass around 50 milligrams of soil (air-dried and
+sieved) was macerated for 12 h at room temperature in
+a mixture of DMSO - DMSO-d6 9:1(v/v) according to
+a weight/volume ratio of 20%. After centrifugation, the
+supernatant was collected and directly introduced into a 5 mm
+NMR tube.
+• Liquid samples
+All liquid samples were studied directly in 5 mm NMR tubes
+with 540 µL of sample and 60 µL of DMSO-d6.
+• Cosmetics or oral hygiene care samples
+To extract creamy foundation product, concealer, powder eye
+shadow or toothpaste, the material was poured into DMSO DMSO-d6 9:1(v/v), shaken for a few minutes and allowed to
+sit. Supernatant was collected and directly introduced into a 5
+mm NMR tube.
+
+https://doi.org/10.26434/chemrxiv-2025-hdnzl-v2 ORCID: https://orcid.org/0009-0000-7993-1323 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+10
+4.2
+
+Briot-Dietsch et al.
+Eyeliner, incl. Polyperfluoromethylisopropyl Ether
+
+NMR analysis
+
+19
+
+F spectra were acquired on a Bruker spectrometer 600 MHz
+Avance I (Bruker BioSpin, Rheinstetten, Germany) equipped
+with a Quadruple Resonance CryoProbe 5 mm QCI-F
+allowing sensitivity increase by a factor of three on 19 F. They
+were collected operating at the 19 F resonance frequency of
+564.607990 MHz at 298 K under the control of Topspin-2.1
+(Bruker BioSpin). 19 F referencing was performed according the
+IUPAC convention91 with no need of a fluorinated reference
+material. The inversion recovery pulse sequence was used for
+longitudinal relaxation time (T1) determination, and a python
+program used to extract the values, using a standard leastsquare 3 parameters approach (see Supporting Information 9).
+1D experiments
+The 1D 19 F qNMR experiments were recorded using OPERA45 shaped pulse.83 They were acquired with a 100 kHz spectral
+width (177.11 ppm), with the digital filtering set to smooth,
+on 128 k points (0.65 s acquisition time) and a 1.5 s relaxation
+delay. Experiments were acquired using block strategy, where
+the data were stored independently every 256 scans, and coadded during the Fourier processing. The number of blocks
+was adapted for each sample according to the required signalto-noise ratio.
+All 1D experiments were processed as follows: the FID
+was apodized with a 30 Hz wide Gaussian broadening, zerofilled twice before Fourier transform, and phase corrected.
+When needed, to correct for baseline distortion, the spectrum
+was reverse Fourier transformed and the 8 first points of the
+reconstructed FID corrected by a reverse Linear Prediction
+computation using the fast Burg algorithm and Fourier
+transformed back. The baseline was further optimized by
+applying a spline correction computed from the empty region
+of the spectrum.
+Quantification was performed by integration of the specific
+line in the spectrum. Quantification results are computed
+from the area under the curve as molar concentration by
+correcting for the effective number of scans (related to the
+number of blocks) and expressed in weight ratio with respect
+of the original sample. Unknown compounds are expressed as
+PFOA equivalent (see 3.4 Expressing qNMR results in mass
+equivalent of PFOA).
+2D experiments
+The HMQC experiment was performed using the SoFastHMQC sequence (presented in the Supporting Information
+2). The 2H,3H-decafluoropentane (Vertrel™) sample was at
+a concentration of 180 mM in d6-DMSO. Each FID was
+acquired with a 100 kHz spectral width (177.11 ppm), with
+the Digital filtering set to smooth, on 4 k points and with
+a 1.94 s relaxation delay. The 19 F excitation pulse was the
+same OPERA-45 pulse as used in other experiments. The 19 F
+refocusing pulse as well as the initial inversion SoFast pulse
+were performed using a 1.5 ms chirp pulse, covering a 300 kHz
+frequency range, with a B1 power at 6.18 kHz. The 13 C π2
+pulses were 20 µs. Four scans were acquired per increment and
+1024 increments were performed for a total acquisition time of
+2 hours 15 min.
+The COSY-45 experiment was acquired using a modified
+sequence, using 1 H decoupling (see Supporting Information 4).
+Both HMQC and COSY experiments were apodized with
+
+Foundation, incl. Fluorphlogopite
+
+-60
+
+-80
+
+-100
+
+-120
+
+-140
+ppm
+
+-160
+
+-180
+
+-200
+
+-220
+
+Figure 10. 19 F NMR spectra of two cosmetic products. (1) A
+foundation with synthetic fluorphlogopite additive used to add a
+glittering effect to products, giving rise to a peak at -119.1 ppm;
+(2) An eyeliner with polyperfluoromethylisopropyl ether polymer to
+make it longer lasting and water-proof, giving rise to 3 patterns
+around -59 ppm, a really weakly distinguishable signal for terminal
+-OCF3 , at -80.5 ppm for the -OCF2 - and -CF3 - polymeric moieties
+and at -145.1 ppm for -CF- polymeric moieties.
+
+shifted sine-bell along both dimensions, zero-filled once on each
+axis, and computed in magnitude after FT. All the DOSY
+experiments were computed using the PALMA algorithm 92 .
+All NMR spectra were processed using an open-source
+Python package dedicated to Fourier spectroscopies called
+“Spectrometry Processing Innovative KErnel” (SPIKE).93 All
+data series were processed with a automatic pipeline program
+derived from Plasmodesma, an autonomous unsupervised
+processing of set of 1D and 2D NMR experiments which
+guarantees homogeneous data processing within the set.94; 95
+
+5
+5.1
+
+Results Case studies
+Detection with daily life products
+
+We have tested the procedure presented above on some
+everyday products including food, cosmetics and hygiene
+products, pharmaceuticals and agrochemicals. The products
+included various common items, representing a range
+of chemical compositions from fluorinated compounds,
+perfluorinated substances to fluoride species. We exemplified
+with some NMR profiles highlighting typical encountered
+situations, either products containing fluorinated ingredients
+or found to be contaminated. However in this case we are
+unable to determine whether contaminants are due to poor
+manufacturing practices, packaging pollution or to the use of
+polluted raw materials.
+Claimed fluorinated ingredients
+In Figure 10, we present spectra of cosmetic products
+containing fluorinated ingredients, as identified in their
+official ingredient lists: synthetic fluorphlogopite and
+polyperfluoromethylisopropyl ether polymer. Until recently,
+PFAS were used in cosmetics for their ability to make
+products long-lasting, water-resistant, and smudge-proof
+as well as for product consistency, texture and longevity
+issues. The most common used were polytetrafluoroethylene
+(PTFE) and perfluorodecalin, along with perfluorooctyl
+triethoxysilane, perfluorononyl dimethicone or perfluorohexane.
+The manufacture and use of fluorine-containing cosmetics
+
+https://doi.org/10.26434/chemrxiv-2025-hdnzl-v2 ORCID: https://orcid.org/0009-0000-7993-1323 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Foundation, incl. Fluorphlogopite
+
+-60
+
+-80
+
+-100
+
+-120
+
+-140
+
+-160
+
+-180
+
+-200
+
+-220
+
+qNMR fluorine pollutionppm
+analysis: perspectives on PFAS exposure characterisation using 19 F NMR
+
+11
+
+Toothpaste, incl. 2 fluoride species
+Fluvalinate strip
+
+Unknown origin honey
+
+Concealer
+Acacia honey
+
+Eyes shadow
+Riesling
+
+Mosquito spray
+
+-60
+
+-60
+
+-80
+
+-100
+
+-120
+
+-140
+ppm
+
+-160
+
+-180
+
+-200
+
+-80
+
+-100
+
+-120
+
+-140
+ppm
+
+-160
+
+-180
+
+-200
+
+-220
+
+-220
+
+Figure 11. 19 F NMR spectra of four PFAS contaminated samples
+from commercial daily life products (toothpaste, concealer, eye
+shadow and mosquito repellent spray exhibiting the characteristic
+PFAS fingerprint grouping three sets of signals around -80, -115 ppm
+and a last cluster centred around -123 ppm (highlighted in blue).
+
+Figure 12. 19 F NMR spectra of four consumer market products with
+fluorinated contaminants. (1) Riesling sample displaying multiple
+peaks: singlet at -77.7, -146.0, -150.2, -158.5 and -159.1 and two
+complex patterns around -147.6 and -162.2 ppm. (2-3) Both honey
+from different sources exhibiting peak at -73,7 ppm. (4) Hive
+treatment product supposed to contain fluvalinate corresponding
+to the peak around -59.5 ppm but containing at least another
+fluorinated substances with unexpected peaks at -61.3, -128.7 and
+-128.9 ppm.
+
+not only pose health risks but contribute to environmental
+pollution particularly through washing off and, ultimately,
+disposal.
+Tested
+cosmetics
+include
+a
+foundation
+with
+fluorphlogopite, a synthetic mica also used in nail polish,
+eye shadow or lip gloss; and an eyeliner formulated with
+a polyperfluoromethylisopropyl ether additive. This last
+compound, introduced as one of the first fluorinated polymers
+for cosmetics since the late 1980s, is recognized for enhancing
+waterproof performance.
+Some toothpaste samples have been explored. It is
+one of the most commonly used healthcare products.
+Various fluoride additives are incorporated in commercial
+toothpaste formulations to prevent tooth decay; among
+them sodium fluoride (NaF), sodium monofluorophosphate
+(Na2 PO3 F), stannous fluoride (SnF2 ) or Olaflur, an alkylammonium fluoride. Regardless of the fluorine compound
+or the toothpaste formulation, claimed fluorine ingredients
+can be visualized by 19 F NMR (see Supporting Information 11).
+
+impurities have been observed in a eye shadow powder and a
+concealer with their classical 19 F NMR fingerprints, combining
+three characteristic patterns two of them around -80, -115
+ppm and a last cluster centred around -123 ppm. Likewise
+among tested hygienic products, a mosquito repellent in spray
+and a toothpaste were found to contain PFAS. Again we are
+unable to determine whether contaminants are due to poor
+manufacturing practices, packaging pollution or to the use of
+polluted raw materials (see Figure 11).
+
+The 19 F NMR technique enables also the precise
+observation of the active substance in fluorine-based medicine
+while also ensuring the detection or confirmation of the
+absence of other potential fluorine-based impurities. This
+approach is useful for quality control,69 guaranteeing the purity
+and efficacy of pharmaceutical formulations (see Supporting
+Information 12).
+PFAS contaminations
+In parallel, contamination of cosmetics with PFAS is becoming
+a growing issue in recent years,96 since cosmetics applied to
+the skin, face, and hair can be a potential route of exposure
+to harmful chemicals, leading to various health risks over time.
+PFAS were initially added to cosmetics to provide smoothness
+and shine, while also improving the product’s texture. In some
+cases, they can also incidentally appear in cosmetics due to
+impurities in raw materials or packaging issues. PFAS-like
+
+Fluorinated contaminations
+We also disclose the spectrum of an acaricide strip based on
+fluvalinate, marketed for honey bee protection. The spectrum
+reveals a characteristic peak around -60 ppm, indicative of
+its primary active component isomers, along with additional
+unexpected peaks at -61.3, -128.7 and -128.9 ppm, potentially
+associated with at least another fluorinated compound not
+mentioned in claimed composition. Impurities that may
+originate from various sources, such as synthesis residues,
+formulation, or packaging, like active substances, will end up
+in the environment.
+While the likelihood of fluorinated compounds being
+present in wine should be generally low due to controlled
+agricultural practices, concerns might even arise from vineyard
+contamination, packaging materials leaks or an industrial
+proximity. Traces of fluorinated compounds in a French Alsatian
+white wine, from Riesling grape were found.
+Similarly, two of six honey samples (first-price honey
+without specified provenance, and an acacia honey) also
+showed traces with a single peak at -73.8 ppm as shown in
+Figure 12
+
+https://doi.org/10.26434/chemrxiv-2025-hdnzl-v2 ORCID: https://orcid.org/0009-0000-7993-1323 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+12
+
+Briot-Dietsch et al.
+
+Manufacture of PFAS containing material
+
+Environmental diagnostic
+
+S1
+
+W1
+
+S2
+
+W2
+
+S3
+
+W3
+
+Figure 13. Diagnosis of PFAS pollution nearby an industrial plant manufacturing PFAS containing material. Three water samples (blue spectra)
+were collected from a nearby river, and three soil samples (green spectra) were taken from an adjoining plot. They were analysed by 19 F NMR
+and compared against the reference product (at least two species, one of which is very marginal according the right shoulder of the peak
+at -80.16 ppm). The manufactured product (black spectrum) exhibits the characteristic three-part PFAS fingerprint with signals at -80.16,
+-112.60 ppm and a last cluster centred around -123 ppm. This similar pattern was found in soil sample S1 and water samples W1 and W2.
+Soil sample S1 exhibits others peaks at -112.40, -112,75, -113,42 and -114,58 ppm revealing at least 4 others PFAS species. Minor peaks,
+observed nearby -71.0 -73.5 and -103.1 ppm, were neither identified nor correlated with each other. S2 and S3 show very similar NMR profiles
+without the classical three-part PFAS fingerprint. Both peaks at -73.5 and -103.1 ppm are also found in S2 and S3 soils. Water samples W1
+and W2 contain at least two PFAS species with two peaks at -115.4 and -115.7 ppm, along with singlet at -82.9 ppm and cluster at -126.0
+ppm, the characteristic pattern of PFAS. Additional peaks at -80.9, -121.5, -158.3 and -158.7 ppm were found in W2 revealing presence of
+more fluorinated compounds. The peak at -121.5 ppm appears also in W1 and W3 along with a singlet at -112.3 ppm.
+
+5.2
+
+Industrial plant pollution diagnosis
+
+In case of suspected pollution, a comprehensive environmental
+monitoring of pollutants is necessary in order to track pollution
+source and levels as well as to carry out efficient remedial
+measures. We present here an investigation by 19 F NMR of
+the occurrence of fluorinated contaminants in soil and water
+samples gathered during an ANSES sampling campaign at an
+industrial contaminated site (Figure 13). To assess potential
+PFAS pollution in the vicinity of this industrial facility,
+environmental samples were compared against the reference
+PFAS-containing product known to be used or produced at
+the industrial plant. The analyses have been performed using
+the protocols described here and summarized in Table 1.
+Reference PFAS-containing material sourced from the
+plant
+Interestingly, we also obtained a reference product, either the
+intended manufactured product or ingredients used during the
+process, however the structure of which was not disclosed to
+us. Its 19 F NMR fingerprints, with a characteristic pattern
+
+consisting in two signals around −80 and −112 ppm and
+last cluster centred around −123 ppm, is consistent with
+known PFAS structural motifs, and in particular fluorotelomer
+species. Indeed the chemical shift of –CF2 group closest to
+the functional group can serves as a distinctive marker, at
+least enabling rapid spectral distinction between perfluorinated
+(PFCA, PFSA, PFPA, FASA) typically around -115 ppm in
+DMSO-d6 or polyfluorinated (FTOH, FTSA, FTCA, N-alkyl
+FASA) which tend to appear closer to –112 ppm.
+Qualitative analysis of environmental samples
+The pattern of the reference PFAS-containing product was
+found in one soil sample S1 and two of the water samples W1
+and W2, whereas S2, S3 and W3 didn’t show this characteristic
+three-part PFAS fingerprint. Sample S1 exhibits several PFAS
+species (at least five), including two major ones, one that could
+be identified as a fluorotelomer and an other as a perfluorinated
+compound according to their chemical shifts. Additional peaks
+reveal the presence of more fluorinated compounds in these
+samples. Nevertheless, whereas S2 and S3 exhibit highly
+
+https://doi.org/10.26434/chemrxiv-2025-hdnzl-v2 ORCID: https://orcid.org/0009-0000-7993-1323 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+F1 [log(m2/s)]
+
+qNMR fluorine pollution analysis: perspectives on PFAS exposure characterisation using 19 F NMR
+
+- 8.5
+
+- 9.0
+
+- 9.5
+
+DOSY - Processed with PALMA Version 1.0
+
+- 105
+
+- 110
+
+- 115
+
+- 120
+
+- 125
+
+- 130
+
+F2 [ppm]
+
+Figure 14. DOSY experiment on W1 sample. Two molecular
+populations with clearly differentiated coefficients of diffusion are
+highlighted.
+
+similar NMR profiles with two well-separated peaks in the
+spectrum, they are only detectable with extended experiment
+durations indicating a minimal pollution. Two of the water
+samples (W1, W2) present the fingerprint of the manufactured
+material but show profiles slightly different from the S1 soil
+sample. They display different additional species. Sample W2
+exhibits an unusual peak nearby -158 ppm, suggesting the
+presence of a compound with tertiary carbon–fluorine centre.
+DOSY experiments were performed on the W1 and the S1
+samples in order to obtain additional information. It clearly
+reveals two distinct populations in W1 sample, one of which
+is PFAS-related and the other of a lighter species with a
+higher diffusion coefficient (Figure 14). S1 shows a greater
+complexity in the PFAS components, which suggest at least
+two different diffusion coefficients and thus two species, as
+previously suspected based on the –CF2 group alpha to the
+functional groups.
+The PFAS contamination is most likely originated
+from production, as characteristic NMR fingerprints of the
+manufactured material were directly found in one soil sample
+and 2 water samples.
+Quantitative analysis of environmental samples
+While individual substances cannot be fully identified from this
+single experiment —nor was that the objective— it remains
+possible to quantify the total PFAS content using an external
+PFOA reference calibration.
+Regarding the signal of interest, we found that in case of
+complex polluted mixture or samples integrating PFECA type
+molecules, the -CF2 - moiety located alpha to the functional
+group is most significant because of reduced overlap with
+other spectral features. The -CF3 region may include additional
+contributions from overlapping -CF2 O- moieties.
+The intensity of the NMR signal is characteristic to the
+number of molecules rather than to their mass, for this reason
+the results are naturally presented here in molar concentration
+of the analyte in the analysed matrices. The T1 table presents
+the quantification results.
+The most loaded sample, S1, was found to contain 753
+
+13
+
+Table 1. Quantification results
+Sample
+
+[PFAStotal ]
+
+[Ftotal ]
+
+S1
+S2
+S3
+
+753 nmol/g
+<LOD
+<LOD
+
+6000 nmol/g
+67 nmol/g
+57 nmol/g
+
+W1
+W2
+W3
+
+48 µM
+13 µM
+<LOD
+
+390 µM
+137 µM
+22 µM
+
+nmol PFAS per gramme of dry soil after a 12-hours extraction,
+as 3 hours was insufficient for a complete extraction.
+For comparative purposes to others methods, we also
+propose to express this content in terms of mass as PFOA
+equivalents (see section 3.4), a way of assuming “artificially”
+that all -CF2 - signals adjacent to the terminal functionality are
+due to PFOA, an approach which is coherent as all CF2 have
+the same molar mass. Thus using the molar mass of PFOA
+(MW=414.07 g/mol) as the average molar mass of the present
+chemical species, this soil is found highly contaminated at 312
+µg PFOAequiv /g dry soil.
+The pollutants in soil samples S2 and S3 were only
+detectable after an extended experiment duration, indicating
+they are much less polluted, with concentrations below the
+limit of detection (LOD) for PFAS within a reasonable time
+frame (4096 scans), even if around 60 nmol/g of fluorine were
+detected.
+Occurrence of per- and polyfluoroalkyl substances (PFAS)
+in soil and water sample indicate an environmental pollution
+originating from the industrial plant, either impacted by
+industrial effluents or receiving run-off or deposition from
+the site. While PFAS are claimed to be "forever chemicals",
+they may be subject to possible chemical transformations
+upon deposition, which might account for the variations in
+the content and the concentrations observed in the different
+analysed samples.
+6
+
+Concluding remarks and outlook
+
+Comprehensive diagnosis tool
+The diagnosis workflow summarized in Figure 15 illustrates
+the use of 19 F NMR spectroscopy for quantifying soluble
+fluorine content in various samples as either total fluorine
+content or total PFAS content using their characteristic
+NMR fingerprints. The modification of active ingredients with
+fluorine or fluorinated motifs, remains an important method
+for designing efficient new chemical entities, because the
+fluorine atoms modulate the properties of active molecules as
+well as improving their sturdiness. Chemists have developed
+numerous and immensely diverse fluorinated compounds,
+which finally end up in the environment. We believe 19 F NMR
+offers a robust strategy to observe the whole scope of these
+fluorinated pollutants. Traditional targeted approaches often
+fail to capture the broader contamination landscape, leaving
+gaps in monitoring and remediation strategies. An untargeted
+diagnosis tool like 19 F NMR could act as a “hot-spot”
+indicator, identifying areas that warrant further investigation.
+It addresses the limitations of conventional techniques, which
+largely focus on specific, pre-characterized compounds and are
+unable to map the full extent of contamination. Or even more,
+a synergistic strategy integrating LC-MS/MS and NMR —an
+
+https://doi.org/10.26434/chemrxiv-2025-hdnzl-v2 ORCID: https://orcid.org/0009-0000-7993-1323 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+14
+
+Briot-Dietsch et al.
+
+19
+OPERA 45
+
+F
+
+Figure 15. General workflow of fluorinated content diagnosis based on 19 F NMR acting as an universal detector. Various samples either soluble or
+extractable can investigated (cosmetic, food, medicine, environment...). qNMR can offer high-throughput analysis by offering simple minimalist
+sample preparation, while providing an unbiased overview of the whole soluble fluorine sample content. Credit NMR instrument: Wikimedia Database Center for Life Science (DBCLS).
+
+approach validated in omics research97; 98 — could provide a
+more robust analytical framework. Now more than ever, the
+iceberg analogy is crucial: targeted methods reveal only the
+tip of the problem, leaving the largest part hidden beneath the
+Attribution NMR instrument : Database Center for Life Science (DBCLS)
+surface as shown in Figure 16.
+
+Moderate to high level pollution diagnosis tool
+As of to day, using acquisition time in the order of hours, we
+experienced a Limit of Detection (LOD) around 500 nmol/L or
+1.5 nmol/g for typical medium-sized molecules. For a small
+molecule as trifluoroacetic acid (TFA), the LOD can be as
+low as 150 nmol/L, which corresponds to roughly 20 µg/L
+(ng/mL). Limit of Quantification (LOQ), typically defined as
+three times the LOD according to the signal-to-noise based
+definition, rises to low µM, around 5 nmol/g for solid samples
+or typically for TFA about 60 ng/mL.
+For PFAS compounds, in terms of mass concentration,
+the Limit of Quantification (LOQ) would be in the order
+of 500 µg/L in liquid matrices and 2.5 µg/g in soil sample,
+eventually reconcentration would improve these figures.
+So the focus for NMR analysis is not in detecting trace
+amounts but rather in identifying and quantifying pollution
+at significant concentrations. This means that instead of
+working at trace levels as in mass spectrometry, NMR is better
+suited to the analysis of contamination at moderate to high
+levels, where larger quantities of pollutants are present in a
+
+PFECA
+
+PFSA
+
+FTAB
+
+FASA
+
+ALTERNATIVE EMERGING PFAS
+
+PFPiA
+
+FTSA
+
+FTMAC
+
+PFPE
+
+FN
+M
+R
+
+PFPA
+
+19
+
+Easy-to-handle diagnosis tool
+Through a simple procedure of straightforward dilution or
+extraction followed by a spectrum acquisition, 19 F NMR
+provides a direct and thorough assessment of the total
+fluorinated content, without prior conversion of samples into
+instrument-compatible formats. The spectra directly reflect the
+presence of all fluorinated contaminants, PFAS or non-PFAS,
+expected or unexpected, native or degradation products,
+offering an untargeted approach to pollution analysis. The
+procedure developed here, based on the OPERA-45 sequence
+appears to be an elegant and efficient way to conduct
+fluorine pollution analysis by NMR and was applied to
+several analysis scenarios. The OPERA-45 pulse is reliable,
+robust and particularly suitable for large spectral widths and
+compounds exhibiting strong homonuclear J-coupling like
+PFAS. Although pre-concentration efforts may be necessary
+to address the sensitivity limitations of 19 F NMR in low
+concentration samples, handling procedures remain minimalist,
+ensuring an absence of cross pollution and the sample integrity.
+
+HISTORICAL PFAS
+
+PFCA
+
+Figure 16. 19 F NMR as a complete tool for untargeted and impartial
+analysis, as targeted analysis only allows you to see the tip of the
+iceberg.
+
+sample. Moreover, it can be expected that under continuous
+development of the NMR technologies in specific cryo-probes
+and higher fields, the sensitivity and resolution of the technique
+can still be extended.
+As illustrated throughout this study, 19 F NMR offers
+a comprehensive strategy for observing the full range of
+fluorinated pollutants. From its ability to detect all soluble
+fluorine species this untargeted, unbiased approach method
+stands out as a promising solution for tackling the complexity
+of fluorine pollution. However, to realize its full potential,
+continuous innovation and optimization will be required
+to address practical challenges it faces, including sample
+preparation, sensitivity enhancement, and data interpretation
+to identify individual substances. We are confident that with
+further advancements, 19 F NMR will become an invaluable
+tool for monitoring fluorinated contaminants, contributing to
+environmental protection and public health efforts on a global
+scale.
+
+https://doi.org/10.26434/chemrxiv-2025-hdnzl-v2 ORCID: https://orcid.org/0009-0000-7993-1323 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+qNMR fluorine pollution analysis: perspectives on PFAS exposure characterisation using 19 F NMR
+Author contributions
+M.A.D. conceived of the foundational idea. J.A.H. made
+the proof of concept. A.B.D. investigated, developed, and
+implemented the study, leading to the fully refined and
+completed concept. M.A.D implemented the presented NMR
+sequence and developed the original processing tool. A.B.D.
+performed almost all the acquisitions and carried out the
+experiments and the sample preparations. L.D. supported
+processing tools development to analyse data and helped
+some sample preparations and acquisition. A.B.D. wrote the
+manuscript with input of M.A.D and L.D. M.A.D. wrote the
+supporting information with input of A.B.D. and L.D.
+
+Acknowledgments
+We thank ANSES for providing test samples and the French
+National Agency for Research ANR for financial supporting
+under the grant number ANR-18-CE44-009.
+
+Financial disclosure
+None reported.
+
+Conflict of interest
+The authors declare no potential conflict of interests.
+REFERENCES
+
+1. Dehnen S, Schafer LL, Lectka T, Togni A. , Fluorine: A Very
+Special Element and Its Very Special Impacts on Chemistry. Org.
+Lett. 2021, 23, 9013–9019. doi: 10.1021/acs.orglett.1c03799
+2. Smart BE. , Fluorine substituent effects (on bioactivity).
+J. Fluorine Chem. 2001, 109, 3-11. doi: 10.1016/S00221139(01)00375-X
+3. Solvay Products & Solutions, Organic Fluorinated CompoundsRaw materials, Intermediates & Active ingredients.
+https://www.solvay.com/en/chemical-categories/
+fluorine-chemicals/organic-fluorinated-compounds
+(accessed 4 April 2025); 2025. Published online.
+4. Purser S, Moore PR, Swallow S, Gouverneur V. , Fluorine in
+medicinal chemistry. Chem. Soc. Rev. 2008, 37, 320-330. doi:
+10.1039/B610213C
+5. Inoue M, Sumii Y, Shibata N. , Contribution of Organofluorine
+Compounds to Pharmaceuticals. ACS Omega 2020, 5, 1063310640. doi: 10.1021/acsomega.0c00830
+6. Shabir G, Saeed A, Zahid W, et al. , Chemistry and
+Pharmacology of Fluorinated Drugs Approved by the FDA
+(2016–2022). Pharmaceuticals 2023, 16, 1162-1212.
+doi:
+10.3390/ph16081162
+7. Henary E, Casa S, Dost TL, Sloop JC, Henary M. , The Role
+of Small Molecules Containing Fluorine Atoms in Medicine and
+Imaging Applications. Pharmaceuticals 2024, 17, 281-306. doi:
+10.3390/ph17030281
+8. Jeschke P. , The Unique Role of Fluorine in the Design of Active
+Ingredients for Modern Crop Protection. ChemBioChem 2004,
+5, 570-589. doi: 10.1002/cbic.200300833
+9. Ogawa Y, Tokunaga E, Kobayashi O, Hirai K, Shibata N.
+, Current Contributions of Organofluorine Compounds to the
+Agrochemical Industry. iScience 2020, 23, 101467.
+doi:
+10.1016/j.isci.2020.101467
+10. Buck RC, Franklin J, Berger U, et al. , Perfluoroalkyl and
+polyfluoroalkyl substances in the environment: Terminology,
+classification, and origins. Integrated Environmental Assessment
+and Management 2011, 7, 513-541. doi: 10.1002/ieam.258
+11. Sauvé S, Desrosiers M. , A review of what is an emerging
+contaminant. Chem. Cent. J. 2014, 8, 15. doi: 10.1186/1752153X-8-15
+12. Stockholm Convention, What are POPs?. https://chm.pops.
+
+15
+
+int/TheConvention/ThePOPs/tabid/673/Default.aspx
+(accessed 4 April 2025); 2025. Published online.
+13. Gaines LGT. , Historical and current usage of per- and
+polyfluoroalkyl substances (PFAS): A literature review. Am. J.
+Ind. Med. 2022, 66, 353–378. doi: 10.1002/ajim.23362
+14. Glüge J, Scheringer M, Cousins IT, et al. , An overview
+of the uses of per- and polyfluoroalkyl substances (PFAS).
+Environ. Sci.: Process. Impacts 2020, 22, 2345-2373. doi:
+10.1039/D0EM00291G
+15. Figuière R, Miaz LT, Savvidou E, Cousins IT. , An Overview
+of Potential Alternatives for the Multiple Uses of Per- and
+Polyfluoroalkyl Substances. Environ. Sci. Technol. 2025, 59,
+2031-2042. doi: 10.1021/acs.est.4c09088
+16. Plunkett RJ. , Oral History Interview, by Bohning, James
+J. on 1986-Apr-14 (First session) and 1986-May-27 (Second
+session).
+https://digital.sciencehistory.org/works/
+0g354g32t#tab=ohDescription (accessed 31 March 2025);
+2025. Published online.
+17. Ebnesajjad S. , Discovery and History of Fluoropolymers. In:
+Introduction to Fluoropolymers, , William Andrew Publishing,
+Oxford, 2013, 17-35
+18. USEPA deems two GenX PFAS chemicals more toxic than
+PFOA. Chem. Eng. News 2021, 99. According to a USEPA
+assessment, October 2021. https://www.epa.gov/chemicalresearch/human-health-toxicity-assessments-genx-chemicals
+(accessed 4 April 2025).
+19. Xin Y, Ren XM, Wan B, Guo LH. , Comparative in Vitro and in
+Vivo Evaluation of the Estrogenic Effect of Hexafluoropropylene
+Oxide Homologues. Environ. Sci. Technol. 2019, 53, 8371-8380.
+doi: 10.1021/acs.est.9b01579
+20. Mahoney H, Xie Y, Brinkmann M, Giesy JP. , Next generation
+per- and poly-fluoroalkyl substances: Status and trends, aquatic
+toxicity, and risk assessment. Eco-Environment & Health 2022,
+1, 117-131. doi: 10.1016/j.eehl.2022.05.002
+21. Evich MG, Davis MJB, McCord JP, et al. , Per- and
+polyfluoroalkyl substances in the environment. Science 2022,
+375. doi: 10.1126/science.abg9065
+22. European
+Chemicals
+Agency
+publishes
+PFAS
+restriction
+proposal.
+https://echa.europa.eu/fr/-/
+echa-publishes-pfas-restriction-proposal
+(accessed
+4 April 2025); 2025. Published online.
+23. United States Environmental Protection Agency, CompTox
+Chemicals Dashboard v2.4.1, Contaminant Candidate List CCL
+5 PFAS subset: 10.246 chemicals. https://comptox.epa.
+gov/dashboard/chemical-lists/CCL5PFAS (accessed 4 April
+2025); 2025. Published online.
+24. Leung SCE, Wanninayake D, Chen D, Nguyen NT, Li Q. ,
+Physicochemical properties and interactions of perfluoroalkyl
+substances (PFAS) - Challenges and opportunities in sensing
+and remediation. Sci. Total Environ. 2023, 905, 166764. doi:
+10.1016/j.scitotenv.2023.166764
+25. Salvatore D, Mok K, Garrett KK, et al. , Presumptive
+Contamination: A New Approach to PFAS Contamination Based
+on Likely Sources. Environ. Sci. Technol. Lett. 2022, 9, 983–990.
+doi: 10.1021/acs.estlett.2c00502
+26. Mikkonen AT, Martin J, Upton RN, et al. , Spatio-temporal
+trends in livestock exposure to per- and polyfluoroalkyl
+substances (PFAS) inform risk assessment and management
+measures. Environ. Res. 2023, 225, 115518.
+doi:
+10.1016/j.envres.2023.115518
+27. Cordner A, Brown P, Cousins IT, et al. , PFAS Contamination
+in Europe: Generating Knowledge and Mapping Known and
+Likely Contamination with “Expert-Reviewed” Journalism.
+Environ. Sci. Technol. 2024, 58, 6616–6627.
+doi:
+10.1021/acs.est.3c09746
+28. Fenton SE, Ducatman A, Boobis A, et al. , Per- and
+Polyfluoroalkyl Substance Toxicity and Human Health Review:
+Current State of Knowledge and Strategies for Informing Future
+
+https://doi.org/10.26434/chemrxiv-2025-hdnzl-v2 ORCID: https://orcid.org/0009-0000-7993-1323 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+16
+
+Briot-Dietsch et al.
+
+Research. Environmental toxicology and chemistry 2020, 40,
+606–630. doi: 10.1002/etc.4890
+29. Panieri E, Baralic K, Dukic-Cosic D, Dordevic A, Saso L. , PFAS
+Molecules: A Major Concern for the Human Health and the
+Environment. Toxics 2022, 10, 44. doi: 10.3390/toxics10020044
+30. Dickman RA, Aga DS. , A review of recent studies on toxicity,
+sequestration, and degradation of per- and polyfluoroalkyl
+substances (PFAS). J. Hazard. Mater. 2022, 436, 129120. doi:
+10.1016/j.jhazmat.2022.129120
+31. Meegoda JN, Bezerra De Souza B, Casarini MM, Kewalramani
+JA. , A review of PFAS destruction technologies. Int.
+J. Environ. Res. Public Health 2022, 19, 16397.
+doi:
+10.3390/ijerph192416397
+32. Verma S, Lee T, Sahle-Demessie E, Ateia M, Nadagouda
+MN. , Recent advances on PFAS degradation via thermal and
+nonthermal methods. Chemical Engineering Journal Advances
+2023, 13, 100421. doi: 10.1016/j.ceja.2022.100421
+33. Yang L, Chen Z, Goult CA, Schlatzer T, Paton RS,
+Gouverneur V. , Phosphate-enabled mechanochemical PFAS
+destruction for fluoride reuse. Nature 2025, 640, 100–106. doi:
+10.1126/science.adi1557
+34. Stockholm Convention on Persistent Organic Pollutants
+(POPs). https://www.pops.int/ (accessed 4 April 2025);
+2025. Published online.
+35. European Commission, Commission Regulation (EU) 2021/1297
+of 4 August 2021 amending Annex XVII to Regulation (EC)
+No 1907/2006 of the European Parliament and of the Council
+as regards perfluorocarboxylic acids containing 9 to 14 carbon
+atoms in the chain (C9-C14 PFCAs), their salts and C9-C14
+PFCA-related substances. https://eur-lex.europa.eu/eli/
+reg/2021/1297/oj (accessed 4 April 2025); 2021. Published
+online.
+36. United
+States
+Environmental
+Protection
+Agency,
+PFAS
+Strategic
+Roadmap:
+EPA’s
+Commitments
+to
+Action
+2021-2024.
+https://www.epa.gov/pfas/
+pfas-strategic-roadmap-epas-commitments-action-2021-2024
+(accessed 4 April 2025); 2025. Published online.
+37. Ng C, Cousins IT, DeWitt JC, et al. , Addressing Urgent
+Questions for PFAS in the 21st Century. Environ. Sci. Technol.
+2021, 12755-12765. doi: 10.1021/acs.est.1c03386
+38. Chaudret B, Donard O, Eisenstein O. , The French Academy
+of Sciences, La pollution aux PFAS : état des lieux des
+connaissances et enjeux de société; Ministry of Ecological
+Transition & BRGM. 2025.
+39. Cordner A, Goldenman G, Birnbaum LS, et al. , The True Cost
+of PFAS and the Benefits of Acting Now. Environ. Sci. Technol.
+2021, 55, 9630–9633. doi: 10.1021/acs.est.1c03565
+40. OECD Series on Risk Managementch. Reconciling Terminology
+of the Universe of Per- and Polyfluoroalkyl Substances:
+Recommendations and Practical Guidance No. 61; OECD
+Publishing, Paris. 2021. doi: 10.1787/e458e796-en
+41. Miège C, Peretti A, Labadie P, et al. , Occurrence of priority and
+emerging organic compounds in fishes from the Rhone River
+(France). Anal. Bioanal. Chem. 2012, 404, 2721–2735. doi:
+10.1007/s00216-012-6187-0
+42. Han J, Kiss L, Mei H, et al. , Chemical Aspects of Human and
+Environmental Overload with Fluorine. Chemical reviews 2021,
+121, 4678–4742. doi: 10.1021/acs.chemrev.0c01263
+43. Kristiansson E, Coria J, Gunnarsson L, Gustavsson M. ,
+Does the scientific knowledge reflect the chemical diversity of
+environmental pollution? – A twenty-year perspective. Environ.
+Sci. Policy 2021, 126, 90-98. doi: 10.1016/j.envsci.2021.09.007
+44. Trufelli H, Palma P, Famiglini G, Cappiello A. , An
+overview of matrix effects in liquid chromatography–mass
+spectrometry. Mass Spectrom. Rev. 2011, 30, 491-509. doi:
+10.1002/mas.20298
+45. Jia S, Marques Dos Santos M, Li C, Snyder SA. , Recent
+advances in mass spectrometry analytical techniques for per-
+
+and polyfluoroalkyl substances (PFAS). Anal. Bioanal. Chem.
+2022, 414, 2795–2807. doi: 10.1007/s00216-022-03905-y
+46. Munoz G, Giraudel JL, Botta F, et al. , Spatial distribution
+and partitioning behavior of selected poly- and perfluoroalkyl
+substances in freshwater ecosystems: A French nationwide
+survey. Sci. Total Environ. 2015, 517, 48-56.
+doi:
+10.1016/j.scitotenv.2015.02.043
+47. Munoz G, Vo Duy S, Budzinski H, Labadie P, Liu J, Sauvé S.
+, Quantitative analysis of poly- and perfluoroalkyl compounds
+in water matrices using high resolution mass spectrometry:
+Optimization for a laser diode thermal desorption method. Anal.
+Chim. Acta 2015, 881, 98-106. doi: 10.1016/j.aca.2015.04.015
+48. Munoz G, Duy SV, Labadie P, et al. , Analysis of
+zwitterionic, cationic, and anionic poly- and perfluoroalkyl
+surfactants in sediments by liquid chromatography polarityswitching electrospray ionization coupled to high resolution
+mass spectrometry. Talanta 2016, 152, 447-456.
+doi:
+10.1016/j.talanta.2016.02.021
+49. Teymoorian T, Munoz G, Vo Duy S, Liu J, Sauvé S. ,
+Tracking PFAS in Drinking Water: A Review of Analytical
+Methods and Worldwide Occurrence Trends in Tap Water and
+Bottled Water. ACS ES&T Water 2023, 3, 246-261. doi:
+10.1021/acsestwater.2c00387
+50. Teymoorian T, Delon L, Munoz G, Sauvé S. , Target
+and Suspect Screening Reveal PFAS Exceeding European
+Union Guideline in Various Water Sources South of Lyon,
+France. Environ. Sci. Technol. Lett. 2025, 12, 327-333. doi:
+10.1021/acs.estlett.4c01126
+51. Muhammad N, Hussain I, Fu XA, et al. , A Comprehensive
+Review of Instrumentation and Applications in Post-Column and
+In-Source Derivatization for LC-MS. Mass Spectrom. Rev., n/a.
+doi: 10.1002/mas.21930
+52. Teymoorian T, Munoz G, Sauvé S. , PFAS contamination in tap
+water: Target and suspect screening of zwitterionic, cationic, and
+anionic species across Canada and beyond. Environ. Int. 2025,
+195, 109250. doi: 10.1016/j.envint.2025.109250
+53. Han Y, Pulikkal VF, Sun M. , Comprehensive Validation of
+the Adsorbable Organic Fluorine Analysis and Performance
+Comparison of Current Methods for Total Per- and
+Polyfluoroalkyl Substances in Water Samples. ACS ES&T Water
+2021, 1, 1474-1482. doi: 10.1021/acsestwater.1c00047
+54. Baqar M, Chen H, Yao Y, Sun H. , Latest trends in the
+environmental analysis of PFAS including nontarget analysis
+and EOF-, AOF-, and TOP-based methodologies. Anal. Bioanal.
+Chem. 2025, 417, 555–571. doi: 10.1007/s00216-024-05643-9
+55. McDonough CA, Guelfo JL, Higgins CP. , Measuring total
+PFASs in water: The tradeoff between selectivity and inclusivity.
+Curr. Opin. Environ. Sci. Health 2019, 7, 13-18.
+doi:
+10.1016/j.coesh.2018.08.005
+56. Togola A. , Note d’information sur les enjeux analytiques
+concernant le paramètre « Total PFAS » – Rapport AQUAREF
+2023; Ministry of Ecological Transition & BRGM. 2023.
+57. Abragam A. , The Principles of Nuclear Magnetism, 0-618;
+Oxford Science. 1983.
+58. Claridge TD. , High-Resolution NMR Techniques in Organic
+Chemistry., , Tetrahedron Organic Chemistry Series. Elsevier,
+2009
+59. Günther H. , NMR Spectroscopy: Basic Principles, Concepts and
+Applications in Chemistry; Wiley-VCH. 3rd ed. 2013.
+60. International
+Organization
+for
+Standardization
+(ISO)
+Quantitative nuclear magnetic resonance spectroscopy —
+Purity determination of organic compounds used for foods and
+food products — General requirements for 1H NMR internal
+standard method. ISO 24583; 2021.
+61. Dolbier WR. , Guide to Fluorine NMR for Organic
+Chemists, i-348; John Wiley & Sons, Ltd.
+2016.
+doi:
+10.1002/9781118831106
+62. Smeltz MG, Clifton MS, Henderson WM, McMillan L, Wetmore
+
+https://doi.org/10.26434/chemrxiv-2025-hdnzl-v2 ORCID: https://orcid.org/0009-0000-7993-1323 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+qNMR fluorine pollution analysis: perspectives on PFAS exposure characterisation using 19 F NMR
+BA. , Targeted Per- and Polyfluoroalkyl substances (PFAS)
+assessments for high throughput screening: Analytical and
+testing considerations to inform a PFAS stock quality evaluation
+framework. Toxicol. Appl. Pharm. 2023, 459, 116355. doi:
+10.1016/j.taap.2022.116355
+63. Howe PW. , Recent developments in the use of fluorine NMR in
+synthesis and characterisation. Prog. Nucl. Mag. Res. Sp. 2020,
+118-119, 1-9. doi: 10.1016/j.pnmrs.2020.02.002
+64. Assemat O, Antoine M, Fourquez JM, et al. , 19F nuclear
+magnetic resonance screening of glucokinase activators. Anal.
+Biochem. 2015, 477, 62–68. doi: 10.1016/j.ab.2015.02.006
+65. Ikeya T, Ban D, Lee D, Ito Y, Kato K, Griesinger C. , Solution
+NMR views of dynamical ordering of biomacromolecules.
+Biochim. Biophys. Acta, Gen. Subj. 2018, 1862, 287-306. doi:
+10.1016/j.bbagen.2017.08.020
+66. Gronenborn AM. , Small, but powerful and attractive: 19F
+in biomolecular NMR. Structure 2022, 30, 6-14.
+doi:
+10.1016/j.str.2021.09.009
+67. Dalvit C, Ardini E, Flocco M, Fogliatto GP, Mongelli N,
+Veronesi M. , A General NMR Method for Rapid, Efficient, and
+Reliable Biochemical Screening. J. Am. Chem. Soc. 2003, 125,
+14620–14625. doi: 10.1021/ja038128e
+68. Dalvit C, Vulpetti A. , Ligand-Based Fluorine NMR
+Screening: Principles and Applications in Drug Discovery
+Projects. J. Med. Chem. 2018, 62, 2218–2244.
+doi:
+10.1021/acs.jmedchem.8b01210
+69. Okaru AO, Brunner TS, Ackermann SM, et al. , Application
+of 19F NMR Spectroscopy for Content Determination of
+Fluorinated Pharmaceuticals. Journal of Analytical Methods in
+Chemistry 2017, 2017, 9206297. doi: 10.1155/2017/9206297
+70. Yamazaki T, Saito T, Ihara T. , A new approach for accurate
+quantitative determination using fluorine nuclear magnetic
+resonance spectroscopy. J. Chem. Metrol. 2017, 11, 16–22. doi:
+10.25135/jcm.3.17.03.036
+71. Moody CA, Kwan WC, Martin JW, Muir DCG, Mabury SA. ,
+Determination of Perfluorinated Surfactants in Surface Water
+Samples by Two Independent Analytical Techniques: Liquid
+Chromatography/Tandem Mass Spectrometry and 19F NMR.
+Anal. Chem. 2001, 73, 2200-2206. doi: 10.1021/ac0100648
+72. Camdzic D, Dickman RA, Aga DS. , Total and class-specific
+analysis of per- and polyfluoroalkyl substances in environmental
+samples using nuclear magnetic resonance spectroscopy. Journal
+of hazardous materials letters 2021, 2, 100023.
+doi:
+10.1016/j.hazl.2021.100023
+73. Camdzic D, Dickman RA, Joyce AS, Wallace JS, Ferguson
+PL, Aga DS. , Quantitation of Total PFAS Including
+Trifluoroacetic Acid with Fluorine Nuclear Magnetic Resonance
+Spectroscopy. Analytical chemistry 2023, 95, 5484–5488. doi:
+10.1021/acs.analchem.2c05354
+74. Gauthier JR, Mabury SA. , Noise-Reduced Quantitative
+Fluorine NMR Spectroscopy Reveals the Presence of Additional
+Per- and Polyfluorinated Alkyl Substances in Environmental
+and Biological Samples When Compared with Routine Mass
+Spectrometry Methods. Analytical chemistry 2022, 94, 3278–
+3286. doi: 10.1021/acs.analchem.1c05107
+75. Gauthier JR, Mabury SA. , Identifying Unknown FluorineContaining Compounds in Environmental Samples Using 19F
+NMR and Spectral Database Matching. Environ. Sci. Technol.
+2023, 57, 8760–8767. doi: 10.1021/acs.est.3c01220
+76. Keeler J. , Understanding NMR Spectroscopy; Apollo
+- University of Cambridge Repository.
+2002.
+doi:
+10.17863/CAM.968
+77. Malliavin TE, Desvaux H, Delsuc MA. , Conditions for
+the measurement of quantitative off-resonance ROESY
+intensities. Magn. Reson. Chem. 1998, 36, 801-806.
+doi:
+10.1002/(SICI)1097-458X(1998110)36:11<801::AIDOMR367>3.0.CO;2-J
+78. Kunz D. , Use of frequency-modulated radiofrequency pulses
+
+17
+
+in MR imaging experiments. Magnet. Reson. Med. 1986, 3,
+377–384. doi: 10.1002/mrm.1910030303
+79. Bohlen J, Bodenhausen G. , Experimental Aspects of Chirp NMR
+Spectroscopy. Journal of Magnetic Resonance, Series A 1993,
+102, 293-301. doi: 10.1006/jmra.1993.1107
+80. Cano KE, Smith MA, Shaka A. , Adjustable, Broadband,
+Selective Excitation with Uniform Phase. J. Magn. Reson. 2002,
+155, 131–139. doi: 10.1006/jmre.2002.2506
+81. Power JE, Foroozandeh M, Adams RW, et al. , Increasing
+the quantitative bandwidth of NMR measurements. Chem.
+Commun. 2016, 52, 2916–2919. doi: 10.1039/c5cc10206e
+82. Khaneja N. , Chirp excitation. J. Magn. Reson. 2017, 282,
+32–36. doi: 10.1016/j.jmr.2017.07.003
+83. Coote P, Bermel W, Arthanari H. , Optimization of phase
+dispersion enables broadband excitation without homonuclear
+coupling artifacts. Journal of magnetic resonance 2021, 325,
+106928. doi: 10.1016/j.jmr.2021.106928
+84. Battiste J, Newmark RA. , Applications of 19F multidimensional
+NMR. Prog. Nucl. Mag. Res. Sp. 2006, 48, 1-23.
+doi:
+10.1016/j.pnmrs.2005.10.002
+85. Aspers RL, Ampt KA, Dvortsak P, Jaeger M, Wijmenga SS.
+, Fluorine detected 2D NMR experiments for the practical
+determination of size and sign of homonuclear F–F and
+heteronuclear C–F multiple bond J-coupling constants in
+multiple fluorinated compounds. J. Magn. Reson. 2013, 231,
+79-89. doi: 10.1016/j.jmr.2013.03.008
+86. Luy B. , Fast Pulsing 2D NMR Methods. In: Fast 2D Solutionstate NMR: Concepts and Applications, , The Royal Society of
+Chemistry, 2023
+87. Claridge TD. , Chapter 5 - Correlations through the chemical
+bond I: Homonuclear shift correlation. In: High-Resolution
+NMR Techniques in Organic Chemistry, , Tetrahedron Organic
+Chemistry Series. Elsevier, 2009, 129-188
+88. Gibbs SJ, Johnson CS. , A PFG NMR experiment for accurate
+diffusion and flow studies in the presence of eddy currents.
+Journal of Magnetic Resonance (1969) 1991, 93, 395–402. doi:
+10.1016/0022-2364(91)90014-k
+89. Johnson C. , Diffusion ordered nuclear magnetic resonance
+spectroscopy: principles and applications. Prog. Nucl. Mag. Res.
+Sp. 1999, 34, 203-256. doi: 10.1016/S0079-6565(99)00003-5
+90. Ernst RR, Anderson WA. , Application of Fourier Transform
+Spectroscopy to Magnetic Resonance. Rev. Sci. Instrum. 1966,
+37, 93-102. doi: 10.1063/1.1719961
+91. Harris RK, Becker ED, Menezes dSMC, Goodfellow R, Granger
+P. , NMR nomenclature. Nuclear spin properties and conventions
+for chemical shifts(IUPAC Recommendations 2001). Pure Appl.
+Chem. 2001, 73, 1795–1818. doi: 10.1351/pac200173111795
+92. Cherni A, Chouzenoux E, Delsuc MA. , PALMA, an improved
+algorithm for DOSY signal processing. The Analyst 2017, 142,
+772–779. doi: 10.1039/c6an01902a
+93. Chiron L, Coutouly MA, Starck JP, Rolando C, Delsuc
+MA. , SPIKE a Processing Software dedicated to Fourier
+Spectroscopies. arXiv (Cornell University) 2016.
+doi:
+10.48550/arxiv.1608.06777
+94. Margueritte L, Markov P, Chiron L, et al. , Automatic differential
+analysis of NMR experiments in complex samples. Magn. Reson.
+Chem. 2018, 56, 469–479. doi: 10.1002/mrc.4683
+95. Margueritte L, Duciel L, Bourjot M, Vonthron-Sénécheau C,
+Delsuc MA. , Automatised pharmacophoric deconvolution
+of plant extracts – application toCinchonabark crude
+extract. Faraday discussions 2019, 218, 441–458.
+doi:
+10.1039/c8fd00242h
+96. U.S.
+Food
+and
+Drug
+Administration,
+Per
+and
+Polyfluoroalkyl
+Substances
+(PFAS)
+in
+Cosmetics.
+https://www.fda.gov/cosmetics/cosmetic-ingredients/
+and-polyfluoroalkyl-substances-pfas-cosmetics
+(accessed 17 June 2024); 2024. Published online.
+97. Bingol K. , Recent advances in targeted and untargeted
+
+https://doi.org/10.26434/chemrxiv-2025-hdnzl-v2 ORCID: https://orcid.org/0009-0000-7993-1323 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+18
+
+Briot-Dietsch et al.
+
+metabolomics by NMR and MS/NMR methods. High
+Throughput 2018, 7, 9. doi: 10.3390/ht7020009
+98. Cajka T, Fiehn O. , Toward Merging Untargeted and
+Targeted Methods in Mass Spectrometry-Based Metabolomics
+and Lipidomics. Anal. Chem. 2016, 88, 524-545. PMID:
+26637011doi: 10.1021/acs.analchem.5b04491
+
+Supporting information
+Additional supporting information may be found in the online
+version of the article at the publisher’s website.
+
+https://doi.org/10.26434/chemrxiv-2025-hdnzl-v2 ORCID: https://orcid.org/0009-0000-7993-1323 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+

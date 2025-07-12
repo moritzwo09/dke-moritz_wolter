@@ -1,0 +1,1179 @@
+Changes in PM2.5-attributable mortality in the US by sector, 2002-2019
+Bujin Bekbulat1, Alper Unal1, Arushi Sharma1, Joshua S Apte2,3, Julian D. Marshall1, *
+
+1
+
+Department of Civil and Environmental Engineering, University of Washington, WA, USA
+Department of Civil and Environmental Engineering, University of California, Berkeley, CA, USA
+3
+School of Public Health, University of California, Berkeley, CA, USA
+*
+Corresponding author. E-mail: jdmarsh@uw.edu. Phone: 206-685-2591.
+2
+
+Abstract
+Levels of fine particulate matter (PM2.5) air pollution in the United States have declined substantially in
+recent decades, yielding substantial benefits for public health. This study evaluates emission reductions
+across five key economic sectors—electricity, industrial, transportation, agriculture, and residential—and
+their impact on air quality and health. We employ a recently-developed sector-specific inventory that
+provides emissions and their spatial disaggregation across time in a self-consistent framework. Using a
+national source-receptor matrix, we estimate annual PM2.5-attributable mortality and its variability
+spatiotemporally and by sector.
+We find that annual PM2.5-attributable mortality decreased 53% between 2002 (142,300 deaths) and 2019
+(66,300 deaths). The largest reductions were in secondary PM2.5 from NOₓ, SOₓ, and VOC emissions from
+electricity and transportation. Emissions reductions from industrial and residential sectors have been more
+modest. In contrast, agricultural emissions, especially NH3, increased over time; the importance of
+agriculture among the five sectors increased from second-smallest (2002) to the largest (2019). While the
+reductions in PM2.5-attributable mortality have been large (more than a factor of 2), future progress may
+need to focus greater attention on agricultural emissions, in addition to traditionally dominant sources
+such as transportation and industry.
+
+https://doi.org/10.26434/chemrxiv-2025-m6n6q ORCID: https://orcid.org/0000-0003-1918-8464 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Introduction
+In recent decades, levels of criteria air pollution have declined substantially in the United States (US),
+yielding large public health benefits. Between 1990 and 2017, emissions of PM2.5 (i.e., fine particles),
+NOx, SOx, and VOCs decreased 29%, 58%, 88% and 40%, respectively [1]. US Environmental Protection
+Agency (USEPA) monitoring stations indicate that annual PM2.5 levels declined 42% during 2000-2017
+[1]. These improvements reflect local, regional, and national policy efforts, driven largely by the Clean
+Air Act [2-4].
+PM2.5-attributable mortality is the largest environmental risk factor in the US [5-7]. In understanding
+PM2.5 health impacts and how to reduce those impacts, one would want to know which sources and
+economic sectors contribute to attributable impacts and also what are the patterns, especially the temporal
+trends, underlying those impacts. Prior research has generally either investigated temporal trends or the
+economic sectors contributing to PM2.5-attributable health impacts, but not both. Examples of the former
+(i.e., studies of temporal trends) include the following. Zhang et al. (2018) modeled PM2.5 and attributable
+mortality for 1990-2010 [8]. Fann et al. (2017) used monitoring data to estimate PM2.5-attributable
+mortality for 1980, 1990, 2000, and 2010 [9]. Cohen et al. (2017) combined air quality model simulations,
+satellite data, and ground observations to evaluate temporal trends in PM2.5-attributable disease burden at
+five-year intervals from 1990 to 2015 [10].
+Examples of the latter (studies of sector-specific impacts) include Caiazzo et al. (2013), who assessed the
+impacts of six major economic sectors on PM2.5 and O3 -attributable mortality for year-2005 [11]. Thakrar
+et al. (2020) provided a detailed breakdown of PM2.5-attributable mortality for multiple sectors, activities,
+and processes for year-2014 [12].
+Here, we estimate PM2.5-attributable mortality annually for 2002-2019. We disaggregate the results into
+five sectors (transportation, electricity, industry, agricultural, and residential) and as well into activities,
+processes, and chemical species, and by US state. These multiple disaggregations, along with temporal
+trends, can shed important light on the effectiveness of past air pollution controls and help identify
+challenges and opportunities for future policy efforts.
+
+Methods
+Emissions of primary PM2.5 and the four secondary precursors of PM2.5 (NOx, SOx, NH3, and VOCs), for
+18 years (2002-2019), are from USEPA EQUATES [13,14]. Often, emission-inventories are carried out
+for a single year at a time; spatial surrogates often change across inventories, making temporal
+comparisons more difficult and less useful (i.e., more challenging to interpret). In contrast, the EQUATES
+approach is internally-consistent across time and space, and covers the entire US, making it well-suited
+for the research questions investigated here.
+In EQUATES, emissions are provided by county or latitude/longitude; we gridded them to the InMAP
+domain using spatial surrogates. Annual anthropogenic emissions in EQUATES are characterized into
+5,434 Source Classification Codes (SCCs). Following Thakrar et al. (2020), we classify emissions in
+multiple ways: into five broad sectors (electricity, industrial, transportation, agriculture, residential), 25
+activities, 10 processes, and 5 pollutants [12]. See Supplementary Information (SI) for additional details.
+
+https://doi.org/10.26434/chemrxiv-2025-m6n6q ORCID: https://orcid.org/0000-0003-1918-8464 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+EQUATES includes non-anthropogenic emissions (e.g., wildfires) and transboundary pollution (e.g.,
+emissions in other countries), however, those sources are outside the scope of this analysis to maintain
+consistency between emissions inputs and model capabilities.
+Changes in annual-average PM2.5 concentrations in the contiguous US are modeled using the Intervention
+Model for Air Pollution (InMAP), an open-source reduced-complexity model [14]. Specifically, we use
+the InMAP source-receptor matrices (ISRM) to estimate changes in annual speciated PM2.5 concentrations
+(five species: primary PM2.5, particulate nitrate, particulate ammonium, particulate sulfate, secondary
+organic aerosol (SOA)) from each emission source. InMAP and the ISRM have been widely used in the
+literature. Reported model performance indicates a population-weighted mean bias of –3.1 µg/m³ and a
+mean fractional bias (MFB) of –38% against observations, and R²=0.90, MFB=–17% against
+WRF-Chem. (Additional model–measurement comparisons are in the Discussion section).
+We use ISRM-estimated PM2.5 concentrations, population data from the US Census, and county-level
+baseline mortality rates from the US Centers for Disease Control to calculate attributable mortality
+[15,16]. To spatially align emissions with the ISRM variable-resolution grid (ranging from 1 km to 48
+km), we spatially allocate EQUATES inventory emissions using USEPA spatial surrogates following
+recommended methodology from Spatial Allocator Tool [19]. To ensure temporal consistency, we use
+population and mortality data from the same year as the emissions—for example, 2002 emissions are
+paired with 2002 Census and mortality data. This step is done for each sector, activity, processes and
+pollutants, for each year. We employ the dose response relationships from Nasari et al (2016), Burnett et
+al. (2018), and Krewski et al. (2009), as parametrized in Tessum et al. (2017) [7,17,18].
+
+Results
+During 2002-2019, EQUATES emissions (primary PM2.5, NOx, SOx, VOCs) declined significantly (Figure
+1), with large reductions for SOx (87%) and NOx (66%), modest reductions for VOC (28%) and primary
+PM2.5 (14%), and an increase in NH3 emissions (20%). (Figure 1 uses Imperial units: 1 ton = 10-6 Mt =
+2,000 pounds.)
+
+https://doi.org/10.26434/chemrxiv-2025-m6n6q ORCID: https://orcid.org/0000-0003-1918-8464 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure 1. Annual emissions of primary PM2.5 and the four secondary-PM2.5 precursors (NOx, SOx, NH3, VOCs), for three of the
+years. Numbers below each map indicate the total annual emissions (Mt).
+
+ISRM-estimated speciated and total PM2.5 concentrations (Figure 2) show corresponding changes during
+2002-2019, with US population-weighted PM2.5 levels decreasing 90% (particulate sulfate), 70%
+(particulate nitrate), 40% (SOA), and 25% (primary PM2.5) and increasing 8% (particulate ammonium).
+The net result is that population-weighted total PM2.5 levels decreased 53%, from 9.6 µg/m³ (2002) to 4.5
+µg/m³ (2019). Figures 1 and 2 show beginning, middle, and end years [2002, 2010, 2019]; additional
+years are in Table S1 and S2.
+
+Figure 2. Annual-average concentrations of speciated and total PM2.5 for three of the years. Numbers below each map indicate the
+US population-weighted concentration (µg/m³).
+
+https://doi.org/10.26434/chemrxiv-2025-m6n6q ORCID: https://orcid.org/0000-0003-1918-8464 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Annual attributable mortality decreased 53%, from 142,300 (in 2002) to 66,300 (2019), reflecting
+sector-specific reductions in attributable mortality from electricity (88% reduction, 2002-2019), industrial
+(47%), transportation (63%), and residential (41%), and increases for agriculture (23%) (Figure 3).
+Two noticeable sectoral changes in Figure 3 are in the electricity sector, from relatively important (2002)
+to the lowest-impact sector (2019), and in agriculture, from relatively less important (2002) to the
+largest-impact sector (2019). Agriculture’s increase was modest (23%), but is in contrast to large
+reductions in the remaining sectors (in aggregate, 65%).
+
+Figure 3. Annual attributable mortality by sector.
+
+National trends in PM2.5 pollution levels and attributable mortality reflect locally-varying combinations of
+policies, emissions, population density and land use, and other factors. The largest economic sector
+contributing to attributable mortality by state has shifted over time (Figure 4, upper plots), from usually
+transportation and electricity (2002) to usually agriculture and industry (2019). As mentioned above, and
+following Thakrar et al. (2020), we also disaggregated attributable mortality by activity, process, and
+pollutant [12]. Results (Figure 4, lower plots) document the dramatic reshuffling of importance of specific
+activities and processes. In 2002, leading activities and processes include coal-electricity, diesel-trucks,
+and gasoline- passenger vehicles. In 2019, the relative importance of livestock and fertilizer use have
+increased, and coal-electricity has decreased. SOx shifted from most-important species (2002) to
+least-important (2019). See SI for additional details.
+
+https://doi.org/10.26434/chemrxiv-2025-m6n6q ORCID: https://orcid.org/0000-0003-1918-8464 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure 4. Economic sector contributing the most to air pollution-related mortality in each US state in years 2002 and 2019 (upper
+plots). Annual attributable mortality, by sector, activity, process, and pollutant emitted for years 2002 and 2019 (lower plots). The
+number of deaths for each category is provided in parentheses. Flows are color-coded by sector: electricity (green), industrial
+(purple), transportation (blue), agriculture (pink), and residential (red). Within each column, flows are ordered from largest (top)
+to smallest (bottom) deaths per year. Activities and processes responsible for more than 3,000 annual deaths are labeled.
+
+The timing of emission-reduction matters; enacting emission reductions sooner or faster will result in
+greater total benefits to health than delaying the same reductions. To uncover this aspect, one can consider
+attributable mortality in cumulative, rather than annual, terms. Over the 18-year study period, in
+aggregate, approximately 1.8 million deaths in the US were attributed to PM2.5 air pollution. If the
+observed emission-reductions had not happened (i.e., if emissions post-2002 were fixed at 2002 levels),
+we estimate that an additional 0.7 million attributable deaths (i.e., a 39% increase) would have occurred
+(Figure 5). Those avoided deaths reflect the public health improvements attributable to emission
+reductions during 2002-2019. Cumulatively during 2002-2019, transportation and industry were
+responsible for the highest number of deaths, followed by electricity; in recent years, contributions from
+these sectors have plateaued, while those from agriculture have continued to rise.
+Of the 0.7 million avoided deaths, the electricity, transportation, and industrial sectors contributed the
+most. The cumulative (2002-2019) avoided mortality for agriculture is negative 9700 deaths (i.e.,
+reflecting that agriculture emissions are increasing, counteracting the progress made in other sectors).
+
+https://doi.org/10.26434/chemrxiv-2025-m6n6q ORCID: https://orcid.org/0000-0003-1918-8464 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure 5. Cumulative attributable mortality (left) and avoided-mortality (right), 2002-2019. Left-plot represents cumulative
+attributable mortality for emissions as they actually happen in the data; right-plot reflects the cumulative attributable mortality
+difference between actual-emissions (i.e., the left plot) and if, counterfactually, emissions during 2002-2019 has stayed constant
+at year-2002 levels.
+
+Discussion
+We investigated PM2.5 levels and attributable mortality by state, for 2002 to 2019 (annually), for each
+sector, activity, process, and chemical pollutant. PM2.5 attributable mortality declined substantially (53%),
+from 142,300 deaths (in 2002) to 66,300 (2019).
+These emission reductions occurred across nearly all major sources, including an 89% (37,300 fewer
+deaths/y) reduction in annual mortality attributable to coal-fired electricity, a 68% (16,300) reduction
+from diesel-powered transportation, and 69% (15,100) for gasoline-transportation. Annual attributable
+mortality for agriculture increased 23% (4,300 more deaths/y), including attributable mortality increases
+of 20% (1800) for livestock, 57% (2,300) for fertilizer use, and 54% (1,300) for commercial cooking. In
+aggregate during 2002-2019 (i.e., cumulative rather than annual), PM2.5 pollution resulted in an estimated
+1.8 million deaths; we estimate that that number would be 0.7 million deaths larger if emission-reductions
+had not happened (i.e., if emissions during 2002-2019 were constant at 2002 levels).
+Additional examples of activities/processes with increasing rates for attributable mortality include garden
+equipment use (35%), burning industrial waste disposal (23%), fugitive dust from road use (22%) and
+tilling (11%); see SI (“Dataset”) for complete list. This list can potentially be useful for framing
+emission-reduction efforts, including activities/sectors for which past emission-reduction efforts have
+been successful (or not) and for which future efforts should potentially focus additional attention.
+Despite overall progress, annual air pollution-related mortality remains high at 66,300 deaths in 2019,
+reinforcing the fact that air pollution remains the leading environmental health risk in the United States.
+These findings underscore the need for continued targeted regulatory interventions to address PM2.5 air
+pollution; this need includes agricultural emissions, which remain largely unregulated compared to other
+major pollution sources.
+
+https://doi.org/10.26434/chemrxiv-2025-m6n6q ORCID: https://orcid.org/0000-0003-1918-8464 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+The overall reduction in attributable mortality (i.e., the 53% decline mentioned above) is primarily driven
+by decreases in average exposure, owing to emission reductions; indeed, the (emission-driven) changes in
+concentration, taken alone, account for a 50% drop in attributable mortality (i.e., nearly equal to the 53%
+decline in mortality). Over the same period, improvements in baseline mortality rates contributed an
+additional 25% reduction (i.e., baseline mortality [annual deaths per 100,000 people] was 845 in 2002,
+and 715 in 2019, a 15% decrease; this matters because PM2.5-attributable mortality is calculated as a
+relative risk, i.e., a relative increase in the baseline mortality) [20,21]. However, population growth (288
+million (2002), 328 million (2019), a 14% increase) led to a 22% increase in total attributable mortality
+[22,23]. (Here, attributable mortality nationally does not scale precisely linearly with national population
+because many variables, including population, baseline mortality, and concentration, vary in space and
+may be spatially correlated.) Thus, the attributable mortality decrease from improved health outcomes
+nearly offset the increase from population growth. (If we instead consider annual PM2.5-attributable
+mortality per 100,000 people, that rate decreased 59%, from 49 in 2002 to 20 in 2019.)
+Our findings align with previous research on long-term air pollution-related mortality trends, which
+documented a decline in air pollution-related mortality over time in the United States [8-10]. Additionally,
+our results are consistent with studies examining sectoral contributions to air pollution [11,12], which
+identified the electricity and transportation sectors as the dominant contributors in 2005, and the industrial
+sector as the leading source in 2014. Lastly, the concentration declines predicted here are strongly
+consistent with measurements at USEPA monitoring stations. Specifically, we compared our results
+against measured annual-average PM2.5 levels at USEPA monitoring stations that had data across the
+relevant years (2002 - 2019). The two trends (i.e., modeled, measured; 2002–2019) show remarkable
+similarity in temporal patterns (Figure S1), with a model-measurement correlation of 0.97 (Figure S2) and
+both indicating a ~5 µg/m³ reduction in population-weighted PM2.5 concentration during 2002-2019.
+Our study expands upon these findings by integrating both mortality trends and sectoral contributions,
+providing a comprehensive, time-evolving analysis of air pollution sources. Our 18-year sector-specific
+analysis reveals the emerging dominance of agricultural emissions and the declining role of electricity
+generation in air pollution-related mortality. As shown above and in Figures S3 and S4, patterns differ by
+US state. These insights highlight the shifting burden of air pollution across sectors, reinforcing the need
+for adaptive regulatory strategies at local, state, and national levels to address evolving sources of
+emissions.
+
+https://doi.org/10.26434/chemrxiv-2025-m6n6q ORCID: https://orcid.org/0000-0003-1918-8464 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Supplementary Information
+The emissions groups used in this paper follow those used in the EPA NEI source categories, but with simplified
+aggregations that are more relevant for the analysis. All years in the EQUATES dataset were used, except that for
+year-2010 transportation NOx emissions, owing to anomalies in the EQUATES data, we linearly interpolated
+those emissions between the year-2009 and -2011 emissions.
+Below are definitions of some of the emissions groups as used here to clarify their scope and meaning by Thakrar
+et al. (2020) [12].
+Sector. Broad aggregations of polluting activities largely following EPA NEI source categories.
+Industrial & commercial. This sector largely overlaps with the EPA NEI industrial and commercial source
+categories, except for industrial and commercial sources that are within the scope of the other sectors, such
+as commercial cooking, which is included in the food & agriculture sector instead.
+Transportation. This sector largely overlaps with the EPA NEI transportation source category, except for
+transportation sources that are within the scope of the other sectors, such as off-road agricultural machinery
+use, which is included in the food & agriculture sector instead.
+Food & agriculture. This sector includes emissions that take place on farms and in agricultural operations,
+and is extended to include emissions from commercial food processing and cooking.
+Activity. A human-caused action that directly results in pollution.
+Crop burning. Crop burning is solely an agricultural activity. Land management for reducing wildfire risk,
+or burning logging residue, is not included within this sector nor within the scope of human- caused
+emissions.
+Road use. Driving on roads causes emissions primarily by disturbing dust particles present on road
+surfaces, but also includes generating small particles from brake and tire wear. This activity also includes
+minor contributions from oil spills.
+Commercial cooking & food processing. This activity includes food processing for retail as well as restaurant
+emissions.
+Oil, gas & petroleum production. This activity largely overlaps with the EPA NEI source categories for
+the petroleum industry and the oil and gas industry. Emissions include flares and volatilization of
+products stored in tanks.
+Solvent use. This includes only the use of solvents, such as applying paints or printer inks, and not the
+production or storage of solvents.
+Waste disposal. This activity includes emissions from site remediation, and burning waste for the purpose
+of disposal. Waste combustion for use as a fuel is not included within the scope of this activity.
+Materials production. This activity includes the production of any material used in goods production, such
+as glass, paper, and ceramic. Emissions from mining and smelting, for example, are often included in this
+activity.
+Municipal vehicle use. This activity includes use of public buses and road cleaning vehicles.
+Process. The means by which the pollution is generated, for any given activity.
+Fuel combustion. Burning fuel for the purpose of energy use (e.g., heat or mechanical work).
+Burning. This includes burning not for the purpose of energy use. Examples include waste burning, cropland
+residue burning, and residential and vehicle fires.
+
+https://doi.org/10.26434/chemrxiv-2025-m6n6q ORCID: https://orcid.org/0000-0003-1918-8464 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Losses & leaks. Losses & leaks are the inadvertent loss to the atmosphere of a product that is in gaseous or
+aerosol form, and typically valuable, but are not dust emissions. NH3 volatilization and NMVOC
+evaporation are the main constituents of this group.
+Table S1. Annual emissions (units: Mt = 106 ton = 2 x 109 pounds), by year, for primary PM2.5, NOx, SOx, NH3 and VOC, during
+2002-2019
+Year
+
+Primary PM2.5
+(Mt)
+
+NOx
+(Mt)
+
+SOx
+(Mt)
+
+NH3
+(Mt)
+
+VOC
+(Mt)
+
+2002
+
+3.7
+
+25.1
+
+14.5
+
+4.2
+
+18.1
+
+2003
+
+4.2
+
+24.3
+
+14.6
+
+4.4
+
+19.0
+
+2004
+
+3.9
+
+22.1
+
+14.3
+
+4.2
+
+17.5
+
+2005
+
+4.0
+
+21.7
+
+14.7
+
+4.5
+
+17.6
+
+2006
+
+4.1
+
+20.0
+
+12.3
+
+4.5
+
+17.6
+
+2007
+
+4.1
+
+18.7
+
+11.4
+
+4.7
+
+17.7
+
+2008
+
+3.8
+
+17.9
+
+11.2
+
+4.5
+
+16.4
+
+2009
+
+3.4
+
+15.3
+
+7.9
+
+4.3
+
+14.6
+
+2010
+
+3.6
+
+14.8
+
+6.8
+
+4.3
+
+14.6
+
+2011
+
+3.7
+
+14.3
+
+6.3
+
+4.5
+
+15.4
+
+2012
+
+3.5
+
+13.5
+
+5.0
+
+4.5
+
+15.6
+
+2013
+
+3.2
+
+12.6
+
+4.7
+
+4.4
+
+14.1
+
+2014
+
+3.3
+
+11.9
+
+4.5
+
+4.3
+
+14.2
+
+2015
+
+3.4
+
+10.8
+
+3.4
+
+4.5
+
+14.9
+
+2016
+
+3.2
+
+9.7
+
+2.6
+
+4.5
+
+13.5
+
+2017
+
+4.3
+
+9.3
+
+2.5
+
+4.7
+
+16.2
+
+2018
+
+4.1
+
+8.8
+
+2.3
+
+5.0
+
+15.7
+
+2019
+
+3.2
+
+8.3
+
+1.9
+
+5.0
+
+13.1
+
+https://doi.org/10.26434/chemrxiv-2025-m6n6q ORCID: https://orcid.org/0000-0003-1918-8464 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Table S2. Population-weighted average concentration, by year, of primary PM2.5, NOx, SOx, NH3,VOC and total PM2.5, during
+2002-2019
+
+Year
+
+Primary PM2.5
+(µg/m3)
+
+NOx
+(µg/m3)
+
+SOx
+(µg/m3)
+
+NH3
+(µg/m3)
+
+VOC
+(µg/m3)
+
+Total PM2.5
+(µg/m3)
+
+2002
+
+2.3
+
+2.3
+
+2.8
+
+1.2
+
+1.0
+
+9.6
+
+2003
+
+2.4
+
+2.3
+
+2.8
+
+1.2
+
+1.0
+
+9.7
+
+2004
+
+2.3
+
+2.1
+
+2.7
+
+1.2
+
+1.0
+
+9.3
+
+2005
+
+2.4
+
+2.0
+
+2.7
+
+1.3
+
+1.0
+
+9.4
+
+2006
+
+2.3
+
+1.8
+
+2.4
+
+1.3
+
+0.9
+
+8.7
+
+2007
+
+2.3
+
+1.6
+
+2.2
+
+1.2
+
+0.9
+
+8.2
+
+2008
+
+2.2
+
+1.6
+
+2.0
+
+1.2
+
+0.8
+
+7.8
+
+2009
+
+2.0
+
+1.4
+
+1.4
+
+1.2
+
+0.7
+
+6.7
+
+2010
+
+2.1
+
+1.4
+
+1.2
+
+1.2
+
+0.7
+
+6.6
+
+2011
+
+2.0
+
+1.3
+
+1.1
+
+1.2
+
+0.7
+
+6.3
+
+2012
+
+1.8
+
+1.2
+
+0.8
+
+1.2
+
+0.7
+
+5.7
+
+2013
+
+1.8
+
+1.1
+
+0.8
+
+1.2
+
+0.7
+
+5.6
+
+2014
+
+1.8
+
+1.1
+
+0.8
+
+1.2
+
+0.7
+
+5.6
+
+2015
+
+1.8
+
+1.0
+
+0.6
+
+1.2
+
+0.7
+
+5.3
+
+2016
+
+1.7
+
+0.9
+
+0.5
+
+1.2
+
+0.7
+
+5.0
+
+2017
+
+2.0
+
+0.8
+
+0.4
+
+1.2
+
+0.7
+
+5.1
+
+2018
+
+2.0
+
+0.8
+
+0.4
+
+1.2
+
+0.7
+
+5.1
+
+2019
+
+1.7
+
+0.7
+
+0.3
+
+1.2
+
+0.6
+
+4.5
+
+https://doi.org/10.26434/chemrxiv-2025-m6n6q ORCID: https://orcid.org/0000-0003-1918-8464 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Table S3. Annual attributable mortality, by year and sector, during 2002-2019
+Year
+
+Electricity
+
+Industrial
+
+Transportation
+
+Agriculture
+
+Residential
+
+Total
+
+2002
+
+38800
+
+34900
+
+42200
+
+18500
+
+7900
+
+142300
+
+2003
+
+38800
+
+34800
+
+40600
+
+17900
+
+8000
+
+140100
+
+2004
+
+37600
+
+33900
+
+37000
+
+17400
+
+7900
+
+133800
+
+2005
+
+38300
+
+34400
+
+35300
+
+18400
+
+8100
+
+134500
+
+2006
+
+35300
+
+27500
+
+33400
+
+18000
+
+7900
+
+122100
+
+2007
+
+32700
+
+27800
+
+29200
+
+18300
+
+8100
+
+116100
+
+2008
+
+33300
+
+27700
+
+28000
+
+18400
+
+8600
+
+116000
+
+2009
+
+20100
+
+22600
+
+25300
+
+17300
+
+8600
+
+93900
+
+2010
+
+18100
+
+22200
+
+35600
+
+17800
+
+8800
+
+102500
+
+2011
+
+16400
+
+22400
+
+23500
+
+18200
+
+8800
+
+89300
+
+2012
+
+12300
+
+22900
+
+22100
+
+18400
+
+8100
+
+83800
+
+2013
+
+12200
+
+21900
+
+21300
+
+18600
+
+9300
+
+83300
+
+2014
+
+12500
+
+20900
+
+20100
+
+18900
+
+10000
+
+82400
+
+2015
+
+9200
+
+20600
+
+19200
+
+20000
+
+9700
+
+78700
+
+2016
+
+6900
+
+19700
+
+17300
+
+20300
+
+8700
+
+72900
+
+2017
+
+6000
+
+19300
+
+16400
+
+21100
+
+8300
+
+71100
+
+2018
+
+5800
+
+19400
+
+15400
+
+22400
+
+9000
+
+72000
+
+2019
+
+4600
+
+18500
+
+15700
+
+22800
+
+4700
+
+66300
+
+https://doi.org/10.26434/chemrxiv-2025-m6n6q ORCID: https://orcid.org/0000-0003-1918-8464 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure S1. Trend in population-weighted annual-average concentrations of PM2.5 , 2002-2019, from EPA monitors and InMAP
+estimates. Estimates from EPA monitors are based on data from the n=72 monitoring stations with measurements reported for all
+18 years of the study period.
+
+Figure S2. Comparison of population-weighted annual-average PM2.5 concentrations from 2002 to 2019 between EPA monitors
+and ISRM (InMAP) estimates. InMAP estimates are consistently lower than EPA observations, likely due to the exclusion of
+non-anthropogenic emissions (e.g., wildfires, windblown dust) and transboundary pollution (e.g., emissions from other
+countries). Data in this figure are the same data as in Figure S3; each plotted point is one year in Figure S3. For more details on
+InMAP performance and limitations, see Tessum et al. (2017) [14].
+
+https://doi.org/10.26434/chemrxiv-2025-m6n6q ORCID: https://orcid.org/0000-0003-1918-8464 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure S3. Trend in total PM2.5-attributable mortality by sector across the 48 contiguous U.S. states. (This figure is similar to
+Figure 3, but disaggregated by state.)
+
+https://doi.org/10.26434/chemrxiv-2025-m6n6q ORCID: https://orcid.org/0000-0003-1918-8464 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure S4. Trend in total PM2.5-attributable mortality by sector across the 48 contiguous U.S. states. This figure is similar to
+Figure S3, but with state-specific y-axis scaling to magnify and illustrate trends in states with lower mortality levels.
+
+https://doi.org/10.26434/chemrxiv-2025-m6n6q ORCID: https://orcid.org/0000-0003-1918-8464 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+References
+1.​
+2.​
+3.​
+
+4.​
+
+5.​
+
+6.​
+
+7.​
+
+8.​
+
+9.​
+
+10.​
+
+11.​
+
+12.​
+
+13.​
+14.​
+15.​
+16.​
+17.​
+
+18.​
+
+19.​
+20.​
+21.​
+
+U.S. Environmental Protection Agency. (2018). Our nation’s air: Status and trends through 2017. U.S. Environmental Protection
+Agency. Retrieved from https://gispub.epa.gov/air/trendsreport/2018/
+Chestnut, L. G., & Mills, D. M. (2005). A fresh look at the benefits and costs of the US acid rain program. Journal of Environmental
+Management, 77(3), 252–266. https://doi.org/10.1016/j.jenvman.2005.05.014
+U.S. Environmental Protection Agency. (n.d.). Benefits and costs of the Clean Air Act 1990–2020, the second prospective study.
+Retrieved from
+https://www.epa.gov/clean-air-act-overview/benefits-and-costs-clean-air-act-1990-2020-report-documents-and-graphics
+U.S. Environmental Protection Agency. (n.d.). Control of air pollution from motor vehicles: Tier 3 motor vehicle emission and fuel
+standards final rule. Retrieved from
+https://www.epa.gov/regulations-emissions-vehicles-and-engines/final-rule-control-air-pollution-motor-vehicles-tier-3
+GBD 2019 Risk Factors Collaborators. (2020). Global burden of 87 risk factors in 204 countries and territories, 1990–2019: A
+systematic analysis for the Global Burden of Disease Study 2019. The Lancet, 396(10258), 1223-1249.
+https://doi.org/10.1016/S0140-6736(20)30752-2
+Tessum, C. W., Apte, J. S., Goodkind, A. L., Muller, N. Z., Mullins, K. A., Paolella, D. A., Polasky, S., Springer, N. P., Thakrar, S. K.,
+& Marshall, J. D. (2019). Inequity in consumption of goods and services adds to racial–ethnic disparities in air pollution exposure.
+Proceedings of the National Academy of Sciences of the United States of America, 116(13), 6001–6006.
+https://doi.org/10.1073/pnas.1818859116
+Burnett, R., Chen, H., Szyszkowicz, M., Fann, N., Hubbell, B., Pope, C. A. III, Apte, J. S., Brauer, M., Cohen, A., & Weichenthal, S.
+(2018). Global estimates of mortality associated with long-term exposure to outdoor fine particulate matter. Proceedings of the
+National Academy of Sciences of the United States of America, 115(38), 9592–9597. https://doi.org/10.1073/pnas.1803222115
+Zhang, Y., West, J. J., Mathur, R., Xing, J., Hogrefe, C., Roselle, S. J., Bash, J. O., Pleim, J. E., Gan, C.-M., & Wong, D. C. (2018).
+Long-term trends in the ambient PM₂.₅- and O₃-related mortality burdens in the United States under emission reductions from 1990 to
+2010. Atmospheric Chemistry and Physics, 18(20), 15003–15016. https://doi.org/10.5194/acp-18-15003-2018
+Fann, N., Kim, S. Y., Olives, C., & Sheppard, L. (2017). Estimated changes in life expectancy and adult mortality resulting from
+declining PM₂.₅ exposures in the contiguous United States: 1980–2010. Environmental Health Perspectives, 125, 097003.
+https://doi.org/10.1289/EHP507
+Cohen, A. J., Brauer, M., & Burnett, R. T. (2017). Estimates and 25-year trends of the global burden of disease attributable to ambient
+air pollution: An analysis of data from the Global Burden of Disease Study 2015. The Lancet, 389, 1907–1918.
+https://doi.org/10.1016/S0140-6736(17)30505-6
+Caiazzo, F., Ashok, A., Waitz, I. A., Yim, S. H. L., & Barrett, S. R. H. (2013). Air pollution and early deaths in the United States. Part
+I: Quantifying the impact of major sectors in 2005. Atmospheric Environment, 79, 198–208.
+https://doi.org/10.1016/j.atmosenv.2013.05.081
+Thakrar, S. K., Balasubramanian, S., Adams, P. J., Azevedo, I. M. L., Muller, N. Z., Pandis, S. N., Polasky, S., Pope III, C. A.,
+Robinson, A. L., Apte, J. S., Tessum, C. W., Marshall, J. D., & Hill, J. D. (2020). Reducing mortality from air pollution in the United
+States by targeting specific emission sources. Environmental Science & Technology Letters, 7(9), 639–645.
+https://doi.org/10.1021/acs.estlett.0c00424
+U.S. Environmental Protection Agency (EPA). (2022). Emission Quantification & Attribution System (EQUATES) Inventory.
+Retrieved from https://www.epa.gov/air-emissions-inventories
+Tessum, C. W., Hill, J. D., & Marshall, J. D. (2017). InMAP: A model for air pollution interventions. PLOS ONE, 12(4), e0176131.
+https://doi.org/10.1371/journal.pone.0176131
+U.S. Census Bureau. (2011). 2010 Census of Population and Housing. U.S. Government Printing Office. Retrieved from
+https://www.census.gov/programs-surveys/decennial-census/decade/2010.html
+Centers for Disease Control and Prevention. (2012). Deaths: Final data for 2010 (National Vital Statistics Reports, Vol. 61, No. 4).
+National Center for Health Statistics. Retrieved from https://www.cdc.gov/nchs/data/nvsr/nvsr61/nvsr61_04.pdf
+Nasari, M. M., Szyszkowicz, M., Chen, H., Crouse, D., Turner, M. C., Jerrett, M., Pope, C. A. III, Hubbell, B., Fann, N., & Cohen, A.
+(2016). A class of non-linear exposure-response models suitable for health impact assessment applicable to large cohort studies of
+ambient air pollution. Air Quality, Atmosphere & Health, 9(8), 961–972. https://doi.org/10.1007/s11869-016-0398-z
+Krewski, D., Jerrett, M., Burnett, R. T., Ma, R., Hughes, E., Shi, Y., Turner, M. C., Pope, C. A. III, Thurston, G., & Calle, E. E. (2009).
+Extended follow-up and spatial analysis of the American Cancer Society study linking particulate air pollution and mortality
+(Research Report No. 140). Health Effects Institute.
+CMAS Center. (n.d.). Spatial Allocator (SA) Tools. Community Modeling and Analysis System. Retrieved from
+https://www.cmascenter.org/sa-tools/
+Ahmad, F. B., Cisewski, J. A., Miniño, A. M., & Anderson, R. N. (2021). Mortality in the United States, 2019 (NCHS Data Brief No.
+395). National Center for Health Statistics. Retrieved from https://www.cdc.gov/nchs/products/databriefs/db395.htm
+Society of Actuaries & Human Mortality Database. (2021). U.S. Population Mortality Observations: 2000–2019. Retrieved from
+https://www.soa.org/globalassets/assets/files/resources/research-report/2021/us-population-mortality-rates-2000-2019.pdf
+
+https://doi.org/10.26434/chemrxiv-2025-m6n6q ORCID: https://orcid.org/0000-0003-1918-8464 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+22.​ U.S. Census Bureau. (2002). Annual Estimates of the Population for the United States: April 1, 2000 to July 1, 2002. Retrieved from
+https://www.census.gov
+23.​ U.S. Census Bureau. (2020). Annual Estimates of the Resident Population for the United States, April 1, 2010 to July 1, 2019. Table:
+NST-EST2019-01. Retrieved from https://www.census.gov/data/tables/time-series/demo/popest/2010s-national-total.html
+
+https://doi.org/10.26434/chemrxiv-2025-m6n6q ORCID: https://orcid.org/0000-0003-1918-8464 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+

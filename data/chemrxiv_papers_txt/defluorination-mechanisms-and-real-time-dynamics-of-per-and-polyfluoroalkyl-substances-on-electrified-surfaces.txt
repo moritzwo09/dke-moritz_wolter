@@ -1,0 +1,1616 @@
+Defluorination Mechanisms and Real-Time
+Dynamics of Per- and Polyfluoroalkyl Substances
+on Electrified Surfaces
+1
+
+Kamal Sharkas and Bryan M. Wong∗
+Department of Chemistry, Department of Physics & Astronomy, and Materials Science &
+Engineering Program, University of California-Riverside, Riverside, California 92521,
+United States
+E-mail: bryan.wong@ucr.edu,Website:http://www.bmwong-group.com
+
+2
+
+Abstract
+
+3
+
+Per- and polyfluoroalkyl substances (PFAS) are persistent environmental contam-
+
+4
+
+inants found in groundwater sources and a wide variety of consumer products. In
+
+5
+
+recent years, electrochemical approaches for the degradation of these harmful con-
+
+6
+
+taminants have garnered significant attention due to their efficiency and chemical-free
+
+7
+
+modular nature. However, these electrochemical processes occur in open, highly non-
+
+8
+
+equilibrium systems, and a detailed understanding of PFAS degradation mechanisms
+
+9
+
+in these promising technologies is still in its infancy. To shed mechanistic insight
+
+10
+
+into these complex processes, we present the first constant-electrode potential (CEP)
+
+11
+
+quantum calculations of PFAS degradation on electrified surfaces. These advanced
+
+12
+
+CEP calculations provide new mechanistic details on the intricate electronic processes
+
+13
+
+that occur during PFAS degradation in the presence of an electrochemical bias, which
+
+14
+
+cannot be gleaned from conventional DFT calculations. We complement our CEP cal-
+
+15
+
+culations with large-scale ab initio molecular dynamics simulations in the presence of
+
+1
+https://doi.org/10.26434/chemrxiv-2025-1z9j7 ORCID: https://orcid.org/0000-0002-3477-8043 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+16
+
+an electrochemical bias to provide timescales for PFAS degradation on electrified sur-
+
+17
+
+faces. Taken together, our CEP-based quantum calculations provide critical reaction
+
+18
+
+mechanisms for PFAS degradation in open electrochemical systems, which can be used
+
+19
+
+for pre-screening candidate material surfaces and optimal electrochemical conditions
+
+20
+
+for remediating PFAS and other environmental contaminants.
+
+21
+
+Keywords: PFAS, constant electrode potential, electrified surfaces, defluorination,
+
+22
+
+density functional theory
+
+23
+
+Synopsis: We present the first constant-electrode potential quantum calculations to
+
+24
+
+understand PFAS degradation mechanisms on electrified surfaces.
+
+25
+
+1.
+
+Introduction
+
+26
+
+Per- and polyfluoroalkyl substances (PFAS) are synthetic compounds with strong C–F bonds
+
+27
+
+that endow them with exceptional chemical and thermal stability. Because of this intrinsic
+
+28
+
+stability, PFAS have been used in a variety of consumer products, such as packaging mate-
+
+29
+
+rials, non-stick cookware, stain-resistant fabrics, surfactants, and firefighting foams. 1–4 Due
+
+30
+
+to their widespread use, PFAS contaminants have now been detected in soil/water sources
+
+31
+
+worldwide and can bioaccumulate in the food chain. The persistence of these environmental
+
+32
+
+pollutants is particularly concerning, since chronic exposure to even low concentration levels
+
+33
+
+has been associated with adverse health effects. Because of their environmental persistance
+
+34
+
+and toxicity, finding efficient approaches to eliminating these contaminants is essential.
+
+35
+
+Among the various oxidation/reduction processes 5–11 used for PFAS remediation, electro-
+
+36
+
+chemical approaches have garnered particular attention due to their efficiency and chemical-
+
+37
+
+free modular nature. 12 In these electrochemical processes, an external bias voltage is applied
+
+38
+
+to an electrolytic solution of PFAS contaminants, which facilitates electron transfer and sub-
+
+39
+
+sequent PFAS degradation on the electrified surface of the electrode. More specifically, at the
+
+40
+
+electrode-electrolyte interface, PFAS molecules interact with both the electrode surface and
+
+41
+
+the solvent. This interface (by definition) is an open, non-equilibrium thermodynamic system
+2
+
+https://doi.org/10.26434/chemrxiv-2025-1z9j7 ORCID: https://orcid.org/0000-0002-3477-8043 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+42
+
+that exchanges matter and energy with its surroundings and facilitates electrochemical re-
+
+43
+
+actions driven by the potential difference between the electrodes and the electrolyte. Due to
+
+44
+
+the inherent complexity of these electrochemical processes, a detailed understanding of PFAS
+
+45
+
+degradation mechanisms in these complex environments is scarce and still in its infancy. 13–16
+
+46
+
+For example, the choice of electrode material, electrolyte composition/concentration, tem-
+
+47
+
+perature, and external bias are all experimental conditions that can be modified, but it is not
+
+48
+
+obvious which combinations of these parameters are optimal for PFAS degradation. More-
+
+49
+
+over, since the entire electrochemical system is under an external bias, conventional density
+
+50
+
+functional theory (DFT) in its standard formulation (discussed further below) cannot be
+
+51
+
+used, since the system is open and driven far from equilibrium. 17 To shed mechanistic in-
+
+52
+
+sight into these electrochemically-induced processes, we present the first constant-electrode
+
+53
+
+potential (CEP) quantum calculations of PFAS degradation on electrified surfaces. The ap-
+
+54
+
+plication of CEP quantum calculations to electrochemically-induced PFAS degradation is
+
+55
+
+particularly novel since traditional DFT methods are inherently constrained to a fixed num-
+
+56
+
+ber of electrons and cannot capture realistic electrochemical conditions where there is a facile
+
+57
+
+exchange of electrons with the electrode. Our CEP calculations go beyond this limitation by
+
+58
+
+modifying the conventional DFT formalism to allow electrons to be freely supplied/removed
+
+59
+
+from the system (via the electrode potential), which accurately simulates a realistic electro-
+
+60
+
+chemical interface. This approach allows us to simulate the true grand-canonical thermo-
+
+61
+
+dynamic ensemble of electrons, capturing the critical Fermi-level fluctuations that govern
+
+62
+
+the complex reactivity in these electrochemical systems. We describe our approaches for
+
+63
+
+simulating these complex, non-equilibrium processes, followed by a variety of analyses and
+
+64
+
+real-time dynamics that explain the underlying mechanisms of the electrochemically-induced
+
+65
+
+degradation process. Finally, we conclude with a discussion and summary of our results, with
+
+66
+
+additional perspectives on future applications of our CEP-based techniques that can have a
+
+67
+
+broad impact on electrochemical degradation of PFAS.
+
+3
+https://doi.org/10.26434/chemrxiv-2025-1z9j7 ORCID: https://orcid.org/0000-0002-3477-8043 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+68
+
+2.
+
+Methods and Materials
+
+69
+
+We investigated PFAS degradation reactions in the presence of a constant-electrode potential
+
+70
+
+(CEP) 18 using a locally modified Vienna Ab initio Simulation Package (VASP) 19,20 code with
+
+71
+
+the VASPsol 21,22 implicit solvation model. In the CEP model, density functional theory 23,24
+
+72
+
+(DFT) calculations with varying numbers of electrons are iteratively carried out for the
+
+73
+
+entire chemical system in the presence of an implicit electrolyte. It is worth emphasizing
+
+74
+
+that these CEP calculations go beyond the conventional canonical DFT formalism since the
+
+75
+
+entire system is open (i.e., a grand canonical thermodynamic system), and the total number
+
+76
+
+of electrons in the system is iteratively adjusted until the Fermi level, EF , converges to the
+
+77
+
+applied electrode potential, U (in volts). A solution for the CEP system is obtained when
+
+78
+
+the following expression is self-consistently satisfied:
+
+U=
+
+−EF − ϕSHE
+,
+e
+
+(1)
+
+79
+
+where ϕSHE = 4.6 eV is the work function of the standard hydrogen electrode (SHE) as
+
+80
+
+calculated with the Perdew-Burke-Ernzerhof (PBE) 25 functional in the VASPsol model, and
+
+81
+
+e is the elementary charge. We used a 0.01 eV convergence criterion for the electrolyte-
+
+82
+
+referenced Fermi level to solve Eq. (1) self-consistently.
+
+83
+
+We investigated a protonated PFOA (C7 F15 COOH) molecule adsorbed on an electrode
+
+84
+
+surface, which was modeled with a 4-layer, 5×5 Cu(111) slab. The Cu(111) surface was
+
+85
+
+specifically chosen for our studies since Cu is one of the most widely used transition metal
+
+86
+
+catalysts (due to its abundance and low cost), and the Cu(111) surface is one of the most well-
+
+87
+
+studied metal surfaces in both experimental and theoretical studies. 26 We also carried out
+
+88
+
+additional calculations with larger slabs and verified that the 5×5 Cu(111) slab used in our
+
+89
+
+work was sufficiently large enough to give accurate results. The PFOA molecule was adsorbed
+
+90
+
+on the Cu(111) surface in the lowest-energy “flat” configuration 27 where the plane of the car-
+
+91
+
+bon backbone is parallel to the surface. To avoid spurious interactions between the adjacent
+4
+
+https://doi.org/10.26434/chemrxiv-2025-1z9j7 ORCID: https://orcid.org/0000-0002-3477-8043 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+92
+
+chemical species in repeated supercells, a ∼25 Å vacuum spacing was used along the surface
+
+93
+
+normal. In the remainder of this work, we denote this supercell as PFOA/Cu(111), which
+
+94
+
+has 1,850 valence electrons. Both static (i.e., single point/structural relaxation) and molec-
+
+95
+
+ular dynamics 28 DFT simulations were carried out with periodic boundary conditions under
+
+96
+
+a fixed electrode potential with projector augmented-wave (PAW) pseudopotentials. 29,30 We
+
+97
+
+used a Debye length of 3.0 Å in the VASPSol package, which corresponds to a bulk electrolyte
+
+98
+
+with a 1 M concentration of monovalent cations and anions and a relative permittivity of
+
+99
+
+the solvent of 80 for water at ambient conditions. The dispersion-corrected PBE-D3 31 func-
+
+100
+
+tional with a 520 eV cutoff energy was used for the plane-wave expansion. The optimized
+
+101
+
+structure of PFOA/Cu(111) is illustrated in Fig. S1 of the Supporting Information (SI). The
+
+102
+
+Brillouin zone was sampled with a 2×2×1 Monkhorst–Pack mesh; the electronic energy and
+
+103
+
+forces were converged to within 1 × 10−6 eV and 0.02 eV/Å, respectively. During the simu-
+
+104
+
+lations, the bottom layer of the Cu electrode was held fixed at the optimized bulk structure.
+
+105
+
+The ab initio molecular dynamics (AIMD) simulations were performed at 300 K with the
+
+106
+
+Nosé-Hover thermostat. 32
+
+107
+
+3.
+
+108
+
+Using the optimized supercell geometries depicted in Fig. S1 in the SI, we carried out CEP
+
+109
+
+ionic-relaxation and AIMD calculations for several values of the applied bias to study PFOA
+
+110
+
+degradation dynamics on the electrified electrode surfaces.
+
+111
+
+3.1
+
+112
+
+Results and Discussion
+
+PFAS Degradation Mechanisms on Electrified Electrode Surfaces
+
+113
+
+We explored a wide range of applied anodic(+)/cathodic(-) voltages (spanning from -3 to
+
+114
+
++3 V) with respect to the SHE, and Fig. S2 in the SI shows the optimized structure
+
+115
+
+of the PFOA/Cu(111) supercell from these CEP ionic-relaxation calculations. Fig. 1(a)
+5
+
+https://doi.org/10.26434/chemrxiv-2025-1z9j7 ORCID: https://orcid.org/0000-0002-3477-8043 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 1: (a) Total number of electrons, Ne (left vertical axis; hollow circles), and Fermi
+level, EF (right vertical axis; solid circles), vs. the applied electrode potential. The three
+structures in panel (a) depict the optimized geometries of the PFOA/Cu(111) supercell
+obtained from the constant-electrode potential ionic-relaxation calculations at an applied
+bias of -3.0, 0.0, and +3.0 V. (b) and (c) Bader charge analysis for PFOA in the structurally
+optimized PFOA/Cu(111) supercell at an applied bias of 0.0 and -3.0 V, respectively. The
+PFOA geometries are identical to those shown inside panel (a). The numbers on the atoms
+show their Bader net atomic charges (in units of e). To simplify the visualization, the
+charges on the backbone F (gray) atoms (∼-0.6 e) are not displayed since they do not differ
+significantly between panels (b) and (c). The atoms are denoted by the following coloring
+scheme: H (white), C (brown), O (red), F (gray), and Cu (blue).
+6
+https://doi.org/10.26434/chemrxiv-2025-1z9j7 ORCID: https://orcid.org/0000-0002-3477-8043 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+116
+
+plots the converged total number of electrons, Ne (left vertical axis; hollow circles), and
+
+117
+
+Fermi level, EF (right vertical axis; solid circles), for the CEP ionic-relaxation calculations
+
+118
+
+for PFOA/Cu(111) as a function of the applied electrode potential. At 0.0 V, the CEP-
+
+119
+
+optimized geometry (illustrated on the lowest snapshot of Fig.1 (a)) shows a minor structural
+
+120
+
+deviation from the initial PFOA/Cu(111) geometry (see panels Figs. S1(a) and (b) in the
+
+121
+
+SI) However, when +1.0 V is applied, the plane of the carboxyl (−COOH) group rotates
+
+122
+
+and moves the carbonyl oxygen/hydroxyl group closer to/farther from the surface plane (see
+
+123
+
+Fig. S2(b) in the SI). This positive voltage effectively reduces Ne by almost 3 electrons to
+
+124
+
+1846.9 e− and shifts EF downward to -7.8 eV. At a potential of +2.0 V, the carbonyl oxygen
+
+125
+
+forms a bond with the copper surface, and the hydroxyl group dissociates. The liberated
+
+126
+
+hydrogen atom subsequently binds to an on-top site on the Cu(111) surface (see Fig. S2(d)
+
+127
+
+in the SI). Further increasing the potential to +3.0 V effectively removes nearly 17 electrons
+
+128
+
+from the neutral reference system and triggers the migration of the hydrogen atom to a
+
+129
+
+hollow site on the Cu(111) surface (see Fig. S2(f) in the SI). Apart from this deprotonation
+
+130
+
+reaction, no additional degradation pathways for PFOA were identified at potentials up to
+
+131
+
++3.0 V. Increasing the potential beyond this limit results in extremely difficult convergence
+
+132
+
+of the CEP calculations since the depletion of electrons creates a large positive charge in the
+
+133
+
+periodic cell, which is unphysical. Our findings are also consistent with several experimental
+
+134
+
+studies showing that oxidation processes at positive applied voltages can be less efficient than
+
+135
+
+reduction processes (which occur at a negative applied bias) for degradation of PFAS. 13–16
+
+136
+
+Turning our attention to negative voltages, Figs. S2(c, e, and g) in the SI show that the
+
+137
+
+carboxyl group plane in PFOA rotates in the opposite direction compared to the geometries
+
+138
+
+obtained under positive voltages. As shown in Fig. 1(a), negative biases result in more
+
+139
+
+electrons introduced into the PFOA/Cu(111) supercell (compared to the zero-bias state
+
+140
+
+with Ne = 1850.0 e− ), which accelerates PFOA defluorination via excess electrons in this
+
+141
+
+reductive process. This phenomenon also manifests itself in the increasing Fermi level as the
+
+142
+
+voltage is decreased, as shown in Fig. 1(a). We observed no significant structural changes in
+
+7
+https://doi.org/10.26434/chemrxiv-2025-1z9j7 ORCID: https://orcid.org/0000-0002-3477-8043 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+143
+
+PFOA for voltages more positive than -3.0 V; however, at this critical value of the bias, the
+
+144
+
+CEP ionic-relaxation simulations show the dissociation of a C−F bond located at the C2
+
+145
+
+carbon (carbon-atom numberings in this work, i.e., C2 or C6, are denoted by their distance
+
+146
+
+from the carboxyl head group); see structure on the middle left side of Fig. 1(a). This
+
+147
+
+agrees well with previous experimental findings that indicate C–F bond cleavage occurs at
+
+148
+
+potentials close to -3.0 V. 11,33,34
+
+149
+
+To further understand the effects of applying a negative potential to the system, we
+
+150
+
+carried out a Bader charge analysis 35,36 for the PFOA/Cu(111) system at 0.0 (Ne = 1849.8
+
+151
+
+e− ) and -3.0 V (Ne = 1856.9 e− ). This analysis reveals that approximately 68% (∼4.8
+
+152
+
+e− ) of the 7.1 additional electrons in the cell at -3.0 V are retained within the Cu(111)
+
+153
+
+surface slab, while about 32% (∼2.3 e− ) are transferred to PFOA. Figs. 1(b) and (c) show
+
+154
+
+the results of the Bader charge analysis for the PFOA/Cu(111) system at applied electrode
+
+155
+
+potentials of 0.0 and -3.0 V, respectively. The numerical labels on each atom denote their
+
+156
+
+Bader net atomic charges, which are determined by the difference between the number of
+
+157
+
+valence electrons and the Bader population associated with that atom. At 0.0 V, the nearly
+
+158
+
+neutral PFOA consists of 15 negatively charged F atoms (-0.6 e) on the carbon backbone.
+
+159
+
+In contrast, the carbon atoms have charges ranging from +1 to +1.8 e and are connected
+
+160
+
+to a carboxyl group with negatively-charged oxygen atoms and a +0.5 e-charged hydrogen
+
+161
+
+atom. This analysis reflects the well-known partial ionic character of the C−F bond where
+
+162
+
+the high electronegativity of fluorine creates a partial positive and negative charge on C and
+
+163
+
+F, respectively. Upon application of a negative voltage of -3.0 V, dramatic changes occur
+
+164
+
+within the PFOA molecule. The positive charge on the H atom decreases to +0.1 e as it gets
+
+165
+
+closer to the surface. Moreover, the C2 carbon atom experiences a significant decrease to
+
+166
+
++0.3 e, and the external voltage leads to cleavage of the C2–F bond. As a result, a negatively
+
+167
+
+charged fluoride ion (F− ) is released from the molecule and migrates into the surrounding
+
+168
+
+electrolyte solution.
+
+169
+
+To understand the electronic mechanisms of the C–F dissociation process in the presence
+
+8
+https://doi.org/10.26434/chemrxiv-2025-1z9j7 ORCID: https://orcid.org/0000-0002-3477-8043 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 2: (Upper panel) Evolution of the C2–F bond, indicated by the dashed red line on
+the PFOA structure; C–F bond length (left vertical axis) as a function of the number ionic
+steps during the CEP ionic relaxation calculation at -3.0 V. The black curve plots the total
+number of electrons (right vertical axis) in the PFOA/Cu(111) supercell during the same
+simulation. (Lower panels) Projected crystal orbital Hamilton population (pCOHP) bonding
+analysis for the C2–F bond at six different lengths (solid blue circles on the upper red curve).
+The left (blue)/right (green) sides of the COHP curves denote the anti-bonding/bonding
+distributions, respectively; the bond order of the C2–F bond is reported at the bottom of
+the figure.
+
+9
+https://doi.org/10.26434/chemrxiv-2025-1z9j7 ORCID: https://orcid.org/0000-0002-3477-8043 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+170
+
+of an applied bias, we used the Crystal Orbital Hamilton Population (COHP) analysis in
+
+171
+
+the LOBSTER 37 software package. In the COHP formalism, bonding, non-bonding, and
+
+172
+
+antibonding interactions are identified for pairs of atoms in a given structure, and the inte-
+
+173
+
+grated value of the crystal orbital bond index (ICOBI) equals the chemical bond order. The
+
+174
+
+upper panel of Fig. 2 depicts the evolution of the C2–F bond length (RC−F , left vertical axis)
+
+175
+
+and the total number of electrons (right vertical axis) throughout the 750 ionic steps of the
+
+176
+
+CEP ionic-relaxation calculation at -3.0 V. The lower panels of Fig. 2 report the projected
+
+177
+
+crystal orbital Hamilton population (pCOHP) bonding analysis of the C2–F bond at six
+
+178
+
+different lengths (denoted as solid blue circles on the bond length vs. ionic steps curve) as a
+
+179
+
+function of energy. For each bond length, the value of the chemical bond order is reported
+
+180
+
+under the associated pCOHP curve in which the Fermi level (EF ) lies at zero eV, and the
+
+181
+
+left (blue)/right (green) sides are the anti-bonding/bonding distributions, respectively. At
+
+182
+
+the first ionic step (RC−F = 1.367 Å and Ne = 1850.0 e− ), the bond order of 0.80 indicates
+
+183
+
+a weaker bond compared to a pure single bond with an order of 1.0. This suggests that
+
+184
+
+the bond is less stable and more susceptible to breaking under the applied bias as the ionic
+
+185
+
+relaxation simulation progresses. In the associated pCOHP curve, the presence of C−F an-
+
+186
+
+tibonding states near the Fermi level signifies electronic instability within the system. At
+
+187
+
+the 100th ionic step (RC−F = 1.612 Å and Ne = 1855.9 e− ), the bond order has significantly
+
+188
+
+decreased to 0.49, indicating a further weakening of the bond. The pCOHP plot shows that
+
+189
+
+this bond weakening is accompanied by an increase in antibonding interactions below the
+
+190
+
+Fermi level. While the antibonding states vanish at the Fermi level by the 125th ionic step
+
+191
+
+(RC−F = 2.460 Å and Ne = 1856.7 e− ), the electronic instability persists. This persistence is
+
+192
+
+attributed to the presence of populated antibonding states, which gradually diminish as the
+
+193
+
+simulation progresses towards the 150th step (RC−F = 3.868 Å and Ne = 1856.8 e− ). At this
+
+194
+
+point, the bond order reaches zero, signifying a complete bond dissociation. Elongation of
+
+195
+
+the C2–F bond during the ionic relaxation process leads to the complete depletion of occu-
+
+196
+
+pied antibonding states. By the final ionic step (RC−F = 6.494 Å and Ne = 1856.9 e− ), the
+
+10
+https://doi.org/10.26434/chemrxiv-2025-1z9j7 ORCID: https://orcid.org/0000-0002-3477-8043 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+197
+
+Fermi level in the pCOHP curve resides within a gap between the bonding and antibonding
+
+198
+
+regions, which signifies a stable non-bonding state for the C2–F bond in the system.
+
+199
+
+3.2
+
+200
+
+Real-Time PFAS Degradation Dynamics on Electrified Electrode Surfaces
+
+201
+
+While the previous CEP ionic-relaxation calculations provide mechanistic information into
+
+202
+
+the PFAS degradation process, they only give a single, time-independent snapshot of the
+
+203
+
+degradation process near an equilibrium structure at zero Kelvin.
+
+204
+
+dependent picture of the degradation dynamics, which also accounts for temperature effects,
+
+205
+
+we carried out computationally-intensive CEP AIMD simulations of PFOA degradation on
+
+206
+
+the Cu(111) surface. These AIMD simulations inherently explore a broader configurational
+
+207
+
+and energetic landscape for the PFAS degradation process, whereas the CEP ionic-relaxation
+
+208
+
+calculations are constrained to an initial geometry and can only explore configurations near
+
+209
+
+the local energy minimum. Using the same PFOA/Cu(111) structure shown in Figs. S1(a)
+
+210
+
+and (b) in the SI as an initial geometry, CEP AIMD calculations were carried out at -
+
+211
+
+3.3 V for a duration of 1,307 fs. The SI provides a movie of the degradation dynamics
+
+212
+
+of PFOA/Cu(111) and Figs. 3(a) and (b) show the final decomposed structure of PFOA
+
+213
+
+obtained from our CEP AIMD calculations, The evolution of all 15 C−F bonds in PFOA
+
+214
+
+during the CEP AIMD simulation is depicted in the inset of Fig. 3(c). At ∼1250 fs, the
+
+215
+
+C5–F and C6–F bonds begin to stretch (by 35% and 73%, respectively) until they effectively
+
+216
+
+dissociate, leading to the release of F atoms from the molecule and migration into the sur-
+
+217
+
+rounding electrolyte solution. It is worth mentioning that we also carried out conventional
+
+218
+
+AIMD calculations (which only allows a fixed number of electrons due to its closed-system
+
+219
+
+nature) of PFOA on CU(111), and no bond dissociation of any kind was observed. In
+
+220
+
+contrast, our CEP-based AIMD calculations clearly show the dissociation of C–F bonds in
+
+221
+
+PFOA at -3.3 V, which demonstrates the new capability of the CEP approach for capturing
+
+222
+
+electrochemically-induced bond-breaking processes.
+
+To provide a time-
+
+11
+https://doi.org/10.26434/chemrxiv-2025-1z9j7 ORCID: https://orcid.org/0000-0002-3477-8043 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 3: (a) Snapshot of the PFOA/Cu(111) supercell at the end (1,307 fs) of the CEP
+AIMD simulation at -3.3 V. (b) Magnified view of the PFOA molecule shown in panel (a).
+(c) Evolution of the C5–F (red) and C6–F (black) bonds, which dissociate during the CEP
+AIMD simulation. The atoms are denoted by the following coloring scheme: H (white), C
+(brown), O (red), F (gray), and Cu (blue).
+
+12
+https://doi.org/10.26434/chemrxiv-2025-1z9j7 ORCID: https://orcid.org/0000-0002-3477-8043 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+223
+
+Taken together, our quantum calculations corroborate several previous experimental and
+
+224
+
+computational observations on PFAS degradation. For example, our CEP AIMD calcula-
+
+225
+
+tions at -3.3 V naturally predict the dissociation of the C5–F and C6–F bonds in PFOA,
+
+226
+
+which were previously identified as having the lowest bond dissociation energies in a joint ex-
+
+227
+
+perimental/computational study (see Fig. 3(d) in Ref. 38). In addition, our ionic relaxation
+
+228
+
+simulations predict that a C–F bond in PFOA dissociates at an applied external potential
+
+229
+
+of -3.0 V, which aligns well with experimental findings. 33 Finally, our quantum calculations
+
+230
+
+enable a Bader charge analysis to predict the distribution of electrons in PFAS, which pro-
+
+231
+
+vides insight into how charge is transferred to these contaminants in electrified environments
+
+232
+
+to enable subsequent degradation reactions.
+
+233
+
+In conclusion, we have carried out the first constant-potential simulations of PFAS
+
+234
+
+reactions on electrified surfaces to probe their degradation dynamics under realistic non-
+
+235
+
+equilibrium conditions. These advanced CEP calculations provide new mechanistic details
+
+236
+
+of PFAS degradation in an open system under an electrochemical bias, which cannot be
+
+237
+
+gleaned from conventional DFT calculations. Specifically, our CEP calculations show that
+
+238
+
+C–F anti-bonding states near the Fermi level (i.e., the chemical potential of the system)
+
+239
+
+emerge when the system is placed under a negative bias. This subsequently causes the C–F
+
+240
+
+bond to dissociate until the system reaches a stable non-bonding state where the bonding
+
+241
+
+and anti-bonding states of PFAS are energetically separated. To provide time scales for this
+
+242
+
+complex process, we also carried out large-scale CEP AIMD calculations of PFOA degrada-
+
+243
+
+tion on an electrified Cu(111) surface, which show that defluorination occurs within 1,307
+
+244
+
+fs when the system is placed under a negative bias of -3.3 V. Taken together, these CEP
+
+245
+
+calculations enable a new capability for predicting reactions and time-resolved PFAS degra-
+
+246
+
+dation mechanisms under realistic, non-equilibrium, electrochemical conditions. Specifically,
+
+247
+
+our open-system quantum calculations enable predictions of chemical reactivity and eluci-
+
+248
+
+date the effect of external potentials on PFAS degradation on electrified surfaces. Moreover,
+
+249
+
+these predictive CEP approaches hold immense promise for pre-screening candidate mate-
+
+13
+https://doi.org/10.26434/chemrxiv-2025-1z9j7 ORCID: https://orcid.org/0000-0002-3477-8043 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+250
+
+rial surfaces and predicting optimal electrochemical conditions/biases to guide experimental
+
+251
+
+efforts in remediating PFAS and other emerging environmental contaminants. For example,
+
+252
+
+our computational approach can facilitate the exploration of alternative electrode materials
+
+253
+
+such as boron-doped diamond (BDD), lead oxide (PbO2 ), and tin oxide (SnO2 ) to provide
+
+254
+
+mechanistic insight into PFOA oxidation and defluorination mechanisms on these different
+
+255
+
+surfaces. Additionally, our approach can also be used to investigate the effect of electrolytes
+
+256
+
+on PFAS degradation, which can further be used to improve treatment processes. Exploring
+
+257
+
+all of these various aspects with our computational approaches can assist PFAS researchers
+
+258
+
+in rationally down-selecting promising electrode materials and electrolytes to enhance the
+
+259
+
+efficiency of experimental degradation strategies.
+
+260
+
+Funding Sources
+
+261
+
+This work was supported by the U.S. Department of Energy, Energy Efficiency & Renewable
+
+262
+
+Energy (EERE) under Award No. DE-EE0010432.
+
+263
+
+Acknowledgement
+
+264
+
+This work used the Expanse supercomputer at the San Diego Supercomputer Center, through
+
+265
+
+allocation TG-CHE240173 from the Advanced Cyberinfrastructure Coordination Ecosystem:
+
+266
+
+Services & Support (ACCESS) program. Dr. Min Choi and Dr. Gabriel S. Phun are
+
+267
+
+gratefully acknowledged for constructing the table of contents figure used in this work.
+
+268
+
+Supporting Information Available
+
+269
+
+CEP-movie of AIMD degradation dynamics of PFOA/Cu(111) at -3.3 V, figures of the opti-
+
+270
+
+mized PFOA/Cu(111) supercell, and figures of optimized PFOA/Cu(111) supercells obtained
+
+271
+
+from CEP ionic-relaxation calculations at several values of the applied bias.
+14
+
+https://doi.org/10.26434/chemrxiv-2025-1z9j7 ORCID: https://orcid.org/0000-0002-3477-8043 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+272
+
+References
+
+273
+
+(1) Schaider, L. A.; Balan, S. A.; Blum, A.; Andrews, D. Q.; Strynar, M. J.; Dickin-
+
+274
+
+son, M. E.; Lunderberg, D. M.; Lang, J. R.; Peaslee, G. F. Fluorinated Compounds
+
+275
+
+in U.S. Fast Food Packaging. Environmental Science & Technology Letters 2017, 4,
+
+276
+
+105–111.
+
+277
+
+278
+
+(2) Sajid, M.; Ilyas, M. PTFE-Coated Non-Stick Cookware and Toxicity Concerns: A
+Perspective. Environmental Science and Pollution Research 2017, 24, 23436–23440.
+
+279
+
+(3) Guelfo, J. L.; Adamson, D. T. Evaluation of a National Data Set for Insights into
+
+280
+
+Sources, Composition, and Concentrations of Per- and Polyfluoroalkyl Substances
+
+281
+
+(PFASs) in U.S. Drinking Water. Environmental Pollution 2018, 236, 505–513.
+
+282
+
+(4) Crone, B. C.; Speth, T. F.; Wahman, D. G.; Smith, S. J.; Abulikemu, G.; Kleiner, E. J.;
+
+283
+
+Pressman, J. G. Occurrence of Per- and Polyfluoroalkyl Substances (PFAS) in Source
+
+284
+
+Water and Their Treatment in Drinking Water. Crit. Rev. Environ. Sci. Technol. 2019,
+
+285
+
+49, 2359–2396.
+
+286
+
+(5) Su, Y.; Rao, U.; Khor, C. M.; Jensen, M. G.; Teesch, L. M.; Wong, B. M.;
+
+287
+
+Cwiertny, D. M.; Jassby, D. Potential-Driven Electron Transfer Lowers the Dissociation
+
+288
+
+Energy of the C–F Bond and Facilitates Reductive Defluorination of Perfluorooctane
+
+289
+
+Sulfonate (PFOS). ACS Applied Materials & Interfaces 2019, 11, 33913–33922.
+
+290
+
+(6) Rao, U.; Su, Y.; Khor, C. M.; Jung, B.; Ma, S.; Cwiertny, D. M.; Wong, B. M.;
+
+291
+
+Jassby, D. Structural Dependence of Reductive Defluorination of Linear PFAS Com-
+
+292
+
+pounds in a UV/Electrochemical System. Environmental Science & Technology 2020,
+
+293
+
+54, 10668–10677.
+
+294
+
+(7) Yamijala, S. S. R. K. C.; Shinde, R.; Wong, B. M. Real-Time Degradation Dynamics
+
+295
+
+of Hydrated Per- and Polyfluoroalkyl Substances (PFASs) in the Presence of Excess
+
+296
+
+Electrons. Phys. Chem. Chem. Phys. 2020, 22, 6804–6808.
+15
+
+https://doi.org/10.26434/chemrxiv-2025-1z9j7 ORCID: https://orcid.org/0000-0002-3477-8043 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+297
+
+(8) Maza, W. A.; Breslin, V. M.; Owrutsky, J. C.; Pate, B. B.; Epshteyn, A. Nanosecond
+
+298
+
+Transient Absorption of Hydrated Electrons and Reduction of Linear Perfluoroalkyl
+
+299
+
+Acids and Sulfonates. Environmental Science & Technology Letters 2021, 8, 525–530.
+
+300
+
+(9) Biswas, S.; Yamijala, S. S. R. K. C.; Wong, B. M. Degradation of Per- and Polyfluo-
+
+301
+
+roalkyl Substances with Hydrated Electrons: A New Mechanism from First-Principles
+
+302
+
+Calculations. Environmental Science & Technology 2022, 56, 8167–8175.
+
+303
+
+(10) Biswas, S.; Wong, B. M. Degradation of Perfluorooctanoic Acid on Aluminum Oxide
+
+304
+
+Surfaces: New Mechanisms from Ab Initio Molecular Dynamics Simulations. Environ-
+
+305
+
+mental Science & Technology 2023, 57, 6695–6702.
+
+306
+
+(11) Wang, Y.; Zhang, J.; Zhang, W.; Yao, J.; Liu, J.; He, H.; Gu, C.; Gao, G.; Jin, X.
+
+307
+
+Electrostatic Field in Contact-Electro-Catalysis Driven C-F Bond Cleavage of Perfluo-
+
+308
+
+roalkyl Substances. Angewandte Chemie International Edition 2024, 63, e202402440.
+
+309
+
+(12) Román Santiago, A.; Baldaguez Medina, P.; Su, X. Electrochemical Remediation of
+
+310
+
+Perfluoroalkyl Substances from Water. Electrochimica Acta 2022, 403, 139635.
+
+311
+
+(13) Su, Y.; Rao, U.; Khor, C. M.; Jensen, M. G.; Teesch, L. M.; Wong, B. M.;
+
+312
+
+Cwiertny, D. M.; Jassby, D. Potential-Driven Electron Transfer Lowers the Dissociation
+
+313
+
+Energy of the C–F Bond and Facilitates Reductive Defluorination of Perfluorooctane
+
+314
+
+Sulfonate (PFOS). ACS Applied Materials & Interfaces 2019, 11, 33913–33922.
+
+315
+
+(14) Rao, U.; Su, Y.; Khor, C. M.; Jung, B.; Ma, S.; Cwiertny, D. M.; Wong, B. M.;
+
+316
+
+Jassby, D. Structural Dependence of Reductive Defluorination of Linear PFAS Com-
+
+317
+
+pounds in a UV/Electrochemical System. Environmental Science & Technology 2020,
+
+318
+
+54, 10668–10677.
+
+319
+
+(15) Biswas, S.; Wang, X.; Wong, B. M. Advanced Experimental and Computational Ap-
+
+320
+
+proaches for Advanced Reduction of Per- and Polyfluoroalkyl Substances. Current
+
+321
+
+Opinion in Chemical Engineering 2024, 44, 101017.
+16
+
+https://doi.org/10.26434/chemrxiv-2025-1z9j7 ORCID: https://orcid.org/0000-0002-3477-8043 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+322
+
+(16) King, J. F.; Chaplin, B. P. Electrochemical Reduction of Per- and Polyfluorinated Alkyl
+
+323
+
+Substances (PFAS): Is It Possible? Applying Experimental and Quantum Mechanical
+
+324
+
+Insights from the Reductive Defluorination Literature. Current Opinion in Chemical
+
+325
+
+Engineering 2024, 44, 101014.
+
+326
+
+(17) Biswas, S.; Wong, B. M. Beyond Conventional Density Functional Theory: Advanced
+
+327
+
+Quantum Dynamical Methods for Understanding Degradation of Per- and Polyfluo-
+
+328
+
+roalkyl Substances. ACS ES&T Engineering 2024, 4, 96–104.
+
+329
+
+330
+
+(18) Garza, A. J.; Bell, A. T.; Head-Gordon, M. Mechanism of CO2 Reduction at Copper
+Surfaces: Pathways to C2 Products. ACS Catalysis 2018, 8, 1490–1499.
+
+331
+
+(19) Zhao, X.; Liu, Y. Origin of Selective Production of Hydrogen Peroxide by Electro-
+
+332
+
+chemical Oxygen Reduction. Journal of the American Chemical Society 2021, 143,
+
+333
+
+9423–9428.
+
+334
+
+(20) Yu, S.; Levell, Z.; Jiang, Z.; Zhao, X.; Liu, Y. What is the Rate-Limiting Step of Oxygen
+
+335
+
+Reduction Reaction on Fe–N–C Catalysts? Journal of the American Chemical Society
+
+336
+
+2023, 145, 25352–25356.
+
+337
+
+(21) Mathew, K.; Kolluru, V. S. C.; Mula, S.; Steinmann, S. N.; Hennig, R. G. Implicit
+
+338
+
+Self-Consistent Electrolyte Model in Plane-Wave Density-Functional Theory. J. Chem.
+
+339
+
+Phys. 2019, 151, 234101.
+
+340
+
+(22) Mathew, K.; Sundararaman, R.; Letchworth-Weaver, K.; Arias, T. A.; Hennig, R. G.
+
+341
+
+Implicit Solvation Model for Density-Functional Study of Nanocrystal Surfaces and
+
+342
+
+Reaction Pathways. J. Chem. Phys. 2014, 140, 084106.
+
+343
+
+344
+
+(23) Hohenberg, P.; Kohn, W. Inhomogeneous Electron Gas. Phys. Rev. 1964, 136, B864–
+B871.
+
+17
+https://doi.org/10.26434/chemrxiv-2025-1z9j7 ORCID: https://orcid.org/0000-0002-3477-8043 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+345
+
+346
+
+347
+
+348
+
+349
+
+350
+
+351
+
+352
+
+353
+
+354
+
+(24) Kohn, W.; Sham, L. J. Self-Consistent Equations Including Exchange and Correlation
+Effects. Phys. Rev. 1965, 140, A1133–A1138.
+(25) Perdew, J. P.; Burke, K.; Ernzerhof, M. Generalized Gradient Approximation Made
+Simple. Phys. Rev. Lett. 1996, 77, 3865–3868.
+(26) Xu, L.; Lin, J.; Bai, Y.; Mavrikakis, M. Atomic and Molecular Adsorption on Cu(111).
+Topics in Catalysis 2018, 61, 736–750.
+(27) Jenness, G. R.; Shukla, M. K. What Can Blyholder Teach Us about PFAS Degradation
+on Metal Surfaces? Environ. Sci.: Adv. 2024, 3, 383–401.
+(28) Bonnet, N.; Morishita, T.; Sugino, O.; Otani, M. First-Principles Molecular Dynamics
+at a Constant Electrode Potential. Phys. Rev. Lett. 2012, 109, 266101.
+
+355
+
+(29) Blöchl, P. E. Projector Augmented-Wave Method. Phys. Rev. B 1994, 50, 17953–17979.
+
+356
+
+(30) Kresse, G.; Joubert, D. From Ultrasoft Pseudopotentials to the Projector Augmented-
+
+357
+
+Wave Method. Phys. Rev. B 1999, 59, 1758–1775.
+
+358
+
+(31) Grimme, S.; Antony, J.; Ehrlich, S.; Krieg, H. A Consistent and Accurate Ab Ini-
+
+359
+
+tio Parametrization of Density Functional Dispersion Correction (DFT-D) for the 94
+
+360
+
+Elements H-Pu. Journal of Chemical Physics 2010, 132, 154104.
+
+361
+
+362
+
+(32) Evans, D. J.; Holian, B. L. The Nose–Hoover Thermostat. Journal of Chemical Physics
+1985, 83, 4069–4074.
+
+363
+
+(33) Pud, A.; Shapoval, G.; Kukhar, V.; Mikulina, O.; Gervits, L. Electrochemical Reduction
+
+364
+
+of Some Saturated and Unsaturated Perfluorocarbons. Electrochimica Acta 1995, 40,
+
+365
+
+1157–1164.
+
+366
+
+367
+
+(34) Röckl, J. L.; Robertson, E. L.; Lundberg, H. Electrosynthetic C–F bond cleavage. Org.
+Biomol. Chem. 2022, 20, 6707–6720.
+18
+
+https://doi.org/10.26434/chemrxiv-2025-1z9j7 ORCID: https://orcid.org/0000-0002-3477-8043 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+368
+
+369
+
+370
+
+371
+
+(35) Bader, R. Atoms in Molecules: A Quantum Theory; International Series of Monographs
+on Chemistry; Clarendon Press, 1990.
+(36) Tang, W.; Sanville, E.; Henkelman, G. A Grid-Based Bader Analysis Algorithm without
+Lattice Bias. Journal of Physics: Condensed Matter 2009, 21, 084204.
+
+372
+
+(37) Nelson, R.; Ertural, C.; George, J.; Deringer, V. L.; Hautier, G.; Dronskowski, R. LOB-
+
+373
+
+STER: Local Orbital Projections, Atomic Charges, and Chemical-Bonding Analysis
+
+374
+
+from Projector-Augmented-Wave-Based Density-Functional Theory. Journal of Com-
+
+375
+
+putational Chemistry 2020, 41, 1931–1940.
+
+376
+
+(38) Bentel, M. J.; Yu, Y.; Xu, L.; Li, Z.; Wong, B. M.; Men, Y.; Liu, J. Defluorination
+
+377
+
+of Per- and Polyfluoroalkyl Substances (PFASs) with Hydrated Electrons: Structural
+
+378
+
+Dependence and Implications to PFAS Remediation and Management. Environmental
+
+379
+
+Science & Technology 2019, 53, 3718–3728.
+
+19
+https://doi.org/10.26434/chemrxiv-2025-1z9j7 ORCID: https://orcid.org/0000-0002-3477-8043 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+380
+
+TOC Graphic
+
+381
+
+20
+https://doi.org/10.26434/chemrxiv-2025-1z9j7 ORCID: https://orcid.org/0000-0002-3477-8043 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+

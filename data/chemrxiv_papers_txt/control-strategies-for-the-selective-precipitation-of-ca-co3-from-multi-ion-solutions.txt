@@ -1,0 +1,1436 @@
+Control strategies for the selective
+precipitation of CaCO3 from multi-ion
+solutions
+Chinmay Hegde1; Andreas Voigt1; Kai Sundmacher1,2
+1
+
+2
+
+Institute of Process Engineering, Otto von Guericke University, Magdeburg
+Max Planck Institute for Dynamics of Complex Technical Systems, Magdeburg
+
+Corresponding Author: Chinmay Hegde (chinmay.hegde@ovgu.de)
+
+1. Abstract
+With rising atmospheric CO2 levels, carbon dioxide capture through calcium carbonate
+(CaCO3) precipitation offers a viable pathway for permanent CO2 storage and the production
+of useful industrial materials. This study presents the experimental implementation of selective
+CaCO3 precipitation from multi-ion solutions in a semi-batch operation. The objective is to
+develop and further implement an autonomous control strategy for the selective precipitation
+using mine wastes. Two distinct pH control strategies were developed and evaluated: a pH
+swing approach and a pH constant approach. Both methods prove effective for the precipitation
+of CaCO3 selectively from different multi-ion solutions rich in Mg2+. The two strategies,
+however, differ in their precipitation mechanisms. The pH swing method induced rapid
+nucleation under high supersaturation, producing fine particles predominantly with Calcite
+morphology. In contrast, the constant-pH method allowed for a slower, controlled growth
+following initial nucleation, resulting in larger particles with a well-defined bimodal particle
+size distribution (PSD). Initial development of the strategies done using model solutions that
+mimics real mine tailing extraction solutions and later validated with actual tailing extraction
+solutions. Depending on the target particle size, morphology, and process control requirements,
+either approach can be tailored for specific applications.
+Keywords: Selective precipitation, control strategy, CaCO3, pH swing and pH constant strategy
+
+2. Introduction
+Calcium carbonate is a versatile and indispensable material in numerous industries [1]. It plays
+a critical role in construction as a key component for cement and lime, in agriculture as a soil
+conditioner, as a filler in the paper industry, as a calcium source, and as an inert filler in
+pharmaceuticals [2], [3], [4]. Solid CaCO3 can be achieved through various methods, including
+mining natural sources and through synthetic processes such as the carbonation of lime [5], [6].
+However, the precipitation of CaCO3 has emerged as a prominent method for producing highpurity CaCO3 tailored for specific industrial applications [7], [8]. The precipitation of calcium
+carbonate involves controlled chemical reactions to transform dissolved calcium ions into solid
+carbonate, capturing atmospheric CO2 through carbon mineralization [9]. This method is
+particularly attractive because it utilizes calcium-rich industrial wastes and mine tailings,
+offering a sustainable approach to resource recovery, separation, and utilization [10]. Calcium
+is available in natural minerals as silicates, mostly Augite (CaMgSi2O6 + Fe, Al) and
+
+https://doi.org/10.26434/chemrxiv-2025-vqllg ORCID: https://orcid.org/0009-0009-3445-6405 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Wollastonite (CaSiO3). In addition, many industrial wastes like ashes, rich in calcium can be
+used as feedstocks for mineral carbonation [11].
+Controlled selective precipitation of CaCO3 is particularly critical while dealing with mine
+tailings or waste solutions containing a variety of dissolved ions along with the needed calcium
+ions. For example, waste solutions from mine tailings and industrial effluents often contain a
+3+
+2+
+variety of dissolved ions such as sulphate (SO2−
+4 ), iron (Fe ), magnesium (Mg ), manganese
+2+
+3−
+(Mn ), and phosphate (PO4 ), which can interfere with the selective precipitation of CaCO3
+[12], [13], [14] [15]. For the precipitated CaCO3 to be used as raw material for the
+abovementioned purposes, selectively precipitating pure CaCO3 from such multicomponent
+systems is a critical challenge. The optimal control of the precipitation process depends on
+precisely regulating various parameters to ensure process efficiency and product quality. The
+key factors influencing the process include pH, ion concentration, and mixing conditions [16].
+Calcium ion extraction is preferred at low pH conditions by use of acids, while carbonate
+precipitation is more favoured at higher pH conditions [17]. Maintaining an alkaline pH
+(typically 8.5 to 10.5) is critical, as it promotes the conversion of dissolved CO2 into carbonate
+and bicarbonate ions, facilitating CaCO3 precipitation [18]. However, excessively high pH can
+lead to the co-precipitation of other compounds, necessitating careful monitoring and
+adjustment [19].
+In this study we implemented a semi-batch mode of operation for the selective precipitation of
+CaCO3 from a mixture solution of various ions. Semi-batch operation is a preferred mode for
+controlled precipitation due to its ability to provide gradual and precise addition of reactants.
+This approach ensures uniform mixing and prevents localized supersaturation, which could
+result in undesired by-products or inconsistent crystal properties. For instance, [20] investigated
+semi-batch processes for calcium oxalate precipitation, highlighting the advantages of precise
+reactant addition and enhanced control over crystal growth. Similarly, studies on barium
+sulphate [21] and magnesium carbonate precipitation [22] have demonstrated the efficacy of
+semi-batch operation in achieving uniform particle size distribution and desired crystal
+morphologies. CaCO3 also exhibits three main morphologies: Calcite, Vaterite, and Aragonite.
+Several factors, such as the reaction rate, pH, ion concentration, temperature, and impurities,
+influence the morphology of the crystals. For e.g., presence of impurities such as magnesium
+in the solution favour Vaterite and Calcite [23], while potassium favours needle like structured
+Aragonite [24]. Similarly, Calcite is favoured in alkaline pH ranges [25], while acidic
+conditions may favour Vaterite and Aragonite [23]. In these previous studies, the precipitation
+of the CaCO3 was implemented by directly mixing two solutions, one a source of Ca, such as
+CaCl2, while the other solution is rich in CO2−
+3 ions, such as Na2CO3 [26]. Due to the very low
+solubility of CaCO3, it would precipitate without the need for pH regulation. However, while
+tailing solutions are used to produce CaCO3, other impurities could be co-precipitated [27]. So,
+the pH regulation via the semi-batch mode not only helps with the controlled selective
+precipitation of CaCO3, but the rate of precipitation is also beneficial in influencing the phase
+of the precipitate crystals.
+The controlled precipitation of CaCO3 is a critical step in developing an autonomous process
+control chain, particularly when using complex and variable feedstocks such as mine tailings.
+These feedstocks fluctuate in ion content, composition, and pH, which can significantly
+influence nucleation, crystal growth, and the morphology of the precipitated CaCO3. High
+concentrations of Ca2+ ions and impurities, and increase in the pH result in higher
+supersaturation facilitating nucleation [26]. Thus, an autonomous control of the precipitation
+
+https://doi.org/10.26434/chemrxiv-2025-vqllg ORCID: https://orcid.org/0009-0009-3445-6405 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+process offers an optimal control of the precipitation process ensuring consistent product quality
+and operational efficiency in industrial applications. Variability in tailings and waste streams
+can lead to inconsistent CaCO3 formation, reducing process efficiency and increasing
+operational costs. By integrating process modelling with an autonomous control chain, we can
+dynamically adjust operational parameters to maintain optimal precipitation conditions and
+produce high-purity CaCO3 in a reliable and cost-effective manner.
+The study aimed to develop optimal control strategies for creating an autonomous process chain
+for the selective precipitation of CaCO3 using a complex solution mixture of different species.
+Two optimal strategies were developed and compared for the optimal control of the
+precipitation process, focusing on enhancing efficiency and selectivity. Also, the particle size
+distribution (PSD), the morphology, and the precipitation phenomenon of CaCO3 crystals were
+analysed for the two optimal control strategies. Furthermore, the impact of foreign ions and
+impurities on the precipitation process in a model solution containing known species such as
+Mg2+, etc, was analysed. Additionally, the research demonstrated that the developed profiles
+could be applied to extraction solutions from actual mine tailings, showcasing their potential to
+selectively precipitate CaCO3 with high purity, offering a practical approach for resource
+recovery in mining operations.
+
+3. Theory
+The implementation of the pH-swing method for the selective precipitation of CaCO3 in a
+complex multi-ion mixture solution is governed by the dependency of the solubility of CaCO3
+on the pH. Calcium carbonate precipitation occurs when Ca²⁺ ions react with CO2−
+3 ions
+dissociated from dissolved atmospheric CO2:
+Ca2+ + CO2−
+3 → CaCO3
+
+(1)
+
+For the CaCO3 formed to be precipitated, its concentration in the solution should exceed the
+solubility factor (K sp ), which is defined by the product of the ion activity coefficients at
+equilibrium [28]:
+K sp = [Ca2+ ]sat [CO2−
+3 ]sat
+
+(2)
+
+The K sp of CaCO3 at 25°C in water (at pH 7) is 4.8×10-9 [29]. The equilibrium conditions are
+altered due to the changes in pH, temperature, or ion concentration. When the concentrations
+of Ca2+ and CO2−
+3 exceed the saturation limits, the solution is supersaturated. Thus, the
+supersaturation ratio (σ), which is the driving force for precipitation, is defined as [26]:
+[Ca2+ ][CO2−
+3 ]
+(3)
+σ=
+K sp
+This Equation reveals that when the ion activity product exceeds K sp (the ion activity product
+at equilibrium), CaCO3 precipitates. The supersaturation ratio (σ) is crucial also because its
+values dictate the phenomenon through which the precipitation process will progress. The
+precipitation could occur through the primary nucleation, where a large number of nuclei are
+born spontaneously. This birth phenomenon occurs when the supersaturation ratios are very
+high and birth rate, B is empirically defined in terms of σ as [30]:
+B = k b (σ − 1)n
+
+https://doi.org/10.26434/chemrxiv-2025-vqllg ORCID: https://orcid.org/0009-0009-3445-6405 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+(4)
+
+where k b is the rate constant, and n is the exponential factor. Primary nucleation via birth is a
+very complex and spontaneous process and is difficult to control. Several previous studies have
+tried to estimate experimentally the birth rates and found the values of n to be in the range of 8
+- 9, and the value of k b to be around 5.5*10-9 [31].
+The precipitation phenomenon could also progress through growth when the value of σ is not
+too high [30]. This is a slower process where the excess CaCO3 from the solution attaches to
+the surfaces of the existing nuclei, and the overall size of the crystals increases. The growth rate
+G, is calculated as [30]:
+G = k g (σ − 1)g
+
+(5)
+
+where k g is the growth constant, and g is the exponential constant depending on the growth
+mechanism (generally between 1 and 2) [30].
+From Equation (3), we also see that the precipitation amount depends not only on the Ca2+ ion
+concentration but also on the availability of CO2−
+3 ions, which is heavily influenced by the pH.
+2The availability of CO3 ions is determined by the equilibrium of dissolved carbon dioxide CO2
+in water, which undergoes a series of reactions:
+KH
+
+K1
+
+K2
+
+CO2 + H2 O ↔ H2 CO3 ↔ H + + HCO3− ↔ 2H + + CO2−
+3
+
+(6)
+
+where KH is the Henry constant for CO2 dissolution in water, while K1 and K2 are the first and
+the second dissociation constants for H2CO3, respectively. The values for the constants are
+detailed in Table 1.
+Table 1: Reaction equilibrium constants at 25 °C [32], [33]
+Reaction constant
+Symbol
+Value
+Henry constant
+0.0034 mol/L
+KH
+1st dissociation constant
+10-6.35
+K1
+2nd dissociation constant
+10-10.3
+K2
+Thus, the concentration of the total dissolved carbonates (CT ) is:
+2−
+CT = H2 CO3 + HCO−
+3 + CO3
+
+(7)
+
+Under steady-state conditions, the different carbonate species are at equilibrium depending on
+the solution pH [34]. From Equation (6) & (7), the equilibrium concentration of CO23 ions can
+be expressed as:
+[CO2−
+3 ]=
+
+CT K1 K 2
++
+2
+[H ] + K1 [H + ] + K1 K 2
+
+(8)
+
+where [H+] is the proton concentration and the driving force for the pH regulation. This
+relationship explains the influence of pH on the supersaturation ratio (σ). As the pH decreases,
+2−
+the equilibrium shifts toward H2 CO3 and HCO−
+3 , reducing the concentration of CO3 ions. This
+suppresses CaCO3 precipitation and can even dissolve existing solid CaCO3. Conversely, at
+higher pH (lower [H⁺]), the equilibrium favours the formation of CO2−
+3 ions, increasing
+supersaturation and promoting CaCO3 precipitation.
+
+https://doi.org/10.26434/chemrxiv-2025-vqllg ORCID: https://orcid.org/0009-0009-3445-6405 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+3.1. CO2 dissolution constant
+The CO2−
+3 needed for the precipitation process is supplied by bubbling the CO2 into the solution.
+Thus, the concentration of CO2−
+3 in the solution not only depends on the pH of the solution but
+also on the total carbonates on the solution (CT) which in turn depends on the amount of total
+dissolved CO2. The concentration of dissolved CO2 in solution depends on the partial pressure
+of CO2 (g) and dissolution capability of the gas governed by the temperature-dependent Henrys
+constant (KH). According to Henry’s law, the dissolved CO2 concentration is:
+CCO2 = K H pCO2
+
+(9)
+
+At ambient pressure and temperature conditions (25°C and 1 bar pressure), the partial pressure
+of CO2 in the gas phase is about 400 ppm [35]. However, the partial pressure of CO2 can be
+increased without increasing the system pressure by bubbling CO2 continuously into the
+solution. Thus, when the partial pressure of CO2 increases to 100%, the maximum amount of
+CO2 that can remain in dissolved form is 0.034 mol/L, from Equation (9). This is also the
+limiting case for the concentration of carbonate ion in the solution at 1 bar pressure and very
+high pH [32].
+
+4. Experimental and methods
+4.1. Materials
+Two distinct sample solution types were used in this study to develop a control chain for the
+selective precipitation of CaCO3 by capturing atmospheric CO2 into mine tailings extracts.
+These include a real mine tailing extract prepared to study the extraction and filtration by the
+partner university of KIT [36] and several model solutions prepared from different
+concentrations of CaCl2 and MgCl2 to mimic the mine tailing extracts. These samples were
+selected to cover a range of conditions and compositions relevant to both controlled and
+practical applications.
+The mine tailing extraction solution was prepared at the Karlsruhe Institute of Technology
+(KIT). The solution was prepared to study the extraction efficiency of Ca2+ ions using different
+acids for dissolving the tailing concentrations. HCl solution with the stoichiometric coefficient
+of 1.0 was found to be most effective in extracting Ca2+ ions. More about the leaching process
+can be found in the recent publication [36]. After extraction, the clear solution filtered from the
+slurry was sent to us for the implementation of the selective precipitation. The concentration of
+the ions present in the extraction solution were measured using Ion chromatography and found
+to be 0.06307 mol/L and 0.0061 mol/L for Ca2+ and Mg2+, respectively.
+The model solution was explicitly prepared to facilitate the study of precipitation under
+controlled conditions. This approach was chosen due to the easy accessibility of the required
+chemicals and the ability to produce large quantities of solutions, which are essential for
+comprehensive experimentation. The calcium-rich model solution was prepared by mixing
+calcium chloride dihydrate (CaCl2.2H20) from Carl Roth GmbH + Co. KG (Karlsruhe,
+Germany) with MiliQ water from Merck Millipore (Massachusetts, US). The pH of the solution
+is neutral, and to study the influence of impurities on the selective precipitation of CaCO3,
+different concentrations of Mg2+ was used. Magnesium impurities were added in various
+concentrations to the solution as magnesium chloride (MgCl2) from Carl Roth GmbH + Co. KG
+(Karlsruhe, Germany). The concentration of Ca2+ ions and impurities (Mg2+) in the model
+solution were kept in the range of concentrations of these ions in that of the actual mine tailings
+
+https://doi.org/10.26434/chemrxiv-2025-vqllg ORCID: https://orcid.org/0009-0009-3445-6405 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+for the study. All the substances were well mixed with the magnetic stirrer to form a clear
+solution without any dissolved particles. In contrast to the model solution, the extraction
+solutions prepared by KIT required additional processing, including filtration, after the
+extraction step to remove particulate matter and ensure the clarity of the solutions. This
+additional step emphasized the practical challenges associated with handling real mine tailing
+extracts, further highlighting the utility of the model solution for preliminary and large-scale
+testing.
+For the shifting of the pH of the solution (model and mine tailing extract) to alkaline ranges,
+1M NaOH solution (at pH 13.29) was used. The NaOH solution was prepared by mixing solid
+NaOH crystal from Merck KGaA (Darmstadt, Germany) with the MilliQ water. Similarly, for
+the pH shift of the solution to acidic range, 25% HCl solution from Carl Roth GmbH + Co. KG
+(Karlsruhe, Germany) was used. The CO2 gas from Linde GmbH (Pullach, Germany) was used
+as the source for the CO2 for the carbonate precipitation process.
+
+4.2. Experimental setup and procedure
+The carbonate precipitation experiments were carried out in a stirred reactor in an open system
+setup. The reactor was operated in a semi-batch mode to provide precise control over the
+reaction conditions necessary for the selective precipitation of CaCO3. The reactor, equipped
+with a stirrer to ensure homogeneous mixing, was maintained at a constant room temperature.
+The reactor was provided with a high-pressure resistant glass window for viewing the reaction
+condition. This setup, Figure 1, allowed for the gradual and controlled addition of reactants,
+which is critical for achieving uniform supersaturation and avoiding localized conditions that
+could lead to the formation of undesired by-products.
+ISE
+
+pH
+CO2
+
+NaOH
+
+CO2(g)
+
+Figure 1: Experimental setup for selective CaCO3 precipitation
+The control profiles for the carbonation process is based on the pH of the solution. The setup
+provided for the continuous measurement of the solution pH using a calibrated pH sensor, pH
+electrode InLab® Expert Go-ISM, by Mettler Toledo (Ohio, US). For the pH-swing
+implementation, NaOH solution was supplied through a diaphgram liquid dosing pump,
+SIMDOS® 10 FEM 1.10 S by KNF Holding AG (Schenkon, Switzerland). The measurement
+of the change in the concentration of Calcium ion during the experiment is a critical factor for
+the control of the selective precipitation and the important stopping criteria for the process.
+Hence the Ca2+ ion concentration must be continuously monitored. This was achieved by using
+calcium ion selective electrode (ISE), DX240-Ca ISE half-cell electrode by Mettler Toledo.
+Periodic sampling for ion chromatography (IC) analysis further validated these measurements.
+To facilitate the introduction of CO2 gas for the carbonation process, at a controlled flow rate,
+a gas inlet valve was integrated at the side of the reactor as shown in Figure 1. The CO2 gas was
+
+https://doi.org/10.26434/chemrxiv-2025-vqllg ORCID: https://orcid.org/0009-0009-3445-6405 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+bubbled into the calcium-rich solution for the carbonate reaction and the supply was regulated
+using a mass flow controller (MFC), ensuring precise dosing. The CO2 concentration in the
+solution was measured using the CO2 sensor, CO₂NTROL Dissolved CO2 Sensors by Hamilton
+Bonaduz AG (Bonaduz, Switzerland). The gas was bubbled into the solution until the partial
+pressure of CO2 and thus the concentration (Section 1.3) reached 100%.
+For the implementation of the autonomous process control for the selective precipitation of
+CaCO3 from the multi-ion solution, control strategies were developed to steer the process not
+only towards pure CaCO3 but also maximise the precipitated CaCO3. The control of the
+precipitation process was achieved through pH regulation of the solution. The solution pH was
+regulated through the different dosing mechanisms of CO2 (g) and NaOH (l). Two unique
+dosing mechanisms were investigated, separate dosing of CO2 and NaOH one after the other
+and the other with simultaneous dosing of NaOH and CO2, discussed in Section 0. Based on
+the dosing mechanisms, two distinct pH profiles have been implemented in a semi-batch
+experimental setup, in Figure 1, for the selective precipitation of CaCO3 and to develop the
+control mechanisms further needed for the autonomous process chain development.
+The experimental procedure involved preparing a 900 mL solution containing known
+concentrations of Ca²⁺ and Mg²⁺ ions, prepared by mixing CaCl2 and MgCl2 in different
+concentrations and initial concentrations measured using IC. The pH, CO2 concentration, and
+Ca2+ ion concentration were monitored continuously using the sensors described above. The
+pH was first adjusted to 7, then the CO2 was bubbled at 200 ml/min until saturation (100 %
+volume %) was achieved and the pH of the solution stabilized as shown in Figure 2 (a) and
+Figure 3 (a). Subsequently, 1M NaOH (l) was added at a rate of 9 mL/min to increase the pH
+and induce precipitation, with pH and Ca²⁺ concentration being monitored continuously. The
+NaOH addition continued with and without CO2 addition based on the control strategy being
+investigated until the predefined target pH was achieved and the solution was allowed to reach
+a steady state. CO2 and Ca²⁺ concentrations were continuously measured for the rate estimation,
+and steady-state conditions were confirmed once CO2 concentration stabilized. Following this,
+alternatively or simultaneously the CO2 and NaOH were added until next predefined saturation
+points until all the Ca²⁺ ion concentration in the solution was depleted to approximately 10-5
+mol/L, ensuring complete precipitation of CaCO3.
+
+4.3. Characterization
+The characterization of the precipitated carbonates is one of the most important steps for the
+selectivity analysis of CaCO3 separation from a multi-ion mixture solution. The
+characterization was performed using a combination of analytical techniques to assess its purity,
+crystalline structure, thermal stability, and surface morphology. After each carbonate
+precipitation experiment, the solid crystals were dried and characterised by means of X-ray
+Diffraction (XRD), crystal size distribution, morphological and thermal analysis.
+The phase purity of the precipitates was measured from the XRD spectra on a D2-Phaser
+diffractometer by Bruker Corporation (Massachusetts, US). equipped with a Cu anode for Kα
+radiation generation (λ = 1.54056 Å) at an operating voltage of 40 kV. XRD was also employed
+to analyse the morphology of CaCO3 precipitated (i.e. Calcite, Aragonite, and Vaterite) and
+measure its crystal sizes. Measurements were performed in the 2θ range of 10–80° with a step
+size of 0.01° and scanning speed of 1s/step. The crystalline phases were identified using the
+Powder Diffraction File PDF-4/Minerals 2020 database from JCPDS. Previous studies [37] and
+[38], have also demonstrated the ability of XRD to evaluate phase transitions and the influence
+of reaction conditions on CaCO3 polymorphs. Along with the XRD, scanning electron
+microscopy (SEM) imaging was used to investigate the phase morphology of the precipitated
+
+https://doi.org/10.26434/chemrxiv-2025-vqllg ORCID: https://orcid.org/0009-0009-3445-6405 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+CaCO3. For this purpose, tungsten cathode-based SEM/EDX device JEOL JSM 5410 (Tokyo,
+Japan) was used for the imaging of the precipitated CaCO3. Different magnifications were used
+from the range of 5000x – 10000x and at 5kV.
+The particle size distribution of the precipitated CaCO3 was determined using a Malvern
+Mastersizer 3000 laser diffraction analyser (), which employs a He-Ne laser (λ = 633 nm) and
+a light scattering angle of 0.02–135°. Samples were dispersed in MilliQ water to ensure welldispersed and agglomerate-free suspensions before measurement.
+Thermogravimetric analysis (TGA) was conducted to evaluate the thermal stability and
+decomposition behaviour of the precipitated CaCO3 using a Thermal Analysis System
+TGA/DSC 3+ by Mettler Toledo (Ohio, USA) under a controlled nitrogen atmosphere, with a
+heating rate of 10°C/min from 25°C to 1000°C. The weight loss associated with CO₂ release
+during decomposition was used to confirm the purity of CaCO3.
+Along with the solid precipitate analysis, it is necessary to analyse the residual solution to close
+the mass balance. The concentrations of the various residual ions (Mg²⁺, Na⁺, Ca2+, Cl⁻) were
+analysed using an Ion chromatography (IC) in the post-precipitation solution. Measurements
+were carried out using a Thermo Scientific Dionex ICS-6000 IC system, equipped with
+conductivity detectors and appropriate separation columns for ion analysis. The eluents used
+for cation and anion separation were methane sulfonic acid (MSA) and a carbonate/bicarbonate
+buffer, respectively.
+
+5. Results and Discussion
+The results of the experimental procedure, using the both pH control strategies, demonstrated
+the implementation of the selective precipitation of pure CaCO3 from different multi-ion
+solutions prepared from model substances and extracted mine tailings. Analysis of the
+precipitates and the remaining solution provided insights into the mechanisms governing the
+precipitation and the role of key parameters such as pH, ion concentration, impurities and CO2
+availability.
+The model solutions prepared were in the concentration range of the real mine tailing exactions
+taken from the study by Baechle at KIT [36]. Based on this, different concentrations of Ca2+
+ions with combination with Mg2+ ions as impurities were used for the CaCO3 precipitation
+investigation as mentioned in Table 2. By bubbling CO2 until saturation and then increasing by
+NaOH, the CaCO3 started to precipitate at different pH conditions based on the concentration
+of ions in it.
+Table 2: Influence of ion concentration on the precipitation pH
+Ca2+ conc. Mg2+ conc. Precipitation
+(mol/L)
+(mol/L)
+pH range
+0.1
+0
+8 – 8.5
+0.1
+0.05
+7.5 – 8
+0.1
+0.1
+~ 7.5
+0.075
+0.1
+7.5 – 8
+0.05
+0.1
+8 – 8.5
+From Table 2, we can see that for higher the Ca2+ ion concentration, the supersaturation is
+achieved earlier (i.e. at lower pH) and the CaCO3 precipitates soon. This is because, from
+
+https://doi.org/10.26434/chemrxiv-2025-vqllg ORCID: https://orcid.org/0009-0009-3445-6405 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Equation 1.3 we saw that higher concentration, larger is the supersaturation factor, leading to
+precipitation. From the experiments, it was observed that not only the Ca2+ and CO2−
+3
+concentrations have an influence on the supersaturation, but also in the presence of other
+impurities (such as Mg2+) leads to higher supersaturation, thus quicker start of the precipitation
+at lower pH conditions. The ion concentration analysis of the solution via IC, before and after
+the precipitation, revealed that the Mg2+ concentration did not change significantly, but the Ca2+
+concentration reduced by a small amount. Still not all Ca2+ present in the solution was
+precipitated as CaCO3. This is due to the limited availability of the CO2−
+3 ions in the solution,
+dictated by the waters ability to hold dissolved CO2 in the solution as described in Section 1.
+Hence to be able to precipitate all the Ca2+ ions in the solution as CaCO3 and capture as much
+as CO2 possible, more CO2 was needed to be added to system. The goal here was that we
+develop an autonomous controller to carry out the precipitation process and steer the process
+towards maximum yield of pure CaCO3. Since pH was the control variable chosen to direct the
+precipitation process, certain projectiles for the pH profiles as control strategies were
+developed. The control strategies aimed to optimize CaCO3 precipitation by precisely
+regulating pH fluctuations and monitoring Ca²⁺ concentration in real-time.
+
+5.1. pH Control strategies
+5.1.1. pH swing strategy
+The pH swing strategy is a dynamic approach used for the selective precipitation of CaCO3
+from the multi-ion mixture of Ca2+ and Mg2+. This method relies on alternating acidic and basic
+conditions through sequential dosing of CO2 gas and NaOH solution. A solution with 0.1M
+each of Ca2+ and Mg2+ was prepared for the implementation of the strategy and filled into the
+reactor setup shown in Figure 1. Initially, CO2 (g) was bubbled into the solution until saturation
+(100% volume) was achieved, leading to a decrease in pH and further stabilization as shown in
+Figure 2 (a) and (b). Upon stabilization, 1 M NaOH solution was introduced at a controlled rate
+to elevate the pH, inducing CaCO3 precipitation. The addition of NaOH continued until the pH
+reached 9, at which point dosing was halted, and the system was allowed to reach a steady state,
+in Figure 2 (a). In the Figure 2 (b) this can be seen by the increase in the Na+ concentration
+while the CO2 concentration decreased. The progression of Ca2+ ion concentration was
+continuously monitored, with steady-state conditions confirmed by a minimum and stable CO2
+concentration following CaCO3 formation via carbonate (CO2−
+3 ) conversion. After reaching
+steady-state conditions, CO2 gas was reintroduced to re-establish acidic conditions, reducing
+the pH to approximately 5.8, during which while the CO2 concentration increased, the Na+
+concentration remained constant. Once saturation was achieved, NaOH was dosed again to
+increase the pH back to 9, repeating the cycle. This pH swing process was iterated until Ca2+
+concentration was reduced to approximately 10-5 mol/L on the ISE, ensuring near-complete
+CaCO3 precipitation.
+Samples from both the solution and precipitates were collected at the end of steady states for
+further analysis. Ion concentrations were assessed using ion chromatography (IC), while the
+solid phase and particle size distribution (PSD) of the precipitates were characterized using the
+XRD and the Mastersizer, respectively.
+The results confirm the effectiveness of the pH swing control strategy in achieving selective
+CaCO3 precipitation while minimizing co-precipitation of MgCO3 or Mg(OH)2. This can be
+seen for the example of initial 0.1M each of Ca2+ and Mg2+. In Figure 2 (a) we see by the
+decrease in the Ca2+ concentration while Mg2+ concentration remains almost constant
+throughout the precipitation process. The formation and precipitation of CaCO3 can be seen
+
+https://doi.org/10.26434/chemrxiv-2025-vqllg ORCID: https://orcid.org/0009-0009-3445-6405 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+from Figure 2 (a) where we see that the Ca2+ concentration decreases quickly while NaOH
+addition due to high supersaturation and slightly increases during the CO2 addition due to the
+dissolution of some of the precipitated CaCO3 caused by slight undersaturation. While in Figure
+2 (b), the CO2 addition up to saturation (100% Volume %) resulting in pH decrease and for the
+2−
+NaOH addition, the CO2 concentration falls to minimum due to conversion to HCO−
+3 and CO3
+by acid dissociation. Also, the NaOH concentration remains constant while CO2 addition and
+increases only when additional NaOH is supplied, thus showing all the Na+ ions stay in the
+dissolved phase and do not precipitate. The analysis of the precipitates has been discussed in
+the next sections.
+(a) 10
+2
+
+1
+
+9
+
+0.10
+
+pH
+
+7
+
+0.06
+
+4
+
+6
+
+0.04
+
+3
+pH
+Ca ISE
+Ca IC
+Mg IC
+
+5
+
+4
+0
+
+2000
+
+4000
+
+Ion Conc.(mol/L)
+
+0.08
+
+8
+
+0.02
+
+5
+
+0.00
+
+6000
+
+8000
+
+10000
+
+Time (s)
+(b)
+
+0.16
+
+100
+
+5
+3
+
+0.14
+
+4
+
+80
+
+0.10
+
+60
+
+0.08
+
+2
+
+1
+40
+
+0.06
+
+Na+ conc. (mol/L)
+
+CO2 conc. (Vol %)
+
+0.12
+
+0.04
+20
+0.02
+
+CO2 (Vol %)
++
+
+Na IC
+
+0
+0
+
+2000
+
+4000
+
+6000
+
+0.00
+8000
+
+10000
+
+Time (s)
+
+Figure 2: pH swing profile for selective precipitation of CaCO3
+The strategy is easy to implement and control and pure CaCO3 can be precipitated. Also, the
+number of swings required for the near complete depletion of the Ca2+ ions from the solution
+can be predetermined based on the initial Ca2+ concentration and the operating pressure of the
+system as can be seen in Table 3. This is because of the limited amount of CO2 the solution can
+hold at a particular pressure (Section 1). Table 3 also shows the decrease in the Ca2+
+concentration at the end of each swing cycle.
+
+https://doi.org/10.26434/chemrxiv-2025-vqllg ORCID: https://orcid.org/0009-0009-3445-6405 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Table 3: # of swings depending on the initial Ca2+ conc.
+# of Swings
+Ca2+ conc. after each swing (mol/L)
+required
+1
+2
+3
+4
+5
+6
+2
+0.03666 0.00957
+3
+0.0565 0.02278 0.00649
+3
+0.08335 0.04433 0.01543
+6
+0.16175 0.13743 0.10542 0.08148 0.05272 0.01955
+2
+0.04523 0.01232
+-
+
+Initial Ca2+
+conc. (mol/L)
+0.05
+0.075
+0.1
+0.2
+Ext. Sol.
+(0.063)
+
+5.1.2. pH constant strategy
+(a) 10
+0.10
+9
+
+1
+
+pH
+
+7
+
+0.06
+
+2
+
+6
+
+0.04
+
+3
+
+pH
+Ca ISE
+Ca IC
+Mg IC
+
+5
+
+4
+0
+
+2000
+
+Ion Conc.(mol/L)
+
+0.08
+
+8
+
+0.02
+
+4
+0.00
+
+4000
+
+6000
+
+Time (s)
+
+(b)
+100
+
+CO2 (Vol %)
+Na+ IC
+
+0.24
+
+4
+
+0.22
+0.20
+
+80
+0.16
+60
+
+0.14
+
+3
+
+0.12
+0.10
+
+2
+
+40
+
+0.08
+0.06
+
+1
+
+20
+
+Na+ conc. (mol/L)
+
+CO2 conc. (Vol %)
+
+0.18
+
+0.04
+0.02
+0.00
+
+0
+0
+
+2000
+
+4000
+
+6000
+
+Time (s)
+
+Figure 3: pH constant profile for selective precipitation of CaCO3
+Unlike the pH swing strategy, the pH constant strategy involves the simultaneous addition of
+CO2 (g) and NaOH (l) to maintain a stable pH within the optimal range for the CaCO3
+precipitation Figure 3 (a) for 0.1M Ca2+ and 0.1M Mg2+ ion-rich solution. By keeping the pH
+constant, this approach mitigates the continuous fluctuations and provides a more controlled
+
+https://doi.org/10.26434/chemrxiv-2025-vqllg ORCID: https://orcid.org/0009-0009-3445-6405 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+environment for continuous CaCO3 precipitation. As shown in Figure 3, after the first phase of
+CO2 addition until saturation, the pH of the solution was raised to 7.5 by adding NaOH (l), by
+turning off the CO2 (g) addition. If CO2 (g) supply was not turned off, the pH of the solution
+rises very slowly initially leading to low precipitation and then the pH rises very quickly making
+the process uncontrollable. Hence, even for the pH constant strategy, NaOH (l) was dosed
+predominantly until pH 7.5. Samples are collected at this point for the analysis and precipitate
+characterisation. Then CO2 (g) was bubbled continuously to the solution while maintain the pH
+of the solution at 7.5 by occasional dosing NaOH (l) and the precipitation was continued until
+the Ca2+ concentration fell below 10-5 mol/L on the ISE. Here since there was no back and
+forth shifting of the pH, the Ca2+ ion constantly dropped due to the precipitation of CaCO3.
+Also, the IC measurements revealed that Mg2+ concentration remained constant indication no
+co-precipitation of magnesium compounds (see Figure 3 (a)). The analysis of the precipitated
+product also revealed that selective precipitation of pure CaCO3. The details of the phase purity
+and PSD have been discussed in Section 5.2. In Figure 3 (b), while the NaOH concentration
+constantly increased, the CO2 concentration remanded nearly stayed constant at pH 7.5, due to
+the immediate transition to the bicarbonate and carbonate ions.
+
+5.2. pH Control strategy comparison
+After the successful implementation of the both the control strategies, it was found that the
+strategies are suitable for precipitating CaCO3 selectively. Both the strategies are equally
+capable of precipitating maximum amount of CaCO3 from the solution while minimising the
+Mg2+ co-precipitation (see Figure 2 and Figure 3). While the pH constant method takes shorter
+time than the pH swing method for precipitation of CaCO3, it requires larger amount of NaOH
+solution (about 200 ml for 0.1M Ca2+ initial conc.) for the precipitation leading to larger dilution
+of the ions present. Also, the pH constant method requires for the continuous monitoring of the
+Ca2+ ion conc. with an ISE, thus limiting the process applicability to low pressure and
+temperature operating conditions. While in the pH swing method depending on the initial
+concentration of Ca2+, it can be accurately estimated the number of swings required as seen in
+Table 3 without the need for the constant Ca2+ ion monitoring. Along with these differences,
+the two methods also dictate the particle phase, morphology, the PSD of the precipitated CaCO3
+and most importantly also influences the precipitation phenomenon i.e. primary nucleation or
+growth of existing crystals, thus enhancing the selectivity of the precipitates formed.
+100
+
+CaCO3 - 100 g/L
+
+Weight (%)
+
+90
+
+80
+
+44%
+CaCO3 - Carl Roth GmbH
+CaCO3 - Expt. pH swing
+CaCO3 - Expt. pH constant
+
+70
+
+60
+
+CaO - 56 g/L
+
+50
+0
+
+200
+
+400
+
+600
+
+800
+
+Temperature (°C)
+
+Figure 4: TGA analysis of the precipitated and ideal CaCO3
+
+https://doi.org/10.26434/chemrxiv-2025-vqllg ORCID: https://orcid.org/0009-0009-3445-6405 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+1000
+
+To investigate the phase purity of the two precipitates formed from both the strategies, the
+implementation of the thermal stability analysis via TGA is shown in Figure 4, in comparison
+to that of the commercially available 99% pure CaCO3 (from Carl Roth GmbH). The
+decomposition of the precipitates resulted in the approximately 44% reduction in weight which
+is similar to the weight loss of the ideal CaCO3 (molar mass: 100 g/L) due to the decomposition
+on the release of CO2 gas (molar mass: 44 g/L). As can be seen in the Figure, though the
+decomposition weight is in comparison to that of the commercial CaCO3, the decomposition
+takes longer for both the precipitates formed in Mg2+ rich environment. This could be due to
+the precipitates forming large clusters making the escape of CO2 or small amount of other
+substances (such as NaCl) over the surface of the precipitates. This needs further investigation
+and would be continued in the upcoming work.
+With this analysis we identified the phase purity of the precipitates produced from both
+strategies, thus establishing their effectiveness. But the method offers no information about the
+morphology and PSD of precipitates. This has been discussed in the next sections.
+5.2.1. Impact of pH control strategies on CaCO3 morphology
+The implementation of two distinct control strategies revealed that not only do impurities in the
+solution influence the phase composition of CaCO3, but the reaction kinetics and pH control
+also play a critical role in determining particle yield. Calcium carbonate can form three different
+polymorphs, Calcite, Vaterite, and Aragonite, each with distinct characteristics. By applying
+the appropriate control strategy, the precipitation process can be steered toward the formation
+of specific morphologies tailored to application requirements.
+Figure 5 presents the XRD measurements of precipitate samples collected at the points marked
+in Figure 2 and Figure 3. For the pH swing strategy, the initial precipitation at pH 9 primarily
+yields Calcite and Vaterite (Figure 5(a)). A similar trend is observed in the pH constant strategy,
+where the first NaOH addition (point 1 in Figure 3a) also results in the formation of Calcite and
+Vaterite (Figure 5(b)). However, as precipitation progresses, the two strategies diverge in their
+effects on phase composition. In the pH swing method, Calcite continues to dominate with
+subsequent swings, whereas in the pH constant method, Aragonite begins to emerge while
+Vaterite diminishes. By the end of the process, the pH swing strategy predominantly produces
+small Calcite particles via primary nucleation, whereas the pH constant strategy facilitates the
+growth of larger Aragonite particles due to secondary nucleation and growth over existing
+nuclei.
+The morphology of these precipitated carbonates is further illustrated through SEM images in
+Figure 6. In Figure 6(a), Aragonite precipitated from the pH constant process exhibits a
+characteristic rod-like, fibrous structure, forming rosette-like aggregates [24]. In contrast,
+Figure 6 (b), and (c) display the Calcite and Vaterite morphologies formed via the pH swing
+strategy. The Calcite crystals appear as compact, densely packed rhombohedral structures,
+whereas Vaterite presents loosely aggregated, needle-like clusters forming star-shaped
+structures. These findings confirm that by carefully selecting the control strategy, both the rate
+of precipitation and the final morphology of CaCO3 can be regulated, allowing for applicationspecific material synthesis.
+
+https://doi.org/10.26434/chemrxiv-2025-vqllg ORCID: https://orcid.org/0009-0009-3445-6405 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Intensity (%)
+
+5
+Calcite: 100 %
+Vaterite: 0 %
+4
+Calcite: 100 %
+Vaterite: 0 %
+3
+Calcite: 87.5 %
+Vaterite: 12.5 %
+2
+Calcite: 74.3 %
+Vaterite: 25.7 %
+1
+Calcite: 62.4 %
+Vaterite: 37.6 %
+Vaterite
+
+(b)
+
+4
+Aragonite: 85.4 %
+Calcite: 14.6 %
+Vaterite: 0 %
+3
+Aragonite: 55.1 %
+Calcite: 23.0 %
+Vaterite: 21.9 %
+2
+Aragonite: 28.3 %
+Calcite: 14.9 %
+Vaterite: 56.9 %
+1
+Aragonite: 0%
+Calcite: 22.1 %
+Vaterite: 77.9 %
+
+Intensity (%)
+
+(a)
+
+Aragonite
+
+Calcite
+
+Calcite
+
+Vaterite
+
+Aragonite
+
+20
+
+30
+
+40
+
+2θ (Deg)
+
+50
+
+60
+
+20
+
+30
+
+40
+
+2θ (Deg)
+
+50
+
+60
+
+Figure 5: XRD measurements at different points (a) pH swing strategy, (b) pH constant strategy
+
+Figure 6: SEM images of the CaCO3 precipitates (a) Aragonite, (b) Calcite, (c) Vaterite
+5.2.2. Impact of pH control strategies on the PSD
+The major impact of the control strategies is on the particle size distribution of the precipitated
+CaCO3. We see in Figure 7 the time-dependent PSD histograms for 0.1M Ca2+ initial ion
+concentration based on the two control strategies at the different measurement points mentioned
+in Figure 2 and Figure 3. In Figure 7 (a) the PSD for the pH swing strategy is shown where
+initially (at the measurement point 1) small particles, mean size around 1.39 µm are precipitated
+at pH 9 due to the addition of NaOH. Smaller particles are precipitated due to high
+supersaturation (Equation (4)) leading to the birth of new nucleus. On further addition of CO2,
+the pH decreases resulting in undersaturation leading to the dissolution of the smallest particles.
+This results in the shift of the PSD causing the mean size of the particles to increase to
+approximately 2.4 µm, though the number of particles has reduced. On continuing the cycle of
+NaOH and CO2 addition we see that very large number of small nuclei with mean size 0.9 µm
+are precipitated owing to the high supersaturation. Though CO2 is added and smaller crystals
+dissolve, the mean size is not affected majorly due to smaller undersaturation due to the pH
+reduction. Also, a smaller bimodal distribution is observed that could be due to growth or
+aggregation of the nuclei.
+On the contrary, for the pH constant strategy (in Figure 7 (b)), since the pH is held constant
+after the first increase, the primary nuclei formed of the similar mean size (1.42 µm), grow
+
+https://doi.org/10.26434/chemrxiv-2025-vqllg ORCID: https://orcid.org/0009-0009-3445-6405 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+(Equation (5)) over the precipitation period due to small supersaturation caused by to the
+continuous CO2 addition and pH being held stable at 7.5. The process results in change of the
+precipitation phenomenon from primary uncontrolled nucleation to better controllable growth
+of the nucleated crystals. Thus, we observe a well- defined bi-modal distribution with the final
+mean size of over 6.6 µm.
+(a)
+
+(b)
+20
+
+20
+
+1
+
+1
+
+10
+
+10
+0
+20
+
+0
+
+2
+
+20
+
+2
+
+10
+
+Number (%)
+
+Number (%)
+
+10
+
+0
+20
+
+3
+
+10
+
+0
+20
+
+0
+20
+
+3
+10
+
+4
+
+10
+
+0
+20
+
+0
+30
+
+4
+5
+
+20
+
+10
+
+10
+
+0
+
+0
+0.1
+
+1
+
+10
+
+Size Classes (μm)
+
+100
+
+0.1
+
+1
+
+10
+
+Size Classes (μm)
+
+100
+
+Figure 7: PSD for precipitated CaCO3 through (a) pH swing, (b) pH constant strategy
+In Figure 8, we see the final particle size of the precipitated CaCO3 for different initial
+concentrations of Ca2+ ions at the end of the precipitation process. The Figure 8 (a) depicts the
+final sizes for the pH swing strategy, where we see large nucleation of very small particles due
+to high supersaturation. For the extraction solution also, the precipitation by the nucleation
+mechanism dominates. In Figure 8 (a), we also see that for higher initial concentrations of Ca2+
+ions, the mean size shifts lower due to very large number of smaller nuclei formed
+spontaneously, thus indication that the supersaturation control plays a crucial role in the PSD.
+In Figure 8 (b) on the contrary we see that the for the pH constant strategy, the final PSD at the
+end of the process has shifted to larger sizes indicating a growth over the existing nuclei. The
+extraction solution also follows the trend indicating that this control strategy offers a better
+regulation of the PSD and thus the overall precipitation process.
+
+https://doi.org/10.26434/chemrxiv-2025-vqllg ORCID: https://orcid.org/0009-0009-3445-6405 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+(b) 20
+
+(a) 20
+
+0.05 mol/L
+Number %
+
+Number %
+
+0.05 mol/L
+
+10
+
+10
+
+0
+
+0
+
+20
+
+20
+
+0.075 mol/L
+Number %
+
+Number %
+
+0.075 mol/L
+
+10
+
+10
+
+0
+
+0
+
+30
+
+20
+
+0.1 mol/L
+Number %
+
+Number %
+
+0.1 mol/L
+20
+
+10
+
+10
+
+0
+
+0
+
+20
+
+20
+
+Extraction Sol.
+Number %
+
+Number %
+
+Extraction sol.
+
+10
+
+0
+
+10
+
+0
+0.1
+
+1
+
+10
+
+Size (µm)
+
+100
+
+0.1
+
+1
+
+10
+
+100
+
+Size (µm)
+
+Figure 8: Comparison of different PSD for model substances and mine tailing mixture for
+(a) pH swing strategy, (b) pH constant strategy
+
+6. Conclusion
+In this study, we investigated the influence of pH regulation on the selective precipitation of
+CaCO3 from a multi-ion solution. Two pH-based control strategies were developed to direct the
+process toward the selective formation of pure CaCO3 using waste-derived solutions.
+A semi-batch reactor setup with pH control was implemented to develop these strategies. Initial
+investigations were carried out with model solutions prepared using laboratory-grade CaCl2 as
+the Ca2+ source at varying concentrations. The ability of the control strategies for the selective
+precipitation in the presence of impurities was examined by adding MgCl2 as source of Mg2+
+ions to the Ca2+-rich solutions. The effectiveness of the control strategies was further
+demonstrated using actual mine tailing extraction solutions. The carbonate ions (CO2−
+3 ) was
+supplied through bubbling pure CO2 gas into the solution in an open system setup at
+atmospheric pressure. For the pH regulation of the process, 1M NaOH was dosed. Ion
+concentrations were monitored over time to track the process and determine its endpoint.
+Two distinct control strategies were developed: pH swing and pH constant. Based on the
+strategy, the morphology and particle sizes of the precipitates can be controlled. In the pH swing
+
+https://doi.org/10.26434/chemrxiv-2025-vqllg ORCID: https://orcid.org/0009-0009-3445-6405 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+strategy, the pH of the solution was lowered to 6 and increased to 9 cyclically by dosing CO2
+gas and NaOH solution respectively, until the Ca2+ ions in the solutions nearly depleted. Using
+this approach, the initially precipitated Calcite and Vaterite when subjected to cyclic
+precipitation and dissolution changed to completely clustered rhombohedral Calcite crystals.
+Rapid shift in the pH by NaOH addition to CO2 saturated solution resulted in high
+supersaturation thereby causing spontaneous formation of very small particle sizes via
+nucleation. It was observed that for this control strategy, the number of swings (cycles) required
+could be predetermined based on the initial concentration of Ca2+ ions, without the need for
+continuous ion concentration monitoring, to avoid co-precipitation of other substances, thus
+providing simpler operational capabilities.
+In contrast, the pH constant strategy, maintained a steady pH of 7.5 by continuous CO2 dosing
+and intermittent NaOH addition. This method completed the process more quickly and
+maintained low supersaturation throughout. Due to this, the precipitation process which started
+initially with primary nucleation was followed by growth of the nuclei, making the process
+more suitable for the modelling and control purposes. Also, the Aragonite crystals dominated
+the morphology of the precipitated CaCO3. This behaviour was consistent across different Ca2+
+ion concentrations and with real extraction solutions, thus demonstrating the robustness and
+applicability of the strategy.
+The model for the semi-batch process has been developed and would be presented in the future.
+Also, the influence of other impurities and concentrations would be investigated for
+development of a robust autonomous controller for the carbonation process chain.
+
+Acknowledgement
+The authors would like to thank the Deutsche Forschungsgemeinschaft (DFG, German
+Research Foundation) for funding the research through the SPP 2364 “Autonomous Processes
+in Particle Technology – Research and Testing of Concepts for Model-based Control of
+Particulate Processes” - project no. 504852622. Also, we would like to thank the project
+partners at Karlsruhe Institute of Technology (KIT) and Rhineland-Palatinate University of
+Technology (RPTU) for the cooperation over the autonomous control process chain
+development for the carbonate precipitation using mine tailings. A special thanks to Volker
+Baechle (KIT) for the preparation of the mine tailing extraction solutions and sending it over
+for the precipitation process.
+
+7. References
+[1]
+
+[2]
+
+[3]
+
+A. A. Khosa, T. Xu, B. Q. Xia, J. Yan, and C. Y. Zhao, “Technological challenges and
+industrial applications of CaCO3/CaO based thermal energy storage system – A review,”
+Solar Energy, vol. 193, pp. 618–636, Nov. 2019, doi: 10.1016/j.solener.2019.10.003.
+“Calcium carbonate - what is this substance and what is it mainly used for? | Foodcom
+S.A.” Accessed: Mar. 23, 2025. [Online]. Available: https://foodcom.pl/en/calciumcarbonate-what-is-this-substance-and-what-is-it-mainly-used-for/
+“What is calcium carbonate and what is it used for? - PCC Group Product Portal.”
+Accessed:
+Mar.
+23,
+2025.
+[Online].
+Available:
+https://www.products.pcc.eu/en/blog/what-is-calcium-carbonate-and-what-is-it-usedfor/
+
+https://doi.org/10.26434/chemrxiv-2025-vqllg ORCID: https://orcid.org/0009-0009-3445-6405 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+[4]
+
+[5]
+
+[6]
+
+[7]
+
+[8]
+
+[9]
+
+[10]
+[11]
+
+[12]
+
+[13]
+[14]
+
+[15]
+
+[16]
+
+[17]
+
+[18]
+[19]
+[20]
+
+“Major Industrial Applications use CaCO3 calcium carbonate in everyday life.”
+Accessed: Mar. 23, 2025. [Online]. Available: https://www.linkedin.com/pulse/majorindustrial-applications-use-caco3-calcium-carbonate“The Role of Calcium Carbonate Powder in Industrial Applications.” Accessed: Mar. 23,
+2025. [Online]. Available: https://sudarshangroup.com/the-role-of-calcium-carbonatepowder-in-industrial-applications/
+“Calcium Carbonate Uses in Industry: Things You Need to Know.” Accessed: Mar. 23,
+2025. [Online]. Available: https://elchemy.com/blogs/food-nutrition/top-industrialuses-of-calcium-carbonate-applications-across-multiple-sectors
+“Calcium Carbonate | Plastic Resins |.” Accessed: Mar. 23, 2025. [Online]. Available:
+https://www.plasticservice.com/industry-news/7062/industrial-uses-of-calciumcarbonate
+K. V. Gomes, C. M. Woodall, H. Pilorgé, P. Psarras, and J. Wilcox, “Techno-economic
+analysis of indirect carbonation processes for carbon sequestration using mining waste,”
+Energy Advances, 2025, doi: 10.1039/d4ya00567h.
+A. Azdarpour, M. Asadullah, E. Mohammadian, H. Hamidi, R. Junin, and M. A. Karaei,
+“A review on carbon dioxide mineral carbonation through pH-swing process,” Nov. 01,
+2015, Elsevier. doi: 10.1016/j.cej.2015.05.064.
+A. A. Olajire, “A review of mineral carbonation technology in sequestration of CO2,” J
+Pet Sci Eng, vol. 109, pp. 364–392, Sep. 2013, doi: 10.1016/j.petrol.2013.03.013.
+E. R. Bobicki, Q. Liu, Z. Xu, and H. Zeng, “Carbon capture and storage using alkaline
+industrial wastes,” Prog Energy Combust Sci, vol. 38, no. 2, pp. 302–320, Apr. 2012,
+doi: 10.1016/j.pecs.2011.11.002.
+Y. P. Lin and P. C. Singer, “Inhibition of calcite precipitation by orthophosphate:
+Speciation and thermodynamic considerations,” Geochim Cosmochim Acta, vol. 70, no.
+10, pp. 2530–2539, May 2006, doi: 10.1016/J.GCA.2006.03.002.
+M. F. Hochella et al., “Nanominerals, mineral nanoparticles, and earth systems,” Science
+(1979), vol. 319, no. 5870, pp. 1631–1635, Mar. 2008, doi: 10.1126/SCIENCE.1141134.
+G. Falini, S. Fermani, G. Tosi, and E. Dinelli, “Calcium carbonate morphology and
+structure in the presence of seawater ions and humic acids,” Cryst Growth Des, vol. 9,
+no. 5, pp. 2065–2072, May 2009, doi: 10.1021/cg8002959.
+D. Kralj, J. Kontrec, L. Brečević, G. Falini, and V. Nöthig-Laslo, “Effect of Inorganic
+Anions on the Morphology and Structure of Magnesium Calcite,” Chemistry - A
+European Journal, vol. 10, no. 7, pp. 1647–1656, Apr. 2004, doi:
+10.1002/chem.200305313.
+E. J. Zeller and J. L. Wray, “Factors Influencing Precipitation of Calcium Carbonate,”
+Am Assoc Pet Geol Bull, vol. 40, no. 1, pp. 140–152, Jan. 1956, doi:
+10.1306/5CEAE30A-16BB-11D7-8645000102C1865D.
+A. H. A. Park, R. Jadhav, and L. S. Fan, “CO2 Mineral Sequestration: Chemically
+Enhanced Aqueous Carbonation of Serpentine,” Can J Chem Eng, vol. 81, no. 3–4, pp.
+885–890, Jun. 2003, doi: 10.1002/CJCE.5450810373.
+“The Effect of pH on Nucleation Kinetics in Solutions”.
+N. Saksono, S. Bismo, R. W. Soemantojo, and A. Manaf, “Effects of pH on Calcium
+Carbonate Precipitation under Magnetic field,” 2009.
+A. Millan, F. Grases, O. Söhnel, and I. Křivánková, “Semi-Batch Precipitation of
+Calcium Oxalate Monohydrate,” Crystal Research and Technology, vol. 27, no. 1, pp.
+31–39, Jan. 1992, doi: 10.1002/CRAT.2170270105.
+
+https://doi.org/10.26434/chemrxiv-2025-vqllg ORCID: https://orcid.org/0009-0009-3445-6405 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+[21] C. Steyer, M. Mangold, and K. Sundmacher, “Modeling of particle size distribution for
+semibatch precipitation of barium sulfate using different activity coefficient models,”
+Ind Eng Chem Res, vol. 49, no. 5, pp. 2456–2468, Mar. 2010, doi: 10.1021/IE901306R.
+[22] B. Han, H. Qu, H. Niemi, Z. Sha, and M. Louhi-Kultanen, “Mechanistic study of
+magnesium carbonate semibatch reactive crystallization with magnesium hydroxide and
+CO2,” Ind Eng Chem Res, vol. 53, no. 30, pp. 12077–12082, Jul. 2014, doi:
+10.1021/ie501706j.
+[23] Z. Hu et al., “Synthesis of Needle-Like Aragonite Crystals in the Presence of Magnesium
+Chloride and Their Application in Papermaking,” Advanced Composite Materials, vol.
+18, no. 4, pp. 315–326, Oct. 2009, doi: 10.1163/156855109X434720.
+[24] G. Falini, S. Fermani, G. Tosi, and E. Dinelli, “Calcium carbonate morphology and
+structure in the presence of seawater ions and humic acids,” Cryst Growth Des, vol. 9,
+no. 5, pp. 2065–2072, May 2009, doi: 10.1021/cg8002959.
+[25] L. Filipescu, “Semi-batch Reactive Precipitation of Calcium Carbonate.” Accessed: Mar.
+24,
+2025.
+[Online].
+Available:
+https://www.academia.edu/20107593/Semi_Batch_Reactive_Precipitation_Of_Calciu
+m_Carbonate
+[26] F. Liendo, M. Arduino, F. A. Deorsola, and S. Bensaid, “Nucleation and growth kinetics
+of CaCO3 crystals in the presence of foreign monovalent ions,” J Cryst Growth, vol. 578,
+Jan. 2022, doi: 10.1016/j.jcrysgro.2021.126406.
+[27] O. Söhnel and J. W. Mullin, “Precipitation of calcium carbonate,” J Cryst Growth, vol.
+60, no. 2, pp. 239–250, Dec. 1982, doi: 10.1016/0022-0248(82)90095-1.
+[28] H. Qian, X. Zhang, and P. Li, “Calculation of CaCO3 Solubility (Precipitability) in
+Natural Waters,” Asian Journal of Chemistry, vol. 24, pp. 668–672, Feb. 2012.
+[29] T. E. Larson, F. W. Sollo, F. F. Mcgurk, and T. E. Larson, “Complexes Affecting The
+Solubility Of Calcium Carbonate In Water Wrc Research Report No. 68 Complexes
+Affecting The Solubility Of Calcium Carbonate In Water,” 1973.
+[30] W. Zhao, B. Han, K. Jakobsson, M. Louhi-Kultanen, and V. Alopaeus, “Mathematical
+model of precipitation of magnesium carbonate with carbon dioxide from the magnesium
+hydroxide slurry,” Comput Chem Eng, vol. 87, pp. 180–189, Apr. 2016, doi:
+10.1016/j.compchemeng.2016.01.013.
+[31] J. Hostomsky and A. G. Jones, “A penetration model of the gas-liquid reactive
+precipitation of calcium carbonate crystals,” Chemical Engineering Research and
+Design, vol. 73, no. A3, pp. 241 – 245, 1995, [Online]. Available:
+https://www.scopus.com/inward/record.uri?eid=2-s2.00029288221&partnerID=40&md5=008318b8dea090e831a57b9638ab4fd6
+[32] J. J. Middelburg, “Biogeochemical Processes and Inorganic Carbon Dynamics,” pp. 77–
+105, 2019, doi: 10.1007/978-3-030-10822-9_5.
+[33] “Carbon
+dioxide.”
+Accessed:
+Mar.
+24,
+2025.
+[Online].
+Available:
+https://webbook.nist.gov/cgi/cbook.cgi?ID=C124389&Mask=10
+[34] D. Pabsch, C. Held, and G. Sadowski, “Modeling the CO2Solubility in Aqueous
+Electrolyte Solutions Using ePC-SAFT,” J Chem Eng Data, vol. 65, no. 12, pp. 5768–
+5777, Dec. 2020, doi: 10.1021/acs.jced.0c00704.
+[35] “39.5: Gas Exchange across Respiratory Surfaces - Gas Pressure and Respiration Biology LibreTexts.” Accessed: Mar. 24, 2025. [Online]. Available:
+https://bio.libretexts.org/Bookshelves/Introductory_and_General_Biology/General_Bio
+logy_(Boundless)/39%3A_The_Respiratory_System/39.05%3A_Gas_Exchange_acros
+s_Respiratory_Surfaces_-_Gas_Pressure_and_Respiration
+
+https://doi.org/10.26434/chemrxiv-2025-vqllg ORCID: https://orcid.org/0009-0009-3445-6405 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+[36] V. Bächle, C. Hegde, A. Voigt, K. Sundmacher, and M. Gleiß, “Tailings as a Source for
+Generating valuable Magnesium and Calcium Carbonates by Leaching and
+Carbonization,” Mar. 14, 2025. doi: 10.26434/chemrxiv-2025-cjxfm.
+[37] R. Ševčík, P. Šašek, and A. Viani, “Physical and nanomechanical properties of the
+synthetic anhydrous crystalline CaCO3 polymorphs: vaterite, aragonite and calcite,” J
+Mater Sci, vol. 53, no. 6, pp. 4022–4033, Mar. 2018, doi: 10.1007/s10853-017-1884-x.
+[38] K. Song, J. H. Bang, S. C. Chae, J. Kim, and S. W. Lee, “Phase and morphology of
+calcium carbonate precipitated by rapid mixing in the absence of additives,” RSC Adv,
+vol. 12, no. 30, pp. 19340–19349, Jul. 2022, doi: 10.1039/d2ra03507c.
+[39] P. Gao and Y. Shi, “Characterization of supersaturatable formulations for improved
+absorption of poorly soluble Drugs,” Dec. 2012. doi: 10.1208/s12248-012-9389-7.
+[40] J. D. Naviaux, A. V. Subhas, N. E. Rollins, S. Dong, W. M. Berelson, and J. F. Adkins,
+“Temperature dependence of calcite dissolution kinetics in seawater,” Geochim
+Cosmochim Acta, vol. 246, pp. 363–384, Feb. 2019, doi: 10.1016/j.gca.2018.11.037.
+[41] G. Guner, A. Amjad, M. Berrios, M. Kannan, and E. Bilgili, “Nanoseeded
+Desupersaturation and Dissolution Tests for Elucidating Supersaturation Maintenance in
+Amorphous Solid Dispersions,” Pharmaceutics, vol. 15, no. 2, Feb. 2023, doi:
+10.3390/pharmaceutics15020450.
+
+https://doi.org/10.26434/chemrxiv-2025-vqllg ORCID: https://orcid.org/0009-0009-3445-6405 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+

@@ -1,0 +1,959 @@
+Distinguishing Surface and Bulk Reactivity: Concentration Dependent
+Kinetics of Iodide Oxidation by Ozone in Microdroplets
+Alexander M. Prophet,1,2 Kritanjan Polley,1,2 Emily K. Brown,1,2 David T. Limmer,1,2,3,4 & Kevin R.
+Wilson1
+1
+
+Chemical Sciences Division, Lawrence Berkeley National Laboratory, Berkeley, CA 94720
+2
+
+Department of Chemistry, University of California, Berkeley, CA 94720
+
+3
+
+Materials Science Division, Lawrence Berkeley National Laboratory, Berkeley, California 94720
+4
+
+Kavli Energy NanoScience Institute, Berkeley, California 94720
+
+Abstract
+Iodine oxidation reactions play an important role in environmental, biological, and industrial
+contexts. The multiphase reaction between aqueous iodide and ozone is of particular interest due to its
+prevalence in the marine atmosphere and unique reactivity at the air-water interface. Here, we explore the
+concentration dependence of the I- + O3 reaction in levitated microdroplets under both acidic and basic
+conditions. To interpret the experimental kinetics, molecular simulations are used to benchmark a kinetic
+model, which enables insight into the reactivity of the interface, the nanometer-scale sub-surface region,
+and the bulk interior of the droplet. For all experiments, a kinetic description of gas- and liquid-phase
+diffusion is critical to interpreting the results. We find that the surface dominates the iodide oxidation
+kinetics under concentrated and acidic conditions, with the reactive uptake coefficient approaching an
+upper limit of 10-2 at pH 3. In contrast, reactions in the sub-surface dominate under more dilute and
+alkaline conditions, with inhibition of the surface reaction at pH 12 and an uptake coefficient that is 10x
+smaller. The origin of a changing surface mechanism with pH is explored and compared to previous ozonedependent measurements.
+
+1
+
+https://doi.org/10.26434/chemrxiv-2024-pjztm ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+I. Introduction
+Global chemical models investigating iodine chemistry in the atmosphere have sought to
+understand how global concentrations and local emissions influence oxidant concentrations.1–4 Recent
+work demonstrated that iodine oxides are a significant source of atmospheric new particle formation,5,6
+with the potential to influence climate through aerosol chemistry and cloud formation.7,8 In these largely
+gas-phase environments, volatile iodine species originate from the sea surface—the release of which
+begins with oxidation of aqueous I- in the chemically-complex environment of the sea surface microlayer.9
+Iodide is also emitted into the atmosphere in sea spray aerosol, an environment where salt concentrations
+can increase dramatically compared to seawater.10 Differences in the chemical reactivity of iodine between
+sea spray aerosol and seawater, and potential implications for overall marine O3 deposition rates remains
+under investigation.11 From this environmental perspective, the multiphase chemistry of iodine consists
+of a reaction network that connects ocean processes with atmospheric microphysics and chemistry.
+The I- + O3 reaction is often used to measure the mass accommodation coefficient of O3 in water,
+with I- acting as a reactive scavenger due to its high reactivity in solution.12,13 An understanding of O3
+accommodation, however, is obscured by the chemical makeup of the air-water interface and by changes
+in iodide availability in the presence of different salts under various concentrations. While it is generally
+observed from both experiment and theory that the iodide is surface active14–19 (the degree to which is still
+contested),20 how this bulk-to-surface partitioning affects the observed reaction kinetics and therefore O3
+uptake remains unclear. More generally for multiphase kinetics, the degree to which a surface reaction
+will contribute to measured kinetics relative to the bulk depends sensitively on underlying physical
+processes such as trace gas diffusion, adsorption to the interface, solvation into the liquid, and liquid
+diffusion. In this context, the I- + O3 reaction is an important model system for assessing mass transport
+mechanisms governing multiphase chemistry.
+Due to the challenges outlined above, a detailed understanding of the multiphase I- + O3 reaction
+mechanism has proven elusive, particularly in distinguishing surface vs. bulk reactivity. As we previously
+observed in aqueous microdroplets, the I- + O3 reaction under concentrated salt conditions occurs almost
+exclusively at the air-water interface, but is complicated by the apparent pH dependence of the reaction.21
+This previous work focused on the I- decay kinetics at a single iodide concentration, which limits our
+knowledge of how the O3 uptake mechanism evolves with concentration especially under dilute
+conditions. Here, we report reaction kinetics of aqueous iodide with O3 in levitated microdroplets for a
+2
+
+https://doi.org/10.26434/chemrxiv-2024-pjztm ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+range of initial iodide concentration using an open-port sampling interface (OPSI) coupled with mass
+spectrometry (MS) as described previously.21–23 Molecular simulations of I- at the air water interface and
+a recently developed reaction-diffusion kinetic model are used to interpret the experimental results.
+Emphasis is placed on the further development of the kinetic model, which is refined to address liquidand gas- diffusion. The model is constrained by results of molecular dynamics simulations of O3 and ions
+at the air-water interface. Together, model and experiment suggest the I- + O3 surface reaction is
+considerably slower than the bulk, and at pH 3 more closely resembles the lower reaction efficiency of
+the gas-phase reaction. Under basic conditions, the surface reaction effectively vanishes, suggesting a
+fundamental relationship between solution pH and stability of reactants or intermediates at the air-water
+interface. These results demonstrate the necessity for accurate mass transport descriptions across the gasliquid interface in order to isolate surface-specific reaction information.
+II. Experimental
+Measurements of the oxidation kinetics of iodide by ozone in single microdroplets were carried
+out as described in Prophet et al.21 and previous reports from co-workers.24–26 Experiments were conducted
+using a quadrupole electrodynamic trap (QET) where microdroplets, generated by a piezoelectric
+microdroplet dispenser (Microfab, 30 μm orifice), are charged and trapped by a quadrupole field. Within
+the QET, DC electrodes are used to balance a collection of ~100 microdroplets over the course of an
+oxidation experiment. Once droplets are trapped, a steady flow of O3 mixed with humidified air is directed
+through the reactor to oxidize the droplets. During oxidation, individual microdroplets are released from
+an upper balancing region to a lower region where the droplet is illuminated by a 532 nm laser diode
+directed axially through the reactor. Mie scattering from the individual droplets are collected at 90° relative
+to the illumination axis and the interference pattern analyzed to obtain droplet radius. Droplet radius is
+quantified by comparing peak spacing to a reference library containing simulated peak positions using a
+fixed refractive index.25,27 A representative interference pattern for droplet size analysis is included in
+Supplemental Information section SI-2. For the current experiments, the droplet radius was measured to
+be r = 17 ± 1 μm, with an average change in droplet size during reaction of ~1 μm. The initial droplet
+radius generated from this model of dispenser before equilibration in the QET is r ~ 25 μm.28,29
+Once sized, droplets are ejected from the QET and analyzed using an open-port sampling interface
+(OPSI) for single droplet electrospray mass spectrometry (MS)22,30 as described by Prophet et al.21 Droplet
+composition is monitored throughout the oxidation reaction using OPSI-MS, where each individual
+3
+
+https://doi.org/10.26434/chemrxiv-2024-pjztm ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+detection event yields single droplet composition as a function of O3 exposure time. A sketch of the
+experimental diagram is shown in Fig. 1, along with example droplet detection events and respective peak
+areas for a typical oxidation experiment. Example single droplet mass spectra before and after reaction
+are included in section SI-2, together with a discussion of observed peaks in the mass spectra.
+While the general experimental setup mirrors that described by recent work,21 droplet composition
+for each experimental condition was altered to study the reactive uptake of O3 as a function of initial NaI
+(Sigma-Aldrich, ≥ 99.5%) concentration. For all experiments, the relative humidity (RH) inside of the
+QET was held at RH = 88 ± 1%. The initial droplet solution for each iodide concentration condition was
+adjusted using NaCl (Sigma-Aldrich, ≥ 99.5%) to establish a water activity of aw = 0.96 ± 0.01. Salt
+concentrations necessary for this condition were calculated using the AIOMFAC thermodynamic
+model31,32 and further verified using a water-activity meter (Aqualab 4TE). Once dispensed into the QET,
+the water activity in the droplet equilibrated to the trap RH, and the salt concentration in the droplet was
+determined with AIOMFAC. Concentrations used for each condition are provided in Tables S2 and S3 in
+supplemental section SI-2. Fresh solutions were prepared daily using HPLC-grade water (Sigma-Aldrich),
+with pH adjusted using citric acid (Sigma-Aldrich, ≥ 99.5%) and NaOH (Sigma-Aldrich, ≥ 98%).
+
+4
+
+https://doi.org/10.26434/chemrxiv-2024-pjztm ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Fig. 1: (A) Experimental graphic showing the geometry of the QET enclosure. Microdroplets within this
+configuration are trapped, sized, and analyzed via mass spectrometry. (B) Ion current at m/z = 126.89 (i.e. iodide)
+detected by the orbitrap mass spectrometer vs. time. The time-series shows individual microdroplet detection
+events for an example ozone oxidation experiment. (C) Integrated peak areas from detection events in (B).
+
+III. Model Description
+To interpret the observed microdroplet reaction kinetics, we employ a combined modeling
+approach where molecular simulations are performed to constrain relevant parameters necessary to run a
+kinetic model executed using the stochastic-based simulation software, Kinetiscope©.33 In addition to this
+system, Kinetiscope has been used to explore a number of other chemical and physical processes in
+microcompartments.34,35 A comprehensive list of the kinetic steps implemented in Kinetiscope is provided
+in the Supplemental Information, section SI-1 and Table S1.
+A. Molecular Dynamics Simulations
+
+5
+
+https://doi.org/10.26434/chemrxiv-2024-pjztm ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Molecular dynamics simulations are used to study the behavior of O3 and I- at the air-water
+interface, providing information about surface concentrations and kinetic timescales for processes such as
+surface-desorption, diffusion, and bulk-solvation. The details of simulating O3 at the air-water interface
+have been described in recent work,21,36 and the present work uses the same approach. To investigate the
+interfacial chemical makeup of systems encountered in the experiments, simulations were performed with
+varying concentrations of NaI to observe how the effective surface concentration of I- changes when
+transitioning from a dilute regime (mM concentrations) to a more concentrated one (M concentrations). A
+water slab with containing 768 water molecules in a box of 24.8× 24.8 × 111.8 Å3 was used to simulate
+an aqueous droplet where the larger dimension is perpendicular to the air-water interface. A classical
+polarizable force field, SWM4-NDP,37 was employed for the molecular dynamics simulation. The
+nonbonded interactions were modelled with a Lennard-Jones potential.21,36 We applied a rigid body
+dynamics for water and ozone molecules. A Drude oscillator model38 was implemented to replicate
+polarization in the simulation.
+
+Fig. 2: Snapshot of the simulated air-water interface under investigation. Ozone, sodium ions, and iodide ions
+are shown in blue, brown, and purple, respectively.
+
+Simulation results for I- partitioning between the bulk phase and the interface were incorporated
+into the kinetic model using a simple Langmuir framework as detailed below in section III.C.(i).
+Additionally, mixtures of NaI and NaCl were simulated to explore the relative surface propensities of
+these ions in solution and any dependence on the relative quantities of different ions in solution. A more
+
+6
+
+https://doi.org/10.26434/chemrxiv-2024-pjztm ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+detailed review of the simulated mixture results and the potential influence on observed iodide-oxidation
+kinetics is provided in the supplemental information section SI-3.
+B. Kinetic Model Framework
+The kinetic model for multiphase oxidation draws on a number of recent publications detailing the
+mechanics of the model and discussing the origins of each kinetic step that is used.21,26,39 In the following
+section, we summarize the main components of the model and introduce an approach to simulate subsurface reaction dynamics. Our approach aims to identify spatial regions of the multiphase system with
+distinct governing kinetics, allowing for the relevant chemistry to be simulated in each region without
+explicitly resolving chemical gradients. A conceptual picture of these distinct kinetic regions and their
+related length scales is shown in Fig. 3. Up to this point, previous models using this approach have relied
+on discretizing the microdroplet into only two separate regions: the droplet surface, and the bulk
+interior.26,35,39–41 In the following, we first provide an overview of the model geometry before describing
+the mass-transport and chemical steps used to run the kinetic simulations.
+(i) Overall Simulation Geometry & Surface Region Definition
+The geometry of the simulated microdroplet follows the general approach used in previous
+studies.35,42 The microdroplet is represented using a rectangular prism divided into sub-compartments with
+length scales weighted to give the correct scaling of a sphere. A surface compartment is defined with a
+1x1 nm2 area and a height of δ = 1 nm, corresponding approximately to the length scale of water density
+attenuation across the interface (Fig. 4A). The remainder of the simulated prism (representing the
+remaining microdroplet volume) is then constrained to have area 1x1 nm2 and a height of R/3, assuring
+that the simulation geometry conserves the surface area to volume ratio of a sphere. No sensitivity is
+observed to the absolute simulated area when the bulk to surface compartments are weighted in this way.
+(ii) Sub-surface & Bulk Interior Region Definitions
+To capture bulk chemistry occurring within the microdroplet, the inner R/3 droplet length is further
+divided into two distinct compartments: a sub-surface and bulk-interior region. The sub-surface region is
+conceptualized as the spherical shell beneath the outer surface where ozone diffusion is competitive with
+the reaction rate in the bulk. Naturally, the length scale of this region is defined using the “reaction𝐷
+
+diffusion” length of O3, Lrxn = √𝑘∙[I𝑙𝑖𝑞−], where Dliq is the diffusion coefficient of O3 in solution and krxn the
+7
+
+https://doi.org/10.26434/chemrxiv-2024-pjztm ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+bimolecular reaction rate for I- + O3. The reaction-diffusion length is commonly encountered in the study
+of chemical reactivity in liquids, and is especially relevant for chemical kinetics in microcompartments
+where physical dimensions are of the same order.43 Fig. 3 provides a conceptual sketch of the sub-surface
+and bulk-interior regions in reference to a microdroplet and their respective projections into the simulation
+geometry.
+Within Kinetiscope, this sub-surface region is implemented with a reaction-diffusion (RD)
+compartment situated between the surface and the bulk-interior compartments and is initialized with
+height Lrxn using the initial iodide concentration [I− ]0 for each experiment. This definition neglects the
+fact that Lrxn changes dynamically throughout the reaction as [I − ] is consumed. However, since Lrxn is
+inversely proportional to √[I − ], the change in Lrxn from its initial value as I- is consumed is relatively
+small over the experimental timescale, and the initial Lrxn proves to be a reasonable approximation.
+Functionally, the RD compartment allows for droplet reactivity due to the ozone gradient extending into
+the droplet while avoiding the full gradient resolution as is commonly done to explore multiphase
+oxidation kinetics using multi-layer kinetic models.44 An in-depth exploration of the utility of the RD
+compartment and its ability to capture the behavior of reaction-diffusion fronts in more general chemical
+kinetics will be provided in an upcoming publication, as a full discussion would be too exhaustive in the
+present work.
+Since the entire simulated droplet height must equal R/3, the bulk-interior region is simulated with
+an inner-bulk compartment of height Lbulk = R/3 - Lrxn. This compartment represents the inner core of the
+droplet beyond the diffusive O3 gradient where only a very small fraction of chemistry occurs.
+Functionally, this compartment is a source of I- that diffuses into the RD and surface compartments. For
+the more general case where Lrxn > R/3 (a case not encountered in the current work), Lbulk is defined to be
+0 and the RD compartment height is defined to be R/3. Although we have only considered
+compartmentalization of the liquid phase, we include in Fig. 3 the same conceptual principle applied to
+the gas phase, with a gas-diffusive region and gas-adsorption region identified above the droplet surface.
+While we include this for conceptual completeness, these regions are not explicitly simulated in the current
+model and can be effectively included as single kinetic steps in the surface compartment (which, while
+applicable to this system, is not generally true for other multiphase processes). Details of the current gasphase diffusion description and adsorption to the droplet surface are included below in section III.C.
+
+8
+
+https://doi.org/10.26434/chemrxiv-2024-pjztm ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Fig. 3: Spatial model-representation referenced to an aqueous microdroplet during reaction. Overlay shows
+conceptual kinetic regions of the model including an outer gas-diffusion layer, the droplet surface, the reactiondiffusion region, and the inner bulk region. Key physical length scales used to define the kinetic model
+compartments are included.
+
+C. Physical and Chemical Mechanistic Steps
+A number of mechanistic steps describing physical and chemical processes are defined in the
+model to simulate the overall reaction progress. The majority of these steps and overall reaction
+mechanism have been previously published21,26,39 so an exhaustive discussion of these steps will not be
+provided. Instead, emphasis is given to the particular steps that distinguish this work from the previous,
+namely, the adsorption behavior of the iodide ion at the air-water interface, the diffusional transport of O3
+to the interface, and the surface vs. bulk rate coefficient used for the primary I- + O3 reaction. Since the
+chemical mechanism has been explored in detail in previous work,21 this mechanism is largely reproduced
+for the current model. One additional chemical consideration is the reactivity of Cl- with products of the
+I- + O3 reaction. Details on these additional mechanistic steps are included in supplemental section SI-1,
+with deviations from the previous model21 being emphasized in bold.
+(i) Surface Concentrations and Langmuir-Adsorption of Aqueous Iodide
+Surface concentrations are of particular importance for distinguishing surface and bulk reactivity.
+In the kinetic model, surface concentrations of I- and O3 are described as simple Langmuir-adsorption. In
+9
+
+https://doi.org/10.26434/chemrxiv-2024-pjztm ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+previous work, particular attention was given to surface concentrations of O3 and the
+adsorption/desorption kinetics at the interface. We refer the reader to previous work21,36 for more
+discussion on O3 density at the air water interface, and provide only a key result in Fig. 4 (A) showing the
+enhanced O3 concentration at the interface. Surface concentrations of iodide in the current model are
+related to the bulk using a kinetic step where bulk-aqueous phase iodide, having diffused into the surface
+compartment, can adsorb to an available site at the interface:
+−
+I(𝑏𝑙𝑘)
++ site
+
+𝑘𝑑𝑒𝑠𝑜𝑙𝑣
+−
+⇄ I(𝑎𝑑𝑠)
+𝑘𝑠𝑜𝑙𝑣
+
+(𝐴1)
+
+The rate coefficients for desolvation and solvation, kdesolv and ksolv, are constrained using the Langmuir
+−
+
+I
+equilibrium coefficient 𝐾𝑒𝑞
+= 𝑘𝑑𝑒𝑠𝑜𝑙𝑣 /𝑘𝑠𝑜𝑙𝑣 from an adsorption isotherm:
+
+𝛤I
+−
+[I(𝑎𝑑𝑠)
+]=
+
+−
+
+−
+I
+𝐾𝑒𝑞
+⋅ [I(𝑏)
+]
+
+∞
+
+−
+
+𝛿
+
+⋅
+
+−
+
+I ⋅ [I − ]
+1 + 𝐾𝑒𝑞
+(𝑏)
+
+Eq. 1
+
+where 𝛤I−∞ is the maximum surface coverage (molecule/cm2) and 𝛿 the surface thickness of 1 nm, where
+−
+𝛤∞
+
+−
+
+I
+the quantity 𝛿I is the maximum site concentration for step (A1). As discussed previously,21 values for 𝐾𝑒𝑞
+
+and 𝛤I−∞ (determined experimentally or theoretically) can deviate dramatically in the literature depending
+on methods used and frameworks employed for analysis. In the current approach, we conduct a series of
+simulations to obtain density profiles of I- across a simulated water slab for different bulk iodide
+concentrations. Fig. 4 (B) shows these density profiles for bulk concentrations ranging from 40 mM to 1
+M, where the density scale is normalized to the bulk solution density. To obtain the Langmuir-type
+information necessary for the kinetic model, we use the results in Fig. 4 (B) to extract an effective surface
+concentration under each condition by averaging the density across the top 1 nm of solution (from 14 Å
+to 24 Å) for each density profile. Surface concentrations defined in this way are then compared to their
+respective bulk concentration, averaged from 0 to 5 Å, as shown in Fig. 4 (C). We fit the results shown in
+−
+
+I
+Fig. 4 (C) to the Langmuir equation (Eq. 1) and obtain 𝐾𝑒𝑞
+= 1 M-1 and 𝛤I−∞ /𝛿 = 2 M.
+
+10
+
+https://doi.org/10.26434/chemrxiv-2024-pjztm ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Fig. 4: (A) Ozone density profile at the air-water interface for a salt solution with [NaI] ~ 800 mM. A scaled
+profile of the water density at the interface is included to qualitatively show how the solution density changes
+over the same spatial length scale. (B) Iodide density profiles at the air-water interface. A series of density
+profiles are obtained by changing the overall ion number in the water slab to change the bulk concentration of
+iodide. (C) A surface vs. bulk concentration curve is constructed using results in (B) by averaging the density
+found between ~15 Å to ~25 Å, spanning the length scale of density changes shown in (A). A fit to the Langmuir
+I−
+isotherm Eq. (1) is shown, yielding values for 𝐾𝑒𝑞
+and 𝛤I−∞ .
+
+We note the values obtained in this way deviate from our previously used values for Langmuiradsorption of iodide, where we fixed the maximum site concentration to a literature value15 and then
+−
+
+I
+determined 𝐾𝑒𝑞
+from an I- density profile using a single concentration. These updated values provide a
+
+more realistic set of parameters to simulate the effective surface concentrations of sodium iodide within a
+Langmuir framework—although we acknowledge that the Langmuir framework may have limitations for
+describing ion adsorption to interfaces. For example, the subtle structural features in the density profiles
+in Fig. 4 (B) are lost when using a simple Langmuir model. Nevertheless, this approach provides a surface
+vs. bulk description of the iodide ion, which generally agrees with the current literature, where the effective
+surface concentration of iodide is weakly enhanced and largely resembles the bulk, especially for more
+−
+
+I
+concentrated solutions. Lastly, we point out that while the Langmuir-fit approach above provides 𝐾𝑒𝑞
+=
+
+𝑘𝑑𝑒𝑠𝑜𝑙𝑣 /𝑘𝑠𝑜𝑙𝑣 , this does not constrain the absolute values kdesolv, ksolv. A sensitivity test performed on the
+absolute rates shows that our kinetic results are independent of these values for ksolv > 1000 s-1. While we
+are not sensitive to these rates above ksolv = 1000 s-1, we note that one would generally expect the absolute
+11
+
+https://doi.org/10.26434/chemrxiv-2024-pjztm ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+solvation rates for small ions to be closer to a diffusional timescale across the interfacial thickness,
+resembling a rate constant ksolv ~ 108 – 109 s-1.
+(ii) Gas-Phase Diffusion and Adsorption of O3
+Adsorption and desorption of O3 to the interface has been previously described,21,36 where the
+timescale of desorption is calculated using the potential of mean force for O3 at the air-water interface,
+computable from umbrella sampling.21,36 This potential of mean force determines the density profile of O3
+at the interface (see Fig. 4 (A)) and, along with a Langmuir-adsorption description, an adsorption rate to
+the interface. We find this adsorption rate (see step S2 in Table S1) agrees well with a simple collision rate
+𝑐
+
+calculated from kinetic theory: 𝑘𝑐𝑜𝑙 = 4⋅𝛿 = 9×1010 s-1, where c̅ is the mean molecular speed of O3 in the
+gas phase at 293 K and 𝛿 the surface thickness 𝛿 = 1 nm. We include an additional gas-phase transport
+step to simulate the diffusional timescale of O3 across a spherical shell surrounding the droplet, illustrated
+in Fig. 3. The thickness of this shell is defined to be the droplet radius r, the length scale found in the
+steady-state solution of the diffusion equation with a spherical sink.45 Gas diffusion across this shell
+functionally determines an upper-bound for the rate of O3 transport to the droplet interface, limiting the
+overall reactivity if the loss rate of O3 at the interface exceeds this diffusion rate. To identify this limiting
+rate for gas-diffusion, we consider the flux 𝑄 of O3 through a surrounding gas shell for arbitrarily large
+thickness, which converges to a lower-bound for O3 flux onto the droplet surface 𝑄 = 4𝜋𝑟𝐷𝑔𝑎𝑠 where
+Dgas is the diffusion coefficient of O3 in air.45,46 From an interfacial perspective, a first-order rate
+coefficient for the process describing diffusion from the gas to the near-surface region (prior to adsorption)
+𝑘𝑑𝑖𝑓𝑓
+O3(𝑔𝑎𝑠) ⇄ O3(𝑛𝑒𝑎𝑟−𝑠𝑢𝑟𝑓𝑎𝑐𝑒)
+𝑘𝑑𝑖𝑓𝑓
+
+(𝐴2)
+
+𝐷𝑔𝑎𝑠
+
+can be simply expressed as 𝑘𝑑𝑖𝑓𝑓 = 𝑟⋅𝛿 , utilized to calculate the rate for step S1 in Table S1. A detailed
+comparison of kinetic terms 𝑘𝑐𝑜𝑙 and 𝑘𝑑𝑖𝑓𝑓 provides a novel route to describing the transition between
+molecular and continuum flow as discussed by Fuchs and Sutugin.47 We leave an exposition of this
+description to future work.
+(iii) Surface and Bulk Rate Coefficients for the I- + O3 Reaction
+
+12
+
+https://doi.org/10.26434/chemrxiv-2024-pjztm ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+In general, it is difficult to anticipate if a surface rate coefficient should deviate from its bulk
+counterpart.48–50 In the current approach we fix the bulk reaction rate to a reported aqueous value51 of
+1.2×109 M-1 s-1 (with literature values ranging from 1-3.4 ×109 M-1 s-1 at 25°C)52 and treat the surface
+reaction rate as an adjustable parameter. This in principle accounts for altered reaction rate barriers at the
+−
+
+I
+interface, as well as potential inaccuracies in 𝐾𝑒𝑞
+deduced from the simulations. We find an effective
+
+surface rate coefficient of 6×107 M-1 s-1 best explains the experimental results. The significance of this
+value, along with an assessment of uniqueness and uncertainty, is included below in section V.
+IV. Experimental Results
+Kinetics of I- oxidation by O3 for initial iodide concentrations ranging from 8 mM to 3.8 M are
+presented in this section for microdroplets generated using acidic (pH 3) and basic (pH 12) solutions.
+Experimental results are shown in Figs. 5 and 6 alongside output from the kinetic simulations. We include
+two model scenarios with each experimental condition that are discussed in the analysis and discussion
+sections below. The primary model conforms to the full description above in Section III and contains all
+steps listed in Table S1. A secondary model scenario, termed “bulk-only” simply shows a model simulation
+that omits the I- + O3 surface reaction.
+Data in Fig. 5 shows results for droplet solution with pH 3 where individual points represent
+normalized peak areas for single OPSI-MS detection events at m/z = 126.9, as illustrated in Fig. 1. Each
+experimental condition includes data from 3 individual reaction trials using microdroplets with radius r =
+17 ± 1 μm. For all the acidic experiments, 300 mM of citric acid/citrate buffer was used to keep the pH
+close to the initial pH 3 during reaction. The shape of the kinetic profiles for the acidic experiments appears
+largely insensitive to initial concentration, where the profiles appear mostly linear, with a small but
+noticeable tail at longer reaction times. In the following analysis section, the degree of agreement between
+experiment and the kinetic model predictions is explored more closely, with special attention given to
+distinguishing surface vs. bulk reactivity.
+
+13
+
+https://doi.org/10.26434/chemrxiv-2024-pjztm ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Fig. 5: Series of iodide-oxidation experiments showing decay of normalized iodide concentration [I-]/[I-]0 for
+initial [I-]0 ranging from 8 mM to 1.6 M with solution pH 3. Datapoints represent individual microdroplet
+detection events quantified by peak area of iodide detection normalized to the initial unreacted peak area, as
+shown in Fig. 1 (B) and (C). Model results are included, showing two simulation cases. The full model case
+(black dashed lines) shows the entirety of the model detailed in section III. The bulk-only model (blue dotted
+lines) is simulated using the same model but neglecting the surface I - + O3 reaction. Concentration conditions
+for each experiment are provided in supplemental Table S2.
+
+Data in Fig. 6 shows the oxidation of aqueous iodide at pH 12, where each dataset originates from
+three individual trials conducted on microdroplets with an initial radius r = 17 μm. Experiments range
+from initial [I-] of 8 mM to 3.8 M, and in this case, the decay profiles exhibit a qualitative change with
+initial [I-]. For concentrations ~100 mM and below, the decays resemble first-order kinetics, showing a
+linear profile, with a small but significant tail when the normalized iodide concentration [I-]/[I-]0 ~25%.
+For concentrations >100 mM, a noticeable decrease is observed in the kinetics, where the rate of decay
+appears to suddenly slow when the remaining iodide is ~50% of its initial concentration.
+As the plateau behavior is not recovered in the kinetic simulations, the origin of this effect remains
+unclear. However, IO- likely becomes relatively concentrated in solution under these conditions, due to
+the higher initial [I-] and as suggested by the kinetic simulations. The self-disproportionation of IO- to
+generate IO3- and I- has long been observed experimentally,53,54 and along with related transformations,
+has been subject to intense experimental and modeling investigation.55–58 Furthermore, photochemistry of
+IO- may become relevant due to ambient laboratory light or from the 532 nm laser used for droplet
+14
+
+https://doi.org/10.26434/chemrxiv-2024-pjztm ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+illumination. McKinon et al.59 report both photodetachment and photodissociation of IO- for exposure to
+a relatively broad wavelength range centered around 515 nm, albeit only evidenced in the gas phase.
+Regeneration of I- from either the chemical or photo-chemical decomposition of IO- would show a distinct
+slowing of I- consumption kinetics, a trend consistent with the experimental kinetic profiles. To verify this
+mechanism, experiments targeting the full redox chemistry of IO-, IO2-, and IO3- in aqueous iodide
+microdroplets should be investigated, along with a more complete chemical model to include this
+chemistry. While outside the scope of the current work, oxidation experiments under dark conditions are
+also needed to isolate any photochemistry of iodine-oxides from alternate chemical decomposition routes.
+
+Fig. 6: Iodide-oxidation kinetics for initial [I-]0 ranging from 8 mM to 3.8 M with solution pH 12. Full model
+(black dashed lines) and bulk-only model (blue dotted lines) results are included for running the simulations at
+pH 12. Concentration conditions for each experiment are provided in supplemental Table S3.
+
+V. Analysis
+
+15
+
+https://doi.org/10.26434/chemrxiv-2024-pjztm ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Model results for the pH 3 solution are shown in Fig. 5, where the full model scenario is in
+reasonable agreement for the concentration range studied. Initial rates of decay are notably in agreement
+between model and experiment, with the model showing deviation from some experiments in the latter
+half of the decay profiles. This deviation is likely due to the static RD compartment length being fixed to
+the initial conditions rather than changing dynamically with [I-], resulting in an underprediction of the
+overall I- consumption with time. This constraint can likely be avoided by numerically evaluating the
+governing rate equations directly rather than using the stochastic simulation approach with a fixed
+geometry. In the pH 12 case shown in Fig. 6, general agreement is also observed, but exclusively for the
+bulk-only model where the surface reaction is neglected. The model does not reproduce the plateau-type
+decay behavior observed in the experiments with higher salt concentrations, suggesting the model neglects
+secondary processes that interfere with the primary consumption of I- resulting from the I- + O3 reaction—
+likely involving the stability and reactivity of intermediates IO- and IO2-, and potential routes to Iregeneration. Nevertheless, initial reaction rates come into close agreement for all conditions studied.
+Many of the insights mentioned above are also evident by comparing experimental and modeled
+uptake coefficients, shown in Fig. 7. Experimental uptake coefficients for each condition are calculated
+from the initial reaction rate 𝑘𝑖𝑛𝑖𝑡 combined with a previous formulation for uptake21,60
+𝛾𝑒𝑥𝑝 =
+
+−
+4 ⋅ 𝑟 ⋅ 𝑘𝑖𝑛𝑖𝑡 ⋅ [I(𝑏)
+]
+
+3 ⋅ [O3(𝑔) ] ⋅ 𝑐̅
+
+0
+
+.
+
+Eq. 2
+
+Here, 𝛾𝑒𝑥𝑝 is not corrected for the reaction stoichiometry, so 𝛾𝑒𝑥𝑝 expresses an observed reactive uptake
+coefficient derived from the solute consumption rate. To calculate the true reactive uptake of O3, 𝛾𝑒𝑥𝑝 must
+be divided by a factor of two when I2 is the product of the reaction. For simplicity, we consider only the
+observed uptake 𝛾𝑒𝑥𝑝 in the following analysis.
+Uptake coefficients from the model are calculated directly by analyzing the output of the stochastic
+simulations, which provides the number of selections for each kinetic step, or event, after a given
+simulation period. The reactive uptake coefficient in this case is simply the ratio of reaction events selected
+and ozone-surface collision events, Nrxn / Ncol. To compare directly to the empirical approach used in Eq.
+2, we use the expected collision selection number Ncol which neglects the influence of gas-phase diffusion.
+Using this analysis, surface and bulk reactivity can be distinguished by using the Nrxn corresponding to
+the number of reaction events selected in the surface compartment or from the reactions selected in the
+16
+
+https://doi.org/10.26434/chemrxiv-2024-pjztm ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+bulk (comprising events selected in the RD compartment and inner bulk compartment but dominated by
+the RD compartment under our conditions). Uptake due to bulk and surface reactivity is shown in Fig. 7
+following this approach, along with the sum total. Also included in Fig. 7 (A) is a comparison to previous
+experimental measurements of ozone uptake in aqueous iodide droplets from droplet-train and flow tube
+experiments. In Fig. 7 (B) we compare our results to model predictions of subsurface chemistry using the
+resistor-model formulation in the liquid-diffusion limited case.61
+As shown in Fig. 7 (A), uptake for the pH 3 condition is mostly driven by bulk chemistry when
+iodide concentrations < 50 mM but dominated by surface chemistry when [I-] > 50 mM. This result is
+expected, since the reaction-diffusion length decreases from ~14 nm to ~1 nm across this concentration
+range and the surface approaches its saturation concentration for I-. With increasing [I-], the shape of the
+uptake curve suggests an approach to a limiting value of ~10-2. This order of uptake has been similarly
+observed for O3 uptake by concentrated aqueous iodide using a droplet-train apparatus12 and a flow tube
+containing sub-micron iodide aerosol.62,63 In the model, we find this upper-bound results from the reactionrate limit at the surface, with only a small contribution from gas phase diffusive limitations. For the pH
+12 shown in Fig. 7 (B), the uptake calculated from the bulk-only model is presented along with
+experiments (a comparison to the full model, including surface reaction, is provided in section SI-4).
+Below 500 mM, the uptake scales as √[I− ], as expected for liquid diffusion limited kinetics. For
+concentrated solutions, however, we observe a slight bend in the uptake dependence as the uptake begins
+to become limited by the solvation (or accommodation) mechanistic step, similarly observed in the resistor
+model when including accommodation and diffusive resistor terms. This observation demonstrates how
+chemistry in what might be considered strictly sub-surface or “bulk” regions are influenced by mass
+transport limitations occurring at the surface, whereas one may typically assume such phenomena to be
+decoupled.
+
+17
+
+https://doi.org/10.26434/chemrxiv-2024-pjztm ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Fig. 7: (A) Uptake coefficients for droplet experiments and kinetic simulations at pH = 3. Error bars around
+individual data points represent the standard deviation above and below the mean calculated using three
+individual trials. The simulated uptake coefficient curves (dashed lines) show the bulk (blue) and surface (red)
+contributions to the total uptake (black). (B) Uptake coefficients from experiment and kinetic simulations at pH
+=12. Model results from the bulk-only model scenario are presented along with experiments and a comparison
+to the resistor model. A comparison to the full model scenario is provided in section SI-4.
+
+VI. Discussion
+From the model comparison to the experimental results above, a number of features and implications
+warrant further discussion. The surface rate coefficient, found to agree with the experimental results at pH
+3, is krxn = 6×107 M-1 s-1 and approximately 20x smaller than the bulk reaction rate constant. The magnitude
+of this rate coefficient is coupled to the modelled surface concentration since the effective reactivity of the
+18
+
+https://doi.org/10.26434/chemrxiv-2024-pjztm ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+interface depends on both the iodide concentration and the rate coefficient. Therefore, a more accurate
+𝑠𝑟𝑓
+
+−
+statement regarding surface and bulk reactivity at pH 3 is the surface reactive term 𝑘𝑟𝑥𝑛 ⋅ [I(𝑎𝑑𝑠)
+] is ~ 5%
+−
+𝑏𝑢𝑙𝑘
+of the corresponding bulk reactive term 𝑘𝑟𝑥𝑛
+⋅ [I(𝑏𝑢𝑙𝑘)
+]. The uncertainty in the true rate coefficient for the
+
+surface reaction is convoluted with any uncertainty in the modelled surface concentration.
+Although a surface rate coefficient that is ~5% of the bulk value may seem unexpected, it is
+instructive to compare the liquid- and the gas-phase rate coefficients for additional context. One argument
+for the uniqueness of droplet chemistry is the potential for reaction coordinates at the gas-liquid interface
+to have energetic profiles that begin to resemble the profiles encountered in the gas phase.64,65
+Measurements of gas-phase I- + O3 kinetics within an ion trap66 reported a forward rate coefficient of
+6.6×108 M-1 s-1, a value that is slower than the corresponding aqueous value of 1×109 M-1 s-1.51,52 Given
+the large difference in gas and liquid diffusivities, quantifying reactivity on a per-collision basis provides
+a cleaner comparison. In the gas phase, the reaction probability per encounter is reported to be φg =
+0.13%,66 whereas for the corresponding liquid phase efficiency, we calculate φl ~ 10%. The liquid phase
+estimate is computed by comparing the reported rate coefficient to an estimated diffusive encounter
+frequency in a bulk solution.67 Given that the reactivity on a per-collision basis differs by almost two
+orders of magnitude in moving from the liquid to gas-phase, it is plausible that reactivity at the interface
+also decreases relative to the bulk, albeit not to the extent of the gas-phase. In addition to the I- + O3
+reaction, measurements have been made on the O3 oxidation of an iodide-water cluster I(H2O)-,
+demonstrating significantly higher efficiency than the reaction with bare I-.68 While it is difficult to connect
+these observations directly to reactivity at air-water interface, these trends support our hypothesis that the
+reaction efficiency in solution likely tapers off across the air-water interface and approaches the gas-phase
+efficiency.
+−
+Uncertainty in [I(𝑎𝑑𝑠)
+] in the kinetic model is complicated by the presence of chloride in the
+
+experiments, which has not been explicitly included at the interface. Furthermore, in order to maintain a
+constant droplet size under each experimental condition, the amount of Cl- in each experiment varies with
+the overall iodide concentration, as shown in Tables S2 and S3. To investigate the ion-ion interactions
+between I- and Cl- at the interface, we perform molecular simulations of NaI/NaCl mixtures in water and
+analyze the density profiles and energetics at the air-water interface. Details of simulations and results
+from this analysis are included in supplemental section SI-3. Fig. S4 provides density profiles for I- and
+Cl- in the simulated salt mixtures for a series of compositions where the I-:Cl- ion ratio is varied from 4:1
+19
+
+https://doi.org/10.26434/chemrxiv-2024-pjztm ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+to 1:10. This ion ratio reports the total number of ions simulated within the water slab in entirety, not
+delineating between surface and bulk regions. The bulk concentrations of iodide in these simulations
+generally range between 50-70 mM, while the chloride concentrations are scaled between 1.2 M to 70
+mM.
+Chloride density profiles in Fig. S4 (B) show an unexpected enhancement of Cl- near the air-water
+interface for concentrated conditions. With increasing surface [Cl-], the surface density of I- is suppressed
+as demonstrated in the density profile in Fig. S4 (A) and in the reduction of the solvation free energy
+profile in Fig. S4 (C). However, even under the most concentrated chloride conditions, with ion ratio 1:10,
+the effective surface concentration of I- is roughly half of what is predicted by the pure I- case shown in
+Fig. 4 (B) and (C). As such, the Cl- effect on the observed chemistry is likely to be relatively minor.
+Nevertheless, this effect could contribute to the shift between bulk and surface reaction mechanisms
+observed in Fig. 7 (A). These findings may be more relevant to natural systems where I- is extremely dilute
+compared to Cl-, as in the case of seawater. Since the I-:Cl- in seawater ~10-7, we would expect iodide
+adsorption to the interface to be very energetically unfavorable. This concentration analysis, the discussion
+of gas and liquid rate coefficients above, along with a consideration of reaction-diffusion lengths, agrees
+well with the observation from Schneider et al.69 that ozone-oxidation of simulated seawater proceeds
+through iodide oxidation in a subsurface layer on the order of ~10 μm.
+Unlike the acidic case, the kinetic model suggests the surface reaction plays a very minor role (if
+any) in the oxidation kinetics at pH 12. This becomes evident when comparing model scenarios where the
+surface reaction is included vs. removed entirely. Similar to the discussion of the results at pH 3, we are
+limited in what specific surface information can be obtained from this observation. In this case, the surface
+𝑠𝑟𝑓
+
+−
+reactivity term 𝑘𝑟𝑥𝑛 ⋅ [I(𝑎𝑑𝑠)
+] is completely masked by the corresponding reaction term in the bulk, so any
+
+degree of surface contribution cannot be identified. By inspecting the sensitivity of the surface rate
+coefficient in the model, we can only identify that the overall surface reactivity is equal or less than ~1%
+−
+𝑏𝑢𝑙𝑘
+of the bulk term 𝑘𝑟𝑥𝑛
+⋅ [I(𝑏𝑢𝑙𝑘)
+].
+
+As reported in recent work,21 the apparent rate coefficient for the oxidation of iodide under basic
+conditions appears ~100x smaller than the measured reaction rate in acidic solution. We have hypothesized
+that this change in rate coefficient is related to the stability of the iodide-ozone adduct IOOO- in solution
+and at the surface. However, given that the updated model can distinguish surface and sub-surface
+reactivity with higher fidelity, it is now apparent that the bulk rate likely remains constant from pH 3 to
+20
+
+https://doi.org/10.26434/chemrxiv-2024-pjztm ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+pH 12, with only the surface rate changing significantly. We propose two possible explanations for this
+observation. The first, that the IOOO- intermediate is significantly stabilized at the interface under basic
+conditions, with the dissociation barrier to IO- becoming larger in a partially solvated environment.
+Researchers observing the adduct BrOOO- using XPS propose a similar hypothesis of surfacestabilization,70 although under acidic conditions rather than basic. The second, and potentially more
+controversial, explanation is that the presence of ~ mM concentrations of OH- in the alkaline solution
+greatly suppress [I-] near the air water interface. While we believe this explanation is less likely than the
+first, given our assessment of ion-ion interactions at the interface at the pH 3, the presence of mM
+concentrations of OH- could potentially alter the energetics of solvated I- at the interface, an investigation
+of which is beyond the scope of the current work.
+VII. Conclusion
+Surface reactivity is commonly invoked to explain unexpected kinetic observations in microdroplets
+due to the increasing surface-to-volume ratio of a spherical particle with decreasing radius. However,
+identifying the reactive contribution of the droplet surface compared to the bulk is notoriously
+challenging—not only due to the quantification of physical processes such as diffusion and adsorption at
+liquid interfaces, but also in the determination of reactant concentrations and reaction rates at the
+interface.71 These quantities may be predicted to deviate dramatically from their bulk counterparts
+depending on the specifics of the system,72,73 yet there are no generally recognized approaches for
+predicting how these quantities may change.
+Here we have presented measurements of aqueous iodide oxidation by ozone in microdroplets while
+further developing a multiphase kinetic model for interpretation of the observed kinetics. This model
+accounts for the relative fraction of surface vs. bulk reactions occurring in the experiments presented using
+acidic and basic microdroplets for a range of iodide concentrations. Our comprehension of surface
+reactivity ultimately relies on a molecular picture of the air-water interface, constrained in the kinetic
+model by molecular simulations of I-/Cl- and O3 at the interface and in solution. Both the static and
+dynamic physical properties of the simulated reactants are critical for designing an accurate representation
+of the interface, which in turn governs an effective representation of the bulk.
+The conceptual framework for this multiphase mechanism has been refined to include both gas- and
+liquid-phase diffusive properties, a key description that allows us to identify unique surface processes. We
+find that the overall reactivity of I- + O3 at the interface is suppressed relative to the bulk and depends on
+21
+
+https://doi.org/10.26434/chemrxiv-2024-pjztm ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+the acidity of solution. Under acidic conditions, surface reaction is observed, but with an efficiency
+significantly lower than that of the bulk solution, and not dissimilar to the efficiency of the gas-phase
+reaction. Under basic conditions, no contribution of the surface is observed, which we ascribe to the unique
+stability of the adduct IOOO- at the interface. Experiment and theory, combined through application of the
+kinetic model, have suggested that the droplet surface is a unique chemical environment which requires
+future work to understand in full detail. Nevertheless, we have demonstrated that the current model
+framework and experimental approach provides a route to distinguishing reactive properties of the surface
+from the bulk, laying the groundwork for further investigations of more general chemical reactivity at gasliquid interfaces.
+Acknowledgements: This work was supported by the Condensed Phase and Interfacial Molecular Science
+Program (CPIMS), in the Chemical Sciences Geosciences and Biosciences Division of the Office of Basic
+Energy Sciences of the U.S. Department of Energy under Contract No. DE-AC02-05CH11231.
+
+22
+
+https://doi.org/10.26434/chemrxiv-2024-pjztm ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+TOC Graphic
+
+23
+
+https://doi.org/10.26434/chemrxiv-2024-pjztm ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+References
+(1) Saiz-Lopez, A.; Fernandez, R. P.; Ordóñez, C.; Kinnison, D. E.; Gómez Martín, J. C.; Lamarque, J.-F.;
+Tilmes, S. Iodine Chemistry in the Troposphere and Its Effect on Ozone. Atmospheric Chem. Phys. 2014, 14
+(23), 13119–13143. https://doi.org/10.5194/acp-14-13119-2014.
+(2) Stone, D.; Sherwen, T.; Evans, M. J.; Vaughan, S.; Ingham, T.; Whalley, L. K.; Edwards, P. M.; Read, K. A.;
+Lee, J. D.; Moller, S. J.; Carpenter, L. J.; Lewis, A. C.; Heard, D. E. Impacts of Bromine and Iodine
+Chemistry on Tropospheric OH and HO2: Comparing Observations with Box and Global Model Perspectives.
+Atmospheric Chem. Phys. 2018, 18 (5), 3541–3561. https://doi.org/10.5194/acp-18-3541-2018.
+(3) Karagodin-Doyennel, A.; Rozanov, E.; Sukhodolov, T.; Egorova, T.; Saiz-Lopez, A.; Cuevas, C. A.;
+Fernandez, R. P.; Sherwen, T.; Volkamer, R.; Koenig, T. K.; Giroud, T.; Peter, T. Iodine Chemistry in the
+Chemistry–Climate Model SOCOL-AERv2-I. Geosci. Model Dev. 2021, 14 (10), 6623–6645.
+https://doi.org/10.5194/gmd-14-6623-2021.
+(4) Sherwen, T.; Evans, M. J.; Carpenter, L. J.; Andrews, S. J.; Lidster, R. T.; Dix, B.; Koenig, T. K.; Sinreich, R.;
+Ortega, I.; Volkamer, R.; Saiz-Lopez, A.; Prados-Roman, C.; Mahajan, A. S.; Ordóñez, C. Iodine’s Impact on
+Tropospheric Oxidants: A Global Model Study in GEOS-Chem. Atmospheric Chem. Phys. 2016, 16 (2),
+1161–1186. https://doi.org/10.5194/acp-16-1161-2016.
+(5) He, X.-C.; Simon, M.; Iyer, S.; Xie, H.-B.; Rörup, B.; Shen, J.; Finkenzeller, H.; Stolzenburg, D.; Zhang, R.;
+Baccarini, A.; Tham, Y. J.; Wang, M.; Amanatidis, S.; Piedehierro, A. A.; Amorim, A.; Baalbaki, R.; Brasseur,
+Z.; Caudillo, L.; Chu, B.; Dada, L.; Duplissy, J.; El Haddad, I.; Flagan, R. C.; Granzin, M.; Hansel, A.;
+Heinritzi, M.; Hofbauer, V.; Jokinen, T.; Kemppainen, D.; Kong, W.; Krechmer, J.; Kürten, A.; Lamkaddam,
+H.; Lopez, B.; Ma, F.; Mahfouz, N. G. A.; Makhmutov, V.; Manninen, H. E.; Marie, G.; Marten, R.; Massabò,
+D.; Mauldin, R. L.; Mentler, B.; Onnela, A.; Petäjä, T.; Pfeifer, J.; Philippov, M.; Ranjithkumar, A.; Rissanen,
+M. P.; Schobesberger, S.; Scholz, W.; Schulze, B.; Surdu, M.; Thakur, R. C.; Tomé, A.; Wagner, A. C.; Wang,
+D.; Wang, Y.; Weber, S. K.; Welti, A.; Winkler, P. M.; Zauner-Wieczorek, M.; Baltensperger, U.; Curtius, J.;
+Kurtén, T.; Worsnop, D. R.; Volkamer, R.; Lehtipalo, K.; Kirkby, J.; Donahue, N. M.; Sipilä, M.; Kulmala, M.
+Iodine Oxoacids Enhance Nucleation of Sulfuric Acid Particles in the Atmosphere. Science 2023, 382 (6676),
+1308–1314. https://doi.org/10.1126/science.adh2526.
+(6) Sipilä, M.; Sarnela, N.; Jokinen, T.; Henschel, H.; Junninen, H.; Kontkanen, J.; Richters, S.; Kangasluoma, J.;
+Franchin, A.; Peräkylä, O.; Rissanen, M. P.; Ehn, M.; Vehkamäki, H.; Kurten, T.; Berndt, T.; Petäjä, T.;
+Worsnop, D.; Ceburnis, D.; Kerminen, V.-M.; Kulmala, M.; O’Dowd, C. Molecular-Scale Evidence of
+Aerosol Particle Formation via Sequential Addition of HIO3. Nature 2016, 537 (7621), 532–534.
+https://doi.org/10.1038/nature19314.
+(7) Baccarini, A.; Karlsson, L.; Dommen, J.; Duplessis, P.; Vüllers, J.; Brooks, I. M.; Saiz-Lopez, A.; Salter, M.;
+Tjernström, M.; Baltensperger, U.; Zieger, P.; Schmale, J. Frequent New Particle Formation over the High
+Arctic Pack Ice by Enhanced Iodine Emissions. Nat. Commun. 2020, 11 (1), 4924.
+https://doi.org/10.1038/s41467-020-18551-0.
+(8) Corella, J. P.; Maffezzoli, N.; Spolaor, A.; Vallelonga, P.; Cuevas, C. A.; Scoto, F.; Müller, J.; Vinther, B.;
+Kjær, H. A.; Cozzi, G.; Edwards, R.; Barbante, C.; Saiz-Lopez, A. Climate Changes Modulated the History of
+Arctic Iodine during the Last Glacial Cycle. Nat. Commun. 2022, 13 (1), 88. https://doi.org/10.1038/s41467021-27642-5.
+(9) Tinel, L.; Adams, T. J.; Hollis, L. D. J.; Bridger, A. J. M.; Chance, R. J.; Ward, M. W.; Ball, S. M.; Carpenter,
+L. J. Influence of the Sea Surface Microlayer on Oceanic Iodine Emissions. Environ. Sci. Technol. 2020, 54
+(20), 13228–13237. https://doi.org/10.1021/acs.est.0c02736.
+
+24
+
+https://doi.org/10.26434/chemrxiv-2024-pjztm ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(10) Gilfedder, B. S.; Lai, S. C.; Petri, M.; Biester, H.; Hoffmann, T. Iodine Speciation in Rain, Snow and
+Aerosols. Atmospheric Chem. Phys. 2008, 8 (20), 6069–6084. https://doi.org/10.5194/acp-8-6069-2008.
+(11) Luther, G. W. Review on the Physical Chemistry of Iodine Transformations in the Oceans. Front. Mar. Sci.
+2023, 10.
+(12) Magi, L.; Schweitzer, F.; Pallares, C.; Cherif, S.; Mirabel, P.; George, C. Investigation of the Uptake Rate of
+Ozone and Methyl Hydroperoxide by Water Surfaces. J. Phys. Chem. A 1997, 101 (27), 4943–4949.
+https://doi.org/10.1021/jp970646m.
+(13) Utter, R. G.; Burkholder, J. B.; Howard, C. J.; Ravishankara, A. R. Measurement of the Mass
+Accommodation Coefficient of Ozone on Aqueous Surfaces. J. Phys. Chem. 1992, 96 (12), 4973–4979.
+https://doi.org/10.1021/j100191a045.
+(14) Stern, A. C.; Baer, M. D.; Mundy, C. J.; Tobias, D. J. Thermodynamics of Iodide Adsorption at the
+Instantaneous Air-Water Interface. J. Chem. Phys. 2013, 138 (11), 114709–114709.
+https://doi.org/10.1063/1.4794688.
+(15) Piatkowski, L.; Zhang, Z.; Backus, E. H. G.; Bakker, H. J.; Bonn, M. Extreme Surface Propensity of Halide
+Ions in Water. Nat. Commun. 2014, 5 (1), 4083. https://doi.org/10.1038/ncomms5083.
+(16) Woods, E.; Konys, C. A.; Rossi, S. R. Photoemission of Iodide from Aqueous Aerosol Particle Surfaces. J.
+Phys. Chem. A 2019, 123 (13), 2901–2907. https://doi.org/10.1021/acs.jpca.8b12323.
+(17) Otten, D. E.; Shaffer, P. R.; Geissler, P. L.; Saykally, R. J. Elucidating the Mechanism of Selective Ion
+Adsorption to the Liquid Water Surface. Proc. Natl. Acad. Sci. 2012, 109 (3), 701–705.
+https://doi.org/10.1073/pnas.1116169109.
+(18) Petersen, P. B.; Saykally, R. J. Probing the Interfacial Structure of Aqueous Electrolytes with Femtosecond
+Second Harmonic Generation Spectroscopy. J. Phys. Chem. B 2006, 110 (29), 14060–14073.
+https://doi.org/10.1021/jp0601825.
+(19) Credidio, B.; Pugini, M.; Malerz, S.; Trinter, F.; Hergenhahn, U.; Wilkinson, I.; Thürmer, S.; Winter, B.
+Quantitative Electronic Structure and Work-Function Changes of Liquid Water Induced by Solute. Phys.
+Chem. Chem. Phys. 2022, 24 (3), 1310–1325. https://doi.org/10.1039/D1CP03165A.
+(20) Seki, T.; Yu, C.-C.; Chiang, K.-Y.; Yu, X.; Sun, S.; Bonn, M.; Nagata, Y. Spontaneous Appearance of
+Triiodide Covering the Topmost Layer of the Iodide Solution Interface Without Photo-Oxidation. Environ.
+Sci. Technol. 2024, 58 (8), 3830–3837. https://doi.org/10.1021/acs.est.3c08243.
+(21) Prophet, A. M.; Polley, K.; Van Berkel, G. J.; Limmer, D. T.; Wilson, K. R. Iodide Oxidation by Ozone at the
+Surface of Aqueous Microdroplets. Chem. Sci. 2024, 15 (2), 736–756. https://doi.org/10.1039/D3SC04254E.
+(22) Van Berkel, G. J.; Kertesz, V. An Open Port Sampling Interface for Liquid Introduction Atmospheric Pressure
+Ionization Mass Spectrometry. Rapid Commun. Mass Spectrom. 2015, 29 (19), 1749–1756.
+https://doi.org/10.1002/rcm.7274.
+(23) Kaur Kohli, R.; Van Berkel, G. J.; Davies, J. F. An Open Port Sampling Interface for the Chemical
+Characterization of Levitated Microparticles. Anal. Chem. 2022, 94 (8), 3441–3445.
+https://doi.org/10.1021/acs.analchem.1c05550.
+(24) Willis, M. D.; Rovelli, G.; Wilson, K. R. Combining Mass Spectrometry of Picoliter Samples with a
+Multicompartment Electrodynamic Trap for Probing the Chemistry of Droplet Arrays. Anal. Chem. 2020, 92
+(17), 11943–11952. https://doi.org/10.1021/acs.analchem.0c02343.
+
+25
+
+https://doi.org/10.26434/chemrxiv-2024-pjztm ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(25) Jacobs, M. I.; Davies, J. F.; Lee, L.; Davis, R. D.; Houle, F.; Wilson, K. R. Exploring Chemistry in
+Microcompartments Using Guided Droplet Collisions in a Branched Quadrupole Trap Coupled to a Single
+Droplet, Paper Spray Mass Spectrometer. Anal. Chem. 2017, 89 (22), 12511–12519.
+https://doi.org/10.1021/acs.analchem.7b03704.
+(26) Willis, M. D.; Wilson, K. R. Coupled Interfacial and Bulk Kinetics Govern the Timescales of Multiphase
+Ozonolysis Reactions. J. Phys. Chem. A 2022, 126 (30), 4991–5010.
+https://doi.org/10.1021/acs.jpca.2c03059.
+(27) Davies, J. F. Mass, Charge, and Radius of Droplets in a Linear Quadrupole Electrodynamic Balance. Aerosol
+Sci. Technol. 2019, 53 (3), 309–320. https://doi.org/10.1080/02786826.2018.1559921.
+(28) Hardy, D. A.; Robinson, J. F.; Hilditch, T. G.; Neal, E.; Lemaitre, P.; Walker, J. S.; Reid, J. P. Accurate
+Measurements and Simulations of the Evaporation and Trajectories of Individual Solution Droplets. J. Phys.
+Chem. B 2023, 127 (15), 3416–3430. https://doi.org/10.1021/acs.jpcb.2c08909.
+(29) Davies, J. F.; Haddrell, A. E.; Reid, J. P. Time-Resolved Measurements of the Evaporation of Volatile
+Components from Single Aerosol Droplets. Aerosol Sci. Technol. 2012, 46 (6), 666–677.
+https://doi.org/10.1080/02786826.2011.652750.
+(30) Berkel, V.; J, G. Open Port Sampling Interface; 11,313,841; Oak Ridge National Lab. (ORNL), Oak Ridge,
+TN (United States), 2022. https://www.osti.gov/doepatents/biblio/1892871 (accessed 2023-03-26).
+(31) AIOMFAC home. http://www.aiomfac.caltech.edu/ (accessed 2024-04-13).
+(32) Zuend, A.; Marcolli, C.; Booth, A. M.; Lienhard, D. M.; Soonsin, V.; Krieger, U. K.; Topping, D. O.;
+McFiggans, G.; Peter, T.; Seinfeld, J. H. New and Extended Parameterization of the Thermodynamic Model
+AIOMFAC: Calculation of Activity Coefficients for Organic-Inorganic Mixtures Containing Carboxyl,
+Hydroxyl, Carbonyl, Ether, Ester, Alkenyl, Alkyl, and Aromatic Functional Groups. Atmospheric Chem. Phys.
+2011, 11 (17), 9155–9206. https://doi.org/10.5194/acp-11-9155-2011.
+(33) Hinsberg, W. D.; Houle, F. A. Kinetiscope. https://hinsberg.net/kinetiscope/. https://hinsberg.net/kinetiscope/.
+(34) Houle, F. A.; Wiegel, A. A.; Wilson, K. R. Predicting Aerosol Reactivity Across Scales: From the Laboratory
+to the Atmosphere. Environ. Sci. Technol. 2018, 52 (23), 13774–13781.
+https://doi.org/10.1021/acs.est.8b04688.
+(35) Wilson, K. R.; Prophet, A. M.; Rovelli, G.; Willis, M. D.; Rapf, R. J.; Jacobs, M. I. A Kinetic Description of
+How Interfaces Accelerate Reactions in Micro-Compartments. Chem. Sci. 2020, 11 (32), 8533–8545.
+https://doi.org/10.1039/D0SC03189E.
+(36) Polley, K.; Wilson, K. R.; Limmer, D. T. On the Statistical Mechanics of Mass Accommodation at Liquid–
+Vapor Interfaces. J. Phys. Chem. B 2024, 128 (17), 4148–4157. https://doi.org/10.1021/acs.jpcb.4c00899.
+(37) Lamoureux, G.; Harder, E.; Vorobyov, I. V.; Roux, B.; MacKerell Jr, A. D. A Polarizable Model of Water for
+Molecular Dynamics Simulations of Biomolecules. Chem Phys Lett 2006, 418 (1–3), 245–249.
+(38) Huang, J.; Lopes, P. E. M.; Roux, B.; MacKerell, A. D. Jr. Recent Advances in Polarizable Force Fields for
+Macromolecules: Microsecond Simulations of Proteins Using the Classical Drude Oscillator Model. J. Phys.
+Chem. Lett. 2014, 5 (18), 3144–3150. https://doi.org/10.1021/jz501315h.
+(39) Wilson, K. R.; Prophet, A. M.; Willis, M. D. A Kinetic Model for Predicting Trace Gas Uptake and Reaction.
+J. Phys. Chem. A 2022, 126 (40), 7291–7308. https://doi.org/10.1021/acs.jpca.2c03559.
+
+26
+
+https://doi.org/10.26434/chemrxiv-2024-pjztm ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(40) Heine, N.; Houle, F. A.; Wilson, K. R. Connecting the Elementary Reaction Pathways of Criegee
+Intermediates to the Chemical Erosion of Squalene Interfaces during Ozonolysis. Environ. Sci. Technol. 2017,
+51 (23), 13740–13748. https://doi.org/10.1021/acs.est.7b04197.
+(41) Brown, E. K.; Rovelli, G.; Wilson, K. R. pH Jump Kinetics in Colliding Microdroplets: Accelerated Synthesis
+of Azamonardine from Dopamine and Resorcinol. Chem. Sci. 2023, 14 (23), 6430–6442.
+https://doi.org/10.1039/D3SC01576A.
+(42) Wiegel, A. A.; Liu, M. J.; Hinsberg, W. D.; Wilson, K. R.; Houle, F. A. Diffusive Confinement of Free
+Radical Intermediates in the OH Radical Oxidation of Semisolid Aerosols. Phys. Chem. Chem. Phys. 2017,
+19 (9), 6814–6830. https://doi.org/10.1039/C7CP00696A.
+(43) Wilson, K. R.; Prophet, A. M. Chemical Kinetics in Microdroplets. Annu. Rev. Phys. Chem. 2024, 75, 185–
+208. https://doi.org/10./1146/annurev-physchem-052623-120718.
+(44) Shiraiwa, M.; Pfrang, C.; Pöschl, U. Kinetic Multi-Layer Model of Aerosol Surface and Bulk Chemistry
+(KM-SUB): The Influence of Interfacial Transport and Bulk Diffusion on the Oxidation of Oleic Acid by
+Ozone. Atmospheric Chem. Phys. 2010, 10 (8), 3673–3691. https://doi.org/10.5194/acp-10-3673-2010.
+(45) Crank, J. The Mathematics of Diffusion, 2nd ed.; Oxford University Press, 1975.
+(46) Seinfeld, J. H.; Pandis, S. N. Mass Transfer Aspects of Atmospheric Chemistry. In Atmospheric Chemistry
+and Physics: From Air Polution to Climate Change; John Wiley & Sons, Inc., 1998.
+(47) Fuchs, N. A.; Sutugin, A. G. High-Dispersed Aerosols. In Topics in Current Aerosol Research; Hidy, G. M.,
+Brock, J. R., Eds.; International Reviews in Aerosol Physics and Chemistry; Pergamon, 1971; p 1.
+https://doi.org/10.1016/B978-0-08-016674-2.50006-6.
+(48) Moon, S.; Limmer, D. T. Enhanced ClNO$_2$ Formation at the Interface of Sea-Salt Aerosol. arXiv March
+13, 2024. https://doi.org/10.48550/arXiv.2403.09052.
+(49) Galib, M.; Limmer, D. T. Reactive Uptake of N2O5 by Atmospheric Aerosol Is Dominated by Interfacial
+Processes. Science 2021, 371 (6532), 921–925. https://doi.org/10.1126/science.abd7716.
+(50) Singh, A. N.; Limmer, D. T. Peptide Isomerization Is Suppressed at the Air–Water Interface. J. Phys. Chem.
+Lett. 2022, 13 (2), 574–579. https://doi.org/10.1021/acs.jpclett.1c03837.
+(51) Liu, Q.; Schurter, L. M.; Muller, C. E.; Aloisio, S.; Francisco, J. S.; Margerum, D. W. Kinetics and
+Mechanisms of Aqueous Ozone Reactions with Bromide, Sulfite, Hydrogen Sulfite, Iodide, and Nitrite Ions.
+Inorg. Chem. 2001, 40 (17), 4436–4442. https://doi.org/10.1021/ic000919j.
+(52) Brown, L. V.; Pound, R. J.; Ives, L. S.; Jones, M. R.; Andrews, S. J.; Carpenter, L. J. Negligible Temperature
+Dependence of the Ozone–Iodide Reaction and Implications for Oceanic Emissions of Iodine. Atmospheric
+Chem. Phys. 2024, 24 (7), 3905–3923. https://doi.org/10.5194/acp-24-3905-2024.
+(53) Forster, E. L. C. Rate of Formation of Iodates in Alkaline Solutions of Iodine. J. Phys. Chem. 1903, 7 (9),
+640–651. https://doi.org/10.1021/j150054a002.
+(54) Li, C. H.; White, C. F. Kinetics of Hypoiodite Decomposition. J. Am. Chem. Soc. 1943, 65 (3), 335–339.
+https://doi.org/10.1021/ja01243a011.
+(55) Truesdale, V. W. Kinetics of Disproportionation of Hypoiodous Acid at High pH,with an Extrapolation to
+Rainwater. J. Chem. Soc. Faraday Trans. 1997, 93 (10), 1909–1914. https://doi.org/10.1039/A700226B.
+(56) Haimovich, O.; Treinin, A. Disproportionation of Hypoiodite. J. Phys. Chem. 1967, 71 (6), 1941–1943.
+https://doi.org/10.1021/j100865a068.
+27
+
+https://doi.org/10.26434/chemrxiv-2024-pjztm ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(57) Bichsel, Y.; von Gunten, U. Hypoiodous Acid: Kinetics of the Buffer-Catalyzed Disproportionation. Water
+Res. 2000, 34 (12), 3197–3203. https://doi.org/10.1016/S0043-1354(00)00077-4.
+(58) Wren, J. C.; Paquette, J.; Sunder, S.; Ford, B. L. Iodine Chemistry in the +1 Oxidation State. II. A Raman and
+Uv–Visible Spectroscopic Study of the Disproportionation of Hypoiodite in Basic Solutions. Can. J. Chem.
+1986, 64 (12), 2284–2296. https://doi.org/10.1139/v86-375.
+(59) McKinnon, B. I.; Marlton, S. J. P.; Ucur, B.; Bieske, E. J.; Poad, B. L. J.; Blanksby, S. J.; Trevitt, A. J. Actinic
+Wavelength Action Spectroscopy of the IO– Reaction Intermediate. J. Phys. Chem. Lett. 2021, 12 (49),
+11939–11944. https://doi.org/10.1021/acs.jpclett.1c03456.
+(60) Smith, J. D.; Kroll, J. H.; Cappa, C. D.; Che, D. L.; Liu, C. L.; Ahmed, M.; Leone, S. R.; Worsnop, D. R.;
+Wilson, K. R. The Heterogeneous Reaction of Hydroxyl Radicals with Sub-Micron Squalane Particles: A
+Model System for Understanding the Oxidative Aging of Ambient Aerosols. Atmospheric Chem. Phys. 2009,
+9 (9), 3209–3222. https://doi.org/10.5194/acp-9-3209-2009.
+(61) Worsnop, D. R.; Morris, J. W.; Shi, Q.; Davidovits, P.; Kolb, C. E. A Chemical Kinetic Model for Reactive
+Transformations of Aerosol Particles. Geophys. Res. Lett. 2002, 29 (20), 57-1-57–4.
+https://doi.org/10.1029/2002GL015542.
+(62) Rouvière, A.; Sosedova, Y.; Ammann, M. Uptake of Ozone to Deliquesced KI and Mixed KI/NaCl Aerosol
+Particles. J. Phys. Chem. A 2010, 114 (26), 7085–7093. https://doi.org/10.1021/JP103257D.
+(63) Rouvière, A.; Ammann, M. The Effect of Fatty Acid Surfactants on the Uptake of Ozone to Aqueous
+Halogenide Particles. Atmospheric Chem. Phys. 2010, 10 (23), 11489–11500. https://doi.org/10.5194/acp-1011489-2010.
+(64) Martins-Costa, M. T. C.; Ruiz-López, M. F. Electrostatics and Chemical Reactivity at the Air–Water Interface.
+J. Am. Chem. Soc. 2023, 145 (2), 1400–1406. https://doi.org/10.1021/jacs.2c12089.
+(65) Rovelli, G.; Jacobs, M. I.; Willis, M. D.; Rapf, R. J.; Prophet, A. M.; Wilson, K. R. A Critical Analysis of
+Electrospray Techniques for the Determination of Accelerated Rates and Mechanisms of Chemical Reactions
+in Droplets. Chem. Sci. 2020, 11 (48), 13026–13043. https://doi.org/10.1039/D0SC04611F.
+(66) Bhujel, M.; L. Marshall, D.; T. Maccarone, A.; I. McKinnon, B.; J. Trevitt, A.; Silva, G. da; J. Blanksby, S.;
+J. Poad, B. L. Gas Phase Reactions of Iodide and Bromide Anions with Ozone: Evidence for Stepwise and
+Reversible Reactions. Phys. Chem. Chem. Phys. 2020, 22 (18), 9982–9989.
+https://doi.org/10.1039/D0CP01498B.
+(67) Smoluchowski, M. V. Versuch Einer Mathematischen Theorie Der Koagulationskinetik Kolloider Lösungen.
+Z. Für Phys. Chem. 1917, No. 92, 129–168.
+(68) Teiwes, R.; Elm, J.; Bilde, M.; Pedersen, H. B. The Reaction of Hydrated Iodide I(H2O)− with Ozone: A New
+Route to IO2− Products. Phys. Chem. Chem. Phys. 2019, 21 (32), 17546–17554.
+https://doi.org/10.1039/C9CP01734H.
+(69) Schneider, S. R.; Lakey, P. S. J.; Shiraiwa, M.; Abbatt, J. P. D. Reactive Uptake of Ozone to Simulated
+Seawater: Evidence for Iodide Depletion. J. Phys. Chem. A 2020, 124 (47), 9844–9853.
+https://doi.org/10.1021/ACS.JPCA.0C08917.
+(70) Artiglia, L.; Edebeli, J.; Orlando, F.; Chen, S.; Lee, M.-T.; Corral Arroyo, P.; Gilgen, A.; Bartels-Rausch, T.;
+Kleibert, A.; Vazdar, M.; Andres Carignano, M.; Francisco, J. S.; Shepson, P. B.; Gladich, I.; Ammann, M. A
+Surface-Stabilized Ozonide Triggers Bromide Oxidation at the Aqueous Solution-Vapour Interface. Nat.
+Commun. 2017, 8 (1), 700. https://doi.org/10.1038/s41467-017-00823-x.
+
+28
+
+https://doi.org/10.26434/chemrxiv-2024-pjztm ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(71) Limmer, D. T.; Götz, A. W.; Bertram, T. H.; Nathanson, G. M. Molecular Insights into Chemical Reactions at
+Aqueous Aerosol Interfaces. Annu. Rev. Phys. Chem. 2024, 75 (Volume 75, 2024), 111–135.
+https://doi.org/10.1146/annurev-physchem-083122-121620.
+(72) Seki, T.; Yu, C.-C.; Chiang, K.-Y.; Greco, A.; Yu, X.; Matsumura, F.; Bonn, M.; Nagata, Y. Ions Speciation at
+the Water–Air Interface. J. Am. Chem. Soc. 2023, 145 (19), 10622–10630.
+https://doi.org/10.1021/jacs.3c00517.
+(73) AbouHaidar, R.; Duflot, D.; Toubin, C. Theoretical Characterization of the Kinetics of the Multiphase
+Ozonolysis of an Aqueous Maleic Acid Droplet. Aerosol Sci. Technol. 2024, 58 (4), 337–355.
+https://doi.org/10.1080/02786826.2023.2286341.
+
+29
+
+https://doi.org/10.26434/chemrxiv-2024-pjztm ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+

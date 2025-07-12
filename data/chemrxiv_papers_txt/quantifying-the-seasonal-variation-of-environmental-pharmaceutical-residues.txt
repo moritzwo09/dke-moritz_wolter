@@ -1,0 +1,1134 @@
+Quantifying the Seasonal Variation of
+Environmental Pharmaceutical Residues
+Tuomas Nurmi*
+
+Toni Kiljunen
+
+Department of Chemistry, University of Jyväskylä
+P.O. Box 35, FI-40014 University of Jyvaskyla, Finland
+*tuomas.m.a.nurmi@student.jyu.fi
+
+23rd April 2024
+Abstract
+Pharmaceutical substances, among other contaminants drained from wastewater treatment process and entered into aqueous environments, exhibit significant
+seasonal dependencies in their environmental concentrations. Although measurement data on removal of pharmaceutical residues in wastewater treatment plants
+and their degradation in the environment thereafter are readily available, the complexity and uniqueness of the sampling scenarios makes general numerical estimation of these phenomena difficult. To gain quantitative insight on the mass balances
+of environmental pharmaceutical residues and their seasonal variations, measurement data of four pharmaceuticals were collected from the literature and an effort
+was undertaken to uniform them and parametrise them with as few variables as
+feasible. Temperature was found to be a commonly available parameter with a
+marked trendsetting effect, and the prospect of using it to characterise the variation
+was examined. Ways to reliably assess the effects of dilution and other advective
+phenomena on the measured concentrations were explored, and a simple method
+for using cross-comparisons of different pharmaceuticals to this end is presented.
+A corresponding fugacity model scenario was also constructed to provide a computational baseline for the mass balance.
+
+1
+
+Introduction
+
+Modern industry produces and uses a growing variety of anthropogenic chemicals
+which are constantly encountered in the environment all over the globe. Traces of
+pharmaceutical substances are among the emerging micropollutants with a recognised
+ecological impact, the possible effects ranging from chronic toxicity levels on organisms (Hughes et al., 2013) to the alteration of bacterial community compositions of
+ecosystems (Hagberg et al., 2021). Various approaches to better understand the action of pharmaceuticals have been called for (Shaheen et al., 2022). These include
+an improved account of the seasonal dynamics and further development of modelling
+methods. For many contaminants, municipal sewage waters are a major entry route
+1
+
+https://doi.org/10.26434/chemrxiv-2024-rn4m5 ORCID: https://orcid.org/0000-0002-8796-304X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+to aquatic environments due to imperfections in trace-chemical removal at wastewater treatment plants (WWTP). Major differences in pharmaceutical emission levels are
+observed between seasons (Vieno et al., 2005; Lindholm-Lehto et al., 2016) which accordingly indicates that the removal efficacy depends on the time of year. Knowledge
+on the seasonal variations of micropollutant concentrations is important for estimating
+the proportion of affected organisms (Mehdi et al., 2021) and further consequences
+such as conditions at drinking water treatment plants (Azzouz and Ballesteros, 2013).
+Various seasonal patterns have been recognised to stem from the source of the
+contaminants. Rainfall, for instance, affects the dilution of contaminants that originate from wastewater and the amounts that are flushed from fields (Comber et al.,
+2020). In case of pharmaceuticals, known examples of temporal changes in usage patterns and thus environmental concentrations range from single popular events causing
+marked spikes (Lindholm-Lehto et al., 2015) to seasonal changes in complete population profiles (Vatovec et al., 2016; Mandaric et al., 2017). Temperature and sunlight
+variations can affect the environmental behaviour of contaminants by photodegradation
+(Wang et al., 2020a), a phenomenon that is relatively straightforward to assess based on
+weather data. On the other hand, deconjugation of pharmaceutical metabolites can act
+as a major contributor to observed concentrations (Azuma et al., 2017), but it is rarely
+quantifiable due to analytical challenges and the lack of measurement standards. Due
+to the vast amount of different environmental parameters, it is often hard to estimate
+the extent to which different sources, degradation rates, and hydrological phenomena
+affect the seasonal changes in contaminant levels. Rivers can be argued to be the easiest
+type of aquatic environment to characterise since the main flow direction remains constant and homogeneous mixing occurs horizontally. However, even then the chemical
+fate can be complicated, as demonstrated by the review by Glaser et al. (2019).
+A relatively widespread approach for predicting environmental concentrations of
+pharmaceuticals is presented in an European Medicines Agency’s guideline (Committee for Medicinal Products for Human Use (CHMP), 2006). The guideline provides
+a simple tool for estimating surface-water concentrations of pharmaceuticals based on
+local pharmaceutical usage data, wastewater flow, and dilution parameters. A more
+fine-grained version of this was used by Villa et al. (2020), who included excretion
+and WWTP removal efficiency parameters in the calculation. However, these methods do not include environmental degradation. To this end, we previously showed the
+feasibility of an enhanced, pseudo-steady state fugacity model (FATEMOD-Q) to inspect the environmental fate of pharmaceuticals in a stratified, humic lake environment
+(Nurmi et al., 2019). The FATEMOD-Q results were similar to ones produced by more
+in-depth photochemical modelling (Bodrato and Vione, 2014).
+The seasonal variation of environmental pharmaceutical levels has gained few accounts in the literature. For example, Comber et al. (2020) analysed a large data set
+from different seasons and Sun et al. (2019) inspected the fate of antibiotics in an icecovered river. To our knowledge, no significant emphasis has been put on a quantitative
+assessment that aims to generalise the extent of the seasonal variation. To provide insight and numerical tools into this topic, we analyse the literature data for general trends
+of seasonal dependency in a collection of WWTP removal efficiencies and pharmaceutical concentrations in the environment. This is augmented by degradation assessment
+via environmental fate modelling, and the correspondence of its results with the litera2
+
+https://doi.org/10.26434/chemrxiv-2024-rn4m5 ORCID: https://orcid.org/0000-0002-8796-304X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+ture data is discussed. We communicate the analysis in a chronological order from the
+source WWTP process to emission levels in aquatic environments, and finally present
+the FATEMOD-Q modelling results for comparison. The applied methods and model
+are shown to help understand the temporal behaviour of contaminants on seasonal and
+also shorter timescales.
+
+2
+
+Materials and methods
+
+2.1
+
+Target molecules
+
+Three pharmaceuticals from the previous research (Nurmi et al., 2019) were selected
+for the present work: anti-inflammatories ibuprofen (IBU) and diclofenac (DCF), and
+the antiepileptic carbamazepine (CBZ). In addition, the antibiotic sulfamethoxazole
+(SMX), which is frequently detected in the environment (Krzeminski et al., 2019), was
+investigated. Measurements of 164 different contaminants by Golovko et al. (2021)
+have demonstrated the vast amount of different pollutants emerging in aquatic environment. Molnar et al. (2020) have calculated toxicities of mixtures taking into account
+the known transformation products, which are manifold as demonstrated by Lin et al.
+(2019). To include a transformation product also in this work, 4-isobutylacetophenone
+(IBAP) was added to our modelling environment since it has exhibited notable levels
+in measurements (Zorita et al., 2007) and modelling (Ruggeri et al., 2013). The five
+compounds’ physicobiochemical properties listed in Table 1 exhibit differences which
+help inspecting the effects of environmental parameters from various viewpoints.
+
+2.2
+
+Residue removal in WWTP
+
+In order to limit the technological variety, we only inspected the conventional activated sludge (CAS) WWTP, which is the most ubiquitous and traditional plant type
+(Krzeminski et al., 2019). The criterion for data collection from literature was that
+concentrations of at least one of the target molecules had been quantified for both influents and effluents, see Online Resource Table S1 for the detailed list of the WWTPs
+(Lindholm-Lehto et al., 2016; Vieno et al., 2005; Papageorgiou et al., 2016; Joss et al.,
+2005; Clara et al., 2005; Česen et al., 2018; Fernández et al., 2014; Paíga et al., 2016;
+Kot-Wasik et al., 2016; Conceicao et al., 2023). By this criterion we avoid possible inaccuracies caused by the limits of analytical methods. However, from the total of 130
+removal results collected, nine samples had effluent concentrations between the limit of
+detection and the limit of quantification. For these cases we assumed the concentration
+to be half of the limit of quantification.
+Hydraulic retention time (HRT) of sewage is identified as one of the factors that
+determines the WWTP efficacy (Verlicchi et al., 2012). To quantify the process, we
+define the removal degree as
+c0 − c(τ)
+,
+(1)
+η=
+c0
+where c0 is the concentration of a pharmaceutical in influent and c(τ) is the residual
+concentration in effluent at time τ (h), i.e., after the HRT had passed. We note that
+3
+
+https://doi.org/10.26434/chemrxiv-2024-rn4m5 ORCID: https://orcid.org/0000-0002-8796-304X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Table 1: Physicochemical properties of the molecules investigated in this work
+ID
+
+Structure
+
+Water solubility
+(g/l, pH 7)
+
+pKa
+
+Half-life
+photo, bio (h)
+
+206.29
+
+1.13a
+
+4.91b
+
+40c , 5d
+
+296.15
+
+1.82a
+
+4.15b
+
+4e , 10d
+
+236.27
+
+0.075f
+
+13.9g
+
+100h , -
+
+253.28
+
+0.375i
+
+5.6, 1.8j
+
+6,k 300l
+
+176.26
+
+5.37m
+
+(4.91)
+
+5n ,(5d )
+
+M
+(g/mol)
+OH
+
+IBU
+O
+O
+Cl
+
+OH
+H
+N
+
+DCF
+
+Cl
+
+CBZ
+
+N
+O
+
+NH2
+O
+N
+
+O
+
+O
+S
+
+SMX
+
+N
+H
+H2N
+
+IBAP
+
+O
+
+a Fini et al. (1986). b Antonić and Heath (2007). c Jacobs et al. (2011). d Kunkel
+
+and Radke (2008). e Bartels and von Tümpling (2007). f Kadam et al. (2009).
+g Lindholm-Lehto et al. (2015). h Andreozzi et al. (2002); Matamoros et al.
+
+(2009). i Martínez and Gómez (2001). j Qiang and Adams (2004). k Lam and
+Mabury (2005). l Xu et al. (2011). m Estimated using
+http://vcclab.org/web/alogps, Tetko et al. (2005). n Ruggeri et al. (2013).
+the methodology for sampling the influent and effluent concentrations varies from one
+WWTP to another, which affects the accuracy and comparability of WWTP data. In
+addition, the sampling seldom follows the same parcel of water from influent to effluent. While most of the collected values are based on single pairs of influent–effluent
+samplings (Česen et al., 2018), some values are averages from sampling campaigns
+spanning days (Papageorgiou et al., 2016) or from weekly samplings during a season
+(Kot-Wasik et al., 2016). We use the mean values in cases where a range of concentrations in influents and effluents was given.
+Metcalfe et al. (2003) have presented an exponential dependence of the removal
+degree of ibuprofen and naproxen on the HRT. This suggests that the removal can
+conveniently be characterised by first-order reaction rate constants
+1
+k = − ln(1 − η) .
+τ
+
+(2)
+
+To characterise data irrespective of the availability of the HRT parameter, the removal
+4
+
+https://doi.org/10.26434/chemrxiv-2024-rn4m5 ORCID: https://orcid.org/0000-0002-8796-304X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+rate was also considered as a per-process value
+r = − ln(1 − η) = ln
+
+c0
+,
+c(τ)
+
+(3)
+
+where c(τ) was taken as the reported effluent concentration at an undetermined τ. In
+this form, the collected efficiencies were used to assess a specific WWTP process on
+an equal footing with the rate constants of Eq. (2). We remind that the removal degree
+η (as well as k and r) can be negative in cases where backward reaction has taken
+place. That is, pharmaceuticals entering in a conjugated form can escape the detection
+in influent samples but emerge later in effluent samples after microbial deconjugation.
+In general, also the solid retention time has an effect on the WWTP efficacy (Verlicchi et al., 2012). However, for the present selection of pharmaceuticals, no significance
+was found by Joss et al. (2005). Due to this controversy, solid retention times of the
+WWTPs were not considered further in the present work.
+Temperature, on the other hand, is another factor that clearly affects the WWTP’s
+removal efficiency (Verlicchi et al., 2012). To probe the correlation between global
+efficiency and temperature, we compared the rate constants of Eq. (2) with respect to
+temperature for all the data with HRT available. In addition, the intra-WWTP efficiency
+correlation was examined by the Eq. (3) values for each WWTP that had measurements
+available at two or more temperatures. For each pharmaceutical, least-squares fitted
+linear trend curves
+k(T ) = k0 + k1 T ,
+(4)
+and equivalent for r(T ), were compiled to assess the temperature (T , ◦ C) patterns in
+the data and to obtain averages for the fit parameters k0 , k1 , r0 , and r1 . Afterwards, the
+intra-WWTP data were resampled to make fits to combinations of either three or four
+temperatures. The combinatory test was performed in order to evaluate whether the
+approach of assessing intra-WWTP temperature correlation is justified. We interpret
+such test as positive if a higher correlation is found within intra-WWTP fits than within
+all combinations on average.
+The temperature data provided by the original researchers was used when available; otherwise, applicable weather data was searched from public resources. There
+are differences in the temperature measurement protocols as some values were from
+the effluent water and some were more general aerial or aqueous values at the WWTP.
+However, this variation of effluent conditions is assumed of minor importance, since
+intraday variation can cause larger than four-fold changes in WWTP influent’s micropollutant levels (Li et al., 2018). Moreover, the temperature differences are expected
+to be relatively small. In the case of intra-WWTP r(T ) values, the comparisons are
+feasible since they always share the temperature information source.
+
+2.3
+
+Residue degradation in aquatic environments
+
+To assess the environmental behaviour of contaminants, hydrological features of different aquatic environments need to be taken into account (Nurmi et al., 2019). We limit
+the present work to rivers and comparable environments with clearly defined hydrological character, see Online Resource Table S2 for the detailed list (Schimmelpfennig
+5
+
+https://doi.org/10.26434/chemrxiv-2024-rn4m5 ORCID: https://orcid.org/0000-0002-8796-304X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+et al., 2016; Vieno et al., 2005; Daneshvar et al., 2010a,b; Meierjohann et al., 2016;
+Mandaric et al., 2017; Zhang et al., 2020; Barbosa et al., 2018). The criterion for data
+inclusion was that concentrations were evaluated from different points of a river without WWTPs or other obvious point sources in-between. As with WWTP removals,
+ideally both start and endpoint concentrations were quantifiable. This was the case for
+56 results out of 59 inspected. In one case, half the limit of quantification was used, and
+in two cases where sufficient concentration data were not available, removal degrees
+of η = 0.999 were used. For some of the samples, retention time data for the river
+water was readily available; where not, it was estimated from different sources. This
+allowed to determine first-order environmental degradation rate constants similarly to
+the WWTPs and Eq. (2).
+Temperature is often directly correlated with sunlight that determines the photodegradation (Wang et al., 2020a), and can be argued to also affect the biodegradation that depends on both sediment properties and water stream dynamics (Radke and
+Maier, 2014). Therefore, we assume that temperature is the single parameter with
+widest characterisation potential, which is also justified by the analysis of Silva et al.
+(2021), who identified the daily maximum temperature as a key factor in pharmaceutical transformations. The degradation rate constants are thus evaluated with respect to
+temperature to examine whether trends could be revealed.
+Further, we examined the usage of CBZ concentrations as a quasi-internal standard.
+CBZ was one of the measured pharmaceuticals in most of the studies, its environmental
+degradation is known to be very limited (Hughes et al., 2013), and the environmental
+half-life is degrees of magnitude longer (Bodrato and Vione, 2014) than the timescales
+inspected in this work. Therefore, the mass of CBZ is assumed to remain constant
+between the inspected sampling points 0 and 1. As the CBZ mass change ∆m = 0, the
+observed change in CBZ concentration, ∆c = c0 − c1 , could then be assumed to cover
+hydrodynamic phenomena such that
+∆c = c0 (1 − d) ,
+
+(5)
+
+where the environmental dilution coefficient is d = c1 /c0 . This ratio from CBZ measurement was then applied to rescale the other pharmaceuticals i measured from the
+same samplings to yield a chemical degradation rate constant
+(i)
+
+k
+
+(i)
+
+c
+1
+= − ln 1(i) ,
+τ dc
+
+(6)
+
+0
+
+τ being the time elapsed between points 0 and 1.
+
+2.4
+
+Environmental fate modelling with seasonal effects
+
+The fugacity-based environmental fate model FATEMOD-Q was used with a unit environment illustrated as a cross section in Fig. 1. The model compartments L1, L2, and
+L3 represent the water column at different layer depths, each containing a subcompartment of suspended sediments occupying 0.0036 % of the volume, and S denotes the
+bottom sediments. All the water layers and the sediment were assumed homogeneous
+6
+
+https://doi.org/10.26434/chemrxiv-2024-rn4m5 ORCID: https://orcid.org/0000-0002-8796-304X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+internally. The surface layer L1, above the main body of water L2, mainly supported
+the photolytic degradation while the biodegradation only happened in S. The variablethickness layer L3 was included for modelling of degradation in stratified lakes or other
+environments where vertical mixing is not effective. The unit environment was a simplified version of our previous one (Nurmi et al., 2019), and apart from the extra layer
+L3, resembled the one used by Wang et al. (2020b). In addition, model compartment
+T was included to simulate sampling by a sedimentation tube. This allowed inspecting
+development of pharmaceutical concentrations during a sampling period corresponding
+to work by Lindholm-Lehto et al. (2015).
+
+1m
+4m
+
+0–8 m
+
+Figure 1: Cross-section of the model environment showing three water layers L1–L3,
+bottom sediment S, and sedimentation tube T
+The incorporated ability of the FATEMOD-Q method to choose starting conditions between zero or Mackay-Level III equilibrium concentrations allowed to inspect
+contamination changes in an environment. To assess the pure degradation of pharmaceuticals, the model environment was set closed with no advection across system
+boundaries, i.e., no water flowing in or out and no sediment burial. The pharmaceuticals were set with a fixed starting mass to focus on the mass balance. This allowed to
+provide a first-order degradation rate constant for a whole compartment cross-section.
+We extended the method to include a Mackay-Level IV type temporal modelling
+(Mackay, 2001). For temporal modelling, the water mass was set to flow through the
+model area at a speed of 1 m/s typical to rivers. To adapt the lake model environment
+to characterise river conditions, intercompartmental vertical mixing velocities were set
+to 5 cm2 /s between L1 and L2, and 1 cm2 /s between L2 and L3. These correspond to
+complete mixing durations of 1.4 h and 320 h for L1–L2 and L2–L3, respectively. The
+vertical dimension of the L3 compartment was varied from 0 to 8 m to gain general
+information on the effect of less mixed deep layers.
+Environmental degradation rates for the four pharmaceuticals were modelled by
+adding a 1.0 g mass of each in the model compartment L2, which we intend to represent a WWTP effluent location, and observing the half-life. To assess if the length of
+the half-life outweighs the effect of intra-environment mixing, setting the mass in L1
+and L3 was also tested for DCF. The preliminary results showed that the effect is relatively small: the resulting final concentrations were < 20 % lower when pharmaceutical
+mass was set in L3 and ca. 1 % lower when in L1. Additionally, when inspecting the
+sedimentation tube concentration profile, water was set to flow through the area at the
+
+7
+
+https://doi.org/10.26434/chemrxiv-2024-rn4m5 ORCID: https://orcid.org/0000-0002-8796-304X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+speed of 0.1 m/s and to contain 50 ng/l of both DCF and CBZ.
+Photo- and biodegradation half-lives for the target molecules are listed in Table 1.
+For IBU and DCF, the values were set identical to the previous work (Nurmi et al.,
+2019). IBAP, the photoproduct of IBU (Zorita et al., 2007), was included to exemplify
+assessment of transformation products without measurement data available. A wide
+variety of photodegradation half-lives in simulated or authentic natural waters has been
+reported for CBZ, ranging from 6 h (Lam and Mabury, 2005) to ca. 900 h (Andreozzi
+et al., 2002). However, since the latter has been suggested to be affected by glass vessel
+UV filtering (Matamoros et al., 2009), we selected a shorter half-life of 100 h for this
+work. Biodegradation is not likely to have a notable role for CBZ at the timescales
+inspected (Li et al., 2013), and was thus not included in the model. SMX was set
+to have photodegradation reactions with a 6 h half-life (Lam and Mabury, 2005) and
+biodegradation reactions were set up based on a half-life of 300 h (Xu et al., 2011).
+Each model compartment was set to have the same temperature, which was then
+varied in the typical environmental temperature range. The environmental temperature
+in experiments by Wang et al. (2020b) ranged from 12 ◦ C to 28 ◦ C, and the obtained
+photodegradation rate constants were on average ca. 1.5–2 times higher during the
+higher end of temperature. Thus, to roughly characterise the temperature dependence,
+we multiplied the L1 photodegradation rate constants by (1.5T + 5)/100, where T is
+the compartment temperature in ◦ C. In case of ice cover, the photodegradation would
+evidently be nonexistent. For a comprehensive list of the model parameters, see Online
+Resource Table S3.
+
+3
+
+Results and discussion
+
+3.1
+
+Evaluation of seasonal WWTP efficiencies
+
+The WWTP data (summarised in Online Resources) was analysed in two ways. First,
+removal rate constants from the data with HRT available are plotted against the measurement temperature in Fig. 2 panels for the four pharmaceuticals IBU, DCF, CBZ,
+and SMX, and resulting linear fit parameters k0 and k1 are collected in Table 2. The
+panels show a consistent trend of WWTP removal rates increasing with temperature
+for each of the pharmaceuticals, that is, the k1 values are all positive. The increase
+is strongest for SMX which has relatively low amount of data (n = 12). The second
+steepest dependence is found for IBU, a trend that agrees well with previous results
+in literature, where better WWTP removals at higher temperatures have been reported
+for IBU (Vieno et al., 2005; Lindholm-Lehto et al., 2016). The positive temperature
+dependence is barely visible for DCF and CBZ. These substances have often been reported with negative WWTP removals (Verlicchi et al., 2012; Lindholm-Lehto et al.,
+2016) which obviously affected the fit results. The importance of deconjugation is also
+manifested in the negative k0 values. The regression exhibits R2 -values well below 0.1,
+which reflects the large variation unaccounted for by temperature in the k-values.
+Second, with IBU as the sample molecule, the WWTP-specific variation of r(T )
+is discussed. (Online Resource Figs. S1–S4 present r(T ) variation graphically for
+each pharmaceutical). The IBU concentrations were collected from twelve individual
+
+8
+
+https://doi.org/10.26434/chemrxiv-2024-rn4m5 ORCID: https://orcid.org/0000-0002-8796-304X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Table 2: Linear fits of removal rate constants k(T ) for number of samples n where both
+WWTP temperature and HRT were available. The goodness of fit is given by the R2
+coefficient of determination
+Compound
+IBU
+DCF
+CBZ
+SMX
+
+k0 (h−1 )
+0.061
+−0.0023
+−0.055
+−0.24
+
+k1 (h−1 ◦ C−1 )
+0.015
+0.0017
+0.0034
+0.024
+
+R2
+0.036
+0.049
+0.025
+0.095
+
+n
+42
+31
+45
+12
+
+WWTP sources, including such data assessed in Fig. 2 where multiple measurements
+exist from same WWTP, and adding a set of datapoints where HRT was not known. A
+rising trend for r(T ) was observed in eight cases; using Eq. (4) again for the fit parameters, the largest slope r1 for IBU is as high as (0.44 ± 0.82) ◦ C−1 , whereas the average
+r1 from all the N = 12 curves settles at (0.05 ± 0.13) ◦ C−1 . Interestingly, three of the
+four negative slopes are from IBU data by Conceicao et al. (2023). We will not evaluate
+that further, but a better understanding of the cause might provide valuable insight in
+some other contexts.
+The trend-line parameters for separate WWTPs were averaged to construct an overall view of temperature dependence. The resulting r0 and r1 per-process averages are
+collected in Table 3 for each pharmaceutical. Comparison with Table 2 shows that,
+aside from SMX, the trend of increasing removal efficiency with increasing temperature is expectedly also visible with the WWTP-specific approach. The RSD given
+for the extrapolation parameter r1 was, however, found to exceed 100 % for all the
+
+Figure 2: The temperature dependence of WWTP removal rate constants k according
+to Eq. (2) for IBU, DCF, CBZ, and SMX
+
+9
+
+https://doi.org/10.26434/chemrxiv-2024-rn4m5 ORCID: https://orcid.org/0000-0002-8796-304X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Table 3: Averages of linear fit parameters for r(T ) based on N WWTP data series
+where removal efficiencies were available at multiple temperatures
+Compound
+IBU
+DCF
+CBZ
+SMX
+
+r0
+2.08
+−0.52
+−0.29
+2.31
+
+r1 (◦ C−1 )
+0.051
+0.052
+0.075
+−0.078
+
+RSD (%)
+260
+161
+158
+171
+
+N
+12
+13
+13
+3
+
+compounds. Thus the variations in the concentration values and calculated efficiencies
+were far from optimal to make good estimates, and readily affected by few “outlier”
+data sets. However, the present compilation of data provided a reasonably quantitative
+picture of the temperature dependence of WWTP removal capability for these pharmaceuticals.
+Removal rate parameters obtained at close temperatures reveal significant intraWWTP variations in some cases (Verlicchi et al., 2012; Burns et al., 2018). Typically,
+a slope from just two r(T ) values may exhibit an uncharacteristically high (or low)
+value. For example, the largest slope for DCF, based on two data points reported by
+Česen et al. (2018) (see Fig. S2), was at 0.3 ◦ C−1 , which is an order of magnitude
+higher than the mean value for DCF in Table 3. The DCF results were collected from
+N = 13 WWTPs and converted from 35 r(T ) values of which 10 were negative. Despite numerous negative removal values, positive r1 trend prevailed even in the CBZ
+case, where 30 r(T ) from the total of 49 were negative. This suggests that either the
+deconjugation was less probable at higher temperature or the deconjugation product
+(DCF, CBZ) was more efficiently removed then.
+To conclude the second approach, we compare the statistics of the above WWTPspecific trends (Table 3, Online Resource Figs. S1–S4) to that of all intra-WWTP trend
+data combined in Table 4, where the regression coefficients R2 are averaged over the
+number of fits. IBU, for example, was measured in one WWTP at three temperatures
+(1 fit) and in four WWTPs at four temperatures (4 fits). Among the 46 IBU measurements overall, possible three-point combinations can be formed in 15180 ways of
+which two instances were removed due to temperature overlap. In general, the r(T )
+shows markedly higher temperature correlation in the case of intra-WWTP than in the
+combined inter-WWTP groups. Adding fourth temperature to the fit weakens the average correlation in combined groups, while intra-WWTP data shows slight increase for
+IBU and CBZ. The combination test indicates that the averaging over intra-WWTP results is meaningful as pharmaceutical removal efficiencies seem to exhibit some intraWWTP temperature correlation, and that fitting of the full data collection gives insight
+into the extents and variations of this.
+Including more variables, such as various stages of the removal, absorption, or
+formation of pollutant-specific bacteria strains, would turn the assessment very complicated. Instead, the presented simple compilation and parametrisation is in line with
+the way the temperature dependencies of physicochemical parameters of various persistent organic pollutants are tradionally determined in fugacity modelling (Paasivirta
+et al., 1999).
+
+10
+
+https://doi.org/10.26434/chemrxiv-2024-rn4m5 ORCID: https://orcid.org/0000-0002-8796-304X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Table 4: Comparison of r(T ) linear regression averages. Data organised either by
+WWTP or for all three and four T -point permutations
+Compound
+IBU
+DCF
+CBZ
+SMX
+
+3.2
+
+R2 , 3 T -points (# fits)
+Intra-WWTP All combinations
+0.57 (1)
+0.54 (15178)
+0.67 (5)
+0.51 (6540)
+0.48 (4)
+0.52 (18423)
+0.88 (1)
+0.47 (120)
+
+R2 , 4 T -points (# fits)
+Intra-WWTP
+All combinations
+0.59 (4)
+0.28 (163185)
+0.46 (2)
+0.32 (52359)
+0.51 (2)
+0.25 (211876)
+0.17 (1)
+0.25 (210)
+
+Evaluation of seasonal variations of degradation in aquatic environments
+
+Fig. 3 shows the compiled environmental degradation rates k(T ) for the data collected
+from riveresque aquatic environments. The linear fits suggest that the environmental
+degradation of IBU and DCF increases with temperature, while that of SMX decreases
+and CBZ remains unaffected. As is to be expected (Glaser et al., 2019), when assessing
+degradation data from various sources and shaping them into comparable parametrisations, the results tend to be somewhat scattered. The research by Schimmelpfennig
+et al. (2016) already demonstrated that lake environments complicate analyzing, even
+with the most well-documented and contained scenarios. In addition to the aforementioned, Meierjohann et al. (2016) was another assessed research where the inspected
+interval included a lake. Even while the general flow rates of the lake are known, retention and dilution factors of the upstream waters are not straightforward to determine.
+
+Figure 3: Temperature dependency of environmental degradation rate of the four pharmaceuticals
+The above direct results for k(T ) can be considered as inconclusive. Therefore, in
+11
+
+https://doi.org/10.26434/chemrxiv-2024-rn4m5 ORCID: https://orcid.org/0000-0002-8796-304X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Fig. 4, we supplement the compilation by representing the IBU, DCF, and SMX reduction rate constants divided by that of the CBZ at each temperature. The ratios were
+obtained from measurements where the IBU/CBZ, DCF/CBZ, and SMX/CBZ pairs
+were available. IBU appears the most distinct compound in terms of temperature dependence. Numerically, the environmental degradation of IBU calculated in this way
+is approximately equal to that of CBZ at 6 ◦ C but rises to a 30-fold level at 20 ◦ C. In
+contrast, the DCF/CBZ ratio only triples from ca. 2 ◦ C to 20 ◦ C. The general trend that
+IBU, DCF, and SMX degradation rates are increased by temperature more than that
+of the refractory pollutant CBZ, persists. This is consistent with other observations in
+this work and in the literature. The negative environmental degradation perceivable
+for SMX in Fig. 3 could suggest the presence of conjugates. However, since Fig. 4
+indicates that increased temperature correlates with an increase of the SMX degradation rate, the SMX trend in Fig. 3 is likely a result of variations in emissions and the
+relatively small data set.
+
+Figure 4: Temperature dependency of degradation rate constants normalised by that of
+CBZ for IBU, DCF, and SMX
+Finally, the results of CBZ-standardised calculations described by Eqs. (5) and (6)
+are shown in Fig. 5 for IBU and DCF, while SMX was left out due to very limited
+amount of data. Again, the results suggest a temperature-induced increase of environmental degradation for IBU and DCF. The k(T ) curve for IBU is slightly steeper
+than the slope for DCF. However, accounting for the dilution effect by using the dcoefficients significantly reduces the k-values, which can be seen, e.g., by comparing
+IBU degradation rates in Figs. 3 and 5. In the former, we have uncorrected values
+at k(10 ◦ C) ≈ 0.1 h−1 and k(20 ◦ C) ≈ 0.2 h−1 , whereas in the latter we have approximately 0.01 h−1 and 0.05 h−1 , respectively. These order-of-magnitude differences
+suggest that even when inspecting pharmaceutical levels in simple well-known waterways over limited distances, most of the apparent removal might actually be caused by
+dilution or other advective processes. This may easily lead to underestimated half-lives
+of pharmaceuticals in environment.
+The difference between IBU and DCF can be regarded somewhat unexpected, as
+their photodegradation and biodegradation half-lives reported in the literature are in
+
+12
+
+https://doi.org/10.26434/chemrxiv-2024-rn4m5 ORCID: https://orcid.org/0000-0002-8796-304X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Figure 5: Temperature dependency of chemical degradation rate constants for IBU and
+DCF with dilution standardised by CBZ
+the same range, see Table 1. Similar phenomenon was, however, also visible in our
+earlier work, which assessed a completely different set of measurements (Nurmi et al.,
+2019). Also the dilution-corrected results by Vieno et al. (2005) independently show an
+increase of total IBU mass in some of the measurements, while DCF mass was reduced
+by degradation as expected. This data does not include CBZ measurements so it was
+not used in our CBZ-standardised evaluation of k.
+Unfortunately, the benefits of dilution correction are reduced due to the small
+amount of applicable data. This stems from the requirements of information on the
+characteristics of the inspected environment and of simultaneous samplings of multiple pharmaceuticals. Also the quality of the calculated k-values is subject to inaccuracies originating from multiple sources. The combined uncertainty becomes notably increased when compared to individual measurements. For example when assessing Zhang et al. (2020), the RSD values for the time-separated pair of CBZ samplings (c0 and c1 ) were 1.2 % and 1.3 %, and the RSDs for coincident IBU samplings were 4.6 % and 1.3 %, respectively. Combining this information quadratically
+to obtain the dilution-corrected IBU degradation rate constants yields an uncertainty of
+approximately 5.1 %pt for the assessment of concentration. As the calculated dilutioncorrected removal for IBU between c0 and c1 is 13.6 %pt, the scale of uncertainty is
+notable.
+
+3.3
+
+Model results
+
+The model results with five different environmental parameter sets are shown in Fig. 6,
+and the corresponding degradation half-lives for each of the pharmaceuticals are listed
+in Table 5. Due to the equal photodegradation rate used for IBU and DCF, their modelled half-lives are very similar when photolysis happens sufficiently fast, and only
+start to differ when the speed difference of intra-environmental migration processes
+start to be in the same temporal range. CBZ, with no biodegradation set, was estimated
+to degrade the slowest. The slowness of CBZ degradation is also observable, e.g., in
+
+13
+
+https://doi.org/10.26434/chemrxiv-2024-rn4m5 ORCID: https://orcid.org/0000-0002-8796-304X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+the results by Daneshvar et al. (2010a), where CBZ levels remain relatively constant
+for a long time while other pharmaceuticals are quickly reduced below the limit of detection. The degradation rate is very slow especially in the low temperature cases, in
+agreement with the literature results (Lindholm-Lehto et al., 2016). CBZ ultimately
+became strongly concentrated in the sediments, and its elimination was limited by the
+speed of resuspension process. It should be noted that only the mass balance was
+modelled here, and in differently constructed scenarios, advective processes including
+sediment burial would dominate the fate of CBZ especially during cold seasons.
+
+Figure 6: Modelled concentration for the pharmaceuticals with various environment
+setups
+
+Table 5: Modelled half-lives (h) by degradation in the ideal environment
+
+IBU
+DCF
+CBZ
+SMX
+
+20 ◦ C
+820
+820
+2780
+130
+
+L3 0.1 m
+10 ◦ C
+1 ◦C
+2730
+13710
+2710
+12890
+11690
+>100000
+430
+2650
+
+20 ◦ C
+1160
+1160
+3280
+150
+
+L3 4 m
+10 ◦ C
+1 ◦C
+5230
+20020
+5190
+18820
+22600
+>100000
+730
+3830
+
+L3 8 m
+20 ◦ C
+1500
+1500
+5390
+150
+
+The model results show SMX degrading rather quickly, as is to be expected by
+the reaction rates reported by Lam and Mabury (2005) and Xu et al. (2011). This is
+somewhat contrary to the environmental sampling results by Schimmelpfennig et al.
+(2016), where the half-lives for SMX were found to be in the same range as for CBZ.
+Again, deconjugation could be one of the explaining factors (Verlicchi et al., 2012).
+Regarding IBAP, its maximum mass in the L3 4 m, 20 ◦ C environment is encountered
+at 1200 h from the beginning, where its peak concentration reaches ca. 9 % of the re14
+
+https://doi.org/10.26434/chemrxiv-2024-rn4m5 ORCID: https://orcid.org/0000-0002-8796-304X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+spective IBU concentration. Being completely formed by degradation reactions, IBAP
+concentration timescales exhibit strong dependency on temperature. In the L3 4 m, 1 ◦ C
+environment, the peak concentration reached 7 % of the respective IBU concentration
+only after 20 000 hours.
+Finally, a simple inspection of temporal aspects of sedimentation tubes was committed using the same ideal environment. Pharmaceutical levels in the sedimentation
+tube (T) and sediment bed (S) were compared after 7 and 14-day temporal model runs
+with the Level III fugacity equilibrium, and the results are shown in Table 6. The mass
+transfer to sedimentation tubes is mostly driven by suspended sediments in the water
+layers. The DCF and CBZ are both seen to accumulate to concentrations that reach
+a fraction of equilibrium within the period of two weeks. Sedimentation of the more
+hydrophobic CBZ occurs faster and the equilibrium level is accordingly higher than
+for DCF. Comparing the sedimentation tube to the sediment bed value, the first-week
+DCF concentration is three orders of magnitude higher. In the sediment bed, DCF already reached the low equilibrium concentration of 2.3 pg/kg. Sedimentation of CBZ
+is a markedly faster process but the higher equilibrium concentration was not attained
+within two weeks.
+Table 6: Modelled pharmaceutical concentrations after 7 days, 14 days, and in equilibrium in the ideal environment
+
+DCF
+CBZ
+
+L3 4 m, 20 ◦ C
+7 d, 14 d, equil.
+50 ng/l
+48 ng/l
+
+7d
+4.7 pg/g
+25 pg/g
+
+T
+14 d
+9.3 pg/g
+50 pg/g
+
+equil.
+240 pg/g
+40 ng/g
+
+7d
+2.3 pg/kg
+0.10 pg/g
+
+S
+14 d
+2.3 pg/kg
+0.20 pg/g
+
+equil.
+2.3 pg/kg
+36 ng/g
+
+We used the same sedimentation speed for the tube and bottom sediments, see Table S3 for parameters. The rate implies that only a 0.02 mm sediment layer is deposited
+to the tube during a 14-day campaign. Using higher speeds would further magnify the
+concentration differences between sedimentation tubes and sediment beds. This difference is connected to a phenomenon we observed earlier (Nurmi et al., 2019): The
+sedimentation tube collects suspended sediments for a relatively short time and the accumulation is likely to follow the concentration of the surrounding water. The fugacity
+model, on the other hand, describes an average concentration of a compartment, which
+in the case of a sediment bed spreads over hundreds of square meters and into depths
+corresponding to several decades of sedimentation. Various environmental changes can
+affect the results in that timescale. Such variation could readily translate into the surprisingly frequent lack of detection of pharmaceuticals in sediment samples even when
+notable concentrations are measured from water (Lindholm-Lehto et al., 2015).
+
+15
+
+https://doi.org/10.26434/chemrxiv-2024-rn4m5 ORCID: https://orcid.org/0000-0002-8796-304X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+3.4
+
+Application potential of the results
+
+The equations and parameters constructed in this work to estimate WWTP removal
+and environmental degradation rates of pharmaceuticals are compiled in Table 7. The
+first row is a straightforward listing to obtain T -dependent k-values using Table 2 parameters. The second row predicts c(τ)/c0 -values at a chosen temperature separated
+by ∆T from a known condition using Table 3 correlations. The third and fourth rows
+quantify the slopes presented in Figs. 3 and 5, respectively, for average environmental
+degradation rate constants. In addition to the equations derived from the literature data,
+we include formulae based on the half-lives and their temperature dependencies in the
+modelled 10×9 m2 cross-section of an aquatic environment, as presented in Fig. 6. The
+fits were done with the extra assumption of zero reaction rate at 0 ◦ C.
+Table 7: Temperature correlation formulae constructed in this work
+Estimation
+IBU
+DCF
+CBZ
+SMX
+Removal rate constant k(T )
+0.061 + 0.015T
+−0.0023 + 0.0017T
+−0.055 + 0.0034T
+−0.24 + 0.024T
+(h−1 ) in WWTP
+Residual degree 1 − η(T ) pree−(r+0.051∆T )
+e−(r+0.052∆T )
+e−(r+0.075∆T )
+e−(r−0.078∆T )
+dicted from a reference removal rate r at another temperature in WWTP
+Degradation rate constant (h−1 )
+0.017 + 0.0088T
+0.085 + 0.0027T
+0.060 − 0.00027T
+−0.0057 − 0.0014T
+in riverine environments
+Degradation rate constant (h−1 )
+−0.024 + 0.0036T
+0.031 + 0.0017T
+n/a
+n/a
+dilution-corrected by CBZ data
+Degradation rate constant (h−1 )
+3.891 × 10−5 T
+3.894 × 10−5 T
+1.114 × 10−5 T
+2.455 × 10−4 T
+from modelling
+T : current temperature (◦ C) in water. ∆T : temperature difference between current T and reference temperature. r:
+reference removal rate at a WWTP.
+
+The WWTP removal correlations provide concrete general values for assessing the
+quantitative aspects of seasonal variations. However, the level of uncertainty is relatively high. Therefore, the tabulated formulae are not advised to be directly used
+as substitutes for the Fstp water term presented in the European Medicines Agency’s
+guideline (Committee for Medicinal Products for Human Use (CHMP), 2006). Instead, the compilation can be used as a tool to estimate the extents of variation of the
+four pharmaceuticals’ environmental concentrations in different seasons. It should be
+noted that even though an estimate for environmental degradation can be calculated
+based on the modelled characteristics, it is rarely comparable with measurement data,
+especially in the colder seasons, due to degradation being overshadowed by dilution,
+advection, and various other parameters involved. However, such results are useful
+when finding out mass balance and total mass of different pharmaceuticals present in
+the inspected environment, which are often specifically interesting questions in light of
+results such as the “ecological trap” phenomenon described by Mehdi et al. (2021).
+Assessing Table 7, it stands out that the modelled slopes for degradation rate constants are clearly lower than the ones based on the measurement data analysis presented
+in this work. In addition to inherent inaccuracies in the data analysis, some possible
+16
+
+https://doi.org/10.26434/chemrxiv-2024-rn4m5 ORCID: https://orcid.org/0000-0002-8796-304X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+factors causing the discrepancy might be underestimated biodegradation in the model
+as it is only set to happen in bottom sediments, and the fact that the modelled rate is
+based on total mass balance of single compounds, while perceived removal rates in
+water measurements might be affected by, e.g., conjugates or binding to sediments.
+However, the predicted IBU and CBZ half-lives are very much in the same range as the
+modelled and field measured data listed by Bodrato and Vione (2014).
+
+4
+
+Conclusions
+
+In what is to our knowledge the first effort to provide such general quantitative insight,
+the effect of seasons on pharmaceutical removal efficancies at WWTP and pharmaceutical degradation in environment was summarised by parametrizing them with temperature. Although variation is present in all the data analysed, for IBU, DCF, and CBZ,
+a consistent trend of WWTP removal and environmental degradation rates increasing
+with temperature was present in all the results, and the numerical tools provided allow
+forming reasonable predictions of their average concentrations in different conditions.
+For SMX, the results were inconclusive, partially due to less data available.
+While temperature variation can cause dozens-fold changes in pharmaceutical environmental degradation rates, its effect on the observed concentrations is still limited,
+due to the levels being mostly dominated by, e.g., pharmaceutical usage patterns and
+hydrological phenomena. However, understanding the mass balance as well as the
+transformation product concentrations requires insight on the variation of degradation.
+Additionally, the presented data analysis method of using CBZ as a quasi-internal standard to provide a baseline for assessing other pharmaceuticals’ environmental concentrations is likely to be of value also in other scenarios.
+The presented model results are in line with previous sampling and modelling results, and can thus be used as a tool to get insight on the extent of environmental degradation at various temperatures. The results describe the selected pharmaceuticals in one
+type of simplified environment, and similar process could be done to cover other pharmaceuticals and environments of different composition. In addition, the comparisons
+of the degradation dynamics and the modelled results on sediments and sedimentation
+tubes highlight the various timescales that can be encountered with different sampling
+targets and environmental media.
+
+Acknowledgements
+Tuomas Nurmi acknowledges thankfully partial funding from Maj and Tor Nessling
+foundation (Grant number 201800007).
+
+Statements and Declarations
+Ethics approval Not applicable.
+Consent to participate All authors have consented to participate in this paper.
+Consent for publication All authors have consented to publish this paper.
+
+17
+
+https://doi.org/10.26434/chemrxiv-2024-rn4m5 ORCID: https://orcid.org/0000-0002-8796-304X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Competing interests The authors declare no competing interests.
+Funding Tuomas Nurmi received partial funding from Maj and Tor Nessling foundation (Grant number 201800007).
+Author Contributions Tuomas Nurmi: Conceptualization, Software, Formal analysis
+and investigation, Methodology, Writing - original draft preparation. Toni Kiljunen:
+Methodology, Writing - review and editing.
+Corresponding author Tuomas Nurmi
+
+References
+Andreozzi R, Marotta R, Pinto G, Pollio A (2002) Carbamazepine in water: persistence in the environment, ozonation treatment and preliminary assessment on algal
+toxicity. Water Res 36(11):2869–2877
+Antonić J, Heath E (2007) Determination of NSAIDs in river sediment samples. Anal
+Bioanal Chem 387(4):1337–1342
+Azuma T, Ishida M, Hisamatsu K, Yunoki A, Otomo K, Kunitou M, Shimizu M, Hosomaru K, Mikata S, Mino Y (2017) A method for evaluating the pharmaceutical deconjugation potential in river water environments. Chemosphere 180:476–482, URL
+https://doi.org/10.1016/j.chemosphere.2017.04.040
+Azzouz A, Ballesteros E (2013) Influence of seasonal climate differences on the pharmaceutical, hormone and personal care product removal efficiency of a drinking
+water treatment plant. Chemosphere 93(9):2046–2054
+Barbosa MO, Ribeiro AR, Ratola N, Hain E, Homem V, Pereira MFR, Blaney L, Silva
+AM (2018) Spatial and seasonal occurrence of micropollutants in four Portuguese
+rivers and a case study for fluorescence excitation-emission matrices. Sci Total Environ 644:1128–1140
+Bartels P, von Tümpling W (2007) Solar radiation influence on the decomposition
+process of diclofenac in surface waters. Sci Total Environ 374(1):143–155, URL
+http://dx.doi.org/10.1016/j.scitotenv.2006.11.039
+Bodrato M, Vione D (2014) APEX (Aqueous Photochemistry of Environmentally occurring Xenobiotics): a free software tool to predict the kinetics of photochemical processes in surface waters. Environ Sci: Processes Impacts 16:732–740, DOI
+10.1039/C3EM00541K, URL http://dx.doi.org/10.1039/C3EM00541K
+Burns EE, Carter LJ, Kolpin DW, Thomas-Oates J, Boxall AB (2018) Temporal and
+spatial variation in pharmaceutical concentrations in an urban river system. Water
+Res 137:72–85, URL https://doi.org/10.1016/j.watres.2018.02.066
+Česen M, Heath D, Krivec M, Košmrlj J, Kosjek T, Heath E (2018) Seasonal and spatial
+variations in the occurrence, mass loadings and removal of compounds of emerging
+concern in the Slovene aqueous environment and environmental risk assessment.
+Environ Pollut 242:143–154, URL https://dx.doi.org/10.1016/j.envpol.
+2018.06.052
+18
+
+https://doi.org/10.26434/chemrxiv-2024-rn4m5 ORCID: https://orcid.org/0000-0002-8796-304X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Clara M, Strenn B, Gans O, Martinez E, Kreuzinger N, Kroiss H (2005) Removal
+of selected pharmaceuticals, fragrances and endocrine disrupting compounds in
+a membrane bioreactor and conventional wastewater treatment plants. Water Res
+39(19):4797–4807
+Comber S, Gardner M, Ellor B (2020) Seasonal variation of contaminant concentrations in wastewater treatment works effluents and river waters. Environ
+Technol 41(21):2716–2730, URL https://doi.org/10.1080/09593330.2019.
+1579872
+Committee for Medicinal Products for Human Use (CHMP) EMA (2006) Guideline
+on the environmental risk assessment of medicinal products for human use
+Conceicao KC, Villamar-Ayala CA, Plaza-Garrido A, Toledo-Neira C (2023) Seasonal behavior of pharmaceuticals and personal care products within Chilean rural
+WWTPs under COVID-19 pandemic conditions. J Environ Chem Eng 11(5):110984,
+DOI 10.1016/j.jece.2023.110984, URL https://www.sciencedirect.com/
+science/article/pii/S2213343723017232
+Daneshvar A, Svanfelt J, Kronberg L, Prévost M, Weyhenmeyer GA (2010a) Seasonal variations in the occurrence and fate of basic and neutral pharmaceuticals in a
+Swedish river–lake system. Chemosphere 80(3):301–309
+Daneshvar A, Svanfelt J, Kronberg L, Weyhenmeyer GA (2010b) Winter accumulation
+of acidic pharmaceuticals in a Swedish river. Environ Sci Pollut Res 17(4):908–916
+Fernández M, Fernández M, Laca A, Laca A, Díaz M (2014) Seasonal occurrence and
+removal of pharmaceutical products in municipal wastewaters. J Environ Chem Eng
+2(1):495–502
+Fini A, Laus M, Orienti I, Zecchi V (1986) Dissolution and partition thermodynamic
+functions of some nonsteroidal anti-inflammatory drugs. J Pharm Sci 75(1):23–25,
+URL https://doi.org/10.1002/jps.2600750106
+Glaser C, Schwientek M, Zarfl C (2019) Designing field-based investigations of organic micropollutant fate in rivers. Environ Sci Pollut Res 26(28):28633–28649,
+URL https://dx.doi.org/10.1007/s11356-019-06058-1
+Golovko O, Örn S, Sörengård M, Frieberg K, Nassazzi W, Lai FY, Ahrens L (2021)
+Occurrence and removal of chemicals of emerging concern in wastewater treatment
+plants and their impact on receiving water systems. Sci Total Environ 754:142122,
+URL https://doi.org/10.1016/j.scitotenv.2020.142122
+Hagberg A, Gupta S, Rzhepishevska O, Fick J, Burmølle M, Ramstedt M (2021) Do
+environmental pharmaceuticals affect the composition of bacterial communities in
+a freshwater stream? A case study of the Knivsta river in the south of Sweden.
+Sci Total Environ 763:142991, DOI 10.1016/j.scitotenv.2020.142991, URL https:
+//www.sciencedirect.com/science/article/pii/S0048969720365219
+
+19
+
+https://doi.org/10.26434/chemrxiv-2024-rn4m5 ORCID: https://orcid.org/0000-0002-8796-304X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Hughes SR, Kay P, Brown LE (2013) Global synthesis and critical evaluation
+of pharmaceutical data sets collected from river systems. Environ Sci Technol
+47(2):661–677
+Jacobs LE, Fimmen RL, Chin YP, Mash HE, Weavers LK (2011) Fulvic acid mediated photolysis of ibuprofen in water. Water Res 45(15):4449–4458, URL https:
+//doi.org/10.1016/j.watres.2011.05.041
+Joss A, Keller E, Alder AC, Göbel A, McArdell CS, Ternes T, Siegrist H (2005) Removal of pharmaceuticals and fragrances in biological wastewater treatment. Water
+Res 39(14):3139–3152
+Kadam Y, Yerramilli U, Bahadur A (2009) Solubilization of poorly water-soluble drug
+carbamezapine in Pluronic® micelles: Effect of molecular characteristics, temperature and added salt on the solubilizing capacity. Colloids Surf B 72(1):141–147
+Kot-Wasik A, Jakimska A, Śliwka Kaszyńska M (2016) Occurrence and seasonal variations of 25 pharmaceutical residues in wastewater and drinking water treatment
+plants. Environ Monit Assess 188(12):661
+Krzeminski P, Tomei MC, Karaolia P, Langenhoff A, Almeida CMR, Felis E, Gritten F,
+Andersen HR, Fernandes T, Manaia CM, Rizzo L, Fatta-Kassinos D (2019) Performance of secondary wastewater treatment methods for the removal of contaminants
+of emerging concern implicated in crop uptake and antibiotic resistance spread: A
+review. Sci Total Environ 648:1052–1081, URL https://dx.doi.org/10.1016/
+j.scitotenv.2018.08.130
+Kunkel U, Radke M (2008) Biodegradation of acidic pharmaceuticals in bed sediments:
+insight from a laboratory experiment. Environ Sci Technol 42(19):7273–7279, URL
+https://doi.org/10.1021/es801562j
+Lam MW, Mabury SA (2005) Photodegradation of the pharmaceuticals atorvastatin,
+carbamazepine, levofloxacin, and sulfamethoxazole in natural waters. Aquat Sci
+67(2):177–188, DOI 10.1007/s00027-004-0768-8
+Li J, Dodgen L, Ye Q, Gan J (2013) Degradation kinetics and metabolites of carbamazepine in soil. Environ Sci Technol 47(8):3678–3684
+Li WL, Zhang ZF, Ma WL, Liu LY, Song WW, Li YF (2018) An evaluation on the
+intra-day dynamics, seasonal variations and removal of selected pharmaceuticals
+and personal care products from urban wastewater treatment plants. Sci Total Environ 640:1139–1147, URL https://doi.org/10.1016/j.scitotenv.2018.
+05.362
+Lin J, Apell JN, McNeill K, Emberger M, Ciraulo V, Gimeno S (2019) A streamlined
+workflow to study direct photodegradation kinetic and transformation products for
+persistence assessment of a fragrance ingredient in natural waters. Enviorn Sci Process Impacts 21:1713–1721, URL https://dx.doi.org/10.1039/C9EM00300B
+
+20
+
+https://doi.org/10.26434/chemrxiv-2024-rn4m5 ORCID: https://orcid.org/0000-0002-8796-304X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Lindholm-Lehto PC, Ahkola HSJ, Knuutinen JS, Herve SH (2015) Occurrence of pharmaceuticals in municipal wastewater, in the recipient water, and sedimented particles of northern Lake Päijänne. Environ Sci Pollut Res 22(21):17209–17223, URL
+https://doi.org/10.1007/s11356-015-4908-6
+Lindholm-Lehto PC, Ahkola HSJ, Knuutinen JS, Herve SH (2016) Widespread occurrence and seasonal variation of pharmaceuticals in surface waters and municipal wastewater treatment plants in central Finland. Environ Sci Pollut Res
+23(8):7985–7997
+Mackay D (2001) Multimedia Environmental Models: The Fugacity Approach, 2nd
+edn. CRC Press
+Mandaric L, Diamantini E, Stella E, Cano-Paoli K, Valle-Sistac J, Molins-Delgado D,
+Bellin A, Chiogna G, Majone B, Diaz-Cruz MS, et al. (2017) Contamination sources
+and distribution patterns of pharmaceuticals and personal care products in Alpine
+rivers strongly affected by tourism. Sci Total Environ 590:484–494
+Martínez F, Gómez A (2001) Thermodynamic study of the solubility of some sulfonamides in octanol, water, and the mutually saturated solvents. J Solution Chem
+30(10):909–923
+Matamoros V, Duhec A, Albaigés J, Bayona JM (2009) Photodegradation of carbamazepine, ibuprofen, ketoprofen and 17α-ethinylestradiol in fresh and seawater.
+Water Air Soil Pollut 196(1):161–168
+Mehdi H, Lau SC, Synyshyn C, Salena MG, McCallum ES, Muzzatti MN, Bowman JE,
+Mataya K, Bragg LM, Servos MR, et al. (2021) Municipal wastewater as an ecological trap: Effects on fish communities across seasons. Sci Total Environ 759:143430,
+URL https://dx.doi.org/10.1016/j.scitotenv.2020.143430
+Meierjohann A, Brozinski JM, Kronberg L (2016) Seasonal variation of pharmaceutical concentrations in a river/lake system in Eastern Finland. Enviorn Sci Process
+Impacts 18(3):342–349
+Metcalfe CD, Koenig BG, Bennie DT, Servos M, Ternes TA, Hirsch R (2003) Occurrence of neutral and acidic drugs in the effluents of Canadian sewage treatment
+plants. Environ Toxicol Chem 22(12):2872–2880
+Molnar E, Maasz G, Pirger Z (2020) Environmental risk assessment of pharmaceuticals at a seasonal holiday destination in the largest freshwater shallow lake in Central Europe. Environ Sci Pollut Res p 1–11, URL https://doi.org/10.1007/
+s11356-020-09747-4
+Nurmi TM, Kiljunen TK, Knuutinen JS (2019) A fugacity model assessment of
+ibuprofen, diclofenac, carbamazepine, and their transformation product concentrations in an aquatic environment. Environ Sci Pollut Res 26(1):328–341, URL
+https://dx.doi.org/10.1007/s11356-018-3485-x
+
+21
+
+https://doi.org/10.26434/chemrxiv-2024-rn4m5 ORCID: https://orcid.org/0000-0002-8796-304X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Paasivirta J, Sinkkonen S, Mikkelson P, Rantio T, Wania F (1999) Estimation of
+vapor pressures, solubilities and Henry’s law constants of selected persistent organic pollutants as functions of temperature. Chemosphere 39(5):811–832, URL
+http://dx.doi.org/10.1016/S0045-6535(99)00016-8
+Papageorgiou M, Kosma C, Lambropoulou D (2016) Seasonal occurrence, removal,
+mass loading and environmental risk assessment of 55 pharmaceuticals and personal
+care products in a municipal wastewater treatment plant in Central Greece. Sci Total
+Environ 543:547–569
+Paíga P, Santos LH, Ramos S, Jorge S, Silva JG, Delerue-Matos C (2016) Presence of
+pharmaceuticals in the Lis river (Portugal): Sources, fate and seasonal variation. Sci
+Total Environ 573:164–177
+Qiang Z, Adams C (2004) Potentiometric determination of acid dissociation constants
+(pKa) for human and veterinary antibiotics. Water Res 38(12):2874–2890
+Radke M, Maier MP (2014) Lessons learned from water/sediment-testing of pharmaceuticals. Water Res 55:63–73, URL https://dx.doi.org/10.1016/j.watres.
+2014.02.012
+Ruggeri G, Ghigo G, Maurino V, Minero C, Vione D (2013) Photochemical transformation of ibuprofen into harmful 4-isobutylacetophenone: pathways, kinetics, and
+significance for surface waters. Water Res 47(16):6109–6121
+Schimmelpfennig S, Kirillin G, Engelhardt C, Dünnbier U, Nützmann G (2016) Fate
+of pharmaceutical micro-pollutants in Lake Tegel (Berlin, Germany): the impact of
+lake-specific mechanisms. Environ Earth Sci 75(10):893
+Shaheen JF, Sizirici B, Yildiz I (2022) Fate, transport, and risk assessment of
+widely prescribed pharmaceuticals in terrestrial and aquatic systems: A review.
+Emerg Contam 8:216–228, DOI 10.1016/j.emcon.2022.04.001, URL https://
+www.sciencedirect.com/science/article/pii/S2405665022000130
+Silva C, Almeida CMM, Rodrigues JA, Silva S, do Rosário Coelho M, Martins
+A, Lourinho R, Cardoso E, Cardoso VV, Benoliel MJ, Rosa MJ (2021) Occurrence and seasonality of pharmaceutical compounds in urban wastewaters in two
+Portuguese regions. Urban Water J 18(6):465–478, DOI 10.1080/1573062X.2021.
+1893365, URL https://doi.org/10.1080/1573062X.2021.1893365, https:
+//doi.org/10.1080/1573062X.2021.1893365
+Sun C, Dong D, He S, Zhang L, Zhang X, Wang C, Hua X, Guo Z (2019)
+Multimedia fate modeling of antibiotic sulfamethoxazole, lincomycin, and florfenicol in a seasonally ice-covered river receiving WWTP effluents. Environ
+Sci Pollut Res 26(17):17351–17361, URL https://dx.doi.org/10.1007/
+s11356-019-05121-1
+Tetko IV, Gasteiger J, Todeschini R, Mauri A, Livingstone D, Ertl P, Palyulin VA,
+Radchenko EV, Zefirov NS, Makarenko AS, Tanchuk VY, Prokopenko VV (2005)
+
+22
+
+https://doi.org/10.26434/chemrxiv-2024-rn4m5 ORCID: https://orcid.org/0000-0002-8796-304X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Virtual Computational Chemistry Laboratory – Design and Description. J Comput
+Aided Mol Des 19(6):453–463
+Vatovec C, Phillips P, Van Wagoner E, Scott TM, Furlong E (2016) Investigating dynamic sources of pharmaceuticals: Demographic and seasonal use are more important than down-the-drain disposal in wastewater effluent in a University City
+setting. Sci Total Environ 572:906–914, URL https://doi.org/10.1016/j.
+scitotenv.2016.07.199
+Verlicchi P, Al Aukidy M, Zambello E (2012) Occurrence of pharmaceutical compounds in urban wastewater: removal, mass load and environmental risk after
+a secondary treatment—a review. Sci Total Environ 429:123–155, URL https:
+//doi.org/10.1016/j.scitotenv.2012.04.028
+Vieno NM, Tuhkanen T, Kronberg L (2005) Seasonal variation in the occurrence of
+pharmaceuticals in effluents from a sewage treatment plant and in the recipient water. Environ Sci Technol 39(21):8220–8226, URL https://doi.org/10.1021/
+es051124k
+Villa S, Di Nica V, Castiglioni S, Finizio A (2020) Environmental risk classification
+of emerging contaminants in an alpine stream influenced by seasonal tourism. Ecol
+Indic 115:106428
+Wang Y, Fan L, Crosbie N, Roddick FA (2020a) Photodegradation of emerging contaminants in a sunlit wastewater lagoon, seasonal measurements, environmental impacts
+and modelling. Environ Sci: Water Res Technol 6(12):3380–3390
+Wang Y, Khan SJ, Fan L, Roddick F (2020b) Application of a QWASI model to
+produce validated insights into the fate and transport of six emerging contaminants in a wastewater lagoon system. Sci Total Environ 721:137676, URL https:
+//dx.doi.org/10.1016/j.scitotenv.2020.137676
+Xu B, Mao D, Luo Y, Xu L (2011) Sulfamethoxazole biodegradation and biotransformation in the water–sediment system of a natural river. Bioresour Technol
+102(14):7069–7076
+Zhang L, Du S, Zhang X, Lyu G, Dong D, Hua X, Zhang W, Guo Z (2020) Occurrence,
+distribution, and ecological risk of pharmaceuticals in a seasonally ice-sealed river:
+From ice formation to melting. J Hazard Mater 389:122083
+Zorita S, Barri T, Mathiasson L (2007) A novel hollow-fibre microporous membrane
+liquid–liquid extraction for determination of free 4-isobutylacetophenone concentration at ultra trace level in environmental aqueous samples. J Chromatogr A
+1157(1):30–37
+
+23
+
+https://doi.org/10.26434/chemrxiv-2024-rn4m5 ORCID: https://orcid.org/0000-0002-8796-304X Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+

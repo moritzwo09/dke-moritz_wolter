@@ -1,0 +1,2606 @@
+1
+
+Modeling the ioniza.on eﬃciency of small molecules in posi.ve
+
+2
+
+electrospray ioniza.on
+
+3
+4
+
+Dimitri Abrahamsson1*, Lelouda-Athanasia Koronaiou2,3, Trevor Johnson1, Dimitra A. Lambropoulou2,3
+
+5
+6
+
+1
+
+7
+
+10016, United States
+
+8
+
+2
+
+9
+
+Thessaloniki, University Campus 54124 Thessaloniki, Greece
+
+Department of Pediatrics, New York University Grossman School of Medicine, New York, New York
+
+Laboratory of Environmental PolluKon Control, Department of Chemistry, Aristotle University of
+
+10
+
+3
+
+11
+
+Greece
+
+Center for Interdisciplinary Research and InnovaKon (CIRI-AUTH), Balkan Center, Thessaloniki 57001,
+
+12
+13
+14
+15
+16
+17
+18
+19
+20
+
+*Corresponding author: Dimitri Abrahamsson, dimitri.abrahamsson@gmail.com
+
+21
+
+Keywords: electrospray ionizaKon, predicKve modeling, relaKve response factor, molecular dynamics
+
+22
+
+simulaKons
+1
+
+https://doi.org/10.26434/chemrxiv-2024-hjzcr-v2 ORCID: https://orcid.org/0000-0002-3402-7565 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+23
+24
+
+ABSTRACT
+Technological advancements in liquid chromatography (LC) electrospray ionizaKon (ESI) high
+
+25
+
+resoluKon mass spectrometry (HRMS) have made it an increasingly popular analyKcal technique in non-
+
+26
+
+targeted analysis (NTA) of environmental and biological samples. One criKcal limitaKon of current
+
+27
+
+methods in NTA is the lack of available analyKcal standards for many of the compounds detected in
+
+28
+
+biological and environmental samples. ComputaKonal approaches can provide esKmates of
+
+29
+
+concentraKons by modeling the ionizaKon eﬃciency of a compound expressed as the relaKve response
+
+30
+
+factor (RRF). In this paper, we explore the applicaKon of molecular dynamics (MD) in the development
+
+31
+
+of a computaKonal workﬂow for predicKng RRF. We obtained measurements of RRF for 48 compounds
+
+32
+
+with LC - quadrupole Kme-of-ﬂight (QTOF) MS and calculated their RRF by dividing the observed peak
+
+33
+
+areas by their concentraKons. We used the CGenFF force ﬁeld to generate the topologies and
+
+34
+
+GROMACS to conduct the (MD) simulaKons (t = 1 ns). We calculated the Lennard-Jones and Coulomb
+
+35
+
+interacKons between the analytes and all other molecules in the ESI droplet, which were then used to
+
+36
+
+construct a mulKlinear regression model for predicKng RRF. The best performing model showed a
+
+37
+
+coeﬃcient of determinaKon (R2) of 0.82 and a mean absolute error (MAE) of 0.13 log units. This
+
+38
+
+performance is comparable to other predicKve models including machine learning models. While there
+
+39
+
+is a need for further evaluaKon of diverse chemical structures, our approach showed promise in
+
+40
+
+predicKons of RRF.
+
+41
+42
+43
+44
+45
+
+2
+https://doi.org/10.26434/chemrxiv-2024-hjzcr-v2 ORCID: https://orcid.org/0000-0002-3402-7565 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+46
+
+INTRODUCTION
+
+47
+
+Recent technological breakthroughs in high-resoluKon mass spectrometry (HRMS) have made it an
+
+48
+
+increasingly popular technology in environmental analysis1, biomonitoring2,3 and metabolomics4. Ohen
+
+49
+
+combined with suspect screening (SS) and non-targeted analysis (NTA) workﬂows, HRMS has shown
+
+50
+
+great promise in the discovery of lesser-known chemical structures and in comprehensively
+
+51
+
+characterizing the chemical composiKon of complex mixtures.2,3,5 One criKcal challenge associated with
+
+52
+
+the applicaKon of HRMS in SS or NTA is the limited availability of analyKcal standards for many
+
+53
+
+anthropogenic / syntheKc chemicals and many endogenously produced metabolites.6,7
+
+54
+
+When it comes to endogenous metabolites, the lack of commercially available analyKcal standards is
+
+55
+
+ohen due to certain compounds being less well-characterized and thus not yet synthesized or puriﬁed.
+
+56
+
+For anthropogenic chemicals, one of the reasons is that chemical manufacturers in the U.S. are not
+
+57
+
+required to produce analyKcal standards for the chemicals that they manufacture and release to the
+
+58
+
+environment.7 One excepKon to this rule is pesKcides.7 It is important to note at this stage that the
+
+59
+
+requirement for analyKcal standards does not extend to the transformaKon and breakdown products of
+
+60
+
+these chemicals. So even in a hypotheKcal scenario where manufacturers would be required to
+
+61
+
+produce analyKcal standards, that would cover only the parent compounds and not all the
+
+62
+
+transformaKon products. The U.S. Environmental ProtecKon Agency (EPA) has prioriKzed about 1.2
+
+63
+
+million chemicals of environmental importance and has created a database called EPA’s CompTox
+
+64
+
+Chemicals Dashboard (henceforth referred to as “the dashboard”).8 Nuñez et al.6 esKmated that out of
+
+65
+
+the 1.2 million chemicals on EPA’s Dashboard, less than 2% are available as analyKcal standards.
+
+66
+
+There is thus a need to develop computaKonal approaches to conﬁrm and quanKfy detected
+
+67
+
+compounds without analyKcal standards.6,9,10 While detecKon and tentaKve conﬁrmaKon can be
+
+68
+
+achieved with MS/MS libraries, quanKﬁcaKon remains a more challenging task.11,12 Liquid
+3
+
+https://doi.org/10.26434/chemrxiv-2024-hjzcr-v2 ORCID: https://orcid.org/0000-0002-3402-7565 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+69
+
+Chromatography (LC) – Electrospray IonizaKon (ESI) HRMS is one of the most commonly used HRMS
+
+70
+
+techniques in SS and NTA studies. One criKcal challenge in ESI is that abundances expressed as peak
+
+71
+
+areas or peak heights are not easily translatable to concentraKons. Two compounds of the same
+
+72
+
+concentraKon can exhibit peak areas that diﬀer by 3 orders of magnitude because of diﬀerences in
+
+73
+
+ionizaKon12,13. Abundances may be used as surrogate for concentraKons in certain situaKons when
+
+74
+
+comparing the same chemical across diﬀerent samples, however, they cannot be used to compare two
+
+75
+
+chemicals to each other.14
+
+76
+
+While ESI is extensively used in mass spectrometry for the analysis of both small (e.g., metabolites
+
+77
+
+and large molecules (e.g., proteins), the precise mechanism has not been fully understood. Brieﬂy,
+
+78
+
+during ESI, the soluKon containing the analyte passes through a metal capillary that is charged at an
+
+79
+
+electric potenKal of thousands of Volts (kV). The soluKon forms a Kp at the end of the capillary known
+
+80
+
+as a Taylor cone that emits a spray of ﬁne droplets. The droplets start in the μm range and shrink in size
+
+81
+
+as they undergo evaporaKon ohen accelerated with heaKng of the capillary. The density of the charged
+
+82
+
+ions in the droplet is controlled by repulsive Coulombic forces between posiKvely charged ions. The
+
+83
+
+upper limit of that density is described as the Rayleigh stability limit:
+
+84
+
+"#
+
+𝑧! = $ .𝜀% 𝛾 𝑅&
+
+(eq. 1)
+
+85
+
+where, 𝑒 is the number of elementary charged parKcles, 𝜀% is the vacuum permisvity, 𝛾 is the surface
+
+86
+
+tension of the droplet and 𝑅 is the droplet radius.
+
+87
+
+Conceptual models have been proposed to describe the process that molecules undergo to become
+
+88
+
+ionized and transferred to the gas phase during ESI. We focus our discussion on the commonly used
+
+89
+
+posiKve ESI under which posiKve ions are formed. Small molecules (< 1000 Da) are thought to ionize
+
+90
+
+and be transferred to the gas phase by the ion evaporaKon model (IEM). According to IEM, the analyte
+
+91
+
+is protonated already while inside the droplet and eventually moves from the center towards the
+4
+
+https://doi.org/10.26434/chemrxiv-2024-hjzcr-v2 ORCID: https://orcid.org/0000-0002-3402-7565 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+92
+
+surface of the droplet. As the posiKvely charged analyte meets the posiKvely charged solvent molecules
+
+93
+
+on the surface of the droplet, the ion is transferred to the gas phase through repulsive forces of
+
+94
+
+posiKvely charged ions and by the excess droplet charge.
+
+95
+
+Larger molecules such as globular proteins (naKvely folded proteins) are thought to ionize and be
+
+96
+
+transferred to the gas phase by the Charged Residue Model (CRM). According to CRM, solvent droplets
+
+97
+
+containing a single protein molecule gradually evaporate to dryness and as the solvent molecules
+
+98
+
+evaporate, the charge is transferred to the analyte. The droplets remain close the Rayleigh stability limit
+
+99
+
+while evaporaKng, which indicates that the droplet loses some of the electric charge as it shrinks in
+
+100
+
+size. This is supported by experimental observaKons where the size of solvent droplets posiKvely
+
+101
+
+correlated with the droplet charge following an exponenKal curve. Contrary to small molecules, the
+
+102
+
+ejecKon of globular proteins is not kineKcally favorable. The repulsive forces of the excess surface
+
+103
+
+charge are not suﬃciently strong for the molecule to be ejected and transferred to the gas phase. CRM
+
+104
+
+is supported by experimental evidence where ionizaKon of globular proteins produces ions with a
+
+105
+
+charge of [𝑀 + 𝑧! 𝐻]'! ( , where 𝑧! is the charge at the Rayleigh limit of water droplets of the same size
+
+106
+
+as the globular protein.
+
+107
+
+While these two models are considered disKnct, both of these two processes could apply to small or
+
+108
+
+medium size molecules, especially in the case of heated ESI where the evaporaKon of the water
+
+109
+
+droplets is assisted through heaKng of the capillary. This is also supported by molecular dynamics (MD)
+
+110
+
+simulaKons studies where naKve (unmodiﬁed) carbohydrates ionize through CRM, while their
+
+111
+
+permethylated derivaKves ionize through IEM.15
+
+112
+
+5
+https://doi.org/10.26434/chemrxiv-2024-hjzcr-v2 ORCID: https://orcid.org/0000-0002-3402-7565 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+113
+114
+
+Figure 1: Conceptual models describing the mechanism of electrospray ionizaKon. Small molecules are
+
+115
+
+thought to be ionized through the ion evaporaKon model (IEM), while larger molecules such, such as
+
+116
+
+globular proteins are thought to ionize through the charged residue model (CRM).
+
+117
+118
+
+IonizaKon eﬃciency is a property that has proven to be diﬃcult to predict from a small number of
+
+119
+
+chemical descriptors or physicochemical properKes. Numerous invesKgaKons have examined the
+
+120
+
+correlaKon between ionizaKon eﬃciencies and diverse physicochemical properKes, including but not
+
+121
+
+limited to their pKa, logP, surface area, charge delocalizaKon, and gas-phase proton aﬃnity.16–21 These
+
+122
+
+ﬁndings have led to the development of various predicKve models for ionizaKon eﬃciencies19,22–25,
+
+123
+
+uKlizing both the physicochemical properKes of analytes and solvent characterisKcs as fundamental
+
+124
+
+inputs. These models commonly rely on parameters associated with the analyte's hydrophobicity (e.g.,
+
+125
+
+logP, WAPS, WANS, C/H raKo) and ionizability (such as pKa and the degree of ionizaKon)26. Data-driven
+
+126
+
+approaches involving machine learning, such as random forest models, have shown great promise in
+6
+
+https://doi.org/10.26434/chemrxiv-2024-hjzcr-v2 ORCID: https://orcid.org/0000-0002-3402-7565 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+127
+
+providing predicKons with reasonable uncertainKes.11,12,27–29 It should be noted, however, that these
+
+128
+
+approaches require large datasets in the order of 100s of chemicals with diverse structures and
+
+129
+
+properKes and the predicKons are Ked to a speciﬁc method and instrumentaKon.
+
+130
+
+Theory-driven approaches that are based on quantum chemistry and computaKonal chemistry
+
+131
+
+principles could provide an alternaKve when large datasets are not available or are diﬃcult to obtain.
+
+132
+
+Molecular dynamic simulaKons (MD) have been previously applied in a limited number of studies to
+
+133
+
+understand the mechanism of ionizaKon in salt ions, pepKdes and proteins.30–34 However, to the best of
+
+134
+
+our knowledge, there appears to be liwle on the study of small molecules and especially in predicKons
+
+135
+
+of their ionizaKon eﬃciency using MD simulaKons. Our study aims to ﬁll this gap by employing
+
+136
+
+molecular dynamics to model the behavior of chemicals in the ionizaKon chamber and evaluate the
+
+137
+
+potenKal of such theory-driven approaches to make predicKons and assess their uncertainKes.
+
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+7
+https://doi.org/10.26434/chemrxiv-2024-hjzcr-v2 ORCID: https://orcid.org/0000-0002-3402-7565 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+150
+
+MATERIALS AND METHODS
+
+151
+
+Workﬂow diagram
+
+152
+
+The individual steps of the experimental and computaKonal aspects of the study are presented in
+
+153
+
+Figure 2.
+
+154
+155
+
+Figure 2: Workﬂow diagram for the processing steps in the experimental and computaKonal parts of
+
+8
+https://doi.org/10.26434/chemrxiv-2024-hjzcr-v2 ORCID: https://orcid.org/0000-0002-3402-7565 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+156
+
+the study
+
+157
+
+Experimental secKon
+
+158
+
+Chemicals and soluKons
+
+159
+
+The analytes were provided by the US EPA for the purposes of this study and were developed as part
+
+160
+
+of EPA’s Non-Targeted Analysis CollaboraKve Trial (ENTACT). The preparaKon of the chemical mixtures is
+
+161
+
+described in detail in the study of Ulrich et al.35 For the purposes of this study, we used mixtures 504,
+
+162
+
+506 and 508. The mixtures were diluted in a series of diluKons ﬁrst with methanol (99.9% Millipore
+
+163
+
+Sigma) and then with HPLC water (99.9% Millipore Sigma) from 20 mM to 100, 50 and 25 μM with a
+
+164
+
+ﬁnal water content of > 99%. For the purposes of this study, we selected chemicals that ionize in
+
+165
+
+posiKve electrospray ionizaKon mode (ESI+) and whose calibraKon curves showed an R2 of 0.8 or
+
+166
+
+higher. The chemical structures and chemical idenKﬁers of the chemicals involved in the study (n=48)
+
+167
+
+are shown in Supplemental Spreadsheet 1. The complete chemical lists from mixtures 504, 506 and 508
+
+168
+
+are also shown in Supplemental Spreadsheet 1. We should note at this point that characterizing the
+
+169
+
+mixtures and maximizing the number of detected and idenKﬁed compounds is beyond the scope of the
+
+170
+
+study. As our study requires extensive computaKons that take days to complete, we have to limit our
+
+171
+
+eﬀorts to a small subset of compounds that saKsﬁes the criteria of detecKon (< 5 ppm mass diﬀerence
+
+172
+
+from the monoisotopic mass) and linearity (R2 ≥ 0.8).
+
+173
+174
+
+Instrumental analysis
+
+175
+
+The mixtures were analyzed with an Agilent 1290 ultra-high performance liquid chromatography
+
+176
+
+(UPLC) coupled to an Agilent quadrupole Kme-of-ﬂight (QTOF) mass spectrometer. The UPLC was
+
+177
+
+equipped with an Agilent Ecliplse Plus C18 column (2.1 x 100 mm, 1.8 μM) for the chromatographic
+
+178
+
+separaKon of the analytes. The mobile phase consisted of the two following soluKons. SoluKon A: HPLC
+9
+
+https://doi.org/10.26434/chemrxiv-2024-hjzcr-v2 ORCID: https://orcid.org/0000-0002-3402-7565 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+179
+
+water (Sigma Aldrich, ≥99.5%) with 0.1% methanol (Sigma Aldrich, 99.9%) and 5 mM ammonium
+
+180
+
+acetate (Sigma Aldrich, ≥98%). SoluKon B: 90 %methanol with 10% HPLC water and 5 mM ammonium
+
+181
+
+acetate. The two soluKons were mixed under the following gradient program: 0 min 10% B and 90% A,
+
+182
+
+0− 15 min increase to 100% B, 16−20 min equilibraKon at 100% B. The solvent gradient over Kme is also
+
+183
+
+shown in Figure S1. All mixtures were injected twice at an injecKon volume of 5 μL. Two no-injecKon
+
+184
+
+blanks and one HPLC water blank were also analyzed in the beginning of the sequence.
+
+185
+
+The instrument was operated in both posiKve electrospray ionizaKon mode (ESI+) and full scan mass
+
+186
+
+spectra (MS1) were acquired in the range of 100-1000 Da with a resolving power of 40,000 and a mass
+
+187
+
+accuracy of <5 ppm. The instrument was calibrated before the analysis and the mass diﬀerence was
+
+188
+
+corrected with reference standards using masses 121.050873 and 922.009798 for posiKve ionizaKon
+
+189
+
+mode.
+
+190
+191
+
+Data collecKon and ﬁle processing
+
+192
+
+All the collected data ﬁles were processed with MS-DIAL, an open-source sohware for mass
+
+193
+
+spectrometry that was developed by the University of California, Davis and by RIKEN (Japan). The
+
+194
+
+detected features were aligned across samples and were matched to the monoisotopic masses of the
+
+195
+
+chemicals contained in the mixtures within a 10-ppm mass diﬀerence (Supplementary Spreadsheet).
+
+196
+
+The peak areas of the analytes were calculated by taking the average of the duplicate injecKons and
+
+197
+
+they were corrected by subtracKng the average area measured in the blanks. The MS-DIAL sesngs and
+
+198
+
+parameters used to process the data ﬁles are presented in Supplementary Spreadsheet.
+
+199
+200
+
+CalculaKon of RRF
+
+10
+https://doi.org/10.26434/chemrxiv-2024-hjzcr-v2 ORCID: https://orcid.org/0000-0002-3402-7565 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+201
+
+IonizaKon eﬃciency describes the extent to which molecules of an analyte in the liquid phase can
+
+202
+
+transiKon to the gas phase as ions during the process of electrospray ionizaKon. The ionizaKon
+
+203
+
+eﬃciency of an analyte can be mathemaKcally described by the relaKve response factor of the analyte
+
+204
+
+as follows:
+
+205
+
+𝑅𝑅𝐹 =
+
+𝐴
+𝐶
+
+𝑒𝑞. 2
+
+206
+
+Where, RRF is the relaKve response factor, A is the abundance (peak area or peak height) and C is the
+
+207
+
+concentraKon of the analyte.
+
+208
+209
+
+Molecular dynamics simulaKons
+
+210
+
+Input generaKon
+
+211
+
+We generated mol2 format ﬁles for all chemicals in the dataset using UCSF Chimera and using SMILES
+
+212
+
+as inputs for the mol2 ﬁles. The protonaKon of each molecule was determined by generaKng pKa
+
+213
+
+diagrams for each chemical using Chemaxon and Chemicalize36 and idenKfying the dominant species at
+
+214
+
+the pH that would be relevant from our experiments (pH=5).37 All the pKa diagrams and the
+
+215
+
+protonaKon states are uploaded as .png images on GitHub under
+
+216
+
+hwps://github.com/dimitriabrahamsson/electro-spray .
+
+217
+218
+219
+
+Topology generaKon
+Topologies were generated with CGenFF force ﬁeld (CHARMM General Force Field) using the
+
+220
+
+CHARMM-GUI38 online pla}orm (hwps://www.charmm-gui.org/) and the mol2 ﬁles from the previous
+
+221
+
+step. The protonaKon of the analytes was examined once more to ensure that it was correct and that
+
+222
+
+no changes were made while imporKng the mol2 ﬁles in GHARMM-GUI. The generated ﬁles from
+
+11
+https://doi.org/10.26434/chemrxiv-2024-hjzcr-v2 ORCID: https://orcid.org/0000-0002-3402-7565 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+223
+
+CHARMM-GUI were then converted to GROMACS format using the charmm2gromacs-pvm.py script
+
+224
+
+(uploaded on GitHub under hwps://github.com/dimitriabrahamsson/electro-spray ).
+
+225
+226
+
+System preparaKon
+
+227
+
+All preparaKon steps were conducted using GROMACS (version 2023.2). GROMACS uses periodic
+
+228
+
+boundary condiKons (PBC) where the atoms of the simulaKon system are put into a space-ﬁlling box,
+
+229
+
+which is surrounded by translated copies of itself. Thus, the system does not have ﬁnite borders during
+
+230
+
+the simulaKon, but it allows for the removal of PBC for post-simulaKon calculaKons.39 Two diﬀerent
+
+231
+
+systems were considered for the MD simulaKons. System 1 aimed at approximaKng the composiKon of
+
+232
+
+a nm electrospray droplet which included the analyte, the H+ and OH- ions produced during hydrolysis,
+
+233
+
+and the water and methanol molecules as shown in the ﬁrst step of IEM in Figure 1. With the second
+
+234
+
+system (System 2), we aimed to approximate the composiKon of the droplet surface and the analyte
+
+235
+
+located at the surface before evaporaKon as shown in the second step of IEM in Figure 1. One criKcal
+
+236
+
+challenge when describing both systems is describing the H+ ions in soluKon. In water, the H+ ions, also
+
+237
+
+(
+referred to as H(*+)
+, produced from the hydrolysis of water molecules react with other water molecules
+
+238
+
+to form hydronium, H& O(
+(*+) , also known as oxonium, following the reacKons below:
+
+239
+240
+
+(
+/
+H- O(.) ⇌ H(*+)
++ OH(*+)
+
+(eq. 3)
+
+241
+
+(
+H- O(.) + H(*+)
+⇌ H& O(
+(*+)
+
+(eq. 4)
+
+242
+
+/
+H& O(
+(*+) + OH(*+) ⇌ 2H- O(.)
+
+(eq. 5)
+
+243
+244
+245
+12
+https://doi.org/10.26434/chemrxiv-2024-hjzcr-v2 ORCID: https://orcid.org/0000-0002-3402-7565 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+246
+247
+
+System 1
+The molecule of hydronium was described using a TIP3P that included an addiKonal hydrogen (3 H in
+
+248
+
+total) and was modiﬁed to include the speciﬁc parameters for H3O+ from the study of Wolf and
+
+249
+
+Groenhof.40 The distance between O and H (rOH) was set at 1.02Å, the angle for H-O-H (θHOH) was set at
+
+250
+
+112o, and the charges for O (qO) and H (qH) were set at -0.59 and 0.53e. The droplet was represented by
+
+251
+
+a three-dimensional cube and the size was set at 64 nm3 (4 x 4 x 4 nm). The number of H3O+ molecules
+
+252
+
+was approximated based the experimental observaKons of Smith et al.41 who determined the charge
+
+253
+
+(e) of water and methanol droplets in ESI+ as a funcKon of the droplet diameter. The calculaKons are
+
+254
+
+described in detail in Text S1 in SI.
+
+255
+
+The numbers of water (TIP3P) and methanol molecules were determined based on the gradient
+
+256
+
+mixing (Figure S1) of the two solvents during LC and based on the retenKon Kme of each chemical
+
+257
+
+(Supplemental Spreadsheet). This means that for every chemical the number of water and methanol
+
+258
+
+molecules was diﬀerent depending on when it was eluted from the LC column. Previous MD studies42
+
+259
+
+on ESI droplets have also suggested that the amount of methanol in the droplet plays a criKcal role in
+
+260
+
+the ionizaKon eﬃciency of the analytes. As the volume of methanol increases, the evaporaKve rate
+
+261
+
+increases, as does the ionizaKon eﬃciency, for many molecules.42
+
+262
+263
+264
+
+System 2
+As menKoned earlier, System 2 aimed at approximaKng the behavior of the analyte on the surface of
+
+265
+
+the droplet where most of the charged ions are expected to be located. While, the presence of
+
+266
+
+hydronium is well established, we are confronted with the paradox that the most common ions formed
+
+267
+
+in posiKve electrospray ionizaKon are not [M+H3O]+, but rather [M+H]+. This indicates that either H+
+
+268
+
+ions also exist in the form of H+ alongside H3O+ ions on the surface of the droplet or during the ﬁnal
+13
+
+https://doi.org/10.26434/chemrxiv-2024-hjzcr-v2 ORCID: https://orcid.org/0000-0002-3402-7565 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+269
+
+interacKons of M and H3O+ one of the protons disengages from the H2O molecule and forms the [M+H]+
+
+270
+
+ion. In order to account for this discrepancy, in System 2, we describe the H+ ions as freely ﬂoaKng ions
+
+271
+
+that are not covalently bound to water molecules. In this case, H+ was described in the same way as
+
+272
+
+other ions like Na+ and Cl- are described in GROMACS using the CGenFF force ﬁeld. In this descripKon,
+
+273
+
+the mass of H+ was set at 1.0080 g/mol and the charge (q) was set at +1. Since this is a single atom, the
+
+274
+
+total charge (qtot) was also set at +1. As a point of reference, Na+ ions in CGenFF are described as single
+
+275
+
+atoms with a mass of 22.98977 g/mol, charge of +1 and a total charge of +1. A 4 x 4 x 4 nm solvent box
+
+276
+
+was created with approximately 600 water molecules (TIP3P) and 600 H+ ions. The number of 600 H+
+
+277
+
+was determined based on pilot simulaKons so that H+ would remain evenly distributed inside the box
+
+278
+
+throughout the simulaKon to ensure conKnuous interacKons with the analyte. A smaller number of
+
+279
+
+ions resulted in the ions starKng evenly distributed but during the simulaKon moving to the outer parts
+
+280
+
+of the box and not suﬃciently interacKng with the chemical which ohen remained towards the center
+
+281
+
+of the box (Figure S3-5 and Text S2).
+
+282
+283
+
+SimulaKon setup
+
+284
+
+The simulaKons were conducted using GROMACS version 2023.2. The simulaKon protocol started
+
+285
+
+with a steepest descend minimizaKon with 50,000 steps as the maximum number of minimizaKon steps
+
+286
+
+to perform and <1000 kJ/mol/nm as the threshold at which the minimizaKon process can stop. The
+
+287
+
+minimizaKon and subsequent simulaKon steps were run using Verlet as the cut-oﬀ scheme for neighbor
+
+288
+
+searching and Fast Smooth ParKcle-Mesh Ewald electrostaKcs (FSPME or PME in GROMACS) for
+
+289
+
+modeling the electrostaKc interacKons. The short-range electrostaKc cut-oﬀ points for Coulomb and
+
+290
+
+van der Waals interacKons were set to 1.2 nm which is recommended for CGenFF.43 The temperature
+
+291
+
+was set at 300 K and it was controlled with a Berendsen thermostat in NVT and a Parrinelo-Rahman
+14
+
+https://doi.org/10.26434/chemrxiv-2024-hjzcr-v2 ORCID: https://orcid.org/0000-0002-3402-7565 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+292
+
+barostat in NPT. System equilibraKon was conducted in two stages, the NVT stage where volume and
+
+293
+
+temperature were kept constant and the NPT stage where pressure and temperature were kept
+
+294
+
+constant. The simulaKon step was set at 0.5 fs using a leapfrog integrator and the simulaKon length was
+
+295
+
+200 ps. The producKon step following equilibraKon was conducted using the same simulaKon step and
+
+296
+
+integrator as previously but in this case the simulaKon length was 1000 ps (1 ns). All the mdp ﬁles for
+
+297
+
+the minimizaKon, equilibraKon and producKon steps with all the details are available on GitHub
+
+298
+
+(hwps://github.com/dimitriabrahamsson/electro-spray ).
+
+299
+300
+
+CalculaKon of interacKons and model development
+
+301
+
+For both System 1 and System 2, we calculated the short-range Lennard-Jones and short-range
+
+302
+
+Coulomb interacKons between the analyte and each group of molecules in the system. For System 1,
+
+303
+
+the sets were i) analyte and water, ii) analyte and methanol, and iii) analyte and H3O+ ions. For System
+
+304
+
+2, the sets were i) analyte and water and ii) analyte and H+ ions, however, we only considered the set of
+
+305
+
+analyte and H+ ions since the interacKons with water were already described in System 1. As these are
+
+306
+
+short-range interacKons, it is important to point out that this includes only the molecules around the
+
+307
+
+analyte that are within the short-range distance, which was set at 1.2 nm. The interacKons were
+
+308
+
+calculated using the gmx energy command in GROMACS. The generated ﬁles contained the interacKon
+
+309
+
+energies (kJ/mol) over Kme (ps) in the form of a Kme series. An example of the Coulomb and Lennard-
+
+310
+
+Jones interacKons for caﬀeine is shown in Figure 3. The top ﬁgures show the interacKons over Kme and
+
+311
+
+the bowom ﬁgures show the distribuKon of the observed interacKon energies using the kernel density
+
+312
+
+esKmate.
+
+313
+
+15
+https://doi.org/10.26434/chemrxiv-2024-hjzcr-v2 ORCID: https://orcid.org/0000-0002-3402-7565 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+314
+
+315
+316
+
+Figure 3: Coulomb and Lennard-Jones interacKons between caﬀeine and H+ ions during the simulaKon
+
+317
+
+of System 2. The top ﬁgures show the interacKons over Kme and the bowom ﬁgures show the
+
+318
+
+distribuKon of the observed interacKon energies.
+
+319
+320
+
+Our model is based on the idea that the RRF of a given compound in ESI+ can be described as a
+
+321
+
+funcKon of the Coulomb and Lennard-Jones interacKons between the compound and all other
+
+322
+
+molecules in the soluKon. RRF was expressed as a funcKon of the Coulomb and Lennard-Jones using a
+
+323
+
+mulKlinear regression model.
+
+324
+325
+
+The model was as follows:
+
+326
+16
+https://doi.org/10.26434/chemrxiv-2024-hjzcr-v2 ORCID: https://orcid.org/0000-0002-3402-7565 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+327
+
+log 𝑅𝑅𝐹 = 𝑙 𝐿𝐽 + 𝑐 𝐶𝑜𝑢𝑙 + 𝑐𝑜𝑛𝑠𝑡
+
+328
+
+where,
+
+329
+
+LJ is the Lennard-Jones interacKons, Coul is the Coulomb interacKons.
+
+𝑒𝑞. 6
+
+330
+331
+
+One criKcal challenge when incorporaKng these interacKons into a model is ﬁnding which metrics are
+
+332
+
+meaningful for the purposes of the model. We applied a Monte Carlo simulaKon approach to randomly
+
+333
+
+sample the Coulomb and Lennard-Jones distribuKons (3 percenKle points per distribuKon plus the
+
+334
+
+standard deviaKon) 100 Kmes for each set of molecules (i.e., System 1: i. analyte and water, ii. analyte
+
+335
+
+and methanol, and iii. analyte and H3O+ ions; System 2: analyte and H+ ions) and selected the best
+
+336
+
+performing model for each set.
+
+337
+338
+
+Expanding the l LJ and c Coul terms of the equaKon we get:
+
+339
+340
+
+𝑙 𝐿𝐽 = 𝑙0 𝐿𝐽20 + 𝑙- 𝐿𝐽2- + 𝑙& 𝐿𝐽2& + 𝑙3 𝐿𝐽456
+
+𝑒𝑞. 7
+
+341
+
+𝑐 𝐶𝑜𝑢𝑙 = 𝑐0 𝐶𝑜𝑢𝑙20 + 𝑐- 𝐶𝑜𝑢𝑙2- + 𝑐& 𝐶𝑜𝑢𝑙2& + 𝑐3 𝐶𝑜𝑢𝑙456
+
+𝑒𝑞. 8
+
+342
+
+where,
+
+343
+
+p1, p2 and p3 are the 3 percenKle points from the distribuKon (e.g., 20, 50 and 70) and std is the
+
+344
+
+standard deviaKon of the distribuKon.
+
+345
+346
+
+The coeﬃcients and the intercept of the model were determined through a least-squares
+
+347
+
+minimizaKon using the statsmodels package (version 0.14.0) in Python (version 3.10.11). The script is
+
+348
+
+available on GitHub ( hwps://github.com/dimitriabrahamsson/electro-spray ). The model was evaluated
+
+349
+
+by examining the R2, the mean absolute error (MAE) and the p-values of the coeﬃcients. Aher selecKng
+17
+
+https://doi.org/10.26434/chemrxiv-2024-hjzcr-v2 ORCID: https://orcid.org/0000-0002-3402-7565 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+350
+
+the best performing model for each set of molecules from both systems, we built a composite model
+
+351
+
+with the parameters whose p-values were lower than 0.1. We purposely chose a higher cutoﬀ point at
+
+352
+
+this stage in order to be more inclusive, however, in the ﬁnal model, only the p-values below 0.05 were
+
+353
+
+considered signiﬁcant. The ﬁnal model was evaluated based on its R2, the mean absolute error (MAE)
+
+354
+
+and the p-values of the coeﬃcients. We also tested whether the addiKon of other physicochemical
+
+355
+
+properKes, i.e. vapor pressure (PV), water solubility (SW), the equilibrium parKKoning raKo between
+
+356
+
+octanol and water (KOW), air and water (KAW), methanol and water (KMW), methanol and air (KMA), and
+
+357
+
+the innate charge of the molecule improved the predicKve accuracy of the model. PV and SW were
+
+358
+
+calculated with OPERA 2.6 44 available on the dashboard8. KOW, KAW, KMW and KMA were calculated with
+
+359
+
+UFZ-LSER.45 The innate charge of the molecule was determined by examining the structure and its
+
+360
+
+protonaKon state at pH 5 and noKng 0 if it was neutral, +1 (or more) if it had a posiKve innate charge,
+
+361
+
+and -1 (or less) if it had a negaKve innate charge. Only the parameters whose coeﬃcient showed a p-
+
+362
+
+value of less than 0.05 were considered signiﬁcant and were included in the model. A parameter with a
+
+363
+
+mere increase in R2 without a signiﬁcant p-value would not be included in the model.
+
+364
+
+The predicKve power of the model was further evaluated with a 10-fold cross validaKon and a y-
+
+365
+
+randomizaKon. During the 10-fold cross-validaKon, the dataset was ﬁrst divided into 10 equally sized
+
+366
+
+sub-datasets. Then, during each fold one dataset was set as the tesKng set and the remaining sub-
+
+367
+
+datasets were compiled into a training set. The model was trained on the training set and tested on the
+
+368
+
+tesKng set. The process was repeated 10 Kmes (10-fold). It is important to note at this point that when
+
+369
+
+applying a k-fold cross validaKon and when dividing the dataset into training and tesKng there is always
+
+370
+
+a possibility of encountering compounds in the tesKng set that are outside the applicability domain of
+
+371
+
+the trained model. In order to account for this discrepancy, if a predicKon was 2 log units higher than
+
+372
+
+the highest value in the dataset or 2 log units lower than the lowest value in the dataset it was
+18
+
+https://doi.org/10.26434/chemrxiv-2024-hjzcr-v2 ORCID: https://orcid.org/0000-0002-3402-7565 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+373
+
+considered outside the applicability domain and it was excluded from the evaluaKon. The compounds
+
+374
+
+that were excluded from any parKcular fold of the cross-validaKon exercise were sKll included in the
+
+375
+
+discussion secKon of the paper. The purpose of the k-fold cross validaKon is to evaluate the predicKve
+
+376
+
+power of the model outside its training set and to idenKfy outlier compounds in the dataset. These
+
+377
+
+compounds are considered outliers in the sense that they represent physicochemical properKes that
+
+378
+
+are dissimilar to the ones in the training set and in order for the model to make accurate predicKons,
+
+379
+
+they have to be included in the training set.
+
+380
+
+For the y-randomizaKon, the y variable, in this case the RRF was randomly shuﬄed, and the model
+
+381
+
+was developed as previously by dividing the dataset into training and tesKng sets. The process was
+
+382
+
+repeated 5 Kmes, and the predicKons were averaged across the 5 iteraKons. The purpose of the y-
+
+383
+
+randomizaKon is to evaluate the extent to which the model predicKons are diﬀerent from random
+
+384
+
+predicKons. This helps to determine whether the model is making meaningful predicKons and whether
+
+385
+
+it has been overparametrized. The lower the R2 of the y-randomizaKon and the more diﬀerent it is from
+
+386
+
+the R2 of the cross-validaKon, the higher the likelihood that the model is making meaningful predicKons
+
+387
+
+that are disKnct from random predicKons.
+
+388
+
+One of the challenges we encountered is that the generated CGenFF topologies ohen included high
+
+389
+
+penalKes (> 50) for a charge, a bond, an angle, a dihedral or an improper group. While high penalKes
+
+390
+
+do not necessarily mean large errors, they do denote a low similarity with the build-by-analogy
+
+391
+
+structure in CGenFF and it is recommended to apply cauKon when using such structures because they
+
+392
+
+may require further validaKon. This may be an important issue in the case of protein dynamics and
+
+393
+
+ligand binding, however, in our case, it is unclear how these penalKes or uncertainKes may inﬂuence
+
+394
+
+our calculaKons. To address this issue, we tested the robustness of the model by incrementally
+
+395
+
+removing compounds with high penalKes starKng from the ones with the highest penalKes to the ones
+19
+
+https://doi.org/10.26434/chemrxiv-2024-hjzcr-v2 ORCID: https://orcid.org/0000-0002-3402-7565 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+396
+
+with the lowest penalKes. This resulted in 10 diﬀerent models with a diﬀerent cutoﬀ point as the
+
+397
+
+maximum acceptable penalty ranging from 500 to 50. We then examined the changes in the R2 of the
+
+398
+
+model as the number and type of chemicals in the dataset changed. In order to avoid introducing errors
+
+399
+
+in the ﬁrst steps of the model development, we developed the ﬁrst iteraKon of the model with
+
+400
+
+chemicals that had a penalty less than 300.
+
+401
+402
+
+RESULTS AND DISCUSSION
+
+403
+
+Experimental measurements
+
+404
+
+The observed log RRF values for the chemicals in our dataset ranged from 1.73 to 3.17 with
+
+405
+
+Cinchophen showing the lowest value and Thiabendazole showing the highest value (Supplementary
+
+406
+
+Spreadsheet). As RRF is the raKo of abundance to concentraKon, higher RRF values indicate higher
+
+407
+
+ionizaKon eﬃciency (higher abundance at lower concentraKons). This observaKon is in agreement with
+
+408
+
+data from our previous study12 where Cinchophen showed a lower RRF compared to Thiabendazole. It
+
+409
+
+should be noted that the two studies use the same mixtures (in part) but diﬀerent methods and
+
+410
+
+diﬀerent instruments (same type – Agilent LC-QTOF-MS – but diﬀerent instrument). Despite the
+
+411
+
+diﬀerences in methods and instrumentaKon, the diﬀerences in the RRF values of the two chemicals are
+
+412
+
+preserved. This observaKon is supporKve of the ionizaKon eﬃciency (IE) scale approach developed by
+
+413
+
+Oss et al.22 where a set of RRF values can be represented as a scale of relaKve ionizaKon eﬃciencies
+
+414
+
+and that that scale should in principle be transferable across diﬀerent methods.
+
+415
+416
+
+Model development
+
+417
+
+From the models developed for System 1, the best performing models for predicKng log RRF showed
+
+418
+
+an R2 of 0.42 when using the analyte-water interacKons, 0.37 when using the analyte-methanol
+20
+
+https://doi.org/10.26434/chemrxiv-2024-hjzcr-v2 ORCID: https://orcid.org/0000-0002-3402-7565 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+419
+
+interacKons and 0.39 when using the analyte-H3O+ interacKons (Supplemental Spreadsheet). From the
+
+420
+
+models developed for System 2, the best performing model for predicKng log RRF showed an R2 of 0.71
+
+421
+
+(Supplemental Spreadsheet). This observaKon indicates that the ﬁnal stage of ionizaKon [M+H]+ is
+
+422
+
+bewer predicted by the interacKons of the analyte with the H+ ions on the surface of the droplet (Figure
+
+423
+
+1 – step 2 of IEM) than by the interacKons of the analyte with the other molecules while in the center
+
+424
+
+of the droplet (Figure 1 – step 1 of IEM). This is not to say that there is no predicKve value in the
+
+425
+
+interacKons of the analyte with the solvent molecules. Previous studies have demonstrated the impacts
+
+426
+
+of diﬀerent solvents on the ionizaKon eﬃciency of small molecules46,47 and this is in agreement with
+
+427
+
+our calculaKons from System 1. This observaKon just indicates that the interacKons of the analyte on
+
+428
+
+the droplet are potenKally more determining of the ionizaKon eﬃciency of the analyte. The ﬁnal
+
+429
+
+composite model consisted of the following parameters. System 1: p2, p3 and the standard deviaKon
+
+430
+
+for Lennard-Jones interacKons between the analyte and water; System 2: p1, p2, p3 and the standard
+
+431
+
+deviaKons for Lennard-Jones and Coulomb interacKons between the analyte and H+ ions. All
+
+432
+
+coeﬃcients for the abovemenKoned parameters showed p-values below 0.05 (Table S1). Out of all the
+
+433
+
+physicochemical properKes that we tested, the only one that showed a staKsKcally signiﬁcant
+
+434
+
+contribuKon was the water solubility of the analyte (SW). The ﬁnal model showed an R2 of 0.82 and an
+
+435
+
+MAE of 0.13.
+
+436
+437
+438
+439
+440
+441
+21
+https://doi.org/10.26434/chemrxiv-2024-hjzcr-v2 ORCID: https://orcid.org/0000-0002-3402-7565 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+442
+443
+
+The coeﬃcients and intercept of the developed model were determined to be as follows:
+
+444
+445
+
+log 𝑅𝑅𝐹 = 𝑙 𝐿𝐽 + 𝑐 𝐶𝑜𝑢𝑙 − 0.14 𝑆7 + 2.51
+
+446
+
+where,
+
+𝑒𝑞. 9
+
+447
+448
+
+#
+#
+#
+#
+)
+)
+)
+𝑙 𝐿𝐽 = 0.63 𝐿𝐽!"
+− 5.80 𝐿𝐽!$
++ 4.92 𝐿𝐽!%
++ 3.49 𝐿𝐽&'(
++ 0.21 𝐿𝐽!$
+− 0.20 𝐿𝐽!%
++ 0.35 𝐿𝐽&'(
+
+𝑒𝑞. 10
+
+449
+
+#
+#
+#
+#
+𝑐 𝐶𝑜𝑢𝑙 = −0.01 𝐶𝑜𝑢𝑙!"
++ 0.03 𝐶𝑜𝑢𝑙!$
+− 0.03 𝐶𝑜𝑢𝑙!%
+− 0.04 𝐶𝑜𝑢𝑙&'(
+
+𝑒𝑞. 11
+
+450
+451
+
+where,
+
+452
+
+LJH are the Lennard-Jones interacKons between the analyte and H+ ions from System 2
+
+453
+
+CoulH are the Coulomb interacKons between the analyte and H+ ions from System 2
+
+454
+
+LJW are the Lennard-Jones interacKons between the analyte and water molecules from System 1
+
+455
+
+the values for p1, p2 and p3 in System 2 were 0.5, 34 and 50
+
+456
+
+the values for p2, and p3 in System 1 were 44 and 89.
+
+457
+458
+
+The p-values of the coeﬃcients and the intercept were all below 0.05 (Table S1). The R2 and MAE of
+
+459
+
+the model were comparable to those in the study of Oss et al.22 where they observed an R2 of 0.67 and
+
+460
+
+a standard residual error of 0.86 log units. While the two studies are very diﬀerent in the
+
+461
+
+computaKonal approaches, they both share datasets of similar size (48 vs 62) and they both use
+
+462
+
+mulKlinear regression models as their ﬁnal predicKve models and thus allowing for meaningful
+
+463
+
+comparisons.
+
+22
+https://doi.org/10.26434/chemrxiv-2024-hjzcr-v2 ORCID: https://orcid.org/0000-0002-3402-7565 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+464
+
+We examined whether the diﬀerences between the experimental and modeled RRF (absolute errors)
+
+465
+
+could be explained due to the diﬀerent retenKon Kmes (RT) of the chemicals and by extension due to
+
+466
+
+the diﬀerent raKos of water to methanol, but we did not observe a signiﬁcant associaKon between the
+
+467
+
+two. Neither did we observe a signiﬁcant associaKon between RRF and RT (Figure S6).
+
+468
+
+Our modeling calculaKons showed that the interacKons of the analyte with the water molecules in
+
+469
+
+System 1 were similar but slightly more predicKve than the interacKons of the analyte with the H3O+
+
+470
+
+ions (R2: 0.42 vs 0.39). Given the great collinearity of these two variables, including both of them in the
+
+471
+
+model renders the coeﬃcients for H3O+ insigniﬁcant (p > 0.05). This observaKon suggests that, at least
+
+472
+
+in terms of interacKons with the analyte, the H atoms in the H2O molecules are not disKnguishable
+
+473
+
+from the H atoms in the H3O+ ions.
+
+474
+
+As menKoned earlier in the methods, we examined the eﬀect that compounds with high penalKes
+
+475
+
+may have on the predicKve power of the model. Including all compounds with penalKes over 300
+
+476
+
+resulted in a small decrease in R2 (0.82 vs 0.74) and a small increase in the MAE (0.13 vs 0.15) of the
+
+477
+
+model (Figure 4). Aher incrementally removing compounds with high penalKes from the dataset, we
+
+478
+
+observed that the R2 of the model appeared to be consistent with an increase around cutoﬀ points of
+
+479
+
+250 and 300 (Figure S7), which conﬁrmed our iniKal cut-oﬀ point of 300. We should note at this point
+
+480
+
+that while in this parKcular case the eﬀect of including compounds with high penalKes appears to be
+
+481
+
+minimal, we do not know how that may manifest in other datasets with diﬀerent composiKon and with
+
+482
+
+compounds with higher penalKes.
+
+483
+484
+485
+486
+23
+https://doi.org/10.26434/chemrxiv-2024-hjzcr-v2 ORCID: https://orcid.org/0000-0002-3402-7565 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+487
+
+488
+489
+
+Figure 4: Experimental and predicted values of log transformed RRF. The diagonal lines show the 1-to-1
+
+490
+
+agreement line, and the ± 1 log unit deviaKon line. Plot A shows the results of the model aher
+
+491
+
+removing compounds with a penalty over 300 (dataset n = 42). Six chemicals were excluded from the
+
+492
+
+dataset in this iteraKon. Plot B shows the results of the model including all the chemicals in the dataset
+
+493
+
+(dataset n = 48). R2 is the coeﬃcient of determinaKon and MAE is the mean absolute error between the
+
+494
+
+predicKons and the experimental values.
+24
+
+https://doi.org/10.26434/chemrxiv-2024-hjzcr-v2 ORCID: https://orcid.org/0000-0002-3402-7565 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+495
+496
+
+The 10-fold cross validaKon showed an R2 of 0.52 and an MAE of 0.25 for compounds that were not
+
+497
+
+included in the training set (Figure S8A). This shows that the model can make reasonable predicKons
+
+498
+
+for chemicals that were not included in the training set. Two chemicals showed to be outside of the
+
+499
+
+applicability domain of the model (based on the deﬁniKon in the methods secKon). These two
+
+500
+
+chemicals were Furalaxyl and Dicrotophos (Figure S9). During the cross-validaKon Furalaxyl showed an
+
+501
+
+absolute error of 10.1 log units and Dicrotophos an absolute error of 5.58 log units. Both chemicals had
+
+502
+
+penalKes lower than 300 so it does not seem that their penalKes would be a likely explanaKon
+
+503
+
+(Supplemental Spreadsheet). Most likely is that these two chemicals are structurally and
+
+504
+
+physicochemically disKnct from the other chemicals in the dataset. This is supported by the observaKon
+
+505
+
+that when these two compounds are included in the dataset their absolute errors are 0.001 log units
+
+506
+
+for Furalaxyl and 0.03 log units for Dicrotophos (Figure S10).
+
+507
+
+The y-randomizaKon showed that when the model is trained on random data the expected R2 is 0.03
+
+508
+
+(Figure S8B). This is substanKally lower than both the R2 of the model with all the chemicals (0.74) and
+
+509
+
+the R2 of the 10-fold cross-validaKon (0.52). This observaKon suggests that the model is making
+
+510
+
+meaningful predicKons that are disKnct from random predicKons.
+
+511
+
+In trying to understand the contribuKons of the diﬀerent interacKons to RRF we examined the
+
+512
+
+diﬀerent terms of equaKon 9 for two chemicals that showed near 0 diﬀerences between experimental
+
+513
+
+and predicted values of RRF. The two chemicals were 1) Cinchophen with a log RRF of 1.73, and 2)
+
+514
+
+Loratadine with a log RRF of 3.15. Both chemicals’ log RRF is determined to a larger extent by the
+
+515
+
+Lennard-Jones and Coulomb interacKons and to a smaller extent by their water solubility. For both
+
+516
+
+chemicals, the Lennard-Jones interacKons appear to have a posiKve contribuKon to RRF while the
+
+517
+
+Coulomb interacKons appear to have a negaKve contribuKon (Figure 5). This is consistent for all
+25
+
+https://doi.org/10.26434/chemrxiv-2024-hjzcr-v2 ORCID: https://orcid.org/0000-0002-3402-7565 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+518
+
+chemicals in the dataset. When comparing Cinchophen and Loratadine, it appears that the lower RRF of
+
+519
+
+Cinchophen is due to smaller l LJ and c Coul terms (Figure 5). The Lennard-Jones potenKal approximates
+
+520
+
+the van der Waals interacKons and the Coulomb potenKal represents the ability to engage in hydrogen
+
+521
+
+bonding. Previous studies have suggested that increased non-polar character, which would be
+
+522
+
+represented by the Lennard-Jones potenKal are associated with higher RRF, while increased polar
+
+523
+
+character which would be represented by the Coulomb potenKal is associated with a decrease in
+
+524
+
+RRF.22,23,27,48,49 Our observaKons appear to be in agreement with the ﬁndings from previous studies.
+
+525
+
+Water solubility appears to play a small (Figure 5) yet signiﬁcant role (Tables S1 and S2) in the model.
+
+526
+
+For all compounds in the dataset, the s SW term has a posiKve contribuKon to RRF. Based on this
+
+527
+
+observaKon, one would expect that compounds with higher water solubility would have a higher RRF.
+
+528
+
+However, given that the term s SW is several orders of magnitude smaller than the l LJ and c Coul terms,
+
+529
+
+the inﬂuence of s SW on RRF is minimal in comparison. In our developed model, s SW acts as a correcKve
+
+530
+
+factor rather than a determining factor. Furthermore, water solubility is known to decrease with
+
+531
+
+increasing molecular weight50, which is also what we observed in our dataset. The contribuKon of the s
+
+532
+
+SW for Cinchophen is slightly larger than that of Loratadine which is in agreement with their molecular
+
+533
+
+weights (Cinchophen: 249.26 g/mol, Loratadine: 382.89 g/mol).
+
+534
+
+26
+https://doi.org/10.26434/chemrxiv-2024-hjzcr-v2 ORCID: https://orcid.org/0000-0002-3402-7565 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+535
+536
+
+Figure 5: ContribuKons of Lennard-Jones interacKons, Coulomb interacKons and water solubility to the
+
+537
+
+calculated log RRF for two compounds that showed near 0 errors between the experimental values and
+
+538
+
+the predicKons of log RRF.
+
+539
+540
+541
+
+LimitaKons and future consideraKons
+One limitaKon that needs to be acknowledged is that while our model showed good accuracy (R2:
+
+542
+
+0.82) the computaKonal cost of our approach is much higher than other approaches that rely on
+
+543
+
+simpler descriptor generators like PaDEL51 or Mordred52 . Running one simulaKon on one system for
+27
+
+https://doi.org/10.26434/chemrxiv-2024-hjzcr-v2 ORCID: https://orcid.org/0000-0002-3402-7565 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+544
+
+one chemical takes approximately 13 min using a ASUS GeForce GTX 1080 TI 11GB Turbo GPU.
+
+545
+
+ConducKng simulaKons for 48 chemicals, 2 systems and 3 replicates each comes up to 62.4h. This may
+
+546
+
+limit the ability of the model to be used as an online applicaKon as it would require access to GPUs. The
+
+547
+
+workﬂow is, however, applicable in PCs with NVIDIA GPUs.
+
+548
+
+Another limitaKon that should be acknowledged is that, in this study, we examined only one type of
+
+549
+
+force ﬁeld (CGenFF). Future applicaKons could examine whether using other types of force ﬁelds like
+
+550
+
+gaﬀ2 from AMBER and GROMOS from GROMACS can produce bewer predicKons than CGenFF.
+
+551
+
+Finally, on the experimental side, it should be acknowledged that for the purposes of this study, we
+
+552
+
+tested only two solvents for our LC gradient, HPLC water and methanol. As the ionizaKon eﬃciency of
+
+553
+
+chemicals is known to vary by diﬀerent solvents53, the eﬀect of that variability on the modeling
+
+554
+
+calculaKons is something that needs to be invesKgated further.
+
+555
+556
+
+CONCLUSION
+
+557
+
+Our study presents a novel approach for modeling the ionizaKon eﬃciency of organic molecules. Our
+
+558
+
+approach can be used in combinaKon with exisKng approaches for concentraKon esKmates of chemical
+
+559
+
+compounds in environmental and biological samples. While there is a variety of modeling approaches
+
+560
+
+for RRF, our view is that these approaches are complementary rather than compeKng. When trying to
+
+561
+
+esKmate concentraKons of chemicals in environmental or biological samples, combining the results of
+
+562
+
+mulKple diﬀerent approaches can help establish mulKple layers of evidence that can be used in support
+
+563
+
+of a predicKon when analyKcal standards are unavailable.
+
+564
+
+28
+https://doi.org/10.26434/chemrxiv-2024-hjzcr-v2 ORCID: https://orcid.org/0000-0002-3402-7565 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+565
+566
+567
+
+SUPPORTING INFORMATION
+The manuscript is accompanied by a SupporKng InformaKon pdf ﬁle and a Supplemental Spreadsheet
+containing the underlying data used in the paper.
+
+568
+569
+
+DECLARATIONS
+
+570
+
+AVAILABILITY OF DATA AND MATERIALS
+
+571
+
+All code, underlying datasets, and chemical structures used in this study are publicly available and
+
+572
+
+can be accessed on GitHub under the following repository:
+
+573
+
+hwps://github.com/dimitriabrahamsson/electro-spray
+
+574
+
+All python scripts are accompanied by instrucKons on how to run them in order to replicate the
+
+575
+
+ﬁndings of the study.
+
+576
+577
+
+COMPETING INTERESTS
+
+578
+
+The authors declare that they have no compeKng interests to report.
+
+579
+580
+
+FUNDING
+
+581
+
+This study was funded by NIH/NIEHS (Grant Nos. R00ES032892, K99ES032892).
+
+582
+583
+
+AUTHOR CONTRIBUTIONS
+
+584
+
+D.A. co-wrote the manuscript, designed the study, conducted the lab experiments, ran part of the
+
+585
+
+simulaKons and worked on the modeling secKon. L-A.K co-wrote the manuscript, ran simulaKons and
+
+586
+
+assisted with the modeling secKon. T.J. co-wrote the manuscript and helped with proof-reading and
+
+587
+
+providing experKse on the analyKcal side. D.L. co-wrote the manuscript, supervised the experimental
+29
+
+https://doi.org/10.26434/chemrxiv-2024-hjzcr-v2 ORCID: https://orcid.org/0000-0002-3402-7565 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+588
+
+part of the study, provided advice and experKse on designing and execuKng the experiments, and on
+
+589
+
+interpreKng the ﬁndings.
+
+590
+591
+592
+
+ACKNOWLEDGEMENTS
+We would like to thank Elin Ulrich from the U.S. EPA for assisKng with providing the chemical
+
+593
+
+mixtures that were used in this study. We would also like to thank June-Soo Park of the California EPA
+
+594
+
+for providing lab space and equipment to support our experiments.
+
+595
+596
+
+REFERENCES
+
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+
+(1) Newton, S. R.; McMahen, R. L.; Sobus, J. R.; Mansouri, K.; Williams, A. J.; McEachran, A. D.; Strynar,
+M. J. Suspect Screening and Non-Targeted Analysis of Drinking Water Using Point-of-Use Filters.
+Environ. Pollut. 2018, 234, 297–306. hwps://doi.org/10.1016/j.envpol.2017.11.033.
+(2) Wang, A.; Abrahamsson, D. P.; Jiang, T.; Wang, M.; Morello-Frosch, R.; Park, J.-S.; Sirota, M.;
+Woodruﬀ, T. J. Suspect Screening, PrioriKzaKon, and ConﬁrmaKon of Environmental Chemicals in
+Maternal-Newborn Pairs from San Francisco. Environ. Sci. Technol. 2021, 55 (8), 5037–5049.
+hwps://doi.org/10.1021/acs.est.0c05984.
+(3) Panagopoulos Abrahamsson, D.; Wang, A.; Jiang, T.; Wang, M.; Siddharth, A.; Morello-Frosch, R.;
+Park, J.-S.; Sirota, M.; Woodruﬀ, T. J. A Comprehensive Non-Targeted Analysis Study of the Prenatal
+Exposome. Environ. Sci. Technol. 2021, 55 (15), 10542–10557.
+hwps://doi.org/10.1021/acs.est.1c01010.
+(4) Zhu, Y.; Barupal, D. K.; Ngo, A. L.; Quesenberry, C. P.; Feng, J.; Fiehn, O.; Ferrara, A. PredicKve
+Metabolomic Markers in Early to Mid-Pregnancy for GestaKonal Diabetes Mellitus: A ProspecKve
+Test and ValidaKon Study. Diabetes 2022, 71 (8), 1807–1817. hwps://doi.org/10.2337/db21-1093.
+(5) Moschet, C.; Anumol, T.; Lew, B. M.; Bennew, D. H.; Young, T. M. Household Dust as a Repository of
+Chemical AccumulaKon: New Insights from a Comprehensive High-ResoluKon Mass Spectrometric
+Study. Environ. Sci. Technol. 2018, 52 (5), 2878–2887. hwps://doi.org/10.1021/acs.est.7b05767.
+(6) Nuñez, J. R.; Colby, S. M.; Thomas, D. G.; Tfaily, M. M.; Tolic, N.; Ulrich, E. M.; Sobus, J. R.; Metz, T.
+O.; Teeguarden, J. G.; Renslow, R. S. EvaluaKon of In Silico MulKfeature Libraries for Providing
+Evidence for the Presence of Small Molecules in SyntheKc Blinded Samples. J. Chem. Inf. Model.
+2019, 59 (9), 4052–4060. hwps://doi.org/10.1021/acs.jcim.9b00444.
+(7) Legal obstacles to toxic chemical research | Science.
+hwps://www.science.org/doi/10.1126/science.abl4383 (accessed 2023-11-30).
+(8) CompTox Chemicals Dashboard. hwps://comptox.epa.gov/dashboard/ (accessed 2023-11-30).
+(9) Abrahamsson, D.; Siddharth, A.; Young, T. M.; Sirota, M.; Park, J.-S.; MarKn, J. W.; Woodruﬀ, T. J. In
+Silico Structure PredicKons for Non-Targeted Analysis: From Physicochemical ProperKes to
+Molecular Structures. J. Am. Soc. Mass Spectrom. 2022, 33 (7), 1134–1147.
+hwps://doi.org/10.1021/jasms.1c00386.
+30
+
+https://doi.org/10.26434/chemrxiv-2024-hjzcr-v2 ORCID: https://orcid.org/0000-0002-3402-7565 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+
+(10) Abrahamsson, D.; Brueck, C. L.; Prasse, C.; Lambropoulou, D. A.; Koronaiou, L.-A.; Wang, M.;
+Park, J.-S.; Woodruﬀ, T. J. ExtracKng Structural InformaKon from Physicochemical Property
+Measurements Using Machine Learning─A New Approach for Structure ElucidaKon in Non-Targeted
+Analysis. Environ. Sci. Technol. 2023, 57 (40), 14827–14838.
+hwps://doi.org/10.1021/acs.est.3c03003.
+(11) Liigand, P.; Liigand, J.; Kaupmees, K.; Kruve, A. 30 Years of Research on ESI/MS Response: Trends,
+ContradicKons and ApplicaKons. Anal. Chim. Acta 2021, 1152, 238117.
+hwps://doi.org/10.1016/j.aca.2020.11.049.
+(12) Panagopoulos Abrahamsson, D.; Park, J.-S.; Singh, R. R.; Sirota, M.; Woodruﬀ, T. J. ApplicaKons of
+Machine Learning to In Silico QuanKﬁcaKon of Chemicals without AnalyKcal Standards. J. Chem. Inf.
+Model. 2020, 60 (6), 2718–2727. hwps://doi.org/10.1021/acs.jcim.9b01096.
+(13) Groﬀ, L. C.; Grossman, J. N.; Kruve, A.; Minucci, J. M.; Lowe, C. N.; McCord, J. P.; Kapraun, D. F.;
+Phillips, K. A.; Purucker, S. T.; Chao, A.; Ring, C. L.; Williams, A. J.; Sobus, J. R. Uncertainty EsKmaKon
+Strategies for QuanKtaKve Non-Targeted Analysis. Anal. Bioanal. Chem. 2022, 414 (17), 4919–4933.
+hwps://doi.org/10.1007/s00216-022-04118-z.
+(14) Johnson, T. A.; Abrahamsson, D. P. QuanKﬁcaKon of Chemicals in Non-Targeted Analysis without
+AnalyKcal Standards – Understanding the Mechanism of Electrospray IonizaKon and Making
+PredicKons. Curr. Opin. Environ. Sci. Health 2023, 100529.
+hwps://doi.org/10.1016/j.coesh.2023.100529.
+(15) Calixte, E. I.; Liyanage, O. T.; Kim, H. J.; Ziperman, E. D.; Pearson, A. J.; Gallagher, E. S. Release of
+Carbohydrate–Metal Adducts from Electrospray Droplets: Insight into Glycan IonizaKon by
+Electrospray. J. Phys. Chem. B 2020, 124 (3), 479–486. hwps://doi.org/10.1021/acs.jpcb.9b10369.
+(16) Mandra, V. J.; Kouskoura, M. G.; Markopoulou, C. K. Using the ParKal Least Squares Method to
+Model the Electrospray IonizaKon Response Produced by Small PharmaceuKcal Molecules in
+PosiKve Mode. Rapid Commun. Mass Spectrom. 2015, 29 (18), 1661–1675.
+hwps://doi.org/10.1002/rcm.7263.
+(17) Golubović, J.; Birkemeyer, C.; ProKć, A.; Otašević, B.; Zečević, M. Structure–Response
+RelaKonship in Electrospray IonizaKon-Mass Spectrometry of Sartans by ArKﬁcial Neural Networks.
+J. Chromatogr. A 2016, 1438, 123–132. hwps://doi.org/10.1016/j.chroma.2016.02.021.
+(18) Henriksen, T.; Juhler, R. K.; Svensmark, B.; Cech, N. B. The RelaKve Inﬂuences of Acidity and
+Polarity on Responsiveness of Small Organic Molecules to Analysis with NegaKve Ion Electrospray
+IonizaKon Mass Spectrometry (ESI-MS). J. Am. Soc. Mass Spectrom. 2005, 16 (4), 446–455.
+hwps://doi.org/10.1016/j.jasms.2004.11.021.
+(19) Kruve, A.; Kaupmees, K.; Liigand, J.; Leito, I. NegaKve Electrospray IonizaKon via DeprotonaKon:
+PredicKng the IonizaKon Eﬃciency. Anal. Chem. 2014, 86 (10), 4822–4830.
+hwps://doi.org/10.1021/ac404066v.
+(20) Liigand, P.; Kaupmees, K.; Haav, K.; Liigand, J.; Leito, I.; Girod, M.; Antoine, R.; Kruve, A. Think
+NegaKve: Finding the Best Electrospray IonizaKon/MS Mode for Your Analyte. Anal. Chem. 2017, 89
+(11), 5665–5668. hwps://doi.org/10.1021/acs.analchem.7b00096.
+(21) AlymaKri, C. M.; Kouskoura, M. G.; Markopoulou, C. K. Decoding the Signal Response of Steroids
+in Electrospray IonizaKon Mode (ESI-MS). Anal. Methods 2015, 7 (24), 10433–10444.
+hwps://doi.org/10.1039/C5AY02839F.
+(22) Oss, M.; Kruve, A.; Herodes, K.; Leito, I. Electrospray IonizaKon Eﬃciency Scale of Organic
+Compounds. Anal. Chem. 2010, 82 (7), 2865–2872. hwps://doi.org/10.1021/ac902856t.
+(23) Kruve, A.; Kaupmees, K. PredicKng ESI/MS Signal Change for Anions in Diﬀerent Solvents. Anal.
+Chem. 2017, 89 (9), 5079–5086. hwps://doi.org/10.1021/acs.analchem.7b00595.
+31
+
+https://doi.org/10.26434/chemrxiv-2024-hjzcr-v2 ORCID: https://orcid.org/0000-0002-3402-7565 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+671
+672
+673
+674
+675
+676
+677
+678
+679
+680
+681
+682
+683
+684
+685
+686
+687
+688
+689
+690
+691
+692
+693
+694
+695
+696
+697
+698
+699
+700
+701
+702
+703
+704
+705
+706
+707
+708
+709
+710
+711
+712
+713
+714
+715
+
+(24) Nguyen, T. B.; Nizkorodov, S. A.; Laskin, A.; Laskin, J. An Approach toward QuanKﬁcaKon of
+Organic Compounds in Complex Environmental Samples Using High-ResoluKon Electrospray
+IonizaKon Mass Spectrometry. Anal. Methods 2012, 5 (1), 72–80.
+hwps://doi.org/10.1039/C2AY25682G.
+(25) Wu, L.; Wu, Y.; Shen, H.; Gong, P.; Cao, L.; Wang, G.; Hao, H. QuanKtaKve Structure–Ion Intensity
+RelaKonship Strategy to the PredicKon of Absolute Levels without AuthenKc Standards. Anal. Chim.
+Acta 2013, 794, 67–75. hwps://doi.org/10.1016/j.aca.2013.07.034.
+(26) Liigand, P.; Liigand, J.; Cuyckens, F.; Vreeken, R. J.; Kruve, A. IonisaKon Eﬃciencies Can Be
+Predicted in Complicated Biological Matrices: A Proof of Concept. Anal. Chim. Acta 2018, 1032, 68–
+74. hwps://doi.org/10.1016/j.aca.2018.05.072.
+(27) Bieber, S.; Letzel, T.; Kruve, A. Electrospray IonizaKon Eﬃciency PredicKons and AnalyKcal
+Standard Free QuanKﬁcaKon for SFC/ESI/HRMS. J. Am. Soc. Mass Spectrom. 2023, 34 (7), 1511–
+1518. hwps://doi.org/10.1021/jasms.3c00156.
+(28) Palm, E.; Kruve, A. Machine Learning for Absolute QuanKﬁcaKon of UnidenKﬁed Compounds in
+Non-Targeted LC/HRMS. Molecules 2022, 27 (3), 1013.
+hwps://doi.org/10.3390/molecules27031013.
+(29) Liigand, J.; Wang, T.; Kellogg, J.; Smedsgaard, J.; Cech, N.; Kruve, A. QuanKﬁcaKon for NonTargeted LC/MS Screening without Standard Substances. Sci. Rep. 2020, 10 (1), 5808.
+hwps://doi.org/10.1038/s41598-020-62573-z.
+(30) Daub, C. D.; Cann, N. M. How Are Completely Desolvated Ions Produced in Electrospray
+IonizaKon: Insights from Molecular Dynamics SimulaKons. Anal. Chem. 2011, 83 (22), 8372–8376.
+hwps://doi.org/10.1021/ac202103p.
+(31) Kim, D.; Wagner, N.; Wooding, K.; Clemmer, D. E.; Russell, D. H. Ions from SoluKon to the Gas
+Phase: A Molecular Dynamics SimulaKon of the Structural EvoluKon of Substance P during
+DesolvaKon of Charged Nanodroplets Generated by Electrospray IonizaKon. J. Am. Chem. Soc. 2017,
+139 (8), 2981–2988. hwps://doi.org/10.1021/jacs.6b10731.
+(32) Luan, M.; Hou, Z.; Zhang, B.; Ma, L.; Yuan, S.; Liu, Y.; Huang, G. Inter-Domain Repulsion of
+Dumbbell-Shaped Calmodulin during Electrospray IonizaKon Revealed by Molecular Dynamics
+SimulaKons. Anal. Chem. 2023, 95 (23), 8798–8806.
+hwps://doi.org/10.1021/acs.analchem.2c05630.
+(33) Luan, M.; Hou, Z.; Huang, G. Suppression of Protein Structural PerturbaKons in NaKve
+Electrospray IonizaKon during the Final EvaporaKon Stages Revealed by Molecular Dynamics
+SimulaKons. J. Phys. Chem. B 2022, 126 (1), 144–150. hwps://doi.org/10.1021/acs.jpcb.1c09130.
+(34) Konermann, L.; Metwally, H.; McAllister, R. G.; Popa, V. How to Run Molecular Dynamics
+SimulaKons on Electrospray Droplets and Gas Phase Proteins: Basic Guidelines and Selected
+ApplicaKons. Methods 2018, 144, 104–112. hwps://doi.org/10.1016/j.ymeth.2018.04.010.
+(35) Ulrich, E. M.; Sobus, J. R.; Grulke, C. M.; Richard, A. M.; Newton, S. R.; Strynar, M. J.; Mansouri,
+K.; Williams, A. J. EPA’s Non-Targeted Analysis CollaboraKve Trial (ENTACT): Genesis, Design, and
+IniKal Findings. Anal. Bioanal. Chem. 2019, 411 (4), 853–866. hwps://doi.org/10.1007/s00216-0181435-6.
+(36) Chemaxon. hwps://chemaxon.com/ (accessed 2024-06-01).
+(37) Van Berkel, G. J.; Zhou, F.; Aronson, J. T. Changes in Bulk SoluKon pH Caused by the Inherent
+Controlled-Current ElectrolyKc Process of an Electrospray Ion Source. Int. J. Mass Spectrom. Ion
+Process. 1997, 162 (1), 55–67. hwps://doi.org/10.1016/S0168-1176(96)04476-X.
+(38) CHARMM-GUI. hwps://www.charmm-gui.org/ (accessed 2024-01-21).
+32
+
+https://doi.org/10.26434/chemrxiv-2024-hjzcr-v2 ORCID: https://orcid.org/0000-0002-3402-7565 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+716
+717
+718
+719
+720
+721
+722
+723
+724
+725
+726
+727
+728
+729
+730
+731
+732
+733
+734
+735
+736
+737
+738
+739
+740
+741
+742
+743
+744
+745
+746
+747
+748
+749
+750
+751
+752
+753
+754
+755
+756
+
+(39) Periodic boundary condiVons - GROMACS 2024.2 documentaVon.
+hwps://manual.gromacs.org/current/reference-manual/algorithms/periodic-boundarycondiKons.html (accessed 2024-06-01).
+(40) Wolf, M. G.; Groenhof, G. Explicit Proton Transfer in Classical Molecular Dynamics SimulaKons. J.
+Comput. Chem. 2014, 35 (8), 657–671. hwps://doi.org/10.1002/jcc.23536.
+(41) Smith, J. N.; Flagan, R. C.; Beauchamp, J. L. Droplet EvaporaKon and Discharge Dynamics in
+Electrospray IonizaKon. J. Phys. Chem. A 2002, 106 (42), 9957–9967.
+hwps://doi.org/10.1021/jp025723e.
+(42) Calixte, E. I.; Liyanage, O. T.; Gass, D. T.; Gallagher, E. S. FormaKon of Carbohydrate–Metal
+Adducts from Solvent Mixtures during Electrospray: A Molecular Dynamics and ESI-MS Study. J. Am.
+Soc. Mass Spectrom. 2021, 32 (12), 2738–2745. hwps://doi.org/10.1021/jasms.1c00179.
+(43) Vanommeslaeghe, K.; Hatcher, E.; Acharya, C.; Kundu, S.; Zhong, S.; Shim, J.; Darian, E.;
+Guvench, O.; Lopes, P.; Vorobyov, I.; Mackerell Jr., A. D. CHARMM General Force Field: A Force Field
+for Drug-like Molecules CompaKble with the CHARMM All-Atom AddiKve Biological Force Fields. J.
+Comput. Chem. 2010, 31 (4), 671–690. hwps://doi.org/10.1002/jcc.21367.
+(44) Mansouri, K.; Grulke, C. M.; Judson, R. S.; Williams, A. J. OPERA Models for PredicKng
+Physicochemical ProperKes and Environmental Fate Endpoints. J. CheminformaVcs 2018, 10 (1), 10.
+hwps://doi.org/10.1186/s13321-018-0263-1.
+(45) UFZ - LSER Database.
+hwps://www.ufz.de/index.php?en=31698&contentonly=1&m=0&lserd_data[mvc]=Public/start
+(accessed 2024-05-26).
+(46) Kruve, A. Inﬂuence of Mobile Phase, Source Parameters and Source Type on Electrospray
+IonizaKon Eﬃciency in NegaKve Ion Mode. J. Mass Spectrom. 2016, 51 (8), 596–601.
+hwps://doi.org/10.1002/jms.3790.
+(47) Liigand, J.; Kruve, A.; Leito, I.; Girod, M.; Antoine, R. Eﬀect of Mobile Phase on Electrospray
+IonizaKon Eﬃciency. J. Am. Soc. Mass Spectrom. 2014, 25 (11), 1853–1861.
+hwps://doi.org/10.1007/s13361-014-0969-x.
+(48) Cech, N. B.; Enke, C. G. RelaKng Electrospray IonizaKon Response to Nonpolar Character of Small
+PepKdes. Anal. Chem. 2000, 72 (13), 2717–2723. hwps://doi.org/10.1021/ac9914869.
+(49) Hermans, J.; Ongay, S.; Markov, V.; Bischoﬀ, R. Physicochemical Parameters AﬀecKng the
+Electrospray IonizaKon Eﬃciency of Amino Acids aher AcylaKon. Anal. Chem. 2017, 89 (17), 9159–
+9166. hwps://doi.org/10.1021/acs.analchem.7b01899.
+(50) Tolls, J.; van Dijk, J.; Verbruggen, E. J. M.; Hermens, J. L. M.; Loeprecht, B.; Schüürmann, G.
+Aqueous Solubility−Molecular Size RelaKonships: A MechanisKc Case Study Using C10- to C19Alkanes. J. Phys. Chem. A 2002, 106 (11), 2760–2765. hwps://doi.org/10.1021/jp011755a.
+(51) PaDEL-descriptor: An open source soZware to calculate molecular descriptors and ﬁngerprints Yap - 2011 - Journal of ComputaVonal Chemistry - Wiley Online Library.
+hwps://onlinelibrary.wiley.com/doi/full/10.1002/jcc.21707 (accessed 2024-06-01).
+(52) Moriwaki, H.; Tian, Y.-S.; Kawashita, N.; Takagi, T. Mordred: A Molecular Descriptor Calculator. J.
+CheminformaVcs 2018, 10 (1), 4. hwps://doi.org/10.1186/s13321-018-0258-y.
+
+33
+https://doi.org/10.26434/chemrxiv-2024-hjzcr-v2 ORCID: https://orcid.org/0000-0002-3402-7565 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+

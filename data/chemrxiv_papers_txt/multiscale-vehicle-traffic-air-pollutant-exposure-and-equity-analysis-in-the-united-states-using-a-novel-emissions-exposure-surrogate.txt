@@ -1,0 +1,831 @@
+Multiscale Vehicle Traffic Air Pollutant Exposure and Equity Analysis in the United States
+using a Novel Emissions Exposure Surrogate
+Brittany Antonczak
+Department of Civil and Environmental Engineering, Transportation Research Center
+University of Vermont, Burlington, VT, 05405
+Email: Brittany.Antonczak@uvm.edu
+Tammy M. Thompson
+Environmental Defense Fund
+Boulder, CO, 80302
+Email: tthompson@edf.org
+Mindi W. DePaola
+Environmental Defense Fund
+Boulder, CO, 80302
+Email: mdepaola@edf.org
+Gregory Rowangould
+Department of Civil and Environmental Engineering, Transportation Research Center
+University of Vermont, Burlington, VT, 05405
+Email: Gregory.Rowangould@uvm.edu
+
+https://doi.org/10.26434/chemrxiv-2025-lmx3n-v3 ORCID: https://orcid.org/0009-0002-6457-142X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+ABSTRACT
+We estimate the emission density of directly emitted (primary) nitrogen oxides (NOX) and fine
+particulate matter (PM2.5) from on-road vehicle traffic for each census block in the United States
+(U.S.) and use these data as a new spatially refined and computationally efficient exposure
+surrogate. Our analysis using block level emission density estimates reveals in new detail the
+widespread extent of vehicle traffic emission exposure hotspots, the large impact of medium- and
+heavy-duty truck traffic on exposure, and environmental justice concerns that encompass nearly
+every county in the U.S. We find that emissions from trucks contribute to 46% of NOX and
+50.4% of PM2.5 exposure from vehicle traffic in the U.S. We also find statistically significant
+associations between where greater proportions of people of color or people with lower incomes
+and higher traffic emission exposures in over 88% of the counties in the U.S. The magnitude of
+these disparities is often substantial. Our findings are notable in that traffic related emission
+exposure hotspots and related exposure inequalities are not limited to just the large metropolitan
+areas that have been the focus of much of the prior transportation and air quality literature. They
+are in fact much more widespread than previously shown.
+Keywords: Environmental Justice, Equity, Air Quality, Vehicle Emissions, Vehicle Traffic,
+Public Health
+
+https://doi.org/10.26434/chemrxiv-2025-lmx3n-v3 ORCID: https://orcid.org/0009-0002-6457-142X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+INTRODUCTION
+On-road vehicle traffic is a major source of hazardous air pollutant emissions in the United
+States (U.S.), disproportionately affecting communities of color and those with lower incomes.
+Numerous studies have shown that these populations are exposed to higher levels of trafficrelated air pollution (TRAP), particularly within a few hundred meters of major roadways, where
+TRAP emission hotspots have been shown to occur.1,2 Proximity to high-traffic roads is
+associated with increased risks of adverse health outcomes, including respiratory and
+cardiovascular diseases, as evidenced by numerous health effect studies.3–6 A systematic review
+by the Health Effects Institute (2022) underscores strong evidence of TRAP exposure leading to
+increased mortality and health issues such as asthma and lung cancer.7 Racial, ethnic, and
+socioeconomic disparities in TRAP exposure in the U.S. are well-documented8–11 and persist
+despite overall reductions in vehicle emissions12–14, exacerbating health disparities in
+underserved communities.
+Recent research also highlights the significant contributions of medium- and heavy-duty vehicle
+(MDV and HDV) traffic to TRAP exposure and exposure disparities. Despite making up a
+smaller proportion of vehicle traffic, MDV and HDV traffic disproportionately contributes to
+TRAP exposure because their fine particulate matter (PM2.5) and nitrogen oxides (NOX) emission
+rates are much higher than those from light-duty vehicles (LDVs).15–19 In addition, HDV traffic
+tends to be concentrated in urban and freight corridors, which further deepens exposure
+disparities in disadvantaged communities.9,20,21
+In epidemiological studies and exposure equity and environmental justice (EJ) screening tools
+such as EJScreen22, proximity to high-traffic roads and traffic density are commonly used as
+surrogates to estimate TRAP exposure8,11,23, given the challenges of directly measuring these
+emissions. While these surrogates offer practical advantages for large-scale assessments, they
+fail to capture critical factors that influence vehicle emission rates. Air quality models—
+including chemical transport models (CTMs) and dispersion models—can provide more accurate
+estimates of pollutant concentrations by incorporating meteorological conditions and the
+photochemical processes that drive the formation of secondary pollutants. However, these
+models are computationally intensive and often produce estimates at spatial resolutions that are
+too coarse to identify near-roadway exposure hotspots, limiting their utility in large-scale studies
+of near-roadway exposure to TRAP and associated exposure disparities.24–28
+The existing literature consistently shows racial, ethnic, and income-based disparities in TRAP
+exposure. Studies report that Black, Hispanic, and Asian populations experience both higher
+levels of traffic-related pollution29–31 and worse health outcomes7,32 when compared to White
+populations. A recent review by Mustansar et al. (2025), which examines 55 studies on air
+pollution exposure by ethnic groups in high-income countries, finds that minority ethnic groups
+in the U.S. are more exposed to air pollutants, including PM2.5 and NO2.30 Despite clear evidence
+of exposure disparities and the important role of truck traffic, few national-scale studies quantify
+the contributions of different types of vehicle traffic to exposure and equity.9,10 Furthermore,
+many studies rely on spatially coarse resolution data, such as county-level aggregates from the
+U.S. Environmental Protection Agency (EPA) National Emissions Inventory (NEI). While useful
+
+https://doi.org/10.26434/chemrxiv-2025-lmx3n-v3 ORCID: https://orcid.org/0009-0002-6457-142X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+for identifying broad trends, this resolution is too coarse to evaluate exposure to TRAP hotspots
+that drive public health and EJ concerns, especially near roads with high traffic volume.
+Moreover, few studies evaluate and statistically assess exposure disparities across racial, ethnic,
+and socioeconomic groups at subnational scales in national scale studies.
+This study aims to: (1) develop a refined primary (directly emitted) vehicle emission exposure
+surrogate to improve national-scale vehicle emissions exposure assessments; (2) evaluate nearroadway TRAP exposure equity, with a focus on historically underserved populations; and (3)
+quantify the contributions of different vehicle types to TRAP exposure and exposure disparities.
+To achieve this, we introduce a novel "vehicle emission density" approach, which provides a
+continuous, fine-scale metric with nationwide coverage. This method overcomes key limitations
+of existing approaches, offering a more comprehensive analysis of near-roadway emissions
+exposure while reducing computational complexity and burden. By leveraging a unique national
+traffic dataset that provides average traffic volumes for most roads in the U.S. and the EPA’s
+Motor Vehicle Emission Simulator (MOVES), we estimate emission density values for every
+census block in the U.S., enabling a more precise evaluation of exposure to emissions from
+LDVs, MDVs, and HDVs. This approach improves upon previous methods, which often rely on
+coarser proximity-based or traffic density measures, by offering greater spatial resolution in
+exposure assessments. Our focus on primary emissions—NOX and PM2.5—is crucial, as these
+pollutants create localized hotspots near roadways, posing significant health risks, especially in
+communities with higher concentrations of lower-income populations and people of color. NOX
+and PM2.5 are linked to a range of adverse health effects and are major contributors to pollution
+in urban and freight corridors.
+This research refines near-roadway emission exposure surrogates, balancing between spatial
+precision and computational efficiency. The vehicle emission density method captures variations
+in emission rates driven by factors such as climate, vehicle maintenance, and traffic patterns. It
+also differentiates emissions from LDV, MDV, and HDV traffic on individual roadway
+segments. By calculating emission densities at the census block level, this approach enables a
+more nuanced understanding of exposure and highlights disparities across national, state, and
+local levels, offering key insights to assess equity in TRAP exposure and inform policies to
+reduce these disparities.
+METHODS
+To assess exposure to near-roadway hotspots and evaluate exposure equity, we first estimate the
+emission density for primary NOX and PM2.5 emissions at the census block level, stratified by
+vehicle type (LDV, MDV, and HDV). This approach builds upon and refines the traffic density
+methodologies used in our previous studies.8,11,33 Emission factors are derived from the U.S.
+EPA’s MOVES, and vehicle activity data are obtained from the Federal Highway
+Administration’s (FHWA) Highway Performance Monitoring System (HPMS).
+The emission density metric sums the emissions from vehicle traffic on roadway links that fall
+within each U.S. census block, including a 250-meter buffer surrounding the block. Emissions
+are then normalized by the block area to obtain a density value in grams per square kilometer
+
+https://doi.org/10.26434/chemrxiv-2025-lmx3n-v3 ORCID: https://orcid.org/0009-0002-6457-142X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+(g/km²). We compute separate emission densities for LDV, MDV, and HDV traffic to capture the
+distinct contributions of each vehicle class to local air quality.
+We define emission exposure as the population-weighted mean emission density within a defined
+geographic area. To evaluate exposure equity, we compare average emission exposure levels
+across demographic groups, group blocks into deciles based on emission density, and apply
+ordinary least squares (OLS) regression models to assess the relationship between emission
+density and census block demographics at the county level. These methods enable us to evaluate
+disparities in TRAP exposure across the U.S. by integrating high-resolution spatial data with
+demographic information, providing a robust assessment of both exposure levels and equity.
+HPMS Data
+We use vehicle activity data from the 2018 HPMS managed by the U.S. FHWA.34 This publicly
+accessible and comprehensive dataset is based on annual traffic counts collected by states across
+highways, arterials, and collector roadways. While the HPMS provides valuable insights into
+national transportation patterns, it lacks comprehensive coverage for MDVs and HDVs,
+particularly on lower-volume road not included in the U.S. highway system. Approximately 28%
+of HPMS road links, representing 47% of total lane-kilometers, do not have MDV and HDV
+annual average daily traffic (AADT) data, with availability varying across states due to
+differences in traffic counting technologies and reporting practices. To address these gaps, we
+developed a random forest regression model to estimate MDV and HDV traffic volumes on
+roadways where these data were missing. Details of the model development, fitting procedure,
+and validation of the estimated MDV and HDV traffic data are provided in our prior work.33
+Emission Modeling and Exposure Analysis
+We use version 3 of the MOVES35, developed by the U.S. EPA, to construct county-specific
+emission factor look-up tables. Given the substantial computational requirements for modeling
+annual average daily emissions at the road link level across the U.S. using MOVES, we develop
+a streamlined approach. This approach involves selectively running MOVES for representative
+counties that represent unique combinations of model parameters for January and July, following
+a method similar to that used in the 2017 NEI by the EPA.36 January and July are selected to
+represent winter and summer conditions , and the resulting emission factors are averaged to
+reflect annual conditions.
+We develop MOVES modeling scenarios for representative counties by integrating multiple
+datasets. First, we extract county-level average temperature and humidity values for January and
+July from the MOVES default database. These values are derived from the National Climatic
+Data Center's average temperature records spanning 2001 to 2011, ensuring comprehensive
+coverage across U.S. counties. We also gather data on county-specific MOVES fuel regions and
+vehicle inspection and maintenance (I/M) programs, which vary considerably between urban and
+rural areas—particularly in regions designated as air quality nonattainment areas. Across the
+U.S., we identify 117 unique combinations of fuel types and I/M programs. Subsequently, we
+merge these datasets to identify distinct Climate-Fuel-I/M combinations. We round temperature
+
+https://doi.org/10.26434/chemrxiv-2025-lmx3n-v3 ORCID: https://orcid.org/0009-0002-6457-142X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+and humidity values to the nearest 10°F and 10%, respectively, to reduce the number of unique
+combinations while retaining key meteorological variation.
+In total, we identify 444 unique Climate-Fuel-I/M combinations. For combinations that include
+only one or two counties, we model each county individually. For all other combinations, we
+model two representative counties—one urban and one rural—to account for minor differences
+in model parameters that vary with the level of urbanization. To select representative counties,
+we use 2020 U.S. Census population data37 and identify the most populous county and the
+county closest to the 25th percentile in population size within each Climate–Fuel–I/M group.
+This selection process results in 479 counties modeled in total, representing approximately 15%
+of all U.S. counties. The modeling process takes about 50 hours to complete on a desktop
+workstation.
+We run MOVES in inventory mode for the year 2018 using default data inputs for all 479
+counties modeled. We model primary NOX and PM2.5 emissions from running exhaust and PM2.5
+emissions from brake and tire wear. We derive distance-based emission factors (g/m) by dividing
+the total county-level emissions by the corresponding vehicle distance traveled for each
+combination of emission source type (i.e., vehicle type) and road type (i.e., urban or rural,
+restricted or unrestricted). This yields a database of average daily NOX and PM2.5 emission
+factors by MOVES Climate–Fuel–I/M group, road type, and vehicle class.
+Emission factors from our database are matched to each roadway segment in the HPMS dataset
+and used to estimate annual average daily emissions from each segment. We first classify all
+U.S. counties as urban or rural using the 2013 USDA County-level Rural-Urban Continuum
+Codes (RUCC).38 Counties with a RUCC of 8 or 9 are classified as rural; all others are classified
+as urban. Next, we align MOVES source types with HPMS vehicle traffic categories. MOVES
+includes 13 source types (See Table 4-1 in MOVES3 Technical Guidance39), while HPMS
+classifies traffic into three broader categories. We aggregate MOVES emission factors
+accordingly (see Table S.1 for the full mapping of source types to vehicle traffic categories). We
+then assign a single MOVES road type to each HPMS roadway segment based on its urban/rural
+classification and HPMS functional classification code (see Table S.2 for the mapping between
+MOVES road types and HPMS functional classifications). Emission factors are mapped to each
+roadway segment based on its Climate-Fuel-I/M group and road type. Finally, we calculate the
+annual average daily emission rate (g/m/day) for each roadway segment by multiplying the
+corresponding emission factor by the vehicle kilometers traveled (VKT) on that segment and
+dividing by the segment’s length, separately for each vehicle type and pollutant.
+Next, we estimate emission densities (in g/km²) for each pollutant and vehicle type for each U.S.
+census block. This process begins by creating a 250-meter spatial buffer around each census
+block using GIS software. The buffer is intended to capture emissions from traffic on nearby
+roadways that contribute to emissions exposure, even if the roadways do not directly intersect the
+census block. Emissions from roadway segments within the buffered area (including portions of
+segments that cross the buffer boundary) are summed and then divided by the area of the census
+
+https://doi.org/10.26434/chemrxiv-2025-lmx3n-v3 ORCID: https://orcid.org/0009-0002-6457-142X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+block. These block-level emission densities are then used as surrogates for evaluating emissions
+exposure.
+Equity Analysis
+We use 2020 Census block-level population data on race and ethnicity37, along with 2016-2020
+American Community Survey (ACS) 5-Year data on median household income at the block
+group level and poverty status at the census tract level.40 In our analysis, individuals identifying
+as "White" are those who reported their race as White alone in the 2020 Census, while "nonWhite" encompasses all other racial identities. The "other race" category includes individuals
+who self-identify as American Indian and Alaska Native alone, Native Hawaiian and Other
+Pacific Islander alone, or another race not categorized as Black or Asian alone. The Hispanic or
+Latino category includes individuals of Hispanic or Latino origin, regardless of race. Median
+household income for each census block is assigned from its corresponding block group, while
+poverty status (i.e., population living below the federal poverty level) is assigned from its
+corresponding census tract.
+To assess emission exposure equity, we classify each census block into deciles based on its
+emission density for each pollutant. These deciles range from blocks with the lowest emission
+density (decile 1) to the highest (decile 10), with each decile containing an equal number of
+census blocks. For each decile, we calculate the proportion of the population by race, ethnicity,
+and poverty level, as well as the population-weighted average median household income. This
+comparative analysis allows us to examine disparities in vehicle emission exposure across
+demographic groups.
+We also estimate ordinary least squares (OLS) regression models to evaluate the direction,
+strength, and statistical significance of the relationship between emission density (exposure) and
+two demographic indicators: the percentage of the population that is non-White and the median
+household income. Separate models are fit for each U.S. county (excluding a few counties with
+few populated areas) for each vehicle type and pollutant, resulting in a total of 49,824 individual
+models.
+RESULTS AND DISCUSSION
+The geographic distribution of NOX and PM2.5 emission densities across the U.S. in 2018 reveals
+substantial variations by emission source. As shown in Figure 1, distinct patterns emerge in
+census block-level NOX and PM2.5 emissions originating from LDV, MDV, and HDV traffic
+across the U.S. Emissions density from LDV traffic is most concentrated in urban areas, where
+greater population density results in higher LDV traffic volume. Emission density from HDV
+traffic, on the other hand, is more dispersed, with high emission densities observed in both urban
+areas and along highway corridors connecting urban centers, extending into rural regions. The
+geographic distribution of emission density from MDV traffic falls between the patterns seen for
+LDV and HDV traffic, with higher emission density values generally concentrated in urban areas
+and along select highway corridors.
+
+https://doi.org/10.26434/chemrxiv-2025-lmx3n-v3 ORCID: https://orcid.org/0009-0002-6457-142X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure 1. Census block-level emission density across the U.S. categorized by type of vehicle
+traffic. Panels (A-C) display NOX emissions density (g/km2) from light-duty vehicles (LDV),
+medium-duty vehicles (MDV), and heavy-duty vehicles (HDV), respectively. Panels (D-F)
+show PM2.5 emissions density (g/km2) from LDV, MDV, and HDV traffic, respectively.
+
+Next, we evaluate population exposure to NOX and PM2.5 from vehicle traffic. Population
+exposure is defined as the population-weighted mean emission density and is estimated for each
+county and for the U.S. using the 2018 block-level emission densities shown in Figure 1, along
+with block-level population data from the 2020 Census.
+Exposure estimates at the national level reveal that MDV and HDV traffic have a
+disproportionately large impact on primary NOX and PM2.5 exposure relative to their traffic
+volume. For example, while MDVs and HDVs account for only 4.3% and 6.5% of average daily
+VKT in the U.S., respectively, they contribute 19.6% and 26.8% of average NOX exposure, and
+24.7% and 25.7% of average PM2.5 exposure (Table 1). Together, emissions from MDV and
+HDV traffic contribute to approximately half of primary NOX and PM2.5 vehicle emissions
+exposure in the U.S.
+
+https://doi.org/10.26434/chemrxiv-2025-lmx3n-v3 ORCID: https://orcid.org/0009-0002-6457-142X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Table 1. Average daily exposure to NOX and PM2.5 emissions from vehicle traffic and
+average daily vehicle-kilometers traveled by vehicle traffic type in the U.S.
+LDV
+
+MDV
+
+HDV
+
+Average NOX Exposure
+
+102,602 (53.6%)
+
+37,488 (19.6%)
+
+51,407 (26.8%)
+
+Average PM2.5 Exposure
+Exhaust Emissions
+
+3,020 (49.5%)
+1,585 (36.8%)
+
+1,507 (24.7%)
+1,306 (30.3%)
+
+1,570 (25.7%)
+1,414 (32.8%)
+
+Brake Wear Emissions
+Tire Wear Emissions
+
+1,038 (78.4%)
+396 (84.8%)
+
+167 (12.6%)
+33 (7.2%)
+
+118 (8.9%)
+37 (8.0%)
+
+VKT (millions)
+
+11,054 (89.1%)
+
+533 (4.3%)
+
+801 (6.5%)
+
+Note. NOX = nitrogen oxides; PM2.5 = fine particulate matter with aerodynamic diameter ≤ 2.5
+micrometers; VKT = vehicle-kilometers traveled; LDV = light-duty vehicle; MDV = mediumduty vehicle; HDV = heavy-duty vehicle. Average exposure values represent the populationweighted mean emission density for each pollutant expressed in grams per square kilometer per
+day (g/km²/day). Percentages represent the share of average exposure and VKT attributed to
+each vehicle traffic type.
+
+While LDV and truck traffic (MDVs and HDVs) on average contribute about equally to PM2.5
+exposure in the U.S., the dominant emission processes differ significantly. LDVs have relatively
+low PM2.5 exhaust emission rates, which results in brake and tire wear accounting for a relatively
+large share (48%) of PM2.5 emissions exposure attributable to LDV traffic (Table 2). Overall,
+LDV traffic is responsible for 78.4% of exposure to PM2.5 from brake wear and 84.8% from tire
+wear in the U.S. (Table 1). In contrast, exhaust emissions account for 86.7% of PM2.5 exposure
+attributable to MDV traffic and 90.1% of HDV traffic (Table 2). Despite truck traffic accounting
+for just 10.1% of VKT in the U.S. it is responsible for 63.1% of primary PM2.5 exposure from
+vehicle exhaust (Table 1).
+
+Table 2. Relative contributions of exhaust, brake wear and tire wear emissions to PM2.5
+exposure by vehicle traffic type in the U.S.
+Emission Process
+
+LDV
+
+MDV
+
+HDV
+
+Exhaust
+Brake Wear
+
+52.5%
+34.4%
+
+86.7%
+11.1%
+
+90.1%
+7.5%
+
+Tire Wear
+
+13.1%
+
+2.2%
+
+2.4%
+
+Note. LDV = light-duty vehicle; MDV = medium-duty vehicle; HDV = heavy-duty vehicle.
+
+At the county level, the dominant source of vehicle emissions exposure varies considerably.
+While LDV traffic generally contributes more significantly to emissions exposure compared to
+
+https://doi.org/10.26434/chemrxiv-2025-lmx3n-v3 ORCID: https://orcid.org/0009-0002-6457-142X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+MDV or HDV traffic, there are large regions of the country where HDV traffic is the dominant
+source of exposure (Figure 2). Notably, counties in states across the central U.S., from North
+Dakota to Texas, as well as Nevada and Utah, exhibit considerably larger proportions of
+emissions exposure from HDV traffic. This occurs primarily in areas where highways carry high
+volumes of truck traffic through rural counties with small populations and relatively low LDV
+traffic volumes. In contrast, more urbanized regions with higher population densities also have
+highways with high HDV traffic volumes. However, the higher LDV and MDV traffic volumes
+on these roads reduce the significance of HDV traffic in explaining overall exposure levels at the
+county level. It is important to note that for individual communities (e.g., those located adjacent
+to truck corridors) within urban counties, MDV and HDV vehicle traffic can still dominate
+emissions exposure, even if LDV traffic is shown to be the largest source of exposure at the
+county level in Figure 2. For example, the maps in Figure S.1 show the census blocks in the Los
+Angeles, California and New York-New Jersey regions where truck traffic (combined MDV and
+HDV traffic) accounts for more than 50% of NOX and PM2.5 emission density.
+
+Figure 2. Percentage contribution of light-duty vehicles (LDVs), medium-duty vehicles
+(MDVs), and heavy-duty vehicles (HDVs) to primary (A–C) NOX and (D–F) PM2.5
+emissions exposure in each U.S. county. County-level emissions exposure represents the
+population-weighted mean of block-level emission density.
+
+https://doi.org/10.26434/chemrxiv-2025-lmx3n-v3 ORCID: https://orcid.org/0009-0002-6457-142X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+We now evaluate exposure equity across different population groups defined by race, ethnicity,
+and income. On average, people of color and those living in poverty face disproportionately high
+levels of exposure to primary NOX (Figure 3) and PM2.5 (Figure S.2) emissions from vehicle
+traffic in the U.S. in 2020. On average, people of color in the U.S. are exposed to approximately
+twice the amount of NOX and PM2.5 emissions from vehicle traffic compared to the White
+population. This trend holds across all non-White population groups examined. Among racial
+groups, the Asian population experiences the highest average exposure from LDV and MDV
+traffic, while the Black population faces the greatest exposure from HDV traffic.
+Individuals living in poverty are also exposed to significantly higher levels of vehicle emissions.
+On average, they experience roughly twice the exposure to primary NOX and PM2.5 emissions
+from LDV and MDV traffic compared to the population that is above the poverty level in the
+U.S. in 2020 (Figure 3 and Figure S.2). This disparity is even more pronounced for HDV
+traffic, with individuals living in poverty experiencing roughly three times the primary NOX and
+PM2.5 emissions compared to the population above the poverty level. On average, a person living
+in poverty is exposed to 200% (three times) more primary NOX and PM2.5 emissions from HDV
+traffic, and about 80% to 100% (approximately twice as much) more from MDV and LDV
+traffic, than the average person in the U.S.
+
+Figure 3. Comparison of average daily vehicle NOX emission exposure in the U.S. (A) Bar
+plots showing exposure (g/km2) by vehicle traffic type, categorized by the overall
+population, race, ethnicity, and poverty status. (B) Bar plots showing the ratio of exposure
+from each vehicle type relative to the national average, categorized by race, ethnicity, and
+poverty status. National exposure values reflect the population-weighted mean of census
+block level emission density estimates. Vehicle traffic types include light-duty vehicle
+(LDV), medium-duty vehicle (MDV), and heavy-duty vehicle (HDV) traffic. For detailed
+exposure values, refer to Table S.3.
+
+https://doi.org/10.26434/chemrxiv-2025-lmx3n-v3 ORCID: https://orcid.org/0009-0002-6457-142X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Next, we delve deeper into exposure equity by examining how the demographic characteristics
+of populations vary across areas with different levels of primary NOX and PM2.5 emission
+densities from LDV, MDV, and HDV traffic. We sort U.S. census blocks into ten equally sized
+bins (i.e., deciles) based on their emission densities for each vehicle type. The first decile
+contains census blocks with the lowest emission density values, while the tenth decile contains
+those with the highest (Figure 4 and Figure S.3). Emission densities vary widely across deciles,
+with the median census block NOX and PM2.5 emission densities within each decile spanning
+several orders of magnitude, as shown in Table S.4.
+The results shown in Figure 4 and Figure S.4 reveal substantial disparities across exposure
+deciles. For instance, in the lowest NOX emission density decile, non-White individuals
+constitute only 17% of the population, whereas in the highest decile they make up 56% of the
+population—a 39 percentage point increase (Figure 4.B). Similar trends are evident when we
+disaggregate the non-While population into specific race and ethnicity groups (Figure 4.C-F).
+For example, in the highest NOX emission density decile, the proportion of Black individuals is
+3.3 times, Asian individuals 6.1 times, and Hispanic or Latino individuals 4.0 times greater than
+in the lowest decile.
+Disparities are also notable with respect to income and poverty (Figure 4.G-H). The poverty rate
+increases from 12.2% in the lowest NOX decile to 17.1% in the highest—a 4.9 percentage point
+(40.5%) increase. While the relationship between median household income and emission
+density deciles is non-linear (households in very low emission density areas often have lower
+incomes, attributable to lower earning in very rural areas but not necessarily greater poverty) the
+results clearly indicate a strong association between lower median income and higher emissions
+exposure.
+
+https://doi.org/10.26434/chemrxiv-2025-lmx3n-v3 ORCID: https://orcid.org/0009-0002-6457-142X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure 4. The relationship between race, ethnicity, poverty status, income, and NOX
+emission density by type of vehicle traffic in the U.S. Panels (A) through (G) illustrate the
+percentage of the population residing within each emission density decile, categorized as
+White alone, non-White alone, Black alone, Asian alone, some other non-White race alone
+(not Black or Asian), Hispanic or Latino, and living below the federal poverty level. Panel
+(H) displays the population-weighted average median household income (in $1,000s) of the
+population residing within each emission density decile. Vehicle traffic types include lightduty vehicle (LDV), medium-duty vehicle (MDV), and heavy-duty vehicle (HDV) traffic.
+For median census block emission densities (VKT/km2) by decile and type of vehicle traffic,
+refer to Table S.4.
+
+These disparities are also observed—and of similar magnitude—when evaluated by vehicle
+traffic type (LDV, MDV, and HDV), as shown in Figure 4. It is important to note that the census
+blocks within each exposure decile vary by vehicle traffic type. For example, a particular census
+block may fall into decile 3 based on emission density from LDV traffic but into decile 6 based
+on HDV traffic emissions. Trends very similar to those described for NOX are also observed for
+PM2.5 and are shown in Figure S.3.
+
+https://doi.org/10.26434/chemrxiv-2025-lmx3n-v3 ORCID: https://orcid.org/0009-0002-6457-142X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure 5. Linear regression model slope coefficients for NOX emission density as a function
+of U.S. census block level (A-C) non-White population share and (D-F) median household
+income by vehicle traffic type for each U.S. county. Vehicle traffic types include light-duty
+vehicle (LDV), medium-duty vehicle (MDV), and heavy-duty vehicle (HDV) traffic.
+Hatched areas indicate counties where slope estimates are statistically insignificant at the
+95% confidence level (p > 0.05).
+Next, we examine how exposure disparities by race and income vary across the U.S. Figure 5
+displays the coefficient estimates (i.e., slope) from county-level linear regression models where
+block-level emission density is modeled as a function of either the percentage of the block
+population this is non-White or the block’s median household income. The coefficient estimates
+indicate the change in emission density (g/km2) associated with a 1% increase in the non-White
+population share or a $1 increase in median household income. For example, counties shaded red
+in Figure 5.A-C indicate a statistically significant positive association between a higher
+proportion of non-White residents and higher NOX emission densities. In contrast, counties
+shaded blue in Figure 5.D-F indicate a statistically significant negative association between
+higher median household incomes and NOX emission densities. Counties with statistically
+insignificant coefficient estimates (p > 0.05, based on a 95% confidence interval) are shown with
+hatching in Figure 5. For the corresponding analysis of PM2.5 emissions, refer to Figure S.4.
+We find that 78.9% of counties exhibit a statistically significant relationship between total NOX
+emission density and the percentage of the population that is non-White based on all vehicle
+traffic (LDV 79.9%, MDV 79.1%, and HDV 74.3%). Similarly, 77.6% of counties demonstrate a
+statistically significant relationship between total NOX emission density and median household
+income (LDV 79.5%, MDV 79.4%, and HDV 71.9%). Similar patterns are observed for PM2.5
+emission density, non-white population, and median household income. See Figure S.5 in the
+Supplemental Information for a detailed presentation of the box plots illustrating the distribution
+of linear regression model coefficient estimates and coefficients of determination (R²) for NOₓ
+and PM₂.₅ across U.S. counties.
+
+https://doi.org/10.26434/chemrxiv-2025-lmx3n-v3 ORCID: https://orcid.org/0009-0002-6457-142X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+The maps in Figure 5 and Figure S.4 reveal significant and widespread disparities in exposure
+to NOX and PM2.5 emissions from vehicle traffic across the U.S. in 2020. Across all regions,
+there is a positive and statistically significant association between the share of non-White people
+and NOX and PM2.5 emission density (red shading), with very few instances of a negative
+association (blue shading) (Figure 5.A-C and Figure S.4.A-C). Similarly, there is a negative and
+statistically significant association between median household income and NOX and PM2.5
+emission density (blue shading) throughout the U.S., with few counties showing a positive
+association (red shading) (Figure 5.D-F and Figure S.4.D-F). Counties with no statistically
+significant association (p > 0.05) are generally rural areas with very small populations (shown
+with hatching).
+The disparities displayed in Figure 5 are striking, as they are observed in the majority of U.S.
+counties, including those that do not contain large cities or are predominantly rural. LDV and
+HDV traffic are the primary drivers of the most pronounced inequities (indicated by the darker
+shading on the maps), though MDV traffic also contributes significantly in some areas. One of
+the most notable differences across the various maps in Figure 5 lies between those illustrating
+racial and income-based disparities. Emission exposure disparities affecting non-White
+populations are generally largest in the most urbanized areas of the U.S. (e.g., the Northeast and
+West Coast regions), whereas disparities related to lower income populations are more
+commonly observed outside of the largest urban centers.
+
+https://doi.org/10.26434/chemrxiv-2025-lmx3n-v3 ORCID: https://orcid.org/0009-0002-6457-142X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Table 3. Percentages of U.S. counties with race and/or income disparity based on emission
+density analysis.
+Pollutant
+
+NOX
+
+PM2.5
+
+Vehicle Traffic
+Type
+
+Race Disparity
+(%)
+
+Income
+Disparity (%)
+
+Race or Income
+Disparity (%)
+
+Race and
+Income
+Disparity (%)
+
+All
+
+78
+
+70
+
+88
+
+60
+
+LDV
+
+79
+
+72
+
+89
+
+62
+
+MDV
+
+79
+
+72
+
+89
+
+61
+
+HDV
+
+74
+
+64
+
+85
+
+53
+
+All
+
+78
+
+71
+
+89
+
+61
+
+LDV
+
+79
+
+73
+
+89
+
+63
+
+MDV
+
+79
+
+72
+
+89
+
+61
+
+HDV
+
+74
+
+65
+
+85
+
+54
+
+Note. NOX = nitrogen oxides; PM2.5 = fine particulate matter with an aerodynamic diameter less
+than or equal to 2.5 micrometers; All = all vehicle traffic; LDV = light-duty vehicle; MDV =
+medium-duty vehicle; HDV = heavy-duty vehicle. Race disparity is defined as counties with a
+statistically significant (p < 0.05) and positive correlation between census block emission density
+and the non-White population share. Income disparity is defined as counties with a statistically
+significant (p < 0.05) and negative correlation between census block traffic density and the
+median household income. Percentages are calculated out of the total number of counties,
+parishes, and county equivalents across all 50 U.S. states and Washington, D.C. (n = 3,143).
+
+Table 3 quantifies the prevalence of disparities in exposure to NOX and PM2.5 emissions from
+vehicle traffic by race and income in U.S. counties in 2020. A race disparity is defined as a
+statistically significant (p < 0.05), positive correlation between census block emission density
+and the non-White population share. An income disparity is defined as a statistically significant,
+negative correlation between emission density and median household income.
+Overall, we find that statistically significant disparities in exposure to NOX and PM2.5 emissions
+from vehicle traffic are present across racial and income groups in a large majority of U.S.
+counties. Specifically, race-based disparities in exposure to both pollutants are observed in 78%
+of counties (see Table 3). Income-based disparities are observed in 70% of counties for NOX and
+71% for PM2.5 (Table 3). Disparities based on either race or income are evident in nearly all
+counties—88% and 89%, respectively. Similar patterns hold when disaggregating emissions by
+vehicle type (LDV, MDV, and HDV).
+In this study, we introduce a refined surrogate for assessing exposure to primary (direct) vehicle
+traffic emissions near roadways. The emission density surrogate enables a more spatially detailed
+
+https://doi.org/10.26434/chemrxiv-2025-lmx3n-v3 ORCID: https://orcid.org/0009-0002-6457-142X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+and source-specific evaluation of near-roadway emissions exposures, revealing in new detail the
+widespread extent of exposure hotspots, the large impact of medium- and heavy-duty truck
+traffic, and environmental justice concerns that affect nearly every county in the U.S. This
+approach also allows for rapid analysis of flexible user-defined areas, such as individual
+neighborhoods. Our findings are notable in that exposure hotspots and associated inequalities are
+not limited to large metropolitan areas, which have historically been the focus of transportation
+and air quality research. High levels of exposure and significant environmental justice concerns
+are present in all types of communities. Additionally, the significant role of truck traffic is an
+important finding, as mitigating these emissions (e.g., through fleet electrification) is expected to
+be more challenging for trucks than for light-duty passenger vehicles.
+It is important to note that this analysis is limited to roadways with functional classifications 1
+through 6. Residential streets in urban areas and low volume roadways in rural areas (functional
+classification 7 in the HPMS dataset) are excluded due to the lack of available HPMS traffic data
+for these roadways. This omission may lead to underestimation of exposure in specific contexts.
+For example, intermodal freight facilities, warehouses and port facilities that are embedded
+within residential neighborhoods may generate high volumes of truck traffic on local streets used
+to access them. For example, the Chicago Truck Counts initiative41, found high volumes of truck
+activity on local streets near freight facilities in the Chicago, Illinois region. As such, our
+findings on exposure disparities are likely conservative in these areas, and actual exposure
+burdens—particularly those relevant to environmental justice—may be even more pronounced.
+The surrogate approach developed in this study can also inform future research and policy
+decisions. While we have conducted a cross-sectional evaluation of current conditions, emission
+density can be used to track exposure changes over time and adapted for planning and
+forecasting applications. For example, it is relatively straightforward and computationally
+minimal to recalculate block-level emission density values to represent future scenarios where
+vehicle emission rates or traffic volumes are different from current levels. Our block-level
+emission density estimates can also serve as more spatially refined inputs for chemical transport
+and photochemical air quality modeling.
+REFERENCES
+(1)
+Karner, A. A.; Eisinger, D. S.; Niemeier, D. A. Near-Roadway Air Quality: Synthesizing
+the Findings from Real-World Data. Environmental Science & Technology 2010, 44 (14), 5334–
+5344. https://doi.org/10.1021/es100008x.
+(2)
+Zhou, Y.; Levy, J. Factors Influencing the Spatial Extent of Mobile Source Air Pollution
+Impacts: A Meta-Analysis. BMC Public Health 2007, 7 (89). https://doi.org/10.1186/1471-24587-89.
+(3)
+Brugge, D.; Durant, J. L.; Rioux, C. Near-Highway Pollutants in Motor Vehicle Exhaust:
+A Review of Epidemiologic Evidence of Cardiac and Pulmonary Health Risks. Environ Health
+2007, 6 (23). https://doi.org/10.1186/1476-069X-6-23.
+
+https://doi.org/10.26434/chemrxiv-2025-lmx3n-v3 ORCID: https://orcid.org/0009-0002-6457-142X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+(4)
+Gan, W. Q.; Tamburic, L.; Davies, H. W.; Demers, P. A.; Koehoorn, M.; Brauer, M.
+Changes in Residential Proximity to Road Traffic and the Risk of Death From Coronary Heart
+Disease. Epidemiology 2010, 21 (5), 642–649. https://doi.org/10.1097/EDE.0b013e3181e89f19.
+(5)
+Hoffmann, B.; Moebus, S.; Möhlenkamp, S.; Stang, A.; Lehmann, N.; Dragano, N.;
+Schmermund, A.; Memmesheimer, M.; Mann, K.; Erbel, R.; Jöckel, K.-H. Residential Exposure
+to Traffic Is Associated With Coronary Atherosclerosis. Circulation 2007, 116 (5), 489–496.
+https://doi.org/10.1161/CIRCULATIONAHA.107.693622.
+(6)
+McConnell, R.; Berhane, K.; Yao, L.; Jerrett, M.; Lurmann, F.; Gilliland, F.; Künzli, N.;
+Gauderman, J.; Avol, E.; Thomas, D.; Peters, J. Traffic, Susceptibility, and Childhood Asthma.
+Environ Health Perspect 2006, 114 (5), 766–772. https://doi.org/10.1289/ehp.8594.
+(7)
+HEI. Systematic Review and Meta- Analysis of Selected Health Effects of Long-Term
+Exposure to Traffic-Related Air Pollution. Special Report 23; HEI Panel on the Health Effects of
+Long-Term Exposure to Traffic-Related Air Pollution: Boston, MA, 2022.
+https://www.healtheffects.org/system/files/hei-special-report-23_2.pdf.
+(8)
+Rowangould, G. A Census of the US Near-Roadway Population: Public Health and
+Environmental Justice Considerations. Transportation Research Part D: Transport and
+Environment 2013, 25, 59–67. https://doi.org/10.1016/j.trd.2013.08.003.
+(9)
+Tessum, C. W.; Paolella, D. A.; Chambliss, S. E.; Apte, J. S.; Hill, J. D.; Marshall, J. D.
+PM2.5 Polluters Disproportionately and Systemically Affect People of Color in the United
+States. Science Advances 2021, 7 (18), eabf4491. https://doi.org/10.1126/sciadv.abf4491.
+(10) Wang, Y.; Apte, J. S.; Hill, J. D.; Ivey, C. E.; Patterson, R. F.; Robinson, A. L.; Tessum,
+C. W.; Marshall, J. D. Location-Specific Strategies for Eliminating US National Racial-Ethnic
+PM2.5 Exposure Inequality. Proc Natl Acad Sci U S A 2022, 119 (44), e2205548119.
+https://doi.org/10.1073/pnas.2205548119.
+(11) Antonczak, B.; Thompson, T. M.; DePaola, M. W.; Rowangould, G. 2020 Near-Roadway
+Population Census, Traffic Exposure and Equity in the United States. Transportation Research
+Part D: Transport and Environment 2023, 125, 103965.
+https://doi.org/10.1016/j.trd.2023.103965.
+(12) Clark, L. P.; Millet, D. B.; Marshall, J. D. Changes in Transportation-Related Air
+Pollution Exposures by Race-Ethnicity and Socioeconomic Status: Outdoor Nitrogen Dioxide in
+the United States in 2000 and 2010. Environmental Health Perspectives 2017, 125 (9), 097012.
+https://doi.org/10.1289/EHP959.
+(13) Colmer, J.; Hardman, I.; Shimshack, J.; Voorheis, J. Disparities in PM2.5 Air Pollution in
+the United States. Science 2020, 369 (6503), 575–578. https://doi.org/10.1126/science.aaz9353.
+(14) Liu, J.; Clark, L. P.; Bechle, M. J.; Hajat, A.; Kim, S.-Y.; Robinson, A. L.; Sheppard, L.;
+Szpiro, A. A.; Marshall, J. D. Disparities in Air Pollution Exposure in the United States by
+
+https://doi.org/10.26434/chemrxiv-2025-lmx3n-v3 ORCID: https://orcid.org/0009-0002-6457-142X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Race/Ethnicity and Income, 1990–2010. Environmental Health Perspectives 2021, 129 (12),
+127005. https://doi.org/10.1289/EHP8584.
+(15) Anenberg, S. C.; Miller, J.; Minjares, R.; Du, L.; Henze, D. K.; Lacey, F.; Malley, C. S.;
+Emberson, L.; Franco, V.; Klimont, Z.; Heyes, C. Impacts and Mitigation of Excess DieselRelated NOx Emissions in 11 Major Vehicle Markets. Nature 2017, 545 (7655), 467–471.
+https://doi.org/10.1038/nature22086.
+(16) Dallmann, T. R.; Kirchstetter, T. W.; DeMartini, S. J.; Harley, R. A. Quantifying OnRoad Emissions from Gasoline-Powered Motor Vehicles: Accounting for the Presence of
+Medium- and Heavy-Duty Diesel Trucks. Environ. Sci. Technol. 2013, 47 (23), 13873–13881.
+https://doi.org/10.1021/es402875u.
+(17) Haugen, M. J.; Bishop, G. A. Long-Term Fuel-Specific NOx and Particle Emission
+Trends for In-Use Heavy-Duty Vehicles in California. Environ. Sci. Technol. 2018, 52 (10),
+6070–6076. https://doi.org/10.1021/acs.est.8b00621.
+(18) Xiang, S.; Yu, Y. T.; Hu, Z.; Noll, K. E. Characterization of Dispersion and UltrafineParticle Emission Factors Based on Near-Roadway Monitoring Part II: Heavy Duty Vehicles.
+Aerosol Air Qual. Res. 2019, 19 (11), 2421–2431. https://doi.org/10.4209/aaqr.2019.08.0386.
+(19) Xiang, S.; Hu, Z.; Zhai, W.; Wen, D.; Noll, K. E. Concentration of Ultrafine Particles
+near Roadways in an Urban Area in Chicago, Illinois. Aerosol Air Qual. Res. 2018, 18 (4), 895–
+903. https://doi.org/10.4209/aaqr.2017.09.0347.
+(20) Demetillo, M. A. G.; Harkins, C.; McDonald, B. C.; Chodrow, P. S.; Sun, K.; Pusede, S.
+E. Space-Based Observational Constraints on NO2 Air Pollution Inequality From Diesel Traffic
+in Major US Cities. Geophysical Research Letters 2021, 48 (17), e2021GL094333.
+https://doi.org/10.1029/2021GL094333.
+(21) Demetillo, M. A. G.; Navarro, A.; Knowles, K. K.; Fields, K. P.; Geddes, J. A.; Nowlan,
+C. R.; Janz, S. J.; Judd, L. M.; Al-Saadi, J.; Sun, K.; McDonald, B. C.; Diskin, G. S.; Pusede, S.
+E. Observing Nitrogen Dioxide Air Pollution Inequality Using High-Spatial-Resolution Remote
+Sensing Measurements in Houston, Texas. Environ. Sci. Technol. 2020, 54 (16), 9882–9895.
+https://doi.org/10.1021/acs.est.0c01864.
+(22) US EPA, O. Overview of Environmental Indicators in EJScreen.
+https://www.epa.gov/ejscreen/overview-environmental-indicators-ejscreen (accessed 2024-0624).
+(23) Tian, N.; Xue, J.; Barzyk, T. M. Evaluating Socioeconomic and Racial Differences in
+Traffic-Related Metrics in the United States Using a GIS Approach. J Expos Sci Environ
+Epidemiol 2013, 23 (2), 215–222. https://doi.org/10.1038/jes.2012.83.
+(24) Hatzopoulou, M.; Miller, E. J. Linking an Activity-Based Travel Demand Model with
+Traffic Emission and Dispersion Models: Transport’s Contribution to Air Pollution in Toronto.
+
+https://doi.org/10.26434/chemrxiv-2025-lmx3n-v3 ORCID: https://orcid.org/0009-0002-6457-142X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Transportation Research Part D: Transport and Environment 2010, 15 (6), 315–325.
+https://doi.org/10.1016/j.trd.2010.03.007.
+(25) Lefebvre, W.; Vercauteren, J.; Schrooten, L.; Janssen, S.; Degraeuwe, B.; Maenhaut, W.;
+de Vlieger, I.; Vankerkom, J.; Cosemans, G.; Mensink, C.; Veldeman, N.; Deutsch, F.; Van
+Looy, S.; Peelaerts, W.; Lefebre, F. Validation of the MIMOSA-AURORA-IFDM Model Chain
+for Policy Support: Modeling Concentrations of Elemental Carbon in Flanders. Atmospheric
+Environment 2011, 45 (37), 6705–6713. https://doi.org/10.1016/j.atmosenv.2011.08.033.
+(26) Poorfakhraei, A.; Tayarani, M.; Rowangould, G. Evaluating Health Outcomes from
+Vehicle Emissions Exposure in the Long Range Regional Transportation Planning Process.
+Journal of Transport & Health 2017. https://doi.org/10.1016/j.jth.2017.05.177.
+(27) Rowangould, G. A New Approach for Evaluating Regional Exposure to Particulate
+Matter Emissions from Motor Vehicles. Transportation Research Part D: Transport and
+Environment 2015, 34, 307–317. https://doi.org/10.1016/j.trd.2014.11.020.
+(28) Tayarani, M.; Rowangould, G. Estimating Exposure to Fine Particulate Matter Emissions
+from Vehicle Traffic: Exposure Misclassification and Daily Activity Patterns in a Large,
+Sprawling Region. Environmental Research 2020, 182, 108999.
+https://doi.org/10.1016/j.envres.2019.108999.
+(29) Di Fonzo, D.; Fabri, A.; Pasetto, R. Distributive Justice in Environmental Health Hazards
+from Industrial Contamination: A Systematic Review of National and near-National Assessments
+of Social Inequalities. Social Science & Medicine 2022, 297, 114834.
+https://doi.org/10.1016/j.socscimed.2022.114834.
+(30) Mustansar, T.; van den Brekel, L.; Timmermans, E. J.; Agyemang, C.; Vaartjes, I. Air
+Pollution Exposure Disparities among Ethnic Groups in High-Income Countries: A Scoping
+Review. Environmental Research 2025, 267, 120647.
+https://doi.org/10.1016/j.envres.2024.120647.
+(31) Clark, L. P.; Millet, D. B.; Marshall, J. D. National Patterns in Environmental Injustice
+and Inequality: Outdoor NO2 Air Pollution in the United States. PLOS ONE 2014, 9 (4),
+e94431. https://doi.org/10.1371/journal.pone.0094431.
+(32) Liu, M.; Meijer, P.; Lam, T. M.; Timmermans, E. J.; Grobbee, D. E.; Beulens, J. W. J.;
+Vaartjes, I.; Lakerveld, J. The Built Environment and Cardiovascular Disease: An Umbrella
+Review and Meta-Meta-Analysis. European Journal of Preventive Cardiology 2023, 30 (16),
+1801–1827. https://doi.org/10.1093/eurjpc/zwad241.
+(33) Antonczak, B.; Fay, M.; Chawla, A.; Rowangould, G. Estimated Roadway Segment
+Traffic Data by Vehicle Class for the United States: A Machine Learning Approach. arXiv
+February 7, 2025. https://doi.org/10.48550/arXiv.2502.05161.
+(34) U.S. FHWA. Highway Performance Monitoring System (HPMS) 2018. U.S. Department
+of Transportation. https://data-usdot.opendata.arcgis.com/search?q=hpms.
+
+https://doi.org/10.26434/chemrxiv-2025-lmx3n-v3 ORCID: https://orcid.org/0009-0002-6457-142X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+(35) U.S. EPA. MOtor Vehicle Emission Simulator (MOVES), 2020.
+https://www.epa.gov/moves.
+(36) U.S. EPA, O. National Emissions Inventory (NEI), 2017. https://www.epa.gov/airemissions-inventories/national-emissions-inventory-nei (accessed 2024-06-24).
+(37)
+
+U.S. Census Bureau. Census 2020, Redistricting Data, Tables P1 and P2, 2021.
+
+(38) U.S. Department of Agriculture, Economic Research Service. Rural-Urban Continuum
+Codes (RUCC), 2013, 2013. https://www.ers.usda.gov/data-products/rural-urban-continuumcodes/.
+(39) U.S. EPA. MOVES3 Technical Guidance: Using MOVES to Prepare Emission
+Inventories for State Implementation Plans and Transportation Conformity; EPA-420-B-20-002;
+2020. https://www.epa.gov/moves.
+(40) U.S. Census Bureau. American Community Survey, 2020 American Community Survey
+5-Year Estimates, Tables B17001 and B19013. U.S. Census Bureau.
+https://www.census.gov/programs-surveys/decennial-census/about/census-acs.html.
+(41) Little Village Environmental Justice Organization; Center for Neighborhood Technology.
+Chicago Truck Counts. https://chicagotruckcounts.cnt.org (accessed 2025-04-29).
+
+https://doi.org/10.26434/chemrxiv-2025-lmx3n-v3 ORCID: https://orcid.org/0009-0002-6457-142X Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+

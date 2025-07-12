@@ -1,0 +1,188 @@
+Chemicals serve pivotal functions in many commercial and consumer products. To manage chemicals
+and their impact on the environment, chemical risk assessment (CRA) and material flow analysis (MFA)
+are employed. However, challenges arise in accessing data, particularly in the end-of-life (EoL) stage of
+products. This perspective manuscript explores how software and data systems can facilitate CRA and MFA
+at the EoL stage. This contribution reviews regulatory data sources like the Pollutant Release and Transfer
+Registers, information extraction from academic data via natural language processing, and real-time data
+to improve understanding of the EoL supply and management chain. Additionally, the manuscript
+discusses the application of graph neural networks and transfer learning techniques to improve the
+representation and performance of EoL supply chain models.
+
+* Corresponding author:
+1. Introduction
+Chemicals are essential components of commercial products like batteries and industrial lubricants.
+However, certain uses of hazardous chemicals can pose an unreasonable risk to human health and the
+environment through their entire life cycle. Chemical risk assessment (CRA) is a method used to make wellinformed decisions, choose compounds with safer characteristics, and develop and implement strategies
+to eliminate or decrease chemical risks[1].
+Material flow analysis (MFA) quantifies and allocates material movement (e.g., chemicals) in
+production systems, releases, and ecosystems[2]. In CRA, MFA helps assess chemical risk and exposure. It
+assists in determining the receptors (e.g., workers) that may be exposed to a chemical in the work
+environment and the quantity of releases into the environment. MFA also identifies scenarios that may
+result in human and environmental exposure[3].
+The data acquisition for MFA and CRA historically has been difficult due to data quality and
+accessibility[4, 5]. The growing amount of chemicals manufactured and brought into the worldwide market
+and the global integration of the chemical supply chain make this particularly concerning[6]. End-of-life
+(EoL) management is complex due to uncertainty about the quantity and pathway taken by a chemical and
+a dearth of data to assess chemical exposure which is why CRA sensitivity assessments are generally
+insufficient[7–9].
+Artificial intelligence (AI) and information technology (IT) systems transformed the chemical industry,
+chemical engineering, sustainability, and life cycle assessment through digitalization[10–14]. Thus, this
+manuscript shows how digitalization may streamline of MFA and CRA at chemical EoL. The topics examined
+in this study encompass a data-centric approach, where the quality and accessibility of data improve over
+time (see Figure 1).
+2. End-of-life chemical data availability
+2.1.
+
+Regulatory data sources
+
+High-performance AI models require domain-specific data to extract “knowledge” about the EoL
+supply and management chain’s behavior through data patterns. Regulatory database systems can help
+collect facility-level EoL and chemical release data. The Pollutant Release and Transfer Registers (PRTRs),
+an international publicly accessible database system created by the Organization of Economic Co3
+
+
+
+operation and Development (OECD), provides data on the releases of toxic chemicals into the air, water,
+and land by industrial facilities and transferred off-site for treatment[15]. Also, the OECD uses the PRTR to
+evaluate progress towards the United Nation’s twelve sustainable development goal, which promotes
+sustainable consumption and production practices[16, 17].
+The PRTRs from Australia, Canada, and the USA provide individual chemical transfer data[18–20]. These
+publicly access databases depict EoL management scenarios with greater quantitative and qualitative
+detail. The off-site material transfer report is done by chemical for all EoL scenarios, which support AI
+models performance because the risk of bias is lower than with other PRTRs reporting aggregated EoL
+material transfer amounts by whether the transferred material is a hazardous waste instead of informing
+the constituent chemicals[21].
+The USA PRTR, also known as the Toxics Release Inventory (TRI), is highly granular, allowing data
+engineering incorporation into environmental impact assessment applications. US government entities
+use TRI in developing environmental input-output life cycle assessment models[22]. It helps track chemicals
+through the EoL supply chain and identify waste brokering and intermediaries[23]. It also provides statistics
+on on-site EoL management operations, potential pollution abatement technologies (e.g., steam
+stripping), and abatement efficiencies[24]. Also, TRI integration with other data sources supports the design
+and evaluation of potential chemical circular economy scenarios[25].
+CRA sensitivity analysis can use regulatory data sources to reflect worst-case environmental release
+scenarios despite reporting quantity thresholds, EoL material industry sector generator, and chemical
+species[23]. As part of data and AI modeling, these data sources can be integrated into a data-centric
+framework, where the systematic procedure remains unchanged while the sample data size (e.g.,
+chemicals, threshold values, reporting facilities, etc.) and quality increase over time[26]. Thus, data
+engineering pipelines can merge data silos to measure the influence of environmental regulatory
+stringency and economic feasibility on the EoL supply chain across countries and time[21], expanding the
+AI model domain[26].
+
+However,
+systems,
+TRI,
+chemicals.
+
+This is a difficult scenario given the continually rising prevalence of toxic and hazardous chemicals. The
+Toxic Substance Control Act (TSCA) inventory in the US lists more than 86,000 chemicals. Approximately
+2,000 new chemicals are introduced annually in the US. Also, around 2,500 chemicals in the TSCA inventory
+are classified as high production volume (HPV), with nearly 45 % of these HPV chemicals lack sufficient
+toxicological studies to assess their health impacts on humans and wildlife[27].
+CRA requires the collection of potential exposure scenarios across various life cycle stages, including
+EoL. It also involves tracking chemical movements between these stages. This process must include
+detailed data on chemical releases into environmental compartments and transport between them.
+Additionally, environmental fate factors must be considered, such as biodegradation, bioaccumulation,
+chemical transformation, and environmental persistence (see Figure 2). It is crucial to develop strategies
+for the automatic data collection and management. This will expand the applicability of datasets used in
+training data-driven models.
+
+2.2.
+
+Information extraction
+
+Regulatory data sources can provide the EoL supply chain elements like generator/waste handler
+industry sectors, inter-industry sector transfer amount, and EoL activities. But, these data sources have
+limitations such as being designated as confidential business information, a limited range of regulated
+substances and industrial sectors/activities, data granularity, and annual report cycle requirements[21].
+Information extraction (IE) may be used to increase dataset size for AI modeling. Computer programs that
+scrape webpages for data identification and collection are one example. Web scrapers have been used in
+epidemiology research and public health planning[28], chemical hazards attributes and physical
+properties[24, 25, 29], textile data extraction for forensic science[30], and the pharmaceutical industry
+medicament requirements analysis based on prevalent diseases[31]. However, web scraping may be illegal
+in some jurisdictions and prohibited by website owners[28].
+Moreover, AI models can go beyond predicting EoL activities and supply chain constituents. Natural
+language processing (NLP) can be used in data engineering pipelines to catalog EoL-related academic
+papers and extract information from portable document format (PDF) files[32]. IE systems have used NLP
+models to automatically label a corpus including superalloy names and property values for materials
+research[33]. In toxicology, NLP-based EI systems have help construct biological response pathways from
+literature. This advances non-animal toxicology research[34]. An NLP-based IE system helped create a
+framework that automatically examines and extracts incidents reports. The framework generates risk
+matrices and analyzes failure modes and effects to address wildfire damage[35].
+Large language models (LLMs), a subset of NLP models, have gained attention for their ability to
+understand and generate text across diverse conditional tasks. LLMs are particularly effective in IE through
+prompt-based instructions, including from scientific texts[36, 37]. They are valuable for IE tasks in data
+engineering pipelines for MFA and CRA during the EoL stage. LLMs have proven useful in extracting
+materials science knowledge from peer-reviewed articles, including phase-property relationships in
+aluminum alloys and aiding alloy design[35, 38]. They are also valuable in chemical fields for tasks like
+compound entity recognition, reaction role labeling, and building databases of thermally activated
+fluorescent molecules [39].
+
+2.3.
+
+Data augmentation
+
+In cases of EoL data scarcity, which can cause overfitting or imbalance data for classification learning
+tasks, data augmentation can improve AI model performance. Data augmentation creates more training
+data using inherent patterns in existing data[40]. Previously, synthetic minority over-sampling technique
+(SMOTE) and multilabel SMOTE (or MLSMOTE) were used for classification learning in the context of MFA
+during the EoL stage[26].
+Moreover, data augmentation was used in chemical reaction prediction to improve the synthesis
+planning of reaction templates and reaction-based molecule optimization. The reaction data was
+supplemented with template applicability information[41]. Other uses of data augmentation include
+altering functional groups inside molecules to generate synthetic data and improve chemical reaction
+predictions[42]. Also, data augmentation is used in chemical process design to digitize chemical process
+flowsheets by randomly changing branches[43].
+Advanced deep learning techniques can find patterns in data and generate artificial sample data for
+CFA and CRA at EoL. For example, AI models have been improved to predict protein sequence solubility
+using deep learning techniques inspired in generative adversarial networks (GANs)[44]. GANs also predict
+supercritical water gasification in hydrogen production[45]. Conditional GANs augment data of corrosion
+generated in industrial process pipelines[46]. In biology and other fields, advanced models like the
+generative pre-trained transformer 4 (GPT-4) have improved predictive modeling[47].
+
+3. Evolution of data-driven models’ architecture
+In cheminformatics and CRA, data-driven toxicity prediction models inspired in quantitative structureactivity relationship (QSAR) models are common. QSAR models quantitatively correlate molecular
+structure descriptors with response variables like the water-ethanol partition coefficient[48]. Combining
+traditional AI tree-based models with QSAR models to understand the EoL supply and management chain
+can yield high-performance models powered by regulatory datasets[26]. When developing a QSAR model,
+tree-based algorithms can explain how each model contributes to the response variable prediction.
+CRA and MFA can use state-of-the-art AI algorithms to capture more complex data patterns, but model
+explainability is important. Researchers have used QSAR and deep neural networks (DNNs) in CRA and
+drug development[49]. AI models that predict chemical toxicity in rats and mice have also used this
+modeling synergy to reduce the need for in-vitro animal trials for hazard assessment[50]. Using previously
+learned knowledge in related tasks, transfer learning improves DNNs performance. Transfer learning has
+been evaluated for chemical process design using reinforcement learning in process system
+engineering[51]. Transfer learning has also been applied to predict chemical properties using deep graph
+neural networks (GNNs)[52].
+DNNs can be used in conjunction with explainable AI (XAI) to evaluate AI models. XAI helps
+stakeholders who are not computer scientists understand and rely on AI model outputs[53]. DNNs and QSAR
+have been used in estimating fish bioconcentration factor research. By adding XAI, researchers were able
+to score molecules’ moieties that most affect bioconcentration factor prediction[54]. Also, XAI has been
+used in supply chain management and analysis to improve explainability by combining DNNs and logicbased reasoning[55]. Thus, DNNs and QSAR could model the EoL supply and management chain for MFA
+and CRA. In summary, XAI could help stakeholders and decisionmakers to prioritize modeling variables
+(e.g., industry sectors, physical properties), while transfer learning could improve QSAR-inspired model
+predictability.
+GNNs have become more popular in chemoinformatic research, including QSAR modeling. This AI
+model architecture can manage graph-structured data and learn complex topological relationships. QSARinspired GNN algorithms predict synthetic compounds toxicity, environmental behavior, and
+physiochemistry[56]. GNN is useful for EoL supply chain analysis due to its edge-, node-, or full graph-level
+prediction. Edge-level GNN predicts hidden linkages and tracks goods and information from suppliers to
+consumers[57]. Node-level GNN has also been used to classify companies by industry sectors[58]. GNN can
+introduce edges and links attributes that connect with regulatory and economical constrains, e.g., if an offsite transfers could be considered for legitimate recycling or waste-to-energy under local environmental
+regulations.
+This contribution shows how advanced software and data systems can enhance CRA and MFA at the
+EoL stage. As shown in earlier publications [25, 26], using n-Hexane as an example, data engineering pipelines
+play a crucial role by integrating information from regulatory databases like PRTRs and TRI and extracting
+additional insights from academic and industrial documents using NLP. This combined approach allows the
+identification of specific facilities responsible for n-Hexane releases, quantities transferred off-site,
+industrial processes involved, and missing data to complete regulatory records. Such integration helps
+identify key exposure pathways, track waste flows, and analyze abatement technologies.
+ML models, including DNNs and GNNs, leverage these enriched datasets to predict exposure scenarios
+and assess risks associated with environmental parameters like bioaccumulation, volatility, and
+persistence. By uncovering patterns in chemical releases and transport, these models help estimate risks
+across the entire lifecycle of n-Hexane. XAI techniques further enhance the interpretability of model
+predictions, providing stakeholders with a clear understanding of the factors that most influence the
+model’s risk assessments. The approach promotes safer and more efficient chemical management
+practices and supports regulatory compliance.
+The views expressed in this article are those of the authors and do not necessarily represent the views or
+policies of the U.S. EPA. Any mention of trade names, products, or services does not imply an endorsement
+by the U.S. Government or the U.S. EPA. The U.S. EPA does not endorse any commercial products, service,
+or enterprises.

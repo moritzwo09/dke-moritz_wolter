@@ -1,0 +1,1267 @@
+Prioritization of early-stage research and development of a hydrogelencapsulated anaerobic technology for distributed treatment of high
+strength organic wastewater
+Xinyi Zhang1, William A. Arnold2, Natasha Wright3, Paige J. Novak2, Jeremy S. Guest1,4,5*
+1
+
+Department of Civil and Environmental Engineering, University of Illinois Urbana-Champaign,
+
+3221 Newmark Civil Engineering Laboratory, 205 N. Mathews Avenue, Urbana, IL 61801, USA.
+2
+
+Department of Civil, Environmental, and Geo- Engineering, University of Minnesota, 500
+
+Pillsbury Drive S.E., Minneapolis, MN 55455, USA.
+3
+
+Department of Mechanical Engineering, University of Minnesota, 111 Church Street SE,
+
+Minneapolis, MN 55455, USA.
+4
+
+Institute for Sustainability, Energy, and Environment, University of Illinois Urbana-Champaign,
+
+1101 W. Peabody Drive, Urbana, IL 61801, USA.
+5
+
+DOE Center for Advanced Bioenergy and Bioproducts Innovation, University of Illinois Urbana-
+
+Champaign, 1206 W. Gregory Drive, Urbana, IL 61801, USA.
+*Corresponding author: jsguest@illinois.edu, +1 (217) 244-9247
+
+1
+
+https://doi.org/10.26434/chemrxiv-2024-w6n9n ORCID: https://orcid.org/0000-0002-5858-9511 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Abstract
+This study aims to support the prioritization of research and development (R&D) pathways of
+hydrogel-encapsulated
+
+anaerobic
+
+technology
+
+to
+
+treat
+
+high-strength
+
+organic
+
+industrial
+
+wastewaters, enabling decentralized energy recovery and treatment to reduce organic loading on
+centralized treatment facilities. To characterize the sustainability implications of early-stage
+design decisions and to delineate R&D targets, an encapsulated anaerobic process model was
+developed and coupled with design algorithms for integrated process simulation, technoeconomic analysis (TEA), and life cycle assessment (LCA) under uncertainty. Across the design
+space, a single-stage configuration with passive biogas collection was found to have the greatest
+potential for financial viability and the lowest life cycle carbon emission. Through robust
+uncertainty and sensitivity analyses, hydraulic retention time (HRT) and encapsulant volume were
+identified as the most impactful design decisions for the levelized cost and carbon intensity of
+chemical oxygen demand (COD) removal. Encapsulant longevity, a technological parameter, was
+the dominant driver of system sustainability and thus a clear R&D priority. Ultimately, we found
+encapsulated anaerobic systems with optimized fluidized bed design have significant potential to
+provide affordable, carbon-negative, distributed COD removal from high strength organic
+wastewaters if encapsulant longevity can be maintained at 5 years or above.
+
+Keywords
+Hydrogel encapsulation; Anaerobic treatment; Biogas recovery; Greenhouse gas (GHG)
+emissions; Quantitative sustainable design.
+
+Synopsis
+Targeted research and development on hydrogel-encapsulated microbial consortia can support
+decentralized bioenergy production while reducing the burden on centralized water resource
+recovery facilities.
+
+2
+
+https://doi.org/10.26434/chemrxiv-2024-w6n9n ORCID: https://orcid.org/0000-0002-5858-9511 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Introduction
+High-strength industrial discharges, e.g., brewery wastewater1 and biorefinery effluent2, create
+challenges for centralized wastewater resource recovery facilities (WRRFs) that utilize energy
+input for the aerobic degradation of organics.3,4 Moreover, the concentrated organics in industrial
+wastewater represent an untapped source of renewable energy that could be recovered through
+distributed treatment at the industry.5 With the potential to convert waste organics into bioenergy6–
+8
+
+and/or high-value bioproducts (e.g., medium-chain fatty acids9–11), anaerobic technologies have
+
+been developed and deployed as distributed alternatives to centralized aerobic treatment.12 Due
+to the slower growth rate of anaerobic microorganisms, small- or medium-scale applications of
+anaerobic technologies require decoupling solids residence time from hydraulic retention time
+(HRT) using biomass retention and separation methods.13 Common challenges faced by such
+technologies include long startup times (e.g., 1-4 months for sludge granulation14,15) and high
+maintenance requirements (e.g., fouling control for anaerobic membrane bioreactors16–18).
+Ultimately, the adoption of anaerobic technologies for decentralized resource recovery from high
+organic wastewaters requires continued development of supporting technologies that overcome
+these barriers.
+Microbial encapsulation with hydrogels has been proposed as a promising option to
+improve the deployability of anaerobic technologies. In particular, leveraging reactors with
+encapsulated microbial communities has the potential to achieve (i) low-energy, reliable retention
+of slow-growing biomass, (ii) fast startup, (iii) reliable treatment, and (iv) protection for the
+microorganisms from exposure to adverse conditions such as acid or toxin shocks in the
+influent.19–22 Microbial encapsulation with hydrogels is still emerging in the field of wastewater
+treatment and resource recovery, with limited bench-scale experimental studies using anaerobic
+microorganisms.23–25 The implications of the use of encapsulant on anaerobic process kinetics,
+design and operational requirements, and ultimately the life cycle cost and environmental impacts
+of the system are still highly uncertain.
+To guide the research and development (R&D) of encapsulated anaerobic technologies,
+models are needed to simulate the effects of wastewater composition, encapsulation matrix
+properties, and reactor design and operation on treatment performance as well as the input and
+output flows of the system throughout its life cycle. Work has been done to understand certain
+aspects of treatment performance in response to design and operating conditions of encapsulated
+biological systems. For example, Zhu et al. parameterized the effects of changing HRT, bead
+size, and feed substrate concentration on the hydrogen production rate of alginate-encapsulated
+biomass based on a classic diffusion-reaction model.26 Wang et al. modified a 1-D biofilm model
+3
+
+https://doi.org/10.26434/chemrxiv-2024-w6n9n ORCID: https://orcid.org/0000-0002-5858-9511 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+to describe encapsulated growth of ammonia oxidizing bacteria and enabled optimizations of
+critical design decisions of the encapsulation matrix for nitrogen removal.27 Although it has been
+recognized that the use of encapsulant materials – especially petroleum-based hydrogels (e.g.,
+polyvinyl alcohol,28 waterborne polyurethane,29,30 polyethylene glycol31) – can affect system
+sustainability in complicated ways,20,32 there is still a lack of understanding of how individual
+design decisions and technology performance parameters are likely to impact the net cost and
+life cycle environmental impacts. Thus far, quantitative discussions to guide the R&D of
+encapsulated biological treatment systems have generally focused on improving treatment
+efficacy. To better inform the early-stage R&D of encapsulation technology, specifically for its
+industrial application in distributed anaerobic treatment of high strength wastewater, it is
+imperative to computationally couple process modeling with rigorous economic and
+environmental impact analyses33 so we can understand how individual decision variables (e.g.,
+reactor design, single-stage vs. two-stage configuration) and technological uncertainty (e.g.,
+biomass encapsulation capacity, encapsulant durability) drive system-level financial viability and
+environmental sustainability.
+The objective of this work was to characterize the potential financial and environmental
+implications of distributed anaerobic treatment of organic industrial wastewater using
+encapsulated biomass. By assessing a range of design decisions and technological assumptions,
+opportunities to improve cost and environmental outcomes were identified and prioritized for R&D
+investment. To achieve this outcome, we developed a computational model for process simulation
+and design of encapsulated anaerobic systems, with a focus on hydrogen (H2) and methane (CH4)
+production. The financial viability and environmental sustainability of applying systems for onsite
+treatment of high-strength industrial wastewater were assessed through techno-economic
+analysis (TEA) and life cycle assessment (LCA) in a Monte Carlo simulation framework. The
+relative impacts of individual design decisions and technological assumptions on system
+sustainability were quantified through robust global sensitivity analyses. Finally, quantitative
+recommendations were provided for R&D prioritization of encapsulated anaerobic technologies.
+
+Methods
+We centered our analysis on an encapsulated anaerobic technology targeting onsite treatment of
+and energy recovery (via H2 and CH4) from a brewery’s wastewater prior to discharge to a
+centralized conventional treatment facility located in St. Paul, Minnesota. The brewery produces
+50 m3·d-1 of high-strength wastewater with a total COD of 6,760 mg·L-1 and a soluble COD of
+4
+
+https://doi.org/10.26434/chemrxiv-2024-w6n9n ORCID: https://orcid.org/0000-0002-5858-9511 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+5,640 mg·L-1 on average.24 To evaluate treatment performance (i.e., COD removal) and system
+sustainability (i.e., economic and environmental indicators) across a broad design landscape, we
+employed the quantitative sustainable design (QSD) methodology integrating process simulation,
+system design, TEA, and LCA under uncertainty across three stages of analysis (Figure 1).34 The
+implementation of this approach was facilitated by the Python package QSDsan.35 All source code
+for modeling, simulation, and assessment of the system can be found in the open-access Python
+repository EXPOsan.36
+
+Figure 1. Illustration of the modeling and analysis framework used in this study. Solid arrows indicate the
+order in which the stages of the analysis were performed as well as the flows of information.
+
+5
+
+https://doi.org/10.26434/chemrxiv-2024-w6n9n ORCID: https://orcid.org/0000-0002-5858-9511 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Process model, system design, techno-economic analysis (TEA), and life cycle
+assessment (LCA)
+The system is mainly comprised of either a single-stage or a two-stage encapsulated anaerobic
+reactor and optional auxiliary unit operations such as degassing membrane contactor, iron
+sponge scrubber, and double-membrane biogas holder. A two-stage system consists of a
+fermenting first stage and a methanogenic second stage, which differ in the initial relative
+abundance of acidogens, acetogens, and methanogens within the encapsulation matrix besides
+pH (SI Section S4). The biogas from the anaerobic system is assumed to be reused for heating
+onsite at the brewery, taking advantage of its existing infrastructure (i.e., the natural gas boiler
+and heat exchangers) and offsetting natural gas purchases. For benchmarking purposes, upflow
+anaerobic sludge blanket (UASB) reactors were also modeled to represent the performance of
+state-of-the-art anaerobic technologies without encapsulation.
+Process model. A process model was developed to establish dynamic connections
+between system design and treatment performance by considering a series of physicochemical
+and biological processes in an encapsulated anaerobic environment (SI section S1). Decision
+variables and technological assumptions were input to the process model for simulations of the
+mass and energy balances in the system. After converging to steady state, the model was used
+to translate the mass flow data of the simulated system’s effluent and biogas streams into
+indicators of treatment performance, such as COD removal percentage and CH4 production rate.
+Identical assumptions about anaerobic biochemical processes were applied to the simulations of
+UASB systems, which mainly differ from encapsulated systems in reactor hydrodynamic and
+mass transport properties.
+System design. All reactor vessels were assumed to be cylindrical and constructed using
+concrete with rockwool for insulation and thin carbon steel exterior facing. The UASB reactor also
+included stainless steel three-phase separators. Polyethylene glycol (PEG) was assumed to be
+the main encapsulant material.37 Hollow-fiber membrane contactors could be applied to remove
+dissolved CH4 from the effluent and/or to actively extract dissolved H2 from an externally
+recirculating sidestream of the first-stage reactor, depending on the system configuration.38 High
+density polyethylene (HDPE) pipes were used for liquid influent and effluent streams, whereas
+stainless steel pipes were assumed for biogas streams. Equipment like water pumps, vacuum
+pumps, air compressors, heat exchangers, and control systems were all included within the
+system boundary when applicable (Figure S10). Detailed design and costing algorithms of all unit
+operations and equipment can be found in Section S2 of the SI.
+
+6
+
+https://doi.org/10.26434/chemrxiv-2024-w6n9n ORCID: https://orcid.org/0000-0002-5858-9511 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+TEA. Using the system boundary described in Figure S10, costs for the construction,
+operation, and maintenance (O&M) of unit operations were calculated using equations detailed in
+Section S2. Calculated costs and revenue were leveraged in a discounted cash flow analysis
+with QSDsan’s TEA class.39 To enable inter-system comparison, the levelized cost of COD
+removal (LC; defined as negative of annualized net present value divided by annual COD
+removal, in USD·tonne-1 COD removed) was calculated assuming a constant 5% discount rate
+and a 30-year project lifetime for all configurations. All monetary values were adjusted to 2021
+US dollars.
+LCA. Using the same system boundary described above, LCA was carried out to quantify
+the life cycle environmental impacts of the system following the general methodology outlined in
+ISO 14040/14044.40,41 For consistency with TEA, 1 tonne of COD removal was chosen as the
+functional unit of the analysis. While construction and O&M of all unit operations and equipment
+were included in the system boundary, project end-of-life was excluded due to lack of information
+about encapsulated systems. With the construction material, equipment, and O&M inputs and
+outputs (e.g., chemical use, electricity consumption, heat utility, bead replacement, fugitive
+emissions) estimated through system simulations and the design algorithms, corresponding life
+cycle inventory data and impact factors were gathered from the ecoinvent v3.8 database.42
+Surrogate items or items in upstream production processes were used when a particular item was
+not available in the database (Table S2). The life cycle impact assessment was conducted using
+the tool for the reduction and assessment of chemical and other environmental impacts (TRACI
+v2.1).43 All nine impact categories evaluated by TRACI v2.1 were included in the simulations, with
+emphasis on the 100-yr global warming potential to represent carbon intensity (CI) in subsequent
+analyses.
+Identifying key drivers for system sustainability
+Stage I. Discrete decision analysis. Given the early stage of encapsulated anaerobic system
+R&D, the most promising system configuration remains highly uncertain. To explore the broad
+landscape of possible designs for high strength wastewater distributed treatment and resource
+recovery, we evaluated 3,552 distinct combinations of 11 design or operation decisions (Figure
+S11) and determined the levelized cost and life cycle environmental impacts of COD removal. We
+considered four discrete decision variables: reactor type (fluidized bed or packed bed), number
+of stages (single-stage vs. two-stage), H2 extraction from the first-stage reactor (passive
+collection, vacuum extraction from the reactor headspace, or sidestream membrane extraction),
+and whether to include a degassing membrane contactor for effluent methane management. Two
+7
+
+https://doi.org/10.26434/chemrxiv-2024-w6n9n ORCID: https://orcid.org/0000-0002-5858-9511 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+distinct external recirculation ratios (1 or 50) were considered for systems adopting sidestream
+membrane extraction of H2 and two distinct vacuum pressures (0.1 bar, 0.4 bar) for vacuum
+extraction from headspace. For systems with encapsulated biomass, three discrete bead sizes (2
+mm, 5 mm, 10 mm) and three distinct bead lifetimes (1 year, 10 years, or 30 years) were
+considered in simulations. In addition, systems with fluidized beds were evaluated at three
+different bead volume fractions (0.10, 0.25, 0.40). Reaction temperature (22°C or 35°C) and total
+HRT (1 day, 2 days, 4 days, or 12 days) were varied for all system configurations. Detailed
+simulation settings for all system configurations can be found in Section S4.
+To quantify the relative impact of individual design decisions on system cost and CI, pairwise comparisons were conducted. For each decision variable, a baseline for comparison was
+first chosen (e.g., UASB as the baseline reactor type) and other values were considered
+alternatives (e.g., packed bed and fluidized bed for reactor type). All the evaluated samples were
+organized into baseline-alternative pairs, each of which only differs by one common decision
+variable. A decision variable’s relative impact (∆𝑌) on a sustainability indicator (i.e., LC or CI) was
+calculated as the difference in the indicator values ( 𝑌 ) between a baseline-alternative pair
+normalized by the entire range of the indicator observed across 3,552 distinct combinations (Eq.
+1).
+∆𝑌 =
+
+𝑌𝐴𝑙𝑡𝑒𝑟𝑛𝑎𝑡𝑖𝑣𝑒 − 𝑌𝐵𝑎𝑠𝑒𝑙𝑖𝑛𝑒
+, 𝑖 = 1, 2, … , 3552
+max 𝑌𝑖 − min 𝑌𝑖
+𝑖
+
+(1)
+
+𝑖
+
+Stage II. Uncertainty and sensitivity analyses. The discrete decision analysis above
+can help identify the best performing designs and exclude unimpactful variables from subsequent
+analyses. While the previous analysis covered a broad design landscape, a more sophisticated
+variation of important continuous decision variables and technological uncertainties need to be
+incorporated in a rigorous uncertainty and sensitivity analysis to better inform decision making in
+the R&D of the encapsulated anaerobic biological technology. Therefore, we identified 18
+independent parameters with uncertainty, including select decision variables that were found to
+be key drivers of system sustainability (e.g., HRT) in Stage I analysis, 6 ADM1 kinetic parameters
+with significant impact on COD removal,44 and a series of configuration-specific parameters
+characterizing the technological uncertainty (e.g., maximum encapsulation density, bead lifetime).
+The uncertainty of each parameter was characterized by a probability distribution derived from
+literature data or expert judgement (Table S5). All decision variables have a uniform distribution,
+representing full control within a feasible or desirable range from a technology developer’s
+perspective.
+
+8
+
+https://doi.org/10.26434/chemrxiv-2024-w6n9n ORCID: https://orcid.org/0000-0002-5858-9511 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+We performed a Monte Carlo simulation with Latin Hypercube Sampling45 (N = 1,000) for
+each reactor type to propagate the uncertainty or variability of the 18 parameters. An identical set
+of samples was used across the three reactor types to enable pair-wise comparisons. To elucidate
+the relative importance of different variables to the sustainability of encapsulated systems, we
+conducted Monte Carlo filtering46 for 5 indicators (i.e., COD removal percentage [rCOD]; LCs and
+CIs for COD removal with and without effluent degassing) using simulation data from the
+uncertainty analysis. Samples were divided into two groups – the top 25% (“desirable”) and the
+bottom 75% (“undesirable”) – based on the indicator value. For example, samples with rCOD
+higher than the 75th percentile were categorized into the “desirable” group, whereas for LC,
+samples lower than the 25th percentile were considered desirable. Two-sample KolmogorovSmirnov (KS) tests were used to characterize the difference in parameter distributions between
+the two groups and indicate whether a parameter, among others, plays a statistically significant
+role in yielding desirable performance for an encapsulated system. The value of the KS test
+statistics 𝐷 represents the “distance” between the parameter distributions of two sample groups.
+A larger 𝐷 value suggests the parameter plays a more important role (relative to other
+parameters) in yielding desirable outcomes. The 𝑝-value indicates the statistical (in-)significance
+of 𝐷 > 0. To identify impactful factors for reactor choice, another KS test was performed between
+two groups of samples – when fluidized bed outperforms packed bed systems vs. the opposite.
+Stage III. Mapping the critical pathways for technology R&D. We leveraged the
+uncertainty and sensitivity analyses above to identify key drivers for the economic and
+environmental sustainability of an encapsulated system. These driving factors are either decision
+variables (e.g., HRT), which can be readily optimized upon system design, or technological
+uncertainty (e.g., bead lifetime), which relies on technological advancement to attain desirable
+values. To characterize the sustainability frontier and to quantitatively delineate targets for
+technology R&D, the encapsulated systems were simulated across the two-dimensional space of
+pairs of key uncertain parameters identified above with other parameters fixed at their baseline
+values. For each uncertain parameter, grid samples were drawn from its defined range of
+uncertainty (i.e., 180 samples were evaluated for each pair of key uncertain parameters). For
+each sample, a bounded global optimization was performed to find the best values for decision
+variables (DVs) with a single objective to minimize the CI of COD removal (Eq. 2), given a very
+strong correlation between LC and CI had been observed for these encapsulated systems in the
+previous uncertainty and sensitivity analyses (Tables S6, S7).
+⃗⃗⃗⃗⃗⃗ = arg
+𝑫𝑽
+
+min
+
+𝑙𝑖 ≤𝐷𝑉𝑖 ≤𝑢𝑖
+
+⃗⃗⃗⃗⃗⃗ )
+𝐶𝐼(𝑫𝑽
+
+9
+
+https://doi.org/10.26434/chemrxiv-2024-w6n9n ORCID: https://orcid.org/0000-0002-5858-9511 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+(2)
+
+Results and Discussion
+Stage I. Relative impacts of individual design decisions
+Simulated performance and system sustainability varied widely across the 3,552 distinct
+combinations of decision variables and technological assumptions. Simulated steady-state rCOD
+varied from 14.5% to 93.8% across designs, with the 5th and 95th percentiles being 35.7% and
+85.7%, respectively. Projected LC and CI had right-tailed distributions spanning 32.4 to 81,363
+USD·tonne-1 COD removed and -80.0 to 18,347 kg CO2eq·tonne-1 COD removed, respectively
+(Figure S12). Only 108 out of 3,552 designs were able to achieve negative CI for COD removal,
+whose LCs ranged from 32.4 to 848 USD·tonne-1 COD removed, lower than 65% of the evaluated
+designs. Therefore, specific combinations of design decisions had synergistic benefits for both
+financial viability and environmental sustainability.
+Among the 11 decision variables, total HRT and reactor type had the greatest relative
+impacts on both LC and CI (Figure 2). Under identical conditions within the evaluated ranges,
+UASB systems tended to have higher rCOD than encapsulated systems (by 2.9%−58.8%
+absolute difference to fluidized bed and -5.0%−11.8% to packed bed) and was generally predicted
+to outperform them both economically and environmentally (Figure 2B). However, UASBs often
+require skilled labor for operation and their performance can be sensitive to changes in organic
+loading due to influent fluctuations:47 this has limited onsite deployment of UASBs at small- or
+medium-scale industries.48 As a result, although a UASB offers a useful technological comparison
+point, it may not be deployable or operable at the scale targeted by many encapsulation systems.
+Between encapsulated systems, packed bed systems tended to have higher predictions
+of rCOD but were usually subjected to higher LC and higher CI per tonne COD removed than a
+comparable fluidized bed system. Increasing total HRT from 1 day to 4 days or above generally
+led to higher cost and impacts per tonne COD removed, with the increase in rCOD overshadowed
+by the quickly rising cost and impacts from the construction and O&M of a larger reactor (Figure
+2A). Between 1-day and 2-day HRTs, the implication was more nuanced. For example, increasing
+the HRT of a single-stage UASB system from 1 day to 2 days reduced the CI per tonne COD
+removed but raised the LC. For a single-stage fluidized bed system, however, a 2-day HRT could
+have both lower cost and lower impacts because further reducing HRT to 1 day was detrimental
+to COD removal performance.
+For all encapsulated systems, bead lifetime was a significant driver for LC and CI (Figure
+2C). Shorter bead longevities resulted in higher bead replacement frequencies (e.g., 30 times
+throughout the 30-yr project lifetime with a 1-year longevity). The relative impacts of bead lifetime
+
+10
+
+https://doi.org/10.26434/chemrxiv-2024-w6n9n ORCID: https://orcid.org/0000-0002-5858-9511 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+on LC and CI also scale with the amount of beads required. Therefore, the highest cost and
+impacts were observed with packed bed systems with long HRT and short bead lifetime, and
+increasing the volume fraction of beads in a fluidized bed system tended to negatively affect its
+sustainability (Figure 2D).
+Employing active H2 extraction or a mesophilic reactor temperature (35°C), compared to
+passive collection or ambient temperature (22°C), was found to have marginal impacts on LC but
+significantly increase CI (Figure 2E, 2F). This is because the improvements in rCOD did not
+outweigh the additional cost and environmental impacts incurred from the installation and
+operation of vacuum pumps or membrane contactors and heat exchangers.
+The impacts of other decision variables, such as single-stage vs. two-stage configurations
+and with vs. without effluent degassing, were also negligible in comparison (Figure S13, ̅̅̅̅
+∆𝑌 <
+0.02). Several common features could be identified among the cheapest and the least carbonintensive designs with different reactor types (Figure S14): they all operate at ambient
+temperature without active H2 extraction, and they have HRTs ≤ 4 days. Systems with the lowest
+LCs have a two-stage configuration without effluent degassing, but the single-stage alternatives
+with effluent degassing have significantly lower CIs with only slight increases in LCs (Figure S14).
+
+11
+
+https://doi.org/10.26434/chemrxiv-2024-w6n9n ORCID: https://orcid.org/0000-0002-5858-9511 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure 2. Kernel density (A, B, D, E, F) and scatter (C) plots of the relative impacts of individual design
+decisions on the levelized cost (LC) and carbon intensity (CI) of COD removal. (C) A scatter plot rather than
+a kernel density plot is used to visualize the impacts of bead lifetime on LC and CI due to perfect linearity
+between the relative impacts on two metrics (bead lifetime directly impacted these two metrics via the exact
+same mechanism – bead replacement). Different alternative decisions are indicated by colors. Shades
+represent the estimated kernel density for a given alternative. In a box-and-whisker plot, the box extends
+from the 25th percentile to the 75th percentile of the data, with a line at the median and a marker (×) at the
+mean. The whiskers indicate the 5th and 95th percentiles of the data.
+
+Stage II. Key driving factors for system sustainability
+Results from the Stage I analysis enabled us to narrow down the potential design space to the
+best-performing configurations: single-stage ambient-temperature systems with passive biogas
+collection and a short HRT (≤ 5 days). These designs were further examined through uncertainty
+and sensitivity analyses, with bead size and bead lifetime varied within narrower ranges to
+exclude unlikely values based on published data.49–53 To have a more representative
+characterization of the performance and sustainability of the systems, a series of parameters in
+the process model was included to account for the technological uncertainties associated with
+
+12
+
+https://doi.org/10.26434/chemrxiv-2024-w6n9n ORCID: https://orcid.org/0000-0002-5858-9511 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+different reactor types. Distributions of parameters varied in Monte Carlo simulations are detailed
+in Table S5.
+COD removal performance under uncertainty. Simulation results for packed bed
+systems demonstrated smaller predicted variances in steady-state rCOD than fluidized bed or
+suspended growth systems under uncertainty. The median (with 5th, 95th percentiles indicated
+in parentheses from hereon) rCODs were estimated at 86.0% (27.3−90.3%) for UASB systems,
+69.3% (14.5−80.0%) for fluidized bed systems, and 82.1% (74.3−86.5%) for packed bed systems,
+suggesting that an encapsulated system with packed bed reactors could provide more reliable
+COD removal under varying conditions compared to suspended growth systems. Furthermore,
+the simulated packed bed systems maintained over 46.5% COD removal under the least desirable
+conditions whereas UASB or fluidized bed could only achieve 4.8−8.5%. The LC and CI of COD
+removal, however, were also much higher for encapsulated systems.
+Life cycle cost and carbon intensity under uncertainty. Packed beds tended to be the
+most expensive reactor type, with simulated LC of 57.9 (45.0−127) USD·tonne-1 COD for UASB
+(Figure S15), 655 (282−2,507) USD·tonne-1 COD for fluidized bed (Figure 3A), and 4,071
+(776−18,989) USD·tonne-1 COD for packed bed systems (Figure 3B) with effluent degassing
+membranes. The LC of encapsulated systems strongly correlated with the amount of
+encapsulants used throughout the project lifetime, which accounted for 94.9% (79.8−98.9%) and
+69.0% (33.9−91.6%) of the life cycle expenditure of packed bed and fluidized bed systems,
+respectively. The second largest contributor to packed bed systems’ LC (with a median
+contribution of 3.2%) was the capital investment for equipment (i.e., water pumps, iron sponge
+scrubber, double-membrane gas holder, effluent degassing membrane contactor), which also
+accounted for significant shares of the life cycle expenditures for UASB (80.8%) and fluidized bed
+(26.3%) systems. When used for onsite heat generation as a substitute for natural gas, recovered
+biogas from an encapsulated anaerobic system can offset 13.7% (3.9−26.5%) or 2.5%
+(0.5−11.9%) of the life cycle costs, respectively, with fluidized bed and packed bed reactors.
+Packed bed systems also had the highest estimated CI (672 [66.8−3,008] kg
+CO2eq·tonne-1 COD removed) among reactor types with effluent degassing (Figure 3D). In
+comparison, the fluidized bed systems had a median CI of 45.9 (-37.8−363) kg CO2eq·tonne-1
+COD removed (Figure 3C). Embedded impacts in encapsulant material was a dominant
+contributor to the CI of both encapsulated systems, accounting for 89.3% (55.8−97.3%) of packed
+bed systems’ and 50.1% (13.7−83.2%) of fluidized bed systems’ carbon emissions. Without
+
+13
+
+https://doi.org/10.26434/chemrxiv-2024-w6n9n ORCID: https://orcid.org/0000-0002-5858-9511 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+biomass encapsulation, UASB systems had a median CI of -80.0 (-88.8−43.4) kg CO2eq·tonne-1
+COD removed, with approximately 94% of the simulated samples being carbon negative.
+Fugitive CH4 emissions also contributed a considerable 29.8% (9.1−58.9%) to the total
+carbon emission of fluidized bed systems, even with effluent methane management. While
+eliminating the effluent membrane contactor had the potential to lower the LC to 616 (259−2,491)
+USD·tonne-1 COD removed by decreasing the required capital investment, the simulated increase
+in fugitive CH4 emission would outweigh the carbon savings from lower O&M electricity
+consumption and eventually drive the net CI up to 82.6 (-4.5−454) kg CO2eq·tonne-1 COD
+removed. The implications of effluent degasification on CI and LC were similar for packed bed
+and UASB systems. This suggests that under current assumptions around membrane
+degasification technologies and performance, there is trade-off between LC and CI. More work is
+needed to explore alternative effluent methane management options both through
+experimentation and in an integrated analysis framework, with the goal of improving the synergy
+between economic and environmental sustainability of encapsulated anaerobic systems.
+The recovered biogas was estimated to offset 203% (78.1−229%), 77.9% (31.7−131%),
+and 19.7% (5.1−71.2%) of the carbon emissions of systems with UASB, fluidized bed, and packed
+bed reactors, respectively, when offsetting natural gas use at the brewery. The CI of recovered
+biogas consistently ranged between -205 and -149 kg CO2eq·tonne-1 COD removed (Figure 3C,
+3D), because the composition (i.e., the relative abundances of water vapor, CO2, H2, and CH4)
+and thus the lower heating values of recovered biogas had small variations across the simulated
+space of system design and operation.
+
+14
+
+https://doi.org/10.26434/chemrxiv-2024-w6n9n ORCID: https://orcid.org/0000-0002-5858-9511 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+arbon intensity
+kgCO 2e tonne 1 CO removed
+
+evelized cost
+tonne 1 CO removed
+
+luidized
+
+ed
+
+Pac ed
+
+( )
+
+( )
+
+(C)
+
+( )
+
+ed
+
+ample
+ffluent degassing membrane
+
+Other e uipment
+
+O
+
+chemicals
+
+ncapsulant
+
+ugitive C
+
+O
+
+heat
+
+eactor vessel
+
+iogas recovery
+
+O
+
+electricity
+
+4 emission
+
+Figure 3. Breakdowns of the simulated (A, B) levelized cost (LC) and (C, D) carbon intensity (CI) of COD
+removal by encapsulated systems using different types of reactors. Effluent degassing membrane is
+included in this figure to show its relative contribution to LC and CI compared to other items. The samples
+are sorted in ascending order of indicator values for better visualization and thus the x-axis value does not
+imply the actual order of simulation. White dashed lines indicate the net LC or CI of COD removal. LC and
+CI breakdowns of UASB systems can be found in Figure S15.
+
+Key design decisions. Through Monte Carlo filtering, the potential financial viability and
+environmental sustainability of early-stage encapsulated anaerobic systems were found to be
+driven by a small number of decision variables and technological parameters. HRT was found to
+be the most important design decision to optimize in future research and development (Figure
+4). rCOD was the most sensitive indicator to HRT for fluidized bed systems (𝐷 = 0.63, 𝑝 < 0.0001,
+Figure 4B) while LC (𝐷 = 0.79, 𝑝 < 0.0001) and CI (𝐷 = 0.79 or 0.78, 𝑝 < 0.0001) were more
+sensitive than rCOD (𝐷 = 0.61, 𝑝 < 0.0001) for packed bed systems (Figure 4C). This finding
+15
+
+https://doi.org/10.26434/chemrxiv-2024-w6n9n ORCID: https://orcid.org/0000-0002-5858-9511 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+stems from two key factors: (i) packed bed systems maintained over 74.3% COD removal for 95%
+of the simulated samples while the COD removal of fluidized bed systems was subject to much
+higher uncertainty; and (ii) 55−65% of a packed bed reactor’s volume is filled with beads
+(compared to 3−25% for a fluidized bed reactor) and, as a result, the change in HRT leads to
+greater changes in packed bed reactor size and the amount encapsulant material needed (the
+latter of which is the dominant contributor to its cost and impacts). Although pair-wise comparison
+showed a packed bed system always outperformed a fluidized bed system at rCOD under
+identical conditions, the significant sensitivity of LC and CI to HRT (𝐷 ∈ [0.87, 0.98], 𝑝 < 0.0001;
+Figure 4A) suggests HRT is a key driver dictating whether a packed bed system would outperform
+its fluidized bed alternative. This means the desirable range of HRT for fluidized bed designs likely
+differs from that for packed bed designs, which is further illustrated in Stage III analysis.
+Reducing bead diameter had a significant positive impact on rCOD for both reactor types
+(𝐷 = 0.24 or 0.47, 𝑝 < 0.0001; Figure 4B, C) by increasing the specific interfacial surface area. It
+was also a significant driver for fluidized bed systems’ CI when effluent methane management
+was absent (𝐷 = 0.11, 𝑝 < 0.05) because increasing bead diameter is expected to lead to greater
+O&M electricity required for fluidization. However, its impacts on other indicators were not
+significant relative to other technological uncertainty or decision decisions (𝑝 ∈ [0.06, 0.26]). For
+fluidized bed systems, all indicators were found to be sensitive to bead volume fraction in the
+reactor (𝐷 ∈ [0.31, 0.39], 𝑝 < 0.0001) because this design decision, along with HRT, determines
+the total interfacial area and the total amount of encapsulant material in a reactor and they should
+be optimized simultaneously in system design.
+Driving technological parameters. Among sources of technological uncertainty, several
+encapsulant-related parameters stood out as important for future research and development.
+Bead lifetime did not affect rCOD but still had the greatest impacts on both encapsulated systems’
+LC (𝐷 ∈ [0.32, 0.53], 𝑝 < 0.0001) and CI (𝐷 ∈ [0.31, 0.48], 𝑝 < 0.0001) (Table S5, Figure 4B, C).
+All indicators of packed bed systems were sensitive to the uncertainty in bed voidage (𝐷 ∈ [0.13,
+0.16], 𝑝 < 0.01). Comparison of the distributions of packed bed voidage between the top 25% and
+the bottom 75% samples (Figure S16) suggested the anticipated benefit of better COD removal
+from lower voidage is unlikely to overcome the additional costs and impacts associated with more
+encapsulant materials required to make up a certain working bed volume. Therefore, it is
+recommended technology developers target loose and homogenous packing throughout longterm operations of a packed bed system. Direction of the water flow and production of biogas may
+introduce more uncertainty to the bed voidage during operation and thus should be taken into
+consideration in system design. The uncertainty in substrate diffusivity through the encapsulation
+16
+
+https://doi.org/10.26434/chemrxiv-2024-w6n9n ORCID: https://orcid.org/0000-0002-5858-9511 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+matrix (i.e., the bead-to-water diffusivity ratio) also had a significant impact on all packed bed
+indicators (𝐷 ∈ [0.10, 0.14], 𝑝 < 0.05). CI of fluidized bed systems and rCOD of packed bed
+systems were also found mildly sensitive to the biomass encapsulation capacity (i.e., maximum
+encapsulation density). Given the importance of encapsulant materials to LC and CI, future
+research and development should prioritize the continued development of these materials as well
+as the characterization of correlations or interactions among different material properties to
+reduce the prediction uncertainty of system performance and facilitate sustainable design of the
+encapsulation matrix.
+Among the ADM1 parameters, only 𝑘𝑎𝑐 (i.e., the maximum specific growth rate of
+acetoclastic methanogens; 𝐷 ∈ [0.16, 0.20], 𝑝 < 0.0001) was found to have significant impacts on
+fluidized bed systems’ LC and CI. In comparison, 𝐾𝑎𝑐 (i.e., the half saturation coefficient of
+acetate) had significant impact on packed bed systems' rCOD (𝐷 = 0.13, 𝑝 < 0.01) but not on LC
+or CI. rCOD was also mildly sensitive to variations in 𝑘𝑑𝑖𝑠 (i.e., the 1st-order kinetic rate constant
+of particulate disintegration; 𝐷 = 0.12 or 0.16, 𝑝 < 0.01), but the effects were not strong enough
+to drive the LC or the CI of COD removal given uncertainty in other technological assumptions
+and design decisions. Nevertheless, these parameters should be prioritized for ADM1 calibration
+in future work to provide more accurate evaluations of the COD removal and methane production
+performance and to enable overall sustainability assessments of encapsulated anaerobic
+systems for similar applications.
+
+17
+
+https://doi.org/10.26434/chemrxiv-2024-w6n9n ORCID: https://orcid.org/0000-0002-5858-9511 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure 4. Kolmogorov-Smirnov (KS) test results of parameter samples between two groups. Each bubble
+represents a single KS test on a parameter using one indicator as the grouping criterion. Bubble size
+indicates the value of the KS test statistics. A highlighted bubble indicates a statistically significant
+difference in parameter sample distributions between the two groups. Parameters were categorized based
+on whether they are technological uncertainty (highlighted in green if significant) or design decision
+variables (blue), which are also indicated by the ✓ marks in the right columns. FB – fluidized bed; PB –
+packed bed.
+
+Stage III. Research and development priorities of the encapsulated anaerobic technology
+Fluidized bed and packed bed reactors were shown in Stage I and Stage II analyses to have their
+own advantages and disadvantages for small-scale applications of the encapsulated anaerobic
+technology. Monte Carlo filtering results suggest the sustainability of the two reactor types are
+18
+
+https://doi.org/10.26434/chemrxiv-2024-w6n9n ORCID: https://orcid.org/0000-0002-5858-9511 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+likely to be driven by different sets of technological assumptions and design decisions. To
+delineate the sustainability frontier and to expediate technology R&D, the specific values of key
+design decision variables (i.e., HRT and bead volume fraction for fluidized beds, and HRT for
+packed beds; Figure 4B,C) that minimize CI were determined; this evaluation was performed
+across the two-dimensional space of the two most important technological parameters for each
+reactor type. Specifically, the HRT and bead volume fraction that yielded the lowest CI values for
+fluidized beds were determined across the uncertainty space (from reasonable minima to
+reasonable maxima) for bead lifetime and 𝑘𝑎𝑐 (Figure 5), and the HRT that yielded the lowest CI
+for packed beds was determined across the uncertainty space for bead lifetime and bead-to-water
+diffusivity ratio (Figure 6). HRT was bounded between 1 hr and 5 days and fluidized-bed bead
+volume fraction was constrained between 0.03 and 0.25. To maximize specific interfacial area for
+mass transfer, both systems were assumed to use 1-mm beads, which is the lower bound for
+bead sizes seen in wastewater-related applications in the literature.50–53 For packed bed systems,
+loose packing (i.e, voidage = 0.45) was assumed.
+The minimum potential CI of these tailored designs was estimated to be between 64.5−339 kg CO2eq·tonne-1 COD removed for fluidized bed designs (Figure 5F) and between 22.9−510 kg CO2eq·tonne-1 COD removed for packed bed designs (Figure 6E). In comparison,
+centralized WRRFs (> 10,000 population equivalent) using a conventional activated sludge
+process have been estimated to consume 0.79−1.07 kWh electricity per kg COD removed on
+average,54 which translates to a CI of 348−471 kg CO2eq·tonne-1 COD removed under identical
+assumptions of grid electricity carbon intensity. Additionally, onsite fugitive emissions of CH4 from
+the centralized WRRFs (using aerobic treatment) account for another (roughly) 210 kg
+CO2eq·tonne-1 COD removed.55 This suggests encapsulated anaerobic systems with design
+optimization have the potential to consistently provide distributed COD removal at a lower CI than
+average centralized WRRFs. Moreover, with improvements in critical technological parameters,
+both systems could potentially be deployed and operated with a negative CI at small- or mediumsized industries where more traditional technologies, such as UASBs, might be infeasible. The
+LCs were estimated to be 151−1,950 USD·tonne-1 COD removed with fluidized beds and
+426−2,329 USD·tonne-1 COD removed with packed beds. The low values within these ranges are
+similar to or less than charges incurred by discharging to a centralized WRRF (e.g., 322−1,340
+USD·tonne-1 COD discharged56,57). This means for small- or medium-size industries, onsite
+deployment of this technology also has a chance be more financially desirable than directly
+discharging high-strength wastewater to a centralized WRRF.
+
+19
+
+https://doi.org/10.26434/chemrxiv-2024-w6n9n ORCID: https://orcid.org/0000-0002-5858-9511 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+For fluidized bed systems, a critical R&D pathway toward sustainable distributed treatment
+is to simultaneously improve encapsulant longevity and the bioreactivity of encapsulated
+acetoclastic methanogens (Figure 5E, F). When both bead lifetime is short (e.g., < 5 years) and
+𝑘𝑎𝑐 is small (e.g., < 6 CO ∙CO
+
+∙d-1), increasing either parameter without compromising the
+
+-1
+
+other can lead to significant reductions in CI and LC. The tailored bead volume fraction (to
+minimize CI) is generally small (3.0−6.0% of bed volume, Figure 5B), but a longer HRT (> 4.8 d,
+Figure 5A) will likely be needed to maintain significant COD removal (55-61%) in this region. The
+tailored encapsulant volume in a fluidized bed reactor generally decreases with 𝑘𝑎𝑐 and increases
+with bead lifetime. Beyond this region, further improvement of a single parameter (either bead
+lifetime or 𝑘𝑎𝑐 ) while the other remains weak has diminishing marginal benefits in cost or CI
+reduction. Although further increasing 𝑘𝑎𝑐 will enable similar COD removal with a smaller reactor
+or less beads, the total amount of encapsulant material required for the 30-yr project lifetime
+barely decreases because frequent bead replacements are needed for the short bead lifetime
+(Figure 5C). Similarly, the tailored HRT or bead volume fraction cannot afford be too low if 𝑘𝑎𝑐
+remains small, which limit the benefits that can be gained from fewer bead replacements by further
+improving bead longevity to 6, 8, 10, and again 15 years.
+
+20
+
+https://doi.org/10.26434/chemrxiv-2024-w6n9n ORCID: https://orcid.org/0000-0002-5858-9511 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure 5. Mapping a fluidized bed system’s performance across ranges of bead lifetime and 𝑘𝑎𝑐 with 1-mm
+beads while all other parameters are fixed at their baseline values. Colors and contour lines indicate (A, B,
+C) the values of the design decision variables and (D, E, F) the values of performance indicators with the
+tailored designs at given values of bead lifetime and 𝑘𝑎𝑐 .
+
+Compared to fluidized beds, R&D of packed bed systems should prioritize increasing bead
+longevity over any other technological parameters because it dictates the frontier of system
+sustainability (Figure 6D, E). Both LC and CI can be significantly reduced by increasing the bead
+lifetime from 1 year to 3 years. Longer bead lifetime also allows the system to target a higher COD
+removal percentage by designing a larger packed bed reactor (i.e., optimal HRT increases from
+approximately 6.5 hours to 14 hours, Figure 6A). Although PEG hydrogel had been estimated to
+have a lifetime over 10 years in the literature,49 it was found in preliminary experiments that the
+addition of microbial cells and mixing high strength wastewater in the reactor could affect the
+structural integrity of the beads and significantly reduce lifetime to as short as 30 days.37 If the
+goal of the system is carbon neutrality (i.e., CI = 0 kg CO2eq·tonne-1 COD removed), using a
+21
+
+https://doi.org/10.26434/chemrxiv-2024-w6n9n ORCID: https://orcid.org/0000-0002-5858-9511 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+packed bed reactor would require the beads to last at least 11 years without replacement, but the
+required bead longevity can be as short as 2 years with fluidized beds. Lower bed voidage (i.e.,
+gray contour lines in Figure 6) would make it even more difficult to achieve carbon neutrality.
+Unlike fluidized bed systems, increasing diffusivity through the encapsulation matrix within the
+evaluated range has minimal impact on the optimal sustainability of packed bed systems, because
+the negative effect of low diffusivity on COD removal may be largely overcome by design
+decisions.
+
+Figure 6. Mapping a packed bed system’s optimal performance across ranges of bead lifetime and beadto-water diffusivity ratio with 1-mm beads while all other parameters are fixed. Colors and white contour
+lines indicate (A, B) the tailored values of the design decision variables and (C, D, E) the values of
+performance indicators with the tailored designs at given values of bead lifetime and bead-to-water
+diffusivity ratio, assuming loose packing of encapsulant beads (i.e., bed voidage = 0.45). Gray contour lines
+represent the dense packing scenario (i.e., voidage = 0.35) for comparison.
+
+22
+
+https://doi.org/10.26434/chemrxiv-2024-w6n9n ORCID: https://orcid.org/0000-0002-5858-9511 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Despite the higher LC and CI, packed bed reactors may be preferred over fluidized beds
+due to locality-specific contextual factors. If the industry is bound by a discharge permit but has
+limited physical space, an optimized packed bed design may make it possible for the system to
+consistently achieve higher COD removal than if a fluidized bed of the same size is used.
+Depending on bead longevity, packed bed systems with a 50 m3·d-1 treatment capacity would
+have a tailored reactor size between 33−100 m3, a much smaller footprint than fluidized bed
+designs (i.e., 161−297 m3) for similar levels of COD removal. This is mainly attributed to the
+difference in the optimal HRT between the reactor types – 6.5−20 hours for packed beds
+compared to 2.8-5.0 days for fluidized beds.
+The most critical R&D pathway for encapsulated systems also depends on contextual
+factors. For example, this study assumed the system would be deployed at a medium-size
+brewery that purchases natural gas for heating onsite. If affordable low-CI energy for heating is
+available, the R&D priorities could shift away from optimization of the methanogenic microbial
+community at room temperature, because anaerobic bioreactivity can often gain significant
+improvement by operating the system at mesophilic temperatures.58 Although not explicitly
+captured by the model, tensions may exist between different properties of encapsulant materials,
+which could limit the feasible region for technological advancements in Figure 5 and Figure 6.
+Additionally, the environmental implications of end-of-life disposal of encapsulant materials are
+currently highly uncertain but could play a significant role in the overall sustainability of the
+technology. Improving encapsulant longevity could make the beads less biodegradable and could
+have unintended consequences (e.g., to human health or biodiversity) if released into the
+environment without control. Strategies for reuse, recycling, or safe disposal of the beads should
+be developed in conjunction with improvement in the durability of encapsulant materials.
+Unequivocally, lowering the cost and impacts associated with the use of encapsulant materials is
+critical for the overall sustainability of this technology regardless of reactor design or other
+technological assumptions.
+Moving forward, more work is needed to systematically evaluate the life cycle implications
+of different material choices or technological advancements. Knowledge and data from
+experiments should be consolidated to establish quantitative connections among encapsulant
+material properties (biocompatibility, durability, degradability, and density, etc.) and empirically
+outline the feasible region of key technological parameters (e.g., bead lifetime, diffusivity,
+encapsulation capacity). Rigorous calibration and validation of the multi-scale process model with
+experimental data will also enable better performance prediction and more specific
+recommendations for optimal system design.
+23
+
+https://doi.org/10.26434/chemrxiv-2024-w6n9n ORCID: https://orcid.org/0000-0002-5858-9511 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Acknowledgements
+The authors would like to thank Prof. Yalin Li (Rutgers, The State University of New Jersey) for
+providing insight and help in the computational implementation of the process model. We also
+thank Gretchen Gutenberger and Ian Song (University of Minnesota Twin Cities) for providing raw
+experimental data and helpful discussions. This work was funded by the U.S. Department of
+nergy’s Industrial fficiency and ecarbonization Office under award number DE-EE0009501c.
+Any opinions, findings, and conclusions or recommendations expressed in this publication are
+those of the authors and do not necessarily reflect the views of the U.S. Department of Energy.
+
+Supplemental Information Available
+The Supporting Information is available free of charge online:
+Additional modeling details, analysis settings, and results (PDF).
+
+Author Information
+Corresponding Author
+Jeremy S. Guest - Department of Civil and Environmental Engineering, University of Illinois at
+Urbana-Champaign (UIUC), 205 North Mathews Avenue, Urbana, IL 61801, United States;
+Institute for Sustainability, Energy, and Environment, UIUC, 1101 West Peabody Drive,
+Urbana, IL 61801, USA; DOE Center for Advanced Bioenergy and Bioproducts Innovation,
+UIUC, 1206 W. Gregory Drive, Urbana, IL 61801, USA. ORCID: https://orcid.org/0000-00032489-2579
+
+Authors
+Xinyi Zhang - Department of Civil and Environmental Engineering, University of Illinois at UrbanaChampaign,
+
+205
+
+North
+
+Mathews
+
+Avenue,
+
+Urbana,
+
+IL
+
+61801,
+
+USA.
+
+ORCID:
+
+https://orcid.org/0000-0002-5858-9511
+William A. Arnold - Department of Civil, Environmental, and Geo- Engineering, University of
+Minnesota Twin Cities, 500 Pillsbury Drive SE, Minneapolis, MN 55345, USA. ORCID:
+https://orcid.org/0000-0003-0814-5469
+Natasha Wright - Department of Mechanical Engineering, University of Minnesota Twin Cities,
+111 Church Street SE, Minneapolis, MN 55455, USA. ORCID: https://orcid.org/0000-00024424-9778
+
+24
+
+https://doi.org/10.26434/chemrxiv-2024-w6n9n ORCID: https://orcid.org/0000-0002-5858-9511 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Paige J. Novak - Department of Civil, Environmental, and Geo- Engineering, University of
+Minnesota Twin Cities, 500 Pillsbury Drive SE, Minneapolis, MN 55345, USA. ORCID:
+https://orcid.org/0000-0001-9054-0278
+
+25
+
+https://doi.org/10.26434/chemrxiv-2024-w6n9n ORCID: https://orcid.org/0000-0002-5858-9511 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+References
+(1)
+
+Arantes, M. K.; Alves, H. J.; Sequinel, R.; da Silva, E. A. Treatment of Brewery Wastewater and
+Its Use for Biological Production of Methane and Hydrogen. Int J Hydrogen Energy 2017, 42
+(42), 26243–26256. https://doi.org/10.1016/j.ijhydene.2017.08.206.
+
+(2)
+
+Ryan, D.; Gadd, A.; Kavanagh, J.; Barton, G. W. Integrated Biorefinery Wastewater Design.
+Chemical
+Engineering
+Research
+and
+Design
+2009,
+87
+(9),
+1261–1268.
+https://doi.org/10.1016/j.cherd.2009.04.016.
+
+(3)
+
+Gu, Y.; Li, Y.; Li, X.; Luo, P.; Wang, H.; Robinson, Z. P.; Wang, X.; Wu, J.; Li, F. The Feasibility
+and Challenges of Energy Self-Sufficient Wastewater Treatment Plants. Appl Energy 2017,
+204, 1463–1475. https://doi.org/10.1016/j.apenergy.2017.02.069.
+
+(4)
+
+Yan, P.; Qin, R.; Guo, J.; Yu, Q.; Li, Z.; Chen, Y.; Shen, Y.; Fang, F. Net-Zero-Energy Model
+for Sustainable Wastewater Treatment. Environ Sci Technol 2017, 51 (2), 1017–1023.
+https://doi.org/10.1021/acs.est.6b04735.
+
+(5)
+
+Walling, E.; Moerman, W.; Verstraete, W.; Villa Gomez, D. K.; Vaneeckhaute, C. Resource
+Recovery from Industrial Wastewater: What and How Much Is There? In Resource Recovery
+from Water; IWA Publishing, 2022; pp 21–48. https://doi.org/10.2166/9781780409566_0021.
+
+(6)
+
+Poh, P. E.; Tan, D. T.; Chan, E.-S.; Tey, B. T. Current Advances of Biogas Production via
+Anaerobic Digestion of Industrial Wastewater. In Advances in Bioprocess Technology; Springer
+International Publishing: Cham, 2015; pp 149–163. https://doi.org/10.1007/978-3-319-179155_9.
+
+(7)
+
+Saikat, B.; Sivamani, S.; Naveen Prasad, B. S. Biogas as a Value Generation in Industrial
+Wastewater—A Review. In Biorefinery for Water and Wastewater Treatment; Springer
+International Publishing: Cham, 2023; pp 49–69. https://doi.org/10.1007/978-3-031-20822-5_3.
+
+(8)
+
+Cvetković, . .; adoičić, T. K.; Novaković, J. G.; Kovačević, V.; Lopičić, Z. .; damović, V.;
+Kijevčanin, . L. enewable ydrogen Production Perspective in erbia via iogas Generated
+from Food Processing Wastewaters. J Clean Prod 2022, 363, 132142.
+https://doi.org/10.1016/j.jclepro.2022.132142.
+
+(9)
+
+Wu, Q.; Guo, W.; Bao, X.; Meng, X.; Yin, R.; Du, J.; Zheng, H.; Feng, X.; Luo, H.; Ren, N.
+Upgrading Liquor-Making Wastewater into Medium Chain Fatty Acid: Insights into Co-Electron
+Donors, Key Microflora, and Energy Harvest. Water Res 2018, 145, 650–659.
+https://doi.org/10.1016/j.watres.2018.08.046.
+
+(10)
+
+Zhang, Z.; Ni, B.-J.; Zhang, L.; Liu, Z.; Fu, W.; Dai, X.; Sun, J. Medium-Chain Fatty Acids
+Production from Carbohydrates-Rich Wastewater through Two-Stage Yeast Biofilm Processes
+without External Electron Donor Addition: Biofilm Development and PH Impact. Science of The
+Total Environment 2022, 828, 154428. https://doi.org/10.1016/j.scitotenv.2022.154428.
+
+(11)
+
+Naresh Kumar, A.; Sarkar, O.; Chandrasekhar, K.; Raj, T.; Narisetty, V.; Mohan, S. V.; Pandey,
+A.; Varjani, S.; Kumar, S.; Sharma, P.; Jeon, B.-H.; Jang, M.; Kim, S.-H. Upgrading the Value
+of Anaerobic Fermentation via Renewable Chemicals Production: A Sustainable Integration for
+Circular Bioeconomy. Science of The Total Environment 2022, 806, 150312.
+https://doi.org/10.1016/j.scitotenv.2021.150312.
+
+(12)
+
+Shoener, B. D.; Bradley, I. M.; Cusick, R. D.; Guest, J. S. Energy Positive Domestic Wastewater
+Treatment: The Roles of Anaerobic and Phototrophic Technologies. Environ. Sci.: Processes
+Impacts 2014, 16 (6), 1204–1222. https://doi.org/10.1039/C3EM00711A.
+
+26
+
+https://doi.org/10.26434/chemrxiv-2024-w6n9n ORCID: https://orcid.org/0000-0002-5858-9511 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+(13)
+
+van Lier, J. B.; Tilche, A.; Ahring, B. K.; Macarie, H.; Moletta, R.; Dohanyos, M.; Hulshoff Pol,
+L. W.; Lens, P.; Verstraete, W. New Perspectives in Anaerobic Digestion. Water Science and
+Technology 2001, 43 (1), 1–18. https://doi.org/10.2166/wst.2001.0001.
+
+(14)
+
+Yan, Y. G.; Tay, J. H. Characterisation of the Granulation Process during UASB Start-Up. Water
+Res 1997, 31 (7), 1573–1580. https://doi.org/10.1016/S0043-1354(96)00354-5.
+
+(15)
+
+Díaz-Gómez, J.; Pérez-Vidal, A.; Vargas-Nuncira, D.; Usaquén-Perilla, O.; Jiménez-Daza, X.;
+Rodríguez, C. Start-Up Evaluation of a Full-Scale Wastewater Treatment Plant Consisting of a
+UASB Reactor Followed by Activated Sludge. Water (Basel) 2022, 14 (24), 4034.
+https://doi.org/10.3390/w14244034.
+
+(16)
+
+Hu, Y.; Cheng, H.; Ji, J.; Li, Y. Y. A Review of Anaerobic Membrane Bioreactors for Municipal
+Wastewater Treatment with a Focus on Multicomponent Biogas and Membrane Fouling
+Control. Environ Sci (Camb) 2020, 6 (10), 2641–2663. https://doi.org/10.1039/D0EW00528B.
+
+(17)
+
+Shoener, B. D.; Zhong, C.; Greiner, A. D.; O. Khunjar, W.; Hong, P.-Y.; Guest, J. S. Design of
+Anaerobic Membrane Bioreactors for the Valorization of Dilute Organic Carbon Waste Streams.
+Energy Environ Sci 2016, 9 (3), 1102–1112. https://doi.org/10.1039/C5EE03715H.
+
+(18)
+
+Pretel, R.; Shoener, B. D.; Ferrer, J.; Guest, J. S. Navigating Environmental, Economic, and
+Technological Trade-Offs in the Design and Operation of Submerged Anaerobic Membrane
+Bioreactors
+(AnMBRs).
+Water
+Res
+2015,
+87,
+531–541.
+https://doi.org/10.1016/j.watres.2015.07.002.
+
+(19)
+
+Chen, S.; Arnold, W. A.; Novak, P. J. Encapsulation Technology to Improve Biological Resource
+Recovery: Recent Advancements and Research Opportunities. Environ Sci (Camb) 2021, 7
+(1), 16–23. https://doi.org/10.1039/D0EW00750A.
+
+(20)
+
+Wang, Z.; Ishii, S.; Novak, P. J. Encapsulating Microorganisms to Enhance Biological Nitrogen
+Removal in Wastewater: Recent Advancements and Future Opportunities. Environ Sci (Camb)
+2021, 7 (8), 1402–1416. https://doi.org/10.1039/D1EW00255D.
+
+(21)
+
+Kavitake, D.; Kandasamy, S.; Devi, P. B.; Shetty, P. H. Recent Developments on Encapsulation
+of Lactic Acid Bacteria as Potential Starter Culture in Fermented Foods – A Review. Food Biosci
+2018, 21, 34–44. https://doi.org/10.1016/j.fbio.2017.11.003.
+
+(22)
+
+Qin, L.; Gao, M.; Zhang, M.; Feng, L.; Liu, Q.; Zhang, G. Application of Encapsulated Algae
+into MBR for High-Ammonia Nitrogen Wastewater Treatment and Biofouling Control. Water
+Res 2020, 187, 116430. https://doi.org/10.1016/j.watres.2020.116430.
+
+(23)
+
+Zhu, K.; Arnold, W. A.; Sakkos, J.; Davis, C. W.; Novak, P. J. Achieving High-Rate Hydrogen
+Recovery from Wastewater Using Customizable Alginate Polymer Gel Matrices Encapsulating
+Biomass. Environ Sci (Camb) 2018, 4 (11), 1867–1876. https://doi.org/10.1039/C8EW00351C.
+
+(24)
+
+Chen, S.; Arnold, W.; Wright, N.; Zhu, K.; Ajayi, O.; Novak, P. Encapsulation Technology for
+Decentralized Brewery Wastewater Treatment: A Small Pilot Experiment. Bioresour Technol
+2022, 347, 126435. https://doi.org/10.1016/j.biortech.2021.126435.
+
+(25)
+
+Youngsukkasem, S.; Rakshit, S. K.; Taherzadeh, M. J. Biogas Production by Encapsulated
+Methane-Producing Bacteria. Bioresources 2012, 7 (1), 56–65.
+
+(26)
+
+Zhu, K.; Arnold, W. A.; Novak, P. J. Modeling Alginate Encapsulation System for Biological
+Hydrogen
+Production.
+Biotechnol
+Bioeng
+2019,
+116
+(12),
+3189–3199.
+https://doi.org/10.1002/bit.27152.
+
+27
+
+https://doi.org/10.26434/chemrxiv-2024-w6n9n ORCID: https://orcid.org/0000-0002-5858-9511 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+(27)
+
+Wang, Z.; Perez-Calleja, P.; Nerenberg, R.; Novak, P. J.; Ishii, S. Unraveling Encapsulated
+Growth of Nitrosomonas Europaea in Alginate: An Experimental and Modeling Study. Water
+Res 2022, 208, 117857. https://doi.org/10.1016/J.WATRES.2021.117857.
+
+(28)
+
+Chen, K.-C.; Lin, Y.-F. Immobilization of Microorganisms with Phosphorylated Polyvinyl Alcohol
+(PVA) Gel. Enzyme Microb Technol 1994, 16 (1), 79–83. https://doi.org/10.1016/01410229(94)90113-9.
+
+(29)
+
+Vorlop, K.-D.; Muscat, A.; Beyersdorf, J. Entrapment of Microbial Cells within Polyurethane
+Hydrogel Beads with the Advantage of Low Toxicity. Biotechnology Techniques 1992, 6 (6),
+483–488. https://doi.org/10.1007/BF02447818.
+
+(30)
+
+Dong, Y. M.; Jin, Y. W.; Zhang, Z. J. Synthesis and Application of Polyurethane Hydrogel
+Carrier on Nitrobacteria Immobilization. Adv Mat Res 2010, 152–153, 1533–1536.
+https://doi.org/10.4028/www.scientific.net/AMR.152-153.1533.
+
+(31)
+
+Sumino, T.; Nakamura, H.; Mori, N.; Kawaguchi, Y. Immobilization of Nitrifying Bacteria by
+Polyethylene Glycol Prepolymer. J Ferment Bioeng 1992, 73 (1), 37–42.
+https://doi.org/10.1016/0922-338X(92)90228-M.
+
+(32)
+
+Jha, M. K.; Das, P. P.; Gupta, S.; Chaudhary, V.; Gupta, P. Complementing the Circular
+Economy with a Life Cycle Assessment of Sustainable Hydrogels and Their Future Prospects.
+In Sustainable Hydrogels; Elsevier, 2023; pp 489–503. https://doi.org/10.1016/B978-0-32391753-7.00010-7.
+
+(33)
+
+Lee, B.; Wang, L.; Wang, Z.; Cooper, N. J.; Elimelech, M. Directing the Research Agenda on
+Water and Energy Technologies with Process and Economic Analysis. Energy Environ Sci
+2023, 16 (3), 714–722. https://doi.org/10.1039/D2EE03271F.
+
+(34)
+
+Li, Y.; Trimmer, J. T.; Hand, S.; Zhang, X.; Chambers, K. G.; Lohman, H. A. C.; Shi, R.; Byrne,
+D. M.; Cook, S. M.; Guest, J. S. Quantitative Sustainable Design (QSD) for the Prioritization of
+Research, Development, and Deployment of Technologies: A Tutorial and Review. Environ Sci
+(Camb) 2022, 8 (11), 2439–2465. https://doi.org/10.1039/D2EW00431C.
+
+(35)
+
+Li, Y.; Zhang, X.; Morgan, V. L.; Lohman, H. A. C.; Rowles, L. S.; Mittal, S.; Kogler, A.; Cusick,
+R. D.; Tarpeh, W. A.; Guest, J. S. QSDsan: An Integrated Platform for Quantitative Sustainable
+Design of Sanitation and Resource Recovery Systems. Environ Sci (Camb) 2022, 8 (10), 2289–
+2303. https://doi.org/10.1039/D2EW00455K.
+
+(36)
+
+Quantitative Sustainable Design Group. EXPOsan/exposan/metab. https://github.com/QSDGroup/EXPOsan/tree/main/exposan/metab (accessed 2023-05-03).
+
+(37)
+
+Gutenberger, G. M.; Holgate, O. M.; Arnold, W. A.; Guest, J. S.; Novak, P. J. Polyethylene
+Glycol as a Robust, Biocompatible Encapsulant for Two-Stage Treatment of Food and
+Beverage
+Wastewater.
+Environ
+Sci
+(Camb)
+2024,
+10
+(2),
+467–479.
+https://doi.org/10.1039/D3EW00633F.
+
+(38)
+
+Song, I.; Soulia, P. S.; Novak, P. J.; Arnold, W. A.; Wright, N. C. Dissolved Gas Recovery from
+Water Using a Sidestream Hollow-Fiber Membrane Module: First Principles Model Synthesis
+and
+Steady-State
+Validation.
+J
+Memb
+Sci
+2024,
+689,
+122134.
+https://doi.org/10.1016/J.MEMSCI.2023.122134.
+
+(39)
+
+Quantitative
+Sustainable
+Design
+Group.
+TEA
+https://qsdsan.readthedocs.io/en/latest/api/TEA.html (accessed 2023-05-03).
+
+28
+
+https://doi.org/10.26434/chemrxiv-2024-w6n9n ORCID: https://orcid.org/0000-0002-5858-9511 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+class.
+
+(40)
+
+ISO. ISO 14040:2006 - Environmental Management — Life Cycle Assessment — Principles
+and Framework. July 2006. https://www.iso.org/standard/37456.html (accessed 2022-04-30).
+
+(41)
+
+ISO. ISO 14044:2006 - Environmental Management — Life Cycle Assessment —
+Requirements and Guidelines. July 2006. https://www.iso.org/standard/38498.html (accessed
+2022-04-30).
+
+(42)
+
+Wernet, G.; Bauer, C.; Steubing, B.; Reinhard, J.; Moreno-Ruiz, E.; Weidema, B. The Ecoinvent
+Database Version 3 (Part I): Overview and Methodology. Int J Life Cycle Assess 2016, 21 (9),
+1218–1230. https://doi.org/10.1007/s11367-016-1087-8.
+
+(43)
+
+Bare, J. Tool for the Reduction and Assessment of Chemical and Other Environmental Impacts
+(TRACI) TRACI Version 2.1 User’s Guide; Washington, DC, 2014.
+
+(44)
+
+Mo, R.; Guo, W.; Batstone, D.; Makinia, J.; Li, Y. Modifications to the Anaerobic Digestion Model
+No. 1 (ADM1) for Enhanced Understanding and Application of the Anaerobic Treatment
+Processes – A Comprehensive Review. Water Res 2023, 244, 120504.
+https://doi.org/10.1016/j.watres.2023.120504.
+
+(45)
+
+McKay, M. D.; Beckman, R. J.; Conover, W. J. A Comparison of Three Methods for Selecting
+Values of Input Variables in the Analysis of Output from a Computer Code. Technometrics
+1979, 21 (2), 245. https://doi.org/10.2307/1268522.
+
+(46)
+
+Rose, K. A.; Smith, E. P.; Gardner, R. H.; Brenkert, A. L.; Bartell, S. M. Parameter Sensitivities,
+Monte Carlo Filtering, and Model Forecasting under Uncertainty. J Forecast 1991, 10 (1–2),
+117–133. https://doi.org/10.1002/for.3980100108.
+
+(47)
+
+Rattier, M.; Jimenez, J. A.; Miller, M. W.; Dhanasekar, A.; Willis, J.; Keller, J.; Batstone, D.
+Long-Term Comparison of Pilot UASB and AnMBR Systems Treating Domestic Sewage at
+Ambient
+Temperatures.
+J
+Environ
+Chem
+Eng
+2022,
+10
+(6),
+108489.
+https://doi.org/10.1016/j.jece.2022.108489.
+
+(48)
+
+Brewery
+Wastewater
+Design.
+BREWERY
+WASTEWATER
+101
+BIOLOGICAL
+PRETREATMENT.
+https://brewerywastewater.com/brewery-wastewater-101/brewerywastewater-101-biological-pretreatment/ (accessed 2023-11-26).
+
+(49)
+
+Isaka, K.; Kimura, Y.; Osaka, T.; Tsuneda, S. High-Rate Denitrification Using Polyethylene
+Glycol Gel Carriers Entrapping Heterotrophic Denitrifying Bacteria. Water Res 2012, 46 (16),
+4941–4948. https://doi.org/10.1016/j.watres.2012.05.050.
+
+(50)
+
+Cristina, G.; Camelin, E.; Ottone, C.; Fraterrigo Garofalo, S.; Jorquera, L.; Castro, M.; Fino, D.;
+Schiappacasse, M. C.; Tommasi, T. Recovery of Humic Acids from Anaerobic Sewage Sludge:
+Extraction, Characterization and Encapsulation in Alginate Beads. Int J Biol Macromol 2020,
+164, 277–285. https://doi.org/10.1016/j.ijbiomac.2020.07.097.
+
+(51)
+
+Covarrubias, S. A.; de-Bashan, L. E.; Moreno, M.; Bashan, Y. Alginate Beads Provide a
+Beneficial Physical Barrier against Native Microorganisms in Wastewater Treated with
+Immobilized Bacteria and Microalgae. Appl Microbiol Biotechnol 2012, 93 (6), 2669–2680.
+https://doi.org/10.1007/s00253-011-3585-8.
+
+(52)
+
+Bustos-Terrones, Y. A.; Bandala, E. R.; Moeller-Chávez, G. E.; Bustos-Terrones, V. Enhanced
+Biological Wastewater Treatment Using Sodium Alginate-Immobilized Microorganisms in a
+Fluidized Bed Reactor. Water Science and Engineering 2022, 15 (2), 125–133.
+https://doi.org/10.1016/j.wse.2022.02.002.
+
+29
+
+https://doi.org/10.26434/chemrxiv-2024-w6n9n ORCID: https://orcid.org/0000-0002-5858-9511 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+(53)
+
+Zhang, Y.; Hui, B.; Ye, L. Reactive Toughening of Polyvinyl Alcohol Hydrogel and Its
+Wastewater Treatment Performance by Immobilization of Microorganisms. RSC Adv 2015, 5
+(111), 91414–91422. https://doi.org/10.1039/C5RA20495J.
+
+(54)
+
+Longo, .; d’ ntoni, . .; ongards, .; Chaparro, .; Cronrath, .; atone, .; Lema, J. .;
+Mauricio-Iglesias, M.; Soares, A.; Hospido, A. Monitoring and Diagnosis of Energy
+Consumption in Wastewater Treatment Plants. A State of the Art and Proposals for
+Improvement.
+Appl
+Energy
+2016,
+179,
+1251–1268.
+https://doi.org/10.1016/J.APENERGY.2016.07.043.
+
+(55)
+
+artram, .; hort, . .; bie, Y.; arkaš, J.; Gueguen, C.; Peters, G. .; Zanzottera, N. .;
+Karthik, M. Chapter 6: Wastewater Treatment and Discharge. In 2019 Refinement to the 2006
+IPCC Guidelines for National Greenhouse Gas Inventories; IPCC, 2019; Vol. 5.
+
+(56)
+
+Metropolitan Council Environmental Services. INDUSTRIAL WASTE RATES AND FEES.
+https://metrocouncil.org/Wastewater-Water/Services/Industrial-Waste/Industrial-Waste-RatesFees.aspx (accessed 2023-05-03).
+
+(57)
+
+Los Angeles County Sanitation Districts. INDUSTRIAL WASTEWATER SURCHARGE RATES
+| Revenue Program & Rates. https://www.lacsd.org/services/wastewater-programspermits/wastewater-revenue-program/revenue-program-rates (accessed 2024-05-19).
+
+(58)
+
+Donoso-Bravo, A.; Retamal, C.; Carballa, M.; Ruiz-Filippi, G.; Chamy, R. Influence of
+Temperature on the Hydrolysis, Acidogenesis and Methanogenesis in Mesophilic Anaerobic
+Digestion: Parameter Identification and Modeling Application. Water Science and Technology
+2009, 60 (1), 9–17. https://doi.org/10.2166/wst.2009.316.
+
+30
+
+https://doi.org/10.26434/chemrxiv-2024-w6n9n ORCID: https://orcid.org/0000-0002-5858-9511 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+

@@ -1,0 +1,280 @@
+A global fluorescence index for predicting dissolved
+organic carbon abundance and aromaticity
+Kathleen R. Murphy1,2*
+.
+Department of Architecture and Civil Engineering, Chalmers University of
+Technology; Gothenburg, 41298 Sweden.
+Department of Building and Environmental Technology, Lund University; Lund, 22363
+Sweden.
+ABSTRACT The chemical structures of dissolved organic compounds in natural waters,
+including degree of aromaticity, affect their physical, chemical, and biological properties and
+ultimately the fate of carbon in aquatic systems and during water treatment. Herein, a new
+fluorescence-based aromaticity index named ARIX is shown to link the composition of aquatic
+dissolved organic matter to its relative aromaticity across diverse aquatic systems. ARIX predicts
+SUVA, a widely used proxy of aromaticity, as well as the percentage of polycyclic aromatic and
+polyphenolic molecular formulas determined by FT-ICR MS and the ratio of “humic substances”
+to “building blocks” fractions determined by LC-OCD. A meta-analysis of nine datasets
+spanning all seven continents suggests that a single linear relationship predicts SUVA from
+ARIX in both bulk and extracted DOM. In impounded waterbodies exhibiting decoupling
+between DOC and absorbance linked to extensive biogeochemical processing, linearity can be
+restored by accounting for the interaction between absorbance and ARIX. The results deliver
+new insights on widely discussed trends in DOM optical properties and on the molecular
+structures underlying optical measurements in aquatic milieu. They further pave the way for new
+optical technologies capable of real-time predictions of DOC concentration, reactivity and fate.
+
+Keywords: DOM, CDOM, surface waters, reactivity, connectivity, remote sensing, sensors
+SYNOPSIS: Algorithms are presented for predicting dissolved organic carbon relative
+aromaticity and concentration from only spectroscopic measurements.
+1. INTRODUCTION
+Predicting the fate of dissolved organic matter (DOM) in aquatic systems requires the ability to
+detect changes in the chemical composition of DOM (1, 2). DOM consists of potentially
+thousands of compounds of varying age and structural complexity including those derived from
+the degradation of biomass as well as compounds released as by-products of metabolism or
+chemical processes (3). In river systems the molecular characteristics of DOM affect ecosystem
+health (4) and determine whether DOM will leave the water column via biological or
+photochemical mineralization, flocculation/precipitation or adsorption, or be transported
+downstream and stored in the deep sea (2, 5).
+DOM aromaticity is widely studied due to its influence on wide-ranging chemical and
+biological processes in water. Aromatic compounds resist degradation due to their stable
+conjugated π-electron systems; when combined with the continuous export of aromatic DOM
+from land this contributes to the overall carbon storage of aquatic systems over long timescales
+(1, 6). Aromatic compounds control primary production by attenuating light underwater and by
+binding and retaining nutrients within their molecular structures (7, 8). During drinking water
+treatment, large polyaromatic compounds are more susceptible to flocculation (9, 10) and
+compete more effectively with micropollutants for sites on adsorption filters, leading to their
+premature saturation (11, 12). The selective removal of polyphenolic and other compounds
+during water treatment further affects the abundance, types, and toxicity of disinfection byproducts formed during subsequent reactions with chlorine (13).
+DOM relative aromaticity, referring to the proportion of carbon atoms associated with
+aromatic bonds, is a bulk property of the pool of molecules that comprise DOM (14). Relative
+aromaticity determined using Carbon-13 nuclear magnetic resonance, 13C-NMR, is strongly
+correlated to the ratio of UV absorption at 254 nm normalized to DOC concentration, termed
+specific UV absorbance or commonly SUVA (14, 15). In natural waters containing low
+concentrations of dissolved iron, SUVA typically spans the range 1 - 6 m2g-1C (16, 17). Since
+measuring 13C-NMR aromaticity is relatively impractical, SUVA is routinely measured in its
+place. However, SUVA has technical shortcomings due to requiring two different instruments (a
+carbon analyser and a spectrophotometer), which starkly increases measurement costs and
+negatively affects immediacy, accuracy and precision (16, 18).
+Fluorescence spectroscopy is widely used to study DOM composition and three fluorescence
+indices based on simple emission ratios are also widely used proxies of aromaticity (15): the
+“fluorescence index” (FI or FIX), “freshness” or “biological index” (β/α and BIX), and
+“humification index” HIX (19-22). However, their sensitivities to differences in aromaticity are
+limited (15, 16) and a theoretical basis underpinning their variability, and demonstrated links to
+specific DOM molecular structures, are missing (15, 23). Recently, a multispectral fluorescence
+index (“PARIX”) derived using parallel factor analysis (PARAFAC) was used to explain
+differences in treatment efficiencies among waters with different SUVA subjected to
+standardized water treatments (16). PARIX was defined as the ratio of two PARAFAC
+components, one with peak emissions above 500 nm, and the other with peak emissions around
+400 nm. In treated and untreated drinking water samples from Europe, Asia and North America,
+PARIX predicted SUVA aromaticity more accurately than FI, HIX or BIX.
+While equations using PARAFAC ratios can be useful, it is unclear whether PARAFAC
+models can be generalized to other datasets or to different types of aquatic systems. Also, the
+requirement to perform a PARAFAC analysis has practical limitations in monitoring applications
+since the components are first obtained from modelling sets of multispectral data matrices,
+requiring many samples and relatively complicated data processing (24). By reanalyzing
+published datasets spanning the river to ocean continuum, the present study aimed to identify
+robust algorithms for predicting DOC aromaticity and abundance from in situ spectral
+measurements. The results provide new insights into the molecular structures underpinning
+optical measurements and a technical basis for monitoring DOC concentrations and aromaticity
+in real-time.
+
+2. MATERIALS AND METHODS
+2.1 Datasets
+Nine published datasets comprising ~1000 samples were re-analysed for this study (Table S1).
+The datasets were created by eight independent research groups during the past two decades.
+They span all seven continents, include bulk DOM and extracts, with samples from inland
+surface waters (rivers, lakes, drinking water plants), groundwater, coastal waters, and the ocean.
+At minimum each dataset contains SUVA measurements plus fluorescence excitation-emission
+matrices (EEMs) and/or a PARAFAC model. SUVA was typically determined by the traditional
+USEPA method, which divides absorbance at 254 nm measured on a spectrophotometer (A254)
+by DOC concentration measured on a separate TOC analyser (18), and sometimes by sizeexclusion liquid chromatography with organic carbon detection (LC-OCD), which combines
+both detectors in a single instrument (25). Fluorescence intensities were measured on filtered
+samples in a 1-cm cell using a scanning excitation-emission (EEM) fluorometer. Absorbance
+was measured in a 1-cm cell within an Aqualog fluorometer or using a separate UV-vis
+spectrophotometer and a 1-cm or 5-cm cell. SUVA in this article is expressed in units m2g-1C
+which is equivalent to L mgC−1 m−1.
+2.2 PARIX and ARIX
+Two datasets (Isolates and Everglades) were used to test the generality of PARIX, the
+PARAFAC-based index developed for estimating percent aromaticity in bulk DOM (16).
+Philibert et al. (16) defined PARIX as the ratio of two components referred to as Hii and Hiii,
+where Hii represents a long-wavelength component with peak emissions above 500 nm and Hiii
+represents a shorter-wavelength component with peak emissions near 400 nm. Specifically, it
+was tested whether PARIX derived from different PARAFAC models and different research
+groups predicts SUVA in bulk EEMs (Everglades) or in DOM extracts (Isolates). In both cases,
+the raw data consisted of PARAFAC loadings reported in published tables and PARIX was
+calculated as the ratio between reported Fmax values for components similar to Hii and Hiii. The
+Isolates dataset included Fourier transform ion cyclotron resonance mass spectrometry (FT-ICR
+MS) performed on diverse DOM sources (17). This dataset was used to test whether PARIX
+predicts the relative abundance of molecular formulae associated with polycyclic aromatic and
+polyphenol compounds.
+Eight datasets comprising whole-water DOM samples (Alaska Rivers (26)., Australia (27),
+Congo (28) , Everglades (29), Horsens (30), S. America (31), SUEZ (16), Yukon Lakes (32))
+were used to assess correlations between SUVA and a newly identified fluorescence ratio called
+ARIX. ARIX is defined as the ratio of emission intensities detected at two fixed emission
+wavelengths (520 nm / 390 nm) when excited by light at 320 nm. ARIX tracks the ratio of
+PARAFAC components identified by Philibert et al. (16) and referred to as Hii and Hiii. Since Hiii
+overlaps spectrally with several ubiquitous PARAFAC components with emission peaks between
+400 - 450 nm (16, 33-35), the ARIX algorithm was designed to track PARIX using wavelengths
+that avoid interfering fluorescence from non-target fluorophores.
+To estimate ARIX in the Isolates dataset, the fluorescence EEMs had to first be reconstructed
+from the reported PARAFAC model. Kellerman et al. (17) tabulated PARAFAC loadings and
+Fmax values, which is sufficient information for estimating the original EEMs using published
+algorithms (24, 36). The reconstructed dataset doesn’t account for model residuals associated
+with lack of fit between the PARAFAC model and the primary dataset. Furthermore, it includes
+new error sources because the model loadings were reported with low machine precision.
+Consequently, a lower correlation is expected between SUVA and (reconstructed) ARIX than if
+the latter were derived from the primary EEM dataset. For the same reason, ARIX values
+determined for the Isolates dataset are not directly comparable to fluorescence indices reported
+by Kellerman et al. (17).
+2.3 Regression models
+For each dataset, individual regression models were calculated in MATLAB (ver. 2022a) using
+the fitlm function to predict SUVA with model y� = β1 (P)ARIX + β0 . Models were made with
+
+and without MATLAB’s robust statistics option that performs automatic outlier exclusion.
+Regressions were additionally calculated using four widely used fluorescence indices as the
+independent variable in place of ARIX. These were FI (“fluorescence index”), HIX
+(“humification index”), β/α (“freshness index”) and BIX (“biological index”). FI was calculated
+
+as the ratio of emission intensities detected at 470 and 520 nm upon excitation at 370 nm (19).
+HIX was calculated as the sum of emissions at 435-480 nm divided by the sum of emissions
+from 300–345 and 435–480 nm following excitation at 254 nm (20). BIX was calculated as the
+ratio of emission intensities detected at 430 and 380 nm upon excitation at 310 nm (37). β/α was
+calculated as the ratio of emission detected at 380 nm to the maximum emission detected at 420-
+435 nm upon excitation at 310 nm (21). The algorithms for BIX and β/α produced negligible
+differences in regressions with SUVA so BIX alone is reported herein.
+To derive a global model linking SUVA and ARIX for all whole-waters, a model II
+(geometric) regression was calculated using lsqfitgm code from MBARI (38). Prior to regression
+analyses, outliers were excluded from three datasets: Horsens: samples with SUVA below 2 or
+above 8 m2g-1C and (marine) samples from the estuary were excluded; Australia: one erroneous
+data point was excluded, and Yukon Lakes: one sample with extremely high DOC (>120 mg/L)
+was excluded. The Isolates dataset was analysed separately using ARIX derived from the
+reconstructed fluorescence EEMs.
+Multiple linear regressions were performed using the regress function in MATLAB with A254
+and ARIX as independent variables and DOC the dependent variable. There was no significant
+main effect of ARIX in any dataset, but there was a significant main effect on A254 in all datasets,
+and a significant interaction between A254 and ARIX in all datasets except S. America. Intercepts
+were also significant in all datasets but Yukon Lakes. The final model for each dataset retains
+only the statistically significant coefficients.
+2.4 Sensitivity analysis
+Fluorescence, absorbance, and DOC detectors have different inherent sensitivities, and
+instruments from different manufacturers (and even different versions of the same model) have
+varying levels of sensitivity and bias. A simulation was performed to estimate how much of the
+scatter in the relationship between ARIX and SUVA in bulk EEMs might be explained by only
+random (unbiased) errors. In this simulation, the model II regression equation was assumed to
+represent the true relationship between ARIX and SUVA. The eight bulk EEM datasets were
+used to generate a simulated dataset containing identical values of each DOC, SUVA and ARIX.
+Only A254 was allowed to vary, and it was calculated from Eq. 1 so that the simulated dataset
+would align perfectly with the regression equation. Finally, a random error residual was added to
+each variable in each sample, selected from a random distribution defined according to Table S3.
+The simulation was run 100 times, then the median RMSE value across all 100 runs was
+recorded.
+3. RESULTS AND DISCUSSION
+3.1 Predicting DOC composition from fluorescence ratios
+PARIX was an unbiased predictor of the proportion of polycyclic aromatic (PA) and
+polyphenolic (PP) structures in DOM extracts comprising the global Isolate dataset, according to
+molecular formulae measured using FT-ICR MS (Fig. 1a). Data are from Table 1 in Kellerman et
+al. (17), representing diverse freshwater and marine samples, including samples from the Pacific
+ocean at 21, 240 and 674 m. PARIX is calculated as the ratio of tabulated scores for PARAFAC
+component C3 divided by C2. Equation 1 estimates the relative abundance of polyphenolic
+compounds within 5% for samples in which these formulae comprised 2 - 45% of total formulas.
+
+%(PA + PP) = 30.28 PARIX
+
+……… Eq. 1
+
+PARIX also predicted SUVA in the Isolate dataset (Fig. 1b) and in bulk EEMs from two
+brackish river systems in the Florida Everglades (Fig 2a). PARIX in Fig 2a is calculated from
+which reveals a tight correlation with SUVA spanning both river systems (R2 = 0.96). These two
+datasets demonstrate linearity between PARIX and relative aromaticity in bulk DOM and
+extracts, independent of the specific PARAFAC model used to calculate PARIX.
+= 6.1 ARIX
+
+……… Eq. 2
+
+The relationships in Eq. 1-2 are notable considering that FTIR-MS and LC-OCD characterise
+all DOC fractions, including coloured and colourless molecules that do not fluoresce. Whether
+aromatic molecules in the DOC pool exhibit fluorescence depends on their specific structures
+and electronic properties. The ARIX numerator tracks a long-wavelength fluorescence
+component identified repeatedly in PARAFAC analyses (17, 39) and usually attributed to
+extensively π-conjugated polyaromatic structures (40). The denominator tracks a shortwavelength component with a secondary excitation maximum around 330 nm and emission peak
+below 400 nm (16, 35). This is similar to several oxidised fluorophores consisting of a single
+aromatic ring with attached carboxy, hydroxy, and methoxy groups, e.g. vanillic acid, syringic
+acid, and acetovanillone (41) albeit with longer absorption, possibly indicating additional
+substitution and/or the presence of a short, conjugated side chain, as in ferulic acid or coniferyl
+alcohol, or a conjugated heterocycle, as in coumarin (5, 41, 42).
+3.3 Global models for predicting DOM aromaticity
+The SUEZ and Isolates datasets each span several continents and multiple biomes yet produced
+similar or higher R2 than several geographically restricted datasets. For the Isolate dataset,
+fluorescence measurements were performed on extracted DOM, which probably limited
+interfering matrix effects and improved signal/noise especially for marine DOM. However, the
+SUEZ dataset was measured on whole-water EEMs and still indicates a single regression for
+predicting SUVA from ARIX regardless of sample origin.
+Plotting all eight whole-water datasets together (Fig. 4) showed ARIX to be confined within
+the range 0.15-1.0, with most samples falling between 0.25 and 0.9. Except for Everglades, all
+datasets were reasonably well captured by a single regression equation. Eq. 3 is derived from a
+geometric (Model II) regression since ARIX and SUVA were measured on multiple instruments
+(50) and has R2 = 0.48 and RMSE = 0.83 m2g-1C.
+
+SUVA = 7.2 ARIX- 1.2
+
+……… Eq. 3
+
+Fig. 4 shows only bulk DOM datasets; the Isolate dataset was excluded due to the
+unavailability of original fluorescence EEMs. However, after estimating the Isolate EEMs from
+the published PARAFAC model (Fig. S4-6), the regression coefficients were not significantly
+different to Eq. 3. For the Isolates dataset, the slope was 7.77 ± 0.57 with intercept -1.15 ± 0.33,
+producing Eq. 4:
+
+SUVA = 7.8 ARIX - 1.1
+
+……… Eq. 4
+
+Extending Weishaar’s equation linking 13C-NMR aromaticity to SUVA in DOM extracts (14):
+
+Percent aromaticity = 6.52 SUVA+ 3.63 = 50.7 ARIX - 3.9
+
+……… Eq. 5
+……… Eq. 6
+
+Across the datasets, b0 coefficients were positive (0-2.9) and highest for Everglades, indicating
+variable contributions by colorless DOC. The coefficient b1 was positive and spanned an order of
+magnitude (15-120). The coefficient b2 ranged between small and large negative values (-6 to 123) indicating that the effect of A254 on DOC generally decreased as SUVA increased; Congo
+was the sole exception with a small positive b2 value (Table S3). Everglades and Yukon Lakes
+had very large b1 and b2 coefficients and by using Eq. 6 to predict DOC, RMSE decreased by
+47% and 35% respectively relative to models with b2 = 0 (Fig. 5, Table S3). These results
+indicate the potential to significantly improve DOC predictions from in situ spectroscopic
+measurements particularly in aquatic systems with low hydrologic connectivity, as exemplified
+by isolated boreal lakes (e.g. Yukon Lakes) and tropical wetlands (e.g. Everglades).
+Figure 5: Prediction of DOC concentrations from absorbance and ARIX. Top row: DOC vs
+A254 in (A) Everglades; (B) Yukon Lakes datasets. Bottom row: Measured DOC vs DOC
+predicted from Eq. 6 for (C) Everglades; (D) Yukon Lakes.
+Equation 6 includes two terms reflecting different CDOM components, along with an intercept
+representing non-coloured DOC. The first term (b1*A254) represents the contribution to DOC of
+fresh terrestrial CDOM and is independent of aromaticity, indicating that for the molecules
+comprising this pool, absorbance increases in proportion to the number of carbon atoms. The
+second term (b2*A254*ARIX) and represents the contributions to DOC of terrestrial breakdown
+products and autochthonous DOM. This term is generally negative and decreasing with
+increasing aromaticity, because the conjugated polyphenolic structures represented by the ARIX
+numerator are more efficient at absorbing light per carbon atom than the degraded phenolic
+structures represented by the ARIX denominator. For terrestrially dominated ecosystems with
+strong hydrologic connectivity only the first term is needed to predict DOC concentration with
+reasonable accuracy, whereas to model optically complex waters including impounded
+catchments with substantial in situ biogeochemical processing, both terms are required.
+3.5 Benefits for water quality monitoring
+Global surface waters face a changing climate with greater variability in both the quantity and
+quality of DOM. Warmer temperatures are increasing rates of litter decomposition in soils and
+rates of biological production in water at the same time as changes in land use and altered
+rainfall patterns are changing hydrological regimes and the connectivity between landscapes and
+DOM (56, 57). This affects correlations between DOC and spectroscopic measurements and
+decreases the accuracy of predicting DOC concentrations from absorbance measurements
+obtained in the laboratory or from remotely sensed imagery (58). Also due to the link between
+aromaticity and chemical reactivity, any lack of predictability in surface water composition
+negatively affects drinking water treatment by increasing the risk of chemical over- or
+underdosing (16).
+Algorithms developed in this study improve the prediction of DOC abundance and reactivity
+from spectroscopic measurements which is especially important in waterbodies with high optical
+complexity. New in situ spectroscopic instruments could leverage these results to deliver
+currently missing data and provide real-time predictions of DOC abundance, reactivity and fate.
+Such instruments could simplify ground-truthing of remote sensing algorithms and enhance
+research on carbon cycling. Further applications include drinking water treatment, whereby realtime optical data could be used to adjust chemical doses in response to changing DOC
+composition, facilitating the sustainable removal of DOC compounds and their associated
+micropollutants.

@@ -1,0 +1,982 @@
+Physicochemical properties of tire-derived para-phenylenediamine quinones - A comparison
+of experimental and computational approaches
+Simon H. Maguire,a Misha Zvekic, a,b Angelina Jaeger,a,b Joseph Monaghan,a,b Erik T. Krogh,a,b and Heather
+A. Wiebe a,b
+a Department of Chemistry, Vancouver Island University, 900 Fifth Street, Nanaimo BC
+b Department of Chemistry, University of Victoria, 3800 Finnerty Rd, Victoria, BC
+
+Para-phenylenediamine (PPD) compounds are added to tire rubber at percent levels to sacrificially react
+with oxidants for prolonged service life. Recently, the PPD transformation product N-(1,3-dimethylbutyl)N’-phenyl-p-phenylenediamine quinone (6PPDQ) has been identified in roadway runoff as a potent
+toxicant for coho salmon (Oncorhynchus kisutch). As 6PPD may be phased out in favour of alternative
+PPDs, understanding the physicochemical properties of their corresponding quinones is important for
+predicting their environmental fate, distribution, and toxicity. Here, we present experimentally
+determined water solubility values for 6PPDQ and five structural analogues and find them to be several
+orders of magnitude lower than those predicted by EPI Suite, a popular Quantitative Structure Activity
+Relationship (QSAR) program. We also report octanol-water and air-water partition coefficients for PPDQs
+using Density Functional Theory (DFT) and QSAR approaches. Both methods provided similar rank
+ordering of compounds. However, DFT methods tended to underestimate log Kow values and overestimate
+log Kaw values relative to EPI Suite. We discuss the strengths and limitations of both computational
+approaches, the need for more experimentally derived values, and caution researchers interpreting
+predicted physicochemical properties, particularly for emerging contaminants for which QSARs may be
+poorly parameterized.
+
+Keywords: tire wear toxins, solubility, partition coefficients, EPI Suite, Density Functional Theory, para-phenylenediamine
+quinones, Quantitative Structure Activity Relationships
+
+Environmental Significance statement (120 words):
+Tire wear particles have been identified as a source of N-(1,3-dimethylbutyl)-N’-phenyl-pphenylenediamine quinone (6PPDQ), which leads to Urban Runoff Mortality Syndrome in salmonid
+species. Characterizing the physicochemical properties of 6PPDQ and structurally related paraphenylenediamine quinone analogues (PPDQs) is crucial in understanding their environmental fate,
+distribution, and consequent risks towards aquatic organisms. Computational methods can provide
+important insight into intrinsic molecular properties, especially where compounds are unavailable in
+sufficient quantity and/or purity to carry out experimental measurements. This paper presents
+experimental water solubilities and evaluates several computational methods applied to PPDQs of
+1
+
+https://doi.org/10.26434/chemrxiv-2025-q5xk3 ORCID: https://orcid.org/0000-0002-4301-1960 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+emerging concern. The research is significant in the evaluation of alternative tire preservatives as well as
+fate and distribution models that inform the design of engineered treatment systems.
+
+2
+
+https://doi.org/10.26434/chemrxiv-2025-q5xk3 ORCID: https://orcid.org/0000-0002-4301-1960 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Introduction
+In 2021, Tian et al. identified N-(1,3-dimethylbutyl)-N’-phenyl-p-phenylenediamine quinone
+(6PPDQ) as the cause of rain driven mass die-off events of coho salmon (Oncorhynchus kisutch) in the
+Pacific Northwest – a phenomenon known as Urban Runoff Mortality Syndrome (URMS).1 Paraphenylenediamine quinones (PPDQs) are derived from the ozonation of para-phenylenediamines (PPDs),
+sacrificial antiozonants added at 0.4–2 wt% to tire rubber to extend their use.1 6PPDQ and structurally
+related PPDQ analogues have been observed to enter urban waterways and have been quantified in road
+dust, sediments, snowmelt, fish tissues, and other matrices.2–8 6PPDQ toxicity has been established for
+other salmonid species, including brook trout (Salvelinus fontinalis),9–11 rainbow trout (Oncorhynchus
+mykiss),9,10 and lake trout (Salvelinus namaycush),12 but coho salmon appear to be the most susceptible
+with LC50 values ranging from 41–95 ng/L.13,14 6PPDQ appears to exhibit stereoselective toxicity, as the S
+enantiomer was recently reported to be 2.6 times more toxic to coho salmon than the R enantiomer.9,15
+The 2024 U.S. Tire Manufacturers Association Preliminary (Stage 1) Alternatives Analysis Report proposes
+several alternatives to 6PPD,16 including structural analogs where alkyl/aryl groups (R1 and R2) are varied
+(Figure 1 and Figure S1). However, the physicochemical properties of 6PPDQ and related analogs remain
+largely unreported.
+
+Figure 1. Structurally related PPD and PPDQ compounds discussed in this work.
+
+3
+
+https://doi.org/10.26434/chemrxiv-2025-q5xk3 ORCID: https://orcid.org/0000-0002-4301-1960 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+The physicochemical properties of a contaminant govern its environmental fate and distribution
+behaviour, including physical, chemical, and biological processes.17 Characterization of these intrinsic
+properties enables more accurate multi-phase models thus improving our understanding of the impact of
+environmental contaminants.18 Knowledge of these properties also informs appropriate sample handling
+in both the field and the lab. For example, recent studies have demonstrated that 6PPDQ sorbs to
+hydrophobic plastic laboratory materials and is lost from aqueous samples open to the atmosphere.4,19,20
+Understanding these loss processes is critical in developing good laboratory practices for analytical
+determinations and has important implications for exposure and toxicity studies.
+Of particular interest for PPDQs is their water solubility, a property which gives an upper bound
+to their ability to leach from tire wear particles into the aquatic environment and contributes to both the
+air-water (Kaw) and octanol-water (Kow) partition coefficients. Compounds with low water solubility such
+as 6PPDQ19 pose a challenge when constructing aqueous standards or designing toxicity studies, especially
+if the solubility limits are exceeded. Various structural and thermodynamic factors influence water
+solubility including the strength of the solvent-solute interactions and the partial molar volume of the
+compound, both of which affect the energetics of cavity formation in water. Water solubility can be
+measured in several ways, but generally involves measuring the concentration of the solute in a saturated
+solution of fixed composition and temperature.17 Complicating the measurement of aqueous solubility,
+sparingly soluble hydrophobic compounds can be slow to dissolve into water from their pure solid or liquid
+form, have a tendency to partition to container walls as well as the air-water interface, and may in some
+cases self-aggregate into dimers, micelles and other lamellar structures.21
+Additional challenges in experimentally measuring physicochemical properties of emerging
+contaminants may arise due to cost (time, personnel, instrumentation), toxicity concerns, and low
+availability of pure standards. The latter concern is particularly relevant for transformation products such
+as PPDQs,19,22 as not all quinone products of proposed PPD alternatives are commercially available and
+4
+
+https://doi.org/10.26434/chemrxiv-2025-q5xk3 ORCID: https://orcid.org/0000-0002-4301-1960 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+those that are may be prohibitively expensive. In such circumstances, physicochemical properties may be
+predicted using a variety of computational tools. A common approach is Quantitative Structure Activity
+Relationship (QSAR) models, such as EPI Suite.23 QSAR modelling involves comparing structural moieties
+of the target compound to a training set of compounds with well-characterized physicochemical
+properties to generate predicted properties. As such, the predictive model is most accurate when the
+target compound is structurally similar to the training set, which can limit the accuracy of predictions for
+complex molecules or unusual structural moieties like those found in PPDQs. EPI Suite in particular uses
+two dimensional SMILES codes as input, so cannot account for variation introduced by chiral centres,
+protonation states, or pH effects.24,25 Predicted properties of PPDQs have previously been reported by
+Klockner et al. (2021), Cao et al. (2022), and Zeng et al. (2023) using QSARs methods,26–28 however the
+accuracy of these values has not been evaluated. Given the structural complexity of PPDQs and the
+relative novelty of the electron distribution in phenylenediamine quinones, it is unclear if the available
+training data in EPI Suite and other QSAR models yield accurate predictions for PPDQs. This led us to
+consider density functional theory (DFT) as an alternative computational approach to evaluate PPDQs.
+Unlike QSAR models, DFT methods are not based on experimentally derived properties. Instead, they use
+quantum mechanics to calculate the electronic structure of a molecule from first principles, which is then
+used to compute the desired property.29,30 As DFT does not rely on empirical data, properties calculated
+using this method may be more accurate for molecules with novel moieties that are not well
+parameterized.31 However, relative to QSAR approaches, DFT calculations are computationally expensive
+and can require several days of run time on a supercomputer. Simplifying assumptions about the system
+such as the use of a dielectric continuum to represent the solvent rather than the use of discrete solvent
+molecules can reduce the run time.32,33 Regardless of the computational approach, experimentallyderived results are needed to validate the accuracy of predicated properties and inform simplifying
+assumptions.
+
+5
+
+https://doi.org/10.26434/chemrxiv-2025-q5xk3 ORCID: https://orcid.org/0000-0002-4301-1960 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Hu et al. recently reported the log Kow and water solubility of 6PPDQ to be 4.30 ± 0.02 and 38 ± 10
+μg L-1, respectively.19 Interestingly, EPI Suite predicts a similar log Kow (3.98) but a water solubility value
+over three orders of magnitude greater at 56.9 mg L-1.27 This discrepancy, along with the general lack of
+physicochemical property information available for the PPDQ structural analogs, prompted us to examine
+this further. Here, we compare water solubility predictions made by EPI Suite for six PPDQs to
+experimental values made by directly measuring their free concentration in aqueous solution using
+condensed phase membrane induction mass spectrometry (CP-MIMS).34 Additionally, we evaluate the
+suitability of DFT methods relative to QSARs for the calculation of the environmentally relevant partition
+coefficients Kow and Kaw.
+
+Experimental Materials and Methods
+Experimental Materials
+Deionized water (18 MΩ-cm, Facility Scale Reverse Osmosis/Ion Exchange Water Purification
+System, Applied Membranes Inc., Vista, CA, USA) was used to prepare analytical standards. HPLC-grade
+solvents were purchased from Fisher Scientific (Ottawa, ON). 6PPDQ, 6PPDQ-d5, IPPDQ, 77PDQ, DTPDQ,
+DPPDQ, and CPPDQ were obtained from HPC Standards Inc (>92% purity, Atlanta, GA, USA). 13C6-6PPDQ
+was purchased from ACP Chemicals (Montreal, QC, CAN).
+Water Solubility
+The aqueous phase concentrations of PPDQs were monitored in real-time using a semi-permeable
+membrane immersion probe mounted into a Teflon-backed cap screwed onto the sample vial. This
+approach, termed condensed phase membrane introduction mass spectrometry (CP-MIMS), has been
+described previously.4 Here, the probe consisted of an 8.0 cm long, 170 μm thick (0.30 mm ID, 0.64 mm
+OD) hollow fibre polydimethylsiloxane (PDMS) membrane (Silastic brand, Dow Corning, Midland, MI, USA)
+
+6
+
+https://doi.org/10.26434/chemrxiv-2025-q5xk3 ORCID: https://orcid.org/0000-0002-4301-1960 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+mounted onto 22-gauge stainless-steel hypodermic tubing. The acceptor phase was a 15/85 (v/v)
+heptane/methanol solution containing 20 µg kg-1 13C6-6PPDQ internal standard (IS) acidified with 0.03%
+formic acid (Fisher Chemical, Ottawa, ON). Acceptor phase was continuously delivered at 10 μL min-1 via
+syringe pump (Chemyx Fusion 100, Stafford, TX, USA) with a 10 mL gas-tight syringe (Hamilton 1000 series,
+Fisher Scientific) to an electrospray ionization (ESI) source. Analysis was conducted using positive mode
+ESI coupled to a triple quadrupole mass spectrometer (ESI-MS/MS; Perkin-Elmer QSightTM 220, Waltham,
+MA, USA). Instrument parameters and MS/MS transitions are listed in Table S1. Water solubility was
+determined by monitoring changes in the IS-normalized MS/MS signal intensity in response to sequential
+spike additions of an analytical standard solution of individual PPDQs. Each spike addition was followed
+by a 10-minute stabilization period in a continuously-stirred, temperature-controlled solution at 25 ± 1 °C
+for all six PPDQs, with additional experiments at 11 ± 1 and 41 ± 1 °C for 6PPDQ. The internal standard
+corrected signal intensity is plotted over time (Figure 2) and the solubility was determined using the
+intersection of the best-fit lines derived from the linear dynamic calibration range and data points in a
+saturated solution. Solubility experiments were performed in triplicate for 6PPDQ with 13–16 spike
+additions of 30. μL of 6.9 mg L-1 6PPDQ sub-stock (in acetonitrile) into 37.0 mL of DI water (pH ~ 5.5). This
+resulted in a final co-solvent concentration of 0.1% v/v. A control experiment evaluating the solubility of
+6PPDQ at elevated co-solvent concentration (2% v/v) showed no significant change to the observed
+solubility (Figure S2). Temperatures were controlled with a recirculating chiller (2095 Bath and Circulator,
+Forma Scientific, Marietta, OH, USA) to remain at 25.4 ± 0.2 °C. A sample vial was placed inside a doublewalled beaker, and water from the chiller was circulated through the outer layer. The water temperature
+inside the beaker, equilibrated with the sample, was measured with a digital thermometer. The solubility
+of the PPDQ analogues were examined using 10. μL spikes of stock solution (in methanol: 1.77 mg L -1
+DTPDQ, 54.4 mg L-1 IPPDQ, 22.1 mg L-1 CPPDQ, 2.88 mg L-1 77PDQ, and acetonitrile: 39.4 mg L-1 DPPDQ).
+
+7
+
+https://doi.org/10.26434/chemrxiv-2025-q5xk3 ORCID: https://orcid.org/0000-0002-4301-1960 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Uncertainties were determined from the standard deviation of n = 3 experimental replicates for 6PPDQ
+and from six different line fits for a single experiment the remaining PPDQs, as illustrated in Figure S3.
+Liquid Chromatography and Log Kow
+Aqueous solubility for 6PPD, 6PPDQ, and DTPDQ were also analyzed using a more conventional
+analytical workflow involving liquid chromatography-mass spectrometry of filtered, aqueous solutions. A
+series of solutions were prepared by spiking increasing volumes of a methanolic standard (280 mg L -1
+6PPD, 4.7 mg L-1 6PPDQ, 4.9 mg L-1 DTPDQ) into 40 mL vials containing deionized water with 300 ng L-1
+6PPDQ-d5 acting as an internal standard (maximum methanol co-solvent ca. 2% v/v). Aqueous solutions
+were equilibrated at room temperature for 10 minutes before filtration through a 0.45 µm Acrodisc Nylon
+filter (Pall Corporation, Port Washington, NY, USA) via a 50 mL glass syringe. Heptane (1.0 mL) was added
+to the aqueous filtrate, and the solution was then shaken for 30 seconds and allowed to fully separate. A
+500. µL aliquot of the heptane layer was taken for HPLC-MS analysis with a Thermo Fisher Vanquish MD
+HPLC connected to a TSQ Fortis. A YMC Triart C18 column (100 x 2.1 mm, 3 µm; Chromatographic
+Specialties, Brockville, ON, CAN) was used at 35 °C. Sample injections were 2.00 μL into an isocratic 0.200
+mL min-1 flow of 0.1% v/v formic acid in methanol. The same m/z transitions described above (Table S1)
+were employed, with additional mass spectrometer settings listed in the table footnote. Chromatographic
+peak areas normalized to the internal standard were plotted against the added concentration.
+The Kow for 6PPDQ was determined following the method of Hu et al. with minor modifications,
+including 30 minutes of equilibration in an ultrasonic bath and separation via centrifugation at 2500 RPM
+for 60 minutes.19 Quantitation of 6PPDQ in the aqueous and n-octanol phase was determined by HPLC–
+MS/MS using solvent matched calibration standards ranging from 0.5–12 µg L-1 and 0.6–48 µg L-1,
+respectively. To aid in the discussion of computational Kow values for the structurally related PPDQ series,
+we obtained isocratic retention times with 25/75 (v/v) water/methanol eluent with 0.1% (v/v) formic acid
+(Figure S4, Table S2).
+8
+
+https://doi.org/10.26434/chemrxiv-2025-q5xk3 ORCID: https://orcid.org/0000-0002-4301-1960 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Computational Methods - EPI Suite
+The Estimation Program Interface (EPI) Suite (v4.11) provided by the US EPA predicts
+physicochemical properties using the two-dimensional SMILES code of a compound and quantitative
+structure activity relationships (QSARs).23 Programs within EPI Suite use either a bond contribution or a
+group contribution method, wherein a molecule is divided into a set of covalent bonds or groups of atoms,
+each of which have been parameterized with a contribution towards a given physicochemical property
+based on experimental data. The predicted property is therefore the sum of the contributions from each
+bond or group, plus correction factors. The KOWWIN Program (v1.68) was used to predict log Kow values
+with the group contribution method. The bond contribution method in the HENRYWIN Program (v3.20)
+predicted Henry’s law constants at 25◦C in Pa∙m3 mol-1 which were converted to Kaw values via the ideal
+gas law (Eqn. S1). The HENRYWIN group contribution method did not output a prediction for the PPDQs
+as it is missing a value for the secondary amine. Water solubility (CWsat) was calculated from Kow with
+WSKOWWIN (v1.42) using equation S2 and from the group contribution method with WATERNT (v1.01).
+Computational Methods - Density functional theory
+DFT calculations were performed using Gaussian 16 (revision c.01)35 with the ωB97XD exchangecorrelation functional and the 6-311++G(d,p) basis set. Molecular geometries of 6PPD, 6PPDQ and its
+analogues were optimized, and the Gibbs energy of each molecule was calculated in the gas phase as well
+as in implicit water and n-octanol using the SMD solvation model.33 Gibbs energies of solvated systems
+Gsolv were calculated using Eqn. 1, where Ggas is the Gibbs energy obtained in the gas phase, Egas(el) and
+Esolv(el) are the electronic energy calculated in the gas phase and in implicit solvent respectively, and RT
+ln (24.46) is a correction factor that accounts a change of reference state from po = 1 bar in the gas phase
+to co = 1 M in solution.
+𝐺𝑠𝑜𝑙𝑣 = [𝐺𝑔𝑎𝑠 − 𝐸𝑔𝑎𝑠 (𝑒𝑙)] + 𝐸𝑠𝑜𝑙𝑣 (𝑒𝑙) + 𝑅𝑇 ln 24.46
+
+(Equation 1)
+
+9
+
+https://doi.org/10.26434/chemrxiv-2025-q5xk3 ORCID: https://orcid.org/0000-0002-4301-1960 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+For Kaw calculations, Ggas was taken directly from Gaussian output with no additional calculation necessary.
+The Kow and Kaw were calculated using Eqn. 2 where ΔG is the Gibbs energy difference for the transition
+from water to either n-octanol or gas phase, R is the gas constant, and T is 298 K.
+∆𝐺
+
+𝐾 = 𝑒 −𝑅𝑇
+
+(Equation 2)
+
+Estimation of Partial Molar Volumes
+Partial molar volumes of PPDQs were calculated using the Archimedean Displacement Model,38,39
+a molecular-dynamics based method for accurate determinations of molecular volumes. In this technique,
+classical force fields are used to represent intra- and inter-molecular interactions, which allows for explicit
+solvent molecules to be included in the calculation. The partial molar volume of a solute surrounded by N
+explicit solvent molecules is determined by the amount of displaced volume relative to the pure N-solvent
+system when a single molecule of solute is added. Simulations were performed using GROMACS 2023 and
+the OPLS/AA force field,38-41 in a cubic periodic box containing about 2000 solvent molecules and one
+solute. Temperature was maintained at 298 K with the velocity-rescale thermostat (τT = 0.1 ps)36 and
+pressure was maintained at 1 bar with the C-rescale barostat (τP = 2.0 ps).37
+
+Results & Discussion
+Water solubility
+To determine the water solubility of 6PPDQ and its analogs, we employed a semi-permeable
+membrane immersion probe to directly measure the free aqueous phase concentration in situ. This
+approach was demonstrated previously by Termopoli et al.,38 showing excellent agreement between
+experimental and literature values for the water solubility of pyrene at 135 μg L -1. Figure 2A shows an
+example chronogram representing the internal standard-normalized MS/MS signal for 6PPDQ over time
+as consecutive spike additions were added to the aqueous solution. Figure 2B displays the resulting data
+wherein the signal is plotted against the added concentration. The intersection of the linear portion of the
+
+10
+
+https://doi.org/10.26434/chemrxiv-2025-q5xk3 ORCID: https://orcid.org/0000-0002-4301-1960 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+calibration curve (below the solubility limit, black data points) and the data points clearly above the
+solubility limit (red data points) corresponds to the solubility limit. Using this approach, we determined
+the water solubility of 6PPDQ at 25 °C as 31 ± 5 μg L-1 which is in excellent agreement with the reported
+literature value (38 ± 10 μg L-1).19 We observed that the solubility of 6PPDQ was relatively invariant with
+temperature ranging from 29 ± 4 (n=3) to 42 ± 6 (n=3) μg L-1 between 11 and 41 °C (example plots given
+in Figure S5).
+
+Figure 2. Representative solubility experiment for 6PPDQ. A) The chronogram of the internal standard-normalized
+MS/MS signal changing over time as spike additions of 6PPDQ are added to aqueous solution (stepwise added
+concentration change indicated with a dashed line), and B) the resulting normalized signal response at
+concentrations below (black data), above (red data), and at intermediate (green data) added concentration.
+
+The experimental solubilities of PPDQ analogues are presented in Figure S6 and summarized in Table 1.
+The water solubility varies across this series with roughly a 50-fold difference between DPPDQ (168 μg L-
+
+11
+
+https://doi.org/10.26434/chemrxiv-2025-q5xk3 ORCID: https://orcid.org/0000-0002-4301-1960 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+1
+
+) and DTPDQ (3.5 μg L-1). In general, smaller PPDQs, such as IPPDQ and DPPDQ, exhibit higher water
+
+solubilities (> 100 μg L-1), whereas the larger DTPDQ and 77PDQ are considerably less water soluble (< 10
+μg L-1). 6PPDQ and CPPDQ exhibit intermediate solubilities at 31 and 32 μg L-1, respectively.
+
+Table 1. Comparison of the experimental and calculated water solubility at 25 °C.
+
+Compound
+
+IPPDQ
+DPPDQ
+CPPDQ
+6PPDQ*
+DTPDQ
+77PDQ
+
+MW
+(g mol-1)
+
+256.3
+
+Partial
+Molar
+Volume
+(cm3 mol-1)
+207 ± 1
+
+290.3
+
+221 ± 1
+
+296.4
+
+237 ± 1
+
+298.4
+
+255 ± 2
+
+318.4
+
+251 ± 1
+
+334.5
+
+313 ± 2
+
+CP-MIMS
+Method
+(μg L-1)
+106 ± 6
+(410 ± 20 nM)
+168 ± 8
+(580 ± 30 nM)
+32 ± 3
+(120 ± 1 nM)
+31 ± 5
+(104 ± 15 nM)
+3.5 ± 0.3
+(11 ± 1 nM)
+6.1 ± 0.8
+(18 ± 10 nM)
+
+WATERNT
+(EPI Suite)
+(μg L-1)
+
+WSKOWWIN
+Corrected
+(EPI Suite) WSKOWWIN
+(μg L-1)
+(µg L-1)**
+
+2.8 × 107
+
+1.4 × 106
+
+850
+
+6.2 × 104
+
+1.5 × 104
+
+96
+
+3.1 × 103
+
+5.7 × 104
+
+35
+
+1.3 × 106
+
+5.1 × 104
+
+-
+
+6.0 × 103
+
+1.2 × 103
+
+7.6
+
+4.1 × 105
+
+1.7 × 103
+
+1.0
+
+* Literature value for 6PPDQ has been reported to be 38 ± 10 μg L-1 following EPA guidelines with minor modifications at 20°C and
+
+67 ± 5 μg L-1 at 23°C using a solid/liquid saturator system method.19,39 Experimental CP-MIMS result for 6PPDQ is reported as the
+mean and standard deviation of n=3 experiments. All other PPDQ results are based on the mean and standard deviation of three
+linear fits choosing different points to as below and above solubility for a single experiment. Error on the partial molar volume
+calculations is estimated using block averaging.40
+**Recalibrated according to an updated correction term (C=-2.207) in Equation S2 determined from the experimental solubility
+for 6PPDQ reported here and the EPISuite predicted log Kow available in Table 2.
+
+The observed differences in solubility for the PPDQ analogues are consistent with the expected
+trend based on their partial molar volumes in water as estimated using the Archimedean Displacement
+Method (Figure 3).41–44 The larger an organic contaminant is, the more water-water solvent interactions
+are disrupted to create a hydrophobic cavity the compound will occupy. This process raises the chemical
+potential of the solution, consequently reducing the aqueous solubility.17 As expected for a structurally
+
+12
+
+https://doi.org/10.26434/chemrxiv-2025-q5xk3 ORCID: https://orcid.org/0000-0002-4301-1960 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+related series, a linear free energy relationship was observed between aqueous solubility and estimated
+partial molar volume, with the exception of DTPDQ which exhibited a low water solubility (3.5 ± 0.3 μg L1
+
+) for its size. Interestingly, the coefficient of determination for the six PPDQs (R2 = 0.57) improved to 0.90
+
+with the exclusion of DTPDQ (Figure 3). It is worth noting that both DPPDQ and DTPDQ are unique in the
+PPDQ series as having aryl substituents on both nitrogen atoms, potentially affecting their acid/base
+characteristics via electron delocalization. While beyond the scope of this work, this may lead to
+consequential pH-dependent solubility for these compounds.
+
+Figure 3. Linear free energy relationship plotting experimental log (Cwsat) from CP-MIMS experiment against
+calculated partial molar volume using the Archimedean Displacement Method. The red best-fit line includes
+DTPDQ (R2 = 0.57) while the black best-fit line excludes it (R2 = 0.90). Experimental solubilities of 6PPDQ (blue) and
+DTPDQ (red) determined using an off-line filtration and LC-MS method are illustrated with stripes and are included
+as a reference (not used in either regression line).
+
+The water solubility of DTPDQ was also measured by preparing a series of aqueous solutions of
+increasing amounts of DTPDQ, passing them through a 0.45 µm filter, and measuring the resulting
+concentrations off-line by conventional LC-MS/MS. The solubility of DTPDQ with this approach was
+determined to be 11 ± 2 μg L-1. While somewhat higher than that measured directly in solution by CP-
+
+13
+
+https://doi.org/10.26434/chemrxiv-2025-q5xk3 ORCID: https://orcid.org/0000-0002-4301-1960 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+MIMS it is still well below the trendline in Figure 3. The solubility of 6PPDQ measured by this method (41
+± 3 μg L-1, Table S3), was in better agreement with the direct CP-MIMS method and also within
+experimental error of the published value from Hu et al.19 The in-situ CP-MIMS data may be revealing
+solution phase behaviour. In the limit of low concentration, there is a linear dynamic range regime below
+10 μg L-1 consistent with employing this technique for trace level quantitative 6PPDQ determinations.4,45
+However, at concentrations approaching the saturation limit, the measured free concentration in solution
+appears to level off gradually (Figure 2; green coloured datapoints). This behaviour suggests some form
+of self-aggregation at higher concentrations, and appears to be more pronounced for some PPDQs, such
+as 77PDQ and IPPDQ (Figure S6). Hu et al. noted that 6PPDQ can form aggregates based on intermolecular
+hydrogen bonding and - stacking interactions.19,46 Further computational studies are currently
+underway to model the energetics of intermolecular interactions of 6PPDQ and structural analogs. In any
+case, it is worth noting that conventional solubility measurements based on physical separation of
+dissolved and undissolved phases (i.e., filtration or centrifugation) have the potential to overestimate the
+solubility of aggregate-forming analytes.
+While it remains unclear if all PPDQs are acutely toxic to aquatic organisms, it is clear that they
+are soluble in water at levels exceeding the LC50 of 6PPDQ for coho by several orders of magnitude.13,14
+Additionally, 6PPDQ is considerably less water soluble than the parent compound 6PPD (0.6–2 mg L-1),39,47
+which has likely confounded early toxicity studies reporting experimental designs with concentration
+levels exceeding the solubility limits reported here.48 The EPI Suite predicted water solubilities using
+WSKOWWIN and WATERNT are also included in Table 1. Interestingly, the predicted values are 2–4 orders
+of magnitude larger than the experimental water solubility reported here and elsewhere.19,39 Additionally,
+the predicted water solubilities do not follow the same rank-order trend observed in the experimental
+results. The accuracy of QSAR methods like WSKOWWIN and WATERNT depend heavily on the similarity
+of the test molecule to the training set. This training set is publicly available through the most recent
+14
+
+https://doi.org/10.26434/chemrxiv-2025-q5xk3 ORCID: https://orcid.org/0000-0002-4301-1960 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+version of the EPI Suite web app (https://episuite.dev/EpiWebSuite/#/) and users are able to view if the
+database has any structural analogs for a test molecule by using the Analog Identification Methodology
+(AIM) function. However, there are no analogs for 6PPDQ in the training set at this time. EPI Suite
+predictions have been found to closely match experimental data for more common compounds like
+polycyclic aromatic hydrocarbons and monoterpenoids,49,50 but it is known to deviate from experimental
+results for more complex structures and novel functional groups.51–55
+One of the notable characteristics of 6PPDQ is the unusually low basicity of the amine groups,
+presumably due to the extensive conjugation and electron withdrawing power of the quinone carbonyls.
+This was first noted in the description of the synthesis of 6PPDQ by Tian et al., where it remained in the
+organic phase after a wash with 0.1 M HCl to remove more basic impurities.1 Whereas most organic
+amines are expected to be protonated under ambient pH conditions and thus more water soluble, this is
+not the case for 6PPDQ. The EPI Suite QSAR methods may therefore use parameters fitted to reproduce
+the solubility of compounds with protonated amines, resulting in a significant overestimation of the water
+solubility of PPDQs. This assertion is supported by the observation that replacing the amines in 6PPDQ
+with alkane groups in EPI Suite, which would have a similar molar volume but not have parameters that
+are biased towards protonation, results in a solubility prediction that is 3-4 orders of magnitude closer to
+the experimental result (130.3 μg/L with WSKOWWIN and 42.9 μg/L with WATERNT). The WSKOWWIN
+method uses a linear free energy method to predict solubility based on the compound’s log Kow and molar
+mass (Eq. S2) and is therefore more convenient to reparametrize than the fragment-based WATERNT
+method. We re-fitted the correction term C = 1.008 in Eq. S2 to our experimental solubility and the QSAR
+predicted log Kow for 6PPDQ (Table 2) and obtained a new value of C’ = -2.207, which was used to predict
+the water solubilities for the remaining analogs. The results, shown in Table 1, are significantly improved
+over the WSKOWWIN predictions with the original parameters. Therefore, the relatively high
+hydrophobicity and low basicity of the PPDQs combined with the paucity of experimental data for the
+15
+
+https://doi.org/10.26434/chemrxiv-2025-q5xk3 ORCID: https://orcid.org/0000-0002-4301-1960 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+unique enamine quinone structure may explain the poor predictive performance of EPI Suite solubilities
+for this family of compounds. Therefore, we recommend caution when using this QSAR method for
+compounds such as PPDQs which are not well-represented by the training set. Additional factors that may
+give rise to an overestimation of the PPDQ water solubilities by QSAR methods may include water
+solubility training set data being biased towards compounds with high water solubilities because of
+historical limitations of analytical measurement sensitivity for hydrophobic organic molecules and/or
+experimental methods that do not adequately separate molecular clusters from the free aqueous phase
+compounds.56 Notably, when the WSKOWWIN method was calculated using Eq. S2 with the original
+correction term C and the molecular weight of a 6PPDQ dimer, rather than that of a single molecule, the
+result was closer to experimental findings (6.9 × 102 μg L-1 instead of 5.1 × 104 μg L-1, Table 1). We were
+not able to acquire DFT-based water solubilities due to the lattice energies for these compounds, which
+is required for such calculations, currently being unknown.
+Octanol – Water Partitioning
+The octanol-water partition coefficients were calculated using both QSAR (EPI Suite) and DFT
+(Gaussian) approaches, summarized in Table 2. The predicted Kow values for the PPDQs follow the same
+rank order by both methods with the KOWWIN values (EPI Suite) being roughly 5 to 10-fold higher. Veith
+and others57,58 have employed the correlation between log Kow and log (isocratic retention times) for a
+structurally related series of compounds to model octanol-water partitioning behaviour. Figure 4 displays
+this linear free energy relationship for the PPDQ series using our experimental retention times and the
+predicted log Kow values from DFT and QSAR. The log Kow value of 3.98 predicted by EPI Suite’s KOWWIN
+for 6PPDQ most closely matches our experimental value of 4.0 ± 0.2 as well as that reported earlier by Hu
+et al.19 of 4.30 ± 0.02 (both overlaid on Figure 4). KOWWIN has been widely accepted to provide good
+predicted log Kow values for neutral compounds.59 The calculation of log Kow is one of the most commonly
+reported uses of EPI Suite in the literature.52,55,60–62 The DFT method yields a log Kow of 3.27 for 6PPDQ,
+16
+
+https://doi.org/10.26434/chemrxiv-2025-q5xk3 ORCID: https://orcid.org/0000-0002-4301-1960 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+which is roughly an order of magnitude less than the experimental values. This discrepancy may be
+explained by the solvent model used. The implicit SMD solvent model, which uses a dielectric continuum
+to represent the solvent, has been shown to underestimate log Kow for other compounds.55,63 The use of
+dielectric constants for dry n-octanol has been shown to yield more accurate results for DFT predictions;63
+however, changing the dielectric here only marginally improved the log Kow result to 3.31. It is important
+to note that the SMD implicit solvent model does not account for specific solvent-solute interactions such
+as hydrogen bonding, so inclusion of some explicit solvent molecules around the solute may improve the
+DFT prediction. However, this would also significantly increase the computational cost of the calculation.
+Based on the results presented here, we recommend the KOWWIN from EPI Suite for PPDQ analogs.
+
+Figure 4. Log-log plot of octanol-water partitioning coefficients against isocratic LC-MS retention times. Calculated
+log Kow values are denoted with a (+) for DFT calculated values and (x) for QSAR predicted values. Experimental log
+Kow values for 6PPDQ are superimposed in solid blue for the results reported here (circle) and previously by Hu et
+al. (square).19
+
+The predicted log Kow values for the PPDQ analogs examined here range from 2.58 to 5.47, which
+indicates partitioning into organic matter and biological systems is likely, and is consistent with previous
+observations of PPDQs in soil/sediment phases.2,27 While a number of factors such as aquatic toxicity and
+17
+
+https://doi.org/10.26434/chemrxiv-2025-q5xk3 ORCID: https://orcid.org/0000-0002-4301-1960 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+environmental persistence need to be considered, the relatively high bioaccumulation potential (log Kow
+> 3) of many PPDQs poses a significant environmental risk.
+Table 2. Calculated log Kow and unitless log Kaw
+Log Kow
+
+Log Kaw
+
+Molecule
+
+DFT
+(Gaussian)
+
+KOWWIN
+(EPI Suite)
+
+DFT
+(Gaussian)
+
+HENRYWIN
+(EPI Suite)
+
+IPPDQ
+
+1.99
+
+2.58
+
+-8.51
+
+-11.71
+
+DPPDQ
+
+2.59
+
+3.46
+
+-8.62
+
+-12.55
+
+CPPDQ
+
+3.14
+
+3.94
+
+-8.65
+
+-11.70
+
+6PPDQ*
+
+3.27
+
+3.98
+
+-7.99
+
+-11.34
+
+DTPDQ
+
+3.63
+
+4.56
+
+-8.92
+
+-12.47
+
+77PDQ
+
+4.84
+
+5.47
+
+-7.18
+
+-9.88
+
+6PPD
+
+4.52
+
+4.68
+
+-5.26
+
+-6.86
+
+*Experimental value for the log Kow of 6PPDQ is 4.0 ± 0.2 in this work and 4.30 ± 0.02 from Hu et al. 19
+
+Air-Water Partitioning
+Understanding the air-water partitioning behaviour of PPDQs is important in predicting their
+environmental distribution and in particular their ability to undergo gas-phase atmospheric transport. A
+marked decrease in the aqueous concentration of PPDQs when left in open containers exposed to the
+atmosphere (t1/2 ~ 14–108 hrs)4 has been observed by us and others,2,4 suggesting that air/water-interface
+partitioning or some other loss process (e.g., reaction with an atmospheric component) may be occurring.
+To probe this further, we have calculated the log Kaw using both QSAR (EPI Suite HENRYWIN) and DFT
+methods. To our knowledge, there are currently no experimental results available for the PPDQs.
+Therefore, seven test compounds with experimental results reported in Abraham et al. (2019) were used
+to test these predictive models.64 These test compounds were selected for their structural similarities to
+
+18
+
+https://doi.org/10.26434/chemrxiv-2025-q5xk3 ORCID: https://orcid.org/0000-0002-4301-1960 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+PPDQs and have experimental log Kaw results between -8.57 and -2.42 (Table S4). Figure S7 plots predicted
+versus experimental log Kaw values using both DFT and EPI Suite methods. The results indicate better
+agreement between experimental values and predicted values obtained with DFT calculations (slope =
+1.04, R2 = 0.89) versus EPI Suite (slope = 0.73, R2 = 0.65). As seen in Table 2, the HENRYWIN predictions
+underestimate Kaw by 2–4 orders of magnitude relative to DFT for the PPDQs, consistent with the variance
+observed in the water solubility values. Furthermore, the DFT predictions for 6PPDQ agree with
+COSMOtherm predictions, which calculated the log Kaw to be -8.28.65 The increased performance of DFT
+relative to EPI Suite in this case may be due to the accuracy of DFT at describing molecules in the gas
+phase, combined with the lack of similarity of the PPDQs to the molecules in the training sets used by
+QSAR methods like HENRYWIN. Therefore, we recommend the use DFT rather than QSAR methods for the
+prediction of log Kaw.
+The DFT calculated log Kaw values for the PPDQs reported in Table 2 range from -7.2 for 77PDQ to
+-8.9 for DTPDQ with 6PPDQ predicted to be -8.0. For context, these values are considerably lower than
+pollutants observed to exhibit long range atmospheric transport, such as polychlorinated biphenyls (-2 to
+-3), and are in a similar range to atrazine (-6.9) and carbaryl (-7.7)17 which are not. As such, PPDQs are not
+expected to readily partition from water into the gas phase. It remains unclear what process is responsible
+for the decrease in aqueous concentrations of PPDQs in open containers. To date we have not observed
+any direct evidence of gas phase PPDQ arising from aqueous solution. While this observation is consistent
+with the low predicted Kaw values predicted here, experimentally determined Kaw are a recognized
+knowledge gap that may further elucidate the underlying loss mechanism.
+Conclusions
+Physicochemical properties may be measured through experimentation and predicted with
+computational approaches including QSARs and DFT methods. Here, we report experimental water
+solubilities for 6PPDQ (31 ± 5 µg L-1) and five structural analogs, ranging from 3.5 ± 0.3 µg L-1 for DTPDQ
+19
+
+https://doi.org/10.26434/chemrxiv-2025-q5xk3 ORCID: https://orcid.org/0000-0002-4301-1960 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+to 168 ± 8 µg L-1 for DPPDQ. EPI Suite predictions based QSARs methods were 2–5 orders of magnitude
+greater than experimental solubility results, potentially due to the anomalously low basicity of the PPDQ
+amines which is not represented in the QSAR training set. Re-parameterization of the equation used by
+WSKOWWIN significantly improved these predictions. Examining log Kow, we found that EPI Suite
+predicted values in close agreement with experimental findings. The KOWWIN predicted log Kow values
+ranged from 2.58 for IPPDQ to 5.47 for 77PPDQ, suggesting that they pose a bioaccumulation risk if
+persistent. While DFT predicted a similar trend and rank order among the PPDQs investigated here, it
+systematically underestimated log Kow, which may be due to the lack of specific solvent-solute interactions
+in the DFT model applied. Conversely, we found DFT worked well in predicting air-water partitioning for a
+series of test compounds, but as we were unable to detect gas phase concentrations we do not report
+experimental Kaw values for PPDQs. DFT predicted low log Kaw values for PPDQs, ranging from -7.2 for
+77PDQ to -8.9 for DTPDQ, suggesting that atmospheric transport in the gas phase is unlikely. This work
+presents both experimental and computed physicochemical properties for these emerging contaminants.
+As computational approaches become increasingly powerful and accessible, we encourage users to
+critically evaluate their fitness for specific purposes. An abundance of computational results with
+unknown accuracy may prove more hindrance than help if applied inappropriately or used in place of
+experimental data.
+
+Author Contributions
+Simon H. Maguire – conceptualization, formal analysis, investigation, methodology, software, validation,
+visualization, writing – original draft, writing – review & editing.
+Misha Zvekic – conceptualization, formal analysis, investigation, methodology, validation, visualization,
+writing – original draft, writing – review & editing.
+Angelina Jaeger – investigation, methodology, validation, writing – original draft, writing – review &
+editing.
+Joseph Monaghan – formal analysis, methodology, software, writing – review & editing.
+20
+
+https://doi.org/10.26434/chemrxiv-2025-q5xk3 ORCID: https://orcid.org/0000-0002-4301-1960 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Erik T. Krogh – conceptualization, funding acquisition, methodology, project administration, resources,
+supervision, writing – original draft, writing – review & editing.
+Heather A. Wiebe – conceptualization, funding acquisition, methodology, project administration,
+resources, supervision, writing – original draft, writing – review & editing.
+
+Conflicts of interest
+There are no conflicts to declare.
+Acknowledgements
+The authors acknowledge the ongoing support of students and infrastructure from Vancouver Island
+University and the University of Victoria. This work was supported by funding provided by NSERC
+Discovery (ETK RGPIN-2022-05349; HW RGPIN-2021-02916), Mitacs Accelerate (IT27105), and BC Salmon
+Restoration and Innovation Fund (BCSRIF_2022_389). This work was enabled in part by the support
+provided by the Canadian Foundation for Innovation (32238), the BC DRI Group, and the Digital Research
+Alliance of Canada (alliancecan.ca).
+Notes and references
+(1)
+
+(2)
+
+(3)
+
+(4)
+
+(5)
+
+(6)
+
+Tian, Z.; Zhao, H.; Peter, K. T.; Gonzalez, M.; Wetzel, J.; Wu, C.; Hu, X.; Prat, J.; Mudrock, E.;
+Hettinger, R.; Cortina, A. E.; Biswas, R. G.; Kock, F. V. C.; Soong, R.; Jenne, A.; Du, B.; Hou, F.; He, H.;
+Lundeen, R.; Gilbreath, A.; Sutton, R.; Scholz, N. L.; Davis, J. W.; Dodd, M. C.; Simpson, A.; McIntyre,
+J. K.; Kolodziej, E. P. A Ubiquitous Tire Rubber–Derived Chemical Induces Acute Mortality in Coho
+Salmon. Science 2021, 371 (6525), 185–189. https://doi.org/10.1126/science.abd6951.
+Hiki, K.; Yamamoto, H. Concentration and Leachability of N-(1,3-Dimethylbutyl)-N′-Phenyl-pPhenylenediamine (6PPD) and Its Quinone Transformation Product (6PPD-Q) in Road Dust
+Collected in Tokyo, Japan. Environmental Pollution 2022, 302, 119082.
+https://doi.org/10.1016/j.envpol.2022.119082.
+Zhu, J.; Guo, R.; Ren, F.; Jiang, S.; Jin, H. Occurrence and Partitioning of p-Phenylenediamine
+Antioxidants and Their Quinone Derivatives in Water and Sediment. Science of The Total
+Environment 2024, 914, 170046. https://doi.org/10.1016/j.scitotenv.2024.170046.
+Monaghan, J.; Jaeger, A.; Jai, J. K.; Tomlin, H.; Atkinson, J.; Brown, T. M.; Gill, C. G.; Krogh, E. T.
+Automated, High-Throughput Analysis of Tire-Derived p-Phenylenediamine Quinones (PPDQs) in
+Water by Online Membrane Sampling Coupled to MS/MS. ACS EST Water 2023, 3 (10), 3293–3304.
+https://doi.org/10.1021/acsestwater.3c00275.
+Nair, P.; Sun, J.; Xie, L.; Kennedy, L.; Kozakiewicz, D.; Kleywegt, S.; Hao, C.; Byun, H.; Barrett, H.;
+Baker, J.; Monaghan, J.; Krogh, E.; Song, D.; Peng, H. Synthesis and Toxicity Evaluation of Tire
+Rubber-Derived Quinones. ChemRxiv June 19, 2023. https://doi.org/10.26434/chemrxiv-2023pmxvc.
+Zhao, H. N.; Hu, X.; Gonzalez, M.; Rideout, C. A.; Hobby, G. C.; Fisher, M. F.; McCormick, C. J.; Dodd,
+M. C.; Kim, K. E.; Tian, Z.; Kolodziej, E. P. Screening P-Phenylenediamine Antioxidants, Their
+Transformation Products, and Industrial Chemical Additives in Crumb Rubber and Elastomeric
+Consumer Products. Environ. Sci. Technol. 2023, 57 (7), 2779–2791.
+https://doi.org/10.1021/acs.est.2c07014.
+
+21
+
+https://doi.org/10.26434/chemrxiv-2025-q5xk3 ORCID: https://orcid.org/0000-0002-4301-1960 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+(7)
+
+Zhang, Z.; Dai, C.; Chen, S.; Hu, H.; Kang, R.; Xu, X.; Huo, X. Spatiotemporal Variation of 6PPD and
+6PPDQ in Dust and Soil from E-Waste Recycling Areas. Science of The Total Environment 2024, 923,
+171495. https://doi.org/10.1016/j.scitotenv.2024.171495.
+(8) Olubusoye, B. S.; Cizdziel, J. V.; Bee, M.; Moore, M. T.; Pineda, M.; Yargeau, V.; Bennett, E. R. Toxic
+Tire Wear Compounds (6PPD-Q and 4-ADPA) Detected in Airborne Particulate Matter Along a
+Highway in Mississippi, USA. Bull Environ Contam Toxicol 2023, 111 (6), 68.
+https://doi.org/10.1007/s00128-023-03820-7.
+(9) Brinkmann, M.; Montgomery, D.; Selinger, S.; Miller, J. G. P.; Stock, E.; Alcaraz, A. J.; Challis, J. K.;
+Weber, L.; Janz, D.; Hecker, M.; Wiseman, S. Acute Toxicity of the Tire Rubber-Derived Chemical
+6PPD-Quinone to Four Fishes of Commercial, Cultural, and Ecological Importance. Environ. Sci.
+Technol. Lett. 2022, 9 (4), 333–338. https://doi.org/10.1021/acs.estlett.2c00050.
+(10) Montgomery, D.; Ji, X.; Cantin, J.; Philibert, D.; Foster, G.; Selinger, S.; Jain, N.; Miller, J.; McIntyre,
+J.; de Jourdan, B.; Wiseman, S.; Hecker, M.; Brinkmann, M. Interspecies Differences in 6PPDQuinone Toxicity Across Seven Fish Species: Metabolite Identification and Semiquantification.
+Environ. Sci. Technol. 2023, 57 (50), 21071–21079. https://doi.org/10.1021/acs.est.3c06891.
+(11) Philibert, D.; Stanton, R. S.; Tang, C.; Stock, N. L.; Benfey, T.; Pirrung, M.; de Jourdan, B. The Lethal
+and Sublethal Impacts of Two Tire Rubber-Derived Chemicals on Brook Trout (Salvelinus Fontinalis)
+Fry and Fingerlings. Chemosphere 2024, 360, 142319.
+https://doi.org/10.1016/j.chemosphere.2024.142319.
+(12) Roberts, C.; Lin, J.; Kohlman, E.; Jain, N.; Amekor, M.; Alcaraz, A. J.; Hogan, N.; Hecker, M.;
+Brinkmann, M. Acute and Subchronic Toxicity of 6PPD-Quinone to Early Life Stage Lake Trout
+(Salvelinus Namaycush). Environ. Sci. Technol. 2025. https://doi.org/10.1021/acs.est.4c09090.
+(13) Tian, Z.; Gonzalez, M.; Rideout, C. A.; Zhao, H. N.; Hu, X.; Wetzel, J.; Mudrock, E.; James, C. A.;
+McIntyre, J. K.; Kolodziej, E. P. 6PPD-Quinone: Revised Toxicity Assessment and Quantification with
+a Commercial Standard. Environ. Sci. Technol. Lett. 2022, 9 (2), 140–146.
+https://doi.org/10.1021/acs.estlett.1c00910.
+(14) Lo, B. P.; Marlatt, V. L.; Liao, X.; Reger, S.; Gallilee, C.; Ross, A. R. S.; Brown, T. M. Acute Toxicity of
+6PPD-Quinone to Early Life Stage Juvenile Chinook (Oncorhynchus Tshawytscha) and Coho
+(Oncorhynchus Kisutch) Salmon. Environ Toxicol Chem 2023, 42 (4), 815–822.
+https://doi.org/10.1002/etc.5568.
+(15) Di, S.; Liu, Z.; Zhao, H.; Li, Y.; Qi, P.; Wang, Z.; Xu, H.; Jin, Y.; Wang, X. Chiral Perspective Evaluations:
+Enantioselective Hydrolysis of 6PPD and 6PPD-Quinone in Water and Enantioselective Toxicity to
+Gobiocypris Rarus and Oncorhynchus Mykiss. Environment International 2022, 166, 107374.
+https://doi.org/10.1016/j.envint.2022.107374.
+(16) United States Tire Manufacturer’s Association. Preliminary (Stage 1) Alternatives Analysis Report;
+2024. https://www.ustires.org/system/files/files/202408/USTMA%206PPD%20Consortium%20Revised%20Preliminary%20AA%20Report_July_2024.pdf.
+(17) Schwarzenbach, R. P.; Gschwend, P. M.; Imboden, D. M. Environmental Organic Chemistry, 3rd
+edition.; Wiley: Hoboken, N.J, 2016.
+(18) Schwarzenbach, R. P.; Escher, B. I.; Fenner, K.; Hofstetter, T. B.; Johnson, C. A.; von Gunten, U.;
+Wehrli, B. The Challenge of Micropollutants in Aquatic Systems. Science 2006, 313 (5790), 1072–
+1077. https://doi.org/10.1126/science.1127291.
+(19) Hu, X.; Zhao, H. (Nina); Tian, Z.; Peter, K. T.; Dodd, M. C.; Kolodziej, E. P. Chemical Characteristics,
+Leaching, and Stability of the Ubiquitous Tire Rubber-Derived Toxicant 6PPD-Quinone. Environ.
+Sci.: Processes Impacts 2023, 25 (5), 901–911. https://doi.org/10.1039/D3EM00047H.
+(20) Lane, R. F.; Smalling, K. L.; Bradley, P. M.; Greer, J. B.; Gordon, S. E.; Hansen, J. D.; Kolpin, D. W.;
+Spanjer, A. R.; Masoner, J. R. Tire-Derived Contaminants 6PPD and 6PPD-Q: Analysis, Sample
+
+22
+
+https://doi.org/10.26434/chemrxiv-2025-q5xk3 ORCID: https://orcid.org/0000-0002-4301-1960 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Handling, and Reconnaissance of United States Stream Exposures. Chemosphere 2024, 363,
+142830. https://doi.org/10.1016/j.chemosphere.2024.142830.
+(21) Borden, S. A.; Damer, H. N.; Krogh, E. T.; Gill, C. G. Direct Quantitation and Characterization of
+Fatty Acids in Salmon Tissue by Condensed Phase Membrane Introduction Mass Spectrometry (CPMIMS) Using a Modified Donor Phase. Anal Bioanal Chem 2019, 411 (2), 291–303.
+https://doi.org/10.1007/s00216-018-1467-y.
+(22) Nuñez, J. R.; Colby, S. M.; Thomas, D. G.; Tfaily, M. M.; Tolic, N.; Ulrich, E. M.; Sobus, J. R.; Metz, T.
+O.; Teeguarden, J. G.; Renslow, R. S. Evaluation of In Silico Multifeature Libraries for Providing
+Evidence for the Presence of Small Molecules in Synthetic Blinded Samples. J. Chem. Inf. Model.
+2019, 59 (9), 4052–4060. https://doi.org/10.1021/acs.jcim.9b00444.
+(23) US EPA, O. EPI SuiteTM-Estimation Program Interface. https://www.epa.gov/tsca-screeningtools/epi-suitetm-estimation-program-interface (accessed 2024-07-30).
+(24) Wittekindt, C.; Goss, K.-U. Screening the Partition Behavior of a Large Number of Chemicals with a
+Quantum-Chemical Software. Chemosphere 2009, 76 (4), 460–464.
+https://doi.org/10.1016/j.chemosphere.2009.03.046.
+(25) Harris, D. C. Quantitative Chemical Analysis; W H Freeman & Co: New York, 2015.
+(26) Klöckner, P.; Seiwert, B.; Wagner, S.; Reemtsma, T. Organic Markers of Tire and Road Wear
+Particles in Sediments and Soils: Transformation Products of Major Antiozonants as Promising
+Candidates. Environ. Sci. Technol. 2021, 55 (17), 11723–11732.
+https://doi.org/10.1021/acs.est.1c02723.
+(27) Cao, G.; Wang, W.; Zhang, J.; Wu, P.; Zhao, X.; Yang, Z.; Hu, D.; Cai, Z. New Evidence of RubberDerived Quinones in Water, Air, and Soil. Environ. Sci. Technol. 2022, 56 (7), 4142–4150.
+https://doi.org/10.1021/acs.est.1c07376.
+(28) Zeng, L.; Li, Y.; Sun, Y.; Liu, L.-Y.; Shen, M.; Du, B. Widespread Occurrence and Transport of PPhenylenediamines and Their Quinones in Sediments across Urban Rivers, Estuaries, Coasts, and
+Deep-Sea Regions. Environ. Sci. Technol. 2023, 57 (6), 2393–2403.
+https://doi.org/10.1021/acs.est.2c07652.
+(29) Leach, A. R. Molecular Modelling: Principles and Applications; Prentice Hall, 2001.
+(30) Cramer, C. J. Essentials of Computational Chemistry: Theories and Models; Wiley, 2005.
+(31) van Mourik, T.; Bühl, M.; Gaigeot, M.-P. Density Functional Theory across Chemistry, Physics and
+Biology. Philos Trans A Math Phys Eng Sci 2014, 372 (2011), 20120488.
+https://doi.org/10.1098/rsta.2012.0488.
+(32) Miertuš, S.; Scrocco, E.; Tomasi, J. Electrostatic Interaction of a Solute with a Continuum. A Direct
+Utilizaion of AB Initio Molecular Potentials for the Prevision of Solvent Effects. Chemical Physics
+1981, 55 (1), 117–129. https://doi.org/10.1016/0301-0104(81)85090-2.
+(33) Marenich, A. V.; Cramer, C. J.; Truhlar, D. G. Universal Solvation Model Based on Solute Electron
+Density and on a Continuum Model of the Solvent Defined by the Bulk Dielectric Constant and
+Atomic Surface Tensions. J. Phys. Chem. B 2009, 113 (18), 6378–6396.
+https://doi.org/10.1021/jp810292n.
+(34) Vandergrift, G. W.; Lattanzio-Battle, W.; Krogh, E. T.; Gill, C. G. Condensed Phase Membrane
+Introduction Mass Spectrometry with In Situ Liquid Reagent Chemical Ionization in a Liquid
+Electron Ionization Source (CP-MIMS-LEI/CI). J. Am. Soc. Mass Spectrom. 2020, 31 (4), 908–916.
+https://doi.org/10.1021/jasms.9b00143.
+(35) Frisch, M. J.; Trucks, G. W.; Schlegel, H. B.; Scuseria, G. E.; Robb, M. A.; Cheeseman, J. R.; Scalmani,
+G.; Barone, V.; Petersson, G. A.; Nakatsuji, H.; Li, X.; Caricato, M.; Marenich, A. V.; Bloino, J.;
+Janesko, B. G.; Gomperts, R.; Mennucci, B.; Hratchian, H. P.; Ortiz, J. V.; Izmaylov, A. F.;
+Sonnenberg, J. L.; Williams; Ding, F.; Lipparini, F.; Egidi, F.; Goings, J.; Peng, B.; Petrone, A.;
+Henderson, T.; Ranasinghe, D.; Zakrzewski, V. G.; Gao, J.; Rega, N.; Zheng, G.; Liang, W.; Hada, M.;
+23
+
+https://doi.org/10.26434/chemrxiv-2025-q5xk3 ORCID: https://orcid.org/0000-0002-4301-1960 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Ehara, M.; Toyota, K.; Fukuda, R.; Hasegawa, J.; Ishida, M.; Nakajima, T.; Honda, Y.; Kitao, O.; Nakai,
+H.; Vreven, T.; Throssell, K.; Montgomery Jr., J. A.; Peralta, J. E.; Ogliaro, F.; Bearpark, M. J.; Heyd, J.
+J.; Brothers, E. N.; Kudin, K. N.; Staroverov, V. N.; Keith, T. A.; Kobayashi, R.; Normand, J.;
+Raghavachari, K.; Rendell, A. P.; Burant, J. C.; Iyengar, S. S.; Tomasi, J.; Cossi, M.; Millam, J. M.;
+Klene, M.; Adamo, C.; Cammi, R.; Ochterski, J. W.; Martin, R. L.; Morokuma, K.; Farkas, O.;
+Foresman, J. B.; Fox, D. J. Gaussian 16 Rev. C.01, 2016.
+(36) Bussi, G.; Donadio, D.; Parrinello, M. Canonical Sampling through Velocity Rescaling. J Chem Phys
+2007, 126 (1), 014101. https://doi.org/10.1063/1.2408420.
+(37) M, B.; G, B. Pressure Control Using Stochastic Cell Rescaling. The Journal of chemical physics 2020,
+153 (11). https://doi.org/10.1063/5.0020514.
+(38) Termopoli, V.; Famiglini, G.; Palma, P.; Cappiello, A.; Vandergrift, G. W.; Krogh, E. T.; Gill, C. G.
+Condensed Phase Membrane Introduction Mass Spectrometry with Direct Electron Ionization: OnLine Measurement of PAHs in Complex Aqueous Samples. J. Am. Soc. Mass Spectrom. 2016, 27 (2),
+301–308. https://doi.org/10.1007/s13361-015-1285-9.
+(39) Hiki, K.; Asahina, K.; Kato, K.; Yamagishi, T.; Omagari, R.; Iwasaki, Y.; Watanabe, H.; Yamamoto, H.
+Acute Toxicity of a Tire Rubber-Derived Chemical, 6PPD Quinone, to Freshwater Fish and
+Crustacean Species. Environ. Sci. Technol. Lett. 2021, 8 (9), 779–784.
+https://doi.org/10.1021/acs.estlett.1c00453.
+(40) Hess, B. Determining the Shear Viscosity of Model Liquids from Molecular Dynamics Simulations.
+The Journal of Chemical Physics 2002, 116 (1), 209–217. https://doi.org/10.1063/1.1421362.
+(41) Wiebe, H.; Spooner, J.; Boon, N.; Deglint, E.; Edwards, E.; Dance, P.; Weinberg, N. Calculation of
+Molecular Volumes and Volumes of Activation Using Molecular Dynamics Simulations. J. Phys.
+Chem. C 2012, 116 (3), 2240–2245. https://doi.org/10.1021/jp209088u.
+(42) Spooner, J.; Wiebe, H.; Boon, N.; Deglint, E.; Edwards, E.; Yanciw, B.; Patton, B.; Thiele, L.; Dance,
+P.; Weinberg, N. Molecular Dynamics Calculation of Molecular Volumes and Volumes of Activation.
+Phys. Chem. Chem. Phys. 2012, 14 (7), 2264–2277. https://doi.org/10.1039/C2CP22949H.
+(43) Abraham, M. J.; Murtola, T.; Schulz, R.; Páll, S.; Smith, J. C.; Hess, B.; Lindahl, E. GROMACS: High
+Performance Molecular Simulations through Multi-Level Parallelism from Laptops to
+Supercomputers. SoftwareX 2015, 1–2, 19–25. https://doi.org/10.1016/j.softx.2015.06.001.
+(44) Jorgensen, W. L.; Maxwell, D. S.; Tirado-Rives, J. Development and Testing of the OPLS All-Atom
+Force Field on Conformational Energetics and Properties of Organic Liquids. J. Am. Chem. Soc.
+1996, 118 (45), 11225–11236. https://doi.org/10.1021/ja9621760.
+(45) Monaghan, J.; Jaeger, A.; Agua, A. R.; Stanton, R. S.; Pirrung, M.; Gill, C. G.; Krogh, E. T. A Direct
+Mass Spectrometry Method for the Rapid Analysis of Ubiquitous Tire-Derived Toxin N-(1,3Dimethylbutyl)-N′-Phenyl-p-Phenylenediamine Quinone (6-PPDQ). Environ. Sci. Technol. Lett. 2021,
+8 (12), 1051–1056. https://doi.org/10.1021/acs.estlett.1c00794.
+(46) Tuttle, M. R.; Davis, S. T.; Zhang, S. Synergistic Effect of Hydrogen Bonding and π–π Stacking
+Enables Long Cycle Life in Organic Electrode Materials. ACS Energy Lett. 2021, 6 (2), 643–649.
+https://doi.org/10.1021/acsenergylett.0c02604.
+(47) Klöckner, P.; Seiwert, B.; Eisentraut, P.; Braun, U.; Reemtsma, T.; Wagner, S. Characterization of
+Tire and Road Wear Particles from Road Runoff Indicates Highly Dynamic Particle Properties.
+Water Research 2020, 185, 116262. https://doi.org/10.1016/j.watres.2020.116262.
+(48) Greer, J. B.; Dalsky, E. M.; Lane, R. F.; Hansen, J. D. Establishing an In Vitro Model to Assess the
+Toxicity of 6PPD-Quinone and Other Tire Wear Transformation Products. Environ. Sci. Technol.
+Lett. 2023, 10 (6), 533–537. https://doi.org/10.1021/acs.estlett.3c00196.
+(49) Tebes-Stevens*, C.; Patel, J. M.; Koopmans, M.; Olmstead, J.; Hilal, S. H.; Pope, N.; Weber, E. J.;
+Wolfe, K. Demonstration of a Consensus Approach for the Calculation of Physicochemical
+
+24
+
+https://doi.org/10.26434/chemrxiv-2025-q5xk3 ORCID: https://orcid.org/0000-0002-4301-1960 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Properties Required for Environmental Fate Assessments. Chemosphere 2018, 194, 94–106.
+https://doi.org/10.1016/j.chemosphere.2017.11.137.
+(50) Vilas-Boas, S. M.; da Costa, M. C.; Coutinho, J. A. P.; Ferreira, O.; Pinho, S. P. Octanol–Water
+Partition Coefficients and Aqueous Solubility Data of Monoterpenoids: Experimental, Modeling,
+and Environmental Distribution. Ind. Eng. Chem. Res. 2022, 61 (8), 3154–3167.
+https://doi.org/10.1021/acs.iecr.1c04196.
+(51) Endo, S.; Hammer, J.; Matsuzawa, S. Experimental Determination of Air/Water Partition
+Coefficients for 21 Per- and Polyfluoroalkyl Substances Reveals Variable Performance of Property
+Prediction Models. Environ. Sci. Technol. 2023, 57 (22), 8406–8413.
+https://doi.org/10.1021/acs.est.3c02545.
+(52) Schönsee, C. D.; Bucheli, T. D. Experimental Determination of Octanol–Water Partition Coefficients
+of Selected Natural Toxins. J. Chem. Eng. Data 2020, 65 (4), 1946–1953.
+https://doi.org/10.1021/acs.jced.9b01129.
+(53) Rodríguez-Leal, I.; MacLeod, M. The Applicability Domain of EPI SuiteTM for Screening Phytotoxins
+for Potential to Contaminate Source Water for Drinking. Environmental Sciences Europe 2022, 34
+(1), 96. https://doi.org/10.1186/s12302-022-00676-2.
+(54) Boethling, R.; Meylan, W. How Accurate Are Physical Property Estimation Programs for
+Organosilicon Compounds? Environmental Toxicology and Chemistry 2013, 32 (11), 2433–2440.
+https://doi.org/10.1002/etc.2326.
+(55) Van Der Spoel, D.; Manzetti, S.; Zhang, H.; Klamt, A. Prediction of Partition Coefficients of
+Environmental Toxins Using Computational Chemistry Methods. ACS Omega 2019, 4 (9), 13772–
+13781. https://doi.org/10.1021/acsomega.9b01277.
+(56) Llompart, P.; Minoletti, C.; Baybekov, S.; Horvath, D.; Marcou, G.; Varnek, A. Will We Ever Be Able
+to Accurately Predict Solubility? Sci Data 2024, 11 (1), 303. https://doi.org/10.1038/s41597-02403105-6.
+(57) Veith, G. D.; Austin, N. M.; Morris, R. T. A Rapid Method for Estimating Log P for Organic
+Chemicals. Water Research 1979, 13 (1), 43–47. https://doi.org/10.1016/0043-1354(79)90252-5.
+(58) Namjesnik-Dejanovic, K.; Cabaniss, S. E. Reverse-Phase HPLC Method for Measuring Polarity
+Distributions of Natural Organic Matter. Environ. Sci. Technol. 2004, 38 (4), 1108–1114.
+https://doi.org/10.1021/es0344157.
+(59) Hodges, G.; Eadsforth, C.; Bossuyt, B.; Bouvy, A.; Enrici, M.-H.; Geurts, M.; Kotthoff, M.; Michie, E.;
+Miller, D.; Müller, J.; Oetter, G.; Roberts, J.; Schowanek, D.; Sun, P.; Venzmer, J. A Comparison of
+Log Kow (n-Octanol–Water Partition Coefficient) Values for Non-Ionic, Anionic, Cationic and
+Amphoteric Surfactants Determined Using Predictions and Experimental Methods. Environmental
+Sciences Europe 2019, 31 (1), 1. https://doi.org/10.1186/s12302-018-0176-7.
+(60) Sühring, R.; Mayer, P.; Leonards, P.; MacLeod, M. Fate-Directed Risk Assessment of Chemical
+Mixtures: A Case Study for Cedarwood Essential Oil. Environ. Sci.: Processes Impacts 2022, 24 (8),
+1133–1143. https://doi.org/10.1039/D2EM00103A.
+(61) Cappelli, C. I.; Benfenati, E.; Cester, J. Evaluation of QSAR Models for Predicting the Partition
+Coefficient (Log P) of Chemicals under the REACH Regulation. Environmental Research 2015, 143,
+26–32. https://doi.org/10.1016/j.envres.2015.09.025.
+(62) Chi, Y.; Zhang, H.; Huang, Q.; Lin, Y.; Ye, G.; Zhu, H.; Dong, S. Environmental Risk Assessment of
+Selected Organic Chemicals Based on TOC Test and QSAR Estimation Models. Journal of
+Environmental Sciences 2018, 64, 23–31. https://doi.org/10.1016/j.jes.2016.11.018.
+(63) Jones, M. R.; Brooks, B. R. Quantum Chemical Predictions of Water–Octanol Partition Coefficients
+Applied to the SAMPL6 logP Blind Challenge. J Comput Aided Mol Des 2020, 34 (5), 485–493.
+https://doi.org/10.1007/s10822-020-00286-1.
+
+25
+
+https://doi.org/10.26434/chemrxiv-2025-q5xk3 ORCID: https://orcid.org/0000-0002-4301-1960 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+(64) Abraham, M. H.; Acree, W. E.; Hoekman, D.; Leo, A. J.; Medlin, M. L. A New Method for the
+Determination of Henry’s Law Constants (Air-Water-Partition Coefficients). Fluid Phase Equilibria
+2019, 502, 112300. https://doi.org/10.1016/j.fluid.2019.112300.
+(65) Rodgers, T. F. M.; Wang, Y.; Humes, C.; Jeronimo, M.; Johannessen, C.; Spraakman, S.; Giang, A.;
+Scholes, R. C. Bioretention Cells Provide a 10-Fold Reduction in 6PPD-Quinone Mass Loadings to
+Receiving Waters: Evidence from a Field Experiment and Modeling. Environ. Sci. Technol. Lett.
+2023, 10 (7), 582–588. https://doi.org/10.1021/acs.estlett.3c00203.
+
+26
+
+https://doi.org/10.26434/chemrxiv-2025-q5xk3 ORCID: https://orcid.org/0000-0002-4301-1960 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+

@@ -1,0 +1,1550 @@
+Association Kinetics for Perfluorinated n-Alkyl
+Radicals
+Hrishikesh Ram,∗,†,‡,¶ Yuri Georgievskii,¶ Sarah N. Elliott,¶,§ and Stephen J.
+Klippenstein¶
+†Department of Chemistry, North Carolina State University, Raleigh, North Carolina 27606,
+United States
+‡Department of Chemical and Biomolecular Engineering, North Carolina State University,
+Raleigh, North Carolina 27606, United States
+¶Chemical Sciences and Engineering Division, Argonne National Laboratory, Lemont,
+Illinois 60439, United States
+§Dipartimento di Chimica, Materiali e Ingegneria Chimica ”Giulio Natta”, Politecnico di
+Milano, Milano, Italia
+E-mail: hram@ncsu.edu
+
+1
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Abstract
+Radical-radical reaction channels are important in the pyrolysis and oxidation
+chemistry of perfluoroalkyl substances. In particular, unimolecular dissociation reactions
+within unbranched n-perfluoroalkyl chains, and their corresponding reverse barrierless
+association reactions, are expected to be significant contributors to the gas-phase
+thermal decomposition of families of species such as perfluorinated carboxylic acids and
+perfluorinated sulfonic acids. Unfortunately, experimental data for these reactions are
+scarce and uncertain. Furthermore, obtaining reliable theoretical predictions for such
+reactions is a laborious and computationally intensive task. In this work, we present
+state-of-the-art ab initio transition-state-theory-based master-equation calculations
+examining the chemical kinetics of the various association/decomposition reactions
+producing/decomposing the C2 − C4 series of unbranched n-perfluoroalkanes (C2 F6 ,
+C3 F8 , and C4 F10 ). The variable-reaction-coordinate transition-state theory (VRCTST) formalism is employed in computing the microcanonical and canonical rates
+for the association reactions. Reaction thermochemistry is obtained via composite
+quantum chemistry calculations and the laddering of error-cancelling reaction schemes
+via a connectivity-based hierarchy approach employing ANL1/ANL0-style reference
+energies. Lennard-Jones collision model parameters for the considered systems were
+estimated by a direct dynamics approach, and collisional energy transfer parameters
+were obtained from analogies to systems of similar size and heavy-atom connectivity.
+A one-dimensional master equation approach was used to convert the microcanonical
+rate coefficients from the VRC-TST analysis into temperature- and pressure-dependent
+rate constants for the association reactions and the reverse dissociation reactions. The
+data are reported in standardized formats for usage in comprehensive chemical kinetic
+models for PFAS thermal destruction.
+
+Keywords: PFAS, Radical Association, Kinetics, VRC-TST, Master Equation, Thermochemistry
+
+2
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+1. Introduction
+The thermal destruction of perfluoroalkyl substances (PFAS) has garnered much attention
+recently due to concerns of adverse health effects, environmental bioaccumulation, and long
+half-lives. 1–5 Full mineralization of all C−F bonds into HF and CO2 is necessary for effective
+removal of PFAS from contaminated matrices, but the combustion is often incomplete. The
+difficulty in experimentally characterizing the products of incomplete combustion, which are
+potentially hazardous, has prompted a variety of computational studies into the chemical
+reaction mechanisms of PFAS pyrolysis and oxidation. 6–10
+Extensive examinations of the thermochemistry of species involved in the destruction of
+perfluorinated carboxylic acids and perfluorinated sulfonic acids indicate that radical-radical
+reaction channels, such as homolytic dissociation within perfluoroalkyl chains, are likely
+important alongside molecular or pericyclic reactions with sufficiently low electronic barriers
+to contribute at incineration conditions. However, in the existing theoretical studies on
+PFAS thermal decomposition, the consideration of barrierless reactions has been limited.
+An example is the variational transition-state theory treatment of reactions like fluorine
+atom loss or singlet-CF2 dissociation from n-perfluoroalkyl radicals or the dissociation of
+the carbon-sulfur bond in perfluorinated sulfonic acids, using bond-stretching coordinates
+and single-reference density functional methods by Altarawneh and co-workers. 7,8 While
+these reactions may be relevant to PFAS thermal decomposition, the series of carbon-carbon
+bond scissions (and their reverse associations) within perfluoroalkyl chains indicated to be
+important by bond dissociation energies have not been studied thoroughly. Wardlaw and
+−
+→
+co-workers have carried out a theoretical study of 2 CF3 −
+←
+−
+− C2 F6 using canonical flexible
+transition state theory, 11 but more refined theoretical studies of this reaction and studies of
+the size dependence of perfluoroalkyl radical combinations have not been published to our
+knowledge.
+Obtaining reliable kinetic parameters for radical-radical reaction channels from theoretical
+calculations is difficult, as they are barrierless, and the radical-radical interaction potential in
+3
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+the transition state region exhibits strong multireference electronic character. Furthermore, a
+number of the modes are strongly coupled with significant deviation from harmonic oscillator
+behavior. The prediction of the pressure dependence is complicated by the dependence
+on thermochemical data and energy transfer parameters. 12 Experimental kinetics data
+are sparsely available for radical-radical pathways due to the challenges of generating and
+monitoring radicals and the complications of secondary reactions. As a result, the experimental
+data that are available often display high uncertainty.
+In the interest of developing a complete high fidelity combustion kinetics model for PFAS,
+we have undertaken a study of reactions R1 – R5 below. Reactions R1 – R4 are the association
+reactions of the C1 − C3 unbranched n-perfluoroalkyl radicals to form the C2 − C4 unbranched
+n-perfluoroalkanes. Reaction R5 is the bimolecular well-skipping reaction over the C4 F10
+well.
+
+k1
+
+−
+→
+2 CF3 −
+←
+−
+− C2 F6
+k91
+
+k2
+
+−
+→
+CF3 + C2 F5 −
+←
+−
+− C3 F8
+k92
+
+k3
+
+−
+→
+CF3 + C3 F7 −
+←
+−
+− C4 F10
+k93
+
+k
+
+4
+−
+→
+2 C2 F5 −
+←
+−
+− C4 F10
+
+k94
+
+k
+
+5
+−
+→
+CF3 + C3 F7 −
+←
+−
+− 2 C2 F5
+
+k95
+
+(R1)
+(R2)
+(R3)
+(R4)
+(R5)
+
+High-pressure-limit rate coefficients for the association reactions were obtained using a
+rigorous direct dynamics approach within the variable-reaction-coordinate transition-state
+theory (VRC-TST) formalism. Thermochemistry was calculated using composite schemes,
+laddered to reduce uncertainties, and collisional energy transfer parameters were evaluated
+both by direct dynamics and by analogy to similar systems. Then, a master equation (ME)
+approach was used to obtain the reverse dissociation rate constants and examine the falloff
+behavior.
+4
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+2. Methods
+2.1 High-Pressure-Limit Rate Coefficients
+2.1.1 VRC-TST
+The barrierless nature of radical-radical reactions correlates with a large variation in the
+location and form of the transition state dividing surface with excess energy. In particular, at
+low temperatures, enthalpic effects are most important and the transition state lies at large
+radical-radical separations. At higher temperatures, the decrease in entropy with decreasing
+separation pushes the transition state towards shorter separations. Within variational
+transition-state theory (VTST), the variationally optimal estimate for the reactive flux is
+provided by its minimum with respect to some reaction coordinate such as the separation
+distance.
+The traditional procedure for implementing VTST assumes that rigid-rotor harmonicoscillator (RRHO) approximations (with corrections, such as hindered-rotor assumptions for
+intermolecular bending modes) are valid along a minimum-energy reaction path (RP), and
+relies on determination of normal-mode harmonic frequencies and moments of inertia along
+the reaction path. This approach is thus known as RP-VTST. 13
+For radical-radical reactions, the transition state typically lies at separations where the
+radical-radical bending motions are not well described as either harmonic oscillators or
+free rotors. An alternative procedure called “flexible TST” uses an approximate separation
+into what are essentially “conserved” vibrational modes of the radicals and the remaining
+“transitional” modes describing the relative and overall rotations of the radicals. 14,15 This
+separation allows for a fully-coupled anharmonic treatment of the radical-radical bending and
+rotational degrees of freedom. Within this approach, the number of energetically accessible
+quantum states of the transition state for a given energy E and total angular momentum
+J, N ‡ (E, J), can be evaluated as a convolution of a direct quantum sum for the conserved
+mode contribution with a classical phase-space-integral (PSI) treatment of the transitional
+5
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+mode contribution. This approach is popular for its accurate treatment of issues involving
+low-frequency modes. However, in its original formulation, it assumes that the reaction
+coordinate is defined by the radical-to-radical center-of-mass separation distance, which fails
+at short separations, especially when the reactive site is far from the center-of-mass within a
+given fragment. 16
+The variable-reaction-coordinate (VRC) approach 17–21 represents an improvement on
+the center-of-mass-based flexible TST by incorporating variation in the reaction coordinate
+definition as well. In other words, both the value and the definition of the reaction coordinate
+are variationally optimized, affording superior descriptions of the reaction coordinate at
+short fragment separation, while retaining the classical PSI treatment of transitional mode
+contributions. Monte Carlo sampling of the transitional modes and subsequent integration
+of the classical PSI representation of the transition-state partition function, are commonly
+carried out via direct dynamics (i.e., with “on-the-fly” potential evaluations of the sampled
+geometric orientations). 16 The optimal dividing surface at a given temperature T is obtained
+by variationally minimizing the resulting fragment association rate coefficient with respect to
+both the value and the definition of the generalized reaction coordinate.
+Within the VRC-TST approach, the radicals are assumed to rotate about arbitrarily
+located “pivot points”. The reaction coordinate is then defined in terms of a fixed separation
+between these pivot points. The full variational optimization then is carried out for both
+the pivot point location and the separation between them. These optimizations are usually
+accomplished through grid-based evaluations of the numbers of available states, N (E,J) . In
+some instances, it is effective to include multiple pivot points on each radical, which leads to
+a multifaceted transition-state dividing surface. 19
+In this work, we employed the VRC-TST approach with direct evaluations of the interaction
+energies (using multireference electronic structure theory as described in the following
+subsection). The pivot points were placed either directly at the location of the radical site
+on each fragment, or on both faces of the reacting fragment at distances ranging from 0.26
+
+6
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+to 0.79 Å from the radical site and along the appropriately defined axis. As many as 48
+dividing surfaces were constructed for each reaction by considering point-to-point separation
+distances ranging from 2.1 to 10.6 Å. Monte Carlo orientational sampling was terminated
+upon achieving integration uncertainties below a 3% threshold, sometimes requiring as many
+as 4000−5000 samplings and single-point energy evaluations for each face of a given dividing
+surface.
+
+2.1.2 Radical-Radical Interaction Potentials
+The nature of the radical-radical interaction potential in the transition-state region (roughly
+2 − 5 Å, where the magnitudes of long-range van der Waals and bonding forces are similar)
+requires the use of multireference methods in the direct potential evaluations. Here, these
+direct potential evaluations in the VRC-TST calculations were carried out using completeactive-space second-order perturbation theory (CASPT2). 22 Fragments were kept rigid in
+their asymptotic equilibrium geometries, obtained at the same level of theory. Active spaces
+for all multireference calculations described in this work were chosen to be (2e,2o), in order to
+allow the molecule to properly dissociate into fragment radicals at large separations. Based
+on prior literature on multireference potential energy surfaces using VRC-TST, 23 a real level
+shift of 0.2 and an ionization potential electron affinity (IPEA) shift of 0.25 eV were used for
+all complete-active-space calculations.
+For computational feasibility, the cc-pVDZ basis set was used in the direct potential
+evaluations. Higher accuracy is obtained by accounting for limitations in (i) the CASPT2
+method, (ii) the small cc-pVDZ basis set, and (iii) fragment geometry relaxation effects,
+through the development of orientation-independent one-dimensional correction terms. These
+correction term evaluations are based on explicit calculations for R1, as a function of the
+radical-radical separation distance, RCC . To correct for method and basis set limitations,
+−
+→
+a fully-relaxed minimum energy path (MEP) for 2 CF3 −
+←
+−
+− C2 F6 was constructed in D3d symmetry using the explicitly-correlated CASPT2-F12 method 24 with the aug-cc-pVTZ-F12
+
+7
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+basis set. 25–27 Single-point energies along this fully-relaxed MEP were obtained using explicitlycorrelated and Davidson-corrected multireference configuration interaction with the same
+basis set, MRCI-F12+Q/aug-cc-pVTZ-F12. 28–32
+Additionally, a so-called “spin-splitting” approach was also used, taking advantage of
+the use of high-accuracy single-reference methods to describe the energy of the triplet state
+along the MEP. 12,33 The energy of the triplet state was evaluated using explicitly-correlated
+coupled-cluster theory with single and double excitations and perturbative connected triples,
+employing a restricted spin Hartree-Fock reference wavefunction, RHF-UCCSD(T)-F12b, 34–36
+along with an aug-cc-pVTZ-F12 basis. Then, the energy of the singlet state was obtained by
+calculating singlet-triplet energy gaps using both of the high-accuracy multireference methods
+considered, CASPT2-F12/aug-cc-pVTZ-F12 and MRCI-F12+Q/aug-cc-pVTZ-F12. These
+spin-splitting-based values are expected to be less sensitive to the multireference method
+used for singlet-triplet gaps. An average of the two spin-splitting approaches is used as the
+final reference energy in determining the correction potential.
+The accuracy and uncertainty of the various correction potentials in the transition state
+region is discussed in Section 3.1. The final correction potential is taken as the difference
+between the average spin-splitting energies on the relaxed CASPT2-F12/aug-cc-pVTZ-F12
+MEP geometries and the CASPT2/cc-pVDZ energies along a constrained D3d MEP in which
+the asymptotic equilibrium CASPT2/cc-pVDZ radical geometries were kept rigid.
+The magnitude and importance of geometry relaxation effects for perfluoroalkyl radical
+combinations can be separately gauged entirely at the CASPT2/cc-pVDZ level, through the
+evaluation of the constrained rigid MEPs previously mentioned. In other words, the geometry
+relaxation component to the total correction is simply the difference between relaxed and
+rigid MEPs at CASPT2/cc-pVDZ as a function of the separation distance. The implications
+of this analysis are further discussed in Section 3.1.
+Due to the large size of the considered systems, we were forced to use a more internallycontracted version 37 of CASPT2 for the potential evaluations for R2 – R4. Since geometry
+
+8
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+relaxation effects were not expected to change significantly and the explicitly-correlated
+methods with large basis sets were computationally infeasible for these systems, we chose to
+−
+→
+apply the correction potential obtained for 2 CF3 −
+←
+−
+− C2 F6 to all the reactions considered.
+This approach has been successful before when applied to similar alkyl-alkyl analogues. 21
+The rate coefficients include an electronic degeneracy correction of 1/4 to account for the
+reaction occurring solely on the ground singlet spin state. For the self-association reactions
+R1 and R4, an additional correction factor of 1/2 was applied to account for symmetry effects.
+Finally, a dynamical correction factor of 0.85 was applied across all cases to account for
+recrossing effects. 21,38
+
+2.2 Thermochemistry
+The high-pressure limit for the reverse dissociation rate constants have a strong sensitivity to
+reaction enthalpies, as do the pressure-dependent rate constants in both directions. Thus,
+it is desirable to obtain high accuracy estimates for the reaction enthalpies. To this end,
+we used the connectivity-based hierarchy (CBH) technique 39 for systematically constructing
+error-cancelling reaction schemes in conjunction with the laddered CBH-ANL approach. 40 The
+first (CBH0), second (CBH1), third (CBH2), and fourth (CBH3) rungs of the CBH schemes
+have been used in this work. These reactions would fall under the “isogyric”, “isodesmic”,
+“hypohomodesmotic”/“isoatomic”, and “hyperhomodesmotic” reaction classes respectively,
+in the hierarchy put forth by Wheeler et al. 41 As shown in the Supporting Information,
+CBH0 was used for the target species CF3 , CBH2 for C2 F5 and C2 F6 , and CBH3 for C3 F7 ,
+C3 F8 and C4 F10 . The required reference species for these schemes have also been considered
+as shown in Table S1. A laddering scheme of successive quantum chemistry methods was
+used to construct the different CBH level references. CBH0 reference species for each element
+in consideration (H, C, and F) were selected as H2 , CH4 , and HF, for which enthalpies of
+formation at 0 K were sourced from the Active Thermochemical Tables (ATcT), V1.202. 42–44
+We also used ATcT values for H to define a reference radical enthalpy of formation.
+9
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+2.2.1 Composite Electronic Structure Theory
+The thermochemistry was calculated according to a set of high-level composite quantum chemistry methodologies based on a CCSD(T)/CBS+HOE+CV+REL+DBOC+SO+ZPVE+ANH
+strategy (outlined below) inspired by the ANL0/ANL1 family of methods. 45 The method at
+which every component of each CBH reaction energy was obtained is outlined in Table S1,
+using abbreviations for the basis sets. For each entry in Table S1, the single-point energies
+for all the species used in the given CBH scheme were treated at the specified level of theory,
+using converged minimum structures at the level of theory indicated for geometries.
+For the smaller systems, the basis CBH reaction energies have been obtained from CCSD(T)
+energies at the complete-basis-set, CBS, limit computed using either RHF-UCCSD(T)F12b/cc-pVnZ-F12 or RHF-UCCSD(T)/aug-cc-pVnZ. The cc-pVnZ-F12 series provided more
+rapid basis set convergence, but for some of the smaller species it appears that the aug-cc-pVnZ
+series provided more reliable convergence. For robustness where possible, both estimates of
+the CCSD(T)/CBS energies were computed and averaged. Up to the cc-pV5Z-F12 and augcc-pV6Z basis sets have been used. For larger systems, RHF-UCCSD(T)-F12b/cc-pVnZ-F12
+energies (with CBS extrapolation where possible) were used.
+A correction term for higher-order excitations, HOE, was incorporated whenever computationally feasible by taking the difference of UHF-UCCSDT(Q) and RHF-UCCSD(T)
+energies at the cc-pVnZ basis, and if possible, the difference of UHF-UCCSDTQ(P) and UHFUCCSDT(Q) energies as well. 46,47 Core-electron correlation and core-valence interactions,
+CV, are accounted for by a correction term composed of the difference between all-electron
+RHF-UCCSD(T,Full) calculations and frozen-core RHF-UCCSD(T) calculations using the
+cc-pwCVnZ or aug-cc-pwCVnZ basis sets. 48 The aug-cc-pwCVnZ series was included here as
+we found that the inclusion of diffuse functions improves basis set convergence for the CV
+correction in fluorine-containing species. Scalar relativistic effects, REL, were accounted for by
+taking the difference between RHF-UCCSD(T) energies with and without the Douglas-KrollHess relativistic one-electron integrals using the aug-cc-pwCVnZ-DK basis sets. 49 Diagonal
+10
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Born-Oppenheimer corrections, DBOC, were computed at CCSD/cc-pVnZ for smaller species
+or HF/cc-pVnZ for larger species based on computational feasibility. Spin-orbit effects, SO,
+were not considered as significant for the species used in this work, as indicated in Table S1.
+All reaction energies were corrected by the zero-point vibrational energies (ZPVE),
+computed at the highest possible level of theory based on converged minimum geometries at
+the same level of theory, ensuring that imaginary (negative) frequencies were not present.
+For smaller species (typically 7 to 8 heavy atoms or less), the CCSD(T)-F12b/cc-pVnZF12 methods were used, and for larger species, the double-hybrid and dispersion-corrected
+density functional method, B2PLYP-D3(BJ), was used with the cc-pVnZ basis sets. 50–53
+Anharmonicity corrections (ANH) were computed using second-order vibrational perturbation
+theory (VPT2), implemented at the CCSD(T)/cc-pVnZ levels for smaller species and at
+the B2PLYP-D3(BJ)/cc-pVnZ levels for larger species. 54 For species with torsional modes,
+the corresponding harmonic frequency was replaced and corrected by the one-dimensional
+hindered-rotor model, 55 with internal rotation potentials evaluated at B2PLYP-D3(BJ)/ccpVTZ.
+CBS limits were estimated using two-point extrapolation forms, with coefficients of 0.46
+for DZ-TZ energy extrapolations, 0.69 for TZ-QZ energy extrapolations, 0.93 for QZ-5Z
+energy extrapolations, 1.20 for 5Z-6Z energy extrapolations, 0.50 for TZ-F12/QZ-F12 energy
+extrapolations, 0.80 for QZ-F12/5Z-F12 energy extrapolations, and 0.5 for all TZ-QZ and
+TZ-F12/QZ-F12 frequency, ZPVE, and VPT2-based anharmonicity correction extrapolations.
+The thermochemical parameters were fitted to 7-coefficient NASA polynomials 56 in both
+the CHEMKIN and Cantera formats. 57,58 The computed enthalpies of formation at 0 K for
+both reference and target species are given in the Supporting Information in Table S1.
+Comparisons of the enthalpies of formation at 0 K for the target species with recent literature
+values is shown in Table 1, shown with the level of theory at which the literature values
+were reported. Overall, excellent agreement is observed for the smaller species, and slightly
+larger discrepancies for the larger species. We recommend the usage of the present results
+
+11
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+due to the robustness of the composite quantum chemistry used in this work.
+◦
+Table 1: Computed ∆f H0K
+and comparisons to literature.
+
+Species
+CF3
+C2 F5
+C2 F6
+C3 F7
+C3 F8
+C4 F10
+
+This Work
+-111.16 ± 0.08
+-212.75 ± 0.20
+-318.33 ± 0.40
+-311.09 ± 0.39
+-415.70 ± 0.48
+-512.52 ± 0.92
+
+ATcT V1.202
+-111.17 ± 0.10
+N/A
+-318.85 ± 0.19
+N/A
+N/A
+N/A
+
+diet-HEAT 59,60
+N/A
+-212.46 ± 0.67
+-318.19 ± 0.76
+N/A
+N/A
+N/A
+
+diet-HEAT-F12 61
+N/A
+N/A
+-319.72 ± 0.67
+N/A
+N/A
+N/A
+
+ANL0 62
+-111.19 ± 0.43
+-212.76 ± 0.43
+-318.31 ± 0.43
+N/A
+N/A
+N/A
+
+G4 9
+N/A
+N/A
+N/A
+-313.33 ± 1.40
+-416.22 ± 1.40
+-513.70 ± 1.40
+
+CBH 63
+N/A
+N/A
+N/A
+N/A
+-416.78 ± 0.48
+-514.01 ± 0.72
+
+2.3 Pressure-Dependent Rate Constants
+Temperature-dependence and pressure-dependence of the phenomenological rate coefficients
+were modeled by solving the one-dimensional master equation (ME) using ab initio based
+Rice-Ramsperger-Kassel-Marcus (RRKM) theory at the E-resolved (microcanonical) level to
+predict the microscopic rates. To avoid numerical instabilities and low eigenvalue issues, well
+truncation was implemented by setting a maximum of 10 for the ratio of the dissociation limit
+to the temperature. Below this threshold, all energy states were assumed to be Boltzmannpopulated. A temperature grid ranging from 200−3000 K and a pressure grid ranging from
+0.001−100 atm have been used.
+
+2.3.1 Collision Models
+The collisional energy transfer behavior for each system were represented by the single
+exponential down model, parameters for which were drawn by analogy to similar hydrocarbon
+systems. 64,65 Calculated values of the collisional energy transfer range parameter α = ⟨∆Ed ⟩
+were drawn from the classical trajectory simulations of Jasper and used directly in the
+single exponential down form. 64 Analogies were made by comparison to hydrocarbons with
+both the same number of heavy atoms (Nheavy = 8 for C2 F6 , Nheavy = 11 for C3 F8 , and
+Nheavy = 14 for C4 F10 ) and analogous heavy-atom connectivity. To compute the collision
+frequencies, Lennard-Jones collision parameters (collision diameter σ and well depth ε) were
+estimated for the C2 F6 and C3 F8 systems with an N2 bath gas, by direct dynamics. The
+12
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+intermolecular potentials were evaluated at the DF-MP2/aug-cc-pVDZ level for various
+different sampled orientations, and Lennard-Jones parameters were determined using onedimensional minimizations within each sampled orientation. 65 For the largest system, C4 F10 ,
+falloff behavior of the corresponding reactions is predicted to be minimal, with limited
+sensitivity of the RRKM/ME calculations to the chosen Lennard-Jones collision model. So,
+instead of an expensive direct dynamics approach, Lennard-Jones parameters are instead
+simply estimated by empirical fitting, based on scaling the calculated parameters for C2 F6
+and C3 F8 by the ratios of Lennard-Jones parameters estimated from the number of heavy
+atoms. 64 Table S2 shows the complete set of input parameters for the collision models used
+in the RRKM/ME calculations, with 95% confidence intervals reported for the Lennard-Jones
+parameters that were determined by direct dynamics.
+
+2.4 Software
+VRC-TST calculations were implemented in the VaReCoF program. 66 The OneDMin code was
+used for the estimation of Lennard-Jones parameters. 67 Electronic structure calculations
+using density functional theory were performed in Gaussian09 and Gaussian16, 68,69 and
+wavefunction methods were performed in MOLPRO, 70–72 as well as the MRCC program 73,74
+extension to MOLPRO for the implementation of coupled-cluster theory with higher order
+excitations for open-shell species and for CCSDTQ(P) and beyond for closed-shell species.
+Diagonal Born-Oppenheimer corrections (DBOC) and CCSDT(Q) calculations for closed-shell
+species were implemented in the CFOUR program. 75 The MESS program was used for master
+equation calculations. Subroutines for automating the workflow of composite thermochemistry
+and master equation kinetics computations were sourced from the AutoMech package. 76
+
+13
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+3. Results and Discussion
+−
+→
+3.1 Benchmarking 2 CF3 −
+←
+−−
+−
+− C2 F6
+To gauge the appropriateness of a CASPT2/cc-pVDZ potential for the VRC-TST calculations,
+various potential corrections as described in Section 2.1.1 were benchmarked against the
+chosen standard of the average of spin-splitting approaches with singlet-triplet gaps obtained
+with both MRCI-F12+Q/aug-cc-pVTZ-F12 and CASPT2-F12/aug-cc-pVTZ-F12. In the
+shorter range, it is expected that the more rigorous and expensive configuration interaction
+(CI) energies are more accurate. However, in the long range, the lack of size consistency in
+truncated CI implementations indicates that the CASPT2 potential may be more accurate.
+Furthermore, geometry relaxation effects are neglected in the orientational sampling
+procedure within the VRC-TST calculation, and the correction to the potential must account
+for this effect as well. The following describes calculations performed to construct the onedimensional orientation-independent correction term for the CASPT2/cc-pVDZ potential, as
+a function only of the radical-radical separation coordinate, RCC [Å].
+The geometry relaxation component to the total correction is gauged using the difference
+between relaxed and rigid CASPT2/cc-pVDZ potentials along the D3d MEP), as shown in
+Figure 1 as a function of the radical-radical separation distance, RCC . These corrections
+are very small due to the strongly non-planar C3v geometry of CF3 requiring minimal rearrangement as the radicals approach each other. In contrast, with the analogous hydrocarbon
+−
+→
+reaction 2 CH3 −
+←
+−
+− C2 H6 there is a large rearrangement and geometry relaxation effect
+arising from the transition from the planar geometry of CH3 to the sp3 -hybridization in C2 H6 .
+
+14
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+V   N F D O  P R O 1 
+
+    
+
+     
+
+     
+
+   
+
+   
+
+   
+
+ 5 & &   A 
+
+   
+
+   
+
+Figure 1: Geometry relaxation component of the correction potential for CF3 +CF3 association
+MEP based on relaxed and rigid CASPT2/cc-pVDZ energies.
+
+The correction potential for overcoming method and basis set limitations is given by the
+difference between the higher level energies obtained for the CASPT2-F12/aug-cc-pVTZ-F12
+fully relaxed D3d MEP and the CASPT2/cc-pVDZ energies on the same MEP. The multiple
+options for this correction potential are plotted along the CASPT2-F12/aug-cc-pVTZ-F12
+D3d MEP in Figure 2a. The total correction term is given by the sum of the component for
+geometry relaxation and the component for method and basis set limitations. With respect
+to the average spin-splitting potential (taken as the reference), the percentage deviations of
+the other potentials along the MEP are shown in Figure 2b, while the correction potential
+and its percentage relative to the total potential are shown in Figure 2c.
+15
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+   
+
+  D 
+
+    
+    
+
+V   N F D O  P R O 1 
+
+    
+    
+    
+    
+
+ 0 5 & ,  )    4  $ 9 7 =  )  
+ 0 5 & ,  )    4  $ 9 7 =  )      6 6
+ $ 9 ( 5 $ * (    6 6
+ 3 7   )    $ 9 7 =  )      6 6
+ 3 7   )    $ 9 7 =  )  
+ 3 7   9 ' =
+
+    
+    
+    
+     
+    
+
+ 0 5 & ,  )    4  $ 9 7 =  )  
+ 0 5 & ,  )    4  $ 9 7 =  )      6 6
+ 3 7   )    $ 9 7 =  )      6 6
+ 3 7   )    $ 9 7 =  )  
+ 3 7   9 ' =
+
+   ' L I I H U H Q F H  Z  U  W   6 6  $ 9 *
+
+    
+    
+    
+
+  E 
+
+    
+  
+    
+    
+    
+    
+
+   
+   
+   
+   
+   
+   
+   
+   
+    
+
+   
+   
+   
+  
+    
+    
+    
+
+  F 
+
+ & R U U   
+
+ & R U U    N F D O  P R O 1 
+
+    
+
+   
+
+   
+
+   
+
+ 5 & &   A 
+
+   
+
+   
+
+Figure 2: (a) Various potentials along a D3d CF3 + CF3 association MEP relaxed at CASPT2F12/aug-cc-pVTZ-F12, plotted against the coordinate RCC [Å], the radical site separation
+distance coordinate. Shorthand is used for methods and basis sets (”VDZ” is cc-pVDZ,
+”AVTZ-F12” is aug-cc-pVTZ-F12, and ”PT2” is CASPT2), and ”SS” refers to spin-splitting
+approaches. (b) Percentage difference of each of the potentials along the D3d CF3 + CF3
+association MEP with respect to (w.r.t.) the average potential calculated by the two spinsplitting approaches. (c) Correction potential based on average spin-splitting interaction
+energies (left) and the percentage of correction potential magnitude relative to total average
+spin-splitting interaction energy.
+16
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+In the long range, all the spin-splitting potentials are in somewhat good agreement. It
+can be speculated that both the lack of size consistency and the internal contraction error in
+the configuration interaction calculations lead to the discrepancy in the MRCI-F12+Q/augcc-pVTZ-F12 potential, and it is seen that the spin-splitting approach resolves the issue when
+the singlet-triplet gap is calculated using the same multireference method. In the shorter
+range, the potentials computed with the pure CASPT2-F12/aug-cc-pVTZ-F12 calculation
+and the spin-splitting approach with CASPT2-F12/aug-cc-pVTZ-F12 singlet-triplet gaps
+do not significantly differ. Similarly, the use of the spin-splitting approach with MRCIF12+Q/aug-cc-pVTZ-F12 singlet-triplet gaps shows much closer agreement with the pure
+MRCI-F12+Q/aug-cc-pVTZ-F12 potential, which is likely to be the more accurate of the
+two multireference approaches at shorter fragment separations. The average of the two
+spin-splitting approaches is likely to be most accurate overall in the transition state region.
+Based on these findings, the use of a CASPT2/cc-pVDZ potential along with the correction
+based on the average of the spin-splitting approaches, is taken to be the reference method in
+subsequent potential evaluations for the calculation of high-pressure-limit rate coefficients
+by VRC-TST. These conclusions are further validated in Figure 2b and Figure 2c. The
+small correction potential validates the high-level-corrected CASPT2/cc-pVDZ approach in
+yielding a high accuracy in the predicted rate coefficients.
+To gauge the uncertainty arising from the choice of potential correction term, a simple
+test was performed. VRC-TST rate coefficients were evaluated with each correction term,
+and also with no correction term, using a single dividing surface defined by two pivot points
+on each CF3 fragment. The pivot points were located approximately 0.5 Å from each face
+of the radical site along the C3v axis of the CF3 . The point-to-point separation distance
+was set at approximately 3.5 Å. This corresponds to the optimal canonical transition-state
+dividing surface between approximately 600−800 K. The results of this calculation are shown
+in Figure 3, and the trend of the magnitudes of the rate coefficients in the optimal region
+are in the reverse order of the trend seen in the potentials from Figure 1.
+
+17
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+    
+
+ 3 7   9 ' =   Z  R  & R U U  
+ 3 7   9 ' =    !  3 7   )    $ 9 7 =  )  
+ 3 7   9 ' =    !  3 7   )    $ 9 7 =  )      6 6
+ 3 7   9 ' =    !  $ 9 ( 5 $ * (    6 6
+ 3 7   9 ' =    !  0 5 & ,  )    4  $ 9 7 =  )      6 6
+ 3 7   9 ' =    !  0 5 & ,  )    4  $ 9 7 =  )  
+
+ N1,      11  F P3  P R O H F X O H 1  V 1 
+
+   
+   
+   
+   
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+
+   
+
+    
+
+    
+
+ 7 H P S H U D W X U H   . 
+
+    
+
+    
+
+    
+
+Figure 3: Dynamically-corrected VRC-TST predictions of the high-pressure-limit rate coeffi−
+→
+cients for 2 CF3 −
+←
+−
+− C2 F6 in the 200−3000 K temperature range, using various potential
+correction terms and an optimal canonical transition-state dividing surface in the 600−800 K
+region.
+
+The pure CASPT2/cc-pVDZ predictions are too high, and the predictions obtained
+using the correction factors obtained from MRCI-F12+Q/aug-cc-pVTZ-F12 calculations
+are too low. Using the correction factors obtained from the spin-splitting approach with
+singlet-triplet gaps obtained from CASPT2-F12/aug-cc-pVTZ-F12 calculations makes almost
+no difference with respect to using the corrections obtained from pure CASPT2-F12/aug-ccpVTZ-F12 calculations. The use of corrections obtained from the spin-splitting approach
+with MRCI-F12+Q/aug-cc-pVTZ-F12 singlet-triplet gaps gives more intermediary results.
+Overall, the uncertainty to the choice of potential correction (i.e., a term on top of the pure
+18
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+CASPT2/cc-pVDZ potentials) with respect to the reference spin-splitting average in the
+600−800 K region is approximately on the order of 25%.
+−
+→
+The full VRC-TST predictions for the high-pressure limit thermal kinetics of 2 CF3 −
+←
+−
+−
+C2 F6 can be found in Figure 4. The predictions based on two pivot points are more
+robust, as the positioning of pivot points on either face of the radical fragment gives a
+superior description of the variational transition states and yields lower rate constants than
+the predictions based on a single pivot point, illustrating the benefits of constructing a
+multifaceted dividing surface in providing more accurate results. The present results are also
+compared with the flexible TST results of Wardlaw and co-workers, which employed a more
+empirical potential energy surface and were constrained to a reaction coordinate given by the
+center-of-mass separation distance. 11 These prior calculations agree with the present ones to
+within about a factor of two.
+The contribution of the four faces of the multifaceted dividing surface when using two
+pivot points follows a trend based on steric and electronic effects. The four faces are termed
+“front-to-front”, “front-to-back” (equivalent to “back-to-front”), and “back-to-back”. Here,
+given the non-planar C3v symmetry of CF3 , the “front” side refers to the face defined by
+the pivot point located on the side of the radical opposite the fluorines, and the “back”
+side refers to the face defined by the pivot point located on the same side as the fluorines.
+The pivot point placement defining the multifaceted dividing surface for CF3 + CF3 are
+illustrated as a representative example in Figure S1. The front-to-front path, with the
+two maximum density radical lobes pointing toward each other, is the most energetically
+favorable approach. Lower steric effects are also expected for this path. At low temperatures,
+the front-to-front contribution to the total flux is about 60–65%, the front-to-back and
+back-to-front contributions are roughly 15% each, and the contribution of the back-to-back
+approaches is already minimal at around 5–10%. At 1000 K, the back-to-front and front-toback contributions are about 5% each, and the back-to-back contribution is negligible. At
+2500 K, the back-to-front and front-to-back contributions decreases to about 2% each.
+
+19
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+   
+
+ ' \ Q   & R U U   9 5 &  7 6 7   Z  R  3 R W   & R U U      3 L Y R W  3 R L Q W V
+ ' \ Q   & R U U   9 5 &  7 6 7   Z   3 R W   & R U U      3 L Y R W  3 R L Q W V
+ ' \ Q   & R U U   9 5 &  7 6 7   Z  R  3 R W   & R U U      3 L Y R W  3 R L Q W
+ : D U G O D Z  H W  D O       
+
+ N1,      11  F P3  P R O H F X O H 1  V 1 
+
+   
+
+   
+   
+   
+   
+   
+   
+   
+   
+
+   
+   
+
+    
+
+    
+
+ 7 H P S H U D W X U H   . 
+
+    
+
+    
+
+    
+
+Figure 4: Dynamically-corrected VRC-TST predictions of the high-pressure-limit rate co−
+→
+efficients, k1,∞ , for 2 CF3 −
+←
+−
+− C2 F6 in the 200−3000 K temperature range, compared with
+flexible TST results of Wardlaw and co-workers. 11
+−
+→
+The theoretically predicted pressure-dependent rate constants for 2 CF3 −
+←
+−
+− C2 F6 are
+plotted in Figure 5. Room temperature experimental data are also plotted in this figure. 77–81
+Experimental data at higher temperatures involve substantive and likely unreliable pressure
+extrapolations and are in considerable discord with the present results (more than an order
+of magnitude). 82–84 Even room-temperature experimental reports vary by about one order
+of magnitude despite similar experimental conditions. Furthermore, the variation in the
+experimental results with pressure appears more or less random. The present results are within
+this range, validating the appropriateness of the chosen scheme to describe the radical-radical
+
+20
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+interaction potential. At room temperature, the VRC-TST calculation predicts virtually no
+pressure dependence. In fact, under temperatures of 800−900 K, the rate constant at 0.001
+atm is within approximately a factor of two of the high-pressure limit rate coefficient. Above
+
+ N1   F P3  P R O H F X O H 1  V 1 
+
+this temperature, the falloff behavior becomes more significant.
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+ % U R Z Q  H W  D O          3           D W P
+ ' L O V  H W  D O          3           D W P
+ 3 D J V E H U J  H W  D O          3          D W P
+ 2 J D Z D  H W  D O          3          D W P
+ 9 D N K W L Q         3          D W P
+
+ + L J K  S U H V V X U H  O L P L W
+ 3         D W P
+ 3        D W P
+ 3       D W P
+ 3         D W P
+ 3          D W P
+ 3           D W P
+   
+
+    
+
+    
+
+ 7 H P S H U D W X U H   . 
+
+    
+
+    
+
+    
+
+−
+→
+Figure 5: Pressure-dependent rate coefficients k1 (T, P ) for 2 CF3 −
+←
+−
+− C2 F6 employing N2
+as a bath gas, plotted in the 200−3000 K temperature range and compared with selected
+literature data at room temperature. 77–81
+
+3.2 Size-Dependence of n-Cn F2n+1 Radical Association Kinetics
+Reactions R2–R4 describing the associations of CF3 with C2 F5 and C3 F7 , as well as the
+self-association of C2 F5 , were treated using the same dynamically-corrected VRC-TST and
+
+21
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+RRKM/ME approaches as described above. The same correction term for the interaction
+potential was used as well. This assumption of minimal changes in the interfragment correction
+potentials, is based on previous precedent in the study of alkyl radical combinations,, 21 as
+well as minimal changes in the geometry relaxation contribution to the correction term, which
+was already small to begin with. Figure S2, Figure S3, and Figure S4 show the same
+dependence of the theoretical predictions on correction potential and pivot point treatment
+for the high-pressure-limit rate coefficients for each remaining case.
+To study the size-dependent properties of the n-perfluoroalkyl associations, the highpressure-limit rate coefficients for the four reactions considered have been plotted together in
+Figure 6. For the self-association reactions, the symmetry factor of 2 has been re-incorporated
+into the rate coefficients to properly compare the trends as the participating n-perfluoroalkyl
+chains grow in size. The observed behavior is further explained by the potentials along the
+highest-possible-symmetry MEPs for each of the cases, shown in Figure 7 and adjusted by
+the potential correction constructed as described earlier.
+At all temperatures, the self-association reaction of C2 F5 possesses the lowest rate coefficient. Both steric and electronic effects can contribute to this behavior. Bulky trifluoromethyl
+groups attached to not one, but both fragments involved, generate comparatively unfavorable
+steric effects along the reaction coordinate, and the potential along the MEP is also seen to be
+less attractive than for all the other cases. At higher temperatures, the self-association reaction of CF3 possesses a consistently higher rate coefficient than both of the cross-association
+reactions. Given that the optimal transition-state dividing surfaces at these temperatures
+are located at shorter separation distances, the observed trend can be explained by steric
+effects. At lower temperatures, the optimal transition-state dividing surfaces are located at
+further separations. Thus, the higher coefficients for the cross-association reactions can likely
+be justified by their more attractive potentials along their MEPs. As temperatures rise into
+more intermediate levels, a combination of the steric and electronic effects described above
+appear to determine the size-dependent behavior of the association rate constants.
+
+22
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure S5 shows the predicted pressure-dependent rate constants at selected temper−
+→
+atures for the CF3 + C2 F5 −
+←
+−
+− C3 F8 . The falloff effect for this reaction was found to be
+−
+→
+diminished in comparison to CF3 + CF3 −
+←
+−
+− C2 F6 , as expected with the increase in size.
+The pressure dependence for the CF3 + C3 F7 reaction is somewhat more complex, as the
+bimolecular reaction to form two C2 F5 radicals competes with stabilization within the C4 F10
+well. Figure S6 and Figure S7 show the predicted pressure-dependent rate constants for
+−
+→
+−
+→
+the two stabilization channels, CF3 + C3 F7 −
+←
+−
+− C4 F10 and 2 C2 F5 −
+←
+−
+− C4 F10 . The falloff
+effect for these two reactions is also diminished.
+
+2 ×  N ,  & )3 +  & )3
+
+   
+
+ N ,  & )3 +  &2 )5
+ N ,  & )3 +  &3 )7
+2 ×  N ,  &2 )5 +  &2 )5
+
+ N      11  F P3  P R O H F X O H 1  V 1 
+
+   
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+
+   
+
+   
+
+    
+
+    
+
+ 7 H P S H U D W X U H   . 
+
+    
+
+    
+
+    
+
+Figure 6: Size-dependent trends in the dynamically-corrected VRC-TST predictions for all
+considered reactions.
+
+23
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+−
+→
+The reaction over the well, CF3 + C3 F7 −
+←
+−
+− 2 C2 F5 , was also studied. In the high-pressure
+limit, the rate coefficients for this reaction vanish (k5,∞ = 0), and the rate constants at
+pressures between 0.001 atm and 100 atm have been plotted in Figure 8. The reaction
+−1
+−
+→
+enthalpy of CF3 + C3 F7 −
+←
+−
+− 2 C2 F5 is computed to be -3.26 kcal mol . In accordance with
+
+−
+→
+the intuition associated with the greater exothermicity of CF3 + C3 F7 −
+←
+−
+− C4 F10 compared
+−
+→
+to 2 C2 F5 −
+←
+−
+− C4 F10 , which in other words refers to greater bond dissociation energies at
+terminal C−C bonds, R3 outcompetes R4 and equilibrium favors the forward direction of
+−
+→
+CF3 + C3 F7 −
+←
+−
+− 2 C2 F5 .
+
+   
+    
+    
+
+V   N F D O  P R O 1 
+
+    
+    
+    
+    
+ 8 Q F R U U   & )3    & )3
+ & R U U   & )3    & )3
+ 8 Q F R U U   & )3    &2 )5
+ & R U U   & )3    &2 )5
+ 8 Q F R U U   & )3    &3 )7
+ & R U U   & )3    &3 )7
+ 8 Q F R U U   &2 )5    &2 )5
+ & R U U   &2 )5    &2 )5
+
+    
+    
+    
+     
+   
+
+   
+
+   
+
+ 5 & &   A 
+
+   
+
+   
+
+Figure 7: Corrected and uncorrected potentials along the highest-possible-symmetry MEPs
+for all considered reactions, plotted against the coordinate RCC [Å], the radical site separation
+distance.
+
+24
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+It is worth noting that the geometric mean rule (as described for alkyl combination
+reactions 21 ) can be used to reasonably predict rate coefficients for larger radical combinations.
+For example, the rate coefficients for the self-combination of C3 F7 may be predicted on the
+
+ N5   F P3  P R O H F X O H 1  V 1 
+
+basis of the rate coefficients for CF3 + CF3 and CF3 + C3 F7 .
+
+10 11
+10 12
+10 13
+10 14
+10 15
+10 16
+10 17
+10 18
+10 19
+10 20
+10 21
+10 22
+10 23
+10 24
+10 25
+10 26
+
+ 3           D W P
+ 3          D W P
+ 3         D W P
+ 3       D W P
+ 3        D W P
+ 3         D W P
+   
+
+    
+
+    
+
+ 7 H P S H U D W X U H   . 
+
+    
+
+    
+
+    
+
+Figure 8: Pressure-dependent rate coefficients k5 for the well-skipping reaction CF3 +
+−
+→
+C3 F7 −
+←
+−
+− 2 C2 F5 employing N2 as a bath gas, plotted in the 200−3000 K temperature
+range.
+
+25
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+4. Conclusions
+Comprehensive kinetics and reaction thermochemistry have been predicted for the four radical
+association reactions forming the C2 − C4 n-perfluoroalkanes, as well as the bimolecular
+well-skipping reaction over the C4 F10 well. A high-level correction potential for CASPT2/ccpVDZ direct dynamics potential evaluations in VRC-TST has been developed for CF3 + CF3
+based on spin-splitting approaches, and implemented in the calculation of high-pressure-limit
+rate coefficients. ANL0/ANL1-like composite quantum chemistry methodologies have been
+used to compute enthalpies of formation for the target species using the CBH0, CBH1, CBH2,
+and CBH3 rungs of the error-cancelling reaction schemes. This combination of ANL schemes
+and CBH schemes provide low uncertainty in the computed enthalpies of formation.
+Computed enthalpies of reaction and estimates of transport parameters and collision
+models have been used with ab initio-based RRKM theory and the one-dimensional master
+equation to obtain the microscopic rates, high-pressure-limit canonical rate coefficients, and
+pressure-dependent kinetics. Both high-pressure-limit and pressure-dependent kinetics are
+reported in the form of modified Arrhenius expressions that are reasonably well-fitted and
+are designed for logarithmic interpolation. Computed thermochemical parameters for the
+perfluoroalkyl radicals and perfluoroalkanes considered in this work have been also been
+fitted to 7-coefficient NASA polynomials and reported in standardized formats.
+Below, the enthalpies of reaction at 0 K and the high-pressure limit fitted rate expressions
+(valid between 200 K and 3000 K) are reported for each of the reactions studied in this
+work. We expect these expressions to prove useful in future modeling studies. The sizedependent trends of the radical combinations are affected by both steric and electronic
+phenomena, and these considerations can be implemented heuristically in estimate the rates
+of radical combinations for larger species. With these considerations in mind, the reported rate
+expressions should be useful in rule-based extrapolations to larger molecules (e.g., geometric
+mean rule), especially in the high pressure limit.
+
+26
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+k1
+
+−
+→
+2 CF3 −
+←
+−
+− C2 F6
+k91
+
+∆Hr◦ (0K) = −96.01 kcal mol−1
+
+k1,∞ (T ) = (3.85 × 10−12 )T −0.07 exp (281/T )
+
+k
+
+2
+−
+→
+CF3 + C2 F5 −
+←
+−
+− C3 F8
+
+k92
+
+∆Hr◦ (0K) = −91.78 kcal mol−1
+
+k2,∞ (T ) = (1.15 × 10−11 )T −0.15 exp (307/T )
+
+k3
+
+−
+→
+CF3 + C3 F7 −
+←
+−
+− C4 F10
+k93
+
+∆Hr◦ (0K) = −90.36 kcal mol−1
+
+k3,∞ (T ) = (3.94 × 10−11 )T −0.31 exp (275/T )
+
+k
+
+4
+−
+→
+2 C2 F5 −
+←
+−
+− C4 F10
+
+k94
+
+∆Hr◦ (0K) = −87.01 kcal mol−1
+
+k4,∞ (T ) = (1.49 × 10−11 )T −0.38 exp (315/T )
+
+k
+
+5
+−
+→
+CF3 + C3 F7 −
+←
+−
+− 2 C2 F5
+
+k95
+
+∆Hr◦ (0K) = −3.26 kcal mol−1
+
+5. Acknowledgements
+This material is based on work supported by the U.S. Department of Energy, Office of
+Science, Office of Basic Energy Sciences, Division of Chemical Sciences, Geosciences, and
+Biosciences under Contract No. DE-AC02-06CH11357. H.R. thanks Ahren W. Jasper for
+useful discussions on collision models, Phillip R. Westmoreland for insights on important
+reactions in PFAS chemistry, and Andrea Della Libera for help with software usage. H.R.
+appreciates financial support from the U.S. Department of Energy, Office of Science, Office of
+27
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Workforce Development for Teachers and Scientists (WDTS) under the Science Undergraduate
+Laboratory Internships (SULI) program. The authors declare no competing interests.
+
+6. Data Availability
+Mechanism files have been provided in the CHEMKIN (“chemkin.inp”) and Cantera (“cantera.yaml”) formats, including both kinetics and thermochemistry. Documents with supplementary tables (“Tables.pdf”) and supplementary figures (“Figures.pdf”) have been provided.
+A spreadsheet (“kTP Tables.xlsx”) containing pressure/temperature rate coefficient tables is
+provided. Finally, MESS input files for the calculation of species partition functions and reaction kinetics have been provided, in which the computed molecular geometries, rovibrational
+data, and other necessary information are given.
+
+28
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+References
+(1) Sunderland, E. M.; Hu, X. C.; Dassuncao, C.; Tokranov, A. K.; Wagner, C. C.; Allen, J. G.
+A review of the pathways of human exposure to poly- and perfluoroalkyl substances
+(PFASs) and present understanding of health effects. J. Expo. Sci. Environ. Epidemiol.
+2019, 29, 131–147.
+(2) Olsen, G. W.; Church, T. R.; Miller, J. P.; Burris, J. M.; Hansen, K. J.; Lundberg, J. K.;
+Armitage, J. B.; Herron, R. M.; Medhdizadehkashi, Z.; Nobiletti, J. B. et al. Perfluorooctanesulfonate and other fluorochemicals in the serum of American Red Cross adult
+blood donors. Environ. Health Perspect. 2003, 111, 1892–1901.
+(3) Kannan, K.; Choi, J.-W.; Iseki, N.; Senthilkumar, K.; Kim, D. H.; Masunaga, S.;
+Giesy, J. P. Concentrations of perfluorinated acids in livers of birds from Japan and
+Korea. Chemosphere 2002, 49, 224–231.
+(4) Kannan, K.; Corsolini, S.; Falandysz, J.; Fillmann, G.; Kumar, K. S.; Loganathan, B. G.;
+Mohd, M. A.; Olivero, J.; Wouwe, N. V.; Yang, J. H. et al. Perfluorooctanesulfonate
+and Related Fluorochemicals in Human Blood from Several Countries. Environ. Sci.
+Technol. 2004, 38,, 4489–4495.
+(5) Li, Y.; Fletcher, T.; Mucs, D.; Scott, K.; Lindh, C. H.; Tallving, P.; Jakobsson, K.
+Half-lives of PFOS, PFHxS and PFOA after end of exposure to contaminated drinking
+water. Occup. Environ. Med. 2018, 75, 46–51.
+(6) Shields, E. P.; Krug, J. D.; Roberson, W. R.; Jackson, S. R.; Smeltz, M. G.; Allen, M. R.;
+Burnette, R. P.; Nash, J. T.; Virtaranta, L.; Preston, W. et al. Pilot-Scale Thermal
+Destruction of Per- and Polyfluoroalkyl Substances in a Legacy Aqueous Film Forming
+Foam. ACS EST Engg. 2023, 3, 1308–1317.
+(7) Altarawneh, M.; Almatarneh, M. H.; Dlugogorski, B. Z. Thermal decomposition of
+
+29
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+perfluorinated carboxylic acids: Kinetic model and theoretical requirements for PFAS
+incineration. Chemosphere 2022, 286, 131685.
+(8) Altarawneh, M. A chemical kinetic model for the decomposition of perfluorinated sulfonic
+acids. Chemosphere 2021, 263, 128256.
+(9) Ram, H.; Sadej, T. P.; Murphy, C. C.; Mallo, T. J.; Westmoreland, P. R. Thermochemistry of Species in Gas-Phase Thermal Oxidation of C2 to C8 Perfluorinated Carboxylic
+Acids. J. Phys. Chem. A 2024, 128, 1313–1326.
+(10) Ram, H.; DePompa, C. M.; Westmoreland, P. R. Thermochemistry of Species in GasPhase Thermal Oxidation of C2 to C8 Perfluorinated Sulfonic Acids with Extrapolation
+to C16 . J. Phys. Chem. A 2024, 128, 3387–3395.
+(11) Pesa, M.; Pilling, M. J.; Robertson, S. H.; Wardlaw, D. M. Application of the Canonical
+Flexible Transition State Theory to CH3, CF3, and CCl3 Recombination Reactions. J.
+Phys. Chem. A 1998, 102, 8526–8536.
+(12) Klippenstein, S. J. From theoretical reaction dynamics to chemical modeling of combustion. Proc. Combust. Inst. 2017, 36, 77–111.
+(13) Miller, W. H.; Handy, N. C.; Adams, J. E. Reaction path Hamiltonian for polyatomic
+molecules. J. Chem. Phys. 1980, 72, 99–112.
+(14) Wardlaw, D. M.; Marcus, R. A. RRKM reaction rate theory for transition states of any
+looseness. Chem. Phys. Lett. 1984, 110, 230–234.
+(15) Wardlaw, D. M.; Marcus, R. A. Unimolecular reaction rate theory for transition states
+of partial looseness. II. Implementation and analysis with applications to NO2 and C2 H6
+dissociations. J. Chem. Phys. 1985, 83, 3462–3480.
+(16) Truhlar, D. G.; Garrett, B. C.; Klippenstein, S. J. Current Status of Transition-State
+Theory. J. Phys. Chem. 1996, 100, 12771–12800.
+30
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+(17) Klippenstein, S. J. Variational Optimizations in the Rice-Ramsberger-Kassel-Marcus
+Theory Calculations for Unimolecular Dissociations with No Reverse Barrier. J. Chem.
+Phys. 1992, 96, 367–371.
+(18) Georgievskii, Y.; Klippenstein, S. J. Variable Reaction Coordinate Transition State
+Theory: Analytic Results and Application to the C2 H3 +H → C2 H4 Reaction. J. Chem.
+Phys. 2003, 118, 5442–5455.
+(19) Georgievskii, Y.; Klippenstein, S. J. Transition State Theory for Multichannel Addition
+Reactions: Multifaceted Dividing Surfaces. J. Phys. Chem. A 2003, 107, 9776–9781.
+(20) Harding, L. B.; Georgievskii, Y.; Klippenstein, S. J. Predictive Theory for Hydrogen
+Atom-Hydrocarbon Radical Association Kinetics. J. Phys. Chem. A 2005, 109, 4646–
+4656.
+(21) Klippenstein, S. J.; Georgievskii, Y.; Harding, L. B. Predictive theory for the combination
+kinetics of two alkyl radicals. Phys. Chem. Chem. Phys. 2006, 8, 1133–1147.
+(22) Werner, H.-J. Third-order multireference perturbation theory The CASPT3 method.
+Mol. Phys. 1996, 89, 645–661.
+(23) Klippenstein, S. J.; Elliott, S. N. OH Roaming during the Ozonolysis of α-Pinene: A New
+Route to Highly Oxygenated Molecules? J. Phys. Chem. A 2023, 127, 10647–10662.
+(24) Shiozaki, T.; Werner, H.-J. Second-order multireference perturbation theory with explicit
+correlation: CASPT2-F12. J. Chem. Phys. 2010, 133, 141103.
+(25) Peterson, K. A.; Adler, T. B.; Werner, H.-J. Systematically convergent basis sets for
+explicitly correlated wavefunctions: The atoms H, He, B-Ne, and Al-Ar. J. Chem. Phys.
+2008, 128, 084102.
+(26) Kendall, R. A.; Dunning, T. H., Jr.; Harrison, R. J. Electron affinities of the firstâĂŘrow
+
+31
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+atoms revisited. Systematic basis sets and wave functions. J. Chem. Phys. 1992, 96,
+6796–6806.
+(27) Sylvetsky, N.; Kesharwani, M. K.; Martin, J. M. L. The aug-cc-pVnZ-F12 basis set
+family: Correlation consistent basis sets for explicitly correlated benchmark calculations
+on anions and noncovalent complexes. J. Chem. Phys. 2017, 147, 134106.
+(28) Werner, H.-J.; Knowles, P. J. An efficient internally contracted multiconfigurationâĂŞreference configuration interaction method. J. Chem. Phys. 1988, 89, 5803–5814.
+(29) Knowles, P. J.; Werner, H.-J. An efficient method for the evaluation of coupling coefficients in configuration interaction calculations. Chem. Phys. Lett. 1988, 145, 514–522.
+(30) Shiozako, T.; Knizia, G.; Werner, H.-J. Explicitly correlated multireference configuration
+interaction: MRCI-F12. J. Chem. Phys. 2011, 134, 034113.
+(31) Shiozako, T.; Werner, H.-J. Explicitly correlated multireference configuration interaction
+with multiple reference functions: Avoided crossings and conical intersections. J. Chem.
+Phys. 2011, 134, 184104.
+(32) Shiozako, T.; Werner, H.-J. Multireference explicitly correlated F12 theories. Mol. Phys.
+2013, 111, 607–630.
+(33) Goldsmith, C. F.; Harding, L. B.; Georgievskii, Y.; Miller, J. A.; Klippenstein, S. J.
+Temperature and Pressure-Dependent Rate Coefficients for the Reaction of Vinyl Radical
+with Molecular Oxygen. J. Phys. Chem. A 2015, 119, 7766–7779.
+(34) Hampel, C.; Peterson, K. A.; Werner, H.-J. A comparison of the efficiency and accuracy
+of the quadratic configuration interaction (QCISD), coupled cluster (CCSD), and
+Brueckner coupled cluster (BCCD) methods. Chem. Phys. Lett. 1992, 190, 1–12.
+(35) Adler, T. B.; Knizia, G.; Werner, H.-J. A simple and efficient CCSD(T)-F12 approximation. J. Chem. Phys. 2007, 127, 221106.
+32
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+(36) Knizia, G.; Adler, T. B.; Werner, H.-J. Simplified CCSD(T)-F12 methods: Theory and
+benchmarks. J. Chem. Phys. 2009, 130, 054104.
+(37) Celani, P.; Werner, H.-J. Multireference perturbation theory for large restricted and
+selected active space reference wave functions. J. Chem. Phys. 2000, 112, 5546–5557.
+(38) Georgievskii, Y.; Klippenstein, S. J. Long-range transition state theory. J. Chem. Phys.
+2005, 122, 194103.
+(39) Ramabhadran, R. O.; Raghavachari, K. Theoretical Thermochemistry for Organic
+Molecules: Development of the Generalized Connectivity-Based Hierarchy. J. Chem.
+Theory Comput. 2011, 7, 2094–2103.
+(40) Elliott, S. N.; Keceli, M.; Ghosh, M. K.; Somers, K. P.; Curran, H. J.; Klippenstein, S. J.
+High-Accuracy Heats of Formation for Alkane Oxidation: From Small to Large via the
+Automated CBH-ANL Method. J. Phys. Chem. A 2023, 127, 1512–1531.
+(41) Wheeler, S. E.; Houk, K. N.; v. R. Schleyer, P.; Allen, W. D. A Hierarchy of Homodesmotic Reactions for Thermochemistry. J. Am. Chem. Soc. 2009, 131, 2547–2560.
+(42) Ruscic, B.; Pinzon, R. E.; Morton, M. L.; von Laszevski, G.; Bittner, S. J.; Nijsure, S. G.;
+Amin, K. A.; Minkoff, M.; Wagner, A. F. Introduction to Active Thermochemical Tables:
+Several âĂĲKeyâĂİ Enthalpies of Formation Revisited. J. Phys. Chem. A 2004, 108,
+9979–9997.
+(43) Ruscic, B.; Pinzon, R. E.; von Laszevski, G.; Kodeboyina, D.; Burcat, A.; Leahy, D.;
+Montoy, D.; Wagner, A. F. Active Thermochemical Tables: thermochemistry for the
+21st century. J. Phys.: Conf. Ser. 2005, 16, 561–570.
+(44) Ruscic, B.; Bross, D. H. Active Thermochemical Tables (ATcT); Argonne National
+Laboratory. https://atct.anl.gov (accessed July 1, 2024).
+
+33
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+(45) Klippenstein, S. J.; Harding, L. B.; Ruscic, B. Ab Initio Computations and Active
+Thermochemical Tables Hand in Hand: Heats of Formation of Core Combustion Species.
+J. Phys. Chem. A 2017, 121, 6580–6602.
+(46) Kallay, M.; Surjan, P. R. Higher excitations in coupled-cluster theory. J. Chem. Phys.
+2001, 115, 2945–2954.
+(47) Kallay, M.; Gauss, J. Approximate treatment of higher excitations in coupled-cluster
+theory. J. Chem. Phys. 2005, 123, 214105.
+(48) Peterson, K. A.; Dunning, T. H., Jr. Accurate correlation consistent basis sets for
+molecular coreâĂŞvalence correlation effects: The second row atoms AlâĂŞAr, and the
+first row atoms BâĂŞNe revisited. J. Chem. Phys. 2002, 117, 10548–10560.
+(49) de Jong, W. A.; Harrison, R. J.; Dixon, D. A. Parallel DouglasâĂŞKroll energy and
+gradients in NWChem: Estimating scalar relativistic effects using DouglasâĂŞKroll
+contracted basis sets. J. Chem. Phys. 2001, 114, 48–53.
+(50) Grimme, S. Semiempirical hybrid density functional with perturbative second-order
+correlation. J. Chem. Phys. 2006, 124, 034108.
+(51) Goerigk, L.; Grimme, S. Efficient and Accurate Double-Hybrid-Meta-GGA Density
+Functionals-Evaluation with the Extended GMTKN30 Database for General Main Group
+Thermochemistry, Kinetics, and Noncovalent Interactions. J. Chem. Theory Comput.
+2011, 7, 291–309.
+(52) Grimme, S.; Goerigk, L.; Ehrlich, S. Effect of the damping function in dispersion
+corrected density functional theory. J. Comp. Chem. 2011, 32, 1456–1465.
+(53) Grimme, S.; Antony, J.; Ehrlich, S.; Krieg, H. A consistent and accurate ab initio
+parametrization of density functional dispersion correction (DFT-D) for the 94 elements
+H-Pu. J. Chem. Phys. 2010, 132, 154104.
+34
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+(54) Bloino, J.; Biczysko, M.; Barone, V. General Perturbative Approach for Spectroscopy,
+Thermodynamics, and Kinetics: Methodological Background and Benchmark Studies.
+J. Chem. Theory Comput. 2012, 8, 1015–1036.
+(55) Pfaendtner, J.; Yu, X.; Broadbelt, L. J. The 1-D hindered rotor approximation. Theor.
+Chem. Acc. 2007, 118, 881–898.
+(56) Gordon, S.; McBride, B. J. Computer Program for Calculation of Complex Chemical Equilibrium Composition, Rocket Performance, Incident and Reflected Shocks
+and Chapman-Jouguet Detonations, Technical Report NASA-SP-273. NASA 1976,
+http://hdl.handle.net/2060/19780009781 (accessed July 1, 2024).
+(57) Ansys
+
+Chemkin-Pro
+
+Chemistry
+
+Simulation
+
+https://www.ansys.com/products/fluids/ansys–chemkin–pro
+
+(accessed
+
+Software.
+July
+
+1,
+
+2024).
+(58) Goodwin, D. G.; Moffat, H. K.; Schoegl, I.; Speth, R. L.; Weber, B. W. Cantera, Version
+3.0.0.: An object-oriented software toolkit for chemical kinetics, thermodynamics, and
+transport processes. https://www.cantera.org (accessed July 1, 2024).
+(59) Ganyecz, A.; Kallay, M.; Csontos, J. Accurate Theoretical Thermochemistry for Fluoroethyl Radicals. J. Phys. Chem. A 2017, 121, 1153–1162.
+(60) Nagy, B.; Csontos, B.; Csontos, J.; SzakAcs, P.; Kallay, M. High-Accuracy Theoretical
+Thermochemistry of Fluoroethanes. J. Phys. Chem. A 2014, 118, 4824–4836.
+(61) Ganyecz, A.; Kallay, M.; Csontos, J. High Accuracy Quantum Chemical and Thermochemical Network Data for the Heats of Formation of Fluorinated and Chlorinated
+Methanes and Ethanes. J. Phys. Chem. A 2018, 122, 5993–6006.
+(62) Sharma, S.; Abeywardane, K.; Goldsmith, C. F. Theory-Based Mechanism for Fluo-
+
+35
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+romethane Combustion I: Thermochemistry and Abstraction Reactions. J. Phys. Chem.
+A 2023, 127, 1499–1511.
+(63) Abeywardane, K.; Goldsmith, C. F. Accurate Enthalpies of Formation for PFAS from
+First-Principles: Combining Different Levels of Theory in a Generalized Thermochemical
+Hierarchy. ACS Phys. Chem. Au 2024, 4, 247–258.
+(64) Jasper, A. W. âĂĲThird-bodyâĂİ collision parameters for hydrocarbons, alcohols, and
+hydroperoxides and an effective internal rotor approach for estimating them. Int. J.
+Chem. Kinet. 2020, 52, 387–402.
+(65) Jasper, A. W.; Miller, J. A. Lennard-Jones parameters for combustion and chemical
+kinetics modeling from full-dimensional intermolecular potentials. Combust. Flame 2014,
+161, 101–110.
+(66) Georgievskii, Y.; Harding, L. B.; Klippenstein, S. J. VaReCoF 2017.05.19.
+(67) Jasper, A. W.; Miller, J. A. OneDMin, October 2023.
+(68) Frisch, M. J.; Trucks, G. W.; Schlegel, H. B.; Scuseria, G. E.; Robb, M. A.; Cheeseman, J. R.; Scalmani, G.; Barone, V.; Petersson, G. A.; Nakatsuji, H. et al. Gaussian 09
+Revision A.02. 2016; Gaussian Inc. Wallingford CT.
+(69) Frisch, M. J.; Trucks, G. W.; Schlegel, H. B.; Scuseria, G. E.; Robb, M. A.; Cheeseman, J. R.; Scalmani, G.; Barone, V.; Petersson, G. A.; Nakatsuji, H. et al. Gaussian 16
+Revision A.03. 2016; Gaussian Inc. Wallingford CT.
+(70) Werner, H.-J.; Knowles, P. J.; Knizia, G.; Manby, F. R.; Schutz, M. Molpro: a generalpurpose quantum chemistry program package. Wiley Interdiscip. Rev. Comput. Mol.
+Sci. 2012, 2, 242–253.
+(71) Werner, H.-J.; Knowles, P. J.; Manby, F. R.; Black, J. A.; Doll, K.; HeÃ§elmann, A.;
+
+36
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Kats, D.; KÃűhn, A.; Korona, T.; Kreplin, D. A. et al. The Molpro quantum chemistry
+package. J. Chem. Phys. 2020, 152, 144107.
+(72) Werner, H.-J.; Knowles, P. J.; Celani, P.; GyÃűrffy, W.; Hesselmann, A.; Kats, D.;
+Knizia, G.; KÃűhn, A.; Korona, T.; Kreplin, D. et al. MOLPRO, 2021.2 , a package of
+ab initio programs. https://www.molpro.net (accessed July 1, 2024).
+(73) Kallay, M.; Nagy, P. R.; Mester, D.; Rolik, Z.; Samu, G.; Csontos, J.; CsÃşka, J.;
+SzabÃş, P. B.; Gyevi-Nagy, L.; HÃľgely, B. et al. The MRCC program system: Accurate
+quantum chemistry from water to proteins. J. Chem. Phys. 2020, 152, 074107.
+(74) Kallay, M.; Nagy, P. R.; Mester, D.; Gyevi-Nagy, L.; CsÃşka, J.; SzabÃş, P. B.; Rolik, Z.;
+Samu, G.; Csontos, J.; HÃľgely, B. et al. MRCC, a quantum chemical program suite.
+https://www.mrcc.hu/ (accessed July 1, 2024).
+(75) Stanton, J. F.; Gauss, J.; Cheng, L.; Harding, M. E.; Matthews, D. A.; Szalay, P. G.
+CFOUR, Coupled-Cluster techniques for Computational Chemistry, a quantum-chemical
+program package. With contributions from A. Asthana, A.A. Auer, R.J. Bartlett,
+U. Benedikt, C. Berger, D.E. Bernholdt, S. Blaschke, Y. J. Bomble, S. Burger, O.
+Christiansen, D. Datta, F. Engel, R. Faber, J. Greiner, M. Heckert,O. Heun, M.
+Hilgenberg, C. Huber, T.-C. Jagau, D. Jonsson, J. Jusélius, T. Kirsch, M.-P. Kitsaras,
+K. Klein, G.M. Kopper, W.J. Lauderdale, F. Lipparini, J. Liu, T. Metzroth, L. Monzel,
+L.A. Mück, D.P. O’Neill, T. Nottoli, J. Oswald, D.R. Price, E. Prochnow, C. Puzzarini,
+K. Ruud, F. Schiffmann, W. Schwalbach, C. Simmons, S. Stopkowicz, A. Tajti, T.
+Uhlı́řová, J. Vázquez, F. Wang, J.D. Watts, P. Yergün. C. Zhang, X. Zheng, and the
+integral packages MOLECULE (J. Almlöf and P.R. Taylor), PROPS (P.R. Taylor),
+ABACUS (T. Helgaker, H.J. Aa. Jensen, P. Jørgensen, and J. Olsen), and ECP routines
+by A. V. Mitin and C. van Wüllen. For the current version, see http://www.cfour.de.
+(76) Elliot, S. N.; Kevin B. Moore, D. R. M.; Mulvihill, C. R.; Harding, L. B.;
+
+37
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Georgievskii, Y.; Jasper, A. W.; Copan, A. V.; Maffei, L. P.; Cavallotti, C. A.;
+Keceli, M. et al. AutoMech: Large-Scale Automated Mechanism Modeling, v0.1.2.
+http://tcg.cse.anl.gov/papr/codes/automech.html (accessed July 1, 2024).
+(77) Ogawa, T.; Carlson, G. A.; Pimentel, G. C. Reaction Rate of Trifluoromethyl Radicals
+by Rapid Scan Infrared Spectroscopy. J. Phys. Chem. 1970, 74, 2090–2095.
+(78) Brown, C. E.; Orlando, J. J.; Reid, J.; Smith, D. R. Diode laser detection of transient
+CF3 radicals formed by CO2 laser multiphoton induced dissociation of halocarbons.
+Chem. Phys. Lett. 1987, 142, 213–216.
+(79) Vakhtin, A. B. The rate constant for the recombination of trifluoromethyl radicals at T
+= 296 K. Int. J. Chem. Kinet. 1996, 28, 443–452.
+(80) Pagsberg, P.; Jodkowski, J. T.; Ratajczak, E.; Sillesen, A. Experimental and theoretical
+studies of the reaction between CF3 and NO2 at 298 K. Chem. Phys. Lett. 1998, 286,
+138–144.
+(81) Dils, B.; Vertommen, J.; Carl, S. A.; Vereecken, L.; Peters, J. The kinetics of the
+CF3 + CF3 and CF3 + F combination reactions at 290 K and at He-pressures of ≈1−6
+Torr. Phys. Chem. Chem. Phys. 2005, 7, 1187–1193.
+(82) Skorobogatov, G. A.; Dymov, B. P.; Lebedev, V. N.; Khripun, V. K. Quasi-steady-state
+pyrolysis of iodotrifluoromethane: kinetics and thermochemistry of trifluoromethyl
+formation. Kinet. Catal. 1987, 28, 682.
+(83) Skorobogatov, G. A.; Rebrova, A. G.; Khripun, V. K. Rate constant of the recombination
+of CF3 radicals in a gas (He, Ar, N2 , or CF3 I). Kinet. Catal. 2010, 51, 485.
+(84) Glaenzer, K.; Maier, M.; Troe, J. Shock-wave study of the high-temperature uv absorption and the recombination of trifluoromethyl radicals. J. Phys. Chem. 1980, 84,
+1681–1686.
+38
+https://doi.org/10.26434/chemrxiv-2024-9m3pc-v3 ORCID: https://orcid.org/0009-0006-8000-0845 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+

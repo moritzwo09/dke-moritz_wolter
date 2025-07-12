@@ -1,0 +1,2861 @@
+1
+
+Enhancing Resource Recovery through Electro-Assisted Regeneration of an Ammonia-
+
+2
+
+Selective Cation Exchange Resin
+
+3
+
+Edward Apraku1, Chloe M. Laguna2, Robert M. Wood1, Neha Sharma2,3, Hang Dong4, William
+
+4
+
+A. Tarpeh1,2*
+
+5
+
+1
+
+Department of Civil and Environmental Engineering, Stanford University, Stanford, CA, 94305,
+
+6
+
+7
+
+8
+
+United States
+
+2
+
+Department of Chemical Engineering, Stanford University, Stanford, CA, 94305, United States
+
+3
+
+Stanford Synchrotron Radiation Lightsource, SLAC National Accelerator Laboratory, Menlo
+
+9
+
+Park, CA, 94025, United States
+
+10
+
+4
+
+11
+
+*Corresponding author, Email: wtarpeh@stanford.edu Address: 443 Via Ortega, Room 387,
+
+12
+
+Stanford, CA, 94305, United States. Telephone: (650) 497-1324
+
+13
+
+Text: 6134 words
+
+14
+
+Figures: 7
+
+Georgia Tech Shenzhen Institute, Tianjin University, Shenzhen, Guangdong, 518055, China
+
+15
+
+16
+
+1
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+17
+
+Graphical Abstract
+
+18
+
+19
+
+20
+
+21
+
+22
+
+2
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+23
+
+Abstract
+
+24
+
+Ammonia-selective adsorbents can manage reactive nitrogen in the environment and
+
+25
+
+promote a circular nutrient economy. Weak acid cation exchangers loaded with zinc exhibit high
+
+26
+
+ammonia selectivity but face two implementation barriers: the stability of the zinc-carboxylate
+
+27
+
+bond in complex wastewaters and energy- and logistics-intensive adsorbent regeneration with
+
+28
+
+acidic solutions. In this study, we examined the stability of the zinc-carboxylate bond in varying
+
+29
+
+solutions (pure ammonium solution, synthetic urine, and real urine) and during electro-assisted
+
+30
+
+regeneration. For electrochemical regeneration, both electrolyte concentration and current density
+
+31
+
+influenced the tradeoff between ammonia regeneration and zinc elution. Using 10 mM K₂SO₄
+
+32
+
+anolyte at 0.08 mA/cm² current density, we achieved 4% zinc elution and 61% ammonia
+
+33
+
+regeneration. In contrast, using 100 mM K₂SO₄ at 4.96 mA/cm² improved regeneration efficiency
+
+34
+
+to 97% but eluted 60% of zinc. We found that the electrolyte concentration was the key factor
+
+35
+
+influencing the regeneration efficiency of NH₃-selective adsorbents. Due to prevalent zinc elution,
+
+36
+
+we designed an in-situ procedure for reforming the zinc-carboxylate bond and achieved similar
+
+37
+
+adsorption densities between pre- and post-regenerated resin, thus enabling multiple cycle resin
+
+38
+
+use. Ultimately, this study advances the understanding of ammonia-selective resins that can
+
+39
+
+facilitate high-purity, selective, and durable nutrient recovery from waste streams.
+
+40
+
+Keywords: adsorbent stability, ammonia selectivity, circular economy, electrochemical water
+
+41
+
+splitting, nutrient recovery, water electrolysis
+
+42
+
+Synopsis: Electrified adsorbent regeneration can control the recovery efficiency and chemical
+
+43
+
+stability of ammonia-selective adsorbents.
+
+3
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+44
+
+Introduction
+
+45
+
+Anthropogenic discharges (e.g., untreated wastewater and fertilizer runoff) have led to an
+
+46
+
+imbalance of reactive nitrogen such as ammonium (NH4+), ammonia (NH3), and nitrate (NO3-) in
+
+47
+
+the environment. This imbalance has caused eutrophication, monetary loss from impacted
+
+48
+
+recreation and tourism, and detrimental human health effects.1,2 The Haber-Bosch process, which
+
+49
+
+converts inert atmospheric N2 to ammonia for fertilizers, is a major contributor to this nitrogen
+
+50
+
+imbalance and its environmental implications. This catalytic nitrogen fixation uses 1% of the
+
+51
+
+world’s total energy production and produces 1.4% of global CO2 emissions.3 In contrast,
+
+52
+
+exploring alternative nitrogen sources, such as wastewater, can reduce the dependency on Haber-
+
+53
+
+Bosch derived fertilizers by recovering and repurposing reactive nitrogen. For example, urine
+
+54
+
+accounts for 80% of the total nitrogen but only 1% of the volume in wastewater and contains
+
+55
+
+concentrated levels of NH3-nitrogen (often above 3,000 mg N/L).4 To promote a more sustainable
+
+56
+
+nutrient economy and safeguard the environment from harmful algal blooms, effective
+
+57
+
+management of reactive nitrogen species is necessary.
+
+58
+
+Contemporary nutrient mitigation techniques (e.g., biological methods, chemical
+
+59
+
+precipitation) prioritize nutrient removal over recovery to satisfy the stringent discharge
+
+60
+
+requirements of wastewater treatment plants. Nutrient recovery from urine could reduce nutrient
+
+61
+
+removal costs (e.g., decreased sludge production) and provide supplemental fertilizers (e.g.,
+
+62
+
+struvite from phosphorus recovery, ammonium sulfate from recovery).5 Ion exchange (IX) resins
+
+63
+
+are a viable approach for the effective management and recovery of nutrients from waste streams.
+
+64
+
+Specifically, weak acid cation (WAC) exchange resins have potential as a low-cost, low-energy,
+
+65
+
+modular technique for ammonium (NH4+) recovery from urine by facilitating electrostatic binding
+
+4
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+66
+
+of NH4+ to carboxylate functional groups.6,7 However, in real urine applications, WAC resins show
+
+67
+
+a maximum NH4+ adsorption capacity of 6 mmol N/g resin due to limited selectivity in
+
+68
+
+multicomponent wastewaters containing competing cations (e.g., Na+, K+, Ca2+).8,9
+
+69
+
+Electrostatically loading zinc ions onto commercial WAC IX resins enhances selectivity towards
+
+70
+
+total ammonium nitrogen (i.e., the sum of NH4+ and NH3, or TAN) through inner-sphere ammonia-
+
+71
+
+zinc interactions, which enable an intrinsic TAN/K+ selectivity of 10.1 (up to ten times higher than
+
+72
+
+commercial resins).10 Ex-situ regeneration of these NH3-selective resins with mild commercial
+
+73
+
+acids (pH 3.25 to 4.25) achieved high TAN recovery (>90%).10 While these achievements are
+
+74
+
+promising, chemical regeneration with commercial acids and bases limits implementation in water
+
+75
+
+treatment systems. Producing chemical regenerants, such as sulfuric acid for cation exchange
+
+76
+
+resins, accounts for up to 70% of treatment greenhouse gas emissions and energy input for
+
+77
+
+adsorptive nitrogen recovery from wastewater.11 To better justify the use of adsorbents for water
+
+78
+
+treatment, nutrient technologies must mitigate the external chemical usage needed for
+
+79
+
+regeneration.
+
+80
+
+Electro-assisted regeneration of IX resins could lower the emissions and energy input for
+
+81
+
+chemical regeneration; however, in-situ electro-assisted regeneration of ammonia-selective
+
+82
+
+adsorbents is underdeveloped. Electro-assisted regeneration uses either the acidic anode solution
+
+83
+
+from the oxygen evolution reaction (OER) for cation exchange resins or the alkaline cathode
+
+84
+
+solution from the hydrogen evolution reaction (HER) for anion exchange resins (Figure S1).12 An
+
+85
+
+electrochemical-ion exchange (EC-IX) system integrating resin inside the reactor can facilitate in-
+
+86
+
+situ regeneration of IX resins and simultaneous recovery of high-purity TAN. Our research group
+
+87
+
+has validated the in-situ electrochemical regeneration of commercial WAC resins as an effective
+
+88
+
+technique for tandem regenerant production, resin regeneration, and nitrogen recovery.13 Although
+
+5
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+89
+
+ex-situ nitrogen recovery using NH3-selective resins has been examined with commercial
+
+90
+
+acids10,14, in-situ analysis of NH3-selective resins regenerated with electrochemically generated
+
+91
+
+acids remains unexplored. More specifically, informed implementation requires exploration of
+
+92
+
+how mild electrochemically generated acids protonate adsorbed ammonia while maintaining the
+
+93
+
+zinc-carboxylate bond to minimize metal elution.
+
+94
+
+Nutrient recovery from NH3-selective resins relies on maintaining the zinc-carboxylate
+
+95
+
+bond during metal-ammine adsorption in wastewater and subsequent electrochemical
+
+96
+
+regeneration. Bond breakage and zinc elution can occur due to outer-sphere competition with
+
+97
+
+cations, inner-sphere competition from ligands, and protonation of the resin moieties under acidic
+
+98
+
+conditions.10,14 Zinc elution limits the effectiveness of NH3-selective resins by reducing the
+
+99
+
+quantity of sites available for NH3 adsorption. Furthermore, zinc elution can enhance effluent metal
+
+100
+
+concentrations and thus pose environmental hazards, detrimental human health effects, and metal
+
+101
+
+mitigation costs.15–17 A monovalent-selective membrane could prevent zinc transport and
+
+102
+
+precipitation into the cathode chamber and allow for potential zinc reloading onto the resin. This
+
+103
+
+membrane structure can prevent Zn2+ contamination of the aqueous ammonia product and maintain
+
+104
+
+current efficiency within EC-IX systems. Systematically understanding operating conditions and
+
+105
+
+system configurations is crucial for enhancing large-scale implementation of emerging nutrient
+
+106
+
+recovery technologies.18 Therefore, conducting in-situ analysis on electrochemically regenerating
+
+107
+
+NH3-selective resins can advance their integration and feasibility in wastewater treatment.
+
+108
+
+The objective of this study was to investigate the electro-assisted regeneration of NH3-
+
+109
+
+selective resins in an EC-IX system, with the goal of understanding the tradeoffs between zinc
+
+110
+
+elution and ammonia recovery. We investigated nutrient recovery across ammonia adsorption
+
+111
+
+solutions and electrochemical regeneration in an EC-IX cell with anodic NH3 protonation to NH4+
+
+6
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+112
+
+and migration into an acidic cathodic chamber. Our main objectives were to: (1) determine how
+
+113
+
+different ammonia adsorption conditions (pure ammonium solution, synthetic urine, and real urine)
+
+114
+
+affect zinc elution and overall ammonia recovery, (2) examine the operating parameters (applied
+
+115
+
+current, electrolyte composition, and TAN concentration) that maximize nutrient recovery while
+
+116
+
+preventing zinc-carboxylate bond breakage, and (3) investigate the in-situ formation of zinc-
+
+117
+
+carboxylate bonds to manage zinc elution. Improved mechanistic understanding of how the
+
+118
+
+solution environment and electrochemical parameters influence ammonium recovery will advance
+
+119
+
+nutrient separation and electrochemical recovery technologies and guide real-world
+
+120
+
+implementation into wastewater treatment systems.
+
+121
+
+122
+
+Materials and Methods
+
+123
+
+Aqueous Chemical Analysis
+
+124
+
+Cation concentrations (Na+, NH4+, K+, and Zn2+) after adsorption and regeneration
+
+125
+
+experiments were measured via ion chromatography on a Dionex ICS-6000 (IC,
+
+126
+
+ThermoFisher/Dionex chromatograph, IonPac SCS1 column, unsuppressed, 4mM tartaric acid and
+
+127
+
+2 mM oxalic acid eluent, 1.0 mL/min, 30 °C). Unless the sample pH was already less than 3,
+
+128
+
+samples were acidified with 2-5 μL of 2 M H2SO4 to reach pH 3, where nearly all TAN was
+
+129
+
+protonated (pH<<9.25 pKa) and detectable on IC as NH4+. Sample pH was measured with a pH
+
+130
+
+meter (FP20, Mettler Toledo, Columbus, OH). Urine samples were collected and stored until full
+
+131
+
+hydrolysis occurred, defined as when urea concentration fell below the detection limit of 1 mg/L
+
+7
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+132
+
+as measured spectrophotometrically (indophenol method)19 with a SEAL AA500 Segmented Flow
+
+133
+
+Analyzer (SEAL Analytical Limited, Mequon, WI).
+
+134
+
+Ion Exchange Resin Metal Loading
+
+135
+
+We modified a macroporous hydrogen-form weak acid cation exchange resin (Dowex Mac 3,
+
+136
+
+Sigma-Aldrich, St. Louis, MO) into a zinc-carboxylate resin to enhance ammonia selectivity using
+
+137
+
+two-step ion exchange (from R-H+ to R-Na+ to R-Zn2+).10,14 Zn2+ was chosen for metal-ammine
+
+138
+
+resins over other metals because it exhibited high selectivity towards NH3 and intermediate binding
+
+139
+
+affinity amenable to both NH3 adsorption and regeneration.20–22 We used a two-step exchange to
+
+140
+
+accurately measure both Zn2+ uptake and Na+ removal with IC.
+
+141
+
+We placed 100 mL of neat hydrogen-form resin in 2 L of 1 M NaHCO3 for 24 hours to
+
+142
+
+completely exchange protons with Na+. As protons entered the solution, carbonic acid formed and
+
+143
+
+rapidly decomposed in water to form H2O and gaseous CO2, which bubbled out of solution and
+
+144
+
+thus increased solution pH.23 We conducted this exchange for 24 hours until bubble formation
+
+145
+
+ceased, indicating Na+ adsorption was complete.
+
+146
+
+Column experiments were used to modify sodium-loaded resins into zinc-loaded resins. 100
+
+147
+
+mL of sodium-loaded resin was placed into a cylindrical plastic column (200 mL volume, 1/4”
+
+148
+
+inner diameter, 1’ length, Spears Manufacturing, Sylmar, CA) and 6 L of 0.2 M ZnCl2 solution
+
+149
+
+was pumped at 3 mL/min for 72 hours using a peristaltic pump (Masterflex C/L, Vernon Hills,
+
+150
+
+IL). Finally, we conducted batch adsorption with 1 L of 0.2 M ZnCl2 solution for 24 hours to ensure
+
+151
+
+complete Zn2+ loading. Resins were washed with nanopure water (resistivity 18.2 mΩ·cm at 25
+
+152
+
+°C, Millipore Milli-Q System, Millipore Corporation, Billerica, MA) to remove any residual ZnCl2
+8
+
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+153
+
+and the wash solution was tested on IC to ensure Na+ levels were below the detection limit of 3
+
+154
+
+nM.
+
+155
+
+Ammonia Loading
+
+156
+
+To elucidate the difference in ammonia selectivity in increasingly complex TAN-
+
+157
+
+containing solutions, we used three adsorption solutions (full composition in Table S1): a pure
+
+158
+
+ammonium solution containing 500 mM TAN (320 mM NH3 as NH4OH and 180 mM NH4+ as
+
+159
+
+NH4Cl), a synthetic urine solution containing 230 mM TAN, and real hydrolyzed urine with 340
+
+160
+
+mM TAN. All adsorption solutions besides the real urine were prepared with nanopure water and
+
+161
+
+reagent-grade chemicals purchased from Sigma-Aldrich (St. Louis, MO). We collected real urine
+
+162
+
+from consenting adults in the Shriram Center for Bioengineering and Chemical Engineering at
+
+163
+
+Stanford University (Internal Review Board Protocol 60601). We first explored the effect of resin
+
+164
+
+mass per solution volume on the ratio of ammonia adsorbed to zinc eluted, which compares the
+
+165
+
+benefits of selective TAN recovery to the risks of adsorbent degradation. We used an isochoric
+
+166
+
+process for the adsorption solution tests for the synthetic and hydrolyzed urine with 5 mL of
+
+167
+
+solution and varying resin mass (10, 25, 50, 75, 100, 150, 200, 250, 500, 750, and 1000 mg
+
+168
+
+resin/mL solution). Generally, we used 5 mL tubes for initial adsorption tests to minimize
+
+169
+
+headspace and ammonia volatilization; because higher resin masses required larger volumes, 750
+
+170
+
+and 1000 mg resin/mL adsorbate were conducted in 10 mL tubes. The ideal resin to solution ratio
+
+171
+
+(i.e., resin dose) for a pure TAN solution (75 mg resin/mL solution) was chosen because our
+
+172
+
+previous work indicated the ratio exhibited preferential TAN adsorption with minimal zinc elution
+
+173
+
+(<1%).14 Preliminary experiments showed that 8 hours was adequate for reaching equilibrium
+
+174
+
+because the measured adsorption density was the same as for 24-hour experiments. Thus, we
+
+9
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+175
+
+conducted 8-hour experiments and took 1-mL aliquots were taken for IC analysis and pH
+
+176
+
+measurement.
+
+177
+
+Three metrics were used to evaluate resin performance: removal efficiency (% removalA),
+
+178
+
+adsorption density (qf), and NH3 adsorbed/Zn2+ eluted ratio.
+
+179
+
+Equation 1 defines the removal efficiency of each adsorbate in mmol/L (A = TAN, Zn2+, K+, or
+
+180
+
+Na+). C0,A is the initial concentration and Cf,A is the final concentration at equilibrium (adsorption
+
+181
+
+after 8 hours).
+
+𝐶!,# − 𝐶$,#
+% 𝑟𝑒𝑚𝑜𝑣𝑎𝑙 = +
+. ∗ 100%
+𝐶!,#
+
+182
+
+(1)
+
+183
+
+The adsorption density qf (mmol adsorbate/g adsorbent) for each adsorbate A where V is the
+
+184
+
+solution volume, and W is resin mass is defined by equation 2:
+
+185
+
+𝑞!,# =
+
+𝑉$𝐶$,# − 𝐶!,# '
+𝑊
+
+(2)
+
+186
+
+The ammonia adsorbed to zinc eluted ratio was calculated by dividing the TAN percent adsorption
+
+187
+
+by Zn2+ percent eluted in equation 3. CTAN,f and CTAN,i represent the final and initial aqueous TAN
+
+188
+
+concentration during adsorption. Vads is the volume of the adsorption solution while W is resin
+
+189
+
+mass. CZn2+,f is the final zinc concentration in aqueous solution. The initial zinc adsorption density,
+
+190
+
+qZn2,i was found by regenerating Zn-loaded resin in 0.5 M H2SO4 for 24 hours and analyzing the
+
+191
+
+regenerant solution on IC.
+
+10
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+192
+
+𝐶%#&! 𝑉'() − 𝐶%#&,! 𝑉'()
+>
+𝐴𝑚𝑚𝑜𝑛𝑖𝑎 𝐴𝑑𝑠𝑜𝑟𝑏𝑒𝑑 =
+𝐶%#&,* 𝑉'()
+=
+𝐶,-"#, ! 𝑉'() − 𝑞,-"#,* 𝑊
+𝑍𝑛 𝐸𝑙𝑢𝑡𝑒𝑑
+=
+>
+𝑞,-"#, * 𝑊
+
+(3)
+
+193
+
+194
+
+Electro-assisted Regeneration of NH3-Selective Resin
+
+195
+
+We performed chronopotentiometry experiments to demonstrate that a proof-of-concept
+
+196
+
+two-chamber EC-IX system could regenerate ammonia-saturated resins while minimizing zinc
+
+197
+
+elution (Figure 1a). The anode was a titanium mesh coated with iridium mixed metal oxide (6
+
+198
+
+cm2, Magneto Special Anodes, Netherlands) and the cathode was solid stainless steel (6 cm2, 316
+
+199
+
+stainless steel, Small Parts, Plymouth, MI).11,13,24,25 The reactor was secured by two hollow Perspex
+
+200
+
+plates (10.2 × 1.2 × 5.3 cm3) bolted between two solid Perspex plates (10.1 × 1.3 × 8.7 cm3) to
+
+201
+
+create two 12-mL chambers. For all regeneration tests, 5 mL (~4.9 g) of ammonia-saturated resins
+
+202
+
+were packed in the anode chamber of the EC-IX. This resin volume prevented direct contact with
+
+203
+
+the anode and potential degradation from direct oxidation. Regeneration experiments were
+
+204
+
+conducted in triplicate using the same batch of ammonia-saturated resin for reproducibility.
+
+205
+
+Equation 4 defines the regeneration efficiency γ (%) where Mads is moles of NH3 adsorbed onto
+
+206
+
+resin, and Manode and Mcathode are moles of TAN detected in each respective chamber.
+
+207
+
+𝛾./0/-/.'1*2- =
+
+𝑀'-2(/ + 𝑀3'142(/
+× 100%
+𝑀'()
+
+(4)
+
+208
+
+We classify regeneration as aqueous TAN in either anolyte or catholyte while recovery
+
+209
+
+describes aqueous TAN only in catholyte. We separately recirculated 100 mL of potassium
+
+11
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+210
+
+solutions (K2SO4 for the anolyte and KCl + 100 mM H2SO4 for the catholyte) at 40 mL/min with
+
+211
+
+a peristaltic pump (Masterflex C/L, Vernon Hills, IL). Catholyte solutions for regeneration
+
+212
+
+experiments contained 100 mM H2SO4 to prevent Zn(OH)2 precipitation observed in preliminary
+
+213
+
+experiments. We used a putatively monovalent-selective cation exchange membrane (CMS,
+
+214
+
+Ameridia Inc., Napa, CA) to separate the anolyte and catholyte chambers. Monovalent-selective
+
+215
+
+membranes use size exclusion to block divalent ions from transporting through the membrane
+
+216
+
+matrix.26–28 K+ was chosen as the electrolyte cation because it exhibits sufficient peak separation
+
+217
+
+with NH4+ for reproducible IC measurements. Sulfate was chosen due to its abundance in the
+
+218
+
+environment and stability in anodic conditions, while chloride was chosen due to its environmental
+
+219
+
+abundance and stability in cathodic conditions.29,30 Anolyte and catholyte concentrations were
+
+220
+
+always matched (both 10 mM or both 100 mM) to examine concentration effects on regeneration
+
+221
+
+efficiency and energy consumption. Zinc eluted during regeneration was recorded during each
+
+222
+
+sampling point. To examine the influence of OER on EC-IX performance, we applied two current
+
+223
+
+densities (0.08 mA/cm2 and 4.96 mA/cm2) for 6-hour experiments using a potentiostat (Reference
+
+224
+
+3000, Gamry, Warminster, PA). These current densities were anticipated to facilitate regeneration
+
+225
+
+via protons from OER (i.e., water oxidation) while minimizing large pH drops that promote metal
+
+226
+
+elution.13,31 Note that the low electrolyte concentration and high current condition (10 mM at 4.96
+
+227
+
+mA/cm2) was omitted from the experimental matrix due to a voltage overload (>13V) from the
+
+228
+
+high ohmic resistance in the system.
+
+12
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+229
+
+Figure 1: Schematic of (a) EC-IX cell with a monovalent-selective membrane for in-situ electrochemical regeneration
+experiments and (b) electrolysis cell to explore cationic transport across a standard cation exchange membrane and a
+monovalent-selective membrane. The electrochemical cell produces acid in the anolyte through OER and base in the catholyte
+through HER. Dotted arrows illustrate movement across each membrane during electrolysis. The monovalent-selective
+membrane retains zinc in the anode chamber and ammonium in the cathode chamber for recovery. The standard membrane
+allows for all cation to transport from anode chamber to cathode chamber.
+
+230
+
+231
+
+Adsorbent Characterization
+
+232
+
+We used Fourier-transform infrared spectroscopy (FTIR) to examine the pre- and post-
+
+233
+
+electrochemical regeneration bonding environment of NH3-selective resins with a Nicolet iS50
+
+234
+
+ATR FT/IR Spectrometer (HeNe laser, Thermo Nicolet Company, USA). The wavenumber range
+
+235
+
+of FTIR spectra was 2000 cm-1 to 800 cm-1. To ensure homogeneity, all samples were ground with
+
+236
+
+a mortar and pestle before FTIR analysis.
+
+237
+
+Ionic Transport through Two-Chamber Electrolysis Cell
+
+238
+
+Although we aimed to avoid zinc elution from the resins, its elution and transport could
+
+239
+
+affect ammonia recovery by influencing the transference number (i.e., the fraction of the total
+
+240
+
+current carried by each ionic species). To investigate the consequences of potential zinc elution,
+
+13
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+241
+
+we explored the cationic transport of Zn2+ against other relevant cations in a two-chamber
+
+242
+
+electrolysis cell without resin (Figure 1b). The anode and cathode chambers were separated by
+
+243
+
+two types of cation exchange membrane (CEM). These membranes are categorized as either a
+
+244
+
+standard membrane (CEM, CMI-7000, Membranes International Inc., Ringwood, NJ) or
+
+245
+
+monovalent-selective membrane (CMS, same as used for electrochemical regeneration with resin)
+
+246
+
+for further reference. More information on membrane properties is listed in Table S2.32
+
+247
+
+We evaluated three solutions with varying concentrations of Zn2+, NH4+, and K+ to compare the
+
+248
+
+transference number of each compound. These solutions were chosen to elucidate the effect of the
+
+249
+
+TAN/Zn2+ ratio (2:1, 1:1, 0:1) on cation transference numbers (Table S3). Equation 5 shows the
+
+250
+
+transference ratio (𝛿) for ions x and y where 𝑡! is the transference number, 𝑍! is the ion valence
+
+251
+
+(+1 for monovalent cations and -1 for monovalent anions), 𝐶! is ion concentration in the cathode
+
+252
+
+chamber, and 𝜆! is equivalent ionic conductivity in the aqueous phase.
+
+253
+
+𝛿=
+
+𝑡5 |𝑍5 |𝐶5 𝜆5
+=
+𝑡6 K𝑍6 K𝐶6 𝜆6
+
+(5)
+
+254
+
+We conducted experiments using a BioLogic potentiostat (VMP-300, BioLogic Sciences
+
+255
+
+Instruments, Grenoble, France) with the standard and monovalent-selective membrane at a current
+
+256
+
+of 4.96 mA/cm2, enabling electromigration through the cation exchange membrane and mild acid
+
+257
+
+production via electrochemical water electrolysis.33,34
+
+258
+
+In-situ Formation of Zn2+- RCOO- bond
+
+259
+
+To demonstrate in-situ reformation of the zinc-carboxylate bond, flow-through
+
+260
+
+experiments were performed in a two-chamber electrochemical reactor (Figure S2). We
+14
+
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+261
+
+regenerated NH3-selective adsorbents at the high current density and electrolyte condition (100
+
+262
+
+mM and 4.96 mA/cm2) and recorded the final NH3 regeneration efficiency and Zn2+ elution along
+
+263
+
+with initial adsorption densities. Subsequently, the same resin was placed in the anode chamber to
+
+264
+
+facilitate in-situ reformation within the same two-chamber EC-IX cell used for electrochemical
+
+265
+
+regeneration and ionic transport experiments. Anolyte and catholyte chambers each contained 100
+
+266
+
+mL of electrolyte, with the bottles initially filled with nanopure water. We pumped 2 L of 50 mM
+
+267
+
+ZnCl2 into the anolyte bottle at 35 mL/min to supply Zn(II) ions into the system. Electrolyte
+
+268
+
+solutions were recirculated with a separate pump at 40 mL/min. Recovery flow rates ensured 100
+
+269
+
+mL recirculation in electrolyte bottles and differed between the two pumps due to a difference in
+
+270
+
+tubing diameter (1/16” for EC-IX recirculation and 1/12” for ZnCl2 flow). The anolyte outflow
+
+271
+
+was placed in a waste bottle to prevent the recirculation of NH3 and promote Zn2+ ion exchange
+
+272
+
+with the carboxylate sites. We collected 1 mL samples from the anolyte (holding bottle and
+
+273
+
+outflow) and catholyte at several time points over the 2-hour experiment. Afterwards, the reloaded
+
+274
+
+resin was placed in hydrolyzed urine for another adsorption stage at the 100 mg resin/mL (as
+
+275
+
+opposed to 75 mg/mL for pure ammonium) solution ratio for 24 hours. Finally, the resin was
+
+276
+
+regenerated with 5 mL of 0.5 M H2SO4 and analyzed by IC to determine the final ammonia and
+
+277
+
+zinc adsorption densities and to evaluate in situ reformation.
+
+278
+
+279
+
+Results and Discussion
+
+280
+
+Effect of Dosage and Ammonia Selectivity during Metal-Ammonia Adsorption
+
+15
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+281
+
+Effective ammonium recovery with metal-ligand adsorbents relies on maximizing NH3
+
+282
+
+adsorption and preserving the zinc-carboxylate bond. Solution composition, particularly pH and
+
+283
+
+TAN concentration, profoundly impacts the stability of metal-ligand adsorbents. Based on
+
+284
+
+previous work, the optimal pH for ammonia adsorption onto NH3-selective adsorbents is 9-10 and
+
+285
+
+the optimal TAN concentration is 200-300 mequiv N/L.10 These optimal solution conditions make
+
+286
+
+hydrolyzed urine (pH 9.2, 300-500 mequiv N/L) a promising adsorption solution. However, three
+
+287
+
+challenges for ammonia recovery occur outside of optimal conditions: (1) outer-sphere
+
+288
+
+electrostatic interactions between the carboxylate functional group on WAC and competing cations
+
+289
+
+in solution, (2) inner-sphere (ligand binding with Zn2+) interactions in solutions with high TAN
+
+290
+
+concentrations, and (3) protonation of carboxylate moieties in acidic conditions10,14 (Figure S3).
+
+291
+
+We first studied the mass to solution ratio for synthetic and hydrolyzed urine and its impact on
+
+292
+
+cation adsorption, metal elution, and the solution pH 7. At higher resin mass to solution ratios (i.e.,
+
+293
+
+resin doses), TAN adsorption plateaued due to excess adsorption sites binding to all available NH3
+
+294
+
+in solution (Figure 2a).
+
+295
+
+At higher resin doses, the adsorption solution pH deviates from the optimal pH range (9-10)
+
+296
+
+for selective adsorption due to shifts in equilibrium between ligand bond and solution
+
+297
+
+environment10,14 (Figure 2b). Because NH3 interacts with the Zn2+ ligand and NH4+ does not, NH3
+
+298
+
+can uniquely be removed via ligand binding.20,21 Adsorption decreases the conjugate base (NH3)
+
+299
+
+concentration, which decreases the solution pH. The natural buffering capacity of human urine35
+
+300
+
+(predominantly by carbonate and ammonia species) likely mitigated sharp pH drops at lower resin
+
+301
+
+to solution ratios in real urine compared to synthetic urine. The change in solution environment
+
+302
+
+also altered the ideal ammonia adsorbed to zinc elution ratio (Figure 2c). We observed ideal ratios
+
+303
+
+of 50 and 100 mg resin/mL of solution for 230 mM TAN synthetic urine and 340 mM TAN real
+
+16
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+304
+
+urine, respectively. At lower resin mass to solution doses, selective TAN removal resulted in
+
+305
+
+minimal zinc elution, while at higher doses, improved TAN removal led to other cations
+
+306
+
+outcompeting Zn2+ and electrostatically interacting with the carboxylate functional group.
+
+307
+
+308
+a
+
+b
+
+c
+
+Figure 2: A comparison of real hydrolyzed and synthetic urine across a range of resin doses exploring (a) TAN
+adsorption efficiency (b) pH of the equilibrium solution with optimal pH shaded in green and (c) ratio of
+ammonia adsorbed to zinc eluted. Error bars not shown are smaller than symbols.
+
+309
+
+17
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+310
+
+In-situ Electrochemical Regeneration
+
+311
+
+The electrochemical regeneration efficiency of NH3-selective adsorbents determines TAN
+
+312
+
+recovery. More specifically, electrochemical operating parameters can tune electrolyte pH and
+
+313
+
+facilitate protonation of removed ammonia into recovered ammonium. Both the molar
+
+314
+
+concentration of electrolyte solution and applied current influence the rate of water electrolysis
+
+315
+
+and thus the bulk solution pH.34,36–38 We compared two anolyte concentrations (K2SO4 at 10 mM
+
+316
+
+and 100 mM) and two current densities (0.08 mA/cm2 and 4.96 mA/cm2) using the monovalent-
+
+317
+
+selective membrane. Across the regeneration experiments with resin that treated real urine, NH4+
+
+318
+
+regeneration efficiency from electrochemical regeneration was between 60-90% (Figure 3). Using
+
+319
+
+100 mM electrolyte produced high total ammonia regeneration across both applied current
+
+320
+
+densities (83% vs 94% for 0.08 mA/cm2 and 4.96 mA/cm2, respectively) (Figure 3a). For constant
+
+321
+
+applied current density, the difference in electrolyte molar concentration varied the total ammonia
+
+322
+
+regeneration more (61% vs 83% for 10 mM and 100 mM, respectively) (Figure 3b). Overall,
+
+323
+
+increasing the molar concentration and current density resulted in a lower final solution pH, which
+
+324
+
+increased the protonation of ammonia to ammonium, thereby enhancing recovery into the cathode
+
+325
+
+and facilitating simultaneous regeneration of the zinc-carboxylate bond (Table S4).
+
+326
+
+We examined the distribution of NH4+ across both chambers and detected the lowest
+
+327
+
+recovery into the cathode chamber in 10 mM K2SO4 at 0.08 mA/cm2 (63% regeneration but only
+
+328
+
+21% recovery in cathode chamber) (Figure S4a). This recovery was likely due to the low
+
+329
+
+electrochemical potential difference across the membrane hindering cation transport.39,40 In
+
+330
+
+contrast, the concentrated 100 mM K2SO4 electrolyte exhibited higher total ammonia regeneration
+
+331
+
+across both applied current densities (83% total regeneration and 34% recovery in cathode for 0.08
+
+18
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+332
+
+mA/cm2 vs 94% total regeneration and 48% recovery in cathode for 4.96 mA/cm2) (Figure S5a
+
+333
+
+and Figure S6a). In every instance, the overall ammonium recovery to the cathode remained below
+
+334
+
+50%. However, like the total ammonia regeneration, recovery varied directly with molar
+
+335
+
+concentration and applied current density. Ammonia recovery was lower in our experiments
+
+336
+
+compared to previous nutrient recovery technologies because of the low applied current density
+
+337
+
+(approximately 0.08 and 4.96 mA/cm2 in this study; 30-180 mA/cm2 for electro-assisted
+
+338
+
+regeneration of urine-loaded commercial cation exchange resins13; 3-10 mA/cm2 for
+
+339
+
+electrochemical stripping25,41). Because we were interested in identifying the impact of operating
+
+340
+
+parameters more than maximizing performance in this study, lower ammonia recovery was not a
+
+341
+
+concern. Ultimately, too low of a current density would hinder ammonium electromigration and
+
+342
+
+favor H+ transport due to their higher ionic mobility.42 To emphasize the regeneration and recovery
+
+343
+
+of ammonium from NH3-selective adsorbents at these conditions, the applied current in the
+
+344
+
+electrochemical system should be higher than 0.08 mA/cm2. Based on the electrochemical
+
+345
+
+regeneration results, the electrolyte concentration was the most influential operating parameter that
+
+346
+
+dictates ammonium regeneration.
+
+347
+
+We complemented the NH4+ migration analysis by examining the competing cation in the
+
+348
+
+electrolytes, K+. Because we measured aqueous K+ concentrations in the anolyte and catholyte,
+
+349
+
+any K+ trapped in the membrane would not have been included in our measurements. During the
+
+350
+
+10 mM at 0.08 mA/cm2 scenario, we identified that summing anode and cathode chamber
+
+351
+
+concentrations left 17% of K+ unaccounted (Figure S4b). Increasing the background ion
+
+352
+
+concentration to 100 mM improved the transfer of K+ from anode to cathode and led to lower
+
+353
+
+unaccounted K+ fractions (6% for 0.08 mA/cm2, 4% for 4.96 mA/cm2) (Figure S5b and Figure
+
+354
+
+S6b). The low applied current likely led to K+ sorption in the membrane or the resin rather than
+
+19
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+355
+
+transport, which we did not distinguish. The same phenomena could occur for NH4+, meaning the
+
+356
+
+“remaining” fraction contains both membrane and resin sorption. Ion sorption in cation exchange
+
+357
+
+membranes is enhanced at low applied current density because of low cation flux across the
+
+358
+
+membrane.44 Compared to K+, unaccounted NH4+ generally exceeded the background electrolyte
+
+359
+
+in all electrochemical regeneration cases at each sample point (Figures S4-S6). While K+ and
+
+360
+
+NH4+ sorption were prevalent in 10 mM K2SO4 at 0.08 mA/cm2, operating at higher applied current
+
+361
+
+density mitigated ion sorption and facilitated ion transport due to a stronger electromigration
+
+362
+
+driving force.43 Ion sorption was the main sorption mechanism and the unaccounted K+ was
+
+363
+
+reversed after acid regeneration (0.5 M of H2SO4 at pH 0.45) closed the mass balance (Figure
+
+364
+
+S7a). As an alternative to acid regeneration, saturating cation exchange resins with nanopure water
+
+365
+
+after electrochemical regeneration could remove the lingering cations from fixed charged groups
+
+366
+
+in the membrane.45
+
+367
+
+Closing the mass balance of NH4+ required additional chemical regeneration with strong
+
+368
+
+acids (0.5 M of H2SO4 at pH 0.45) after electrochemical regeneration of ammonia-saturated resin
+
+369
+
+(Figure S7b). As highlighted earlier, we observed the highest regeneration efficiency in the 100
+
+370
+
+mM K2SO4 at 4.96 mA/cm2 and the lowest in the 10 mM K2SO4 at 0.08 mA/cm2 condition.
+
+371
+
+Nevertheless, most resin sites were regenerated across all experimental conditions and facilitated
+
+372
+
+ammonium regeneration from ammonia-saturated resin. At higher K2SO4 concentration and
+
+373
+
+applied current density, the final solution pH trended acidic (Table S4). Dynamic bias systems,
+
+374
+
+where regeneration occurs at 0.08 mA/cm2 and recovery occurs at 4.96 mA/cm2, could circumvent
+
+375
+
+the zinc elution and ion sorption challenges.
+
+20
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+376
+b
+
+a
+
+Figure 3: Total ammonium regeneration (left axis) and zinc elution (right axis) under experimental conditions:
+(a) 100 mM with varied applied current density and (b) 0.08 mA/cm2 with varying electrolyte molar
+concentration. Error bars not shown are smaller than symbols.
+
+377
+
+378
+
+Zinc Elution
+
+379
+
+Across all experimental conditions, we detected zinc elution in the anode chamber after 1
+
+380
+
+hour of operation. For zinc elution from ammonia-saturated resins, the combination of low current
+
+381
+
+and low K+ concentration led to minimal zinc elution (<4%) by the end of the experiment (Figure
+
+382
+
+3b). Experiments with higher K+ electrolyte concentrations enhanced K+ competition with Zn2+
+
+383
+
+for carboxylate moieties. Furthermore, the concentrated anolyte salt (100 mM) led to a more drastic
+
+384
+
+pH drop (Table S4). In the 10 mM at 0.08 mA/cm2 case, the initial pH was 5.5 ± 0.5 and final pH
+
+385
+
+was 4.2 ± 0.6; in the 100 mM at 0.08 mA/cm2 case, the initial pH was 5.3 ± 0.2 and final pH was
+
+386
+
+3.3 ± 0.1. Similar to regeneration efficiency, the anolyte concentration influenced zinc elution
+
+387
+
+more than applied current density. The final solution pH also directly correlated with the stability
+
+388
+
+of zinc-carboxylate bonds with more acidic conditions leading to more zinc elution. The choice of
+
+389
+
+electrolyte could improve zinc-carboxylate stability during regeneration by limiting the OER
+
+21
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+390
+
+overpotential on iridium oxide anodes. For example, sodium ions exhibit a smaller overpotential
+
+391
+
+enhancement of OER compared to potassium ions.46 Furthermore, innovative resin chemistries
+
+392
+
+that strengthen the zinc-carboxylate bond could also improve ammonia adsorption in complex
+
+393
+
+wastewaters and advance electrochemical ammonium recovery technologies.5 Finally, combining
+
+394
+
+pH buffer resins (tertiary amine) with NH3-selective resins14 could also mitigate pH drops and
+
+395
+
+exhibit tandem improvements of ammonium regeneration efficiency and mitigation zinc elution
+
+396
+
+across electrochemical operating parameters.
+
+397
+
+398
+
+Adsorbent Characterization
+
+399
+
+Ideal electrochemical regeneration protonates NH3 to NH4+ while preserving the zinc-
+
+400
+
+carboxylate bond. Identifying changes in the ligand structure between pre- and post-regeneration
+
+401
+
+adsorbents will help inform how experimental conditions (i.e., adsorption solution,
+
+402
+
+electrochemical operating parameters) influence ammonia binding and zinc elution. Urine-loaded
+
+403
+
+adsorbents exhibited similar absorbance peak intensity with post-regenerated adsorbents at 0.08
+
+404
+
+mA/cm2 compared to less pronounced peak intensity in the 4.96 mA/cm2 experiments (Figure 4).
+
+405
+
+Peaks across all experimental conditions match antisymmetric (1537 cm-1) and symmetric (1407
+
+406
+
+cm-1) stretches for carboxylate functional groups.47 Electrochemical regeneration at 0.08 mA/cm2
+
+407
+
+did not remove all NH3 from ligand binding and a mild N-H bend exists between 950 cm-1 to 1120
+
+408
+
+cm-1. Examining all regeneration conditions with the real urine-loaded resin, the subtle C=O stretch
+
+409
+
+at 1700 cm-1 is likely caused by the protonation of carboxylate sites to carboxylic acid.
+
+410
+
+Furthermore, the transition from the COO- asymmetric stretch to the C=O stretch is less
+
+22
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+411
+
+pronounced in the 100 mM at 4.96 mA/cm2 concentration experiment where zinc elution prevailed
+
+412
+
+during regeneration. The C=O stretch is prevalent across all electrochemical regeneration
+
+413
+
+experiments regardless of adsorption solution or electrochemical operating parameters (Figure 4,
+
+414
+
+Figure S8). Comparing spectra across ammonia adsorption solutions, pure ammonium TAN and
+
+415
+
+synthetic urine produced similar intensity peaks during electrochemical regeneration at 100 mM
+
+416
+
+at 4.96 mA/cm2 compared to adsorbents before regeneration (Figure S8). Based on these results,
+
+417
+
+additional adsorption and regeneration cycles could be performed after electrochemical
+
+418
+
+regeneration of NH3-selective adsorbents.
+
+419
+
+N-H
+bending
+950
+
+1120
+
+COOsymmetric
+stretch
+stretch
+1407
+
+10 mM at 0.08
+mA/cm2
+
+420
+
+COOC=O
+antisymmetric stretch
+stretch
+1537
+
+1700
+
+100 mM at 0.08
+mA/cm2
+
+100 mM at 4.96
+mA/cm2
+
+Figure 4: FTIR spectra of unamended WAC-Zn2+ and urine loaded NH3-selective resins after electrochemical
+regeneration under different conditions.
+
+421
+
+23
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+422
+
+Ion Migration: Transference of Ammonium, Potassium, and Zinc
+
+423
+
+To examine how eluted zinc influences cation transport, we investigated the transference
+
+424
+
+number of relevant cations (K+, NH4+, and Zn2+) in several electrolytes (compositions in Table
+
+425
+
+S3) across standard and monovalent-selective cation exchange membranes. K+ and Zn2+ can
+
+426
+
+compete with NH4+ for transport across membranes and diminish NH4+ recovery in the catholyte.48
+
+427
+
+In both membranes, the transference number for all cations (K+, NH4+, and Zn2+) peaked within
+
+428
+
+the first 30 minutes and gradually decreased during the experiment (Figure 5). Compared to the
+
+429
+
+standard membrane, the monovalent-selective membrane exhibited less relative K+ transport and
+
+430
+
+more relative NH4+ transport. For the standard membrane, K+ and NH4+ contributed most of the
+
+431
+
+charge transport throughout the experiment (Figure 5a). Due to its larger ionic radius, Zn2+
+
+432
+
+contributed the least amount of charge, migrating slower through membrane matrix than
+
+433
+
+monovalent ions with smaller ionic radii (K+ and NH4+).49
+
+434
+
+For the monovalent-selective membrane, a similar transference number trend was
+
+435
+
+observed, where the membrane completely hindered the migration of Zn2+ ions into the cathode
+
+436
+
+chamber due to size exclusion, leaving only K+ and NH4+ transport (Figure 5b). These results
+
+437
+
+indicate that implementing a monovalent-selective membrane would not hinder the total charge
+
+438
+
+carried nor ammonium recovery during electrochemical regeneration of NH3-selective resins since
+
+439
+
+H+ would supplement lost charge. For both membranes, as the transference number of cations
+
+440
+
+decreased from migration there was a gradual increase in current carried from protons produced
+
+441
+
+by OER. To maintain a constant current, proton transport increased due to cation depletion within
+
+442
+
+the system, with proton production from OER supplementing charge during the later stage as
+
+443
+
+cations migrated from anode to cathode.13 During in-situ regeneration of NH3-selective resins, we
+
+24
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+444
+
+expect the concentrations of the summed concentration NH4+ and Zn2+ will be lower compared to
+
+445
+
+that of K+ (background electrolyte).
+
+446
+
+As we changed the concentration, we noticed a preservation in trends across membranes but
+
+447
+
+observed differences in transference from each non-H+ cation (Figure 5 vs Figure S9). The
+
+448
+
+reduced ionic conductivity of the monovalent-selective membrane compared to the standard
+
+449
+
+membrane decreased the NH4+ transference, thereby lowering the overall transference contribution
+
+450
+
+from non-H+ cations. In the standard membrane, the higher mobility and abundance of K+ cations
+
+451
+
+compensated for the lower charge carried by Zn2+ to ensure a constant current was maintained in
+
+452
+
+the system. Compared to the equimolar case, lower initial NH4+ concentration led to more charge
+
+453
+
+carried by K+ for both the standard and monovalent-selective membrane (92% and 42% at 0.5
+
+454
+
+hours, respectively) (Figure S9). However, similarly to the equimolar condition, proton generation
+
+455
+
+from OER supplemented most of the charge at longer electrolysis times. When we reduced the
+
+456
+
+ionic strength of the electrolyte by removing NH4+ but maintained equal concentrations of K+ and
+
+457
+
+Zn2+, K+ was the dominant charge carrier. (Figure S10). However, when NH4+ was present in
+
+458
+
+solution then H+ was the predominant charge carrier in both membranes (Figure 5 and Figure S9).
+
+459
+
+Across all ion migration experiments, slower Zn2+ diffusion across the standard and monovalent-
+
+460
+
+selective membrane forced the competing monovalent cations (i.e., K+ and NH4+) to carry the
+
+461
+
+charge until OER produced sufficient protons for migration.
+
+462
+
+25
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+a
+
+b
+
+Figure 5: Comparison of total transference numbers of NH4+, K+, and Zn2+ during equimolar (10 mM) cationic migration
+experiments conducted at 4.96 mA/cm2 across (a) standard and (b) monovalent-selective membrane. Solid lines represent
+calculations based on measured ion concentrations, while the dashed line for protons was determined using the remaining
+current balance. Error bars not shown are smaller than symbols.
+
+463
+
+464
+
+Transference Ratio
+
+465
+
+To further evaluate cation migration across each membrane, we calculated the ratio of
+
+466
+
+transference numbers (transference ratio) of NH4+ ions compared to the background electrolyte
+
+467
+
+cation, K+. For the monovalent-selective membrane at equimolar concentration (100 mM
+
+468
+
+K+/NH4+/Zn2+), the transference ratio between K+ and NH4+ hovered near 1, indicating an equal
+
+469
+
+migration of both cations from anode to cathode chamber (Figure 6a). Compared to the standard
+
+470
+
+membrane, the transference ratio was enhanced in the monovalent membrane (1.05 ± 0.01 at 6
+
+471
+
+hours for the monovalent and 0.73 ± 0.14 standard membrane). The standard membrane’s lower
+
+472
+
+NH4+ migration to the catholyte was likely due to Zn2+ binding in the standard cation exchange
+
+473
+
+membrane, which could block exchange sites and limit the migration for cations with smaller
+
+474
+
+hydration shells (i.e., K+ and NH4+).49,50
+
+26
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+475
+
+Based on the transference ratio in the monovalent-selective membrane, the rejection of
+
+476
+
+Zn2+ did not hinder cation migration of K+ or NH4+ nor charge carried within the system. Due to
+
+477
+
+similar ionic size and charge5,8, the transference ratio of K+ and NH4+ was governed by the initial
+
+478
+
+ionic ratio between the cations. When we lowered the initial concentration of NH4+, the resulting
+
+479
+
+NH4+/K+ transference ratio (~0.5 NH4+/K+) in both membranes followed the initial ionic ratio in
+
+480
+
+the electrolyte (Figure 6). Overall, these experiments without resin show that using a monovalent-
+
+481
+
+selective membrane could prevent metal precipitation in electrochemical recovery systems,
+
+482
+
+enhance ammonium recovery (ion migration of NH4+), and avoid adverse effects on OER.
+
+483
+
+484
+
+485
+
+486
+
+487
+
+488
+
+Figure 6: The transference ratio of NH4+/K+ during cationic migration experiments conducted at 4.96 mA/cm2
+across (a) standard and (b) monovalent-selective membrane. Blue line indicates the equimolar (10 mM of K+,
+NH4+, and Zn2+) condition while red indicates the decreased ammonium condition (10 mM of K+ and Zn2+; 5 mM
+of NH4+)
+
+489
+
+490
+
+491
+
+27
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+492
+
+In-situ Zinc Recovery and Cyclic Ammonia Adsorption
+
+493
+
+Electrochemical regeneration of ammonia-saturated resins facilitated ammonia protonation
+
+494
+
+and zinc elution to varying degrees across experimental conditions. We applied our insights from
+
+495
+
+ex-situ zinc-carboxylate column loading and ligand exchange chemistry to evaluate in-situ
+
+496
+
+reformation of the zinc-carboxylate bond after regeneration. In-situ reformation achieved similar
+
+497
+
+adsorption densities for NH3 (7.27 ± 0.47 mmol NH3/g resin and 6.29 ± 0.72 mmol NH3/g resin
+
+498
+
+for urine adsorption cycles 1 and 2, respectively) and Zn2+ (3.8 ± 0.63 mmol Zn2+/g resin and 3.2
+
+499
+
+± 1.3 mmol Zn2+/g resin for hydrolyzed urine adsorption cycles 1 and 2, respectively) (Figure 7).
+
+500
+
+A two-sample t-test revealed that the two means for NH3 and Zn2+ are not statistically different (p-
+
+501
+
+value of 0.12 for NH3 and 0.17 for Zn2+). The pH of the 50 mM ZnCl2 solution (~6.2) helped
+
+502
+
+maintain the WAC functional group speciation towards carboxylate instead of carboxylic acid.
+
+503
+
+Simultaneously, ion exchange was aided by NH3 removal likely from increased zinc-ammine
+
+504
+
+complexes in solution.10,51,52 We further explored zinc-carboxylate bond reformation with Na+
+
+505
+
+loaded resins and >95% of sites were zinc-loaded after 180 minutes (Figure S11a). Our results
+
+506
+
+indicate in-situ reloading procedures could facilitate long-term selective resin use for ammonium
+
+507
+
+recovery. A semicontinuous electrochemical treatment system that combines continuous flow for
+
+508
+
+zinc loading and batch for ammonia adsorption could promote full-scale ammonium recovery
+
+509
+
+technologies.53 Based on these results, in-situ reformation of the zinc-carboxylate bond can be
+
+510
+
+achieved without applied current and with minimal chemical inputs. We encourage future research
+
+511
+
+efforts to continue exploring metal-ligand coordination chemistry and adsorbent stability to
+
+512
+
+promote ammonium recovery from waste streams.
+
+28
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+513
+
+Figure 7: The adsorption density of Zn2+ and NH3 on NH3-selective resin. ‘Real Urine Adsorption 1’ indicates
+adsorption density after urine adsorption with 340 mM TAN prior to regeneration. ‘Electrochemical Regeneration’
+indicates the adsorption density after regeneration at 100 mM and 4.96 mA/cm2. ‘Real Urine Adsorption 2’ shows
+the final adsorption density after in-situ reloading with 50 mM ZnCl2 and then 340 mM TAN and urine loading
+with 340 mM TAN.
+
+514
+
+515
+
+Conclusion
+
+516
+
+This study explored the ammonia adsorption efficiency (ammonia removal) and the in-situ
+
+517
+
+electrochemical regeneration (ammonium recovery) of NH3-selective adsorbents to advance ion
+
+518
+
+exchange technologies in water treatment and circular nitrogen management. Zinc elution from
+
+519
+
+the carboxylate moiety limits the effectiveness of NH3-selective adsorbents for ammonia removal
+
+520
+
+by sacrificing the adsorption sites. By exploiting a zinc elution pathway (inner-sphere ligand
+
+521
+
+bonding), we reformed the bond in-situ which can enable continuous TAN recovery after multiple
+
+522
+
+adsorption and regeneration cycles. We explored the resin characterization and process
+
+523
+
+performance across aqueous ammonia solution of varying complexity (pure ammonium, synthetic
+
+524
+
+urine, and real urine with organics) and electrochemical regeneration with varying current density
+
+525
+
+and electrolyte concentrations. Electrolyte concentration impacted ammonium regeneration
+
+29
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+526
+
+efficiency more than current density, and the most extreme conditions exhibited >97% ammonium
+
+527
+
+regeneration efficiency. However, a tradeoff exists between ammonia recovery and zinc elution
+
+528
+
+that could hinder implementation. Flow-through experiments showed that aqueous Zn2+ removed
+
+529
+
+ammonia from carboxylate moieties. The preservation of the carboxylate chemistry after
+
+530
+
+regeneration highlights the potential for multiple adsorption-regeneration cycles, as supported by
+
+531
+
+FTIR resin characterization that evinced minimal changes in bonding environment of
+
+532
+
+electrochemically regenerated resin compared to unamended NH3-selective adsorbents.
+
+533
+
+Electrochemically mediated regeneration of TAN-selective adsorbents furthers the
+
+534
+
+integration of adsorbents and electrochemistry to advance selective nitrogen separations. Using
+
+535
+
+ligand exchange for improved ammonia removal followed by electrochemical regeneration for
+
+536
+
+ammonia recovery overcomes the selectivity and regeneration challenges of existing adsorptive
+
+537
+
+nitrogen recovery techniques. We identified a tradeoff between ammonium regeneration and zinc
+
+538
+
+eluted within electrochemical systems. To preserve the zinc-carboxylate bond while facilitating
+
+539
+
+adequate ammonium recovery, electrochemical operators should use low molar concentrations (10
+
+540
+
+mM K2SO4) and applied current (0.08 mA/cm2) to minimize zinc elution (4%) and maximize NH4+
+
+541
+
+regeneration (61%). With 100 mM K2SO4 and 4.96 mA/cm2 we increased the ammonium
+
+542
+
+regeneration efficiency to >97% but observed 60% zinc elution. We demonstrate the improved
+
+543
+
+selectivity and recovery of TAN at low concentrations with NH3-selective adsorbents and implore
+
+544
+
+further exploration in complex wastewaters with varying TAN concentrations (e.g., 0.1-10 mg
+
+545
+
+TAN/L in fertilizer runoff55,56, 41-50 mg TAN/L in municipal wastewater influent57,58, and 30-
+
+546
+
+2500 mg TAN/L in industrial wastewaters).54 Future work will further interrogate multi-cycle
+
+547
+
+adsorbent durability using X-ray absorption spectroscopy (X-ray absorption near edge structure
+
+548
+
+and extended X-ray absorption fine structure) to identify the coordination environment and
+
+30
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+549
+
+elemental distribution of Zn2+ on ammonia-loaded and electrochemically regenerated resin.
+
+550
+
+Tracking the stability of the ammonia-zinc complex in adsorption, electrochemical regenerate, and
+
+551
+
+reformation solutions will enable electrochemical separations for nitrogen removal and recovery.
+
+552
+
+By tuning the electrochemical operating parameters and establishing process performance metrics
+
+553
+
+for effective TAN recovery and ligand stability, this study advances selective ammonium recovery
+
+554
+
+technologies, promotes a circular nitrogen economy, and repurposes waste into a value-added
+
+555
+
+product.
+
+556
+
+557
+
+Acknowledgements
+
+558
+
+Funding for this work was made possible by the Department of Chemical Engineering at Stanford
+
+559
+
+University and a P3 (People, Prosperity, and the Planet) award from the U.S. Environmental
+
+560
+
+Protection Agency. E.A. was supported through the National Science Foundation Graduate
+
+561
+
+Research Fellowship (Grant No. 1656518). C.M.L. and R.M.W. were supported by the Stanford
+
+562
+
+University Vice Provost for Undergraduate Education through the Chemical Engineering Research
+
+563
+
+Experience for Undergraduates program. We thank the Stanford Doerr School of Sustainability
+
+564
+
+Accelerator for providing funding support to N.S. FTIR analysis was performed at the Stanford
+
+565
+
+Synchrotron Radiation Lightsource at SLAC National Accelerator Laboratory, supported by the
+
+566
+
+U.S. Department of Energy, Office of Science, Office of Basic Energy Sciences under Contract
+
+567
+
+No. DE-AC02-76SF00515. N.S. was instrumental in preparing and providing insight into FTIR
+
+568
+
+spectra interpretation. Tarpeh lab members H.D. and B.C. were crucial in aiding experimental
+
+569
+
+formulation and data synthesis through their knowledge of ion exchange phenomena and metal-
+
+31
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+570
+
+ligand complexes. We thank Kelly A. Harrison and all members of the Tarpeh lab for reviewing
+
+571
+
+and editing an earlier version of this manuscript.
+
+572
+
+Supporting Information
+
+573
+
+The supporting information contains a schematic of the electrochemical water electrolysis process
+
+574
+
+with stoichiometric reactions for OER and HER, composition of tested adsorption solutions,
+
+575
+
+information on membrane properties, composition of solutions tested during no-resin cation
+
+576
+
+migration experiments, schematic of zinc reloading experiment setup, and pathways of zinc elution
+
+577
+
+in aqueous solutions.
+
+578
+
+579
+
+580
+
+581
+
+582
+
+583
+
+584
+
+585
+
+32
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+586
+
+References
+
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+
+(1) Bodirsky, B. L.; Popp, A.; Lotze-Campen, H.; Dietrich, J. P.; Rolinski, S.; Weindl, I.;
+Schmitz, C.; Müller, C.; Bonsch, M.; Humpenöder, F.; Biewald, A.; Stevanovic, M.
+Reactive Nitrogen Requirements to Feed the World in 2050 and Potential to Mitigate
+Nitrogen Pollution. Nat Commun 2014, 5 (1), 3858. https://doi.org/10.1038/ncomms4858.
+(2) Erisman, J. W.; Galloway, J. N.; Seitzinger, S.; Bleeker, A.; Dise, N. B.; Petrescu, A. M.
+R.; Leach, A. M.; De Vries, W. Consequences of Human Modification of the Global
+Nitrogen Cycle. Phil. Trans. R. Soc. B 2013, 368 (1621), 20130116.
+https://doi.org/10.1098/rstb.2013.0116.
+(3) Kyriakou, V.; Garagounis, I.; Vourros, A.; Vasileiou, E.; Stoukides, M. An Electrochemical
+Haber-Bosch Process. Joule 2020, 4 (1), 142–158.
+https://doi.org/10.1016/j.joule.2019.10.006.
+(4) Miller, D. M.; Abels, K.; Guo, J.; Williams, K. S.; Liu, M. J.; Tarpeh, W. A.
+Electrochemical Wastewater Refining: A Vision for Circular Chemical Manufacturing. J.
+Am. Chem. Soc. 2023, 145 (36), 19422–19439. https://doi.org/10.1021/jacs.3c01142.
+(5) Clark, B.; Sharma, N.; Apraku, E.; Dong, H.; Tarpeh, W. A. Ligand Exchange Adsorbents
+for Selective Phosphate and Total Ammonia Nitrogen Recovery from Wastewaters. Acc.
+Mater. Res. 2024. https://doi.org/10.1021/accountsmr.3c00290.
+(6) Sengupta, S.; Nawaz, T.; Beaudry, J. Nitrogen and Phosphorus Recovery from Wastewater.
+Curr Pollution Rep 2015, 1 (3), 155–166. https://doi.org/10.1007/s40726-015-0013-1.
+(7) Stein, L. Y.; Klotz, M. G. The Nitrogen Cycle. Current Biology 2016, 26 (3), R94–R98.
+https://doi.org/10.1016/j.cub.2015.12.021.
+(8) Tansel, B. Significance of Thermodynamic and Physical Characteristics on Permeation of
+Ions during Membrane Separation: Hydrated Radius, Hydration Free Energy and Viscous
+Effects. Separation and Purification Technology 2012, 86, 119–126.
+https://doi.org/10.1016/j.seppur.2011.10.033.
+(9) Malovanyy, A.; Sakalova, H.; Yatchyshyn, Y.; Plaza, E.; Malovanyy, M. Concentration of
+Ammonium from Municipal Wastewater Using Ion Exchange Process. Desalination 2013,
+329, 93–102. https://doi.org/10.1016/j.desal.2013.09.009.
+(10) Clark, B.; Tarpeh, W. A. Selective Recovery of Ammonia Nitrogen from Wastewaters with
+Transition Metal‐Loaded Polymeric Cation Exchange Adsorbents. Chem. Eur. J. 2020, 26
+(44), 10099–10112. https://doi.org/10.1002/chem.202002170.
+(11) Tarpeh, W. A.; Barazesh, J. M.; Cath, T. Y.; Nelson, K. L. Electrochemical Stripping to
+Recover Nitrogen from Source-Separated Urine. Environ. Sci. Technol. 2018, 52 (3), 1453–
+1460. https://doi.org/10.1021/acs.est.7b05488.
+(12) Tarpeh, W. A.; Chen, X. Making Wastewater Obsolete: Selective Separations to Enable
+Circular Water Treatment. Environmental Science and Ecotechnology 2021, 5, 100078.
+https://doi.org/10.1016/j.ese.2021.100078.
+(13) Dong, H.; Laguna, C. M.; Liu, M. J.; Guo, J.; Tarpeh, W. A. Electrified Ion Exchange
+Enabled by Water Dissociation in Bipolar Membranes for Nitrogen Recovery from SourceSeparated Urine. Environ. Sci. Technol. 2022, 56 (22), 16134–16143.
+https://doi.org/10.1021/acs.est.2c03771.
+
+33
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+
+(14) Clark, B.; Gilles, G.; Tarpeh, W. A. Resin-Mediated pH Control of Metal-Loaded Ligand
+Exchangers for Selective Nitrogen Recovery from Wastewaters. ACS Appl. Mater.
+Interfaces 2022, 14 (20), 22950–22964. https://doi.org/10.1021/acsami.1c22316.
+(15) Gupta, G.; Torres, N. Use of Fly Ash in Reducing Toxicity of and Heavy Metals in
+Wastewater Effluent. Journal of Hazardous Materials 1998, 57 (1), 243–248.
+https://doi.org/10.1016/S0304-3894(97)00093-9.
+(16) Lester, J. N. Significance and Behaviour of Heavy Metals in Waste Water Treatment
+Processes I. Sewage Treatment and Effluent Discharge. Science of The Total Environment
+1983, 30, 1–44. https://doi.org/10.1016/0048-9697(83)90002-5.
+(17) Qasem, N. A. A.; Mohammed, R. H.; Lawal, D. U. Removal of Heavy Metal Ions from
+Wastewater: A Comprehensive and Critical Review. npj Clean Water 2021, 4 (1), 1–15.
+https://doi.org/10.1038/s41545-021-00127-0.
+(18) Kogler, A.; Farmer, M.; Simon, J. A.; Tilmans, S.; Wells, G. F.; Tarpeh, W. A. Systematic
+Evaluation of Emerging Wastewater Nutrient Removal and Recovery Technologies to
+Inform Practice and Advance Resource Efficiency. ACS EST Eng. 2021, 1 (4), 662–684.
+https://doi.org/10.1021/acsestengg.0c00253.
+(19) Kogler, A.; Sharma, N.; Tiburcio, D.; Gong, M.; Miller, D. M.; Williams, K. S.; Chen, X.;
+Tarpeh, W. A. Long-Term Robustness and Failure Mechanisms of Electrochemical
+Stripping for Wastewater Ammonia Recovery. ACS Environ. Au 2024.
+https://doi.org/10.1021/acsenvironau.3c00058.
+(20) Bauschlicher, C. W., Jr. Transition Metal–Ligand Bonding. II. The Journal of Chemical
+Physics 1986, 84 (1), 260–267. https://doi.org/10.1063/1.450179.
+(21) Mustafa, S.; Nadia, L. H.; Rehana, N.; Naeem, A.; Samad, H. Y. Ligands Sorption Studies
+on Transition Metal Ion Loaded Amberlite IRC-50. Langmuir 1998, 14 (9), 2378–2384.
+https://doi.org/10.1021/la9706328.
+(22) Irving, H.; Williams, R. J. P. 637. The Stability of Transition-Metal Complexes. J. Chem.
+Soc. 1953, No. 0, 3192–3210. https://doi.org/10.1039/JR9530003192.
+(23) Wang, H.; Zeuschner, J.; Eremets, M.; Troyan, I.; Willams, J. Stable Solid and Aqueous
+H2CO3 from CO2 and H2O at High Pressure and High Temperature. Sci Rep 2016, 6 (1),
+19902. https://doi.org/10.1038/srep19902.
+(24) Liu, M. J.; Miller, D. M.; Tarpeh, W. A. Reactive Separation of Ammonia from Wastewater
+Nitrate via Molecular Electrocatalysis. Environ. Sci. Technol. Lett. 2023,
+acs.estlett.3c00205. https://doi.org/10.1021/acs.estlett.3c00205.
+(25) Liu, M. J.; Neo, B. S.; Tarpeh, W. A. Building an Operational Framework for Selective
+Nitrogen Recovery via Electrochemical Stripping. Water Research 2020, 169, 115226.
+https://doi.org/10.1016/j.watres.2019.115226.
+(26) Wang, W.; Zhang, Y.; Tan, M.; Xue, C.; Zhou, W.; Bao, H.; Hon Lau, C.; Yang, X.; Ma, J.;
+Shao, L. Recent Advances in Monovalent Ion Selective Membranes towards Environmental
+Remediation and Energy Harvesting. Separation and Purification Technology 2022, 297,
+121520. https://doi.org/10.1016/j.seppur.2022.121520.
+(27) Rehman, D.; Ahdab, Y. D.; Lienhard, J. H. Monovalent Selective Electrodialysis:
+Modelling Multi-Ionic Transport across Selective Membranes. Water Research 2021, 199,
+117171. https://doi.org/10.1016/j.watres.2021.117171.
+(28) Huang, J. H.; Cheng, X. Q.; Wu, Y. D.; Zhang, Y. Q.; Li, S. W.; Lau, C. H.; Shao, L.
+Critical Operation Factors and Proposed Testing Protocol of Nanofiltration Membranes for
+
+34
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+673
+674
+675
+676
+677
+678
+679
+680
+681
+682
+683
+684
+685
+686
+687
+688
+689
+690
+691
+692
+693
+694
+695
+696
+697
+698
+699
+700
+701
+702
+703
+704
+705
+706
+707
+708
+709
+710
+711
+712
+713
+714
+715
+716
+717
+
+Developing Advanced Membrane Materials. Adv Compos Hybrid Mater 2021, 4 (4), 1092–
+1101. https://doi.org/10.1007/s42114-021-00334-w.
+(29) Goldin, M. M.; Khubutiya, M. Sh.; Kolesnikov, V. A.; Abakumov, M. M.; Evseev, A. K.;
+Volkov, A. G. Indirect Electrochemical Synthesis of Active Oxygen in Dilute Sulfate
+Solutions. J Appl Electrochem 2009, 39 (2), 185–189. https://doi.org/10.1007/s10800-0089652-x.
+(30) Liu, Z.; Wang, Y.; Li, Y.; Chang, H. Electro-Assisted Regeneration of Ion Exchange
+Resins. Front. Environ. Sci. Eng. China 2008, 2 (4), 410–414.
+https://doi.org/10.1007/s11783-008-0069-x.
+(31) Kim, K.-W.; Kim, Y.-J.; Kim, I.-T.; Park, G.-I.; Lee, E.-H. Electrochemical Conversion
+Characteristics of Ammonia to Nitrogen. Water Research 2006, 40 (7), 1431–1441.
+https://doi.org/10.1016/j.watres.2006.01.042.
+(32) Ran, J.; Wu, L.; He, Y.; Yang, Z.; Wang, Y.; Jiang, C.; Ge, L.; Bakangura, E.; Xu, T. Ion
+Exchange Membranes: New Developments and Applications. Journal of Membrane
+Science 2017, 522, 267–291. https://doi.org/10.1016/j.memsci.2016.09.033.
+(33) Dong, H.; Wei, L.; Tarpeh, W. A. Electro-Assisted Regeneration of pH-Sensitive Ion
+Exchangers for Sustainable Phosphate Removal and Recovery. Water Research 2020, 184,
+116167. https://doi.org/10.1016/j.watres.2020.116167.
+(34) Rodrigues, M.; Sleutels, T.; Kuntke, P.; Buisman, C. J. N.; Hamelers, H. V. M. Effects of
+Current on the Membrane and Boundary Layer Selectivity in Electrochemical Systems
+Designed for Nutrient Recovery. ACS Sustainable Chem. Eng. 2022, 10 (29), 9411–9418.
+https://doi.org/10.1021/acssuschemeng.2c01764.
+(35) Hamm, L. L.; Simon, E. E. Roles and Mechanisms of Urinary Buffer Excretion. Am J
+Physiol 1987, 253 (4 Pt 2), F595-605. https://doi.org/10.1152/ajprenal.1987.253.4.F595.
+(36) McEnaney, J. M.; Blair, S. J.; Nielander, A. C.; Schwalbe, J. A.; Koshy, D. M.; Cargnello,
+M.; Jaramillo, T. F. Electrolyte Engineering for Efficient Electrochemical Nitrate Reduction
+to Ammonia on a Titanium Electrode. ACS Sustainable Chem. Eng. 2020, 8 (7), 2672–
+2681. https://doi.org/10.1021/acssuschemeng.9b05983.
+(37) Dinh, H. Q.; Toh, W. L.; Chu, A. T.; Surendranath, Y. Neutralization Short-Circuiting with
+Weak Electrolytes Erodes the Efficiency of Bipolar Membranes. ACS Appl. Mater.
+Interfaces 2023, acsami.2c18685. https://doi.org/10.1021/acsami.2c18685.
+(38) Zhang, L.; Shi, Z.; Lin, Y.; Chong, F.; Qi, Y. Design Strategies for Large Current Density
+Hydrogen Evolution Reaction. Frontiers in Chemistry 2022, 10.
+(39) Boettcher, S. W.; Oener, S. Z.; Lonergan, M. C.; Surendranath, Y.; Ardo, S.; Brozek, C.;
+Kempler, P. A. Potentially Confusing: Potentials in Electrochemistry. ACS Energy Lett.
+2021, 6 (1), 261–266. https://doi.org/10.1021/acsenergylett.0c02443.
+(40) Oelßner, W. Cell, Electrochemical. In Encyclopedia of Applied Electrochemistry; Kreysa,
+G., Ota, K., Savinell, R. F., Eds.; Springer: New York, NY, 2014; pp 163–170.
+https://doi.org/10.1007/978-1-4419-6996-5_433.
+(41) Tarpeh, W. A.; Barazesh, J. M.; Cath, T. Y.; Nelson, K. L. Electrochemical Stripping to
+Recover Nitrogen from Source-Separated Urine. Environ. Sci. Technol. 2018, 52 (3), 1453–
+1460. https://doi.org/10.1021/acs.est.7b05488.
+(42) Matsumoto, H.; Tanioka, A.; Murata, T.; Higa, M.; Horiuchi, K. Effect of Proton on
+Potassium Ion in Countertransport across Fine Porous Charged Membranes. J. Phys. Chem.
+B 1998, 102 (25), 5011–5016. https://doi.org/10.1021/jp972223q.
+
+35
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+718
+719
+720
+721
+722
+723
+724
+725
+726
+727
+728
+729
+730
+731
+732
+733
+734
+735
+736
+737
+738
+739
+740
+741
+742
+743
+744
+745
+746
+747
+748
+749
+750
+751
+752
+753
+754
+755
+756
+757
+758
+759
+760
+761
+762
+763
+
+(43) Moshtarikhah, S.; Oppers, N. A. W.; de Groot, M. T.; Keurentjes, J. T. F.; Schouten, J. C.;
+van der Schaaf, J. Nernst–Planck Modeling of Multicomponent Ion Transport in a Nafion
+Membrane at High Current Density. J Appl Electrochem 2017, 47 (1), 51–62.
+https://doi.org/10.1007/s10800-016-1017-2.
+(44) Tang, C.; Yaroshchuk, A.; Bruening, M. L. Flow through Negatively Charged, Nanoporous
+Membranes Separates Li+ and K+ Due to Induced Electromigration. Chem. Commun. 2020,
+56 (74), 10954–10957. https://doi.org/10.1039/D0CC03143G.
+(45) Sujanani, R.; Nordness, O.; Miranda, A.; Katz, L. E.; Brennecke, J. F.; Freeman, B. D.
+Accounting for Ion Pairing Effects on Sulfate Salt Sorption in Cation Exchange
+Membranes. J. Phys. Chem. B 2023, 127 (8), 1842–1855.
+https://doi.org/10.1021/acs.jpcb.2c07900.
+(46) del Rosario, J. A. D.; Li, G.; Labata, M. F. M.; Ocon, J. D.; Chuang, P.-Y. A. Unravelling
+the Roles of Alkali-Metal Cations for the Enhanced Oxygen Evolution Reaction in Alkaline
+Media. Applied Catalysis B: Environmental 2021, 288, 119981.
+https://doi.org/10.1016/j.apcatb.2021.119981.
+(47) Palacios, E. G.; Juárez-López, G.; Monhemius, A. J. Infrared Spectroscopy of Metal
+Carboxylates. Hydrometallurgy 2004, 72 (1–2), 139–148. https://doi.org/10.1016/S0304386X(03)00137-3.
+(48) Liu, Y.; Qin, M.; Luo, S.; He, Z.; Qiao, R. Understanding Ammonium Transport in
+Bioelectrochemical Systems towards Its Recovery. Sci Rep 2016, 6 (1), 22547.
+https://doi.org/10.1038/srep22547.
+(49) Epsztein, R.; Shaulsky, E.; Qin, M.; Elimelech, M. Activation Behavior for Ion Permeation
+in Ion-Exchange Membranes: Role of Ion Dehydration in Selective Transport. Journal of
+Membrane Science 2019, 580, 316–326. https://doi.org/10.1016/j.memsci.2019.02.009.
+(50) Richards, L. A.; Schäfer, A. I.; Richards, B. S.; Corry, B. The Importance of Dehydration in
+Determining Ion Transport in Narrow Pores. Small 2012, 8 (11), 1701–1709.
+https://doi.org/10.1002/smll.201102056.
+(51) Kitchen, D. B.; Allen, L. C. Zinc Complexes of Water, Hydroxide, and Ammonia. J. Phys.
+Chem. 1989, 93 (20), 7265–7269. https://doi.org/10.1021/j100357a046.
+(52) Krężel, A.; Maret, W. The Biological Inorganic Chemistry of Zinc Ions. Archives of
+Biochemistry and Biophysics 2016, 611, 3–19. https://doi.org/10.1016/j.abb.2016.04.010.
+(53) Muddemann, T.; Haupt, D.; Sievers, M.; Kunz, U. Electrochemical Reactors for
+Wastewater Treatment. ChemBioEng Reviews 2019, 6 (5), 142–156.
+https://doi.org/10.1002/cben.201900021.
+(54) Meese, A. F.; Kim, D. J.; Wu, X.; Le, L.; Napier, C.; Hernandez, M. T.; Laroco, N.;
+Linden, K. G.; Cox, J.; Kurup, P.; McCall, J.; Greene, D.; Talmadge, M.; Huang, Z.;
+Macknick, J.; Sitterley, K. A.; Miara, A.; Evans, A.; Thirumaran, K.; Malhotra, M.;
+Gonzalez, S. G.; Rao, P.; Stokes-Draut, J.; Kim, J.-H. Opportunities and Challenges for
+Industrial Water Treatment and Reuse. ACS EST Eng. 2022, 2 (3), 465–488.
+https://doi.org/10.1021/acsestengg.1c00282.
+(55) Kato, T.; Kuroda, H.; Nakasone, H. Runoff Characteristics of Nutrients from an
+Agricultural Watershed with Intensive Livestock Production. Journal of Hydrology 2009,
+368 (1), 79–87. https://doi.org/10.1016/j.jhydrol.2009.01.028.
+(56) Lang, M.; Li, P.; Yan, X. Runoff Concentration and Load of Nitrogen and Phosphorus from
+a Residential Area in an Intensive Agricultural Watershed. Science of The Total
+Environment 2013, 458–460, 238–245. https://doi.org/10.1016/j.scitotenv.2013.04.044.
+
+36
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+764
+765
+766
+767
+768
+769
+770
+771
+772
+
+(57) Meerbergen, K.; Van Geel, M.; Waud, M.; Willems, K. A.; Dewil, R.; Van Impe, J.;
+Appels, L.; Lievens, B. Assessing the Composition of Microbial Communities in Textile
+Wastewater Treatment Plants in Comparison with Municipal Wastewater Treatment Plants.
+MicrobiologyOpen 2017, 6 (1), e00413. https://doi.org/10.1002/mbo3.413.
+(58) Mendoza Grijalva, L.; Brown, B.; Cauble, A.; Tarpeh, W. A. Diurnal Variability of SARSCoV-2 RNA Concentrations in Hourly Grab Samples of Wastewater Influent during Low
+COVID-19 Incidence. ACS EST Water 2022, 2 (11), 2125–2133.
+https://doi.org/10.1021/acsestwater.2c00061.
+
+37
+https://doi.org/10.26434/chemrxiv-2024-kl45n ORCID: https://orcid.org/0000-0002-6067-7588 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+

@@ -1,0 +1,966 @@
+Surfactant Control of Interfacial Reaction Rates in Aqueous
+Microdroplets
+Alexander M. Prophet,1 David T. Limmer,1,2,3,4 & Kevin R. Wilson1*
+1
+
+Chemical Sciences Division, Lawrence Berkeley National Laboratory, Berkeley, CA 94720
+2
+
+Department of Chemistry, University of California, Berkeley, CA 94720
+
+3
+
+Materials Science Division, Lawrence Berkeley National Laboratory, Berkeley, California 94720
+4
+
+Kavli Energy NanoScience Institute, Berkeley, California 94720
+
+Abstract
+Microdroplets are purported to enhance reaction rates and produce spontaneous chemical
+transformations that are unfavorable in macroscale systems. The gas-liquid interface is widely implicated
+for the emergence of these chemical anomalies. Experiments conducted on individual microdroplets
+provide a unique platform for studying interfacial effects while bypassing transport limitations often
+encountered in macroscopic systems. We investigate such interfacial effects by analyzing the suppression
+of the I- + O3 surface reaction by the nonionic surfactant Triton X-100 in an array of levitated
+microdroplets. Using a novel kinetic framework
+describing surface and bulk reactivity, we find that
+increasing surfactant concentration shifts the locus
+of reaction from the top-most nanometer of the
+interface to a subsurface region located < 2 nm
+below the surface. This detailed picture of spatial
+reactivity is afforded only by considering the
+timescales for O3 adsorption and solvation combined
+with reaction monitoring in single microdroplets.
+Chemical uniqueness is further illustrated by the I- +
+O3 rate dependence on [Triton X-100], which is
+quantitatively understood by considering finite size
+effects in microdroplets. Both size and surface
+effects are considered to derive an analytical
+expression for reactive uptake of O3 which demonstrates the role of competitive adsorption of Triton-X
+and I- at the gas-liquid interface. This work establishes a novel approach to understanding interfacial
+reaction kinetics that successfully links nanometer-scale dynamics from molecular simulations with
+macroscale measurements of surface tension and microscale measurements of chemical reactivity.
+
+1
+
+https://doi.org/10.26434/chemrxiv-2024-mj9gg ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+I. Introduction
+Microdroplets present unique chemical environments and are reported to exhibit unexpectedly
+rapid reaction kinetics.1–3 These kinetics are generally difficult to interpret in many experiments as reactive
+contributions from the gas, bulk liquid, and interface are not easily distinguished, which has been shown
+to lead to erroneous conclusions about microdroplet reactivity.4–6 Key kinetic parameters such as reagent
+concentrations, droplet radii, and the rates of gas-liquid partitioning and evaporation are also difficult to
+constrain in spray-type microdroplet experiments—leading similarly to exaggerated claims of interfacial
+reactivity.7,8 Furthermore, there is an ongoing debate around the evidence for and mechanism of
+“spontaneous” chemistry that is attributed to strong electric fields.9–14
+Reaction rates at the gas-liquid interface do, however, likely deviate from their bulk analogs.
+Reagent concentrations at the interface are known to differ from those in the bulk solution for many
+molecules due to their unique thermodynamic stability at the interface15–19 or from the kinetics of
+competing diffusion and adsorption timescales.20–22 Surfactant molecules exhibit an extreme preference
+for the gas-liquid interface due to their chemical structure, the consequences of which are important for
+understanding the dynamic surface tension of microdroplets and the activation of cloud condensation
+nuclei.23–29 Surface tension measurements on surfactant-containing microdroplets have revealed unique
+static properties originating from finite-volume effects in pico-liter volumes.30–32 Additionally, recent
+work by Bain et al.33 interrogating the dynamics of surfactant adsorption has shown that timescales for
+interfacial equilibration span up to milliseconds for freshy generated microdroplets with radius r ~ 25 μm.
+Interfacial reaction rates may also be strongly influenced by dynamics at the interface. For
+multiphase reactions, molecular motions on the top-nanometer of solution can significantly alter a reaction
+trajectory compared to a purely bulk-dominated process.34,35 Furthermore, the energetics of the reaction
+coordinate itself may be influenced by the partially solvated environment of the interface,36,37 although
+empirical validation of this effect is limited. Our previous investigations of iodide oxidation kinetics in
+microdroplets38,39 indeed suggest that partial-solvation of the I- + O3 reaction at the interface yields a
+reaction efficiency resembling the gas-phase,40 rather than the aqueous-phase. Nevertheless, direct probes
+of interfacial chemistry are necessary to verify such observations and provide a basis for identifying
+general trends needed to link reaction efficiency to the degree of solvation. Given the number of
+uncertainties surrounding surface reactivity, there remains a need for novel kinetic methods and detailed
+models of chemistry at microdroplet interfaces.41
+2
+
+https://doi.org/10.26434/chemrxiv-2024-mj9gg ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Here we report on the coupling of a prototypical surface reaction (I- + O3) with interfacial
+adsorption of the nonionic surfactant Triton X-100 (TX) in microdroplets. Kinetic measurements
+demonstrate that the reaction is effectively inhibited by addition of [Triton X-100], with reactivity
+switching from the surface to the subsurface. This system is chosen since the ozonation of iodide in
+aqueous solution is a relatively well characterized system42–44 that exhibits chemical reactivity at the
+interface under acidic conditions.39 Similarly, Triton X-100 is a common surfactant whose interfacial
+properties in both bulk aqueous systems and in microdroplets is well characterized.30,45–47 The inhibition
+of the surface reaction with increasing [TX] results from the competition of TX with I- at the gas-liquid
+interface, which is accompanied by “bulk depletion” of surfactant throughout the microdroplet
+volume.30,31
+To quantitatively explain the experimental observations, a multiphase reaction model is used to
+replicate the microdroplet kinetics using explicit simulations. This multiphase model is also used to derive
+analytical expressions for predicting reactive uptake. The coupled chemical and mass-transport framework
+used in this model is adapted from previous work on the I- + O3 reaction in droplets for varying reagent
+concentrations and pH.38,39 This framework also includes the spatial partitioning of the gas-phase, aqueous
+surface, subsurface region, and bulk interior in order to isolate the reactive contributions of each. Fig. 1A
+conceptually outlines the workings of the model, where O3 adsorption and desorption at the interface
+couple to the surface reaction, solvation, and the subsurface reaction. This conceptual framework is used
+to predict the chemical kinetics using stochastic reaction-diffusion simulations (as has been explored
+extensively with this particular reaction system)38,39 and to derive an analytical expression for reactive
+uptake that includes interfacial effects of Triton X-100. Molecular properties at the interface are
+parameterized in the model using average density profiles from molecular dynamics simulations (MD), as
+illustrated in Fig. 1B, and by macroscale surface tension measurements of Triton X-100. Consequently,
+the reaction location can be identified with high fidelity, as summarized in Fig. 1, where the overall uptake
+of O3 is controlled by the surface reaction for low [TX] and by liquid diffusion of O3 into the sub-surface
+region at high [TX] (extending < 2 nm beneath the surface).
+
+3
+
+https://doi.org/10.26434/chemrxiv-2024-mj9gg ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Fig. 1: (A) Model droplet undergoing oxidation with increasing surfactant concentration. Higher concentrations
+of surfactant inhibit the surface reaction and reactivity in the subsurface region dominates. (B) Conceptual
+scheme of the droplet interface showing I- density extending into the bulk solution, and O3 density in the gas
+phase from Prophet et al.39 Density profiles for these reagents are normalized with respect to their bulk phase
+densities, and both show some degree of density enhancement at the interface. Notably, the density profiles
+overlap across the ~ 1 nm range where the overall density attenuates, which we identify herein as the surface.
+The subsurface region we denote as the “reaction-diffusion” region as this extends the length of the reactiondiffusion length as defined for O3 under the experimental salt concentration, of LRD = 1.36 nm.
+4
+
+https://doi.org/10.26434/chemrxiv-2024-mj9gg ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+II. Experimental
+Microdroplet oxidation kinetics are measured in a quadrupole electrodynamic trap (QET)48
+equipped with an open-port sampling interface (OPSI) for single droplet mass spectrometry (MS).38 This
+particular assembly is recently described in multiple works, along with comparable configurations.38,49,50
+The QET charges and traps individual microdroplets generated from a piezo-electric droplet dispenser
+(Microfab). Arrays of ~100 microdroplets are trapped while a gas phase oxidant is introduced to the
+enclosed assembly, initiating the reaction. Single microdroplets are then sized via Mie scattering51,52
+before being ejected from the QET into the OPSI-MS. Droplet signals obtained from OPSI-MS allow for
+the quantitative determination of the solute consumed during the reaction. Additional information and a
+schematic of the experimental apparatus is provided in supplemental information section SI-1.
+The ion signal from iodide (m/z = 126.89) is shown in Fig. 2A, with example mass spectra before
+and after the reaction in SI-1. Peak areas, integrated from the time-series, are used to quantify the [I-] in
+individual droplets during exposure to O3, as shown in Fig. 2B. Microdroplets are prepared from solutions
+that contain NaI and citric acid to buffer the pH at 3. NaCl is added to the solution to maintain constant
+water activity and therefore droplet size over the course of reaction. For these experiments, the humidity
+of the trap was maintained at 88%, and hence, the final water activity in the microdroplets is aw = 0.88.
+Using this final water activity and the radius of the droplet, the initial droplet concentrations are: [NaI]0 =
+795 mM, 1 M NaCl, and 1M citric acid/sodium citrate. Triton X-100 is added to the initial droplet solution
+in a concentration range of 6 µM to 1.6 mM. Stock solutions containing surfactant were first prepared via
+serial dilution, before adding salt solution to obtain the final concentration.
+
+5
+
+https://doi.org/10.26434/chemrxiv-2024-mj9gg ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Fig. 2: Microdroplet detection events using OPSI-MS. Panel A shows a droplet detection time-series where
+initial, unreacted droplets are first detected, followed by iodide decay resulting from O3 exposure. Panel B shows
+peak areas from overall intensity trace in A.
+
+III. Results
+Iodide consumption kinetics as a function of [TX] are shown in Fig. 3. Fig. 3A shows that the
+reaction slows when increasing [TX] from 32 μM to1.6 mM. The entire experimental dataset across a
+broad range of [TX] (6 μM to 3.2 mM) is shown in Fig. 3B. The O3 concentration for all experiments is
+500 ± 10 ppb and initial droplet radii are r = 17 ± 1 μm. As shown in Fig. 3, the overall rate of I- decay
+decreases with increasing [TX]. For comparison, explicit kinetic simulations are included for each reaction
+condition in Fig. 3. These simulations use a previously validated kinetic model for iodide oxidation in
+microdroplets,39 augmented with an additional step to include Triton X-100 adsorption to the air-water
+interface. Details of the kinetic model and an overview of the Triton X-100 adsorption description are
+included in the following analysis section.
+6
+
+https://doi.org/10.26434/chemrxiv-2024-mj9gg ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Fig. 3: Experimental decay profiles of [I-] in microdroplets during O3 oxidation. Panel (A) shows side-by-side
+results for a high and low [TX] condition. Panel (B) provides individual kinetics for each condition.
+Experimental data is shown as points and simulation output as lines. All experiments are on 17 μm radius
+aqueous droplets containing 795 mM [NaI] and variable Triton-X concentrations when exposed to 500 ppb [O3].
+
+The initial rate of decay, kinit, of iodide in each experiment is used to compute reactive uptake
+coefficients 𝛾𝑒𝑥𝑝 for O3,53
+
+𝛾𝑒𝑥𝑝 =
+
+−
+4 ⋅ 𝑟 ⋅ 𝑘𝑖𝑛𝑖𝑡 ⋅ [I(𝑏)
+]
+
+0
+
+3 ⋅ [O3(𝑔) ] ⋅ 𝑐̅
+
+Eq. 1
+
+where r is the droplet radius and c̅ the mean speed of O3 in the gas-phase. Uptake coefficients are shown
+in Fig. 4 and exhibit a non-linear dependence on [TX]. For [TX] < 100 μM, the reaction kinetics are
+largely insensitive to the addition of TX with the observed uptake of 𝛾𝑒𝑥𝑝 ~ 5.5×10-3, a value that is
+equivalent for the same sized microdroplets in the absence of [TX].39 For 100 μM < [TX] < 500 μM, there
+is a sharp transition with the observed uptake decreasing to ~1.5×10-3. Increasing the [TX] beyond 500
+μM has no noticeable effect on the uptake coefficient. This behavior is consistent with the simple picture
+that increasing TX displaces iodide from the surface, which effectively shuts off the surface reaction for
+[TX] ≥ 500 μM. The plateau observed for higher [TX] indicates that once the surface is saturated with
+TX, only reactivity within the sub-surface of the microdroplet contributes to the net loss of I-, thus yielding
+7
+
+https://doi.org/10.26434/chemrxiv-2024-mj9gg ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+a smaller uptake coefficient. Although one might predict that this saturation point should coincide with
+the CMC of Triton X-100 in bulk solution (~200 μM), this shift in the observed saturation behavior to
+larger [TX] (~500 μM) is a consequence of surfactant adsorption in finite-sized droplets, which is
+discussed in the following section.
+
+Fig. 4: Experimental kinetics summarized using reactive uptake coefficients of O3 for the range of droplet [Triton
+X-100] studied. Analytical expressions Eq. 2-4 are compared to experimental values. Error bars indicated around
+model results represent the predicted values for ± 1 μm in radius.
+
+IV. Analysis
+The experimental results shown in Fig. 3 and summarized in Fig. 4 qualitatively suggest that the
+addition of TX inhibits the I- + O3 reaction at the air-water interface. To understand this more
+quantitatively, a competitive adsorption model of I- and TX is developed. This model utilizes the same
+multiphase kinetic framework used to execute the explicit kinetic simulations in Fig. 3. The kinetic
+simulations are performed using Kinetiscope (https://hinsberg.net/kinetiscope/), as discussed extensively
+in previous publications.38,39,49 The specific reaction mechanism used here and the spatial representation
+of a droplet within Kinetiscope can be found in Prophet et al.39 The mechanism consists of the primary
+oxidation of the iodide anion by O3 followed by a series of secondary chemical steps that ultimately
+8
+
+https://doi.org/10.26434/chemrxiv-2024-mj9gg ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+produce I2 at pH 3. Chemically relevant kinetic regions of the microdroplet are identified, including the
+surface, sub-surface, and inner bulk, with mass-transport kinetics defined at the interface and between
+each adjacent region. The dimensions of the interfacial region is approximated using the density
+attenuation across the interface as observed in MD.39 The sub-surface length is defined using the reactiondiffusion length of O3 in solution. The reaction-diffusion length, as previously discussed,54–56 is the
+average distance an O3 molecule diffuses in solution prior to undergoing a reaction. Kinetic steps
+describing mass transport of the reactants and solutes at the interface are also described, constrained by
+MD and previously reported values. Here, kinetic steps are added to model Triton X-100 adsorption to the
+interface. Since the kinetic model and simulation methods have been thoroughly described in recent work,
+we instead emphasize the introduction of analytical expressions for uptake coefficients at the surface and
+within the reaction-diffusion region below. These uptake expressions rely on previous work and are
+augmented here with the addition of steps to describe TX adsorption.57
+Formulation of Uptake Coefficients
+Reactive uptake coefficients 𝛾𝑠 and 𝛾𝑟𝑑 resulting from O3 loss at the droplet surface (s) and within
+the reaction-diffusion length (𝐿𝑟𝑑 ), are adapted from expressions found in Wilson et al.,57
+𝑠𝑟𝑓
+
+−
+4 ⋅ 𝑟 ⋅ 𝑘𝑟𝑥𝑛 ⋅ [O3(𝑎𝑑𝑠) ][I(𝑎𝑑𝑠)
+] 𝑟 3 − (𝑟 − 𝛿)3
+𝛾𝑠 =
+⋅
+𝑟3
+3 ⋅ 𝑐̅ ∙ [O3(𝑔) ]
+
+Eq. 2
+
+−
+𝑏𝑙𝑘
+4 ⋅ 𝑟 ⋅ 𝑘𝑟𝑥𝑛
+⋅ [O3(𝑟𝑑) ][I(𝑟𝑑)
+] (𝑟 − 𝛿)3 − (𝑟 − 𝛿 − 𝐿𝑟𝑑 )3
+𝛾𝑟𝑑 =
+⋅
+𝑟3
+3 ⋅ 𝑐̅ ∙ [O3(𝑔) ]
+
+Eq. 3
+
+𝛾𝑡𝑜𝑡𝑎𝑙 = 𝛾𝑠 + 𝛾𝑟𝑑
+
+Eq. 4
+
+where δ is the surface thickness of 1 nm and Lrd is the reaction-diffusion length of O3 in solution under
+𝐷
+
+our experimental conditions, i.e., 𝐿𝑟𝑑 = √𝑘 𝑏𝑙𝑘 ⋅[I−] = 1.36 nm. Equations 2 and 3 adopt the same general
+𝑟𝑥𝑛
+
+0
+
+form in which a reaction term is defined using local concentrations (indicated with subscripts s or rd to
+denote the relevant region), normalized by the O3 collisional flux on the droplet surface. Each equation
+has a volumetric weighting term to account for the relative fraction of the entire droplet volume that is
+kinetically active (i.e., surface or reaction-diffusion region). We note that there is an additional
+contribution, 𝛾𝑏 , to the overall uptake arising from the inner bulk (b) or “core” of the droplet, beyond the
+depth of the reaction diffusion length Lrd (the core, in fact, comprises the vast majority of the droplet
+9
+
+https://doi.org/10.26434/chemrxiv-2024-mj9gg ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+volume). Since Lrd has nanometer dimensions for the current experiments, virtually all of the reactivity
+occurs either at the surface or within the reactive diffusive (RD) volume. Therefore, we can neglect the
+uptake contribution of 𝛾𝑏 in the following analysis. Fig. 5 provides a geometric overview of the droplet
+regions, with length scales and the corresponding 𝛾 for each region.
+
+Fig. 5: Conceptual overview of microdroplet spatial regions (not to scale), with respective defining
+lengths and uptake coefficients labeled. As noted above, the uptake contribution from the inner core is
+neglected in the present work due to the much larger values of 𝛾𝑠 and 𝛾𝑟𝑑 .
+Application of Eqs. 2 and 3 requires calculating [I-(ads)] and [O3(ads)] in the surface region, and [I(rd)] and [O3(rd)] in the RD region. This is done by applying a steady-state assumption to the kinetic
+
+framework used in the stochastic simulations, as described in detail in section SI-3. We assume that shortly
+after the reaction has begun, local concentrations of reactants in each geometric region rapidly achieve
+steady-state. These steady-state concentrations are governed by the balance of mass transport (source) and
+chemical reactivity (sink). The governing transport kinetics rely heavily on both gas- and liquid-phase
+diffusion of O3, as well as the desorption and solvation kinetics across the energetic barrier at the interface.
+For the solutes I- and TX, diffusional transport is simpler, and the droplet can be assumed to be well-mixed
+since the transport rate of I- from the bulk to the surface is larger than the surface-loss rate under our
+experimental conditions. This is generally a reasonable approximation when the aqueous reactant
+concentration (i.e., iodide) is many orders of magnitude larger than that of the solubilized trace gas. In this
+10
+
+https://doi.org/10.26434/chemrxiv-2024-mj9gg ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+case, the steady-state subsurface concentration in the RD region, [I-(rd)], is simply the initial bulk
+concentration [I-b]0.
+Assuming the interfacial concentration of I- is not perturbed by the reaction (also generally true
+when a trace gas reacts with a concentrated solute), the steady-state surface-adsorbed concentration of
+iodide [I-(ads)] can be described by a Langmuir competitive-adsorption isotherm,58
+I−
+Γ∞
+−
+[I(𝑎𝑑𝑠) ] =
+⋅
+
+𝛿
+
+−
+
+−
+I
+𝐾𝑒𝑞
+∙ [I(𝑏𝑢𝑙𝑘)
+]
+−
+
+I ∙ [I −
+𝑇𝑋
+1 + 𝐾𝑒𝑞
+(𝑏𝑢𝑙𝑘) ] + 𝐾𝑒𝑞 ∙ [TX (𝑏𝑢𝑙𝑘) ]
+
+Eq. 5
+
+−
+
+I
+where Γ∞
+represents the maximum coverage term (in molecules/cm2) of iodide at the interface, expressed
+−
+
+I
+as a volumetric concentration by dividing by the surface thickness δ. 𝐾𝑒𝑞
+is the Langmuir adsorption
+
+equilibrium constant, which relates the bulk concentration of I- to the surface adsorbed concentration.
+𝑇𝑋
+Similarly, 𝐾𝑒𝑞
+is the equilibrium constant relating the bulk and surface concentrations of TX and the
+−
+
+−
+
+𝑇𝑋
+I
+I
+quantity Γ∞
+the corresponding maximum coverage term. Values of 𝐾𝑒𝑞
+and Γ∞
+are taken from recent
+
+work,39 where MD simulations were used to quantify interface densities of I- as a function of bulk
+concentration.
+Triton X-100 Adsorption Description
+𝑇𝑋
+𝑇𝑋
+To constrain the adsorption behavior of TX in the model, Γ∞
+and 𝐾𝑒𝑞
+are obtained from fits of
+
+surface tension measurements of aqueous TX solutions30 using the Szyszkowski equation-of-state
+(EOS),59
+𝑇𝑋
+𝛾 − 𝛾0.5M NaCl = −Γ∞
+⋅ 𝑅 ⋅ 𝑇 ⋅ ln(1 − 𝜃)
+
+Eq. 6
+
+where R is the gas constant, T the temperature, and 𝛾0.5M NaCl is the surface tension of 0.5 M NaCl solution.
+This EOS depends on a fractional surface coverage (θ). Here, we model 𝜃 with a standard Langmuir
+adsorption isotherm:
+𝜃=
+
+𝑇𝑋
+𝐾𝑒𝑞
+⋅ [𝑇𝑋(𝑏𝑢𝑙𝑘) ]
+𝑇𝑋 ⋅ [𝑇𝑋
+1 + 𝐾𝑒𝑞
+(𝑏𝑢𝑙𝑘) ]
+
+.
+
+Eq. 7
+
+Fig. 6 shows surface tension measurements of a 0.5 M NaCl solution as a function of [TX]
+𝑇𝑋
+measured by Bzdek et al.30 Also shown are fits to Eq. 6, which yield Γ∞
+= 2×1014 molecules/cm2 and
+
+11
+
+https://doi.org/10.26434/chemrxiv-2024-mj9gg ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+𝑇𝑋
+𝐾𝑒𝑞
+= 1.1×10-15 cm3 molecule-1 s-1. The kinetic model is adapted to include this information by defining
+
+a surface partitioning step for Triton X-100,
+𝑘𝑑𝑒𝑠𝑜𝑙𝑣
+TX (𝑏𝑢𝑙𝑘) + site ⇄ TX(𝑎𝑑𝑠) .
+𝑘𝑠𝑜𝑙𝑣
+
+(𝑆1)
+
+Site in step (S1) is defined as previously discussed for O3 and I-,38,49,57 where the maximum surface
+𝑇𝑋
+coverage Γ∞
+constrains the site area and related volumetric concentration within the model geometry.
+
+Kinetic coefficients kdesolv and ksolv are directly related to the Langmuir adsorption equilibrium coefficient:
+𝑇𝑋
+𝐾𝑒𝑞
+= 𝑘𝑑𝑒𝑠𝑜𝑙𝑣 ⁄𝑘𝑠𝑜𝑙𝑣 . While the equilibrium coefficient only constrains the ratio, we choose a value of
+
+ksolv = 1 s-1 to constrain kdesolv. This choice of ksolv falls within the range of timescales from previous
+measurements,33,60 although we note there exists substantial deviation in these timescales for different
+surfactants, and a unique measurement for Triton X-100 has not been made to the best of our knowledge.
+Fortunately, the model results are insensitive to the absolute values of ksolv and kdesolv since the experimental
+time-scale is much longer than the equilibration time of the surfactant at the interface, which is expected
+to be on the order of milliseconds.33
+
+Fig. 6: Surface tension measurements by Bzdek et al. of Triton X-100 solution in 0.5 M NaCl above
+and below the CMC ~ 0.2 mM. A fit to Eq. 6 is obtained to provide the maximum surface coverage
+𝑇𝑋
+𝑇𝑋
+Γ∞
+and Langmuir adsorption equilibrium coefficient 𝐾𝑒𝑞
+that are used directly in the kinetic model.
+The molecular structure of Triton X-100 is provided, where n has an average value of 9.5.
+
+12
+
+https://doi.org/10.26434/chemrxiv-2024-mj9gg ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Surface Adsorption Coupling to Bulk Depletion in Microdroplets
+Benchmarked to macroscopic measurements, the partitioning of TX to the interface can be
+modeled in microdroplets using the same general mechanism. An important consequence of applying this
+description to microscale volumes is that the surface coverage diverges from that expected for macroscale solutions.56 This is because microdroplets lack the total number of TX molecules required to satisfy
+the equilibrium surface coverage observed in a macroscale solutions. This is shown in Fig. 7A, where
+divergence from the macroscopic behavior becomes quite pronounced in small droplets. This finitevolume effect arises from the depletion of surfactant concentration in the bulk interior as the surfactant
+partitions to the droplet interface.61 Considering surface-to-volume constraints for a single droplet radius
+and the partitioning kinetics parametrized above for TX, a simple expression for adsorbed concentration56
+and the corresponding depleted bulk concentration is (see section SI-3 for derivation),
+[TX](𝑎𝑑𝑠) =
+
+1
+⋅ (𝑁2 − √𝑁22 − 4 ⋅ 𝑁1 ⋅ 𝑁3 )
+2 ⋅ 𝑁1
+
+Eq. 8
+
+3𝛿
+1
+[TX](𝑏𝑢𝑙𝑘) = [TX]0 − ( ) ⋅
+⋅ (𝑁2 − √𝑁22 − 4 ⋅ 𝑁1 ⋅ 𝑁3 )
+𝑟
+2 ⋅ 𝑁1
+
+Eq. 9
+
+𝑁1 = 3 ⋅ 𝑘𝑑𝑒𝑠𝑜𝑙𝑣 ⋅ 𝛿 2
+
+Eq. 10a
+
+𝑇𝑋
+𝑁2 = 3 ∙ 𝑘𝑑𝑒𝑠𝑜𝑙𝑣 ⋅ Γ∞
+⋅ 𝛿 + 𝑘𝑑𝑒𝑠𝑜𝑙𝑣 ⋅ [TX]0 ⋅ 𝛿 ⋅ 𝑟 + 𝑘𝑠𝑜𝑙𝑣 ⋅ 𝛿 ⋅ 𝑟
+
+Eq. 10b
+
+where,
+
+𝑇𝑋
+𝑁3 = 𝑘𝑑𝑒𝑠𝑜𝑙𝑣 ⋅ Γ∞
+⋅ [TX]0 ⋅ 𝑟
+
+Eq. 10c
+
+In Eqs. 8-10c, [TX]0 is the nominal concentration of Triton X-100, equivalent to the bulk concentration in
+the absence of finite-volume effects. This nominal concentration [TX]0 is taken as the independent
+quantity and is plotted as the domain in Figs. 7A and B. Eq. 8 provides the equilibrium surfactant
+concentration at the interface, whereas Eq. 9 provides an expression for the corresponding equilibrium
+bulk concentration in the droplet. This demonstrates how the true bulk concentration [TX(bulk)] in the
+microdroplet deviates from the nominal bulk concentration [TX]0 as the droplet radius decreases, shown
+for an array of sizes and concentrations in Fig. 7B. This equilibrated concentration [TX(bulk)] computed by
+13
+
+https://doi.org/10.26434/chemrxiv-2024-mj9gg ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Eq. 9 is the relevant bulk concentration to describe competitive adsorption between I- and TX. As such,
+the expression for [TX(bulk)] is used in Eq. 5 to accurately model the adsorbed concentration of I- as a
+function of both [I-(bulk)] and [TX(bulk)] in the droplet.
+
+Fig. 7: Panel (A) shows the surface-adsorbed concentration (or fractional surface coverage) for [Triton
+X-100] ranging from 10-5-10 mM in droplets with various radii. The suppression of coverage fraction
+for smaller microdroplets is a finite-volume effect, where adsorption to the interface is coupled to
+depletion of the bulk concentration. This is also demonstrated in panel (B), where the equilibrium [TX]
+is shown vs the nominal bulk concentration. For both of these panels, the nominal bulk [Triton X-100]0
+axis indicates the bulk concentration of the droplet in the absence of any surface adsorption.
+Importantly, the true bulk concentration at equilibrium can be greatly depleted relative to the nominal
+concentration, as demonstrated in (B).
+14
+
+https://doi.org/10.26434/chemrxiv-2024-mj9gg ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Using [I-(ads)] (Eq. 5) and [I-(rd)] (simply the bulk iodide concentration [I-(bulk)]0), the steady-state
+concentrations of O3 in the respective regions can be computed. This is accomplished by applying a quasisteady-state condition to the entire kinetic framework as detailed in SI-3. Resulting concentrations are
+𝑠𝑢𝑟𝑓
+
+𝑏𝑢𝑙𝑘
+defined in terms of the rate coefficients for the surface- and bulk-reaction (𝑘𝑟𝑥𝑛 , 𝑘𝑟𝑥𝑛
+) and coefficients
+𝑔𝑎𝑠
+
+𝑙𝑖𝑞
+𝑙𝑖𝑞
+that describe gas-diffusion (𝑘𝑑𝑖𝑓𝑓 ), liquid-diffusion (𝑘𝑑𝑖𝑓𝑓1
+, 𝑘𝑑𝑖𝑓𝑓2
+), adsorption and desorption from the
+
+gas to the interface (𝑘𝑎𝑑𝑠 , 𝑘𝑑𝑒𝑠 ), and desolvation/solvation from the liquid to the interface (𝑘𝑑𝑒𝑠𝑜𝑙𝑣 , 𝑘𝑠𝑜𝑙𝑣 ).
+[O3(𝑎𝑑𝑠) ] =
+𝑔𝑎𝑠
+
+𝑘𝑑𝑖𝑓𝑓 𝑘𝑎𝑑𝑠
+( 𝑔𝑎𝑠
+) [O3(𝑔) ]
+𝑘𝑑𝑖𝑓𝑓 + 𝑘𝑎𝑑𝑠
+𝑙𝑖𝑞
+
+𝑙𝑖𝑞
+
+𝑘𝑑𝑖𝑓𝑓1 𝑘𝑑𝑖𝑓𝑓2 𝑘𝑑𝑒𝑠𝑜𝑙𝑣 𝑘𝑠𝑜𝑙𝑣
+
+𝑘𝑑𝑒𝑠 𝑘𝑎𝑑𝑠
+𝑘
+𝑘
+𝑠𝑢𝑟𝑓
+−
+𝑘𝑑𝑒𝑠 + 𝑘𝑠𝑜𝑙𝑣 + [I(𝑎𝑑𝑠)
+]𝑘𝑟𝑥𝑛 − ( 𝑔𝑎𝑠
+) − ( 𝑙𝑖𝑞𝑑𝑒𝑠𝑜𝑙𝑣 𝑠𝑜𝑙𝑣 ) − ( 𝑙𝑖𝑞
+𝑘𝑑𝑖𝑓𝑓 + 𝑘𝑎𝑑𝑠
+𝑘𝑑𝑖𝑓𝑓1 + 𝑘𝑑𝑒𝑠𝑜𝑙𝑣
+(𝑘
+
+−
+𝑏𝑢𝑙𝑘 + 𝑘 𝑙𝑖𝑞 [I− ]𝑘 𝑏𝑢𝑙𝑘 + 𝑘 𝑙𝑖𝑞
++ 𝑘𝑑𝑒𝑠𝑜𝑙𝑣 ) × (𝑘𝑑𝑒𝑠𝑜𝑙𝑣 [I(𝑟𝑑)
+𝑘
+)
+] 𝑘𝑟𝑥𝑛
+𝑑𝑖𝑓𝑓2
+𝑑𝑖𝑓𝑓1 (𝑟𝑑) 𝑟𝑥𝑛
+𝑑𝑖𝑓𝑓2 𝑑𝑒𝑠𝑜𝑙𝑣
+
+)
+
+Eq. 11
+
+[O3(𝑟𝑑) ] =
+
+𝑙𝑖𝑞
+𝑘𝑑𝑖𝑓𝑓2
+𝑘𝑠𝑜𝑙𝑣 [O3(𝑎𝑑𝑠) ]
+𝑙𝑖𝑞
+
+𝑙𝑖𝑞
+
+−
+−
+𝑏𝑢𝑙𝑘
+𝑏𝑢𝑙𝑘
+𝑘𝑑𝑒𝑠𝑜𝑙𝑣 [I(𝑟𝑑)
+] 𝑘𝑟𝑥𝑛
++ 𝑘𝑑𝑒𝑠𝑜𝑙𝑣 𝑘𝑑𝑖𝑓𝑓2 + 𝑘𝑑𝑖𝑓𝑓1 [I(𝑟𝑑)
+] 𝑘𝑟𝑥𝑛
+
+Eq. 12
+
+Note that Eq. 12 is defined implicitly in terms of the adsorbed ozone concentration in Eq. 11 for the sake
+of brevity.
+The rate coefficients in Eq. 11 and Eq. 12 are explained in more detail in Prophet et al.39 and in
+𝑏𝑢𝑙𝑘
+supplemental section SI-3. Briefly, the reaction rate 𝑘𝑟𝑥𝑛
+= 1.2×109 M-1 s-1 is from previous literature
+43,44
+
+𝑠𝑢𝑟𝑓
+
+and 𝑘𝑟𝑥𝑛 = 6×107 M-1 s-1 is obtained from our previous work, which found evidence for diminished
+
+surface reactivity.39 The pairs of kinetic constants ksolv/kdesolv and kdes/kads are obtained by an analysis of
+the timescales associated with molecular motions in MD simulations of O3 at the air-water interface.38,62
+𝑔𝑎𝑠
+
+The gas-diffusion rate 𝑘𝑑𝑖𝑓𝑓 is calculated by considering the flux of O3 to the droplet surface, as discussed
+𝑙𝑖𝑞
+𝑙𝑖𝑞
+in Prophet et al.,39,63 and liquid-diffusion rates 𝑘𝑑𝑖𝑓𝑓1
+, and 𝑘𝑑𝑖𝑓𝑓2
+are computed using Fick’s first law.64
+
+These terms are expressions involving the diffusion constants over relevant length scales,
+𝑔𝑎𝑠
+
+𝑘𝑑𝑖𝑓𝑓 =
+
+𝐷𝑔𝑎𝑠
+𝑟𝛿
+
+𝑙𝑖𝑞
+𝑘𝑑𝑖𝑓𝑓1
+= (𝐿
+𝑙𝑖𝑞
+𝑘𝑑𝑖𝑓𝑓2
+= (𝐿
+
+,
+
+Eq. 13
+
+2 𝐷𝑙𝑖𝑞
+𝑅𝐷 +𝛿)𝛿
+
+2 𝐷𝑙𝑖𝑞
+𝑅𝐷 +𝛿)𝐿𝑅𝐷
+
+,
+
+,
+
+15
+
+https://doi.org/10.26434/chemrxiv-2024-mj9gg ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Eq. 14
+Eq. 15
+
+where 𝐷𝑔𝑎𝑠 and 𝐷𝑙𝑖𝑞 are the diffusion coefficients of O3 in the gas- and aqueous phases, respectively.
+Expressions for the uptake coefficients given in Eqs. 2 and 3 are now fully constrained by Eqs. 11
+−
+and 12. We highlight that the competitive adsorption isotherm defining [I(𝑎𝑑𝑠)
+] in Eq. 5 is necessary to
+
+calculate [O3(𝑎𝑑𝑠) ] in Eq. 11 and [O3(𝑟𝑑) ] in Eq. 12. Note that the competitive adsorption description in
+Eq. 5 itself relies on the depletion equation for [TX(bulk)] in Eq. 9.
+V. Discussion
+By implementing the approach outlined above, a quantitative assessment of the observed kinetics
+is possible. As shown in Fig. 4, the total uptake calculated by Eq. 4 agrees with the measured uptake
+coefficients as [TX] increases from 6 μM to 3.2 mM. Individual uptake contributions from the reaction in
+surface region (Eq. 2) and RD region (Eq. 3) demonstrate that the overall reactivity is dominated by the
+surface when [TX] < 150 μM, which then becomes increasingly attenuated when [TX] > 150 μM. This
+attenuation is accompanied by a slight increase in the reactivity of the RD region. This predicted rise in
+the RD contribution results from the fact that when the surface-reaction dominates, O3(ads) becomes
+partially depleted at the interface such that the reactivity in the RD region is partially “screened.”
+Importantly, the degree of surface-reaction suppression plateaus when [TX] > 500 μM, indicating the
+microdroplet surface is saturated by Triton X-100. For this case, the reactivity is dominated by the subsurface RD region, since I- is completely displaced from the surface by TX. The [TX]0 where the surfaceto-subsurface transition occurs as well as the overall shape of the uptake dependence observed in
+experiment is reproduced by the analytical expression shown in Eq. 4.
+The unique chemical kinetics observed in the experiments arise from two distinct effects related
+to the nature of the interface and the microscale volume. The first, and most clear, is the increasing
+displacement of I- at the air-water interface with increasing [TX]. The potential for I- displacement by TX
+has been modeled using a competitive Langmuir adsorption isotherm parametrized from surface-tension
+measurements of aqueous TX and from molecular dynamics simulations of aqueous I-.39 Although a
+competitive-adsorption framework is utilized, we note that due to the much greater preference for TX to
+the interface than I-, TX greatly out-competes I- for surface area and the surface-reaction uptake
+dependence on [TX] scales with the TX coverage function. The second microdroplet-related effect is the
+concentration range over which TX inhibits the surface reaction and the shape of the affected uptake. This
+range and shape are unique to the depletion of TX within the bulk interior of the microdroplet, which is a
+16
+
+https://doi.org/10.26434/chemrxiv-2024-mj9gg ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+function of the droplet radius and mirrors the surface fractional coverage for microdroplets shown in Fig.
+7A.
+In comparison to previous works, a similar degree of I- + O3 reaction suppression was reported by
+Rouvière et al. in the study of O3 uptake onto deliquesced submicron KI aerosol with varying amounts of
+a fatty acid.65 Fatty acids with larger molecular footprints resulted in larger degrees of reaction
+suppression, up to over an order of magnitude decrease in overall uptake with increasing surfactant
+concentration. However, these submicron experiments are not directly comparable to the current work as
+the fatty acids are included at much higher mass fractions than the current work and exceed their solubility
+limits. As such, Rouvière et al.65 observe reaction suppression largely due to surface-film formation rather
+than monolayer coverage as investigated in the present work. Chemical effects of films and monolayers
+also become relevant for understanding the reactivity of iodide in the sea-surface microlayer (SSM), which
+contains a complex mixture of inorganic and surface-active organic molecules. Tinel et al.66 analyzed the
+volatile product distributions from O3 oxidation of simulated seawater and real SSM samples,
+demonstrating that microlayer composition has a marked effect on I2 production rates. Similarly,
+Schneider et al.67 measured the production of I2 from the ozone uptake onto aqueous iodide solutions
+under varying conditions with proxies to seawater and microlayer conditions. While the impact of
+surfactant adsorption to iodide-chemistry in the SSM is likely significant, we note that the behavior
+analyzed here applies more directly to concentrated solutions where surface reactions dominate—unlike
+the dilute [I-] found in seawater where reactivity is dominated by liquid-diffusion limitations of ozone in
+the reaction-diffusion region.68
+We emphasize that the inclusion of Triton X-100 into the previously developed chemical kinetic
+framework38 involves no adjustable parameters, and the mechanistic addition of TX relies only on surfacetension measurements30 analyzed within a Langmuir framework. Although the Langmuir-adsorption
+description is likely an oversimplification (especially for describing gas-liquid dynamics), the additive
+behavior of a Langmuir-adsorption description in the current work shows remarkable agreement with
+experiment. We believe this is the case because TX adsorption to the interface is much more favorable
+than I-, while we expect this simplistic model to potentially break down for two (or more) strongly
+adsorbing reagents, especially in a highly concentrated regime.
+VI. Conclusion
+
+17
+
+https://doi.org/10.26434/chemrxiv-2024-mj9gg ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Chemical reactivity at interfaces is increasingly invoked to explain broad changes in observed
+chemical kinetics in environments where surfaces are prominent. Aerosol and microdroplet chemistry,
+unsurprisingly, is at the forefront of such exploration since these systems often show distinct signatures
+that indicate the presence of surface reactions and provide a convenient reaction platform for investigating
+interfacial effects. Here, we present a prototypical example of coupled interfacial phenomena directly
+inhibiting the I- + O3 surface reaction in levitated microdroplets. The surfactant Triton X-100 is observed
+to suppress the surface reaction when the surface coverage fraction is high enough to displace I- from the
+air water interface. The TX concentration dependence of O3 reactive uptake reflects the coverage function
+of TX—demonstrating a microdroplet-specific signature due to the bulk-depletion effect of TX adsorption
+to the air-water interface. An analytical expression for reactive uptake on the aqueous surface and within
+the sub-surface region is derived and based on a previously developed framework. This work demonstrates
+how insights into molecular timescales of mass transfer across interfaces, combined with macroscopic
+surface tension measurements, inform on chemical reactivity in micron-scale compartments containing a
+mixture of organic and inorganic components.
+Supporting Information: Overview of experimental setup, a description of the model framework and
+kinetic simulations, and further details on the steady-state approach used to derive the analytical uptake
+expressions.
+Acknowledgements: This work was supported by the Condensed Phase and Interfacial Molecular Science
+Program (CPIMS), in the Chemical Sciences Geosciences and Biosciences Division of the Office of Basic
+Energy Sciences of the U.S. Department of Energy under Contract No. DE-AC02-05CH11231.
+References
+(1) Wei, Z.; Li, Y.; Cooks, R. G.; Yan, X. Accelerated Reaction Kinetics in Microdroplets: Overview
+and Recent Developments. Annual Review of Physical Chemistry 2020, 71 (Volume 71, 2020), 31–
+51. https://doi.org/10.1146/annurev-physchem-121319-110654.
+(2) Brown, E. K.; Rovelli, G.; Wilson, K. R. pH Jump Kinetics in Colliding Microdroplets:
+Accelerated Synthesis of Azamonardine from Dopamine and Resorcinol. Chemical Science 2023,
+14 (23), 6430–6442. https://doi.org/10.1039/D3SC01576A.
+(3) Wilson, K. R.; Prophet, A. M.; Rovelli, G.; Willis, M. D.; Rapf, R. J.; Jacobs, M. I. A Kinetic
+Description of How Interfaces Accelerate Reactions in Micro-Compartments. Chemical Science
+2020, 11 (32), 8533–8545. https://doi.org/10.1039/D0SC03189E.
+(4) Nam, I.; Lee, J. K.; Nam, H. G.; Zare, R. N. Abiotic Production of Sugar Phosphates and Uridine
+Ribonucleoside in Aqueous Microdroplets. Proceedings of the National Academy of Sciences 2017,
+114 (47), 12396–12400. https://doi.org/10.1073/pnas.1714896114.
+18
+
+https://doi.org/10.26434/chemrxiv-2024-mj9gg ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(5) Jacobs, M. I.; Davis, R. D.; Rapf, R. J.; Wilson, K. R. Studying Chemistry in Micro-Compartments
+by Separating Droplet Generation from Ionization. Journal of the American Society for Mass
+Spectrometry 2019, 30 (2), 339–343. https://doi.org/10.1007/s13361-018-2091-y.
+(6) Gallo, A.; Farinha, A. S. F.; Dinis, M.; Emwas, A.-H.; Santana, A.; Nielsen, R. J.; Goddard, W. A.;
+Mishra, H. The Chemical Reactions in Electrosprays of Water Do Not Always Correspond to Those
+at the Pristine Air–Water Interface. Chemical Science 2019, 10 (9), 2566–2577.
+https://doi.org/10.1039/C8SC05538F.
+(7) Rovelli, G.; Jacobs, M. I.; Willis, M. D.; Rapf, R. J.; Prophet, A. M.; Wilson, K. R. A Critical
+Analysis of Electrospray Techniques for the Determination of Accelerated Rates and Mechanisms
+of Chemical Reactions in Droplets. Chemical Science 2020, 11 (48), 13026–13043.
+https://doi.org/10.1039/D0SC04611F.
+(8) J. Chen, C.; R. Williams, E. The Role of Analyte Concentration in Accelerated Reaction Rates in
+Evaporating Droplets. Chemical Science 2023, 14 (18), 4704–4713.
+https://doi.org/10.1039/D3SC00259D.
+(9) Lee, J. K.; Walker, K. L.; Han, H. S.; Kang, J.; Prinz, F. B.; Waymouth, R. M.; Nam, H. G.; Zare,
+R. N. Spontaneous Generation of Hydrogen Peroxide from Aqueous Microdroplets. Proceedings of
+the National Academy of Sciences 2019, 116 (39), 19294–19298.
+https://doi.org/10.1073/pnas.1911883116.
+(10) Xiong, H.; Lee, J. K.; Zare, R. N.; Min, W. Strong Electric Field Observed at the Interface of
+Aqueous Microdroplets. J. Phys. Chem. Lett. 2020, 11 (17), 7423–7428.
+https://doi.org/10.1021/acs.jpclett.0c02061.
+(11) Martins-Costa, M. T. C.; Ruiz-López, M. F. Probing Solvation Electrostatics at the Air–Water
+Interface. Theor Chem Acc 2023, 142 (3), 29. https://doi.org/10.1007/s00214-023-02969-y.
+(12) Ahmad Eatoo, M.; Mishra, H. Busting the Myth of Spontaneous Formation of H 2 O 2 at the Air–
+Water Interface: Contributions of the Liquid–Solid Interface and Dissolved Oxygen Exposed.
+Chemical Science 2024, 15 (9), 3093–3103. https://doi.org/10.1039/D3SC06534K.
+(13) Heindel, J. P.; LaCour, R. A.; Head-Gordon, T. The Role of Charge in Microdroplet Redox
+Chemistry. Nat Commun 2024, 15 (1), 3670. https://doi.org/10.1038/s41467-024-47879-0.
+(14) Chen, C. J.; Williams, E. Are Hydroxyl Radicals Spontaneously Generated in Unactivated Water
+Droplets? Angewandte Chemie International Edition n/a (n/a), e202407433.
+https://doi.org/10.1002/anie.202407433.
+(15) Valsaraj, K. T. Hydrophobic Compounds in the Environment: Adsorption Equilibrium at the AirWater Interface. Water Research 1994, 28 (4), 819–830. https://doi.org/10.1016/00431354(94)90088-4.
+(16) Vaikuntanathan, S.; Shaffer, P. R.; Geissler, P. L. Adsorption of Solutes at Liquid–Vapor Interfaces:
+Insights from Lattice Gas Models. Faraday Discuss. 2013, 160 (0), 63–74.
+https://doi.org/10.1039/C2FD20106B.
+(17) Otten, D. E.; Shaffer, P. R.; Geissler, P. L.; Saykally, R. J. Elucidating the Mechanism of Selective
+Ion Adsorption to the Liquid Water Surface. Proceedings of the National Academy of Sciences
+2012, 109 (3), 701–705. https://doi.org/10.1073/pnas.1116169109.
+(18) Goss, K.-U. Predicting Adsorption of Organic Chemicals at the Air−Water Interface. J. Phys.
+Chem. A 2009, 113 (44), 12256–12259. https://doi.org/10.1021/jp907347p.
+(19) Devlin, S. W.; Benjamin, I.; Saykally, R. J. On the Mechanisms of Ion Adsorption to Aqueous
+Interfaces: Air-Water vs. Oil-Water. Proceedings of the National Academy of Sciences 2022, 119
+(42), e2210857119. https://doi.org/10.1073/pnas.2210857119.
+
+19
+
+https://doi.org/10.26434/chemrxiv-2024-mj9gg ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(20) Zou, Y.-S.; Fukuta, N. The Effect of Diffusion Kinetics on the Supersaturation in Clouds.
+Atmospheric Research 1999, 52 (1), 115–141. https://doi.org/10.1016/S0169-8095(99)00025-3.
+(21) Bell, A. K.; Kind, J.; Hartmann, M.; Kresse, B.; Höfler, M. V.; Straub, B. B.; Auernhammer, G. K.;
+Vogel, M.; Thiele, C. M.; Stark, R. W. Concentration Gradients in Evaporating Binary Droplets
+Probed by Spatially Resolved Raman and NMR Spectroscopy. Proceedings of the National
+Academy of Sciences 2022, 119 (15), e2111989119. https://doi.org/10.1073/pnas.2111989119.
+(22) Karmakar, T.; Finney, A. R.; Salvalaglio, M.; Yazaydin, A. O.; Perego, C. Non-Equilibrium
+Modeling of Concentration-Driven Processes with Constant Chemical Potential Molecular
+Dynamics Simulations. Acc. Chem. Res. 2023, 56 (10), 1156–1167.
+https://doi.org/10.1021/acs.accounts.2c00811.
+(23) Prisle, N. L.; Raatikainen, T.; Laaksonen, A.; Bilde, M. Surfactants in Cloud Droplet Activation:
+Mixed Organic-Inorganic Particles. Atmospheric Chemistry and Physics 2010, 10 (12), 5663–5683.
+https://doi.org/10.5194/acp-10-5663-2010.
+(24) Ruehl, C. R.; Davies, J. F.; Wilson, K. R. An Interfacial Mechanism for Cloud Droplet Formation
+on Organic Aerosols. Science 2016, 351 (6280), 1447–1450.
+https://doi.org/10.1126/science.aad4889.
+(25) Ovadnevaite, J.; Zuend, A.; Laaksonen, A.; Sanchez, K. J.; Roberts, G.; Ceburnis, D.; Decesari, S.;
+Rinaldi, M.; Hodas, N.; Facchini, M. C.; Seinfeld, J. H.; O’ Dowd, C. Surface Tension Prevails
+over Solute Effect in Organic-Influenced Cloud Droplet Activation. Nature 2017, 546 (7660), 637–
+641. https://doi.org/10.1038/nature22806.
+(26) Davies, J. F.; Zuend, A.; Wilson, K. R. Technical Note: The Role of Evolving Surface Tension in
+the Formation of Cloud Droplets. Atmospheric Chemistry and Physics 2019, 19 (5), 2933–2946.
+https://doi.org/10.5194/acp-19-2933-2019.
+(27) Lin, J. J.; Kristensen, T. B.; Calderón, S. M.; Malila, J.; Prisle, N. L. Effects of Surface Tension
+Time-Evolution for CCN Activation of a Complex Organic Surfactant. Environ. Sci.: Processes
+Impacts 2020, 22 (2), 271–284. https://doi.org/10.1039/C9EM00426B.
+(28) McGraw, R.; Wang, J. Surfactants and Cloud Droplet Activation: A Systematic Extension of Köhler
+Theory Based on Analysis of Droplet Stability. The Journal of Chemical Physics 2021, 154 (2),
+024707. https://doi.org/10.1063/5.0031436.
+(29) Prisle, N. L. Surfaces of Atmospheric Droplet Models Probed with Synchrotron XPS on a Liquid
+Microjet. Acc. Chem. Res. 2024, 57 (2), 177–187. https://doi.org/10.1021/acs.accounts.3c00201.
+(30) Bzdek, B. R.; Reid, J. P.; Malila, J.; Prisle, N. L. The Surface Tension of Surfactant-Containing,
+Finite Volume Droplets. Proceedings of the National Academy of Sciences 2020, 117 (15), 8335–
+8343. https://doi.org/10.1073/pnas.1915660117.
+(31) Bain, A.; Ghosh, K.; Prisle, N. L.; Bzdek, B. R. Surface-Area-to-Volume Ratio Determines Surface
+Tensions in Microscopic, Surfactant-Containing Droplets. ACS Cent. Sci. 2023, 9 (11), 2076–2083.
+https://doi.org/10.1021/acscentsci.3c00998.
+(32) Singh, M.; Jones, S. H.; Kiselev, A.; Duft, D.; Leisner, T. The Viscosity and Surface Tension of
+Supercooled Levitated Droplets Determined by Excitation of Shape Oscillations. Atmospheric
+Measurement Techniques 2023, 16 (21), 5205–5215. https://doi.org/10.5194/amt-16-5205-2023.
+(33) Bain, A.; Lalemi, L.; Croll Dawes, N.; Miles, R. E. H.; Prophet, A. M.; Wilson, K. R.; Bzdek, B. R.
+Surfactant Partitioning Dynamics in Freshly Generated Aerosol Droplets. J. Am. Chem. Soc. 2024.
+https://doi.org/10.1021/jacs.4c03041.
+(34) Gao, X.-F.; Nathanson, G. M. Exploring Gas–Liquid Reactions with Microjets: Lessons We Are
+Learning. Acc. Chem. Res. 2022, 55 (23), 3294–3302.
+https://doi.org/10.1021/acs.accounts.2c00602.
+20
+
+https://doi.org/10.26434/chemrxiv-2024-mj9gg ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(35) Galib, M.; Limmer, D. T. Reactive Uptake of N2O5 by Atmospheric Aerosol Is Dominated by
+Interfacial Processes. Science 2021, 371 (6532), 921–925. https://doi.org/10.1126/science.abd7716.
+(36) Qiu, L.; Wei, Z.; Nie, H.; Cooks, R. G. Reaction Acceleration Promoted by Partial Solvation at the
+Gas/Solution Interface. ChemPlusChem 2021, 86 (10), 1362–1365.
+https://doi.org/10.1002/cplu.202100373.
+(37) Martins-Costa, M. T. C.; Ruiz-López, M. F. Electrostatics and Chemical Reactivity at the Air–
+Water Interface. J. Am. Chem. Soc. 2023, 145 (2), 1400–1406.
+https://doi.org/10.1021/jacs.2c12089.
+(38) Prophet, A. M.; Polley, K.; Van Berkel, G. J.; Limmer, D. T.; Wilson, K. R. Iodide Oxidation by
+Ozone at the Surface of Aqueous Microdroplets. Chemical Science 2024, 15 (2), 736–756.
+https://doi.org/10.1039/D3SC04254E.
+(39) Prophet, A. M.; Polley, K.; Brown, E. K.; Limmer, D. T.; Wilson, K. R. Distinguishing Surface and
+Bulk Reactivity: Concentration-Dependent Kinetics of Iodide Oxidation by Ozone in
+Microdroplets. J. Phys. Chem. A 2024, 128 (41), 8970–8982.
+https://doi.org/10.1021/acs.jpca.4c05129.
+(40) Bhujel, M.; L. Marshall, D.; T. Maccarone, A.; I. McKinnon, B.; J. Trevitt, A.; Silva, G. da;
+J. Blanksby, S.; J. Poad, B. L. Gas Phase Reactions of Iodide and Bromide Anions with Ozone:
+Evidence for Stepwise and Reversible Reactions. Physical Chemistry Chemical Physics 2020, 22
+(18), 9982–9989. https://doi.org/10.1039/D0CP01498B.
+(41) Limmer, D. T.; Götz, A. W.; Bertram, T. H.; Nathanson, G. M. Molecular Insights into Chemical
+Reactions at Aqueous Aerosol Interfaces. Annual Review of Physical Chemistry 2024, 75 (Volume
+75, 2024), 111–135. https://doi.org/10.1146/annurev-physchem-083122-121620.
+(42) Hoigné, J.; Bader, H.; Haag, W. R.; Staehelin, J. Rate Constants of Reactions of Ozone with
+Organic and Inorganic Compounds in Water—III. Inorganic Compounds and Radicals. Water
+Research 1985, 19 (8), 993–1004. https://doi.org/10.1016/0043-1354(85)90368-9.
+(43) Liu, Q.; Schurter, L. M.; Muller, C. E.; Aloisio, S.; Francisco, J. S.; Margerum, D. W. Kinetics and
+Mechanisms of Aqueous Ozone Reactions with Bromide, Sulfite, Hydrogen Sulfite, Iodide, and
+Nitrite Ions. Inorg. Chem. 2001, 40 (17), 4436–4442. https://doi.org/10.1021/ic000919j.
+(44) Brown, L. V.; Pound, R. J.; Ives, L. S.; Jones, M. R.; Andrews, S. J.; Carpenter, L. J. Negligible
+Temperature Dependence of the Ozone–Iodide Reaction and Implications for Oceanic Emissions of
+Iodine. Atmospheric Chemistry and Physics 2024, 24 (7), 3905–3923. https://doi.org/10.5194/acp24-3905-2024.
+(45) Makievski, A. V.; Fainerman, V. B.; Joos, P. Dynamic Surface Tension of Micellar Triton X-100
+Solutions by the Maximum-Bubble-Pressure Method. Journal of Colloid and Interface Science
+1994, 166 (1), 6–13. https://doi.org/10.1006/jcis.1994.1264.
+(46) Fainerman, V. B.; Lylyk, S. V.; Aksenenko, E. V.; Makievski, A. V.; Petkov, J. T.; Yorke, J.; Miller,
+R. Adsorption Layer Characteristics of Triton Surfactants: 1. Surface Tension and Adsorption
+Isotherms. Colloids and Surfaces A: Physicochemical and Engineering Aspects 2009, 334 (1), 1–7.
+https://doi.org/10.1016/j.colsurfa.2008.09.015.
+(47) Robinson, J. E.; Sutton, C. M.; Reid, G. F. Dilute Triton X-100 in Water as a Reference Liquid for
+Hydrometer Calibration Using Cuckow’s Method. Measurement 2014, 57, 132–137.
+https://doi.org/10.1016/j.measurement.2014.08.001.
+(48) Willis, M. D.; Rovelli, G.; Wilson, K. R. Combining Mass Spectrometry of Picoliter Samples with
+a Multicompartment Electrodynamic Trap for Probing the Chemistry of Droplet Arrays. Anal.
+Chem. 2020, 92 (17), 11943–11952. https://doi.org/10.1021/acs.analchem.0c02343.
+
+21
+
+https://doi.org/10.26434/chemrxiv-2024-mj9gg ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(49) Willis, M. D.; Wilson, K. R. Coupled Interfacial and Bulk Kinetics Govern the Timescales of
+Multiphase Ozonolysis Reactions. J. Phys. Chem. A 2022, 126 (30), 4991–5010.
+https://doi.org/10.1021/acs.jpca.2c03059.
+(50) Kaur Kohli, R.; Van Berkel, G. J.; Davies, J. F. An Open Port Sampling Interface for the Chemical
+Characterization of Levitated Microparticles. Anal. Chem. 2022, 94 (8), 3441–3445.
+https://doi.org/10.1021/acs.analchem.1c05550.
+(51) Jacobs, M. I.; Davies, J. F.; Lee, L.; Davis, R. D.; Houle, F.; Wilson, K. R. Exploring Chemistry in
+Microcompartments Using Guided Droplet Collisions in a Branched Quadrupole Trap Coupled to a
+Single Droplet, Paper Spray Mass Spectrometer. Analytical Chemistry 2017, 89 (22), 12511–
+12519. https://doi.org/10.1021/acs.analchem.7b03704.
+(52) Davies, J. F. Mass, Charge, and Radius of Droplets in a Linear Quadrupole Electrodynamic
+Balance. Aerosol Science and Technology 2019, 53 (3), 309–320.
+https://doi.org/10.1080/02786826.2018.1559921.
+(53) Smith, J. D.; Kroll, J. H.; Cappa, C. D.; Che, D. L.; Liu, C. L.; Ahmed, M.; Leone, S. R.; Worsnop,
+D. R.; Wilson, K. R. The Heterogeneous Reaction of Hydroxyl Radicals with Sub-Micron Squalane
+Particles: A Model System for Understanding the Oxidative Aging of Ambient Aerosols.
+Atmospheric Chemistry and Physics 2009, 9 (9), 3209–3222. https://doi.org/10.5194/acp-9-32092009.
+(54) Kuramoto, Y. Effects of Diffusion on the Fluctuations in Open Chemical Systems. Progress of
+Theoretical Physics 1974, 52 (2), 711–713. https://doi.org/10.1143/PTP.52.711.
+(55) Houle, F. A.; Wiegel, A. A.; Wilson, K. R. Predicting Aerosol Reactivity Across Scales: From the
+Laboratory to the Atmosphere. Environ. Sci. Technol. 2018, 52 (23), 13774–13781.
+https://doi.org/10.1021/acs.est.8b04688.
+(56) Wilson, K. R.; Prophet, A. M. Chemical Kinetics in Microdroplets. Annual Review of Physical
+Chemistry 2024, 75, 185–208. https://doi.org/10./1146/annurev-physchem-052623-120718.
+(57) Wilson, K. R.; Prophet, A. M.; Willis, M. D. A Kinetic Model for Predicting Trace Gas Uptake and
+Reaction. J. Phys. Chem. A 2022, 126 (40), 7291–7308. https://doi.org/10.1021/acs.jpca.2c03559.
+(58) Masel, R. I. Principles of Adsorption and Reaction on Solid Surfaces; John Wiley & Sons, 1996.
+(59) Szyszkowski, B. von. Experimentelle Studien über kapillare Eigenschaften der wässerigen
+Lösungen von Fettsäuren. Zeitschrift für Physikalische Chemie 1908, 64U (1), 385–414.
+https://doi.org/10.1515/zpch-1908-6425.
+(60) He, Y.; Yazhgur, P.; Salonen, A.; Langevin, D. Adsorption–Desorption Kinetics of Surfactants at
+Liquid Surfaces. Advances in Colloid and Interface Science 2015, 222, 377–384.
+https://doi.org/10.1016/j.cis.2014.09.002.
+(61) Alvarez, N. J.; Walker, L. M.; Anna, S. L. Diffusion-Limited Adsorption to a Spherical Geometry:
+The Impact of Curvature and Competitive Time Scales. Phys. Rev. E 2010, 82 (1), 011604.
+https://doi.org/10.1103/PhysRevE.82.011604.
+(62) Polley, K.; Wilson, K. R.; Limmer, D. T. On the Statistical Mechanics of Mass Accommodation at
+Liquid–Vapor Interfaces. J. Phys. Chem. B 2024, 128 (17), 4148–4157.
+https://doi.org/10.1021/acs.jpcb.4c00899.
+(63) Fuchs, N. A.; Sutugin, A. G. High-Dispersed Aerosols. In Topics in Current Aerosol Research;
+Hidy, G. M., Brock, J. R., Eds.; International Reviews in Aerosol Physics and Chemistry;
+Pergamon, 1971; p 1. https://doi.org/10.1016/B978-0-08-016674-2.50006-6.
+(64) Fick, A. V. On Liquid Diffusion. The London, Edinburgh, and Dublin Philosophical Magazine and
+Journal of Science 1855, 10 (63), 30–39. https://doi.org/10.1080/14786445508641925.
+
+22
+
+https://doi.org/10.26434/chemrxiv-2024-mj9gg ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(65) Rouvière, A.; Ammann, M. The Effect of Fatty Acid Surfactants on the Uptake of Ozone to
+Aqueous Halogenide Particles. Atmospheric Chemistry and Physics 2010, 10 (23), 11489–11500.
+https://doi.org/10.5194/acp-10-11489-2010.
+(66) Tinel, L.; Adams, T. J.; Hollis, L. D. J.; Bridger, A. J. M.; Chance, R. J.; Ward, M. W.; Ball, S. M.;
+Carpenter, L. J. Influence of the Sea Surface Microlayer on Oceanic Iodine Emissions. Environ.
+Sci. Technol. 2020, 54 (20), 13228–13237. https://doi.org/10.1021/acs.est.0c02736.
+(67) Schneider, S. R.; Lakey, P. S. J.; Shiraiwa, M.; Abbatt, J. P. D. Iodine Emission from the Reactive
+Uptake of Ozone to Simulated Seawater. Environ. Sci.: Processes Impacts 2023, 25 (2), 254–263.
+https://doi.org/10.1039/D2EM00111J.
+(68) Schneider, S. R.; Lakey, P. S. J.; Shiraiwa, M.; Abbatt, J. P. D. Reactive Uptake of Ozone to
+Simulated Seawater: Evidence for Iodide Depletion. The Journal of Physical Chemistry A 2020,
+124 (47), 9844–9853. https://doi.org/10.1021/ACS.JPCA.0C08917.
+
+23
+
+https://doi.org/10.26434/chemrxiv-2024-mj9gg ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+

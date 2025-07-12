@@ -1,0 +1,3184 @@
+1
+
+Assessing the Performance of Emerging and Existing Continuous Monitoring Solutions under a
+
+2
+
+Single-blind Controlled Testing Protocol
+
+3
+
+Fancy Cheptonui1,2, Ethan Emerson2, Chiemezie Ilonze2, Rachel Day2, Ezra Levin2, Daniel
+
+4
+
+Fleischmann2, Ryan Brouwer2, and Daniel J. Zimmerle2, *
+
+5
+
+1
+
+Department of Systems Engineering, Colorado State University, Fort Collins, CO, 80523, USA
+
+6
+
+2
+
+Energy Institute, Colorado State University, Fort Collins, CO, 80524, USA
+
+7
+
+*Corresponding Author: Daniel Zimmerle (dan.zimmerle@colostate.edu)
+
+8
+
+Abstract
+
+9
+
+Continuous Monitoring (CM) solutions have been identified as a method to address methane
+
+10
+
+emissions at oil and gas (O&G) facilities, as these solutions can facilitate faster emission detection
+
+11
+
+and repair compared to traditional survey methods. This study tested 13 CM solutions over 12
+
+12
+
+weeks using single-blind controlled testing. Controlled release rates ranged from 0.08 to 6.75 kg
+
+13
+
+CH4 hr-1 and lasted 18 minutes to 8 hours. Six solutions demonstrated 90 % method detection
+
+14
+
+limits (DL90s) within the range of controlled releases, from 0.5 [0.3, 0.6] kg CH4 hr-1 to 6.7 [5.9,
+
+15
+
+8.0] kg CH4 hr-1. Of the six solutions, four had False Positive (FP) rates between 7.8% and 14.0%
+
+16
+
+(less than 15%), and four had False Negative rates (FN) of 8.0% to 34.1% (less than 50%).
+
+17
+
+Compared with Ilonze et al., these results show retested solutions balancing method sensitivity
+
+18
+
+with FP and FN rates. All scanning/imaging solutions had high localization (≥ 40%) precision and
+
+19
+
+accuracy to the equipment unit. Eleven of the 13 solutions were tested for quantification. Single
+
+20
+
+quantification estimates exhibited high relative quantification errors, outside the -90 % to 1000%
+
+21
+
+range. The mean quantification error ranged from 33 [0.9, 66] %, 95% CI to 1326 [1003, 1648] %,
+
+22
+
+95 % CI for small emissions, between 0.1 and 1 kg CH4 hr-1, and from 3 [-20, 26] %, 95% CI to
+
+23
+
+3578 [-2832, 9988] %, 95% CI for larger emissions, greater than 1 kg CH4 hr-1. There were 3 and
+
+https://doi.org/10.26434/chemrxiv-2024-f1znb-v2 ORCID: https://orcid.org/0009-0003-0001-8649 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+1
+
+24
+
+9 solutions in the small and large emissions categories, respectively, that had less than 100%
+
+25
+
+relative quantification error. Relative to previous studies, errors in quantification estimates
+
+26
+
+decreased, as did FN and FP rates, with improved DL90s for two of the four retested solutions.
+
+27
+
+These findings highlight that continuous, rigorous testing enhances solution performance, with
+
+28
+
+notable improvements observed across multiple testing programs using the same test protocol.
+
+29
+
+Keywords
+
+30
+
+Methane, Detection, Detection Limit, Quantification, Continuous Monitoring, Probability of
+
+31
+
+Detection
+
+32
+
+Introduction
+
+33
+
+Dry natural Gas (NG) production has gradually increased over the past ten years (EIA 2024). The
+
+34
+
+production increased by 4%, 5 billion cubic feet per day (Bcf/d), in 2023 compared to the
+
+35
+
+production in 2022 (EIA 2024). Natural gas consists of between 70 % and 90 % methane (CH4),
+
+36
+
+one of the major greenhouse gases in the atmosphere. Although CH4 stays in the atmosphere for a
+
+37
+
+shorter period than CO2, it has a global warming potential that is 27 - 30 times higher than CO2 in
+
+38
+
+a 100-year timespan (ORD US EPA 2017; OAR US EPA 2016; IPCC 2021). Methane is emitted
+
+39
+
+from natural sources, such as wetlands, and anthropogenic sources, such as energy production and
+
+40
+
+agricultural activities (NASA, 2024).
+
+41
+
+Globally, emissions from the energy sector accounted for approximately 130 million tonnes of CH4
+
+42
+
+in 2023 (IEA 2024). In the US, operations in the oil and gas (O & G) industry are the second-
+
+43
+
+largest industrial source of emissions (EPA, 2024a). Federal and state regulations require operators
+
+44
+
+to implement the leak detection and repair (LDAR) program (CDPHE; EPA, 2024). The program
+
+45
+
+aims to reduce intentional (vented) and unintentional (fugitive) methane emissions (Zimmerle,
+
+46
+
+Dileep, and Quinn 2024) from the O&G industry in the US and Canada.
+
+https://doi.org/10.26434/chemrxiv-2024-f1znb-v2 ORCID: https://orcid.org/0009-0003-0001-8649 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+2
+
+47
+
+Current regulatory-approved methods for LDAR programs, such as the EPA method 21 and OGI
+
+48
+
+camera surveys, can provide precise component- or equipment unit-level measurements
+
+49
+
+(EPA,2024b). However, they are expensive and labor-intensive when scaled over thousands of
+
+50
+
+O&G facilities. Also, studies have shown that source, facility-level, and annually assessed
+
+51
+
+emissions exhibit spatial and temporal variability (Brandt et al. 2014; Lavoie et al. 2017; Vaughn
+
+52
+
+et al. 2018; Huang et al. 2024). These variabilities make it challenging for surveys to estimate the
+
+53
+
+long-term size of emissions using snapshot measurements from a facility. Further, studies show
+
+54
+
+that super-emitters skew the emissions distribution (Collins et al. 2022; Huang et al. 2024; Schuit
+
+55
+
+et al. 2023; Zavala-Araiza et al. 2015). Super emitters emit at rates greater than 100 kg hr-1 (EPA,
+
+56
+
+2024b). Detecting such emitters using traditional methods is challenging because they are usually
+
+57
+
+intermittent.
+
+58
+
+Regulations (EPA, 2024b; CDPHE, 2024; European Parliament, 2024; EPA, 2023) and research
+
+59
+
+efforts have motivated the development and testing of new and existing Leak Detection and
+
+60
+
+Quantification (LDAQ) technologies (Bell et al., 2020, 2023; Chen et al., 2024; Ilonze et al., 2024;
+
+61
+
+Liu et al., 2024; MONITOR| Arpa-e, 2014; Ravikumar et al., 2019; Siebenaler et al., 2016;
+
+62
+
+Titchener et al., 2022). LDAQ technologies, such as Continuous Monitors (CM), promise to
+
+63
+
+address some emission measurement concerns by cost-effectively providing temporally resolved
+
+64
+
+monitoring of O&G facilities. These technologies are scanning, imaging, or point sensors installed
+
+65
+
+at O & G facilities to monitor NG or CH4 emissions for a long-term period. The major advantages
+
+66
+
+of CM solutions include the capability to detect large emissions, sustained operational capacity,
+
+67
+
+and provision of temporal data. Despite these advantages, CM solutions cannot be used for
+
+68
+
+regulatory LDAR programs unless they demonstrate equal or better emissions reduction than
+
+69
+
+existing LDAR survey methods (EPA, 2024c).
+
+https://doi.org/10.26434/chemrxiv-2024-f1znb-v2 ORCID: https://orcid.org/0009-0003-0001-8649 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+3
+
+70
+
+The EPA's final rule stipulates the performance CM solutions must meet to be approved as an
+
+71
+
+alternative approach for regulatory LDAR programs (EPA, 2024b). According to subpart OOOOb
+
+72
+
+40 CFR part 60 by the EPA, the detection threshold for CM systems must be at least 0.4 kg hr-1 of
+
+73
+
+CH4 over facility-specific background emissions (EPA, 2024b). Operators already use CM
+
+74
+
+solutions for internal emissions accounting and voluntary methane emissions reduction programs
+
+75
+
+like OGMP 2.0 (OGMP 2024). However, more rigorous testing is needed to improve confidence
+
+76
+
+in output data (such as the 90% method detection limit (DL90), quantification accuracy, detection,
+
+77
+
+and localization) and track solutions' performance trends over time.
+
+78
+
+Colorado State University’s (CSU) Methane Emissions Technology Evaluation Centre
+
+79
+
+(METEC) developed a standardized, controlled testing protocol for the Advancing Development
+
+80
+
+of Emission Detection (ADED) project. The project was developed to assess the performance of
+
+81
+
+CM and survey solutions (Bell and Zimmerle 2022). Starting in 2022, the protocol has been
+
+82
+
+utilized for an extended CM test from February to April each year. The 2022 testing is documented
+
+83
+
+in Bell et al., 2023, the 2023 testing in Ilonze et al. (2024), and the 2024 testing in this paper.
+
+84
+
+The 2022 test showed that CM solutions exhibited quantification errors over ± 60% for single
+
+85
+
+emission estimates. One of the primary metrics assessed for all the CM solutions is the DL90,
+
+86
+
+which represents the emission rate at which a deployed solution detects emissions 90% of the time
+
+87
+
+(Bell et al. 2023). In 2023 testing, retested solutions showed decreased DL90 and FP rates (the
+
+88
+
+percentage of detection reports from a solution that incorrectly attributes a controlled release).
+
+89
+
+However, there were consistently wide quantification errors for single emission estimates. The
+
+90
+
+2023 testing also indicates that solutions with the lowest DL90 had the lowest FP and FN rates
+
+91
+
+(the percentage of controlled releases not identified by a solution). This contrasts with the
+
+92
+
+expectation that raising detection limits to lower FP and FN rates is necessary.
+
+https://doi.org/10.26434/chemrxiv-2024-f1znb-v2 ORCID: https://orcid.org/0009-0003-0001-8649 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+4
+
+93
+
+The current study (2024 testing) tested 13 CM solutions, including four solutions that
+
+94
+
+participated in the 2023 testing (Ilonze et al., 2024), and 2 of the four solutions and 1 of the thirteen
+
+95
+
+were also tested in 2022 (Bell et al. 2023). The solutions were tested at CSU’s METEC facility in
+
+96
+
+Colorado, US. Solutions were categorized into point sensor networks (PSNs) and
+
+97
+
+scanning/imaging solutions. The PSN solutions consist of point sensors deployed at/on the
+
+98
+
+facility’s equipment to detect the presence of hydrocarbons in the atmosphere (Day et al. 2024).
+
+99
+
+Scanning/imaging solutions deploy scanning lasers and short/mid-infrared cameras that generate
+
+100
+
+2D images of gas plumes at the deployed locations (Bell et al., 2023; Ilonze et al., 2024).
+
+101
+
+Algorithms are used with meteorological data to produce quantification and localization
+
+102
+
+information. Performance metrics such as the probability of detection (POD), quantification
+
+103
+
+accuracy, localization accuracy, and precision of a solution are presented in this study and
+
+104
+
+compared to the performance of solutions from 2023 (Ilonze et al., 2024) and 2022 (Bell et al.
+
+105
+
+2023).
+
+106
+
+Methodology
+
+107
+
+Testing Facility
+
+108
+
+The solutions were tested between February and April 2024 at CSU’s METEC facility. Long-
+
+109
+
+duration testing was conducted depending on the facility’s availability. Additionally, testing is
+
+110
+
+aimed at various conditions, as seen in winter and spring. The facility is an 8-acre (3 ha) outdoor
+
+111
+
+facility for testing and improving CH4 emissions LDAQ solutions. The facility consists of 7
+
+112
+
+wellpads, complete with retired O & G equipment, including, but not limited to, wellheads,
+
+113
+
+separators, and tanks (SI Figure S-1). For this study, wellpads 4 and 5 were used for controlled
+
+114
+
+releases of compressed natural gas. Wellpad 4 consists of 5 wellheads, four horizontal separators,
+
+115
+
+and three tanks, while Wellpad 5 consists of 3 wellheads and three vertical separators (SI Figure
+
+https://doi.org/10.26434/chemrxiv-2024-f1znb-v2 ORCID: https://orcid.org/0009-0003-0001-8649 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+5
+
+116
+
+S-3). The tanks, wellheads, and separators have unique emission points (EPs: with unique tag
+
+117
+
+identifiers) and flow meters that control the gas flow.
+
+118
+
+ADED Continuous Monitoring Protocol R1.0
+
+119
+
+Overview: The first revision of ADED’s controlled testing protocol (Bell & Zimmerle, 2022) was
+
+120
+
+developed in September 2020 by METEC. The protocol received contributions from stakeholders
+
+121
+
+in the O & G industry, LDAQ technology developers, regulatory bodies, non-governmental
+
+122
+
+agencies, and state and federal environmental agencies. The protocol employs single-blind,
+
+123
+
+controlled testing to evaluate the performance of solutions in a rigorous and reproducible manner.
+
+124
+
+This testing allows for inter-solution comparison and year-over-year performance evaluation. In a
+
+125
+
+single-blind test, the test center knows the emission rates and locations, while the performers
+
+126
+
+(solution providers) are unaware of this information. Testing is conducted for extended periods,
+
+127
+
+typically months, to assess the performance of a solution over a wide range of emission rates with
+
+128
+
+varied environmental and meteorological conditions.
+
+129
+
+According to the protocol, a solution consists of one or more natural gas (NG) or CH4 sensors,
+
+130
+
+data analytics, and a data management system. The analytics convert raw sensor readings to
+
+131
+
+quantification and localization data and infer the 1.) presence or absence of an emission, 2.) the
+
+132
+
+source emission rate, and 3.) location of an emission. The data management system reports
+
+133
+
+detections, localizations, and applicable quantification data.
+
+134
+
+Experimental Process
+
+135
+
+Compressed NG consisting of 84.2% CH4, 13.3% C2H6, 2.0% C3H8, and a trace amount of C4+
+
+136
+
+was released from storage gas cylinders. Emission points released gas at rates ranging from 0.08
+
+137
+
+to 6.75 kg CH4 hr-1. Flow meters assigned to each equipment group controlled gas flow through
+
+https://doi.org/10.26434/chemrxiv-2024-f1znb-v2 ORCID: https://orcid.org/0009-0003-0001-8649 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+6
+
+138
+
+the EPs on Pads 4 and 5. Testing involved a series of experiments with the number of EPs ranging
+
+139
+
+from 1 to 5 per experiment (SI Figure S9). The EPs were located on different equipment units for
+
+140
+
+experiments with multiple EPs. The duration of each experiment ranged from 18 minutes to 8
+
+141
+
+hours. The durations were selected to account for the duration of vented emissions and those that
+
+142
+
+may last for extended periods without being repaired.
+
+143
+
+Experiments ran 24 hours a day for 5 to 7 days per week. The controlled releases started and
+
+144
+
+ended simultaneously for experiments with multiple EPs. Multiple controlled releases are designed
+
+145
+
+to test the capability of a solution to attribute an emission to a particular location. Individual
+
+146
+
+experiments were separated from the preceding experiment by a no-emission period lasting from
+
+147
+
+30 min to 4 hours (SI Figure S-9). The no-emission period enabled solutions to potentially identify
+
+148
+
+the start and end of experiments when the concentration levels were reduced to the original
+
+149
+
+background concentration. Additionally, the no-emission periods were selected based on the time
+
+150
+
+it takes for the concentration in the atmosphere to return to the background; depending on
+
+151
+
+prevailing atmospheric conditions, this time varies.
+
+152
+
+The test facility assigned an experiment ID to an experiment and recorded the start and end time,
+
+153
+
+the duration, the metered flow rate, the uncertainty of the metered flow rate, the gas composition
+
+154
+
+(as measured using gas chromatography), and the meteorological conditions. Regularly, the team
+
+155
+
+processed the detection reports of various solutions to determine the emission rates and durations
+
+156
+
+that had not been covered while testing (small, large, and longer-duration releases).
+
+157
+
+Reporting: Performers submitted detection reports to METEC’s email reporting system for
+
+158
+
+evaluation using the protocol’s performance metrics (Bell & Zimmerle, 2022). Detection reports
+
+159
+
+notify the test center of identified individual emission events, the start time, the location, and the
+
+160
+
+emission rate of a source. Each report should be attributed to a single controlled release in an
+
+https://doi.org/10.26434/chemrxiv-2024-f1znb-v2 ORCID: https://orcid.org/0009-0003-0001-8649 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+7
+
+161
+
+experiment with multiple controlled releases for proper detection classification. Mandatory
+
+162
+
+information in the detection report includes the DetectionReportID, DetectionReportDateTime,
+
+163
+
+EmissionStartDateTime, EmissionSourceID, Gas (the species monitored by the solution), and
+
+164
+
+Equipment Unit (SI Section S5). The protocol allows performers to update a detection by sending
+
+165
+
+new reports referencing the same EmissionSourceID from a previous report. This provision enables
+
+166
+
+performers to change data, such as the estimated emission rate, the timing of a controlled release,
+
+167
+
+and the GPS coordinates, to reflect the best solution estimates. The update was permitted before
+
+168
+
+the test center sent the performance results to the performers.
+
+169
+
+In addition to the detection reports, performers submit offline reports whenever their solution is
+
+170
+
+not operating during testing. The offline reports state the offline start and end times, allowing the
+
+171
+
+exclusion of offline data during analysis. Additionally, the test center records all maintenance
+
+172
+
+events at the site, such as gas house filling and fixing faulty equipment. All the detection reports
+
+173
+
+sent during maintenance events are excluded from the analysis.
+
+174
+
+Before classification, specific data were removed from the analysis, including 1) data when the
+
+175
+
+performer reported their system was offline, 2) data that occurred outside the testing window, 3)
+
+176
+
+data that the performer stated the equipment unit as being off facility, i.e., outside the test facility’s
+
+177
+
+fence line, and 4) data that occurred during maintenance events as shown in the maintenance log
+
+178
+
+sheet. As stipulated in the protocol (Bell & Zimmerle, 2022), the classification process was as
+
+179
+
+follows:
+
+180
+
+1.) All the controlled releases conducted within the test facility were sorted by equipment
+
+181
+
+unit identifier and then by the flow rate, if reported by the performer, in descending order.
+
+182
+
+2.) From the first step above, the remaining controlled releases were sorted by equipment
+
+183
+
+group identifier and then by flow rate, if reported by a performer, in descending order.
+
+https://doi.org/10.26434/chemrxiv-2024-f1znb-v2 ORCID: https://orcid.org/0009-0003-0001-8649 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+8
+
+184
+
+3.) Finally, the remaining controlled releases were sorted by flow rate, if reported by a
+
+185
+
+performer, in descending order. After this step, all the controlled releases and unpaired
+
+186
+
+detections were classified as FN and FP detections, respectively.
+
+187
+
+In steps 1, 2, and 3 above, all the detections identifying the sorted equipment unit, group, or
+
+188
+
+facility as the emission source were selected, respectively. The selected detections whose emission
+
+189
+
+start time was between the controlled release start and end time were filtered and sorted by flow
+
+190
+
+rate, if reported by a performer, in descending order. Finally, the uppermost detection was paired
+
+191
+
+with a controlled release as a TP detection with correct unit, group, or facility-level localization
+
+192
+
+precision for steps 1, 2, and 3, respectively. After each step above, a matched pair was removed
+
+193
+
+from further classification.
+
+194
+
+Performance Metrics: Controlled releases within the testing period were paired with detection
+
+195
+
+reports to evaluate the performance of the solutions (SI Section S8). The detection reports were
+
+196
+
+classified as true positives (TP) or false positives (FP). According to the protocol, a TP occurs
+
+197
+
+when a performer’s detection report is attributed to the correct and coinciding controlled release.
+
+198
+
+A false positive occurs when a detection report incorrectly attributes a controlled release within
+
+199
+
+the test facility. During the second (Ilonze et al., 2024) and current protocol implementation, FPs
+
+200
+
+were further classified into FP-no controlled release and FP-excess. An FP-no controlled release
+
+201
+
+occurs when a detection report identifies an emission with no controlled release at the test facility.
+
+202
+
+An FP-Excess occurs when a detection report identifies a controlled release already paired with a
+
+203
+
+different detection report. A controlled release is classified as a false negative (FN) when there is
+
+204
+
+no detection report to pair with it.
+
+205
+
+The current study used the primary performance metrics, including the probability of detection
+
+206
+
+(POD), localization precision and accuracy, quantification accuracy, and detection time, to assess
+
+https://doi.org/10.26434/chemrxiv-2024-f1znb-v2 ORCID: https://orcid.org/0009-0003-0001-8649 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+9
+
+207
+
+a solution's performance. POD is a fraction of controlled releases under a set of independent
+
+208
+
+variables that were classified as detections. Independent variables include the controlled emission
+
+209
+
+rate and prevailing meteorological conditions. The localization accuracy at various levels
+
+210
+
+(equipment unit, equipment group, and facility levels) is the ratio of the TP detections to the sum
+
+211
+
+of the TP and FP reports. Localization precision of each TP detection was assigned to three levels
+
+212
+
+of precision (i.e., equipment unit, equipment group, and facility levels).
+
+213
+
+A precise equipment unit localization occurs when a performer correctly attributes a detection
+
+214
+
+to an equipment unit where the controlled release occurred. For instance, if a controlled release
+
+215
+
+occurred from the first wellhead unit on pad 4 (i.e., 4W-1), and the report identifies 4W-1, this TP
+
+216
+
+detection will have a localization precision to the unit level. However, if the controlled release
+
+217
+
+occurred on the third wellhead unit in pad 4 (4W-3), the TP detection will have a localization
+
+218
+
+precision to the equipment group. For the solutions that reported the source emission rate, the
+
+219
+
+quantification accuracy was assessed by computing the relative error between the controlled
+
+220
+
+release rate and the reported emission rate. Additionally, quantification accuracy was assessed by
+
+221
+
+analyzing the percentage of single estimates within a factor of 3. The detection time is the time
+
+222
+
+difference between the start of a controlled release and when a performer submitted the first
+
+223
+
+detection report.
+
+224
+
+ADED Participating Solutions: Spring 2024
+
+225
+
+Participants were recruited through an open invitation on the METEC facility’s website and by
+
+226
+
+contacting solution developers identified during protocol development. Ten performers deployed
+
+227
+
+their solutions at wellpads 4 and 5 before the start of controlled testing. Two performers deployed
+
+228
+
+more than one solution for testing, summing up to 13 CM solutions. Some solutions monitored a
+
+229
+
+subset of equipment groups, while others deployed their solutions in all the equipment groups in
+
+https://doi.org/10.26434/chemrxiv-2024-f1znb-v2 ORCID: https://orcid.org/0009-0003-0001-8649 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+10
+
+230
+
+wellpads 4 and 5 (SI Figure S-3). After deployment, performers operated their solutions remotely
+
+231
+
+except when their hardware malfunctioned; in this case, a performer’s team would fix their
+
+232
+
+hardware during ‘no release’ periods.
+
+233
+
+In alphabetical order, the participating performers were Blue-Rock, ChampionX, Earthview,
+
+234
+
+Honeywell, Oiler-Equation, Project-Canary, Sensirion, Sensit, Shepherd-Safety, and SLB. Table 1
+
+235
+
+shows all the solutions deployed during testing, identified with a unique solution ID. Three
+
+236
+
+solutions tested in the current study were scanning/imaging solutions, while 10 were PSNs. As
+
+237
+
+shown in Table 1, four solutions were tested in 2023 (Ilonze et al., 2024) relative to the current
+
+238
+
+study (solutions N, F, D, and P). Solutions C, D, and F were also tested in the study by Bell et al.,
+
+239
+
+(2023). All the solutions were deployed across Pads 4 and 5 except solution U, which was only
+
+240
+
+deployed on the tanks in Pad 4.
+
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+
+https://doi.org/10.26434/chemrxiv-2024-f1znb-v2 ORCID: https://orcid.org/0009-0003-0001-8649 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+11
+
+253
+254
+255
+
+Table 1.
+Participating solutions in the current study (2024), from 2023 (Ilonze et al., 2024), and 2022 (Bell
+et al. 2023) testing, in alphabetical order of the solution ID.
+
+Solution ID
+C
+
+Sensor Type
+PSN
+
+Sensor Count
+2024
+2023
+(this study) (Ilonze et al)
+12
+-
+
+D
+
+PSN
+
+8
+
+8
+
+8
+
+✓
+
+✓
+
+F
+
+PSN
+
+9
+
+10
+
+8
+
+✓
+
+✓
+
+I
+
+Scanning/Imaging 1
+
+-
+
+-
+
+✓
+
+✓
+
+M
+
+Scanning/Imaging 7
+
+-
+
+-
+
+✓
+
+✓
+
+N
+
+PSN
+
+50
+
+18
+
+-
+
+✓
+
+✓
+
+P
+
+PSN
+
+14
+
+6
+
+-
+
+✓
+
+
+
+R
+
+PSN
+
+11
+
+-
+
+-
+
+✓
+
+✓
+
+S
+
+PSN
+
+12
+
+-
+
+-
+
+✓
+
+✓
+
+T
+
+PSN
+
+7
+
+-
+
+-
+
+✓
+
+✓
+
+U
+
+PSN
+
+3
+
+-
+
+-
+
+✓
+
+
+
+V
+
+Scanning/Imaging 1
+
+-
+
+-
+
+✓
+
+✓
+
+W
+
+PSN
+
+-
+
+-
+
+✓
+
+✓
+
+35
+
+2022
+(Bell et al)
+6
+
+Detection Quantification
+✓
+✓
+
+The table shows two different types of solutions that were tested: the PSNs and scanning/imaging solutions. The
+current study tested 13 solutions, with 4 of the 13 tested in (Ilonze et al., 2024), 2 of the 4, and 1 of the 13 tested
+in (Bell et al. 2023).
+✓ means the performer reported the data necessary for detection or quantification.
+ means the performer did not report the data necessary for detection or quantification.
+256
+
+Data Analysis
+
+257
+
+Classified data was divided into various quantiles, ranging from 30 to 50 points per bin. The
+
+258
+
+number of points was determined using quantile-based discretization, which produced the highest
+
+259
+
+goodness of fit (R2) for a solution. This approach ensured that each bin used when evaluating the
+
+260
+
+POD curve had an equal sample size of data classified as TP or FN—hence, approximately equal
+
+261
+
+statistical significance. In quantile-based discretization, balanced data bins were generated for
+
+262
+
+various test conditions. A detection fraction, a ratio of the number of TPs to the sum of the number
+
+https://doi.org/10.26434/chemrxiv-2024-f1znb-v2 ORCID: https://orcid.org/0009-0003-0001-8649 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+12
+
+263
+
+of TPs and FNs (nTPs /(nTPs + nFNs)), was derived from each bin. The detection fractions from
+
+264
+
+all the bins were fit to a POD curve using power functions; the intercept was set to zero for these
+
+265
+
+curves. The POD curve was calculated as a function of the source emission rate, duration, and
+
+266
+
+wind speed.
+
+267
+
+Multiple independent variables could impact the probability of detecting emissions. Therefore, a
+
+268
+
+multivariable logistics regression model was fitted to the detection data to assess the impact of
+
+269
+
+independent variables (wind speed, sensor location relative to the source, wind direction, release
+
+270
+
+duration, temperature, and emission rate) on the probability of a solution detecting emissions (SI
+
+271
+
+Section 8.2). Information on the analysis can be found in the SI sections S7, S10.1, and S10.2.
+
+272
+
+We applied a 5-minute buffer time on the maintenance end time to account for any residual
+
+273
+
+emissions in the atmosphere and to avoid assigning an FP detection to such reports. Additionally,
+
+274
+
+we applied 20-minute buffer times to the start and end times of the experiments to maintain
+
+275
+
+consistency with previous studies and to track the performance of solutions that have been retested
+
+276
+
+effectively.
+
+277
+
+Protocol Constraints
+
+278
+
+The performance of the tested solutions is only representative of the test conditions; therefore,
+
+279
+
+the results cannot be extrapolated to untested conditions. Tested conditions represent the site's
+
+280
+
+structural configuration, prevailing meteorological conditions, duration of controlled releases, and
+
+281
+
+the range of emission rates spanned during testing. Untested conditions include emissions longer
+
+282
+
+than 8 hrs, wind speed greater than 13m s-1, and, generally, atmospheric stabilities during summer.
+
+283
+
+For instance, some CM solutions rely on the accuracy of measurements from emissions that run
+
+284
+
+for extended periods. Since the controlled releases in this study ran for up to a maximum of 8 hrs,
+
+285
+
+the results may not cover the full capabilities of such solutions. Therefore, these untested
+
+https://doi.org/10.26434/chemrxiv-2024-f1znb-v2 ORCID: https://orcid.org/0009-0003-0001-8649 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+13
+
+286
+
+conditions may limit the work's applicability in this study. Testing at the site configuration
+
+287
+
+resembled a simplified upstream production facility. Therefore, results cannot be extrapolated to
+
+288
+
+more complex production facilities.
+
+289
+
+Emission rates ranging from 0.08 to 6.75 kg CH4 hr-1 were tested; however, for most production
+
+290
+
+facilities, there can be larger emission rates not tested in the study due to safety reasons. The
+
+291
+
+protocol implementation requires testing the solution for component emission detection and
+
+292
+
+quantification. However, some solutions operate as full facility monitors and may provide facility-
+
+293
+
+level emission rates rather than detection at the component level. The testing in this study involved
+
+294
+
+steady-state emission rates; however, this may not be the case in production facilities.
+
+295
+
+The detection reports in this study are human-influenced. The protocol requires the performers to
+
+296
+
+infer the presence/absence of emissions based on sensor readings rather than sending the sensor
+
+297
+
+readings directly to the test center. As this is the third implementation, we acknowledge that
+
+298
+
+repeated testing by some solutions may result in well-trained solution algorithms, and as such,
+
+299
+
+detection, localization, and quantification results may have improved substantially for such
+
+300
+
+solutions.
+
+301
+
+Results
+
+302
+
+Overview of the Results
+
+303
+
+Results of a multivariable logistic regression model showed that the emission rate significantly
+
+304
+
+(p<0.05) affected the probability of all solutions to detect emissions except for solution T (SI Table
+
+305
+
+S13). Therefore, POD curves were generated as functions of the emission rate. Other variables
+
+306
+
+tested for their impact on the POD include the release duration, ambient temperature, wind speed,
+
+307
+
+wind direction, and distance to the closest sensor (Tables S4-S16). The DL90 represents the
+
+308
+
+emission rate at which, results indicate, the solution could detect emissions in 90% of cases,
+
+https://doi.org/10.26434/chemrxiv-2024-f1znb-v2 ORCID: https://orcid.org/0009-0003-0001-8649 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+14
+
+309
+
+regardless of the prevailing meteorological conditions (Bell et al., 2023; Ilonze et al., 2024). In the
+
+310
+
+figures, the DL90 was labeled as NA if it was outside the tested release rate range (0.08 – 6.75 kg
+
+311
+
+CH4 hr-1).
+
+312
+
+Figure 1 compares the POD curves for solutions retested in this study relative to Ilonze et al.,
+
+313
+
+(2024). Figures 2 and 3 show the POD curves for the newly tested solutions. In Figure 1, the red
+
+314
+
+(data points from 2023 testing) and blue (data points from the current testing) markers represent
+
+315
+
+the fraction of controlled releases in a bin classified as TPs. The faded curves in all the plots were
+
+316
+
+derived from bootstrapping the data points to obtain the uncertainty of the POD curve (SI Section
+
+317
+
+S10.1).
+
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+
+https://doi.org/10.26434/chemrxiv-2024-f1znb-v2 ORCID: https://orcid.org/0009-0003-0001-8649 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+15
+
+332
+
+Figure 1.
+
+333
+334
+335
+336
+337
+338
+
+The probability of detection against the release rate for PSNs tested in 2023 and 2024. The
+90 % DL for both years is based on the controlled release rate range for the current testing (0.08
+to 6.75 kg CH4 hr-1). The DL90s of three of four solutions (Solutions D, F, and P) are within the
+current study's range of tested release rates, while 1 is outside the tested release rate range (Solution
+N).
+
+https://doi.org/10.26434/chemrxiv-2024-f1znb-v2 ORCID: https://orcid.org/0009-0003-0001-8649 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+16
+
+339
+
+Probability of Detection: In this section, we discuss the solutions' PODs in two categories: PODs
+
+340
+
+within and those outside (> 6.75 kg hr-1) the range of the tested emission rate. Additionally, we
+
+341
+
+perform an inter-solution comparison of the PODs (PSN versus scanning/imaging solutions).
+
+342
+
+Generally, figures 1, 2, and 3 show that 6 out of 13 solutions had DL90s ranging from 0.5 to 6.7
+
+343
+
+kg CH4 hr-1. For the 6 solutions, results indicate that these solutions balance method sensitivity
+
+344
+
+and low FP and FN rates (as in (Ilonze et al., 2024)). Table 2 shows that 5 of the six solutions had
+
+345
+
+the lowest FP rates (less than 20%: 8.0 to 18.9%), and 4 had the lowest FN rates (less than 50%:
+
+346
+
+8.0-34.1%) (SI Section S8.1).
+
+347
+
+Seven of 13 solutions with DL90s outside the controlled release rate range struggle with high
+
+348
+
+FP and FN rates (Table 2). Four of the seven solutions had the highest FP (>20%) and FN (>50%)
+
+349
+
+rates. Most of the tested variables affected the PODs of the 7 solutions, i.e., the distance to the
+
+350
+
+closest sensor, wind speed, duration, wind direction, and temperature (SI Section S8.2). As for
+
+351
+
+these solutions (N, C, U, M, R, T, and W), their DL90s should be used cautiously as they fall
+
+352
+
+outside the range of tested release rates, 0.08 – 6.75 kg CH4 hr-1.
+
+353
+
+Although all solutions had less than 50% FP rates, the percentage of FPs further classified as
+
+354
+
+excess reports for 10 of 13 solutions was high (≥50%). These solutions sent multiple detection
+
+355
+
+reports identifying already paired controlled releases. Multiple emissions identification could be
+
+356
+
+costly, as it would send misleading alerts for repair. Solutions N and W, which have the lowest FP
+
+357
+
+rates overall (4 % and 5 %, respectively), deployed the largest number of sensors (50 and 35,
+
+358
+
+respectively).
+
+359
+
+As for the FNs, 6 of 13 solutions had FN rates greater than 50%. All scanning/imaging solutions
+
+360
+
+had the highest FN rates (> 80%). A high FN rate indicates the likelihood of missing emissions,
+
+361
+
+which could delay repairs. For the scanning/imaging solutions, the scan time of a solution impacts
+
+https://doi.org/10.26434/chemrxiv-2024-f1znb-v2 ORCID: https://orcid.org/0009-0003-0001-8649 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+17
+
+362
+
+how fast a solution identifies an emission. Scanning/imaging solutions also deployed low sensor
+
+363
+
+counts (1 sensor each for solutions I and V, and 7 sensors for solution M; Table 1). This means that
+
+364
+
+they have a likelihood of missing emissions.
+
+365
+
+Figure 2.
+
+366
+367
+368
+369
+
+The probability of detection against the controlled release rate for scanning/imaging
+solutions. The DL90 of one of three solutions (Solution M) is outside the range of tested release
+rates; therefore, this is presented as NA.
+
+https://doi.org/10.26434/chemrxiv-2024-f1znb-v2 ORCID: https://orcid.org/0009-0003-0001-8649 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+18
+
+370
+
+Figure 3.
+
+371
+372
+373
+374
+
+The probability of detection against the controlled release rate for the newly tested PSNs.
+The DL90 of one solution is within the range of tested release rates. The DL90s for solutions C,
+R, T, U, and W are outside the tested emission rate range.
+
+375
+
+Inter-solution POD comparison: The DL90s for 4 PSNs were within the tested emission rate
+
+376
+
+range, ranging from 0.5 to 5.5 kg CH4 hr-1, somewhat better than the scanning/imaging solutions.
+
+377
+
+The DL90s for two scanning/imaging solutions (I and V) were 5.5 and 6.7 kg CH4 h-1, respectively.
+
+378
+
+The DL90 for the other scanning/imaging solution (M) could not be estimated; therefore, this is
+
+379
+
+presented as NA. The 4 PSNs deployed more sensors than scanning/imaging solutions, and had
+
+380
+
+low FP and FN rates, less than 20% and 50%, respectively. Additionally, 3 of the 4 PSNs were
+
+381
+
+previously tested by Ilonze et al., (2024) hence, better performance than scanning/imaging
+
+382
+
+solutions. The DL90s for the remaining 6 PSNs (5 newly tested) could not be estimated or did not
+
+383
+
+produce data that reflected enough trends to estimate a DL90.
+
+https://doi.org/10.26434/chemrxiv-2024-f1znb-v2 ORCID: https://orcid.org/0009-0003-0001-8649 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+19
+
+384
+
+Finally, the curves for POD as a function of emission rate for all scanning/imaging solutions
+
+385
+
+reflected a quasi-linear relationship. This suggests a stronger POD and emission rate relationship
+
+386
+
+than the independent variables tested.
+
+Table 2.
+A summary of the solutions’ DL90, overall true positive rate (TP), overall false negative rate (FN),
+overall no-controlled release, and excess reports- false positive rates (FP) (SI Section S8).
+FP
+DL
+Within
+No
+Excess
+Solution ID 90 % DL
+Tested
+Overall
+Controlled
+Reports
+TP
+FN
+(Type)
+(kg CH4 hr-1)
+Rates
+(%)
+Release (%)
+(%)
+(%)
+(%)
+F (PSN)
+0.5 [0.3, 0.6]
+Yes
+14.0
+7.8
+92.2
+92.0
+8.0
+P (PSN)
+3.2 [2.2, 5.6]
+Yes
+8.0
+6.1
+93.9
+72.3
+27.7
+a
+C (PSN)
+NA
+No
+24.0
+27.8
+72.2
+69
+30.8
+a
+R (PSN)
+NA
+No
+34.0
+3.0
+97.0
+67.7
+32.3
+D (PSN)
+5.5 [3.3, 16.0]
+Yes
+7.8
+15.9
+84.1
+67.1
+32.9
+S (PSN)
+3.4 [2.5, 5.2]
+Yes
+18.9
+5.0
+95.0
+65.9
+34.1
+a
+N (PSN)
+NA
+No
+3.7
+94.1
+5.9
+56.8
+43.2
+a
+T (PSN)
+NA
+No
+40.5
+33.2
+66.8
+39.5
+60.5
+a
+U (PSN)
+NA
+No
+34.1
+78.6
+21.4
+37.7
+63.0
+64.9
+I (Imaging)
+5.5 [4.3, NA]
+Yes
+22.8
+35.1
+18.7
+81.3
+a
+M
+(Imaging)
+NA
+No
+5.1
+20.0
+80.0
+14.2
+85.8
+V (Imaging) 6.7 [5.9, 8.0]
+Yes
+12.8
+50.0
+50.0
+10.9
+89.1
+a
+W (PSN)
+NA
+No
+5.1
+100.0
+0.0
+7.2
+92.8
+The table is presented in decreasing order of the TP rate. Overall, FP in the table represents the fraction of the
+detection reports classified as false positives. The FP detection reports were further classified as a nocontrolled release or an extra report. For the FP no-controlled release, this is a detection report sent in when
+the test center was not releasing gas. The FP extra report is when a solution sends multiple detection reports
+linked to an already TP-classified detection report.
+a
+Solutions with no observable POD trend with emission rates or whose DL90 is outside the range of tested
+rates. These POD curves and DLs should be used with caution. The POD for solutions T and W did not exceed
+60% and 20% in any bin, respectively (Figure 3).
+
+387
+388
+389
+
+390
+
+Comparing the POD Performance in the Current Study to the Two Previous Studies
+
+391
+
+Logistic regression models were used to generate the POD curve and to calculate the Method
+
+392
+
+Detection Limits in Bell et al., (2023). This is referred to as the DL90 in this study and in Ilonze
+
+393
+
+et al., (2024). The controlled releases in the studies by Bell et al., (2023) and Ilonze et al., (2024)
+
+https://doi.org/10.26434/chemrxiv-2024-f1znb-v2 ORCID: https://orcid.org/0009-0003-0001-8649 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+20
+
+394
+
+ranged from 0.4 to 6.4 kg CH4 h-1 and 0.006 to 7.1 kg CH4 h-1, respectively. The DL90 ranged
+
+395
+
+from 2.7 to 30.1 kg CH4 h-1 in Bell et al., (2023) and from 3.9 to 18.2 kg CH4 h-1 in Ilonze et al.,
+
+396
+
+(2024). Six of 11 and four of 9 solutions had DL90s within the range of controlled release rates in
+
+397
+
+Bell et al., (2023) and Ilonze et al., (2024), respectively.
+
+398
+
+Ilonze et al. relative to this study: The DL90s for the three retested solutions showed substantial
+
+399
+
+improvements, though with increased variability. The DL90s for these solutions ranged from 3.9
+
+400
+
+to 14.1 kg CH4 hr-1 in Ilonze et al. (2024). By the current study, these DL90s ranged from 0.5 to
+
+401
+
+5.5 kg CH4 hr-1, with notable gains for solutions F and P. Solution F’s DL90 improved from 6.2
+
+402
+
+[3.6, 17.4] kg CH4 hr-1 in Ilonze et al., (2024) to 0.5 [0.3, 0.6] kg CH4 hr-1 in the current study.
+
+403
+
+Solution P’s DL90 improved from 6.0 [4.1, 11.8] kg CH4 hr-1 to 3.2 [2.2, 5.7] kg CH4 hr-1 in the
+
+404
+
+current study. The two solutions' improvement in performance can be attributed to continuous
+
+405
+
+testing, improvement in the solution algorithm, and an increased number of sensors in solution P.
+
+406
+
+Solution F in the current study had a DL90 above EPA’s detection threshold (0.4 kg h-1) (US
+
+407
+
+EPA, 2024) for continuous monitoring systems by 0.1 kg CH4 h-1. The EPA regulation requires
+
+408
+
+detecting a facility’s fugitive emissions of 0.4 kg CH4 hr-1 in the presence of baseline emissions,
+
+409
+
+i.e., routine emissions common to most O&G sites. However, the current testing protocol has no
+
+410
+
+baseline emissions.
+
+411
+
+Bell et al. relative to this study: The DL90 for solutions tested in the current study, relative to
+
+412
+
+Bell et al. (2023), partially improved. Three solutions, C, D, and F, were also tested by Bell et al.
+
+413
+
+(2023). The DL90 for solution C could not be estimated in the current study, although the number
+
+414
+
+of sensors doubled. The DL90 remained at 5.5 kg CH4 h-1 for solution D and decreased from 3.4
+
+415
+
+[2.4, 5.4] kg CH4 h-1 to 0.5 [0.3, 0.6] kg CH4 h-1 for solution F. Although the DL90 for solution D
+
+416
+
+remained constant, the upper and lower bounds had a wider range than during testing by Bell et
+
+https://doi.org/10.26434/chemrxiv-2024-f1znb-v2 ORCID: https://orcid.org/0009-0003-0001-8649 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+21
+
+417
+
+al. (2023). Additionally, solution D has deployed a constant number of sensors since the protocol's
+
+418
+
+first implementation; therefore, the steady performance is attributed to improving the solution
+
+419
+
+algorithm and continuous testing.
+
+420
+
+Localization Precision and Accuracy
+
+421
+
+The protocol required the performers to submit the equipment unit where the solution detected an
+
+422
+
+emission. Localization used the reported equipment unit as a primary metric to establish the
+
+423
+
+precision of each TP detection (SI S9.2). As for the localization accuracy at the equipment unit,
+
+424
+
+this was calculated as a ratio of the number of TP detections at the equipment unit level to the total
+
+425
+
+number of reported detections (nTPEqUnit / (nTP + nFP)) for each solution (SI Section S9.2). We
+
+426
+
+define sensor density as the ratio of the surface area (in hectares) of the test center, i.e., pads 4 and
+
+427
+
+5, to the number of sensors deployed by a performer. Scanning/imaging solutions had higher sensor
+
+428
+
+densities (ha/sensor) as their sensors monitored larger areas than PSNs. The sensor densities for
+
+429
+
+scanning/imaging solutions (I, V, and M) were 0.12, 0.85, and 0.85 ha/sensor. For PSNs, the sensor
+
+430
+
+density ranged from 0.02 to 0.28 ha/sensor.
+
+431
+
+Overall, most solutions (7) presented high precision (> 50%) at the unit level. Although
+
+432
+
+scanning/imaging solutions have higher sensor density, results show that they localize emission
+
+433
+
+sources better than PSNs. All scanning/imaging solutions indicate high precision (> 50%) and
+
+434
+
+accuracy (> 40%) at the unit level (Table 3; SI Figure S-21). The localization precision of
+
+435
+
+scanning/imaging solutions (solutions I, M, and V) ranged from 56.0 % to 84.9%, and the
+
+436
+
+localization accuracy ranged from 43.2% to 80.6% at the unit level. As shown in Table 3, for the
+
+437
+
+PSNs at the unit level, 4 out of 10 solutions achieved precisions of 50% or greater and accuracies
+
+438
+
+of 40% or greater.
+
+https://doi.org/10.26434/chemrxiv-2024-f1znb-v2 ORCID: https://orcid.org/0009-0003-0001-8649 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+22
+
+439
+
+Table 3.
+
+440
+Summary of the localization precision and accuracies at the unit, group, and facility levels.
+Solution ID Solution Type
+Sensor Density Localization (Equipment Unit)
+(ha/sensor)
+Localization precision (%) Localization Accuracy (%)
+unit group facility
+unit group facility
+PSN
+0.28
+U
+96.3 3.7
+N/A
+63.4 65.9
+65.9
+PSN
+0.02
+W
+89.3 5.4
+5.4
+84.7 89.8
+94.9
+Imaging
+0.12
+M
+84.9 10.8
+4.3
+80.6 90.8
+94.9
+Imaging
+0.85
+V
+59.8 29.3
+11.0
+52.1 77.7
+87.2
+Imaging
+0.85
+I
+56.0 34.4
+9.6
+43.2 69.8
+77.2
+PSN
+0.02
+N
+55.7 41.2
+1.1
+55.5 95.2
+96.3
+PSN
+0.09
+F
+50.4 48.4
+1.3
+43.3 84.9
+86.0
+PSN
+0.07
+S
+29.2 49.9
+20.9
+23.7 64.1
+81.1
+PSN
+0.06
+P
+25.5 65.0
+9.5
+23.5 83.3
+92.0
+PSN
+0.11
+D
+24.6 64.2
+11.2
+22.6 81.8
+92.2
+PSN
+0.08
+R
+23.2 33.0
+43.8
+15.3 37.1
+66.0
+PSN
+0.12
+T
+22.9 35.0
+42.2
+13.6 34.4
+59.5
+PSN
+0.07
+C
+22.0 54.5
+23.5
+16.7 58.2
+76.0
+Results from Ilonze et al. for the solutions that were retested in the current study
+PSN
+0.11
+D
+27.2 68.8
+4.0
+25.3 89.3
+93.1
+PSN
+0.08
+F
+40.8 53.9
+5.3
+36.5 84.7
+89.4
+PSN
+0.05
+N
+51.6 41.8
+6.6
+42.2 76.2
+81.6
+PSN
+0.14
+P
+27.0 56.9
+16.1
+23.4 72.8
+86.8
+Results from Bell et al. for the solutions that were retested in the current study
+PSN
+0.14
+C
+1.0
+0.5
+98.5
+0.8
+1.2
+79.3
+PSN
+0.11
+D
+0.0
+52.8
+47.2
+0.0
+47.3
+89.6
+PSN
+0.11
+F
+24.8 50.2
+25.0
+19.2 58.1
+77.5
+The table is organized in decreasing order of the localization precision (for the current testing) at the equipment unit
+level. Precision at the unit level refers to a TP detection that identified the correct equipment unit, precision at the group
+level refers to a TP detection that identified the correct equipment group, and precision at the facility level refers to a
+TP detection that identified an emission from the test center.
+Solution U localized emissions to the unit and group levels because its sensors monitored a specific equipment group,
+i.e., the tanks on pad 4.
+441
+
+Comparing the Current Study's Localization (Equipment Unit) to Bell et al. and Ilonze et al.
+
+442
+
+Generally, localization precision and accuracy for solutions tested in previous studies changed
+
+443
+
+slightly relative to the current study (less than ±22%). The precision and accuracy increased for 2
+
+444
+
+of 4 solutions relative to Ilonze et al. (2024). For solutions C, D, and F, the precision and accuracy
+
+https://doi.org/10.26434/chemrxiv-2024-f1znb-v2 ORCID: https://orcid.org/0009-0003-0001-8649 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+23
+
+445
+
+increased at the unit level relative to Bell et al. (2023) (Table 3). Overall, there is an increase in
+
+446
+
+precision and accuracy for the 2 of 4 and all three solutions relative to Ilonze et al. (2024) and Bell
+
+447
+
+et al. (2023), respectively. This shows that, as a group, the current study's localization precision
+
+448
+
+and accuracy partially improved compared to the two previous studies. Although the results may
+
+449
+
+indicate partial improvement in precision and accuracy, these changes imply that the solutions’
+
+450
+
+algorithms have improved.
+
+451
+
+Quantification Accuracy
+
+452
+
+Quantification accuracy for all TP detections from all solutions that reported the source emission
+
+453
+
+rate is presented in two ways: as a percentage of single estimates within a factor of 3 and as the
+
+454
+
+relative quantification error. In the current study, 11 solutions reported the source emission rate.
+
+455
+
+The relative quantification error (in %) represents the relative difference between the reported and
+
+456
+
+metered emission rates.
+
+457
+
+Overall, the percentage of single emission estimates within a factor of 3 for the 11 solutions ranged
+
+458
+
+from 31 % to 92% (Table 4). The mean relative error from single estimates for controlled releases
+
+459
+
+(CR) between 0.1 and 1 kg CH4 h-1 and those greater than 1 kg CH4 h-1 for 3 and 9 solutions were
+
+460
+
+less than ±100%, respectively (Table 4). Small emission rates (between 0.1 and 1 kg CH4 h-1),
+
+461
+
+often associated with component leaks, exhibit consistently high relative quantification error for
+
+462
+
+most solutions (8). In contrast, larger emissions (> 1 kg CH4 h-1), often linked to process failures,
+
+463
+
+show lower quantification error for most solutions (9 solutions); this indicates that most CM
+
+464
+
+solutions could be well-positioned to mitigate larger emissions. Sections S8.4 and S10.3 of the SI
+
+465
+
+provide additional information on quantification accuracies.
+
+466
+
+https://doi.org/10.26434/chemrxiv-2024-f1znb-v2 ORCID: https://orcid.org/0009-0003-0001-8649 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+24
+
+467
+
+Table 4. The percentage of estimates within a factor of 3, and the relative quantification errors for
+
+468
+
+the 11 solutions that reported the source emission rate.
+
+Solution Solution Percent
+type
+of
+Estimates
+within 3×
+(%)
+F
+PSN
+93
+S
+PSN
+74
+D
+PSN
+71
+C
+PSN
+70
+M
+Imaging 67
+N
+PSN
+62
+V
+Imaging 57
+W
+PSN
+55
+R
+PSN
+40
+
+Relative quantification error (%)
+CR [0.1 to 1] (kg CH4 h-1)
+CR > 1 (kg CH4 h-1)
+Data
+Mean Error
+Median Data Count Mean Error
+Median
+Count [95% CI] (%)
+Error
+[95% CI] (%)
+Error
+(%)
+(%)
+510
+35 [27, 43]
+15
+203
+-12 [-18, -5]
+-22
+343
+186 [153, 219]
+90
+168
+27 [12, 41]
+8
+340
+260 [213, 308]
+124
+158
+33 [17, 49]
+3
+387
+96 [63, 129]
+-2
+149
+10 [-11, 30]
+-40
+35
+110 [56, 164]
+98
+57
+-20 [-45, 6]
+-52
+282
+33 [1, 66]
+-41
+135
+3 [-20, 26]
+-51
+17
+367 [17, 716]
+204
+64
+-29 [-46, -12]
+-47
+40
+569 [319, 820]
+394
+16
+4 [-34, 43]
+-14
+380
+1326
+[1003, 478
+145
+305 [205, 406]
+111
+1648]
+T
+PSN
+39
+233
+962 [775, 1149]
+383
+73
+3578
+[-2832, 114
+9988]
+I
+Imaging 31
+54
+422 [-279, 1122] -61
+71
+-28 [-63, 8]
+-79
+The percent of estimates 3× (%) represents the percentage of single emission rate estimates within a factor of 3 [33% to
+300%] of the CR rate. Also, the table shows the relative quantification errors’ mean, median, and 95% CI of the mean
+for control release rates between 0.1 and 1 kg CH4 h-1 and those > 1 kg CH4 h-1. The table is ranked based on the
+decreasing order of the percent estimates within a factor of 3.
+469
+
+Comparing the Quantification Accuracy for the Current Study to Ilonze et al.
+
+470
+
+Relative to Ilonze et al. (2024), 3 of 4 solutions reported the source emission rate (Figure 4).
+
+471
+
+Between 57 and 78% of the single estimates were within a factor of 3 during testing by Ilonze et
+
+472
+
+al. (2024). In the current study, between 62% and 93% of the single estimates were within a factor
+
+473
+
+of 3 (Table 4 and Figure 4). The percentage of estimates within a factor of 3 has increased.
+
+474
+
+Additionally, there is a stronger correlation between the reported and actual release rates.
+
+475
+476
+477
+
+https://doi.org/10.26434/chemrxiv-2024-f1znb-v2 ORCID: https://orcid.org/0009-0003-0001-8649 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+25
+
+478
+
+Figure 4.
+
+479
+480
+481
+482
+483
+484
+485
+486
+487
+
+The reported against the actual emission rate for the three re-tested solutions. The plots with
+green points are from 2023 quantification data, while those with blue points are from the current
+study’s quantification data. Each subplot shows the number of data points whose estimates are
+within a factor of 3. The black dotted line represents the 1:1 line; data points along this line
+illustrate that the reported equals the actual emission rate. The red dotted lines highlight the region
+where the single estimates are within a factor of 3 of the actual emission rates. The R 2 illustrates
+the correlation between the reported and actual emission rates. Generally, there is a stronger
+correlation between the reported and actual emission rates relative to Ilonze et al. (2024).
+
+488
+
+The overall emissions quantification has improved despite the consistently large quantification
+
+489
+
+errors in single estimates. This improvement can be attributed to consistent testing, the improved
+
+490
+
+emission quantification algorithm of solutions, and an increased number of deployed sensors for
+
+491
+
+solution N. The improvement is illustrated by an increase in the percentage of single estimates
+
+492
+
+within a factor of 3 in the current study, and Ilonze et al. (2024). Additionally, the solutions
+
+493
+
+consistently tested in previous studies had the lowest relative quantification errors for small and
+
+494
+
+large leaks (Table 4).
+
+https://doi.org/10.26434/chemrxiv-2024-f1znb-v2 ORCID: https://orcid.org/0009-0003-0001-8649 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+26
+
+495
+
+Detection Time
+
+496
+
+The detection time was calculated as the time between the start time of a controlled release and
+
+497
+
+the time our email-based reporting system received the solution’s detection report. In cases where
+
+498
+
+we received multiple detection report IDs, the time for the first detection report was used for
+
+499
+
+calculation. Generally, the mean detection time of solutions ranged from 5 hrs to 5 days (Figure
+
+500
+
+5). All solutions except solution D took longer (≥ 9 hrs) than the longest duration (8 hrs) of
+
+501
+
+controlled releases in the study. Overall, detection time for these solutions varies widely due to the
+
+502
+
+performers' manual evaluation of the detection report before submission. Additionally, the
+
+503
+
+automated reporting system may have failed for solutions with long detection times, resulting in
+
+504
+
+delayed detection report processing.
+
+505
+
+The mean detection time of solutions in the current study was larger than the mean detection
+
+506
+
+time in Bell et al. (2023) and Ilonze et al. (2024). For the current study, the least mean detection
+
+507
+
+time for 1 of 13 solutions was 5 hrs. For Bell et al. (2023) and Ilonze et al. (2024), 3 of 11 and 4
+
+508
+
+of 9 solutions had a mean detection time of ≤ 5 hrs, respectively. The mean detection time increased
+
+509
+
+for 3 of the four solutions tested by Ilonze et al. (2024).
+
+https://doi.org/10.26434/chemrxiv-2024-f1znb-v2 ORCID: https://orcid.org/0009-0003-0001-8649 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+27
+
+510
+
+Figure 5.
+
+511
+512
+513
+514
+515
+516
+517
+
+Bar plot showing the mean time to detection for all the solutions. The plot shows the mean
+time to detection for solutions tested in the current study (green bars) and those tested in Ilonze et
+al. (gold bars); the bars are organized in descending order of the mean time to detection for
+solutions tested in 2024. The whiskers represent the 2.5th and 97.5th percentiles of each solution’s
+detection time distribution. The inserted plot represents the outer plot's trimmed y-axis (at 1 week).
+For solutions I, W, and M, the mean time to detect is over 1 month.
+
+518
+
+Operation Downtime
+
+519
+
+Operation downtime is when a solution is not operational during testing, as a performer reports.
+
+520
+
+The operation downtime for 12 of 13 solutions in this study was ≤ 6.4%, meaning that the 12
+
+521
+
+solutions met EPA’s stipulated maximum operation downtime for continuous monitoring systems
+
+522
+
+(US EPA, 2024). Although the EPA considers operational downtime on a 12-month rolling
+
+523
+
+average, the solutions assessed in the current study demonstrate the ability to operate for more than
+
+524
+
+three months without malfunctioning.
+
+https://doi.org/10.26434/chemrxiv-2024-f1znb-v2 ORCID: https://orcid.org/0009-0003-0001-8649 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+28
+
+525
+
+Implications
+
+526
+
+This study represents the third implementation of the ADED continuous monitoring protocol. The
+
+527
+
+major findings for the current study are (1) solutions that tested in the two previous studies have
+
+528
+
+improved or held steady in various performance metrics, including lower DL90, lower FP and FN
+
+529
+
+rates, and higher localization accuracies at equipment group and facility levels, (2)
+
+530
+
+scanning/imaging solutions offer higher localization precision and accuracy than most PSNs, and
+
+531
+
+(3) solutions have higher quantification accuracies for larger emissions (> 1 kg CH4 hr-1) than
+
+532
+
+smaller emissions (< 1 kg CH4 hr-1).
+
+533
+
+These results highlight the importance of controlled testing in understanding the potential
+
+534
+
+performance of solutions in the field. Although the newly tested solutions performed well on
+
+535
+
+localization precision and accuracy, these solutions struggle with the probability of detection, have
+
+536
+
+large FP and false negative FN rates, and generally have long detection times. These results suggest
+
+537
+
+that repeat testing, with concomitant attention to solution evaluation and improvement, positively
+
+538
+
+impacts solution performance. Therefore, providing extended testing windows at low cost will
+
+539
+
+likely benefit the development of next-generation LDAQ solutions.
+
+540
+
+Additionally, different solutions perform well on different metrics, indicating that they could or
+
+541
+
+may already be tailored towards desirable functionalities or applicability to certain facility types
+
+542
+
+or leak detection and repair programs. Some solutions have DL90 that qualify for current voluntary
+
+543
+
+and regulatory leak detection programs. Also, these solutions have sufficiently low FP rates,
+
+544
+
+meaning they should be well-positioned for deployment in those programs.
+
+545
+
+Finally, as in prior test programs, release rates did not span the range necessary for many
+
+546
+
+solutions to achieve DL90 within the tested range. Comparing the three release programs to
+
+547
+
+recently approved EPA regulations shows that there is a need for future programs to test above the
+
+https://doi.org/10.26434/chemrxiv-2024-f1znb-v2 ORCID: https://orcid.org/0009-0003-0001-8649 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+29
+
+548
+
+survey mode requirements listed in EPA’s subpart OOOOb (US EPA, 2024) of 15 kg/h. Also, field
+
+549
+
+testing indicates a need for future testing to include non-fugitive emission sources during
+
+550
+
+controlled release testing (Day et al. 2024). Additionally, we have learnt that, with repeated testing,
+
+551
+
+we needed data representative of field performance (Day et al. 2024).
+
+552
+
+To address these concerns, revisions to the controlled testing protocol are underway. Therefore,
+
+553
+
+we propose the following revisions to the controlled testing protocol: 1. Including non-fugitive
+
+554
+
+emissions to fugitive releases; 2. Including more test conditions, such as during summer, to widen
+
+555
+
+the applicability of the test results; and 3. Encouraging performers to define detection thresholds
+
+556
+
+relevant to their solutions. Non-fugitive emission sources are due to normal operational conditions
+
+557
+
+at a facility. This creates non-steady emission rates and introduces temporal emission variation like
+
+558
+
+the field's emission profile. This allows a representative assessment of a solution's performance.
+
+559
+
+Data accessibility statement
+
+560
+
+All data from different solutions that participated in the current testing are included as
+
+561
+
+supplementary material.
+
+562
+
+Supporting Materials
+
+563
+
+All the solutions’ reports are included in one zip folder. Additional information about the test
+
+564
+
+facility and supplementary results are in PDF form. The final reports on each solution’s
+
+565
+
+performance can also be found on METEC’s ADED Results website.
+
+566
+
+Acknowledgment
+
+567
+
+We recognize the effort and commitment of the solution vendors who paid to participate in the
+
+568
+
+study and the test program. The authors acknowledge the contributions of the protocol
+
+569
+
+development committee to the test protocol's development. Finally, the authors wish to thank Ryan
+
+570
+
+Buenger and Wendy Hartzell for their assistance during testing.
+
+https://doi.org/10.26434/chemrxiv-2024-f1znb-v2 ORCID: https://orcid.org/0009-0003-0001-8649 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+30
+
+571
+572
+
+Funding:
+1. The Department of Energy (DOE: DE-FE0031873) supported the test protocol
+
+573
+
+development and subsidized the cost of testing for participating solutions.
+
+574
+
+2. Matching funds from industry partners and associations for the DOE contract.
+
+575
+
+Competing Interest
+
+576
+
+After the testing was concluded and before manuscript submission, Ethan Emerson began working
+
+577
+
+for Sonoma Technology, Inc., headquartered in Petaluma, California. Sonoma Technology, Inc. did
+
+578
+
+not participate financially or otherwise in drafting this manuscript; therefore, the views and
+
+579
+
+opinions expressed do not represent those of Sonoma Technology, Inc.
+
+580
+
+Author Contributions
+
+581
+
+Contributed to conception and design: FC, EE, CI, RD, DF, RB, DZ.
+
+582
+
+Contributed to data acquisition: FC, EE, DF, RB, DZ.
+
+583
+
+Contributed to analysis and interpretation of data: FC, EE, CI, EL, DZ.
+
+584
+
+Drafted and/or revised this article: FC, EE, CI, RD, EL, DF, RB, DZ.
+
+585
+
+Approved the submitted version for publication: FC, EE, CI, RD, EL, DF, RB, DZ.
+
+586
+
+References
+
+587
+588
+589
+590
+591
+592
+593
+594
+595
+
+“5-CCR-1001-9_eff-021424.Pdf.” n.d. Google Docs. Accessed July 21, 2024.
+https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=11327&fileName=5
+%20CCR%201001-9.
+Bell, Clay, Chiemezie Ilonze, Aidan Duggan, and Daniel Zimmerle. 2023. “Performance of
+Continuous Emission Monitoring Solutions under a Single-Blind Controlled Testing
+Protocol.” Environmental Science & Technology 57 (14): 5794–5805.
+https://doi.org/10.1021/acs.est.2c09235.
+Bell, Clay, Timothy Vaughn, and Daniel Zimmerle. 2020. “Evaluation of next Generation
+Emission Measurement Technologies under Repeatable Test Protocols.” Edited by Detlev
+
+https://doi.org/10.26434/chemrxiv-2024-f1znb-v2 ORCID: https://orcid.org/0009-0003-0001-8649 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+31
+
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+
+Helmig and Brian Lamb. Elementa: Science of the Anthropocene 8 (January):32.
+https://doi.org/10.1525/elementa.426.
+Bell, Clay, and Daniel Zimmerle. 2022. “METEC Controlled Test Protocol: Continuous
+Monitoring Emission Detection and Quantification.” Testing,reports. Mountain Scholar.
+https://doi.org/10.25675/10217/235364.
+Brandt, A. R., G. A. Heath, E. A. Kort, F. O’Sullivan, G. Pétron, S. M. Jordaan, P. Tans, et al.
+2014. “Methane Leaks from North American Natural Gas Systems.” Science 343 (6172):
+733–35. https://doi.org/10.1126/science.1247045.
+CDPHE. 2024. “Oil and Gas Greenhouse Gas Intensity Program | Department of Public Health
+& Environment.” 2024. https://cdphe.colorado.gov/oil-and-gas-greenhouse-gas-intensityprogram.
+Chen, Zhenlin, Sahar H. El Abbadi, Evan D. Sherwin, Philippine M. Burdeau, Jeffrey S.
+Rutherford, Yuanlei Chen, Zhan Zhang, and Adam R. Brandt. 2024. “Comparing
+Continuous Methane Monitoring Technologies for High-Volume Emissions: A SingleBlind Controlled Release Study.” ACS ES&T Air, June.
+https://doi.org/10.1021/acsestair.4c00015.
+Collins, William, Raymond Orbach, Michelle Bailey, Sebastien Biraud, Ian Coddington, David
+DiCarlo, Jeff Peischl, Anuradha Radhakrishnan, and David Schimel. 2022. “Monitoring
+Methane Emissions from Oil and Gas Operations ‡.” Optics Express 30 (14): 24326.
+https://doi.org/10.1364/OE.464421.
+Day, Rachel Elizabeth, Ethan Emerson, Clay Bell, and Daniel Zimmerle. 2024. “Point Sensor
+Networks Struggle to Detect and Quantify Short Controlled Releases at Oil and Gas
+Sites.” Sensors 24 (8): 2419. https://doi.org/10.3390/s24082419.
+EIA. 2024. “U.S. Natural Gas Production Grew by 4% in 2023, Similar to 2022 - U.S. Energy
+Information Administration (EIA).” 2024.
+https://www.eia.gov/todayinenergy/detail.php?id=61646.
+EPA. 2024. “40 CFR Part 60 Subpart OOOOb -- Standards of Performance for Crude Oil and
+Natural Gas Facilities for Which Construction, Modification or Reconstruction
+Commenced After December 6, 2022.” 2024. https://www.ecfr.gov/current/title-40/part60/subpart-OOOOb.
+“Gd-56-Alternative-Test-Methods-in-the-Advanced-Methane-Detection-Program.Pdf.” n.d.
+Accessed January 26, 2025. https://www.epa.gov/system/files/documents/2024-05/gd-56alternative-test-methods-in-the-advanced-methane-detection-program.pdf.
+Huang, Ling, Shannon Stokes, Qining Chen, and David T. Allen. 2024. “Uncertainties in the
+Estimated Methane Emissions in Oil and Gas Production Regions Based on Aircraft Mass
+Balance Flights.” ACS Sustainable Chemistry & Engineering 12 (29): 11024–32.
+https://doi.org/10.1021/acssuschemeng.4c03945.
+IEA, International Energy Agency. 2024. “Global Methane Tracker 2024 – Analysis.” IEA. 2024.
+https://www.iea.org/reports/global-methane-tracker-2024.
+Ilonze, Chiemezie, Ethan Emerson, Aidan Duggan, and Daniel Zimmerle. 2024a. “Assessing the
+Progress of the Performance of Continuous Monitoring Solutions under a Single-Blind
+Controlled Testing Protocol.” Environmental Science & Technology 58 (25): 10941–55.
+https://doi.org/10.1021/acs.est.3c08511.
+———. 2024b. “Assessing the Progress of the Performance of Continuous Monitoring Solutions
+under a Single-Blind Controlled Testing Protocol.” Environmental Science & Technology,
+June, acs.est.3c08511. https://doi.org/10.1021/acs.est.3c08511.
+
+https://doi.org/10.26434/chemrxiv-2024-f1znb-v2 ORCID: https://orcid.org/0009-0003-0001-8649 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+32
+
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+673
+674
+675
+676
+677
+678
+679
+680
+681
+682
+683
+684
+685
+686
+687
+
+IPCC. 2021. Climate Change 2021 – The Physical Science Basis: Working Group I Contribution
+to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change. 1st
+ed. Cambridge University Press. https://doi.org/10.1017/9781009157896.
+Lavoie, Tegan N., Paul B. Shepson, Maria O. L. Cambaliza, Brian H. Stirm, Stephen Conley,
+Shobhit Mehrotra, Ian C. Faloona, and David Lyon. 2017. “Spatiotemporal Variability of
+Methane Emissions at Oil and Natural Gas Operations in the Eagle Ford Basin.”
+Environmental Science & Technology 51 (14): 8001–9.
+https://doi.org/10.1021/acs.est.7b00814.
+Liu, Yunsong, Jean-Daniel Paris, Gregoire Broquet, Violeta Bescós Roy, Tania Meixus
+Fernandez, Rasmus Andersen, Andrés Russu Berlanga, et al. 2024. “Assessment of
+Current Methane Emission Quantification Techniques for Natural Gas Midstream
+Applications.” Atmospheric Measurement Techniques 17 (6): 1633–49.
+https://doi.org/10.5194/amt-17-1633-2024.
+“Methane | Vital Signs.” n.d. Climate Change: Vital Signs of the Planet. Accessed November 14,
+2024. https://climate.nasa.gov/vital-signs/methane?intent=121.
+MONITOR| Arpa-e. 2014. “MONITOR | Arpa-e.Energy.Gov.” April 29, 2014. http://arpae.energy.gov/technologies/programs/monitor.
+OGMP. 2024. “A Solution to the Methane Challenge – OGMP 2.0.” 2024.
+https://www.ogmpartnership.org/partnership.
+Parliament, European. n.d. “Reducing Methane Emissions in the Energy Sector | Legislative
+Train Schedule.” European Parliament. Accessed April 24, 2024.
+https://www.europarl.europa.eu/legislative-train/package-fit-for-55/file-reducingmethane-emissions-in-the-energy-sector.
+Ravikumar, Arvind P., Sindhu Sreedhara, Jingfan Wang, Jacob Englander, Daniel Roda-Stuart,
+Clay Bell, Daniel Zimmerle, et al. 2019. “Single-Blind Inter-Comparison of Methane
+Detection Technologies – Results from the Stanford/EDF Mobile Monitoring Challenge.”
+Edited by Detlev Helmig and Brian Lamb. Elementa: Science of the Anthropocene 7
+(January):37. https://doi.org/10.1525/elementa.373.
+Schuit, Berend J., Joannes D. Maasakkers, Pieter Bijl, Gourav Mahapatra, Anne-Wil Van Den
+Berg, Sudhanshu Pandey, Alba Lorente, et al. 2023. “Automated Detection and
+Monitoring of Methane Super-Emitters Using Satellite Data.” Atmospheric Chemistry
+and Physics 23 (16): 9071–98. https://doi.org/10.5194/acp-23-9071-2023.
+Siebenaler, Shane P., Adam M. Janka, David Lyon, John P. Edlebeck, and Aileen E. Nowlan.
+2016. “Methane Detectors Challenge: Low-Cost Continuous Emissions Monitoring.” In
+Volume 3: Operations, Monitoring and Maintenance; Materials and Joining,
+V003T04A013. Calgary, Alberta, Canada: American Society of Mechanical Engineers.
+https://doi.org/10.1115/IPC2016-64670.
+Titchener, James, Doug Millington-Smith, Chris Goldsack, George Harrison, Alexander
+Dunning, Xiao Ai, and Murray Reed. 2022. “Single Photon Lidar Gas Imagers for
+Practical and Widespread Continuous Methane Monitoring.” Applied Energy 306
+(January):118086. https://doi.org/10.1016/j.apenergy.2021.118086.
+US EPA, OA. 2023. “Methane Emissions Reduction Program.” Collections and Lists. January
+20, 2023. https://www.epa.gov/inflation-reduction-act/methane-emissions-reductionprogram.
+———. 2024. “Biden-Harris Administration Announces Final Rule to Cut Methane Emissions,
+Strengthen and Update Greenhouse Gas Emissions Reporting for the Oil and Gas Sector.”
+
+https://doi.org/10.26434/chemrxiv-2024-f1znb-v2 ORCID: https://orcid.org/0009-0003-0001-8649 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+33
+
+688
+689
+690
+691
+692
+693
+694
+695
+696
+697
+698
+699
+700
+701
+702
+703
+704
+705
+706
+707
+708
+709
+710
+
+News Release. May 6, 2024. https://www.epa.gov/newsreleases/biden-harrisadministration-announces-final-rule-cut-methane-emissions-strengthen-and.
+US EPA, OAR. 2016. “Understanding Global Warming Potentials.” Overviews and Factsheets.
+January 12, 2016. https://www.epa.gov/ghgemissions/understanding-global-warmingpotentials.
+———. 2024. “Overview of Greenhouse Gases.” Overviews and Factsheets. 2024.
+https://www.epa.gov/ghgemissions/overview-greenhouse-gases.
+US EPA, ORD. 2017. “Greenhouse Gases.” Reports and Assessments. November 2, 2017.
+https://www.epa.gov/report-environment/greenhouse-gases.
+Vaughn, Timothy L., Clay S. Bell, Cody K. Pickering, Stefan Schwietzke, Garvin A. Heath,
+Gabrielle Pétron, Daniel J. Zimmerle, Russell C. Schnell, and Dag Nummedal. 2018.
+“Temporal Variability Largely Explains Top-down/Bottom-up Difference in Methane
+Emission Estimates from a Natural Gas Production Region.” Proceedings of the National
+Academy of Sciences 115 (46): 11712–17. https://doi.org/10.1073/pnas.1805687115.
+Zavala-Araiza, Daniel, David Lyon, Ramón A. Alvarez, Virginia Palacios, Robert Harriss, Xin
+Lan, Robert Talbot, and Steven P. Hamburg. 2015. “Toward a Functional Definition of
+Methane Super-Emitters: Application to Natural Gas Production Sites.” Environmental
+Science & Technology 49 (13): 8167–74. https://doi.org/10.1021/acs.est.5b00133.
+Zimmerle, Daniel, Sonu Dileep, and Casey Quinn. 2024. “Unaddressed Uncertainties When
+Scaling Regional Aircraft Emission Surveys to Basin Emission Estimates.”
+Environmental Science & Technology 58 (15): 6575–85.
+https://doi.org/10.1021/acs.est.3c08972.
+
+https://doi.org/10.26434/chemrxiv-2024-f1znb-v2 ORCID: https://orcid.org/0009-0003-0001-8649 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+34
+
+

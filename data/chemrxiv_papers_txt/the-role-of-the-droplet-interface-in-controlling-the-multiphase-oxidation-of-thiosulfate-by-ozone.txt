@@ -1,0 +1,1365 @@
+The Role of the Droplet Interface in Controlling the
+Multiphase Oxidation of Thiosulfate by Ozone
+Alexandra M. Deal1, Franky Bernal1,2, Andreas Siebert1,3, Alexander M. Prophet1,2, Mauricio
+Lopez Luna1, Monika Blum1,3, Richard J. Saykally1,2, and Kevin R. Wilson1,*
+1
+
+Chemical Sciences Division, Lawrence Berkeley National Laboratory, Berkeley, CA 94720, United States
+2
+Department of Chemistry, University of California, Berkeley, Berkeley, CA 94720, United States
+3
+Advanced Light Source, Lawrence Berkeley National Laboratory, Berkeley, CA 94720, United States
+*Corresponding Author; krwilson@lbl.gov
+
+Abstract
+Predicting reaction kinetics in
+aqueous microdroplets, including
+aerosols and cloud droplets, is
+challenging due to the probability that
+the underlying reaction mechanism
+can occur both at the surface and in
+the interior of the droplet. Here, we
+use a stochastic reaction-diffusion
+model of thiosulfate oxidation by gas
+phase ozone to examine how the
+interface influences the multiphase
+reaction kinetics measured in levitated microdroplets using mass spectrometry. Building a realistic
+kinetic model of multiphase reactions requires both a detailed multistep reaction mechanism as
+well as the surface affinities of all reactants and products. Deep-UV Second Harmonic Generation
+spectroscopy is used to probe surface affinities of thiosulfate, sulfate, and sulfite, key species in
+the reaction mechanism. Thiosulfate has an appreciable surface affinity with a measured Gibbs
+free energy of adsorption of -7.29 ± 2.47 kJ/mol in neutral solution, while sulfate and sulfite exhibit
+negligible surface propensity. The Gibbs free energy is combined with data from liquid flat jet
+ambient pressure x-ray photoelectron spectroscopy to constrain the concentration of thiosulfate
+at the surface in the kinetic model. Kinetic simulations show that the primary reaction between
+thiosulfate and ozone occurs at the interface and in the bulk, with the contribution of the interface
+decreasing from ~65% at pH 5 to ~45% at pH 13. Additionally, sulfate, the major product of
+thiosulfate ozonation and an important species in atmospheric processes, can be produced by
+two different pathways at pH 5, one with a contribution from the interface of >70% and the other
+occurring predominantly in the bulk (>98%). Finally, we use the kinetic model to demonstrate the
+impact of a range of atmospherically relevant droplet sizes and reactant concentrations on product
+distributions and relative importances of surface and bulk chemistry. The observations in this work
+have implications for mining wastewater remediation and are likely applicable to other
+atmospherically-relevant reaction mechanisms, suggesting that future microdroplet/aerosol
+chemistry studies should carefully consider the role of both interfacial and bulk chemistry.
+
+1
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+1. Introduction
+Chemistry in microdroplets has garnered interest in recent years for its (sometimes extreme)
+differences from either purely gas-phase or condensed phase chemistry.1 Some studies have
+shown that microdroplet reaction rates increase with decreasing droplet size and reactant
+concentration, attributing this rate enhancement to high surface-to-volume ratios and increased
+contributions to the reaction from droplet interfaces. However, there is debate regarding the
+source of reaction rate enhancement,2-4 and determining the exact drivers in microdroplet
+chemistry, including the individual contributions from surface and bulk phases, is notoriously
+challenging due to experimental constraints and a lack of available surface activity data.
+Chemistry in microdroplets, including aerosols and cloud droplets, has a crucial role in
+atmospheric chemistry,5 hence a thorough understanding of microdroplet reaction mechanisms
+will be vital for accurate atmospheric chemistry modeling.
+The oxidation of sulfur and its impact on global climate has long been studied, but new sulfur
+intermediates are still being identified6 and sulfur oxyanions like thiosulfate may be
+underappreciated atmospheric intermediates. Thiosulfate might be released into the environment
+from incompletely treated mining tailings or formed from H2S and SO2 in volcanic stratospheric
+aerosols.7 Once released or formed, the ozonation of thiosulfate can acidify the reaction
+environment and form a mixture of fully oxidized sulfur (sulfate, SO42-) and partially oxidized sulfur
+(sulfur dioxide, SO2, trithionate, S3O62-, and tetrathionate, S4O62-). While sulfate directly
+contributes to the global radiation budget through new particle formation, thiosulfate, SO2,
+trithionate, and tetrathionate can act as long-lived metastable intermediates in the atmospheric
+sulfur cycle with down-stream environmental effects. Despite these potential impacts, the
+chemistry of thiosulfate in microdroplets has largely been unaccounted for in modeling the
+atmospheric sulfur cycle, and few studies have directly addressed the aqueous surface activity of
+sulfur oxyanions.
+
+2
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Efforts towards understanding the ozone oxidation of thiosulfate can also provide an excellent
+model system for understanding complex multistep reaction kinetics in microdroplets. Thiosulfate
+is often used as an O3 scavenger in laboratory uptake studies due to its fast reaction with ozone,8
+and trapped droplet studies suggest that thiosulfate is relatively surface active.9 In fact, previous
+work from Wilson and co-workers have shown that ozone reactions with organic and inorganic
+species in aqueous microdroplets are mediated by the non-reactive partitioning and diffusion of
+reactants, but many of these studies had undetectable products.10, 11 A detailed investigation of
+the multiphase chemistry of thiosulfate in microdroplets can therefore add to this body of work by
+exploring the role of the droplet surface for a reaction where the quantitative kinetics of
+intermediates and products are measured.
+
+Scheme 1. Reaction mechanism for the oxidation of aqueous thiosulfate (S2O32-) by ozone (O3).a
+
+a
+
+Reprinted with permission from Deal, et al.7 Copyright 2024 American Chemical Society.
+
+Our previous study7 presented the ozone oxidation of thiosulfate in aqueous droplets as a
+function of solution pH and gas-phase ozone concentration. This work prompted the formulation
+of a new reaction mechanism, shown in Scheme 1, which incorporates a previously unobserved
+intermediate, dithionite (S2O42-), as well as explains the pH-dependence of the reaction by a series
+of elementary reaction steps, as described in Deal, et al.7 Briefly, the primary reaction between
+thiosulfate and ozone forms an ozonide intermediate ([S2O3OOO]2-), which can decompose via
+
+3
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+three different reaction steps to form sulfate (SO42-), sulfur dioxide (SO2), dithionite (S2O42-), and
+dithionite’s conjugate acid (HS2O4-). S2O42- can then react with dissolved oxygen to form SO42and SO2 or react with SO2 to form trithionate (S3O62-). HS2O4- can react with another thiosulfate
+molecule to form tetrathionate (S4O62-). Any SO2 produced can either desorb to the gas phase or
+hydrolyze to form bisulfite (HSO3-) and sulfite (SO32-), which acidifies the solution. Lastly, SO32can be oxidized by ozone to form SO42-. In this mechanism, the pH of the solution has an explicit
+role in the branching ratio of the three [S2O3OOO]2- decomposition pathways and controls the
+acid-base equilibria for S2O42-/ HS2O4- and SO2/HSO3-/SO32-. A kinetic model using this proposed
+mechanism was validated against prior literature experiments.9, 12
+The kinetic model of the mechanism in Scheme 1 showed that accurate modeling of an
+experiment requires a thorough understanding of partitioning, but few studies have directly
+assessed the surface activity of thiosulfate or other intermediate sulfur oxyanions.7 Here, Deep
+UV-Second Harmonic Generation (DUV-SHG) is used to determine the Gibbs free energy of
+adsorption of thiosulfate, sulfate, and sulfite, and ambient pressure x-ray photoelectron
+spectroscopy (APXPS) of a flat liquid micro-jet is used to determine the maximum surface
+concentration of thiosulfate. There is a longstanding history of using nonlinear SHG
+measurements to extract thermodynamic information about surface-active species.13-15 These
+experiments help establish the molecular driving force for ions at the air-water interface when
+combined with corroborating information, typically from molecular dynamics simulations. In this
+work, we instead couple SHG studies with APXPS and kinetic experiments to assess the
+macroscopic impact of ions partitioning to interfaces during multiphase reactions. We use our
+kinetic models to test the Gibbs free energy of adsorption from SHG experiments and the
+maximum surface concentration from APXPS experiments. Thus, we bridge surface-specific
+(SHG and APXPS) and bulk (levitated microdroplet reactions) techniques to refine our
+understanding of the surface activity of thiosulfate and the mechanism for ozone oxidation of
+thiosulfate.
+4
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Finally, we use the kinetic model to explore the interaction between microscale reactors and
+reaction kinetics using calculated surface reaction fractions and demonstrate the potential impacts
+on product distributions for a range of environmentally relevant droplet sizes and reactant
+concentrations.
+2. Methods
+2.1. Deep UV Second Harmonic Generation (DUV-SHG)
+2.1.1. Experimental Methods
+We directly probe the equilibrium constants for sulfur oxyanions at the air-water interface using
+resonantly enhanced DUV-SHG spectroscopy. As a second-order nonlinear spectroscopy, DUVSHG is a surface-specific molecular probe that, in the electric dipole approximation, generates
+signal from only the topmost molecular layers of the air-water interface. Since the full experimental
+approach is described elsewhere,14, 16 only key details are provided here. The 800 nm output of a
+Ti:Sapphire amplifier (Spectra Physics, Spitfire) is directed to an optical parametric amplifier
+(TOPAS Prime) where the fundamental input wavelength is generated (386 – 440 nm). Solutions
+of Na2S2O3 (Sigma Aldrich, Reddi-Dri 99%), Na2SO3 (Fisher, ≥98%), and Na2SO4 (Sigma Aldrich,
+Reddi-Dri 99%) were made using ultrapure 18.2 MΩ water (Millipore, Milli-Q). The fundamental
+was directed to solutions held in Petri dishes at an angle 60o relative to the solution surface normal.
+DUV-SHG signal from the solution interface is spectrally filtered from the colinear fundamental
+and detected by a photomultiplier tube (Hamamatsu, R7154PHA). Figure 1A depicts the
+experimental setup and SHG process.
+
+5
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 1. DUV-SHG experimental diagram probing thiosulfate at the air-water interface. A) Molecular
+depiction of SHG produced at the air-water interface containing contributions from water molecules and
+resonant thiosulfate anions. B) Energy-level diagram highlighting the nonlinear SHG parametric process.
+The fundamental at 440 nm is two-photon resonant with the CTTS transition of thiosulfate. C) UV-Visible
+spectra of aqueous sulfur oxyanions. The CTTS transition peaks of sulfite and thiosulfate are clearly visible
+along with the low energy tail of the sulfate CTTS.
+
+In DUV-SHG, two photons are simultaneously annihilated to generate a third photon at twice
+the input frequency (Figure 1B). The input wavelength is chosen such that the second harmonic is
+resonant with the charge-transfer-to-solvent (CTTS) transition of the anions for signal
+enhancement. Much work has been done to characterize the energy and magnitude of CTTS
+transitions of common ions, including the sulfur oxyanions studied here.17 Despite the broad
+absorption features typical of these transitions, the center absorption wavelengths are well
+separated for each of the three species studied here (Figure 1C) and therefore require different
+input wavelengths.
+2.1.2. Langmuir Adsorption Model of DUV-SHG Spectra
+To characterize the propensity of ion adsorption to the air-water interface, DUV-SHG data are
+fit to a Langmuir isotherm. Compared to other adsorption isotherms, a simple Langmuir model
+
+6
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+best fits our concentration-dependent data. A full discussion on this Langmuir model and its
+application to SHG data can be found elsewhere.14 Briefly, we assume molecules in the bulk
+([𝑤𝑎𝑡𝑒𝑟(𝑏) ], [𝑖𝑜𝑛(𝑏) ]) are free to exchange position with molecules at the interface ([𝑤𝑎𝑡𝑒𝑟(𝑎𝑑𝑠) ],
+[𝑖𝑜𝑛(𝑎𝑑𝑠) ]) and derive an equilibrium expression for ion adsorption. Our model assumes that there
+is a maximum number of surface sites ( [𝑠𝑖𝑡𝑒𝑠]𝑚𝑎𝑥 ) and we use the relation [𝑠𝑖𝑡𝑒𝑠]𝑚𝑎𝑥 =
+[𝑖𝑜𝑛(𝑎𝑑𝑠) ] + [𝑤𝑎𝑡𝑒𝑟(𝑎𝑑𝑠) ] to substitute for the interfacial water concentration:
+[𝑤𝑎𝑡𝑒𝑟(𝑎𝑑𝑠) ] + [𝑖𝑜𝑛(𝑏) ] ↔ [𝑤𝑎𝑡𝑒𝑟(𝑏) ] + [𝑖𝑜𝑛(𝑎𝑑𝑠) ]
+𝑎𝑑𝑠 =
+𝐾𝑒𝑞
+
+[𝑤𝑎𝑡𝑒𝑟(𝑏) ] × [𝑖𝑜𝑛(𝑎𝑑𝑠) ]
+[𝑤𝑎𝑡𝑒𝑟(𝑎𝑑𝑠) ] × [𝑖𝑜𝑛(𝑏) ]
+
+=
+
+(1)
+
+[𝑤𝑎𝑡𝑒𝑟(𝑏) ] × [𝑖𝑜𝑛(𝑎𝑑𝑠) ]
+([𝑠𝑖𝑡𝑒𝑠]𝑚𝑎𝑥 − [𝑖𝑜𝑛(𝑎𝑑𝑠) ]) × [𝑖𝑜𝑛(𝑏) ]
+
+(2)
+
+From Equation 2, we solve for the surface ion concentration to generate Equation 3 which is in
+the form of a typical Langmuir expression relating ion concentration to the equilibrium constant
+for ion adsorption.
+[𝑖𝑜𝑛(𝑎𝑑𝑠) ] = [𝑠𝑖𝑡𝑒𝑠]𝑚𝑎𝑥 ×
+
+𝑎𝑑𝑠 [𝑖𝑜𝑛
+𝐾𝑒𝑞
+(𝑏) ]
+
+(3)
+
+𝑎𝑑𝑠 [𝑖𝑜𝑛
+[𝑤𝑎𝑡𝑒𝑟(𝑏) ] +𝐾𝑒𝑞
+(𝑏) ]
+
+Being a second-order process, the measured intensity of the SHG signal (𝐼2𝜔 ) is proportional
+to the susceptibility of the interface comprising contributions from water molecules and ions
+(2)
+
+(2)
+
+(𝜒𝑤𝑎𝑡𝑒𝑟 , 𝜒𝑖𝑜𝑛 ), and the input intensity squared (𝐼𝜔 2 ):
+(2)
+
+(2) 2
+
+𝐼2𝜔 ∝ |𝜒𝑤𝑎𝑡𝑒𝑟 + 𝜒𝑖𝑜𝑛 | × 𝐼𝜔 2
+
+(4)
+
+(2)
+
+Under resonant conditions, 𝜒𝑖𝑜𝑛 is a complex quantity with both real and imaginary
+(2)
+
+components. The water molecules are far from resonance and therefore 𝜒𝑤𝑎𝑡𝑒𝑟 has only a real
+contribution. Additionally, susceptibilities can be expressed as the product of the number
+interfacial species (𝑁) and an average hyperpolarizability (〈𝛽〉𝑒𝑓𝑓 ):
+𝐼2𝜔
+𝐼𝜔 2
+
+∝ (𝑁𝑤𝑎𝑡𝑒𝑟 × 〈𝛽〉𝑤𝑎𝑡𝑒𝑟 + 𝑁𝑖𝑜𝑛 × 𝑅𝑒[〈𝛽〉𝑖𝑜𝑛 ])2 + (𝑁𝑖𝑜𝑛 × 𝐼𝑚[〈𝛽〉𝑖𝑜𝑛 ])2
+
+(5)
+
+Numbers of interfacial species, N, are converted to interfacial concentrations by dividing with
+𝑁𝑤𝑎𝑡𝑒𝑟 :
+
+7
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+𝐼2𝜔
+𝐼𝜔 2
+
+2
+
+2
+
+∝ (〈𝛽〉𝑤𝑎𝑡𝑒𝑟 + [𝑖𝑜𝑛]𝑠𝑢𝑟𝑓 × 𝑅𝑒[〈𝛽〉𝑖𝑜𝑛 ]) + ([𝑖𝑜𝑛]𝑠𝑢𝑟𝑓 × 𝐼𝑚[〈𝛽〉𝑖𝑜𝑛 ])
+
+(6)
+
+We substitute Equation 3 into Equation 6 and group the hyperpolarizability and maximum
+surface site terms into A, B, and C parameters to generate Equation 7.
+𝐼2𝜔
+𝐼𝜔 2
+
+∝ (𝑨 + 𝑩 ×
+
+𝑎𝑑𝑠 [𝑖𝑜𝑛
+𝐾𝑒𝑞
+(𝑏) ]
+𝑎𝑑𝑠 [𝑖𝑜𝑛
+[𝑤𝑎𝑡𝑒𝑟(𝑏) ] +𝐾𝑒𝑞
+(𝑏)
+
+2
+
+2
+
+𝑎𝑑𝑠 [𝑖𝑜𝑛
+𝐾𝑒𝑞
+(𝑏) ]
+
+) + (𝑪 × [𝑤𝑎𝑡𝑒𝑟
+]
+
+𝑎𝑑𝑠
+(𝑏) ] +𝐾𝑒𝑞 [𝑖𝑜𝑛(𝑏) ]
+
+])
+
+(7)
+
+We can simplify Equation 7 and express all concentration terms as ion mole fractions (𝑋𝑖𝑜𝑛 ).
+𝑎𝑑𝑠 )−1 /(𝐾 𝑎𝑑𝑠 )−1 and use the relation (𝐾 𝑎𝑑𝑠 )−1 =
+Additionally, we multiply the fraction terms by (𝐾𝑒𝑞
+𝑒𝑞
+𝑒𝑞
+𝛥𝐺
+
+𝑒 𝑅𝑇 to reach the final fitting equation used to relate normalized SHG intensities to Gibbs free
+energies of adsorption.
+2
+𝐼2𝜔
+𝐼𝜔 2
+
+𝑋𝑖𝑜𝑛
+
+∝ (𝑨 + 𝑩
+
+𝛥𝐺
+
+(1−𝑋𝑖𝑜𝑛 )𝑒 𝑅𝑇 + 𝑋𝑖𝑜𝑛
+
+) + (𝑪
+
+2
+𝑋𝑖𝑜𝑛
+𝛥𝐺
+
+)
+
+(8)
+
+(1−𝑋𝑖𝑜𝑛 )𝑒 𝑅𝑇 + 𝑋𝑖𝑜𝑛
+
+2.2. Ambient Pressure Photoelectron Spectroscopy (APXPS)
+We directly probe the surface concentration, [𝑆2 𝑂32−(𝑎𝑑𝑠) ], of thiosulfate given its known bulk
+concentration, [𝑆2 𝑂32−(𝑏) ], using APXPS on a flat liquid jet. APXPS measurements were conducted
+at the Advanced Light Source (ALS) at beamline 11.0.2.1 in the LARaXS endstation using a
+colliding micro-liquid flat jet system, as described in Section S2.1 in the Supporting Information.
+O 1s core level spectra were taken with varying excitation energies (Section S2.2 in Supporting
+Information) to probe the first ~1.5 – 5 nm of the flat jet surface. Thiosulfate and water peak areas
+were determined from the O 1s spectrum, which probes the first ~1.5 nm of the surface (i.e., the
+O 1s spectrum taken with an excitation energy producing electrons with 100 eV excess kinetic
+energy). These areas were used to calculate the concentration of adsorbed thiosulfate at a bulk
+𝑏=0.5 𝑀
+
+concentration of 0.5 M, [𝑆2 𝑂32−(𝑎𝑑𝑠) ]
+
+𝑏=0.5 𝑀
+
+The average value for [𝑆2 𝑂32−(𝑎𝑑𝑠) ]
+
+= 0.4 ± 0.2 𝑀 (Section S2.3 in Supporting Information).
+
+(0.4 M), the average plus one standard deviation (0.6 M),
+
+and the average minus one standard deviation (0.4 M) were then used with the average value for
+the Gibbs free energy of absorption from the DUV-SHG experiments (-7.29 kJ/mol, Figure 2B) to
+
+8
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+calculate a range for the maximum concentration of adsorbed thiosulfate, which is equal to
+[sites]max in Equation 3 (see Supporting Information Section S3 for more details). This resulted in
+[𝑆2 𝑂32−(𝑎𝑑𝑠) ]
+
+𝑚𝑎𝑥
+
+= 1.67 ± 1.34 𝑀.
+
+2.3. Kinetic Modeling of Thiosulfate Ozonation
+A stochastic reaction diffusion model is implemented in Kinetiscope©, which has been used
+to model kinetics in a variety of systems, including organic aerosol, aqueous microdroplets, and
+emulsions.10, 11, 18, 19 The model used in this work was developed previously in Deal, et al.7 and
+validated against experimental data, which is replicated here in Figure 3 and Figure 4. These
+data7 were collected using levitated microdroplets that were trapped using a quadrupole
+electrodynamic trap (QET), exposed to ozone, and ejected into an open-port sampling interface
+(OPSI) for analysis by mass spectrometry (see Figure S12 in Supporting Information for an
+experimental schematic). The droplets comprised a 0.25 M solution of sodium thiosulfate at pH 5,
+9, or 13. Solutions at pH 5 and 9 were buffered using malonic acid and NaOH or glycine and HCl,
+respectively. The pH 13 solution was adjusted using NaOH and was unbuffered due to a lack of
+viable buffers in this pH range. Single droplets were ejected sequentially and their contents at
+each time point were analyzed using OPSI-MS as described in Deal, et al.7, providing
+concentrations of reactants, intermediates, and products over time. A kinetic model was
+constructed based on the mechanism shown in Scheme 1, with reaction rate constants and
+diffusion coefficients from the literature or benchmarked against the experimental data (see Table
+S1 in Supporting Information). This kinetic model is the basis for many of the observations in this
+paper and we thus describe the model in more detail here.
+Kinetiscope© is a kinetic modeling software package that uses a Monte Carlo approach to
+simulate chemical kinetics wherein probabilities for each reaction step are used to propagate
+concentrations in time. To account for the multiphase nature of the droplet, the system is modeled
+as two rectangular compartments: a surface compartment and a bulk compartment. The surface
+
+9
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+compartment has a depth of 1 nm, representing the depth of favorable solvation of ozone as
+determined by molecular dynamics simulations,10 and the bulk compartment has a length of r/3,
+which preserves the correct surface-to-volume ratio of spherical droplets.20 Both surface and bulk
+compartments have cross sections of 1 nm2. We note that the probing depth of the DUV-SHG is
+a few molecules and APXPS is the first ~1.5 nm of the surface, but we model the depth of the
+interface as 1 nm to represent the region where ozone is expected to have enhanced
+concentration relative to the gas and bulk phases (see Supporting Information Figure S13). Using
+a larger depth for the surface compartment would over predict the amount of adsorbed ozone and
+inaccurately enhance thiosulfate decay.
+When modeling ‘bulk-only’ chemistry and calculating surface reaction fractions, we add a third
+‘reaction-diffusion’ compartment between the surface and bulk compartments, as described in
+Section S1.2 in Supporting Information. While this three-compartment model provides more
+detailed simulations, it is also computationally expensive and takes up to 24 hours to simulate
+~500 seconds of reaction time, while the two-compartment model takes 15 minutes to simulate
+~1,500 seconds of reaction time. Given that the two-compartment model adequately replicates
+the kinetics simulated in three-compartments (see Section S1.3 in Supporting Information), the
+two-compartment is used for all simulations unless noted otherwise.
+2.3.1. Ozone Partitioning Scheme
+In the model it is necessary to consider ozone in three separate regimes: gas, bulk, and at the
+interface.11 For the interface, we use a previously published Langmuir adsorption framework21
+wherein ozone adsorbs to a surface site from the gas or liquid phase via the equilibria shown as
+steps S1 and S2 in Table S1 in Supporting Information. A ‘surface site’ is a portion of the interface
+where an ozone molecule can adsorb, and the maximum concentration of surface sites in
+volumetric units is related to the surface excess by
+𝛤𝑂∞
+
+[𝑠𝑖𝑡𝑒𝑠𝑜3 ]𝑚𝑎𝑥 = 𝛿3 𝑚𝑜𝑙𝑒𝑐 · 𝑐𝑚−3 ,
+
+10
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(9)
+
+where 𝛤𝑂∞3 is the maximum 2D surface concentration and δ is the thickness of the interface being
+simulated. To calculate 𝛤𝑂∞3 , we use the inverse of the molecular area of ozone calculated by
+Vieceli, et al.22 (18.5 Å2 ). Note that although sites are not molecules, we use the units 𝑚𝑜𝑙𝑒𝑐 ·
+𝑐𝑚−3 for consistency with kinetic rates.
+To determine the relevant kinetic rates, we first decompose the dimensionless Henry’s law
+𝑔𝑏
+
+𝑔𝑏
+
+𝑔𝑠
+
+𝑠𝑏 ,
+constant, 𝐻𝑐𝑐 , into the gas-to-surface (gs) and surface-to-bulk (sb) components, 𝐻𝑐𝑐 = 𝐻𝑐𝑐 · 𝐻𝑐𝑐
+
+as originally shown in Willis and Wilson11. Molecular Dynamics (MD) simulations published by
+Prophet, et al.10 provided solvation free energies, which were used to calculate the Henry’s Law
+𝑔𝑠
+
+𝑔𝑏
+
+𝑔𝑠
+
+𝑠𝑏 = 0.0292, and 𝐻
+components, giving 𝐻𝑐𝑐 = 4.97, 𝐻𝑐𝑐
+𝑐𝑐 = 0.1451. Note that here we use 𝐻𝑐𝑐 =
+
+4.97, which is obtained by averaging the solvation free energy across the interfacial region, while
+𝑔𝑠
+
+Prophet, et al.10 used 𝐻𝑐𝑐 = 9.3, which is computed from the maximum solvation free energy in
+𝑔𝑠
+
+the interfacial region. The simulation is not sensitive to this difference, but we believe that 𝐻𝑐𝑐 =
+4.97 is a more realistic representation of O3 in the interfacial regime. Both Prophet, et al.10 and
+𝑔𝑏
+
+this work use 𝐻𝑐𝑐 = 0.1451, which is consistent with previous studies on ozone solvation in 1M
+sodium chloride solutions.23, 24
+The Henry’s Law equilibrium constants are related to kinetic parameters to describe
+partitioning between the phases (adsorption/desorption between the gas-phase and interface and
+solvation/desolvation between the interface and bulk liquid):11
+𝑔𝑠
+
+[𝑂3(𝑎𝑑𝑠) ]
+
+𝑘𝑎𝑑𝑠 ·𝛤𝑂∞3 ·𝜎
+
+3(𝑔)
+
+𝑘𝑑𝑒𝑠 ·𝛿
+
+𝐻𝑐𝑐 = [𝑂
+
+=
+]
+
+[𝑂3(𝑏) ]
+
+𝑠𝑏 =
+𝐻𝑐𝑐
+[𝑂
+
+3(𝑎𝑑𝑠) ]
+
+𝑘𝑠𝑜𝑙𝑣 ·𝛿
+∞
+𝑑𝑒𝑠𝑜𝑙𝑣 ·𝛤𝑂3
+
+=𝑘
+
+(10)
+(11)
+
+Here the subscript (ads) signifies ozone adsorbed to the interface, (b) signifies bulk solvated
+ozone, and (g) signifies gas-phase ozone. We set the sticking coefficient, 𝜎, to 1 for simplicity and
+consistency with the previous study on ozone oxidation of iodide in aqueous microdroplets.10 The
+coefficients for desorption from the interface to the gas-phase ( 𝑘𝑑𝑒𝑠 = 1.93 𝑥 1010 𝑠 −1 ) and
+
+11
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+solvation from the interface into the bulk liquid (𝑘𝑠𝑜𝑙𝑣 = 1.90 𝑥 108 𝑠 −1 ) were obtained from prior
+MD simulations.10 Rearranging Equations 10 and 11, we compute 𝑘𝑎𝑑𝑠 and 𝑘𝑑𝑒𝑠𝑜𝑙𝑣 :
+𝑔𝑠
+
+𝑘𝑎𝑑𝑠 =
+
+𝐻𝑐𝑐 ·𝑘𝑑𝑒𝑠 ·𝛿
+𝛤𝑂∞3 ·𝜎
+
+(12)
+
+𝑘𝑠𝑜𝑙𝑣 ·𝛿
+𝑠𝑏 ·𝛤 ∞
+𝐻𝑐𝑐
+𝑂3
+
+(13)
+
+𝑘𝑑𝑒𝑠𝑜𝑙𝑣 =
+
+This results in rates of adsorption to the interface from the gas-phase of 𝑘𝑎𝑑𝑠 =
+1.77 𝑥 10−11 𝑐𝑚3 · 𝑚𝑜𝑙𝑒𝑐 −1 · 𝑠 −1 and from the bulk liquid to the interface of 𝑘𝑑𝑒𝑠𝑜𝑙𝑣 =
+1.2 𝑥 10−12 𝑐𝑚3 · 𝑚𝑜𝑙𝑒𝑐 −1 · 𝑠 −1 . These fast rates, in a stochastic simulation, often result in a rapid
+‘shuttling’ of ozone back and forth between the gas-phase and interface, significantly lengthening
+simulation times. Thus, most simulations were run with 100X slower rates; i.e., 𝑘𝑎𝑑𝑠 =
+1.77 𝑥 10−13 𝑐𝑚3 · 𝑚𝑜𝑙𝑒𝑐 −1 · 𝑠 −1 and 𝑘𝑑𝑒𝑠 = 1.93 𝑥 108 𝑠 −1 . In both cases, ozone transfer happens
+much faster than the reaction and using the slower adsorption and desorption rate constants does
+not affect the overall reaction kinetics while dramatically decreasing computational time.
+2.3.2. Aqueous Solute Partitioning Scheme
+After diffusing into the surface compartment, solutes can adsorb to the interface using a
+Langmuir framework, wherein the adsorption rate is proportional to the bulk concentration and
+the concentration of available surface sites. Using thiosulfate as an example, surface-adsorbed
+species at equilibrium are expressed as,
+2−
+[𝑆2 𝑂3(𝑎𝑑𝑠)
+] = [𝑆2 𝑂32−(𝑎𝑑𝑠) ]
+
+𝑚𝑎𝑥
+
+·
+
+𝑎𝑑𝑠 ·[𝑆 𝑂 2− ]
+𝐾𝑒𝑞
+2 3(𝑏)
+
+,
+
+(14)
+
+𝑎𝑑𝑠 ·[𝑆 𝑂 2− ]
+[𝑤𝑎𝑡𝑒𝑟(𝑏) ] +𝐾𝑒𝑞
+2 3(𝑏)
+
+where [𝑤𝑎𝑡𝑒𝑟(𝑏) ] = 55.5 𝑀 and
+𝑎𝑑𝑠 = 𝑘
+𝐾𝑒𝑞
+𝑑𝑒𝑠𝑜𝑙𝑣 ⁄𝑘𝑠𝑜𝑙𝑣 .
+
+(15)
+
+Note that the number of sites available is different for volatile solutes (O3 and SO2) and nonvolatile solutes (S2O32- and all other reaction intermediates and products). To our knowledge, the
+𝑎𝑑𝑠 , and maximum surface concentration,
+equilibrium constant for adsorption, 𝐾𝑒𝑞
+[𝑆2 𝑂32−(𝑎𝑑𝑠) ]
+
+𝑚𝑎𝑥
+
+,
+
+for thiosulfate has not been measured, so we combine data obtained from DUV-SHG (Section 2.1
+12
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+above) and APXPS (Section 2.2 above and Section S2 in Supporting Information) to constrain
+the maximum concentration of adsorbed thiosulfate in the kinetic experiments, [𝑆2 𝑂32−(𝑎𝑑𝑠) ]
+
+𝑚𝑎𝑥
+
+(see Section S3 in Supporting Information).
+The surface affinities for other non-volatile intermediates and products are also not well known.
+Therefore, we adopt a relative surface activity framework wherein the Langmuir equilibrium
+coefficient for each species is set relative to that of thiosulfate. At least one molecular dynamics
+study showed that sulfate is repelled from the interface,25 and DUV-SHG results shown in Figure
+2 suggest sulfite would be similarly repelled from the interface. Thus, the Langmuir equilibrium
+coefficients for sulfate and sulfite are set as one order of magnitude smaller than that for
+thiosulfate. On the other hand, other species are likely to be at least as surface active as
+thiosulfate, thus we set the Langmuir equilibrium coefficients for HS2O4-, S3O62-, and S4O62- equal
+to that of thiosulfate. The remaining species, S2O42-, is assigned a Langmuir equilibrium coefficient
+one order of magnitude larger than that of thiosulfate, which provided the best match between
+simulations and experiments.7 The reverse rate constants, 𝑘𝑠𝑜𝑙𝑣 , are set to 1 x 103 s-1 for all
+adsorbing species, as in Prophet, et al.10 This value is large enough such that the simulated
+kinetics are not sensitive to changes in the magnitude of 𝑘𝑠𝑜𝑙𝑣 , but small enough to prevent
+excessive computation time. The forward rate constants, 𝑘𝑑𝑒𝑠𝑜𝑙𝑣 , are calculated using Equation
+15.
+
+3. Results & Discussion
+3.1. Sulfur Oxyanion Surface Activities
+3.1.1. DUV-SHG of Sulfite, Sulfate, and Thiosulfate
+We adopt a Langmuir-Hinshelwood mechanism in the kinetic model, wherein molecules must
+first adsorb to the interface before they can react in the surface compartment. The concentration
+of adsorbed molecules is dictated by the molecule’s surface activity, determined by the maximum
+
+13
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+surface concentration and free energy of adsorption to the interface ( 𝛥𝐺𝑎𝑑𝑠 ) or associated
+𝑎𝑑𝑠 ). See Methods section 2.3.2. for more
+equilibrium constant for surface adsorption ( 𝐾𝑒𝑞
+
+information. However, to the best of our knowledge, few studies have measured either 𝛥𝐺𝑎𝑑𝑠 or
+𝑎𝑑𝑠 for thiosulfate and the other sulfur oxyanions involved in the reaction mechanism shown in
+𝐾𝑒𝑞
+
+Scheme 1. Here, we use Deep UV Second Harmonic Generation (DUV-SHG) to quantitatively
+determine the adsorption energy for thiosulfate at pH 6 and pH 13 and qualitatively determine
+sulfate and sulfite adsorption at pH 6.
+
+Figure 2. Normalized DUV-SHG response of sulfur oxyanions at the air-water interface. A)
+Response of sodium sulfite and sodium sulfate solutions exhibiting a weak concentrationdependent SHG response. Dashed lines act as a visual guide. B) Response of sodium thiosulfate
+exhibiting a clear concentration dependent DUV-SHG signal. Orange dashed line represents the
+fit to a Langmuir model. Error bars represent one standard deviation. Note that y-axes are different
+for clarity, panel A is shown with concentration on the x-axis for ease of interpretation, and panel
+B is shown with mole fraction on the x-axis for consistency with the Langmuir fit (Equation 8).
+Figure 2A plots the normalized SHG response of sulfite and sulfate as a function of bulk
+concentration. Sulfate solutions exhibit a flat SHG response across the measured concentration
+range, which is consistent with sulfate being repelled from the interface. As part of the Hoffmeister
+series, sulfate is a known kosmotrope and several studies have found it is well-solvated in water
+with no significant interfacial presence.26-29 Previous Raman thermometry measurements on 3 M
+aqueous (NH4)2SO4 microdroplets observed no change in the evaporation rate relative to pure
+water, which suggests that neither ammonium nor sulfate significantly impacted the exchange of
+
+14
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+water molecules across the air-water interface.26 Additionally, recent phase-sensitive vibrationalSHG measurements observed minimal perturbation of the free O-H stretch band of interfacial
+water molecules in MgSO4 and Na2SO4 solutions.27 It should be noted that our sulfate
+measurements were made with the second harmonic ca. 20 nm away from the expected CTTS
+transition maximum due to limitations in our optics and to avoid water molecule transitions.
+However, we are still weakly resonant with the low energy tail of the CTTS as seen in Figure 1C,
+SHG is sensitive enough to capture signal changes even under non-resonant conditions, and our
+results agree with previous studies.30
+Sodium sulfite measurements collected at 200 nm display a weak signal increase above 1 M
+(Figure 2A). Previous SHG work has attributed this weak linear response to an interfacial
+thickening of the water layer due to an increased solute concentration, which alters the
+hyperpolarizability of interfacial water moleucles.16, 30, 31 Given the typical linewidth of CTTS
+transitions, we measured sodium sulfite at 390 nm (195 nm SHG), and observe a clear uniform
+response similar to sulfate measurements. If sulfite ions were indeed surface-active, a 5 nm shift
+away from the resonant transition center would not completely diminish the SHG response.
+Unlike sodium sulfate and sodium sulfite solutions, Figure 2B shows a strong concentration
+dependent SHG signal for solutions of sodium thiosulfate. Fitting the normalized SHG response
+to Equation 8, we extract 𝛥𝐺𝑎𝑑𝑠 = −7.29 ± 2.47𝑘𝐽/𝑚𝑜𝑙 for thiosulfate anions at the air-water
+interface. These results indicate that thiosulfate, a doubly charged anion, exhibits a strong
+propensity for the interface not seen in the similarly charged sulfite and sulfate anions. This
+behavior is striking since early theories of ions at interfaces by Onsager and Samaras predict a
+strong repulsion of doubly charged ions based on electrostatic arguments.32 Even as early
+experimental and theoretical studies began to uncover support for interfacial ions, it was thought
+that only large, highly polarizable anions could be surface enhanced and excluded multicharged
+anions and cations. However, much progress has been made in our understanding of interfacial
+ions and we now have evidence to support the surface enhancement of previously overlooked
+15
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+ions. Recent X-ray photoelectron spectroscopy and DUV-SHG studies find that the doublycharged carbonate ion similarly preferentially adsorbs to the air-water interface, much more
+strongly than the singly charged bicarbonate ion.31, 33 MD simulations found that carbonate ions
+form quasi-neutral clusters with surrounding water molecules and sodium counterions that is then
+better accommodated at the interface. Similarly, recent studies indicate that like-charge ion pairing
+is involved in the strong surface adsorption observed for guanidinium cations.16 While we do not
+yet have a mechanism to explain the surface adsorption of thiosulfate, it is not unreasonable to
+propose that favorable ion-pairing effects are likely involved. Without MD simulations, we lack a
+theoretical route to validate and interpret the measured 𝛥𝐺𝑎𝑑𝑠 of thiosulfate, and instead use the
+kinetic model to compare simulated reaction kinetics using the measured 𝛥𝐺𝑎𝑑𝑠 to experimental
+reaction kinetics.
+Specifically, Deal, et al.7 performed a sensitivity analysis comparing experimental data at each
+pH to simulations assuming ΔGads = -4.82 kJ/mol, -7.29 kJ/mol, and -9.76 kJ/mol and found that
+simulations assuming ΔGads = -7.29 kJ/mol were most consistent with the pH 5 and pH 9
+experimental data while simulations assuming ΔGads = -4.82 kJ/mol were most consistent with the
+pH 13 experimental data (see Figure S8 Supporting Information). This seems to suggest that
+thiosulfate is less surface-active in this highly alkaline environment, thus we perform additional
+DUV-SHG measurements of thiosulfate solutions adjusted to pH 13 (see Section S4 in Supporting
+Information). The average ΔGads value at pH 13 is more positive (-4.08 ± 2.85 kJ/mol, Figure S8
+in Supporting Information) than that for the neutral solution (-7.29 ± 2.47 kJ/mol, Figure 2Figure
+3B), which may be consistent with a decreased surface activity at pH 13. However, the uncertainty
+in these measurements remains large and the intensity of the SHG response is not significantly
+different than the pH 6 measurements, which is inconsistent with decreased surface activity. Thus,
+while our data suggest that the ΔGads of thiosulfate at the air-water interface could be less
+favorable with increased pH, DUV-SHG results are inconclusive on their own (see Section S4 in
+Supporting Information for more details).
+16
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+3.1.2. Constraining [S2O32-(ads)] with DUV-SHG and APXPS
+The concentration of adsorbed thiosulfate calculated by the kinetic model is dependent on
+both the free energy of adsorption, as measured by DUV-SHG and discussed previously, as well
+as the maximum concentration of adsorbed thiosulfate, [𝑆2 𝑂32−(𝑎𝑑𝑠) ]
+
+𝑚𝑎𝑥
+
+, which is determined using
+
+combined DUV-SHG and APXPS results (Section S3 in Supporting Information). To gauge the
+sensitivity of the coupled parameters ΔGads and [𝑆2 𝑂32−(𝑎𝑑𝑠) ]
+
+𝑚𝑎𝑥
+
+, we completed kinetic simulations
+
+for two scenarios, first with ΔGads = -4.82 kJ/mol and then ΔGads = -7.29 kJ/mol. For each given
+free energy of adsorption, three values of [𝑆2 𝑂32−(𝑎𝑑𝑠) ]
+
+𝑚𝑎𝑥
+
+were tested, namely [𝑆2 𝑂32−(𝑎𝑑𝑠) ]
+
+𝑚𝑎𝑥
+
+=
+
+8.05 x1020 molec · cm-3 (1.33 M), 1.61 x1021 molec · cm-3 (2.67 M), and 2.41 x1021 molec · cm-3
+(4.00 M). Experimental data recreated from Deal, et al.7 (points) are compared to simulation
+results (lines) assuming 𝛥G = -4.82 kJ/mol in Figure 3 and simulation results assuming 𝛥G = 7.29 kJ/mol in Supporting Information Figure S7. Note that green points represent S2O42- and
+HS2O4- and grey points represent SO32- and HSO3-, as protonated forms are indistinguishable
+from deprotonated forms in the mass spectra used in Deal, et al.7 The term ‘S loss’, or the total
+amount of reacted sulfur that is not detected in products, encompasses all potential
+unaccountable sulfur sinks, including evaporation as gasses, precipitation as elemental sulfur,
+and experimental error.7
+
+17
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 3. Representative reaction kinetics for the ozone oxidation of thiosulfate (S2O32-) in pH 5
+(A,D,G), pH 9 (B,E,H), and pH 13 (C,F,J) solutions compared with simulation results using 𝛥G =
+-4.82 kJ/mol and three values for the maximum concentration of adsorbed thiosulfate (values
+shown in legend). Experimental data (points) are recreated from Deal, et al.7 with error bars
+representing one standard deviation in a set of 5 repeats.
+Interestingly,
+[𝑆2 𝑂32−(𝑎𝑑𝑠) ]
+
+𝑚𝑎𝑥
+
+we
+
+find
+
+that
+
+the
+
+ΔGads
+
+=
+
+-4.82
+
+kJ/mol
+
+simulations
+
+with
+
+varying
+
+recreate the experimental data at all three pH values (Figure 3), while the ΔGads =
+
+-7.29 kJ/mol simulations only recreate experimental data at pH 5 and pH 9 (Figure S7 in
+Supporting Information). In Figure 3, we see that [𝑆2 𝑂32−(𝑎𝑑𝑠) ]
+
+𝑚𝑎𝑥
+
+closely recreates the pH 5 experimental data, [𝑆2 𝑂32−(𝑎𝑑𝑠) ]
+
+𝑚𝑎𝑥
+
+recreates the pH 9 experimental data, and [𝑆2 𝑂32−(𝑎𝑑𝑠) ]
+
+𝑚𝑎𝑥
+
+= 4.00 M (dotted lines) most
+
+= 2.67 M (solid lines) most closely
+
+= 1.33 M (dashed lines) most closely
+
+recreates the pH 13 experimental data. Specifically, the simulated thiosulfate decay (Figure
+3A,B,C black), trithionate production (Figure 3G,H blue), and tetrathionate production (Figure 3G
+purple) show excellent agreement with experimental data. The simulated sulfate production (red)
+also shows excellent agreement with experimental data at pH 5 (Figure 3G) but overestimates
+18
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+the amount of observed sulfate production at pH 9 (Figure 3H). This discrepancy at pH 9 is likely
+due to the high sulfur loss (Figure 3B orange point), which the kinetic model does not account for.
+Comparing the simulated and experimental results for dithionite and sulfite is more complicated
+due to uncertainties in the concentrations for each of these species. Dithionite is not stable in
+aqueous solution, where it decomposes into sulfite and sulfate,34 meaning that calibration curves
+were not obtained for dithionite and the concentrations shown here are qualitative rather than
+quantitative. Furthermore, because dithionite decomposes into sulfite, the experimental sulfite
+signal at pH 9 (Figure 3E grey) may be skewed. Despite these issues, we find that the kinetic
+simulations do accurately replicate the kinetic behavior of dithionite (Figure 3D,E,F green).
+We note that although OH- is known to react with ozone, which could also explain the reduced
+thiosulfate decay observed at pH 13, the rate constant (< 100 M-1 s-1 or < 2 x 10-19 cm3 molec-1 s1 35
+
+)
+
+is ~6 orders of magnitude smaller than the rate constant for the reaction of thiosulfate with
+
+ozone (7.2 x 107 M-1 s-1 or 1.20 x 10-13 cm3 molec-1 s-1).36, 37 This means that almost all of the
+thiosulfate has to be depleted before the OH- + O3 reaction becomes competitive. Given that we
+still detect significant amounts of thiosulfate at long reaction times, we consider OH- + O3 as a
+negligible contributor to the reaction kinetics. We also note that although we model the pH as the
+same in the bulk and surface compartments, there is some evidence for enhanced acidity near
+the interface.1 While it is possible our modeling of pH is too simplistic, enhanced acidity at the
+interface likely does not explain the pH 13 kinetics as we would expect to see formation of
+trithionate or tetrathionate. On the other hand, there is some evidence that anion reactions with
+ozone are slower at the interface in highly alkaline environments.10
+Overall, we find that the DUV-SHG and APXPS results are consistent with the experimental
+results from Deal, et al.7, with all indicating that thiosulfate is surface active. Although there is
+some uncertainty in the free energy of adsorption, and whether it changes with pH, the DUV-SHG
+data show favorable free energies of adsorption to the interface in all cases. The APXPS results
+also show a significant concentration of thiosulfate at the water surface, with maximum surface
+19
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+concentrations of 1.33 M to 4 M. Simulations with this range of potential maximum surface
+concentrations suggest that less thiosulfate adsorbs to the interface with increasing pH, which
+may indicate competitive adsorption between thiosulfate and OH-, especially at pH 13 when [OH-]
+= 0.1 M compared with [S2O32-] = 0.25 M. We note that APXPS measurements have only been
+collected at neutral pH, and the exact mechanism for decreased thiosulfate surface concentration
+with increasing pH remains to be determined. However, the general trend is consistent with
+previous literature,10 and both experimental and simulated kinetics results show a fast reaction
+with ozone which points towards a significant contribution from surface chemistry, regardless of
+the exact concentration of thiosulfate.
+3.2. Interface vs. Bulk Contributions to Reaction Kinetics
+To examine the relative contribution of surface and bulk reactions, we run the kinetic model
+allowing only surface or bulk chemistry, respectively. Given the findings in Section S.1., the kinetic
+models use ΔGads = -4.82 kJ/mol for all pH values, but use [𝑆2 𝑂32−(𝑎𝑑𝑠) ]
+
+𝑚𝑎𝑥
+
+[𝑆2 𝑂32−(𝑎𝑑𝑠) ]
+
+𝑚𝑎𝑥
+
+= 2.67 M for pH 9, and [𝑆2 𝑂32−(𝑎𝑑𝑠) ]
+
+𝑚𝑎𝑥
+
+= 4.00 M for pH 5,
+
+= 1.33 M for pH 13. ‘Bulk only’ simulations
+
+require an additional reaction-diffusion compartment between the surface and bulk compartments
+to account for near- surface reactions (see Supporting Information Section S1.2). In both ‘surface
+only’ and ‘bulk only’ simulations, acid-base equilibria are still enforced throughout the simulation
+volume and all species are allowed to adsorb to the interface, desorb from the interface, and
+diffuse throughout the surface and bulk compartments. Simulations run with only surface
+chemistry show significant thiosulfate decay (black dashed lines in Figure 4A,B,C), while modeling
+only bulk chemistry (dotted lines) predicts a slower thiosulfate decay at pH 5 and pH 9.
+At all pH values studied here, neither surface chemistry nor bulk chemistry alone recreate the
+observed kinetics for reaction intermediates and final products (summarized in Table S3 in
+Supporting Information). As shown by the dashed lines Figure 4D,E,F, restricting chemistry to the
+surface does not accurately capture the decay kinetics for dithionite (S2O42-, green) and results in
+
+20
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+negligible sulfite (SO32-, grey) formation. Note that although experimental results cannot
+distinguish between S2O42- and its conjugate acid, HS2O4-, simulations suggest that [S2O42-] >>
+[HS2O4-] at all pH values studied here. In Figure 4G,H,J, we see that restricting chemistry to the
+surface compartment produces a negligible amount of the expected final products in pH 9 and pH
+13 solutions (Figure 4H,J), and no tetrathionate (S4O62-, purple) and too much trithionate (S3O62-,
+blue) in the pH 5 solution (Figure 4G). On the other hand, restricting chemistry to the bulk
+compartment shows reasonable agreement with dithionite (S2O42-, green) kinetics (Figure 4D,E,F)
+and reasonable agreement with the final concentrations of final products at pH 5 (Figure 4G) but
+does not accurately capture the maximum dithionite concentration at pH 9 (Figure 4E), final
+product kinetics at early times at pH 5 (Figure 4G), or trithionate (S3O62-, blue) production at pH 9
+(Figure 4H). This suggests that the ozonation of thiosulfate in droplets formed from pH 5 and pH
+9 solutions relies on both surface and bulk chemistry.
+
+21
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 4. Contributions from surface and bulk chemistry to the ozone oxidation of thiosulfate
+(S2O32-) in pH 5 (A,D,G), pH 9 (B,E,H), and pH 13 (C,F,J) solutions. Experimental data (points)
+are recreated from Deal, et al.7 with error bars representing the standard deviation in a set of 5
+repeats. Simulation results include both surface and bulk reactions (solid lines), only surface
+reactions (dashed lines), or only bulk reactions (dotted lines).
+Thiosulfate decay kinetics appear decoupled from the kinetics of the reaction intermediates
+and products, as mentioned in Deal, et al.7 and seen in Figure 4. This is especially clear for pH 5
+and pH 9 solutions, wherein the thiosulfate decay kinetics (Figure 4A,B) can be described using
+only surface reactions, but the kinetics of reaction intermediates (Figure 4D,E) and products
+(Figure 4G,H) must be described using both surface and bulk reactions. To better understand this,
+we examine the percent surface reaction for each reaction step using a 3-compartment model
+(see Section S1.2. and S.1.3. in Supporting Information). Although computationally expensive, a
+3-compartment model is used to prevent an artificial enhancement of the surface reaction fraction,
+22
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+and the reaction-diffusion compartment (noted as ‘rxn’) is considered part of the bulk. The
+selection frequency, n, or number of times a specific reaction step occurs, is extracted from the
+Kinetiscope© model for each reaction step in the bulk, reaction-diffusion, and surface
+𝑥
+compartments. The percent surface reaction, 𝑓𝑠𝑢𝑟𝑓
+, for each reaction step, x, is then calculated
+𝑥
+as 𝑓𝑠𝑢𝑟𝑓
+= 𝑛𝑥
+
+𝑥
+𝑛𝑠𝑢𝑟𝑓
+
+𝑥
+𝑥
+𝑠𝑢𝑟𝑓 +𝑛𝑟𝑥𝑛 +𝑛𝑏𝑢𝑙𝑘
+
+∗ 100%. The results are shown in Figure 5.
+
+Figure 5. Percent surface reaction values for each reaction step determined from kinetic
+simulations. Note that y-axes vary for clarity. The colors for secondary and other down-stream
+reaction steps are set to match the product color scheme used elsewhere in this paper (e.g.,
+reaction 2b is set to blue to match the blue used for trithionate (S3O62-)).
+
+Figure 5A,D,F shows that the primary reaction between thiosulfate and ozone occurs both at
+𝑥
+the surface and in the bulk at all pH values, with 𝑓𝑠𝑢𝑟𝑓
+decreasing from over 65% at pH 5 to ~45%
+
+at pH 13, which is consistent with the decreasing value of [𝑆2 𝑂32−(𝑎𝑑𝑠) ]
+
+𝑚𝑎𝑥
+
+used here. The
+
+subsequent decomposition of the ozonide intermediate [S2O3OOO]- to form SO2 and sulfate,
+S2O42-, or HS2O4- (reactions 1a, 1b, 1c in Figure 5A,D,F) primarily occurs at the droplet surface at
+𝑥
+pH 9 (Figure 5D; 𝑓𝑠𝑢𝑟𝑓
+>80%), but has a larger contribution from the bulk at pH 5 (Figure 5A;
+𝑥
+𝑥
+𝑓𝑠𝑢𝑟𝑓
+~70%) and pH 13 (Figure 5F; 𝑓𝑠𝑢𝑟𝑓
+~65%). On the other hand, the oxygen-mediated
+
+23
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+decomposition of S2O42- to form SO2 and SO42- (reaction 2a in Figure 5C,E) and the reaction of
+HS2O4- with thiosulfate to form S4O62- (reaction 2c in Figure 5C) occur primarily in the droplet bulk
+𝑥
+with 𝑓𝑠𝑢𝑟𝑓
+< 2%. Interestingly, the location of the S2O42- + SO2 reaction to form S3O62- (reaction 2b
+
+in Figure 5B,E) is both pH and reaction time dependent. At pH 9, this reaction occurs mostly in
+𝑥
+the droplet bulk with 𝑓𝑠𝑢𝑟𝑓
+~ 0% (Figure 5E), but at pH 5, this reaction occurs at the surface and
+𝑥
+in the bulk with 𝑓𝑠𝑢𝑟𝑓
+decreasing from ~35% to ~20% over 10 minutes (Figure 5B). Using this
+
+information, we can overlay the reaction mechanism shown in Scheme 1 with the interface or bulk
+reaction location and create a detailed reaction-diffusion mechanism as demonstrated in Figure
+6.
+
+Figure 6. Schematic of the interface-mediated reaction-diffusion mechanism for the ozonation of
+thiosulfate in aqueous droplets at pH 5. Bolded species are detected by experiments7 and colors
+are set to match those used in Scheme 1 and other figures in this work.
+The combined role of pH and the interface in the production of sulfate, the main product, is
+particularly interesting. Sulfate can either be formed by direct decomposition of the ozonide
+intermediate, which primarily occurs at the interface (r1a in Figure 5A,D), or by the reaction of
+S2O42- with O2, which primarily occurs in the bulk (r2a in Figure 5C,E). However, reaction 1a is pH
+dependent, meaning that reaction 2a is the main sulfate formation pathway at pH 9 and pH 13.
+Ultimately, sulfate will be formed mostly in the bulk at higher pH, but some will be formed at the
+surface of the droplet at lower pH. Accurate accounting of sulfate is important for climate modeling
+
+24
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+due to its hygroscopic nature and ability to form cloud condensation nuclei, meaning that such a
+detailed analysis of sulfate formation in droplets may be useful to atmospheric scientists.
+3.3. Reactant Concentration & Droplet Size Effects
+Microdroplets in the atmosphere may be exposed to a range of gas-phase reactant
+concentrations or have a variety of size distributions and solute concentrations. With this in mind,
+we seek to address how aerosol/droplet size, thiosulfate concentration, and ozone concentration
+affect the relative importance of the surface and bulk chemistry illustrated in Figure 6.
+First, we compare our kinetic model with data published by Hsu, et al.9 which utilized smaller
+droplets (~3 μm) and larger ranges of thiosulfate (2.86 to 10.1 M) and ozone concentrations (0.4
+to 15 ppm). Hsu, et al.9 used optical tweezers to capture single droplets and Raman spectroscopy
+to determine reactant and product concentrations. Droplets were unbuffered, and the pH likely
+decreased from 7 at the start of the reaction to 1 or 2 at the end of the reaction. The kinetic model
+used here assumes a fixed pH to reduce computation time and used pH = 7, which has been
+accurate when modeling other unbuffered thiosulfate ozonation experiments.7 Despite this
+assumption, our model adequately predicts the thiosulfate decay detected in some of the Hsu, et
+al.9 experiments, as shown in Figure 7. We note, however, that our model does not explain all of
+the Hsu, et al.9 data as shown in Section S6 in Supporting Information, especially at low ozone
+
+25
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+concentrations where the thiosulfate decay rate decreases and experimental error increases
+(Experiments 6-9 in Figure S9 and S10 in Supporting Information).
+
+Figure 7. Select comparisons between the kinetic model (lines) and experimental data from Hsu,
+et al.9 Data with error bars are recreated from ref 9. See Section S6 in Supporting Information for
+all comparisons between model and experiments.
+Next, we investigate a range of atmospherically relevant initial bulk thiosulfate concentrations,
+gas-phase ozone concentrations, and droplet radii using the kinetic model described here. Note
+that although most aerosols are very acidic (pH 1-3), our current kinetic model has not been
+benchmarked against experiments at such low acidity. Additionally, there are some instances
+where aerosols may reach pH 4-6, including over Hawaii, São Paulo, and mainland China.38 As
+such, the simulations presented here use the pH 5 kinetic model to offer novel insights into the
+ozonation of thiosulfate in acidic environments.
+
+26
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+The droplet experiments presented in Deal, et al.7 were performed with an initial bulk
+thiosulfate concentration of 250 mM, but thiosulfate concentrations in the natural environment are
+likely very low (< 10 mM). Similarly, the experiments presented in Deal, et al.7 were performed
+with gas-phase ozone concentrations between 1 and 6 ppm, but gas-phase ozone concentrations
+in the natural environment are much lower (< 1 ppm). Here, we connect experiment and natural
+environment concentration ranges by simulating droplet chemistry with [S2O32-]0 = 1, 10, 100, and
+250 mM and [O3]gas = 0.1, 0.5, and 1 ppm. Atmospheric chemistry is most impacted by
+aerosols/droplets with radii between 0.001 and 5 μm, but at sufficiently small droplet sizes (<
+~0.01 μm), curvature can affect droplet chemistry due to the similarity between molecular and
+droplet sizes. Given that our kinetic model does not account for droplet curvature, we simulate
+droplets with r = 0.2 μm (which represents a maximum in the volume distribution for a typical
+urban model aerosol39), 3 μm (representative of Hsu, et al.9), and 25 μm (representative of Deal,
+et al.7). Sets of simulations were run with fixed thiosulfate concentration ([S2O32-]0 = 100 mM) or
+fixed ozone concentration ([O3]gas = 1 ppm), and the concentrations of each product and the
+percent surface reactions were calculated using the values after all thiosulfate was reacted. Note
+that of the four products examined here, SO42-, S3O62-, and S4O62- were detectable in experiments
+and SO2 was undetectable.7, 9 However, SO2 is likely a major source of the S loss noted in the
+Deal, et al.7 experiments, Figure 3, and Figure 4, thus we model its production here. The % yield
+for each product represents the total amount of reacted sulfur that is incorporated into the given
+product, and the % surface reaction is calculated as described previously.
+Figure 8 shows the impact of [S2O32-]0, [O3]gas, and aerosol size on the product distribution,
+or % yield of each product, and relative importance of surface chemistry to bulk chemistry for a
+given reaction, or the % surface reaction. Note that the results in Figure 8 were calculated with
+the 2-compartment model described in Methods Section 2.3 to reduce computation time, and
+results were checked against a 3-compartment model (see Section S9 in Supporting Information).
+Although the 3-compartment model showed decreased % surface reaction values, the overall
+27
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+trends with changes in [S2O32-]0, [O3]gas, and r remain constant, and there were negligible
+differences in the calculated % yield.
+
+Figure 8. Product distributions (A,B) and proportion of reactions occurring at the droplet surface
+(C,D) for a range of gas-phase ozone concentrations ([O3]gas), initial bulk thiosulfate
+concentrations ([S2O32-]0), and droplet radii. In A and C, the initial bulk thiosulfate concentration is
+fixed at 100 mM, while the gas-phase ozone concentration and droplet radius are varied. In B and
+D, the gas-phase ozone concentration is fixed at 1 ppm while the initial bulk thiosulfate
+concentration and droplet radius are varied. Note: In A and B, SO42-, S3O62-, S4O62-, and SO2
+products are indicated by red, blue, purple, and orange, respectively, to show the % yield of each
+product. In C and D, S2O32- decay, SO42- production, and S3O62- production are indicated by grey,
+red, and blue bars, respectively, with differences in shade according to droplet size as shown in
+the legend. Simulations presented here are run with a 2-compartment model to reduce
+computation time (see Methods Section 2.3. and Section S1.2. in Supporting Information). Select
+simulations run with a 3-compartment model are shown for comparison in Section S9 in
+Supporting Information.
+Several observations can be drawn from Figure 8. First, changes in [O3]gas have minimal
+impacts on the product distribution (Figure 8A) and relative importance of surface vs. bulk
+chemistry (Figure 8C). In contrast, [S2O32-]0 has a significant effect on both product distributions
+(Figure 8B) and surface vs bulk chemistry (Figure 8D). The difference in product distributions
+28
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+shown in Figure 8B largely stems from the competition between SO2 evaporation (desorb in
+Scheme 1) and the downstream reactions that form SO42-, S3O62-, and S4O62- (2a, 2b, and 2c in
+Scheme 1 and Figure 6). Specifically, we see that as [S2O32-]0 increases, the % yield of S4O62- also
+increases because its production requires two thiosulfate molecules, while the % yield of SO42and SO2 decreases. As [S2O32-]0 increases, more thiosulfate decay, SO42- production, and S3O62production occur at the surface (Figure 8D) due to the Langmuir adsorption of thiosulfate to the
+interface. At higher bulk concentrations, more thiosulfate will adsorb to the interface, depleting a
+significant portion of the adsorbed ozone before it can enter the droplet bulk. At lower thiosulfate
+concentrations, which will have less adsorbed thiosulfate, less surface adsorbed ozone will be
+reacted, allowing more ozone to enter the droplet bulk, thereby increasing the number of bulk
+reactions and decreasing the relative importance of surface reactions.
+Finally, we examine the role of droplet size in relationship to the reacto-diffusive length, l. The
+reacto-diffusive length is calculated as:
+𝐷𝑂
+
+𝑙 = √𝑘·[𝑆 𝑂32− ],
+2 3(b)
+
+(16)
+
+where 𝐷𝑂3 is the diffusion coefficient for ozone and k is the rate constant for the reaction between
+ozone and thiosulfate (see Section S1 in Supporting Information for these values). For the bulk
+thiosulfate concentrations tested here (1 mM, 10 mM, 100 mM, 250 mM), we calculate reactodiffusive lengths of approximately 150nm, 50 nm, 15 nm, and 10 nm, respectively.
+For a given [O3]gas and [S2O32-]0, increasing droplet size increases the % surface reaction for
+S2O32- decay and decreases the % surface reaction for S3O62- production (gray and blue in Figure
+8C,D). In larger droplets, where the radius is much larger than the reacto-diffusive length, bulk
+chemistry is limited by diffusion, resulting in ozonation reactions occurring mostly at the surface.
+In smaller droplets, the radius of the droplet nears the reacto-diffusive length, approaching phase
+mixing where ozone diffusion no longer limits bulk phase reactions. This also leads to differences
+in product distributions due to the phase dependent competition of downstream reaction steps,
+
+29
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+as shown in Figure 6. Generally, for a given [O3]gas and [S2O32-]0, the % yields of SO42- and SO2
+increase with increasing droplet size, while the relationships between droplet size and the %
+yields of S3O62- or S4O62- are more complicated (Figure 8A,B).
+Droplet size and [S2O32-]0 effects on product distributions are particularly interesting when
+considering the impacts on the overall oxidation state of sulfur, as shown in Figure 9. S2O32- has
+an average oxidation state of 2, while the major products have a variety of oxidation states. SO42has an oxidation state of 6, SO2 has an oxidation state of 4, S3O62- has an average oxidation state
+of 3.3, and S4O62- has an average oxidation state of 2.5. This means that reaction environments
+that favor S3O62- and/or S4O62- will, on average, produce less oxidized sulfur than reaction
+environments that favor SO2 and/or SO42-. Among the test environments simulated here, the
+smallest droplets (r = 0.2 μm) with the lowest [S2O32-]0 (1 mM) produce the most sulfate and SO2,
+resulting in the highest average oxidation state at reaction completion (4.74). This is in contrast
+with midsize droplets (r = 3 μm) with the highest [S2O32-]0 (250 mM), which produce the most
+S4O62-, resulting in the lowest average oxidation state at reaction completion (3.99).
+
+Figure 9. Average sulfur oxidation state for a range of gas-phase ozone concentrations, [O3]gas,
+(A), initial bulk thiosulfate concentrations ([S2O32-]0), (B) and droplet radii (indicated across the top
+of each panel. Note: The average oxidation state is broken down into contributions from each
+product. Contributions from SO42-, S3O62-, S4O62-, and SO2 are indicated by red, blue, purple, and
+orange, respectively.
+The average sulfur oxidation state is a function of the product distribution, which will be
+determined by a combination of droplet size and thiosulfate concentration, primarily due to an
+
+30
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+interface-mediated competition between SO42- and S4O62- production. As depicted in Figure 6,
+S4O62- production requires the reaction of thiosulfate with ozone, which primarily occurs at the
+surface, followed by the secondary reaction of HS2O4- with another thiosulfate molecule, which
+primarily occurs in the bulk. In contrast, SO42- production occurs by two different pathways, at the
+interface or in bulk. Given this complex role of the droplet interface in controlling individual reaction
+steps, it is unsurprising that the product distribution, and thus the overall oxidation state, is a
+complex function of thiosulfate concentration and droplet size. Regardless of the exact
+mechanistic differences that drive this outcome, this example demonstrates the multiphase
+control of the thiosulfate ozonation reaction mechanism.
+
+4. Conclusions
+One of the key challenges when investigating multiphase chemistry is connecting molecularlevel detail to macroscale reactivity in different phases. Here, we use DUV-SHG, which provides
+information about the first few layers of molecules at an aqueous surface, APXPS, which provides
+information from about the first ~1.5 to 5 nm at an aqueous surface, and reaction kinetics in
+trapped droplets, which provides information about reactivity across the interface and bulk. These
+three techniques, representing vastly different length scales, are combined using stochastic
+kinetic modeling via Kinetiscope©. The resultant kinetic model is used to explore the relationship
+between a complex reaction mechanism, the ozonation of thiosulfate, and the multiphase nature
+of the droplet reactor. Specifically, we find that individual reaction steps tend to occur throughout
+smaller droplets, where the reacto-diffusive length nears the droplet radius, while individual
+reaction steps become separated in larger droplets, where the reacto-diffusive length is much
+smaller than the droplet radius. Specifically, primary reaction steps typically occur more often at
+the interface than in the bulk, while some downstream reaction steps occur predominantly in the
+bulk. We also find that the product distribution, and thus the average sulfur oxidation state, is
+dependent on a non-trivial combination of droplet size and reactant concentration.
+31
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+S2O32- has two sulfurs with an average oxidation state of +2, while its ozonation products have
+a range of oxidation states. Fully oxidized sulfur (S+6) in the form of sulfate attracts water,
+increasing the size of the aerosol/droplet or forming cloud condensation nuclei (CCN), directly
+affecting radiative forcing. While we show that most sulfate will be formed in the bulk of the droplet,
+in more acidic conditions some sulfate will be formed at the surface of the droplet, potentially
+increasing the likelihood that it can impact the surrounding environment. On the other hand, SO2,
+S3O62-, and S4O62- are incompletely oxidized with average sulfur oxidation states of +4, +3.3, and
++2.5, respectively. The incompletely oxidized sulfur in these stable intermediates remains
+susceptible to further oxidation in large bodies of water or atmospheric aerosols/droplets, which
+typically also results in downstream acidification.
+Recent efforts have suggested using ozone-microbubbles for mining wastewater remediation
+including thiosalt removal. This study shows that these processes should consider the size and
+pH of bubbles to ensure maximum sulfur oxidation and prevent downstream acidification of the
+natural environment. Additionally, the sulfur cycle, and specifically the oxidation state of sulfur,
+can have a large impact on the global radiation budget. Atmospheric chemistry models thus
+require a thorough understanding of sulfur chemistry to predict CCN formation and aerosol/droplet
+acidification. This study begins to address the relevant parameters for thorough modeling of
+potential thiosulfate ozonation occurring in the atmosphere. Similar studies addressing the
+multiphase chemistry in droplet reactors for other environmentally relevant reaction mechanisms
+can be used to obtain a more detailed understanding of atmospheric chemistry involving droplets
+and aerosols.
+Data Availability
+Data are available from the corresponding author upon request.
+Author Contributions
+Conceptualization: A.M.D and K.R.W. Kinetic modelling methodology: A.M.D, A.M.P, and K.R.W.
+Model implementation and simulations: A.M.D. DUV-SHG experimental methodology: F.B. and
+32
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+R.J.S. DUV-SHG collection: F.B. APXPS experimental methodology: M.B. APXPS data collection:
+M.L.L., A.S., M.B. APXPS data analysis: A.S. Writing – original draft: A.M.D. Writing – review and
+editing: all.
+Conflicts of Interest
+There are no conflicts to declare.
+Acknowledgements
+This work was supported by the Condensed Phase and Interfacial Molecular Science Program
+(CPIMS), in the Chemical Sciences Geosciences and Biosciences Division of the Office of Basic
+Energy Sciences of the U.S. Department of Energy under Contract No. DE-AC02-05CH11231.
+The APXPS measurements used the Advanced Light Source, which is a U.S. Department of
+Energy Scientific User Facility under contract no. DE-AC02-05CH11231. We thank Professor
+Yuan-Pin Chang for providing the data in Figure 7 and Section S6 in Supporting Information.
+
+References
+1.
+
+Z. Wei, Y. Li, R. G. Cooks and X. Yan, Accelerated reaction kinetics in microdroplets:
+Overview and recent developments, Ann. Rev. Phys. Chem, 2020, 71, 31-51.
+G. Rovelli, M. I. Jacobs, M. D. Willis, R. J. Rapf, A. M. Prophet and K. R. Wilson, A critical
+analysis of electrospray techniques for the determination of accelerated rates and
+mechanisms of chemical reactions in droplets, Chem. Sci., 2020, 11, 13026-13043.
+C. J. Chen and E. Williams, Are hydroxyl radicals spontaneously generated in unactivated
+water droplets?, Angew. Chem., 2024, e202407433.
+A. Gallo, A. S. Farinha, M. Dinis, A.-H. Emwas, A. Santana, R. J. Nielsen, W. A. Goddard
+and H. Mishra, The chemical reactions in electrosprays of water do not always correspond
+to those at the pristine air–water interface, Chem. Sci., 2019, 10, 2566-2577.
+V. Masson-Delmotte, P. Zhai, A. Pirani, S. L. Connors, C. Péan, S. Berger, N. Caud, Y.
+Chen, L. Goldfarb and M. Gomis, IPC 2021. Summary for policymakers. Climate change
+2021: The physical science Basis. Contribution of working group I to the sixth assessment
+report of the intergovernmental panel on climate change, 2023.
+P. R. Veres, J. A. Neuman, T. H. Bertram, E. Assaf, G. M. Wolfe, C. J. Williamson, B.
+Weinzierl, S. Tilmes, C. R. Thompson and A. B. Thames, Global airborne sampling reveals
+a previously unobserved dimethyl sulfide oxidation mechanism in the marine atmosphere,
+Proc. Natl. Acad. Sci., 2020, 117, 4505-4510.
+A. M. Deal, A. M. Prophet, F. Bernal, R. J. Saykally and K. R. Wilson, A detailed reaction
+mechanism for thiosulfate oxidation by ozone in aqueous environments, Environ. Sci.
+Technol., 2024.
+A. J. Atkinson, H. Ray and E. C. Wert, Efficiency of ozone quenching agents at different
+temperature, pH, and hydrodynamic conditions, Ozone: Sci. Eng., 2024, 1-20.
+
+2.
+3.
+4.
+5.
+
+6.
+
+7.
+8.
+
+33
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+9.
+
+S.-H. Hsu, F.-Y. Lin, G. G. Huang and Y.-P. Chang, Accelerated sulfur oxidation by ozone
+on surfaces of single optically trapped aerosol particles, J. Phys. Chem. C, 2023, 127,
+6248-6261.
+A. M. Prophet, K. Polley, G. J. Van Berkel, D. T. Limmer and K. R. Wilson, Iodide oxidation
+by ozone at the surface of aqueous microdroplets, Chem. Sci., 2024, 15, 736-756.
+M. D. Willis and K. R. Wilson, Coupled interfacial and bulk kinetics govern the timescales
+of multiphase ozonolysis reactions, J. Phys. Chem. A, 2022, 126, 4991-5010.
+M. Takizawa, A. Okuwaki and T. Okabe, The chemical behavior of low valence sulfur
+compounds. VIII. the oxidation of sodium thiosulfate with ozone, Bull. Chem. Soc. Jpn.,
+1973, 46, 3785-3789.
+H. M. Eckenrode, S.-H. Jen, J. Han, A.-G. Yeh and H.-L. Dai, Adsorption of a cationic dye
+molecule on polystyrene microspheres in colloids: Effect of surface charge and
+composition probed by second harmonic generation, J. Phys. Chem. B, 2005, 109, 46464653.
+P. B. Petersen and R. J. Saykally, Probing the interfacial structure of aqueous electrolytes
+with femtosecond second harmonic generation spectroscopy, J. Phys. Chem. B, 2006,
+110, 14060-14073.
+D. E. Otten, P. R. Shaffer, P. L. Geissler and R. J. Saykally, Elucidating the mechanism of
+selective ion adsorption to the liquid water surface, Proc. Natl. Acad. Sci., 2012, 109, 701705.
+F. Bernal, A. Dodin, C. Kyprianou, D. T. Limmer and R. J. Saykally, Adsorption of
+guanidinium cations to the air-water interface, arXiv preprint arXiv:2408.15423, 2024.
+M. J. Blandamer and M. F. Fox, Theory and applications of charge-transfer-to-solvent
+spectra, Chem. Rev., 1970, 70, 59-93.
+M. I. Jacobs, J. F. Davies, L. Lee, R. D. Davis, F. Houle and K. R. Wilson, Exploring
+chemistry in microcompartments using guided droplet collisions in a branched quadrupole
+trap coupled to a single droplet, paper spray mass spectrometer, Anal. Chem., 2017, 89,
+12511-12519.
+M. D. Willis, G. Rovelli and K. R. Wilson, Combining mass spectrometry of picoliter
+samples with a multicompartment electrodynamic trap for probing the chemistry of droplet
+arrays, Anal. Chem., 2020, 92, 11943-11952.
+A. Wiegel, K. Wilson, W. Hinsberg and F. Houle, Stochastic methods for aerosol chemistry:
+a compact molecular description of functionalization and fragmentation in the
+heterogeneous oxidation of squalane aerosol by OH radicals, Phys. Chem. Chem. Phys.,
+2015, 17, 4398-4411.
+I. Langmuir, The adsorption of gases on plane surfaces of glass, mica and platinum, J.
+Am. Chem. Soc., 1918, 40, 1361-1403.
+J. Vieceli, M. Roeselova, N. Potter, L. X. Dang, B. C. Garrett and D. J. Tobias, Molecular
+dynamics simulations of atmospheric oxidants at the air− water interface: solvation and
+accommodation of OH and O3, J. Phys. Chem. B, 2005, 109, 15876-15892.
+R. Sander, Compilation of Henry's law constants (version 5.0. 0) for water as solvent,
+Atmos. Chem. Phys., 2023, 23, 10901-12440.
+N. Panich, B. Ershov, A. Seliverstov and A. Basiev, Ozone solubility in concentrated
+aqueous solutions of salts, Russ. J. Appl. Chem., 2007, 80, 1812-1815.
+S. Gopalakrishnan, P. Jungwirth, D. J. Tobias and H. C. Allen, Air− liquid interfaces of
+aqueous solutions containing ammonium and sulfate: Spectroscopic and molecular
+dynamics studies, J. Phys. Chem. B, 2005, 109, 8861-8872.
+W. S. Drisdell, R. J. Saykally and R. C. Cohen, On the evaporation of ammonium sulfate
+solution, Proc. Natl. Acad. Sci., 2009, 106, 18897-18901.
+
+10.
+11.
+12.
+13.
+
+14.
+15.
+16.
+17.
+18.
+
+19.
+20.
+
+21.
+22.
+23.
+24.
+25.
+26.
+
+34
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+27.
+
+Y. Litman, K.-Y. Chiang, T. Seki, Y. Nagata and M. Bonn, Surface stratification determines
+the interfacial water structure of simple electrolyte solutions, Nat. Chem., 2024, 16, 644650.
+L. M. Pegram and M. T. Record, Hofmeister salt effects on surface tension arise from
+partitioning of anions and cations between bulk water and the air− water interface, J. Phys.
+Chem. B, 2007, 111, 5411-5417.
+T. Seki, C.-C. Yu, K.-Y. Chiang, A. Greco, X. Yu, F. Matsumura, M. Bonn and Y. Nagata,
+Ions speciation at the water–air interface, J. Am. Chem. Soc., 2023, 145, 10622-10630.
+H.-t. Bian, R.-r. Feng, Y.-y. Xu, Y. Guo and H.-f. Wang, Increased interfacial thickness of
+the NaF, NaCl and NaBr salt aqueous solutions probed with non-resonant surface second
+harmonic generation (SHG), Phys. Chem. Chem. Phys., 2008, 10, 4920-4931.
+S. W. Devlin, S. Jamnuch, Q. Xu, A. A. Chen, J. Qian, T. A. Pascal and R. J. Saykally,
+Agglomeration drives the reversed fractionation of aqueous carbonate and bicarbonate at
+the air–water interface, J. Am. Chem. Soc., 2023, 145, 22384-22393.
+L. Onsager and N. N. Samaras, The surface tension of Debye‐Hückel electrolytes, J.
+Chem. Phys., 1934, 2, 528-536.
+R. K. Lam, J. W. Smith, A. M. Rizzuto, O. Karslıoğlu, H. Bluhm and R. J. Saykally,
+Reversed interfacial fractionation of carbonate and bicarbonate evidenced by X-ray
+photoemission spectroscopy, J. Chem. Phys., 2017, 146.
+Z. Tao, J. Goodisman and A.-K. Souid, Oxygen measurement via phosphorescence:
+reaction of sodium dithionite with dissolved oxygen, J. Phys. Chem. A, 2008, 112, 15111518.
+G. Merényi, J. Lind, S. Naumov and C. von Sonntag, The reaction of ozone with the
+hydroxide ion: mechanistic considerations based on thermokinetic and quantum chemical
+calculations and the role of HO4− in superoxide dismutation, Chem. Eur. J., 2010, 16,
+1372-1377.
+J. R. Kanofsky and P. D. Sima, Reactive absorption of ozone by aqueous biomolecule
+solutions: implications for the role of sulfhydryl compounds as targets for ozone, Arch.
+Biochem. Biophys., 1995, 316, 52-62.
+B. Müller and M. R. Heal, The mass accommodation coefficient of ozone on an aqueous
+surface, Phys. Chem. Chem. Phys., 2002, 4, 3365-3369.
+H. O. Pye, A. Nenes, B. Alexander, A. P. Ault, M. C. Barth, S. L. Clegg, J. L. Collett Jr, K.
+M. Fahey, C. J. Hennigan and H. Herrmann, The acidity of atmospheric particles and
+clouds, Atmos. Chem. Phys., 2020, 20, 4809-4888.
+B. J. Finlayson-Pitts and J. N. Pitts Jr, Particles in the troposphere, in Chemistry of the
+upper and lower atmosphere: theory, experiments, and applications, Elsevier, 1999.
+
+28.
+29.
+30.
+31.
+32.
+33.
+34.
+35.
+
+36.
+37.
+38.
+39.
+
+35
+https://doi.org/10.26434/chemrxiv-2025-p234l ORCID: https://orcid.org/0000-0003-0264-0872 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+

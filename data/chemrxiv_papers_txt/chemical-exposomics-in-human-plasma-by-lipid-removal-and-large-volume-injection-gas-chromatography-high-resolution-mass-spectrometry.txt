@@ -1,0 +1,1006 @@
+Chemical Exposomics in Human Plasma by Lipid Removal and Large Volume Injection Gas
+Chromatography High-Resolution Mass Spectrometry
+Hongyu Xie¹, Kalliroi Sdougkou¹, Bénilde Bonnefille¹,2, Stefano Papazian¹,2, Ingvar A. Bergdahl3, Panu
+Rantakokko4, Jonathan W. Martin¹,2*
+¹Department of Environmental Science, Stockholm University, Stockholm 106 91, Sweden
+²National Facility for Exposomics, Metabolomics Platform, Science for Life Laboratory, Stockholm
+University, Solna 171 65, Sweden
+3
+
+Department of Public Health and Clinical Medicine, Section for Sustainable Health, Umeå University,
+
+Umeå 901 87, Sweden
+4
+
+National Institute for Health and Welfare, Department of Environmental Health, Toxicology and
+
+Chemical Exposure Unit, Neulaniementie 4, Kuopio 702 10, Finland
+Corresponding author: Jonathan W. Martin; Email: jon.martin@aces.su.se
+
+TOC
+
+1
+
+https://doi.org/10.26434/chemrxiv-2024-1tpfx ORCID: https://orcid.org/0000-0002-2422-0492 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+ABSTRACT. For comprehensive chemical exposomics in blood, analytical workflows are evolving
+through advances in sample preparation and instrumental methods. We hypothesized that gas
+chromatography high-resolution mass spectrometry (GC-HRMS) workflows could be enhanced by
+minimizing lipid co-extractives, thereby enabling larger injection volumes and lower matrix
+interference for improved sensitivity and molecular discovery. A simple protocol was developed for
+small plasma volumes (100-200 µL) by using isohexane (H) to extract supernatants of acetonitrileplasma (A-P). The HA-P method was quantitative for a wide range of hydrophobic multiclass target
+analytes (i.e. log Kow >3.0), and the extracts were free of major lipids, thereby enabling robust largevolume injections (LVI; 25 µL) in long sequences to a GC-Orbitrap HRMS. Without lipid removal, LVI
+was counter-productive because method sensitivity suffered from the abundant matrix signal,
+resulting in low ion injection times to the Orbitrap. The median method quantification limit was 0.08
+ng/mL (range 0.005–4.83 ng/mL), and good accuracy was shown for a certified reference serum.
+Applying the method to plasma from a Swedish cohort (n=32; 100 µL), 51 of 103 target analytes were
+detected. Simultaneous nontarget analysis resulted in 112 structural annotations (12.8% annotation
+rate), and Level 1 identification was achieved for 7 of 8 substances in follow-up confirmations. The HAP method is potentially scalable for application in cohort studies and is also compatible with many
+liquid-chromatography-based exposomics workflows.
+
+Synopsis:
+Sensitivity of chemical exposomics in plasma was enhanced after lipid removal and large volume
+injections to GC-HRMS. Application to adult plasma resulted in high rates of target analyte detection,
+nontarget annotation, and molecular confirmation.
+
+Keywords: chemical exposome, blood plasma, molecular discovery, sample preparation, GC-HRMS,
+exposure
+
+2
+
+https://doi.org/10.26434/chemrxiv-2024-1tpfx ORCID: https://orcid.org/0000-0002-2422-0492 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+INTRODUCTION. The concept of the exposome was introduced in 2005 to encourage more research
+on the environmental determinants of disease.1,2 Environmental chemicals have long been known to
+be human disease risk factors,3 and relevant exposures today include ambient air pollution and
+mixtures of contaminants ingested from food, water and dust.4–7 Analytical methods are now evolving
+to measure the ‘chemical exposome’, broadly defined as all environmental chemical exposures
+throughout the life course.8–10 With this ambitious scope of chemical exposomics comes several
+practical methodological challenges, including to comprehensively quantify a broad range of priority
+target analytes, to discover and identify novel exposures by nontarget workflows, to scale-up sample
+throughput, and to achieve high sensitivity in the small volumes of biofluid available in typical cohort
+studies.11
+Traditional analytical methods for human biomonitoring are mostly targeted and mass spectrometrybased, employing either liquid chromatography (LC) or gas chromatography (GC).12–19 Such methods
+are very sensitive and quantitative, but can require large sample volumes and laborious sample
+processing steps, and ultimately reveal only a limited fraction of the chemical exposome, defined a
+priori by the investigators. Today there are over 350,000 chemicals in global commerce,20 but only 5%
+of these have ever been analyzed in environmental media,21 and likely fewer have been biomonitored
+in humans. In this context, modern instrumental advances in LC- and GC-high resolution mass
+spectrometry (HRMS) provide great potential for chemical exposomics, as several commercial
+instruments now combine high mass spectral resolving power, high mass accuracy, high scanning
+frequency, good sensitivity and a wide dynamic range in full scan mode.10,22 These instruments are
+therefore well suited to perform parallel target and nontarget data acquisition, but methodological
+challenges remain for sample preparation. One specific challenge is to quantitatively extract diverse
+analytes from complex biological samples, while minimizing interferences. In human blood, known
+organic environmental contaminants vary greatly in their hydrophobicity, spanning 17 orders of
+magnitude in octanol-water partition coefficient (Kow), and their concentrations range over 11 orders
+of magnitude (i.e. 160 fM – 140 mM)23,24 in a matrix dominated by major lipid classes and complex
+mixtures of endogenous metabolites25 that may overshadow small signals from environmental
+chemicals. Multi-class target exposomes are now being reported, as well as methods for combined
+target and nontarget analysis, but the sample preparation methods are often adapted directly from
+metabolomics,26–28 and not specifically designed or optimized for chemical exposomics which strives
+to profile small molecules present at 1000× lower concentrations than endogenous substances.24
+Most reported chemical exposomics methods for blood have so far been LC-based, and thus focused
+on the polar environmental chemical fraction.22,29,30 But the commercial availability of GC-Orbitrap
+HRMS instruments31 has enabled recent development of methods for low polarity and semi-volatile
+
+3
+
+https://doi.org/10.26434/chemrxiv-2024-1tpfx ORCID: https://orcid.org/0000-0002-2422-0492 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+analytes.28,32,33 The associated sample preparation methods for blood serum and plasma are simple,
+rapid and potentially scalable, including liquid-liquid extraction,28 and liquid-liquid extraction with
+dispersive powders33 (i.e. QuEChERS). Nevertheless, the performance of existing methods to minimize
+major blood lipid co-extractives has not been directly evaluated, and there is concern that abundant
+lipids may negatively influence method robustness, lower method sensitivity and interfere with
+molecular discovery. Of particular relevance is that the resolving power of Orbitrap HRMS analyzers is
+adversely impacted by abundant matrix signal, such that the auto gain control function dynamically
+lowers the ion injection time to minimize space-charging when abundant signal is detected.34,35
+Therefore, we hypothesized that by minimizing lipid co-extractives that trace analytes would be more
+easily detected by GC-Orbitrap HRMS, and moreover that larger volumes could be injected to improve
+method sensitivity. A similar phenomenon was demonstrated by phospholipid-removal and LCOrbitrap HRMS-based chemical exposomics of human plasma.30
+Building on existing GC-based chemical exposomics methods for human blood, here we explore
+methods to achieve improved sensitivity for plasma chemical exposomics by a GC-Orbitrap HRMS
+workflow. Specifically, we aimed to minimize co-extracted plasma lipids at the extraction step to
+achieve dual benefits to method performance from: i) minimizing matrix interference, and ii) enabling
+large-volume injections of plasma extracts. A simple and potentially scalable protocol, which uses
+isohexane (H) to liquid-liquid extract acetonitrile-plasma (A-P), was developed and validated for small
+samples of human plasma (100-200 µL) while optimizing for lipid removal and method sensitivity for
+103 priority target analytes. The validated method, termed the HA-P method, was applied to a subset
+of adult plasma samples (n = 32) in a combined target and nontarget analysis, and method
+performance was examined with respect to target analytes and molecular discoveries.
+
+MATERIALS & METHODS
+Chemicals, Standards and Materials. A representative list of 103 target analytes from 6 chemical
+classes were selected for method development, and their native and isotopic labelled standards were
+acquired from commercial suppliers (Table S1). These included 33 polychlorinated biphenyls (PCBs), 8
+polybrominated diphenyl ethers (BDEs), 10 polychlorinated dibenzodioxins/dibenzofurans (PCDD/Fs),
+16 polycyclic aromatic hydrocarbons (PAHs), 24 organochlorine pesticides (OCPs), and 12 phthalates.
+Toluene, formic acid, n-hexane, silica gel (high-purity grade, pore size 60 Å, 230-400 mesh particle size)
+were from Merck (Germany). Isohexane, ethyl acetate, acetonitrile, dichloromethane, chloroform,
+water were from Fisher Scientific (USA); isohexane was used instead of n-hexane because it has similar
+physiochemical properties but lower toxicity.36,37 MgSO4 and a dispersive solid phase extraction
+powder, Bond Elut EMR-Lipid, were from Agilent (USA).
+
+4
+
+https://doi.org/10.26434/chemrxiv-2024-1tpfx ORCID: https://orcid.org/0000-0002-2422-0492 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Human Plasma and Serum. For method development and validation, sterile-filtered human serum was
+obtained commercially (Merck, Germany, human male AB plasma derived, origin USA). Standard
+reference material (SRM 1958, fortified and lyophilized human serum) was purchased from NIST (USA).
+The optimized exposomics workflow was applied to 32 individual human plasma samples (100 µL) from
+the Västerbotten Intervention Programme (VIP) cohort,38 a cardiovascular study cohort launched in
+1985 in north Sweden. The samples (16 men and 16 women), which were collected between 19912013 (Table S2) and stored at -80°C, were randomly selected among participants whose samples
+(separate aliquot) had previously been analyzed for persistent organic pollutants.6 Participant smoking
+and moisture snuff consumption, as well as dietary intake of meat and fish were self-reported. As
+described previously,30 a Swedish pooled plasma reference sample was also prepared in-house from
+residual heparinized plasma of 953 adults (male and female) from the VIP cohort. Approval from the
+Swedish Ethical Review Authority [Dnr 2020-03301] was granted for work with these plasma samples.
+Sample Preparation of Human Plasma/Serum. All glassware was newly furnaced to minimize
+background contamination, and sample preparation was in a positive pressure clean laboratory with
+high efficiency particulate air filtration. Method development included various tests of lipid removal
+techniques, including liquid-liquid and solid-phase extraction (see supplementary information, SI). The
+optimized method utilized 100-200 µL of human plasma/serum in conical borosilicate-glass centrifuge
+tubes (10 mL, Pyrex®, Coning, USA). This was spiked with 8 µL of a 100 ng/mL surrogate internal
+standard mixture containing 26 isotopically labelled chemicals (Table S1). Procedural blanks composed
+of LC water, substituted for plasma, were prepared with all experiments and batches. For protein
+precipitation, acetonitrile was added (4 × sample volume) to the samples, vortexed at 1400 rpm for 1
+min (multi-tube vortex mixer, Ohaus, USA) and then centrifuged (5804R, Eppendorf) at 4400 g for 5
+min at room temperature. The supernatant was transferred to a new borosilicate-glass tube, 1.2 mL
+isohexane was added, followed by vortexing at 1400 rpm (1 min) and centrifugation at 3000 g (1 min).
+The upper isohexane layer was transferred to a new borosilicate-glass tube, another 400 µL isohexane
+was added to the extraction test tube, and the extraction step was repeated. The two isohexane layers
+were combined and evaporated to 100 µL by gentle nitrogen flow at room temperature (TurboVap LV,
+Biotage, Sweden), followed by adding 10 µL of 20 ng/mL volumetric internal standard (methoxychlorD14), vortexing, and transferring to an amber glass vial with insert (0.3 mL, ThermoScientific) for GCHRMS analysis. All the 32 individual samples (VIP cohort) were extracted in one daily batch along with
+3 procedural blanks and 3 Swedish pooled plasma reference samples.
+For comparison, plasma samples were also prepared by a literature chemical exposomics method
+designed for GC-Orbitrap HRMS.28 Briefly, 8 µL of 100 ng/mL surrogate internal standard was added to
+200 µL of Swedish pooled plasma (n = 3) in conical glass tubes, followed by adding 50 µL formic acid
+
+5
+
+https://doi.org/10.26434/chemrxiv-2024-1tpfx ORCID: https://orcid.org/0000-0002-2422-0492 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+and 200 µL n-hexane : ethyl acetate (V:V = 2:1). This was vortexed for 1 hr on ice, then centrifuged at
+4400 g 4 °C (10 min). The organic supernatant was transferred to a new tube with 25 mg of MgSO4,
+vortexed, and centrifuged at 4400 g (10 min). The final supernatant was transferred to an injection vial
+with 6 µL of 100 ng/mL volumetric internal standards for instrumental analysis.
+GC-HRMS Analysis. Plasma extracts were analyzed by GC (TRACE 1300 Series, ThermoFisher Scientific,
+US) interfaced to an Orbitrap HRMS (Q-Exactive, ThermoFisher Scientific, US) operating in full scan
+(34–750 m/z) in electron ionization mode. The ion source and transfer line temperature were 300 °C.
+The optimized method utilized a DB-5MS column (30 m × 0.25 mm × 0.25 µm, Agilent) and temperature
+gradient program starting at 30 °C for 1 min, increasing to 50 °C at 20 °C/min, then ramping to 170 °C
+at 25 °C/min, to 250 °C at 6 °C/min, then increasing to 315 °C/min at 25 °C/min with a 12 min hold.
+Carrier gas was helium at constant flow of 1.3 mL/min. Injections of 25 µL of extract were made to a
+programable temperature vaporizer (PTV) injector in large volume mode (Table S3). During method
+development, a shorter DB-5MS column (15 m) was compared, based on instrumental detection limits
+(IDL) of the target analytes, and 1 µL of each solution was injected to each system in PTV splitless mode,
+with injection temperature increasing from 30 to 315 °C at 7.3 °C/sec, and oven and MS conditions
+were the same as the optimized method. IDL was defined as the lowest concentration in an 11-point
+calibration curve (range 0.0025–50 ng/mL, triplicate) with signal to noise ratio >3, and at least 3 data
+points across the peak. For large volume injection (LVI), optimal injection volume was decided by
+comparing response for various injection conditions: 1 and 5 µL injections with a small syringe (10 µL),
+and 5, 10, 25, 30, and 40 µL injections with a larger syringe (100 µL).
+For application to cohort samples, calibration curves of target analytes were run 3 times during the
+injection sequence (beginning, middle, end). Kovats retention index (RI) was applied, consisting of nalkane standards (C7–40 mixture, Merck, 25 ng/mL in isohexane) injected separately at the beginning
+and end of the sequence. The entire sequence, including samples, calibration solutions, procedural
+and instrumental blanks, and Swedish pooled reference samples, lasted approximately 71 hr (35 min
+gradient plus 15 min re-equilibration per injection), while all samples were maintained at 10°C in the
+autosampler. The instrumental blanks consisted of clean solvent and were run multiple times in the
+sequence to monitor for carryover.
+Method Validation. Method robustness was examined by 60 continuous injections of the same spiked
+(2 ng/mL) serum extract (split into 12 vials), with an additional 12 injections of isohexane spread
+throughout the sequence, with one solvent injection after every 5 sample injections. The whole
+sequence lasted 60 hr over 4 calendar days. Target analyte recoveries, precision and matrix effects
+were evaluated at spiked concentrations of 0.1, 1 and 10 ng/mL (each n = 3) in 200 µL of the
+commercial serum. Absolute recovery (without internal standard correction) was calculated from the
+
+6
+
+https://doi.org/10.26434/chemrxiv-2024-1tpfx ORCID: https://orcid.org/0000-0002-2422-0492 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+peak areas of native analyte spiked to serum before sample preparation, compared to the same spike
+added to processed serum extracts immediately before GC-HRMS analysis. Final recoveries were
+corrected for internal standard response (Table S4), spiked at the same time as the native analytes.
+Method precision was evaluated by relative standard deviations of the triplicate recovery experiments
+at 1 ng/mL. For evaluating matrix effects, peak areas of spiked native analytes were compared between
+(i) extracts of serum, and (ii) extracts of blank water. The method limit of quantification (MLOQ) was
+defined as the lowest spiked concentration in matrix-matched calibration curves (8 points between
+0.005–10 ng/mL, n = 4), in which peak area of the analytes had relative standard deviations below 20 %
+without internal standard correction. Method accuracy was examined in two ways, including by
+comparison of calculated target analyte concentrations to a previous target analysis of the same VIP
+plasma samples (different aliquots),6 and by analysis of a NIST SRM1958 with certified reference values.
+Data Processing and Analysis. External calibration curves (7 points, 0.005–5 ng/mL, n = 3) were used
+to quantify the 103 target analytes. Tracefinder (v.5.0, ThermoScientific) was used for peak detection,
+identification and quantification for the target analytes. Isotopically labelled surrogate internal
+standards (n = 26) were used to correct the recoveries and variations during sample preparation (Table
+S4). Target analytes were generally absent in procedural blanks, however peaks were detectable for
+certain phthalates and PAHs, and in this case analytes were only considered detected if sample peak
+areas were 3 times higher than the corresponding procedural blank; concentrations were also blanksubtracted in these cases.
+For nontarget analysis, MS-DIAL39 (v.4.9.221218, parameters in Table S5) was used to align features
+and deconvolute corresponding electron ionization spectra. Each nontarget feature had a
+corresponding retention time (RT), RI, deconvoluted spectrum, and peak area. Mass spectral library
+matching was performed from the combination of an in-house GC-HRMS Orbitrap library (244
+chemicals), MassBankEU40, and NIST20 (version 2.4, purchased from Thermo Fisher Scientific, USA).
+Annotation confidence levels were applied, defined according to the annotation scoring framework
+for GC-HRMS,41 with RI matching scores considered.
+Analyzed data were further processed and visualized in Excel (Microsoft Office 2019), Python (v.3.7.3)42
+and Jupyter Notebook (v.5.7.8),43 and R(v.4.3.2)44 and RStudio (v.2023.12.1+402)45 with ggplot2
+(v.3.4.4).
+Statistical tests were performed in R (v.4.3.2) using the rstatix package (v.0.7.2). Normality was
+evaluated by the Shapiro-Wilk test, equal variance by the F-test (Data Analysis Tool, Excel), and group
+differences by two-tailed T-tests, with p-values adjusted for multiple testing by the Bonferroni method,
+
+7
+
+https://doi.org/10.26434/chemrxiv-2024-1tpfx ORCID: https://orcid.org/0000-0002-2422-0492 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+if the data were normally distributed and had equal variance. Otherwise, statistical differences were
+evaluated by the two-tailed Wilcoxon test, with p-value adjusted by the Bonferroni method.
+
+RESULTS & DISCUSSION
+GC Column Selection. In initial instrumental optimization, the IDL of the 69 halogenated analytes
+(PCBs, BDEs, OCPs and PCDD/Fs) were compared on two different GC column lengths (15 m and 30 m;
+0.25 mm × 0.25 µm DB-5MS, Agilent) using 1 µL injections of standard mixtures between 0.0025 and
+50 ng/mL (Figure S1, original data in Table S6); phthalates and PAHs were not included for this aim.
+For approximately half of the analytes (n = 35), the 30 m column resulted in better sensitivity (Figure
+S1, green), while for approximately one third of the analytes (n = 22) the column length had no
+significant effect on detection limits (Figure S1, grey), and only 10 target analytes had better sensitivity
+on the shorter 15 m column (Figure S1, red); two analytes (pentachlorobenzene and PCB-3) had very
+low instrumental detection limits (i.e. <<2.5 fg) that could not be adequately compared in the
+concentration ranges tested. Those analytes with lower detection limits on the 15 m column were
+mostly late-eluting (RI > 2570) substances with higher boiling points, including one OCP, five BDEs and
+four PCDD/Fs. The highly brominated BDEs are known to degrade on longer or thicker GC columns,
+and thus perform better on shorter columns.49 Nevertheless, for this multi-class chemical exposomics
+method, we decided to use the 30 m column because of the 2–5 fold increased sensitivity for a majority
+(51.5%) of the analytes examined, and considering that this may lead to greater sensitivity for
+nontarget molecular discovery over most of the retention range.
+Optimization of Plasma/Serum Extraction. For further method development, commercial human
+serum was spiked with 103 priority target analytes (Table S4) representing the wide chemical space of
+hydrophobic environmental contaminants targeted by GC-based methodologies in national46 or
+international biomonitoring programs.47 These analytes belonged to 6 chemical classes (PCBs, BDEs,
+OCPs, PCDD/Fs, PAHs, phthalates), ranged in molecular weight from 128 (i.e. naphthalene) to 637 (i.e.
+BDE-154) Da, and had log Kow ranging from 1.7 (i.e. dimethyl phthalate) to 11.2 (i.e. dechlorane 603)48.
+For the traditional GC-MS sample-preparation of blood plasma extracts, it is a common strategy for
+major lipid interferences to be removed by destructive techniques under acidic conditions, such as by
+addition of concentrated sulfuric acid,50,51 or using chromatographic cleanup on acidified silica gel.52
+For the suite of multi-class target analytes here, we briefly tested their recoveries in acidified silica gel
+columns by loading standards in isohexane (10–13.5 ng/mL). But this step was relatively laborious and
+resulted in very low recoveries for a majority of PAHs and phthalates (<5%, Figure S2), likely due to
+degradation or hydrolysis under acidic condition.53,54 To avoid these issues, this step was abandoned,
+and we focused on solvent extraction conditions that would minimize lipid co-extractives. Acidic
+
+8
+
+https://doi.org/10.26434/chemrxiv-2024-1tpfx ORCID: https://orcid.org/0000-0002-2422-0492 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+conditions were also avoided in further development, thus prior to solvent extraction we denatured
+and precipitated plasma proteins by addition of acetonitrile, rather than by formic acid.28 Plasma
+protein-precipitation by acetonitrile is a common technique in metabolomics protocols and is also
+compatible with some LC-HRMS-based chemical exposomics methods,30 thereby opening the future
+possibility to split deproteinized supernatants for dual analysis by LC- and GC-based exposomics.
+Following the protein precipitation and centrifugation step, further method development focused on
+minimizing lipid co-extractives from the acetonitrile-plasma supernatant. We first tested the effect of
+adding 40 mg of conditioned dispersive solid phase extraction material (Bond Elut EMR-Lipid) on
+relative recoveries into isohexane extracts. Although EMR-Lipid reduced major sterol lipids in the
+chromatograms (Figure S3a, RT 24.5 min), 25 late eluting analytes (i.e. RT > 20 min) were also lost
+(average 20% absolute loss, range 10–28%). Moreover, precision was much lower using EMR, and few
+improvements to the relative recoveries were evident (Figure S3b). Subsequent tests focused solely
+on solvent types and their ratios under liquid-liquid extraction conditions, including pure isohexane
+and mixtures of isohexane with more polar solvents (isohexane: toluene (9:1); isohexane: ethyl acetate
+(2:1); isohexane: chloroform (9:1)) (Figure S4). However, the addition of polar solvent always resulted
+in decreased recoveries, in particular with ethyl acetate, and especially for the more polar early eluting
+analytes. Moreover, the addition of toluene resulted in three layers and was abandoned. In all cases,
+the isohexane containing extract layer (on the top) also contained more interference peaks of lipids
+and/or fatty acids when polar solvents were included. Therefore, it was concluded that that 100%
+isohexane (H) was the optimum extraction solvent for the acetonitrile-plasma (A-P) supernatant; in
+subsequent sections we refer to this as the HA-P method. It is germane for us to note that a recent
+study investigating various extraction conditions for plasma exposomics reported the best quantitative
+performance for a hexane-acetonitrile-plasma extraction condition, but the authors chose alternate
+methods due to the assumption that the hexane layer would contain lipid interferences55; as discussed
+later, the hexane layer in the HA-P method was in fact free from most lipid interferences.
+In final HA-P method optimization we compared target analyte recoveries with different volumes of
+isohexane for the primary extraction (600 µL, 1.2 and 2 mL). Although the larger volume (2 mL) slightly
+improved recovery for some analytes (average 3%), precision was lower (i.e. see higher standard
+deviation in Figure S5a). So, 1.2 mL was determined to be the optimum volume of isohexane.
+Moreover, we tested the effect of performing a second follow-up extraction with additional of
+isohexane. The addition of this secondary isohexane extraction (400 µL) after the primary extraction
+(0.6 mL) increased the absolute recoveries on average by 8.5% (range 1.1–14.4%, Figure S5b),
+particularly for later eluting analytes. Thus, it was included in the optimized HA-P method for validation
+tests.
+
+9
+
+https://doi.org/10.26434/chemrxiv-2024-1tpfx ORCID: https://orcid.org/0000-0002-2422-0492 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Performance of LVI. In order to increase the sensitivity for trace level contaminants, a LVI method was
+applied and optimized. The initial parameters (temperature gradient ramp, split flow rates) were first
+optimized with pure standards (Table S4), and the optimal injection volume was selected based on
+performance with a commercial serum extract, prepared by the optimized HA-P method and spiked at
+10 ng/mL. Peak areas increased with larger injection volumes between 1 - 40 µL (Figure S6), but at 30
+and 40 µL the peak areas did not further increase linearly, and some analytes had greater standard
+deviations and split peaks, suggesting overloading at these injection volumes. Thus, 25 µL injections
+were chosen as optimal for method validation tests. Under these conditions, method precision and
+robustness were tested over 4 days by 60 continuous injections of the same spiked sample extract (2
+ng/mL). Although peak areas for many target analytes decreased slowly over the entire sequence
+(mean 28%), this minor effect was adequately controlled by internal standard correction. The median
+RSD was 5.1% for target analytes over 4 days (range 1.6–24.5 %, Figure S7).
+Method Validation. Using the optimized HA-P method with LVI (25 µL) we performed method
+validation for all target analytes, including determination of matrix effects, internal standard corrected
+recoveries, calibration linearity and MLOQs (Table S7). The internal standard for correcting each native
+analyte was selected based on similar retention, absolute recovery and matrix effect. The median
+MLOQ was 0.079 ng/mL (range 0.005–4.83 ng/mL; Figure 1a), and mean R2 for calibration curves
+between MLOQ and 10 ng/ml was 0.985 (range 0.96-1.0). When all analytes were spiked to native
+serum at 1 ng/mL, among the 91 detectable analytes (out of 103) the mean matrix effect was null (i.e.
+mean 100% response; range 76–140%) and the median internal standard recovery was 104% (range
+22–132%; Figure 1b). The lowest recoveries were for the smallest phthalates, dimethyl phthalate (22%)
+and diethyl phthalate (41%), likely owing to their lower hydrophobicity (log Kow 1.6 and 2.5)56 and their
+presumed preferential partitioning to the plasma-acetonitrile layer during extraction. The other spiked
+phthalate analytes all have log Kow > 3, suggesting that the HA-P method is most effective for analytes
+in this more hydrophobic range. This limitation of the HA-P method is not a limitation for chemical
+exposomics in general, for example dimethyl phthalate and diethyl phthalate are more sensitive and
+quantitative by LC-HRMS-based chemical exposomics,57 and it is understood that GC-HRMS will need
+to be applied together with LC-HRMS for comprehensive analysis of the exposome.9 Finally, it is
+noteworthy that the relatively low recovery of β-HCH, and relatively high recovery of α-HCH (Figure
+1b), are likely due to interconversion of these isomers in presence of water (i.e. plasma),58 and
+therefore not necessarily a limitation of the analytical method.
+The performance of the HA-P method with LVI was also examined by analysis of NIST SRM 1958 (i.e. a
+freeze-dried fortified human serum), which has certified or non-certified reference values, including
+for 33 of target analytes detected here. For most of these (n = 22), quantified concentrations by the
+
+10
+
+https://doi.org/10.26434/chemrxiv-2024-1tpfx ORCID: https://orcid.org/0000-0002-2422-0492 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+HA-P method were within 75-125% of certified/non-certified values (i.e. ratio 0.75-1.25, Figure S8),
+and mean ratio for all analytes was 0.93 (range 0.3-1.36). Notable outliers were again HCH isomers (i.e.
+low concentrations of β-HCH, high concentrations of γ-HCH), which have non-certified values in the
+SRM and are known to interconvert as described above. From literature reported values, the ratios of
+20 analytes were within 75-125%, and mean ratio for all analytes was 0.9 (range 0.3-1.79). Overall, the
+current chemical exposomics method also performs similarly well as a literature chemical exposomics
+method, which reported on the analysis of the same SRM (see Figure S8 for comparison).28
+Investigation of Plasma Lipid Interferences. During method development it was noted that the total
+ion chromatograms of HA-P method extracts were relatively clean (visually) and free from large
+interfering peaks in GC-HRMS analysis (Figure S3a). This suggested that few lipid species had been coextracted, and may explain why dispersive solid phase extraction by EMR-Lipid had no beneficial effect
+in our method development tests. The major lipids in human plasma include glycerolipids,
+glycerophospholipids, and sterol lipids such as cholesterol esters.25 Non-polar bulk lipids (i.e.
+glycerolipids and some sterol esters) generally have very low solubility in polar solvents such as
+acetonitrile, and are known to be removed with proteins during protein precipitation.59 Most
+phospholipids remain in the plasma-acetonitrile phase during extraction, and here we found no traces
+of phospholipids in the isohexane extract (Figure S9, cyan).
+To fully understand the relative extent of lipid interferences, and the impact of these on chemical
+exposomics, we compared plasma extracts from the HA-P method (in 100 µL isohexane) to extracts of
+the same plasma by a literature method (in 200 µL ethyl acetate).28 The relatively clear appearance of
+extracts from the HA-P method was evident, relative to yellow-colored extracts by the literature
+method (Figure 2). Consistent with visual appearances, after injecting 2 µL of each extract (Figure 2ab), the corresponding total ion chromatograms revealed a comparably complex matrix for the
+literature method, with many abundant co-extracted substances. The relatively clean total ion
+chromatogram of the HA-P extract is noteworthy considering that twice as much plasma equivalents
+were injected on-column. The major chromatographic peaks for the literature method extract included
+long chain fatty acids (RT = 11.19, 13.77, 16.46 min) and sterol lipids (RT = 16.06, 20.96–24.61 min,
+Figure S10b), which were either absent or much lower in the HA-P method, even with 10-fold more
+plasma equivalents injected on column (Figure S10a).
+For the extracts from the literature method, the MS response was saturated for many of the largest
+peaks, as maximum peak heights were in the range of 2 x 1010, and did not increase with increasing
+injection volumes from 2 to 5 µL. The largest peak in TICs of both extracts were sterol lipids (RT =
+24.5 min), thus both methods are still similarly prone to interference from these major plasma
+metabolites. When increasing the injection volume of plasma extract from the literature method
+
+11
+
+https://doi.org/10.26434/chemrxiv-2024-1tpfx ORCID: https://orcid.org/0000-0002-2422-0492 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(Figure 2d), the major chromatographic peaks became visibly broader, suggesting that the GC column
+was being overloaded, and larger injection volumes were not attempted. In comparison, a larger
+injection volume of the HA-P extract (25 µL, corresponding to 50 µL plasma equivalents on column,
+Figure 2c) was nevertheless applied, and the total ion chromatogram was still relatively clean, but did
+show elevated baseline at later retention times (> 25 min); this increased background overlaps with
+the retention range of 18 (17.5%) of the target analytes, thus its potential as a minor interference
+cannot be discounted.
+As shown in extracted ion chromatograms of target analytes in the HA-P method (Figure 3a-b), the
+increased injection volume resulted in larger target analyte peaks, and also revealed new detectable
+analyte peaks that were not evident at lower injection volume (e.g. trans-nonachlor, m/z 408.7840 at
+16.04 min, and PCB-105, m/z 325.8810 at 18.25 min), demonstrating enhanced method sensitivity by
+large-volume injection for low-abundance analytes in plasma. Using 200 µL plasma aliquots of pooled
+Swedish plasma, 16 target PCBs/OCPs were consistently detected in all triplicate samples by the HA-P
+method (25 µL injection), compared to only 5 target analytes by the literature method (2 µL injection).
+The 11 PCBs/OCPs not detected consistently detected by the literature method all had plasma
+concentrations below 0.2 ng/mL, according to quantification by the HA-P method.
+An additional observation in analysis of the extracts produced by the literature method was that, when
+increasing injection volumes from 2 µL to 5 µL, some analyte peaks disappeared (e.g., PCB-13 at
+11.39 min, m/z 221.9998) (Figure 3c-d). This may be due to abundant interferences (Figure 4a), and
+the auto gain control function of the Orbitrap mass spectrometer, which applies a dynamic ion
+injection time (i.e. to the C-trap and subsequently to the Orbitrap analyzer) throughout the analytical
+run to balance sensitivity and mass spectral resolving power.34,35 For a very clean injection, as shown
+for analysis of instrumental blanks composed only of isohexane (Figure 4b black), the ion injection time
+was initially maximal (i.e. 112 ms), thereby allowing maximum signal to the Orbitrap analyzer, but
+declined to approximately 20 ms after 22 min due to increasing background signal from column-bleed
+at higher temperatures (300 °C at 22 min); overall, mean ion injection time throughout the analysis of
+isohexane instrumental blanks was high (mean = 73 ms; 97 ms before 25 min). In comparison, lower
+ion injection times were observed with LVIs of the HA-P extract (mean 38.6 ms, 56 ms before 25 min,
+Figure 4b cyan). Nevertheless, these ion injection times were still substantially higher than for the
+extract produced by the literature method (mean 3.22 ms, 3.85 before 25 min, Figure 4b brown), even
+considering 10× more plasma-equivalent volume injected on column from the HAP-extract (Figure 4b;
+50 µL plasma equivalents by HA-P (25 µL injection) and 5 µL plasma equivalents by the literature
+method (5 µL injection)). Lower ion injection times predictably corresponded to regions of the
+chromatograms with higher total ion signal (Figure 4a). For analytes that are still detectable, a
+
+12
+
+https://doi.org/10.26434/chemrxiv-2024-1tpfx ORCID: https://orcid.org/0000-0002-2422-0492 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+correction factor is applied by the software to maintain quantitative analysis,60 but for trace analytes
+near detection limits the signal can become non-detectable due to the lower ion injection time, as
+shown for PCB-13 in the extract from the literature method (Figure 3d).
+Multiclass Target Analysis of Individual Plasma Samples. The HA-P method with LVI was applied to 32
+individual plasma samples of Swedish adults, as well as to pooled Swedish plasma for reference and
+quality assurance. Among all samples, 51 (out of 103) target analytes were detected in at least one
+individual (Table S8). The detected analytes included 7 dioxin-like PCBs (#105, #114, #118, #123, #156,
+#157, #167), 14 non-dioxin like PCBs (#1, #3, #4, #19, #15, #28, #52, #37, #101, #138, #153, #202, #180,
+#205), 9 PAHs, 12 OCPs, 1 BDE and 8 phthalates. Among these, 28 analytes had detection frequencies
+above 20%, the distributions of which are shown by sex (Figure 5), but with no significant difference in
+concentrations after Bonferroni correction. Contrasting the current results to previous target analyses
+of the same plasma samples (separate aliquots)6 showed linear associations between two methods
+(Figure S11).
+Eight target analytes showed statistically significant time trends between 1990 and 2013, six of which
+are shown in Figure 6. Particularly, PCBs and OCPs were trending down over time, consistent with bans
+and restrictions that started in the 1970s.61,62 To the contrary, DEHP, a commonly used phthalate
+plasticizer, showed an increasing trend over time, from below 10 ng/L in the early 1990s to >40 ng/L
+by 2005, and possibly lower concentrations thereafter. We acknowledge that no field blanks were
+available in this cohort to rule out phthalate contamination from medical sampling equipment, but
+similar or higher levels of DEHP have been reported in other studies. For example, mean DEHP was
+180 ng/mL (maximum 1030 ng/mL) in healthy women in the 2000s,63 and 65 ng/mL in serum of women
+diagnosed with endometriosis in the 2010s.64
+We found no significant associations between the concentrations of these target analytes and
+individual available metadata, such as birth year, sampling age, meat consumption or by smoking
+status. Nevertheless, concentrations of several PCBs (#15, #156, #180) as well as β-HCH and HCB, were
+significantly higher in snuff users than non-snuff users (means: 0.008 vs 0.002, 0.07 vs 0.05, 0.37 vs
+0.05, 0.06 vs 0.05, and 0.15 vs 0.11 ng/mL, respectively, for PCB-15, 156, 180, β-HCH, HCB) whereas
+DEHP was lower in snuff users (mean: 8.5 vs 21.4 ng/mL). However, snuff users were not equally
+distributed over sampling years (with fewer snuff users in later years), thus these results are likely
+confounded by the associated temporal trends.
+Nontarget Analysis of Individual Plasma Samples. We additionally evaluated the suitability of the HAP method with LVI for the discovery of unexpected substances in a nontarget exposomics workflow.
+After data processing by MS-DIAL and blank filtration, a total of 875 molecular features were
+
+13
+
+https://doi.org/10.26434/chemrxiv-2024-1tpfx ORCID: https://orcid.org/0000-0002-2422-0492 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+detectable among all individual plasma samples (see Table S9, including relative responses). Among
+these features, 112 were matched to reference library spectra, corresponding to a relatively high
+annotation rate of 12.8%. The annotations included 30 of the target analytes (confirmed Level 1,41 ΔRT
+< 1%), as well as 82 new annotations (Level 2 confidence,41 ΔRI < 50) that included 28 prospective
+environmental substances. Authentic standards for 8 of these environmental chemicals were
+purchased, resulting in 7 confirmed identifications (Level 1, ΔRT < 1%, chromatograms and spectra in
+Figure S12-18). These included the related analytes 2,4-di-tert-butylphenol (Figure S12) and tris(2,4di-tert-butylphenyl) phosphite (Figure S18), which have been used as anti-oxidants and UV stabilizers
+in rubber and plastics, the co-occurrence of the two was reported in indoor dust in 2018.65 Although
+2,4-di-tert-butylphenol, which is a degradation product of the latter,66 has been detected in human
+blood and urine previously,67,68 we are not aware that tris(2,4-di-tert-butylphenyl) phosphite has been
+reported previously in human biomonitoring. This latter substance was previously reported in chemical
+migration tests from polymeric materials to water and simulated foods.65,66,69,70 This analyte has a high
+boiling point and very late elution time in our method (26.14 min), and in some methods may suffer
+from high background interferences. The discovery of this substance, and in general the high nontarget
+annotation and confirmation rates, are likely due to a combination of compounding factors, including
+higher sensitivity from LVI and lower matrix interference in the HA-P extracts. The low matrix
+interference by the HA-P method may not only result in higher sensitivity (i.e. due to higher ion
+injection times), but could also improve performance of the in silico spectral deconvolution (i.e., in MSDIAL), resulting in higher quality spectra that will have better matches to spectral libraries.
+
+14
+
+https://doi.org/10.26434/chemrxiv-2024-1tpfx ORCID: https://orcid.org/0000-0002-2422-0492 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+ACKNOWLEDGMENTS. This research was supported by the Swedish Research Council (VR, 201803409) and Formas (2018-02268). Hannu Kiviranta is acknowledged for providing targeted GC-MS/MS
+concentration data for selected persistent organic pollutants from VIP cohort. We also thank the
+Biobank Research Unit at Umeå University, Västerbotten Intervention Programme, and the County
+Council of Vasterbotten for providing data and samples, and acknowledge the contribution from
+Biobank Sweden, supported by the Swedish Research Council (VR 2017-00650). And we thank
+colleagues from Department of Environmental Science, Stockholm University for providing the
+standards for nontarget analysis confirmation.
+
+15
+
+https://doi.org/10.26434/chemrxiv-2024-1tpfx ORCID: https://orcid.org/0000-0002-2422-0492 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+LITERATURE CITED
+1.
+
+Wild, C. P. Complementing the genome with an ‘exposome’: The outstanding challenge
+of environmental exposure measurement in molecular epidemiology. Cancer
+Epidemiol. Biomarkers Prev. 14, 1847–1850 (2005).
+
+2.
+
+Rappaport, S. M. & Smith, M. T. Environment and Disease Risks. Science (80-. ). 330,
+460–461 (2010).
+
+3.
+
+Pott, P. Chirurgical observations : relative to the cataract, the polypus of the nose, the
+cancer of the scrotum, the different kinds of ruptures, and the mortification of the toes
+and feet - Catalog - UW-Madison Libraries. (1775).
+
+4.
+
+Heinrich, U. Exhaust-Specific Carcinogenic Effects of Polycyclic Aromatic Hydrocarbons
+and Their Significance for the Estimation of the Exhaust Exposure-Related Lung Cancer
+Risk. in Assessment of Inhalation Hazards 301–313 (Springer, Berlin, Heidelberg, 1989).
+doi:10.1007/978-3-642-74606-2_28
+
+5.
+
+Lim, S. S. et al. A comparative risk assessment of burden of disease and injury
+attributable to 67 risk factors and risk factor clusters in 21 regions, 1990-2010: A
+systematic analysis for the Global Burden of Disease Study 2010. Lancet 380, 2224–
+2260 (2012).
+
+6.
+
+Donat-Vargas, C. et al. Persistent organochlorine pollutants in plasma, blood pressure,
+and hypertension in a longitudinal study. Hypertension 71, 1258–1268 (2018).
+
+7.
+
+Grove, R. & Sanchez, O. Human Exposure to Environmental Pollutants and Associations
+with Non-Hodgkin Lymphoma: A Review. Expo. Heal. 14, 99–109 (2022).
+
+8.
+
+Miller, G. W. & Jones, D. P. The nature of nurture: Refining the definition of the
+exposome. Toxicol. Sci. 137, 1–2 (2014).
+
+9.
+
+Zhang, P. et al. Defining the Scope of Exposome Studies and Research Needs from a
+Multidisciplinary Perspective. Environ. Sci. Technol. Lett. 8, 839–852 (2021).
+
+10.
+
+Vermeulen, R., Schymanski, E. L., Barabási, A. L. & Miller, G. W. The exposome and
+health: Where chemistry meets biology. Science (80-. ). 367, 392–396 (2020).
+
+11.
+
+Dennis, K. K. et al. Biomonitoring in the era of the exposome. Environ. Health Perspect.
+125, 502–510 (2017).
+
+12.
+
+Rignell-Hydbom, A. Exposure to persistent organochlorine pollutants and type 2
+diabetes mellitus. Hum. Exp. Toxicol. 26, 447–452 (2007).
+
+13.
+
+Rantakokko, P., Kiviranta, H., Rylander, L., Rignell-Hydbom, A. & Vartiainen, T. A simple
+16
+
+https://doi.org/10.26434/chemrxiv-2024-1tpfx ORCID: https://orcid.org/0000-0002-2422-0492 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+and fast liquid–liquid extraction method for the determination of 2,2′,4,4′,5,5′hexachlorobiphenyl (CB-153) and 1,1-dichloro-2,2-bis(p-chlorophenyl)-ethylene (p,p′DDE) from human serum for epidemiological studies on type 2 diabetes. J. Chromatogr.
+A 1216, 897–901 (2009).
+14.
+
+Jeanjean, M. et al. Environmental and Dietary Exposures Near a Major Industrial
+Harbour (Fos-sur-Mer, France) Identified as a Significant Pathway for PCBs and PCDD/Fs
+Accumulation in Residents’ Blood Serum. Expo. Heal. 13, 447–464 (2021).
+
+15.
+
+Palát, J. et al. Application of 96-well plate SPE method for analysis of persistent organic
+pollutants in low volume blood serum samples. Chemosphere 287, 132300 (2022).
+
+16.
+
+Butt, C. M., Miranda, M. L. & Stapleton, H. M. Development of an analytical method to
+quantify PBDEs, OH-BDEs, HBCDs, 2,4,6-TBP, EH-TBB, and BEH-TEBP in human serum.
+Anal. Bioanal. Chem. 408, 2449–2459 (2016).
+
+17.
+
+Gély, C. A. et al. NC-ND license A new LC/MS method for specific determination of
+human systemic exposure to bisphenol A, F and S through their metabolites:
+Application to cord blood samples. Environ. Int. J. 151, 106429 (2021).
+
+18.
+
+Trimmel, S. et al. Rapid determination of per-and polyfluoroalkyl substances (Pfas) in
+harbour porpoise liver tissue by hybridspe®–uplc®–ms/ms. Toxics 9, 183 (2021).
+
+19.
+
+Wolf, K. et al. Persistent organic pollutants and the incidence of type 2 diabetes in the
+CARLA and KORA cohort studies. Environ. Int. 129, 221–228 (2019).
+
+20.
+
+Wang, Z., Walker, G. W., Muir, D. C. G. & Nagatani-Yoshida, K. Toward a Global
+Understanding of Chemical Pollution: A First Comprehensive Analysis of National and
+Regional Chemical Inventories. Environ. Sci. Technol. 54, 2575–2584 (2020).
+
+21.
+
+Muir, D. C. G., Getzinger, G. J., McBride, M. & Ferguson, P. L. How Many Chemicals in
+Commerce Have Been Analyzed in Environmental Media? A 50 Year Bibliometric
+Analysis. Environ. Sci. Technol. 57, 9119–9129 (2023).
+
+22.
+
+Andra, S. S. et al. Trends in the application of high-resolution mass spectrometry for
+human biomonitoring: An analytical primer to studying the environmental chemical
+space of the human exposome. Environ. Int. 100, 32–61 (2017).
+
+23.
+
+David, A. et al. Towards a comprehensive characterisation of the human internal
+chemical exposome: Challenges and perspectives. Environ. Int. 156, 106630 (2021).
+
+24.
+
+Rappaport, S. M., Barupal, D. K., Wishart, D., Vineis, P. & Scalbert, A. The blood
+exposome and its role in discovering causes of disease. Environ. Health Perspect. 122,
+17
+
+https://doi.org/10.26434/chemrxiv-2024-1tpfx ORCID: https://orcid.org/0000-0002-2422-0492 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+769–774 (2014).
+25.
+
+Quehenberger, O. & Dennis, E. A. The Human Plasma Lipidome. N. Engl. J. Med. 365,
+1812 (2011).
+
+26.
+
+González-Domínguez, R., Jáuregui, O., Queipo-Ortuño, M. I. & Andrés-Lacueva, C.
+Characterization of the Human Exposome by a Comprehensive and Quantitative LargeScale Multianalyte Metabolomics Platform. Anal. Chem. 92, 13767–13775 (2020).
+
+27.
+
+Jamnik, T. et al. Next-generation biomonitoring of the early-life chemical exposome in
+neonatal and infant development. Nat. Commun. 13, 2653 (2022).
+
+28.
+
+Hu, X. et al. A scalable workflow to characterize the human exposome. Nat. Commun.
+2021 121 12, 1–12 (2021).
+
+29.
+
+Plassmann, M. M., Tengstrand, E., Åberg, K. M. & Benskin, J. P. Non-target time trend
+screening: a data reduction strategy for detecting emerging contaminants in biological
+samples. Anal. Bioanal. Chem. 408, 4203–4208 (2016).
+
+30.
+
+Sdougkou, K. et al. Phospholipid Removal for Enhanced Chemical Exposomics in Human
+Plasma. Environ. Sci. Technol. 57, 10173–10184 (2023).
+
+31.
+
+Peterson, A. C. et al. Development of a GC/quadrupole-orbitrap mass spectrometer,
+Part I: Design and characterization. Anal. Chem. 86, 10036–10043 (2014).
+
+32.
+
+Manz, K. E. et al. Non-targeted analysis (NTA) and suspect screening analysis (SSA): a
+review of examining the chemical exposome. J. Expo. Sci. Environ. Epidemiol. 2023 334
+33, 524–536 (2023).
+
+33.
+
+Manz, K. E. et al. Targeted and Nontargeted Detection and Characterization of Trace
+Organic Chemicals in Human Serum and Plasma Using QuEChERS Extraction. Toxicol.
+Sci. 185, 77–88 (2021).
+
+34.
+
+Barry, J. A., Robichaud, G., Muddiman, D. C. & Keck, W. M. Mass recalibration of FT-ICR
+mass spectrometry imaging data using the average frequency shift of ambient ions. J
+Am Soc Mass Spectrom . 24, 1137–45 (2013).
+
+35.
+
+Gorshkov, M. V., Good, D. M., Lyutvinskiy, Y., Yang, H. & Zubarev, R. A. Calibration
+Function for the Orbitrap FTMS Accounting for the Space Charge Effect. J. Am. Soc. Mass
+Spectrom. 21, 1846–1851 (2010).
+
+36.
+
+Ono, Y., Takeuchi, Y. & Hisanaga, N. A Comparative Study on the Toxicity of n-Hexane
+and its Isomers on the Peripheral Nerve*. Int. Arch. Int Arch Occup Env. Heal. 48, 289–
+294 (1981).
+18
+
+https://doi.org/10.26434/chemrxiv-2024-1tpfx ORCID: https://orcid.org/0000-0002-2422-0492 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+37.
+
+Agency for Toxic Substances and Disease Registry. TOXICOLOGICAL PROFILE FOR nHEXANE. (1999).
+
+38.
+
+Norberg, M., Wall, S., Boman, K. & Weinehall, L. The Västerbotten Intervention
+Programme: background, design and implications. Glob. Health Action 3, 4643 (2010).
+
+39.
+
+Tsugawa, H. et al. MS-DIAL: Data Independent MS/MS Deconvolution for
+Comprehensive Metabolome Analysis. Nat. Methods 12, 523 (2015).
+
+40.
+
+MassBank
+
+|
+
+MassBank
+
+Europe
+
+Mass
+
+Spectral
+
+DataBase.
+
+Available
+
+at:
+
+https://massbank.eu/MassBank/. (Accessed: 5th April 2024)
+41.
+
+Koelmel, J. P. et al. An actionable annotation scoring framework for gas
+chromatography-high-resolution mass spectrometry. Exposome 2, osac007 (2022).
+
+42.
+
+Van Rossum, G. & Drake, F. L. Python 3 Reference Manual. Nature 585, 357–362 (2009).
+
+43.
+
+Kluyver, T. et al. Jupyter Notebooks – a publishing format for reproducible
+computational workflows. (IOS Press, 2016). doi:10.3233/978-1-61499-649-1-87
+
+44.
+
+R: The R Project for Statistical Computing. Available at: https://www.r-project.org/.
+(Accessed: 6th February 2024)
+
+45.
+
+Posit | The Open-Source Data Science Company. Available at: https://posit.co/.
+(Accessed: 6th February 2024)
+
+46.
+
+Centers for Disease Control and Prevention U.S. Department of Health and Human
+Services. Fourth National Report on Human Exposure to Environmental Chemicals. 2,
+(2019).
+
+47.
+
+HBM4EU Substances – HBM4EU – science and policy for a healthy future. Available at:
+https://www.hbm4eu.eu/hbm4eu-substances/. (Accessed: 18th October 2023)
+
+48.
+
+EPI
+
+SuiteTM-Estimation
+
+Program
+
+Interface
+
+|
+
+US
+
+EPA.
+
+Available
+
+at:
+
+https://www.epa.gov/tsca-screening-tools/epi-suitetm-estimation-program-interface.
+(Accessed: 16th January 2024)
+49.
+
+Shen, X. et al. Characterizing the emissions of polybrominated dibenzo-p-dioxins and
+dibenzofurans (PBDD/Fs) from electric arc furnaces during steel-making. Ecotoxicol.
+Environ. Saf. 208, 111722 (2021).
+
+50.
+
+Niels Sjcrslev, B. ON THE SULFURIC ACID REACTION OF BUTTER FAT AND THE
+DISAPPEARANCE OF THE REACTION FROM VITAMIN A-CONTAINING BUTTER FAT
+THROUGH THE ACTION OF OXI-DIZED FAT.
+
+51.
+
+Fontana, A. R., Camargo, A., Martinez, L. D. & Altamirano, J. C. Dispersive solid-phase
+19
+
+https://doi.org/10.26434/chemrxiv-2024-1tpfx ORCID: https://orcid.org/0000-0002-2422-0492 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+extraction as a simplified clean-up technique for biological sample extracts.
+Determination of polybrominated diphenyl ethers by gas chromatography-tandem
+mass spectrometry. J. Chromatogr. A 1218, 2490–2496 (2011).
+52.
+
+Hovander, L., Athanasiadou, M., Jensen, S. & Klasson Wehler, E. Extraction and Cleanup
+Methods for Analysis of Phenolic and Neutral Organohalogens in Plasma. Iournal Anal.
+Toxicol. 24, 696–703 (2000).
+
+53.
+
+Huang, J., Nkrumah, P. N., Li, Y. & Appiah-Sefah, G. Chemical behavior of phthalates
+under abiotic conditions in landfills. Rev. Environ. Contam. Toxicol. 224, 39–52 (2013).
+
+54.
+
+M.H. Lamoree, C.P. Swart, H. Senhorst, A. G. M. van H. (14) (PDF) Validation of the acidic
+sample clean-up procedure for the DR-CALUX assay. (2004).
+
+55.
+
+Braun, G., Krauss, M. & Escher, B. I. Recovery of 400 Chemicals with Three Extraction
+Methods for Low Volumes of Human Plasma Quantified by Instrumental Analysis and
+In Vitro Bioassays. Environ. Sci. Technol 57, 19363–19373 (2023).
+
+56.
+
+Kim, S. et al. PubChem 2023 update. Nucleic Acids Res. 51, 1373–1380 (2022).
+
+57.
+
+Feás, C. P., Barciela-Alonso, M. C. & Bermejo-Barrera, P. Direct LC-ES-MS/MS
+determination of phthalates in physiological saline solutions. J. Chromatogr. B 879,
+231–235 (2011).
+
+58.
+
+Deo, P. G., Hasan, S. B. & Maiumder, S. K. Interconversions and toxicity changes in
+hexachlorocyclohexane isomers on dispersion in water. J. Environ. Sci. Heal. Part B 16,
+691–701 (1981).
+
+59.
+
+Höring, M. et al. Benchmarking One-Phase Lipid Extractions for Plasma Lipidomics.
+Anal. Chem 94, 12292–12296 (2022).
+
+60.
+
+Schwartz, J. C., Jose, S., Zhou, X.-G. & Mark, F. ; METHOD AND APPARATUS OF
+INCREASING DYNAMIC RANGE AND SENSITIVITY OF AMASS SPECTROMETER. 1–8
+(1996).
+
+61.
+
+Mats Olsson, L. R. DDT and PCB Pollution Trends in the Swedish Aquatic Environment.
+Ambio 15, 103–109 (1986).
+
+62.
+
+Nyberg, E. et al. Spatio-temporal trends of PCBs in the Swedish freshwater environment
+1981–2012. Ambio 43, 45 (2014).
+
+63.
+
+Cobellis, L. et al. High plasma concentrations of di-(2-ethylhexyl)-phthalate in women
+with endometriosis. Hum. Reprod. 18, 1512–1515 (2003).
+
+64.
+
+Nazir, S., Usman, Z., Pervaiz Lone, K. & Ahmad, G. Women Diagnosed with
+20
+
+https://doi.org/10.26434/chemrxiv-2024-1tpfx ORCID: https://orcid.org/0000-0002-2422-0492 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Endometriosis Show High Serum Levels of Diethyl Hexyl Phthalate. J. Hum. Reprod. Sci.
+11, 131–136 (2018).
+65.
+
+Liu, R. & Mabury, S. A. Unexpectedly High Concentrations of a Newly Identified
+Organophosphate Ester, Tris(2,4-di-tert-butylphenyl) Phosphate, in Indoor Dust from
+Canada. (2018). doi:10.1021/acs.est.8b03061
+
+66.
+
+Yang, Y. et al. Effects of Ultraviolet (UV) on Degradation of Irgafos 168 and Migration of
+Its Degradation Products from Polypropylene Films. J. Agric. Food Chem. 64, 7866–7873
+(2016).
+
+67.
+
+Tang, S. et al. Prenatal Exposure to Emerging Plasticizers and Synthetic Antioxidants and
+Their Potency to Cross Human Placenta. Environ. Sci. Technol 56, 8507–8517 (2022).
+
+68.
+
+Arvstrand, L. Target analysis of synthetic phenolic antioxidants in human serum,
+prioritized by using an exposure index applied to the Swedish Products Register.
+(Stockholm University Department, 2021).
+
+69.
+
+Panou, A. & Karabagias, I. K. Migration and Safety Aspects of Plastic Food Packaging
+Materials: Need for Reconsideration? Coatings 2024, Vol. 14, Page 168 14, 168 (2024).
+
+70.
+
+Hernández-Fernández, J., Cano, H. & Reyes, A. F. Valoration of the Synthetic Antioxidant
+Tris-(Diterbutyl-Phenol)-Phosphite (Irgafos P-168) from Industrial Wastewater and
+Application in Polypropylene Matrices to Minimize Its Thermal Degradation. Mol. 2023,
+Vol. 28, Page 3163 28, 3163 (2023).
+
+21
+
+https://doi.org/10.26434/chemrxiv-2024-1tpfx ORCID: https://orcid.org/0000-0002-2422-0492 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 1. Method validation results for multi-class target analytes spiked to 200 µL of human
+serum and analyzed by the HA-P method with LVI, showing (a) method limits of quantification
+(MLOQ) for 93 analytes arranged by chemical class, and (b) internal standard corrected
+recoveries of 91 analytes. Note, not all of the 103 target analytes have a reported MLOQ
+because of interference from native analytes in the commercial serum, and similarly not all
+target analytes have a calculated recovery because the experiment was conducted at 1 ng/mL
+spiking level, below the native concentration of some analytes.
+
+22
+
+https://doi.org/10.26434/chemrxiv-2024-1tpfx ORCID: https://orcid.org/0000-0002-2422-0492 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 2. Total ion chromatograms and photos of extracts from pooled Swedish plasma (200 µL)
+prepared by the HA-P method (cyan, left panels) and a literature method (brown, right panels) injected
+with various volumes to GC-HRMS. Chromatograms for the HA-P method extract are shown for a 2 µL
+injection (a) and 25 µL injection (c), corresponding to 4 µL and 50 µL of plasma equivalents on-column,
+respectively, and these can be contrasted with chromatograms for the literature method extract for a
+2 µL injection (b) and 5 µL injection (d), corresponding to 2 µL and 5 µL of plasma equivalents oncolumn. Photos of the associated solvent extracts are also shown for (a) the HA-P method in 100 µL
+isohexane, and (b) from the literature method in 200 µL ethyl acetate, with 100 µL taken for
+photography.
+
+23
+
+https://doi.org/10.26434/chemrxiv-2024-1tpfx ORCID: https://orcid.org/0000-0002-2422-0492 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 3. Extracted ion chromatograms (EICs) for example analytes detected in extracts of the same
+pooled Swedish plasma (200 µL aliquots) but prepared by the HA-P method (a, b) and literature
+method (c, d), and injected to GC-HRMS with various injection volumes. Top row: EIC of ion m/z
+221.9998 for PCB 13 (Level 4 annotation, RT= 11.39 min), PCB-15 (RT = 11.89 min). Middle row: EIC of
+m/z 408.7840, trans-nonachlor (RT = 16.03 min). Bottom row: EIC of ion m/z 325.8810, PCB-118 (RT =
+17.54 min) and PCB-105 (RT = 18.25 min). For simplicity, another 13 target chemicals detected only in
+the HA-P extracts at 25 µL injection volume are not shown here.
+
+24
+
+https://doi.org/10.26434/chemrxiv-2024-1tpfx ORCID: https://orcid.org/0000-0002-2422-0492 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 4. Comparison of (a) total ion chromatograms and (b) ion injection times for extracts of pooled
+Swedish plasma prepared by the HA-P method (cyan, 50 µL plasma equivalents on column) and by a
+literature method (red, 5 µL plasma equivalents on-column), both injected to the same GC-HRMS. In
+both plots, the instrumental blank is also shown (black, 25 µL isohexane) for comparison.
+
+25
+
+https://doi.org/10.26434/chemrxiv-2024-1tpfx ORCID: https://orcid.org/0000-0002-2422-0492 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 5. Violin plots showing concentrations and distributions for detected target analytes in 32
+individual Swedish adult plasma samples by sex (female in purple, male in green). Panel a shows 28
+analytes with detection frequencies > 20%, while Panel b 23 analytes detected at lower frequencies
+(i.e. in 1-6 samples). Black ‘+’ symbols indicate the target analyte MLOQ. For data visualization,
+detectable signals below the MLOQ are plotted as MLOQ/2, and non-detects are plotted as MLOQ/4,
+quantified values of DBP and DEHP > 5 ng/mL (the highest calibrant) were extrapolated from the
+calibration curves.
+
+26
+
+https://doi.org/10.26434/chemrxiv-2024-1tpfx ORCID: https://orcid.org/0000-0002-2422-0492 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 6. Linear regression revealed statistically significant trends with sampling year for 8 target
+analytes; not shown are PCB-156 and p,p’-DDT which had similar downward trends as their
+homologues shown here.
+
+27
+
+https://doi.org/10.26434/chemrxiv-2024-1tpfx ORCID: https://orcid.org/0000-0002-2422-0492 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+

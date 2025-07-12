@@ -1,0 +1,3372 @@
+Highlights
+Structural and thermodynamic properties of La3+ in chloride-bearing hydrothermal
+fluids - Insights from a new ab initio-based polarizable force field
+Rajorshi Chattopadhyay, Sandro Jahn
+• New polarizable force field is developed for rare earth elements (REE) in hydrothermal fluids
+• Change in relative stability of complexes is observed from supercritical to subcritical conditions
+• Effects of simulation box size on calculated thermodynamics properties is negligible at high
+temperatures
+
+https://doi.org/10.26434/chemrxiv-2025-h5v4s ORCID: https://orcid.org/0009-0008-3812-3731 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Structural and thermodynamic properties of La3+ in chloride-bearing
+hydrothermal fluids - Insights from a new ab initio-based polarizable
+force field
+Rajorshi Chattopadhyaya,b,∗, Sandro Jahna,b
+a Institute of Geology and Mineralogy, University of Cologne, Zülpicher Str. 49b, Köln, 50674, , Germany
+b Department of Earth and Environmental Sciences, Ludwig-Maximilians University Munich, Theresienstr.
+
+41, München, 80333, , Germany
+
+Abstract
+Rare earth elements (REEs) are an important group of elements both geologically and economically. The ability of hydrothermal fluids to mobilize REEs in natural, ore-forming environments
+depends on the chemical composition and the presence of suitable ligands such as chloride and fluoride. Here, we use molecular dynamics (MD) simulations to study the molecular structure and
+thermodynamic stability of La3+ species in Cl-bearing hydrothermal fluids. We develop a new
+polarizable force field for this system optimized by reference to density functional theory (DFT)
+calculations. The structural and thermodynamic data obtained with the new potential using the
+well-tempered metadynamics (WMetaD) technique reproduce experimental and ab initio MD simulation data well. Polarization effects are shown to be essential for predicting realistic association
+and stability constants, which was not achieved with simpler non-polarizable interaction potentials.
+Simulations with different box sizes indicate that the effects of simulation box sizes on calculated
+thermodynamic quantities are almost negligible at high temperatures.
+Keywords: Rare earth elements, Hydrothermal fluids, Speciation, Reaction thermodynamics,
+Molecular dynamics, Enhanced sampling technique, Polarizable force field
+
+1
+
+1. Introduction
+
+2
+
+Rare earth elements (REEs) are a group of 17 (including scandium (Sc) and yttrium (Y)) silvery-
+
+3
+
+white heavy metals. Compounds containing REEs have immense applications in electronic and
+
+4
+
+electrical equipments, lasers, glass, semiconductors and magnetic materials. Due to their increasing
+∗ Corresponding author
+
+Email addresses: R.Chattopadhyay@lmu.de (Rajorshi Chattopadhyay ), s.jahn@lmu.de (Sandro Jahn)
+
+https://doi.org/10.26434/chemrxiv-2025-h5v4s ORCID: https://orcid.org/0009-0008-3812-3731 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+5
+
+importance in economic developments and potential of their supplies being at risk [1, 2], they have
+
+6
+
+been classified as critical elements by the U.S. Geological Survey (USGS).
+
+7
+
+Hydrothermal processes control the mineralogy and grade distribution of several important REE
+
+8
+
+deposits, such as Gallinas Mountain in New Mexico [3] or Thor Lake in Canada [4]. The mobility of
+
+9
+
+elements in hydrothermal fluids is primarily controlled by the chemical composition and speciation,
+
+10
+
+which have been shown to be controlled by temperature and pressure [5]. Commonly formed REE
+
+11
+
+complexes include carbonates, sulfates, fluorides and chlorides [6, 7]. Therefore, accurate knowledge
+
+12
+
+of the speciation of REEs in dilute to concentrated hydrothermal brines is necessary to improve
+
+13
+
+existing geochemical models and to complement existing mineral recovery and extraction processes.
+
+14
+
+Lanthanum (La), which is classified as a light rare earth element (LREE), is generally enriched by
+
+15
+
+hydrothermal processes that form primary ore deposits. Several minerals like bastnasite, monazite,
+
+16
+
+zircon and apatite are important sources of REEs in such deposits [8]. Although LREEs form
+
+17
+
+stronger complexes with F− with increasing temperature, Cl− is considered to be the main transport
+
+18
+
+ligand of LREEs mainly because of its much higher availability in hydrothermal fluids [9]. Several
+
+19
+
+experimental and theoretical studies have been conducted to determine the properties of La3+ aqua
+
+20
+
+and chloride complexes at room temperature (Table 1 in Guan et al. [9]). Experimental and
+
+21
+
+molecular dynamics (MD) simulation studies [10, 11, 12, 13, 14, 15, 16, 17] have shown that the
+
+22
+
+hydration structure of La3+ at room temperature is a tricapped trigonal prism with nine water
+
+23
+
+molecules. Weak chloride complexation was found by Raman spectroscopy in LaCl3 solutions with a
+
+24
+
+solute concentration above 0.1 mol/kg [18], which was confirmed by AIMD simulations [19]. Petit et
+
+25
+
+al. [20] used a combination of pair potential-based MD and AIMD simulations and found an average
+
+26
+
+3+
+configuration of La(H2 O)8 Cl−
+2 in concentrated 14 mol/kg solutions. However, fully hydrated La
+
+27
+
+complexes were seen in 1 mol/kg solutions [17].
+
+28
+
+Although aqueous lanthanum chloride solutions have been well studied at room temperature
+
+29
+
+[17, 20, 19, 18], studies targeting hydrothermal temperatures and pressures are quite scarce in
+
+30
+
+available literature. In the absence of experiments at high temperatures, earlier studies relied on
+
+31
+
+extrapolations of room temperature data using a species-based equation of state (EOS), such as the
+
+32
+
+Helgeson- Kirkham-Flowers (HKF) model [21]. Haas et al. [22] fitted a set of parameters for the
+
+33
+
+HKF model at 25 ◦ C, 1 bar. Mayanovic et al. [23] performed in situ X-ray absorption spectroscopy
+
+34
+
+(XAS) of La3+ in Cl-bearing solutions up to 500 ◦ C. They predicted a gradual increase in chloride
+
+35
+
+complexation from zero at 25 ◦ C to 3.1 at 500 ◦ C. Migdisov et al. [24] performed high-temperature
+
+36
+
+solubility experiments and published a set of HKF parameters that can be used up to 300 ◦ C. As
+
+2
+
+https://doi.org/10.26434/chemrxiv-2025-h5v4s ORCID: https://orcid.org/0009-0008-3812-3731 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+37
+
+far as computational studies are concerned, Guan et al. [9] is the only study available in literature.
+
+38
+
+They performed AIMD simulations up to 500 ◦ C and reported speciation and association constants
+
+39
+
+in a wide range of temperatures, pressures and concentrations.
+
+40
+
+As the forces between atoms in AIMD simulations are calculated by electronic structure methods,
+
+41
+
+usually within DFT, such simulations require extremely large computational resources. Parameter-
+
+42
+
+ized force fields are much more efficient and can overcome some of the shortcomings of AIMD while
+
+43
+
+still providing sufficient geochemical insights into fluid properties at hydrothermal conditions [25].
+
+44
+
+However, an accurate description of ionic and molecular interactions requires an analytical model
+
+45
+
+with sufficient chemical complexity. The explicit account of polarizability becomes particularly
+
+46
+
+important when dealing with highly charged ions having high polarization power in concentrated
+
+47
+
+solutions [26]. Many different polarizable force fields exist, each having a different representation of
+
+48
+
+polarizability [27, 28, 29], but none of them for the system and the thermodynamic conditions of
+
+49
+
+interest here.
+
+50
+
+In this paper, we fit an ab initio-based polarizable ion model (PIM) for the LaCl3 -H2 O system.
+
+51
+
+We use the new potential to study the speciation of La3+ and derive association constants of different
+
+52
+
+La-Cl complexes in dilute to concentrated brines at two different hydrothermal conditions. To
+
+53
+
+understand the importance of ionic polarizability, a comparative study is performed with a non-
+
+54
+
+polarizable pair potential [12]. The results are also compared to available AIMD and experimental
+
+55
+
+data, where available.
+
+56
+
+2. Methods
+
+57
+
+2.1. Polarizable ion model
+
+58
+
+The PIM describes the interactions between the charged particles of the system and has been
+
+59
+
+used in previous studies [26, 30, 31], so we only summarize its functional form here. The total
+
+60
+
+potential energy Vtotal of the system comprises four terms:
+Vtotal = Vcharge + Vdisp + Vrep + Vpol
+
+61
+
+(1)
+
+The Vcharge term is calculated between ion pairs I and J from Coulomb’s law
+Vcharge =
+
+X qI qJ
+I,J
+
+rIJ
+
+(2)
+
+62
+
+where qI , qJ are the charges of ions I and J and rIJ is the distance between the ions. Ions are
+
+63
+
+treated as rigid particles with fixed formal charges of +3 for La and -1 for Cl. The Vdisp term
+3
+
+https://doi.org/10.26434/chemrxiv-2025-h5v4s ORCID: https://orcid.org/0009-0008-3812-3731 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+64
+
+includes contributions from the dipole-dipole and dipole-quadrupole dispersion interactions:
+Vdisp = −
+
+X
+
+f6IJ (rIJ )
+
+I,J>I
+
+C6IJ
+C IJ 
++ f8IJ (rIJ ) 88
+6
+rIJ
+rIJ
+
+(3)
+
+65
+
+represented by the dispersion parameters C6IJ and C8IJ . Short range corrections to these interactions
+
+66
+
+are described using Tang-Toennies functions fnIJ (rIJ ), which are of the form [32]
+IJ
+
+−bn rIJ
+fnIJ (rIJ ) = 1 − cIJ
+n e
+
+m
+X
+(bIJ rIJ )k
+n
+
+k=0
+67
+
+68
+
+69
+
+k!
+
+(4)
+
+IJ
+IJ
+IJ
+IJ
+with m = 6 for f6IJ and m = 8 for f8IJ . Further, we set cIJ
+6 = c8 = 1 and b6 = b8 = bdisp .
+
+The Vrep term accounts for the short range repulsion and is modeled by an exponential function
+with two parameters AIJ and B IJ as
+Vrep =
+
+X
+
+AIJ e−B
+
+IJ
+
+(5)
+
+rIJ
+
+I,J
+70
+
+Finally, the polarization energy Vpol many-body electrostatic effects are described by the induced
+
+71
+
+dipole (µ⃗I ) terms. These are treated as additional degrees of freedom and obtained at each MD step
+
+72
+
+by minimizing the polarization energy,
+Vpol =
+
+X |µ⃗I |2
+I
+
+X
+
+q
+
+I
+
+2α
+
++
+I
+
+X X
+
+α J JI
+µIα TIJ
+q fpol (rIJ )−
+
+α
+
+I,J
+
+α J IJ
+TIJ
+µα fpol (rIJ ) −
+
+α
+
+X
+
+αβ J
+µIα TIJ
+µβ
+
+
+
+(6)
+
+α,β
+
+73
+
+αβ
+α
+where αI is the ion polarizability, TIJ
+and TIJ
+are multipole interaction tensors [33, 31] and α, β =
+
+74
+
+x, y, z are the Cartesian coordinates. For the short-range corrections in Vpol , the sum in Equation 4
+
+75
+
+has m = 4.
+
+76
+
+The solvent water molecules are described by the polarizable model described by Dang and
+
+77
+
+Chang (DC) [29], which is compatible with PIM. DC water is a rigid 4-site rigid model, with an
+
+78
+
+additional virtual site M along the symmetry axis of the molecule, which carries a negative partial
+
+79
+
+charge and the induced dipole. The short range repulsion and dispersion interactions are described
+
+80
+
+by Lennard-Jones (LJ) interaction on the oxygen atom only. The parameters of the DC model are
+
+81
+
+summarized in Table 1. The functional form of the water potential is included in the SI. This model
+
+82
+
+has been shown to correctly reproduce the trends in several thermophysical properties of bulk water
+
+83
+
+from ambient to high temperature conditions [34].
+
+4
+
+https://doi.org/10.26434/chemrxiv-2025-h5v4s ORCID: https://orcid.org/0009-0008-3812-3731 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Table 1: Parameters of the DC water model with partial charges, ϵO and σO are LJ parameters.
+
+rOH (Å)
+0.9752
+
+84
+
+rOM (Å)
+0.215
+
+H-O-H an-
+
+ϵO
+
+gle (◦ )
+
+(kcal/mol)
+
+104.52
+
+0.1825
+
+σO (Å)
+
+qH (e)
+
+qO (e)
+
+αM (Å3 )
+
+3.2340
+
+0.5190
+
+-1.0380
+
+1.444
+
+2.2. Potential parameter optimization
+
+85
+
+The PIM potential parameters are determined sequentially. First, we derive the ionic polarizabil-
+
+86
+
+ity (αI in Equation 6) of La3+ and Cl− ions. For La3+ , DFT calculations are done with an isolated
+
+87
+
+gas phase cation. The dipole induced on the cation by an electric field perturbation is analyzed
+
+88
+
+by constructing maximally localized Wannier functions (MLWF) using the method by Molina et
+
+89
+
+al.[30]. Since the effect of the coordination environment on the polarizability of anions is significant
+
+90
+
+[31, 30], αI of Cl− ion is determined from analogous simulations of the solvated anion with box #3
+
+91
+
+in Table 2.
+
+92
+
+To determine the other adjustable potential parameters, the LaCl3 -H2 O system is split into 3 dif-
+
+93
+
+ferent subsystems: crystalline LaCl3 to determine the La-La, La-Cl and Cl-Cl potential parameters,
+
+94
+
+hydrated La3+ in liquid water to determine the La-O potential parameters and hydrated Cl− in liq-
+
+95
+
+uid water to determine the Cl-O potential parameters, both at 773 K, 5 kbar. The simulation boxes
+
+96
+
+used for simulations of the individual subsystems are listed in Table 2 (boxes #1 to #3). AIMD
+
+97
+
+simulations are performed for each of the subsystems with the PBE exchange and correlation (XC)
+
+98
+
+functional [35] to generate structural configurations that are used as training set for the subsequent
+
+99
+
+dipole and force fitting. For each configuration, MLWFs and atomic forces are computed. MLWFs
+
+100
+
+are used to calculate the dispersion interaction terms (C6IJ and C8IJ in Equation 3) and ionic or
+
+101
+
+molecular dipole moments. More technical details about the DFT-related and AIMD simulations
+
+102
+
+and derived properties are given in the SI.
+
+103
+
+In a next step, the DFT-derived dipole moments are used to determine the short-range damping
+
+104
+
+IJ
+parameters of Vpol , bIJ
+pol and cpol , using a dipole fitting approach [26, 36]. They are optimized to
+
+105
+
+minimize the difference between dipole moments calculated from PIM and those obtained from DFT
+
+106
+
+for the different training configurations:
+χ2µ =
+
+X X |⃗
+1
+µP IM − µ
+⃗ DF T |2
+DF
+Nconf Natom
+|⃗
+µ T |2
+atom
+
+(7)
+
+conf
+
+107
+
+where Nconf is the number of configurations in training set, Natom is the number of atoms in each
+
+108
+
+snapshot, µ
+⃗ P IM are the dipole moments obtained from PIM and µ
+⃗ DF T are the reference dipole
+5
+
+https://doi.org/10.26434/chemrxiv-2025-h5v4s ORCID: https://orcid.org/0009-0008-3812-3731 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Table 2: Details of simulation boxes
+
+109
+
+box
+
+system
+
+edge lengths (Å)
+
+density (g/cm3 )
+
+molality (mol/kg)
+
+#1
+
+32 LaCl3 (crystal)
+
+26.1332×15.0880×8.7432
+
+3.77
+
+-
+
+#2
+
+84 H2 O, 1 La3+
+
+14.2784
+
+0.87
+
+0.661
+
+#3
+
+84 H2 O, 1 Cl−
+
+14.2784
+
+0.87
+
+0.661
+
+#4
+
+227 H2 O, 1 La
+
+−
+
+, 3 Cl
+
+20.0
+
+0.90
+
+0.734
+
+#5
+
+55 H2 O, 1 La3+ , 3 Cl−
+
+12.57
+
+1.03
+
+3.02
+
+#6
+
+55 H2 O, 1 La
+
+−
+
+12.24
+
+1.11
+
+3.02
+
+#7
+
+339 H2 O, 1 La3+ , 3 Cl−
+
+22.0
+
+1.05
+
+0.495
+
+3+
+
+3+
+
+, 3 Cl
+
+moments obtained from MLWFs. χ2 is the relative mean square error (MSE).
+
+110
+
+Finally, the parameters of the short-range repulsion term (Vrep ) and bIJ
+disp in Vdisp are optimized
+
+111
+
+following a similar procedure [26, 36] by fitting the forces calculated from PIM to those obtained
+
+112
+
+from DFT:
+χ2F =
+
+X X |F⃗ P IM − F⃗ DF T |2
+1
+Nconf Natom
+|F⃗ DF T |2
+atom
+
+(8)
+
+conf
+
+113
+
+F⃗ P IM are the atomic forces obtained from PIM and F⃗ DF T are the reference atomic forces obtained
+
+114
+
+IJ
+from DFT. bIJ
+for La-La, La-Cl and Cl-Cl interactions because they are found
+disp are set equal to B
+
+115
+
+to be very close to each other. For Cl-O interactions, bIJ
+disp is taken as 0, consistent with Tazi et
+
+116
+
+al.[26].
+
+117
+
+2.3. MD simulations
+
+118
+
+The fitted PIM potential is used to investigate the speciation and association constants of La-Cl
+
+119
+
+complexes at 773 K and 5 kbar. The simulation boxes used to study speciation and thermodynamics
+
+120
+
+are compiled in Table 2 (boxes #4 to #7). The edge lengths of the boxes are adjusted to match the
+
+121
+
+densities obtained from EOS in Driesner et al. [37]. To prepare those boxes, first a box containing
+
+122
+
+only water molecules is equilibrated at a density of ∼0.8 g/cm3 with the SPC/E water model [38].
+
+123
+
+Boxes #4 and #7 are prepared by replacing some of the water molecules with a geometry-optimized
+
+124
+
+LaCl3 molecule.
+
+125
+
+MD simulations are performed in the N V T ensemble, that is, with a constant number of particles,
+
+126
+
+N , volume, V and temperature, T , and with a time step of 0.5 fs. After initial equilibration, the
+
+127
+
+simulations are run for approximately 5 ns. To compare the fitted PIM potential against available
+
+6
+
+https://doi.org/10.26434/chemrxiv-2025-h5v4s ORCID: https://orcid.org/0009-0008-3812-3731 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+128
+
+non-polarizable force fields, MD simulations are carried out with the same boxes using the pair
+
+129
+
+potential reported in Migliorati et al. [12] and Smith and Dang [39], referred to as N-POL in
+
+130
+
+the following. Details of the N-POL potential are described in Table S2. These potentials have
+
+131
+
+been shown to accurately predict the structural and thermodynamic properties of aqueous La3+
+
+132
+
+at ambient conditions [12, 40]. To check the transferability of the PIM potential to subcritical
+
+133
+
+conditions, additional MD simulations are performed at 473 K and 400 bar. This temperature and
+
+134
+
+pressure are chosen to ensure solvent densities similar to the training set and to facilitate direct
+
+135
+
+comparison with AIMD data from Guan et al. [9].
+
+136
+
+137
+
+Structural analysis of the MD trajectories is done by computing partial radial distribution functions, gIJ (r), for different pairs of species I and J using the TRAVIS code [41]
+
+gIJ (r) =
+138
+
+139
+
+D
+
+E
+dnIJ
+r
+4πr2 ρJ dr
+
+(9)
+
+where dnIJ
+r is a function calculating the number of particles of type J within a shell of thickness
+
+dr at a distance r from a particle of type I. ρJ is the number density NJ /V of species J. The
+
+140
+
+angular brackets denote ensemble average over the entire trajectory. Coordination numbers (CN)
+
+141
+
+are calculated by counting the number of particles up to the first minimum of the respective gIJ (r).
+
+142
+
+In order to calculate the association constants of different La-Cl complexes, well-tempered meta-
+
+143
+
+dynamics (WMetaD) [42, 43] simulations are performed in the N V T ensemble for ∼6 ns. Hills of
+
+144
+
+height 1 kJ/mol and width 0.02 are deposited every 102 timesteps to get a good sampling of the
+
+145
+
+associated and dissociated states within a reasonable simulation time. To allow a direct comparison
+
+146
+
+with the AIMD data from Guan et al. [9] at their studied conditions, boxes #5 and #6 in Table
+
+147
+
+2 are used for these simulations. WMetaD simulations are also performed with boxes #4 and #7
+
+148
+
+to study the effects of box size on the association constant. These simulations are conducted using
+
+149
+
+the PLUMED package together with the CP2K code [44]. Association constants are obtained from
+
+150
+
+the free energy surface (FES) using the method described by Chialvo et al. [45]. More details of
+
+151
+
+this method are provided in the SI. The integration cutoff of the radial distribution function, rc in
+
+152
+
+Equation S11 is taken as half of the edge length of the respective simulation boxes, i.e. ∼6.10-6.30 Å
+
+153
+
+for boxes #5 and #6 and ∼10.00-10.80 Å for boxes #4 and #7 (see Table 2). ri in the same equation
+
+154
+
+is set to ∼2.8 Å in all biased simulations corresponding to the distance of the first minimum in FES.
+
+7
+
+https://doi.org/10.26434/chemrxiv-2025-h5v4s ORCID: https://orcid.org/0009-0008-3812-3731 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Table 3: Ionic polarizabilities obtained from DFT calculations
+
+Ion
+
+Polarizability (Å3 )
+
+Cl−
+
+3.05
+
+La3+
+
+1.12
+Table 4: Fitted parameters of PIM
+
+subsystem
+
+ion
+
+pair
+
+AIJ (Ha)
+
+(I, J)
+LaCl3 crys-
+
+B IJ
+
+C6IJ
+
+C8IJ
+
+bIJ
+disp
+
+bIJ
+pol
+
+(Å−1 )
+
+(HaÅ6 )
+
+(HaÅ8 )
+
+(Å−1 )
+
+(Å−1 )
+
+cIJ
+pol
+
+La-La
+
+1.5643
+
+5.3542
+
+2.8889
+
+5.7830
+
+5.3542
+
+-
+
+-
+
+La-Cl
+
+194.6102
+
+2.9768
+
+4.4840
+
+10.1427
+
+2.9768
+
+2.4498
+
+1.0
+
+Cl-Cl
+
+18.6488
+
+2.4573
+
+7.1163
+
+17.9533
+
+2.4573
+
+-
+
+-
+
+La-O
+
+132.1557
+
+3.3156
+
+1.4961
+
+2.7856
+
+2.8447
+
+3.7756
+
+1.0242
+
+aqueous Cl−
+
+Cl-O
+
+973.7683
+
+3.8222
+
+2.2225
+
+4.3390
+
+0
+
+3.0998
+
+-0.7204
+
+aqueous Cl−
+
+Cl-H
+
+-
+
+-
+
+-
+
+-
+
+-
+
+5.7893
+
+3.8516
+
+tal
+LaCl3 crystal
+LaCl3 crystal
+aqueous
+La3+
+
+155
+
+3. Results
+
+156
+
+3.1. PIM parameters
+
+157
+
+The ionic polarizability values of the La3+ and Cl− ions obtained from the DFT simulations are
+
+158
+
+listed in Table 3. These values agree well with previously calculated polarizability values for these
+
+159
+
+ions [30, 46, 47]. The other PIM parameters obtained with the methods described above are given in
+
+160
+
+Table 4. The MSEs obtained for forces and dipole moments of the different subsystems are listed in
+
+161
+
+Table S3. Plots comparing fitted and computed dipole moments and forces for different subsystems
+
+162
+
+are shown in Figures S3-S8.
+
+163
+
+3.2. Speciation and structure
+
+164
+
+To test the performance of the new PIM potential, we first compare structural data from PIM
+
+165
+
+and AIMD simulations using the boxes used as training sets. The calculated bond lengths and
+
+8
+
+https://doi.org/10.26434/chemrxiv-2025-h5v4s ORCID: https://orcid.org/0009-0008-3812-3731 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+166
+
+coordination numbers from the PIM agree well with the AIMD data as shown in Table 5. For
+
+167
+
+La-Cl, the AIMD data from Guan et al. [9] are used as a reference. Note that the latter study was
+
+168
+
+performed with a different DFT exchange-correlation functional.
+Table 5: Comparison of bond lengths and coordination numbers from PIM and AIMD simulations at 773 K and 5 kbar.
+
+ion pair
+
+box
+
+bond length from
+
+bond length from
+
+PIM (Å)
+
+AIMD (Å)
+
+CN from PIM
+
+CN
+
+from
+
+AIMD
+
+La-O
+
+#2
+
+2.52
+
+2.55
+
+8.0
+
+8.5(5)
+
+Cl-O
+
+#3
+
+3.18
+
+3.08
+
+10.5(5)
+
+10.5(5)
+
+La-Cl
+
+#5
+
+2.85
+
+2.78 [9]
+
+1.5(5)
+
+2.0 [9]
+
+169
+
+Next, La-Cl radial distribution functions, gLaCl (r), from PIM, N-POL and AIMD are compared
+
+170
+
+in Figure 1. While the PIM data reproduce the AIMD results reasonably well, N-POL MD predicts
+
+171
+
+strong La-Cl attraction that allows only negligible ion exchange throughout the simulation. This
+
+172
+
+point is illustrated and discussed in greater detail later. La-O and Cl-O pair correlation functions
+
+173
+
+from AIMD and PIM are shown in Figure S9. Both models predict similar sizes and overall structures
+
+174
+
+of the hydration shells.
+
+Figure 1: Comparison of the radial distribution functions gLaCl (r) obtained from PIM, N-POL and AIMD at 773 K
+and 5 kbar.
+
+9
+
+https://doi.org/10.26434/chemrxiv-2025-h5v4s ORCID: https://orcid.org/0009-0008-3812-3731 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+175
+
+The predictions of ion pair distances and coordination numbers from PIM and N-POL MD at
+
+176
+
+both conditions are listed in Table 6 and compared to AIMD data. gLaCl (r) and gLaO (r) obtained at
+
+177
+
+773 K and 473 K from box #4 with both the models are shown in Figures S10 and S11 respectively.
+
+178
+
+For both conditions, N-POL predicts longer La-Cl and La-O distances as compared to PIM.
+
+179
+
+The number of nearest neighbors of the La3+ ion is ∼7 for PIM, while it is ∼8 for N-POL MD at
+
+180
+
+supercritical conditions. At subcritical conditions, the total CN is ∼8 for PIM, while it is ∼9 for
+
+181
+
+N-POL MD. In contrast to PIM, N-POL MD shows almost no La-Cl dissociation, resulting in high
+
+182
+
+CN at both conditions. This is reflected by sharp high peaks in gLaCl (r) at ∼2.8 Å in Figures S10
+
+183
+
+and S11 (left). At 473 K, PIM predicts an almost completely hydrated La3+ ion with ∼8 water
+
+184
+
+molecules in the first hydration shell. This is seen in Figure S11 (left) where gLaCl (r) from PIM is
+
+185
+
+characterized by a narrow low peak at ∼2.8 Å and a broad peak at ∼5.0 Å. These two peaks indicate
+
+186
+
+the formation of two different types of ion pairs, contact ion pairs (CIPs) and solvent-shared ion
+
+187
+
+pairs (SShIPs).
+
+188
+
+3.3. Association constants
+
+189
+
+Reaction constants and energy barriers from the metadynamics simulations using WMetaD asso-
+
+190
+
+ciated with different La-Cl association reactions are presented in Table 7. PMF data from Guan et
+
+191
+
+∞
+al. [9] is used to recalculate log Keq
+for the AIMD reference in Table 7 using the method described
+
+192
+
+∞
+in the SI. Making these corrections leads to a maximum difference of about one log unit in log Keq
+
+193
+
+of the studied reactions. To make a credible comparison, PIM association constants obtained from
+
+194
+
+the small simulation boxes are compared with the AIMD data. The effects of box size are discussed
+
+195
+
+subsequently. La-Cl complexes show step-wise association reactions as
+LaCln−14−n + Cl− −−→ LaCln3−n
+
+(10)
+
+196
+
+The reactions for successive values of n starting from n = 1 in Equation 10 are referred to as reactions
+
+197
+
+1, 2 and 3 respectively in the remaining paper.
+
+198
+
+Energy barriers for dissociation are approximated by ∆G between the first energy maximum and
+
+199
+
+the first energy minimum in the FES, whereas relative stabilities of different metastable states are
+
+200
+
+determined as free energy differences between them as shown in Figure 2 (right). It is to be noted
+
+201
+
+that since the MD simulations are performed in the N V T ensemble, the free energies obtained with
+
+202
+
+the biased simulations are the Helmholtz free energies. However, as shown in Schulze et al. [48], the
+
+203
+
+change in volume due to the addition of an associated ion pair or a dissociated ion pair is negligibly
+
+10
+
+https://doi.org/10.26434/chemrxiv-2025-h5v4s ORCID: https://orcid.org/0009-0008-3812-3731 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Table 6: Nearest neighbour distances and running coordination numbers for different ion pairs obtained from simulations of box #4 (for PIM and N-POL) at 773 K and 473 K.
+
+tempera-
+
+model
+
+ion pair
+
+ture
+773 K
+
+PIM
+AIMD [9]
+EXAFS [9]
+N-POL
+
+473 K
+
+PIM
+AIMD [9]
+EXAFS [9]
+N-POL
+
+1st
+
+maxi-
+
+1st
+
+mini-
+
+mum (Å)
+
+mum (Å)
+
+La-Cl
+
+2.83
+
+4.0
+
+La-O
+
+2.51
+
+La-Cl
+
+CN
+
+2nd
+
+maxi-
+
+2nd
+
+mini-
+
+CN
+
+mum (Å)
+
+mum (Å)
+
+1.5(2)
+
+4.84
+
+6.0
+
+2.2(3)
+
+3.5
+
+6.0(1)
+
+5.00
+
+6.2
+
+27(3)
+
+2.76
+
+-
+
+2.0
+
+-
+
+-
+
+-
+
+La-O
+
+2.58
+
+-
+
+5.8
+
+-
+
+-
+
+-
+
+La-Cl
+
+2.90-3.02
+
+-
+
+1.4
+
+-
+
+-
+
+-
+
+La-O
+
+2 57-2.59
+
+-
+
+5.0
+
+-
+
+-
+
+-
+
+La-Cl
+
+2.88
+
+4.0
+
+2.3(2)
+
+-
+
+-
+
+-
+
+La-O
+
+2.58
+
+3.5
+
+6.2(3)
+
+5.15
+
+6.7
+
+35(5)
+
+La-Cl
+
+2.87
+
+4.0
+
+0.1(2)
+
+4.88
+
+6.0
+
+1.4(4)
+
+La-O
+
+2.53
+
+3.5
+
+8.0(3)
+
+4.82
+
+6.0
+
+28(5)
+
+La-Cl
+
+2.86
+
+-
+
+1.0
+
+-
+
+-
+
+-
+
+La-O
+
+2.55
+
+-
+
+7.2
+
+-
+
+-
+
+-
+
+La-Cl
+
+2.90-3.02
+
+-
+
+0.5
+
+-
+
+-
+
+-
+
+La-O
+
+2 57-2.59
+
+-
+
+7.5
+
+-
+
+-
+
+-
+
+La-Cl
+
+2.90
+
+4.0
+
+2.2(2)
+
+-
+
+-
+
+-
+
+La-O
+
+2.58
+
+3.5
+
+7.0(2)
+
+4.78
+
+6.5
+
+33(3)
+
+204
+
+small at solvent density of ∼0.8 g/cm3 . These effects can therefore be neglected and the Helmholtz
+
+205
+
+free energies can be considered to be approximately equal to the Gibbs free energies.
+
+206
+
+WMetaD is performed with the La-Cl interionic distance of the dissociating Cl− as the collective
+
+207
+
+variable (CV). The other Cl− ligands are prevented from dissociating or associating by restraining
+
+208
+
+them to a fixed distance either close to or far away from the La3+ ion. For example, in case of
+
+209
+
+reaction 2, one Cl− ligand is restrained at ∼3 Å, the other is allowed to associate while the third
+
+210
+
+one (to be associated in the next step) is restrained at ∼8-10 Å. This is illustrated in Figure 2 (left,
+
+211
+
+inset). In dilute solutions ions generally exist in equilibrium as contact ion pairs (CIPs - ion pairs
+
+212
+
+where anion and cation are in close contact), solvent-shared ion pairs (SShIPs - ion pairs where
+
+213
+
+anion and cation share hydration water molecules) and solvent-separated ion pairs (SSIPs - ion pairs
+
+214
+
+where anion and cation form their individual hydration shells) as shown in Figure 3. These can be
+11
+
+https://doi.org/10.26434/chemrxiv-2025-h5v4s ORCID: https://orcid.org/0009-0008-3812-3731 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure 2: Left: FES of the LaCl2+ + Cl – −−→ LaCl2+ reaction at 773 K. Inset 1 shows the associated state where
+two Cl− ions (green) are coordinated to the La3+ ion (brown) while the third Cl− is restrained at a long distance.
+Inset 2 shows the dissociated state where one of the previously coordinating Cl− ions is at a long distance. Right:
+FES of the LaCl2+ + Cl – −−→ LaCl2+ reaction at 473 K. ∆Gdiss is the energy barrier for dissociation calculated as
+the difference in free energy between state 1 (associated state) and the high energy transition state (TS). ∆G2−1 is
+the energy difference between states 2 and 1.
+
+12
+
+https://doi.org/10.26434/chemrxiv-2025-h5v4s ORCID: https://orcid.org/0009-0008-3812-3731 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+215
+
+distinguished from each other using the La-Cl interionic distance, thereby allowing proper sampling
+
+216
+
+of all the metastable states.
+
+Figure 3: Different ion pairs obtained from simulations. Brown and green balls represent La3+ and Cl− ions. In case
+of CIPs and SSIPs, red balls represent hydration water molecules of La3+ , and magenta balls represent hydration
+water molecules of Cl− ions. For SShIPs red balls are the shared hydration water molecules.
+
+217
+
+Figure 2 shows the FES of reaction 2 obtained from PIM and N-POL MD at supercritical and
+
+218
+
+subcritical conditions. FES for the other reactions are shown in Figures S12 and S13. All FES
+
+219
+
+primarily show two metastable states indicated by energy minima at ∼3 Å and at ∼5 Å (marked by
+
+220
+
+1 and 2 in Figure 2 right). State 1 is attributed to the CIPs whereas state 2 is populated by SShIPs
+
+221
+
+and these metastable states are separated by a high-energy transition state (TS). Relative stabilities
+
+222
+
+of CIPs and SShIPs show a change from subcritical to supercritical conditions with PIM. However,
+
+223
+
+no such change in relative stability is observed with N-POL MD. ∆G2−1 obtained from the different
+
+224
+
+models at 773 K and 473 K is shown in Figure S14.
+
+225
+
+In Table 7, high values of the energy barrier for dissociation can be seen compared to the thermal
+
+226
+
+energy, kB T. This creates a kinetic bottleneck in unbiased simulations, which underlines the moti-
+
+227
+
+vation to use WMetaD for this system. Further, it can be inferred that PIM predicts lower energy
+
+228
+
+barriers for dissociation compared to those from N-POL MD for all reactions at subcritical as well
+
+229
+
+as supercritical conditions. PIM predicts increasing energy barriers for successive dissociation reac-
+
+230
+
+tions at both conditions. N-POL MD predicts almost constant energy barriers at 773 K. At 473 K,
+
+231
+
+an increase in energy barrier from reaction 1 to 2 followed by a decrease in reaction 3 is observed.
+
+232
+
+∞
+Both models predict positive values of log Keq
+for all the stepwise association reactions due to
+
+233
+
+the tendency of ions to associate in water at high temperatures. In general, the calculated values of
+
+234
+
+∞
+log Keq
+for PIM are lower than those for N-POL MD for all association reactions at subcritical and
+
+235
+
+supercritical conditions. This is because of the deep energy basins predicted by N-POL MD for CIPs,
+
+236
+
+∞
+which make them more exothermic than those from PIM. Both models show an increase in log Keq
+
+13
+
+https://doi.org/10.26434/chemrxiv-2025-h5v4s ORCID: https://orcid.org/0009-0008-3812-3731 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Table 7: Energy barriers and reaction constants of La-Cl association reactions from different models at supercritical
+conditions (773 K, 5 kbar) and subcritical conditions (473 K, 400 bar).
+
+Tempera-
+
+Reaction
+
+Method
+
+Energy barrier (in kB T )
+
+∞
+logKeq
+
+PIM
+
+2.97
+
+2.86
+
+N-POL MD
+
+6.19
+
+3.51
+
+AIMD [9]
+
+4.65
+
+2.72
+
+PIM
+
+3.57
+
+2.20
+
+N-POL MD
+
+6.17
+
+2.64
+
+AIMD [9]
+
+4.10
+
+1.66
+
+PIM
+
+4.07
+
+1.53
+
+N-POL MD
+
+6.22
+
+1.77
+
+AIMD [9]
+
+3.51
+
+0.53
+
+PIM
+
+2.25
+
+2.29
+
+N-POL MD
+
+7.12
+
+2.45
+
+AIMD [9]
+
+3.73
+
+1.81
+
+PIM
+
+2.46
+
+1.60
+
+N-POL MD
+
+7.47
+
+1.60
+
+AIMD [9]
+
+4.60
+
+1.19
+
+PIM
+
+3.10
+
+0.97
+
+N-POL MD
+
+6.67
+
+0.76
+
+AIMD [9]
+
+3.90
+
+0.18
+
+ture
+773 K
+
+La3+ + Cl – −−→ LaCl2+
+
+LaCl
+
+2+
+
++ Cl −−→ LaCl2
+–
+
++
+
+LaCl2+ + Cl – −−→ LaCl3
+
+473 K
+
+La
+
+3+
+
++ Cl −−→ LaCl
+–
+
+2+
+
+LaCl2+ + Cl – −−→ LaCl2+
+
+LaCl2+ + Cl – −−→ LaCl3
+
+237
+
+∞
+with increasing temperature. Note that FES and log Keq
+have a many-to-one relation, which means
+
+238
+
+∞
+value can be obtained from different FES. Therefore, an accurate prediction
+that the same log Keq
+
+239
+
+of the underlying FES is of paramount importance to retrieve reliable association constants.
+
+240
+
+4. Discussion
+
+241
+
+4.1. Speciation and structure: Comparison with available AIMD and experimental data
+
+242
+
+The new PIM potential predicts La-Cl bond distances closer to AIMD data compared to N-POL
+
+243
+
+MD (Table 6) at both conditions studied here. However, distances from both PIM and N-POL MD
+
+14
+
+https://doi.org/10.26434/chemrxiv-2025-h5v4s ORCID: https://orcid.org/0009-0008-3812-3731 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+244
+
+are shorter than the 2.90-3.02 Å range predicted by experiments at similar conditions [9]. Shorter
+
+245
+
+bond lengths from PIM are a consequence of shorter bond lengths predicted by DFT which is used
+
+246
+
+to generate the training configurations. Both models predict a decrease in La-Cl bond length with
+
+247
+
+increasing temperature, which is consistent with experiments [9] and AIMD [9] at similar conditions.
+
+248
+
+N-POL MD simulations with box #4 at both conditions show almost no La-Cl dissociation resulting
+
+249
+
+in CN > 2. The presence of high-energy barriers for dissociation (∼7 kB T, Table 7) at both conditions
+
+250
+
+is the reason why La-Cl dissociation is kinetically unfavorable in N-POL MD. Similar conclusions
+
+251
+
+were drawn by Zhang and Yan [49] with a different set of pair potentials at similar temperature
+
+252
+
+conditions. As the existing N-POL potentials were optimized to reproduce structures at ambient
+
+253
+
+conditions, we attempted to refit the LJ potential from Migliorati et al. [12] with atomic force
+
+254
+
+data at supercritical conditions. However, this refitted potential also predicted unfavourable La-Cl
+
+255
+
+dissociation. The observed inability of LJ-type potentials to predict the hydration free energies and
+
+256
+
+ion-oxygen distances of divalent cations was already addressed by Li et al.[50], who attributed this
+
+257
+
+behavior to the lack of ion-dipole interactions. These problems are overcome with PIM, which softens
+
+258
+
+the La-Cl interactions resulting in significant dissociation at both conditions, consistent with AIMD
+
+259
+
+simulations and extended X-ray absorption fine structure (EXAFS) data [9] at similar conditions.
+
+260
+
+At 473 K, ∆G2−1 is negative for PIM reactions (Figure S14), which means that SShIP is the more
+
+261
+
+stable state compared to CIP. This is also seen in the unbiased simulations (PIM with box #4, Table
+
+262
+
+6) where almost all Cl− ligands preferentially populate the second coordination shell at a distance
+
+263
+
+of ∼5 Å. La-O distances from PIM are shorter compared to those from EXAFS data [9] at similar
+
+264
+
+conditions.
+
+265
+
+Figure 4 shows a comparison of the total number of ligands and the number of Cl− ligands in
+
+266
+
+the first coordination shell. With increasing temperature, the static dielectric constant of water
+
+267
+
+decreases, which promotes ion association. This effect is seen in PIM where an increase of about
+
+268
+
+one Cl− ion is observed from subcritical to supercritical conditions, consistent with AIMD data
+
+269
+
+[9], EXAFS studies [9], XAS studies [23] and HKF model data [6]. N-POL MD predicts higher
+
+270
+
+Cl− coordination and negligible change with temperature. In terms of the absolute number of Cl−
+
+271
+
+ligands, the PIM data agrees well with the HKF model [6] generated using solubility data from
+
+272
+
+Migdisov et al. [24] and EXAFS data [9], whereas an overestimation of about one ligand is observed
+
+273
+
+for N-POL MD. With decreasing temperature, PIM shows an increase in the total number of ligands
+
+274
+
+of about one, in agreement with EXAFS data [9]. XAS data [23] predict an increase of about
+
+275
+
+three ligands. However, XAS generally overestimates coordination numbers indicated by the 10-fold
+
+15
+
+https://doi.org/10.26434/chemrxiv-2025-h5v4s ORCID: https://orcid.org/0009-0008-3812-3731 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+276
+
+coordinated La3+ predicted at subcritical conditions [23]. N-POL MD predicts negligible change in
+
+277
+
+the total number of ligands with temperature. In terms of the absolute number of ligands in the
+
+278
+
+first coordination shell, PIM data agree well with EXAFS [9] and AIMD [9] data, while N-POL MD
+
+279
+
+overestimates the number of ligands by about one. PIM also shows better agreement with XAS
+
+280
+
+studies [23] in terms of the total number of ligands compared to N-POL MD at 773 K. In general,
+
+281
+
+La-O distances predicted by PIM are shorter than those in AIMD and experiments [9] at similar
+
+282
+
+conditions.
+
+Figure 4: Comparison of coordination numbers from PIM, N-POL MD with XAS [23], EXAFS [9], AIMD [9] and
+HKF model [6] data
+
+283
+
+4.2. Ion association thermodynamics: Comparison with available AIMD and experimental data.
+
+284
+
+In general, association constants predicted by AIMD, N-POL MD and PIM follow the order,
+
+285
+
+∞
+∞
+∞
+log Keq,N
+−P OL > log Keq,P IM > log Keq,AIM D . This is seen in Table 7 and also illustrated in Figure
+
+286
+
+∞
+S15. Although PIM gives better log Keq
+values as compared to N-POL, the disagreement with AIMD
+
+287
+
+is still relatively large, i.e. about one log unit in some cases. Table 8 shows the cumulative association
+
+288
+
+constants, log β obtained from N-POL MD, PIM, AIMD [9] and the HKF model parameterized with
+
+289
+
+solubility data from Migdisov et al. [24] up to ∼350 ◦ C. They are obtained by cumulative addition
+
+290
+
+∞
+of log Keq
+values shown in Table 7 and, hence, follow the same descending order as association
+
+291
+
+constants. log β predicted by PIM for reactions 2 and 3 at 473 K are in better agreement with the
+
+292
+
+thermodynamic model and AIMD than N-POL MD. Both models predict an increase in log β values
+
+293
+
+of LaCl2+ and LaCl+
+2 with increasing temperature, in agreement with data from the HKF model
+16
+
+https://doi.org/10.26434/chemrxiv-2025-h5v4s ORCID: https://orcid.org/0009-0008-3812-3731 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+294
+
+up to ∼400 ◦ C [24] and with AIMD data [9]. Due to the increased stability of La-Cl complexes at
+
+295
+
+higher temperatures, the stepwise addition of Cl− into the coordination sphere of La3+ becomes
+
+296
+
+more exothermic at higher temperatures.
+Table 8: Cumulative association constants log β obtained from different models (∗ values are from two the data sets
+shown in Migdisov et al. [24])
+
+temperature
+
+reaction
+
+773 K
+
+La
+
+3+
+
++ Cl −−→ LaCl
+–
+
+2+
+
+La3+ + 2 Cl – −−→ LaCl2+
+
+La
+
+473 K
+
+3+
+
++ 3 Cl −−→ LaCl3
+–
+
+La3+ + Cl – −−→ LaCl2+
+
+La3+ + 2 Cl – −−→ LaCl2+
+
+La3+ + 3 Cl – −−→ LaCl3
+
+method
+
+log β
+
+PIM
+
+2.86
+
+N-POL MD
+
+3.51
+
+AIMD [9]
+
+2.72
+
+PIM
+
+5.06
+
+N-POL MD
+
+6.15
+
+AIMD [9]
+
+4.38
+
+PIM
+
+6.59
+
+N-POL MD
+
+7.92
+
+AIMD [9]
+
+4.91
+
+PIM
+
+2.29
+
+N-POL MD
+
+2.45
+
+AIMD [9]
+
+1.81
+
+Model [24]
+
+2.29, 2.38∗
+
+PIM
+
+3.89
+
+N-POL MD
+
+4.05
+
+AIMD [9]
+
+3.00
+
+Model [24]
+
+3.86
+
+PIM
+
+4.86
+
+N-POL MD
+
+4.81
+
+AIMD [9]
+
+3.18
+
+297
+
+The relative stabilities of the metastable CIPs and SShIPs predicted by PIM are in agreement
+
+298
+
+with AIMD data as shown in Figure S14. Both predict CIPs as the more stable state at 773 K and
+
+299
+
+SShIPs as the more stable state at 473 K in contrast to N-POL MD that always predicts CIPs as the
+
+300
+
+more stable state at both conditions. Zhang and Yan [49] also predict similar trends of energy barrier
+
+301
+
+and relative stabilities with a different set of non-polarizable pair potential at similar temperature
+17
+
+https://doi.org/10.26434/chemrxiv-2025-h5v4s ORCID: https://orcid.org/0009-0008-3812-3731 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+∞ of association reactions (right) from small and big simulation
+Figure 5: Comparison of energy barriers (left) and log Keq
+
+boxes. Integration limits of ∼6.30 Å and ∼11 Å were used for small and big boxes, respectively.
+
+302
+
+conditions. Absolute values of ∆G2−1 from PIM are generally lower than those from AIMD.
+
+303
+
+From Table 8, it may seem that PIM and N-POL MD are more accurate than AIMD in predicting
+
+304
+
+formation constants. However, we do not draw such conclusions here because formation constants
+
+305
+
+are derived from the corresponding reaction FES. As discussed above, FES from N-POL MD are
+
+306
+
+unable to predict the relative stabilities of the different metastable states correctly. We do not have
+
+307
+
+any data to prove that FES from PIM are more accurate than their AIMD counterparts.
+
+308
+
+4.2.1. Effect of box size on association constant
+
+309
+
+MD simulations use periodic boundary conditions to replicate bulk liquid systems. The success
+
+310
+
+of this assumption depends on the size of the simulation box which determines the distance between
+
+311
+
+the particles and their nearest images. A small simulation box would mean smaller distances between
+
+312
+
+particles and their periodic images leading to higher interactions between them, which is not desirable
+
+313
+
+as this imposes correlations not expected in fluids. To understand the effect of box size on the
+
+314
+
+∞
+calculated values of log Keq
+and energy barriers, WMetaD simulations were performed with boxes
+
+315
+
+#4 and #7 in Table 2 with the new PIM potential. The results are presented in Figure 5.
+
+316
+
+Figure 5 shows minor disagreements (maximum difference of ∼0.9 kB T in energy barriers and
+
+317
+
+∼0.25 log units in association constants) between results from the two simulation boxes. The tech-
+
+318
+
+nique used to calculate the association constants in this work boils down to calculating g ∞ (r), which
+18
+
+https://doi.org/10.26434/chemrxiv-2025-h5v4s ORCID: https://orcid.org/0009-0008-3812-3731 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+319
+
+is the radial distribution function in the limit of infinite dilution. For highly dilute solutions, ob-
+
+320
+
+taining g ∞ (r) from MD simulations is difficult as sampling deficiency occurs due to rather short
+
+321
+
+simulation times, leading to poor statistics. Therefore, the more practical way is to calculate g ∞ (r)
+
+322
+
+from ∆G obtained from biased simulations using Equation S12. If it were possible to simulate a
+
+323
+
+’theoretically’ infinitely dilute solution (the simulation box is big enough with adequate number of
+
+324
+
+water molecules and La, Cl particles to reach bulk behavior), g ∞ (r) would converge to 1 and hence
+
+325
+
+ϕ(r) would converge to 0 at r → ∞, which is the dissociated state in the ideal case. However, due
+
+326
+
+to extreme long-range nature of Coulomb interactions and limited number of La, Cl particles, this is
+
+327
+
+difficult to achieve even in simulation boxes with edge lengths of ∼30 Å [51]. Hence, the dissociated
+
+328
+
+state is taken to be the limiting continuum behavior where charged particles interact via screened
+
+329
+
+Coulomb interaction given by ϕanalytical (r) = −q 2 /4πϵ0 ϵr r. FES obtained from simulation boxes
+
+330
+
+of different sizes are rigidly shifted so that their tails coincide with the analytical solution at long
+
+331
+
+∞
+distances, as shown in Figure 6. The difference in the log Keq
+values arise due to the difference in
+
+332
+
+length of the tail coinciding with the analytical solution. However, once the FES is properly aligned
+
+333
+
+to the analytical solution (indicating efficient sampling of all the metastable states), dependence of
+
+334
+
+∞
+on cutoff distance is weak beyond ∼5 Å (corresponding to SShIP) at high temperatures, as
+log Keq
+
+335
+
+shown in Figure S16. Therefore, results obtained from small simulation boxes used in AIMD sim-
+
+336
+
+ulations are acceptable at these conditions. The effect of box size may become important at lower
+
+337
+
+temperatures where SSIPs are stabilized in addition to CIPs and SShIPs. Since SSIPs are formed
+
+338
+
+at ∼7.5 Å-8 Å efficient sampling of these ion pairs is no longer possible in small simulation boxes.
+
+339
+
+Bigger simulation boxes with minimum edge lengths of ∼16-17 Å are required to calculate reliable
+
+340
+
+association constants at lower temperatures.
+
+341
+
+5. Conclusion
+
+342
+
+We fit a new polarizable potential for La3+ in Cl− -bearing hydrothermal systems from first-
+
+343
+
+principles AIMD simulations. Production simulations were performed at 773 K and 473 K to derive
+
+344
+
+structural and thermodynamic properties of La3+ in dilute to concentrated solutions.
+
+345
+
+The new PIM interaction potential gives good estimates of La-Cl and La-O distances at the stud-
+
+346
+
+ied conditions. PIM provides better estimates of total coordination and Cl− coordination numbers
+
+347
+
+compared to N-POL MD in dilute solutions. It also reproduces the increase in La-Cl coordination
+
+348
+
+with increasing temperature as observed in experiments. However, the La-O distances predicted by
+
+349
+
+PIM are shorter than the experimental data at similar conditions.
+19
+
+https://doi.org/10.26434/chemrxiv-2025-h5v4s ORCID: https://orcid.org/0009-0008-3812-3731 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure 6: ϕ(r) obtained from small simulation box (left) and big simulation box (right) aligned to the analytical
+solution at 773 K, 5 kbar. ϕ(r) from larger box shows a longer tail coinciding with the analytical solution.
+
+350
+
+Calculation of association constants reveal increasing stability of LaCl2+ and LaCl+
+2 complexes
+
+351
+
+with increasing temperature. In general, the formation constants calculated from PIM simulations
+
+352
+
+are closer to the data from the AIMD and HKF models than those from N-POL MD. This is
+
+353
+
+despite the fact that no energy values are used in fitting the PIM. Relative stabilities of CIPs
+
+354
+
+and SShIPs predicted by PIM are in agreement with AIMD at both conditions. Altogether, the
+
+355
+
+newly fitted PIM gives more precise structural and thermodynamic insight into dilute La-Cl-bearing
+
+356
+
+hydrothermal fluids at both the studied temperature and pressure conditions than those from simple
+
+357
+
+pair potentials, with reasonable computational cost. We also show that the effects of simulation box
+
+358
+
+size on calculated thermodynamics properties are negligibly small at high temperatures. Our results
+
+359
+
+underpin the importance of an explicit description of ionic polarizability to retrieve reliable structural
+
+360
+
+and thermodynamic information in hydrothermal systems containing highly polarizable anions such
+
+361
+
+as Cl− and cations with high polarization power such as La3+ .
+
+362
+
+6. Research data
+
+363
+
+364
+
+The pair correlation functions, FES and example CP2K input files are hosted in open source
+repository - DOI 10.17605/OSF.IO/E93GQ
+
+20
+
+https://doi.org/10.26434/chemrxiv-2025-h5v4s ORCID: https://orcid.org/0009-0008-3812-3731 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+365
+
+7. Acknowledgments
+
+366
+
+This study was supported by the Deutsche Forschungsgemeinschaft (DFG) in the framework
+
+367
+
+of project JA 1469/13-1. The authors gratefully acknowledge the Gauss Centre for Supercomput-
+
+368
+
+ing e.V. (www.gauss-centre.eu) for funding this project by providing computing time through the
+
+369
+
+John von Neumann Institute for Computing (NIC) on the GCS Supercomputer JUWELS at Jülich
+
+370
+
+Supercomputing Centre (JSC).
+
+371
+
+References
+
+372
+
+[1] R. G. Skirrow, D. L. Huston, T. P. Mernagh, J. P. Thorne, H. Duffer, A. Senior, Critical
+
+373
+
+commodities for a high-tech world: Australia’s potential to supply global demand, Geoscience
+
+374
+
+Australia Canberra, 2013.
+
+375
+
+[2] I. González-Álvarez,
+
+F. Stoppa,
+
+X. Yang,
+
+A. Porwal,
+
+Introduction to the spe-
+
+376
+
+cial issue, insights on carbonatites and their mineral exploration approach:
+
+377
+
+lenge towards resourcing critical metals,
+
+378
+
+doi:https://doi.org/10.1016/j.oregeorev.2021.104073.
+
+A chal-
+
+Ore Geology Reviews 133 (2021) 104073.
+
+379
+
+[3] A. Williams-Jones, I. Samson, G. Olivo, The genesis of hydrothermal fluorite-ree de-
+
+380
+
+posits in the gallinas mountains, new mexico, Economic Geology 95 (2000) 327–341.
+
+381
+
+doi:10.2113/gsecongeo.95.2.327.
+
+382
+
+[4] E. Sheard, A. Williams-Jones, M. Heiligmann, C. Pederson, D. Trueman, Controls on
+
+383
+
+the concentration of zirconium, niobium, and the rare earth elements in the thor lake
+
+384
+
+rare metal deposit, northwest territories, canada, Economic Geology 107 (2012) 81–104.
+
+385
+
+doi:10.2113/econgeo.107.1.81.
+
+386
+
+[5] J. Brugger, W. Liu, B. Etschmann, Y. Mei, D. M. Sherman, D. Testemale, A review of the
+
+387
+
+coordination chemistry of hydrothermal systems, or do coordination changes make ore deposits?,
+
+388
+
+Chemical Geology 447 (2016) 219–253. doi:https://doi.org/10.1016/j.chemgeo.2016.10.021.
+
+389
+
+[6] A. Migdisov, A. Williams-Jones, J. Brugger, F. Caporuscio, Hydrothermal transport, deposi-
+
+390
+
+tion, and fractionation of the ree: Experimental data and thermodynamic calculations, Chem-
+
+391
+
+ical Geology 439 (2016) 13–42. doi:https://doi.org/10.1016/j.chemgeo.2016.06.005.
+
+21
+
+https://doi.org/10.26434/chemrxiv-2025-h5v4s ORCID: https://orcid.org/0009-0008-3812-3731 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+392
+
+[7] D. Banks, B. Yardley, A. Campbell, K. Jarvis, Ree composition of an aqueous magmatic fluid:
+
+393
+
+A fluid inclusion study from the capitan pluton, new mexico, u.s.a., Chemical Geology 113 (3)
+
+394
+
+(1994) 259–272. doi:https://doi.org/10.1016/0009-2541(94)90070-1.
+
+395
+
+[8] L. Lintjewas, I. Setiawan, Mobility of rare earth element in hydrothermal process and weathering
+
+396
+
+product: a review, IOP Conference Series: Earth and Environmental Science 118 (1) (2018)
+
+397
+
+012076. doi:10.1088/1755-1315/118/1/012076.
+
+398
+
+[9] Q. Guan, Y. Mei, B. Etschmann, M. Louvel, D. Testemale, R. Spezia, J. Brugger, Speciation and
+
+399
+
+thermodynamic properties of la(iii)-cl complexes in hydrothermal fluids: A combined molecular
+
+400
+
+dynamics and in situ x-ray absorption spectroscopy study, Geochimica et Cosmochimica Acta
+
+401
+
+330 (2022) 27–46. doi:https://doi.org/10.1016/j.gca.2022.02.032.
+
+402
+
+[10] T. Ikeda, M. Hirata, T. Kimura, Hydration structure of Y3+ and La3+ compared: An
+
+403
+
+application of metadynamics, The Journal of Chemical Physics 122 (24) (2005) 244507.
+
+404
+
+doi:10.1063/1.1940029.
+
+405
+
+[11] C. Terrier, P. Vitorge, M.-P. Gaigeot, R. Spezia, R. Vuilleumier, Density functional theory
+
+406
+
+based molecular dynamics study of hydration and electronic properties of aqueous La3+, The
+
+407
+
+Journal of Chemical Physics 133 (4) (2010) 044509. doi:10.1063/1.3460813.
+
+408
+
+[12] V. Migliorati, A. Serva, F. Terenzio, P. D’Angelo, Development of lennard-jones and
+
+409
+
+buckingham potentials for lanthanoid ions in water, Inorganic Chemistry 56 (05 2017).
+
+410
+
+doi:10.1021/acs.inorgchem.7b00207.
+
+411
+
+[13] M. Duvail, M. Souaille, R. Spezia, T. Cartailler, P. Vitorge, Pair interaction potentials with
+
+412
+
+explicit polarization for molecular dynamics simulations of La3+ in bulk water, The Journal of
+
+413
+
+Chemical Physics 127 (3) (2007) 034503. doi:10.1063/1.2751503.
+
+414
+
+[14] M. Duvail, P. Vitorge, R. Spezia, Building a polarizable pair interaction potential for lan-
+
+415
+
+thanoids(III) in liquid water: A molecular dynamics study of structure and dynamics of the
+
+416
+
+whole series, The Journal of Chemical Physics 130 (10) (2009) 104501. doi:10.1063/1.3081143.
+
+417
+
+[15] R. Spezia, M. Duvail, P. Vitorge, P. D’Angelo, Molecular dynamics to rationalize exafs ex-
+
+418
+
+periments: A dynamical model explaining hydration behaviour across the lanthanoid(iii)
+
+419
+
+series, Journal of Physics: Conference Series 190 (1) (2009) 012056.
+
+420
+
+6596/190/1/012056.
+
+doi:10.1088/1742-
+
+22
+
+https://doi.org/10.26434/chemrxiv-2025-h5v4s ORCID: https://orcid.org/0009-0008-3812-3731 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+421
+
+[16] C. Clavaguéra, R. Pollet, J. M. Soudan, V. Brenner, J. P. Dognon, Molecular dynamics study
+
+422
+
+of the hydration of lanthanum(iii) and europium(iii) including many-body effects, The Journal
+
+423
+
+of Physical Chemistry B 109 (16) (2005) 7614–7616. doi:10.1021/jp051032h.
+
+424
+
+[17] C. Beuchat, D. Hagberg, R. Spezia, L. Gagliardi, Hydration of lanthanide chloride salts: A
+
+425
+
+quantum chemical and classical molecular dynamics simulation study, The Journal of Physical
+
+426
+
+Chemistry B 114 (47) (2010) 15590–15597. doi:10.1021/jp105590h.
+
+427
+
+[18] W. W. Rudolph, G. Irmer, Hydration and ion pair formation in common aqueous la(iii)
+
+428
+
+salt solutions – a raman scattering and dft study, Dalton Trans. 44 (2015) 295–305.
+
+429
+
+doi:10.1039/C4DT03003F.
+
+430
+
+[19] M. Bühl, N. Sieffert, A. Partouche, A. Chaumont, G. Wipff, Speciation of la(iii) chloride com-
+
+431
+
+plexes in water and acetonitrile: A density functional study, Inorganic Chemistry 51 (24) (2012)
+
+432
+
+13396–13407. doi:10.1021/ic302255a.
+
+433
+
+[20] L. Petit, R. Vuilleumier, P. Maldivi, C. Adamo, Molecular dynamics study of the coordination
+
+434
+
+sphere of trivalent lanthanum in a highly concentrated licl aqueous solution: a combined classical
+
+435
+
+and ab initio approach, The Journal of Physical Chemistry B 112 (34) (2008) 10603–10607.
+
+436
+
+doi:10.1021/jp8017106.
+
+437
+
+[21] J. C. Tanger, H. C. Helgeson, Calculation of the thermodynamic and transport properties of
+
+438
+
+aqueous species at high pressures and temperatures; revised equations of state for the standard
+
+439
+
+partial molal properties of ions and electrolytes, American Journal of Science 288 (1) (1988)
+
+440
+
+19–98. doi:10.2475/ajs.288.1.19.
+
+441
+
+[22] J. R. Haas, E. L. Shock, D. C. Sassani, Rare earth elements in hydrothermal systems: Estimates
+
+442
+
+of standard partial molal thermodynamic properties of aqueous complexes of the rare earth
+
+443
+
+elements at high pressures and temperatures, Geochimica et Cosmochimica Acta 59 (21) (1995)
+
+444
+
+4329–4350. doi:https://doi.org/10.1016/0016-7037(95)00314-P.
+
+445
+
+[23] R. Mayanovic, A. Anderson, W. Bassett, I.-M. Chou, Steric hindrance and the enhanced stabil-
+
+446
+
+ity of light rare-earth elements in hydrothermal fluids, American Mineralogist - AMER MIN-
+
+447
+
+ERAL 94 (2009) 1487–1490. doi:10.2138/am.2009.3250.
+
+448
+
+[24] A. A. Migdisov, A. Williams-Jones, T. Wagner, An experimental study of the solubility and
+
+449
+
+speciation of the rare earth elements (iii) in fluoride- and chloride-bearing aqueous solutions
+23
+
+https://doi.org/10.26434/chemrxiv-2025-h5v4s ORCID: https://orcid.org/0009-0008-3812-3731 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+450
+
+at temperatures up to 300◦ c, Geochimica et Cosmochimica Acta 73 (23) (2009) 7087–7109.
+
+451
+
+doi:https://doi.org/10.1016/j.gca.2009.08.023.
+
+452
+
+[25] D. Sherman, M. Collings, Ion association in concentrated nacl brines from ambient to super-
+
+453
+
+critical conditions: Results from classical molecular dynamics simulations, Geochemical Trans-
+
+454
+
+actions 3 (2002) 102–107. doi:10.1039/b208671a.
+
+455
+
+[26] S. Tazi, J. J. Molina, B. Rotenberg, P. Turq, R. Vuilleumier, M. Salanne, A transferable ab initio
+
+456
+
+based force field for aqueous ions, The Journal of Chemical Physics 136 (11) (2012) 114507.
+
+457
+
+doi:10.1063/1.3692965.
+
+458
+
+[27] W. Zhang, A. C. T. van Duin, Improvement of the reaxff description for functionalized hydro-
+
+459
+
+carbon/water weak interactions in the condensed phase, The Journal of Physical Chemistry B
+
+460
+
+122 (14) (2018) 4083–4092. doi:10.1021/acs.jpcb.8b01127.
+
+461
+
+[28] G. Lamoureux, E. Harder, I. V. Vorobyov, B. Roux, A. D. MacKerell, A polarizable model of
+
+462
+
+water for molecular dynamics simulations of biomolecules, Chemical Physics Letters 418 (1)
+
+463
+
+(2006) 245–249. doi:https://doi.org/10.1016/j.cplett.2005.10.135.
+
+464
+
+[29] L. X. Dang, T.-M. Chang, Molecular dynamics study of water clusters, liquid, and liquid–vapor
+
+465
+
+interface of water with many-body potentials, The Journal of Chemical Physics 106 (19) (1997)
+
+466
+
+8149–8159. doi:10.1063/1.473820.
+
+467
+
+[30] J. J. Molina, S. Lectez, S. Tazi, M. Salanne, J.-F. Dufrêche, J. Roques, E. Simoni, P. A. Madden,
+
+468
+
+P. Turq, Ions in solutions: Determining their polarizabilities from first-principles, The Journal
+
+469
+
+of Chemical Physics 134 (1) (2011) 014511. doi:10.1063/1.3518101.
+
+470
+
+[31] R. J. Heaton, P. A. Madden, S. J. Clark, S. Jahn, Condensed phase ionic polarizabilities from
+
+471
+
+plane wave density functional theory calculations, The Journal of Chemical Physics 125 (14)
+
+472
+
+(2006) 144104. doi:10.1063/1.2357151.
+
+473
+
+[32] K. T. Tang, J. P. Toennies, An improved simple model for the van der Waals potential based
+
+474
+
+on universal damping functions for the dispersion coefficients, The Journal of Chemical Physics
+
+475
+
+80 (8) (1984) 3726–3741. doi:10.1063/1.447150.
+
+476
+
+[33] A. Aguado, P. A. Madden, Ewald summation of electrostatic multipole interactions up
+
+477
+
+to the quadrupolar level, The Journal of Chemical Physics 119 (14) (2003) 7471–7483.
+
+478
+
+doi:10.1063/1.1605941.
+24
+
+https://doi.org/10.26434/chemrxiv-2025-h5v4s ORCID: https://orcid.org/0009-0008-3812-3731 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+479
+
+[34] J. Wang, P. Cieplak, Q. Cai, M.-J. Hsieh, J. Wang, Y. Duan, R. Luo, Development of polarizable
+
+480
+
+models for molecular mechanical calculations. 3. polarizable water models conforming to thole
+
+481
+
+polarization screening schemes, The Journal of Physical Chemistry B 116 (28) (2012) 7999–8008.
+
+482
+
+doi:10.1021/jp212117d.
+
+483
+
+484
+
+[35] J. P. Perdew, K. Burke, M. Ernzerhof, Generalized gradient approximation made simple, Phys.
+Rev. Lett. 77 (1996) 3865–3868. doi:10.1103/PhysRevLett.77.3865.
+
+485
+
+[36] M. S. Yoshiki Ishii, Satoshi Kasai, N. Ohtori, Transport coefficients and the stokes–einstein
+
+486
+
+relation in molten alkali halides with polarisable ion model, Molecular Physics 113 (17-18)
+
+487
+
+(2015) 2442–2450. doi:10.1080/00268976.2015.1046527.
+
+488
+
+[37] T. Driesner, C. A. Heinrich, The system h2 o–nacl. part i:
+
+Correlation formulae for
+
+489
+
+phase relations in temperature–pressure–composition space from 0 to 1000◦ c, 0 to 5000bar,
+
+490
+
+and 0 to 1 xN aCl , Geochimica et Cosmochimica Acta 71 (20) (2007) 4880–4901.
+
+491
+
+doi:https://doi.org/10.1016/j.gca.2006.01.033.
+
+492
+
+493
+
+494
+
+495
+
+[38] H. J. C. Berendsen, J. R. Grigera, T. P. Straatsma, The missing term in effective pair potentials,
+The Journal of Physical Chemistry 91 (24) (1987) 6269–6271. doi:10.1021/j100308a038.
+[39] D. E. Smith, L. X. Dang, Computer simulations of NaCl association in polarizable water, The
+Journal of Chemical Physics 100 (5) (1994) 3757–3766. doi:10.1063/1.466363.
+
+496
+
+[40] V. Migliorati, A. Serva, F. Sessa, A. Lapi, P. D’Angelo, Influence of counterions on the hydration
+
+497
+
+structure of lanthanide ions in dilute aqueous solutions, The Journal of Physical Chemistry B
+
+498
+
+122 (10) (2018) 2779–2791, pMID: 29481749. doi:10.1021/acs.jpcb.7b12571.
+
+499
+
+[41] M. Brehm, M. Thomas, S. Gehrke, B. Kirchner, TRAVIS—A free analyzer for trajecto-
+
+500
+
+ries from molecular simulation, The Journal of Chemical Physics 152 (16) (2020) 164105.
+
+501
+
+doi:10.1063/5.0005078.
+
+502
+
+[42] A. Barducci,
+
+G. Bussi,
+
+M. Parrinello,
+
+Well-tempered metadynamics:
+
+503
+
+converging and tunable free-energy method,
+
+504
+
+doi:10.1103/PhysRevLett.100.020603.
+
+505
+
+506
+
+A smoothly
+
+Phys. Rev. Lett. 100 (2008) 020603.
+
+[43] A. Barducci, M. Bonomi, M. Parrinello, Metadynamics, WIREs Computational Molecular Science 1 (5) (2011) 826–843. doi:https://doi.org/10.1002/wcms.31.
+
+25
+
+https://doi.org/10.26434/chemrxiv-2025-h5v4s ORCID: https://orcid.org/0009-0008-3812-3731 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+507
+
+[44] J. Hutter, M. Iannuzzi, F. Schiffmann, J. VandeVondele, cp2k: atomistic simulations of
+
+508
+
+condensed matter systems, WIREs Computational Molecular Science 4 (1) (2014) 15–25.
+
+509
+
+doi:https://doi.org/10.1002/wcms.1159.
+
+510
+
+[45] A. A. Chialvo, P. T. Cummings, H. D. Cochran, J. M. Simonson, R. E. Mesmer, Na+ Cl−
+
+511
+
+ion pair association in supercritical water, The Journal of Chemical Physics 103 (21) (1995)
+
+512
+
+9379–9387. doi:10.1063/1.470707.
+
+513
+
+[46] C. Clavaguéra, J.-P. Dognon, Accurate static electric dipole polarizability calculation
+
+514
+
+of +3 charged lanthanide ions, Chemical Physics - CHEM PHYS 311 (2005) 169–176.
+
+515
+
+doi:10.1016/j.chemphys.2004.10.014.
+
+516
+
+[47] E. E. Wait, J. Gourary, C. Liu, E. D. Spoerke, S. B. Rempe, P. Ren, Development of amoeba
+
+517
+
+polarizable force field for rare-earth la3+ interaction with bioinspired ligands, The Journal of
+
+518
+
+Physical Chemistry B 127 (6) (2023) 1367–1375. doi:10.1021/acs.jpcb.2c07237.
+
+519
+
+[48] M. Schulze, T. Driesner, S. Jahn, Assessing the validity and limits of linear density models for
+
+520
+
+predicting dissociation–association equilibria in supercritical water, Geochimica et Cosmochim-
+
+521
+
+ica Acta (2024). doi:https://doi.org/10.1016/j.gca.2024.10.008.
+
+522
+
+[49] W. Zhang,
+
+T. Yan,
+
+A molecular dynamics investigation of la3+ and lu3+-ligand
+
+523
+
+speciation in aqueous solution,
+
+Journal of Molecular Liquids 347 (2022) 118367.
+
+524
+
+doi:https://doi.org/10.1016/j.molliq.2021.118367.
+
+525
+
+[50] P. Li, L. F. Song, K. M. J. Merz, Parameterization of highly charged metal ions using the 12-6-4
+
+526
+
+lj-type nonbonded model in explicit water, The Journal of Physical Chemistry B 119 (3) (2015)
+
+527
+
+883–895. doi:10.1021/jp505875v.
+
+528
+
+[51] J. Aufort, P. Raiteri, J. D. Gale, Computational insights into mg2+ dehydration in
+
+529
+
+the presence of carbonate, ACS Earth and Space Chemistry 6 (3) (2022) 733–745.
+
+530
+
+doi:10.1021/acsearthspacechem.1c00389.
+
+26
+
+https://doi.org/10.26434/chemrxiv-2025-h5v4s ORCID: https://orcid.org/0009-0008-3812-3731 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+

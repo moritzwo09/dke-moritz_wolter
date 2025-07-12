@@ -1,0 +1,1340 @@
+On the thermodynamic stability of polycations
+Denis S. Tikhonov1,* , Jason W.L. Lee1 , and Melanie Schnell1,2,*
+1
+
+2
+
+Deutsches Elektronen-Synchrotron DESY, Notkestr. 85, 22607 Hamburg, Germany
+Institute of Physical Chemistry, Christian-Albrechts-Universität zu Kiel, Max-Eyth-Str. 1, 24118
+Kiel, Germany
+*
+denis.tikhonov@desy.de, melanie.schnell@desy.de
+May 30, 2024
+
+We present a simple approximation to estimate the largest charge that a given molecule can hold until fragmentation
+into smaller charged species becomes more energetically favorable. This approximation solely relies on the ionization
+potentials, electron affinities of the parent and fragment species, and also on the neutral parent’s dissociation energy.
+By parametrizing these quantities, it is possible to obtain analytical phase diagrams of polycationic stability. We
+demonstrate the applicability of this approach by discussing maximal charge dependence on the size of the molecular
+system. A numerical demonstration for linear polyenes, monocyclic annulenes, and helium clusters is provided.
+
+1
+
+Introduction
+
+Molecular composition in the interstellar medium (ISM) is rich: so far, more than 300 molecular species have been
+identified through their spectroscopic signatures.[1] If we also include the polycyclic aromatic hydrocarbons (PAHs),
+which are estimated to contain up to 10% of all galactic carbon,[2] the potential molecular variety grows even larger.
+However, the ISM is still a harsh place for molecules: cosmic radiation from various sources provides high-energy
+photons that can provide single and multiple ionization of the molecular species.[1–4] For instance, if a PAH molecule
+will absorb an extreme UV or soft X-ray photon, this can lead up to triple ionization with a production of a stable
+trication and/or to fragmentation.[3, 5–7] Therefore, molecular mono- and polycations can exist in the ISM, serving as
+intermediates in different chemical reactions and generating new molecular species.[8] The potential role of multiply
+charged ions in the production of complex molecules can be crucial since the rates of ion-neutral reactions grow linearly
+with the increase of the ionic charge.[9]
+Over the years, many experimental results were obtained in investigating molecular polycations.[10, 11] For instance, dications were detected in space, in the tails of comets,[12] trications of PAHs were produced with high-energy
+photons,[6] by above-threshold ionization (ATI), and also by interaction with highly-charged xenon ions.[13] The quest
+for molecular tetracations started with the high-power ATI by femtosecond intense laser pulses, which led to the laboratory detection of tetracations of PAHs,[14] substituted benzene,[15] and even doubly-iodosubstituted acetylene.[16]
+Intact tetracations of PAHs were also found in high-energy collisions of neutral PAH molecules with various ions.[17]
+However, to our knowledge, no existing model provides a general description of the stability of polycations. In the case
+of fragmentation, the availability of many possible pathways of fragmentation possibilities with various spin-charge
+states provides a very challenging chemical space to sample.[5, 18–22] Theoretical calculations may be done, for instance, using molecular dynamics-based approaches,[23–26] reproducing some of the polycationic properties, such as
+the kinetic energy release in fragmentation.[27] Semi-quantitative models are known to be useful for describing trends
+of different processes.[11, 28–31] In particular, a model for polycation stability based on the Coulomb interaction
+potential was proposed in Ref. [11], and for fullerenes, a Hückel-method [32] based model was introduced in Ref. [31].
+In this work, we provide a derivation of a simple approximation to estimate the largest charge a given molecule
+can hold until the fragmentation of this ion into smaller charged species becomes more energetically favorable. This
+approximation solely relies on the ionization potentials, electron affinities of the parent and fragment species, and the
+neutral parent’s dissociation energy. This allows for a significant reduction of the computational time for estimating
+the polycationic stability. The same approximation for the maximal possible charge of the molecule can be further
+parametrized to produce an analytical approximation for the maximum charge, depending on various molecular properties, such as the size of the molecule. We demonstrate the applicability of our approach with two showcase examples,
+imitating the ISM-important species. The first case is chemically-bound π-conjugated hydrocarbons: linear polyenes
+
+1
+https://doi.org/10.26434/chemrxiv-2023-z7cnv-v3 ORCID: https://orcid.org/0000-0003-3167-3104 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+and monocyclic annulenes that serve as simplified analogs of PAHs. The second case is helium clusters, illustrating the general applicability of the same approach to non-covalently bound clusters, such as PAH clusters and dust
+nanograins.[33]
+
+2
+
+Thermodynamics of the polycation’s dissociation
+
+Let us define the thermodynamic stability of the polycation through its dissociation reaction via the following formal
+chemical reaction:
+PQ+ → XqX + + YqY + ,
+(1)
+where PQ+ , with charge Q ≥ 0, is either a parent neutral molecule (Q = 0) or a (poly)cation (Q > 0), and XqX + and
+YqY + are the daughter ions with charges qX ≥ 0 and qY ≥ 0, respectively. The daughter ions’ charges fulfill the charge
+conservation Q = qX + qY . The following equation gives the dissociation energy of this reaction:
+DXY (qX , qY ) = EX (qX ) + EY (qY ) − EP (Q) ,
+
+(2)
+
+where EA (q) denotes the energy of the fragment “A” with charge q. For simplicity, we will consider only the electronic
+energy contribution to dissociation energy, ignoring the vibrational effects. To approximate electronic energies of
+molecules, we use a Taylor expansion of the following form:[34, 35]
+E(q) ≈ E(0) +
+
+1 d2 E
+dE
+(0) · q 2 = E(0) + χq + ηq 2 ,
+(0) · q +
+dq
+2 dq 2
+
+(3)
+
+IP+EA
+where E(0) is the electronic energy of the neutral molecule, χ = dE
+is Mulliken’s electronegativity,
+dq (0) =
+2
+2
+
+given through molecular ionization potential (IP) and electron affinity (EA), and η = 12 ddqE2 (0) = IP−EA
+is the
+2
+Pearson’s absolute hardness.[34, 35] We can apply Koopmans’ theorem to calculate χ and η. This theorem states that
+IP = −εHOMO and EA = −εLUMO with ε denoting the molecular orbital’s (MO) energy for the highest occupied MO
+(HOMO) and lowest unoccupied MO (LUMO), respectively.[36] Therefore, we can express our parameters in Equation
+3 as:
+IP + EA
+εLUMO + εHOMO
+χ=
+=−
+,
+(4)
+2
+2
+and
+IP − EA
+εLUMO − εHOMO
+η=
+=
+.
+(5)
+2
+2
+Parametrization of the electronic energy given in Equation 3 by construction provides exact values for the IP and EA
+of the molecule. The aforementioned approximation for the higher ionization states deviates from the actual energy
+values. Nevertheless, the general energy increase trend is being reproduced. For instance, for quintuply-charged
+benzene (C6 H6 ), the approximation via Equation 3 overestimates the ionization energy by 36% compared to the
+DFT-computed value, and for [22]annulene (C22 H22 ), the analogous overestimation is 16%. However, for lower charge
+states, the overestimation of the energy is smaller, which makes Equation 3 a useful parametrization of the trends
+for IP. A comparison of actual and estimated electronic energies for five annulenes can be found in the supporting
+information (SI) in Figure S1.
+The expression 3 thus gives us an approximation for the polycation’s dissociation energy of Equation 2:
+D
+
+z
+}|
+{
+DXY (qX , qY ) ≈ EX (0) + EY (0) − EP (0) +
+2
+2
++ χX qX + ηX qX
++ χY qY + ηY qY
+− χP Q − ηP Q2 =
+2
+2
+= D + χX qX + ηX qX
++ χY qY + ηY qY
+− χP Q − ηP Q2 , (6)
+
+where D = DXY (0, 0) is the dissociation energy of the neutral molecule. For a polycation with charge Q to be
+thermodynamically stable, all possible dissociation energies for all dissociation reactions of the type 1 should be
+endothermic, i.e., the thermodynamic stability condition is:
+min {DXY (qX , qY )} ≥ 0 ,
+
+(7)
+
+which should be fulfilled for all combinations of the daughter species “X” and “Y” and their charges qX and qY . For a
+given set of daughter fragments and the dissociation energy approximation from Equation 6, we can find the minimum
+
+2
+https://doi.org/10.26434/chemrxiv-2023-z7cnv-v3 ORCID: https://orcid.org/0000-0003-3167-3104 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+dissociation energy by varying the charges qX and qY with the charge conservation conditions Q = qX + qY . This can
+be easily done using the Lagrangian multipliers technique. For that, we need to find the minimum of the function
+F (qX , qY , λ) = DXY (qX , qY ) − λ · (qX + qY − Q)
+with respect to variables qX , qY , and of the Lagrangian multiplier λ. This is done by solving the following three
+equations
+
+∂F
+
+ ∂qX = χX + 2ηX qX − λ = 0
+∂F
+∂q = χY + 2ηY qY − λ = 0
+
+ ∂FY
+∂λ = Q − qX − qY = 0
+The solution of these linear equations provides us with the optimal values of the fragments’ charges:
+(
+(χY −χX )
+qX = ηηXY
+Q + 2(η
+,
+X
+X +ηY )
+(χX −χY )
+qY = ηηXY
+Q + 2(η
+,
+X
+X +ηY )
+
+(8)
+
+where ηXY is the reduced hardness of the two fragments, given by the following expression:
+
+ηXY =
+
+1
+1
++
+ηX
+ηY
+
+−1
+=
+
+ηX · ηY
+ηX + ηY
+
+(9)
+
+Substitution of the optimal charges (Equation 8) into the dissociation energy (Equation 6) would yield the final
+(and tedious) expression for the minimal energy upon dissociation of the parent PQ+ into fragments “X” and “Y”.
+However, for the hydrocarbons with a persistent sp2 hybridization of the carbon atoms (discussed in more detail in
+Section 3), the electronegativities of all the species can be approximated to be the same, i.e., χP ≈ χX ≈ χY . This
+simplifies the final equation for the minimal dissociation energy of the parent cation with charge Q into fragments “X”
+and “Y” to be:
+∆η
+z
+}|
+{
+DXY (Q) = D − (ηP − ηXY ) Q2 = D − ∆η · Q2 .
+(10)
+The behavior of DXY (Q) with an increase of the charge Q depends on the sign of ∆η. To determine it, we need to
+know if the hardness of the neutral parent (“P”) or the reduced hardness of the neutral fragments (“X” and “Y”) is
+larger. From Equation 5, we know that the hardness is half of the HOMO-LUMO gap of the neutral molecule, which
+means that the hardness should be a positive number (η > 0). Furthermore, the HOMO-LUMO gap usually tends
+to decrease with increasing size of the molecular system. This means that the fragments would have equal or greater
+hardness compared to the parent (ηX , ηY ≥ ηP ). This inequality leads us to (see Equation 9)
+≤1/ηP
+
+≤1/ηP
+
+z}|{
+z}|{
+1
+1
+1
+2
+=
++
+≤
+.
+ηXY
+ηX
+ηY
+ηP
+From here, we obtain ηP ≥ 2ηXY , which means that ∆η = ηP − ηXY ≥ ηXY > 0. Thus, with the increase of charge Q,
+we inevitably hit a point when the parent polycation becomes thermodynamically unstable (i.e., condition 7 will be
+broken).
+Chemically, this result is simple to comprehend. When ionizing the parent, we remove electrons from the valence
+shell, which is responsible for the chemical bonds holding the molecule together. Thus, if too many electrons are
+removed, fragmentation will be thermodynamically preferable. Note that the parent species still might exist, but as a
+metastable state, protected by the activation energy for the fragmentation reaction 1. The charge at which the parent
+molecule will become thermodynamically unstable for fragmentation into fragments “X” and “Y” is denoted as the
+maximum charge QXY,max , which can be obtained from Equation 10 by setting DXY (Q) = 0, giving
+s
+D
+.
+(11)
+QXY,max =
+∆η
+The limiting charge for the polycation thermodynamic stability will be the lowest one, and thus the maximal charge
+that the parent molecule can acquire without being prone to breakup is
+max(QP ) = min {QXY,max } .
+X,Y
+
+3
+https://doi.org/10.26434/chemrxiv-2023-z7cnv-v3 ORCID: https://orcid.org/0000-0003-3167-3104 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+(12)
+
+3
+
+Existence of the polycations of linear and cyclic conjugated hydrocarbons
+
+3.1
+
+Computational details
+CnHn+2
+
+Cn H n
+
+C 6H 6
+
+C 2H 4
+
+C10H10
+
+C 4H 6
+
+C14H14
+C18H18
+
+C 6H 8
+
+C22H22
+
+C8H10
+C10H12
+C12H14
+
+...
+C22H24
+
+Figure 1: Linear polyenes (C2n H2n+2 ) and monocyclic Hückel annulenes (C4n+2 H4n+2 ) considered in this work. The
+dashed red lines denote the broken bonds upon dissociation into two equivalent fragments. The justification of the
+equivalent fragment dissociation being the most preferable pathway is given in the Appendix.
+In the following, we will treat the dissociation of the two classes of hydrocarbons with extended π-systems as
+examples: linear polyenes (C2n H2n+2 ) and monocyclic Hückel annulenes (C4n+2 H4n+2 ), see Figure 1. We will consider
+the molecules up to 22 carbon atoms, comprising 11 linear polyenes (n = 1, . . . , 11) and 5 annulenes (n = 1, . . . , 5).
+For the polyenes, the all-trans conformations were taken. The computational results (structures and energies) can be
+found in the SI.
+The quantum-chemical calculations were performed at the PBE0/def2-TZVP level of theory[37, 38] using the
+ORCA 5 program package.[39] Each molecule was optimized in the singlet neutral state, and the harmonic frequencies
+were computed to confirm that the structure found is indeed a local minimum. Then, for each molecule, at the
+optimized neutral geometry, the energies of the doublet monoanion1 and polycations up to pentacations were computed.
+Based on these optimized neutral geometries, the fragmentation products were obtained by breaking the central carboncarbon bonds (see Figure 1). The geometries of these products, to reduce computational expenses, were not optimized.
+In general, this should lead to an underestimation of the dissociation energy in each case of fragmentation. However,
+our numerical tests for ethylene, trans-1,3-butadiene, and all-trans-1,3,5-hexatriene show that the values obtained with
+such approximation are well correlated with the adiabatic dissociation energies (see SI sections 1.2 and 1.3 for details).
+Two multiplicities for the parent’s cations and each fragment species were tested: singlet and triplet for the even
+and doublet and quadruplet for the odd number of electrons. For each of these species, the state with the lower energy
+was then chosen to calculate the ionization potentials, electron affinities (for parent species), and dissociation energies
+of the different neutral and cationic states.
+
+3.2
+
+Analytical solution using Hückel’s method
+
+HOMO and LUMO orbitals for the extended neutral π-systems are π-orbitals in the chosen system set. Therefore, we
+can apply Hückel’s method to express the MO energies εHOMO and εLUMO as a function of the number of atoms.[36, 40]
+3.2.1
+
+Linear polyenes
+
+In a linear polyene of K carbon atoms, each of the atoms provides one pz orbital to form the π-system, therefore
+producing K MOs with energies[40]
+
+
+π·k
+εk = α + 2β cos
+,
+(13)
+K +1
+where k = 1, 2, . . . , K enumerates the π-orbitals, and parameters α, β ≤ 0 denote the energy of the unperturbed pz
+orbital (α) and coupling between neighbouring pz orbitals (β). For a neutral linear polyene of K carbon atoms, the
+1 Monoanions were computed to obtain the EA values.
+
+4
+https://doi.org/10.26434/chemrxiv-2023-z7cnv-v3 ORCID: https://orcid.org/0000-0003-3167-3104 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+2
+HOMO’s orbital number will be kHOMO = K
+2 , therefore
+
+
+
+
+πK
+π
+1
+πβ
+εHOMO = εK/2 = α + 2β cos
+= α + 2β sin
+≈α+
+.
+2(K + 1)
+2 (K + 1)
+K +1
+
+Similarly, the LUMO’s number is kLUMO = K
+2 + 1, and thus
+
+
+
+
+πK
+π
+π
+1
+πβ
+εLUMO = ε(K/2)+1 = α + 2β cos
++
+= α − 2β sin
+≈α−
+2(K + 1) (K + 1)
+2 (K + 1)
+K +1
+Using Koopmans’ theorem, we can re-parametrize these expressions. The IP for the K-carbon linear polyene is
+IPK = −εHOMO ≈ −α −
+
+πβ
+B
+= IP∞ +
+,
+(K + 1)
+K +1
+
+(14)
+
+where both parameters IP∞ = −α and B = −πβ are non-negative (unlike the original α and β). This gives us
+(
+B
+εHOMO = −IP∞ − K+1
+.
+B
+εLUMO = −IP∞ + K+1
+With these expressions, we can rewrite the χ and η (Equations 4 and 5) for the linear polyene of K-carbons as follows.
+The electronegativity is
+χK = IP∞ ≥ 0 ,
+(15)
+which means that it does not depend on the size of the polyene’s chain and also that the energy of the molecule
+(Equation 3) increases upon ionization. For the hardness, the final expression is
+ηK =
+
+B
+≥0,
+K +1
+
+(16)
+
+therefore, the hardness in this model (which is also half of the HOMO-LUMO gap, see Equation 5) approaches zero
+when increasing the size of the molecule.
+Upon the dissociation of the linear polyene of N carbon atoms via the carbon-carbon bond cleavage following the
+reaction
+PQ+
+XqX +
+YqY +
+z }| {
+z }| { z }| {
+qX +
+qY +
+CN HQ+
+N +2 → CNX HMX + CNY HMY
+two polyenes of smaller sizes are formed; therefore, their hardness will also be given by equation 16. This means that
+the reduced hardness of the products (Equation 9) will be
+ηXY =
+
+B
+.
+N +2
+
+(17)
+
+Note that in Hückel’s method, the reduced hardness does not depend on the size of the fragments, i.e., all fragmentation
+channels are equivalent. Substituting this equation and ηP = NB+1 (Equation 16) into the equation 11 gives maximal
+charge of the linear polyene as
+r
+Dpoly
+Qmax =
+(N + 2)(N + 1) ,
+(18)
+B
+where Dpoly is the dissociation energy of the neutral polyene.
+3.2.2
+
+Cyclic annulenes
+
+Let us now assume that we have a monocyclic annulene CN HQ+
+N with charge Q. We want to know the dissociation
+energy of the backbone of this cation into two smaller charged linear polyene fragments X = CNX HqNXX+ and Y =
+CNY HqNYY+ with charges qX and qY , respectively. This corresponds to the energy of the chemical reaction:
+PQ+
+
+XqX +
+
+XqX +
+
+z }| {
+z }| { z }| {
+qX +
+qY +
+CN HQ+
+→
+C
+N X H N X + CN Y H N Y .
+M
+As before, both charge and number of atoms must be conserved, i.e., N = NX + NY and Q = qX + qY .
+2 We use
+
+πK
+1
+= π2 − π2 (K+1)
+and sin(x) ≈ x for small x.
+2(K+1)
+
+5
+https://doi.org/10.26434/chemrxiv-2023-z7cnv-v3 ORCID: https://orcid.org/0000-0003-3167-3104 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+(19)
+
+The derivation of the charge-size relation will be similar to linear polyenes in the previous section. As the values for
+the dissociation products (linear polyenes) are already known (Equations 15 and 16), that leaves the electronegativity
+and hardness of the parent species to be determined.
+The MO energies of the cyclic polyenes within the same Hückel approximation are given by the following equation:[40]
+
+
+2πk
+,
+(20)
+εk = α + 2β cos
+N
+where k = 0, ±1, ±2, . . . , ± (N 2−1) , N2 for even N , and k = 0, ±1, ±2, . . . , ± (N 2−1) for odd N . Each MO is doubly
+degenerate, except for k ̸= 0 and k ̸= N/2 (for even N ), which means that εk = ε−k , and that the energy of the
+MO increases with an increase of |k|. The |k| is essentially an MO’s angular momentum quantum number. We will
+limit ourselves to Hückel aromatic annulenes, where N = 4l + 2 with l = 0, 1, 2, . . ..[41] The integer number l denotes
+essentially the k-value of the HOMO (kHOMO ), which leads to N = 4kHOMO + 2. And kLUMO = l + 1, since all the ±k
+MOs are occupied for Hückel aromatic annulenes. We can formally rewrite N = 4l + 2 as l = (N − 2)/4, which will
+give kHOMO = (N − 2)/4 and kLUMO = 1 + (N − 2)/4. Therefore, the energies of these orbitals from Equation 20 are
+−B
+
+εHOMO = ε(N −2)/4 = α + 2β cos
+
+π
+2
+
+−
+
+π
+N
+
+= α + 2β sin
+
+π
+N
+
+−IP∞
+
+z}|{
+z}|{ 2 βπ
+2B
+≈ α +
+= −IP∞ −
+N
+N
+
+and
+
+(21)
+
+−B
+−IP∞
+
+z}|{
+z}|{ 2 βπ
+2B
++
+= −IP∞ +
+.
+(22)
+= α − 2β sin
+≈ α −
+εLUMO = ε1+(N −2)/4 = α + 2β cos
+2
+N
+N
+N
+N
+Now, substituting these Equations 21 and 22 into expressions 4 and 5, we get Equation 15 for the electronegativity
+(χ) and
+2B
+ηN =
+(23)
+N
+The products’ reduced hardness will be again given by Equation 17. Substitution of Equations 23 and 17 into Equation
+11 gives us the final maximal charge of the annulene as:
+r
+Dannu
+Qmax =
+N ,
+(24)
+B
+π
+
+π
+
+π
+
+where Dannu is the dissociation energy of the neutral annulene.
+
+3.3
+
+Parametrization of the model
+
+Let us look at the set of parameters obtained from the quantum-chemical calculations: IP, EA, electronegativity χ
+(Equation 4), hardness η (Equation 5), and also the dissociation energies of the neutral molecule into two equivalent
+molecular fragments according to Figure 1. The resulting trends as a function of the number of carbon atoms in
+the molecule are given in Figure 2. The IP decreases and EA increases with an increasing number of carbon atoms.
+However, their mean value (χ) remains rather constant, as predicted with Hückel’s method. This means that our
+approximation, resulting in Equation 11, applies to this type of system.
+To apply the Hückel’s model expressions (Equations 18 and 24), we also need an estimation of the coupling
+strength of the sp2 -hybridized orbitals, given as parameter B in Equations 18 and 24. To obtain such an expression,
+the Equation 14 was fitted to the quantum-chemically computed values of polyenes, giving IP∞ = 5.4 ± 0.1 [eV] and
+B = 16.1 ± 0.7 [eV]. The second parameters, Dpoly and Dannu , were taken as the means of the dissociation energies of
+the neutrals of all computed sizes. The values for both polyenes and annulenes approach some limit, therefore justifying
+such an operation. The oscillations of the dissociation energies for polyenes arise from the alternating middle bond
+being either a formally single or double bond (see Figure 1). The resulting values were Dpoly = 6.5 ± 0.7 [eV] and
+Dannu = 12.3 ± 0.5 [eV]. Note that Dannu ≈ 2 × Dpoly , because two carbon-carbon bonds are being broken during the
+dissociation of the annulene.
+The main flaw of the Hückel’s method solution is that the HOMO-LUMO gap of the extended systems decreases to
+zero upon increasing the size of the polyene/annulene. As we can see from quantum chemistry (Figure 2), η decreases
+in the case of both the polyenes and annulenes, but not to zero, as predicted by Hückel’s model, but to some finite
+value. To remove this limitation, we use a three-parametric expression for approximating quantum-chemical values to
+obtain the carbon backbone length-dependent graphs:
+ηN = η∞ +
+
+η0
+,
+N +K
+
+6
+https://doi.org/10.26434/chemrxiv-2023-z7cnv-v3 ORCID: https://orcid.org/0000-0003-3167-3104 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+(25)
+
+14
+12
+
+12
+10
+IP / EA / D00 / χ / η [eV]
+
+10
+IP / EA / D00 / χ / η [eV]
+
+14
+
+IP
+EA
+D00
+χ
+Fit of η
+η
+Fit of IP
+
+8
+6
+4
+2
+
+8
+6
+4
+2
+
+0
+
+0
+
+-2
+
+-2
+2
+
+4
+
+6
+
+8 10 12 14 16 18 20 22
+
+6
+
+Number of carbons n (in CnHn+2)
+
+8
+
+10 12 14 16 18 20 22
+
+Number of carbons n (in CnHn)
+
+Figure 2: Ionization potentials (IP), electron affinities (EA), electronegativity (χ), hardness (η), and dissociation
+energies of the neutral molecule (D00 ) of the linear polyenes (left) and monocyclic annulenes (right) as a function of
+the number of carbon atoms in the molecule. The IPs of polyenes were fitted with Equation 14. The legend is the
+same in the left and right plots.
+where N is the number of carbon atoms in the molecule, and the three fitting parameters are η∞ , η0 , and K. K
+(poly)
+(poly)
+= 0.77 ± 0.1 [eV], η0
+= 33.8 ± 0.1 [eV], and
+was limited to integer numbers. The results of the fitting are η∞
+(annu)
+(annu)
+(annu)
+(poly)
+= 1.2 ± 0.1 [eV], η0
+= 25 ± 1 [eV], and K
+= 0 for annulenes.
+K
+= 4 for the polyenes and η∞
+With the hardness of the form given by Equation 25, the most energetically favorable breakdown channel is
+dissociation into two equal fragments (see Appendix for proof). In this case, when a polyene or annulene with N
+carbon atoms dissociates into two polyenes with N/2 carbons, we get the reduced hardness (Equation 9) to be
+(poly)
+
+ηXY =
+
+ηN/2
+2
+
+,
+
+(poly)
+
+where ηN/2 corresponds to applying Equation 25 with N/2 atoms and polyene parameters, given above. We note
+that this assumption of symmetric dissociation may fail if stable products are formed, like in the case of acetylene–like
+fragments.[5] In particular, we observe this for adiabatic dissociation energies of the all-trans-1,3,5-hexatriene (section
+1.3 of SI). However, the numerical tests show that the dissociation energy trends correlate well for the lowest energy
+asymmetric dissociation and the symmetric energy dissociation channels.
+
+3.4
+
+Comparison of the model with quantum chemistry
+
+We have computed the dissociation energies for each of the charge states of the polyenes and annulenes and dissociation
+pathways given in Figure 1. As an example, the result is provided for the polyenes in Figure 3. We can think of the
+resulting map as a phase diagram in the size-maximal charge space: the positive dissociation energies correspond to
+thermodynamically stable polycations of a given size and charge, whether the negative ones are the thermodynamically
+unstable species that are prone to carbon backbone dissociation. To estimate more accurately the maximal charge
+at a given size for a given molecule, we can use the following approximation. First, determine the last stable integer
+charge Q of the molecule with dissociation energy D(Q) ≥ 0. Then, use a linear approximation of dissociation energy
+
+7
+https://doi.org/10.26434/chemrxiv-2023-z7cnv-v3 ORCID: https://orcid.org/0000-0003-3167-3104 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+10
+
+Parent ion's charge Q
+
+4
+
+5
+
+3
+0
+2
+-5
+
+1
+
+0
+
+0
+
+2
+
+4
+
+6
+
+8
+
+10
+
+Dissociation energy D [eV]
+
+5
+
+-10
+
+Size of the polyene k (in C2(k+1)H2(k+1)+2)
+
+Figure 3: Dissociation energies for the linear polyenes of different sizes and cationic charge states. The black line
+approximates each species’ maximal charge Qmax .
+D in the range of charges between Q and Q + 1 to find the Qmax from condition D(Qmax ) = 0 as
+Qmax ≈ Q +
+
+D(Q)
+.
+D(Q) − D(Q + 1)
+
+The corresponding line can be considered an approximate phase-change line, and such a result for polyenes is shown
+in Figure 3.
+Additionally, we can compare the quantum-chemically computed Qmax values with the quantum-chemically parameterized models, both based on simple Hückel’s method and more general parametrizations with hardness given by
+Equation 25. The results are shown in Figure 4. The trend for the polyenes from Hückel’s method is too fast-growing,
+which is attributed to the HOMO-LUMO gap approaching zero. The empirically-fitted hardness gives better trends,
+although lower in energy than the quantum-chemical values. This is probably due to approximating the parent species
+and using their values for the fragments. In the case of linear polyenes, this approximation gives better results since the
+products are reminiscent of the parent species. However, in the case of the annulene species, the resulting fragments
+are structurally different from those from polyenes, and these effects, like differences in trans-/cis- energies, can lead to
+the observed deviations. Nevertheless, we can say that the approximate model based on the hardness of the reagents
+and products reproduces the important features of the size-maximal charge phase diagrams.
+
+4
+
+Critical sizes of multicharged helium droplets
+
+In the next step, we apply the same principles to the thermodynamic stability of the weakly bound clusters in the
+most straightforward example, i.e., in the case of helium clusters, for which experimental data on the critical sizes
+of the clusters with different charges is available from the literature. [42, 43] We also can find the expression of the
+helium clusters’ (Hen ) energies as a function of the number of atoms n:[44, 45]
+Etot (n) = −ε∞ · n + ε2/3 · n2/3 − ε1/3 · n1/3 ,
+
+(26)
+
+where ε∞ , ε2/3 , and ε1/3 are the fitted coefficients.
+We obtained the parametrizations of the energy, electronegativity, and hardness as a function of the helium cluster
+size using the following procedure:
+
+8
+https://doi.org/10.26434/chemrxiv-2023-z7cnv-v3 ORCID: https://orcid.org/0000-0003-3167-3104 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+5
+
+Maximal charge Qmax
+
+4
+
+3
+
+Polyenes (QC)
+Polyenes (QC,interp)
+Polyenes (Hückel model)
+Polyenes (full model)
+Annulenes (QC)
+Annulenes (QC,interp)
+Annulenes (Hückel model)
+Annulenes (full model)
+
+2
+
+1
+
+0
+
+5
+
+10
+
+15
+
+20
+
+25
+
+Number of carbon atoms
+Figure 4: Maximal charge Qmax vs. molecule’s size phase diagrams for linear polyenes and monocyclic annulenes.
+“QC” denotes the values extracted from the dissociation energies of the different species (see Figure 3), “QC,interp”
+denotes interpolated values using Equation 11 from the computed neutral dissociation energies and hardnesses η,
+“Hückel model” is the approximation based on the analytical HOMO-LUMO gaps from the Hückel model, and “full
+model” uses the empirically fitted HOMO-LUMO gaps according to Equation 25.
+
+He13
+
+He305
+
+He623
+
+He913
+
+Figure 5: Examples of GFN2-xTB-optimized structures of the Hen clusters.
+• Various helium cluster initial geometries for n ≤ 1000 were cut from the hexagonal closed packing (HCP)
+spherical cluster of 1002 atoms, optimized using the GFN-FF force field[46] implemented in xTB software. HCPtype arrangement was chosen as a building pattern for clusters since solid helium can exist in this structure.[47]
+For each of these Hen clusters, structure optimization and harmonic frequency calculations were performed at
+the semi-empirical GFN2-xTB level of theory[48] using the xTB software.[49]
+• For these Hen clusters, the single point energies (E(n)) were computed at the DLPNO-CCSD/aug-cc-pVDZ
+level of theory. IP and EA were computed using IP-EOM-DLPNO-CCSD/aug-cc-pVDZ, and EA-EOM-DLPNOCCSD/aug-cc-pVDZ levels of theory, respectively. All these calculations were done using the ORCA 5 program
+package.[39]
+• The resulting total energies (Etot (n) = E(n) + ZPVE), comprised of the zero-point vibrational energy (ZPVE)
+9
+https://doi.org/10.26434/chemrxiv-2023-z7cnv-v3 ORCID: https://orcid.org/0000-0003-3167-3104 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+at the GFN2-xTB level of theory and the electronic energy (E(n)) at the DLPNO-CCSD/aug-cc-pVDZ level of
+theory, were fitted to the Equation 26. The resulting parameters were ε∞ = 78.6531±0.0001 [eV], ε2/3 = 13.8±0.6
+[meV], and ε1/3 = 11.2 ± 0.5 [meV].
+• The IPs and EAs were then fitted to the equations
+(
+IP(n) = IP∞ + IP0 · n−1/3 ,
+EA(n) = EA∞ + EA0 · n−1/3 ,
+
+(27)
+
+with these parameters being IP∞ = 24.066 ± 0.004 [eV], IP0 = 0.32 ± 0.01 [eV], EA∞ = −4.12 ± 0.03 [eV], EA0 =
+−0.6 ± 0.1 [eV]. These trends were then corrected for the experimental values of IP and EA for the helium atom
+(IPexp (He) = 24.6 [eV] and EAexp (He) = 0.1 [eV])[50, 51] by adding corrections IPcorr = IPexp (He) − IP(1) = 0.2
+[eV] and EAcorr = EAexp (He) − EA(1) = 4.7 [eV].
+• From the corrected IP and EA dependencies (Equation 27), we produce the approximations for χ and η for Hen
+clusters according to Equations 4 and 5:
+(
+χ(n) = (IP(n) + EA(n) + IPcorr + EAcorr )/2 = χ∞ + χ0 · n−1/3 ,
+(28)
+η(n) = (IP(n) − EA(n) + IPcorr − EAcorr )/2 = η∞ + η0 · n−1/3 ,
+where, from Equation 27, we get
+
+χ∞ = (IP∞ + EA∞ + IPcorr + EAcorr )/2 = 12.4 [eV] ,
+
+
+
+χ = (IP + EA )/2 = −0.1 [eV] ,
+0
+0
+0
+
+η
+=
+(IP
+−
+EA
+∞
+∞
+∞ + IPcorr − EAcorr )/2 = 11.8 [eV] ,
+
+
+
+η0 = (IP0 − EA0 )/2 = 0.4 [eV] .
+
+(29)
+
+A detailed description of this procedure, justification of the methods used, and numerical results are available in the
+SI (Section 2).
+Unlike in the covalently bound molecules discussed above (polyenes and annulenes), the change in electronegativity
+of the helium clusters (Hen ) is noticeable upon increasing cluster size. Therefore, Equation 11 is insufficient due to
+negligence of the change in χ. To account for that, let us reevaluate the solution. First, we examine the optimal
+charges of the fragments in Equation 8. The maximal value of the Q-independent term for the helium clusters can be
+estimated as (see Equations 28 and 29)
+χX − χY
+|χ0 |
+≤
+= 0.002 .
+2(ηX + ηY )
+4η∞
+From this estimation, we can neglect this Q-independent term in Equation 8, giving us approximate optimal charges
+that do not account for spontaneous charge separation upon neutral dissociation:
+(
+Q
+,
+qX ≈ ηXηY+η
+Y
+ηX Q
+qY ≈ ηX +ηY ,
+and their substitution into the dissociation energy (Equation 6) gives the equation for obtaining the maximal stable
+charge
+D − ∆χQ − ∆ηQ2 = 0 ,
+(30)
+where ∆η is given by the same expression from Equation 10, and ∆χ is defined as
+
+
+ηY χX
+ηX χY
+∆χ = χP −
++
+.
+ηX + ηY
+ηX + ηY
+
+(31)
+
+Equations 28 and 29 show that with increasing size, the electronegativity also increases. Thus, χP ≥ χX , χY . Assuming
+that χX ≥ χY , we get
+≤χX
+
+z}|{
+ηY χX
+η X χY
++
+≤ χX ≤ χP ,
+ηX + ηY
+ηX + ηY
+thus ∆χ ≥ 0. Solving Equation 30, we obtain the final expression:
+Qmax = −
+
+∆χ
+1 p 2
++
+∆χ + 4∆η · D .
+2∆η 2∆η
+10
+
+https://doi.org/10.26434/chemrxiv-2023-z7cnv-v3 ORCID: https://orcid.org/0000-0003-3167-3104 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+(32)
+
+7
+
+0.5
+
+Experiment
+Fit
+
+6
+
+0.4
+
+0.3
+
+4
+
+ξ
+
+Qmax
+
+5
+
+3
+
+0.2
+
+2
+0.1
+1
+0
+
+0
+101
+
+102
+
+103
+
+104
+
+105
+
+106
+
+107
+
+108
+
+n, size of cluster Hen
+Figure 6: Experimental (points)[42] and model (colored area) maximal possible charge of helium clusters as a function
+of cluster size. ξ is the asymmetry parameter for the dissociation reaction (Equation 34). The “Fit” curve represents
+the fit of the experimental points to Equation 32 (see main text for details).
+Unlike the previously discussed cases of polyenes and annulenes, all three parameters (∆χ, ∆η, and D) are sizedependent for the helium clusters.
+For evaluating the stability of the charged helium clusters, we evaluate the dissociation according to the reaction
+y+
+x+
+, (Qx + Qy = Q, nx + ny = n, nx ≥ ny ) .
++ HeQ
+→ HeQ
+HeQ+
+ny
+nx
+n
+
+(33)
+
+To characterize the asymmetry of the large cluster breakup, we introduce a parameter ξ ∈ (0, 1/2] defined as
+ξ=
+
+ny
+,
+n
+
+(34)
+
+where symmetric breakup nx = ny = n/2 corresponds to ξ = 1/2, and maximally asymmetric breakup nx = n − 1,
+ny = 1 is denoted by ξ = 1/n.
+The results of Equation 32 with parameters D, ∆χ, and ∆η computed from parametrized Equations 26 and 28 are
+also included in Figure 6. If we compare our results with the experimental data,[42, 43] we see very similar trends of
+increasing stability of the poly-charged helium clusters with the increase of cluster size. It is worth noting that, unlike
+the polyenes and annulenes, helium clusters are more stable for the symmetric breakup (ξ = 1/2) than for the small
+cluster removal (ξ → 0). This is in agreement with the experimental observations, where the strong evaporation of
+charged helium clusters was observed via the removal of small charged fragments and not through symmetric Coulomb
+explosions.[43]
+Despite the qualitative agreement of our theoretically predicted stability trends with the experimental observations,
+the quantitative predictions differ from the actual observed trends. The main reason for this is that our theoretical
+methodology has a limited quality of the quantum-chemical calculations, in particular for the sampling of the conformational space, poor harmonic approximation of the ZPVE for the superfluid vibrational state,[44] limited size of the
+basis set for calculation of the electronic energies, and significant failures of the conventional basis sets to describe
+the EA of helium (see SI for details). These defects of the theoretical model, combined with extrapolation of the
+parameters from cluster size ranges of 1 ≤ n < 1000 up to n ∼ 108 , can lead to significant deviations in the observed
+trends.
+To align the model and experiment, we fitted the parameters of our model to the experimental data. The expression
+for the Qmax (Equation 32) was fitted to the observed experimental trend by varying parameters from Equations 29,
+that are used in Equations 28. A fit for χ and η included only a single parameter, with χ(1) and η(1) being taken
+11
+https://doi.org/10.26434/chemrxiv-2023-z7cnv-v3 ORCID: https://orcid.org/0000-0003-3167-3104 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+from the experimental IP and EA values of the helium atom. The energy expression (Equation 26) was taken with
+parameters from the literature, namely ε∞ = 0.621 [meV], ε2/3 = 1.526 [meV], and ε1/3 = 0.513 [meV].[44, 45] Due to
+numerical instabilities of the fit, the smallest possible ξ = 0.4 was taken. The fitting resulted in a curve reproducing the
+observations, as can be seen from Figure 6. This shows the potential of the proposed model for describing experimental
+observations.
+
+5
+
+Conclusions
+
+Here, we provided a new approach for computing the maximal possible charge a molecular polycation can carry
+without being thermodynamically unstable (Qmax ). The approach is based on the quadratic approximation of the
+ionization potentials using the energy expansion in terms of Mulliken’s electronegativity and Pearson’s hardness. For
+the conjugated hydrocarbons, Qmax can be estimated using Equation 11, and the value for the molecule is provided
+as the lowest of those values for different fragmentation pathways. This estimation reduced the computations to
+calculations of only the molecule’s and fragment’s electronic energy, ionization potential, and electron affinity. Further,
+by parametrizing these properties with some molecular descriptors, one can produce analytical approximations for the
+maximal charges, which is essentially a phase diagram of the thermodynamic stability of molecular polycations.
+We demonstrated the applicability and efficiency of this approach using the three model systems: linear polyenes,
+monocyclic annulenes, and helium clusters.
+The resulting approach can be useful in the field of astrochemistry to produce effective and sufficiently accurate approximations for quasi-thermodynamic modeling of the interstellar medium, interplanetary environment, and
+atmospheres of exoplanets, to include the possibility of polycationic states in the photochemistry of molecules and
+molecular clusters under the influence of harsh radiation. As a perspective, the proposed approach can be extended
+to include the higher-order terms of the energy expansion (Equation 3), vibrational effects, and reach a more accurate
+approximation of thermodynamic potentials (enthalpy, entropy, free energies).
+
+Appendix
+Here, we will provide explicit proof that for the fragmentation reaction with a fixed dissociation energy and sizedependent hardness given by Equation 25, the most energetically favorable fragmentation channel for a polycation is
+dissociation into two equal fragments.
+Equation 12 is fulfilled if ∆η = ηP − ηXY is maximal (see Equations 11 and 10), and since D and ηP are fixed,
+which is achieved by minimization of ηXY with respect to the fragments’ sizes X and Y = N − X. We will take η of
+the fragments to depend on the sizes of fragments “X” and “Y” (x and y = N − x) as a function η = η(n), where
+ηX = η(x) and ηY = η(y) = η(N − x). This means, that ηXY (Equation 9) is given as
+ηXY (x) =
+
+η(x) · η(N − x)
+.
+η(x) + η(N − x)
+
+The stationary point of this function is found through the following equation:
+η ′ (x) · η 2 (N − x) − η ′ (N − x)′ · η 2 (x)
+dηXY
+′
+= ηXY
+=
+=0,
+dx
+(η(x) + η(N − x))2
+with a trivial solution x = N/2. To prove that the found solution is indeed a minimum, we calculate the second
+derivative at this point, which is given as
+2
+
+d2 ηXY
+η ′′ (N/2) · η(N/2) − 2 (η ′ (N/2))
+′′
+(N/2)
+=
+η
+(N/2)
+=
+.
+XY
+dx2
+2η(N/2)
+′′
+The condition for minimum is ηXY
+(N/2) > 0, and if we check the second derivative for the Equation 25, we get
+′′
+ηXY
+(N/2) =
+
+η0 η∞
+>0,
+∞ (N/2 + K) + η0 )
+
+(N/2 + K)2 (η
+
+if η0 , η∞ > 0.
+
+Conflict of interest
+There are no conflicts to declare.
+12
+https://doi.org/10.26434/chemrxiv-2023-z7cnv-v3 ORCID: https://orcid.org/0000-0003-3167-3104 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Acknowledgements
+We acknowledge DESY (Hamburg, Germany), a member of the Helmholtz Association HGF. Quantum-chemical
+calculations were enabled through the Maxwell computational resources operated at Deutsches Elektronen-Synchrotron
+DESY, Hamburg, Germany.
+
+References
+[1] Michel Guélin and Jose Cernicharo. Organic Molecules in Interstellar Space: Latest Advances. Frontiers in
+Astronomy and Space Sciences, 9, 2022. ISSN 2296-987X. doi: 10.3389/fspas.2022.787567. URL https://www.
+frontiersin.org/articles/10.3389/fspas.2022.787567.
+[2] A.G.G.M. Tielens. Interstellar Polycyclic Aromatic Hydrocarbon Molecules. Annual Review of Astronomy and
+Astrophysics, 46(1):289–337, 2008. doi: 10.1146/annurev.astro.46.060407.145211. URL https://doi.org/10.
+1146/annurev.astro.46.060407.145211.
+[3] Thiago Monfredini, Heidy M Quitián-Lara, Felipe Fantuzzi, Wania Wolff, Edgar Mendoza, Alexsandre F Lago,
+Dinalva A Sales, Miriani G Pastoriza, and Heloisa M Boechat-Roberty. Destruction and multiple ionization of
+PAHs by X-rays in circumnuclear regions of AGNs. Monthly Notices of the Royal Astronomical Society, 488(1):
+451–469, 2019. ISSN 0035-8711. doi: 10.1093/mnras/stz1021. URL https://doi.org/10.1093/mnras/stz1021.
+[4] A. G. G. M. Tielens. The molecular universe. Rev. Mod. Phys., 85:1021–1081, 2013. doi: 10.1103/RevModPhys.
+85.1021. URL https://link.aps.org/doi/10.1103/RevModPhys.85.1021.
+[5] J. W. L. Lee, D. S. Tikhonov, P. Chopra, S. Maclot, A. L. Steber, S. Gruet, F. Allum, R. Boll, X. Cheng,
+S. Düsterer, B. Erk, D. Garg, L. He, D. Heathcote, M. Johny, M. M. Kazemi, H. Köckert, J. Lahl, A. K. Lemmens, D. Loru, R. Mason, E. Müller, T. Mullins, P. Olshin, C. Passow, J. Peschel, D. Ramm, D. Rompotis,
+N. Schirmel, S. Trippel, J. Wiese, F. Ziaee, S. Bari, M. Burt, J. Küpper, A. M. Rijs, D. Rolles, S. Techert,
+P. Eng-Johnsson, M. Brouard, C. Vallance, B. Manschwetus, and M. Schnell. Time-resolved relaxation and
+fragmentation of polycyclic aromatic hydrocarbons investigated in the ultrafast XUV-IR regime. Nature Communications, 12(1):6107, 2021. ISSN 2041-1723. doi: 10.1038/s41467-021-26193-z. URL https://doi.org/10.
+1038/s41467-021-26193-z.
+[6] D. Garg, J. W. L. Lee, D. S. Tikhonov, P. Chopra, A. L. Steber, A. K. Lemmens, B. Erk, F. Allum, R. Boll,
+X. Cheng, S. Düsterer, S. Gruet, L. He, D. Heathcote, M. Johny, M. M. Kazemi, H. Köckert, J. Lahl, D. Loru,
+S. Maclot, R. Mason, E. Müller, T. Mullins, P. Olshin, C. Passow, J. Peschel, D. Ramm, D. Rompotis, S. Trippel,
+J. Wiese, F. Ziaee, S. Bari, M. Burt, J. Küpper, A. M. Rijs, D. Rolles, S. Techert, P. Eng-Johnsson, M. Brouard,
+C. Vallance, B. Manschwetus, and M. Schnell. Fragmentation Dynamics of Fluorene Explored Using Ultrafast
+XUV-Vis Pump-Probe Spectroscopy. Frontiers in Physics, 10, 2022. ISSN 2296-424X. doi: 10.3389/fphy.2022.
+880793. URL https://www.frontiersin.org/articles/10.3389/fphy.2022.880793.
+[7] Junfeng Zhen, Sarah Rodriguez Castillo, Christine Joblin, Giacomo Mulas, Hassan Sabbah, Alexandre Giuliani,
+Laurent Nahon, Serge Martin, Jean-Philippe Champeaux, and Paul M. Mayer. VUV PHOTO-PROCESSING
+OF PAH CATIONS: QUANTITATIVE STUDY ON THE IONIZATION VERSUS FRAGMENTATION PROCESSES. The Astrophysical Journal, 822(2):113, 2016. doi: 10.3847/0004-637X/822/2/113. URL https:
+//dx.doi.org/10.3847/0004-637X/822/2/113.
+[8] Theodore P. Snow, Valery Le Page, Yeghis Keheyan, and Veronica M. Bierbaum. The interstellar chemistry of
+PAH cations. Nature, 391(6664):259–260, 1998. ISSN 1476-4687. doi: 10.1038/34602. URL https://doi.org/
+10.1038/34602.
+[9] Ian W. M. Smith. Ion-Neutral Reaction, pages 1255–1259. Springer Berlin Heidelberg, Berlin, Heidelberg, 2015. ISBN 978-3-662-44185-5. doi: 10.1007/978-3-662-44185-5 807. URL https://doi.org/10.1007/
+978-3-662-44185-5_807.
+[10] Károly Vékey. Multiply charged ions. Mass Spectrometry Reviews, 14(3):195–225, 1995. doi: https://doi.org/10.
+1002/mas.1280140304. URL https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/abs/10.
+1002/mas.1280140304.
+[11] G W Burdick, J R Appling, and T F Moran. Stable multiply charges molecular ions. Journal of Physics B:
+Atomic and Molecular Physics, 19(5):629, 1986. doi: 10.1088/0022-3700/19/5/021. URL https://dx.doi.org/
+10.1088/0022-3700/19/5/021.
+13
+https://doi.org/10.26434/chemrxiv-2023-z7cnv-v3 ORCID: https://orcid.org/0000-0003-3167-3104 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+[12] Stefano Falcinelli and Marzio Rosi. Production and Characterization of Molecular Dications: Experimental
+and Theoretical Efforts. Molecules, 25(18), 2020. ISSN 1420-3049. doi: 10.3390/molecules25184157. URL
+https://www.mdpi.com/1420-3049/25/18/4157.
+[13] P. Rousseau, A. Lawicki, A.I.S. Holm, M. Capron, R. Maisonny, S. Maclot, E. Lattouf, H.A.B. Johansson, F. Seitz, A. Méry, J. Rangama, H. Zettergren, S. Rosén, H.T. Schmidt, J.-Y. Chesnel, A. Domaracka,
+B. Manil, L. Adoui, H. Cederquist, and B.A. Huber. Low-energy ions interacting with anthracene molecules
+and clusters. Nuclear Instruments and Methods in Physics Research Section B: Beam Interactions with Materials and Atoms, 279:140–143, 2012. ISSN 0168-583X. doi: https://doi.org/10.1016/j.nimb.2011.10.050. URL
+https://www.sciencedirect.com/science/article/pii/S0168583X1101010X. Proceedings of the Fifth International Conference on Elementary Processes in Atomic Systems Belgrade, Serbia, 21-25 June 2011.
+[14] Tomoyuki Yatsuhashi and Nobuaki Nakashima. Formation and Fragmentation of Quadruply Charged Molecular
+Ions by Intense Femtosecond Laser Pulses. The Journal of Physical Chemistry A, 114(28):7445–7452, 2010. doi:
+10.1021/jp103725s. URL https://doi.org/10.1021/jp103725s. PMID: 20578764.
+[15] Akihiro Kitashoji, Akimasa Fujihara, Taiki Yoshikawa, and Tomoyuki Yatsuhashi. The Smallest Aromatic Tetracation Produced in Gas Phase by Intense Femtosecond Laser Pulses. Chemistry Letters, 48(12):1472–1475, 2019.
+doi: 10.1246/cl.190667. URL https://doi.org/10.1246/cl.190667.
+[16] Takashi Kawaguchi, Kosei Kitagawa, Kazuo Toyota, Masatoshi Kozaki, Keiji Okada, Nobuaki Nakashima, and
+Tomoyuki Yatsuhashi. Smallest Organic Tetracation in the Gas Phase: Stability of Multiply Charged Diiodoacetylene Produced in Intense Femtosecond Laser Fields. The Journal of Physical Chemistry A, 125(36):8014–8024,
+2021. doi: 10.1021/acs.jpca.1c06390. URL https://doi.org/10.1021/acs.jpca.1c06390. PMID: 34491746.
+[17] A. Lawicki, A. I. S. Holm, P. Rousseau, M. Capron, R. Maisonny, S. Maclot, F. Seitz, H. A. B. Johansson,
+S. Rosén, H. T. Schmidt, H. Zettergren, B. Manil, L. Adoui, H. Cederquist, and B. A. Huber. Multiple ionization
+and fragmentation of isolated pyrene and coronene molecules in collision with ions. Phys. Rev. A, 83:022704,
+2011. doi: 10.1103/PhysRevA.83.022704. URL https://link.aps.org/doi/10.1103/PhysRevA.83.022704.
+[18] Leo Radom, Peter M. W. Gill, and Ming Wah Wong. Fragmentation Mechanisms for Multiply-Charged Cations,
+pages 219–225. Springer US, Boston, MA, 1988. ISBN 978-1-4684-7424-4. doi: 10.1007/978-1-4684-7424-4 23.
+URL https://doi.org/10.1007/978-1-4684-7424-4_23.
+[19] Sergio Dı́az-Tendero, Manuel Alcamı́, and Fernando Martı́n. Structure and electronic properties of highly charged
+C60 and C58 fullerenes. The Journal of Chemical Physics, 123(18):184306, 2005. ISSN 0021-9606. doi: 10.1063/
+1.2104467. URL https://doi.org/10.1063/1.2104467.
+[20] S. Dı́az-Tendero, M. Alcamı́, and F. Martı́n. Coulomb Stability Limit of Highly Charged Cq+
+60 Fullerenes. Phys.
+Rev. Lett., 95:013401, 2005. doi: 10.1103/PhysRevLett.95.013401. URL https://link.aps.org/doi/10.1103/
+PhysRevLett.95.013401.
+[21] Henning Zettergren, Goar Sánchez, Sergio Dı́az-Tendero, Manuel Alcamı́, and Fernando Martı́n. Theoretical
+study of the stability of multiply charged C70 fullerenes. The Journal of Chemical Physics, 127(10):104308, 2007.
+ISSN 0021-9606. doi: 10.1063/1.2768361. URL https://doi.org/10.1063/1.2768361.
+[22] A. I. S. Holm, H. A. B. Johansson, H. Cederquist, and H. Zettergren. Dissociation and multiple ionization energies
+for five polycyclic aromatic hydrocarbon molecules. The Journal of Chemical Physics, 134(4):044301, 2011. ISSN
+0021-9606. doi: 10.1063/1.3541252. URL https://doi.org/10.1063/1.3541252.
+[23] Denis S. Tikhonov, Amlan Datta, Pragya Chopra, Amanda L. Steber, Bastian Manschwetus, and Melanie Schnell.
+Approaching black-box calculations of pump-probe fragmentation dynamics of polyatomic molecules. Zeitschrift
+für Physikalische Chemie, 234(7-9):1507–1531, 2020. doi: doi:10.1515/zpch-2020-0009. URL https://doi.org/
+10.1515/zpch-2020-0009.
+[24] Ewa Erdmann, Néstor F. Aguirre, Suvasthika Indrajith, Jacopo Chiarinelli, Alicja Domaracka, Patrick Rousseau,
+Bernd A. Huber, Paola Bolognesi, Robert Richter, Lorenzo Avaldi, Sergio Dı́az-Tendero, Manuel Alcamı́, and
+Marta Labuda. A general approach to study molecular fragmentation and energy redistribution after an ionizing
+event. Phys. Chem. Chem. Phys., 23:1859–1867, 2021. doi: 10.1039/D0CP04890A. URL http://dx.doi.org/
+10.1039/D0CP04890A.
+
+14
+https://doi.org/10.26434/chemrxiv-2023-z7cnv-v3 ORCID: https://orcid.org/0000-0003-3167-3104 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+[25] Ewa Erdmann, Marta Labuda, Néstor F. Aguirre, Sergio Dı́az-Tendero, and Manuel Alcamı́. Furan Fragmentation
+in the Gas Phase: New Insights from Statistical and Molecular Dynamics Calculations. The Journal of Physical
+Chemistry A, 122(16):4153–4166, 2018. doi: 10.1021/acs.jpca.8b00881. URL https://doi.org/10.1021/acs.
+jpca.8b00881. PMID: 29543456.
+[26] Henning Zettergren, Alicja Domaracka, Thomas Schlathölter, Paola Bolognesi, Sergio Dı́az-Tendero, Marta
+Labuda, Sanja Tosic, Sylvain Maclot, Per Johnsson, Amanda Steber, Denis Tikhonov, Mattea Carmen Castrovilli, Lorenzo Avaldi, Sadia Bari, Aleksandar R. Milosavljević, Alicia Palacios, Shirin Faraji, Dariusz G.
+Piekarski, Patrick Rousseau, Daniela Ascenzi, Claire Romanzin, Ewa Erdmann, Manuel Alcamı́, Janina Kopyra,
+Paulo Limão-Vieira, Jaroslav Kočišek, Juraj Fedor, Simon Albertini, Michael Gatchell, Henrik Cederquist, Henning T. Schmidt, Elisabeth Gruber, Lars H. Andersen, Oded Heber, Yoni Toker, Klavs Hansen, Jennifer A.
+Noble, Christophe Jouvet, Christina Kjær, Steen Brøndsted Nielsen, Eduardo Carrascosa, James Bull, Alessandra Candian, and Annemieke Petrignani. Roadmap on dynamics of molecules and clusters in the gas phase. The
+European Physical Journal D, 75(5):152, 2021. ISSN 1434-6079. doi: 10.1140/epjd/s10053-021-00155-y. URL
+https://doi.org/10.1140/epjd/s10053-021-00155-y.
+[27] Jason W. L. Lee, Denis S. Tikhonov, Felix Allum, Rebecca Boll, Pragya Chopra, Benjamin Erk, Sebastian
+Gruet, Lanhai He, David Heathcote, Mehdi M. Kazemi, Jan Lahl, Alexander K. Lemmens, Donatella Loru,
+Sylvain Maclot, Robert Mason, Erland Müller, Terry Mullins, Christopher Passow, Jasper Peschel, Daniel Ramm,
+Amanda L. Steber, Sadia Bari, Mark Brouard, Michael Burt, Jochen Küpper, Per Eng-Johnsson, Anouk M. Rijs,
+Daniel Rolles, Claire Vallance, Bastian Manschwetus, and Melanie Schnell. The kinetic energy of PAH dication
+and trication dissociation determined by recoil-frame covariance map imaging. Phys. Chem. Chem. Phys., 24:
+23096–23105, 2022. doi: 10.1039/D2CP02252D. URL http://dx.doi.org/10.1039/D2CP02252D.
+[28] Bilin P. Tsai and John H.D. Eland. Mass spectra and doubly charged ions in photoionization at 30.4 nm
+and 58.4 nm. International Journal of Mass Spectrometry and Ion Physics, 36(2):143–165, 1980. ISSN 00207381. doi: https://doi.org/10.1016/0020-7381(80)80064-7. URL https://www.sciencedirect.com/science/
+article/pii/0020738180800647.
+[29] T. Hartman, P. N. Juranić, K. Collins, B. Reilly, N. Appathurai, and R. Wehlitz. Large Molecules Reveal a Linear
+Length Scaling for Double Photoionization. Phys. Rev. Lett., 108:023001, 2012. doi: 10.1103/PhysRevLett.108.
+023001. URL https://link.aps.org/doi/10.1103/PhysRevLett.108.023001.
+[30] T. Hartman, P. N. Juranić, K. Collins, B. Reilly, E. Makoutz, N. Appathurai, and R. Wehlitz. Photo-doubleionization mechanisms in aromatic hydrocarbons. Phys. Rev. A, 87:063403, 2013. doi: 10.1103/PhysRevA.87.
+063403. URL https://link.aps.org/doi/10.1103/PhysRevA.87.063403.
+[31] Yang Wang, Sergio Dı́az-Tendero, Manuel Alcamı́, and Fernando Martı́n. Cage connectivity and frontier π orbitals
+govern the relative stability of charged fullerene isomers. Nature Chemistry, 7(11):927–934, 2015. ISSN 1755-4349.
+doi: 10.1038/nchem.2363. URL https://doi.org/10.1038/nchem.2363.
+[32] Erich Hückel. Quantentheoretische Beiträge zum Benzolproblem. Zeitschrift für Physik, 70(3):204–286, 1931.
+ISSN 0044-3328. doi: 10.1007/BF01339530. URL https://doi.org/10.1007/BF01339530.
+[33] C. Joblin, L. Dontot, G. A. Garcia, F. Spiegelman, M. Rapacioli, L. Nahon, P. Parneix, T. Pino, and P. Bréchignac.
+Size Effect in the Ionization Energy of PAH Clusters. The Journal of Physical Chemistry Letters, 8(15):3697–
+3702, 2017. doi: 10.1021/acs.jpclett.7b01546. URL https://doi.org/10.1021/acs.jpclett.7b01546. PMID:
+28742357.
+[34] Robert G. Parr and Ralph G. Pearson. Absolute hardness: companion parameter to absolute electronegativity.
+Journal of the American Chemical Society, 105(26):7512–7516, 1983. doi: 10.1021/ja00364a005. URL https:
+//doi.org/10.1021/ja00364a005.
+[35] Mihai V. Putz. Systematic formulations for electronegativity and hardness and their atomic scales within density
+functional softness theory. International Journal of Quantum Chemistry, 106(2):361–389, 2006. doi: https:
+//doi.org/10.1002/qua.20787. URL https://onlinelibrary.wiley.com/doi/abs/10.1002/qua.20787.
+[36] Attila Szabo and Neil S. Ostlund. Modern Quantum Chemistry: Introduction to Advanced Electronic Structure
+Theory. Dover Publications, Inc., first edition, 1996.
+[37] Carlo Adamo and Vincenzo Barone. Toward reliable density functional methods without adjustable parameters:
+The PBE0 model. The Journal of Chemical Physics, 110(13):6158–6170, 1999. doi: 10.1063/1.478522. URL
+http://scitation.aip.org/content/aip/journal/jcp/110/13/10.1063/1.478522.
+15
+https://doi.org/10.26434/chemrxiv-2023-z7cnv-v3 ORCID: https://orcid.org/0000-0003-3167-3104 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+[38] Florian Weigend and Reinhart Ahlrichs. Balanced basis sets of split valence, triple zeta valence and quadruple
+zeta valence quality for H to Rn: Design and assessment of accuracy. Phys. Chem. Chem. Phys., 7:3297–3305,
+2005. doi: 10.1039/B508541A. URL http://dx.doi.org/10.1039/B508541A.
+[39] Frank Neese, Frank Wennmohs, Ute Becker, and Christoph Riplinger. The ORCA quantum chemistry program
+package. The Journal of Chemical Physics, 152(22):224108, 2020. doi: 10.1063/5.0004608. URL https://doi.
+org/10.1063/5.0004608.
+[40] Werner Kutzelnigg. What I like about Hückel theory. Journal of Computational Chemistry, 28(1):25–34, 2007. doi:
+https://doi.org/10.1002/jcc.20470. URL https://onlinelibrary.wiley.com/doi/abs/10.1002/jcc.20470.
+[41] Miquel Solà. Aromaticity rules. Nature Chemistry, 14(6):585–590, 2022. ISSN 1755-4349. doi: 10.1038/
+s41557-022-00961-w. URL https://doi.org/10.1038/s41557-022-00961-w.
+[42] Felix Laimer, Fabio Zappa, Paul Scheier, and Michael Gatchell. Multiply Charged Helium Droplet Anions.
+Chemistry – A European Journal, 27(25):7283–7287, 2021. doi: https://doi.org/10.1002/chem.202005004. URL
+https://chemistry-europe.onlinelibrary.wiley.com/doi/abs/10.1002/chem.202005004.
+[43] Felix Laimer, Lorenz Kranabetter, Lukas Tiefenthaler, Simon Albertini, Fabio Zappa, Andrew M. Ellis, Michael
+Gatchell, and Paul Scheier. Highly Charged Droplets of Superfluid Helium. Phys. Rev. Lett., 123:165301, 2019.
+doi: 10.1103/PhysRevLett.123.165301. URL https://link.aps.org/doi/10.1103/PhysRevLett.123.165301.
+[44] E. Krotscheck and R. Zillich. Dynamics of He4 droplets. The Journal of Chemical Physics, 115(22):10161–10174,
+2001. ISSN 0021-9606. doi: 10.1063/1.1400780. URL https://doi.org/10.1063/1.1400780.
+[45] J. Peter Toennies. Helium Nanodroplets: Formation, Physical Properties and Superfluidity, pages 1–40. Springer
+International Publishing, Cham, 2022. ISBN 978-3-030-94896-2. doi: 10.1007/978-3-030-94896-2 1. URL https:
+//doi.org/10.1007/978-3-030-94896-2_1.
+[46] Sebastian Spicher and Stefan Grimme. Robust Atomistic Modeling of Materials, Organometallic, and Biochemical
+Systems. Angewandte Chemie International Edition, 59(36):15665–15673, 2020. doi: https://doi.org/10.1002/
+anie.202004239. URL https://onlinelibrary.wiley.com/doi/abs/10.1002/anie.202004239.
+[47] H. K. Mao, R. J. Hemley, Y. Wu, A. P. Jephcoat, L. W. Finger, C. S. Zha, and W. A. Bassett. High-Pressure
+Phase Diagram and Equation of State of Solid Helium from Single-Crystal X-Ray Diffraction to 23.3 GPa. Phys.
+Rev. Lett., 60:2649–2652, 1988. doi: 10.1103/PhysRevLett.60.2649. URL https://link.aps.org/doi/10.1103/
+PhysRevLett.60.2649.
+[48] Christoph Bannwarth, Sebastian Ehlert, and Stefan Grimme.
+GFN2-xTB—An Accurate and Broadly
+Parametrized Self-Consistent Tight-Binding Quantum Chemical Method with Multipole Electrostatics and
+Density-Dependent Dispersion Contributions. Journal of Chemical Theory and Computation, 15(3):1652–1671,
+2019. doi: 10.1021/acs.jctc.8b01176. URL https://doi.org/10.1021/acs.jctc.8b01176. PMID: 30741547.
+[49] Christoph Bannwarth, Eike Caldeweyher, Sebastian Ehlert, Andreas Hansen, Philipp Pracht, Jakob Seibert, Sebastian Spicher, and Stefan Grimme. Extended tight-binding quantum chemistry methods. WIREs
+Computational Molecular Science, 11(2):e1493, 2021. doi: https://doi.org/10.1002/wcms.1493. URL https:
+//wires.onlinelibrary.wiley.com/doi/abs/10.1002/wcms.1493.
+[50] Robert C. Wetzel, Frank A. Baiocchi, Todd R. Hayes, and Robert S. Freund. Absolute cross sections for electronimpact ionization of the rare-gas atoms by the fast-neutral-beam method. Phys. Rev. A, 35:559–577, 1987. doi:
+10.1103/PhysRevA.35.559. URL https://link.aps.org/doi/10.1103/PhysRevA.35.559.
+[51] J.S. Thompson, D.J. Pegg, J. Dellwo, R.N. Compton, and G.D. Alton. Photodetachment of metastable He-.
+Nuclear Instruments and Methods in Physics Research Section B: Beam Interactions with Materials and Atoms,
+56-57:211–215, 1991. ISSN 0168-583X. doi: https://doi.org/10.1016/0168-583X(91)96008-9. URL https://www.
+sciencedirect.com/science/article/pii/0168583X91960089.
+
+16
+https://doi.org/10.26434/chemrxiv-2023-z7cnv-v3 ORCID: https://orcid.org/0000-0003-3167-3104 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+

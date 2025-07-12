@@ -1,0 +1,1728 @@
+Electrochemically induced carbon dioxide capture from air
+with an aqueous fluoflavine sorbent
+Zhuwen Wei†1, Sheng Xu†1, Jinxin Liu2, Kaiping Zhu1, Mengke Tang3, Aini Li1, Xingqi Wang1, Kean
+Ping (Leah) Tan4, Yang Li3✉, Zheng Meng2✉, Yan Jing1✉
+1
+
+Department of Materials Science and Engineering, National University of Singapore, 117576,
+Singapore.
+2
+State Key Laboratory of Precision and Intelligent Chemistry, Department of Chemistry, University of
+Science and Technology of China, Hefei, Anhui 230026, P. R. China.
+3
+State Key Laboratory of Information Photonic and Optical Communications, and School of Science,
+Beijing University of Posts and Telecommunications, Beijing 100876, P. R. China.
+4
+Department of Mechanical Engineering, National University of Singapore, 117583, Singapore.
+†
+These authors contributed equally to this work.
+✉e-mail: liyang1988@bupt.edu.cn; zhengmeng@ustc.edu.cn; yan-jing@nus.edu.sg.
+Abstract
+Direct air capture (DAC) holds great potential in mitigating climate change. A promising approach
+is redox sorbent-based electrochemically induced DAC, which operates at ambient conditions with
+significantly lower energy costs while utilizing clean electricity. However, the oxygen sensitivity of
+redox sorbents remains a major challenge. Thus, the feasibility of achieving electrochemically induced
+DAC with redox sorbents remains uncertain. Despite the vast difference in partial pressures between
+carbon dioxide (CO2) and molecular oxygen (O2) in air, ribulose-1,5-bisphosphate in plant leaves can
+preferentially react with CO2 in the sunlight, thus achieving the net CO2 removal. Motivated by the
+nature-based DAC solution, we hereby developed an aqueous-soluble oxygen-tolerant fluoflavine
+disulfonate (FFDS) sorbent for DAC. Electrochemical characterizations, spectroscopic studies, along
+with theoretical calculations, reveal that FFDS undergoes proton-coupled electron transfer and exhibits
+a redox potential higher than the two-electron transfer oxygen reduction potential. When exposed to
+simulated flue gas containing 10% O2, the FFDS sorbent demonstrates reversible CO2 capture and
+release with an average CO2/e molar ratio of 0.88. Implemented for both indoor and outdoor DAC in
+Singapore, FFDS sorbent shows stable cycling performance over 40 days with a three-day DAC under
+the normal discharge-charge mode, and exhibits an enhanced CO2 capture capacity and a Coulombic
+efficiency exceeding 99% with an accelerated overnight DAC under the deep discharge-charge mode.
+Doubling the concentration of FFDS leads to a twofold increase in CO2 capture/release capacity,
+regardless of whether the three-day DAC is conducted indoors or outdoors. The energy cost for CO2
+release and sorbent regeneration ranges from 58 to 190 kJ mol–1 CO2, depending on the applied current
+densities and discharge-charge modes.
+Introduction
+Capturing carbon dioxide (CO2) from point or diffuse sources is urgently needed to mitigate climate
+change. Existing technologies, including amine scrubbing for point source capture[1] and hydroxidebased solutions[2] for direct air capture (DAC), rely on temperature-swing and require high energy input
+for sorbent regeneration and CO2 release.
+Potentially operating entirely on clean electricity, electrochemically induced CO2 capture approach
+using redox sorbents offers a promising alternative to thermochemical methods, as the process enables
+reversible CO2 release and sorbent regeneration under isothermal conditions by alternating
+electrochemical potentials, significantly lowering energy costs.[3-9]
+A number of electrochemically redox-active sorbents have been investigated in both aqueous[5, 6, 1016]
+and nonaqueous[3, 17-25] media for reversible CO2 capture and release through nucleophilicity-swing
+and/or pH-swing. Despite the promise of low energy cost and operating at ambient conditions, a key
+challenge remains: the poor selectivity of sorbents for CO2 over molecular oxygen (O2).[15] This issue
+arises because, after sorbent regeneration, the electrochemically reduced species are more likely to be
+1
+
+https://doi.org/10.26434/chemrxiv-2025-rmfmq ORCID: https://orcid.org/0000-0002-5669-4609 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+re-oxidized by O2, rather than capturing CO2 to form organic or inorganic carbonates, particularly when
+exposed to ambient air.
+Strategies including molecular engineering,[8, 21] electrolyte engineering,[3, 18-20, 23] and
+electrochemical engineering[11] have been employed to address the O2 sensitivity issue of the redoxactive sorbents in their reduced state, leading to significant advancements in point source capture.
+However, the inherent O2 sensitivity issue of the redox-active sorbents at the molecular level persists.
+As a result, the viability of using redox-active sorbents for electrochemically induced DAC remains an
+open question.
+Ribulose-1,5-bisphosphate (RuBp) in plant leaves preferentially reacts with CO2 over O2 in the
+sunlight, despite the orders of magnitude difference in partial pressures—0.4 mbar CO2 vs. 0.21 bar O2
+in air.[26] Motivated by the capability of RuBp in carbon fixation through photosynthesis, we envision
+the possibility of developing a redox-active sorbent capable of electrochemically induced DAC while
+tolerating ambient oxygen.
+Fluoflavine, an azaacene dye known for its intense fluorescence,[27, 28] has been used to facilitate
+charge transfer in LiFePO4 and used as an electro-active material for energy storage.[29, 30] Our interest
+in fluoflavine stems from its unique properties, including its air stability,[30] high pKa values,[31] and
+excellent redox activity.[27] Through introducing water-solubilizing sulfonate groups to fluoflavine, we
+developed an oxygen-tolerant aqueous-soluble fluoflavine disulfonate sorbent that can be
+electrochemically induced to capture CO2 from simulated flue gas as well as indoor and outdoor ambient
+air, with low energy cost, excellent reversibility, and high stability. The electrochemically induced CO2
+capture system with aqueous redox-active sorbents inherits the merits of aqueous flow batteries,
+including non-flammability, continuous-flow engineering, modularity, and the ability to operate at high
+current densities. We demonstrated that increasing the applied current densities accelerates the CO2
+capture–release rate, which is crucial in addressing the urgent challenge of climate change.
+Disfavored
+Photorespiration
+
+Nature plants-based solution
+
+Technology-based solution in this work
+
+Oxidative deactivation
+
+Favored
+
+21% O2
+
+RuBP
+Rubisco
+
+0.04% CO2
+
+21% O2
+
+QH2, OHsorbent
+
+0.04% CO2
+
+Photosynthesis
+
+Carbon capture
+
+Q/QH2: Water-soluble redox molecules undergoing proton-coupled electron transfer (PCET).
+Acid-base reaction
+
+e-PCET redox flow chemistry
+
+QH2(aq)
++ OH-(aq)
+
+e-oxidation
+
+air in
+
+Carbon capture
+OH-(aq) + CO2(g) à HCO3-(aq)
+2OH (aq) + CO2(g) à CO32-(aq)
++H2O(l)
+
+CO2 release
+2QH2(aq) + CO32-(aq) +
+2HCO3-(aq) - 4e- à 2Q(aq)
++ 3CO2(g) + 3H2O(l)
+
+CO2
+
+e-reduction
+
+CO2-lean
+air out
+QH2(aq)
++ OH-(aq)
+
+QH2(aq)
++ HCO3-(aq)
++ CO32-(aq)
+
+Sorbent
+regeneration
+Q(aq) + 2e- + 2H2O(l)
+à QH2(aq) + 2OH-(aq)
+
+Figure 1 | Schematics of nature-based DAC solution and technology-based DAC solution in this work.
+Both DAC solutions face a vast difference in partial pressures between O2 and CO2, 0.21 bar vs. 0.4
+mbar. In the presence of light, RuBP and Rubisco preferentially react with CO2 over O2, promoting
+photosynthesis over photorespiration. The redox-active sorbents used in the emerging electrochemically
+induced DAC technology usually encounter an oxygen sensitivity issue and show poor selectivity for
+CO2 over O2. Ideally, a redox-active sorbent Q (QH2), with inherent oxygen tolerance at molecular
+level, would enable electrochemically induced carbon capture from the air, while greatly suppressing
+the sorbent oxidative deactivation. Three steps are involved in Q/QH2 sorbent-based CO2 capture and
+
+2
+
+https://doi.org/10.26434/chemrxiv-2025-rmfmq ORCID: https://orcid.org/0000-0002-5669-4609 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+release: 1. acid–base reaction induced CO2 capture; 2. electrochemically induced CO2 release; 3.
+electrochemical reduction for sorbent regeneration.
+Results and discussion
+Fluoflavine (FF) was synthesized through a condensation reaction.[30] After the one-step sulfonation
+of FF, we obtained fluoflavine disulfonic acid (FFDS) with an outstanding yield of 94%. The
+disulfonation of FF was confirmed by the mass-to-charge ratio obtained from high-resolution mass
+spectrometry. The oxidized FFDS (ox. FFDS) was quantitatively obtained through a one-step
+electrochemical oxidation. By analysing the splitting pattern and the ratio of peak integrals in the
+aromatic regions of their 1H NMR spectra, we were able to determine the structure of FFDS and ox.
+FFDS as drawn in Figure 2a, where the two sulfonate groups are attached to the separated phenyl rings
+at the meta- or para-positions. The number of peaks in the 13C NMR spectra further validates the
+proposed structures.
+a
+
+H
+N
+N
+H
+
+N
+N
+
+Fluoflavine (FF)
+
+H
+N
+
+Conc. H2SO4
+150 ˚C, 6 h
+
+H
+N
+
+N
+
+N
+
+SO3H
+HO3S
+
+N
+H
+
+SO3
+
+N
+
+Fluoflavine disulfonic acid (FFDS)
+
+N
+H
+
+O3S
+
+N
+
+–2e–
+
+N
+
+N
+
+N
+
+N
+
+SO3 + 2H
+
++2e–
+
+O3S
+
++
+
+ox. FFDS
+
+Fluoflavine disulfonate (FFDS)
+
+b
+ox. FFDS
+
+FFDS
+
+170
+
+8.8 8.7 8.6 8.5 8.4 8.3 8.2 8.1 8.0 7.9 7.8 7.7 7.6 7.5 7.4 7.3 7.2 7.1 7.0 6.9 6.8 6.7 6.6
+1
+H (ppm)
+
+165
+
+160
+
+155
+
+150
+
+145
+
+140
+
+135 130
+C (ppm)
+
+13
+
+125
+
+120
+
+115
+
+110
+
+105
+
+100
+
+Figure 2 | Synthesis and NMR spectra of fluoflavine disulfonate (FFDS) and its oxidized form (ox.
+FFDS). a, Fluoflavine sulfonation reaction condition and the electrochemical proton-coupled electron
+transfer (PCET). b, 1H and 13C NMR spectra of the ox. FFDS and FFDS in DMSO-d6. See Figure
+S1-S2 for more details.
+The cyclic voltammograms of FFDS in buffered aqueous media exhibit reversible redox behaviour
+over a pH range of 5.7 to 13.9 (Figure 3a). The Pourbaix diagram in Figure 3b indicates that the redox
+potential of FFDS is negatively proportional to pH with a fitted slope of 59 mV/pH throughout the pH
+range from 0 to 14. The overlap between the experimental reduction potentials of FFDS and the
+theoretical values (Figure S10) further corroborates that FFDS undergoes two-proton, two-electron
+transfer, i.e., proton-coupled electron transfer (PCET), over the pH range of 0 to 14. It is worth noting
+that the oxidation potentials of FFDS fall between the potentials of two-electron transfer oxygen
+reduction reaction (ORR) and four-electron transfer ORR (Figure 3b). Given that the four-electron
+transfer ORR pathway is highly disfavoured in the absence of a catalyst, FFDS could potentially tolerate
+ambient O2, thus enabling FFDS sorbent-based electrochemically induced DAC.
+The electrochemically induced CO2 capture using FFDS was first examined in the absence of O2.
+FFDS shows a reversible swing in both pH and potential while operating in N2 (Figure 3c). The
+introduction of CO2 to the reduced electrolyte leads to a steep decline in pH and a sharp rise in potential,
+which are attributed to the CO2 buffering effect (Figure 3d). A slight pH increase and potential drop
+are observed after the CO2 feed gas is replaced by pure N2. Such a phenomenon can be explained by
+the CO2 partial pressure drop in feed gas lowering the solubility of CO2 in liquid phase. Subsequent
+oxidation of FFDS lowers the electrolyte pH from 9.5 to 4, accompanied by the CO2 release. The
+replotted voltage profiles in Figure 3e clearly show that the oxidation potential of FFDS shifts to a
+more positive value after CO2 capture. The integrated loop area in Figure 3f represents the energy
+required for CO2 release and FFDS sorbent regeneration. With a one-hour exposure of pure CO2 at one
+
+3
+
+https://doi.org/10.26434/chemrxiv-2025-rmfmq ORCID: https://orcid.org/0000-0002-5669-4609 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+bar, the FFDS sorbent could release 43.10 mL CO2 after the electrochemical oxidation (Figure S5),
+which corresponds to a CO2/e molar ratio of 0.97 and an energy cost of 32.97 kJ mol-1 CO2.
+b ",$
+
+d #EC
+#E$
+
+!E*
+!E)
+!EC
+
+@V
+
+H,-./-0NOP45PSTEP8V:;
+
+#E!
+
+!E$
+!E!
+'!E$
+'!EC
+'!E)
+
+#C
+#%
+#$
+##
+#!
+?
+*
+>
+)
+"
+C
+%
+$
+#
+!
+
+A$
+!
+
+BC$
+"!
+
+A$
+#!!
+
+#"!
+
+$!! $"!
+<0=.P4=0/;
+
+%!!
+
+%"!
+
+C!!
+
+e
+
+c #)$
+#)!
+%! !
+R?@
+@
+
+#! !
+R?@
+@
+
+!)*
+!)'
+!)&
+!)$
+!)!
+
+E!)$
+!
+
+"
+
+#
+
+$
+
+%
+
+&
+
+'
+
+E )
+>;
+
+E!)&
+
+* "! "" "# "$ "%
+
+A$
+!
+
+"
+
+f
+
+CE#
+
+#&
+#%
+#$
+##
+#!
+?
+*
+>
+'
+"
+&
+%
+$
+#
+!
+
+@V
+
+",#
+","
+",!
+!,*
+!,)
+!,E
+!,'
+!,&
+!,%
+!,$
+!,#
+!,"
+!,!
+H!,"
+
+H,-./-0N2P45PST)P8V:;
+
+-./01/OP4RS7R8V,R:;<=
+
+!"#$ !"#% !"#& !"#' "#" "#' "#& "#% "#$ E#" E#'
+8*7NS7/-.PV:P;<#P=>?@
+
+#! #" $! $" %! %" &! &" "! "" '!
+<0=.P4=0/;
+
+CE"
+
+CE"
+
+CE!
+
+CE!
+-./0N/OP4)5S)78E)V:;<
+
+)*H,-./0N2P45HHNS7
+
+PA>PBPC#a
+PA>PBPa#&
+PA>PBP$#&
+PA>PBP$#$
+PA>PBPE#E
+PA>PBPEE#E
+PA>PBPE'#"
+PA>PBPEc#"
+PA>PBPEc#E
+
+)*H,JH./01OP145E1S78V
+
+a
+
+!E%
+!E$
+!E#
+!E"
+!E!
+)*"
+)H,"
+
+'!E"
+'!E#
+
+!
+
+"!
+
+!E%
+!EA
+!E#
+
+Ec,/1G1A>E#>1B
+
+!E"
+!E!
+>"E?@1AB1C*0!C1:a"
+
+'!E"
+#!
+
+$!
+
+%! C!! C"! C#! C$! C%! "!!
+HP=P>O/?)5H<
+
+'!E#
+
+!
+
+"!
+
+#!
+
+A!
+
+%! C!! C"! C#! CA! C%! "!!
+:/;/<.H=1O:V
+
+Figure 3 | Electrochemical characterizations of FFDS in the absence and presence of CO2. a, Cyclic
+voltammograms of FFDS in buffered electrolytes. b, Pourbaix diagram of FFDS. c, Potential and pH
+profiles of FFDS electrolyte over time in N2. d, Potential and pH profiles of FFDS electrolyte over time
+when CO2 is introduced. e, Potential vs. capacity profiles with and without captured CO2. f, Energy cost
+for CO2 release and sorbent regeneration when CO2 is captured from one-bar 100% CO2.
+In light of the distinctive colours of the azaacene family[27, 28], we carried out spectroscopic studies
+on FFDS at varied state of charge (SOC). Figure 4a shows that the UV-Vis absorbance spectrum of
+FFDS evolves reversibly between 0% and 100% SOC, confirming the reversible redox behaviour.
+Although the structural conjugation is extended from FFDS to ox. FFDS, the corresponding UV–Vis
+spectral shift is insignificant, which has also been corroborated by the simulated results (Figure S7).
+The lack of red shift can be attributed to the fact that the S0–S1 transition is forbidden due to the
+substantial alternation in molecular symmetry caused by oxidation (Figure S8).
+As implied by the name, fluorescence is an inherent feature of fluoflavine derivatives. The
+fluorescence of FFDS linearly diminishes with the decrease of SOC (Figure 4b). The same linear
+correlation has also been observed in the mixture of FFDS and ox. FFDS in varying ratios (Figure
+S12). It is important to note that the quantitative relationship between fluorescence intensity and SOC
+could be established via in-situ non-invasive fluorescence technique.[32] The almost non-fluorescent
+feature shown by the ox. FFDS can also be attributed to the S0–S1 transition being forbidden. The
+fluorescence of the ox. FFDS is effectively quenched by rapid internal conversion to the dark state (S1)
+upon photoexcitation, as confirmed by the transient absorption measurements (Figure S13). The FFDS
+solutions with and without captured CO2 show the same spectra of both UV-Vis absorbance and
+fluorescence (Figure S11-S12), indicating that CO2 is captured as dissolved inorganic carbon (DIC)
+species that does not affect the structure of FFDS, validating that FFDS captures and releases CO2 via
+pH-swing rather than nucleophilicity-swing.[5, 15]
+The in-situ ATR-FTIR spectra of FFDS over the electrochemical reduction process in Figure 4c
+show gradual transmittance variations at 1150-1200, 1600, 2900, and 3200-3300 cm-1, which
+correspond to the stretching vibrations of C-N, C=N, N-H, and O-H bonds, respectively.[21, 33, 34]
+During the reduction, the C=N bonds in one of the two pyrazine rings are converted to C-N and N-H
+bonds, intensifying the absorption bands at 1150, 1200, and 2900 cm-1, weakening the C=N absorption
+band at 1600 cm-1. The O-H vibration absorption in the range of 3200-3300 cm-1 diminishes, as water
+molecules are consumed over reduction.
+
+4
+
+https://doi.org/10.26434/chemrxiv-2025-rmfmq ORCID: https://orcid.org/0000-0002-5669-4609 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+a
+
+)&"
+
+100%
+
+7U!UVW3+;W<=;+/>-
+
+"&(
+"&'
+"&%
+"&!
+
+$""
+
+$#"
+%""
+*+,-.-/01234/56
+
+*'&"!
+%'&"!
+
++,-./01203204536031567
+
+%#"
+
+(F*+,-./-0/-1O-34150S-0.5S7
+
+b
+
+!#"
+
+$'&"!
+#'&"!
+!'&"!
+
+#""
+
+##"
+
+%'C!#
+$'C!#
+#'C!#
+"'C!#
+
+F'&"!
+
+!
+
+!
+
+"!
+
+#! $!
+89:1;<=
+
+%!
+
+C!!
+
+SOC
+
+"&"
+!""
+
+('&"!
+&'&"!
+"
+!""
+
+c
+
+!#"
+
+#""
+
+##"
+89W0,03;6<4=3>?
+
+!9;W
+
+!W!<
+
+$#"
+
+%""
+
+!=!<
+
+'()*HI-./0**I-NO
+
+!9!W
+
+$""
+
+!"""
+
+!#""
+
+$"""
+$#""
+3I4O-R/6OH)7N/!!8
+
+%"""
+
+%#""
+
+C"""
+
+0%
+
+Figure 4 | Spectroscopic studies of 10 µM FFDS. a, UV-Vis absorbance spectra at varied SOC between
+0% and 100%. b, Fluorescence emission spectra of FFDS at varied SOC, and the fluorescence peak
+intensity vs. SOC (insert). c, Stacked in-situ IR transmittance spectra of FFDS over electrochemical
+reduction process (bottom to top: 0% to 100% SOC).
+To assess the oxygen tolerance of FFDS, we measured the CO2 capture performance of FFDS
+sorbent in a simulated flue gas consisting of 10% CO2, 10% O2, and 80% N2 at one bar. The simulated
+flue gas is introduced to the FFDS electrolyte as the feed gas at a flow rate of 30 mL min–1. The flow
+cell is charged to electrochemically reduce ox. FFDS, thereby regenerating the sorbent. The pH of the
+sorbent first increases from 7.25 to 9.5, then decreases and stabilizes at 7.7 which is a result of the
+acid-base reaction between the CO2 in the feed gas and the OH- generated via the PCET process.
+Correspondingly, the CO2 flow rate becomes lower than 3 mL min–1; while the oxygen level becomes
+higher than 10%. The acid-base reaction-induced CO2 capture continues after the charging process and
+completes during the rest period. During the electrochemical oxidation of FFDS, the pH of the sorbent
+first decreases from 7.7 to 6.6, then increases and stabilizes at 7.25. The corresponding CO2 release
+leads to the increase of CO2 flow rate and the decrease of O2 level. The reversible alterations in voltage,
+pH, O2 level, and CO2 capture flow rate over 11 cycles indicate the excellent oxygen tolerance of FFDS
+in 0.1 bar O2 (Figure 5a). Being exposed to 0.1 bar O2 for 200-hour, 38-cycle CO2 capture and release,
+the FFDS sorbent steadily releases CO2 at an average volume of 36.7 mL per cycle with an average
+5
+
+https://doi.org/10.26434/chemrxiv-2025-rmfmq ORCID: https://orcid.org/0000-0002-5669-4609 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Coulombic efficiency of 99.02% (Figure 5b, Figure S20), indicating that FFDS possesses exclusive
+selectivity of CO2 over O2, superior oxygen-tolerance, and excellent reversibility. The molar ratio of
+CO2/e approaching 0.88 suggests that CO2 was primarily absorbed via the reaction of CO2 + OH- à
+HCO3- during the capture process, which is also reflected by the stabilized pH at 7.7 after the completion
+of CO2 capture. As shown in Figure S16, the DIC in water at pH 7.7 is primarily in the form of
+bicarbonate.
+It is worth noting that the aqueous electrochemical flow system is capable of operating at high
+current densities, thus accelerating the CO2 release and sorbent regeneration, ultimately expediting the
+DAC rate. Figure 5c shows the averaged volumes of CO2 capture-release over five cycles at varied
+current densities. Increasing the applied current densities does not adversely lower the volumes of CO2
+captured and released by the FFDS sorbent. Instead, it reduces the time required to complete the CO2
+capture from 132 to 92 minutes when the applied current density increases from 20 to 40 mA cm–2
+(Figure S21b). Further increasing the current density does not shorten the CO2 capture time, as the ratelimiting step becomes the acid-base chemical reaction between CO2 and OH–. Figure 5d shows that
+the CO2 release peak intensifies with the increase of current densities, shortening the duration of CO2
+capture–release cycle. Because CO2 release is coupled with electrochemical oxidation of FFDS,
+increasing the applied current densities from 20 to 100 mA cm–2 reduces the time required to complete
+CO2 release from 50 to 20 mins (Figure 5e). Figure 5f shows the comparable Coulombic efficiencies
+of close to 100% and the increased energy cost for CO2 release and sorbent regeneration from 58 to 190
+kJ mol–1 CO2 when the applied current density is increased from 20 to 100 mA cm–2.
+!
+
+b
+
+!"#A
+
+'
+
+!B;
+$!
+!B<
+#!
+!B%
+"!
+
+!
+
+C
+%"#)
+
+!B#
+
+!
+
+"!
+
+<*3.OCO.34a5
+
+c
+
+#!
+OT8(+,V)*:+.
+
+)*+,-.L*0L1O!L3-45
+
+!H(#A(36@
+H
+*
+
+"
+
+H"" !
+
+%""
+*""
+EA6O346AB5
+
+#!!!
+
+e
+
+*
+#!!+,-+.,!A
+
+)
+89A+:;4<+6=>1+O,?+,0@!#T
+
+"!!
+
+'!+
+C!
+
+'
+"
+
+A!
+
+C
+%
+A
+
+$"!!
+
+!
+
+"
+
+#!
+#"
+L0,1+O3456T
+
+A!
+
+%!!!
+
+"AA
+
+!"
+"A'
+
+"
+
+%"!!
+
+!"
+
+#"
+A"
+%"
+1,66.78LV.7:;8<L3-=L>-!!5
+
+f C!'
+
+"E!
+!E)
+!E'
+!E%
+
+*#!*
+*%!
+*'!
+*)!
+*"!!*+,*-+!#
+
+!E#
+
+#
+!
+
+'"
+
+C""
+
+"A"
+
+"'!
+
+C!!
+
+)!
+
+(
+
+#"!!
+$!!!
+&'()*+(',-
+
+CA!
+
+"AB
+
+#"
+
+C"
+
+H'#Hc36@
+
+A"
+
+*:+;:6<380J==383J.8405>9
+
+d
+
+)
+
+./01O0*34*56#*T1819:1
+
+;<*3=.->3?0LO346@36AB!%5
+
+%"#"
+
+A
+
+!B!
+%!
+
+$!
+
+>?@8,6.V
+6.+.?:.V
+
+("
+
+(#C
+
+"B!
+
+!E!
+
+!
+
+"!
+
+#!
+
+A!
+%!
+;<+1*=+<O>
+
+C!
+
+'!
+
+"!!
+
+)'
+)!
+
+C'!
+
+%'
+C!!
+
+%!
+E'
+
+'!
+
+E!
+A'
+
+!
+
+"!
+
+#!
+A!
+%!
+C!!
+*+,,J./01J.O3/40567086!"9
+
+0?.J,@408:O/05AB06:;!C0*C"9
+
+V:
+
+%"
+
+#!!
+
+O3#C!
+
+"#"
+
+"<!
+
+%!
+
+1O!C!
+
+*"36T386!*
+
+"#A
+
+=>*+,4?').6
+;!
+"#!
+
+%!
+
+=?+'.+@>8L(,A'()*+
+
+C'()*+,'-,.+(+L0+1,O3#,4*56
+
+,-.L01O34,5
+
+a %#"
+
+!
+C"!
+
+Figure 5 | FFDS sorbent-based electrochemically induced CO2 capture and release at one bar in a
+simulated flue gas composed of 10% CO2, 10% O2 and 80% N2 at a total flow rate of 30 mL min–1. The
+negolyte is composed of 10 mL of 0.1 M FFDS, 0.4 M KOH. The posolyte is composed of 100 mL of
+0.03 M K4Fe(CN)6 and 0.07 M K3Fe(CN)6. The flow cell is charged-discharged at constant current
+densities with potential holds until the current density decreases to 2 mA cm–2. A 180-min rest after
+charge, and a 90-min rest after discharge are implemented to complete CO2 capture and release,
+respectively. a, One-cycle and 10-cycle CO2 capture and release at 20 mA cm–2. Top to bottom: voltage
+profile, variation of pH, O2 level, and CO2 flow rate. b, Volume of released CO2, molar ratio of CO2/e
+6
+
+https://doi.org/10.26434/chemrxiv-2025-rmfmq ORCID: https://orcid.org/0000-0002-5669-4609 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+at 20 mA cm–2 over 38 cycles and 200 hours. c, Volume of released CO2, molar ratio of CO2/e at 20,
+40, 60, 80, and 100 mA cm–2 over five cycles. d, CO2 capture and release at varied current densities of
+20, 40, 60, 80, and 100 mA cm–2. e, Cumulative CO2 released over time at 20, 40, 60, 80, and 100 mA
+cm–2. f, Averaged Coulombic efficiency and energy cost over five cycles at 20, 40, 60, 80, and 100 mA
+cm–2.
+Encouraged by the stable cycling of carbon capture and release in the simulated flue gas, we put 10
+mL, 0.1 M FFDS sorbent in the indoor air and stirred it for three days. As such, we were able to evaluate
+the outcome of the two competing reactions—carbon capture vs. oxidative deactivation of FFDS
+(Figure 1) over an extended air exposure. Instead of releasing CO2 to a mixed gas containing 10% CO2
+at ambient pressure (Figure 5), we employed pure N2 (99.9995%) as the carrier gas to avoid any further
+unintended CO2 capture, as the sorbent after DAC would immediately continue to capture CO2 upon
+being exposed to a feed gas containing 0.1 bar CO2, which ultimately leads to an overestimation in DAC
+capacity and the CO2/e molar ratio. Figure 6b shows the charge-discharge voltage profile of FFDS
+after the three-day DAC. A Coulombic efficiency of 87% suggests that most of FFDS remains intact
+after the three-day indoor air exposure. 20.16 mL CO2 is released (Figure 6d), corresponding to a CO2/e
+molar ratio of 0.51.
+To assess the cycling stability of FFDS sorbent-based DAC and release, we conducted 10 cycles of
+continuous three-day indoor DAC plus one-day CO2 release, as shown in Figure 6h. During the 40
+days of operation, the FFDS sorbent releases 16.5-20.0 mL CO2 per cycle with a Coulombic efficiency
+of 85-95% and an energy cost of 80-110 kJ mol–1 for CO2 release and sorbent regeneration. The
+variation in the released CO2 volume is mainly attributed to sorbent loss or residual sorbent left behind
+during transfer.
+Although the significantly improved oxygen tolerance of FFDS enables us to capture CO2 from the
+air, there is still 5-15% of FFDS being oxidized by molecular oxygen during the three-day air exposure,
+as reflected by the Coulombic efficiency. As a result, part of the captured CO2 remains in the sorbent
+solution. The remaining DIC creates a buffer solution that stabilizes its pH at 9.3 after CO2 release and
+at 12.6 after the sorbent regeneration (Figure 6c). To confirm whether the DICs accumulate over
+cycling, 1 M HCl was intentionally added to the cycled FFDS sorbent (Figure S24), and a total of 36
+mL CO2 was released, validating our reasoning. However, the addition of hydrochloric acid adversely
+introduces extra ions to the sorbent, which would compromise the aqueous solubility of FFDS.
+Furthermore, the unbalanced charges over cycling will eventually outbalance the whole system.
+To eliminate the influence of extra ions and rebalance the charges in the system,[11, 35] we further
+lowered the discharge voltage to initiate the oxygen evolution reaction (OER), which was noted as deep
+discharge. By controlling the deep discharge capacity, we improved the Coulombic efficiency close to
+100% and increased the initial CO2 release volume up to 23.31 mL. With the controlled OER, we
+lowered the pH to 4.0 after CO2 release to ensure that no HCO3- and CO32- were left in the sorbent
+(Figure S16). The subsequent charge process elevates the sorbent pH up to 13.3. To accelerate the
+DAC-release cycle, we kept bubbling the sorbent solution with the indoor air overnight at a flow rate
+of 375 mL min–1 and stopped bubbling when the sorbent pH decreased to ~10. The whole DAC-release
+cycle completes within one day. Figure 6i shows the cycling over 16 days with an average CO2 release
+volume of 21.6 mL. The fluctuation in the volume of released CO2 was mainly due to the unavoidable
+liquid splashes caused by air bubbling. Compared to the normal discharge, the deep discharge method
+improves the Coulombic efficiency close to 100%, releases 3.2 mL more CO2, and rebalances the
+system with 51% higher energy cost (Figure 6i vs. Figure 6h).
+With the 0.2 M FFDS sorbent, we conducted both indoor and outdoor DAC in Singapore, a city
+country near the equator with a tropical climate of high humidity and relatively consistent temperatures
+year-round. Figure 6a presents the continuous 20-day indoor and outdoor temperatures, relative
+humidity, oxygen, and CO2 levels of Singapore in Feb. 2025. The outdoor open air shows recurring
+oscillations for all of the monitored parameters. Because of air conditioning, the indoor air is maintained
+at relatively stable temperature, humidity, and O2 levels. The indoor CO2 fluctuation is due to the
+activities of group members. Figure 6j presents the continuous cycling of FFDS sorbent for two cycles
+of the three-day indoor DAC, and another two cycles of the three-day outdoor DAC. The FFDS sorbent
+releases more than 46 mL CO2 after the three-day indoor and outdoor DAC, doubling the DAC capacity
+7
+
+https://doi.org/10.26434/chemrxiv-2025-rmfmq ORCID: https://orcid.org/0000-0002-5669-4609 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+as compared to the 0.1 M FFDS sorbent. The similar released CO2 volumes, Coulombic efficiency, and
+energy cost indicate that the fluctuations in temperature and humidity levels of the outdoor air have
+insignificant influence on the FFDS sorbent. It is noticed that the water loss from the FFDS sorbent
+during the three-day outdoor DAC is 30%-50% less than that during the three-day indoor DAC. The
+10% higher relative humidity in the outdoor air slows down the water evaporation of FFDS sorbent
+during the three-day outdoor DAC (Figure 6a).
+=!HT<9 :15,.,O;HT<9 345640O104HT/89
+
+%C
+%!
+!$
+!#
+!"
+'!"
+'""
+$"
+C"
+#"
+!%
+
+8=!HT6659
+
+a
+
+C""
+
+H,-.//0
+H/1O.//0
+
+H,-.//0
+H/1O.//0
+
+H,-.//0
+H/1O.//0
+
+!!
+!'
+!"
+
+H,-.//0
+H/1O.//0
+
+(""
+#""
+!
+
+%
+
+#
+
+(
+
+C
+
+)
+
+b C(!
+
+'%
+
+*+$,-.L0,1O34,56T,689!#:
+
+"!
+
+!(!
+
+*
+
+'!("
+
+)
+
+'!(#
+
+(
+
+!
+
+"! #! $! %! C!! C"! C#! C$! C%!
+3-4-56,70132
+
+D
+
+C"
+
+!(#
+
+C!
+;<
+
+!(!
+'!(#
+
+836009:;<1.=:4461>?@
+60A8
+@B#160C0;A0
+A46a0=8160b0=06;8.4=
+!
+
+f C#
+
+!(%
+
+#
+
+'C("
+!
+
+"!
+
+!
+
+C
+
+#)
+#%
+#!
+"'
+"#
+
+D(()*)HD,)-./0)H1O34,.56T
+H)8,
+T9".H)*)D8)
+8/H:)1,.H)3)1)HD,O/1
+
+%!
+
+%!
+$!
+
+#!
+
+!
+!
+! " # $ % C ' ( ) * "! ""
+T<=-01>.L?03
+
+#!
+"!
+!
+
+#!
+
+%
+
+#!
+
+#
+!
+!
+
+"
+
+#
+
+$ % C! C" C# C$
+'()*+,-./0+1
+
+!
+
+"!
+!
+
+'$
+
+'*
+
+!"
+
+!'(
+!'C
+!'$
+!
+
+"! #!! #"! $!! $"! %!! %"! C!! C"! "!!
+;864,5689:
+$%'%#,6T
+
+#'$
+#'!
+!')
+!'(
+!'C
+!'$
+!'!
+
+C"
+
+')
+
+!')
+
+g #'C
+
+"
+
+$!
+
+'C
+
+$!'#(,6T
+
+%! C!! C"! C#! C$! C%!
+!
+! " # A % C! C" C# CA C% "! "" "#
+=O>).?4/@HA
+3-4-56,70132
+23/+,456(T
+@AL01V64<;
+j
+"! "C #! #C $! $C %!
+i ! " # $ % C! C" C# C$
+C$! C!!
+"!!
+D!
+"%
+"!!
+*!
+"#
+C!
+)!
+%!
+C"!
+)!
+"!
+(!
+%!
+'!
+$!
+'!
+C$
+A!
+%!
+C!
+#!
+
+)
+%
+
+'(
+
+#'!
+
+!'!
+
+"! #! A! %! C! D! (! )! *! "!!
+-./01O3456T
+
+%
+A
+
+'!(%
+
+'#
+
+d #'$
+
+*+$,-.L0,1O34,56T,689!#:
+
+H,
+
+)*+,-./01)2
+
+!("
+
+e C("
+
+)*+,-./01)2
+
+'!
+
+""
+
+!(#
+
++,-.L01,O130-045061T8#1VL:;
+
+'"
+''
+3,54HT.>;9
+
+"#
+
+!($
+
+h
+
+*
+
+"A
+
+!(%
+
+'!($
+
+$
+
+c "%
+
+"! #!! #"! $!! $"! %!! %"! C!! C"! "!!
+;864,5689:
+"D!
+
+"#!
+
+E!
+
+#!
+
+%!
+
+"!
+!
+
+@*=11,/>?9
+
+1<3=11,/>?9
+
+!
+
+"!!
+E!
+D!
+%!
+#!
+
+91<817A@0/+BB@0@+*0./4C;
+
+'
+
+)*+,J./01O3/456/718!"/9:#;
+
+"
+
+!
+
+Figure 6 | FFDS sorbent-based electrochemically induced DAC and CO2 release from both indoor and
+outdoor ambient air in Singapore. 10 mL, 0.1 M FFDS and 0.4 M KOH was used as the sorbent for the
+experiments in a-i. The posolyte is composed of 100 mL of 0.03 M K4Fe(CN)6 and 0.07 M K3Fe(CN)6.
+The flow cell is charged-discharged at 20 mA cm–2 with potential holds until the current density
+decreases to 2 mA cm–2. a, Indoor and outdoor air monitoring including temperature, relative humidity,
+O2 and CO2 levels for 20 days. b, Normal discharge-charge voltage profile. c, pH monitoring during
+8
+
+https://doi.org/10.26434/chemrxiv-2025-rmfmq ORCID: https://orcid.org/0000-0002-5669-4609 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+the three-day indoor DAC, rest, CO2 release, and the sorbent regeneration. d, Variation in CO2 flow
+rate over CO2 release with normal discharge. e, Deep discharge-charge voltage profile. f, pH
+monitoring during the three-day indoor DAC, rest, CO2 release, and the sorbent regeneration. g,
+Variation in CO2 flow rate over CO2 release with deep discharge. h, 10 cycles of normal discharge
+induced CO2 release after the three-day indoor DAC over 40 days. i, 16 cycles of deep discharge induced
+CO2 release after the accelerated overnight indoor DAC. j, Comparison of the three-day indoor and
+outdoor DAC with the 10 mL, 0.2 M FFDS sorbent. The posolyte is composed of 200 mL of 0.03 M
+K4Fe(CN)6 and 0.07 M K3Fe(CN)6.
+Depending on the discharge voltage cutoffs, FFDS-sorbent used for electrochemically induced DAC
+exhibits an estimated energy cost range of 3.15-6.14 GJ tonne–1 CO2 when air contact, CO2 release,
+sorbent regeneration, and pressurization are taken into consideration (Table S5), which is significantly
+lower than the hydroxide solution-based thermochemical approach.[2] Furthermore, among the reported
+technology-based DAC solutions operating at ambient pressure, the FFDS sorbent bears the lowest
+energy cost for CO2 release and sorbent regeneration (Table S6).
+Outlook
+We developed an aqueous-soluble, oxygen-tolerant fluoflavine sorbent that can be electrochemically
+induced to capture CO2 from simulated flue gas, as well as indoor and outdoor ambient air. Specifically,
+we synthesized an aqueous soluble fluoflavine disulfonate FFDS in a one-step sulfonation with an
+outstanding yield. Electrochemical characterizations, theoretical calculations, and spectroscopic studies
+reveal that FFDS not only undergoes reversible two-proton, two-electron transfer, but also exhibits an
+oxidation potential exceedingly higher than that of the two-electron transfer oxygen reduction reaction
+across the entire pH range of 0 to 14, indicating that FFDS can potentially capture and release CO2 via
+pH-swing in the presence of O2. In a one-bar simulated flue gas containing 10% CO2, 10% O2, and 80%
+N2, the FFDS sorbent shows a reversible CO2 capture and release with an average CO2/e molar ratio of
+0.88 and a Coulombic efficiency of >99% throughout 38 cycles and 200 hours. Besides, as the applied
+current density increases, the discharge-induced CO2 release rate is substantially accelerated.
+Throughout the 10-cycle three-day indoor DAC over the course of 40 days, FFDS shows an average
+Coulombic efficiency of 90% via a normal discharge-charge process and releases 16.5-20.0 mL of
+CO2. Instead of stirring the sorbent in the air for three days, we continuously passed ambient air through
+the sorbent solution overnight to expedite the DAC process and implemented a deep discharge step to
+fully release the captured CO2, achieving a steady DAC-CO2 release with an improved Coulombic
+efficiency of ~99% over 16 cycles. The FFDS sorbent shows an inappreciable difference in its CO2
+capture and release capacity between the indoor and outdoor DAC, in spite of the elevated and
+fluctuating temperature and humidity levels outdoors in Singapore. The CO2 capture capacity increases
+twofold when the concentration of FFDS is doubled, regardless of whether the DAC is conducted
+indoors or outdoors. Molecular engineering could be employed to further improve the aqueous
+solubility, structural stability, and oxygen tolerance of the fluoflavine derivatives. Electrochemical and
+electrolyte optimizations would maximize the CO2 capture capacity, lower the energy cost, and expedite
+the DAC rate at high current densities.
+References
+[1]
+
+G.T. Rochelle, "Amine Scrubbing for CO2 Capture", Science 325, 1652 (2009).
+https://doi.org/10.1126/science.1176731
+[2]
+D.W. Keith, G. Holmes, D. St. Angelo, and K. Heidel, "A Process for Capturing CO2 from the
+Atmosphere", Joule 2, 1573 (2018). https://doi.org/10.1016/j.joule.2018.05.006
+[3]
+B. Gurkan, F. Simeon, and T.A. Hatton, "Quinone Reduction in Ionic Liquids for Electrochemical
+CO2 Separation", ACS Sustainable Chemistry & Engineering 3, 1394 (2015).
+https://doi.org/10.1021/acssuschemeng.5b00116
+[4]
+M. Rahimi, G. Catalini, S. Hariharan, M. Wang, M. Puccini, and T.A. Hatton, "Carbon Dioxide
+Capture Using an Electrochemically Driven Proton Concentration Process", Cell Reports Physical
+Science 1, (2020). https://doi.org/10.1016/j.xcrp.2020.100033
+
+9
+
+https://doi.org/10.26434/chemrxiv-2025-rmfmq ORCID: https://orcid.org/0000-0002-5669-4609 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+[5]
+
+S. Jin, M. Wu, R.G. Gordon, M.J. Aziz, and D.G. Kwabi, "Ph Swing Cycle for CO2 capture
+Electrochemically Driven through Proton-Coupled Electron Transfer", Energy & Environmental
+Science 13, 3706 (2020). https://doi.org/10.1039/d0ee01834a
+[6]
+H. Xie, W. Jiang, T. Liu, Y. Wu, Y. Wang, B. Chen, D. Niu, and B. Liang, "Low-Energy
+Electrochemical Carbon Dioxide Capture Based on a Biological Redox Proton Carrier", Cell Reports
+Physical Science 1, (2020). https://doi.org/10.1016/j.xcrp.2020.100046
+[7]
+R. Sharifian, R.M. Wagterveld, I.A. Digdaya, C. Xiang, and D.A. Vermaas, "Electrochemical Carbon
+Dioxide Capture to Close the Carbon Cycle", Energy & Environmental Science 14, 781 (2021).
+https://doi.org/10.1039/d0ee03382k
+[8]
+J.M. Barlow, L.E. Clarke, Z. Zhang, D. Bim, K.M. Ripley, A. Zito, F.R. Brushett, A.N. Alexandrova,
+and J.Y. Yang, "Molecular Design of Redox Carriers for Electrochemical CO2 Capture and
+Concentration", Chem. Soc. Rev. 51, 8415 (2022). https://doi.org/10.1039/d2cs00367h
+[9]
+K.M. Diederichsen, R. Sharifian, J.S. Kang, Y. Liu, S. Kim, B.M. Gallant, D. Vermaas, and T.A.
+Hatton, "Electrochemical Methods for Carbon Dioxide Separations", Nature Reviews Methods Primers
+2, (2022). https://doi.org/10.1038/s43586-022-00148-0
+[10]
+C. Huang, C. Liu, K. Wu, H. Yue, S. Tang, H. Lu, and B. Liang, " CO2 Capture from Flue Gas Using
+an Electrochemically Reversible Hydroquinone/Quinone Solution", Energy & Fuels 33, 3380 (2019).
+https://doi.org/10.1021/acs.energyfuels.8b04419
+[11]
+S. Jin, M. Wu, Y. Jing, R.G. Gordon, and M.J. Aziz, "Low Energy Carbon Capture Via
+Electrochemically Induced pH Swing with Electrochemical Rebalancing", Nature Communications 13,
+(2022). https://doi.org/10.1038/s41467-022-29791-7
+[12]
+H. Seo, M. Rahimi, and T.A. Hatton, "Electrochemical Carbon Dioxide Capture and Release with a
+Redox-Active Amine", J. Am. Chem. Soc. 144, 2164 (2022). https://doi.org/10.1021/jacs.1c10656
+[13]
+S. Pang, S. Jin, F. Yang, M. Alberts, L. Li, D. Xi, R.G. Gordon, P. Wang, M.J. Aziz, and Y. Ji, "A
+Phenazine-Based High-Capacity and High-Stability Electrochemical CO2 Capture Cell with Coupled
+Electricity Storage", Nature Energy 8, 1126 (2023). https://doi.org/10.1038/s41560-023-01347-z
+[14]
+H. Seo and T.A. Hatton, "Electrochemical Direct Air Capture of CO2 Using Neutral Red as
+Reversible
+Redox-Active
+Material",
+Nature
+Communications
+14,
+(2023).
+https://doi.org/10.1038/s41467-023-35866-w
+[15]
+Y. Jing, K. Amini, D. Xi, S. Jin, A.M. Alfaraidi, E.F. Kerr, R.G. Gordon, and M.J. Aziz,
+"Electrochemically Induced CO2 Capture Enabled by Aqueous Quinone Flow Chemistry", ACS Energy
+Letters 9, 3526 (2024). https://doi.org/10.1021/acsenergylett.4c01235
+[16]
+S. Liu, J. Zhang, F. Li, J.P. Edwards, Y.C. Xiao, D. Kim, P. Papangelakis, J. Kim, D. Elder, P. De
+Luna, M. Fan, G. Lee, R.K. Miao, T. Ghosh, Y. Yan, Y. Chen, Y. Zhao, Z. Guo, C. Tian, P. Li, Y. Xu,
+E.H. Sargent, and D. Sinton, "Direct Air Capture of CO2 via Cyclic Viologen Electrocatalysis", Energy
+& Environmental Science 17, 1266 (2024). https://doi.org/10.1039/d3ee03024e
+[17]
+S. Voskian and T.A. Hatton, "Faradaic Electro-Swing Reactive Adsorption for CO2 Capture", Energy
+& Environmental Science 12, 3530 (2019). https://doi.org/10.1039/c9ee02412c
+[18]
+Y. Liu, H.Z. Ye, K.M. Diederichsen, T. Van Voorhis, and T.A. Hatton, "Electrochemically Mediated
+Carbon Dioxide Separation with Quinone Chemistry in Salt-Concentrated Aqueous Media", Nat.
+Commun. 11, 2278 (2020). https://doi.org/10.1038/s41467-020-16150-7
+[19]
+J.M. Barlow and J.Y. Yang, "Oxygen-Stable Electrochemical CO2 Capture and Concentration with
+Quinones Using Alcohol Additives", J. Am. Chem. Soc. 144, 14161 (2022).
+https://doi.org/10.1021/jacs.2c04044
+[20]
+K.M. Diederichsen, Y. Liu, N. Ozbek, H. Seo, and T.A. Hatton, "Toward Solvent-Free ContinuousFlow Electrochemically Mediated Carbon Capture with High-Concentration Liquid Quinone
+Chemistry", Joule 6, 221 (2022). https://doi.org/10.1016/j.joule.2021.12.001
+[21]
+X. Li, X. Zhao, Y. Liu, T.A. Hatton, and Y. Liu, "Redox-Tunable Lewis Bases for Electrochemical
+Carbon Dioxide Capture", Nature Energy 7, 1065 (2022). https://doi.org/10.1038/s41560-022-01137-z
+[22]
+M. Abdinejad, H. Seo, M.E. Lev Massen-Hane, and T.A. Hatton, "Oxygen-Stable Electrochemical
+CO2 Capture Using Redox-Active Heterocyclic Benzodithiophene Quinone", Angew. Chem. Int. Ed.
+Engl. e202412229 (2024). https://doi.org/10.1002/anie.202412229
+[23]
+A. Liu, C.B. Musgrave, X. Li, W.A. Goddard, and Y. Liu, "Non-Aqueous Alkoxide-Mediated
+Electrochemical Carbon Capture", Nature Energy (2024). https://doi.org/10.1038/s41560-024-016147
+10
+
+https://doi.org/10.26434/chemrxiv-2025-rmfmq ORCID: https://orcid.org/0000-0002-5669-4609 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+[24]
+
+X. Li, C. Deng, R. Chen, X. Li, F. Xie, Z. Wu, Y. Xie, S. Wang, and G.-M. Weng, "Exploiting
+Thiolate/Disulfide Redox Couples toward Large-Scale Electrochemical Carbon Dioxide Capture and
+Release", Energy & Environmental Science (2025). https://doi.org/10.1039/d4ee04739g
+[25]
+J. Liu, M. Yang, X. Zhou, and Z. Meng, "Solid-State Electrochemical Carbon Dioxide Capture by
+Conductive Metal-Organic Framework Incorporating Nickel Bis(Diimine) Units", J. Am. Chem. Soc.
+146, 33093 (2024). https://doi.org/10.1021/jacs.4c10654
+[26]
+R.J. Spreitzer and M.E. Salvucci, "Rubisco: Structure, Regulatory Interactions, and Possibilities for
+a
+Better
+Enzyme",
+Annu.
+Rev.
+Plant
+Biol.
+53,
+449
+(2002).
+https://doi.org/10.1146/annurev.arplant.53.100301.135233
+[27]
+G.J. Richards, J.P. Hill, N.K. Subbaiyan, F. D'Souza, P.A. Karr, M.R. Elsegood, S.J. Teat, T. Mori,
+and K. Ariga, "Pyrazinacenes: Aza Analogues of Acenes", J. Org. Chem. 74, 8914 (2009).
+https://doi.org/10.1021/jo901832n
+[28]
+G.J. Richards and J.P. Hill, "The Pyrazinacenes", Acc. Chem. Res. 54, 3228 (2021).
+https://doi.org/10.1021/acs.accounts.1c00315
+[29]
+K. Hatakeyama-Sato, T. Akahane, C. Go, T. Kaseyama, T. Yoshimoto, and K. Oyaizu, "Ultrafast
+Charge/Discharge by a 99.9% Conventional Lithium Iron Phosphate Electrode Containing 0.1% RedoxActive
+Fluoflavin
+Polymer",
+ACS
+Energy
+Letters
+5,
+1712
+(2020).
+https://doi.org/10.1021/acsenergylett.0c00622
+[30]
+D. Du, J. Zhou, Z. Yin, G. Feng, W. Ji, H. Huang, and S. Pang, "High–Voltage Recyclable Organic
+Cathode Enabled by Heteroatomic Substitution for Aqueous Zinc–Ion Batteries", Advanced Energy
+Materials 14, (2024). https://doi.org/10.1002/aenm.202400580
+[31]
+D. Miklik, S. Fatemeh Mousavi, Z. Buresova, A. Middleton, Y. Matsushita, J. Labuta, A. Ahsan, L.
+Buimaga-Iarinca, P.A. Karr, F. Bures, G.J. Richards, P. Svec, T. Mori, K. Ariga, Y. Wakayama, C.
+Morari, F. D'Souza, T.A. Jung, and J.P. Hill, "Pyrazinacenes Exhibit on-Surface Oxidation-StateDependent Conformational and Self-Assembly Behaviours", Commun. Chem. 4, 29 (2021).
+https://doi.org/10.1038/s42004-021-00470-w
+[32]
+K. Amini, T. Cochard, Y. Jing, J.D. Sosa, D. Xi, M. Alberts, M.S. Emanuel, E.F. Kerr, R.G. Gordon,
+and M.J. Aziz, "In Situ Techniques for Aqueous Quinone-Mediated Electrochemical Carbon Capture
+and Release", Nature Chemical Engineering 1, 774 (2024). https://doi.org/10.1038/s44286-024-00153y
+[33]
+L.J. Murphy, K.N. Robertson, R.A. Kemp, H.M. Tuononen, and J.A.C. Clyburne, "Structurally
+Simple
+Complexes
+of
+CO2",
+Chemical
+Communications
+51,
+3942
+(2015).
+https://doi.org/10.1039/C4CC08510H
+[34]
+F.-Y. Kuo, S.E. Jerng, and B.M. Gallant, "Dual Salt Cation-Swing Process for Electrochemical CO2
+Separation", ACS Central Science 9, 1750 (2023). https://doi.org/10.1021/acscentsci.3c00692
+[35]
+Y. Jing, E.W. Zhao, M.A. Goulet, M. Bahari, E.M. Fell, S. Jin, A. Davoodi, E. Jonsson, M. Wu, C.P.
+Grey, R.G. Gordon, and M.J. Aziz, "In Situ Electrochemical Recomposition of Decomposed RedoxActive Species in Aqueous Organic Flow Batteries", Nat. Chem. 14, 1103 (2022).
+https://doi.org/10.1038/s41557-022-00967-4
+Methods
+Synthesis of FFDS
+Fluoflavine (51 mmol, 11.9 g) was added into 95% H2SO4 to afford a 0.5 M fluoflavine solution. The
+reaction mixture was stirred at 150 °C for 18 hours. After cooling down, the acid solution was slowly
+added into a 300 mL of ice water mixture. The resulting precipitate was then vacuum-filtered and
+washed with ice water to remove residual H2SO4. The product was then dried in vacuo at 60 °C
+overnight to afford the desired yellow product, fluoflavine disulfonic acid (FFDS), with a yield of 94%.
+Electrochemical Analysis
+Cyclic voltammetry (CV) measurements were carried out with a CHI1140D electrochemical
+workstation. The three-electrode system includes a glassy carbon as the working electrode, a platinum
+wire as the counter electrode, and an Ag/AgCl (3 M KCl) as the reference electrode.
+Fourier-Transform Infrared (FTIR) Spectra
+
+11
+
+https://doi.org/10.26434/chemrxiv-2025-rmfmq ORCID: https://orcid.org/0000-0002-5669-4609 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+In situ Fourier transform infrared spectra were collected using an attenuated total reflectance infrared
+spectroscopy (ATR-IR) instrument from Bruker Tensorll. Spectra were collected on the neat samples
+at room temperature (around 25 °C). Spectra were plotted in transmittance (%) against the wavenumbers
+(cm–1).
+Fluorescence Emission Spectra
+The fluorescence emissions of FFDS with different SOCs were measured with PerkinElmer FL-6500
+fluorescence spectrometer. The source power is 40 kW and the frequency is 50 Hz. 255 nm was selected
+as excitation wavelength with 2.5 nm excitation slit width and a scan rate of 240 nm min–1. 2.5 nm
+emission slit width, 320 nm emission filter, and 240 nm min–1 scan rate were selected as emission
+settings. The emission wavelength range was from 350 to 700 nm. 400 V was used as the
+photomultiplier voltage for acquisition.
+UV–Vis Absorption
+The UV–Vis spectra of FFDS at different states of charge (SOCs) were collected from Shimadzu UV1900 UV–Vis spectrometer.
+Flow cell setup
+Flow cell experiments were constructed with the cell hardware from Fuel Cell Tech. The two
+electrolytes are separated with a cation exchange membrane Nafion 117. The electrodes were 5 pieces
+of baked carbon cloth on each side. Electrolytes was circulated by a peristaltic pump. A Lei-ci pH
+electrode (E-301-QC) was implemented for monitoring the electrolyte pH. The mass flow controller
+was a MFC-4200 (Siargo, Ltd.). CO2 data was recorded with 100% CO2 Sensor (SprintIR®-W CM0221), 5% CO2 Sensor (ExplorIR®-W CM-0124) and 1% CO2 Sensor (K30 CM-0024). O2 data was
+recorded by 25% Oxygen Flow Through Sensor (LOX-O2-F UV Flux CM-42991). The downstream
+CO2 reading (ppm) is monitored with CO2 sensors and recorded with the GasLab data logging software.
+All electrochemical characterizations were conducted and recorded on a BioLogic VMP-300 instrument.
+FFDS-based carbon capture and release in a simulated flue gas
+The flow cell was galvanostatically charged and discharged at constant current densities followed with
+potential holds until current density decreased to 2 mA cm–2. The charge process was followed by a
+180-minute rest to complete CO2 capture. The discharge process was followed by a 90-minute rest to
+complete CO2 release. The simulated flue gas composed of 10% CO2, 10% O2, and 80% N2 was used
+as the feed gas. The total pressure of the feed gas was one bar, and the flow rate was 30 mL min–1.
+Before being fed into the FFDS negolyte, the feed gas was first flowed through a deionized water
+reservoir to be humidified to minimize the gas flow induced water loss over experiments. To avoid the
+influence of humidity on the accuracy of sensor readings, a drying tube filled with blue silica gel
+(Chemicon, 6–20 mesh) was installed before the downstream gas entered the gas sensors. CO2 data was
+recorded by a 100% CO2 sensor. O2 data was recorded by a 25% O2 sensor.
+FFDS sorbent-based three-day indoor/outdoor DAC, CO2 release, and regeneration
+The 100% SOC FFDS sorbent was transferred to a 50 mL PTFE beaker equipped with a cylindrical stir
+bar and being stirred in ambient air at a speed of 500 rpm for the three-day direct air capture (DAC),
+both indoors and outdoors. After the three-day DAC, approximately 5–7 mL of water was added to
+compensate for the evaporation-induced water losses. The pH of the FFDS sorbent decreased from the
+initial 13.3 to ~10.2 after DAC. The CO2-captured FFDS sorbent was then transferred back to the
+negolyte reservoir, and the flow cell was reconnected for discharge-induced CO2 release. Pure N2 served
+as the carrier gas at a flow rate of 28 mL min–1. To minimize the evaporation-induced water losses in
+the negolyte during the electrochemical measurements, N2 was humidified by flowing the gas through
+a deionized water reservoir before being introduced to the FFDS negolyte. The N2 gas outlet was
+positioned at the bottom of the FFDS negolyte to ensure that all of the released CO2 during the discharge
+can be bubbled out from the negolyte and being detected by the CO2 sensor. To better measure the
+volume of the released CO2, the CO2 flow rates before and after CO2 release should be approximated
+to 0 mL min–1 to generate a baseline. We let N2 flow through the CO2 sensors for a while before initiating
+the CO2 release and after the completion of the CO2 release.
+The flow cell was discharged at 20 mA cm–2 followed by potential holds. –0.5 V was applied for normal
+discharge until the current density decreased to 2 mA cm–2. –1.2 V was applied for deep discharge
+12
+
+https://doi.org/10.26434/chemrxiv-2025-rmfmq ORCID: https://orcid.org/0000-0002-5669-4609 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+until the pH of negolyte decreased to 4. The CO2 release process was considered complete when the 5%
+CO2 sensor reading stabilized at ~200 ppm.
+After the completion of CO2 release, the flow cell was charged in N2 to regenerate the FFDS sorbent at
+20 mA cm–2 followed by a potential hold at 1.0 V until the current density decreased to 2 mA cm–2.
+FFDS sorbent-based accelerated overnight DAC, CO2 release, and regeneration
+Powered by an electric air pump, the ambient air was pumped through a deionized water reservoir to be
+humidified, before being introduced into the FFDS sorbent through a PTFE tube (Æ3.2 mm). As such,
+the water loss induced by the rapid gas flow can be significantly minimized. The air outlet was
+positioned at the bottom of the FFDS sorbent to increase the air-liquid interface for sufficient CO2
+capture. The air flow rate was regulated at 375 mL min–1 with a mass flow controller (Siargo, Ltd. MFC4200). With such a high flow rate, the whole DAC process was greatly accelerated. The pH of the FFDS
+sorbent decreased from 13.3 to around 10.0 after the overnight air bubbling. To avoid the influence of
+humidity on the accuracy of sensor readings, a drying tube filled with blue silica gel was installed before
+the downstream gas entered the gas sensors. The CO2 reading during the accelerated overnight DAC
+was recorded with the 1% CO2 sensor. After the accelerated overnight DAC, the air was replaced by N2
+at a flow rate of 28 mL min–1. Serving as the carrier gas, N2 flowed through the FFDS negolyte for 30
+minutes to generate a baseline of CO2 level at ~200 ppm before discharge process. The flow cell was
+discharged at 20 mA cm–2 until the voltage approached the pre-set cutoffs. A potential hold at –0.5 V
+was applied for normal discharge until the current density decreased to 2 mA cm–2. A potential hold at
+–1.2 V was applied for deep discharge until the pH of the negolyte dropped to 4. The CO2 release was
+considered complete when the CO2 sensor reading stabilized at ~200 ppm.
+The flow cell was charged in N2 to regenerate the FFDS sorbent at 20 mA cm–2 followed by a potential
+hold at 1.0 V until the current density decreased to 2 mA cm–2.
+Data and material availability
+All experimental data are available in the main text or Supplementary Information. Source data are
+provided in this paper.
+Acknowledgments
+Research at National University of Singapore was supported by the Presidential Young Professorship
+startup grant. Research at University of Science and Technology of China was supported by the National
+Science Foundation of China (22305238, 22475203). Research at Beijing University of Posts and
+Telecommunications was supported by the National Natural Science Foundation of China (22203009).
+Author contributions
+Y.J., Z.M., Y.L. supervised the project. Y.J. conceived the idea. Y.J., Z.M., and Y.L. designed the
+experiment. Z.W. and J.L. performed the synthesis and characterization. Z.W., J.L., M.T. and A.L.
+performed spectroscopic studies. S.X. performed the electrochemical CO2 capture from simulated flue
+gas and DAC tests. S.X. and K.Z. performed three-electrode measurement. X.W. calculated the DIC
+over DAC. K.T. optimized the gas sensor setup and the data collection. All authors contributed to the
+discussion of the project. Y.J. and S.X. wrote the manuscript with input from all co-authors.
+Competing interests
+The National University of Singapore has applied for a patent on the material and technology discussed
+herein regarding electrochemically induced carbon capture from flue gas or air with FFDS sorbent via
+its technology transfer innovation office on which Y.J., Z.W., and S.X. are listed as co-inventors
+(application no. 10202500648U).
+
+13
+
+https://doi.org/10.26434/chemrxiv-2025-rmfmq ORCID: https://orcid.org/0000-0002-5669-4609 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+

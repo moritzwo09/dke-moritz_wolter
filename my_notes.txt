@@ -1,0 +1,28 @@
+Pretrained Models with Faster-RCNN and Masked-RCNN available on https://github.com/ibm-aur-nlp/PubLayNet but
+=> requires detectron2 and that requires GPU.
+
+
+Grobid:
+./gradlew run
+
+
+One can use Latexify to extract math equations from pdf's but:
+=> for latexify it is needed to supply the image of the equation and nothing else
+somehow convert to latex and then back to pdf
+
+
+#################
+
+problems using PDFBoT:
+
+- pdf2htmlEX is difficult to set up
+- had to use a custom docker image for it to work (inspired by https://github.com/mirpo/pdf2htmlEX-docker)
+- had to change the source code of PDFBoT to use the docker command
+
+- still not useable (maybe due to the high variety of layouts of ChemRxiv papers)
+- for some the service crashed, for one it gave garbage output with nearly only "boxes"
+- some worked more or less but still there were a lot of patches missing and it didn't even remove the bibliography
+
+
+docker buildx build --platform=linux/amd64 -t my-pdf2htmlex .
+docker run --platform linux/amd64 -ti --rm -v ~/Downloads:/pdf -w /pdf my-pdf2htmlex pdf2htmlEX 1.pdf 1.html

@@ -1,0 +1,2149 @@
+Catalytic efficiencies for methane removal:
+Impact of HOx, NOx and chemistry in the
+high-chlorine regime
+Luisa Pennacchio,†,§ Maarten van Herpen,‡,§ Daphne Meidan,¶ Alfonso
+Saiz-Lopez,¶ and Matthew S. Johnson∗,†
+†Department of Chemistry, University of Copenhagen, Universitetsparken 5, DK-2100
+Copenhagen, Denmark.
+‡Acacia Impact Innovation BV, Acacialaan 9, 5384 BB, Heesch, The Netherlands.
+¶Department of Atmospheric Chemistry and Climate, Institute of Physical Chemistry Blas
+Cabrera, CSIC, Madrid 28006, Spain.
+§These authors contributed equally to this work.
+E-mail: msj@chem.ku.dk
+
+1
+
+Abstract
+
+2
+
+Catalytic production of chlorine atoms from iron salt aerosols has been suggested as
+
+3
+
+a means of achieving atmospheric methane removal. The feasibility of this approach,
+
+4
+
+its efficiency and the optimum conditions for deployment must be determined, but this
+
+5
+
+is not straightforward as the mechanism involves interlocking nonlinear atmospheric
+
+6
+
+free radical chain reactions; under some conditions added chlorine is known to increase
+
+7
+
+methane lifetime. Here we evaluate the catalytic efficiency of atmospheric methane
+
+8
+
+oxidation under different conditions, initiated by the photocatalytic conversion of chlo-
+
+9
+
+ride to chlorine by iron chlorides Fe(III)Cln
+
+(3−n)
+
+using a box model. While HOx and
+
+1
+https://doi.org/10.26434/chemrxiv-2023-3r8sf-v2 ORCID: https://orcid.org/0009-0008-2225-3371 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+10
+
+high NOx behaviors are well known, a new regime for tropospheric chemistry is found
+
+11
+
+and described, one characterized by high ClOx conditions. We find that at chlorine
+
+12
+
+production rates below 1×106 Cl2 /(cm3 s) and ambient NOx and O3 levels of 4–80
+
+13
+
+ppt NOx at 14 ppb O3 , 8–180 ppt NOx at 30 ppb O3 and 14–200 ppt NOx at 40 ppb
+
+14
+
+O3 the net effect on CH4 is negative, increasing CH4 concentrations. This variation
+
+15
+
+is driven by the formation and hydrolysis of ClONO2 leading to loss of O3 and NO2 .
+
+16
+
+At high rates of Cl2 addition the reaction of CH3 OOH with Cl becomes the major
+
+17
+
+source of OH and CH4 is removed. At elevated ClOx, ClO· usurps the role of NO in
+
+18
+
+converting HO2 to OH, and CH3 O2 to CH3 O. The efficiencies seen in the model range
+
+19
+
+from -0.62 to 2.81 CH4 /Cl. The modeling shows that due to the dispersion of a ship’s
+
+20
+
+plume into low NOx conditions, iron emitted by ships is likely to increase the lifetime
+
+21
+
+of atmospheric methane.
+
+22
+
+Introduction
+
+23
+
+Methane is a potent greenhouse gas, responsible for >1/3 of global warming since pre-
+
+24
+
+industrial times; 1 its atmospheric burden continues to increase with a new record set every
+
+25
+
+year for over a decade. 2 The IPCC emissions pathways that prevent 1.5 °C of global warming
+
+26
+
+by 2050 require large reductions of methane emissions. 1 The obvious strategy would be to
+
+27
+
+reduce emissions from the largest methane sources including agriculture, fossil fuels, and
+
+28
+
+waste and wastewater. However, according to Höglund-Isaksson et al., emissions reduction
+
+29
+
+is limited to 30-45% by 2030 and 50% by 2050 using known technologies. Moreover, emis-
+
+30
+
+sions from natural sources including wetlands, permafrost, thermokarst lakes and bacterial
+
+31
+
+processes are likely to increase with increasing global temperature. 4–6 Wetland emissions
+
+32
+
+could increase by 22 to 149% by 2100, becoming larger than anthropogenic emissions in
+
+33
+
+most scenarios. 7 Already, about half of the increased methane concentration in 2020 can be
+
+34
+
+attributed to wetland emissions. 6
+
+35
+
+Due to the challenge of reducing atmospheric methane in the face of increasing anthro-
+
+2
+https://doi.org/10.26434/chemrxiv-2023-3r8sf-v2 ORCID: https://orcid.org/0009-0008-2225-3371 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+36
+
+pogenic and natural emissions, it may be necessary to develop method/s to remove methane
+
+37
+
+from the atmosphere, similar to carbon dioxide removal. 8–10 According to recent work, at-
+
+38
+
+mospheric methane removal has the potential to reduce global average temperature by 0.4-1
+
+39
+
+°C. 11–13 The IPCC concluded that the field is in its infancy. 1
+
+40
+
+Photocatalytic generation of chlorine by iron salt aerosols (ISA) has been suggested
+
+41
+
+as a method for achieving cost-effective atmospheric methane removal. 14,15 The method
+
+42
+
+has been demonstrated in the laboratory. 16–19 In addition to the low technology readiness
+
+43
+
+level there are important questions regarding the safety, efficacy, appropriate conditions for,
+
+44
+
+and especially the governance of any such approach. 20 It was recently shown that the ISA
+
+45
+
+mechanism is active over the North Atlantic in Mineral Dust-Sea Spray Aerosols (MDSA)
+
+46
+
+created when particles from the Sahara descend into the marine boundary layer (MBL). 21
+
+47
+
+Unexpectedly, MDSA is the largest source of oxidized chlorine (Cl2 and Cl) in this region.
+
+48
+
+The largest anthropogenic source of iron in the MBL is shipping, arising from impurities in
+
+49
+
+fuel. This source was estimated at <16 Gg(Fe)/yr in 2001. 22 These anthropogenic emissions
+
+50
+
+of soluble iron will likely mix with sea-salt aerosols, creating ISA that would produce chlorine,
+
+51
+
+possibly removing methane. 14,23 Herrmann and coauthors have summarized research on the
+
+52
+
+photochemistry of aqueous iron complexes including a wide variety of inorganic and organic
+
+53
+
+ligands. 24 Additionally, Hoffmann and coauthors constructed a detailed model of marine
+
+54
+
+multiphase chemistry for air quality in polluted coastal areas. 25 In particular, the simulations
+
+55
+
+indicate significant influence of Cl atoms on the oxidation of volatile organic compounds.
+
+3
+https://doi.org/10.26434/chemrxiv-2023-3r8sf-v2 ORCID: https://orcid.org/0009-0008-2225-3371 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 1: Schematic showing the interlocking atmospheric radical cycles. Top, overview of
+the HOx, NOx and ClOx cycles’ interactions and their effect on O3 concentrations. Bottom,
+methane oxidation mechanism, including HOx (green), NOx (red) and ClOx (blue) species.
+
+56
+
+Previous research has shown that while Cl· can be important in initiating oxidation of
+
+57
+
+methane and non-methane volatile organic compounds, 26 a higher rate of Cl· production does
+
+58
+
+not necessarily lead to a reduction in methane as the additional Cl· can suppress methane
+
+59
+
+removal by OH· . 21,27,28 This is because OH· production depends on O3 and NO2 , both of
+
+60
+
+which are removed by ClOx, see Figure 1, top. However, the negative impact of lower
+
+61
+
+OH· concentrations on methane removal can be overcome with sufficiently high rate of Cl2
+
+62
+
+addition. 28 It is important to consider these effects when evaluating the impact of iron from
+
+63
+
+shipping on methane, especially as NOx plays an important role in the mechanism and ships
+
+64
+
+co-emit NOx with iron.
+
+65
+
+In this paper, we use a photochemical box model to evaluate the impact of adding Cl2
+
+66
+
+to the troposphere on methane removal for a wide range of parameters extending from a
+
+67
+
+concentrated nascent shipping exhaust plume to the ambient atmosphere. We assess the
+
+68
+
+impact as methane removal per added Cl2 at different atmospheric NOx levels.
+
+4
+https://doi.org/10.26434/chemrxiv-2023-3r8sf-v2 ORCID: https://orcid.org/0009-0008-2225-3371 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+69
+
+Method
+
+70
+
+A box model that runs a diurnal cycle and constant NOx input was built in the Kinte-
+
+71
+
+cus environment. 29 The model contains the radical cycles and the oxidation of CH4 and
+
+72
+
+dimethyl sulfide (DMS), as it impacts NOx at night. 30 The mechanisms and rates of these
+
+73
+
+reactions were obtained from the Master Chemical Mechanism, MCM v3.3.1, 31–33 via web-
+
+74
+
+site: www.mcm.york.ac.uk. The model uses a reduced VOC chemistry but contains the key
+
+75
+
+elements to describe the system, specifically the interlocking free radical chain reactions, see
+
+76
+
+Figure 1, top. The model includes the ClOx reactions and key deposition rates. Furthermore,
+
+77
+
+bromine and iodine chemistry was included due to their importance in the MBL. 34–37
+
+78
+
+A full listing of the initial conditions and the reactions and their sources can be found
+
+79
+
+in the Supporting Information (SI). Photolysis reactions not included in the MCM sub-
+
+80
+
+scheme are obtained from the NCAR TUV calculator. 38 NOx and O3 are constrained via
+
+81
+
+fixed emissions of NO2 and O(3 P) rather than fixed concentrations. 39 This allows for the
+
+82
+
+evaluation of the impact of the radical chemistry on methane. Constraining O3 gives more
+
+83
+
+realistic levels due to the mixing of the atmosphere. Thus, an additional first order loss rate
+
+84
+
+of O3 is added at high NOx as well.
+
+85
+
+The model is run for 16 days to reach stable concentrations for key species like O3 and
+
+86
+
+NOx. Next, Cl2 is added (’A’ for 1 day at a maximum rate rA,Cl2 depending linearly on
+
+87
+
+solar intensity I(t). The model is run for 15 additional days to let it relax to baseline
+
+88
+
+concentrations. CH4 oxidation initiated by OH· and Cl· is tracked during the 16-day period
+
+89
+
+after Cl2 release starts and compared with the same model run with no addition of chlorine,
+
+90
+
+i.e. rA,Cl2 =0. CH4 removal is divided by total Cl emission nT,Cl to derive CH4 removal per
+
+91
+
+Cl. The total emission is given by:
+Z
+nT,Cl = 2
+
+92
+
+rA,Cl2 I(t)dt , I(t) ∈ [0, 1]
+
+(1)
+
+The addition of Cl2 affects methane oxidation by OH· in three ways: ClOx removes 1)
+
+5
+https://doi.org/10.26434/chemrxiv-2023-3r8sf-v2 ORCID: https://orcid.org/0009-0008-2225-3371 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+93
+
+NO2 and 2) O3 reducing OH· production, see Figure 1, top, and 3) ClOx affects the HOx
+
+94
+
+radical chain efficiency.
+
+95
+
+The model output was benchmarked against the Community Earth System Model (CESM)
+
+96
+
+by Meidan et al. by converting Cl2 emission rates to daily average Cl2 mixing ratios, see SI.
+
+97
+
+The CESM output for the North Pacific (NP) and North Atlantic (NA) regional boxes were
+
+98
+
+used.
+
+99
+
+Ozone production efficiency, ϵO3
+
+100
+
+The ozone production efficiency, ϵO3 , is defined as the rate of O3 production (’P ’) (rP,O3 )
+
+101
+
+divided by the rate of NOx loss (’L’) (rL,NOx ): ϵO3 = rP,O3 /rL,NOx . 41 The photolysis of NO2
+
+102
+
+will produce O3 , however, NO2 is also lost to oxidation to nitrate r = k[NO2 ][OH· ][M], see
+
+103
+
+Figure 1, top. The balance between the rate of photolysis and the rate of HNO3 formation
+
+104
+
+determines ϵO3 . This number depends on local conditions and is mainly driven by solar
+
+105
+
+intensity, temperature and [OH· ].
+
+106
+
+Values of ϵO3 over the United States are typically in the range 1-20. In the remote
+
+107
+
+troposphere, where NOx levels are very low, ϵO3 is much higher and can even exceed 100. 41
+
+108
+
+O3 -OH· production efficiency, βO3
+
+109
+
+The O3 -OH· production efficiency, βO3 , is defined as the total rate of O3 loss divided by
+
+110
+
+T ot
+N oon
+the production rate of OH at midday: βO3 = rL,O3
+/rP,OH
+. OH· is produced through the
+
+111
+
+photolysis of O3 followed by reaction with water:
+O3 + hν → O2 + O( 1D)
+
+(R1)
+
+O( 1D) + M → O( 3P) + M
+
+(R2)
+
+O( 3P) + O2 + M → O3 + M
+
+(R3)
+
+112
+
+113
+
+6
+https://doi.org/10.26434/chemrxiv-2023-3r8sf-v2 ORCID: https://orcid.org/0009-0008-2225-3371 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+114
+
+O( 1D) + H2 O → 2 OH·
+
+(R4)
+
+115
+
+Reaction (R1) does not always lead to loss of O3 due to reactions (R2) and (R3). O3 is lost
+
+116
+
+in (R4) to yield two OH· radicals. Other loss reactions for O3 include reactions with HOx
+
+117
+
+and NOx as well as deposition:
+
+O3 + HO2 → OH· + 2 O2
+
+(R5)
+
+O3 + OH· → HO2 + O2
+
+(R6)
+
+O3 + NO → O2 + NO2
+
+(R7)
+
+O3 + NO2 → O2 + NO3
+
+(R8)
+
+118
+
+119
+
+120
+
+121
+
+while photolysis of NO2 from (R7) produces O3 via (R3), closing a null cycle, the competing
+
+122
+
+formation of HNO3 should be included in loss rate of O3 , rL,O3 . Addition of Cl· creates an
+
+123
+
+additional loss for O3 through (R9), reducing βO3 .
+
+Cl + O3 → ClO + O2
+
+(R9)
+
+124
+
+Radical chain length, νOH
+
+125
+
+Methane is oxidized in a nonlinear chain reaction where OH· is both reagent and product,
+
+126
+
+see Figure 1, bottom. Due to these feedbacks, an additional OH· can ultimately cause more
+
+127
+
+than one OH· reaction. 42 This amplification is described by the radical chain length, defined
+
+128
+
+as the rate of loss of OH· divided by the rate of OH· primary production via (R1)-(R4):
+
+129
+
+νOH = rPL,OH
+. At steady state rL,OH = rP,OH where rP,OH is the rate of production of OH· by
+P,OH
+
+130
+
+all processes.
+
+r
+
+131
+
+In high-NOx conditions the CH4 oxidation chain reaction produces one NO2 and three
+
+132
+
+HO2 radicals, which together produce four OH· through reactions (R3),(R10) and (R11),
+7
+
+https://doi.org/10.26434/chemrxiv-2023-3r8sf-v2 ORCID: https://orcid.org/0009-0008-2225-3371 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+133
+
+replacing OH· lost to reaction and producing additional ozone, increasing OH· : 43
+
+HO2 + NO → OH· + NO2
+
+(R10)
+
+NO2 + hν → NO + O
+
+(R11)
+
+134
+
+135
+
+followed by (R3). In low-NOx conditions the mechanism only produces one HO2 . With-
+
+136
+
+out (R10) HO2 increases, forming H2 O2 and terminating the chain. The radical chain length
+
+137
+
+is thus much shorter under low-NOx conditions making the efficiency of CH4 removal by
+
+138
+
+OH· much lower.
+
+139
+
+Results and Discussion
+
+140
+
+The model yields stable concentrations over the full time-period and the results are repro-
+
+141
+
+ducible. The modeled OH· concentration over the entire NOx range, [OH· ] = 6.5 ×106 to
+
+142
+
+2.2×107 cm−3 , is slightly higher than the literature, 7×105 to 2.9×106 cm−3 , which can be
+
+143
+
+attributed to the limited VOC chemistry in the box model. 44–46 In comparable conditions,
+
+144
+
+there is good agreement with Edwards and Young, see SI. The box model and the CESM 40
+
+145
+
+output show similar NOx and O3 depletion with increasing Cl2 emissions. Additionally,
+
+146
+
+ClONO2 is also in good agreement, with slightly higher concentrations in CESM, suggesting
+
+147
+
+the hydrolysis rate used in our box model is in the same order of magnitude as the NP and
+
+148
+
+NA locations in CESM. Furthermore, H2 O2 concentrations increase similarly in both models,
+
+149
+
+as well as HOCl and CH3 OOH which are indicative of the high-ClOx regime, see SI S8. The
+
+150
+
+agreement between CESM and the box model provides high confidence in the conclusions
+
+151
+
+based on the box model investigation.
+
+152
+
+Sensitivity analyses are performed for the ClONO2 hydrolysis rate, due to the variability
+
+153
+
+in the aerosol surface area in the MBL, and for the effect of additional ozone sources and
+
+154
+
+sinks. The effect of iodine and bromine chemistry is discussed in SI, and was found to only
+
+8
+https://doi.org/10.26434/chemrxiv-2023-3r8sf-v2 ORCID: https://orcid.org/0009-0008-2225-3371 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+155
+
+have a minor impact.
+
+156
+
+Ozone production efficiency, ϵO3
+
+157
+
+In the model, NOx is mainly lost through reaction with OH· giving HNO3 . The large addition
+
+158
+
+of Cl· introduces another loss mechanism for NO2 via formation of ClONO2 which can either
+
+159
+
+be photolyzed back to ClO· and NO2 or hydrolyze forming HNO3 :
+
+ClO + NO2 + M → ClONO2 + M
+
+(R12)
+
+ClONO2 + H2 O(l) → HNO3 + HOCl
+
+(R13)
+
+160
+
+161
+
+H2 O(l) is high in the MBL so (R13) is very fast with a rate limited by the diffusion
+
+162
+
+of ClONO2 to a particle. The HOCl formed in (R13) can be photolyzed to OH· and Cl· or
+
+163
+
+absorbed by particles, where it can react either with HCl/Cl− to form Cl2 18,35 or be deposited
+
+164
+
+with the particle.
+
+165
+
+Increased chlorine addition increases the rate of NOx loss rL,NOx , decreasing the ozone
+
+166
+
+production efficiency ϵO3 . Figure S1 shows the ozone production efficiency as a function of
+
+167
+
+xNOx and rA,Cl2 (peak rate at noon). Very large addition of Cl2 reduces ϵO3 by an order of
+
+168
+
+magnitude, from >100 to the range of 10 to 30.
+
+169
+
+The NOx lost under high Cl· conditions reduces O3 production. While the reduction of
+
+170
+
+tropospheric O3 and NOx pollution is desirable for health and the environment, it results in
+
+171
+
+lower OH· production from O3 via (R1) and (R4).
+
+172
+
+O3 -OH· production efficiency, βO3
+
+173
+
+The O3 -OH· production efficiency, βO3 , as a function of the NOx mixing ratio xNOx and rA,Cl2
+
+174
+
+is shown in Figure S2. βO3 is highest at low NOx and low-Cl2 conditions, with a maximum
+
+175
+
+of 0.84 mol OH· /mol O3 . Under these conditions the photolysis of O3 followed by reaction
+
+176
+
+with H2 O to form OH· is the main O3 sink, see Figure S3 which illustrates the O3 sinks at
+9
+
+https://doi.org/10.26434/chemrxiv-2023-3r8sf-v2 ORCID: https://orcid.org/0009-0008-2225-3371 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+177
+
+low and high NOx. The lowest βO3 values are found for high-NOx and high-Cl2 conditions
+
+178
+
+which suppress O3 , preventing OH· formation. βO3 increases above rA,Cl2 ≈ 106 Cl2 /(cm3 s)
+
+179
+
+as Cl· reacts with NO, decreasing this loss of O3 . Above this range most O3 is lost by (R9),
+
+180
+
+decreasing rP,OH , but increasing the radical chain length, described in the next section.
+
+181
+
+Radical chain length, νOH
+
+182
+
+The main OH· sink reactions at high and low NOx are shown in the top of Figure 2 as a
+
+183
+
+function of rA,Cl2 . OH· loss increases sharply with increasing Cl2 addition in low NOx/high
+
+184
+
+ClOx conditions. This does not necessarily mean that [OH· ] will decrease as the radical
+chain length νOH could increase due to increased OH· production by other mechanisms.
+
+Figure 2: Overview of the main OH· reactions (rL,OH , top) and sources (rP,OH , bottom) at
+peak sunlight with increasing rA,Cl2 at low NOx (9 ppt) (left) and high NOx (4 pbb) (right).
+Note the different y-axes.
+185
+
+186
+
+The main sources of OH· for low- and high-NOx conditions, with increasing rA,Cl2 , are
+
+187
+
+shown at the bottom of Figure 2. OH· from O3 (O(1 D)+H2 O) is suppressed at high rA,Cl2
+10
+
+https://doi.org/10.26434/chemrxiv-2023-3r8sf-v2 ORCID: https://orcid.org/0009-0008-2225-3371 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+188
+
+due to (R9). However, alternative OH· sources at high rA,Cl2 become dominant, increasing
+
+189
+
+νOH . In low-NOx conditions reaction (R14) becomes the main OH· source above 106 Cl2
+
+190
+
+/(cm3 s) while at high NOx the photolysis of HOCl becomes the dominant source of OH· as
+
+191
+
+rA,Cl2 increases, followed by (R14) at the very highest rA,Cl2 .
+
+Cl· + CH3 OOH → HCl + CH2 O + OH·
+
+(R14)
+
+192
+
+The OH· chain length at peak sunlight as a function of xN Ox and rA,Cl2 is shown in Figure
+
+193
+
+S4. As expected νOH is shorter in low-NOx conditions, <2, as methane oxidation is forced
+
+194
+
+through the HOx pathway, see Figure 2. For high-NOx conditions νOH increases to 2.2-5.2.
+
+195
+
+Above 1×107 Cl2 /(cm3 s) there is a dramatic increase in νOH , due to additional OH· sources
+
+196
+
+from Cl· chemistry, see Figure 2 bottom.
+
+197
+
+Although the formation of ClO· in (R9) decreases OH· by consuming O3 , ClO· can reform
+
+198
+
+O3 and ClO· can make the methane oxidation cycle more efficient. An overview of the
+
+199
+
+interactions is shown in Figure S5. At low-NOx, the ClO· reaction with CH3 O2 (R15)
+
+200
+
+is substantial, providing an alternative to the low NOx pathway, see Figure 1, bottom.
+
+201
+
+Moreover, a substantial fraction of ClO· reacts with HO2 , (R16), converting it into OH·
+
+202
+
+through the formation and photolysis of HOCl.
+
+ClO + CH3 O2 → Cl· + HCHO + HO2
+
+(R15)
+
+ClO + HO2 → HOCl + O2
+
+(R16)
+
+203
+
+204
+
+At high NOx conditions ClO· mainly reacts with NO and NO2 , depleting NOx, which
+
+205
+
+can lead to low NOx conditions. The reaction of ClO· with NO produces NO2 which can be
+
+206
+
+photolyzed, reforming the O3 used to make ClO· . Even at low-NOx conditions this reaction
+
+207
+
+will occur and represents 10% of the total loss of ClO· for rA,Cl2 below 4×104 Cl2 /(cm3 s).
+
+11
+https://doi.org/10.26434/chemrxiv-2023-3r8sf-v2 ORCID: https://orcid.org/0009-0008-2225-3371 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+208
+
+CH4 removal
+
+209
+
+The overall efficiency of the mechanism depends on the three parameters introduced above:
+
+210
+
+the O3 production efficiency ϵO3 , the O3 -OH· production efficiency βO3 and the radical chain
+
+211
+
+length νOH . The combined impact is seen by calculating the change in [CH4 ] per emitted
+
+212
+
+Cl atom over the simulation period, see Figure 3. The effect of added Cl2 depends strongly
+
+213
+
+on xNOx and rA,Cl2 . At xNOx < 4 ppt (4×10-12 mol/mol) or > 180 ppt (1.8×10-10 mol/mol)
+
+214
+
+the effect is always positive, removing additional CH4 . Between these xNOx levels and below
+
+215
+
+1×106 Cl2 /(cm3 s), ∆[CH4 ] is negative, i.e. [CH4 ] increases. This range is dependent on the
+
+216
+
+ClONO2 hydrolysis rate, see below. The most favorable regime is for xNOx > 1 ppb (1×10-9
+
+217
+
+mol/mol), where as many as 2.81 CH4 can be removed per Cl. Comparing with the CESM
+
+218
+
+output from Meidan et al., the same unfavorable NOx range can be observed, but extends
+
+219
+
+up to 1×107 Cl2 /(cm3 s). Differences between the CESM and the box model could be due
+
+220
+
+to the wide fluctuation of NOx/O3 and Cl2 emission in CESM, or due to the added VOC
+
+221
+
+chemistry included in CESM.
+
+Figure 3: CH4 removed per added Cl (mol/mol) as a function of xNOx and maximum rA,Cl2 ,
+split over the days when the impact is observed and a total time of 16 days. The darkest
+pink ranges from -0.62 to -0.4 and the darkest green ranges from 0.5 to 2.81
+
+222
+
+While changes to νOH occur during emission, the impacts of O3 loss continue for at least
+
+223
+
+a day and the impact of NOx loss continues for several days. This is seen in the CH4
+
+224
+
+removal per day shown in Figure 3. On the day of Cl2 emission CH4 removal, increases in
+
+12
+https://doi.org/10.26434/chemrxiv-2023-3r8sf-v2 ORCID: https://orcid.org/0009-0008-2225-3371 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+225
+
+all scenarios. However, on day 2 the impact of O3 loss leads to an increase in [CH4 ] in all
+
+226
+
+scenarios except high NOx and high rA,Cl2 . For days 3-16, overall, the loss of NOx leads to
+
+227
+
+lower O3 formation and lower OH· production, resulting in increased [CH4 ] for all conditions
+
+228
+
+except high NOx with low rA,Cl2 and very low NOx. Thus, the impact of rA,Cl2 cannot be
+
+229
+
+judged just based on measurements on the day of emission, but needs to take several days
+
+230
+
+after emission into account.
+
+231
+
+Sensitivity Analyses
+
+232
+
+ClONO2 hydrolysis rate sensitivity analysis
+
+233
+
+Reaction of ClO· with NO2 will produce ClONO2 which can hydrolyze yielding HOCl and
+
+234
+
+HNO3 . The HNO3 will most likely be deposited and thereby the reaction represents the main
+
+235
+
+loss of NOx due to Cl2 addition. The hydrolysis rate of ClONO2 , however, is dependent on
+
+236
+
+particle surface area density, which changes over orders of magnitude. The rate has been ap-
+
+237
+
+proximated as a first order reaction and the sensitivity of the model was tested by evaluating
+
+238
+
+CH4 removal per Cl atom added, when the total emission is 1500 Cl2 molecules/(cm3 s), see
+
+239
+
+Figure S6. Deiber et al. reported a ClONO2 uptake coefficient of 0.02 on water and NaCl
+
+240
+
+solution. Using a thermal velocity of 277 m/s and a sea spray aerosol surface area density
+
+241
+
+in the range of 1 – 50 µm2 /cm3 (depending on wind speed) 48 results in a first order loss rate
+
+242
+
+for ClONO2 hydrolysis ranging from 5.5×10−6 s-1 to 2.8×10−4 s-1 , and hydrolysis rates may
+
+243
+
+be further increased due to mineral dust or emitted iron salt aerosols. Therefore, we used an
+
+244
+
+average value of 10−4 s-1 in our model (corresponding to 20 µm2 /cm3 surface area density),
+
+245
+
+and we performed a sensitivity analysis covering the range of 10−3 s-1 to 10−6 s-1 .
+
+246
+
+The hydrolysis rate competes with the photolysis rates of 10-5 s-1 , producing Cl and NO3 ,
+
+247
+
+and 10-6 s-1 , producing ClO· and NO2 again. A fast hydrolysis rate will therefore result in
+
+248
+
+a higher NOx removal, which in turn will decrease the O3 production and the following
+
+249
+
+OH production. Ultimately, this will lead to increasing CH4 concentrations when the NOx
+13
+
+https://doi.org/10.26434/chemrxiv-2023-3r8sf-v2 ORCID: https://orcid.org/0009-0008-2225-3371 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+250
+
+mixing ratio is between 4–200 ppt (4×10-12 –2×10-10 mol/mol) with a hydrolysis rate of 10-3
+
+251
+
+s-1 . This is in agreement with the findings reported by Edwards and Young. 39 In contrast,
+
+252
+
+decreasing the hydrolysis rate to 10-5 s-1 will result in CH4 removal at all NOx mixing ratios.
+
+253
+
+Sensitivity to additional ozone sources and sinks
+
+254
+
+The reduction of ozone due to the addition of chlorine atoms to the atmosphere is highly
+
+255
+
+relevant for our conclusions. We performed a sensitivity analysis using an extra source of
+
+256
+
+ozone and an extra sink of ozone in the box model, see Figure 4. A sensitivity analysis
+
+257
+
+was performed without constraining O3 with additional sources or sinks, which resulted in
+
+258
+
+relatively low O3 at low NOx, and relatively high O3 at high NOx, and the resulting methane
+
+259
+
+removal per Cl was in line with the simulations where O3 was constrained. The sensitivity
+
+260
+
+analysis shows that increasing O3 leads to less CH4 removal in high-NOx conditions and
+
+261
+
+more removal in low-NOx conditions. Increasing [CH4 ] is found between 4–80 ppt NOx at
+
+262
+
+14 ppb O3 , 8–180 ppt NOx at 30 ppb O3 and 14–200 ppt NOx at 40 ppb O3 .
+
+Figure 4: O3 sensitivity analysis evaluating CH4 removed per Cl added as a function of NOx
+and O3 mixing ratios, with rA,Cl2 =1500 Cl2 /(cm3 s).
+
+263
+
+Relevance for ship emissions
+
+264
+
+Iron present in fuel or additives is emitted as part of a ship’s plume. As the plume disperses,
+
+265
+
+iron containing particles will mix with sea spray aerosols, forming ISA. These aerosols could
+14
+
+https://doi.org/10.26434/chemrxiv-2023-3r8sf-v2 ORCID: https://orcid.org/0009-0008-2225-3371 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+266
+
+potentially produce high intensity Cl2 emissions within the high NOx conditions of the
+
+267
+
+plume. However, ship plumes disperse rapidly, reducing the concentration of the ISA and
+
+268
+
+NOx by orders of magnitude, while spreading the aerosols over a very large area. Typically,
+
+269
+
+the dispersion into the background will occur within a day, but the ISA could have a total
+
+270
+
+atmospheric lifetime of several days, depending on particle size. 49 This implies that the
+
+271
+
+impact of the shipping iron emission is driven by the local, ambient NOx concentrations
+
+272
+
+where the plume disperses.
+
+273
+
+Based on Figure 3 it can be seen that low rA,Cl2 leads to an increase in [CH4 ] for xNOx
+
+274
+
+from 4-180 ppt, while Figure 4 shows that this range is shifted higher with increasing [O3 ].
+
+275
+
+This results in increased [CH4 ] between 4–80 ppt NOx at 14 ppb O3 , 8–180 ppt NOx at 30
+
+276
+
+ppb O3 and 14–200 ppt NOx at 40 ppb O3 . Figure 5 shows the areas where these conditions
+
+277
+
+occur in red, based on the yearly average from the CESM global model output for 2023.
+
+278
+
+The model description can be found in Meidan et al.. Most of the world has unfavorable
+
+279
+
+background NOx and O3 concentrations, which means that shipping iron emissions are likely
+
+280
+
+to increase methane levels. One exception is a region in the North Atlantic, which explains
+
+281
+
+why mineral dust in this region was able to effectively remove methane from the atmosphere,
+
+282
+
+as shown by van Herpen et al.. A constant rate of 10-4 s-1 for the ClONO2 hydrolysis has
+
+283
+
+been used for this analysis. However, the local aerosol surface area density is dependent on
+
+284
+
+wind speed, resulting in faster and slower hydrolysis rates regionally. As discussed above,
+
+285
+
+this will have an impact on the methane removal.
+
+286
+
+Conclusion
+
+287
+
+In this paper we have explored a new domain of tropospheric chemistry, the high ClOx
+
+288
+
+regime. The results of the study show clearly that the impact of chlorine added to the
+
+289
+
+atmosphere depends critically on ambient conditions. Initial chlorine can increase methane
+
+290
+
+lifetime via its effects on ozone and NOx, the primary and secondary sources of the main
+
+15
+https://doi.org/10.26434/chemrxiv-2023-3r8sf-v2 ORCID: https://orcid.org/0009-0008-2225-3371 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 5: World map highlighting the unfavorable NOx and O3 levels, 4–80 ppt NOx at 14
+ppb O3 , 8–180 ppt NOx at 30 ppb O3 and 14–200 ppt NOx at 40 ppb O3 , for low rA,Cl2
+where CH4 concentration increase in pink, using the yearly average NOx and O3 surface
+concentrations from the CESM global model output for 2023. NOx and O3 levels resulting
+in net CH4 removal is indicated by green. Model description can be found in Meidan et al..
+291
+
+methane oxidant, OH· . The impact of chlorine depends on the amount of NOx present. We
+
+292
+
+have identified the range of NOx and O3 concentrations, 4–80 ppt NOx at 14 ppb O3 , 8–180
+
+293
+
+ppt NOx at 30 ppb O3 and 14–200 ppt NOx at 40 ppb O3 , where Cl2 emissions below 1×106
+
+294
+
+/(cm3 s) lead to an increase of CH4 lifetime. Cl2 emissions above this threshold always lead
+
+295
+
+to net CH4 removal. At such high Cl2 additions CH3 OOH + Cl· becomes the dominant OH·
+
+296
+
+source. In addition, in the high-ClOx regime, ClO· reacts with CH3 O2 and HO2 resulting
+
+297
+
+in Cl and increasing OH radical chain length. The impact of Cl2 emissions should not just
+
+298
+
+be evaluated on the day of emission, as it has a longer term impact through the loss of O3
+
+299
+
+and NOx. This is especially important to keep in mind for atmospheric measurements. We
+
+300
+
+identified the main reaction responsible for the ozone and associated OH loss, which is ClO·
+
+301
+
++ NO2 → ClONO2 , followed by hydrolysis of ClONO2 . Without ClONO2 hydrolysis, ozone
+
+302
+
+loss is strongly reduced and methane lifetime does not increase. However, the hydrolysis rate
+
+303
+
+in the troposphere is variable, due to changing particle surface area density and uncertainty
+
+304
+
+regarding the hydrolysis rate itself, as few studies exist. More research is needed to reduce
+
+305
+
+these uncertainties.
+
+306
+
+Ship plume emissions dilute quickly, making ISA particles from ship emissions spend
+
+307
+
+most of their lifetime in the range of low-Cl2 emissions and local background levels of NOx.
+16
+
+https://doi.org/10.26434/chemrxiv-2023-3r8sf-v2 ORCID: https://orcid.org/0009-0008-2225-3371 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+308
+
+This implies that the impact of ISA from shipping strongly depends on the NOx and O3
+
+309
+
+concentrations in the area the ship plume is dispersed into. We show that due to this effect,
+
+310
+
+for most of the world, ship based ISA emissions can lead to an increase of methane. Iron
+
+311
+
+emissions from ships are likely to increase methane lifetime, while removing ozone and NOx
+
+312
+
+pollution.
+
+313
+
+These findings are important to the discussion of how much chlorine would be required
+
+314
+
+to reduce methane and restore it to preindustrial concentrations. 28 It is also important as
+
+315
+
+chlorine sources do not release chlorine equally in terms of surface flux or volumetric rate, as
+
+316
+
+assumed e.g. by Li et al.. The proposed methods of introducing iron to the atmosphere are
+
+317
+
+point sources, 14,15,28 resulting in a high-ClOx regime that cannot be captured with global
+
+318
+
+models due to dilution to grid dimensions. 49 However, we have shown that the impact of Cl2
+
+319
+
+emissions needs to be evaluated over multiple days. Because of the long term effects on O3
+
+320
+
+and NOx loss the impact cannot be captured easily with a local box model as dilution will
+
+321
+
+depend on meteorology. Therefore, both local plume modeling and global modeling need to
+
+322
+
+be combined to fully appreciate the effects of Cl2 from iron emissions by ships.
+
+323
+
+Acknowledgement
+
+324
+
+The authors are grateful for support from Spark Climate Solutions and the ISAMO project.
+
+325
+
+The University of Copenhagen (UCPH) has filed a patent application related to atmo-
+
+326
+
+spheric iron chlorides on behalf of its inventors (MvH, MSJ). All other authors declare they
+
+327
+
+have no competing interests.
+
+328
+
+Supporting Information Available
+
+329
+
+The following Supporting Information is available free of charge at the ACS website:
+
+330
+
+Figure S1. Ozone production efficiency.
+
+331
+
+Figure S2. O3 -OH production efficiency.
+17
+
+https://doi.org/10.26434/chemrxiv-2023-3r8sf-v2 ORCID: https://orcid.org/0009-0008-2225-3371 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+332
+
+Figure S3. O3 sinks.
+
+333
+
+Figure S4. OH· chain length, νOH .
+
+334
+
+Figure S5. ClOx chemistry and ClO· sinks.
+
+335
+
+Figure S6. CH4 removal comparison with CESM.
+
+336
+
+Figure S7. Comparison with CESM.
+
+337
+
+Figure S8. ClONO2 hydrolysis rate sensitivity.
+
+338
+
+Model evaluation and sensitivity analyses.
+
+339
+
+Model setup and full list of reactions.
+
+340
+
+References
+
+341
+
+(1) IPCC In Climate Change 2021: The Physical Science Basis. Contribution of Working
+
+342
+
+Group I to the Sixth Assessment Report of the Intergovernmental Panel on Climate
+
+343
+
+Change; Masson-Delmotte, V. et al. , Eds.; Cambridge University Press: Cambridge,
+
+344
+
+United Kingdom and New York, NY, USA, 2021; pp 3–32.
+
+345
+
+(2) Lan, X.; Thoning, K.; Dlugokencky, E. Trends in globally-averaged CH4 N2O, and
+
+346
+
+SF6 determined from NOAA Global Monitoring Laboratory measurements, Version
+
+347
+
+2023-04, NOAA Earth System Research Laboratories Global Monitoring Laboratory.
+
+348
+
+2023.
+
+349
+
+(3) Höglund-Isaksson, L.; Gómez-Sanabria, A.; Klimont, Z.; Rafaj, P.; Schöpp, W. Tech-
+
+350
+
+nical potentials and costs for reducing global anthropogenic methane emissions in the
+
+351
+
+2050 timeframe –results from the GAINS model. Environmental Research Communica-
+
+352
+
+tions 2020, 2, 025004.
+
+353
+
+(4) Neumann, R. B.; Moorberg, C. J.; Lundquist, J. D.; Turner, J. C.; Waldrop, M. P.;
+
+354
+
+McFarland, J. W.; Euskirchen, E. S.; Edgar, C. W.; Turetsky, M. R. Warming effects
+
+18
+https://doi.org/10.26434/chemrxiv-2023-3r8sf-v2 ORCID: https://orcid.org/0009-0008-2225-3371 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+355
+
+of spring rainfall increase methane emissions from thawing permafrost. Geophysical
+
+356
+
+Research Letters 2019, 46, 1393–1401.
+
+357
+
+(5) Paudel, R.; Mahowald, N. M.; Hess, P. G.; Meng, L.; Riley, W. J. Attribution of changes
+
+358
+
+in global wetland methane emissions from pre-industrial to present using CLM4. 5-
+
+359
+
+BGC. Environmental Research Letters 2016, 11, 034020.
+
+360
+
+(6) Peng, S.; Lin, X.; Thompson, R. L.; Xi, Y.; Liu, G.; Hauglustaine, D.; Lan, X.; Poul-
+
+361
+
+ter, B.; Ramonet, M.; Saunois, M.; others Wetland emission and atmospheric sink
+
+362
+
+changes explain methane growth in 2020. Nature 2022, 612, 477–482.
+
+363
+
+364
+
+(7) Kleinen, T.; Gromov, S.; Steil, B.; Brovkin, V. Atmospheric methane underestimated
+in future climate projections. Environmental Research Letters 2021, 16, 094006.
+
+365
+
+(8) Jackson, R. B.; Abernethy, S.; Canadell, J. G.; Cargnello, M.; Davis, S. J.; Féron, S.;
+
+366
+
+Fuss, S.; Heyer, A. J.; Hong, C.; Jones, C. D.; others Atmospheric methane re-
+
+367
+
+moval: a research agenda. Philosophical Transactions of the Royal Society A 2021,
+
+368
+
+379, 20200454.
+
+369
+
+(9) Nisbet-Jones, P. B.; Fernandez, J. M.; Fisher, R. E.; France, J. L.; Lowry, D.;
+
+370
+
+Waltham, D. A.; Woolley Maisch, C. A.; Nisbet, E. G. Is the destruction or removal
+
+371
+
+of atmospheric methane a worthwhile option? Philosophical Transactions of the Royal
+
+372
+
+Society A 2022, 380, 20210108.
+
+373
+
+(10) Pennacchio, L.; Mikkelsen, M. K.; Krogsbøll, M.; van Herpen, M. M. J. W.; Johnson, M.
+
+374
+
+Physical and practical constraints on atmospheric methane removal technologies. En-
+
+375
+
+vironmental Research Letters 2024,
+
+376
+
+377
+
+(11) Smith, C.; Mathison, C. How much methane removal is required to avoid overshooting
+1.5◦ C? Environmental Research Letters 2024, 19, 074044.
+
+19
+https://doi.org/10.26434/chemrxiv-2023-3r8sf-v2 ORCID: https://orcid.org/0009-0008-2225-3371 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+378
+
+(12) Abernethy, S.; O’Connor, F. M.; Jones, C. D.; Jackson, R. B. Methane removal and the
+
+379
+
+proportional reductions in surface temperature and ozone. Philosophical Transactions
+
+380
+
+of the Royal Society A: Mathematical, Physical and Engineering Sciences 2021, 379,
+
+381
+
+20210104.
+
+382
+
+(13) Staniaszek, Z.; Griffiths, P. T.; Folberth, G. A.; O’Connor, F. M.; Archibald, A. T.
+
+383
+
+Climate and composition impacts of a net-zero anthropogenic methane future using
+
+384
+
+an emissions-driven chemistry-climate model. EGU General Assembly Conference Ab-
+
+385
+
+stracts. 2021; pp EGU21–5740.
+
+386
+
+(14) Oeste, F. D.; de Richter, R.; Ming, T.; Caillol, S. Climate engineering by mimicking
+
+387
+
+natural dust climate control: the iron salt aerosol method. Earth System Dynamics
+
+388
+
+2017, 8, 1–54.
+
+389
+
+(15) Meyer-Oeste, F. D. Troposphere cooling procedure. 2014-07-09.
+
+390
+
+(16) Wittmer, J.; Bleicher, S.; Zetzsch, C. Iron(III)-Induced Activation of Chloride and
+
+391
+
+Bromide from Modeled Salt Pans. The Journal of Physical Chemistry A 2015, 119,
+
+392
+
+4373–4385, PMID: 25243918.
+
+393
+
+394
+
+395
+
+396
+
+(17) Wittmer, J.; Bleicher, S.; Ofner, J.; Zetzsch, C. Iron (III)-induced activation of chloride
+from artificial sea-salt aerosol. Environmental Chemistry 2015, 12, 461–475.
+(18) Wittmer, J.; Zetzsch, C. Photochemical activation of chlorine by iron-oxide aerosol.
+Journal of Atmospheric Chemistry 2017, 74, 187–204.
+
+397
+
+(19) Mikkelsen, M. K.; Liisberg, J. B.; van Herpen, M. M. J. W.; Mikkelsen, K. V.; John-
+
+398
+
+son, M. S. Photocatalytic chloride to chlorine conversion by ionic iron in aqueous
+
+399
+
+aerosols: A combined experimental, quantum chemical and chemical equilibrium model
+
+400
+
+study. Aerosol Research 2023, ar-2023-13, x.
+
+20
+https://doi.org/10.26434/chemrxiv-2023-3r8sf-v2 ORCID: https://orcid.org/0009-0008-2225-3371 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+401
+
+(20) Gorham, K. A.; Abernethy, S.; Jones, T. R.; Hess, P.; Mahowald, N.; Meidan, D.;
+
+402
+
+Johnson, M. S.; van Herpen, M. M. J. W.; Xu, Y.; Saiz-Lopez, A.; Röckmann, T.;
+
+403
+
+Brashear, C.; Reinhardt, E.; Mann, D. An atmospheric methane removal roadmap:
+
+404
+
+iron salt aerosols to enhance chlorine radicals. Environmental Research Letters 2023,
+
+405
+
+xx, xx–xx.
+
+406
+
+(21) van Herpen, M. M. J. W.; Li, Q.; Saiz-Lopez, A.; Liisberg, J. B.; Röckmann, T.;
+
+407
+
+Cuevas, C. A.; Fernandez, R. P.; Mak, J. E.; Mahowald, N. M.; Hess, P.; Meidan, D.;
+
+408
+
+Stuut, J.-B. W.; Johnson, M. S. Photocatalytic chlorine atom production on mineral
+
+409
+
+dust–sea spray aerosols over the North Atlantic. Proceedings of the National Academy
+
+410
+
+of Sciences of the USA 2023, XX, XX.
+
+411
+
+412
+
+(22) Ito, A. Global modeling study of potentially bioavailable iron input from shipboard
+aerosol sources to the ocean. Global Biogeochemical Cycles 2013, 27, 1–10.
+
+413
+
+(23) Ming, T.; de Richter, R.; Dietrich Oeste, F.; Tulip, R.; Caillol, S. A nature-based neg-
+
+414
+
+ative emissions technology able to remove atmospheric methane and other greenhouse
+
+415
+
+gases. Atmospheric Pollution Research 2021, 12, 101035.
+
+416
+
+(24) Herrmann, H.; Schaefer, T.; Tilgner, A.; Styler, S. A.; Weller, C.; Teich, M.; Otto, T.
+
+417
+
+Tropospheric aqueous-phase chemistry: kinetics, mechanisms, and its coupling to a
+
+418
+
+changing gas phase. Chemical reviews 2015, 115, 4259–4334.
+
+419
+
+(25) Hoffmann, E. H.; Tilgner, A.; Vogelsberg, U.; Wolke, R.; Herrmann, H. Near-explicit
+
+420
+
+multiphase modeling of halogen chemistry in a mixed urban and maritime coastal area.
+
+421
+
+ACS Earth and Space Chemistry 2019, 3, 2452–2471.
+
+422
+
+(26) Young, C.; Washenfelder, R.; Edwards, P.; Parrish, D.; Gilman, J.; Kuster, W.;
+
+423
+
+Mielke, L.; Osthoff, H.; Tsai, C.; Pikelnaya, O.; others Chlorine as a primary rad-
+
+424
+
+ical: evaluation of methods to understand its role in initiation of oxidative cycles.
+
+425
+
+Atmospheric chemistry and physics 2014, 14, 3427–3440.
+21
+
+https://doi.org/10.26434/chemrxiv-2023-3r8sf-v2 ORCID: https://orcid.org/0009-0008-2225-3371 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+426
+
+(27) Li, Q.; Fernandez, R. P.; Hossaini, R.; Iglesias-Suarez, F.; Cuevas, C. A.; Apel, E. C.;
+
+427
+
+Kinnison, D. E.; Lamarque, J.-F.; Saiz-Lopez, A. Reactive halogens increase the global
+
+428
+
+methane lifetime and radiative forcing in the 21st century. Nature Communications
+
+429
+
+2022, 13, 2768.
+
+430
+
+(28) Li, Q.; Meidan, D.; Hess, P.; Añel, J. A.; Cuevas, C. A.; Doney, S.; Fernandez, R. P.;
+
+431
+
+van Herpen, M.; Höglund-Isaksson, L.; Johnson, M. S.; others Global environmental
+
+432
+
+implications of atmospheric methane removal through chlorine-mediated chemistry-
+
+433
+
+climate interactions. Nature Communications 2023, 14, 4045.
+
+434
+
+(29) Ianni, J. C. Kintecus, Windows Version 6.01. http://www.kintecus.com, 2017.
+
+435
+
+(30) Kim, H. S.; Kim, Y. H.; Song, C. H. Ship-plume sulfur chemistry: ITCT 2K2 case
+
+436
+
+study. Science of The Total Environment 2013, 450-451, 178–187.
+
+437
+
+(31) Jenkin, M. E.; Saunders, S. M.; Pilling, M. J. The tropospheric degradation of volatile
+
+438
+
+organic compounds: a protocol for mechanism development. Atmospheric Environment
+
+439
+
+1997, 31, 81–104.
+
+440
+
+(32) Saunders, S. M.; Jenkin, M. E.; Derwent, R. G.; Pilling, M. J. Protocol for the develop-
+
+441
+
+ment of the Master Chemical Mechanism, MCM v3 (Part A): tropospheric degradation
+
+442
+
+of non-aromatic volatile organic compounds. Atmospheric Chemistry and Physics 2003,
+
+443
+
+3, 161–180.
+
+444
+
+(33) Master Chemical Mechanism, MCM v3.2. http://mcm.leeds.ac.uk/MCM, 2023.
+
+445
+
+(34) Saiz-Lopez, A.; Shillito, J. A.; Coe, H.; Plane, J. M. C. Measurements and modelling
+
+446
+
+of I2 , IO, OIO, BrO and NO3 in the mid-latitude marine boundary layer. Atmospheric
+
+447
+
+Chemistry and Physics 2006, 6, 1513–1528.
+
+448
+
+(35) Hossaini, R.; Chipperfield, M. P.; Saiz-Lopez, A.; Fernandez, R.; Monks, S.; Feng, W.;
+
+449
+
+Brauer, P.; Von Glasow, R. A global model of tropospheric chlorine chemistry: Organic
+22
+
+https://doi.org/10.26434/chemrxiv-2023-3r8sf-v2 ORCID: https://orcid.org/0009-0008-2225-3371 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+450
+
+versus inorganic sources and impact on methane oxidation. Journal of Geophysical
+
+451
+
+Research: Atmospheres 2016, 121, 14–271.
+
+452
+
+(36) Saiz-Lopez, A.; Plane, J. M. C.; Mahajan, A. S.; Anderson, P. S.; Bauguitte, S. J.-B.;
+
+453
+
+Jones, A. E.; Roscoe, H. K.; Salmon, R. A.; Bloss, W. J.; Lee, J. D.; Heard, D. E. On the
+
+454
+
+vertical distribution of boundary layer halogens over coastal Antarctica: implications
+
+455
+
+for O3 , HOx , NOx and the Hg lifetime. Atmospheric Chemistry and Physics 2008, 8,
+
+456
+
+887–900.
+
+457
+
+(37) Sander, S.; Friedl, R.; Golden, D.; Kurylo, M.; Moortgat, G.; Wine, P.; Ravis-
+
+458
+
+hankara, A.; Kolb, C.; Molina, M.; Finlayson-Pitts, B.; others Chemical kinetics and
+
+459
+
+photochemical data for use in atmospheric studies evaluation number 15 ; 2006.
+
+460
+
+(38) Madronich, S.; Flocke, S.; Zeng, J.; Petropavlovskikh, I.; Lee-Taylor, J. Tropospheric
+
+461
+
+ultraviolet and visible (TUV) radiation model. 2002; National Center for Atmospheric
+
+462
+
+Research (NCAR), Boulder, CO.
+
+463
+
+(39) Edwards, P. M.; Young, C. J. Primary Radical Effectiveness: Do the Different Chemical
+
+464
+
+Reactivities of Hydroxyl and Chlorine Radicals Matter for Tropospheric Oxidation?
+
+465
+
+ACS ES&T Air 0, 0, 546–554.
+
+466
+
+(40) Meidan, D.; Li, Q.; Cuevas, C. A.; Doney, S. C.; Fernandez, R. P.; van Herpen, M.
+
+467
+
+M. J. W.; Johnson, M. S.; Kinnison, D. E.; Li, L.; Hamilton, D. S.; Saiz-Lopez, A.;
+
+468
+
+Hess, P.; Mahowald, N. M. Evaluating the potential of iron-based interventions in
+
+469
+
+methane reduction and climate mitigation. Environmental Research Letters 2024, 19,
+
+470
+
+054023.
+
+471
+
+472
+
+473
+
+474
+
+(41) Jacob, D. J. Introduction to Atmospheric Chemistry; Princeton University Press:
+Princeton, 2000; pp 231–244.
+(42) Levy, H. Normal atmosphere: Large radical and formaldehyde concentrations predicted.
+Science 1971, 173, 141–143.
+23
+
+https://doi.org/10.26434/chemrxiv-2023-3r8sf-v2 ORCID: https://orcid.org/0009-0008-2225-3371 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+475
+
+476
+
+(43) Harnung, S. E.; Johnson, M. S. Chemistry and the Environment; Cambridge University
+Press, 2012.
+
+477
+
+(44) Thompson, A.; Johnson, J.; Torres, A.; Bates, T.; Kelly, K.; Atlas, E.; Greenberg, J.;
+
+478
+
+Donahue, N.; Yvon, S.; Saltzman, E.; others Ozone observations and a model of ma-
+
+479
+
+rine boundary layer photochemistry during SAGA 3. Journal of Geophysical Research:
+
+480
+
+Atmospheres 1993, 98, 16955–16968.
+
+481
+
+(45) Cooper, D. J. Estimation of hydroxyl radical concentrations in the marine atmospheric
+
+482
+
+boundary layer using a reactive atmospheric tracer. Journal of atmospheric chemistry
+
+483
+
+1996, 25, 97–113.
+
+484
+
+(46) Yang, M.; Blomquist, B. W.; Huebert, B. J. Constraining the concentration of the
+
+485
+
+hydroxyl radical in a stratocumulus-topped marine boundary layer from sea-to-air eddy
+
+486
+
+covariance flux measurements of dimethylsulfide. Atmospheric Chemistry and Physics
+
+487
+
+2009, 9, 9225–9236.
+
+488
+
+(47) Deiber, G.; George, C.; Le Calvé, S.; Schweitzer, F.; Mirabel, P. Uptake study of
+
+489
+
+ClONO2 and BrONO2 by Halide containing droplets. Atmospheric Chemistry and
+
+490
+
+Physics 2004, 4, 1291–1299.
+
+491
+
+(48) Moore, K. A.; Alexander, S. P.; Humphries, R. S.; Jensen, J.; Protat, A.; Reeves, J. M.;
+
+492
+
+Sanchez, K. J.; Kreidenweis, S. M.; DeMott, P. J. Estimation of Sea Spray Aerosol
+
+493
+
+Surface Area Over the Southern Ocean Using Scattering Measurements. Journal
+
+494
+
+of Geophysical Research: Atmospheres 2022, 127, e2022JD037009, e2022JD037009
+
+495
+
+2022JD037009.
+
+496
+
+(49) Song, C. H.; Chen, G.; Hanna, S. R.; Crawford, J.; Davis, D. D. Dispersion and chemical
+
+497
+
+evolution of ship plumes in the marine boundary layer: Investigation of O3/NOy/HOx
+
+498
+
+chemistry. Journal of Geophysical Research: Atmospheres 2003, 108 .
+
+24
+https://doi.org/10.26434/chemrxiv-2023-3r8sf-v2 ORCID: https://orcid.org/0009-0008-2225-3371 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+

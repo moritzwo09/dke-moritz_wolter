@@ -1,0 +1,1389 @@
+Modeling homogeneous ice nucleation from drop-freezing
+experiments: Impact of droplet volume dispersion and cooling rates
+Ravi Kumar Reddy Addula∗1 , Ingrid de Almeida Ribeiro∗2 , Valeria Molinero2 , and Baron Peters1,3
+1
+
+Chemical and Biomolecular Engineering, University of Illinois at Urbana-Champaign, Urbana, IL 61801, USA.
+Department of Chemistry, The University of Utah, Salt Lake City, UT 84112, USA.
+3
+Department of Chemistry, University of Illinois at Urbana-Champaign, Urbana, IL 61801, USA.
+2
+
+Correspondence: Baron Peters (baronp@illinois.edu)
+Abstract. Homogeneous nucleation is the prominent mechanism of glaciation in cirrus and other high-altitude clouds. Ice
+nucleation rates can be studied in laboratory assays that gradually lower the temperature of pure water droplets. These experiments can be performed with different cooling rates, different droplet sizes, and often with a distribution of droplet sizes. We
+combine nucleation theory, survival probability analysis, and published data on the fraction of frozen droplets as a function of
+5
+
+temperature to understand how cooling rate, droplet size, and size dispersity influence the nucleation rates. The framework,
+implemented in the Python code AINTBAD, provides a temperature dependent nucleation rate on a per volume basis, in terms
+of approximately temperature-independent prefactor (A) and barrier (B) parameters. We find that less than an order of magnitude dispersion in droplet diameters, if not properly included in the analysis, can cause apparent nucleation barriers to be
+underestimated by 50%. This result highlights the importance of droplet size-dispersion in efforts to model glaciation in the
+
+10
+
+polydisperse droplets of clouds. We also developed a theoretical framework, implemented in the Python code IPA, to predict
+the fraction of frozen droplets at each temperature for arbitrary droplet size dispersions and cooling rates. Finally, we present
+a sensitivity analysis for the effect of temperature uncertainty on the nucleation spectrum. Our framework can improve models
+for ice nucleation in clouds by explicitly accounting for droplet polydispersity and cooling rates.
+
+Copyright statement.
+
+15
+
+1
+
+Introduction
+
+The thermodynamics and kinetics of ice formation from water are important for atmospheric science (Koop et al. (2000); Möhler et al. (2007); DeMott et al. (2010); Knopf and Alpert (2023)), preservation of biologically active substances (John Morris
+et al. (2012); Zachariassen and Kristiansen (2000)), and storage of food products (Goff (1997); Li and Sun (2002)). Nucleation, the first step in ice formation, heralds the onset of important subsequent changes: rapid growth of ice domains (Shultz
+20
+
+(2018); Barrett et al. (2019); Sibley et al. (2021)), the release of latent heat (Riechers et al. (2013); Dobbie and Jonas (2001)),
+and freeze concentration of impurities (Deck et al. (2022); Deville (2017); Stoll et al. (2021)). A quantitative understanding
+* These authors contributed equally to this work
+
+1
+https://doi.org/10.26434/chemrxiv-2024-1vkn7-v2 ORCID: https://orcid.org/0000-0001-9502-3763 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+of these processes requires models that accurately predict ice nucleation kinetics. In most applications, the primary source of
+nuclei is heterogeneous nucleation on various surfaces and impurities at mild supercooling (Alpert and Knopf (2016); Zhang
+and Maeda (2022); Stan et al. (2009); Kubota (2019)). However, homogeneous nucleation of ice occurs at deep supercooling
+25
+
+for pure water droplets in the atmosphere (Koop et al. (2000); Knopf and Alpert (2023); Herbert et al. (2015); Heymsfield and
+Miloshevich (1993); Spichtinger et al. (2023)) and in laboratory experiments (Murray et al. (2010); Atkinson et al. (2016);
+Shardt et al. (2022); Riechers et al. (2013); Laksmono et al. (2015)).
+Special assays have been developed to study ice nucleation kinetics by monitoring hundreds of small supercooled water
+droplets (Laval et al. (2009); Shardt et al. (2022); Ando et al. (2018); Tarn et al. (2020)). These experiments provide an
+
+30
+
+independent realization of the nucleation time and/or temperature for each droplet (Tarn et al. (2020); Shardt et al. (2022)).
+Typically, the kinetics are studied via induction times in isothermal conditions (constant supercooling) (Alpert and Knopf
+(2016); Herbert et al. (2014); Knopf et al. (2020)) or via the spectrum of ice nucleation temperatures at constant cooling rate
+(Zhang and Maeda (2022); Ando et al. (2018); Shardt et al. (2022); Murray et al. (2010)). These two types of experiments have
+important similarities and differences.
+
+35
+
+For droplets subjected to a constant supercooling, the induction time is exponentially distributed. Several analyses have modeled the exponential decay to understand how nucleation rates depend on supercooling (Alpert and Knopf (2016); Herbert et al.
+(2014); Knopf et al. (2020)). In experiments where the supercooling is gradually increased, the distribution of nucleation times
+is more complicated (Murray et al. (2010); Riechers et al. (2013)). Typically, no nucleation events occur until the temperature
+drops below some critical temperature, and then the nucleation times/temperatures all occur within a focused range (Murray
+
+40
+
+et al. (2010); Riechers et al. (2013); Shardt et al. (2022)). The narrow range of ice nucleation temperatures has motivated the
+use of a single temperature cutoff for ice nucleation in cloud models (Kärcher and Lohmann (2002)). This approach, however,
+cannot account for the known impact of cooling rate - which span from about 0.01 to 1 K/min - in the formation of ice in
+clouds (Stephens (1978); Kärcher and Seifert (2016); Shardt et al. (2022)). Likewise, cloud models typically assume monodisperse distribution of droplet sizes, while the range of sizes of droplets in clouds span typically from 2 to 50 micrometers (Igel
+
+45
+
+and van den Heever (2017)). The combined impact of the cooling rate and droplet size distribution on the analysis of droplet
+freezing experiments and the prediction of cloud properties has not been, to our knowledge, addressed to date.
+To motivate new elements of our approach to introduce cooling rate and droplet polydispersity on the interpretation and
+prediction of experimental data, we briefly discuss the capabilities and gaps in existing models for analyzing the experiments
+with steadily cooled droplets. Analyses of drop-freezing experiments can be grouped according to two distinguishing criteria.
+
+50
+
+The first distinction pertains to the models used for interpreting the nucleation rate. Kubota used empirical nucleation rate
+models (Kubota (2019)), while others have used theoretically motivated rate expressions (often based on classical nucleation
+theory) (Ickes et al. (2017); Murray et al. (2010); Riechers et al. (2013)). Empirical rate models can provide excellent fits
+to the nucleation rate data, and successful empiricisms sometimes inspire new theoretical models. However, the fitted rate
+expressions for nucleation rate from an empirical model lack the interpretability and generalizability afforded by a successful
+
+55
+
+fit to theoretical rate models.
+
+2
+https://doi.org/10.26434/chemrxiv-2024-1vkn7-v2 ORCID: https://orcid.org/0000-0001-9502-3763 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+A second distinction pertains to the analysis and interpretation of the droplet nucleation data itself. Some studies focus
+on the fraction of droplets that nucleate in a specific supercooling range, i.e. the nucleation spectrum (Murray et al. (2010);
+Shardt et al. (2022); Ando et al. (2018)). The nucleation spectrum has sometimes been interpreted as an intrinsic property
+of supercooled water and/or the nucleants present in the system (Zhang and Maeda (2022); Alpert and Knopf (2016); Knopf
+60
+
+and Alpert (2023)). However, it also depends on variables beyond chemical or interfacial properties, e.g. the cooling rates
+and droplet diameters. An alternative explanation for the nucleation spectrum begins with the survival probability formalism.
+In survival probability analyses, the probability that a droplet remains liquid steadily declines with time in proportion to the
+changing rate of ice nucleation. The survival probability formalism is easily used in combination with theoretical models for
+the nucleation rate, but the combination remains rare in the ice nucleation literature. Indeed, prior combinations of survival
+
+65
+
+probability and nucleation theory in the ice literature focus on heterogeneous nucleation (Wright and Petters (2013); Marcolli
+et al. (2007); Alpert and Knopf (2016)).
+In this work, we combine survival probability analysis with classical nucleation theory to quantitatively predict the effects
+of different droplet volumes (Atkinson et al. (2016)) and cooling rates (Shardt et al. (2022)). The experiments that motivated
+our study observed homogeneous nucleation in narrowly selected droplet diameters, cooled at a steady rate deep into the
+
+70
+
+metastable zone. We are inspired by the experiments to achieve the precise control of droplet diameters, but the atmospheric
+clouds will naturally have a distribution of droplet diameters (Painemal and Zuidema (2011); Igel and van den Heever (2017)).
+We demonstrate a method to extract theoretically derived nucleation rate parameters from the experimental survival probability
+data of monodispersed droplets and droplets with the distribution of diameters. We find that the dispersion of droplet sizes
+typically found in clouds, if ignored in the data analysis, can cause serious errors in the predicted slopes of nucleation rate vs
+
+75
+
+temperature. These nucleation rate slopes are known to significantly impact the prediction of cloud properties (Herbert et al.
+(2015); Spichtinger et al. (2023)). To address this, we develop a theoretical framework to predict the fraction of frozen droplets
+considering an arbitrary dispersion of droplet sizes at any specified cooling rates. We implement this framework in a Python
+code named IPA, which predicts the fraction of frozen droplets as a function of temperature using as input the distribution
+of droplet sizes and cooling rates. We expect that this model and its implementation will help improve the accuracy of cloud
+
+80
+
+microphysics predictions by accounting for the natural variability in droplet sizes and cooling rates observed in atmospheric
+conditions.
+
+2
+
+Analytical model to analyze the nucleation of monodispersed droplets
+
+The probability that a single droplet of volume V is not frozen in a given time t can be modelled using the master equation
+(Cox and Oakes (1984)).
+85
+
+dP (t|V )
+= −P (t|V ) × JV.
+dt
+
+(1)
+
+here P (t|V ) is the probability, J is the nucleation rate on a per volume per time basis, and V is the droplet volume. For nucleation rate on a per droplet per time basis, we multiply nucleation rate J by droplet volume(V). Note that J itself is independent
+
+3
+https://doi.org/10.26434/chemrxiv-2024-1vkn7-v2 ORCID: https://orcid.org/0000-0001-9502-3763 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+of droplet volume, and accordingly parameters that defines J should also be independent of volume. The temperature is constant and the rate of nucleation in each liquid droplet also remains constant in induction time measurements. On integrating
+90
+
+Eq. (1) survival probability becomes P (t|V ) = exp[−JV t]. This result has been used to analyze nucleation data in several
+crystallization studies, e.g. by plotting ln P (t|V ) vs t to estimate J and its supersaturation dependence (Alpert and Knopf
+(2016); Knopf and Alpert (2023); Stöckel et al. (2005); Kubota (2019); Sear (2014)). In contrast, in experiments where the
+supercooling increases with time, the nucleation rate in each liquid droplet also increases with time.Peters (2011) The survival
+
+probability can be obtained by integrating Eq. (1), we get
+ t
+
+Z
+95 P (t|V ) = exp − J(t)V dt ,
+
+(2)
+
+0
+
+where P is a function of time. However, the data are usually reported as a function of temperature or supercooling (Murray
+et al. (2010); Shardt et al. (2022)). Since the experiments are conducted at a specific cooling rate R (Murray et al. (2010);
+Shardt et al. (2022) ), we replace the time variable with temperature using the following relation
+T = Tm − R × t,
+100
+
+(3)
+
+where Tm is the melting temperature. After variable transformation the survival probability becomes
+
+
+ZT
+V
+P (T |V ) = exp −
+J(T ′ )dT ′ 
+R
+
+(4)
+
+Tm
+
+Eq. (4) separates protocol-specific factors (droplet diameter and cooling rate) from intrinsic properties of the nucleation kinetics
+and their dependence on temperature.
+Now, we need theoretical models or experimental data for nucleation rate to predict the survival probability. Classical nucle105
+
+ation theory gives the rate for homogeneous nucleation as (Volmer and Weber (1926); Becker and Döring (1935))
+"
+2 #
+
+16πγ 3 v02
+1
+J = A exp −
+,
+2 )k T
+3(λ2f /Tm
+Tm − T
+B
+
+(5)
+
+where A is the kinetic prefactor, γ is the interfacial free energy between the ice and water, λf is the latent heat of freezing, kB
+is the Boltzmann constant, Tm is the melting point of ice, v0 is the molar volume of ice and T is the absolute temperature.
+The nucleation rate J is a product of the equilibrium concentration of clusters of a critical size and the non-equilibrium flux
+110
+
+to post-critical sizes. Classical nucleation theory predicts prefactors and exponential terms with explicit temperature dependencies. The exponent in classical nucleation theory is interpreted as a Gibbs free energy barrier, ∆G∗ /kB T . It depends explicitly
+on both the absolute temperature and on the supercooling. To account for the temperature dependence of nucleation and the
+time-dependent temperature, we use δT = (Tm − T )/Tm as the dimensionless temperature and rewrite the expression for J as
+
+
+
+
+−B
+J = A exp
+,
+(1 − δT )δT2
+
+(6)
+
+4
+https://doi.org/10.26434/chemrxiv-2024-1vkn7-v2 ORCID: https://orcid.org/0000-0001-9502-3763 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+115
+
+here B = (16πγ 3 v02 )/(3λ2f kB Tm ) contains shape factors, physical constants, the latent heat, and interfacial free energy.
+These quantities are nearly independent of temperature for the narrow temperature range where homogeneous nucleation is
+observed in the experiments (Kashchiev (2000); Sear (2007); Koop et al. (2000)). Thus the parameter B should be a nearly
+temperature independent parameter, while the barrier ∆G∗ /kB T is strong function of temperature because of the 1/∆T 2
+factor.
+
+120
+
+The prefactor is related to the frequency at which water molecules at the ice-water interface attach to the critical nucleus and
+to the number of ice molecules that must attach to surmount the barrier. The prefactor is proportional to the self-diffusivity of
+water, and therefore it depends on temperature. However, over the small range of nucleation temperatures in this study (ca. 2K)
+we assume that the prefactor is temperature independent.
+Note that both parameters, A and also B, are assumed to be temperature independent constants over the narrow range of ice
+
+125
+
+nucleation temperatures. However, they may both differ from values that would be theoretically estimated using properties of
+ice and water at Tm . The value of the interfacial free energy when calculated from the fitted values of B is 33 mN/m at 235.5
+K, higher than the interfacial free energy reported by Ickes et al., (i.e. 29.0 mN/m). We show in section 9.2 that by assuming
+that A is independent of temperature, we transfer its temperature dependence to the effective nucleation barrier.
+
+Using Eq. (6) in Eq. (4), the survival probability becomes
+
+
+
+ ZδT
+
+
+AV
+T
+−B
+m
+130 P (δT |V ) = exp −
+exp
+dδT′  .
+R
+(1 − δT′ )δT′2
+
+(7)
+
+0
+
+To our knowledge, Eq. (7) has not been used in previous studies of ice nucleation. It isolates parameter B, a property of
+nucleation kinetics, from the dimensionless group (AV Tm /R). The latter depends on intrinsic properties of ice and water (A
+and Tm ) but also on V and R which may be experimental choices or cloud conditions. Eq. (7) is valid for water droplets of
+volume V . In most experiments, there is a distribution of volumes which leads to a distribution of droplet nucleation rates. We
+135
+
+consider a distribution of droplet sizes in section 5, but first, we demonstrate that the model can predict the effect of droplet
+volume for narrowly size-selected droplets.
+Across the range of nucleation temperatures observed in experiments (Atkinson et al. (2016); Shardt et al. (2022)) for homogeneous ice nucleation (234 K - 238 K), the factor (1 − δT ) in the rate expression is always near 0.9. Hence, the nucleation
+rate expression is approximately J = A exp(B ′ /δT2 ). Where B ′ is approximately B ′ = B/(1 − δT ) ≈ 1.1B. With this approx-
+
+140
+
+imation, we have an analytical solution for the survival probability as follows
+"√ #
+√
+
+
+!
+ ′
+πB ′
+B′
+−B ′
+A V Tm
+δT ×
+.
+ln[P (δT |V )] ≈
+erfc
+− exp
+R
+δT
+δT
+δT2
+
+(8)
+
+To illustrate the use of Eq. (7) and Eq. (8), we analyze one of the survival probability data sets (droplet diameter corresponding
+to 3.8-6.2 µm) obtained from Atkinson et al. (2016). Optimized fits of the analytical solution (Eq. (8), with A′ = 1.76 ×
+1039 cm−3 s−1 , B ′ = 1.3578) and the numerical integration (Eq. (7), with A = 8.68 × 1041 cm−3 s−1 , B = 1.2722) are shown
+145
+
+in Fig. 1. Even though the fits show excellent agreement in both analytical and numerical approaches, we note that a 10 %
+error in the exponent (from approximating 1 − δT ≈ 1.0 leads to a nearly 1000-fold error in A′ and a 10 % error in B ′ relative
+5
+
+https://doi.org/10.26434/chemrxiv-2024-1vkn7-v2 ORCID: https://orcid.org/0000-0001-9502-3763 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+7
+8
+
+Figure 1. a) Illustration of survival probability fits with analytical (red continuous line) and numerical (cyan dashed line) solutions for the
+integral in Eq. (7). The experimental data represented by the empty black circles used as a reference is from Atkinson et al. (2016). b)
+Comparison of estimated nucleation rates from experiments using survival probability data as described in Atkinson et al. (2016) (black
+circles), and the nucleation rate computed using Eq. (7) (cyan line).
+
+to A and B). We conclude that precise A and B values require careful treatment of even weak temperature dependencies
+within J. Although the prefactor and barriers are different, the predicted nucleation rates are not. For example, at 234.9 K both
+approaches give an estimate of nucleation rate to be 1.44 × 109 cm−3 s−1 .
+The noisy estimates of J in Fig. 1b have been obtained by a finite difference of the cumulative survival probability data. For
+
+150
+
+the finite difference procedure, large numbers of droplets are needed to obtain an estimate of J from the incremental nucleation
+events in each ∆T interval. As seen in Fig. 1b, there is considerable noise in the J estimates even in an experiment with
+hundreds of droplets. Our data analysis approach directly fits a model to the cumulative fraction of frozen droplets. It should
+therefore remain accurate for data sets with smaller numbers of droplets.
+
+155
+
+3
+
+A computer code for analysis of drop-freezing experiments
+
+We implemented the numerical integration in Eq. (7) and analytical model of Eq. (8) in an python code to estimate A, B and
+J from experimental drop-freezing data. The code outputs the parameters A and B from Eq. (7). These are used to compute
+the nucleation barriers ∆G, the temperature that corresponds to 50% of frozen droplets T50 , and the homogeneous nucleation
+model
+rate evaluated at T50 using Jhom
+(δT ) = Aexp(−B/[(1 − δT )δT2 ]). The AINTBAD (Analysis of Ice nucleation Temperature
+
+160
+
+for B and A Determination) code is illustrated in Fig. 2. The code is available in (https://github.com/Molinero-Group/volumedispersion), last access: 18 Mar 2024).
+
+6
+https://doi.org/10.26434/chemrxiv-2024-1vkn7-v2 ORCID: https://orcid.org/0000-0001-9502-3763 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+[
+
+[
+
+Figure 2. Flowchart of the AINTBAD (Analysis of Ice nucleation Temperature for B and A Determination) code.
+
+We use the minimize function from the scipy.optimize module in Python to optimize the difference between the target survival
+probability and the predicted one by adjusting the parameters A and B. The chosen optimization method is the Nelder-Mead
+algorithm, suitable for functions without explicit derivatives. Optional settings include a convergence tolerance of 10−4 and a
+165
+
+maximum iteration limit of 1000.
+
+4
+
+Analysis of nucleation spectrum in mono dispersed droplets
+
+Atkinson et al. (2016) monitored the freezing temperatures of narrowly size-selected droplets cooled to temperatures near 235
+K at a steady rate of 1.0 K/min. A total of 581 droplets were used in the diameter range of 3.8-18.8 µm, an average of
+96 droplets for each diameter. The range of droplet diameters in each experiment and the fraction of droplets that remain at
+170
+
+each temperature can be seen as data points in Fig. 3a. We have analyzed the data from Atkinson et al., in two ways. First,
+we separately fitted the data for each diameter range to Eq. (7). Because the range of diameters each size-selected group
+is narrow, we have assumed that all droplets in each size range are spheres with the mean diameter for that range. These
+fits (not shown) result in independent estimates of the optimized nucleation prefactor A and the barrier parameter B from
+each of the six experiments. Table 1 shows the range of droplet diameters in each experiment, the independent log10 A and
+
+175
+
+B estimates, the predicted free energy barrier β∆G = B/[(1 − δT )δT2 ] at 235.5K, and the predicted nucleation rate (from
+J = A exp[−B/((1 − δT )δT2 )] at 235.5K. The separate A and B estimates vary considerably, but they are highly correlated to
+each other. Fig. 3b shows B vs. log10 A for each of the independent estimates. When B is small (large), A is also small (large).
+The estimated parameters compensate for errors in each other such that all six data sets yield models that predict consistent
+nucleation rates. The predicted nucleation rates are shown in Table 1 for the temperature 235.5K.
+
+180
+
+The measurements of Atkinson et al., were all made in the same way, so the same fundamental nucleation rate expression
+should describe all six size selected data sets. Accordingly, we reanalyzed the data of Atkinson et al., with one global rate
+expression (J = A exp[−B/((1 − δT )δT2 )]), keeping the same A and B values across all six data sets. The nucleation rate
+parameters obtained from the global fit are A = 2.79 × 1046 (cm−3 s−1 ) and B = 1.45. Fig. 3a shows the experimental data for
+different droplet diameters along with model predictions from the global fit. We emphasize that these are six curves, accurately
+7
+
+https://doi.org/10.26434/chemrxiv-2024-1vkn7-v2 ORCID: https://orcid.org/0000-0001-9502-3763 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 3. a) Illustration of survival probability fits for homogeneous nucleation with varied droplet diameters at a cooling rate of 1 K/min.
+Open symbols represent experimental data from Atkinson et al. (2016) and continuous lines represent model predictions from a global data
+fit. Colors of symbols indicate different droplet diameters. The individual fits are not shown because the curves overlap closely with the data
+and globally fitted model predictions. b) Illustration of the correlation between the log10 A and B parameters obtained from individual fits.
+Black star indicate the ones obtained by the global fit, and other symbols correspond to estimations for different diameters of droplets.
+
+Droplet diameter (D/µm)
+
+log10 A
+
+B
+
+β∆G235.5K
+
+log10 J235.5K
+
+5.0
+
+41.9
+
+1.27
+
+77.5
+
+8.3
+
+7.5
+
+44.5
+
+1.38
+
+84.2
+
+7.9
+
+10.1
+
+45.7
+
+1.42
+
+86.7
+
+8.1
+
+12.6
+
+39.2
+
+1.18
+
+72.0
+
+7.9
+
+15.1
+
+49.8
+
+1.57
+
+95.8
+
+8.1
+
+17.6
+
+42.0
+
+1.29
+
+78.8
+
+7.8
+
+global
+46.4
+1.45
+88.5
+8.0
+Table 1. Computed nucleation rate parameters A and B for various groups of droplet diameters using the volume corresponding to the mean
+diameter of the group. D is the mean diameter of the droplets in the group in µm. β∆G is the free energy barrier for nucleation, and J is
+nucleation rate computed using fit parameters in Eq. (6). Estimations of β∆G and J are corresponding to a temperature of 235.5 K.
+
+185
+
+fitted with just two free parameters, and that both parameters have a clear physical and theoretical interpretation. However, we
+note that the theoretical relationship between B and β∆G reflects only the reversible work to create a nucleus at equilibrium,
+but the parameter B as obtained from experimental data also reflects activation energy contributions from the prefactor. See
+Section 9.2 for more explanation about this point. Indeed, using the expression B = (16πγ 3 v02 )/(3λ2f kB Tm ) and the global fit
+B = 1.45 in Table 1 results in γ = 33 mJ/m2 at 235.5 K, which is above the median value of the ice-liquid surface tension in the
+
+190
+
+literature Ickes et al. (2015).
+
+8
+https://doi.org/10.26434/chemrxiv-2024-1vkn7-v2 ORCID: https://orcid.org/0000-0001-9502-3763 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+At a temperature of 235.5 K, the global fit yields a prediction J = 108 cm−3 s−1 for the nucleation rate, consistent with
+predictions from the independent fits. The free energy barrier at 235.5K from the global fit is 88.5 kB T . This is again similar
+to those obtained from fits to the individual size-selected data sets (Table 1).
+Although the rate predictions show remarkable internal consistency, the inferred barriers are scattered and larger than bar195
+
+riers which have been inferred from other data sets (Murray et al. (2010); Shardt et al. (2022); Riechers et al. (2013)). The
+discrepancy may be a consequence of theoretically unaccounted for temperature dependencies within the pre-factor. Note that
+the data sets in cyan and pink Fig. 3a actually cross over each other. The crossover indicates that small droplets are nucleating
+at warmer temperatures than the larger droplets, which should not occur according to nucleation theory. These two anomalous
+curves correspond to the two most extreme estimates of A and B (upper right and lower left in Fig. 3b). Thus scatter in the A
+
+200
+
+and B parameters, seems to be a true reflection of experiment-to-experiment variation.
+Section 5 explores how size dispersity, i.e. the distribution of droplet sizes around the mean diameter, influences the inferred
+rate parameters. Section 6 examines whether diameter dispersity within the narrow, but non-zero diameter-ranges of Atkinson
+et al., may still affect the inferred rate parameters.
+
+5
+205
+
+Droplets with distribution of volume
+
+Experiments that report on droplet diameter dispersity (Murray et al. (2010); Shardt et al. (2022); Ando et al. (2018)) consistently report a broader range of diameters than the droplets of Atkinson et al. (2016). This section develops a superposition
+formula to predict the survival probability for experiments with a broad distribution of droplet diameters. We use the term
+superposition for a data analysis that retains the stratification in freezing temperature, but otherwise pools droplets together
+regardless of their size. As seen from Fig. 3 and as predicted in Eq. (7) large droplets in a broad distribution will nucleate early
+
+210
+
+(at milder supercoolings), while small droplets will survive to deeper supercoolings. If all temperature dependence comes from
+the free energy barrier B/[(1 − δT )δT2 ], then large droplets that nucleate at milder supercoolings will also nucleate with higher
+free energy barriers.
+The steep sigmoidal survival probabilities for droplets of a specific size, when superimposed, result in a more gradual
+sigmoid. The gradual sigmoid looks deceptively like the theoretical prediction in Eq. (7), but with artificially reduced barrier B
+
+215
+
+and prefactor A parameters. The analysis here shows how a distribution of droplet diameters broadens the nucleation spectrum,
+decreasing the inferred nucleation rate barrier.
+The joint survival probability distribution with volume and temperature variables is given by
+P (V, δT ) = ρ(V ) × P (δT |V ),
+
+(9)
+
+where ρ(V ) is the normalized distribution of droplet volumes and P (δT |V ) is the survival probability for droplets of a specific
+220
+
+volume, i.e. Eq. (7). The survival probability in time/temperature is obtained by integrating over droplet volumes in the joint
+
+9
+https://doi.org/10.26434/chemrxiv-2024-1vkn7-v2 ORCID: https://orcid.org/0000-0001-9502-3763 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+6.81 x 1031
+0.91
+
+Figure 4. Illustrating the effects of the distribution of droplet diameter on survival probabilities. Open symbols are the experimental survival
+probabilities for different groups of size-selected droplets from Ref. Atkinson et al. (2016). The continuous black line is the superposition
+survival probability of Eq. (10) from the same kinetics and for a distribution droplets from 3.8-18.8 µm.
+
+distribution.
+Z∞
+P (δT ) = P (V, δT )dV.
+
+(10)
+
+0
+
+Here we provide an example calculation to illustrate the effects of a broad droplet volume distribution. Let the normalized
+(gamma-type) distribution of droplet sizes be ρ(V ) = 8V0−2 V exp(−2V /V0 ). Here V0 is the mean volume of the entire range
+225
+
+of droplets. Let the survival probability for droplets of any specific diameter be given by P (δT |V ) in Eq. (7), with the global fit
+values of A and B, as reported in Table 1. The survival probability for the distribution of droplet volumes can then be obtained
+using Equations 9 and 10.
+We let V0 = 1057.1µm3 in ρ(V ) to obtain a distribution with droplets of diameter between 3.0 µm and 20 µm. Note that the
+model volume distribution spans the range of sizes in the experiments of Atkinson et al. Fig. 4, shows the gradually decreasing
+
+230
+
+survival probability from the superposition as a black solid curve with more steeply changing diameter-selected P (δT |V ) data
+in the background.
+If we were unaware of the droplet polydispersity or did not account for it, we might interpret the black curve in Fig. 4,
+using a survival probability analysis with nucleation theory for droplets correspond to the mean diameter d, the volume is
+computed assuming spherical droplets i.e. V0 = (πd3 /6), thus variations in diameter directly translate to changes in volume.
+
+235
+
+To illustrate how droplet diameter dispersity influences the inferred nucleation rate parameters, we re-optimized A and B now
+to minimize the residuals between the dispersity superposition result in P (δT ) and the naive specific-volume model P (δT |V0 ).
+The resulting A and B values are 6.81 × 1031 cm−3 s−1 and 0.91 respectively. The inferred prefactor (Aapparent ) is 15 orders of
+magnitude smaller than that from the global fit of the sets with narrow volume distribution, and the inferred barrier parameter
+(Bapparent ) has been reduced by nearly 40%. Moreover, the inferred free energy barrier at 235.5 K is now estimated to be
+
+240
+
+β∆G = 55.7 kB T , relative to a value of 88.5 kB T based on the global fit values to the diameter selected droplet data. The
+
+10
+https://doi.org/10.26434/chemrxiv-2024-1vkn7-v2 ORCID: https://orcid.org/0000-0001-9502-3763 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+calculation illustrates how a failure to account for diameter-dispersity causes a spurious broadening of the nucleation spectrum
+and reduction in the inferred prefactor A, barrier parameter B, and free energy barriers.
+Once we know the variation in droplet diameters, resultant survival probabilities can easily be computed with the help of
+the python code presented in Section 9 and available in GitHub (https://github.com/Molinero-Group/volume-dispersion). Here
+245
+
+variation refers to the overall differences in droplet sizes within a sample, encompassing any deviation from the average droplet
+diameter. The inputs needed for the program are the proposed distribution of droplet diameters (Gaussian, uniform, gamma,
+etc.) and the variation of nucleation rate with temperature (see Section 9.1). The output from the code is the effective survival
+probability.
+
+6
+250
+
+How narrow should a droplet distribution be to safely assume a single volume?
+
+First, we ask whether the range of droplet diameters in each experiment by Atkinson et al., each spanning a few µm, is already
+broad enough to adversely impact the inferred nucleation parameters. We have considered two test cases for the analysis. One
+with a midpoint of each reported diameter range as the diameter of all droplets in that group (as shown in the vertical axis of
+Fig. 5), and the second with a uniform distribution of droplet volumes over the corresponding diameter ranges (as shown in
+the horizontal axis of Fig. 5). If the range of sizes are sufficiently narrow relative to the mean, then the A and B parameters
+
+255
+
+resulting from a fit to the superposition become identical to those from monodisperse droplets of the mean size. Fig.6 shows
+that relative width of the volume distribution is sufficient to predict the superposition error. Specifically, for less than 1% error
+in B (Bapparent /Bactual > 0.99) we must have ∆V /V < 0.25. The parity plots for the two values of A and B are presented in
+Fig. 5. As all the data points are close to the x=y line, we conclude that the droplet diameter ranges in Atkinson et al., are
+sufficiently narrow to ignore diameter dispersion when inferring the nucleation kinetics.
+
+Figure 5. Parity plots showing how droplet diameter dispersion influences the inferred A and B parameters. Symbols are inferred A and B
+parameters with a sharp monodisperse droplet distribution (delta function) corresponding to mean diameter of droplets (mid) as shown in the
+cartoon on the vertical axis and with a uniform distribution of droplets (uniform) as shown in the cartoon on the horizontal axis. Acombined is
+the prefactor estimated using global fit. Intervals and midpoints in V correspond to diameter-window of Atkinson et al. The black dashed
+lines represent x = y lines (parity).
+
+11
+https://doi.org/10.26434/chemrxiv-2024-1vkn7-v2 ORCID: https://orcid.org/0000-0001-9502-3763 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 6. When droplet diameter dispersity is ignored, the inferred Bapparent relative to Bactual depends on uniform spread in volume ∆V
+relative to the mean volume V̄ . ∆V is the width of a uniform distribution of droplet volumes according to the uniform distribution. Symbols
+of the same color correspond to different widths of uniform distribution and different colors correspond to different mean volume of the
+droplets. Bactual is the predicted B with monodisperse droplets and Bapparent is the computed B with dispersity in droplet volume.
+
+Fig. 6 shows the ratio between the apparent B parameter from superposition of survival probabilities of droplets with
+
+260
+
+volumes V ± ∆V and the true B parameter. The analysis shows that the groups with 2µm variation in diameter resulted in
+the same nucleation rate parameters with approximately less than 1% variation in estimated free energy barriers. Our analysis
+in Fig. 6 quantifies the effect of dispersion of droplets in the experiments on predicted B parameters, assuming droplets have
+uniform distribution. Given ∆V /V and B values from an analysis that imposes volume dispersity, Fig. 6 can be used to estimate
+265
+
+the true value of B. The analysis shows that to obtain B within 1% of the correct value, the volume dispersity should be no
+more than 25% of the mean volume.
+
+7
+
+Effect of cooling rate on nucleation parameters
+
+The combined survival probability and nucleation theory expression, as shown in Eq. (7), also predicts that the cooling rate will
+impact the nucleation spectrum. In this section, we analyze data from Shardt et al. (2022), whose experiments are performed
+270
+
+at two different cooling rates (0.1 K/min and 1.0 K/min) with diameter selected droplets of 75 µm and 100 µm. Shardt
+et al. report the uncertainty in the droplet diameters to be 5 µm. We model their droplet diameter distribution using a Gaussian
+with a mean of 75 (or 100) µm and a standard deviation of 5 µm. We have analyzed the survival probability data across
+the two droplet diameters and two cooling rates with one global fit. The global fit to the survival probability data across the
+cooling rates and droplet diameters are shown in Fig. 7. The computed nucleation rate parameters from the global fit are
+
+275
+
+A = 5.72 × 1028 cm−3 s−1 and B = 0.81. The predictions of free energy barriers across the cooling rates and droplet diameters
+are presented in Table 2.
+
+12
+https://doi.org/10.26434/chemrxiv-2024-1vkn7-v2 ORCID: https://orcid.org/0000-0001-9502-3763 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+75 μm, 1.0 K/min
+100 μm, 1.0 K/min
+75 μm, 0.1 K/min
+100 μm, 0.1 K/min
+
+Figure 7. Survival probability fits for homogeneous nucleation data with different droplet diameters and cooling rates. Open circles represent
+experimental data from Shardt et al. (2022) and the solid lines represent model predictions.
+
+Diameter (µm)
+
+R (K/min)
+
+β∆G
+
+T50 /K
+
+100
+
+0.1
+
+57.3
+
+238.4
+
+100
+
+1.0
+
+55.3
+
+237.7
+
+75
+
+0.1
+
+56.4
+
+238.1
+
+75
+1.0
+54.1
+237.3
+Table 2. The computed free energy barriers for various droplet diameters across the cooling rates. T50 is the temperature corresponding to
+survival probability of 0.5.
+
+The predictions of B have a similar order of magnitude but are approximately 25% lower when compared to other estimates
+(Riechers et al. (2013)). We suspect the variation may stem from the difficulties in measuring the precise temperatures of
+the droplets (Shardt et al. (2022); Tarn et al. (2020); Atkinson et al. (2016)). We also note the computed nucleation rate
+280
+
+parameters A and B from Shardt et al., are lower than those from the study of Atkinson et al.. The difference may be due
+to the uncertainty in droplet temperature measurements, however the two experiments report similar uncertainties in droplet
+temperatures. Specifically, experiments by Shardt et al. indicated the uncertainty in temperature measurements to be ±0.2K,
+and experiments by Atkinson et al. reports ±0.3K.
+
+8
+285
+
+Comparing homogeneous nucleation rate parametrizations
+
+Fig. 8 shows the comparison for the homogeneous nucleation rates using experimental data from Shardt et al. (2022) (blue
+diamonds) and Atkinson et al. (2016) (green squares). Continuous lines indicate different parametrizations: the fit using the
+model
+AINTBAD code Jhom
+(T ), where A = 2.79 × 1046 cm−3 s−1 and B = 1.45 for the temperature range of 234.8 to 236.8 K,
+
+and A = 5.72 × 1028 cm−3 s−1 and B = 0.81 for 237.0 to 239.1 K (red continuous lines), the parametrization proposed by
+equation
+fitting multiple experimental data Jhom
+(T ) = exp[−3.9126T + 939.916] Atkinson et al. (2016) (cyan line), as well as the
+
+290
+
+parametrizations based on classical nucleation theory (CNT) from Qiu et al. (2019) (black line) and from Koop and Murray
+
+13
+https://doi.org/10.26434/chemrxiv-2024-1vkn7-v2 ORCID: https://orcid.org/0000-0001-9502-3763 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+model
+(2016) (magenta line). In a small temperature range, Jhom
+(T ) captures well the experimental data points. The proposed
+model
+model, Jhom
+(T ), which works well for micrometer-sized droplets at lower temperatures, may have limitations in accurately
+model
+capturing the complex nucleation processes occurring in larger droplets at higher temperatures. Thus, Jhom
+(T ) can be used
+
+only to predict the homogeneous nucleation rate in the temperature range of the input data used to fit the model.
+
+Figure 8. a) Comparison of the nucleation rate vs. temperature from experiments of Shardt et al. (2022) (blue diamonds) and Atkinson
+et al. (2016) (green squares); empirical model proposed by Atkinson et al. (2016) (cyan continuous line); global fit A and B in model
+J = Aexp[−B/((1 − δT )δT2 )] fitted to Atkinson et al. (2016) and Shardt et al. (2022) (red continuous lines); and the CNT parametrizations
+from Qiu et al. (2019) (black dashed line) and Koop and Murray (2016) (magenta continuous line). The temperature axis extends to 245 K,
+the upper plausible limit of homogeneous nucleation temperatures as defined in Herbert et al. (2015). Panel b) shows the nucleation rate in
+the region from 235 to 240 K only.
+
+All parameterizations predict nucleation rates within an order-of-magnitude of each other and with experiments for temper-
+
+295
+
+atures between 235 K and 240 K. However, there is a small gap in the data near 237 K. Fig. 8 suggests a slight disagreement
+between experimental rates at temperatures below 237 K and those above 237 K. Models for ice nucleation in cloud droplets
+require nucleation rates that remain accurate over a broad range of temperatures and droplet diameters. Although it is not
+possible to discriminate between models based on the currently available data, physics-based models should help to build
+300
+
+parameterizations that are internally consistent and valid over a broad temperature range.
+
+9
+
+A computer code to predict the survival probability using any droplet diameter distribution and cooling rate
+
+We developed a versatile code capable of taking various parametrizations for the homogeneous nucleation rate Jhom (T ),
+the droplet diameter distributions (Gaussian, Gamma, uniform, exponential, etc.), and cooling rates to compute the survival
+probability or fraction of frozen droplets. The code IPA (Inhomogeneous Poisson Analysis) is illustrated in Fig. 9. We use the
+
+14
+https://doi.org/10.26434/chemrxiv-2024-1vkn7-v2 ORCID: https://orcid.org/0000-0001-9502-3763 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+305
+
+nucleation rate data vs temperature as the input to compute the survival probability using the following equation
+
+
+
+ ZδT
+V
+T
+m
+P (δT |V ) = exp −
+J(δT′ )dδT′  .
+R
+
+(11)
+
+0
+
+Eq. (11) is general representation for any given J, i.e. it is a version of Eq. (7) that can be used with other nucleation rate
+models. We evaluate the integral numerically using the trapezoidal rule. Even though Eq. (11) is strictly valid only for a given
+constant volume of the droplets, we can use Eq. (11) in combination with Eq. (10) to account for the distribution of diameters.
+310
+
+model
+Our code includes diverse nucleation rate variations with temperature, including the local parametrization Jhom
+(T ) discussed
+
+in the preceding section, the CNT parametrization from sources like Qiu et al. (2019) and Koop and Murray (2016), and the
+empirical parametrization from Atkinson et al. (2016). Additionally, users can integrate any other parametrization into the
+code. The code is publicly accessible at (https://github.com/Molinero-Group/volume-dispersion), last access: 18 Mar 2024).
+
+droplet sizes
+
+(11)
+
+Figure 9. Flowchart of the IPA (Inhomogeneous Poisson Analysis) code to obtain the survival probability of water droplets as a function of
+temperature for any distribution of droplet diameters, cooling rate, and homogeneous nucleation rate parametrization.
+
+9.1
+315
+
+Survival probability predictions for cloud data using CNT parametrization
+
+CN T
+To extend Jhom (T ) to higher temperatures, and predict freezing for any diameter distribution, we use Jhom
+(T ) based on
+
+classical nucleation theory (CNT) parametrization of experimental properties of water as previously described in Qiu et al.
+(2017, 2019). According to CNT, the rate of nucleation is given by
+
+
+−∆Ghom
+J(T ) = A(T ) exp
+,
+kB T
+
+(12)
+
+where T is the absolute temperature, kB is the Boltzmann constant, A(T ) is the prefactor, and ∆Ghom is the free energy
+320
+
+barrier associated with the formation of a critical ice nucleus. The temperature dependence of the prefactor follows the one
+of the diffusion coefficient of liquid water using the Vogel–Fulcher–Tammann (VFT) model and was obtained from Koop and
+Murray (2016). The free energy barrier is formulated as
+∆Ghom =
+
+3
+16πγice−liq
+,
+3ρ2 ∆µ2
+
+(13)
+15
+
+https://doi.org/10.26434/chemrxiv-2024-1vkn7-v2 ORCID: https://orcid.org/0000-0001-9502-3763 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+where ∆µ(T ) is the excess chemical potential of the liquid with respect to the crystal, ρ is the density of the crystal,
+325
+
+and γice−liq is the surface tension of the ice-liquid interface. We follow the procedure developed by Qiu et al. (2019) to
+compute the homogeneous nucleation rate Jhom (T ) as a function of experimental properties of water and ice. In summary, the temperature dependence of the free energy barriers is computed with Eq. (13). The ice-liquid surface tension
+at the melting point was selected to match the γice−liq (Tm ) = 31.20 mJm−2 to match Jhom at Thom = 238K for µL
+droplets cooled at 1 K/min following the experimental data of Atkinson et al. (2016) and Riechers et al. (2013). We ap-
+
+330
+
+proximate the temperature dependence of the ice-liquid surface tension γice−liq (T ) by Turnbull’s relation Turnbull (2004)
+where γice−liq (T )/γice−liq (Tm ) = ∆Hm (T )/∆Hm (Tm ). This parametrization was previously used in Qiu et al. (2019) to
+study heterogeneous ice nucleation.
+Utilizing the CNT parametrization from Qiu et al. (2019) as an input, we integrate it with diverse droplet diameter distributions and cooling rates. The distribution of water droplets in clouds has been examined through the gamma distribution
+
+335
+
+function (Liu et al. (1995); Painemal and Zuidema (2011); Igel and van den Heever (2017)). In Fig. 10a, we showcase how
+different gamma diameter distributions, manipulated by altering the shape parameter as suggested in Igel and van den Heever
+(2017), impact droplet diameters. Note that we did not fit a distribution to the data but assume a distribution based on known
+properties of droplet sizes in clouds. Additionally, Fig. 10b illustrates the survival probability computed via the IPA code using
+a fixed cooling rate, qc =1 K/min that is typical in clouds Shardt et al. (2022). Notably, the inset reveals a correlation between
+
+340
+
+the shape parameter and freezing temperature. We also include the survival probability for monodisperse droplets, using the
+most likely diameter from the distributions. Importantly, when the diameter distribution is broader, it has a significant impact
+on the freezing temperatures.
+Typical rates of cooling rates in clouds span from ∼ 0.01 to 1 K/min (Stephens (1978); Kärcher and Seifert (2016); Shardt
+et al. (2022)). Furthermore, Fig. 10c shows that by each tenfold increase in the cooling rate decreases T50 by approximately
+
+345
+
+0.5 K, supporting that an explicitly account of the cooling rate is important in the modeling of ice nucleation. These analyses
+indicate that explicit account of the cooling rate and droplet size distribution are important for accurate modeling of cloud
+micro-physical properties.
+9.2
+
+B as obtained from experiment reflects both diffusion and nucleation barriers
+
+Each of the two data sets, Fig. 3 from Atkinson et al.. and Fig. 7 from Shardt et al., follow the theoretically predicted trends
+350
+
+in cooling rate and droplet size dependence. When compared to each other, the larger droplets of Shardt et al., as expected,
+nucleate at higher temperatures than those of Atkinson et al. Therefore, there is no discrepancy between theoretical expectations
+and the directly monitored nucleation temperatures. However, the estimated Gibbs free energy barriers from the data of Shardt
+et al. are smaller than those estimated from the data of Atkinson et al. If ∆G∗ /kB T = B/(T ∗∆T 2 ) with constant B, then ∆G∗
+should be larger for the droplets of Shardt et al. which nucleate at higher temperatures. We have shown that size dispersion
+
+355
+
+causes an underestimation of the B and A parameters. As detailed in section 10, noise in the temperature measurements can
+also broaden the distribution of nucleation temperatures, causing a similar underestimation of B, A, and ∆G∗ . However,
+
+16
+https://doi.org/10.26434/chemrxiv-2024-1vkn7-v2 ORCID: https://orcid.org/0000-0001-9502-3763 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 10. We use the CNT parametrization from Qiu et al. (2019) as an input, and we integrate it with diverse droplet diameter distributions
+and cooling rates. a) We employ a gamma distribution characterized by different shape parameters as used in Igel and van den Heever, where
+the most likely diameter is indicated for shape parameters 2 and 14. b) The survival probability predictions for the distributions shown in a)
+and cooling rates qc = 1 K/min. The dashed lines represent the survival probability considering the case of droplets with a single diameter
+with the same values as the most likely values in a). The inset shows the temperature corresponding to a survival probability of 0.5 using the
+droplet diameter distribution with different shape parameters, with horizontal dotted lines indicating the results using monodisperse droplets.
+c) The survival probability predictions using the same droplet diameter distribution but with varying cooling rate.
+
+uncertainty in droplet temperatures cannot explain why the ∆G∗ obtained from Shardt et al. are smaller, as that data set has
+lower uncertainty (±0.2K) than the data set from Atkinson et al. (±0.3K).
+Alternatively, larger nucleation barriers at the lower temperatures (larger supercoolings) may result from combined effects
+360
+
+of the nucleation barrier (estimated with the AINTBAD code) and diffusion barriers within the prefactor (not yet considered).
+We analyze this possibility by first predicting the survival probability of liquid droplets upon cooling for a proposed narrow
+CN T
+distribution of droplet volumes using the IPA code with a cooling rate of 1 K/min and the Jhom
+(T ) CNT parametrization from
+
+Qiu et al. (2019) (Fig. 11b and Fig. 11c) and then analyzing these synthetic survival probabilities with the IPA code to extract
+the effective barrier from the B parameter. Fig. 11a shows that the values of ∆G at T50 obtained from the AINTBAD code
+365
+
+align closely with the sum of free energy barriers for diffusion and homogeneous nucleation of the CNT parametrization of Qiu
+et al. (2019). This suggests that the high effective barriers for the smaller droplets may originate on a steeply increasing barrier
+for diffusion. Such an increase is not represented in the parametrization of Qiu et al. (2019) or in Koop (Koop and Murray
+(2016)), which model the temperature dependence of the diffusion using the Volger-Fulcher-Tamman (VFT) equation with T0
+= 148 K, while recent experiments support a steeper decrease in the self-diffusion coefficient D(T ) of water as it approaches
+
+370
+
+its maximum in isobaric heat capacity at 229 K (Pathak et al. (2021)). We interpret that the increase steepness of D(T ) on
+approaching the temperature of maximum heat capacity could be responsible for the larger apparent barrier obtained from the
+AINTBAD fits to the experimental data. Our finding support a reassessment of the temperature dependence of the prefactor in
+the parameterizations of the homogeneous ice nucleation rates based on the most current experimental data.
+
+17
+https://doi.org/10.26434/chemrxiv-2024-1vkn7-v2 ORCID: https://orcid.org/0000-0001-9502-3763 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 11. a) Comparison between the nucleation barriers computed using the CNT parametrization from Qiu et al. (2019) and the predicted
+one from the model. b) Distribution of droplet diameters, c) survival probability prediction using the IPA code and the CNT parametrization
+from Qiu et al. (2019) (blue circles) and the fit using the AINTBAD code (black dashed line). The narrow distribution essentially behaves as
+a delta distribution.
+
+10
+375
+
+Impact of temperature uncertainty on the apparent nucleation barriers
+
+Another important factor that has a significant effect on the measured nucleation spectrum is the measurement of droplet
+temperature. The estimations of the droplet temperatures in freezing experiments show large variability (Tarn et al. (2020);
+Shardt et al. (2022)). The highest level of accuracy in the temperature measurements is ±0.2K (Shardt et al. (2022)).
+In this section, we conduct a sensitivity analysis using our model to quantify the impact of temperature measurement
+uncertainty on estimated free energy barriers. To perform this analysis, we utilized data from frozen 75 µm droplets, as
+
+380
+
+presented in Shardt et al. (2022), which were collected at a cooling rate of 0.1 K/min. Through the HUB-backward code
+from de Almeida Ribeiro et al. (2023), we determined the optimized differential spectra denoted as nm (T ) based on the
+frozen fraction (represented by the red continuous line in Fig. 12a). The resulting parameters derived from this analysis were
+Tmode = 238.2K and s = 0.33, where Tmode represents the most probable freezing temperature within the distribution, and s
+characterizes the distribution’s spread. Subsequently, we employed the original distribution (red continuous line in Fig. 12b)
+
+385
+
+to generate random temperature values, augmenting them with random values drawn from a uniform distribution within the
+range of -0.4 to +0.4 K (or -0.2 to 0.2 K). These additional values introduce noise into the data. We sampled a total of 100
+temperature values, equivalent to simulating the behavior of 100 droplets in an experimental setup.
+The resulting differential freezing spectra are illustrated by the blue squares and green triangles in Fig. 12b. For each case,
+we calculated the survival probability and fitted the data using Eq. (7), resulting in the continuous lines depicted in Fig. 12c.
+
+390
+
+The effects of temperature variation on the nucleation spectrum are summarized in Table 3. We conclude that measurements
+with ±0.2K and ±0.4K variations, resulted in 8% and 14% variation in the computed free energy barriers, respectively. Even
+though the predictions of free energy barriers show a strong dependence on the uncertainty in temperature measurements, the
+
+18
+https://doi.org/10.26434/chemrxiv-2024-1vkn7-v2 ORCID: https://orcid.org/0000-0001-9502-3763 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+a)
+
+HUB-backward fit
+
+b)
+
+original
+distribution
+
+100 droplets
+(±0.4K noise)
+
+c)
+
+100 droplets
+(±0.2K noise)
+100 droplets
+(no noise)
+
+Shardt et al. 2022
+
+Figure 12. Illustration of the effect of temperature uncertainty on the nucleation spectrum. a) We use the HUB-backward code,
+(de Almeida Ribeiro et al. (2023)) to find the best fit (continuous red line) of the experimental data Shardt et al. (2022) (black circles). b)
+The continuous red line shows the optimized differential spectra denoted as nm (T ), with resulting parameters Tmode = 238.2K and s = 0.33,
+where Tmode represents the most probable freezing temperature within the distribution, and s characterizes the distribution’s spread. We use
+the red continuous line as the original distribution to generate 100 temperature values (orange circles). Random noise is introduced in the
+temperature (±0.4 K shown in blue squares, ±0.2 K shown in green triangles). c) The survival probability fit (continuous lines) of the artificially generated data based on Eq. (8).
+
+nucleation rates are insensitive as shown in Table 3. However, the noise in the predicted rate data increases with the noise in
+temperature measurements.
+
+Noise (K)
+
+B
+
+β∆G
+
+log10 (J238.2K )
+
+0.0
+
+0.97 ±0.05
+
+67.0 ±3.0
+
+5.06 ± 0.03
+
+0.2
+
+0.89 ±0.06
+
+62.0 ±4.0
+
+5.01 ± 0.04
+
+0.4
+0.83 ± 0.03 58.0 ±2.0
+5.05 ± 0.07
+Table 3. The computed free energy barriers and nucleation rates for various uncertainties in the temperature measurements. Mean and
+standard deviation of B and β∆G are computed from 5 different estimates. We consider T50 to be 238.2K for all the cases presented in this
+table.
+
+395
+
+11
+
+Conclusions
+
+Homogeneous ice nucleation is the predominant mechanism of glaciation in cirrus and other high-altitude clouds, making
+the accurate representation of cloud microphysics highly dependent on the homogeneous nucleation rates. It has been shown
+that the predictions of cloud models are sensitive to the rate of cooling and variations in the slope of the nucleation rate with
+temperature (Herbert et al. (2015)). In this study, we demonstrate that cooling rate and dispersion in droplet diameters can
+
+19
+https://doi.org/10.26434/chemrxiv-2024-1vkn7-v2 ORCID: https://orcid.org/0000-0001-9502-3763 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 13. Diagram illustrating the usage of the AINTBAD and IPA codes.
+
+400
+
+lead to substantial changes in the freezing temperature of droplets, stressing the need to incorporate these variations into cloud
+models.
+Homogeneous nucleation rates can be obtained from experiments that record the freezing temperature as pure water droplets
+are gradually cooled to temperatures far below 00 C. Prior studies analyzed these experiments using Poisson statistics to infer
+rates at different temperatures, and then fitted the rate vs temperature data to empirical or theoretical rate expressions. Here
+
+405
+
+we directly analyze the fraction of frozen droplets vs temperature data to estimate rate parameters within a stochastic survival
+probability framework. We implement our approach in a Python code, AINTBAD (Fig. 13) that extracts the prefactor A and
+barrier B parameters according to a classical nucleation theory (CNT)-type rate expression. An advantage of our method is
+that it does not require large number of droplets to estimate accurate nucleation rates at each temperature. Although AINTBAD
+does not directly use nucleation rates in the optimization, it yields accurate estimates of the nucleation rate and avoids the noise
+
+410
+
+associated with numerical differentiation.
+We applied the AINTBAD code to analyze the homogeneous nucleation data obtained from two different studies: Atkinson
+et al. (2016); Shardt et al. (2022). We first used the new framework to extract parameters and rate expressions from experiments
+
+20
+https://doi.org/10.26434/chemrxiv-2024-1vkn7-v2 ORCID: https://orcid.org/0000-0001-9502-3763 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+on six groups of diameter selected droplets, from 5.0 ± 1.2µm to 17.5 ± 1.2µm. The analysis gave similar prefactors, barriers
+and rates across all six experiments. We further showed that all six experiments can be fitted with just two parameters from
+415
+
+one global parametrization. The results of Shardt et al. including four experiments with two droplet sizes and two cooling rates
+were similarly fitted with a single pair of A and B values.
+We derived a superposition formula to predict how a distribution of droplet sizes causes a broadening in the distribution
+of nucleation temperatures. The broadening causes the AINTBAD analysis to underestimate the B parameter relative to that
+obtained from monodisperse droplets of the same mean size. For example, pooling droplets with a broad range of diameters
+
+420
+
+from 4 to 19 micrometers significantly reduces the slope in the fraction of frozen droplets with temperature and leads to a
+∼40% reduction of the inferred barrier. The erroneous parameterization would result in large errors for glaciation rates in
+cloud microphysics models. Accurate parameterizations can be obtained from experiments like those of Atkinson et al. (2016);
+Shardt et al. (2022), in which the droplet size distributions are sufficiently narrow to yield parameters that are indistinguishable
+from perfectly monodisperse droplets.
+
+425
+
+Our analysis suggest that the barrier obtained with AINTBAD is the sum of the nucleation and diffusion barriers. As the
+nucleation barriers decrease monotonously with temperature, we infer that the increase in overall barrier for nucleation at
+235.5 K originates in a steeper temperature dependence of the diffusion coefficient of water D that controls the temperature
+dependence of the prefactor. Our interpretation is consistent with the steep decrease in D(T ) unveiled by experiments on
+water approaching the maximum in isobaric heat capacity at 229 K (Pathak et al. (2021)), and calls for a reassessment of the
+
+430
+
+representation of D(T ) in CNT parametrizations of ice nucleation rates.
+While laboratory experiments strive to study nucleation in the narrowest possible distribution of droplet sizes to avoid
+spurious impacts on the parametrization of nucleation rates, clouds can have a relatively broad distribution of size of water
+droplets. We develop the Python code IPA to predict the nucleation spectrum for any given distribution of droplet diameters at
+any cooling rate. IPA uses as input the distribution of droplet diameters and a parametrization of nucleation rate J(T ) from the
+
+435
+
+literature (Fig. 13). IPA includes various previously reported parameterizations and can be extended to use others introduced
+by the users. We have demonstrated the application of IPA in predicting the impact of droplet diameter distributions typical of
+clouds on the evolution of the fraction of frozen droplets with temperature. By integrating the cooling rate and size dependence
+into the ice nucleation rates, the results and tools provided in this study could be used to improve and test approximations made
+in cloud models.
+
+440
+
+We restrict our discussion in this article to homogeneous nucleation, but it might be possible to develop similar methods for
+analysis of heterogeneous nucleation data. A key challenge is that pure water droplets vary only in volume, while heterogeneous
+nucleation sites may vary in surface chemistry, pore geometry, and size (area) of the active region. These differences lead to
+sites with different barriers and also different prefactors. Except for special cases of highly regular surfaces, the estimated A
+and B parameters will then reflect a superposition of survival probabilities from many different types of sites. To illustrate this
+
+445
+
+point, we analyze the data of fraction of ice vs temperature for ice nucleation by Kaolinite from Zhang and Maeda (2022) using
+the AINTBAD code. The estimated barrier at T50 = 267.2 K is approximately 2 kB T (Supp. Fig. S1), a low value indicative of a
+
+21
+https://doi.org/10.26434/chemrxiv-2024-1vkn7-v2 ORCID: https://orcid.org/0000-0001-9502-3763 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+superposition with nucleation sites of many different barriers. Further developments are needed to disentangle the contributions
+of different sites in heterogeneous nucleation of ice.
+
+Code availability. The codes and data that support the findings of this study are available in the github repository https://github.com/Molinero450
+
+Group/volume-dispersion
+
+Author contributions. RKRA, IdAR, VM, and BP designed the project and prepared the manuscript. RKRA, IdAR, and BP developed the
+models and performed the analysis.
+
+Competing interests. The contact author has declared that none of the authors has any competing interests
+
+Acknowledgements. We thank Geoffrey Poon, Max Flattery, and Conrad Morris for helpful discussions. This work was supported by the Air
+455
+
+Force Office of Scientific Research through MURI Award FA9550-20-1-0351.
+
+22
+https://doi.org/10.26434/chemrxiv-2024-1vkn7-v2 ORCID: https://orcid.org/0000-0001-9502-3763 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+References
+Alpert, P. A. and Knopf, D. A.: Analysis of isothermal and cooling-rate-dependent immersion freezing by a unifying stochastic ice nucleation
+model, Atmos. Chem. Phys., 16, 2083–2107, 2016.
+Ando, K., Arakawa, M., and Terasaki, A.: Freezing of micrometer-sized liquid droplets of pure water evaporatively cooled in a vacuum,
+460
+
+Phys. Chem. Chem. Phys., 20, 28 435–28 444, 2018.
+Atkinson, J. D., Murray, B. J., and O’Sullivan, D.: Rate of Homogenous Nucleation of Ice in Supercooled Water, J. Phys. Chem. A, 120,
+6513–6520, 2016.
+Barrett, A. I., Westbrook, C. D., Nicol, J. C., and Stein, T. H. M.: Rapid ice aggregation process revealed through triple-wavelength Doppler
+spectrum radar analysis, Atmos. Chem. Phys., 19, 5753–5769, 2019.
+
+465
+
+Becker, R. and Döring, W.: Kinetische Behandlung der Keimbildung in übersättigten Dämpfen, Annalen der Physik, 416, 719–752, 1935.
+Cox, D. and Oakes, D.: Analysis of Survival Data, Chapman & Hall/CRC Monographs on Statistics & Applied Probability, Taylor & Francis,
+https://books.google.com/books?id=Y4pdM2soP4IC, 1984.
+de Almeida Ribeiro, I., Meister, K., and Molinero, V.: HUB: a method to model and extract the distribution of ice nucleation temperatures
+from drop-freezing experiments, Atmospheric Chemistry and Physics, 23, 5623–5639, 2023.
+
+470
+
+Deck, L. T., Ochsenbein, D. R., and Mazzotti, M.: Stochastic shelf-scale modeling framework for the freezing stage in freeze-drying processes, Int. J. Pharm., 613, 121 276, 2022.
+DeMott, P. J., Prenni, A. J., Liu, X., Kreidenweis, S. M., Petters, M. D., Twohy, C. H., Richardson, M. S., Eidhammer, T., and Rogers, D. C.:
+Predicting global atmospheric ice nuclei distributions and their impacts on climate, Proc. Natl. Acad. Sci. U.S.A., 107, 11 217–11 222,
+2010.
+
+475
+
+Deville, S.: Ice-Templating: Processing Routes, Architectures, and Microstructures, pp. 171–252, Springer International Publishing, Cham,
+2017.
+Dobbie, S. and Jonas, P.: Radiative influences on the structure and lifetime of cirrus clouds, Q. J. R. Meteorol. Soc., 127, 2663–2682, 2001.
+Goff, H.: Colloidal aspects of ice cream—A review, Int. Dairy J., 7, 363–373, 1997.
+Herbert, R. J., Murray, B. J., Whale, T. F., Dobbie, S. J., and Atkinson, J. D.: Representing time-dependent freezing behaviour in immersion
+
+480
+
+mode ice nucleation, Atmos. Chem. Phys., 14, 8501–8520, 2014.
+Herbert, R. J., Murray, B. J., Dobbie, S. J., and Koop, T.: Sensitivity of liquid clouds to homogenous freezing parameterizations, Geophysical
+Research Letters, 42, 1599–1605, 2015.
+Heymsfield, A. J. and Miloshevich, L. M.: Homogeneous ice nucleation and supercooled liquid water in orographic wave clouds, Journal of
+the Atmospheric Sciences, 50, 2335–2353, 1993.
+
+485
+
+Ickes, L., Welti, A., Hoose, C., and Lohmann, U.: Classical nucleation theory of homogeneous freezing of water: thermodynamic and kinetic
+parameters, Phys. Chem. Chem. Phys., 17, 5514–5537, 2015.
+Ickes, L., Welti, A., and Lohmann, U.: Classical nucleation theory of immersion freezing: sensitivity of contact angle schemes to thermodynamic and kinetic parameters, Atmos. Chem. Phys., 17, 1713–1739, 2017.
+Igel, A. L. and van den Heever, S. C.: The importance of the shape of cloud droplet size distributions in shallow cumulus clouds. Part II:
+
+490
+
+Bulk microphysics simulations, Journal of the Atmospheric Sciences, 74, 259–273, 2017.
+John Morris, G., Acton, E., Murray, B. J., and Fonseca, F.: Freezing injury: The special case of the sperm cell, Cryobiology, 64, 71–80, 2012.
+
+23
+https://doi.org/10.26434/chemrxiv-2024-1vkn7-v2 ORCID: https://orcid.org/0000-0001-9502-3763 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Kärcher, B. and Lohmann, U.: A parameterization of cirrus cloud formation: Homogeneous freezing including effects of aerosol size, Journal
+of Geophysical Research: Atmospheres, 107, AAC–9, 2002.
+Kärcher, B. and Seifert, A.: On homogeneous ice formation in liquid clouds, Quarterly Journal of the Royal Meteorological Society, 142,
+495
+
+1320–1334, 2016.
+Kashchiev, D.: Nucleation : basic theory with applications, 2000.
+Knopf, D. A. and Alpert, P. A.: Atmospheric ice nucleation, Nat. Rev. Phys., 5, 203–217, 2023.
+Knopf, D. A., Alpert, P. A., Zipori, A., Reicher, N., and Rudich, Y.: Stochastic nucleation processes and substrate abundance explain timedependent freezing in supercooled droplets, NPJ Clim. Atmos. Sci., 3, 2, 2020.
+
+500
+
+Koop, T. and Murray, B. J.: A physically constrained classical description of the homogeneous nucleation of ice in water, The Journal of
+Chemical Physics, 145, 211 915, 2016.
+Koop, T., Luo, B., Tsias, A., and Peter, T.: Water activity as the determinant for homogeneous ice nucleation in aqueous solutions, Nature,
+406, 611–614, 2000.
+Kubota, N.: Random distribution active site model for ice nucleation in water droplets, CrystEngComm, 21, 3810–3821, 2019.
+
+505
+
+Laksmono, H., McQueen, T. A., Sellberg, J. A., Loh, N. D., Huang, C., Schlesinger, D., Sierra, R. G., Hampton, C. Y., Nordlund, D., Beye,
+M., Martin, A. V., Barty, A., Seibert, M. M., Messerschmidt, M., Williams, G. J., Boutet, S., Amann-Winkel, K., Loerting, T., Pettersson,
+L. G. M., Bogan, M. J., and Nilsson, A.: Anomalous Behavior of the Homogeneous Ice Nucleation Rate in “No-Man’s Land”, J. Phys.
+Chem. Lett., 6, 2826–2832, 2015.
+Laval, P., Crombez, A., and Salmon, J. B.: Microfluidic Droplet Method for Nucleation Kinetics Measurements, Langmuir, 25, 1836–1841,
+
+510
+
+2009.
+Li, B. and Sun, D.: Novel methods for rapid freezing and thawing of foods – a review, J. Food Eng., 54, 175–182, 2002.
+Liu, Y., Laiguang, Y., Weinong, Y., and Feng, L.: On the size distribution of cloud droplets, Atmospheric Research, 35, 201–216,
+https://doi.org/https://doi.org/10.1016/0169-8095(94)00019-A, 1995.
+Marcolli, C., Gedamke, S., Peter, T., and Zobrist, B.: Efficiency of immersion mode ice nucleation on surrogates of mineral dust, Atmos.
+
+515
+
+Chem. Phys., 7, 5081–5091, 2007.
+Möhler, O., DeMott, P. J., Vali, G., and Levin, Z.: Microbiology and atmospheric processes: the role of biological particles in cloud physics,
+Biogeosciences, 4, 1059–1071, 2007.
+Murray, B. J., Broadley, S. L., Wilson, T. W., Bull, S. J., Wills, R. H., Christenson, H. K., and Murray, E. J.: Kinetics of the homogeneous
+freezing of water, Phys. Chem. Chem. Phys., 12, 10 380–10 387, 2010.
+
+520
+
+Painemal, D. and Zuidema, P.: Assessment of MODIS cloud effective radius and optical thickness retrievals over the Southeast Pacific with
+VOCALS-REx in situ measurements, Journal of Geophysical Research: Atmospheres, 116, 2011.
+Pathak, H., Späh, A., Esmaeildoost, N., Sellberg, J. A., Kim, K. H., Perakis, F., Amann-Winkel, K., Ladd-Parada, M., Koliyadu, J., Lane,
+T. J., et al.: Enhancement and maximum in the isobaric specific-heat capacity measurements of deeply supercooled water using ultrafast
+calorimetry, Proceedings of the National Academy of Sciences, 118, e2018379 118, 2021.
+
+525
+
+Peters, B.: Supersaturation rates and schedules: Nucleation kinetics from isothermal metastable zone widths, Journal of Crystal Growth, 317,
+79–83, 2011.
+Qiu, Y., Odendahl, N., Hudait, A., Mason, R. H., Bertram, A. K., Paesani, F., DeMott, P. J., and Molinero, V.: Ice Nucleation Efficiency of
+Hydroxylated Organic Surfaces Is Controlled by Their Structural Fluctuations and Mismatch to Ice., Journal of the American Chemical
+Society, 139 8, 3052–3064, 2017.
+
+24
+https://doi.org/10.26434/chemrxiv-2024-1vkn7-v2 ORCID: https://orcid.org/0000-0001-9502-3763 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+530
+
+Qiu, Y., Hudait, A., and Molinero, V.: How Size and Aggregation of Ice-Binding Proteins Control Their Ice Nucleation Efficiency, Journal
+of the American Chemical Society, 141, 7439–7452, 2019.
+Riechers, B., Wittbracht, F., Hütten, A., and Koop, T.: The homogeneous ice nucleation rate of water droplets produced in a microfluidic
+device and the role of temperature uncertainty, Phys. Chem. Chem. Phys., 15, 5873–5887, 2013.
+Sear, R. P.: Nucleation: theory and applications to protein solutions and colloidal suspensions, J. Phys. Condens. Matter., 19, 033 101, 2007.
+
+535
+
+Sear, R. P.: Quantitative studies of crystal nucleation at constant supersaturation: experimental data and models, CrystEngComm, 16, 6506–
+6522, 2014.
+Shardt, N., Isenrich, F. N., Waser, B., Marcolli, C., Kanji, Z. A., deMello, A. J., and Lohmann, U.: Homogeneous freezing of water droplets
+for different volumes and cooling rates, Phys. Chem. Chem. Phys., 24, 28 213–28 221, 2022.
+Shultz, M. J.: Crystal growth in ice and snow, Phys. Today., 71, 34–39, 2018.
+
+540
+
+Sibley, D. N., Llombart, P., Noya, E. G., Archer, A. J., and MacDowell, L. G.: How ice grows from premelting films and water droplets, Nat.
+Commun., 12, 239, 2021.
+Spichtinger, P., Marschalik, P., and Baumgartner, M.: Impact of formulations of the homogeneous nucleation rate on ice nucleation events in
+cirrus, Atmospheric Chemistry and Physics, 23, 2035–2060, 2023.
+Stan, C. A., Schneider, G. F., Shevkoplyas, S. S., Hashimoto, M., Ibanescu, M., Wiley, B. J., and Whitesides, G. M.: A microfluidic apparatus
+
+545
+
+for the study of ice nucleation in supercooled water drops, Lab Chip, 9, 2293–2305, 2009.
+Stephens, G. L.: Radiation Profiles in Extended Water Clouds. II: Parameterization Schemes, Journal of Atmospheric Sciences, 35, 2123 –
+2132, https://doi.org/10.1175/1520-0469(1978)035<2123:RPIEWC>2.0.CO;2, 1978.
+Stoll, N., Eichler, J., Hörhold, M., Shigeyama, W., and Weikusat, I.: A Review of the Microstructural Location of Impurities in Polar Ice and
+Their Impacts on Deformation, Front. Earth Sci., 8, 2021.
+
+550
+
+Stöckel, P., Weidinger, I. M., Baumgärtel, H., and Leisner, T.: Rates of Homogeneous Ice Nucleation in Levitated H2O and D2O Droplets, J.
+Phys. Chem. A, 109, 2540–2546, 2005.
+Tarn, M. D., Sikora, S. N. F., Porter, G. C. E., Wyld, B. V., Alayof, M., Reicher, N., Harrison, A. D., Rudich, Y., Shim, J. u., and Murray,
+B. J.: On-chip analysis of atmospheric ice-nucleating particles in continuous flow, Lab Chip, 20, 2889–2910, 2020.
+Turnbull, D.: Formation of Crystal Nuclei in Liquid Metals, Journal of Applied Physics, 21, 1022–1028, 2004.
+
+555
+
+Volmer, M. and Weber, : Keimbildung in übersättigten Gebilden, Zeitschrift für Physikalische Chemie, 119U, 277–301,
+https://doi.org/doi:10.1515/zpch-1926-11927, 1926.
+Wright, T. P. and Petters, M. D.: The role of time in heterogeneous freezing nucleation, J. Geophys. Res. Atmos., 118, 3731–3743, 2013.
+Zachariassen, K. E. and Kristiansen, E.: Ice Nucleation and Antinucleation in Nature, Cryobiology, 41, 257–279, 2000.
+Zhang, X. and Maeda, N.: Nucleation curves of ice in the presence of nucleation promoters, Chem. Eng. Sci., 262, 118 017, 2022.
+
+25
+https://doi.org/10.26434/chemrxiv-2024-1vkn7-v2 ORCID: https://orcid.org/0000-0001-9502-3763 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+

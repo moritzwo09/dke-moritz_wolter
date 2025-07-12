@@ -1,0 +1,698 @@
+Cryogenic Ion Vibrational Spectroscopy of
+Protonated Valine: Messenger Tag Effects
+Lane M. Terry,1 Maddie K. Klumb,1 Deacon J. Nemchick,2 Robert Hodyss,2 Frank Maiwald,2 and
+J. Mathias Weber1,*
+1
+
+JILA and Department of Chemistry, University of Colorado Boulder, 440 UCB, Boulder, CO
+
+80309-0440, USA
+2
+
+Jet Propulsion Laboratory, California Institute of Technology, Pasadena, CA, USA
+
+TOC Figure
+
+1
+https://doi.org/10.26434/chemrxiv-2024-2tvc6 ORCID: https://orcid.org/0000-0002-5493-5886 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Abstract
+We report the infrared photodissociation spectrum of tagged protonated valine in the range 1000
+– 1900 cm-1, prepared in a cryogenic ion trap. Comparison of experimental results with calculated
+infrared spectra based on density functional theory shows that the hydroxyl group of the carboxylic
+acid functionality and the protonated amine group adopt a trans configuration. Nitrogen and
+methane molecules were used as messenger tags, with optimal tagging temperatures of 30 K for
+N2 and 60 K for CH4. While the calculated infrared spectra of the tagged ion suggest only a weak
+influence of the messenger tag on the frequency positions of ValH+, the measured intensities for
+N2-tagged ValH+ are strongly suppressed for all but the highest frequency features at 1773 cm-1.
+We trace this behavior to the binding energy of the N2 tag, which is significantly higher than that
+of CH4, based on CCSD(T) calculations and rate estimates for photoinduced unimolecular
+dissociation from statistical theory.
+
+2
+https://doi.org/10.26434/chemrxiv-2024-2tvc6 ORCID: https://orcid.org/0000-0002-5493-5886 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Introduction
+The search for chemical markers of life or of prebiotic conditions supporting the development
+of life is at the forefront of astrobiology. Radio astronomy and infrared (IR) spectroscopy have led
+to the discovery of numerous molecular species1 in the interstellar medium, as well as in the
+outflow of carbon rich stars, and much hope rests on future detection of biomarkers by the James
+Webb Space Telescope.2 Closer to home, one of the most promising avenues for the detection and
+analysis of complex molecules that can serve as biomarkers is through planetary probes on worlds
+in our own solar system. Using terrestrial biology as a starting point, suitable biomarkers include
+simple amino acids, nucleobases, sugars, or fatty acids, and candidate worlds range from planets
+like Mars to planetary moons and planetoids, especially icy worlds with a subsurface aqueous
+ocean such as Titan, Enceladus, or Europa.
+Mass spectrometry provides a powerful approach for the detection of polyatomic molecules,
+and it has been or will be used on several planetary missions,3-5 e.g., on the Viking lander (Mars),
+Curiosity rover (Mars), Rosetta/Philae Lander (Churyumov-Gerasimenko comet), and the planned
+Rosalind Franklin rover (Mars), and Dragonfly rotorcraft (Titan).
+
+However, while mass
+
+spectrometers with sufficient resolution can distinguish between ions with very similar masses,
+e.g., N2+ (28.0134 u) and CO+ (28.0101 u), mass spectrometry alone is insufficient to identify a
+molecular ion that could have different structures with the same atomic composition. Using valine
+(Val, C5H11NO2) as an example, the NIST chemistry webbook6 identifies more than 30 unique
+compounds with the same atomic composition, but distinct structure, out of which only valine is a
+proteinogenic amino acid. Consequently, additional information is required for the unambiguous
+identification of more complex molecular biomarkers, such as amino acids. Fragmentation patterns
+from collision induced dissociation experiments can narrow down the candidates for a given
+
+3
+https://doi.org/10.26434/chemrxiv-2024-2tvc6 ORCID: https://orcid.org/0000-0002-5493-5886 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+molecular ion, which have very different functional groups (e.g., amino acids and nitrites), but
+such fragmentation patterns depend significantly on the experimental details. Alternatively,
+instrumentation operating in concert with mass spectrometry may offer additional information. For
+example, ion mobility front ends can bring additional structural information. However, ion
+mobility ultimately only yields a single data point, namely the orientation-averaged collision cross
+section of the ion in question, and ion mobility collision cross sections may be ambiguous.
+Chromatography front ends are complex, and standardization of elution presents significant
+engineering challenges. Additional channels of information are desirable to unambiguously
+identify the molecular structure of ions detected in mass spectrometry instruments on planetary
+missions.
+Infrared spectroscopy of mass selected ions in concert with quantum chemical calculations
+has been shown to be a valuable tool to determine the molecular structure of ions in vacuo, and it
+has been used extensively in the study of biomolecules.7-28 With its power to encode molecular
+structure, IR spectroscopy can offer an approach towards unambiguous identification of complex
+molecular ions, including isomers of valine with similar functional groups (see Supporting
+Information, Figure S1). Libraries of laboratory spectra are needed to make such identifications
+possible for a large variety of possible biomarkers. While the spectra of several protonated8, 11-13,
+15-18, 20, 23
+
+and deprotonated22 amino acids have been measured at room temperature using IR
+
+multiphoton dissociation (IRMPD), much fewer IR spectroscopy data exist on cryogenically
+prepared amino acid ions14, 27-28 outside of peptides containing several amino acid residues.
+Cryogenic ion vibrational spectroscopy (CIVS) allows the use of single photon dissociation
+by employing weakly bound messenger tags (e.g., H2, D2, N2), yielding IR photodissociation
+spectra that correspond closely to the absorption spectra of the target ions, typically with linewidths
+
+4
+https://doi.org/10.26434/chemrxiv-2024-2tvc6 ORCID: https://orcid.org/0000-0002-5493-5886 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+that are narrow compared to many IRMPD signatures at room temperature and with only small
+tag-induced shifts. The technique is in principle compatible with trap-based mass spectrometry
+technology employed on planetary probes. However, the usable temperature range for a given
+messenger tag is typically relatively narrow, (e.g., 10-15 K for D2, 25-40 K for N2), and the tagging
+temperatures are often significantly lower than the temperatures of target worlds on which CIVS
+might be employed (e.g., 46 – 96 K on Europa29; 33 – 145 K on Enceladus30; 110 – 235 K on
+Ceres31; 95 K on Titan32). Active cooling would introduce additional electrical power requirements
+as well as weight, which is difficult within the typical limitations on both resources on planetary
+probes. For the prospect of using CIVS on such missions it is therefore desirable to find suitable
+alternative tags which can function at higher temperatures.
+In this work, we use CIVS to measure the IR fingerprint spectra of protonated Val (ValH+),
+supported by density functional theory (DFT). We provide an experimental case study on
+distinguishing different constitutional isomers, comparing the experimental spectrum of ValH+,
+with DFT calculated spectra of potential isomers. We compare messenger tagging of ValH+ with
+N2 and CH4, both in terms of optimal tagging temperatures and photodissociation efficiency.
+
+Methods
+The experimental setup has been described in earlier work.33 Briefly, we prepared protonated
+molecular species by electrospray ionization (ESI) of a 1 mM solution of L-Val (Sigma-Aldrich)
+in 2:1 acetonitrile (ACN, Thermo Fisher Scientific) and water, with drops of hydrochloric acid
+(HCl, Mallinckrodt Chemicals) added until the solution was at a pH of 2. Ions passed through a
+heated desolvation capillary (80 C) and a skimmer into a series of octopole ion guides and ion
+optics, which transferred the ions into a Paul trap mounted on a closed cycle He cryostat. In the
+
+5
+https://doi.org/10.26434/chemrxiv-2024-2tvc6 ORCID: https://orcid.org/0000-0002-5493-5886 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+trap, the ions were accumulated, cooled, and tagged with a single N2 tag or a single CH4 tag during
+a period of 100 ms or 50 ms per experimental cycle, respectively. For methane tagging, neat CH4
+was used as the buffer gas, and the optimal trap temperature for tagging was ca. 60 K. The resulting
+pressure of CH4 in the trap can be estimated as ca. 2ꞏ10-3 mbar. For N2 tagging, we used residual
+N2 from the ESI source inlet with 10% D2 in He as the buffer gas in the trap, and the trap was held
+at ca. 30 K. As a result, the partial pressure of N2 in the trap is more difficult to quantify, although
+the overall pressure in the trap is of the same order of magnitude as for methane buffer gas. The
+temperatures reported here are the average of two temperature probes, one at the top of the trap
+near the cold head and one at the bottom of the trap. The difference between the two probes is 1215 K.
+The contents of the ion trap were injected into the acceleration region of a time-of-flight
+mass spectrometer, and target ions ValH+ꞏtag were subsequently mass-selected in the first space
+focus using an interleaving comb mass gate and irradiated with the output of a tunable OPO/OPA
+(LaserVision). Photofragments of ValH+ following the reaction
+𝑉𝑎𝑙𝐻 ⋅ 𝑡𝑎𝑔
+
+ℏ𝜔
+
+→ 𝑉𝑎𝑙𝐻
+
+𝑡𝑎𝑔
+
+were separated from undissociated parent ions in a two-stage reflectron, and the photofragment
+ion intensity was monitored as a function of IR wavelength on a microchannel plate detector. Ion
+signals from sixteen shots were averaged for each wavelength in each scan. Background signals
+from unimolecular dissociation caused by collisional activation during ion ejection from the trap
+were negligible for ions tagged with N2. For CH4 tagging, only every other ion package was
+irradiated, and the signals with and without irradiation were subtracted. Multiple spectra taken
+over several days were averaged for each species to improve the signal-to-noise ratio and to ensure
+reproducibility. Spectra were taken in the fingerprint region (1100 – 1900 cm-1) and calibrated to
+
+6
+https://doi.org/10.26434/chemrxiv-2024-2tvc6 ORCID: https://orcid.org/0000-0002-5493-5886 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+the known spectrum of acetone34 using a photoacoustic cell, and we assume the calibration to be
+accurate to within 3 cm-1. We note that photodissociation signals were low for ValH+ꞏN2, resulting
+in a relatively low signal-to-noise ratio, despite the fact that the spectra we report represent the
+average of at least 50 scans.
+Structures of the species under study were calculated using DFT,35 beginning with several
+starting structures for each ion. We employed the B3LYP functional36-37 and cc-pVTZ basis sets3839
+
+for all atoms. For each minimum energy structure of protonated valine, the IR spectrum was
+
+calculated based on the harmonic approximation, scaling the frequencies by 0.9889, using a
+comparison of calculated and experimental data found for the antisymmetric OCO stretching
+vibration of the carboxylic acid group of protonated alanine.28 In all calculated spectra, vibrational
+lines are shown as Lorentzians with 8 cm-1 full width at half-maximum.
+Binding energies of the tags were calculated with the same method as the geometry
+optimization, applying the counterpoise method40-41 to correct basis set superposition errors. In
+addition, we used the optimized geometries from the DFT calculations to determine binding
+energies at the CCSD42 and CCSD(T)43-44 levels of theory with cc-pVDZ and cc-pVTZ basis sets3839
+
+for the former and cc-pVDZ for the latter. All calculations were performed using the Gaussian
+
+16 program suite.45
+
+Results and Discussion
+In order to form a complex of a neutral messenger tag and ValH+, the trap temperature must be
+chosen to create optimal conditions regarding the vapor pressure and binding energy of the tag. If
+the trap is too warm, the complex will have sufficient internal energy to induce loss of the tag. If
+the trap is too cold, the gaseous tag will have insufficient vapor pressure to efficiently form the
+
+7
+https://doi.org/10.26434/chemrxiv-2024-2tvc6 ORCID: https://orcid.org/0000-0002-5493-5886 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+complex. Figure 1 shows the abundance of ion-tag complexes as a function of temperature for both
+N2 and CH4 tags. The temperature range for tagging of ValH+ with N2 is 20-65 K with an optimum
+at ca. 30 K. For CH4 tags the optimal temperature range is 50-75 K with an optimum at ca. 60 K.
+
+Figure 1. Abundance of ValH+ tagged with N2 (blue, open) and with CH4 (green, full) as a function
+of trap temperature. The peak tagging efficiency for each gas is ≤ 5% under the conditions used
+here.
+
+Protonated valine, ValH+, has several possible conformations, which can be roughly classified
+by the position of the protonated amine group relative (cis or trans) to the OH group of the COOH
+carboxylic acid moiety (Figure 2). As one would expect, the lowest energy structure has a trans
+configuration (trans-1), which is stabilized by intramolecular hydrogen bonding (H-bonding) to
+the carboxylic acid group. This structure is significantly lower in energy (by 191 meV) than the
+lowest energy cis (cis-1) configuration, which lacks this stabilization. There are overall three lowlying trans configurations of ValH+ (trans-2 at 56 meV and trans-3 at 70 meV higher than trans1), which have different orientations of the two methyl groups relative to the NH3+ and COOH
+
+8
+https://doi.org/10.26434/chemrxiv-2024-2tvc6 ORCID: https://orcid.org/0000-0002-5493-5886 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+groups. We note that similar low-lying conformers were found in earlier computational work by
+Quesada-Moreno et al.46 The geometries discussed there were calculated for different protonation
+states of valine embedded in a polarizable continuum, which explains the differences compared to
+the gas phase structures in the present work.
+
+Figure 2. Lowest energy structures of protonated L-Val (ValH+), with three trans and one cis
+configuration. The zero-point corrected relative energies are given for each structure. C = grey, H
+= white, N = blue, O = red. Hydrogen bonds are shown as dotted lines.
+
+9
+https://doi.org/10.26434/chemrxiv-2024-2tvc6 ORCID: https://orcid.org/0000-0002-5493-5886 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 3. IR photodissociation spectra (upright) of ValH+ꞏN2 (top) and ValH+ꞏCH4 (second from
+top) compared to the calculated spectra of different structures of ValH+ (inverted, shown on the
+same vertical scale). The open circles in the experimental spectra are raw data points, the full lines
+are 5-point gliding averages to guide the eye. The tag is given for each experimental spectrum, and
+the structure label is shown for each calculated spectrum (see Figure 2). See text for letter labels
+in the experimental spectra. Vertical bars mark individual transitions.
+
+The IR photodissociation spectra of ValH+ꞏN2 and ValH+ꞏCH4 are shown in Figure 3, together
+with the calculated IR spectra of the lowest energy trans and cis structures of ValH+. Consistent
+with the energetic ordering, the experimental spectrum is more consistent with the calculated
+spectra for a trans configuration than with a cis structure. Based on the calculated spectrum of the
+lowest energy isomer (trans-1), we assign the most intense transition (labeled a in Figure 3) around
+
+10
+https://doi.org/10.26434/chemrxiv-2024-2tvc6 ORCID: https://orcid.org/0000-0002-5493-5886 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+1775 cm-1 to the antisymmetric OCO stretching vibration of the carboxylic acid group, which is
+coupled to an HNC bending motion of the H-bonded NH group. A weak, broad peak around 1585
+cm-1 (b) can be assigned to two NH3+ scissoring modes. Another weak peak at 1478 cm-1 (c)
+contains several unresolved transitions characterized by CH3 scissoring modes. The prominent
+feature at ca. 1444 cm-1 (d) is mostly due to the NH3+ umbrella motion. This pattern of motion also
+contributes to the peak at ca. 1415 cm-1 (e) which is mainly carried by a HOC bending and
+symmetric OCO stretching motion of the COOH group. We assign the weak feature at 1355 cm-1
+(f) to a CCH bending motion of the two CH groups attached to the carbon atoms of the central C–
+C bond. The peak at ca. 1170 cm-1 (g) belongs to a mode mainly due to OH bending motion, while
+the peak around 1125 cm-1 (h) comes from two modes displaying CH3/NH3+ tilting motions, and
+feature (i) at ca. 1080 cm-1 can be traced to similar motions. The simulated spectra of the different
+trans isomers show subtle differences (see Supporting Information, Figure S2), and most key
+features are sufficiently similar that it is challenging to distinguish between them
+spectroscopically. However, the signatures between 1100 cm-1 and 1200 cm-1 (in particular feature
+h) suggest that the lowest energy isomer (trans-1) is indeed the isomer populated in the experiment.
+Tags generally bind to an ion in the vicinity of the charge center, and usually have only small
+effects on the structure and spectrum. Consistent with this expectation, exploratory calculations
+show that the tags bind close to the NH3+ group. Table 1 summarizes the frequency positions of
+each feature for the two tags used here. For the lowest energy conformation of the tags, there is no
+significant change in the structure of the ValH+ ion (see Supporting Information, Figures S3 and
+S4), and only small changes in its IR frequencies (Table 1).
+
+11
+https://doi.org/10.26434/chemrxiv-2024-2tvc6 ORCID: https://orcid.org/0000-0002-5493-5886 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Table 1. Experimental (Calculateda in Parentheses) Frequencies in cm-1 and Relative
+Intensities for trans-ValH+ With Different Tags.
+Labelb
+
+CH4
+
+N2
+
+a
+
+1776 (1782)
+
+1773 (1783)
+
+b
+
+1593 (1636)c
+
+1580 (1643)c
+
+c
+
+1482 (1499)
+
+1478 (1500)
+
+d
+
+1445 (1464)
+
+1442 (1472)
+
+e
+
+1417 (1411)
+
+1411 (1412)
+
+f
+
+1356 (1367)
+
+1355 (1367)
+
+g
+
+1173 (1184)
+
+1164 (1184)
+
+h
+
+1131 (1133)c
+
+1120 (1134)c
+
+i
+
+1097 (1104)
+
+1068 (1111)
+
+a
+
+B3LYP functional and cc-pVTZ basis, frequencies scaled by 0.9889.
+
+b
+
+See Figure 3.
+
+c
+
+Average of two calculated frequencies contributing to this feature.
+
+However, an overall absence of tagging effects on the spectrum cannot be taken for granted. A
+conformation with an N2 tag binding in a slightly different position, 59 meV higher in energy (see
+Supporting Information, Figure S4), is predicted to result in a blue shift of the OCO stretching
+feature by 10 cm-1, and even an altered intensity pattern in the NH3+ umbrella region. This structure
+is higher in energy because the tag interferes with the intramolecular H-bond, destabilizing the
+complex. Since the overall experimental band pattern in the NH3+ umbrella region matches the
+calculated patterns of the untagged trans structures, we judge that this tag position is not
+significantly populated.
+
+12
+https://doi.org/10.26434/chemrxiv-2024-2tvc6 ORCID: https://orcid.org/0000-0002-5493-5886 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+The vibrational signatures of the CH4 tag itself are found at 1293 cm-1 and 1324 cm-1,
+respectively, and they represent different CH3 umbrella modes of the tag. The N2 stretching
+frequency is predicted to be at 2431 cm-1, which is outside the frequency range reported here.
+A much more dramatic influence of the tag is seen in the relative intensities for the experimental
+IR spectra. While the relative intensities in the spectrum of ValH+ꞏCH4 are consistent with the
+calculated pattern, the intensities for ValH+ꞏN2 show a pronounced dependence on frequency, with
+the lower frequency modes having significantly lower relative intensities than calculated. We trace
+this behavior to the tag binding energies. The binding energy of the N2 tag is calculated to be
+significantly higher than the CH4 tag (see Table 2), with binding energies of the former in the range
+of the photon energies in the present work, while the latter was calculated on average 500 cm-1
+lower than for N2, closer to the low energy end of the spectral range discussed here.
+
+Table 2. Calculated Binding Energies in cm-1 for ValH+ in Complexes with Different Tags.
+Method
+
+CH4
+
+N2
+
+B3LYP/cc-pVTZ
+
+1008
+
+1400
+
+CCSD/cc-pVDZ
+
+900
+
+1586
+
+CCSD/cc-pVTZ
+
+1257
+
+1498
+
+CCSD(T)/cc-pVDZ
+
+973
+
+1670
+
+Tagged ValH+ ions spend roughly 20 s between photon absorption and entry into the reflectron.
+If they require significantly longer times for dissociation, our experiment will not register fragment
+ion formation. To evaluate the effect of the binding energy E0 on the photodissociation efficiency,
+
+13
+https://doi.org/10.26434/chemrxiv-2024-2tvc6 ORCID: https://orcid.org/0000-0002-5493-5886 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+we estimated the rate constants k for unimolecular dissociation of photoexcited ValH+ꞏN2 and
+ValH+ꞏCH4 complexes based on Rice-Ramsperger-Kassel-Marcus (RRKM) theory47-50 as
+𝑘 𝐸
+
+𝑠𝑁 ‡ 𝐸 𝐸
+,
+ℎ𝜌 𝐸
+
+where E is the total internal energy of the complex, s is the reaction degeneracy (here taken to be
+1), 𝑁 ‡ 𝐸 is the sum of vibrational states at the transition state, h is Planck’s constant, and 𝜌 𝐸
+is the vibrational density of states of the reactant complex. Since we cannot measure actual
+dissociation rate constants, we chose several approximations to simplify the calculation of the sum
+and density of states: (i) all vibrational modes are treated as harmonic oscillators; (ii) we assume
+a tight transition state by identifying a single vibration of the reactant complex (calculated at 106
+cm-1) as a reaction coordinate that most closely resembles dissociation of the complex; (iii) the
+methyl groups are treated as hindered rotors in a 3-fold well to better represent their degeneracy
+(g = 3), but the level spacing was still chosen to be harmonic; (iv) similar to (iii), the internal
+rotations of the N2 tag were treated as hindered rotors in a double well, resulting in a degeneracy
+g = 2. These simplifications allowed us to estimate the sums and densities of states using a simple
+Beyer-Swinehart algorithm.51
+In addition to the energy of the absorbed photon, the ions have an internal energy based on
+their microcanonical temperature prior to photon absorption. In previous work,52 we estimated that
+the ions prepared at ca. 30 K trap temperature will have microcanonical temperatures of ca. 65 K.
+The internal energy of the tagged ion is given by
+ℏ𝜔
+
+𝑈
+
+,
+
+ℏ
+
+𝑒
+
+1
+
+14
+https://doi.org/10.26434/chemrxiv-2024-2tvc6 ORCID: https://orcid.org/0000-0002-5493-5886 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Where the sum runs over all vibrational frequencies, resulting in internal energies of 150 cm-1 for
+N2-tagged ions, which we simply add to the photon energy ℎ𝜈 to arrive at the total energy after
+photon absorption. For CH4-tagged ions, the higher temperature of the trap increases the estimated
+ion temperature to 95 K, which results in internal energies of ca. 365 cm-1 prior to photon
+absorption. If the total energy (𝑈
+
+ℎ𝜈) is below the calculated dissociation energy E0, we
+
+expect no dissociation to occur. Above this threshold, the characteristic time scales for dissociation
+depend on the photon energy and can be longer than the experimental observation time of 20 s
+in our setup. For ValH+ꞏN2, significant suppression of the photodissociation quantum yield can be
+expected for photon energies as high as 1735 cm-1 (see Supporting Information, Figure S5) based
+on the calculated binding energies shown in Table 2. In the spectrum of ValH+ꞏN2, feature (b) at
+1580 cm-1 is significantly suppressed compared to the same feature in the spectrum of ValH+ꞏCH4
+(Figure 3), consistent with a binding energy of the N2 tag around 1600 cm-1 or higher. The lack of
+any apparent suppression of signals for the CH4 tag in the spectral range considered here is
+consistent with significantly lower binding energies (see Table 2 and Supporting Information,
+Figure S5) as well as higher internal energy contents of the tagged ion due to the higher trap
+temperature.
+Based on the calculated binding energies and the RRKM estimates, we judge that N2 binds
+sufficiently strongly to the ion to suppress the photodissociation quantum yield at photon energies
+significantly below the feature of the antisymmetric OCO stretching vibration. The residual
+fragment ion yield at low photon energies is likely caused by a fraction of the ion population that
+are incompletely thermalized, or which are collisionally excited below the threshold for
+dissociation during ejection from the ion trap. In contrast, tagging with CH4 does not lead to
+suppression of the photodissociation quantum yield in the fingerprint region. We note that –
+
+15
+https://doi.org/10.26434/chemrxiv-2024-2tvc6 ORCID: https://orcid.org/0000-0002-5493-5886 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+although this is not the subject of the present work – tagging with D2 seems to have not led to
+significant suppression of the photodissociation quantum yield in work on protonated amino acids
+by Garand and coworkers down to 1400 cm-1.
+Coming back to the motivation for this work, the choice of the best tag will depend on several
+factors. The photodissociation quantum yield of the tag in the relevant frequency range is of
+obvious importance for the signal-to-noise ratio and the faithful representation of the IR absorption
+spectrum in the photodissociation channel. Out of the currently known tags for protonated amino
+acids, this consideration favors the use of D2 or CH4, although there should be no problems
+associated with N2 tags for work in the CH and OH stretching range (above ca. 2700 cm-1). Even
+water as a “tag”, which can be used at trap temperatures in the range of 80 – 185 K,27 may work
+in this spectral region,11, 13, 53 although the presence of a water adduct may change the spectrum of
+the biomarker considerably. For an instrument on a planetary probe, a very important consideration
+is the temperature of the target environment. Since heating and cooling can be energy and weight
+intensive, the optimal tagging temperature should be as close to the target environment as possible.
+This excludes D2, and even N2 will be impractical to use on most target worlds (see Introduction).
+Depending on the exact region on a world like Europa or Enceladus, CH4 shows the most promise
+of the tags studied so far, although Ceres and Titan will likely be too warm. It would be
+advantageous to study additional tags, such as CF4 or CH3CN, for their potential use at higher
+temperatures.
+
+Conclusions
+We present CIVS to measure the IR fingerprint spectra of protonated Val (ValH+), comparing
+the experimental spectra of ValH+ tagged with N2 and CH4. Based on the calculated spectra of
+
+16
+https://doi.org/10.26434/chemrxiv-2024-2tvc6 ORCID: https://orcid.org/0000-0002-5493-5886 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+potential conformers, we find that the trans conformer dominates the population, consistent with
+the fact that it is calculated to be lowest in energy. The different tags have only a small influence
+on most of the vibrational energies, but N2 has a much higher binding energy than CH4. As a result,
+the photodissociation efficiency for ValH+ꞏN2 is strongly suppressed for all but the highest energy
+feature in the spectrum at 1773 cm-1, consistent with simple RRKM calculations. Interestingly,
+this observation may make N2 a more generally unattractive tag for CIVS of protonated amino
+acids in the lower energy part of the fingerprint region. In contrast, CH4, which can be used at
+higher trap temperatures (we found 60 K to be optimal) without introducing significant
+broadening, making it a suitable tag for applications of CIVS with protonated amino acids,
+particularly in experiments that require trap temperatures above 50 K. For example, the use of CH4
+tags would allow application of messenger tagging on planetary missions to target worlds such as
+Europa or Enceladus.
+
+ASSOCIATED CONTENT
+Supporting Information. The following files are available free of charge: Calculated IR spectra
+of protonated valine and selected isomers; calculated IR spectra and lowest energy structures of
+trans-ValH+; lowest energy structures of ValH+, ValH+ꞏN2 and ValH+ꞏCH4; calculated IR spectra
+and lowest energy structures of ValH+ꞏN2; IR photodissociation times of ValH+ꞏN2 and
+ValH+ꞏCH4; atomic coordinates for ValH+, ValH+ꞏN2, and ValH+ꞏCH4; unscaled vibrational
+frequencies of ValH+ꞏN2 and ValH+ꞏCH4.
+
+AUTHOR INFORMATION
+
+17
+https://doi.org/10.26434/chemrxiv-2024-2tvc6 ORCID: https://orcid.org/0000-0002-5493-5886 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Corresponding Author
+*J. Mathias Weber – JILA and Department of Chemistry, University of Colorado, Boulder,
+Colorado 80309-0440, United States; orcid.org/0000-0002-5493-5886; Phone: +1-303-492-7841;
+Email: weberjm@jila.colorado.edu
+Notes
+The authors declare no competing financial interest.
+
+ACKNOWLEDGMENT
+Portions of this work were funded by the Jet Propulsion Laboratory, California Institute of
+Technology, under a contract with the National Aeronautics and Space Administration
+(80NM0018D0004) and JPL's Strategic University Research Partnership (SURP) program. We
+gratefully acknowledge partial support from the National Science Foundation under award no.
+CHE-2154126. This work utilized resources from the University of Colorado Boulder Research
+Computing Group, which is supported by the National Science Foundation (awards ACI-1532235
+and ACI-1532236), the University of Colorado Boulder, and Colorado State University.
+
+18
+https://doi.org/10.26434/chemrxiv-2024-2tvc6 ORCID: https://orcid.org/0000-0002-5493-5886 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+REFERENCES
+(1) McGuire, B. A. 2021 Census of Interstellar, Circumstellar, Extragalactic, Protoplanetary
+Disk, and Exoplanetary Molecules. Astrophys. J. Suppl. Ser. 2022, 259, 30.
+(2) Fujii, Y.; Angerhausen, D.; Deitrick, R.; Domagal-Goldman, S.; Grenfell, J. L.; Hori, Y.;
+Kane, S. R.; Pallé, E.; Rauer, H.; Siegler, N. et al. Exoplanet Biosignatures: Observational
+Prospects. Astrobiology 2018, 18, 739-778.
+(3) Brockwell, T. G.; Waite, J. H.; Lunine, J. I.; Meech, K. J.; Miller, G.; Wilson, P.; Pickens,
+K.; Roberts, J.; IEEE In The Mass Spectrometer for Planetary Exploration (MASPEX), IEEE
+Aerospace Conference, Big Sky, MT, Mar 05-12; Big Sky, MT, 2016.
+(4) Willis, P.; Mora, M. F.; Noell, A.; Creamer, J.; Kehl, F.; Zamuruyev, K.; Jaramillo, E.; Kok,
+M.; Cieslarova, Z.; Santos, M. S. F. et al. How to Search for Chemical Biosignatures on Ocean
+Worlds. Bull. Am. Astronom. Soc. 2020, 53, https://doi.org/10.3847/25c2cfeb.8a770808.
+(5) Chou, L. T.; Mahaffy, P.; Trainer, M.; Eigenbrode, J.; Arevalo, R.; Brinckerhoff, W.; Getty,
+S.; Grefenstette, N.; Da Poian, V.; Fricke, G. M. et al. Planetary Mass Spectrometry for Agnostic
+Life Detection in the Solar System. Front. Astron. Space Sci. 2021, 8, 755100.
+(6) Linstrom, P. J.; Mallard, W. G., NIST Chemistry Webbook, NIST Standard Reference
+Database Number 69. National Institute of Standards and Technology: Gaithersburg MD, 20899,
+retrieved September 12, 2023.
+(7) Kapota, C.; Lemaire, J.; Maitre, P.; Ohanessian, G. Vibrational Signature of Charge Solvation
+vs Salt Bridge Isomers of Sodiated Amino Acids in the Gas Phase. J. Am. Chem. Soc. 2004, 126,
+1836-1842.
+
+19
+https://doi.org/10.26434/chemrxiv-2024-2tvc6 ORCID: https://orcid.org/0000-0002-5493-5886 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(8) Polfer, N. C.; Paizs, B.; Snoek, L. C.; Compagnon, I.; Suhai, S.; Meijer, G.; von Helden, G.;
+Oomens, J. Infrared Fingerprint Spectroscopy and Theoretical Studies of Potassium Ion Tagged
+Amino Acids and Peptides in the Gas Phase. J. Am. Chem. Soc. 2005, 127, 8571-8579.
+(9) Mac Aleese, L.; Simon, A.; McMahon, T. B.; Ortega, J. M.; Scuderi, D.; Lemaire, J.; Maitre,
+P. Mid-IR Spectroscopy of Protonated Leucine Methyl Ester Performed with an FTICR or a Paul
+Type Ion-Trap. Int. J. Mas Spectrom. 2006, 249, 14-20.
+(10) Oomens, J.; Sartakov, B. G.; Meijer, G.; Von Helden, G. Gas-Phase Infrared Multiple
+Photon Dissociation Spectroscopy of Mass-Selected Molecular Ions. Int. J. Mas Spectrom. 2006,
+254, 1-19.
+(11) Kamariotis, A.; Boyarkin, O. V.; Mercier, S. R.; Beck, R. D.; Bush, M. F.; Williams, E. R.;
+Rizzo, T. R. Infrared Spectroscopy of Hydrated Amino Acids in the Gas Phase: Protonated and
+Lithiated Valine. J. Am. Chem. Soc. 2006, 128, 905-916.
+(12) Vaden, T. D.; de Boer, T. S. J. A.; MacLeod, N. A.; Marzluff, E. M.; Simons, J. P.; Snoek,
+L. C. Infrared Spectroscopy and Structure of Photochemically Protonated Biomolecules in the Gas
+Phase: A Noradrenaline Analogue, Lysine and Alanyl Alanine. Phys. Chem. Chem. Phys 2007, 9,
+2549-2555.
+(13) Bush, M. F.; Prell, J. S.; Saykally, R. J.; Williams, E. R. One Water Molecule Stabilizes the
+Cationized Arginine Zwitterion. J. Am. Chem. Soc. 2007, 129, 13544-13553.
+(14) Stearns, J. A.; Mercier, S.; Seaiby, C.; Guidi, M.; Boyarkin, O. V.; Rizzo, T. R.
+Conformation-Specific Spectroscopy and Photodissociation of Cold, Protonated Tyrosine and
+Phenylalanine. J. Am. Chem. Soc. 2007, 129, 11814-11820.
+
+20
+https://doi.org/10.26434/chemrxiv-2024-2tvc6 ORCID: https://orcid.org/0000-0002-5493-5886 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(15) Forbes, M. W.; Bush, M. F.; Polfer, N. C.; Oomens, J.; Dunbar, R. C.; Williams, E. R.;
+Jockusch, R. A. Infrared Spectroscopy of Arginine Cation Complexes: Direct Observation of GasPhase Zwitterions. J. Phys. Chem. A 2007, 111, 11759-11770.
+(16) Correia, C. F.; Balaj, P. O.; Scuderi, D.; Maitre, P.; Ohanessian, G. Vibrational Signatures
+of Protonated, Phosphorylated Amino Acids in the Gas Phase. J. Am. Chem. Soc. 2008, 130, 33593370.
+(17) Wu, R. H.; McMahon, T. B. An Investigation of Protonation Sites and Conformations of
+Protonated Amino Acids by IRMPD Spectroscopy. ChemPhysChem 2008, 9, 2826-2835.
+(18) O’Brien, J. T.; Prell, J. S.; Steill, J. D.; Oomens, J.; Williams, E. R. Interactions of Monoand Divalent Metal Ions with Aspartic and Glutamic Acid Investigated with IR Photodissociation
+Spectroscopy and Theory. J. Phys. Chem. A 2008, 112, 10823-10830.
+(19) Polfer, N. C.; Oomens, J. Vibrational Spectroscopy of Bare and Solvated Ionic Complexes
+of Biological Relevance. Mass Spectrom. Rev. 2009, 28, 468-494.
+(20) Heaton, A. L.; Bowman, V. N.; Oomens, J.; Steill, J. D.; Armentrout, P. B. Infrared Multiple
+Photon Dissociation Spectroscopy of Cationized Asparagine: Effects of Metal Cation Size on GasPhase Conformation. J. Phys. Chem. A 2009, 113, 5519-5530.
+(21) Rizzo, T. R.; Stearns, J. A.; Boyarkin, O. V. Spectroscopic Studies of Cold, Gas-Phase
+Biomolecular Ions. Int. Rev. Phys. Chem. 2009, 28, 481-515.
+(22) Oomens, J.; Steill, J. D.; Redlich, B. Gas-Phase IR Spectroscopy of Deprotonated Amino
+Acids. J. Am. Chem. Soc. 2009, 131, 4310-4319.
+
+21
+https://doi.org/10.26434/chemrxiv-2024-2tvc6 ORCID: https://orcid.org/0000-0002-5493-5886 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(23) Citir, M.; Stennett, E. M. S.; Oomens, J.; Steill, J. D.; Rodgers, M. T.; Armentrout, P. B.
+Infrared Multiple Photon Dissociation Spectroscopy of Cationized Cysteine: Effects of Metal
+Cation Size on Gas-Phase Conformation. Int. J. Mas Spectrom. 2010, 297, 9-17.
+(24) Brodbelt, J. S. Photodissociation Mass Spectrometry: New Tools for Characterization of
+Biological Molecules. Chem. Soc. Rev. 2014, 43, 2757-2783.
+(25) Patrick, A. L.; Polfer, N. C., Peptide Fragmentation Products in Mass Spectrometry Probed
+by Infrared Spectroscopy. In Gas-Phase IR Spectroscopy and Structure of Biological Molecules,
+Rijs, A. M.; Oomens, J., Eds. 2015; pp 153-181.
+(26) Rijs, A. M.; Oomens, J. IR Spectroscopic Techniques to Study Isolated Biomolecules.
+Topics in current chemistry 2015, 364, 1-42.
+(27) Voss, J. M.; Fischer, K. C.; Garand, E. Accessing the Vibrational Signatures of Amino Acid
+Ions Embedded in Water Clusters. J. Phys. Chem. Lett. 2018, 9, 2246-2250.
+(28) Fischer, K. C.; Sherman, S. L.; Voss, J. M.; Zhou, J.; Garand, E. Microsolvation Structures
+of Protonated Glycine and L-Alanine. J. Phys. Chem. A 2019, 123, 3355-3366.
+(29) Ashkenazy, Y. The Surface Temperature of Europa. Heliyon 2019, 5, e01908.
+(30) Spencer, J. R.; Pearl, J. C.; Segura, M.; Flasar, F. M.; Mamoutkine, A.; Romani, P.; Buratti,
+B. J.; Hendrix, A. R.; Spilker, L. J.; Lopes, R. M. C. Cassini Encounters Enceladus: Background
+and the Discovery of a South Polar Hot Spot. Science 2006, 311, 1401-1405.
+(31) Tosi, F.; Capria, M. T.; De Sanctis, M. C.; Ammannito, E.; Capaccioni, F.; Zambon, F.;
+Raponi, A.; Russell, C. T.; Raymond, C. A., Dwarf Planet Ceres: Preliminary Surface
+Temperatures from Dawn. In EGU General Assembly, Vienna, Austria, 2015; p 11960.
+22
+https://doi.org/10.26434/chemrxiv-2024-2tvc6 ORCID: https://orcid.org/0000-0002-5493-5886 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(32) Jennings, D. E.; Cottini, V.; Nixon, C. A.; Achterberg, R. K.; Flasar, F. M.; Kunde, V. G.;
+Romani, P. N.; Samuelson, R. E.; Mamoutkine, A.; Gorius, N. J. P.; Coustenis, A.; Tokano, T.
+Surface Temperatures on Titan During Northern Winter and Spring. Astrophys. J. Lett. 2016, 816,
+L17.
+(33) Xu, S.; Gozem, S.; Krylov, A. I.; Christopher, C. R.; Mathias Weber, J. Ligand Influence
+on the Electronic Spectra of Monocationic Copper-Bipyridine Complexes. Phys. Chem. Chem.
+Phys. 2015, 17, 31938-31946.
+(34) Chu, P. M.; Guenther, F. R.; Rhoderick, G. C.; Lafferty, W. J., Quantitative Infrared
+Database. In NIST Chemistry WebBook, NIST Standard Reference Database Number 69, Mallard,
+P. J. L. a. W. G., Ed. National Institute of Standards and Technology: Gaithersburg MD, 20899.
+(35) Parr, R. G.; Yang, W. Density-Functional Theory of Atoms and Molecules. Oxford
+University Press: New York, 1989.
+(36) Becke, A. D. Density-Functional Exchange-Energy Approximation with Correct
+Asymptotic-Behavior. Phys. Rev. A 1988, 38, 3098-3100.
+(37) Lee, C. T.; Yang, W. T.; Parr, R. G. Development of the Colle-Salvetti Correlation-Energy
+Formula into a Functional of the Electron-Density. Phys. Rev. B 1988, 37, 785-789.
+(38) Dunning, T. H. Gaussian-Basis Sets for Use in Correlated Molecular Calculations .1. The
+Atoms Boron through Neon and Hydrogen. J. Chem. Phys. 1989, 90, 1007-1023.
+(39) Woon, D. E.; Dunning, T. H. Gaussian-Basis Sets for Use in Correlated Molecular
+Calculations .3. The Atoms Aluminum through Argon. J. Chem. Phys. 1993, 98, 1358-1371.
+
+23
+https://doi.org/10.26434/chemrxiv-2024-2tvc6 ORCID: https://orcid.org/0000-0002-5493-5886 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(40) Boys, S. F.; Bernardi, F. Calculation of Small Molecular Interactions by Differences of
+Separate Total Energies - Some Procedures with Reduced Errors. Mol. Phys. 1970, 19, 553-566.
+(41) Simon, S.; Duran, M.; Dannenberg, J. J. How Does Basis Set Superposition Error Change
+the Potential Surfaces for Hydrogen‐Bonded Dimers? J. Chem. Phys. 1996, 105, 11024-11031.
+(42) Purvis, G. D., III; Bartlett, R. J. A Full Coupled‐Cluster Singles and Doubles Model: The
+Inclusion of Disconnected Triples. J. Chem. Phys. 1982, 76, 1910-1918.
+(43) Raghavachari, K.; Trucks, G. W.; Pople, J. A.; Head-Gordon, M. A Fifth-Order Perturbation
+Comparison of Electron Correlation Theories. Chem. Phys. Lett. 1989, 157, 479-483.
+(44) Bartlett, R. J.; Watts, J. D.; Kucharski, S. A.; Noga, J. Non-Iterative Fifth-Order Triple and
+Quadruple Excitation Energy Corrections in Correlated Methods. Chem. Phys. Lett. 1990, 165,
+513-522.
+(45) Frisch, M. J.; Trucks, G. W.; Schlegel, H. B.; Scuseria, G. E.; Robb, M. A.; Cheeseman, J.
+R.; Scalmani, G.; Barone, V.; Petersson, G. A.; Nakatsuji, H., et al. Gaussian 16 Rev. C.01,
+Wallingford, CT, 2016.
+(46) Quesada-Moreno, M. M.; Avilés-Moreno, J. R.; López-González, J. J. Structural Behavior
+of Neutral, Protonated, and Deprotonated L-Valine in Aqueous Solutions: A Combined Study
+Using Chirality Sensitive (VCD) and Non Sensitive (IR and Raman) Vibrational Spectroscopies
+and Quantum Chemical Calculations. Tetrahedron Asymmetry 2015, 26, 1314-1327.
+(47) Rice, O. K.; Ramsperger, H. C. Theories of Unimolecular Gas Reactions at Low Pressures.
+J. Am. Chem. Soc. 1927, 49, 1617-1629.
+(48) Kassel, L. S. Studies in Homogeneous Gas Reactions. I. J. Phys. Chem. 1928, 32, 225-242.
+24
+https://doi.org/10.26434/chemrxiv-2024-2tvc6 ORCID: https://orcid.org/0000-0002-5493-5886 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(49) Marcus, R. A. Unimolecular Dissociations and Free Radical Recombination Reactions. J.
+Chem. Phys. 1952, 20, 359-364.
+(50) Marcus, R. A.; Rice, O. K. The Kinetics of the Recombination of Methyl Radicals and
+Iodine Atoms. J. Phys. Colloid Chem. 1951, 55, 894-908.
+(51) Beyer, T.; Swinehart, D. F. Algorithm 448: Number of Multiply-Restricted Partitions.
+Commun. ACM 1973, 16, 379.
+(52) Dodson, L. G.; Zagorec-Marks, W.; Xu, S.; Smith, J. E. T.; Weber, J. M. Intrinsic
+Photophysics of Nitrophenolate Ions Studied by Cryogenic Ion Spectroscopy. Phys. Chem. Chem.
+Phys 2018, 20, 28535-28543.
+(53) Nguyen, T. M.; Ober, D. C.; Balaji, A.; Maiwald, F. W.; Hodyss, R. P.; Madzunkov, S. M.;
+Okumura, M.; Nemchick, D. J. Infrared Photodissociation Spectroscopy of Water-Tagged Ions
+with a Widely Tunable Quantum Cascade Laser for Planetary Science Applications. Anal. Chem.
+2024, https://doi.org/10.1021/acs.analchem.4c01023.
+
+25
+https://doi.org/10.26434/chemrxiv-2024-2tvc6 ORCID: https://orcid.org/0000-0002-5493-5886 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+TOC Graphic
+
+26
+https://doi.org/10.26434/chemrxiv-2024-2tvc6 ORCID: https://orcid.org/0000-0002-5493-5886 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+

@@ -1,0 +1,534 @@
+The gallophosphate cloverite – A promising adsorbent for
+environmental remediation…?
+
+Michael Fischer
+
+Faculty of Geosciences, University of Bremen, Klagenfurter Straße 2-4, 28359 Bremen,
+Germany
+Bremen Center for Computational Materials Science (BCCMS) and MAPEX Center for
+Materials and Processes, University of Bremen, 28359 Bremen, Germany
+E-mail: michael.fischer@uni-bremen.de
+
+Abstract
+Several recent molecular simulation studies proposed the gallophosphate zeotype cloverite,
+or cloverite-type materials, as promising adsorbents for the removal of various contaminants
+from water. This comment presents evidence that the cloverite models used in the simulations
+presented in those articles were most likely not charge-neutral. Use of such physically
+unrealistic adsorbent models is expected to have a negative impact on the meaningfulness of
+the simulation results. To provide a potential starting point for future simulation studies, a
+neutral model of guest-free cloverite is constructed and optimised with density functional theory
+calculations.
+
+Cloverite
+The gallophosphate zeotype cloverite was reported by Estermann et al. in 1991.1 Its name is
+derived from the shape of the apertures of the largest pores in the structure, as they resemble
+four-leaf clovers. At the time of publication, these pore openings, which are lined by 20 TO4
+tetrahedra (where T = tetrahedrally coordinated atoms, in this case, Ga and P), were the largest
+reported for any zeotype structure (zeolite-like materials with pore openings constituted by up
+to 30 TO4 tetrahedra have been reported more recently2). The largest cage of the cloverite
+structure, which lies at the intersection of channels lined by the 20-membered rings (20MRs)
+is also exceptionally large, with a body diagonal of ~30 Å. Another peculiarity of the cloverite
+structure is the interrupted nature of the framework: In each 20MR, there are four TO4
+tetrahedra having one “dangling” O atom, which is not connected to a neighbouring T atom,
+1
+https://doi.org/10.26434/chemrxiv-2024-nt5f2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+but forms a hydroxyl group that points towards the ring centre (Figure 1). As is the convention
+for interrupted frameworks, the structure commission of the International Zeolite Association
+(IZA) assigned a framework type code with a leading hyphen to the cloverite structure: -CLO.3
+The crystal structure of cloverite, determined from single-crystal X-ray diffraction
+measurements, is cubic, space group 𝐹𝑚3𝑐, with a very large unit cell (a = 52.712 Å).1 While
+the positions of framework atoms (including dangling O atoms) and fluoride anions
+incorporated in the double four-membered rings (d4r units) could be refined, a refinement of
+the positions of OSDA molecules and of hydrogen atoms of the hydroxyl groups remained
+elusive. This crystal structure is available from the IZA Structure Database (IZADB) in CIF
+format.3 The content of the conventional cubic unit cell is Ga768P768O2976(O_OH)192F192, where
+O_OH is used as a label to distinguish dangling oxygen atoms from those belonging to
+Ga−O−P linkages. It has been postulated that the negative charge of −384 e per unit cell is
+balanced by protons of hydroxyl groups and quinuclidinium cations in equal amounts
+(192/192).4 Concurrent removal of OSDA cations and fluoride anions through calcination
+results in a neutral compound with accessible porosity.5
+
+Figure 1: Left: Crystal structure of cloverite taken from the IZADB. Green and purple
+tetrahedra represent GaO4 and PO4 tetrahedra, respectively, light blue spheres correspond to
+fluorine atoms. Non-coordinated O atoms in one of the 20MRs are highlighted by arrows.
+Right: Single 20MR including charge-balancing protons. Figures prepared with VESTA.6
+
+Subsequent experimental investigations focused on various properties of cloverite, such as its
+thermal stability and dehydration/defluorination behaviour,4,5 adsorption properties4,5,7 and its
+potential use in gas-phase catalysis.8,9 Although the framework remains intact after calcination,
+this detemplated form is unstable in the presence of water or other polar molecules,5,7 and can
+2
+https://doi.org/10.26434/chemrxiv-2024-nt5f2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+only be stabilised by blocking the pores, for example, using silanes.10 The low stability of
+cloverite (together with the rather high cost of gallium) severely limits its potential applicability
+in separation and catalysis, despite the large pore openings. In 2010, an aluminophosphate
+analogue of cloverite was reported.11 While it is more stable than the gallophosphate, the
+calcined form still shows significant decrease in crystallinity upon exposure to ambient air for
+several days. PKU-12, a germanosilicate having the -CLO topology, is also unstable in the
+presence of water.12
+
+Recent simulation studies of cloverite
+In several recent simulation studies, grand-canonical Monte Carlo (GCMC) simulations were
+employed to predict adsorption isotherms of organic or inorganic contaminants in different
+zeolites.13–16 As high uptakes were predicted for cloverite in gallophosphate form or, in one
+case, another -CLO-type structure, this framework was proposed as a particularly promising
+system for contaminant removal in the context of environmental remediation. The following
+studies are discussed in more detail in this comment:
+o
+
+In one paper, abbreviated SN2020 for convenience, the adsorption of three drug
+molecules, ciprofloxacin, diclofenac, and chloramphenicol, was investigated.13 The
+conclusions of this paper state: “According to the molecular simulation results in this
+research, CLO zeolite has proved to be the satisfactory zeolite suited for adsorption
+of diclofenac, ciprofloxacin and chloramphenicol […].”
+
+o
+
+More recently, a similar approach was used to study the adsorption of various
+chlorinated hydrocarbons like hexachlorobenzene (HCB).16 In the abstract of this
+paper, abbreviated JC2024, it is highlighted that “[i]t was found that CLO (a cubic
+microporous gallophosphate) demonstrated the highest adsorption capacity for HCB
+among 245 zeolites, with a loading capacity of 65.84 wt%.”
+
+o
+
+Two computational investigations of ion adsorption addressed the adsorption of
+metal cations like Pb2+ (CMS2021)14 and of inorganic anions like AsO43(JML2022).15 A representative quote from the conclusions of JML2022 reads:
+“According to the molecular simulation results, the CLO zeolite has proved to be the
+best zeolite for adsorption of anions (PO43-, NO3-, CrO42-, AsO43-).”
+
+While this comment addresses exclusively the modelling of the structure of cloverite, some
+aspects of the simulation setup, such as the unclear relationship between fugacity and
+concentration in the aqueous phase, have also been the subject of some scrutiny (see, for
+example,
+
+the
+
+present
+
+author’s
+
+PubPeer
+
+comment
+
+regarding
+
+JML2022:
+
+https://pubpeer.com/publications/9A405AF8B5714665C857948C5AB54C).
+3
+https://doi.org/10.26434/chemrxiv-2024-nt5f2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Non-neutral models of cloverite
+In the first place, it may seem questionable whether a rather unstable and expensive zeotype
+like the gallophosphate cloverite can play any role in large-scale applications, especially in the
+view of its instability towards hydration. However, it would appear overly dogmatic to limit the
+scope of computational screening investigations to those materials for which a practical
+applicability has already been established, as the inclusion of less conventional materials may
+result in new insights and potentially spark further experimental research. Hence, the main
+point of criticism elaborated in this comment is not the fact that cloverite was included in the
+investigations, but rather how it was modelled. Although neither of the four papers provides
+input structures of the adsorbent models used in the simulations, the following issues can be
+identified based on the information provided in text, figures, and tables:
+o
+
+In the abstract of SN2020, the composition of cloverite is stated as
+F24Ga96P96O372(OH)24.13 Presence of 192 T atoms (Ga+P) indicates that this sum
+formula refers to one eighth of the conventional cubic unit cell. A summation of the
+formal charges indicates that this structure is not charge-balanced, with a total
+charge of −24 e per formula unit (−192 e per cubic cell). On the other hand, an
+inspection of the figures of SN2020 (notably Figure 3 A and Figure S1) indicates that
+neither the fluorine atoms nor the hydrogen atoms saturating the “dangling” oxygen
+atoms were present in the cloverite structure used in the simulations. This would
+result in a sum formula Ga96P96O396, which also is not neutral (−24 e per formula
+unit). Incidentally, a cloverite model having this composition is included in the
+structure database that is part of the commercial software DS BIOVIA Materials
+Studio, which was used in the simulations reported in SN2020.
+
+o
+
+CMS2021 does not state a cell composition, but Figure S50 shows dangling,
+unsaturated oxygen atoms and no fluorine atoms, rendering it plausible to assume
+that a model with sum formula Ga96P96O396 was used, as in SN2020.14 The same
+reasoning can be applied for the case of JC2024, notably on the basis of Figure 9.16
+
+o
+
+Although the sum formula is not given in JML2022, a density of 1.129 g cm-3 is stated
+in Table S1.15 This is exactly the density of the purely siliceous model of the -CLO
+framework that is included in the IZADB. This purely hypothetical all-silica -CLO
+model has, again, dangling oxygen atoms and is therefore not neutral. As all T sites
+are occupied by the same element, silicon, the structure can be described in a
+smaller unit cell having composition Si192O396 (charge: −24 e).
+
+Based on the evidence collected, it seems reasonable to surmise that all four investigations
+used models of cloverite (or, in the case of JML2022, of a purely siliceous -CLO-type
+framework) that were not charge-neutral. When simulating the adsorption of neutral, non-polar
+4
+https://doi.org/10.26434/chemrxiv-2024-nt5f2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+guest molecules, it may be a permissible first approximation to ignore electrostatic interactions
+altogether. In such cases, the non-neutrality of the adsorbent model and the presence of
+dangling oxygen atoms may not cause any major artefacts. However, the adsorption of polar
+molecules and, even more so, of cations or anions will be strongly impacted, if not dominated,
+by electrostatic interactions. For such cases, use of charge-imbalanced adsorbent models is
+expected to result in spurious electrostatic contributions to the total energy. In particular, the
+dangling, undercoordinated oxygen atoms will act as negatively polarised sites that would
+provide an artificially strong electrostatic interaction with cations or positively polarised areas
+of guest molecules. Clearly, these spurious contributions will negatively affect the physical
+meaningfulness of the simulation results and may result in qualitatively wrong predictions, for
+example, by systematically favouring non-neutral adsorbents over neutral ones. Without going
+into further details of the four studies, we may note that the reported loadings of 728 Pb2+
+cations (positive excess charge: +2,184 e) or 420 phosphate anions (negative excess charge:
+−1,260 e) per conventional -CLO unit cell, taken from CMS2021 and JML2022, respectively,
+appear physically unrealistic, especially when considering that, apparently, no additional
+charge-balancing species were included in the simulations. In the commenter’s opinion, this
+points to significant problems with the representation of electrostatic interactions, which may
+not necessarily be caused, but certainly exacerbated by the use of non-neutral adsorbent
+models.
+
+A charge-balanced cloverite model
+In order to obtain a charge-balanced model of the gallophosphate cloverite, the structure
+refined by Estermann et al. was taken from the IZADB.1 The fluorine atoms occupying the d4r
+units were removed, and all dangling oxygen atoms were saturated by hydrogen atoms. This
+structure was then optimized using dispersion-corrected density functional theory (DFT)
+calculations, employing two different exchange-correlation functionals, namely, the PerdewBurke-Ernzerhof functional17 together with a Grimme-type D318 dispersion correction (PBE-D3)
+and the rev-vdW-DF2 functional proposed by Hamada.19 Both of these approaches performed
+well in a previous benchmarking study on all-silica zeolites and aluminophosphate zeotypes.20
+Further details of the DFT calculations are provided in the Appendix.
+Table 1 compares some important structure parameters of the DFT-optimised structures to
+those of the experimental structure. The cell parameter a is 1.8%/1.0% (PBE-D3/rev-vdWDF2) larger than the experimental one. This tendency is unsurprising when considering, first,
+that cell parameters of guest-free zeolites/zeotypes are often larger than those of assynthesised systems21 and, second, that a tendency to overestimate the cell parameters has
+been established for both functionals (although it is less pronounced than for many other
+5
+https://doi.org/10.26434/chemrxiv-2024-nt5f2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+dispersion-corrected DFT approaches).20 Regarding bond distances, it is noteworthy that the
+average Ga−O and P−O bond distances in the DFT-optimised structures are about 0.04 Å
+longer than in the experimental structure, regardless of the choice of functional. Nevertheless,
+they fall well into the range of typical Ga−O/P−O bond distances compiled in a survey of
+experimental zeolite and zeotype structures.22 Compared to bonds within Ga−O−P linkages,
+bonds to the oxygen atom of the hydroxyl group are somewhat compressed for gallium, but
+expanded for phosphorus. The O−H distances amount to 0.971/0.974 Å (PBE-D3/rev-vdWDF2) for the (Ga−)O−H group and 0.974/0.977 Å for the (P−)O−H group. As the hydrogen
+atoms were placed on a mirror plane in the starting structure in order to retain the 𝐹𝑚3𝑐
+symmetry, it has to be conceded that the final, optimised positions are likely to depend on the
+starting positions and may not correspond to global minima. However, it is not expected that
+the exact orientation of the hydroxyl groups would strongly affect the properties computed
+using such a DFT-optimised model, e.g., in adsorption simulations.
+
+Table 1: Unit cell parameters and average T−O bond distances of cloverite. Experimental
+values are from the work of Estermann et al.,1 DFT values are from this work.
+a/Å
+daver(Ga−O) / Å
+d(Ga−O_OH) / Å
+daver(P−O) / Å
+d(P−O_OH) / Å
+
+Experiment
+51.712
+1.813±0.034
+1.820
+1.506±0.027
+1.494
+
+DFT, PBE-D3
+52.671
+1.854±0.012
+1.789
+1.549±0.010
+1.594
+
+DFT, rev-vdW-DF2
+52.340
+1.852±0.012
+1.789
+1.549±0.010
+1.592
+
+Concluding remarks
+In summary, an analysis of the information provided in some earlier molecular simulation
+studies points to a use of non-neutral models of cloverite in those works. It seems thus likely
+that the results reported for polar or charged guest species are affected by spurious
+electrostatic interactions. A neutral model of the gallophosphate cloverite was constructed and
+optimised using dispersion-corrected DFT calculations; it should constitute a suitable starting
+point for future molecular simulation studies of this material. An extension of the same
+approach to -CLO-type structures with other compositions or other interrupted zeolite
+frameworks should be straightforward. Looking beyond the specific case of cloverite, one feels
+compelled to reiterate that care must be taken when using structural data from structure
+databases for simulations of adsorption (or other) properties. Although significant efforts have
+been made to develop “computation-ready” structure databases, for example, in the field of
+MOFs,23–25 even these may still contain structures that require modifications to allow for
+6
+https://doi.org/10.26434/chemrxiv-2024-nt5f2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+physically meaningful simulations, with identified issues including missing hydrogen atoms or
+charge-balancing ions.26,27 In general, crystal structure databases are not designed to provide
+structures that are directly usable in simulations. It is therefore pivotal to include a “sanity
+check”, either by the user or via a suitably designed algorithm, prior to using structures from
+such databases in any kind of molecular simulation. For the specific case of the IZADB, it can
+be stated that the all-silica models of fully connected frameworks, optimised with a distance
+least-squares algorithm (DLS-76), should not require further modifications, whereas models of
+interrupted frameworks have to be treated with care. The same is true for the experimental
+crystal structures contained in this database, which often contain disorder, for example, of
+extra-framework cations or water molecules. Finally, it is recommended that researchers either
+supply structures of adsorbent models or describe the origin of the initial models and, where
+applicable, all modifications unambiguously and in sufficient detail in order to allow for a reliable
+reproduction of the simulation results.
+
+Appendix: Details of DFT calculations
+The structure of cloverite as refined by Estermann et al.1 was taken from the IZA Database.3
+Fluorine atoms were removed, and the two non-coordinated oxygen atoms (labelled O18 and
+O19 according to the original publication, Figure 1) were saturated with hydrogen atoms.
+These hydrogen atoms were put on the mirror plane perpendicular to a on which the O18 and
+O19 atoms also reside (Wyckoff position 96i). The structure was then converted to the primitive
+cell prior to full DFT optimisations using the CP2K code, version 2023.1.28 As described in the
+main text, separate optimisations were performed using the PBE-D317,18 and rev-vdW-DF219
+functionals. The DFT calculations used “molecularly optimised” double-zeta basis sets (DZVPMOLOPT-SR) proposed by VandeVondele and Hutter29 and Goedeker-Teter-Hutter
+pseudopotentials devised by Krack,30 employing a cutoff energy of 600 Ry. Due to the size of
+the unit cell, only the Γ point was included in the sampling of the first Brillouin zone. The
+optimisations
+
+enforced
+
+the 𝐹𝑚3𝑐 symmetry
+
+of
+
+the
+
+cloverite
+
+structure
+
+(keyword
+
+KEEP_SPACE_GROUP in the block CELL_OPT of the CP2K input file). Using a BFGS optimiser,
+the optimisations were considered converged when the maximal step size (displacement
+between optimisation steps) was below 10-4 a0 (a0 = 0.52918 Å), the maximal residual force
+was below 10-5 Hartree/a0, and the residual pressure was below 10 bar. The final structures
+were converted back to the conventional cell setting using the DS Biovia Materials Studio suite.
+
+7
+https://doi.org/10.26434/chemrxiv-2024-nt5f2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Acknowledgments
+The author gratefully acknowledges funding by the Deutsche Forschungsgemeinschaft
+(German Research Foundation, DFG) through a Heisenberg fellowship (project no.
+455871835). The
+
+author
+
+further
+
+acknowledges
+
+computing time provided
+
+on the
+
+supercomputers Lise and Emmy/Grete at NHR@ZIB and NHR@Göttingen as part of the NHR
+infrastructure. Finally, Frank Hoffmann is thanked for encouraging remarks on a preliminary
+version of this comment.
+
+Supporting Information
+Supporting information archive contains CIF files of the gallophosphate cloverite optimised
+with DFT calculations as well as CP2K input files.
+
+References
+1
+
+M. Estermann, L. B. McCusker, C. Baerlocher, A. Merrouche and H. Kessler, A
+synthetic gallophosphate molecular sieve with a 20-tetrahedral-atom pore opening,
+Nature, 1991, 352, 320–323.
+
+2
+
+J. Sun, C. Bonneau, A. Cantín, A. Corma, M. J. Díaz-Cabañas, M. Moliner, D. Zhang,
+M. Li and X. Zou, The ITQ-37 mesoporous chiral zeolite, Nature, 2009, 458, 1154–
+1157.
+
+3
+
+C. Baerlocher and L. B. McCusker, http://www.iza-structure.org/databases/, 2022.
+
+4
+
+R. L. Bedard, C. L. Bowes, N. Coombs, A. J. Holmes, T. Jiang, S. J. Kirkby, P. M.
+Macdonald, A. M. Malek and G. A. Ozin, Cloverite: exploring the 30 Å supercage for
+advanced materials science applications, J. Am. Chem. Soc., 1993, 115, 2300–2313.
+
+5
+
+A. Merrouche, J. Patarin, H. Kessler, M. Soulard, L. Delmotte, J. L. Guth and J. F.
+Joly, Synthesis and characterization of cloverite: a novel gallophosphate molecular
+sieve with three-dimensional 20-membered ring channels, Zeolites, 1992, 12, 226–
+232.
+
+6
+
+K. Momma and F. Izumi, VESTA 3 for three-dimensional visualization of crystal,
+volumetric and morphology data, J. Appl. Crystallogr., 2011, 44, 1272–1276.
+
+7
+
+G. Muller, G. Eder-Mirth, H. Kessler and J. A. Lercher, Sorptive properties and
+reactivity of cloverite single crystals studied by in situ FTIR microscopy, J. Phys.
+Chem., 1995, 99, 12327–12331.
+
+8
+
+M. Richter, H.-L. Zubowa, R. Eckelt and R. Fricke, Catalytic properties of the
+gallophosphate cloverite 1 Gas-phase formation of methyl tert-butyl ether,
+Microporous Mater., 1996, 7, 119–123.
+8
+
+https://doi.org/10.26434/chemrxiv-2024-nt5f2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+9
+
+M. Richter, H. Fischer, M. Bartoszek, H.-L. Zubowa and R. Fricke, Catalytic properties
+of the gallophosphate cloverite II. Gas-phase formation of ethyl tert-butyl ether,
+Microporous Mater., 1997, 8, 69–78.
+
+10
+
+R. Fricke, H. Zubowa, M. Richter and H. Kosslick, Crystallization, stability and possible
+application of the molecular sieve cloverite, Comptes Rendus Chim., 2005, 8, 549–
+559.
+
+11
+
+Y. Wei, Z. Tian, H. Gies, R. Xu, H. Ma, R. Pei, W. Zhang, Y. Xu, L. Wang, K. Li, B.
+Wang, G. Wen and L. Lin, Ionothermal synthesis of an aluminophosphate molecular
+sieve with 20-ring pore openings, Angew. Chem. Int. Ed., 2010, 49, 5367–5370.
+
+12
+
+J. Su, Y. Wang, J. Lin, J. Liang, J. Sun and X. Zou, A silicogermanate with 20-ring
+channels directed by a simple quaternary ammonium cation, Dalt. Trans., 2013, 42,
+1360–1363.
+
+13
+
+F. S. Wanyonyi, A. Pembere, G. K. Mutua, F. Orata and H. Louis, Computational
+screening of zeolites for the adsorption of selected pharmaceutical pollutants, SN
+Appl. Sci., 2020, 2, 1901.
+
+14
+
+F. S. Wanyonyi, T. T. Fidelis, G. K. Mutua, F. Orata and A. M. S. Pembere, Role of
+pore chemistry and topology in the heavy metal sorption by zeolites: From molecular
+simulation to machine learning, Comput. Mater. Sci., 2021, 195, 110519.
+
+15
+
+F. S. Wanyonyi, T. T. Fidelis, H. Louis, G. K. Mutua, F. Orata, L. Rhyman, P.
+Ramasami and A. M. S. Pembere, Simulation guided prediction of zeolites for the
+sorption of selected anions from water: Machine learning predictors for enhanced
+loading, J. Mol. Liq., 2022, 355, 118913.
+
+16
+
+T. Manda, S. Omwoma, G. O. Barasa, A. M. Pembere, D. Sifuna, L. Ochilo, S. Lagat,
+E. Ngeno, P. Ssebugere, C. B. Nagawa and C. Kyarimpa, Sorption Mechanisms and
+Enhancement of Selected Organochlorine Pollutants in Water on Zeolites, J. Chem.,
+2024, 2024, 4008315.
+
+17
+
+J. P. Perdew, K. Burke and M. Ernzerhof, Generalized Gradient Approximation Made
+Simple, Phys. Rev. Lett., 1996, 77, 3865–3868.
+
+18
+
+S. Grimme, J. Antony, S. Ehrlich and H. Krieg, A consistent and accurate ab initio
+parametrization of density functional dispersion correction (DFT-D) for the 94 elements
+H-Pu, J. Chem. Phys., 2010, 132, 154104.
+
+19
+
+I. Hamada, van der Waals density functional made accurate, Phys. Rev. B, 2014, 89,
+121103.
+
+20
+
+M. Fischer, W. J. Kim, M. Badawi and S. Lebègue, Benchmarking the performance of
+approximate van der Waals methods for the structural and energetic properties of SiO2
+and AlPO4 frameworks, J. Chem. Phys., 2019, 150, 094102.
+
+21
+
+M. Fischer, Local Environment and Dynamic Behavior of Fluoride Anions in
+Silicogermanate Zeolites: A Computational Study of the AST Framework, J. Phys.
+Chem. C, 2019, 123, 1852–1865.
+
+9
+https://doi.org/10.26434/chemrxiv-2024-nt5f2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+22
+
+W. H. Baur and R. X. Fischer, The Floppiness of It All: Bond Lengths Change with
+Atomic Displacement Parameters and the Flexibility of Various Coordination
+Tetrahedra in Zeolitic Frameworks. An Empirical Structural Study of Bond Lengths and
+Angles, Chem. Mater., 2019, 31, 2401–2420.
+
+23
+
+Y. G. Chung, J. Camp, M. Haranczyk, B. J. Sikora, W. Bury, V. Krungleviciute, T.
+Yildirim, O. K. Farha, D. S. Sholl and R. Q. Snurr, Computation-Ready, Experimental
+Metal–Organic Frameworks: A Tool To Enable High-Throughput Screening of
+Nanoporous Crystals, Chem. Mater., 2014, 26, 6185–6192.
+
+24
+
+P. Z. Moghadam, A. Li, S. B. Wiggin, A. Tao, A. G. P. Maloney, P. A. Wood, S. C.
+Ward and D. Fairen-Jimenez, Development of a Cambridge Structural Database
+Subset: A Collection of Metal–Organic Frameworks for Past, Present, and Future,
+Chem. Mater., 2017, 29, 2618–2625.
+
+25
+
+Y. G. Chung, E. Haldoupis, B. J. Bucior, M. Haranczyk, S. Lee, H. Zhang, K. D.
+Vogiatzis, M. Milisavljevic, S. Ling, J. S. Camp, B. Slater, J. I. Siepmann, D. S. Sholl
+and R. Q. Snurr, Advances, Updates, and Analytics for the Computation-Ready,
+Experimental Metal-Organic Framework Database: CoRE MOF 2019, J. Chem. Eng.
+Data, 2019, 64, 5985–5998.
+
+26
+
+C. Altintas, G. Avci, H. Daglar, A. Nemati Vesali Azar, I. Erucar, S. Velioglu and S.
+Keskin, An extensive comparative analysis of two MOF databases: high-throughput
+screening of computation-ready MOFs for CH4 and H2 adsorption, J. Mater. Chem. A,
+2019, 7, 9593–9608.
+
+27
+
+T. Chen and T. A. Manz, Identifying misbonded atoms in the 2019 CoRE metalorganic framework database, RSC Adv., 2020, 10, 26944–26951.
+
+28
+
+T. D. Kühne, M. Iannuzzi, M. Del Ben, V. V. Rybkin, P. Seewald, F. Stein, T. Laino, R.
+Z. Khaliullin, O. Schütt, F. Schiffmann, D. Golze, J. Wilhelm, S. Chulkov, M. H. BaniHashemian, V. Weber, U. Borštnik, M. Taillefumier, A. S. Jakobovits, A. Lazzaro, H.
+Pabst, T. Müller, R. Schade, M. Guidon, S. Andermatt, N. Holmberg, G. K. Schenter,
+A. Hehn, A. Bussy, F. Belleflamme, G. Tabacchi, A. Glöß, M. Lass, I. Bethune, C. J.
+Mundy, C. Plessl, M. Watkins, J. VandeVondele, M. Krack and J. Hutter, CP2K: An
+electronic structure and molecular dynamics software package - Quickstep: Efficient
+and accurate electronic structure calculations, J. Chem. Phys., 2020, 152, 194103.
+
+29
+
+J. VandeVondele and J. Hutter, Gaussian basis sets for accurate calculations on
+molecular systems in gas and condensed phases., J. Chem. Phys., 2007, 127,
+114105.
+
+30
+
+M. Krack, Pseudopotentials for H to Kr optimized for gradient-corrected exchangecorrelation functionals, Theor. Chem. Acc., 2005, 114, 145–152.
+
+10
+https://doi.org/10.26434/chemrxiv-2024-nt5f2 ORCID: https://orcid.org/0000-0001-5133-1537 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+

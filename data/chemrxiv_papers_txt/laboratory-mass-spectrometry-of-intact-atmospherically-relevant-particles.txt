@@ -1,0 +1,1087 @@
+Laboratory Mass Spectrometry of Intact Atmospherically-Relevant Particles
+Annapoorani Hariharana , Christopher J. Johnsona,∗
+a Department of Chemistry Stony Brook University Stony Brook 11794-3400 NY USA
+
+Abstract
+The physical and chemical properties of atmospheric aerosols profoundly impact the climate and human
+health. With diameters from sub-nanometer to tens of microns, a multitude of different experimental
+techniques suited to specific size ranges must be employed to characterize them. While mass spectrometry
+can be performed on particles of any size by destroying them and characterizing their molecular and atomic
+compositions, the masses of atmospheric nanoparticles with sizes below 10 nm can be measured with enough
+precision to observe discrete changes of their chemical composition while they remain intact. This enables
+direct study of their structure and reactivity in well-controlled laboratory experiments, complementing
+ambient field measurements. Here, we review the application of mass spectrometry and unique experiments
+based on mass spectrometers to measure the composition, stability, structure, and formation mechanisms
+of aerosol particles. We discuss the instrumentation employed in these experiments, including ion mobility
+separation, ion trap reactivity, and laser spectroscopy, that are often combined with mass spectrometry,
+and highlight illustrative examples of these techniques to prototypical atmospheric nanoparticles. We also
+highlight emerging mass spectrometry techniques that could extend these studies to larger nanoparticles
+and enable new insights into current unsolved problems involving atmospheric nanoparticles.
+Keywords:
+atmospheric particles, aerosols, clusters, mass spectrometry, climate
+
+1. Introduction
+Atmospheric aerosols greatly impact human health and the earth’s climate.(1; 2) These particles cause
+severe respiratory illnesses and influence the energy flux (radiative forcing) of the atmosphere.(3; 4) In
+the latter case, the thermal effects brought on by aerosols on global climate contribute to some of the
+largest uncertainties in anthropogenic radiative forcing (as shown in Figure 1a), and impact the accuracy
+of existing climate models.(5; 6) Aerosols scatter incoming solar radiation (direct effect) or seed clouds
+that increase earth’s albedo (indirect effect), and have a net cooling effect on global temperature. While
+∗ Department
+of Chemistry,
+chris.johnson@stonybrook.edu
+
+Stony
+
+Brook
+
+University,
+
+Stony
+
+Brook,
+
+11794-3400,
+
+Preprint submitted to Aerosol Science
+
+https://doi.org/10.26434/chemrxiv-2024-h3jzp ORCID: https://orcid.org/0000-0003-1859-5615 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+NY,
+
+USA;
+
+email:
+
+September 16, 2024
+
+Figure 1: (a) Natural and anthropogenic factors that affect global radiative forcing. Aerosols likely have a net cooling effect
+on global temperature and contribute the largest uncertainties in current climate models. (b) Multi-modal size distribution
+of atmospheric particles. Laboratory-based MS studies probe particles belonging to the nucleation and Aitken modes (MS of
+particles) while field studies perform MS on particles of any size. Adapted with permission from reference (5) and (17).
+
+significant progress has been made to understand these effects, identifying the various sources and sinks of
+particles remains a major challenge in developing reliable models of present-day, pre-industrial and pristine
+environments.
+Aerosols vary widely in size, number concentration, chemical composition and, in spatial and temporal
+distribution.(7; 8; 9) Typically ranging in diameter from 0.001 µm - 100 µm, aerosols are classified as shown
+Figure 1b. Nucleation mode particles include those freshly made from the clustering and uptake of trace
+vapors in the atmosphere (new particle formation, NPF). The small, thermodynamically stable clusters
+formed via NPF contribute to 10-90% of particles in the atmosphere.(10; 11; 12; 13; 14) Aitken mode
+particles are formed by the accretion of vapors on nucleation mode particles.(15; 16) Accumulation mode
+particles are composed of those that were either formed by the growth of smaller particles via coagulation
+and condensation processes while coarse particles are made by mechanical processes such as wind and erosion
+or are directly emitted (primary particles such as dust, soot, and sea spray) into the atmosphere.(8)
+Atmospheric particles are chemically complex and require powerful analytical techniques to be applied
+for their characterization. Field studies of atmospheric aerosols offer information on particle abundances,(18)
+chemical composition, variation in particle size,(19) and regional conditions that promote particle growth.(20;
+21) Laboratory efforts to investigate aerosols can be broadly categorized as techniques that analyze aerosols
+obtained by direct sampling from the atmosphere or by their production in simulation chambers,(22; 23) sea
+spray chambers,(24) or other validated sources of atmospherically-relevant particles.(25) These efforts have
+identified sulfates, nitrates, organics,(26; 27) ammonia,(28) sea salt, metal oxides,(29) and iodine-containing
+2
+
+https://doi.org/10.26434/chemrxiv-2024-h3jzp ORCID: https://orcid.org/0000-0003-1859-5615 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+compounds(30) as some of the key chemical species in atmospheric particles, largely by the application of
+mass spectrometry (MS) methods. Efforts are ongoing to link particle composition and state to their roles
+in atmospheric processes such as cloud formation.(31)
+The majority of MS studies have been performed on particles, which is to say that the goal of the
+studies is to measure the mass of the molecules composing the particle. More rarely is the mass of the
+particle measured, as for most particles, this information is largely redundant with increasing particle sizes.
+The multitude of chemical species making up particles larger than 10 nm makes it impossible to directly
+infer composition from particle mass. However, with the advent of high resolution, high precision mass
+analyzers, for the smallest of particles, it is now possible to determine exact chemical composition from
+particles composed of up to several tens of molecules, or even larger for particles formed in well-controlled
+laboratory settings.(32; 33; 34) Filtering of particles by mass can be performed non-destructively, yielding
+a compositionally pure “sample” of particles for further study. Such unambiguous identification of particle
+composition leads to detailed study of their chemical transformation from an exactly known starting point,
+rather than inferring these changes from measurements of a disperse ensembles of particles.
+MS is routinely used to selectively detect the amount of a given substance/analyte and determine the
+chemical composition of that analyte. The production and detection of fragments—groups of atoms or
+smaller portions of the analyte—provide insight into the structure of the analyte via MS. Owing to the
+availability of different ionization and analysis schemes, MS can be applied to the qualitative and quantitative
+examination of both ensembles of particles and individual clusters. In this review, we use the acronym MS to
+refer to both the technique and the instrument. In MS, the measurable quantity is the mas-to-charge ratio
+(m/z) of an collection of ions, and when the charge is unity the m/z corresponds to the ion’s mass. Thus,
+the analyte not only has to be an innate ion or ionized in order to be detectable by MS, the m/z that an ion
+is detected as decreases as the charge of the ion increases. For example, the largest analytes detected by MS
+include biomolecules and long-chain polymers that typically have masses between several hundred kDa and a
+few MDa, with the former often, being multiply charged, detected at lower m/z values.(35; 36; 37; 38; 39; 40)
+A hypothetical spherical cluster of mass ≈300 Da (≈1 nm in diameter) that grows into a climatically relevant
+size (≈10 nm) will obtain a mass of ≈3 MDa. If singly charged, the m/z of this particle will be close the
+detection limit of common MS analyzers, thereby requiring the development of new instrumentation capable
+of detecting such a particle. In the next sections, we will provide an overview of ionization and mass
+analysis techniques routinely applied to atmospheric nanoparticles, discuss extensions of these techniques to
+gain information beyond simply mass and relative abundance, and highlight new insights gained with these
+techniques, primarily in the context of NPF. We will then sketch paths towards more detailed studies of
+small particles as well as extensions of mass analyzers to larger particles.
+
+3
+
+https://doi.org/10.26434/chemrxiv-2024-h3jzp ORCID: https://orcid.org/0000-0003-1859-5615 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+2. Common Instrumentation Themes
+A basic idea of MS instrumentation is important to understand the scope of MS experiments. All
+MSs have three main components: an ion source (typically at atmospheric pressure), a mass analyzer,
+and a detector (latter two components are at high vacuum). Ions are transported from one component to
+another using ion guides, which constrain ions using radio-frequency (RF) fields while allowing background
+gas to be pumped away.(41) Mass analyzers are broadly classified into low- and high-resolution analyzers
+(LR-MS and HR-MS, respectively) based on the smallest difference in m/z between two peaks that can
+be reliably distinguished. LR-MS, such as quadrupole mass analyzers (QMA/QMS), is ideal for quick
+identification of m/z and abundances of different chemical components in a mixture but offer a resolution of
+1000-3000. HR-MS is ideal for distinguishing the various chemical species that make up complex mixtures
+such as atmospheric particles, including isomers and isotopologues. HR-MS that can separate ions with
+mass differences of 0.001 Da and resolving powers of 50,000-100,000 or higher are preferred in the analysis
+of atmospheric particles and require the use of sophisticated and expensive instrumentation. Time-of-flight
+(TOF), Orbitrap and Fourier transform ion cyclotron resonance (FT-ICR) are commonly applied high
+resolution techniques.(42; 43)
+Both commercial and custom-built MS benefit from the use of ion traps, designed to capture and store
+ions using electromagnetic fields. Ions can be trapped by a RF electric fields (Paul traps) or by a combination
+of electric and magnetic fields (Penning trap). FT-ICR MS, for example, uses a Penning trap while TOF
+analyzers are often coupled with Paul traps.(44) Trapped ions are cooled by multiple collisions with buffer
+gases such as helium to reduce their internal energy and limit any fragmentation. Carefully controlled
+collisions between ions and buffer gas (Collision Induced Dissociation (CID)) can lead to fragmentation,
+where analysis of the fragment masses offers insight into the structure of the ions.(45) Mass selection,
+where an ion of a specific m/z is isolated, prior to, and after, ion trapping enables the study of cluster/size
+specific effects in laboratory MS experiments. For example, isolated and trapped ions can be exposed to
+different reactive vapors and any resulting changes in m/z can be detected, providing a way to study the
+kinetics and thermodynamics of gas phase reactions. Coupling MS with other analytical techniques such
+as chromatography, ion mobility spectrometry (IMS) and spectroscopy offers enhanced characterization,
+including information on the size, chemical behaviour and structure of the analyte.(41; 46; 47)
+A discussion on the various instruments used in field studies of atmospheric particle is outside of the
+scope of this review but will be briefly discussed here. The Aerosol MS (AMS), the Aerosol TOF MS
+(ATOFMS), and the Atmospheric Pressure Interface TOF MS (APiTOF) are often used to examine ambient
+particles.(48; 49; 50; 51; 52; 53) The AMS can measure the mass of an ensemble of particles having a particular
+aerodynamic diameter, while the ATOFMS measures the mass of single particles. Both instruments apply
+MS on particles and provide insight into the chemical constitution of the sampled particles, but are not
+4
+
+https://doi.org/10.26434/chemrxiv-2024-h3jzp ORCID: https://orcid.org/0000-0003-1859-5615 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure 2: (a) Schematic of APiTOF with a ESI source and a differential mobility analyzer. (b) Schematic of the CI source. Red
+circles are the reagent gas molecules, blue circles are analyte molecules and black circles are electrons that ionize the reagent
+gas. The APiTOF was adapted with permission from reference (55).
+
+sensitive to particles with diameters of several tens of nanometers. The APiTOF, shown in Figure 2a, is
+used to probe the mass and composition of nucleation mode particles and is sensitive to ambient ions and
+clusters.(53) An ionization source and a mobility analyzer are often included in the sampling region of the
+APiTOF the sampled particles are directed into the MS using ion guides and are ultimately detected by a
+TOF analyzer.
+2.1. Particle Ionization Techniques/Sources
+Since only ions can be analyzed, ionization is an important component of MS. Electron ionization (EI)
+and photoionization (PI) are two commonly used ionization techniques. In EI, high energy (70 eV) electrons
+from an electron beam collide with the vaporized sample, resulting in the formation of a radical cation. The
+energy imparted in these collisions is enough to induce bond cleavage and the formation of fragment ions.
+Analysis of the fragments offers some details on the bonding motifs in the ion, but the mass spectrum often
+does not contain the intact molecular ion. The extensive fragmentation and the lack of the molecular ion pose
+a challenge to the precise measurement of the molecular weight and identity of the compounds present in the
+analyte. Thus, EI is a harsh technique and not preferred for the analysis of intact atmospheric particles.(54)
+Softer ionization techniques, such as chemical ionization (CI) and electrospray ionization (ESI), produce
+molecular ions without inducing fragmentation. ESI has been used to generate atmospheric particles in a
+laboratory environment, while the chemical constituents of aerosols have been ionized by CI or PI after
+being sampled and vaporized. PI, CI and ESI are discussed below.
+2.1.1. Photoionization
+PI occurs when an atom or molecule absorbs a photon, usually from a laser, and ejects an electron
+to form a cation. In order to induce ionization, the energy of the photon has to exceed the ionization
+energy (IE) of the chemical species.(56)PI efficiency (PIE), the ratio of number of ions formed to the
+number of photons absorbed by the molecule, typically increases as photon energy approaches the IE of the
+molecule. However, PIE is reduced considerably if the dissociation energy of the molecule is lower than its
+5
+
+https://doi.org/10.26434/chemrxiv-2024-h3jzp ORCID: https://orcid.org/0000-0003-1859-5615 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+IE and the absorption of a photon results in dissociation and not ionization of the molecule. Hence, PI can
+only be used to ionize those samples that have lower IE than dissociation energy.(57) PI has been applied
+to ionize vaporized molecules from ambient particles as well as particles made in a controlled laboratory
+environment.(58; 59; 60; 61; 62; 49) Laser desorption ionization (LDI), a type of PI, has been used to
+ionize atmospheric particles that have been collected on a filter and re-vaporized for prior to ionization.
+Generally, ionization of most chemical species needs photons with 10 eV or higher energy, requiring access
+to synchrotron facilities or high power lasers in the laboratory. The use of latter can result in extensive
+fragmentation and prevent proper mass analysis. A custom-built PI-TOFMS uses frequency-tripled light
+from a Nd:YAG laser to irradiate a mixture of Xe:Ar in the PI-chamber of the instrument.(63) Ionization
+of this inert gas mixture produces tripled light at 118 nm than can ionize the analyte. While this set
+up has been used to ionize species that have large ionization potentials such as iodine oxides Ix Oy , PI of
+atmospherically relevant species is a challenging task in the laboratory and is harder to achieve in field
+studies.(64).
+2.1.2. Chemical Ionization
+CI ionizes an analyte through ion-molecule reactions between an ionized reagent gas and the analyte
+molecule, akin to an acid-base reaction. In the ionization chamber the partial pressure of the reagent gas is
+maintained higher than that of the analyte, ensuring frequent collisions. The reagent gas is first ionized by
+collisions with electron or alpha particles, creating charged species that then ionize the analyte. CI leverages
+differences in proton affinities, with the analyte typically having higher affinity in cation mode. Unlike in
+proton-transfer reaction MS (PTR-MS), which uses hydronium ions for ionization, CI offers customization
+of reagent ions based on the proton affinity of the analyte.(65) For example, nitrate CI-MS is used for acidic
+analytes, while water-CI-MS suits basic analytes.(66; 67; 68; 69; 70) Various CI-MS methods, such as those
+using ethanol, acetate, or iodide, have enabled the detection of both cationic and anionic species in the
+atmosphere, including amines, acids, and unsaturated organics.(71; 72)
+2.1.3. Electrospray Ionization
+In ESI, a solution containing the analyte(s) flows through a capillary held at several kilovolts. At the
+capillary tip, a conical droplet (Taylor cone) forms and, aided by coaxial gas flow, emits a fine mist of
+droplets. There is considerable debate regarding the formation of gas-phase ions via the ESI process, but
+the general consensus is that a highly charged droplet forms initially, which then undergoes multiple cycles of
+solvent evaporation and fission to produce ions.(73) ESI results in little to no fragmentation, and offers fine
+control over spray and solution conditions to produce clusters with sufficient concentration for MS detection.
+While ESI is a versatile method for producing both cationic and anionic species, the formation of particles by
+ESI is mechanistically different from that occurring in the atmospheric. Therefore, the relative abundances
+6
+
+https://doi.org/10.26434/chemrxiv-2024-h3jzp ORCID: https://orcid.org/0000-0003-1859-5615 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure 3: (a) Cationic ammonium bisulfate clusters generated by ESI. (b) CI-MS obtained from CLOUD showing cationic
+ammonium bisulfate (black), dimethylaminium bisulfate (blue) and ammonium-dimethylaminium bisulfate clusters (green).
+Peaks marked A are (NH4 + )x (HSO4 − )x−1 clusters and peaks marked B are (NH4 + )x (HSO4 − )x−2 clusters. These images are
+adapted with permission from references (74) and (23).
+
+seen in an ESI-MS should not be extrapolated to infer concentrations of similar species during atmospheric
+particle formation events. Figure 3 shows cationic ammonium bisulfate clusters produced by ESI.(74; 33)
+The composition of the ions, (NH4+ )x (HSO4− )x−1 , is identical to the ammonium bisulfate clusters detected
+by the atmospheric simulation chamber, Cosmics Leaving Outdoor Droplets (CLOUD), using CI-APiTOF.
+This demonstrates that ESI is effective in producing ions that are atmospherically relevant in a laboratory
+setting.(23)
+The success of ESI in generating atmospherically relevant particles has led to the development of customized sources, such as the electrostatic precipitation ESI (EP-ESI) source.(75) EP-ESI involves a two-step
+process: aerosols are first ionized by corona discharge in an ionization chamber, then deposited onto a metal
+filament by electrophoretic motion. The filament acts as the emitter, and the deposited aerosols dissolve into
+the Taylor cone of the electrospray, eventually forming ions. In a proof-of-concept study, EP-ESI detected
+nanogram quantities of collected materials, making it valuable for chemical analysis of PM2.5 and smaller
+particles in lab studies. The synthesis of particles/molecular clusters via ESI is sensitive to the environment
+in the ionization chamber. A custom-designed nano-ESI emitter, housed in a air-tight capsule with controlled temperature and pressure, has been used to produce ammonium and aminium bisulfate clusters.(33)
+The clusters, produced by electrospraying the respective salt solutions or through exchange reactions in
+the gas phase between nascent ions and amine vapors, were compositionally identical to those detected by
+CLOUD. This setup separates the ESI emitter from changes in the laboratory environment, and has been
+used to synthesize many atmospherically relevant clusters.(76; 33; 77; 78; 79)
+
+7
+
+https://doi.org/10.26434/chemrxiv-2024-h3jzp ORCID: https://orcid.org/0000-0003-1859-5615 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure 4: Custom-built ESI sources: (a) EP-ESI for directly sampled ambient aerosols and (b) Nano-ESI chamber designed for
+careful control of the ESI-environment. Adapted with permission from references (75) and (33).
+
+3. Changes to Particle Compositions Due to Sampling
+High-resolution and high-sensitivity MS techniques have enabled the investigation of the chemical composition of both ambient aerosols and clusters. The ionized sample is guided into the MS and undergoes
+collisions with the background gas in the presence of electric fields. These collisions are far more energetic
+than any collision that ions are likely to experience in the atmosphere. The collisionally-excited ions can undergo fragmentation, resulting in the detection of only the fragments and not the particles that were initially
+sampled. The Atmospheric Cluster Dynamics Code (ACDC) is used to model the kinetics of cluster growth,
+and often, discrepancies in the distribution of clusters predicted by ACDC and those sampled in a mass
+spectrometer are due to fragmentation.(80; 81) Computational efforts to model the extent of fragmentation
+a cluster can undergo inside a MS like the APiTOF have shown that clusters undergo fragmentation while
+moving between the various differentially pumped chambers of the instrument, with highest fragmentation
+occurring between the first and second chambers. The study also established that the high pressures (7
+mTorr - 1 Torr) maintained in these chambers also contributed to greater fragmentation. The degree of
+fragmentation was found to be dependent on the type of clusters, with sulfuric aid-bisulfate clusters losing
+sulfuric acid molecules and dimethylamine-sulfuric acid clusters exhibiting fragmentation patterns that were
+highly dependent on the size of the cluster. Typically, larger clusters undergoing fragmentation to a greater
+extent and via multiple pathways.(55; 82; 83) Extensive fragmentation can skew the interpretation of the
+results, introducing significant uncertainties in terms of whether the measured/observed results are truly
+representative of the sampled species. This is an important detail to consider when applying MS to the
+study of ambient aerosols.
+
+8
+
+https://doi.org/10.26434/chemrxiv-2024-h3jzp ORCID: https://orcid.org/0000-0003-1859-5615 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+4. Mass Spectrometry of Ambient Particles
+While it is beyond the scope of this review, we provide a brief overview of non-laboratory MS measurements applied to atmospheric particles. In field measurements, most mass spectrometry studies focus
+on particles larger than ∼ 100 nm, characterizing the chemical complexity, number concentration, spatial and temporal variation and distinguished between natural and anthropogenic sources of atmospheric
+particles.(84; 85; 86; 20; 87; 88; 89; 90) Typically, particles over a given geographical area are studied at a specific time, with the overall motivation for the study deciding the duration and frequency of the experiment.
+Both the AMS and the ATOFMS have been key to the analysis of ambient aerosols.(91; 85; 92; 93)
+For nucleation mode particles under 100 nm, there has been relatively less study. Field-portable instruments are critical to gain direct insight into the composition of particles in the natural environment, and
+these same instruments are also useful for sampling from well-controlled atmospheric simulation experiments
+such as CLOUD.(84) The APiTOF with various CI sources is widely used to determine the composition of
+neutral sub-3 nm particles, and without CI, it can detect naturally charged species in the atmosphere.(94; 95)
+These measurements have provided invaluable data for ongoing debates about the relative roles of neutral
+and charged NPF, suggesting that neutral species outnumber charged ones by around an order of magnitude, but that charged particles are associated with faster growth rates.(23) From field studies that used the
+APiTOF, we have a better understanding of the role of a wide array of highly oxygenated organic molecules
+(HOMs) in NPF,(13) mechanism of volatile organic compounds formation,(92) the observation that nitrogen
+oxide-containing species such as organo-nitrates drive nighttime particle formation, or to being to pick apart
+the complicated role of diverse biogenic vapors in particle growth and aging.(84; 96; 18; 97) Here, the ability
+to unambiguously determine the chemical composition of new particles is critical to understanding what
+chemical properties are associated with growing particles. In all of these measurements, it is important to
+consider the effects of fragmentation in the atmospheric pressure interface as described above as well as the
+different transport efficiencies of particles of widely varying masses, both of which can bias interpretation of
+the mass spectra.
+
+5. Mass Spectrometry and Structure Determination
+The motivation to characterize the structure of clusters is two-fold. First, theoretical approaches compute
+the growth rate of molecular clusters, one monomer at a time.(80) ACDC, for example, requires accurate
+thermodynamic parameters that are typically obtained from high-accuracy quantum chemical calculations.
+Multiple methods that search the potential energy surface (PES) to identify the minimum energy structure
+(MES) have been developed.(98; 99; 100) An initial set of configurations, determined through low accuracy,
+low-cost quantum chemical methods, are filtered and refined with more accurate methods to hopefully locate
+the global MES.(101; 102) A variety of methods have been developed to identify the MES, resulting in a pool
+9
+
+https://doi.org/10.26434/chemrxiv-2024-h3jzp ORCID: https://orcid.org/0000-0003-1859-5615 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure 5: (a) Three different equilibrium geometry structures for the (NH4 )3 + (HSO4 − )2 cluster, predicted by different levels of
+theory. (b) Change in CCS of (I2 O5 )x (IOa − ) where x =1-7 and a=2-3 as a function of saturation water vapor ratio. Adapted
+with permission from (103) and (34).
+
+of candidate structures. For example, consider the three differed MES predicted for the (NH4 )3 + (HSO4 − )2
+cluster by a set of three calculations shown in Figure 5a.(103) The true MES structure was found to be
+a slightly modified version of structure A through spectroscopy experiments. Comparing experimental
+observables with quantum chemical predictions aids in confirming the best-match structures, advances the
+development of better screening criteria and improves the efficiency and accuracy of theoretical structure
+search methods. Second, the unique structural markers of small clusters such as (NH4 )3 + (HSO4 − )2 can be
+used to map the structural motifs in larger, more complex particles. Only a handful of techniques, such as
+electron scattering of trapped ions and single particle X-ray scattering, can directly probe the structure of
+gas phase species.(104; 105) Often requiring access to user-facilities such as a synchrotron, the adaptation of
+such techniques to probe the structure of atmospheric aerosols is challenging. Hence, laboratory-based MS
+have been combined with structure-sensitive techniques to indirectly probe the structures of mass-selected
+atmospherically relevant clusters.
+5.1. Probing structure through ion mobility measurements
+In IMS, ions are separated based on their collision cross sections (CCS) with buffer gases while under
+the influence of an electric field.(106) Smaller ions are more mobile and travel faster than larger, slower ions.
+While mobility is the parameter traditionally measured as a function of time or a differential electric field,
+the measured mobilities are often converted into a calculated CCS value. CCS varies with size and shape of
+the ion and is directly related to that particular ion’s mobility equivalent diameter. The differential mobility
+10
+
+https://doi.org/10.26434/chemrxiv-2024-h3jzp ORCID: https://orcid.org/0000-0003-1859-5615 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure 6: (a) Two possible structures for the HSO−
+4 (HNO3 )1 cluster. The proton can be located on either H2 SO4 or HNO3 as
+shown. (b) Experimental IRMPD spectra of three mixed clusters and HSO−
+4 . Adapted with permission from (103).
+
+analyzer (DMA) has been coupled with MS to characterize aerosols and clusters.(107; 34) In this method,
+ions are passed between two parallel plate electrodes that have voltages such that the electric field is stronger
+and longer-lived in one direction compared to the other. The trajectory of the ions is always perpendicular
+to the gas flow, and the alternating electric fields ensure that mobility varies in different directions, allowing
+for separation. Varying the potential difference between the plates also aids in ion separation. The ions
+transmitted through the DMA are directed into an MS, where they are detected.
+The stability of cationic dimethylamine-sulfuric acid clusters were studied using a DMA attached to
+a QSTAR XL MS.(107) Cationic clusters, particularly [H+ ((CH3 )2 NH)x (H2 SO4)x−1 ], exhibited significant dissociation during transfer between analyzers, with hydration via a humidified buffer gas reducing dissociation by stabilizing interactions within the clusters. Conversely, negatively charged clusters
+[(HSO4 − )(CH3 )2 NH)x (H2 SO4 )y ] dissociated through the loss of dimethylamine and sulfuric acid pairs, with
+no difference observed under dry or humidified conditions. All clusters, irrespective of the charge on them,
+showed water uptake, leading to slight increases in measured CCS. Similarly, iodine pentoxide-iodic acid
+clusters ((I2 O5 )x (HIO3 )y (IOa ) where x =0-7, y=0-1 and a=2-3 were examined, demonstrating greater stability and less dissociation compared to dimethylamine-sulfuric acid clusters.(34) Hydration facilitated the
+conversion of I2 O5 to HIO3 , with moderate CCS increases indicating limited water sorption. These findings
+suggest that, under atmospheric conditions, small ionic clusters are only mildly hydrated and do not behave as nanodroplets, underscoring the importance of considering hydration effects when modeling cluster
+properties.
+11
+
+https://doi.org/10.26434/chemrxiv-2024-h3jzp ORCID: https://orcid.org/0000-0003-1859-5615 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+5.2. Spectroscopy
+Two spectroscopic techniques are often employed to examine the structure of atmospheric clusters:
+vibrational and electronic spectroscopy. Both techniques leverage the ability of MS to mass-select clusters
+and track changes in structure and properties as a function of composition and hydration. Vibrational
+spectroscopy provides a way to the track the structural changes brought on by size and hydration. Electronic
+spectra often contain no structural information, but offer insights into the strength of bonding interactions
+between cluster components. In this section, we briefly review these techniques and discuss a few insights
+obtained through spectroscopy experiments performed in a MS. For more details on the spectroscopy of
+atmospherically relevant particles, refer to the following references.(108; 109; 110; 111)
+5.2.1. Vibrational Spectroscopy
+Direct absorption spectroscopy of gas-phase molecular ions in a MS is impossible due to low ion densities
+and high spectral congestion from other absorbing species or complex ions. Action spectroscopy, where
+changes brought on by the absorption of one or more photons are measured instead of measuring absorption
+of life. Thus, action spectroscopy provides indirect information on the structure and energy levels of the
+analyte. In a MS, a change in m/z is detected owing to the dissociation of the analyte or a weakly bound
+adduct brought on by light absorption. Infrared photodissociation (IRPD), infrared multiphoton dissociation
+(IRMPD), and cryogenic ion vibrational predissociation spectroscopy (CIVP) have become the preferred
+methods to obtain IR spectra of gaseous ions. The IR spectrum is obtained by plotting photodissociation
+cross-section versus photon energy or wavelengths. CIVP and IRMPD are usually performed in custom-built
+instruments with cryogenically-cooled ion traps to obtain a linear vibrational spectrum. Both techniques
+are valuable for mapping the various bonding arrangements in the analyte, but insights into structure
+are obtained by comparing experimental spectra with those predicted by quantum chemical calculations.
+Typically, shifts in vibrational modes or differences in degenerate resonances are determined in order to
+elucidate the structure. Vibrational spectroscopy has been used to understand binding, hydration, and
+acid-base chemistry in atmospherically relevant clusters.(111)
+Anions composed of sulfuric acid and nitric acid have been detected in the atmosphere.(112) While
+the composition of the smallest clusters was HSO−
+4 (HNO3 )x (x = 1,2), field studies could not identify the
+charge-carrying species. The location of charge in atmospheric clusters influences their chemical reactivity
+and stability, making it important to determine the location of the proton in these clusters. IRMPD spectra
+−1
+) appears only in
+of H2 SO4 /HNO3 clusters (Figure 6a) reveal that the HSO−
+4 peak (around 1190 cm
+−
+−
+HSO−
+4 (HNO3 ) and HSO4 (H2 SO4 )(HNO3 ), while nitrate was the charge carrier in (HNO3 )(NO3 )(H2 SO4 ).
+
+(113) Thus, sulfuric acid is unlikely to be the charge carrier despite its higher gas-phase basicity. CIVP
+has been applied to determine the MES of a wide range of atmospheric particles and also in elucidating
+atmospheric reaction mechanisms. The formation of photoactive nitrosyl halides (XNO2 ) from N2 O5 on
+12
+
+https://doi.org/10.26434/chemrxiv-2024-h3jzp ORCID: https://orcid.org/0000-0003-1859-5615 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+sea-spray aerosol surfaces, studied by CIVP, was found to include halide insertion into N2 O5 leading to
+XNO2 or HNO2 .(114)
+5.2.2. Electronic Spectroscopy
+Negative ion photoelectron spectroscopy (NIPES) provides a way to directly acquire details on the
+strength of binding between different cluster components. Typically, gaseous ions or molecules are irradiated
+with monochromatic light (from a laser) with sufficient energy to eject an electron from the molecule/ion.
+The kinetic energy (KE) of this electron, the photoelectron, is measured, and the electron binding energy
+(BE) is calculated based on the photoelectric effect BE = hν −KE.(109) A histogram of the BEs emitted by
+the photoelectrons is plotted as a NIPES spectrum, from which the relative energies of the ground and excited
+states of both the anion and the corresponding neutral species can be determined. Photoelectron spectra
+can be compared with calculations to obtain structural information, but is typically combined with ab initio
+molecular dynamics calculations to determine the key binding interactions between cluster components.
+As an example, consider the NIPES spectra of HSO4 − along with HSO4 − (Sol)n shown in Figure7,
+where n=1,2 and Sol refers to succinic acid (SUA), water or sulfuric acid.(115) These spectra, obtained
+by irradiating the clusters at 157 nm, show that HSO4 − has four bands of which X is the lowest energy
+feature. On comparing the HSO4 − spectrum with spectra 5 and 7 in the figure, it is clear that binding with
+water shifts X to higher BE and the intensity pattern is somewhat retained. Bonding with SUA or H2 SO4 ,
+however, substantially shifts the four bands and there are no similarities between three spectra and that
+of HSO4 − . Thus, the two acids have a larger stabilization effect on HSO4 − than water and also affect the
+structure of the HSO4 − . Adding a second solvent molecule leads to further stabilization of HSO4 − , with
+both SUA and H2 SO4 forming multiple hydrogen bonds with HSO4 − . The formation of (SUA)(HSO4 − ) was
+also found to be more thermodynamically favorable in comparison to HSO4 − (H2 O) cluster. In this manner,
+NIPES has been applied to probe the hydrogen bonding topology and the charge carrying species in many
+clusters that are key to the initial stages of atmospheric nucleation.(116; 117; 118; 119)
+
+6. Mass Spectrometry and Photochemistry
+The rates of photochemical reactions of atmospheric particles vary by orders of magnitude based on the
+nature of the chemical species involved. Absorption of light results in the formation of transient excited
+state species which may dissociate, isomerize, transfer energy to other molecules or engage in chemical
+reactions. Aerosol precursors generate reactive species (such as (OH• ), IO, and XNO2 ) that participate in
+reactions that influence the atmosphere’s chemistry. Irradiating an ensemble of particles can produce several
+photofragmentation products, where identifying the initial species undergoing the photochemical reaction
+becomes impossible. Mass selection of a single cluster prior to photo-excitation, however, can provide
+effective isolation and precise analysis of the elementary steps of atmospherically relevant reactions. For
+13
+
+https://doi.org/10.26434/chemrxiv-2024-h3jzp ORCID: https://orcid.org/0000-0003-1859-5615 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure 7: (a) NIPES spectra of HSO4 − along with HSO4 − (Sol)n , where n=1,2 and Sol refers to succinic acid (SUA), water or
+sulfuric acid is shown. Peaks X, A, B and C on HSO4 − spectrum refer to characteristic electron binding energies (BE) of the
+ion. The blue dashed line have been added to track the shift in BE induced by water. (b) Lowest energy structures computed
+for each of these clusters is shown.
+
+14
+
+https://doi.org/10.26434/chemrxiv-2024-h3jzp ORCID: https://orcid.org/0000-0003-1859-5615 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+example, the photochemical reactions of sea salt-glyoxylic acid and Ix Oy clusters have recently been studied
+through UV spectroscopy. (120; 121; 64) ESI-generated cations, [Nan Cln−2 (C2 HO3 )]+ where n = 5−11, were
+guided into an FT-ICR mass spectrometer coupled to a Nd:YAG laser system. The UV photodissociation
+spectra of these clusters displayed two absorption bands between 225-400 nm, with loss of Nax Clx−1 (C2 HO3 )
+or Nax Clx−1 being the most prominent fragmentation pathways. The carbon dioxide radical (CO•−
+2 ) was
+also detected as a photolysis product, forming from the cleavage of a C-C bond in glyoxylate. The CO•−
+2
+photofragment was only detected in the 300-400 nm UV range and was likely stabilized by the salt, making
+it a transient species in the troposphere. The photochemical lifetime of the clusters was found to be
+approximately 10 hours, implying that glyoxylic acid/glyoxylate played a role in the photochemical aging
+of SSA. Hydration of sodium glyoxylate clusters resulted in increased photodissociation but did not result
+in the formation of the gem-diol form of aqueous glyoxylic acid, confirming that glyoxylate will remain
+photo-active in the actinic wavelength range.
+The photochemical reactions of various Ix Oy have been probed in several studies recently. In one study,
+the authors combined pulsed photolysis, photodepletion and photoionization TOFMS (PI-TOFMS).(64) IO,
+produced in situ by the reaction between triplet oxygen and iodine, underwent further reactions to form
+larger Ix Oy . The photodepletion of these Ix Oy species was carried out at 355 and 532 nm and products
+were detected by PI-TOFMS. IO and I2 O4 showed significant depletion at 355 nm, with sufficiently large
+photolysis cross sections suggesting that these species are not likely to participate in particle growth. The
+photolytic lifetimes of different Ix Oy species suggest that photolysis of more photolabile species such I3 O7 and
+I5 O12 is likely to slow down particle formation while less photolabile species are likely to be contribute more
+to particle growth in the atmosphere. Another study probed the UV photodissociation of (I2 O5 )0–3 (IO3 – )
+clusters and found that loss of O atom, I2 O4 and I2 O5 were the major photofragmentation pathways in
+the actinic region.(122) Loss of I2 O5 was found to be much faster than the loss of O, with estimated
+rates indicating that photolysis of these clusters is likely to compete with particle formation under ambient
+conditions. The O-loss fragment likely left behind a triplet cluster that could then undergo further complex
+reactions with other particle constituents such as organics and amines.
+
+7. Energetics and Reaction Dynamics with Mass Spectrometry
+In order to be climatically relevant, an atmospheric cluster initially composed of a few molecules needs
+to form adducts by uptaking other vapors. Each step of the particle formation process has to be efficient and
+offer enough stability to the cluster to ensure growth to the next size out-competes coagulation, absorption
+by larger particles, or evaporation. Thus, understanding the intricate details of energetics and kinetics
+at each step is paramount. Additionally, simulation of the aforementioned processes also requires exact
+rates and thermodynamic parameters such as binding free energy (∆G). Here, we describe laboratory MS
+15
+
+https://doi.org/10.26434/chemrxiv-2024-h3jzp ORCID: https://orcid.org/0000-0003-1859-5615 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+experiments that have probed the kinetics and thermodynamics of cluster formation and reactions. We also
+highlight the need for experimental validation of predicted rates and thermochemical parameters.
+7.1. Ion Trap Kinetics and Thermodynamics
+Probing the kinetics, energetics and mechanisms of atmospherically relevant reactions via MS requires
+the use of ion traps. The duration (“trapping time”) for which the ions are stored in the ion traps can be
+controlled affects how long ions are exposed to the changing RF fields in the ion trap and ultimately, impacts
+the observed ion signal. Obtaining mass spectra as a function of trapping time provides a way to track the
+kinetics of a reaction and Arrhenius analysis (plot of rate constant vs 1/T) of the recorded data provides
+insight into the temperature dependence of the rate constant and any activation barriers. Introduction of
+reactive vapors into the ion trap can lead to new product peaks that, when studied across different ion trap
+temperatures, provide an insight into the energetics of the reaction. van’t Hoff analysis (plot of equilibrium
+constant lnK vs 1/T) of mass spectra recorded under steady state conditions establishes the temperature
+dependence of the equilibrium constant and to extract the enthalpy change (∆H) and entropy change (∆S)
+of the reaction.
+The kinetics of base exchange in small ammonium bisulfate, ammonium nitrate and ammonium methanesulfonate clusters were examined in a FT-ICR-MS. These studies focused on measuring the rates of the substitution of amines such as methylamine, dimethylamine and trimethylamine for ammonia and found that
+the observed substitutions were all pseudo first order reactions.(123; 124; 125) Figure 8b shows a typical
+reaction profile and statistical fit for the reaction of the [(NH4 + )8 (HSO4 − )7 ]+ cluster with dimethylamine.
+While dimethylamine readily replaced ammonia, the reverse was not observed, indicating that substitution
+is driven by proton affinity and amine exchange is highly favorable.(123) The measured rates were also independent of cluster size, and near unity uptake coefficients indicated that the conversion from ammonium
+to aminium salt clusters is likely rapid in ambient conditions. Similar results were obtained for the ammonium nitrate clusters, while ammonium methanesulfonate clusters showed slower exchange. Regardless of
+the acid in the cluster, amines will displace ammonia. Furthermore, the exchange of a surface ammonia
+was more rapid that the exchange of an ammonia at the core of the cluster. The kinetics of nucleation of
+sulfuric acid, water and ammonia has been in quadrupole ion trap MS.(126; 127; 128; 129; 130) The observed
+rates, for H+ (H2 SO4 )s (H2 O)w ,(HSO4 − )(H2 SO4 )s (H2 O)w , and NH4 + (NH3 )n (H2 SO4 )s cluster systems, were
+in the low-pressure limit, and highly dependent on the reacting species and not on the pressure at which
+the reactions were monitored.
+Incorporation of water into sulfuric acid-bisulfate anionic clusters was more favorable compared to incorporation of sulfuric acid into protonated water clusters. This laboratory study supports field studies that
+showed anionic nucleation of sulfuric acid-water system as more favorable than cationic or neutral nucleation. In fact, neutral nucleation was found to be slower than ion-induced nucleation under tropospheric
+16
+
+https://doi.org/10.26434/chemrxiv-2024-h3jzp ORCID: https://orcid.org/0000-0003-1859-5615 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure 8: (a) Reaction profile for the uptake of dimethylamine by (NH4 + )8 (HSO4 − )7 ]+ cluster. The bracketed number in the
+legends showed the number of ammonia(s) replaced by dimethylamine in the cluster. The lines are statistical fits to pseudo first
+order kinetics observed for this reaction. (b) A van’t Hoff plot depicting the measured equilibrium constants for the addition
+of NH3 to the (NH4 )+ (NH3 )n (H2 SO4 )2 clusters in an ion trap. Adapted from references (130) and (123).
+
+conditions.(131) Extensive hydrogen bonding and proton transfer between ammonia and sulfuric acid results in fully ionized cluster components (NH4 + (NH3 )n (H2 SO4 )s ). The corresponding structures were 50
+kcal mol−1 more stable than clusters composed entirely of neutral ammonia and sulfuric acid, with clusters
+where n ≥ s were found to be particularly stable. Thus, sulfuric acid is stabilized to a greater extent by
+ammonia and water, making sulfuric acid-ammonia nucleation more spontaneous in the free troposphere.
+7.2. Fragmentation/Dissociation Experiments
+The deliberate, controlled dissociation of mass-selected ions offers insights into cluster structure. In order
+to induce fragmentation, a cluster’s internal energy must be raised above its dissociation threshold. This
+process, called ion activation, can be achieved in a myriad of ways including collision induced dissociation
+(CID),(45; 79) surface induced dissociation (SID),(132; 133; 134) IRMPD, (135; 113; 108; 78; 79) and ultraviolet photodissociation. Since the m/z of both the initial cluster and the resulting fragments are analyzed,
+techniques that use multiple stages of mass detection are referred to as MS/MS or MSn , where n refers to
+the number of mass analysis steps employed. According to the principle of microscopic reversibility, cluster
+fragmentation can be considered as the reverse of cluster growth pathways.(136; 137; 138) Analyzing the
+composition and abundances of fragments produced at different energies gives clues to the cluster formation
+mechanism and the ordering of the binding strengths of different cluster constituents. In this section, we
+will highlight studies that have used CID and SID to obtain insights into stability of molecular clusters and
+the energetics of cluster growth.
+
+17
+
+https://doi.org/10.26434/chemrxiv-2024-h3jzp ORCID: https://orcid.org/0000-0003-1859-5615 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Figure 9: a) CID mass spectra of (G)1 (A)2 (SA)2 cluster, where G, A and SA refer to glycine, ammonia and sulfuric acid. NCE
+refers to normalized collisional energy, an internal scale for collisional energy in the Thermo LTQ XL. (b) Potential energy
+surface for the two step, sequential loss of ammonia and sulfuric acid from the [(NH4 + )4 (HSO4 − )3 ]+ cluster. Adapted from
+(79) and (139).
+
+7.2.1. Collision-induced dissociation
+In a CID experiment, mass-selected clusters collide with molecules of a neutral, non-reactive gas, such
+as helium, in the ion trap or collision cell of a MS.(45) Multiple collisions between the ion and the neutral
+gas molecules result in an increase in the internal energy of the ion, ultimately leading to the fragmentation
+of the cluster. Fragmentation leads to the formation of at least two species: an ion, lower in mass than
+the precursor ion, and at least one neutral molecule that corresponds to the difference in mass between the
+fragment ion and the precursor ion. The degree of fragmentation depends on the internal energy of the
+activated ion, with greater internal energies corresponding to greater fragmentation.
+Our group recently used CID to probe the stability of atmospherically relevant glycine ammonium bisulfate clusters.(79) The experiments were carried out in a QIT-MS (Thermo LTQ XL). Both bare ammonium
+bisulfate and glycine ammonium bisulfate clusters exhibited preferential loss of ammonia or an ammoniasulfuric acid pair. The absence of any glycine-loss fragments from the mixed clusters showed that glycine
+was bound more strongly to sulfuric acid than ammonia. Quantum chemical calculations, however, revealed
+comparable binding free energies (∆Gb ) for glycine, ammonia, and sulfuric acid and that the energy required
+to remove an ammonia-sulfuric acid pair from a mixed cluster is ≈10 kcal/mol greater than the energy required to remove glycine. This suggests that removing glycine from the cluster is substantially easier, a
+result that was not experimentally observed. Applying the calculated ∆Gb to cluster growth models could
+18
+
+https://doi.org/10.26434/chemrxiv-2024-h3jzp ORCID: https://orcid.org/0000-0003-1859-5615 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+lead to substantial errors in the computed growth rates (as rate depends exponentially on ∆Gb ). Thus, this
+work reiterates the need for experimental validation of computed ∆Gb .
+7.2.2. Surface-induced dissociation
+In an SID experiment, mass-selected precursor ions are accelerated to a specified KE before colliding
+with a surface. Upon impact, the kinetic energy of the ions is converted into internal energy, leading
+to fragmentation. Collisions with the carefully constructed surface, usually self-assembled monolayers of
+large organic molecules such as 1-dodecanethiol, induce extensive fragmentation of the ion. The energy
+transfer between the ion and the surface is much more efficient than the transfer of energy through multiple
+collisions in CID. SID and CID are conceptually similar experiments but SID offers better control over
+collision energies. As a result, activation energies can be determined more accurately using SID.(140; 134)
+SID experiments of [(NH4 + )6 (HSO4 − )5 ]+ and [(NH4 + )5 (HSO4 − )4 ]+ clusters established that the incorporation of ammonia into small, prototypical ammonium bisulfate clusters is a barrier-controlled process.(139)
+Upon SID, both clusters demonstrated the same two major fragmentation pathways: a) the two-step sequential loss of ammonia and sulfuric acid, and b) the one-step loss of ammonium bisulfate. The experimentally
+measured energies required to induce the loss of ammonia and ammonium bisulfate from the clusters always
+exceeded the theoretical predictions, suggesting the existence of a reverse activation barrier for the addition
+of these monomers. Loss of sulfuric acid was kinetically controlled, suggesting that growth by sulfuric acid
+is not barrier controlled. Accommodating an ammonia molecule requires a considerable rearrangement of
+the electrostatic interactions within the sulfuric acid-rich cluster, and a similar phenomenon was observed
+for cluster growth by the addition of an ammonium bisulfate molecule. The presence, and height, of the
+activation barrier to the addition of ammonia to a sulfuric acid cluster can impact cluster distribution in
+the atmosphere, making it an important detail to account for cluster growth models.
+
+8. Future Needs
+Thus far, we have discussed some insights into atmospheric aerosol particles obtained from laboratorybased MS. Here, we take the opportunity to highlight a few areas where technological development is
+required to extend the benefits of applying MS-based methods to study the physical and chemical properties
+of atmospheric particles.
+8.1. Energy-Resolved CID
+CID experiments performed in modern MS are significantly influenced by instrument specific parameters
+such as an internally-defined scale of collisional energies that are not consistent between instruments. In
+an ideal CID experiment, a well-thermalized ion packet is subjected to carefully controlled single collisions.
+In practice, the internal energy of the ion packet is influenced by the ion source and the ion transfer
+19
+
+https://doi.org/10.26434/chemrxiv-2024-h3jzp ORCID: https://orcid.org/0000-0003-1859-5615 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+optics between the source and the collision cell/ion trap.(141; 142) The distribution of KE in the parent
+ions is not known prior to activation, increasing the uncertainty in the energy transferred during the CID
+process. In most instruments, ions are excited/activated by the application of an excitation voltage unique
+to the precursor ion being examined. Non-ideal trapping conditions and space-charge effects can hinder
+true resonance and lead to inefficient fragmentation. Guided-ion beam (GIB) MS are an alternate way to
+obtain quantitative binding energies of atmospheric particles. In a typical GIB-MS experiment, the KE
+of the ions are set to a desired value before colliding with a neutral background gas.(143) Monitoring the
+reactant and product ion intensities yields the reaction cross section as a function of KE, which can be
+modeled to determine binding free energies. GIB-MS has been used to obtain quantitative thermochemical
+parameters for many different systems including alkali metal-nuclei acid complexes and could be extended
+to atmospheric particles as well.(144; 145; 146)
+8.2. Charge Detection Mass Spectrometry
+Climatically relevant particles are much larger than 10 nm in diameter, a size range that is beyond the
+upper mass limit of most MS. Large particles such as viruses, anti-bodies, and nanoparticles have been
+characterized by charge detection mass spectrometry (CDMS).(32; 147; 148) CDMS is a single particle
+technique where an ion passing through a conducting cylinder induces a proportional charge on the cylinder
+(image charge) that is amplified and recorded. In ion trap CDMS, the cylinder is embedded in an ion trap and
+the ion oscillates back and forth through cylinder. Fourier transform of the recorded image charge yields the
+ion’s oscillation frequency from which the m/z of the particle can be determined.(148) CDMS has been used
+to measure the mass of heterogeneous samples and could be extended to examine larger atmospheric particles
+as well.(149) When coupled with a structure-sensitive technique like vibrational spectroscopy, CDMS could
+trace the chemical changes brought about by the aging of atmospheric particles and also provide a way
+to examine aerosol phase and mixing states. Such an instrument is currently under development in our
+lab. Additionally, combing SID and CDMS could offer unique structural insights into larger, more complex
+particles that are held together by non-covalent interactions.(150; 151)
+8.3. Variable Temperature Mass Spectrometry
+Although ubiquitous in the atmosphere, water’s role in NPF and the effect of humidity on NPF rates are
+yet unclear. The extent of hydration of clusters is largely dependent on cluster type and size. Probing the
+hydration of clusters via MS is challenging because sampling techniques typically transfer enough energy
+to the cluster, any evaporate any bound water.(84; 85; 88) Spectroscopy and DMA-MS have offered some
+insights into water-containing new particles but do not provide quantitative thermodynamic parameters
+of water binding, which is vital to comprehend water’s role in particle growth.(107; 116; 152; 34; 76; 77)
+Our group recently probed the thermochemistry of hydration of lanthanide complexes by VTMS, where the
+20
+
+https://doi.org/10.26434/chemrxiv-2024-h3jzp ORCID: https://orcid.org/0000-0003-1859-5615 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+lanthanide complexes were hydrated step-by-step in a variable temperature ion trap in the presence of a
+water-seeded buffer gas.(153) By monitoring the partial pressure of water and ion intensities of both dry and
+any hydrated complexes, we were able to carry out van’t Hoff analyses to derive the free energies required
+to bind water to these complexes. Ours is a modified, low temperature additive version of the VT method
+employed by Froyd and Lovejoy.(130) Adapting this approach to determine the thermodynamics of vapor
+uptake of atmospherically-relevant molecular clusters can provide a quick way to validate computational
+predictions as well as complement structural information obtained from IR-MS.
+
+9. Conclusions
+We have shown the breath of information that is made available through measuring the mass of intact
+particles. Laboratory-based MS studies have provided molecular level insights into particle formation and
+growth rates. Additionally, combining structure sensitive methods with MS has provided further details into
+the intermolecular interactions that govern particle formation and growth. We have highlighted different
+ionization methods, most commonly used MS instrumentation, as well as MS-based spectroscopy, kinetics
+and thermodynamics experiments. We have also discussed efforts to extend MS based insights out of the
+current size limitations and highlighted key areas where more research and development is required. We
+hope that the studies discussed here establish the ability of MS to unravel details of complex analytes like
+atmospheric aerosols.
+
+Declaration of competing interest
+The authors are not aware of any affiliations, memberships, funding source that might perceived as
+influencing the objectivity of this review.
+
+Acknowledgements
+The authors gratefully acknowledge the financial support provided by the National Science Foundation
+through the grants CHE-1905172 and CHE-2215900.
+
+References
+[1] M. Kulmala, I. Riipinen, M. Sipilä, H. E. Manninen, T. Petäjä, H. Junninen, M. D. Maso, G. Mordas, A. Mirme, M. Vana,
+et al., Toward direct measurement of atmospheric nucleation, Science 318 (5847) (2007) 89–92.
+[2] M. Kulmala, J. Kontkanen, H. Junninen, K. Lehtipalo, H. E. Manninen, T. Nieminen, T. Petäjä, M. Sipilä, S. Schobesberger, P. Rantala, et al., Direct observations of atmospheric aerosol nucleation, Science 339 (6122) (2013) 943–946.
+[3] S. C. Anenberg, L. W. Horowitz, D. Q. Tong, J. J. West, An estimate of the global burden of anthropogenic ozone and
+fine particulate matter on premature human mortality using atmospheric modeling, Environmental Health Perspectives
+118 (9) (2010) 1189–1195.
+
+21
+
+https://doi.org/10.26434/chemrxiv-2024-h3jzp ORCID: https://orcid.org/0000-0003-1859-5615 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+[4] T. Arfin, A. M. Pillai, N. Mathew, A. Tirpude, R. Bang, P. Mondal, An overview of atmospheric aerosol and their effects
+on human health, Environmental Science and Pollution Research 30 (60) (2023) 125347–125369.
+[5] T. Stocker, Q. Dahe, K. Plattner, G, M. Tignor, K. Allen, S, J. Boschung, A. Nauels, Y. Xia, V. Bex, M. Midgleym,
+IPCC, 2013: Climate Change 2013: The Physical Science Basis. Working Group I Contribution to the Fifth Assessment
+Report of the Intergovernmental Panel on Climate Change, Cambridge University Press, U.K and New York, 2013.
+[6] V. Masson-Delmotte, P. Zhai, A. Pirani, L. Connors, S, C. Péan, S. Berger, N. Caud, Y. Chen, L. Goldfarb, I. Gomis,
+M, et al., IPCC, 2021: Climate Change 2021: The Physical Science Basis. Contribution of Working Group I to the Sixth
+Assessment Report of the Intergovernmental Panel on Climate Change, Cambridge University Press, U.K and New York,
+2021.
+[7] U. Pöschl, Atmospheric aerosols: Composition, transformation, climate and health effects, Angewandte Chemie International Edition 44 (46) (2005) 7520–7540.
+[8] J. H. Seinfeld, S. N. Pandis, Atmospheric chemistry and physics: from air pollution to climate change, John Wiley and
+Sons, 2016.
+[9] H.-S. Kwon, M. H. Ryu, C. Carlsten, Ultrafine particles: unique physicochemical properties relevant to health and
+disease, Experimental & molecular medicine 52 (3) (2020) 318–328.
+[10] D. Spracklen, K. Carslaw, M. Kulmala, V.-M. Kerminen, G. Mann, S.-L. Sihto, The contribution of boundary layer
+nucleation events to total particle concentrations on regional and global scales, Atmospheric Chemistry and Physics
+6 (12) (2006) 5631–5648.
+[11] F. Yu, G. Luo, Simulation of particle size distribution with a global aerosol model: contribution of nucleation to aerosol
+and ccn number concentrations, Atmospheric Chemistry and Physics 9 (20) (2009) 7691–7710.
+[12] C. von Bismarck-Osten, W. Birmili, M. Ketzel, A. Massling, T. Petäjä, S. Weber, Characterization of parameters
+influencing the spatio-temporal variability of urban particle number size distributions in four european cities, Atmospheric
+Environment 77 (2013) 415–429.
+[13] F. Bianchi, J. Tröstl, H. Junninen, C. Frege, S. Henne, C. R. Hoyle, U. Molteni, E. Herrmann, A. Adamov, N. Bukowiecki,
+et al., New particle formation in the free troposphere: A question of chemistry and timing, Science 352 (6289) (2016)
+1109–1112.
+[14] H. Gordon, J. Kirkby, U. Baltensperger, F. Bianchi, M. Breitenlechner, J. Curtius, A. Dias, J. Dommen, N. M. Donahue,
+E. M. Dunne, et al., Causes and importance of new particle formation in the present-day and preindustrial atmospheres,
+Journal of Geophysical Research: Atmospheres 122 (16) (2017) 8739–8760.
+[15] J. Mäkelä, P. Aalto, V. Jokinen, T. Pohja, A. Nissinen, S. Palmroth, T. Markkanen, K. Seitsonen, H. Lihavainen,
+M. Kulmala, Observations of ultrafine aerosol particle formation and growth in boreal forest, Geophysical Research
+Letters 24 (10) (1997) 1219–1222.
+[16] P. Vaattovaara, M. Räsänen, T. Kühn, J. Joutsensaari, A. Laaksonen, A method for detecting the presence of organic
+fraction in nucleation mode sized particles, Atmospheric Chemistry and Physics 5 (12) (2005) 3277–3287.
+[17] P. McMurry, Aerosols — observations and measurements, in: Encyclopedia of Atmospheric Sciences, second edition
+Edition, Academic Press, Oxford, 2015, pp. 53–65.
+[18] A. W. Rollins, E. C. Browne, K.-E. Min, S. E. Pusede, P. J. Wooldridge, D. R. Gentner, A. H. Goldstein, S. Liu, D. A.
+Day, L. M. Russell, R. C. Cohen, Evidence for NOx control over nighttime soa formation, Science 337 (6099) (2012)
+1210–1212.
+[19] N. Hilker, C.-H. Jeong, J. M. Wang, G. J. Evans, Elucidating long-term trends, seasonal variability, and local impacts
+from thirteen years of near-road particle size data (2006–2019), Science of The Total Environment 774 (2021) 145028.
+[20] S. Almeida, J. Lage, B. Fernández, S. Garcia, M. Reis, P. Chaves, Chemical characterization of atmospheric particles
+and source apportionment in the vicinity of a steelmaking industry, Science of The Total Environment 521-522 (2015)
+
+22
+
+https://doi.org/10.26434/chemrxiv-2024-h3jzp ORCID: https://orcid.org/0000-0003-1859-5615 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+411–420.
+[21] P. Kalkavouras, A. Bougiatioti, N. Kalivitis, I. Stavroulas, M. Tombrou, A. Nenes, N. Mihalopoulos, Regional new
+particle formation as modulators of cloud condensation nuclei and cloud droplet number in the eastern mediterranean,
+Atmospheric Chemistry and Physics 19 (9) (2019) 6185–6203.
+[22] M. D. Stokes, G. B. Deane, K. Prather, T. H. Bertram, M. J. Ruppel, O. S. Ryder, J. M. Brady, D. Zhao, A marine
+aerosol reference tank system as a breaking wave analogue for the production of foam and sea-spray aerosols, Atmospheric
+Measurement Techniques 6 (4) (2013) 1085–1094.
+[23] F. Bianchi, A. P. Praplan, N. Sarnela, J. Dommen, A. Kürten, I. K. Ortega, S. Schobesberger, H. Junninen, M. Simon,
+J. Tröstl, et al., Insight into acid–base nucleation experiments by comparison of the chemical composition of positive,
+negative, and neutral clusters, Environmental science & technology 48 (23) (2014) 13675–13684.
+[24] N. Triesch, M. van Pinxteren, M. Salter, C. Stolle, R. Pereira, P. Zieger, H. Herrmann, Sea spray aerosol chamber study
+on selective transfer and enrichment of free and combined amino acids, ACS Earth and Space Chemistry 5 (6) (2021)
+1564–1574.
+[25] J. S. Sauer, K. J. Mayer, C. Lee, M. R. Alves, S. Amiri, C. J. Bahaveolos, E. B. Franklin, D. R. Crocker, D. Dang,
+J. Dinasquet, et al., The sea spray chemistry and particle evolution study (seascape): overview and experimental methods,
+Environ. Sci.: Processes Impacts 24 (2022) 290–315.
+[26] R. Zhang, I. Suh, J. Zhao, D. Zhang, E. C. Fortner, X. Tie, L. T. Molina, M. J. Molina, Atmospheric new particle
+formation enhanced by organic acids, Science 304 (5676) (2004) 1487–1490.
+[27] P. G. Blower, S. T. Ota, N. A. Valley, S. R. Wood, G. L. Richmond, Sink or surf: atmospheric implications for succinic
+acid at aqueous surfaces, The Journal of Physical Chemistry A 117 (33) (2013) 7887–7903.
+[28] Q. Zhang, C. Anastasio, M. Jimenez-Cruz, Water-soluble organic nitrogen in atmospheric fine particles (pm2.5 ) from
+northern california, Journal of Geophysical Research: Atmospheres 107 (D11) (2002) AAC–3.
+[29] B. Onat, Ü. A. Şahin, C. Bayat, Assessment of particulate matter in the urban atmosphere: size distribution, metal
+composition and source characterization using principal component analysis, Journal of Environmental Monitoring 14 (5)
+(2012) 1400–1409.
+[30] T. Hoffmann, C. D. O’Dowd, J. H. Seinfeld, Iodine oxide homogeneous nucleation: An explanation for coastal new
+particle production, Geophysical Research Letters 28 (10) (2001) 1949–1952.
+[31] S. Zhu, K. N. Sartelet, C. Seigneur, A size-composition resolved aerosol model for simulating the dynamics of externally
+mixed particles: Scram (v 1.0), Geoscientific Model Development 8 (6) (2015) 1595–1612.
+[32] D. Z. Keifer, E. E. Pierson, M. F. Jarrold, Charge detection mass spectrometry: weighing heavier things, Analyst 142 (10)
+(2017) 1654–1671.
+[33] S. E. Waller, Y. Yang, E. Castracane, J. J. Kreinbihl, K. A. Nickson, C. J. Johnson, Electrospray ionization–based
+synthesis and validation of amine-sulfuric acid clusters of relevance to atmospheric new particle formation, Journal of
+the American Society for Mass Spectrometry 30 (11) (2019) 2267–2277.
+[34] L. Ahonen, C. Li, J. Kubečka, S. Iyer, H. Vehkamäki, T. Petäjä, M. Kulmala, C. J. Hogan Jr, Ion mobility-mass
+spectrometry of iodine pentoxide–iodic acid hybrid cluster anions in dry and humidified atmospheres, The Journal of
+Physical Chemistry Letters 10 (8) (2019) 1935–1941.
+[35] R. Smith, X. Cheng, J. Brace, S. Hofstadler, G. Anderson, Trapping, detection and reaction of very large single molecular
+ions by mass spectrometry, Nature 369 (6476) (1994) 137–139.
+[36] M. A. Tito, K. Tars, K. Valegard, J. Hajdu, C. V. Robinson, Electrospray time-of-flight mass spectrometry of the intact
+ms2 virus capsid, Journal of the American Chemical Society 122 (14) (2000) 3550–3551.
+[37] S. Hanton, Mass spectrometry of polymers and polymer surfaces, Chemical Reviews 101 (2) (2001) 527–570.
+[38] R. Antoine, T. Doussineau, P. Dugourd, F. Calvo, Multiphoton dissociation of macromolecular ions at the single-molecule
+
+23
+
+https://doi.org/10.26434/chemrxiv-2024-h3jzp ORCID: https://orcid.org/0000-0003-1859-5615 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+level, Phys. Rev. A 87 (2013) 013435.
+[39] J. Snijder, R. J. Rose, D. Veesler, J. E. Johnson, A. J. R. Heck, Studying 18mda virus assemblies with native mass
+spectrometry, Angewandte Chemie International Edition 52 (14) (2013) 4020–4023.
+[40] T. Doussineau, P. Paletto, P. Dugourd, R. Antoine, Multiphoton dissociation of electrosprayed megadalton-sized dna
+ions in a charge-detection mass spectrometer, Journal of the American Society for Mass Spectrometry 26 (1) (2015) 7–13.
+[41] D. J. Douglas, A. J. Frank, D. Mao, Linear ion traps in mass spectrometry, Mass spectrometry reviews 24 (1) (2005)
+1–29.
+[42] T. J. Watson, The Mass Spectrometer, John Wiley and Sons, Ltd, 2007, Ch. 2-3, pp. 53–172.
+[43] A. G. Marshall, C. L. Hendrickson, High-resolution mass spectrometers, Annual Review of Analytical Chemistry 1 (2008)
+579–599.
+[44] D. Gerlich, Inhomogeneous RF Fields: A Versatile Tool for the Study of Processes with Slow Ions, John Wiley and Sons,
+Ltd, 1992, pp. 1–176.
+[45] A. K. Shukla, J. H. Futrell, Tandem mass spectrometry: dissociation of ions by collisional activation, Journal of mass
+spectrometry 35 (9) (2000) 1069–1090.
+[46] D. Nolting, R. Malek, A. Makarov, Ion traps in modern mass spectrometry, Mass spectrometry reviews 38 (2) (2019)
+150–168.
+[47] A. Raffaelli, A. Saba, Ion scanning or ion trapping: Why not both?, Mass Spectrometry Reviews 42 (4) (2023) 1152–1173.
+[48] K. A. Prather, T. Nordmeyer, K. Salt, Real-time characterization of individual aerosol particles using time-of-flight mass
+spectrometry, Analytical Chemistry 66 (9) (1994) 1403–1407.
+[49] Y. Su, M. F. Sipin, H. Furutani, K. A. Prather, Development and characterization of an aerosol time-of-flight mass
+spectrometer with increased detection efficiency, Analytical Chemistry 76 (3) (2004) 712–719.
+[50] D. G. Nash, T. Baer, M. V. Johnston, Aerosol mass spectrometry: an introductory review, International Journal of Mass
+Spectrometry 258 (1-3) (2006) 2–12.
+[51] M. Canagaratna, J. Jayne, J. Jimenez, J. Allan, M. Alfarra, Q. Zhang, T. Onasch, F. Drewnick, H. Coe, A. Middlebrook,
+et al., Chemical and microphysical characterization of ambient aerosols with the aerodyne aerosol mass spectrometer,
+Mass spectrometry reviews 26 (2) (2007) 185–222.
+[52] Q. Zhang, J. L. Jimenez, M. R. Canagaratna, I. M. Ulbrich, N. L. Ng, D. R. Worsnop, Y. Sun, Understanding atmospheric
+organic aerosols via factor analysis of aerosol mass spectrometry: a review, Analytical and Bioanalytical chemistry 401
+(2011) 3045–3067.
+[53] H. Junninen, M. Ehn, T. Petäjä, L. Luosujärvi, T. Kotiaho, R. Kostiainen, U. Rohner, M. Gonin, K. Fuhrer, M. Kulmala, et al., A high-resolution mass spectrometer to measure atmospheric ion composition, Atmospheric Measurement
+Techniques Discussions 3 (1) (2010) 599–636.
+[54] N. Mirsaleh-Kohan, W. D. Robertson, R. N. Compton, Electron ionization time-of-flight mass spectrometry: Historical
+review and current applications, Mass spectrometry reviews 27 (3) (2008) 237–285.
+[55] E. Zapadinsky, M. Passananti, N. Myllys, T. Kurtén, H. Vehkamäki, Modeling on fragmentation of clusters inside a mass
+spectrometer, The Journal of Physical Chemistry A 123 (2) (2018) 611–624.
+[56] A. Raffaelli, A. Saba, Atmospheric pressure photoionization mass spectrometry, Mass Spectrometry Reviews 22 (5) (2003)
+318–331.
+[57] M. D. Morse, Predissociation measurements of bond dissociation energies, Accounts of Chemical Research 52 (1) (2019)
+119–126.
+[58] B. D. Morrical, D. P. Fergenson, K. A. Prather, Coupling two-step laser desorption/ionization with aerosol time-of-flight
+mass spectrometry for the analysis of individual organic particles, Journal of the American Society for Mass Spectrometry
+9 (10) (1998) 1068–1073.
+
+24
+
+https://doi.org/10.26434/chemrxiv-2024-h3jzp ORCID: https://orcid.org/0000-0003-1859-5615 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+[59] M. V. Johnston, Sampling and analysis of individual particles by aerosol mass spectrometry, Journal of Mass Spectrometry
+35 (5) (2000) 585–595.
+[60] A. L. Hunt, G. A. Petrucci, Analysis of ultrafine and organic particles by aerosol mass spectrometry, Trends in Analytical
+Chemistry 21 (2) (2002) 74–81.
+[61] M. F. Sipin, S. A. Guazzotti, K. A. Prather, Recent advances and some remaining challenges in analytical chemistry of
+the atmosphere, Analytical Chemistry 75 (12) (2003) 2929–2940.
+[62] B. Öktem, M. P. Tolocka, M. V. Johnston, On-line analysis of organic components in fine and ultrafine particles by
+photoionization aerosol mass spectrometry, Analytical Chemistry 76 (2) (2004) 253–261.
+[63] J. C. Gómez Martı́n, S. A. Garraway, J. M. C. Plane, Reaction kinetics of meteoric sodium reservoirs in the upper
+atmosphere, The Journal of Physical Chemistry A 120 (9) (2016) 1330–1346.
+[64] T. R. Lewis, J. C. Gómez Martı́n, M. A. Blitz, C. A. Cuevas, J. M. Plane, A. Saiz-Lopez, Determination of the absorption
+cross sections of higher-order iodine oxides at 355 and 532 nm, Atmospheric Chemistry and Physics 20 (18) (2020) 10865–
+10887.
+[65] R. S. Blake, P. S. Monks, A. M. Ellis, Proton-transfer reaction mass spectrometry, Chemical Reviews 109 (3) (2009)
+861–896.
+[66] M. Ehn, T. Berndt, J. Wildt, T. Mentel, Highly oxygenated molecules from atmospheric autoxidation of hydrocarbons:
+A prominent challenge for chemical kinetics studies, International Journal of Chemical Kinetics 49 (11) (2017) 821–831.
+[67] F. Bianchi, T. Kurtén, M. Riva, C. Mohr, M. P. Rissanen, P. Roldin, T. Berndt, J. D. Crounse, P. O. Wennberg, T. F.
+Mentel, et al., Highly oxygenated organic molecules (hom) from gas-phase autoxidation involving peroxy radicals: A key
+contributor to atmospheric aerosol, Chemical Reviews 119 (6) (2019) 3472–3509.
+[68] J. C. Gómez Martı́n, T. R. Lewis, A. D. James, A. Saiz-Lopez, J. M. C. Plane, Insights into the chemistry of iodine
+new particle formation: The role of iodine oxides and the source of iodic acid, Journal of the American Chemical Society
+144 (21) (2022) 9240–9253.
+[69] R.-J. Huang, T. Hoffmann, J. Ovadnevaite, A. Laaksonen, H. Kokkola, W. Xu, W. Xu, D. Ceburnis, R. Zhang, J. H.
+Seinfeld, et al., Heterogeneous iodine-organic chemistry fast-tracks marine new particle formation, Proceedings of the
+National Academy of Sciences 119 (32) (2022) e2201729119.
+[70] V. Alage, S vand Michoud, S. Harb, B. Picquet-Varrault, M. Cirtog, A. Kumar, M. Rissanen, C. Cantrell, A nitrate
+ion chemical ionization atmospheric pressure interface time-of-flight mass spectrometer (no3 tofcims): calibration and
+sensitivity study, Atmospheric Measurement Techniques Discussions 2024 (2024) 1–31.
+[71] Y. You, V. P. Kanawade, J. A. de Gouw, A. B. Guenther, S. Madronich, M. R. Sierra-Hernández, M. Lawler, J. N.
+Smith, S. Takahama, G. Ruggeri, et al., Atmospheric amines and ammonia measured with a chemical ionization mass
+spectrometer (cims), Atmospheric Chemistry and Physics 14 (22) (2014) 12181–12194.
+[72] M. Le Breton, M. Psichoudaki, M. Hallquist, Å. K. Watne, A. Lutz, Å. M. Hallquist, Application of a figaero tof cims
+for on-line characterization of real-world fresh and aged particle emissions from buses, Aerosol Science and Technology
+53 (3) (2019) 244–259.
+[73] L. Konermann, E. Ahadi, A. D. Rodriguez, S. Vahidi, Unraveling the mechanism of electrospray ionization, Analytical
+Chemistry 85 (1) (2013) 2–9.
+[74] B. Bzdek, D. Ridge, M. Johnston, Amine reactivity with charged sulfuric acid clusters, Atmospheric Chemistry and
+Physics 11 (16) (2011) 8735–8743.
+[75] S. He, L. Li, H. Duan, A. Naqwi, C. J. Hogan, Aerosol analysis via electrostatic precipitation-electrospray ionization
+mass spectrometry, Analytical Chemistry 87 (13) (2015) 6752–6760.
+[76] Y. Yang, C. J. Johnson, Hydration motifs of ammonium bisulfate clusters of relevance to atmospheric new particle
+formation, Faraday Discussions 217 (2019) 47–66.
+
+25
+
+https://doi.org/10.26434/chemrxiv-2024-h3jzp ORCID: https://orcid.org/0000-0003-1859-5615 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+[77] J. J. Kreinbihl, N. C. Frederiks, C. J. Johnson, Hydration motifs of ammonium bisulfate clusters show complex temperature dependence, The Journal of Chemical Physics 154 (1) (2021) 014304.
+[78] N. C. Frederiks, D. D. Heaney, J. J. Kreinbihl, C. J. Johnson, The competition between hydrogen, halogen, and covalent
+bonding in atmospherically relevant ammonium iodate clusters, Journal of the American Chemical Society 145 (2) (2023)
+1165–1175.
+[79] A. Hariharan, C. J. Bready, J. G. Ajello, S. H. Black, G. C. Shields, C. J. Johnson, Stability and structure of potentially atmospherically relevant glycine ammonium bisulfate clusters, The Journal of Physical Chemistry A 128 (2024)
+4268–4278.
+[80] M. McGrath, T. Olenius, I. Ortega, V. Loukonen, P. Paasonen, T. Kurtén, M. Kulmala, H. Vehkamäki, Atmospheric
+cluster dynamics code: a flexible method for solution of the birth-death equations, Atmospheric Chemistry and Physics
+12 (5) (2012) 2345–2355.
+[81] T. Olenius, S. Schobesberger, O. Kupiainen-M´’a´’att´’a, A. Franchin, H. Junninen, I. K. Ortega, T. Kurtén, V. Loukonen,
+D. R. Worsnop, M. Kulmala, et al., Comparing simulated and experimental molecular cluster distributions, Faraday
+Discuss. 165 (2013) 75–89.
+[82] M. Passananti, E. Zapadinsky, T. Zanca, J. Kangasluoma, N. Myllys, M. P. Rissanen, T. Kurtén, M. Ehn, M. Attoui,
+H. Vehkamäki, How well can we predict cluster fragmentation inside a mass spectrometer?, Chemical Communications
+55 (42) (2019) 5946–5949.
+[83] D. Alfaouri, M. Passananti, T. Zanca, L. Ahonen, J. Kangasluoma, J. Kubečka, N. Myllys, H. Vehkamäki, A study on
+the fragmentation of sulfuric acid and dimethylamine clusters inside an atmospheric pressure interface time-of-flight mass
+spectrometer, Atmospheric Measurement Techniques 15 (1) (2022) 11–19.
+[84] M. Ehn, H. Junninen, T. Petäjä, T. Kurtén, V.-M. Kerminen, S. Schobesberger, H. Manninen, I. Ortega, H. Vehkamäki,
+M. Kulmala, et al., Composition and temporal behavior of ambient ions in the boreal forest, Atmos. Chem. Phys. 10 (17)
+(2010) 8513–8530.
+[85] S. Schobesberger, H. Junninen, F. Bianchi, G. Lönn, M. Ehn, K. Lehtipalo, J. Dommen, S. Ehrhart, I. K. Ortega,
+A. Franchin, et al., Molecular understanding of atmospheric particle formation from sulfuric acid and large oxidized
+organic molecules, Proceedings of the National Academy of Sciences 110 (43) (2013) 17223–17228.
+[86] D. R. Worton, J. D. Surratt, B. W. LaFranchi, A. W. H. Chan, Y. Zhao, R. J. Weber, J.-H. Park, J. B. Gilman,
+J. de Gouw, C. Park, et al., Observational insights into aerosol formation from isoprene, Environmental Science &
+Technology 47 (20) (2013) 11403–11413.
+[87] J. Kirkby, J. Duplissy, K. Sengupta, C. Frege, H. Gordon, C. Williamson, M. Heinritzi, M. Simon, C. Yan, J. Almeida,
+et al., Ion-induced nucleation of pure biogenic particles, Nature 533 (7604) (2016) 521–526.
+[88] K. Lehtipalo, C. Yan, L. Dada, F. Bianchi, M. Xiao, R. Wagner, D. Stolzenburg, L. R. Ahonen, A. Amorim, A. Baccarini,
+et al., Multicomponent new particle formation from sulfuric acid, ammonia, and biogenic vapors, Sci. Adv. 4 (12) (2018)
+eaau5363.
+[89] T. Jokinen, M. Sipilä, J. Kontkanen, V. Vakkari, P. Tisler, E.-M. Duplissy, H. Junninen, J. Kangasluoma, H. E. Manninen,
+T. Petäjä, et al., Ion-induced sulfuric acid–ammonia nucleation drives particle formation in coastal antarctica, Science
+Advances 4 (11) (2018) eaat9744.
+[90] R. Yin, C. Yan, R. Cai, X. Li, J. Shen, Y. Lu, S. Schobesberger, Y. Fu, C. Deng, L. Wang, et al., Acid–base clusters during
+atmospheric new particle formation in urban beijing, Environmental Science & Technology 55 (16) (2021) 10994–11005.
+[91] Q. Zhang, J. L. Jimenez, M. Canagaratna, J. D. Allan, H. Coe, I. Ulbrich, M. Alfarra, A. Takami, A. Middlebrook,
+Y. Sun, et al., Ubiquity and dominance of oxygenated species in organic aerosols in anthropogenically-influenced northern
+hemisphere midlatitudes, Geophysical research letters 34 (13) (2007).
+[92] M. Ehn, J. A. Thornton, E. Kleist, M. Sipilä, H. Junninen, I. Pullinen, M. Springer, F. Rubach, R. Tillmann, B. Lee,
+
+26
+
+https://doi.org/10.26434/chemrxiv-2024-h3jzp ORCID: https://orcid.org/0000-0003-1859-5615 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+et al., A large source of low-volatility secondary organic aerosol, Nature 506 (7489) (2014) 476–479.
+[93] J. L. Jimenez, M. Canagaratna, N. Donahue, A. Prevot, Q. Zhang, J. H. Kroll, P. F. DeCarlo, J. D. Allan, H. Coe,
+N. Ng, et al., Evolution of organic aerosols in the atmosphere, science 326 (5959) (2009) 1525–1529.
+[94] J. Almeida, S. Schobesberger, A. Kürten, I. K. Ortega, O. Kupiainen-Määttä, A. P. Praplan, A. Adamov, A. Amorim,
+F. Bianchi, M. Breitenlechner, et al., Molecular understanding of sulphuric acid–amine particle nucleation in the atmosphere, Nature 502 (7471) (2013) 359–363.
+[95] M. Kulmala, T. Petäjä, M. Ehn, J. Thornton, M. Sipilä, D. Worsnop, V.-M. Kerminen, Chemistry of atmospheric
+nucleation: On the recent advances on precursor characterization and atmospheric cluster composition in connection
+with atmospheric new particle formation, Annual Review of Physical Chemistry 65 (Volume 65, 2014) (2014) 21–37.
+[96] A. Hirsikko, T. Nieminen, S. Gagné, K. Lehtipalo, H. Manninen, M. Ehn, U. Hõrrak, V.-M. Kerminen, L. Laakso,
+P. McMurry, et al., Atmospheric ions and nucleation: a review of observations, Atmospheric Chemistry and Physics
+11 (2) (2011) 767–798.
+[97] Y. Liang, R. J. Weber, P. K. Misztal, C. N. Jen, A. H. Goldstein, Aging of volatile organic compounds in october 2017
+northern california wildfire plumes, Environmental Science & Technology 56 (3) (2022) 1557–1567.
+[98] J. W. DePalma, B. R. Bzdek, D. J. Doren, M. V. Johnston, Structure and energetics of nanometer size clusters of sulfuric
+acid with ammonia and dimethylamine, The Journal of Physical Chemistry A 116 (3) (2012) 1030–1040.
+[99] J. Elm, K. V. Mikkelsen, Computational approaches for efficiently modelling of small atmospheric clusters, Chemical
+Physics Letters 615 (2014) 26–29.
+[100] N. Myllys, J. Elm, T. Kurtén, Density functional theory basis set convergence of sulfuric acid-containing molecular
+clusters, Computational and Theoretical Chemistry 1098 (2016) 1–12.
+[101] J. Kubecka, V. Besel, T. Kurtén, N. Myllys, H. Vehkamäki, Configurational sampling of noncovalent (atmospheric)
+molecular clusters: sulfuric acid and guanidine, The Journal of Physical Chemistry A 123 (28) (2019) 6022–6033.
+[102] B. Temelso, E. F. Morrison, D. L. Speer, B. C. Cao, N. Appiah-Padi, G. Kim, G. C. Shields, Effect of mixing ammonia
+and alkylamines on sulfate aerosol formation, The Journal of Physical Chemistry A 122 (6) (2018) 1612–1622.
+[103] C. J. Johnson, M. A. Johnson, Vibrational spectra and fragmentation pathways of size-selected, d2 -tagged ammonium/methylammonium bisulfate clusters, The Journal of Physical Chemistry A 117 (50) (2013) 13265–13274.
+[104] M. Maier-Borst, D. B. Cameron, M. Rokni, J. H. Parks, Electron diffraction of trapped cluster ions, Physical Review A
+59 (5) (1999) R3162.
+[105] T. Ekeberg, M. Svenda, C. Abergel, F. R. Maia, V. Seltzer, J.-M. Claverie, M. Hantke, O. Jönsson, C. Nettelblad,
+G. Van Der Schot, et al., Three-dimensional reconstruction of the giant mimivirus particle with an x-ray free-electron
+laser, Physical review letters 114 (9) (2015) 098102.
+[106] J. N. Dodds, E. S. Baker, Ion mobility spectrometry: fundamental concepts, instrumentation, applications, and the road
+ahead, Journal of the American Society for Mass Spectrometry 30 (11) (2019) 2185–2195.
+[107] J. M. Thomas, S. He, C. Larriba-Andaluz, J. W. DePalma, M. V. Johnston, C. J. Hogan Jr, Ion mobility spectrometrymass spectrometry examination of the structures, stabilities, and extents of hydration of dimethylamine–sulfuric acid
+clusters, Physical Chemistry Chemical Physics 18 (33) (2016) 22962–22972.
+[108] N. Heine, K. R. Asmis, Cryogenic ion trap vibrational spectroscopy of hydrogen-bonded clusters relevant to atmospheric
+chemistry, International Reviews in Physical Chemistry 34 (1) (2015) 1–34.
+[109] W. C. Qinqin Yuan, X.-B. Wang, Cryogenic and temperature-dependent photoelectron spectroscopy of metal complexes,
+International Reviews in Physical Chemistry 39 (1) (2020) 83–108.
+[110] S. J. Marlton, A. J. Trevitt, The combination of laser photodissociation, action spectroscopy, and mass spectrometry to
+identify and separate isomers, Chemical Communications 58 (68) (2022) 9451–9467.
+[111] N. C. Frederiks, A. Hariharan, C. J. Johnson, Spectroscopic studies of clusters of atmospheric relevance, Annual Review
+
+27
+
+https://doi.org/10.26434/chemrxiv-2024-h3jzp ORCID: https://orcid.org/0000-0003-1859-5615 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+of Physical Chemistry 74 (2023) 99–121.
+[112] E. Arijs, D. Nevejans, P. Frederick, J. Ingels, Negative ion composition measurements in the stratosphere, Geophysical
+Research Letters 8 (1) (1981) 121–124.
+[113] T. I. Yacovitch, N. Heine, C. Brieger, T. Wende, C. Hock, D. M. Neumark, K. R. Asmis, Vibrational spectroscopy
+of bisulfate/sulfuric acid/water clusters: structure, stability, and infrared multiple-photon dissociation intensities, The
+Journal of Physical Chemistry A 117 (32) (2013) 7081–7090.
+[114] L. M. McCaslin, M. A. Johnson, R. B. Gerber, Mechanisms and competition of halide substitution and hydrolysis in
+reactions of N2 O5 with seawater, Sci. Adv. 5 (6) (2019) eaav6503.
+[115] G.-L. Hou, W. Lin, S. Deng, J. Zhang, W.-J. Zheng, F. Paesani, X.-B. Wang, Negative ion photoelectron spectroscopy
+reveals thermodynamic advantage of organic acids in facilitating formation of bisulfate ion clusters: atmospheric implications, J. Phys. Chem. Lett. 4 (5) (2013) 779–785.
+[116] G.-L. Hou, X.-T. Kong, M. Valiev, L. Jiang, X.-B. Wang, Probing the early stages of solvation of cis-pinate dianions by
+water, acetonitrile, and methanol: a photoelectron spectroscopy and theoretical study, Phys. Chem. Chem. Phys. 18 (5)
+(2016) 3628–3637.
+[117] G.-L. Hou, M. Valiev, X.-B. Wang, Deprotonated dicarboxylic acid homodimers: Hydrogen bonds and atmospheric
+implications, J. Phys. Chem. A 120 (15) (2016) 2342–2349.
+[118] G.-L. Hou, X.-B. Wang, M. Valiev, Formation of (HCOO− )(H2 SO4 ) anion clusters: violation of gas-phase acidity
+predictions, J. Am. Chem. Soc. 139 (33) (2017) 11321–11324.
++
+−
+[119] G.-L. Hou, X.-B. Wang, Spectroscopic signature of proton location in proton bound HSO−
+4 · H · X (X= F, Cl, Br, and
+
+I) clusters, J. Phys. Chem. Lett. 10 (21) (2019) 6714–6719.
+[120] N. K. Bersenkowitsch, M. Ončák, C. van der Linde, A. Herburger, M. K. Beyer, Photochemistry of glyoxylate embedded
+in sodium chloride clusters, a laboratory model for tropospheric sea-salt aerosols, Physical Chemistry Chemical Physics
+20 (12) (2018) 8143–8151.
+[121] N. K. Bersenkowitsch, S. J. Madlener, J. Heller, C. van der Linde, M. Ončák, M. K. Beyer, Spectroscopy of cluster aerosol
+models: IR and UV spectra of hydrated glyoxylate with and without sea salt, Environmental Science: Atmospheres 3 (10)
+(2023) 1396–1406.
+[122] N. C. Frederiks, C. J. Johnson, Photochemical mechanisms in atmospherically relevant iodine oxide clusters, The Journal
+of Physical Chemistry Letters 15 (24) (2024) 6306–6314.
+[123] B. Bzdek, D. Ridge, M. Johnston, Amine exchange into ammonium bisulfate and ammonium nitrate nuclei, Atmospheric
+Chemistry and Physics 10 (8) (2010) 3495–3503.
+[124] B. R. Bzdek, D. P. Ridge, M. V. Johnston, Size-dependent reactions of ammonium bisulfate clusters with dimethylamine,
+The Journal of Physical Chemistry A 114 (43) (2010) 11638–11644.
+[125] B. R. Bzdek, D. P. Ridge, M. V. Johnston, Reactivity of methanesulfonic acid salt clusters relevant to marine air, Journal
+of Geophysical Research: Atmospheres 116 (D3) (2011).
+[126] E. R. Lovejoy, R. R. Wilson, Kinetic studies of negative ion reactions in a quadrupole ion trap: absolute rate coefficients
+and ion energies, The Journal of Physical Chemistry A 102 (13) (1998) 2309–2315.
+[127] E. R. Lovejoy, R. Bianco, Temperature dependence of cluster ion decomposition in a quadrupole ion trap, The Journal
+of Physical Chemistry A 104 (45) (2000) 10280–10287.
+[128] K. D. Froyd, E. R. Lovejoy, Experimental thermodynamics of cluster ions composed of H2 SO4 and H2 O. 1. positive ions,
+The Journal of Physical Chemistry A 107 (46) (2003) 9800–9811.
+[129] K. D. Froyd, E. R. Lovejoy, Experimental thermodynamics of cluster ions composed of H2 SO4 and H2 O. 2. Measurements
+and ab initio structures of negative ions, The Journal of Physical Chemistry A 107 (46) (2003) 9812–9824.
+[130] K. D. Froyd, E. R. Lovejoy, Bond energies and structures of ammonia–sulfuric acid positive cluster ions, The Journal of
+
+28
+
+https://doi.org/10.26434/chemrxiv-2024-h3jzp ORCID: https://orcid.org/0000-0003-1859-5615 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Physical Chemistry A 116 (24) (2012) 5886–5899.
+[131] D. R. Hanson, E. R. Lovejoy, Measurement of the thermodynamics of the hydrated dimer and trimer of sulfuric acid,
+The Journal of Physical Chemistry A 110 (31) (2006) 9525–9528.
+[132] R. Cooks, T. Ast, M. Mabud, Collisions of polyatomic ions with surfaces, International Journal of Mass Spectrometry
+and Ion Processes 100 (1990) 209–265.
+[133] V. H. Wysocki, J.-M. Ding, J. L. Jones, J. H. Callahan, F. L. King, Surface-induced dissociation in tandem quadrupole
+mass spectrometers: A comparison of three designs, Journal of the American Society for Mass Spectrometry 3 (1) (1992)
+27–32.
+[134] J. Laskin, J. H. Futrell, New approach for studying slow fragmentation kinetics in FT – ICR: surface-induced dissociation
+combined with resonant ejection, International Journal of Mass Spectrometry 378 (2015) 160–168.
+[135] N. C. Polfer, Infrared multiple photon dissociation spectroscopy of trapped ions, Chemical Society Reviews 40 (5) (2011)
+2211–2221.
+[136] R. C. Tolman, The principle of microscopic reversibility, Proceedings of the National Academy of Sciences 11 (7) (1925)
+436–439.
+[137] R. L. Burwell Jr, R. G. Pearson, The principle of microscopic reversibility, The Journal of Physical Chemistry 70 (1)
+(1966) 300–302.
+[138] P. D. Dau, P. Armentrout, M. C. Michelini, J. K. Gibson, Activation of carbon dioxide by a terminal uranium–nitrogen
+bond in the gas-phase: a demonstration of the principle of microscopic reversibility, Physical Chemistry Chemical Physics
+18 (10) (2016) 7334–7340.
+[139] B. R. Bzdek, J. W. DePalma, D. P. Ridge, J. Laskin, M. V. Johnston, Fragmentation energetics of clusters relevant to
+atmospheric new particle formation, Journal of the American Chemical Society 135 (8) (2013) 3276–3285.
+[140] A. R. Dongré, Á. Somogyi, V. H. Wysocki, Surface-induced dissociation: An effective tool to probe structure, energetics
+and fragmentation mechanisms of protonated peptides, Journal of Mass Spectrometry 31 (4) (1996) 339–350.
+[141] F. Xu, Q. Dang, X. Dai, X. Fang, Y. Wang, L. Ding, C.-F. Ding, Characteristics of ion activation and collision induced
+dissociation using digital ion trap technology, Journal of The American Society for Mass Spectrometry 27 (8) (2016)
+1351–1356.
+[142] L. Sleno, D. A. Volmer, Ion activation methods for tandem mass spectrometry, Journal of mass spectrometry 39 (10)
+(2004) 1091–1112.
+[143] P. Armentrout, Mass spectrometry—not just a structural tool: the use of guided ion beam tandem mass spectrometry
+to determine thermochemistry, Journal of the American Society for Mass Spectrometry 13 (5) (2002) 419–434.
+[144] J. Xu, M. Rodgers, J. Griffin, P. Armentrout, Guided ion beam studies of the reactions of vn+ (n= 2–17) with o2 : bond
+energies and dissociation pathways, The Journal of chemical physics 108 (22) (1998) 9339–9350.
+[145] M. T. Rodgers, P. B. Armentrout, Noncovalent interactions of nucleic acid bases (uracil, thymine, and adenine) with alkali
+metal ions. threshold collision-induced dissociation and theoretical studies, Journal of the American Chemical Society
+122 (35) (2000) 8548–8558.
+[146] I. Savić, S. Schlemmer, D. Gerlich, Formation of h3+ in collisions of h2 + with h2 studied in a guided ion beam instrument,
+ChemPhysChem 21 (13) (2020) 1429–1435.
+[147] A. G. Elliott, C. C. Harper, H.-W. Lin, E. R. Williams, Effects of individual ion energies on charge measurements in
+fourier transform charge detection mass spectrometry (ft-cdms), Journal of the American Society for Mass Spectrometry
+30 (6) (2018) 946–955.
+[148] C. C. Harper, V. S. Avadhani, E. Hanozin, Z. M. Miller, E. R. Williams, Dynamic energy measurements in charge detection
+mass spectrometry eliminate adverse effects of ion–ion interactions, Analytical Chemistry 95 (26) (2023) 10077–10086.
+[149] M. F. Jarrold, Applications of charge detection mass spectrometry in molecular biology and biotechnology, Chemical
+
+29
+
+https://doi.org/10.26434/chemrxiv-2024-h3jzp ORCID: https://orcid.org/0000-0003-1859-5615 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Reviews 122 (8) (2022) 7415–7441.
+[150] B. D. Adamson, M. E. Miller, R. E. Continetti, The aerosol impact spectrometer: a versatile platform for studying the
+velocity dependence of nanoparticle-surface impact phenomena, EPJ Techniques and Instrumentation 4 (2017) 1–17.
+[151] C. Du, S. P. Cleary, M. M. Kostelic, B. J. Jones, J. O. Kafader, V. H. Wysocki, Combining surface-induced dissociation
+and charge detection mass spectrometry to reveal the native topology of heterogeneous protein complexes, Analytical
+Chemistry 95 (37) (2023) 13889–13896.
+[152] G.-L. Hou, J. Zhang, M. Valiev, X.-B. Wang, Structures and energetics of hydrated deprotonated cis-pinonic acid anion
+clusters and their atmospheric relevance, Phys. Chem. Chem. Phys. 19 (16) (2017) 10676–10684.
+[153] E. E. Racow, J. J. Kreinbihl, A. G. Cosby, Y. Yang, A. Pandey, E. Boros, C. J. Johnson, General approach to direct
+measurement of the hydration state of coordination complexes in the gas phase: variable temperature mass spectrometry,
+Journal of the American Chemical Society 141 (37) (2019) 14650–14660.
+
+30
+
+https://doi.org/10.26434/chemrxiv-2024-h3jzp ORCID: https://orcid.org/0000-0003-1859-5615 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+

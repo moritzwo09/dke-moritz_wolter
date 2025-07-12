@@ -1,0 +1,2716 @@
+Head Group Dependence and Kinetic Bottlenecks of Gas-phase Thermal
+PFAS Destruction
+
+Jens Blotevogel1, Justin P. Joyce2, Olivia L. Hill2, Anthony K. Rappé2,*
+
+1
+
+CSIRO, Environment, Waite Campus, Urrbrae, SA 5064, Australia
+
+2
+
+Department of Chemistry, Colorado State University, Fort Collins, CO 80523, USA
+
+PFECA
+
+PFSA
+
+FTOH
+
+FASA
+590 °C
+
+PFCA
+650 °C
+
+570 °C
+590 °C
+MeFASAA
+
+FTS
+
+FTCA
+
+TOC Art
+
+KEYWORDS: AFFF, PFOS, PFOA, incineration, combustion, pyrolysis
+
+1
+
+https://doi.org/10.26434/chemrxiv-2024-22skh ORCID: https://orcid.org/0000-0002-5259-1186 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+1
+
+ABSTRACT
+
+2
+
+Varying and sometimes conflicting temperatures and products have been reported from
+
+3
+
+studies addressing thermal PFAS destruction, often because decomposition pathways are highly
+
+4
+
+dependent on the respective experimental system. Here we applied highest-level coupled cluster
+
+5
+
+calculations to isolate and identify the major processes during thermal PFAS destruction in the gas
+
+6
+
+phase with relevance to incineration, thermal oxidation, and other thermal treatment technologies
+
+7
+
+in which PFAS and their volatile decomposition products desorb into the gas phase. All
+
+8
+
+investigated perfluoroalkyl acids decompose via unimolecular head group loss, either through HF
+
+9
+
+elimination or homolytic bond cleavage as a function of head group type. In contrast, all
+
+10
+
+investigated fluorotelomers undergo initial hydrogen abstraction from the characteristic C2H4
+
+11
+
+moiety by hydroxyl radicals under representative incineration conditions, followed by radical
+
+12
+
+decomposition. Subsequent formation of perfluoroalkanes including CF4 can then be prevented by
+
+13
+
+supplying sufficient hydrogen donors such as hydrocarbon fuel and water as well as by scavenging
+
+14
+
+released fluorine. This leads to the generation of stable 1H-perfluoroalkanes. While parent PFAS
+
+15
+
+decomposition proceeds at gas-phase temperatures ≤700 °C, carbon-carbon cleavage of 1H-
+
+16
+
+perfluoroalkanes requires up to ~950 °C at 2 seconds gas residence time, making this step the
+
+17
+
+kinetic bottleneck on the way to complete thermal PFAS mineralization.
+
+18
+19
+
+SYNOPSIS
+
+20
+
+Concerns exist around PFAS stack emissions. This study identifies the main decomposition
+
+21
+
+pathways and conditions needed for complete thermal gas-phase destruction of eleven major PFAS
+
+22
+
+classes.
+
+2
+
+https://doi.org/10.26434/chemrxiv-2024-22skh ORCID: https://orcid.org/0000-0002-5259-1186 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+23
+
+INTRODUCTION
+
+24
+
+Per- and polyfluoroalkyl substances (PFAS) comprise well over 10,000 individual
+
+25
+
+chemicals that are used in countless commercial, industrial, and consumer products.1,2 While the
+
+26
+
+composition and properties of their head groups vary greatly with their respective type of
+
+27
+
+application, the functional group common to all PFAS is a perfluoroalkyl tail.3 This remarkably
+
+28
+
+unreactive functional group is the root of PFAS’ high persistence both in the environment and in
+
+29
+
+traditional water, soil, and waste treatment technologies.4
+
+30
+
+Thermal destruction is among the few treatment processes that can break the strong carbon-
+
+31
+
+fluorine bond and completely mineralize PFAS.5 However, as the scientific community’s
+
+32
+
+understanding of high-temperature fluorocarbon chemistry is still evolving, concerns about stack
+
+33
+
+emissions of potentially toxic products of incomplete destruction (PIDs) persist.6 This lack of
+
+34
+
+understanding has led to great uncertainty within the regulatory community, and as a consequence
+
+35
+
+to widely varying regulations internationally to the point of temporary prohibition of incineration
+
+36
+
+of PFAS-containing materials in the U.S.7,8
+
+37
+
+Adding to the uncertainties around thermal PFAS destruction are observations that, at first
+
+38
+
+glance, may seem contradictory. For instance, Xiao and co-workers (2020)9 found that
+
+39
+
+perfluoroalkane sulfonic acids (PFSAs) needed a higher decomposition temperature than
+
+40
+
+perfluoroalkyl carboxylic acids (PFCAs) during treatment of spent granular activated carbon
+
+41
+
+(GAC). In contrast, Shields et al. (2023)10 reported higher destruction efficiencies for PFSAs
+
+42
+
+compared to PFCAs during the incineration of aqueous film forming foam (AFFF) in a pilot-scale
+
+43
+
+research combustor. Likely reasons for these discrepancies are (1) surface catalytic processes that
+
+44
+
+are highly material-specific and fundamentally different from gas phase processes as well as (2)
+
+45
+
+concurrent volatilization processes that are captured as mass loss during thermogravimetric
+
+3
+
+https://doi.org/10.26434/chemrxiv-2024-22skh ORCID: https://orcid.org/0000-0002-5259-1186 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+46
+
+analysis but do not necessarily reflect partial or complete destruction of the analytes.6 Furthermore,
+
+47
+
+both Shields et al. (2023)10 and Mattila et al. (2024)11 observed a decrease in PFCA destruction
+
+48
+
+efficiency with decreasing fluorocarbon chain length, while we witnessed only little chain length
+
+49
+
+dependence in PFCA head group loss in a previous computational study.12 A possible explanation
+
+50
+
+for this disagreement between physical and theoretical experiments could be the generation of
+
+51
+
+shorter-chained PFCAs and therefore an apparent decrease in their destruction efficiency during
+
+52
+
+concurrent thermal destruction of longer-chained PFAS. Clearly, more mechanistic insights are
+
+53
+
+needed to unravel the underlying processes and kinetics in complex mixtures.
+
+54
+
+To systematically start identifying and characterizing the highly complex field of thermal
+
+55
+
+PFAS destruction, our study is aimed at elucidating the fundamental steps in the gas phase.
+
+56
+
+Gaseous transformation pathways, mechanisms, and kinetics are not only relevant for assessing
+
+57
+
+PFAS fate in incinerators and thermal oxidizers, but likely also for other thermal processes such
+
+58
+
+as GAC reactivation and pyrolysis of impacted biosolids, where PFAS decomposition may be
+
+59
+
+initiated on a potentially catalytically active surface, but where highly volatile fluorocarbon
+
+60
+
+intermediates may only be mineralized after desorption into the gas phase.13,14 To exclude any
+
+61
+
+surface reaction bias from physical experiments and to overcome the lack of analytical methods
+
+62
+
+capable of detecting often short-lived key intermediates in the thermal decomposition of PFAS,
+
+63
+
+we applied highly accurate quantum chemical calculations using coupled cluster with single and
+
+64
+
+double and perturbative triple excitations (CCSD(T)), which we previously benchmarked against
+
+65
+
+data from physical experiments to confirm that our predictions can achieve chemical accuracy (±1
+
+66
+
+kcal/mol).12 While CCSD(T) calculations are computationally expensive, their use in the
+
+67
+
+investigation of fluorine chemicals is justified because less costly density functional theory (DFT)
+
+68
+
+methods struggle with accurately describing non-covalent interactions, excited states, and kinetic
+
+4
+
+https://doi.org/10.26434/chemrxiv-2024-22skh ORCID: https://orcid.org/0000-0002-5259-1186 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+69
+
+descriptors such as activation barriers.15 Accurate quantification of activation barriers is especially
+
+70
+
+important in high-temperature systems where homolytic bond cleavage proceeds through a
+
+71
+
+variational transition state and, in contrast to ambient temperature, cannot be kinetically described
+
+72
+
+by a bond dissociation (free) energy.12,16-18
+
+73
+
+The first specific objective of our study was to determine the head group dependence on
+
+74
+
+thermal PFAS destruction. Head group loss is thought to be the first step in high-temperature
+
+75
+
+decomposition of PFAS and therefore determines a parent compound’s destruction efficiency, a
+
+76
+
+descriptor widely used to benchmark the effectiveness of incineration processes.10,19,20 Thus far,
+
+77
+
+mechanistic studies have exclusively focused on head group loss in PFCAs and PFSAs.12,18,21-23
+
+78
+
+Some of these studies disagree over the primary decomposition mechanism, partly because of the
+
+79
+
+disregard of variational transition states. Here, we aim to settle these disagreements and expand
+
+80
+
+our mechanistic understanding to a broader set of PFAS head groups that have not been
+
+81
+
+investigated yet, such as sulfonamides, telomers, and alcohols. However, as destruction efficiency
+
+82
+
+does not necessarily relate to complete mineralization of an organic chemical,6 the second specific
+
+83
+
+objective of our study was to identify the kinetic bottleneck for thermal PFAS mineralization in
+
+84
+
+the gas phase. Collectively, we envision these results to provide a framework for safe and efficient
+
+85
+
+thermal destruction of these highly persistent environmental contaminants.
+
+86
+87
+
+COMPUTATIONAL DETAILS
+
+88
+
+All gas-phase computations were performed on uncharged (acid) species. As previously
+
+89
+
+described,12 reported ground and transition state geometry optimizations as well as vibrational
+
+90
+
+frequency computations used the 6-311+G(2d,2p) basis set,24 the ωB97X-D hybrid functional,25
+
+91
+
+an unrestricted formalism for radical species, and the Gaussian 16 electronic structure package.26
+
+5
+
+https://doi.org/10.26434/chemrxiv-2024-22skh ORCID: https://orcid.org/0000-0002-5259-1186 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+92
+
+Single point computations were carried out at stationary points using the aug-cc-pVTZ basis set27,28
+
+93
+
+and the DLPNO-CCSD(T) coupled cluster approach29,30 in the ORCA suite of programs.31 The
+
+94
+
+aug-cc-pVTZ basis for sulfur-containing compounds was augmented with a tight d exponent of
+
+95
+
+3.203.32 Estimates of variational transition state free energies of activation Δ‡G were obtained
+
+96
+
+along constrained bond dissociation curves.17 The maximum Δ‡G required to achieve 99%
+
+97
+
+destruction in 2 seconds of combustion gas residence time (t99) curve was obtained along
+
+98
+
+constrained bond dissociation curves to calculate T99 temperatures, a common laboratory
+
+99
+
+benchmark indicative of 99.99% destruction and removal efficiency (DRE) at full scale.19 To
+
+100
+
+describe representative incineration conditions, partial pressures for incineration accrued from
+
+101
+
+estimated initial partial pressures for O2, H2O, and methane of 18.3% and 8.5%, and 4.25%,
+
+102
+
+respectively. These initial concentrations were used in Cantera33 to provide temperature-dependent
+
+103
+
+equilibrium concentrations and associated free energy corrections for bimolecular reactions with
+
+104
+
+second-order kinetics (Fig. S1, Tables S1-S3). Additional details are provided in the Supporting
+
+105
+
+Information.
+
+106
+107
+
+As 1 kcal/mol is roughly equivalent to 17 °C within the range of incineration temperatures,
+we estimate that the error of our T99 temperatures is within ±20 °C.
+
+108
+109
+
+RESULTS AND DISCUSSION
+
+110
+
+Unimolecular Head Group Loss. Initial PFAS head group loss can proceed via unimolecular or
+
+111
+
+bimolecular reactions. Unimolecular mechanisms include hydrogen fluoride (HF) elimination and
+
+112
+
+homolytic bond dissociation.6,34 Starting with carboxylic acids, Fig. 1 shows that HF elimination
+
+113
+
+at the α-carbon (“α-elimination”) requires the lowest temperature among these mechanisms in
+
+114
+
+perfluorooctanoic acid (PFOA) and perfluorobutanoic acid (PFBA), meaning it is the kinetically
+
+6
+
+https://doi.org/10.26434/chemrxiv-2024-22skh ORCID: https://orcid.org/0000-0002-5259-1186 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+115
+
+most favorable unimolecular decomposition pathway for these two PFCAs consistent with
+
+116
+
+previous studies.12,18 In PFBA, cleavage of the β C-C bond is favored over cleavage of the α and
+
+117
+
+γ C-C bonds (Figure 1b, Table S4), in agreement with bond dissociation energy estimates by
+
+118
+
+Alinezhad and co-workers.35 The free energy barrier Δ‡G for HF elimination is almost independent
+
+119
+
+of temperature as there is very little entropy change in the rearrangement, while the barrier for
+
+120
+
+homolytic C-C cleavage decreases notably with increasing temperature due to transitional entropy
+
+121
+
+build-up. The computed T99 of 700 °C for PFOA based on the preferred mechanism α-elimination
+
+122
+
+agrees well with the equivalent temperature of 680 °C from physical experiments by Weber and
+
+123
+
+co-workers, who carefully vaporized PFOA before inducing its thermal decomposition.36
+
+124
+
+Branching of the perfluorocarbon chain lowers the required temperatures for all three mechanisms
+
+125
+
+by up to 190 °C for C-C cleavage, although α-elimination remains the kinetically most favorable
+
+126
+
+pathways for branched PFOA (T99 = 650 °C, Table 1). The product of α-elimination during gas-
+
+127
+
+phase PFCA decomposition is an acyl fluoride (R-COF, Table 1).12,18,37 This product distribution
+
+128
+
+may differ in the presence of solid surfaces, where the alkene products from β-elimination have
+
+129
+
+been observed in physical experiments.34,38 The perfluoroalkylether carboxylic acid (PFECA)
+
+130
+
+hexafluoropropylene oxide dimer acid (HFPO-DA, a.k.a. “GenX”) likewise decomposes via α-
+
+131
+
+elimination in the gas phase at a substantially lower T99 of 480 °C compared to PFCAs.12
+
+7
+
+https://doi.org/10.26434/chemrxiv-2024-22skh ORCID: https://orcid.org/0000-0002-5259-1186 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+132
+133
+
+Figure 1. Free energies of activation as a function of temperature for α-HF elimination, β-
+
+134
+
+HF elimination, and homolytic C-C bond cleavage for PFOA (a) and PFBA (b) or C-S bond
+
+135
+
+cleavage for PFOS (c) and PFBS (d). The black line illustrates the maximum free energy of
+
+136
+
+activation required to achieve 99% destruction in 2 seconds of combustion gas residence time
+
+137
+
+(t99). The temperatures at the crossing points of the respective lowest free energy of activation
+
+138
+
+and the black line represent T99.
+8
+
+https://doi.org/10.26434/chemrxiv-2024-22skh ORCID: https://orcid.org/0000-0002-5259-1186 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+139
+
+Recent computational studies have reported α-elimination via sultone formation to be the
+
+140
+
+primary pathway for head group loss in PFSAs.22,23 However, the emergence of variational
+
+141
+
+transition states at elevated temperature has been neglected for PFSAs thus far, and many previous
+
+142
+
+computational studies have been carried out at zero Kelvin.6 Our highly accurate computations,
+
+143
+
+which were carried out over a temperature range of 1 to 2000 Kelvin, reveal that α-elimination is
+
+144
+
+indeed the primary head loss mechanism for perfluorooctane sulfonic acid (PFOS) and
+
+145
+
+perfluorobutane sulfonic acid (PFBS), but only at temperatures below 520 °C and 190 °C,
+
+146
+
+respectively (Fig. 1). Above these temperatures, the relatively weak C-S bond leads to a curve
+
+147
+
+crossing and for the homolytic C-S cleavage path to be preferred. The products of initial C-S bond
+
+148
+
+cleavage in PFSAs are a perfluoroalkyl radical and HSO3, which can reductively or oxidatively
+
+149
+
+form H2SO3 or H2SO4. The T99 values of 610 °C for PFOS and 560 °C for PFBS are lower than
+
+150
+
+for PFOA and PFBA, which is consistent with the weaker C-S bond for PFSAs compared to the
+
+151
+
+C-C bond of PFCAs. Our computational findings are supported by recent physical experiments
+
+152
+
+where the favored product formation pathway is observed to be temperature-dependent.39 It should
+
+153
+
+be noted that, on average, the T99 for C-C cleavage was underestimated by 100 °C using DFT (here
+
+154
+
+wB97xd) compared to highly accurate DLPNO-CCSD(T).
+
+9
+
+https://doi.org/10.26434/chemrxiv-2024-22skh ORCID: https://orcid.org/0000-0002-5259-1186 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+155
+
+Table 1. Unimolecular head group loss pathways with calculated T99 temperatures. The
+
+156
+
+asterisk (*) indicates the favored unimolecular decomposition pathway for each PFAS.
+a-Elimination
+Substrate
+
+b-Elimination
+a-Cleavage
+
+Geometries of the kinetically
+most favorable transition state
+incl. bond distance for
+variational transition states
+during cleavage
+
+Product of initial
+unimolecular head group loss
+
+700 °C *
+PFOA
+(linear)
+
+O
+
+890 °C
+R
+
+940 °C
+
+F
+
+650 °C *
+PFOA
+(branched)
+
+O
+
+810 °C
+R
+
+750 °C
+
+F
+
+700 °C *
+PFBA
+
+O
+
+890 °C
+R
+
+920 °C
+
+F
+
+480 °C *
+HFPO-DA
+(“GenX”)
+
+O
+
+860 °C
+R
+
+890 °C
+640 °C
+PFOS
+
+F
+
+F
+
+F
+
+3.08 Å
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+3.04 Å
+
+F
+
+F
+
+F
+
+F
+
+157
+158
+10
+
+https://doi.org/10.26434/chemrxiv-2024-22skh ORCID: https://orcid.org/0000-0002-5259-1186 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+F
+
+F
+
+F
+
+F
+
+810 °C
+560 °C *
+
+F
+
+F
+
+640 °C
+PFBS
+
+F
+
+F
+
+F
+
+810 °C
+610 °C *
+
+OR
+
+F
+
+F
+
+F
+
+F
+
+159
+
+Table 1 (continued).
+F
+
+1030 °C
+FBSA
+
+3.08 Å
+
+F
+
+F
+
+F
+
+not applicable
+NMeFBSAA
+
+F
+
+F
+
+3.18 Å
+
+F
+
+2.79 Å
+
+H H
+
+F
+
+F
+
+F
+
+F
+
+F
+
+F
+
+H
+
+F
+
+F
+
+710 °C *
+
+H
+F
+
+F
+
+840 °C
+
+H
+
+F
+
+H
+
+F
+
+F
+
+650 °C *
+
+H
+
+700 °C
+
+F
+
+F
+
+470 °C *
+
+H
+F
+
+F
+
+F
+
+F
+
+780 °C
+
+O
+
+840 °C
+
+F
+
+F
+
+F
+
+1040 °C
+2:2 FTOH
+
+H
+H
+
+740 °C
+
+PFBOH
+
+H H
+
+F
+
+F
+
+950 °C
+
+2:2 FTSA
+
+F
+
+F
+
+690 °C *
+950 °C
+
+2:2 FTS
+
+F
+
+F
+
+920 °C
+3:2 FTCA
+
+F
+
+F
+
+1120 °C
+880 °C *
+
+F
+
+F
+
+F
+
+F
+
+950 °C
+2:3 FTCA
+
+F
+
+F
+
+not applicable
+590 °C *
+
+F
+
+F
+
+1060 °C
+590 °C *
+
+F
+
+F
+
+F
+H
+
+F
+
+F
+
+770 °C *
+
+H
+F
+
+900 °C
+
+F
+
+160
+
+11
+
+https://doi.org/10.26434/chemrxiv-2024-22skh ORCID: https://orcid.org/0000-0002-5259-1186 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+H
+
+161
+
+We note that for both PFCAs and PFSAs there is little chain length dependence for the
+
+162
+
+initial head group loss. Therefore, shorter chains of two to four perfluorinated carbons were chosen
+
+163
+
+as representative homologues of the remaining investigated PFAS classes to keep computational
+
+164
+
+expenses affordable.
+
+165
+
+Transitioning from a sulfonic acid to the sulfonamide, here perfluorobutane sulfonamide
+
+166
+
+(FBSA), leads to a profound suppression of the α- and β-elimination pathways, as shown in Fig.
+
+167
+
+S2 in the Supporting Information. The T99 rises from 640 °C for PFSAs to over 1000 °C due to the
+
+168
+
+loss of acidity in the amide functional group. For both FBSA and N-methylperfluorooctane
+
+169
+
+sulfonamidoacetic acid (N-MeFBSAA), C-S cleavage is the kinetically preferred pathway with a
+
+170
+
+T99 of 590 °C, only 30 °C higher than for the C4-PFSA analogue PFBS (Tables 1 and S4). The C-
+
+171
+
+S cleavage pathway leads to the generation of a perfluoroalkyl radical analogous to the chain
+
+172
+
+scission pathway proposed by Xiao and co-workers (2021) based on thermal AFFF decomposition
+
+173
+
+in a muffle furnace.40 The alternate N-S cleavage paths are higher at T99 values of 800 °C and 610
+
+174
+
+°C for FBSA and N-MeFBSAA, respectively, and therefore not favored.
+
+175
+
+In contrast to perfluorinated PFAS, the telomeric C2H4 alkyl moiety adjacent to the head
+
+176
+
+group significantly alters the reaction pathways as evident when comparing PFBA to fluorotelomer
+
+177
+
+carboxylic acids (FTCAs) (Table 1). HH elimination is kinetically much less favorable than HF
+
+178
+
+elimination. For 2:3 FTCA, the α- and β-elimination pathways no longer contribute significantly
+
+179
+
+to decomposition and head group elimination parallels that of aliphatic carboxylic acids as
+
+180
+
+summarized in Figs. S3 and S4.41-43 2:3 FTCA loses its head group through C-C cleavage at a T99
+
+181
+
+values of 880 °C, about 40 °C lower than its non-fluorinated counterpart valeric acid (a.k.a.
+
+182
+
+pentanoic acid).43 3:2 FTCA, however, has a β-fluorine and preferentially undergoes β-elimination
+
+183
+
+at a T99 of 690 °C (Figure S5).
+
+12
+
+https://doi.org/10.26434/chemrxiv-2024-22skh ORCID: https://orcid.org/0000-0002-5259-1186 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+184
+
+In comparison to fluorotelomer carboxylic acids, 2:2 fluorotelomer sulfonic acid (FTS) and
+
+185
+
+2:2 fluorotelomer sulfonamide (FTSA) have lower T99 values of 740 °C and 700 °C, respectively,
+
+186
+
+for homolytic cleavage due to a weaker C-S bond. Furthermore, FTSs have a significantly lowered
+
+187
+
+β-elimination barrier relative to FTCAs due to formation of an alkene product and a stabilized
+
+188
+
+S(IV) species (T99 = 710 °C). For 2:2 fluorotelomer sulfonamide (FTSA), the β-elimination barrier
+
+189
+
+is lowered due to involvement of a C-H bond (T99 = 650 °C). Consequently, unimolecular
+
+190
+
+decomposition of FTSs and FTSAs will primarily produce an alkene product (Table 1, Fig. S7).
+
+191
+
+Other industrially and commercially relevant fluorotelomers are those with an alcoholic
+
+192
+
+terminal group, here 2:2 fluorotelomer alcohol (FTOH). FTOHs are uncharged, volatile PFAS that
+
+193
+
+readily transform into FTCAs and PFCAs in the environment.44 Like FTCAs, α-elimination and
+
+194
+
+bond cleavage pathways are kinetically unfavorable for FTOHs, leading to β-elimination being
+
+195
+
+preferred for unimolecular decomposition (T99 = 770 °C) and the generation of an alkene
+
+196
+
+intermediate (Table 1). Also like FTCAs, FTOHs undergo head group loss at slightly lower
+
+197
+
+temperatures than their non-fluorinated counterparts (Fig. S8).45 Vice versa, the fully fluorinated
+
+198
+
+perfluorobutanol (PFBOH, Fig. S9) loses its head group at a much lower T99 of 470 °C through an
+
+199
+
+α-elimination pathway, stabilized by the formation of a carbonyl functional group in contrast to
+
+200
+
+carbene formation for the acids (Table 1).
+
+201
+
+Radical Abstraction. Reaction of the parent PFAS with radicals such as •OH, H•, or R•, the latter
+
+202
+
+one for instance stemming from the hydrocarbon fuel, is an alternative to unimolecular
+
+203
+
+decomposition. As shown in Fig. S10, F atom abstraction from PFAS is unfavorable under
+
+204
+
+representative incineration conditions12,20 with T99 values ranging between 1060 °C for F atom
+
+205
+
+abstraction by hydrogen and 1710 °C for F atom abstraction by fluorine radicals, which may be
+
+206
+
+present from the thermal decomposition of other PFAS in the treated material. With a T99 range
+
+13
+
+https://doi.org/10.26434/chemrxiv-2024-22skh ORCID: https://orcid.org/0000-0002-5259-1186 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+207
+
+from 640 °C to 770 °C (Fig. 2a), hydrogen atom abstraction from the head group by •OH is
+
+208
+
+kinetically more favorable than by H• (T99 range 730 °C to 850 °C) or •CH3 radicals (T99 range 820
+
+209
+
+°C to 950 °C, Figure S11).
+
+210
+211
+
+Figure 2. Free energies of activation as a function of temperature for hydrogen abstraction
+
+212
+
+by hydroxyl radicals (a) from the head groups of four perfluoroalkyl substances their
+
+213
+
+respective telomeric analogues and (b) from the telomeric carbons of five different classes.
+
+214
+
+Data were calculated at O2 concentrations representative of incineration conditions. The
+
+215
+
+black line illustrates the maximum free energy of activation required to achieve 99%
+
+216
+
+destruction in 2 seconds of combustion gas residence time (t99). The temperatures at the
+
+217
+
+crossing points of the respective lowest free energy of activation and the black line represent
+
+218
+
+T99.
+
+219
+
+For head group H abstraction, there is a clear trend that telomeric polyfluoroalkyl
+
+220
+
+substances require lower temperatures than their perfluorinated homologues. The resulting head
+14
+
+https://doi.org/10.26434/chemrxiv-2024-22skh ORCID: https://orcid.org/0000-0002-5259-1186 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+221
+
+group radical species are highly unstable and rapidly eliminate CO2, SO3, SO2NH, or CF2O,
+
+222
+
+generating perfluorocarbon radicals with T99 values below room temperature (Fig. S12).
+
+223
+
+However, for all five telomer classes investigated here, H abstraction from the telomeric
+
+224
+
+C2H4 moiety requires T99 temperatures 30 to 100 °C lower than H abstraction from the respective
+
+225
+
+head group (Fig. 2b). For 2:2 FTS, H abstraction from the β-carbon is most favorable, while for
+
+226
+
+the four other species, H abstraction from the α-carbon is most favorable. In fact, when comparing
+
+227
+
+free energies of activation with unimolecular head loss mechanisms, H abstraction from the
+
+228
+
+telomeric C2H4 by •OH under incineration conditions is the most favorable decomposition
+
+229
+
+mechanism for all five investigated fluorotelomers 2:2 FTS (T99 = 650 °C), 2:2 FTSA (T99 = 630
+
+230
+
+°C), 2:2 FTOH (T99 = 580 °C), 3:2 FTCA (T99 = 660 °C), and 2:3 FTCA (T99 = 630 °C). Subsequent
+
+231
+
+radical decomposition occurs below 270 °C generating the head group radical and a telomeric
+
+232
+
+alkene (Fig. S13).
+
+233
+
+It is important to note that •OH concentrations are substantially lower under oxygen-
+
+234
+
+depleted conditions, which can exist in poorly mixed incinerators.20 This may lead to an increase
+
+235
+
+in free energies of activation for H abstraction by •OH of 20 kcal/mol (Fig. S1), and consequently
+
+236
+
+to a shift in primary degradation mechanism for fluorotelomers towards other H-abstracting
+
+237
+
+radicals or, as a kinetically worst-case scenario, to the respective primary unimolecular
+
+238
+
+decomposition mechanisms summarized in Table 2.
+
+239
+
+Fate of the Head Group Loss Products. Once the headgroup has been removed from PFAS, the
+
+240
+
+resulting perfluoroalkyl radicals, acyl fluorides or alkenes can react with abundant gas-phase
+
+241
+
+species such as H2O, O2, hydrogen, or hydrocarbon fuel. Alkenes react with H•, •OH, and O2 at T99
+
+242
+
+temperatures ranging from 610 °C to 740 °C (Fig. S14). Acyl fluorides do not hydrolyze in the gas
+
+15
+
+https://doi.org/10.26434/chemrxiv-2024-22skh ORCID: https://orcid.org/0000-0002-5259-1186 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+243
+
+phase even in the presence of water vapor, but C-C cleavage reactions occur between 830-880 °C
+
+244
+
+and OH addition proceeds between 820-920 °C (Fig. S15 and additional computations below).
+
+245
+
+Perfluoroalkyl radicals can follow several decomposition pathways.36,46 Decomposition
+
+246
+
+can form shorter chain perfluoroalkyl radicals and a difluoro carbene CF2 (pathway a in Fig. 3a,
+
+247
+
+T99 = 430 °C) or tetrafluoroethene C2F4 (b, T99 = 560 °C). In contrast, for telomeric fluoroalkyl
+
+248
+
+radicals, ethylene loss (T99 = 290 °C) is substantially more kinetically favorable than methylene
+
+249
+
+loss (T99 = 1080 °C, Fig. S16). Alternatively, the primary radical can lose fluorine, generating an
+
+250
+
+alkene (d, T99 = 570 °C). However, H abstraction is the most favorable mechanism for
+
+251
+
+perfluoroalkyl radicals. In an incinerator with significant hydrocarbon fuel and water vapor, H
+
+252
+
+abstraction from H2O and H2 proceeds at T99 temperatures of 280 °C (f) and 150 °C (l),
+
+253
+
+respectively, while a very low T99 of 100 °C implies that the hydrocarbon fuel (here: CH4) is the
+
+254
+
+primary source for perfluoroalkyl radical transformation, forming 1H-perfluoroalkanes (e).
+
+255
+
+Isomerization of primary perfluoroalkyl radicals to more stable secondary radicals only
+
+256
+
+proceeds with a higher T99 of 380 °C (c). Secondary radicals may undergo the same reactions as
+
+257
+
+primary radicals, though generally at higher temperatures (Figure 3b). Again, the most favorable
+
+258
+
+pathway is H abstraction from the hydrocarbon fuel (j) at a T99 of 280 °C.
+
+259
+
+Alternatively, as outlined in Fig. S17 under incineration conditions, perfluoroalkyl radicals
+
+260
+
+can also react with O2 forming peroxy radicals with a T99 of -10 °C but require 520 °C to
+
+261
+
+decompose further. Reverse reaction of the peroxy radicals to perfluoroalkyl radicals is kinetically
+
+262
+
+more favorable than (forward) decomposition with a T99 of 280 °C. Parallel to hydrocarbon
+
+263
+
+combustion,35,47 polyfluoroalkyl radicals also react with O2 at low temperature and rearrange to
+
+264
+
+hydroperoxyalkyl radical species (•QOOH) at 270 °C and decompose to an alkene plus peroxy
+
+265
+
+radical at 40 °C (Fig. S17).
+
+16
+
+https://doi.org/10.26434/chemrxiv-2024-22skh ORCID: https://orcid.org/0000-0002-5259-1186 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+266
+17
+
+https://doi.org/10.26434/chemrxiv-2024-22skh ORCID: https://orcid.org/0000-0002-5259-1186 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+267
+
+Figure 3. Thermal transformation pathways for (a) primary and (b) secondary
+
+268
+
+perfluoroalkyl radicals, both boxed in blue. Perfluoroalkyl radicals are central products of
+
+269
+
+head group loss or carbon chain cleavage of larger fluoroalkanes (black box). Temperatures
+
+270
+
+provided are T99 values. The red T99 and red box indicate the kinetically most favorable
+
+271
+
+pathway for perfluoroalkyl radicals.
+
+272
+
+Consequently, various pathways exist for the products of heads group loss with T99
+
+273
+
+temperatures substantially below the temperatures computed for head group removal (Table 1).
+
+274
+
+These products are therefore not the kinetic bottleneck on the path to complete thermal
+
+275
+
+mineralization.
+
+276
+
+Carbon-Carbon Cleavage in Fluoroalkanes. While 1H-perfluoroalkanes are the predicted major
+
+277
+
+products from perfluoroalkyl radical transformation in treatment systems with excess hydrocarbon
+
+278
+
+fuel, non-hydrogenated perfluoroalkanes may be generated from F trapping/abstraction or
+
+279
+
+recombination of perfluoroalkyl radicals. These fluoroalkanes are thought to decompose via C-C
+
+280
+
+bond dissociation46,48 because homolytic cleavage of the carbon-fluorine bond has a substantially
+
+281
+
+higher activation barrier. This is the reason for CF4 having an exceptionally high T99 of 1450 °C.12
+
+282
+
+Free energies of activation as a function of temperature for C-C bond cleavage in a series
+
+283
+
+of perfluoroalkanes is shown in Fig. 4a. Both experimental and computational data reveal a general
+
+284
+
+chain length-dependence as required thermal decomposition temperatures increase with
+
+285
+
+decreasing perfluoroalkane size. For the synthetic fluoropolymer polytetrafluoroethylene (PTFE),
+
+286
+
+a T99 of only 580 °C has been reported.49,50 The required thermal destruction temperatures then
+
+287
+
+increase notably to T99 of 800 °C for perfluorooctane, 840 °C for perfluorohexane, and 890 °C for
+
+288
+
+perfluorobutane, until they reach a computationally predicted T99 for C2F6 of 920 °C, close to the
+
+289
+
+experimentally reported ones of 912 °C,5 919 °C,51 and 940 °C.52
+18
+
+https://doi.org/10.26434/chemrxiv-2024-22skh ORCID: https://orcid.org/0000-0002-5259-1186 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+290
+291
+
+Figure 4. Computed free energies of activation as a function of temperature for C-C bond
+
+292
+
+cleavage in a series of a) perfluoroalkanes and b) butane with varying degrees of fluorination.
+
+293
+
+The black line illustrates the maximum free energy of activation required to achieve 99%
+
+294
+
+destruction in 2 seconds of combustion gas residence time (t99). The temperatures at the
+
+295
+
+crossing points of the respective lowest free energy of activation and the black line represent
+
+296
+
+T99.
+
+297
+
+The effect of substituting hydrogen for fluorine on C-C bond cleavage T99 temperatures
+
+298
+
+can be seen in the example of C4 alkanes in Fig. 4b. 1H-perfluorobutane’s T99 is 880 °C, within
+
+299
+
+the margin of estimation error to perfluorobutane’s T99 of 890 °C. 2H-perfluorobutane’s T99 is
+
+300
+
+slightly higher at 920 °C, while an alkyl-perfluoroalkyl linkage further raises the temperature to
+
+301
+
+940 °C for 1H,1H,1H,2H,2H-perfluorobutane. For fully hydrogenated (non-fluorinated) butane,
+
+302
+
+the T99 drops to 860 °C. Fluorinated C-C bonds are stronger than the hydrogen analog while the
+
+303
+
+polarity of the heteropolar C-C bond of C2H5-C2F5 strengthens the bond further.
+
+19
+
+https://doi.org/10.26434/chemrxiv-2024-22skh ORCID: https://orcid.org/0000-0002-5259-1186 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+304
+
+Given these high T99 temperatures, the cleavage of 1H-perfluoroalkanes and, if present,
+
+305
+
+perfluoroalkanes can be identified as the kinetic bottlenecks in the thermal gas-phase
+
+306
+
+decomposition of PFAS. Indeed, 1H-perfluoroalkanes were observed to be the dominant products
+
+307
+
+of incomplete thermal PFAS destruction in a recent pilot-scale AFFF decomposition study.10 Fully
+
+308
+
+fluorinated perfluoroalkanes were detected as minor products in the same pilot-scale study10 as
+
+309
+
+well as in a small-scale AFFF pyrolysis study.53 The radical products of fluoroalkane C-C cleavage
+
+310
+
+then undergo the reactions discussed above (Fig. 3a).
+
+311
+
+Kinetic Modeling. As multiple potential parallel pathways exist, product distributions based on
+
+312
+
+predicted thermochemical parameters can be estimated using kinetic modeling.18,54 The important
+
+313
+
+question is at what temperature does complete mineralization occur and by which pathway. In Fig.
+
+314
+
+5 we compare two pathways for PFOA decomposition, a sequential carboxylic acid pathway and
+
+315
+
+a C-C bond cleavage pathway. PFOA was chosen as model species because among all PFAS
+
+316
+
+investigated in this study, PFCAs require the highest gas-phase decomposition temperatures and
+
+317
+
+can thus be seen as a worst-case scenario.
+
+20
+
+https://doi.org/10.26434/chemrxiv-2024-22skh ORCID: https://orcid.org/0000-0002-5259-1186 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+318
+21
+
+https://doi.org/10.26434/chemrxiv-2024-22skh ORCID: https://orcid.org/0000-0002-5259-1186 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+319
+
+Figure 5. Comparison of (a) a sequential carboxylic acid pathway with (b) a C-C bond
+
+320
+
+cleavage pathway for gas-phase PFOA decomposition as a function of temperature. The
+
+321
+
+kinetically limiting steps for the carboxylic acid path are α-HF elimination (blue box) and
+
+322
+
+•OH addition to the acyl fluoride intermediates (green box). For the bond cleavage path, the
+
+323
+
+kinetically limiting steps are homolytic cleavage of various bonds in the carbon chain of the
+
+324
+
+initially formed perfluoroheptanoyl fluoride (PFHpCOF, green box) and cleavage of the 1H-
+
+325
+
+perfluoroalkane intermediates (blue box).
+
+326
+
+As discussed above, PFOA initially decomposes via α-elimination to form a lactone
+
+327
+
+intermediate (Fig. 1), which rapidly decarbonylates into perfluoroheptanoyl fluoride (PFHpCOF,
+
+328
+
+Fig. 5a). In the sequential carboxylic acid pathway, subsequent PFHpCOF decomposition proceeds
+
+329
+
+by way of •OH addition forming perfluoroheptanoic acid (PFHpA). This pathway then repeats to
+
+330
+
+generate acyl fluoride intermediates (R-COF) and PFCAs of increasingly shorter chain length. The
+
+331
+
+kinetic bottleneck in this pathway is the decomposition of the acyl fluoride species (T99 of 830-
+
+332
+
+880 °C versus T99 of 700 °C for α-elimination) as can be seen by the dominance of acyl fluorides
+
+333
+
+in the product distribution (Fig. 5a). Within the simulated temperature range of 810-970 °C, chosen
+
+334
+
+based on the pilot-scale study by Shields and colleagues,10 and at a hydroxyl radical concentration
+
+335
+
+representative of incineration conditions (3x10-6 atm), a significant fraction of PFAS remains up
+
+336
+
+to 920 °C, and only at 970 °C 97% of PFOA are completely destroyed via this pathway considering
+
+337
+
+a 2-second residence time.
+
+338
+
+In the C-C bond cleavage pathway (Fig. 5b), which is a unimolecular pathway independent
+
+339
+
+of any secondary species’ concentration, the initially formed PFHpCOF undergoes chain rupture
+
+340
+
+in various places. This process generates C1-C5 perfluoroalkyl radicals, which then abstract
+
+341
+
+hydrogen to generate 1H-perfluororadicals in a repeating cycle that does not produce sequentially
+22
+
+https://doi.org/10.26434/chemrxiv-2024-22skh ORCID: https://orcid.org/0000-0002-5259-1186 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+342
+
+shorter PFCAs. This pathway is kinetically preferred over the sequential carboxylic acid pathway:
+
+343
+
+at 920 °C only 0.3% of PFAS remains, and at 970 °C only 10-11% of PFAS remains after 2 seconds.
+
+344
+
+We note that both pathways ultimately lead to the generation of carbonyl fluoride COF2 (Fig. 5),
+
+345
+
+which rapidly decomposes in aqueous media (T99 of 20 °C).
+
+346
+
+Implications. Our highly accurate coupled cluster calculations reveal that in the gas phase, i.e., in
+
+347
+
+the absence of heterogeneous catalysis on reactor, waste, ash or other surfaces, six out of eleven
+
+348
+
+PFAS classes investigated in this study undergo initial unimolecular head group loss, which
+
+349
+
+includes all perfluoroalkyl acids such as PFCAs and PFSAs. For all five fluorotelomers, however,
+
+350
+
+initial H abstraction from the telomeric functional group by hydroxyl radicals is more favorable
+
+351
+
+under incineration (combustion) conditions, which is then followed by rapid radical
+
+352
+
+decomposition. However, it is important to reiterate that changes in concentrations of radicals and
+
+353
+
+other reactive species in the gas phase may lead to changes in primary reaction mechanisms,
+
+354
+
+pathways, and kinetics. Therefore, even in the gas phase in the absence of catalytic processes, the
+
+355
+
+outcomes of thermal PFAS destruction can be expected to be specific to process conditions.
+
+356
+
+The major intermediates from thermal PFAS destruction are 1H-perfluoroalkanes,10 which
+
+357
+
+are formed when perfluoroalkyl radicals abstract hydrogen from hydrocarbon fuel and to a lesser
+
+358
+
+extent from water. Two implications of these findings are (1) that DREs calculated based on parent
+
+359
+
+PFAS removal are of little value and (2) that especially short-chain 1H-perfluoroalkanes are
+
+360
+
+suitable benchmark chemicals to assess whether a particular thermal process, reactor or facility is
+
+361
+
+capable of complete PFAS destruction.
+
+362
+
+Several previous bench-scale studies have reported thermal decomposition of parent PFAS
+
+363
+
+at temperatures hundreds of °C below the ones reported in this study.9,38,40,54 Such observations
+
+364
+
+are possible due to surface catalysis and other effects, but often do not capture the fate of volatile
+
+23
+
+https://doi.org/10.26434/chemrxiv-2024-22skh ORCID: https://orcid.org/0000-0002-5259-1186 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+365
+
+PIDs generated. Fluorine mass balance closure is therefore not achieved, which is critical for the
+
+366
+
+assessment of destructive PFAS technologies55 and should be the aim of future studies. It seems
+
+367
+
+prudent to ensure that a particular thermal process can sufficiently destroy 1H-perfluoroalkanes
+
+368
+
+within 2 seconds of gas residence time. Our kinetic calculations reveal that ≥99.99% destruction
+
+369
+
+and removal of C8 and shorter PFAS at the full scale are possible at temperatures around 950 °C.
+
+370
+
+In fact, hazardous waste incinerators typically operate at much higher temperatures around 1100
+
+371
+
+°C and commonly treat organic chemicals that require much higher temperatures than PFAS, such
+
+372
+
+as chlorobenzene (T99 = 990 °C), acetonitrile (T99 = 1000 °C), and naphthalene (T99 = 1070 °C).20
+
+373
+
+It remains to be noted that safe and complete thermal PFAS destruction is a more complex
+
+374
+
+engineering problem than dialing in a temperature of ~950 °C at ≥2 seconds gas residence time.
+
+375
+
+One important factor is to optimize mixing in the reactor to ensure sufficient exposure to high
+
+376
+
+temperatures and to minimize pockets of depleted oxygen and other relevant reactants. Other
+
+377
+
+critical variables are waste stream composition, fuel:oxygen:PFAS ratio, and the presence of
+
+378
+
+fluorine scavenger(s), which are all related to the fact that many relevant reactions are bimolecular
+
+379
+
+with second-order kinetics, and therefore concentration-dependent. For instance, a very limited
+
+380
+
+number of experimental studies38,56 have reported the generation of tetrafluoromethane, a potent
+
+381
+
+greenhouse gas, through recombination of CF3 with fluorine. As discussed above, CF4 destruction
+
+382
+
+requires extremely high temperatures >1400 °C because high-barrier C-F bond dissociation is the
+
+383
+
+only decomposition mechanism. Preventing tetrafluoromethane formation should thus be a main
+
+384
+
+priority during process development and optimization, and can be achieved by (1) providing
+
+385
+
+sufficient hydrogen donors such as hydrocarbons and water, (2) lowering PFAS and thus F
+
+386
+
+concentrations in the feed, and/or (3) adding fluorine scavengers such as lime to the feed. These
+
+387
+
+best practices are imperative for safe thermal destruction of PFAS.
+
+24
+
+https://doi.org/10.26434/chemrxiv-2024-22skh ORCID: https://orcid.org/0000-0002-5259-1186 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+388
+389
+390
+
+AUTHOR INFORMATION
+
+391
+
+Corresponding Author
+
+392
+
+*(A.K.R.) E-mail: anthony.rappe@colostate.edu. Phone: +1-970-491-6292.
+
+393
+
+Notes
+
+394
+
+The authors declare no competing financial interest.
+
+395
+396
+
+ASSOCIATED CONTENT
+
+397
+
+Supporting Information. The Supporting Information is available free of charge at...
+
+398
+
+Computational details; free energy corrections for incineration, thermal oxidation, and oxygen-
+
+399
+
+depleted conditions; tabulated T99 values; temperature plots for individual PFAS and thermal
+
+400
+
+decomposition intermediates.
+
+401
+402
+
+ACKNOWLEDGMENTS
+
+403
+
+Financial support for this research was provided by the U.S. Department of Defense’s Strategic
+
+404
+
+Environmental Research and Development Program (SERDP) under Project ER21-1019.
+
+405
+406
+
+REFERENCES
+
+407
+
+(1)
+
+Tokranov, A. K.; Nishizawa, N.; Amadei, C. A.; Zenobio, J. E.; Pickard, H. M.; Allen, J. G.;
+
+408
+
+Vecitis, C. D.; Sunderland, E. M. How Do We Measure Poly- and Perfluoroalkyl Substances
+
+409
+
+(PFASs) at the Surface of Consumer Products? Environ. Sci. Technol. Lett. 2019, 6, 38-43.
+
+25
+
+https://doi.org/10.26434/chemrxiv-2024-22skh ORCID: https://orcid.org/0000-0002-5259-1186 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+410
+
+(2)
+
+411
+412
+
+Wang, Z.; DeWitt, J. C.; Higgins, C. P.; Cousins, I. T. A Never Ending Story of Per- and
+Polyfluoroalkyl Substances (PFASs)? Environ. Sci. Technol. 2017, 51, 2508-2518.
+
+(3)
+
+Buck, R.C.; Franklin, J.; Berger, U.; Conder, J.M.; Cousins, I.T.; de Voogt, P.; Jensen, A.A.;
+
+413
+
+Kannan, K.; Mabury, S.A.; van Leeuwen, S.P.J. Perfluoroalkyl and polyfluoroalkyl
+
+414
+
+substances in the environment: terminology, classification, and origins. Integr. Environ.
+
+415
+
+Assess. Manage. 2011, 7, 513-541.
+
+416
+
+(4)
+
+Cousins, I.T.; DeWitt, J.C.; Glüge, J.; Goldenman, G.; Herzke, D.; Lohmann, R.; Ng, C.A.;
+
+417
+
+Scheringer, M.; Wang, Z. The high persistence of PFAS is sufficient for their management
+
+418
+
+as a chemical class. Environ. Sci. Process Impacts 2020, 22, 2307-2312.
+
+419
+
+(5)
+
+420
+421
+
+Tsang, W.; Burgess Jr., D.R.; Babushok, V. On the Incinerability of Highly Fluorinated
+Organic Compounds. Combust. Sci. and Tech. 1998, 139, 385-402.
+
+(6)
+
+Wang, J.; Lin, Z.; He, X.; Song, M.; Westerhoff, P.; Doudrick, K.; Hanigan, D. Critical
+
+422
+
+Review of Thermal Decomposition of Per- and Polyfluoroalkyl Substances: Mechanisms
+
+423
+
+and Implications for Thermal Treatment Processes. Environ. Sci. Technol. 2022, 56, 5355-
+
+424
+
+5370.
+
+425
+
+(7)
+
+426
+427
+
+Hall, H.; Moodie, D.; Vero, C. PFAS in Biosolids: A Review of International Regulations.
+Water e-Journal 2020, 5, 4. https://doi.org/10.21139/wej.2020.026.
+
+(8)
+
+United States Department of Defense, Office of the Assistant Secretary of Defense for
+
+428
+
+Energy, Installations, and Environment. Incineration Moratorium. Report to Congress. 03
+
+429
+
+February 2023, Washington, DC, USA.
+
+430
+
+(9)
+
+Xiao, F.; Challa Sasi, P.; Yao, B.; Kubatova, A.; Golovko, S.A.; Golovko, M.Y.; Soli, D.
+
+431
+
+Thermal Stability and Decomposition of Perfluoroalkyl Substances on Spent Granular
+
+432
+
+Activated Carbon. Environ. Sci. Technol. Lett. 2020, 7, 343-350.
+
+26
+
+https://doi.org/10.26434/chemrxiv-2024-22skh ORCID: https://orcid.org/0000-0002-5259-1186 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+433
+
+(10) Shields, E.P.; Krug, J.D.; Roberson, W.R.; Jackson, S.R.; Smeltz, M.G.; Allen, M.R.;
+
+434
+
+Burnette, R.P.; Nash, J.T.; Virtaranta, L.; Preston, W. et al. Pilot-Scale Thermal Destruction
+
+435
+
+of Per-and Polyfluoroalkyl Substances in a Legacy Aqueous Film Forming Foam. ACS EST
+
+436
+
+Engg. 2023, 3 (9), 1308-1317.
+
+437
+
+(11) Mattila, J.M.; Krug, J.D.; Roberson, W.R.; Burnette, R.P.; S. McDonald; Virtaranta, L.;
+
+438
+
+Offenberg, J.H.; Linak, W.P. Characterizing Volatile Emissions and Combustion
+
+439
+
+Byproducts from Aqueous Film-Forming Foams Using Online Chemical Ionization Mass
+
+440
+
+Spectrometry. Environ. Sci. Technol. 2024, 58 (8), 3942-3952.
+
+441
+
+(12) Blotevogel, J.; Giraud, R.J.; Rappé, A.K. Incinerability of PFOA and HFPO-DA:
+
+442
+
+Mechanisms, Kinetics, and Thermal Stability Ranking. Chemical Engineering Journal 2023,
+
+443
+
+457, 141235.
+
+444
+
+(13) Watanabe, N.; Takata, M.; Takemine, S.; Yamamoto, K. Thermal mineralization behavior
+
+445
+
+of PFOA, PFHxA, and PFOS during reactivation of granular activated carbon (GAC) in
+
+446
+
+nitrogen atmosphere. Environ. Sci. Pollut. Res. 2018, 25, 7200-7205.
+
+447
+
+(14) Kundu, S.; Patel, S.; Halder, P.; Patel, T.; Hedayati Marzbali, M.; Pramanik, B. K.; Paz-
+
+448
+
+Ferreiro, J.; de Figueiredo, C. C.; Bergmann, D.; Surapaneni, A.; Megharaj, M.; Shah,
+
+449
+
+K. Removal of PFASs from biosolids using a semi-pilot scale pyrolysis reactor and the
+
+450
+
+application of biosolids derived biochar for the removal of PFASs from contaminated
+
+451
+
+water. Environmental Science: Water Research & Technology 2021, 7 (3), 638-649.
+
+452
+
+(15) Feng, Y.; Liu, L.; Wang, J.T.; Huang, H.; Guo, Q.X. Assessment of experimental bond
+
+453
+
+dissociation energies using composite ab initio methods and evaluation of the performances
+
+454
+
+of density functional methods in the calculation of bond dissociation energies. J. Chem. Inf.
+
+455
+
+Comput. Sci. 2003, 43, 2005-2013.
+
+27
+
+https://doi.org/10.26434/chemrxiv-2024-22skh ORCID: https://orcid.org/0000-0002-5259-1186 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+456
+457
+
+(16) Truhlar, D.; Garrett, B. Variational Transition State Theory. Annu. Rev. Phys.
+Chem. 1984, 35, 159-189.
+
+458
+
+(17) Bao, J.L.; Zhang, X.; Truhlar, D.G. Barrierless association of CF2 and dissociation of C2F4
+
+459
+
+by variational transition-state theory and system-specific quantum Rice–Ramsperger–Kassel
+
+460
+
+theory. Proc. Natl. Acad. Sci. U.S.A. 2016, 113, 13606-13611.
+
+461
+
+(18) Altarawneh, M., Almatarneh, M.H., Dlugogorski, B.Z. Thermal decomposition of
+
+462
+
+perfluorinated carboxylic acids: kinetic model and theoretical requirements for PFAS
+
+463
+
+incineration. Chemosphere 2022, 286, 131685.
+
+464
+465
+
+(19) Dellinger, B.; Taylor, P.H.; Lee, C.C. Full-scale evaluation of the thermal stability-based
+hazardous organic waste incinerability ranking. Air & Waste 1993, 43, 203-207.
+
+466
+
+(20) Taylor, P.H.; Dellinger, B.; Lee, C.C. Development of a Thermal Stability Based Ranking
+
+467
+
+of Hazardous Organic Compound Incinerability. Environ. Sci. Technol. 1990, 24, 316-328.
+
+468
+
+(21) Adi, M. A.; Altarawneh, M. Thermal decomposition of heptafluoropropylene-oxide-dimer
+
+469
+470
+471
+472
+473
+
+acid (GenX). Chemosphere 2022, 289, 133118.
+(22) Khan, M.Y.; So, S.; da Silva, G. Decomposition kinetics of perfluorinated sulfonic acids.
+Chemosphere 2020, 238, 124616.
+(23) Altarawneh, M.A. Chemical Kinetic Model for the Decomposition of Perfluorinated
+Sulfonic Acids. Chemosphere 2021, 263, 128256.
+
+474
+
+(24) Krishnan, R.; Binkley, J. S.; Seeger, R.; Pople, J. A. Self-consistent molecular orbital
+
+475
+
+methods. XX. A basis set for correlated wave functions. J. Chem. Phys. 1980, 72, 650-654.
+
+476
+
+(25) Chai, J.-D; Head-Gordon, M. Systematic optimization of long-range corrected hybrid
+
+477
+
+density functionals. J. Chem. Phys. 2008, 128, 084106.
+
+28
+
+https://doi.org/10.26434/chemrxiv-2024-22skh ORCID: https://orcid.org/0000-0002-5259-1186 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+478
+
+(26) Frisch, M. J.; Trucks, G. W.; Schlegel, H. B.; Scuseria, G. E.; Robb, M. A.; Cheeseman, J.
+
+479
+
+R.; Scalmani, G.; Barone, V.; Petersson, G. A.; Nakatsuji, H.; Li, X.; Caricato, M.; Marenich,
+
+480
+
+A. V.; Bloino, J.; Janesko, B. G.; Gomperts, R.; Mennucci, B.; Hratchian, H. P.; Ortiz, J. V.;
+
+481
+
+Izmaylov, A. F.; Sonnenberg, J. L.; Williams-Young, D.; Ding, F.; Lipparini, F.; Egidi, F.;
+
+482
+
+Goings, J.; Peng, B.; Petrone, A.; Henderson, T.; Ranasinghe, D.; Zakrzewski, V. G.; Gao,
+
+483
+
+J.; Rega, N.; Zheng, G.; Liang, W.; Hada, M.; Ehara, M.; Toyota, K.; Fukuda, R.; Hasegawa,
+
+484
+
+J.; Ishida, M.; Nakajima, T.; Honda, Y.; Kitao, O.; Nakai, H.; Vreven, T.; Throssell, K.;
+
+485
+
+Montgomery, J. A., Jr.; Peralta, J. E.; Ogliaro, F.; Bearpark, M. J.; Heyd, J. J.; Brothers, E.
+
+486
+
+N.; Kudin, K. N.; Staroverov, V. N.; Keith, T. A.; Kobayashi, R.; Normand, J.;
+
+487
+
+Raghavachari, K.; Rendell, A. P.; Burant, J. C.; Iyengar, S. S.; Tomasi, J.; Cossi, M.; Millam,
+
+488
+
+J. M.; Klene, M.; Adamo, C.; Cammi, R.; Ochterski, J. W.; Martin, R. L.; Morokuma, K.;
+
+489
+
+Farkas, O.; Foresman, J. B.; Fox, D. J. Gaussian 16. 2016. Gaussian, Inc., Wallingford CT.
+
+490
+
+(27) Eichkorn, K.; Treutler, O.; Öhm, H.; Häser, M.; Ahlrichs, R. Auxiliary basis sets to
+
+491
+492
+493
+494
+495
+
+approximate Coulomb potentials. Chem. Phys. Lett. 1995, 240, 283-290.
+(28) Weigend, F.; Häser, M.; Patzelt, H.; Ahlrichs, R. RI-MP2: optimized auxiliary basis sets and
+demonstration of efficiency. Chem. Phys. Lett. 1998, 294, 143-152.
+(29) Riplinger, C.; Neese, F. An efficient and near linear scaling pair natural orbital based local
+coupled cluster method. J. Chem. Phys. 2013, 138, 034106.
+
+496
+
+(30) Saitow, M.; Becker, U.; Riplinger, C.; Valeev, E.F.; Neese, F. A new near-linear scaling,
+
+497
+
+efficient and accurate, open-shell domain-based local pair natural orbital coupled cluster
+
+498
+
+singles and doubles theory. J. Chem. Phys. 2017, 146, 164105.
+
+499
+
+(31) Neese, F. The ORCA program system. WIREs Comput. Mol. Sci. 2012, 2, 73-78.
+
+29
+
+https://doi.org/10.26434/chemrxiv-2024-22skh ORCID: https://orcid.org/0000-0002-5259-1186 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+500
+
+(32) Martin, J. M. L. Basis set convergence study of the atomization energy, geometry, and
+
+501
+
+anharmonic force field of SO2: The importance of inner polarization functions. J. Chem.
+
+502
+
+Phys. 1998, 108, 2791-2800.
+
+503
+
+(33) Goodwin, D.G; Moffat, H.K.; Schoegl, I.; Speth, R.; Weber, B.W. Cantera: An object-
+
+504
+
+oriented software toolkit for chemical kinetics, thermodynamics, and transport processes.
+
+505
+
+https://www.cantera.org, 2023. Version 3.0.0. doi:10.5281/zenodo.8137090.
+
+506
+507
+
+(34) Krusic, P.J.; Marchione, A.A.; Roe, D.C. Gas-phase NMR studies of the thermolysis of
+perfluorooctanoic acid. Journal of Fluorine Chemistry 2005, 126, 1510-1516.
+
+508
+
+(35) Alinezhad, A.; Shao, H.; Litvanova, K.; Sun, R.; Kubatova, A.; Zhang, W.; Li, Y.; Xiao, F.
+
+509
+
+Mechanistic investigations of thermal decomposition of perfluoroalkyl ether carboxylic
+
+510
+
+acids and short-chain perfluoroalkyl carboxylic acids. Environmental Science & Technology
+
+511
+
+2023, 57, 8796-8807.
+
+512
+
+(36) Weber, N.H.; Dixon, L.J.; Stockenhuber, S.P.; Grimison, C.C.; Lucas, J.A.; Mackie, J.C.;
+
+513
+
+Stockenhuber, M.; Kennedy, E.M. Thermal decomposition of PFOA: Influence of reactor
+
+514
+
+and reaction conditions on product formation. Chem. Eng. Sci. 2023, 278, 118924.
+
+515
+
+(37) Ge, Y.; Liu, Z.-Z.; Liu, H.-X.; Feng, J.-K.; Liu, D.-S.; Ge, X.-W. Theoretical Study on the
+
+516
+
+Degradation
+
+Reaction
+
+Mechanism
+
+of
+
+Elimination
+
+Hydrogen
+
+Fluoride
+
+517
+
+Perfluoropropionic Acid. Computational and Theoretical Chemistry 2014, 1029, 33-40.
+
+518
+
+(38) Wang, J.; Song, M.; Abusallout, I.; Hanigan, D. Thermal Decomposition of Two Gaseous
+
+519
+
+Perfluorocarboxylic Acids: Products and Mechanisms. Environ. Sci. Technol. 2023, 57,
+
+520
+
+6179-6187.
+
+30
+
+https://doi.org/10.26434/chemrxiv-2024-22skh ORCID: https://orcid.org/0000-0002-5259-1186 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+from
+
+521
+
+(39) Weber, N.H.; Delva, C.S.; Stockenhuber, S.P.; Grimison, C.C.; Lucas, J.A.; Mackie, J.C.;
+
+522
+
+Stockenhuber, M.; and Kennedy, E.M. Thermal Mineralization of Perfluorooctanesulfonic
+
+523
+
+Acid (PFOS) to HF, CO2, and SO2. Ind. Eng. Chem. Res. 2023, 62, 881-892.
+
+524
+
+(40) Xiao, F.; Sasi, P. C.; Yao, B.; Kubátová, A.; Golovko, S. A.; Golovko, M. Y.; Soli, D.
+
+525
+
+Thermal Decomposition of PFAS: Response to Comment on “Thermal Stability and
+
+526
+
+Decomposition of Perfluoroalkyl Substances on Spent Granular Activated Carbon.
+
+527
+
+Environmental Science & Technology Letters 2021, 8, 364-365.
+
+528
+
+(41) Doolan, K.R.; Mackie, J.C.; Reid C.R. High Temperature Kinetics of the Thermal
+
+529
+
+Decomposition of the Lower Alkanoic Acids. Int. J. Chem. Kin. 1986, 18, 575-596.
+
+530
+
+(42) Namysl, S.; Pelucchi, M.; Herbinet, O.; Frassoldati, A.; Faravelli, T.; Battin-Leclerc, F.A.
+
+531
+
+First evaluation of butanoic and pentanoic acid oxidation kinetics. Chemical Engineering
+
+532
+
+Journal 2019, 373, 973-984.
+
+533
+
+(43) Clark, J. M.; Nimlos, M. R.; Robichaud, D. J. Comparison of Unimolecular Decomposition
+
+534
+
+Pathways for Carboxylic Acids of Relevance to Biofuels. J. Phys. Chem. A. 2014, 118, 260-
+
+535
+
+274.
+
+536
+
+(44) Tseng, N.; Wang, N.; Szostek, B.; Mahendra, S. Biotransformation of 6:2 fluorotelomer
+
+537
+
+alcohol (6:2 FTOH) by a wood-rotting fungus. Environ. Sci. Technol. 2014, 48, 4012-4020.
+
+538
+
+(45) Heufer, K. A.; Sarathy, S. M.; Curran, H. J.; Davis, A. C.; Westbrook, C. K.; Pitz, W. J.
+
+539
+
+Detailed Kinetic Modeling Study of n‐Pentanol Oxidation. Energy Fuels 2012, 26, 6678-
+
+540
+
+6685.
+
+541
+542
+
+(46) Ainagos, A.F. Mechanism and Kinetics of Pyrolysis of Perfluorohexane. Kinet. Catal. 1991,
+32, 720-725.
+
+31
+
+https://doi.org/10.26434/chemrxiv-2024-22skh ORCID: https://orcid.org/0000-0002-5259-1186 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+543
+
+(47) Hansen, A. S.; Bhagde, T.; Moore III, K. B.; Moberg, D. R.; Jasper, A. W.; Georgievskii,
+
+544
+
+Y.; Vansco, M. F.; Klippenstein, S. J.; Lester, M. K. Watching a hydroperoxyalkyl radical
+
+545
+
+(•QOOH) dissociate. Science 2021, 373, 679-682.
+
+546
+
+(48) Yu, H.; Kennedy, E. M.; Ong, W.-H.; Mackie, J. C.; Han, W.; Dlugogorski, B. Z.
+
+547
+
+Experimental and Kinetic Studies of Gas-phase Pyrolysis of n-C4F10. Ind. Eng. Chem. Res.
+
+548
+
+2008, 47, 2579-2584.
+
+549
+
+(49) Bezuidenhoudt, A.; Sonnendecker, P. W.; Crouse, P. L. Temperature and pressure effects on
+
+550
+
+the product distribution of PTFE pyrolysis by means of qualitative, in-line FTIR analysis.
+
+551
+
+Polymer Degradation and Stability 2017, 142, 79-88.
+
+552
+553
+554
+555
+556
+557
+
+(50) Conesa, J. A.; Font R. Polytetrafluoroethylene Decomposition in Air and Nitrogen. Poly.
+Eng. Sci. 2001, 41, 2137-2147.
+(51) Tschuikow-Roux, E. Kinetics of the Thermal Decomposition of C2F6 in the Presence of H2
+at 1300°-1600°K. J. Chem. Phys. 1965, 43, 2251-2256.
+(52) Cobos, C.J.; Croce, A.E.; Luther, K.; Troe, J. Temperature and Pressure Dependence of the
+Reaction 2CF3 (+ M) ↔ C2F6 (+ M). J. Phys. Chem. A 2010, 114, 4748-4754.
+
+558
+
+(53) Yao, B.; Sun, R.; Alinezhad, A.; Kubatova, A.; Simcik, M. F.; Guan, X.; Xiao, F. The first
+
+559
+
+quantitative investigation of compounds generated from PFAS, PFAS-containing aqueous
+
+560
+
+film-forming foams and commercial fluorosurfactants in pyrolytic processes. J. Hazard.
+
+561
+
+Mater. 2022, 436, 129313.
+
+562
+
+(54) Weber, N. H.; Stockenhuber, S. P.; Delva, C. S.; Abu Fara, A.; Grimison, C. C.; Lucas, J.
+
+563
+
+A.; Mackie, J. C.; Stockenhuber, M.; Kennedy, E. M. Kinetics of Decomposition of PFOS
+
+564
+
+Relevant to Thermal Desorption Remediation of Soils. Ind. Eng. Chem. Res. 2021, 60, 9080-
+
+565
+
+9087.
+
+32
+
+https://doi.org/10.26434/chemrxiv-2024-22skh ORCID: https://orcid.org/0000-0002-5259-1186 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+566
+
+(55) Smith, S.J.; Lauria, M.; Higgins, C.P.; Pennell, K.D.; Blotevogel, J.; Arp, H.P.H. The Need
+
+567
+
+to Include a Fluorine Mass Balance in the Development of Effective Technologies for PFAS
+
+568
+
+Destruction. Environ. Sci. Technol. 2024, 58, 2587-2590.
+
+569
+
+(56) Krug, J. D.; Lemieux, P. M.; Lee, C. W.; Ryan, J. V.; Kariher, P. H.; Shields, E. P.;
+
+570
+
+Wickersham, L. C.; Denison, M. K.; Davis, K. A.; Swensen, D. A.; Burnette, R. P.; Wendt,
+
+571
+
+J. O. L.; Linak, W. P. Combustion of C1 and C2 PFAS: Kinetic modeling and experiments.
+
+572
+
+J. Air Waste Manag. Assoc. 2022, 72 (3), 256−270.
+
+33
+
+https://doi.org/10.26434/chemrxiv-2024-22skh ORCID: https://orcid.org/0000-0002-5259-1186 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+

@@ -1,0 +1,5082 @@
+1
+
+Grouping strategies for assessing and managing
+
+2
+
+persistent and mobile substances
+
+3
+
+Parviel Chirsir*1, Emma H. Palm1, Sivani Baskaran2, Emma L. Schymanski*1, Zhanyun
+
+4
+
+Wang3, Raoul Wolf2, Sarah E. Hale4 and Hans Peter H. Arp*2,5
+
+5
+
+1
+
+6
+
+Swing, 4367, Belvaux, Luxembourg
+
+7
+
+2
+
+8
+
+Norway
+
+9
+
+3
+
+Luxembourg Centre for Systems Biomedicine (LCSB), University of Luxembourg, 6 avenue du
+
+Department of Environmental Engineering, Norwegian Geotechnical Institute, NO-0806 Oslo,
+
+Technology and Society Laboratory, Empa – Swiss Federal Laboratories for Materials Science
+
+10
+
+and Technology, 9014 St. Gallen, Switzerland
+
+11
+
+4
+
+12
+
+76139 Karlsruhe / Germany
+
+13
+
+5
+
+14
+
+Trondheim, Norway
+
+15
+
+* Corresponding authors: P.C. parviel.chirsir@uni.lu, E.L.S. emma.schymanski@uni.lu and
+
+16
+
+H.P.H.A. Hans.Peter.Arp@ngi.no
+
+17
+
+Keywords: PMT, vPvM, transformation products, hazardous properties, regrettable substitution,
+
+18
+
+substance grouping, chemical regulation, persistent, mobile, toxic
+
+19
+
+ORCIDs:
+
+20
+
+PC: 0000-0002-9932-8609, EHP: 0000-0001-7774-2510, SB: 0000-0001-6192-5072, ELS:0000-
+
+21
+
+0001-6868-8145, ZW:0000-0001-9914-7659, RW: 0000-0001-5971-8525, SEH: 0000-0002-
+
+22
+
+7743-9199, HPHA: 0000-0002-0747-8838
+
+TZW: DVGW-Technologiezentrum Wasser (German Water Centre), Karlsruher Straße 84,
+
+Department of Chemistry, Norwegian University of Science and Technology (NTNU), NO-7491
+
+23
+
+1
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+24
+
+Abstract
+
+25
+
+Background: Persistent, Mobile and Toxic (PMT), or very Persistent and very Mobile (vPvM)
+
+26
+
+substances are a wide class of chemicals that are recalcitrant to degradation, easily transported,
+
+27
+
+and potentially harmful to humans and the environment. Due to their persistence and mobility,
+
+28
+
+these substances are often widespread in the environment once emitted, particularly in water
+
+29
+
+resources, causing increased challenges during water treatment processes. Some PMT/vPvM
+
+30
+
+substances such as GenX and perfluorobutane sulfonic acid have been identified as substances
+
+31
+
+of very high concern (SVHCs) under the European Registration, Evaluation, Authorisation and
+
+32
+
+Restriction of Chemicals (REACH) regulation. With hundreds to thousands of potential PMT/vPvM
+
+33
+
+substances yet to be assessed and managed, effective and efficient approaches that avoid a
+
+34
+
+case-by-case assessment and prevent regrettable substitution are necessary to achieve the
+
+35
+
+European Union's zero-pollution goal for a non-toxic environment by 2050.
+
+36
+
+Main: Substance grouping has helped global regulation of some highly hazardous chemicals, e.g.,
+
+37
+
+through the Montreal Protocol and the Stockholm Convention. This article explores the potential
+
+38
+
+of grouping strategies for identifying, assessing and managing PMT/vPvM substances. The aim
+
+39
+
+is to facilitate early identification of lesser-known or new substances that potentially meet
+
+40
+
+PMT/vPvM criteria, prompt additional testing, avoid regrettable use or substitution, and integrate
+
+41
+
+into existing risk management strategies. Thus, this article provides an overview of PMT/vPvM
+
+42
+
+substances and reviews the definition of PMT/vPvM criteria and various lists of PMT/vPvM
+
+43
+
+substances available. It covers the current definition of groups, compares the use of substance
+
+44
+
+grouping for hazard assessment and regulation, and discusses the advantages and
+
+45
+
+disadvantages of grouping substances for regulation. The article then explores strategies for
+
+46
+
+grouping PMT/vPvM substances, including read-across, structural similarity and commonly
+
+47
+
+retained moieties, as well as the potential application of these strategies using cheminformatics
+
+48
+
+to predict P, M and T properties for selected examples.
+
+49
+
+Conclusion: Effective substance grouping can accelerate the assessment and management of
+
+50
+
+PMT/vPvM substances, especially for substances that lack information. Advances to read-across
+
+51
+
+methods and cheminformatics tools are needed to support efficient and effective chemical
+
+52
+
+management, preventing broad entry of hazardous chemicals into the global market and favouring
+
+53
+
+safer and more sustainable alternatives.
+
+2
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+54
+
+Background
+
+55
+
+In 2019 water pollution was estimated to cause 1.4 million premature deaths globally [1].
+
+56
+
+Improving water quality by reducing pollution is also defined as one of the tasks in the Sustainable
+
+57
+
+Development Goals [2]. Meanwhile, the number of known chemicals that are in use is increasing
+
+58
+
+dramatically. Over 350,000 chemicals and mixtures have been registered in the global market
+
+59
+
+over the past 50 years [3], while the largest chemical databases contain over 100 million
+
+60
+
+chemicals, with PubChem [4] and the Chemical Abstracts Service (CAS) registry containing 116
+
+61
+
+million [5] and 219 million [6] chemicals, respectively, as of January 2023. Chemical production
+
+62
+
+and pollution are outpacing global assessment capacity, posing more risks to human health,
+
+63
+
+wildlife, and the environment [7, 8]. In 2021, about 224.8 and 86.4 million tonnes of chemicals
+
+64
+
+hazardous to human health and the environment, respectively, were consumed in the European
+
+65
+
+Union (EU) [9]. Some of these chemicals are persistent, mobile and toxic (PMT) substances or
+
+66
+
+very persistent and very mobile (vPvM) substances, collectively referred to as PMT/vPvM
+
+67
+
+substances.
+
+68
+
+PMT/vPvM substances have been listed by the European Commission’s Scientific Committee on
+
+69
+
+Health, Environmental and Emerging Risks (SCHEER) as one of the 14 emerging problems that
+
+70
+
+could impact human health or the environment [10]. Recently, the EU Chemicals, Labelling and
+
+71
+
+Packaging (CLP) regulation (1272/2008) introduced the new hazard classes PMT and vPvM, as
+
+72
+
+well as defined criteria for
+
+73
+
+presented below in Figure 1. These substances do not degrade in the environment over an
+
+74
+
+appreciable timescale and are easily transported through water and aquatic ecosystems due to
+
+75
+
+poor sorption to soil and sediments [12–14]. PMT/vPvM substances can be found in a wide range
+
+76
+
+of applications and sources, including in industrial processes, fire-fighting foams, and consumer
+
+77
+
+products such as food, cosmetics and furniture [15]. They can cause long-term harm to humans
+
+78
+
+and the environment and are also costly and difficult to remove from drinking water [16–19].
+
+79
+
+PMT/vPvM substances have been suggested to have an equivalent level of concern as persistent,
+
+80
+
+bioaccumulative and toxic (PBT) substances or very persistent and very bioaccumulative (vPvB)
+
+81
+
+substances. GenX and perfluorobutane sulfonic acid (PFBS), both classified as PMT/vPvM
+
+82
+
+substances by the German Environmental Agency (UBA) [20] (but not yet officially classified
+
+83
+
+under the CLP Regulation), have been identified as substances of very high concern (SVHCs)
+
+84
+
+under the European Registration, Evaluation, Authorisation and Restriction of Chemicals,
+
+85
+
+REACH, regulation (EC 1907/2006) [12]. The commonality between PMT/vPvM and PBT/vPvB
+
+PMT/vPvM substances based on chemical properties [11], as
+
+3
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+86
+
+substances is their elevated potential for long-lasting and long-range exposure when released to
+
+87
+
+the environment in substantial quantities. Their difference is related to the exposure pathway, with
+
+88
+
+PMT/vPvM substances likely to be first monitored in water resources where they are most likely
+
+89
+
+to accumulate and PBT/vPvB substances being first monitored in the food supply, humans and
+
+90
+
+living organisms. Though this was not stated within the CLP regulation [11], it may be assumed
+
+91
+
+this was introduced due to concerns from enhanced exposure potential leading to unforeseen
+
+92
+
+effects, be they odour, aesthetic, geophysical, economical or other than established toxicological
+
+93
+
+criteria. As an example, REACH Annex 1, Section 0.10 refers to “particular effects, such as ozone
+
+94
+
+depletion, photochemical ozone creation potential, strong odour and tainting, for which […] the
+
+95
+
+risks associated with such effects shall be assessed on a case-by-case basis”. Considering these
+
+96
+
+concerns, a key consideration for vP substances is to further check if they exhibit enhanced
+
+97
+
+exposure-related properties (vB or vM), toxicological or other hazards, following the current
+
+98
+
+regulatory approaches.
+
+99
+
+Furthermore, due to the high mobility of PMT/vPvM substances, many of them can break through
+
+100
+
+artificial barriers in wastewater treatment plants, including granular activated carbon filtration and
+
+101
+
+ultrafiltration systems, posing challenges for removal and remediation [12, 21]. These substances
+
+102
+
+can be further transported through natural media such as soils, riverbanks, aquifers and
+
+103
+
+groundwater, making them hard to contain and remove from the environment. As such, these
+
+104
+
+substances are problematic in drinking water, and many are detected frequently in European
+
+105
+
+surface waters [12]. For example, 1,4-dioxin was found in Bavarian surface waters [22] and
+
+106
+
+melamine in the Netherlands, France and Belgium [23].
+
+107
+
+Approximately 2% of identifiable unique chemicals registered under REACH are considered to
+
+108
+
+meet the PMT/vPvM criteria (259 out of 13405 unique, identifiable chemicals registered under
+
+109
+
+REACH); however, the true number is likely higher due to data gaps related to persistent, mobility
+
+110
+
+or toxicity, with a potential maximum of 28% of REACH registered substances (3677 out of 13405
+
+111
+
+substances) [24]. Developing and applying substance grouping strategies is one way to potentially
+
+112
+
+identify and manage PMT/vPvM substances more effectively. There are two main motivations for
+
+113
+
+a substance grouping approach. The first is to expedite hazard assessments related to the large
+
+114
+
+number of substances being introduced to the global chemical market. The second is to avoid
+
+115
+
+regrettable substitution caused by drop-in substitution [25], where one substance is replaced by
+
+116
+
+another with similar hazardous properties and effects [26]. Thus, this paper aims to explore how
+
+117
+
+grouping strategies can be generally developed and used to identify, assess and manage new,
+
+118
+
+emerging and well-known PMT/vPvM substances. To provide context, the paper first provides an
+
+4
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+119
+
+overview of PMT/vPvM substances, including scoping the numbers of substances covered by
+
+120
+
+existing definitions, reviewing previous successful grouping strategies, and determining the
+
+121
+
+relevance of grouping strategies in the context of PMT/vPvM substances while exploring the
+
+122
+
+future efforts required to achieve this effectively. The principle aim of this article is not specifically
+
+123
+
+targeting the ECHA technical guidance for PMT/vPvM substance assessment, but rather it is on
+
+124
+
+how grouping strategies can be used to screen, assess, regulate and manage groups of
+
+125
+
+PMT/vPvM substances more efficiently.
+
+126
+
+Methods
+
+127
+
+Definition of key terms
+
+128
+
+The International Union of Pure and Applied Chemistry (IUPAC) defines a chemical substance as
+
+129
+
+“matter of constant composition best characterized by the entities (molecules, formula, units,
+
+130
+
+atoms) it is composed of. Physical properties such as density, refractive index, electric
+
+131
+
+conductivity, melting point etc. characterize the chemical substance” [27]. The term “substance”
+
+132
+
+in this article is used in this context. Databases also refer to chemical entities as compounds and
+
+133
+
+substances, but the context may be different. PubChem, for instance, define these as “a
+
+134
+
+substance is a chemical sample description provided by a single source and a compound is a
+
+135
+
+normalized chemical structure representation found in one or more contributed substances” [28].
+
+136
+
+Since this article later refers to calculations performed on PubChem queries, “compound” in this
+
+137
+
+article refers to a chemical that fulfils the definition of a compound according to PubChem with a
+
+138
+
+unique PubChem Compound Identifier (CID). A mixture, according to IUPAC, is a “portion of
+
+139
+
+matter consisting of two or more chemical substances called constituents” [29]. Mixtures can be
+
+140
+
+simple (e.g., xylene is a mixture of three isomers, o-xylene, m-xylene and p-xylene) or complex
+
+141
+
+(e.g., C9-C14 alcohols, or mineral oils). The latter are often referred to as “substances of Unknown
+
+142
+
+or Variable composition, Complex reaction products or Biological origin” (UVCBs) [30].
+
+143
+
+A group of substances is defined by REACH as substances that have “(1) a common functional
+
+144
+
+group; (2) the common precursors and/or the likelihood of common breakdown products via
+
+145
+
+physical and biological processes, which result in structurally similar chemicals; or (3) a constant
+
+146
+
+pattern in the changing of the potency of the properties across the category.” (REACH Regulation
+
+147
+
+EC No 1907/2006, Annex XI, Section 1.5) [31]. In other words, the term “group” and “category”
+
+5
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+148
+
+are used interchangeably in this article. As an example, two widely regulated groups of
+
+149
+
+substances that fulfil all three aspects of grouping substances in the REACH regulation are
+
+150
+
+dioxins (polychlorinated dibenzo-p-dioxins and polychlorinated dibenzo-furans) [32] and
+
+151
+
+polychlorinated biphenyls (PCBs) [33], which are composed of about 210 [34] and 209 individual
+
+152
+
+congeners, respectively [35].
+
+153
+
+Literature analysis
+
+154
+
+To obtain relevant literature to underpin the arguments in this paper, a comprehensive literature
+
+155
+
+search spanning both policy-related documents (e.g., regulations, guidelines, analysis, dossiers)
+
+156
+
+and scientific literature was conducted using keywords like "persistent, mobile and toxic", “very
+
+157
+
+persistent very mobile”, "substance grouping" and "chemical regulation" in electronic databases
+
+158
+
+such as PubMed and Google Scholar, while filtering for relevance. As the study focus area was
+
+159
+
+mainly the European Union, recent policy documents in the EU and United Nations were
+
+160
+
+considered most relevant due to the greater activity on PMT/vPvM substances, while detailed
+
+161
+
+policy analysis of areas outside the European Union was considered out of scope. Scientific
+
+162
+
+studies focused on grouping strategies for the assessment and management of substances,
+
+163
+
+including chemicals, pollutants, and contaminants that exhibit persistence and mobility in the
+
+164
+
+environment were also considered relevant. Backward citation searching was also conducted
+
+165
+
+from the list of relevant articles to identify additional studies that may have been overlooked during
+
+166
+
+the electronic search. By systematically executing the search strategy across multiple databases
+
+167
+
+and supplementing it with hand-searching reference lists, a comprehensive selection of relevant
+
+168
+
+literature with findings focused on the topic was compiled and considered in this article.
+
+169
+
+Cheminformatics analysis
+
+170
+
+For cheminformatics analysis, the search functions available in the PubChem database [4] were
+
+171
+
+used to obtain the structural and substructural data of compounds of interest. The OPERA
+
+172
+
+ReadyBiodegradable model version 2.9 [36] was used to predict the persistence of compounds,
+
+173
+
+along with the KOCWIN model version 2.00 [37] to predict the mobility (log Koc values) of the
+
+174
+
+compounds from the PubChemLite for Exposomics dataset, Version 1.27.0 [38] and other subsets
+
+175
+
+of compounds extracted from PubChem. Further details of other datasets used can be found in
+
+176
+
+the "availability of data and material" section below. The toxicity predictions were performed with
+
+177
+
+MS2Tox version 0.3.2 [39]. Data processing was performed in R version 4.3.1 [40] using the
+
+6
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+178
+
+packages Tidyverse version 2.0.0 [41, 42] and ggplot2 version 3.4.3 [43, 44] for data
+
+179
+
+transformation and plotting, and RChemMass 0.1.28 [45] for obtaining the exact mass before
+
+180
+
+MS2Tox calculations. Additional information is given in the “Cheminformatics challenges in
+
+181
+
+grouping PMT/vPvM substances” section below.
+
+182
+
+Overview of PMT/vPvM Substances
+
+183
+
+Assessment of the number of substances being introduced to the global chemical market that
+
+184
+
+may be PMT/vPvM substances requires a clear set of criteria and the ability to scale the
+
+185
+
+application of these criteria to large numbers. The EU Chemicals, Labelling and Packaging (CLP)
+
+186
+
+regulation (EC 1272/2008) criteria for PMT/vPvM substances [11] are displayed in Figure 1. The
+
+187
+
+mobility (M) aspect (see Figure 1A) is defined based on the organic-carbon-water partition
+
+188
+
+coefficient (KOC, with units of L/kg) of a chemical which is then log transformed to log KOC values,
+
+189
+
+this is used as a proxy to describe the sorption potential of a chemical to organic carbon. Since
+
+190
+
+experimental log KOC data are rare, it was suggested that the logarithmic octanol-water partition
+
+191
+
+coefficient (log KOW or log P) or the pH-adjusted log DOW (or log D) could be used as a screening
+
+192
+
+parameter for hydrophobicity where high-quality log KOC data are not available [24, 46]. Though
+
+193
+
+the two parameters have some variance, particularly for ionogenic substances, substances with
+
+194
+
+very low log DOW values tend to have very low log KOC values, hence log DOW values were seen
+
+195
+
+as a good alternative screening parameter for mobility. As such they are often used in a
+
+196
+
+complementary fashion (see [24, 47] for more details), where log KOW and log DOW data are used
+
+197
+
+when log KOC data are unavailable. Persistence (P) is defined based on the half-lives of a
+
+198
+
+chemical in different environmental water, sediment and soil systems (see Figure 1B), and
+
+199
+
+toxicity (T) is defined based on one or a combination of the following: carcinogenicity,
+
+200
+
+mutagenicity, reproductive toxicity, endocrine disruption and specific target organ toxicity after
+
+201
+
+repeated exposure as well as long-term no-observed effect concentration (NOEC) and effect
+
+202
+
+concentration at a given percentage of the population (ECx) shown in Figure 1C.
+
+203
+
+A compound is a considered a PMT substances when it fulfils the persistence, mobility and toxicity
+
+204
+
+criteria (i.e. a combination of at least one persistency criterion, one mobility criterion and one
+
+205
+
+toxicity criterion are met) or in the case of vPvM at least one of the criteria for very persistent and
+
+206
+
+the very mobile criterion must be met (see Figure 1). Some examples of PMT/vPvM substances
+
+207
+
+are shown in Figure 2.
+
+7
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+208
+209
+210
+211
+212
+213
+214
+215
+216
+
+Figure 1: EU CLP criteria [11] for PMT/vPvM substances. A) Mobility criteria based on log KOC
+(blue). B) Persistence criteria, with persistent in green and C) Toxicity criteria, including
+carcinogenicity, mutagenicity, endocrine disruption, specific target toxicity and reproductive
+toxicity (1A, 1B, 1 and 2 refer to the categories for that criterion) as well as concentrations, where
+long-term no observable effect concentration (NOEC), and effect concentration (ECx) for marine
+and freshwater organisms refers to the concentration where a toxic effect was observed in a given
+percentage of the population e.g. 10% for EC10 at less than 0.01 mg/L.
+
+217
+218
+219
+220
+
+Figure 2: Selected examples of potential PMT/vPvM substances from the UBAPMT list assessed
+by Arp and Hale (2022) as meeting the criteria [20, 24]. A) PMT substances; B) vPvM substances;
+C) both PMT and vPvM substances.
+
+8
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+221
+
+There are several published lists containing PMT/vPvM substances (e.g. the PMT list by
+
+222
+
+Holmberg et al., UBAPMT, EAWAGPMT, UFZHSFPMT, ZEROPM and PMTPFAS) [20, 48–52].
+
+223
+
+The later five have been digitized and are hosted on the NORMAN Suspect List Exchange
+
+224
+
+(NORMAN-SLE) [53, 54] and thus openly available with a CC-BY license. The UBAPMT suspect
+
+225
+
+list contains substances currently registered under REACH that meet the proposed PMT/vPvM
+
+226
+
+criteria set by UBA in 2019 [47]. The original list has 254 substances [55, 56], while the 2022
+
+227
+
+revised version has 340 substances [57, 58] due to an increase in chemicals registered in REACH
+
+228
+
+and updated chemical information [20]. The EAWAGPMT list contains 1,156 compounds
+
+229
+
+identified in groundwater by Kiefer et al. [49, 59]. This list contains a mix of compounds on other
+
+230
+
+PMT lists as well as compounds on the Swedish Chemical Agency (KEMI) market list [60] that
+
+231
+
+have a low log Dow and high water exposure index, while the UFZHSFPMT list includes 1,063
+
+232
+
+potential persistent mobile compounds detected in surface water as described by Neuwald et al.
+
+233
+
+[50, 61, 62]. The ZEROPMBOX1 contains 38 compounds, including representative per- and poly-
+
+234
+
+fluoroalkyl substances (PFAS), triazines and triazoles used to start the H2020 ZeroPM project
+
+235
+
+[51]. Finally, the PMTPFAS list contains 180 fluorinated compounds extracted from the UBAPMT,
+
+236
+
+EAWAGPMT and UFZHSFPMT lists [52]. In combination, the five lists contain 2,081 unique
+
+237
+
+compounds, but this does not represent all PMT/vPvM substances in the global market.
+
+238
+
+239
+
+Grouping and Regulations
+
+240
+
+Assessing and regulating individual PMT/vPvM substances that fall within a PMT/vPvM substance
+
+241
+
+group is inefficient and more time-consuming than assessing an entire group. Past strategies
+
+242
+
+have led to drop-in replacements, subsequently referred to as regrettable substitution [25].
+
+243
+
+Assessing chemicals individually also ignores cumulative exposures and risks of groups of
+
+244
+
+substances [63]. Considering primarily the structural similarity and similar properties of PMT/vPvM
+
+245
+
+substances, it may be more feasible and prudent to regulate these substances as a group. The
+
+246
+
+idea of substance grouping based on the relationship between hazard and structural similarity is
+
+247
+
+not new, since many of the very first organic substances to be regulated were groups sharing a
+
+248
+
+similar structure. The successes of regulation in managing substances as groups such as ozone-
+
+249
+
+depleting substances (ODS) under the Montreal Protocol [64, 65] and specific groups of persistent
+
+250
+
+organic pollutants (POPs) under the Stockholm Convention [66] are discussed below. Moreover,
+
+251
+
+successfully grouping substances for regulation not only accelerates but also prevents and
+9
+
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+252
+
+reduces inconsistencies in the regulatory process [67]. Grouping substances can enhance
+
+253
+
+chemical safety management, facilitating the identification of regulated substances and potential
+
+254
+
+substitutes for harmful ones [67].
+
+255
+
+While there may be several legislations about grouping substances globally, this section focuses
+
+256
+
+on the use of grouping in EU legislation. In the EU, the European Chemical Agency (ECHA)
+
+257
+
+coordinates the REACH regulation for the restriction, evaluation and authorization of substances
+
+258
+
+based on hazard classifications and the CLP regulation for labelling based on hazard
+
+259
+
+classifications. REACH Annex XI section 1.5 specifies how groups or categories of substances
+
+260
+
+can be defined and which regulatory actions can be applied [31]. It states that “substances whose
+
+261
+
+physicochemical, toxicological and ecotoxicological properties are likely to be similar or follow a
+
+262
+
+regular pattern as a result of structural similarity may be considered as a group, or ‘category’ of
+
+263
+
+substances” [31]. The toxicological or hazard properties referred to are described in the CLP
+
+264
+
+regulation shown in Figure 1.
+
+265
+
+According to Article 36 of the CLP regulation, certain substances, including those with respiratory
+
+266
+
+sensitizing properties (category 1), germ cell mutagenicity, carcinogenicity, and reproductive
+
+267
+
+toxicity (category 1A, 1B and 2), are considered hazardous and are subject to harmonized
+
+268
+
+classification. This also applies to active substances listed in Regulation (EC) No 1107/2009 and
+
+269
+
+Regulation (EU) No 528/2012 [68, 69]. Moreover, Article 57 of REACH includes substances that
+
+270
+
+are hazardous to the environment and are also subject to harmonized classification. A list of these
+
+271
+
+hazardous substances for which harmonized classification and labelling has been established at
+
+272
+
+the EU level can be found in Part 3 of Annex VI of the CLP regulation.
+
+273
+
+Under REACH, UVCBs are regulated based on the structural similarity of the constituents
+
+274
+
+identified and can also be regulated as part of a different group. This means that certain
+
+275
+
+components of these substances may be identified and registered as part of a different group.
+
+276
+
+Annex XI section 1.5 of REACH provides more information on the regulation of UVCBs [31, 70].
+
+277
+
+Existing grouping legislation and impacts
+
+278
+
+The Montreal Protocol on Ozone-Depleting Substances
+
+10
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+279
+
+The Montreal Protocol regulates the manufacturing and consumption of ODS [64, 71]. This is a
+
+280
+
+group of over 100 substances including chlorofluorocarbons (CFCs), methyl chloroform,
+
+281
+
+hydrochlorofluorocarbons (HCFCs) and hydrobromofluorocarbons (HBFCs) that release chlorine
+
+282
+
+and bromine into the stratosphere, damaging the ozone layer [64, 72]. This can lead to increased
+
+283
+
+global warming, skin cancer and damage to marine ecosystems [73]. The Montreal Protocol is
+
+284
+
+considered to have drastically decreased relative consumption (total of production and imports -
+
+285
+
+total of exports and destroyed) of ODS in the EU (100% to 0.36%) and globally (100% to 1.35%)
+
+286
+
+between 1986 and 2021 [71, 74], as shown in Figure 3. This is an example of a property-based
+
+287
+
+regulatory effort that has been successful [71, 75]. However, the Montreal Protocol has also been
+
+288
+
+criticized for shifting the burden by transitioning from ODS to greenhouse gases and PMT/vPvM
+
+289
+
+precursors, as discussed further below.
+
+290
+291
+
+Figure 3: EU and global relative consumption of ODS since 1986 [74] showing the reduction of
+
+292
+
+the consumption of ODS due to the Montreal Protocol.
+
+293
+
+The
+
+294
+
+Pollutants
+
+295
+
+The Stockholm Convention was signed in 2001 to protect humans and the environment from
+
+296
+
+POPs [66]. An EU Legislation regulation (EC No 850/2004) was adopted later to implement the
+
+297
+
+Convention in the EU [76, 77]. Initially, the Convention regulated 12 POPs or groups of POPs
+
+Stockholm
+
+Convention
+
+on
+
+Persistent
+
+11
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Organic
+
+298
+
+such as aldrin, chlordane and dichlorodiphenyltrichloroethane (DDT). Over time, the list expanded
+
+299
+
+to include 39 substances and substance groups as of January 2024, with the regulation covering
+
+300
+
+the manufacturing, sales, use, and waste management of these chemicals, as well as
+
+301
+
+unintentional releases in some cases [66, 78]. Structural similarity and the resulting similar
+
+302
+
+compound properties played a major role in managing the grouping of substances under the
+
+303
+
+Convention, for instance, polychlorinated biphenyls (PCBs), dioxins and DDT derivatives [79].
+
+304
+
+The Stockholm Convention has been successful in reducing the emission of regulated POPs
+
+305
+
+since its enforcement. The emission levels of PCBs, for example, decreased by over 60% from
+
+306
+
+2001 to 2020, while dioxin levels also dropped by 50% from 2001 to 2020 (top of Figure 4). This
+
+307
+
+reduction is also noticeable as the number of registered patents for 17 dioxins, 12 PCBs and
+
+308
+
+hexachlorobenzene (HCB) dropped since the Convention (bottom of Figure 4).
+
+309
+310
+
+Figure 4: Top: Emission tonnage of PCB, dioxins and HCB from regulation (EU) No 277/2012,
+
+311
+
+between 1990 to 2020 [80]. Bottom: The chemical stripes drawn using the chemical stripes
+
+312
+
+package in R [81] show a decrease in the number of registered patents of PCB, dioxins and HCB
+
+313
+
+in PubChem; the date range was chosen to match the emission data.
+
+314
+315
+
+12
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+316
+
+Substitution of regulated substances with PMT/vPvM
+
+317
+
+substances
+
+318
+
+The concept of regrettable substitution first appeared in the literature in 2011 [82]. There are many
+
+319
+
+examples of regrettable substitution, which refers to the practice of replacing a hazardous
+
+320
+
+substance with a structurally similar substance for a specific use or function, that is also hazardous
+
+321
+
+or potentially more hazardous, or that has not been tested broadly enough for different hazards
+
+322
+
+and other than those of the substance being replaced [83]. One well-known example is Bisphenol
+
+323
+
+A, an endocrine-disrupting chemical (EDC) that was first discovered in 1891 [84]. Due to its
+
+324
+
+harmful effects, it has since been replaced by various other EDCs with similar structures such as
+
+325
+
+Bisphenol S and Bisphenol P. Currently, more than 30 bisphenols, including the ones mentioned
+
+326
+
+above, are recommended for restriction by ECHA [85].
+
+327
+
+One of the reasons for the “drop-in” solution by companies after substance regulation (both as
+
+328
+
+individual or as a group) is that structurally similar substances often have similar functions in the
+
+329
+
+product being applied, and can be manufactured generally without requiring substantial changes
+
+330
+
+in processes, infrastructure, or product testing [63]. Unfortunately, similar toxicological effects are
+
+331
+
+likely to occur as well [26], and at other times “burden shifting” towards different hazards. A key
+
+332
+
+example is the series of restrictions related to the Montreal Protocol that began with a global
+
+333
+
+phase-out of CFCs [86, 87]. Later, hydrobromofluorocarbons (HBFCs) were introduced as
+
+334
+
+replacements but were only briefly commercialized [88]. They were then replaced with
+
+335
+
+hydrochlorofluorocarbons (HCFCs), which exhibited substantially less ozone-depleting potential,
+
+336
+
+and exhibited the same commercial properties as CFCs [89]. HCFCs were eventually also
+
+337
+
+included under the Montreal Protocol and were again replaced by chemicals with similar
+
+338
+
+chemistry, hydrofluorocarbons (HFCs) [64]. Due to the removal of chlorine atoms from the
+
+339
+
+molecules, HFCs no longer pose a threat to the stratospheric ozone layer [90], but they are still
+
+340
+
+highly persistent and have high global warming potential. Therefore, in a subsequent amendment
+
+341
+
+to the Montreal Protocol, the Kigali Amendment, HFCs themselves were listed [90, 91]. As a
+
+342
+
+consequence of the Kigali amendment, the industry that manufactures fluorinated gases then
+
+343
+
+sought to substitute HFCs with hydrofluoroolefins (HFOs), which have a short atmospheric lifetime
+
+344
+
+of 6 days [92, 93]. However, these HFOs (almost) exclusively degrade to form trifluoroacetic acid
+
+345
+
+(TFA), a vPvM substance that is ubiquitous in the environment, especially in drinking water
+
+346
+
+systems, but the current understanding of its risk to human health and the environment is limited.
+
+347
+
+While some research has argued that TFA has low health risks [94, 95], other studies have shown
+
+13
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+348
+
+mild liver hypertrophy in rats, and eye and skin irritation [94, 96]. As the levels of TFA are rapidly
+
+349
+
+increasing, some EU countries have proposed to ban HFOs as part of the broad PFAS restriction
+
+350
+
+under REACH. In summary, although the Montreal Protocol is often considered the most
+
+351
+
+successful multilateral environmental agreement, this has led to burden shifting over time from
+
+352
+
+ODS to the production of persistent, mobile substances such as TFA.
+
+353
+
+Similar to the Montreal Protocol, increased regulatory pressure on PBT/vPvB substances in
+
+354
+
+Europe and the USA was seen as a driver for the chemical industry to produce more hydrophilic,
+
+355
+
+and hence mobile, substances [97]. Individual fluoropolymer manufacturers have developed their
+
+356
+
+own structurally similar per- and polyfluoroalkylether carboxylic acids (PFECAs) as replacements
+
+357
+
+for PFOA, which was used as a processing aid in fluoropolymer production. However, as
+
+358
+
+mentioned above, some of these replacements, including GenX, are similarly problematic despite
+
+359
+
+being less bioaccumulative [98]. To date, many monitoring programs have seen an increase in
+
+360
+
+these replacements in water resources and fish due to increasing use and emissions [99]. GenX
+
+361
+
+and PFBS were identified as SVHCs under the EU REACH regulation in 2019 and were some of
+
+362
+
+the first SVHCs that were considered an equivalent level of concern to PBT/vPvB substances
+
+363
+
+[12]. Thus, the phasing out of some PBT/vPvB substances such as the long-chain PFASs has led
+
+364
+
+to burden shifting towards PMT/vPvM substances such as PFECAs [100].
+
+365
+
+Existing regulation of substances as groups based on structural similarity and/or intrinsic
+
+366
+
+properties has been successful, as demonstrated in the Montreal Protocol of ODSs and the
+
+367
+
+Stockholm Convention of POPs. Meanwhile, regrettable substitution with increasing production
+
+368
+
+of PMT/vPvM substances such as TFA and GenX has been noted as a side-effect. This shows a
+
+369
+
+limitation of the grouping approach under the Montreal Protocol and the Stockholm Convention:
+
+370
+
+limiting the scope of intrinsic properties during grouping may lead to burden shifting to other
+
+371
+
+hazards. This calls for a grouping strategy that can prevent regrettable substitution and improve
+
+372
+
+the efficiency and effectiveness of chemical regulatory processes.
+
+373
+374
+375
+376
+
+14
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+377
+
+Grouping strategies
+
+378
+
+Grouping based on structural similarity
+
+379
+
+Read-across in substance grouping is a strategy that relies on the use of important information
+
+380
+
+obtained from tests conducted on a reference substance known as the “source” substance within
+
+381
+
+a group to predict the properties of another substance in the group known as the “target”
+
+382
+
+substance [101]. This method relies on justified similarities in structure, toxicokinetic,
+
+383
+
+physicochemical and molecular properties, transformation process/endpoints and other similar
+
+384
+
+data for interpolation and extrapolation of relevant information [102] and is recommended in
+
+385
+
+Section 1.5 of Annex XI of the REACH regulation for groups of substances [70]. It can be applied
+
+386
+
+from a single source substance to a single target substance (analogue approach) or from multiple
+
+387
+
+source substances to multiple target substances within a group (category approach) [101, 103].
+
+388
+
+This method is commonly used to fill data gaps for chemical safety assessment in the regulatory
+
+389
+
+process but has also been used to build grouping hypotheses for categories of chemicals [101,
+
+390
+
+102]. The Read-Across Assessment Framework (RAAF) by ECHA and the OECD guidance on
+
+391
+
+the grouping of chemicals have been developed to guide systematic and consistent applications
+
+392
+
+of read-across [104, 105].
+
+393
+
+Read-across is advantageous because it reduces the number of experimental tests needed
+
+394
+
+during an assessment by using existing experimental data for the source substance(s) to predict
+
+395
+
+the properties of the untested substance(s) [106]. If a clear hypothesis and justification are
+
+396
+
+provided, read-across can be used efficiently to predict the hazard properties of target substances
+
+397
+
+and fill data gaps in the regulatory process, thereby facilitating and speeding up assessment and
+
+398
+
+regulatory decisions [107]. However, read-across requires an adequate justification for use, and
+
+399
+
+appropriate documentation covering all assumptions and conclusions [36, 107]. This can be
+
+400
+
+complex and may require a certain level of expertise for interpretation [108]. Despite its limitations,
+
+401
+
+read-across can be applied to the grouping of PMT/vPvM substances.
+
+402
+
+For persistence in the environment, an important property is the readiness of the bonds to be
+
+403
+
+broken down under ambient conditions, whether it be from radical reactions or through metabolic
+
+404
+
+processes. For instance, the C-F bonds in PFAS (bond dissociation energy of 513.8 ± 10.0
+
+405
+
+kJ/mol), and aromatic-Cl bonds in PCBs or dioxins (394.9 ± 13.4 kJ/mol), are difficult to break
+
+406
+
+down in the environment, making groups rich in such bonds likely to be persistent [109].
+15
+
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+407
+
+Compounds with molecules containing high bond dissociation energies can be flagged for
+
+408
+
+persistence assessment and subsequent inclusion as PMT/vPvM if each of the M and/or T criteria
+
+409
+
+are met. Biodegradability models can be used to quickly provide relevant information about the
+
+410
+
+persistence of many substances or the presence of many persistent substructures, pending
+
+411
+
+further investigation and confirmation by experimental studies [110]. However, the applicability
+
+412
+
+domain of available models is dependent on their training data, resulting in unreliable predictions
+
+413
+
+for compound classes that may not be covered yet [110].
+
+414
+
+For mobility, the chemical substructures that are associated with low KOC values are those that
+
+415
+
+are highly polar or ionic, as this favours their water solubility over sorption to soil organic carbon
+
+416
+
+[24, 111]. A 2022 review found that most ionic compounds with measured log KOC values have
+
+417
+
+log KOC values <4.0 [24]. Thus, the presence of many hydrophilic substituents may be a predictor
+
+418
+
+of mobility, and conversely, chemicals with largely hydrophobic substructures are unlikely to be
+
+419
+
+mobile in the environment. However, an important limitation of mobility is size. Extremely large
+
+420
+
+molecules that are highly polar and ionic may not be mobile if they have sufficient hydrophobic
+
+421
+
+substructures to decrease their solubility, or (as in the case of water-soluble polymers) can
+
+422
+
+aggregate for charge neutrality and therefore lose/reduce their mobility as an aggregate [112].
+
+423
+
+Quantitative structure-activity relationship (QSAR) models are available to predict the mobility of
+
+424
+
+certain substances and can be applied effectively (within their respective applicability domains)
+
+425
+
+to classify the mobility of substances.
+
+426
+
+The toxicity of a substance is related to its chemical structure and determines the type of health
+
+427
+
+effects it induces in the biological systems [113]. The interaction of a chemical with a biological
+
+428
+
+system is determined by the functional groups, stereochemistry and other molecular features
+
+429
+
+[114]. A change in the structure can lead to changes in toxicity, depending on how this change
+
+430
+
+affects the toxicophore – the structural portion associated with the toxicity of the chemical [115].
+
+431
+
+The descriptors used for toxicity predictions vary between models, some models consider only
+
+432
+
+2D descriptors, while others use a mix of 2D and 3D descriptors. In recent years some models
+
+433
+
+have also attempted to predict toxicity through graph neural networks which take the position of
+
+434
+
+the different functional groups into consideration [116, 117]. Toxicity is also related to the
+
+435
+
+absorption, distribution, metabolism and excretion ability of the body, which depends on the
+
+436
+
+chemical structure of the substance. Increased hydrophobicity leads to increased absorption and
+
+437
+
+increased potential toxic effects (due to potential bioaccumulation). A concern with PMT/vPvM
+
+438
+
+substances is chronic exposure via water consumption, which can lead to elevated concentrations
+
+439
+
+in humans and diverse biota [12, 118].
+
+16
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+440
+
+Considering the chemical features that make these substances P, M and T, and the provided
+
+441
+
+criteria for classification, PMT/vPvM substances can be identified and grouped accordingly. Read-
+
+442
+
+across can be applied to identify PMT substances on the basis that they have similar
+
+443
+
+(sub)structures, similar properties and available toxicological data. This can be done through a
+
+444
+
+fragment-based approach, which relies on the identification of small similar fragments or
+
+445
+
+functional groups with similar properties [119]. Substance grouping approaches take the fragment
+
+446
+
+models one step further. Substances can have similar properties due to the similarity in structures
+
+447
+
+– this includes functional groups, common precursors or reaction products, and a constant pattern
+
+448
+
+in the changing of the potency of the properties across the group [31, 104]. The substance
+
+449
+
+grouping approach is used in read-across techniques and alternative assessments [104]. This
+
+450
+
+has been supported by the use of various models that predict physical-chemical property
+
+451
+
+information such as the KOCWIN model [120]. This is a fragment-based model that relates
+
+452
+
+substructures and mobility (KOC) based on appropriate training data [120].. The mobility (KOC) of
+
+453
+
+new chemicals can be predicted using the established relationship (when they are within the
+
+454
+
+applicability domain). Similarly, the ReadyBiodegradable model in OPERA [36] and CERAPP and
+
+455
+
+CoMPARA models [116, 121]can be used to predict the biodegradability and toxicity, respectively,
+
+456
+
+of many new PMT/vPvM substances.
+
+457
+
+Grouping based on retained moieties from transformation
+
+458
+
+reactions
+
+459
+
+Both biotic and abiotic transformations generally result in transformation products (TPs) with
+
+460
+
+significantly higher mobility (lower log KOW) than their parent compounds or precursors, making
+
+461
+
+them more mobile in the environment. This seems intuitive as one of the "goals'' of metabolism
+
+462
+
+and wastewater treatment processes is to increase the polarity of the compounds. For metabolic
+
+463
+
+processes, this allows the compounds to be expelled from the body with the urine. However, some
+
+464
+
+persistent substructures may be retained during the transformation resulting in similar toxic
+
+465
+
+properties between the parent compound and TPs. For example, decabromodiphenyl ethane
+
+466
+
+forms 6 metabolites that were found to be carcinogenic like the parent compound [122]. In other
+
+467
+
+cases, even small structural changes can result in large differences in toxicity such as for
+
+468
+
+bis(pentabromophenyl) ether, which has low thyroid binding affinity itself but can form the TP
+
+469
+
+2,3,5,6-tetrabromo-4-(2,3,4,5,6-pentabromophenoxy)phenol with a strong thyroid binding affinity
+
+470
+
+[122]. Therefore, it is of interest not only to identify parent compounds that may be PMT/vPvM,
+
+17
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+471
+
+but also compounds that can form PMT/vPvM TPs, along with identifying the common persistent
+
+472
+
+and mobile moieties that were retained and not readily metabolized. Such an approach would be
+
+473
+
+consistent with the approach to substance grouping in REACH of identifying “common breakdown
+
+474
+
+products via physical and biological processes, which result in structurally similar chemicals”
+
+475
+
+(REACH Annex XI, Section 1.5).
+
+476
+
+One way to do this identification is by using known reactions, such as those contained within the
+
+477
+
+“transformations” section in PubChem, which links parent compounds to TPs with basic reaction
+
+478
+
+information [123]. Of all the substances on the five suspect lists mentioned above,
+
+479
+
+perfluorooctanoic acid (PFOA) has the highest number of recorded parent compounds (22) in the
+
+480
+
+PubChem transformations section (from version 0.1.6 of the dataset archived on Zenodo) [124].
+
+481
+
+This is also one of several PMT/vPvM TPs where parent compounds are included in the legislation
+
+482
+
+as part of the substance group. Specifically, the Stockholm Convention restricts the use of PFOA-
+
+483
+
+related compounds, which include compounds that form PFOA after degradation [78]. TFA is also
+
+484
+
+a known TP of several different compounds containing a CF3– moiety. Since there are over 5
+
+485
+
+million compounds containing a CF3– moiety included in PubChem [125], many of which are also
+
+486
+
+industrially relevant, there are myriad potential sources of TFA.
+
+487
+
+Triazoles are another example of moieties preserved from parent compounds to TPs. Out of the
+
+488
+
+triazole compounds in PubChem, 62 have recorded TPs (12 Jan 2024) [124]. This corresponds
+
+489
+
+to 233 unique reactions, out of which the triazole moiety is retained in 88% of the cases, showing
+
+490
+
+its high stability. While usually not acutely toxic in low doses, triazoles may cause several severe
+
+491
+
+chronic toxic effects such as endocrine disruption and neurotoxicity [126]. Triazole substances
+
+492
+
+such as benzotriazoles are present in the environment at high levels [126]. Thus, the retention of
+
+493
+
+this functional group and other PMT/vPvM moieties may be concerning from an exposure point
+
+494
+
+of view, supporting the idea that grouping based on retained moieties or TPs is relevant to obtain
+
+495
+
+comprehensive and inclusive groups for PMT/vPvM substances.
+
+496
+
+Another example of how substances can be regulated based on their precursors are the aromatic
+
+497
+
+amines registered under REACH some of which can also be found on PMT/vPvM suspect lists,
+
+498
+
+such as 4,4'-methylenedianiline, 4,4'-oxydianiline, 4-chloroaniline, 3,3’-dichlorobenzidine, 4,4'-
+
+499
+
+methylenebis(2-chloroaniline), 4,4'-methylenedianiline, and 2-methoxy-5-methylaniline [20, 31,
+
+500
+
+50]. However, there are several other aromatic amines that have multiple known precursors listed
+
+501
+
+in the PubChem transformations library (e.g. 4-aminophenol and aniline) that are also listed as
+
+18
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+502
+
+PMT by the UBAPMT suspect list. As such, regulating aromatic amines and precursor substances
+
+503
+
+as a group based on PMT/vPvM substances warrants further investigation and consideration.
+
+504
+
+505
+
+Cheminformatics
+
+506
+
+PMT/vPvM substances
+
+507
+
+The strategies mentioned above regarding grouping can be matched to substance regulation in
+
+508
+
+various ways. Firstly, substances falling within a PMT/vPvM group with little known data could be
+
+509
+
+flagged for follow-up to see if persistence and mobility measurements have been conducted in
+
+510
+
+literature, and if read-across methods (based on patterns with other substances) could be used
+
+511
+
+to fill data gaps. This could help prioritise filling data gaps and would help develop read-across
+
+512
+
+approaches for further substances within the group. Secondly, if any other substance with a
+
+513
+
+similar structure exists in the group and is hazardous (source substance), this could be seen as
+
+514
+
+a reason to investigate for similar toxicological hazards for this substance (target substance). If
+
+515
+
+several members within a group are shown to be PMT/vPvM substances, then a precautionary
+
+516
+
+approach would be to assume all group members with no assessments are similarly hazardous,
+
+517
+
+until there is sufficient scientific data to show otherwise. An overview of an assessment procedure
+
+518
+
+to identify PMT/vPvM substances has also been presented by Neumann and Schliebner (2019),
+
+519
+
+suggesting to first assess compounds for persistence followed by mobility and toxicity for both
+
+520
+
+precursors and transformation products [47].
+
+521
+
+Estimating the number of individuals and groups of chemicals that fit the PMT/vPvM classification
+
+522
+
+is a challenging task. Most substances lack readily available persistence, mobility and toxicity
+
+523
+
+data. Due to the limited data availability, the prediction models of these properties are also limited
+
+524
+
+in their accuracy and applicability domains. However, some data and models are available as a
+
+525
+
+starting point, especially for log KOW. For example, both XlogP and the newer XlogP3 [127, 128]
+
+526
+
+and the KOWWIN [129] module in EPI Suite [130] use a multivariate regression approach to KOW
+
+527
+
+prediction. While KOC data is more limited than KOW data, there are also several models which
+
+528
+
+attempt to predict KOC, including KOCWIN from EPI Suite [37] and the KOC module of OPERA
+
+529
+
+[36], which both utilise the training data from the PHYSPROP database [36, 37]. For persistence,
+
+530
+
+OPERA
+
+also
+
+contains
+
+three
+
+challenges
+
+modules
+
+for
+
+predicting
+
+in
+
+grouping
+
+biodegradability
+
+19
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+(BiodegHL,
+
+531
+
+ReadyBiodegradable and Km) as well as one module predicting rate constants for gas-phase
+
+532
+
+reactions with hydroxyl-radicals, though with more limited applicability domains compared to the
+
+533
+
+KOC module [36]. The prediction of toxicity is even more challenging due to the limited availability
+
+534
+
+of training data. However, models already exist for several toxicological endpoint predictions such
+
+535
+
+as endocrine disruption, mutagenicity and developmental toxicity for many possible structures
+
+536
+
+[131, 132]. For example, the CERAPP and CoMPARA models in OPERA can be used to predict
+
+537
+
+estrogen and androgen receptor interactions [116, 121].
+
+538
+
+An example of how a combination of experimental and predicted property data has been used to
+
+539
+
+classify compounds as PMT/vPvM is the study by Arp and Hale (2022), which focused on the
+
+540
+
+compounds in the REACH inventory [24]. Their study concluded that about 1.9% of substances
+
+541
+
+registered in REACH and 24% of REACH-registered substances that were detected in drinking
+
+542
+
+water sources would be classified as PMT. However, over 40% of the inventory could not be
+
+543
+
+assessed due to data gaps. This illustrates the importance of acquiring experimental data for a
+
+544
+
+wider range of compounds.
+
+545
+
+To further illustrate how predicted properties can be used for assessing PMT compounds, the
+
+546
+
+PubChemLite for Exposomics [133] dataset was used to give a preliminary estimate of the number
+
+547
+
+of potential environmental contaminants that are predicted to meet the CLP definition of mobility.
+
+548
+
+PubChemLite is a subset of ~350,000 compounds from PubChem with environmentally relevant
+
+549
+
+annotation content [133]. In total, KOC values were predicted for 346,133 compounds (96.0% of
+
+550
+
+PubChemLite) using the molecular connectivity index (MCI) model from KOCWIN [37, 120]. The
+
+551
+
+results of the log KOC distribution are shown in Figure 5. Based on these predicted values log KOC,
+
+552
+
+147,930 compounds (41%) would be considered mobile and 78,107 compounds (21%) would be
+
+553
+
+considered very mobile. The MCI model assigns values of 1 and 0 for chemicals when KOC
+
+554
+
+predictions have been overcorrected. The large peak at log KOC 10 is an upper bound for these
+
+555
+
+predictions within the MCI model output. Note that the results of this analysis will differ if the KOW-
+
+556
+
+based model in KOWWIN is used.
+
+20
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+557
+558
+
+Figure 5: Predicted log KOC via KOCWIN values for PubChemLite (346,133 compounds total) [38,
+
+559
+
+133]. Some KOC predictions fall outside the applicability domain of the model. The “count” is the
+
+560
+
+number of compounds inside each bin. Bin widths are 0.2.
+
+561
+562
+
+To investigate this concept in more detail on slightly smaller subsets, four compound classes:
+
+563
+
+triazines, aromatic amines, PFAS and triazoles were selected based on the five suspect lists
+
+564
+
+mentioned previously (UBAPMT, EAWAGPMT, UFZHSFPMT, PMTPFAS and ZEROPMBOX1)
+
+565
+
+[20, 49–52]. The substructure search function of PubChem was then used to estimate the number
+
+566
+
+of compounds that belong to these compound classes. An overview of these search queries can
+
+567
+
+be found in Table 1. As can be seen in the first three rows, relatively unspecific substructures can
+
+568
+
+generate very large query results. For the 1,2,3-triazole substructure over 1 million substances
+
+569
+
+were found, which corresponded to a search of only 87% of the database as the search results
+
+570
+
+are capped at 1 million substances. Similarly, the aromatic amines (with aniline as the searched
+
+571
+
+substructure) resulted in over 1 million substances with only 2% of the database searched. The
+
+572
+
+1,3,5-triazine query resulted in 718,119 substances. The compounds classified within the OECD
+
+573
+
+definition of PFAS in the PubChem PFAS tree were used to source PFAS, which contained
+
+574
+
+6,604,017 compounds at the time the queries were performed (Dec. 17, 2023) [125]. It is unlikely
+
+575
+
+that all compounds containing these substructures would meet the PMT/vPvM criteria outlined in
+
+576
+
+the CLP. For example, only 250,873 of the 718,199 triazines meet the CLP criteria for mobility
+
+21
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+577
+
+based on the predicted log KOW from XlogP3. As such the substructures used when discussing
+
+578
+
+PMT/vPvM compound grouping for regulation purposes should be more specific.
+
+579
+
+More specific substructure queries were used to interrogate these results further according to the
+
+580
+
+PMT/vPvM criteria, shown in the remaining rows of Table 1 and Figure 6, using the structures of
+
+581
+
+melamine, benzotriazole and benzidine as well as the “larger PFAS parts” definition (contains –
+
+582
+
+CF2CF2–) from the PubChem PFAS tree [125]. The search was then progressively restricted to
+
+583
+
+exclude the searched substructures from being part of larger ring systems and substances with
+
+584
+
+molecular weights greater than 300 g/mol. The results of this search were also used to perform
+
+585
+
+persistence and toxicity prediction as discussed above. The top two rows of Figure 6 show these
+
+586
+
+substructure query results. Like their less specific triazine counterpart, they seem too broad to
+
+587
+
+capture only PMT/vPvM substances. However, when restricting the search to only compounds
+
+588
+
+below 300 g/mol, between 87 and 99% of the compounds would meet the CLP definition of
+
+589
+
+mobility. The most restricted PubChem search results were also used for biodegradability and
+
+590
+
+LC50 predictions using the ReadyBiodegradable model from OPERA and MS2Tox (compounds
+
+591
+
+which fell outside the applicability domain of the ReadyBiodegradable model were excluded in
+
+592
+
+the biodegradability results; this information is not given by MS2Tox). As can be seen in Figure
+
+593
+
+6, almost all compounds inside the applicability domain were classified as non-biodegradable.
+
+594
+
+This indicates that in addition to their mobility, most compounds within these classes are
+
+595
+
+potentially persistent. Based on the EU CLP definition of toxicity, an EC10 less than 0.01 mg/L is
+
+596
+
+toxic for marine or freshwater organisms. Some of the predicted LC50 toxicity values (the lethal
+
+597
+
+concentration at 50% of the population) shown in Figure 6 go below 0.1 mg/L. As toxicity is usually
+
+598
+
+observed before lethality, this indicates that some of the compounds may be toxic below 0.01
+
+599
+
+mg/L. In addition, it is important to note that this is not the only toxicity criterion used in the CLP,
+
+600
+
+for example, triazole compounds have been shown to have endocrine-disrupting properties by
+
+601
+
+e.g., Wang et al. (2022) [134] and thus it is likely that at least a fraction of these compounds would
+
+602
+
+be classified as PMT.
+
+603
+
+22
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+604
+605
+606
+607
+608
+609
+610
+611
+612
+
+Table 1: Overview of the PubChem substructure searches (queries performed on 19/12/2023).
+Default settings for all queries were (1) single or double bonds match aromatic bonds (2) chain
+bonds in the query may match rings in hits and (3) remove any explicit hydrogens before
+searching. Extra settings “Ring” (rings may not be embedded in a larger system) and the filter
+“MW<300” (Molecular weight < 300 g/mol) are indicated in the respective column. Query URLs
+are embedded into the substructure column. The first three rows in italics are generic queries, the
+latter rows are the queries used to generate Figure 6 and are coloured accordingly. The OECD
+PFAS results were obtained via the PubChem classification browser. DB = database, values in
+brackets indicate the % of the database searched (queries are capped at 1 M results).
+
+Substructure
+
+Substructure SMARTS
+
+Extra
+Settings
+
+Number of
+Structures
+
+1,3,5-Triazine
+
+C1=NC=NC=N1
+
+None
+
+718,134
+
+Aromatic amine C1=CC=C(C=C1)N
+
+None
+
+>1 M (2 % of
+DB)
+
+1,2,3-Triazole
+
+C1=NNN=C1
+
+None
+
+>1 M (87 % of
+DB)
+
+Melamine
+
+C1(=NC(=NC(=N1)N)N)N
+
+None
+
+96,660
+
+Melamine
+
+C1(=NC(=NC(=N1)N)N)N
+
+Ring
+
+47,519
+
+Melamine
+
+C1(=NC(=NC(=N1)N)N)N
+
+Ring,
+MW<300
+
+10,528
+
+Benzotriazole
+
+C1=CC2=NNN=C2C=C1
+
+None
+
+165,361
+
+Benzotriazole
+
+C1=CC2=NNN=C2C=C1
+
+Ring
+
+158,766
+
+Benzotriazole
+
+C1=CC2=NNN=C2C=C1
+
+Ring,
+MW<300
+
+30,945
+
+Benzidine
+
+C1=CC(=CC=C1C2=CC=C(C=C2)N)N
+
+None
+
+208,934
+
+Benzidine
+
+C1=CC(=CC=C1C2=CC=C(C=C2)N)N
+
+Ring
+
+48,123
+
+Benzidine
+
+C1=CC(=CC=C1C2=CC=C(C=C2)N)N
+
+Ring,
+MW<300
+
+1,618
+
+OECD PFAS
+
+PFAS Tree - OECD PFAS definition
+
+None
+
+6,604,017
+
+OECD PFAS
+OECD PFAS
+
+PFAS Tree - OECD PFAS definition
+PFAS Tree - OECD PFAS definition
+
+Larger
+PFAS Parts
+Larger
+PFAS
+Parts,
+MW<300
+
+222,174
+29,521
+
+23
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+613
+614
+615
+616
+617
+618
+
+Figure 6: Distribution of PubChem XlogP3 values for four searches with varying restrictions (top
+three rows), plus predicted biodegradability from the OPERA ReadyBiodegradable model and
+LC50 values (in mg/L) predicted from MS2Tox for the most restricted search queries (last two
+rows). Search settings and total numbers are given in Table 1. It should be noted that MS2Tox is
+used for illustration purposes only, and does not reflect the CLP toxicity criteria in Figure 1.
+
+24
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+619
+
+Perspectives for grouping strategies
+
+620
+
+Challenges for assessing and managing PMT/vPvM
+
+621
+
+substances
+
+622
+
+Based on the criteria for persistence, mobility and toxicity, many chemicals (as shown from the
+
+623
+
+prediction results above) may be PMT/vPvM substances, warranting further assessments and
+
+624
+
+management (see Table 1). One of the major challenges of dealing with PMT/vPvM substances
+
+625
+
+is the lack of high-quality data. As shown above, there is a growing need for computational
+
+626
+
+modelling to complement experimental approaches as the number of substances to be tested
+
+627
+
+increases, yet efficient computational methods rely on high quality and sufficient experimental
+
+628
+
+data availability, which is a major limiting factor. Structurally diverse substances with multiple
+
+629
+
+functional groups and stereochemistry can lead to unexpected behaviour, posing a critical
+
+630
+
+challenge [135]. However, developing high-throughput screening (HTS) methods for toxicity
+
+631
+
+testing may be difficult for these diverse substances and toxicological endpoints, which produce
+
+632
+
+large amounts of data, and require expert knowledge to interpret and manage [136].
+
+633
+
+Identification, monitoring and removal are other challenges to managing PMT/vPvM substances.
+
+634
+
+Targeted identification and monitoring approaches will not be sufficient to detect all PMT/vPvM
+
+635
+
+substances, hence it is crucial to ensure wider availability of analytical methods and reference
+
+636
+
+standards to properly identify, quantify and assess potential PMT/vPvM substances. Targeted
+
+637
+
+analysis could be complemented with non-targeted analytical approaches. Non-target analysis
+
+638
+
+can be a first step in identifying unknown and emerging PMT/vPvM substances and their TPs in
+
+639
+
+environmental and biological matrices. It can also be used for the monitoring of known PMT/vPvM
+
+640
+
+substances, yet regulatory acceptance of non-targeted monitoring is still lacking [137]. Moreover,
+
+641
+
+the lack of data on persistence, mobility, toxicity, TPs, complex mixtures and appropriate suspect
+
+642
+
+lists for broader suspect screening poses identification and monitoring challenges [22].
+
+643
+
+Prioritization strategies for testing and assessment
+
+644
+
+Considering many potential PMT/vPvM substances, and the possible challenges outlined, it is
+
+645
+
+necessary to develop other strategies that could be used in combination with the proposed
+
+25
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+646
+
+grouping strategies above to prioritize chemicals for assessing their PMT/vPvM properties.
+
+647
+
+Exposure and emission information could serve in the prioritization of chemicals for testing.
+
+648
+
+Utilising exposure information such as mode of exposure (chemicals in food or drinking water)
+
+649
+
+[138, 139] or Occupational Exposure Banding strategy for categorization of airborne substances
+
+650
+
+lacking defined limits [140], could help identify chemicals with high exposure potential.
+
+651
+
+Additionally, the hazard level of the toxicity can be used as a criterion, where specific persistent
+
+652
+
+and mobile substances with high toxicity can be targeted for prioritization.
+
+653
+
+The use of in vitro, in vivo, and in silico approaches can aid the grouping and prioritization of
+
+654
+
+chemicals for testing or assessments by regulatory bodies. This can be done by generating
+
+655
+
+grouping hypotheses and justification for inclusion or exclusion criteria for substances in groups
+
+656
+
+[140]. In particular, novel approaches may generate huge amounts of toxicological and high-
+
+657
+
+throughput “omics” data including metabolomics, transcriptomics, and exposomics to support the
+
+658
+
+validation and establishment of grouping hypotheses needed by regulatory authorities [141]. An
+
+659
+
+example of a grouping hypothesis is the mode of action (MOA) hypothesis, which states that all
+
+660
+
+chemicals that share a common mode of action are candidates for grouping [142]. Additionally,
+
+661
+
+concepts such as adverse outcome pathways and toxicity pathways can be translated into
+
+662
+
+prioritization hypotheses that can target specific substances, hence advancing prioritization for
+
+663
+
+hazard assessment [143, 144]. These can facilitate regulator efforts to restrict hazardous
+
+664
+
+substances.
+
+665
+
+Measurable biological and physiological effects of chemical exposure, known as effect
+
+666
+
+biomarkers, can be used to group PMT/vPvM substances according to their toxicological profiles.
+
+667
+
+If two substances induce similar biomarker responses indicative of for instance genotoxicity, or
+
+668
+
+endocrine disruption, they can be grouped. This approach can also help to identify common
+
+669
+
+pathways of toxicity, adverse outcome pathways (AOPs), or mechanisms of toxicity. By grouping
+
+670
+
+substances with similar toxic profiles as PMT/vPvM substances, effect biomarkers can aid in
+
+671
+
+characterizing cumulative risks posed by mixtures and complex chemical substances. This
+
+672
+
+proactive approach focuses on biological effects rather than relying solely on the structural and
+
+673
+
+chemical properties of PMT/vPvM substances [145, 146]
+
+674
+
+It is crucial to recognize that the effectiveness of strategies used for prioritizing substances largely
+
+675
+
+depends on the availability of relevant data, including hazard and exposure data. To improve the
+
+676
+
+availability and quality of such data, it is necessary to foster collective efforts such as high-quality
+
+677
+
+data generation, community-level data collection, Open Science, FAIR data, and enhanced data
+
+26
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+678
+
+sharing policies. When potential vPvM substances are identified by read-across and experimental
+
+679
+
+evidence as substances that meet the PMT/vPvM criteria, then a hazard classification would be
+
+680
+
+required. The data collected through these efforts can then be used to enhance the prioritization,
+
+681
+
+identification, and regulation of PMT/vPvM substances. To manage PMT/vPvM substances
+
+682
+
+effectively, manufacturers can be encouraged to submit a plan to remove these substances from
+
+683
+
+wastewater. This approach can help improve the overall management of PMT/vPvM substances.
+
+684
+
+As a precaution, the principle of "as low as reasonably achievable" (ALARA) can be applied to
+
+685
+
+minimize exposure levels and reduce the risk of harm to PMT/vPvM substances [147].
+
+686
+
+687
+
+Conclusion
+
+688
+
+To achieve the EU’s zero pollution ambition of a non-toxic environment by 2050, regulating the
+
+689
+
+production, use and disposal of PMT/vPvM substances is necessary. As shown in Table 1, scaling
+
+690
+
+PMT/vPvM criteria to big substance collections reveals that there are potentially thousands of
+
+691
+
+PMT/vPvM substances that could cause harm to human health and the environment, especially
+
+692
+
+concerning water quality and drinking water treatment.
+
+693
+
+The Montreal Protocol and the Stockholm Convention have demonstrated that grouping
+
+694
+
+substances can be an effective strategy to expedite the elimination of the production, use, and
+
+695
+
+emission of toxic substances such as ozone-depleting substances (ODSs) and persistent organic
+
+696
+
+pollutants (POPs). This approach can also accelerate the identification and regulatory processes
+
+697
+
+for substances that lack hazard information. Grouping can prevent the introduction of new
+
+698
+
+hazardous substances into the global market. However, it is important to ensure that grouping is
+
+699
+
+done in a way that is feasible and promotes the use of safer and more sustainable alternatives.
+
+700
+
+Otherwise, it could result in the production of regrettable substitutes, as was the case with ODSs
+
+701
+
+and POPs, which led to the creation of some PMT/vPvM substances.
+
+702
+
+Read-across based on structural or substructural similarity is one of the strategies that could be
+
+703
+
+used to group PMT/vPvM substances, which relies on the idea that substances with similar
+
+704
+
+structures have similar properties. Commonly retained moieties from transformation reactions
+
+705
+
+could also be a grouping strategy for PMT/vPvM substances. Substances that are structurally
+
+27
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+706
+
+similar to PMT/vPvM according to read-across, or form persistent, mobile TPs could be flagged
+
+707
+
+for subsequent assessment and/or regulatory actions.
+
+708
+
+Cheminformatics may be used for substance grouping based on predictive models for properties
+
+709
+
+such as biodegradability, mobility, and toxicity. PubChemLite predictions suggest that 41% of
+
+710
+
+potentially environmentally relevant compounds would be considered mobile (147,930
+
+711
+
+compounds) and 21% would be considered very mobile (78,107 compounds). Certain compound
+
+712
+
+classes, such as triazines, aromatic amines, triazoles and PFAS, are likely to be persistent, non-
+
+713
+
+biodegradable, and toxic. As shown in Table 1, the numbers are high and restricting these
+
+714
+
+compounds as a group would be challenging; however, prioritizing members of these large groups
+
+715
+
+for property testing is warranted as they contain a substructure associated with a PMT/vPvM
+
+716
+
+substance group. Additional strategies are needed to prioritize some substances for regulation,
+
+717
+
+such as mapping the uses of these chemicals and exposure which requires more data availability
+
+718
+
+following FAIR principles.
+
+719
+
+Some strategies proposed for the prioritization of substances for testing or assessment of
+
+720
+
+PMT/vPvM include (i) better understanding and the use of exposure/ emissions information such
+
+721
+
+as Occupational Exposure Banding and environmental exposure to the PMT/vPvM substances,
+
+722
+
+(ii) the use of in vitro, in vivo and in silico techniques to generate relevant toxicological data that
+
+723
+
+will support prioritization, identification and regulation of PMT/vPvM substances. These strategies
+
+724
+
+in combination with substance grouping could result in substituting PMT/vPvM substances with
+
+725
+
+safer alternatives.
+
+726
+
+List of abbreviations
+Abbreviations
+CAS
+CFCs
+CID
+CLP
+DDT
+DOW
+
+Full Meaning
+Chemical Abstracts Service
+Chlorofluorocarbons
+PubChem Compound Identifier
+Chemicals, Labelling and Packaging
+Dichlorodiphenyltrichloroethane
+pH-dependent octanol-water partition coefficient
+
+EC
+ECx
+ECHA
+EDC
+EU
+HBFCs
+
+European Commission
+Effect concentration at X percentage
+European Chemical Agency
+Endocrine-disrupting chemical
+European Union
+Hydrobromofluorocarbons
+
+28
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Abbreviations
+HCB
+HCFCs
+HFCs
+HFOs
+HTS
+IUPAC
+KEMI
+
+Full Meaning
+Hexachlorobenzene
+Hydrochlorofluorocarbons
+Hydrofluorocarbons
+Hydrofluoroolefins
+High-Throughput Screening
+International Union of Pure and Applied Chemistry
+Swedish Chemical Agency
+
+KOC
+
+Organic-carbon-water partition coefficient
+
+KOW
+
+Octanol-water partition coefficient at pH = 7
+
+log P
+
+Logarithm of KOW
+
+M
+MCI
+MOA
+NOEC
+NORMAN-SLE
+ODS
+P
+PBT
+PCBs
+PFAS
+PFBS
+PFECAs
+PFOA
+PMT
+PMT/vPvM
+POPs
+QSAR
+RAAF
+REACH
+SCHEER
+SVHCs
+T
+TFA
+TPs
+UBA
+UVCBs
+
+Mobility
+Molecular Connectivity Index
+Mode Of Action
+No Observable Effect Concentration
+NORMAN Suspect List Exchange
+Ozone-Depleting Substances
+Persistence
+Persistent, Bioaccumulative and Toxic
+Polychlorinated biphenyls
+Per- and poly-fluoroalkyl substances
+Perfluorobutane sulfonic acid
+Per- and polyfluoroalkylether carboxylic acids
+Perfluorooctanoic acid
+Persistent, Mobile and Toxic
+Persistent, Mobile and Toxic or very Persistent and very Mobile
+Persistent Organic Pollutants
+Quantitative Structure-Activity Relationship
+Read-Across Assessment Framework
+Registration, Evaluation, Authorisation and Restriction of Chemicals
+Scientific Committee on Health, Environmental and Emerging Risks
+Substances of Very High Concern
+Toxicity
+Trifluoroacetic acid
+Transformation products
+Umweltbundesamt (German Environmental Agency)
+Substances of Unknown or Variable composition, Complex reaction
+products or Biological origin
+very Mobile
+very Persistent
+very Persistent and very Bioaccumulative
+very Persistent and very Mobile
+
+vM
+vP
+vPvB
+vPvM
+
+29
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+727
+
+728
+
+Declarations
+
+729
+
+Ethics approval and consent to participate
+
+730
+
+Not applicable.
+
+731
+
+Consent for publication
+
+732
+
+Not applicable.
+
+733
+
+Availability of data and material
+
+734
+
+The datasets analysed during the current study are available in PubChem, the NORMAN Suspect
+
+735
+
+List Exchange (NORMAN-SLE - https://www.norman-network.com/nds/SLE/) and on Zenodo
+
+736
+
+under the following URLs: S36 UBAPMT (DOI: 10.5281/zenodo.6482414), S82 EAWAGPMT
+
+737
+
+(DOI: 10.5281/zenodo.5500132), S84 UFZHSFPMT (DOI: 10.5281/zenodo.5535288), S90
+
+738
+
+ZeroPMBox1
+
+739
+
+10.5281/zenodo.8417075), PubChemLite for Exposomics (Version 1.27.0, Oct. 27th 2023, DOI:
+
+740
+
+10.5281/zenodo.10126889, PubChem Transformations Dataset (Version 0.1.6, Jul. 5th, 2023,
+
+741
+
+DOI:
+
+742
+
+(https://pubchem.ncbi.nlm.nih.gov/classification/#hid=120).
+
+(DOI:
+
+10.5281/zenodo.5854252),
+
+10.5281/zenodo.8117741)
+
+and
+
+the
+
+S111
+
+PMTPFAS
+
+PubChem
+
+PFAS
+
+(DOI:
+
+Tree
+
+743
+744
+745
+
+Competing interests
+
+746
+
+The authors declare that they have no competing interests.
+
+747
+
+Funding
+
+748
+
+All authors acknowledge funding from the European Union’s Horizon 2020 research and
+
+749
+
+innovation programme under grant agreement No 101036756, project ZeroPM: Zero pollution of
+
+750
+
+persistent, mobile substances. ELS acknowledges funding support from the Luxembourg National
+
+30
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+751
+
+Research Fund (FNR) for project A18/BM/12341006. SB acknowledges support from Natural
+
+752
+
+Sciences and Engineering Research Council of Canada via a Postdoctoral Fellowship.
+
+753
+
+Author contributions:
+
+754
+
+PC: Investigation (lead), Visualization, Writing original draft (lead), Writing review and editing,
+
+755
+
+EHP: Investigation, Formal analysis (lead), Visualization, Writing original draft (lead), Writing
+
+756
+
+review and editing, SB: Writing the original draft, Writing review and editing, ELS: Investigation,
+
+757
+
+Writing the original draft, Writing review and editing, Conceptualization, Supervision, Funding
+
+758
+
+acquisition, ZW: Writing the original draft, Writing review and editing, Funding acquisition, RW:
+
+759
+
+Writing review and editing, SH: Writing original draft, Writing review and editing, Funding
+
+760
+
+acquisition, Conceptualization, HPA: Writing original draft, Writing review and editing, Funding
+
+761
+
+acquisition, Conceptualization
+
+762
+763
+
+Acknowledgements
+
+764
+
+The authors would like to acknowledge discussions with other ZeroPM partners and PubChem
+
+765
+
+during the preparation of this article. All authors acknowledge funding from the European Union’s
+
+766
+
+Horizon 2020 research and innovation programme under grant agreement No 101036756, project
+
+767
+
+ZeroPM: Zero pollution of persistent, mobile substances. ELS acknowledges funding support from
+
+768
+
+the Luxembourg National Research Fund (FNR) for project A18/BM/12341006. SB acknowledges
+
+769
+
+support from Natural Sciences and Engineering Research Council of Canada via a Postdoctoral
+
+770
+
+Fellowship.
+
+771
+
+References
+
+772
+773
+774
+
+1.
+
+Fuller R, Landrigan PJ, Balakrishnan K, et al (2022) Pollution and health: a progress
+update. The Lancet Planetary Health 6:e535–e547. https://doi.org/10.1016/S25425196(22)00090-0
+
+775
+776
+777
+778
+
+2.
+
+United Nations (2015) Resolution adopted by the General Assembly on 25 September
+2015. Transforming our world: the 2030 Agenda for Sustainable Development.
+https://undocs.org/Home/Mobile?FinalSymbol=A%2FRES%2F70%2F1&Language=E&De
+viceType=Desktop&LangRequested=False
+
+779
+780
+
+3.
+
+Wang Z, Walker GW, Muir DCG, Nagatani-Yoshida K (2020) Toward a Global
+Understanding of Chemical Pollution: A First Comprehensive Analysis of National and
+
+31
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+781
+782
+
+Regional
+Chemical
+Inventories.
+https://doi.org/10.1021/acs.est.9b06379
+
+Environ
+
+Sci
+
+Technol
+
+54:2575–2584.
+
+783
+784
+
+4.
+
+Kim S, Chen J, Cheng T, et al (2023) PubChem 2023 update. Nucleic Acids Research
+51:D1373–D1380. https://doi.org/10.1093/nar/gkac956
+
+785
+786
+
+5.
+
+PubChem (2023) PubChem-Explore
+Accessed 4 Dec 2023
+
+787
+788
+
+6.
+
+CAS CAS REGISTRY | CAS. https://www.cas.org/cas-data/cas-registry. Accessed 30 Jan
+2024
+
+789
+790
+791
+
+7.
+
+Resnik DB, Portier CJ (2022) Environment, Ethics, and Human Health - The Hastings
+Center. https://www.thehastingscenter.org/briefingbook/environmental-health/. Accessed
+6 Nov 2023
+
+792
+793
+794
+
+8.
+
+Persson L, Carney Almroth BM, Collins CD, et al (2022) Outside the Safe Operating Space
+of the Planetary Boundary for Novel Entities. Environ Sci Technol 56:1510–1521.
+https://doi.org/10.1021/acs.est.1c04158
+
+795
+796
+797
+
+9.
+
+Eurostat (2023) Chemicals production and consumption statistics - Statistics Explained.
+https://ec.europa.eu/eurostat/databrowser/view/sdg_12_10/default/bar?lang=en.
+Accessed 4 Oct 2023
+
+798
+799
+800
+
+10.
+
+SCHEER (Scientific Committee on Health, Environmental and Emerging Risks) (2018)
+Statement
+on
+emerging
+health
+and
+environmental
+issues.
+https://health.ec.europa.eu/system/files/2019-02/scheer_s_002_0.pdf
+
+801
+802
+803
+804
+
+11.
+
+European Commission (2022) Commission Delegated Regulation (EU) 2023/707 of 19
+December 2022 amending Regulation (EC) No 1272/2008 as regards hazard classes and
+criteria for the classification, labelling and packaging of substances and mixtures.
+https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A32023R0707
+
+805
+806
+807
+808
+809
+
+12.
+
+Hale SE, Arp HPH, Schliebner I, Neumann M (2020) Persistent, mobile and toxic (PMT)
+and very persistent and very mobile (vPvM) substances pose an equivalent level of concern
+to persistent, bioaccumulative and toxic (PBT) and very persistent and very
+bioaccumulative (vPvB) substances under REACH. Environ Sci Eur 32:155.
+https://doi.org/10.1186/s12302-020-00440-4
+
+810
+811
+812
+813
+
+13.
+
+Matthies M, Solomon K, Vighi M, et al (2016) The origin and evolution of assessment
+criteria for persistent, bioaccumulative and toxic (PBT) chemicals and persistent organic
+pollutants
+(POPs).
+Environ
+Sci:
+Processes
+Impacts
+18:1114–1128.
+https://doi.org/10.1039/C6EM00311G
+
+814
+815
+816
+
+14.
+
+Shrestha P, Junker T, Fenner K, et al (2016) Simulation Studies to Explore Biodegradation
+in Water–Sediment Systems: From OECD 308 to OECD 309. Environ Sci Technol
+50:6856–6864. https://doi.org/10.1021/acs.est.6b01095
+
+817
+818
+
+15.
+
+Van Dijk J, Figuière R, Dekker SC, et al (2023) Managing PMT/vPvM substances in
+consumer products through the concepts of essential-use and functional substitution: a
+
+Chemistry.
+
+https://pubchem.ncbi.nlm.nih.gov/.
+
+32
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+819
+820
+
+case-study for cosmetics. Environ
+https://doi.org/10.1039/D3EM00025G
+
+Sci:
+
+Processes
+
+Impacts
+
+25:1067–1081.
+
+821
+822
+823
+824
+
+16.
+
+Albergamo V, Escher BI, Schymanski EL, et al (2020) Evaluation of reverse osmosis
+drinking water treatment of riverbank filtrate using bioanalytical tools and non-target
+screening.
+Environ
+Sci:
+Water
+Res
+Technol
+6:103–116.
+https://doi.org/10.1039/C9EW00741E
+
+825
+826
+827
+
+17.
+
+Camacho L, Kelly KP, Beland FA, Gamboa da Costa G (2011) Gene expression of
+biomarkers of nephrotoxicity in F344 rats co-exposed to melamine and cyanuric acid for
+seven days. Toxicol Lett 206:166–171. https://doi.org/10.1016/j.toxlet.2011.07.009
+
+828
+829
+830
+831
+
+18.
+
+Habotta OA, Abdeen A, Roomi AB, et al (2023) Nootkatone Mitigated Melamine-Evoked
+Hepatotoxicity by Featuring Oxidative Stress and Inflammation Interconnected
+Mechanisms:
+In
+Vivo
+and
+In
+Silico
+Approaches.
+Toxics
+11:784.
+https://doi.org/10.3390/toxics11090784
+
+832
+833
+
+19.
+
+Hau AK, Kwan TH, Li PK (2009) Melamine Toxicity and the Kidney. Journal of the American
+Society of Nephrology 20:245–250. https://doi.org/10.1681/ASN.2008101065
+
+834
+835
+836
+
+20.
+
+Arp HPH, Hale SE, Schliebner I, Neumann M (2022) S36 | UBAPMT | Prioritised PMT/vPvM
+substances
+in
+the
+REACH
+registration
+database
+_all
+versions.
+https://doi.org/10.5281/ZENODO.2653212
+
+837
+838
+839
+
+21.
+
+Aumeier BM, Georgi A, Saeidi N, Sigmund G (2023) Is sorption technology fit for the
+removal of persistent and mobile organic contaminants from water? Science of The Total
+Environment 880:163343. https://doi.org/10.1016/j.scitotenv.2023.163343
+
+840
+841
+842
+
+22.
+
+Rüdel H, Körner W, Letzel T, et al (2020) Persistent, mobile and toxic substances in the
+environment: a spotlight on current research and regulatory activities. Environ Sci Eur 32:5.
+https://doi.org/10.1186/s12302-019-0286-x
+
+843
+844
+845
+
+23.
+
+Lütjens LH, Pawlowski S, Silvani M, et al (2023) Melamine in the environment: a critical
+review
+of
+available
+information.
+Environmental
+Sciences
+Europe
+35:2.
+https://doi.org/10.1186/s12302-022-00707-y
+
+846
+847
+848
+
+24.
+
+Arp HPH, Hale SE (2022) Assessing the Persistence and Mobility of Organic Substances
+to
+Protect
+Freshwater
+Resources.
+ACS
+Environ
+Au
+2:482–509.
+https://doi.org/10.1021/acsenvironau.2c00024
+
+849
+850
+851
+
+25.
+
+Tickner JA, Schifano JN, Blake A, et al (2015) Advancing safer alternatives through
+functional
+substitution.
+Environmental
+science
+&
+technology
+49:742–749.
+https://doi.org/10.1021/es503328m
+
+852
+853
+854
+
+26.
+
+Žalmanová T, Hošková K, Nevoral J, et al (2016) Bisphenol S instead of bisphenol A: a
+story of reproductive disruption by regretable substitution - a review. Czech J Anim Sci
+61:433–449. https://doi.org/10.17221/81/2015-CJAS
+
+855
+856
+857
+
+27.
+
+IUPAC (2019) IUPAC Compendium of Chemical Terminology, “chemical substance.” 3rd
+ed.
+International
+Union
+of
+Pure
+and
+Applied
+Chemistry;
+2006,
+https://doi.org/10.1351/goldbook.C01039
+
+33
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+858
+859
+
+28.
+
+PubChem
+(2024)
+Explore
+PubChem
+https://pubchem.ncbi.nlm.nih.gov/docs/. Accessed 23 Jan 2024
+
+860
+861
+862
+
+29.
+
+IUPAC (2019) IUPAC Compendium of Chemical Terminology, “mixture.” 3rd ed.
+International
+Union
+of
+Pure
+and
+Applied
+Chemistry;
+2006,
+https://doi.org/10.1351/goldbook.M03949
+
+863
+864
+865
+
+30.
+
+Dimitrov SD, Georgieva DG, Pavlov TS, et al (2015) UVCB substances: Methodology for
+structural description and application to fate and hazard assessment. Environmental
+Toxicology and Chemistry 34:2450–2462. https://doi.org/10.1002/etc.3100
+
+866
+867
+868
+869
+870
+871
+872
+873
+874
+
+31.
+
+European Commission (2006) EUR-Lex - 02006R1907-20140410 - EN - EUR-Lex
+Consolidated text: Regulation (EC) No 1907/2006 of the European Parliament and of the
+Council of 18 December 2006 concerning the Registration, Evaluation, Authorisation and
+Restriction of Chemicals (REACH), establishing a European Chemicals Agency, amending
+Directive 1999/45/EC and repealing Council Regulation (EEC) No 793/93 and Commission
+Regulation (EC) No 1488/94 as well as Council Directive 76/769/EEC and Commission
+Directives 91/155/EEC, 93/67/EEC, 93/105/EC and 2000/21/EC. https://eurlex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02006R1907-20140410, Accessed
+2023-12-20
+
+875
+876
+877
+878
+
+32.
+
+Åberg A, MacLeod M, Wiberg K (2008) Physical-Chemical Property Data for Dibenzo-pdioxin (DD), Dibenzofuran (DF), and Chlorinated DD/Fs: A Critical Review and
+Recommended Values. Journal of Physical and Chemical Reference Data 37:1997–2008.
+https://doi.org/10.1063/1.3005673
+
+879
+880
+881
+882
+883
+
+33.
+
+European Commission (2017) Commission Regulation (EU) 2017/644 of 5 April 2017
+laying down methods of sampling and analysis for the control of levels of dioxins, dioxin‐
+like PCBs and non‐dioxin‐like PCBs in certain foodstuffs and repealing Regulation (EU) No.
+589/2014. Official Journal of the European Union L 92/9, https://eurlex.europa.eu/eli/reg/2017/644/oj
+
+884
+885
+886
+
+34.
+
+Mukherjee A, Debnath B, Ghosh SK (2016) A Review on Technologies of Removal of
+Dioxins and Furans from Incinerator Flue Gas. Procedia Environmental Sciences 35:528–
+540. https://doi.org/10.1016/j.proenv.2016.07.037
+
+887
+888
+889
+
+35.
+
+Garmash O, Hermanson MH, Isaksson E, et al (2013) Deposition History of Polychlorinated
+Biphenyls to the Lomonosovfonna Glacier, Svalbard: A 209 Congener Analysis. Environ
+Sci Technol 47:12064–12072. https://doi.org/10.1021/es402430t
+
+890
+891
+892
+
+36.
+
+Mansouri K, Grulke CM, Judson RS, Williams AJ (2018) OPERA models for predicting
+physicochemical properties and environmental fate endpoints. J Cheminform 10:10.
+https://doi.org/10.1186/s13321-018-0263-1
+
+893
+894
+895
+
+37.
+
+Meylan W, Howard PH, Boethling RS (1992) Molecular topology/fragment contribution
+method for predicting soil sorption coefficients. Environ Sci Technol 26:1560–1567.
+https://doi.org/10.1021/es00032a011
+
+896
+897
+
+38.
+
+Bolton E, Schymanski E, Kondic T, et al (2023) PubChemLite for Exposomics (V. 1.27.0).
+https://doi.org/10.5281/zenodo.10126889
+
+34
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Documentation.
+
+898
+899
+900
+
+39.
+
+Peets P, Wang W-C, MacLeod M, et al (2022) MS2Tox Machine Learning Tool for
+Predicting the Ecotoxicity of Unidentified Chemicals in Water by Nontarget LC-HRMS.
+Environ Sci Technol 56:15508–15517. https://doi.org/10.1021/acs.est.2c02536
+
+901
+902
+
+40.
+
+R Core Team (2023) A Language and Environment for Statistical Computing. R Foundation
+for Statistical Computing. https://cran.r-project.org/bin/windows/base/old/4.3.1/
+
+903
+904
+
+41.
+
+Wickham H, Averick M, Bryan J, et al (2019) Welcome to the Tidyverse. JOSS 4:1686.
+https://doi.org/10.21105/joss.01686
+
+905
+906
+
+42.
+
+Hadley Wickham (2023) tidyverse 2.0.0. https://www.tidyverse.org/blog/2023/03/tidyverse2-0-0/
+
+907
+908
+909
+
+43.
+
+Wickham H, Chang W, Wickham MH (2016) Package ‘ggplot2.’ Create elegant data
+visualisations
+using
+the
+grammar
+of
+graphics
+Version
+2:1–189.
+https://ggplot2.tidyverse.org/reference/ggplot2-package.html
+
+910
+911
+
+44.
+
+Thomas
+Lin
+Pedersen
+(2024)
+https://github.com/tidyverse/ggplot2/releases/tag/v3.5.0
+
+912
+913
+
+45.
+
+Emma L. Schymanski (2020) RChemMass: Various Cheminformatic, Curation and Mass
+Spectrometry Functions. https://github.com/schymane/RChemMass
+
+914
+915
+916
+917
+
+46.
+
+Arp HPH, Hale SE, Schliebner I, Neumann M (2023) Prioritised PMT/vPvM substances in
+the
+REACH
+registration
+database
+|
+Umweltbundesamt.
+https://www.umweltbundesamt.de/publikationen/prioritised-pmtvpvm-substances-in-thereach. Accessed 9 Oct 2023
+
+918
+919
+920
+921
+922
+
+47.
+
+Neumann M, Schliebner I (2019) Protecting the sources of our drinking water: The criteria
+for identifying persistent, mobile and toxic (PMT) substances and very persistent and very
+mobile (vPvM) substances under EU Regulation REACH (EC) No 1907/2006.
+https://www.umweltbundesamt.de/sites/default/files/medien/1410/publikationen/2019-1129_texte_127-2019_protecting-sources-drinking-water-pmt.pdf
+
+923
+924
+925
+926
+927
+
+48.
+
+Holmberg R, Wedebye EB, Nikolov NG, Tyle H (2021) How many potential vPvM/PMT
+substances have been registered under REACH?-vPvM/PMT-screening by using the
+Danish
+(Q)
+SAR
+database.
+https://backend.orbit.dtu.dk/ws/portalfiles/portal/240040384/111514_909384_DTU_Rapp
+ort_vPvM_PMT_CB_7kor_links.pdf
+
+928
+929
+
+49.
+
+Kiefer K, Du L, Singer H, Hollender J (2021) S82 | EAWAGPMT | PMT Suspect List from
+Eawag. https://doi.org/10.5281/ZENODO.5500131
+
+930
+931
+
+50.
+
+Neuwald I, Muschket M, Zahn D, et al (2021) S84 | UFZHSFPMT | PMT Suspect List from
+UFZ and HSF. https://doi.org/10.5281/ZENODO.5535287
+
+932
+933
+
+51.
+
+Schymanski E, Wang Z, Wolf R, Arp HP (2022) S90 | ZEROPMBOX1 | ZeroPM Box 1
+Substances. https://doi.org/10.5281/ZENODO.5854251
+
+934
+935
+
+52.
+
+Schymanski E (2023) S111 | PMTPFAS | Fluorine-containing Compounds in PMT Suspect
+Lists. https://doi.org/10.5281/ZENODO.8417075
+
+ggplot2
+
+35
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+3.5.0.
+
+936
+937
+938
+939
+
+53.
+
+Mohammed Taha H, Aalizadeh R, Alygizakis N, et al (2022) The NORMAN Suspect List
+Exchange (NORMAN-SLE): facilitating European and worldwide collaboration on suspect
+screening in high resolution mass spectrometry. Environ Sci Eur 34:104.
+https://doi.org/10.1186/s12302-022-00680-6
+
+940
+941
+
+54.
+
+NORMAN Network (2024) NORMAN Suspect List Exchange. https://www.normannetwork.com/nds/SLE/. Accessed 30 Jan 2024
+
+942
+943
+
+55.
+
+Arp HPH, Hale SE (2020) S36 | UBAPMT | Potential Persistent, Mobile and Toxic (PMT)
+substances_V.0.2. https://doi.org/10.5281/ZENODO.3637611
+
+944
+945
+946
+947
+
+56.
+
+UBA (2019) REACH: Improvement of guidance and methods for the identification and
+assessment
+of
+PMT/vPvM
+substances
+|
+Umweltbundesamt.
+https://www.umweltbundesamt.de/en/publikationen/reach-improvement-of-guidancemethods-for-the. Accessed 4 Oct 2023
+
+948
+949
+
+57.
+
+Arp HPH, Hale SE (2020) S36 | UBAPMT | Potential Persistent, Mobile and Toxic (PMT)
+substances V.0.3. https://doi.org/10.5281/ZENODO.3637611
+
+950
+951
+952
+
+58.
+
+UBA (2023) Prioritised PMT/vPvM substances in the REACH registration database.
+https://www.umweltbundesamt.de/sites/default/files/medien/11850/publikationen/21_2023
+_texte_pmt_vpvm_substances_reach_v23032023.pdf
+
+953
+954
+955
+
+59.
+
+Kiefer K, Du L, Singer H, Hollender J (2021) Identification of LC-HRMS nontarget signals
+in groundwater after source related prioritization. Water Research 196:116994.
+https://doi.org/10.1016/j.watres.2021.116994
+
+956
+957
+
+60.
+
+Fischer
+S
+(2023)
+S17
+|
+KEMIMARKET
+https://doi.org/10.5281/ZENODO.2628786
+
+958
+959
+960
+961
+
+61.
+
+Neuwald I, Muschket M, Zahn D, et al (2021) Filling the knowledge gap: A suspect
+screening study for 1310 potentially persistent and mobile chemicals with SFC- and HILICHRMS
+in
+two
+German
+river
+systems.
+Water
+Research
+204:117645.
+https://doi.org/10.1016/j.watres.2021.117645
+
+962
+963
+
+62.
+
+Neuwald I, Muschket M, Zahn D, et al (2021) A suspect screening list of 1310 persistent
+and mobile (PM) candidates. https://doi.org/10.5281/zenodo.5503380
+
+964
+965
+966
+
+63.
+
+Blum A, Behl M, Birnbaum LS, et al (2019) Organophosphate Ester Flame Retardants: Are
+They a Regrettable Substitution for Polybrominated Diphenyl Ethers? Environ Sci Technol
+Lett 6:638–649. https://doi.org/10.1021/acs.estlett.9b00582
+
+967
+968
+
+64.
+
+UNEP (2023) About Montreal Protocol. https://www.unep.org/ozonaction/who-weare/about-montreal-protocol. Accessed 7 Oct 2023
+
+969
+970
+971
+972
+
+65.
+
+United Nations (1989) Montreal Protocol on Substances that Deplete the Ozone Layer (with
+annex).
+Concluded
+at
+Montreal
+on
+16
+September
+1987.
+https://treaties.un.org/doc/publication/unts/volume%201522/volume-1522-i-26369english.pdf Vol. 1522, 1-26369:
+
+|
+
+KEMI
+
+36
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Market
+
+List.
+
+973
+974
+975
+
+66.
+
+Stockholm
+Convention
+(2023)
+Overview.
+https://www.pops.int/TheConvention/Overview/tabid/3351/Default.aspx. Accessed 7 Oct
+2023
+
+976
+977
+978
+
+67.
+
+ECHA (2020) Grouping speeds up regulatory action Integrated Regulatory Strategy Annual
+Report.
+https://echa.europa.eu/documents/10162/5641810/irs_annual_report_2019_en.pdf
+
+979
+980
+981
+982
+983
+
+68.
+
+European Commission (2022) Consolidated text: Regulation (EC) No 1107/2009 of the
+European Parliament and of the Council of 21 October 2009 concerning the placing of plant
+protection products on the market and repealing Council Directives 79/117/EEC and
+91/414/EEC.
+https://eur-lex.europa.eu/legalcontent/EN/TXT/?uri=CELEX%3A02009R1107-20221121
+
+984
+985
+986
+987
+988
+
+69.
+
+European Commission (2022) Consolidated text: Regulation (EU) No 528/2012 of the
+European Parliament and of the Council of 22 May 2012 concerning the making available
+on the market and use of biocidal products (Text with EEA relevance)Text with EEA
+relevance. https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A02012R052820220415
+
+989
+990
+991
+992
+993
+
+70.
+
+European Commission (2021) Commission Regulation (EU) 2021/979 of 17 June 2021
+amending Annexes VII to XI to Regulation (EC) No 1907/2006 of the European Parliament
+and of the Council concerning the Registration, Evaluation, Authorisation and Restriction
+of Chemicals (REACH). https://eur-lex.europa.eu/eli/reg/2021/979/oj. Accessed 16 Oct
+2023
+
+994
+995
+996
+
+71.
+
+Gonzalez M, Taddonio KN, Sherman NJ (2015) The Montreal Protocol: how today’s
+successes offer a pathway to the future. J Environ Stud Sci 5:122–129.
+https://doi.org/10.1007/s13412-014-0208-6
+
+997
+998
+999
+
+72.
+
+Ravishankara AR, Daniel JS, Portmann RW (2009) Nitrous oxide (N2O): the dominant
+ozone-depleting substance emitted in the 21st century. Science 326:123–125.
+https://doi.org/DOI: 10.1126/science.1176985
+
+1000
+1001
+1002
+
+73.
+
+Umar SA, Tasduq SA (2022) Ozone Layer Depletion and Emerging Public Health Concerns
+- An Update on Epidemiological Perspective of the Ambivalent Effects of Ultraviolet
+Radiation Exposure. Front Oncol 12:866733. https://doi.org/10.3389/fonc.2022.866733
+
+1003
+1004
+1005
+1006
+
+74.
+
+EEA (2023) EU and global consumption of controlled ozone-depleting substances —
+European
+Environment
+Agency.
+In:
+European
+Environmental
+Agency.
+https://www.eea.europa.eu/data-and-maps/figures/consumption-of-controlled-ozonedepleting-5/. Accessed 7 Oct 2023
+
+1007
+1008
+1009
+
+75.
+
+Nunez
+C
+(2023)
+Ozone
+layer
+facts
+and
+information.
+https://www.nationalgeographic.com/environment/article/ozone-depletion. Accessed 9 Jan
+2024
+
+1010
+1011
+1012
+
+76.
+
+ECOLEX (2004) Regulation (EC) No. 850/2004 of the European Parliament and of the
+Council on persistent organic pollutants and amending Directive 79/117/EEC.
+https://www.ecolex.org/details/legislation/regulation-ec-no-8502004-of-the-european-
+
+37
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+1013
+1014
+
+parliament-and-of-the-council-on-persistent-organic-pollutants-and-amending-directive79117eec-lex-faoc087038/. Accessed 9 Oct 2023
+
+1015
+1016
+
+77.
+
+Wheeler AF (2017) Study on the cumulative health and environmental benefits of chemical
+legislation: final report. https://data.europa.eu/doi/102779/070159
+
+1017
+1018
+1019
+
+78.
+
+Stockholm Convention (2024) Listing of POPs in the Stockholm Convention.
+https://www.pops.int/TheConvention/ThePOPs/AllPOPs/tabid/2509/Default.aspx.
+Accessed 7 Oct 2023
+
+1020
+1021
+1022
+
+79.
+
+United
+Nations
+The
+12
+Initial
+POPs.
+https://www.pops.int/TheConvention/ThePOPs/The12InitialPOPs/tabid/296/Default.aspx,
+Accessed 2024-01-30
+
+1023
+1024
+1025
+1026
+
+80.
+
+EEA (2023) National emissions reported to the Convention on Long-range Transboundary
+Air Pollution (LRTAP Convention). In: European Environmental Agency.
+https://www.eea.europa.eu/en/datahub/datahubitem-view/5be6cebc-ed2b-4496-be5993736fc4ad78?activeAccordion=1086857. Accessed 7 Oct 2023
+
+1027
+1028
+
+81.
+
+Aurich D (2024) Environmental Cheminformatics / chemicalstripes
+https://gitlab.lcsb.uni.lu/eci/chemicalstripes, Accessed 31 Jan 2024
+
+1029
+1030
+1031
+
+82.
+
+Maertens A, Golden E, Hartung T (2021) Avoiding Regrettable Substitutions: Green
+Toxicology for Sustainable Chemistry. ACS Sustainable Chem Eng 9:7749–7758.
+https://doi.org/10.1021/acssuschemeng.0c09435
+
+1032
+1033
+1034
+
+83.
+
+Young AS, Allen JG, Kim U-J, et al (2018) Phthalate and Organophosphate Plasticizers in
+Nail Polish: Evaluation of Labels and Ingredients. Environ Sci Technol 52:12841–12850.
+https://doi.org/10.1021/acs.est.8b04495
+
+1035
+1036
+
+84.
+
+Tyl RW (2014) Abbreviated assessment of bisphenol A toxicology literature. Seminars in
+Fetal and Neonatal Medicine 19:195–202. https://doi.org/10.1016/j.siny.2013.11.010
+
+1037
+1038
+
+85.
+
+ECHA
+(2021)
+Assessment
+of
+regulatory
+needs.
+https://echa.europa.eu/documents/10162/1bd5525c-432c-495d-9dab-d7806bf34312
+
+1039
+1040
+1041
+
+86.
+
+McKenzie R, Bernhard G, Liley B, et al (2019) Success of Montreal Protocol Demonstrated
+by Comparing High-Quality UV Measurements with “World Avoided” Calculations from Two
+Chemistry-Climate Models. Sci Rep 9:12332. https://doi.org/10.1038/s41598-019-48625-z
+
+1042
+1043
+1044
+1045
+1046
+1047
+1048
+
+87.
+
+UNEP-Ozone secretariat (2023) Consumption of controlled substances-Data in tables |
+Ozone
+Secretariat.
+https://ozone.unep.org/countries/datatable?report_type=0&output_type=odp-CO2etonnes&party_grouping=individual&eu_member%5Bis_eu_member%5D=is_eu_member
+&period_start=1986&period_end=2022&ignore_zero=1&baseline=1&group_by=group&op
+=GENERATE+REPORT&form_id=ozone_country_data_form__report_table_form.
+Accessed 15 Dec 2023
+
+1049
+1050
+
+88.
+
+Tapscott RE, Moore TA, Mather JD, Vitali JA (1998) Halon replacement research–a
+historical review of technical progress and regulatory decision points. Halons Options
+
+38
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+·
+
+GitLab.
+
+1051
+1052
+
+Technical
+Working
+Conference,
+Albuquerque,
+https://www.nist.gov/system/files/documents/el/fire_research/R0000266.pdf
+
+NM,
+
+1053
+1054
+1055
+
+89.
+
+Sukornick B (1989) Potentially acceptable substitutes for the chlorofluorocarbons:
+properties and performance features of HFC-134a, HCFC-123, and HCFC-141b. Int J
+Thermophys 10:553–561. https://doi.org/10.1007/BF00507978
+
+1056
+1057
+1058
+1059
+
+90.
+
+Benhadid-Dib S, Benzaoui A (2012) Refrigerants and their Environmental Impact
+Substitution of Hydro Chlorofluorocarbon HCFC and HFC Hydro Fluorocarbon. Search for
+an
+Adequate
+Refrigerant.
+Energy
+Procedia
+18:807–816.
+https://doi.org/10.1016/j.egypro.2012.05.096
+
+1060
+1061
+1062
+
+91.
+
+Heath EA (2017) Amendment to the Montreal Protocol on Substances that Deplete the
+Ozone
+Layer
+(Kigali
+Amendment).
+Int
+leg
+mater
+56:193–205.
+https://doi.org/10.1017/ilm.2016.2
+
+1063
+1064
+1065
+1066
+
+92.
+
+Luecken DJ, Waterland RL, Papasavva S, et al (2010) Ozone and TFA Impacts in North
+America from Degradation of 2,3,3,3-Tetrafluoropropene (HFO-1234yf), A Potential
+Greenhouse
+Gas
+Replacement.
+Environ
+Sci
+Technol
+44:343–348.
+https://doi.org/10.1021/es902481f
+
+1067
+1068
+1069
+
+93.
+
+Rivela CB, Tovar CM, Teruel MA, et al (2019) CFCs replacements: Reactivity and
+atmospheric lifetimes of a series of Hydrofluoroolefins towards OH radicals and Cl atoms.
+Chemical Physics Letters 714:190–196. https://doi.org/10.1016/j.cplett.2018.10.078
+
+1070
+1071
+1072
+
+94.
+
+Boutonnet JC, Bingham P, Calamari D, et al (1999) Environmental Risk Assessment of
+Trifluoroacetic Acid. Human and Ecological Risk Assessment: An International Journal
+5:59–124. https://doi.org/10.1080/10807039991289644
+
+1073
+1074
+1075
+
+95.
+
+Solomon KR, Carr JA, Du Preez LH, et al (2008) Effects of atrazine on fish, amphibians,
+and aquatic reptiles: a critical review. Critical reviews in toxicology 38:721–772.
+https://doi.org/10.1080/10408440802116496
+
+1076
+1077
+1078
+
+96.
+
+Dekant W, Dekant R (2023) Mammalian toxicity of trifluoroacetate and assessment of
+human health risks due to environmental exposures. Arch Toxicol 97:1069–1077.
+https://doi.org/10.1007/s00204-023-03454-y
+
+1079
+1080
+1081
+1082
+
+97.
+
+Morgan K, Bonanno F (2022) Sustainability is no longer a “nice to have” goal for the data
+center
+industry
+|
+S&P
+Global
+Market
+Intelligence.
+https://www.spglobal.com/marketintelligence/en/news-insights/research/sustainability-isno-longer-a-nice-to-have-goal-for-the-data-center-industry. Accessed 16 Oct 2023
+
+1083
+1084
+1085
+
+98.
+
+Wang Z, DeWitt JC, Higgins CP, Cousins IT (2017) A Never-Ending Story of Per- and
+Polyfluoroalkyl Substances (PFASs)? Environ Sci Technol 51:2508–2518.
+https://doi.org/10.1021/acs.est.6b04806
+
+1086
+1087
+1088
+
+99.
+
+Knutsen H, Mæhlum T, Haarstad K, et al (2019) Leachate emissions of short- and longchain per- and polyfluoralkyl substances (PFASs) from various Norwegian landfills. Environ
+Sci: Processes Impacts 21:1970–1979. https://doi.org/10.1039/C9EM00170K
+
+39
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+1089
+1090
+1091
+
+100. Helmer RW, Reeves DM, Cassidy DP (2022) Per- and Polyfluorinated Alkyl Substances
+(PFAS) cycling within Michigan: Contaminated sites, landfills and wastewater treatment
+plants. Water Research 210:117983. https://doi.org/10.1016/j.watres.2021.117983
+
+1092
+1093
+1094
+
+101. ECHA (2013) Grouping of substances and read-across approach Part 1: Introductory note.
+https://www.echa.europa.eu/documents/10162/17221/read_across_introductory_note_en.
+pdf/1343b1b8-e5d1-4e72-b9b3-8a99e940ab29
+
+1095
+1096
+1097
+1098
+
+102. Lamon L, Asturiol D, Richarz A, et al (2018) Grouping of nanomaterials to read-across
+hazard endpoints: from data collection to assessment of the grouping hypothesis by
+application
+of
+chemoinformatic
+techniques.
+Part
+Fibre
+Toxicol
+15:37.
+https://doi.org/10.1186/s12989-018-0273-1
+
+1099
+1100
+1101
+
+103. Schultz TW, Amcoff P, Berggren E, et al (2015) A strategy for structuring and reporting a
+read-across prediction of toxicity. Regulatory Toxicology and Pharmacology 72:586–601.
+https://doi.org/10.1016/j.yrtph.2015.05.016
+
+1102
+1103
+
+104. ECHA (2017) Read-across assessment
+https://doi.org/10.2823/619212
+
+1104
+1105
+
+105. OECD (2017) Guidance on Grouping
+https://doi.org/10.1787/9789264274679-en
+
+1106
+1107
+1108
+
+106. Patlewicz G, Helman G, Pradeep P, Shah I (2017) Navigating through the minefield of readacross tools: A review of in silico tools for grouping. Computational Toxicology 3:1–18.
+https://doi.org/10.1016/j.comtox.2017.05.003
+
+1109
+1110
+1111
+1112
+
+107. Tate T, Wambaugh J, Patlewicz G, Shah I (2021) Repeat-dose toxicity prediction with
+Generalized Read-Across (GenRA) using targeted transcriptomic data: A proof-of-concept
+case
+study.
+Computational
+Toxicology
+19:100171.
+https://doi.org/10.1016/j.comtox.2021.100171
+
+1113
+1114
+1115
+
+108. ECHA
+(2023)
+Substance
+group
+and
+analogy
+concept
+ECHA.
+https://echa.europa.eu/de/support/registration/how-to-avoid-unnecessary-testing-onanimals/grouping-of-substances-and-read-across. Accessed 20 Dec 2023
+
+1116
+1117
+
+109. Luo Y-R (2007) Comprehensive Handbook of Chemical Bond
+https://www.taylorfrancis.com/books/9781420007282 9780429128684:
+
+1118
+1119
+1120
+
+110. Hafner J, Fenner K, Scheidegger A (2023) Systematic Handling of Environmental Fate
+Data for Model Development─Illustrated for the Case of Biodegradation Half-Life Data.
+Environ Sci Technol Lett 10:859–864. https://doi.org/10.1021/acs.estlett.3c00526
+
+1121
+1122
+1123
+
+111. Sigmund G, Arp HPH, Aumeier BM, et al (2022) Sorption and Mobility of Charged Organic
+Compounds: How to Confront and Overcome Limitations in Their Assessment. Environ Sci
+Technol 56:4702–4710. https://doi.org/10.1021/acs.est.2c00570
+
+1124
+1125
+1126
+
+112. Zahn D, Neuwald IJ, Knepper TP (2020) Analysis of mobile chemicals in the aquatic
+environment—current capabilities, limitations and future perspectives. Anal Bioanal Chem
+412:4763–4784. https://doi.org/10.1007/s00216-020-02520-z
+
+framework
+of
+
+(RAAF).
+
+ECHA‐17‐R‐01‐EN.
+
+Chemicals,
+
+40
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+Second
+
+Edition.
+
+Energies.
+
+1127
+1128
+
+113. Barratt MD (2000) Prediction of toxicity from chemical structure. Cell Biology and
+Toxicology 16:1–13. https://doi.org/10.1023/A:1007676602908
+
+1129
+1130
+
+114. Struyf J (2009) Relating Functional Groups to the Periodic Table. J Chem Educ 86:190.
+https://doi.org/10.1021/ed086p190
+
+1131
+1132
+1133
+
+115. Singh PK, Negi A, Gupta PK, et al (2016) Toxicophore exploration as a screening
+technology for drug design and discovery: techniques, scope and limitations. Arch Toxicol
+90:1785–1802. https://doi.org/10.1007/s00204-015-1587-5
+
+1134
+1135
+1136
+
+116. Mansouri K, Abdelaziz A, Rybacka A, et al (2016) CERAPP: Collaborative Estrogen
+Receptor Activity Prediction Project. Environ Health Perspect 124:1023–1033.
+https://doi.org/10.1289/ehp.1510267
+
+1137
+1138
+1139
+
+117. Liu J, Lei X, Zhang Y, Pan Y (2023) The prediction of molecular toxicity based on BiGRU
+and
+GraphSAGE.
+Computers
+in
+Biology
+and
+Medicine
+153:106524.
+https://doi.org/10.1016/j.compbiomed.2022.106524
+
+1140
+1141
+1142
+1143
+
+118. Freeling F, Scheurer M, Koschorreck J, et al (2022) Levels and Temporal Trends of
+Trifluoroacetate (TFA) in Archived Plants: Evidence for Increasing Emissions of Gaseous
+TFA Precursors over the Last Decades. Environ Sci Technol Lett 9:400–405.
+https://doi.org/10.1021/acs.estlett.2c00164
+
+1144
+1145
+
+119. Li Q (2020) Application of Fragment-Based Drug Discovery to Versatile Targets. Front Mol
+Biosci 7:180. https://doi.org/10.3389/fmolb.2020.00180
+
+1146
+1147
+1148
+
+120. US EPA (2012) Estimation programs interface suiteTM for Microsoft® windows, v 4.11.
+United States Environmental Protection Agency, Washington, DC, USA.
+https://www.epa.gov/tsca-screening-tools/epi-suitetm-estimation-program-interface
+
+1149
+1150
+1151
+
+121. Mansouri K, Kleinstreuer N, Abdelaziz AM, et al (2020) CoMPARA: Collaborative Modeling
+Project for Androgen Receptor Activity. Environ Health Perspect 128:027002.
+https://doi.org/10.1289/EHP5580
+
+1152
+1153
+1154
+1155
+
+122. Zheng Z, Arp HPH, Peters G, Andersson PL (2021) Combining In Silico Tools with
+Multicriteria Analysis for Alternatives Assessment of Hazardous Chemicals: Accounting for
+the Transformation Products of decaBDE and Its Alternatives. Environ Sci Technol
+55:1088–1098. https://doi.org/10.1021/acs.est.0c02593
+
+1156
+1157
+1158
+
+123. Schymanski EL, Bolton EE (2022) FAIRifying the exposome journal: Templates for
+chemical
+structures
+and
+transformations.
+Exposome
+2:osab006.
+https://doi.org/10.1093/exposome/osab006
+
+1159
+1160
+
+124. Schymanski E, Bolton E, Cheng T, et al (2023) Transformations in PubChem - Full Dataset.
+https://doi.org/105281/zenodo8117741
+
+1161
+1162
+1163
+
+125. Schymanski EL, Zhang J, Thiessen PA, et al (2023) Per- and Polyfluoroalkyl Substances
+(PFAS) in PubChem: 7 Million and Growing. Environ Sci Technol 57, 44, 16918–
+16928:acs.est.3c04855. https://doi.org/10.1021/acs.est.3c04855
+
+41
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+1164
+1165
+1166
+
+126. Shi Z-Q, Liu Y-S, Xiong Q, et al (2019) Occurrence, toxicity and transformation of six typical
+benzotriazoles in the environment: A review. Science of The Total Environment 661:407–
+421. https://doi.org/10.1016/j.scitotenv.2019.01.138
+
+1167
+1168
+1169
+
+127. Cheng T, Zhao Y, Li X, et al (2007) Computation of Octanol−Water Partition Coefficients
+by Guiding an Additive Model with Knowledge. J Chem Inf Model 47:2140–2148.
+https://doi.org/10.1021/ci700257y
+
+1170
+1171
+
+128. Wang R, Fu Y, Lai L (1997) A New Atom-Additive Method for Calculating Partition
+Coefficients. J Chem Inf Comput Sci 37:615–621. https://doi.org/10.1021/ci960169p
+
+1172
+1173
+1174
+
+129. Meylan WM, Howard PH (1995) Atom/Fragment Contribution Method for Estimating
+Octanol–Water Partition Coefficients. Journal of Pharmaceutical Sciences 84:83–92.
+https://doi.org/10.1002/jps.2600840120
+
+1175
+1176
+1177
+1178
+
+130. Card ML, Gomez-Alvarez V, Lee W-H, et al (2017) History of EPI SuiteTM and future
+perspectives on chemical property estimation in US Toxic Substances Control Act new
+chemical risk assessments. Environmental Science: Processes & Impacts 19:203–212.
+https://doi.org/10.1039/C7EM00064B
+
+1179
+1180
+
+131. Cassano A, Manganaro A, Martin T, et al (2010) CAESAR models for developmental
+toxicity. Chemistry Central Journal 4:S4. https://doi.org/10.1186/1752-153X-4-S1-S4
+
+1181
+1182
+1183
+
+132. Honma M (2020) An assessment of mutagenicity of chemical substances by (quantitative)
+structure–activity relationship. Genes and Environ 42:23. https://doi.org/10.1186/s41021020-00163-1
+
+1184
+1185
+1186
+
+133. Schymanski EL, Kondić T, Neumann S, et al (2021) Empowering large chemical knowledge
+bases for exposomics: PubChemLite meets MetFrag. J Cheminform 13:19.
+https://doi.org/10.1186/s13321-021-00489-0
+
+1187
+1188
+1189
+
+134. Wang Y, Ning X, Li G, Sang N (2022) New insights into potential estrogen agonistic activity
+of triazole fungicides and coupled metabolic disturbance. Journal of Hazardous Materials
+424:127479. https://doi.org/10.1016/j.jhazmat.2021.127479
+
+1190
+1191
+1192
+
+135. Goss K-U, Arp HPH, Bronner G, Niederer C (2009) Nonadditive effects in the partitioning
+behavior of various aliphatic and aromatic molecules. Environmental Toxicology and
+Chemistry 28:52–60. https://doi.org/10.1897/08-189.1
+
+1193
+1194
+1195
+
+136. Villeneuve DL, Coady K, Escher BI, et al (2019) High-throughput screening and
+environmental risk assessment: State of the science and emerging applications.
+Environmental Toxicology and Chemistry 38:12–26. https://doi.org/10.1002/etc.4315
+
+1196
+1197
+1198
+
+137. Hollender J, Schymanski EL, Ahrens L, et al (2023) NORMAN guidance on suspect and
+non-target screening in environmental monitoring. Environmental Sciences Europe 35:75.
+https://doi.org/10.1186/s12302-023-00779-4
+
+1199
+1200
+1201
+
+138. Cramer GM, Ford RA, Hall RL (1976) Estimation of toxic hazard—A decision tree approach.
+Food and Cosmetics Toxicology 16:255–276. https://doi.org/10.1016/S00156264(76)80522-6
+
+42
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+1202
+1203
+1204
+
+139. EFSA Scientific Committee, More SJ, Bampidis V, et al (2019) Guidance on the use of the
+Threshold of Toxicological Concern approach in food safety assessment. EFS2 17:.
+https://doi.org/10.2903/j.efsa.2019.5708
+
+1205
+1206
+1207
+
+140. Wohlleben W, Mehling A, Landsiedel R (2023) Lessons Learned from the Grouping of
+Chemicals to Assess Risks to Human Health. Angew Chem Int Ed 62:e202210651.
+https://doi.org/10.1002/anie.202210651
+
+1208
+1209
+1210
+
+141. Zhu H, Zhang J, Kim MT, et al (2014) Big Data in Chemical Toxicity Research: The Use of
+High-Throughput Screening Assays To Identify Potential Toxicants. Chem Res Toxicol
+27:1643–1651. https://doi.org/10.1021/tx500145h
+
+1211
+1212
+
+142. Enoch SJ, Roberts DW (2011) Approaches for Grouping Chemicals into Categories.
+https://doi.org/10.1039/9781849731744-00030
+
+1213
+1214
+1215
+
+143. Ankley GT, Bennett RS, Erickson RJ, et al (2010) Adverse outcome pathways: A
+conceptual framework to support ecotoxicology research and risk assessment. Enviro
+Toxic and Chemistry 29:730–741. https://doi.org/10.1002/etc.34
+
+1216
+1217
+
+144. Vinken M (2013) The adverse outcome pathway concept: A pragmatic tool in toxicology.
+Toxicology 312:158–165. https://doi.org/10.1016/j.tox.2013.08.011
+
+1218
+1219
+1220
+1221
+
+145. Rodríguez-Carrillo A, Rosenmai AK, Mustieles V, et al (2021) Assessment of chemical
+mixtures using biomarkers of combined biological activity: A screening study in human
+placentas.
+Reproductive
+Toxicology
+100:143–154.
+https://doi.org/10.1016/j.reprotox.2021.01.002
+
+1222
+1223
+1224
+
+146. Zare Jeddi M, Hopf NB, Viegas S, et al (2021) Towards a systematic use of effect
+biomarkers in population and occupational biomonitoring. Environment International
+146:106257. https://doi.org/10.1016/j.envint.2020.106257
+
+1225
+1226
+
+147. Hansson SO (2013) Chapter 9 - ALARA: What is Reasonably Achievable? In: Oughton D,
+Hansson SO (eds) Radioactivity in the Environment. Elsevier, pp 143–155
+
+1227
+
+43
+https://doi.org/10.26434/chemrxiv-2024-tn5t5-v3 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+

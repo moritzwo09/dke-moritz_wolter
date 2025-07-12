@@ -1,0 +1,1220 @@
+Predicting Liquid-Liquid Phase Separation of
+Submicron Proxies for Atmospheric
+Secondary Aerosol
+Qishen Huang1,2, Kiran R. Pitta2, Andreas Zuend3, Miriam Arak Freedman*, 2,4
+1
+
+Institute of Chemical Physics, School of Chemistry and Chemical Engineering,
+
+Beijing Institute of Technology, Beijing, 100081, China
+2
+
+Department of Chemistry, The Pennsylvania State University, University Park,
+
+Pennsylvania 16802, United States
+3
+
+Department of Atmospheric and Oceanic Sciences, McGill University, Montreal,
+
+Quebec, H3A 0B9, Canada
+4
+
+Department of Meteorology and Atmospheric Science, The Pennsylvania State
+
+University, University Park, Pennsylvania 16802, United States
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Abstract
+Liquid–liquid phase separation (LLPS) of atmospheric aerosols can significantly
+impact climate, air quality, and human health. However, their complex composition,
+small size, and history-dependent properties result in great uncertainty in the modeling
+of aerosol phase state and atmospheric processes. Herein, using cryogenic transmission
+electron microscopy (cryo-TEM), we examined model submicron aerosols composed
+of organic compounds and ammonium sulfate, and established a parameterization for
+the separation relative humidity (SRH) that accounts for chemical composition, particle
+size, and equilibration time. We evaluated different variables that describe chemical
+composition: O/C ratio, partition coefficient, solubility, molar mass, and polarizability.
+The O/C ratio fits the SRH of micrometer droplets best, and by using a scaling factor
+to translate the micrometer SRH parameterization to submicron aerosols, we
+incorporate the effects of size and equilibration time. The measured scaling factor for
+the submicron mean SRH (30nm – 1𝜇m, 20 min equilibration times) is 0.80, the factor
+becomes 1 with equilibration time over 1 hour, and is equal to 0, meaning that SRH is
+absent, when the aerosol dry diameter is smaller than 30 nm. Our parameterization will
+aid in universal SRH modeling, potentially leading to more accurate predictions of
+aerosol mass, optical properties, hygroscopicity, and heterogeneous chemistry.
+Keywords: Liquid-liquid phase separation (LLPS), atmospheric secondary aerosols,
+submicron aerosol, separation relative humidity (SRH), O/C ratio.
+Synopsis ： This study provides a practical parameterization for liquid-liquid phase
+separation of atmospheric secondary aerosol particles, which accounts for aerosol
+chemical composition, size, and time evolution.
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Introduction
+Aerosol particles are ubiquitous in the atmosphere. They have significant effects
+on the Earth’s climate via direct and indirect interactions, determine air quality via
+multiphase physics and chemistry, and impact public health via human exposure.1–5
+Atmospheric secondary aerosol particles, mainly composed of organic and inorganic
+compounds, is one of the most abundant species of the total aerosol loading. Field
+studies across the world show that organic compounds contribute to a large mass
+fraction of secondary aerosol particles (20-90 wt%).6–8 The formation and evolution
+of atmospheric secondary aerosol particles involves various chemical and physical
+processes, and aerosol phase state is one of the key determining factors that dictates
+the role of secondary aerosol particles in the atmosphere.9 Following changes in
+ambient relative humidity (RH), the aerosol water activity shifts, resulting in phase
+transition processes such as liquid–liquid phase separation (LLPS), homogeneous
+mixing mediated by water, efflorescence, and deliquescence.3 LLPS of internally
+mixed organic/inorganic aerosol particles often occurs at relatively high RH, leading
+to separation into an organic-rich phase and an inorganic-rich phase, both with
+correspondingly high aerosol water activity (as imposed by the modified Raoult’s law
+and, for submicron-sized particles, the Köhler equation, both of which take nonideality into account).10 Additionally, once LLPS occurs in organic—inorganic
+secondary aerosols, it often persists at least down to the efflorescence RH, the low RH
+levels where inorganic salts like ammonium sulfate crystallize. The occurrence of
+LLPS significantly changes aerosol mixing state and morphology, which can impact
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+gas–particle partitioning, heterogeneous chemistry, cloud condensation nuclei
+activity, and ice nucleation.11
+Due to its complex composition, atmospheric secondary aerosol contributes a
+great amount of uncertainty to our understanding of Earth’s climate and air quality.
+To the best of our knowledge, no measurement technique can thoroughly resolve the
+molecular composition of secondary aerosol particles; therefore, accurate prediction
+of LLPS based on representative variables is vital for understanding atmospheric
+processes and for improving atmospheric modeling. Much effort has been devoted to
+the prediction of the separation relative humidity (SRH) of LLPS, which refers to the
+RH at the occurrence of LLPS when dehydrating an aerosol from high RH. Using the
+oxygen-to-carbon ratio (O/C ratio) as the key variable, parameterizations have been
+established to predict the SRH.12–14 The parameterizations were estimated by fitting to
+experimentally measured SRH values for secondary aerosol surrogates containing the
+sole inorganic compound of ammonium sulfate. Phase separation between organic
+species of different aqueous solubilities (e.g. primary and secondary organic aerosol)
+has also been reported recently, and the separation relative humidity between primary
+organic aerosol and secondary organic aerosol was also explained based on the O/C
+ratio.15–17 Additionally, thermodynamic models can be used to predict the values of
+SRH as a function of aerosol composition. The Aerosol Inorganic–Organic Mixtures
+Functional groups Activity Coefficient model for nonideal mixing (AIOMFAC-LLE)
+can predict the water activity change and phase diagram of LLPS when molecular
+structure information about the system components is available.18–22 However,
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+limitations exist for current parametrizations. First, experimentally established
+parameterizations for LLPS consider only the O/C ratio, and therefore overlook
+distinctions between different oxygen-containing functional groups. Second, the use
+of the thermodynamic model requires the exact composition of the system, which is
+not accessible from field-collected samples without resorting to assumptions.23 Third,
+the effects of aerosol physicochemical properties, such as size, equilibration time, and
+aerosol pH, are not incorporated into the simple parameterization-based models.24–29
+In our recent work, we have shown a size effect on SRH using cryogenic transmission
+electron microscopy (cryo-TEM): the SRH in submicron SOA particles is suppressed
+or inhibited depending on their size.28,30–32 We also found that the suppression of SRH
+in submicron aerosol particles is dependent on the equilibration time.31,33
+Given these limitations, studies that can develop parameterizations for LLPS and
+SRH of submicron secondary aerosol particles will improve our understanding of the
+aerosol phase state by minimizing the uncertainty in the phase state prediction of
+atmospheric secondary aerosol. A proper parameterization for aerosol SRH should
+possess the following characteristics: i) accurately predict the presence of LLPS as
+well as the value of SRH with variables that can effectively represent the chemical
+composition of the organic component(s); ii) effectively reflect the effect of aerosol
+size and equilibration time; iii) have a simple form that can be easily incorporated into
+a large-scale atmospheric model. Considering the criteria, O/C ratio, molar mass,
+octanol–water partition coefficient (LogP, LogD, explained below), water solubility
+(LogS), and the polarizability of the organic component are potential variables that
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+depict different physicochemical properties of molecules. The O/C ratio is widely
+applied in atmospheric chemistry to roughly represent the degree of oxidation, the
+hygroscopicity, and as an influential factor on phase transition processes including
+LLPS.34–37 Along with the O/C ratio, the molar mass of organic components has been
+investigated in a reduced-complexity thermodynamic model for organic-water binary
+systems.38 LogP is defined as the logarithmically transformed partition coefficient
+between octanol and water (i.e., log10(P); the same notation is used below for LogD
+and LogS), assuming the species of interest is neutral in charge. LogD is the octanol–
+water partition coefficient at a specific pH value. The LogS value represents the water
+solubility of the organic species. All LogP, LogD, and LogS values are estimated at
+room temperature (298 K). The polarizability of a molecule denotes the tendency of
+the molecule to develop an induced dipole moment subjected to an electric field.
+Polarizability can be particularly important when considering the interaction between
+neutral organic molecules and electrolytes.
+In this study, we measured the SRH of various organic/inorganic mixtures for
+both micrometer droplets (1 – 103 µm in diameter) and submicron aerosol particles
+(10 – 103 nm in diameter). We established parameterizations for the presence of LLPS
+and the value of SRH for submicron organic/inorganic particles using two methods: i)
+numerical fits, including polynomial and sigmoidal fits, using a set of elected
+variables (O/C ratio, LogP and LogD, LogS, polarizability) and the measured SRH, ii)
+a scaling factor to predict the SRH for submicron aerosol particles using an
+established parameterization for the SRH of micrometer droplets, i.e. to capture the
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+influence of particle size in this regime. Regarding (i), we investigated these different
+parameterization variables and compared the results to a parameterization based only
+on the O/C ratio. Regarding (ii), we calculated scaling factors that effectively connect
+the SRH for micrometer droplets to the SRH for submicron aerosol particles with
+consideration of the size effect and equilibration time. Our results suggest that a
+scaling factor that accounts for the size and time effect on SRH of submicron aerosol
+particles combined with the parameterization as a function of chemical composition
+for micrometer droplets can result in an applicable prediction for LLPS of
+atmospheric secondary aerosol particles.
+Materials and Methods
+LLPS of micrometer droplets. For our study, we selected organic components with
+O/C ratios ranging from 0.33 to 0.67. The organic compounds used were 2methylglutaric acid (2MGA, O/C = 0.67), 2,2-dimethylsuccinic acid (DMSA, O/C =
+0.67), diethyl malonic acid (DEMA, O/C = 0.57), 3,3-dimethylglutaric acid (DMGA,
+O/C = 0.57), 2,5-dihydroxybenzoic acid (DHBA, O/C = 0.57), DL-4-hydroxy-3methoxymandelic acid (HMMA, O/C = 0.56), PEG-400 (O/C = 0.56), 1,2,6-hexanetriol
+(O/C = 0.5) and 2,5-hexanediol (O/C = 0.33) (Table 1). Each organic component was
+mixed with ammonium sulfate (AS). The concentration of the solutions was 5 wt. %,
+containing organic and inorganic components in a 2:1 mass ratio, respectively, in highperformance liquid chromatography (HPLC) grade water. The mass ratio was chosen
+based on the typical mass fractions of organic and inorganic compounds for
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+atmospheric aerosol particles. In addition, the phase diagrams for SRH are usually flat
+(Figure S2) for a wide range of organic mass fractions, thus the 2:1 mass ratio is
+representative for the ternary mixture and a precise solute mass ratio is not that critical
+for the purpose of SRH predictions. Aerosol particles were generated by spraying the
+solution of interest onto hydrophobic glass slides. In the discussion, we will use the
+name or abbreviations of the organic compounds (Table 1) to refer to the aerosol
+composition, while all systems used are mixtures of an organic compound and AS.
+The phase transitions of the aerosol particles were studied using a Nikon Eclipse
+Ti2 microscope, with a 20× objective. The size of the particles ranges from 20 µm –
+200 µm in diameter. The hydrophobic slides were kept in a home-built environmental
+chamber. The relative humidity (RH) was controlled by mixing wet and dry nitrogen
+gas, and measured using a Vaisala HMP60 probe. Initially, the particles were dried at a
+rate of ~10% RH/second, until complete efflorescence was observed (<10% RH). Next,
+RH was increased at a uniform rate of 1% RH/min until deliquescence occurred. Once
+all the particles deliquesced, the particles were equilibrated for 20 minutes. After
+equilibration, RH was decreased at a uniform rate of 1% RH/min. Upon encountering
+a phase transition (LLPS and efflorescence) during the RH reduction, the rate of
+decrease of RH was reduced to approximately 0.5% RH/min. Images were collected at
+5 min intervals. Reducing the rate at which the RH is changed allows us to observe the
+phase transitions of the aerosol particles. However, changing the dehumidification rate
+does not affect the SRH value of the systems studied.
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Around 30 particles were characterized for every phase transition and the
+separation RH (SRH), efflorescence RH (ERH) and deliquescence RH (DRH) were
+determined for every particle (summarized in Table S1). For each system, the average
+SRH, ERH and DRH were determined based on all corresponding imaged particles.
+Table 1. The separation relative humidity (SRH) measurement results achieved in this
+study. Aerosols are composed of the listed organic species and ammonium sulfate with
+an organic-to-inorganic dry mass ratio of 2:1.
+
+1
+2
+
+Submicron Submicron Micrometer Micrometer
+SRH range mean SRH SRH (Exp.) SRH (Ref.)
+
+Compound
+
+O/C
+
+2-Methylglutaric acid
+(2MGA)
+
+0.67
+
+48-65%
+
+59±4%
+
+78.4±0.2%
+
+75.3±2.8%1
+
+2,2-Dimethylsuccinic acid
+(DMSA)
+
+0.67
+
+55-72%
+
+66±6%
+
+Not
+observed
+
+Not
+observed1
+
+Diethyl malonic acid
+(DEMA)
+
+0.57
+
+73-81%
+
+77±4%
+
+89.7±0.8%
+
+89.2±3.0%1
+
+3,3-Dimethylglutaric acid
+(DMGA)
+
+0.57
+
+74-83%
+
+78±4%
+
+89.2±2.1%
+
+89.1±3.4%1
+
+2,5-Dihydroxybenzoic
+acid (DHBA)
+
+0.57
+
+Not
+available
+
+Not
+available
+
+Not
+observed
+
+Not
+observed1
+
+DL-4-Hydroxy-3methoxymandelic acid
+(HMMA)
+
+0.56
+
+48-74%
+
+61±9%
+
+73.1±1.0%
+
+72.6±2.6%1
+
+PEG-400
+
+0.56
+
+58-78%
+
+70±7%
+
+89.6±0.6%
+
+88.0±1.0%2
+
+1,2,6-Hexanetriol
+
+0.5
+
+50-71%
+
+58±6%
+
+74.03±0.1%
+
+76.7±2.5%1
+
+2,5-Hexanediol
+
+0.33
+
+52-78%
+
+64±6%
+
+87.7±1.5%
+
+88.8±3.7%1
+
+You et al., Atmos. Chem. Phys. 2013, 13 (23), 11723–11734.
+Song et al., Geophys. Res. Lett. 2012, 39 (19), 1–5.
+
+LLPS of submicron particles at different RH. The flash freeze technique coupled
+with transmission electron microscopy (TEM) was used to study the SRH of submicron
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+aerosol particles.31,39 An aqueous solution of the organic and inorganic components was
+prepared in a 2:1 mass ratio at 0.05 wt.%. The composition of the aerosol particles used
+for the study were the same as for the optical microscopy experiments described above.
+Aerosol particles were generated using an atomizer (TSI 3076, TSI, Inc) and collected
+in a Tedlar bag (RH > 90%). The desired RH was obtained by injecting dry N2 gas into
+the Tedlar bag. The particle number concentrations were measured via a condensation
+particle counter (CPC, TSI model 3752). The relative humidity was recorded using a
+combined RH and temperature probe (Vaisala HMP 110, ±1.5% RH). We set the RH
+using a binary search-like approach: first identifying the onset SRH and the final SRH,
+then setting intermediate RH values to determine the mean SRH. The mean SRH,
+represented by the average value and standard deviation, is calculated as the average
+RH of all phase-separated particles between the onset and final SRH. After obtaining
+the targeted RH, the particles were passed through a pre-cooled flow tube that is
+approximately 220K inside, maintained by chilled nitrogen gas.39 The particles were
+vitrified at a high cooling rate (> 3×109 K/s) and collected on copper mesh grids cooled
+using dry ice.31,39 These grids are carefully stored in liquid nitrogen. Cryo holders were
+precooled using liquid nitrogen in a cryo-station and the grid was transferred carefully
+into the precooled holders. Particles were imaged using a Tecnai LaB6 and FEI Talos
+Arctica G2 TEMs. A minimum of four experiments with different target RH levels were
+conducted for each solution. At each RH, 100-200 images of different particles were
+imaged and analyzed using Fiji software.
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Parameterization of aerosol SRH. The estimation of the potential parameterization
+variables, LogP, LogD (at pH 7.4), and LogS, of the organic compounds were
+evaluated using the absorption, distribution, metabolism, excretion, and toxicity
+(ADMET) model: ADMETLab 2.0. The model uses the multi-task graph attention
+framework with the inclusion of 10370 molecules.40 The input to the model is the
+simplified molecular-input line-entry system (SMILES) string characterizing the
+molecular structure of each organic species. The estimated polarizability was
+collected from the ChemSpider database (https://www.chemspider.com/). The
+estimated LogP, LogD, LogS, and polarizability values are listed in Table S2.
+AIOMFAC-LLE modeling. The AIOMFAC-LLE model was applied to estimate the
+phase diagram and SRH for the systems of ammonium sulfate and the organic species
+in Table 1.18–21 We calculated the phase diagrams of all organic/AS systems involved
+in this study for a temperature of 298 K to evaluate the effect of functional groups and
+their interactions with the inorganic ions and water on the phase diagram predicted from
+this thermodynamic model (Figure S2).
+Results and Discussion
+Parameterization of SRH for Micrometer Organic/AS Particles. We conducted
+optical microscopy measurements to characterize the SRH of micrometer aerosol
+particles. The measured SRH values agree with values reported in other published
+work, indicating the consistency of the SRH values across different studies for
+micrometer droplets (Table 1). Such consistency validates the accuracy of our
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+measurement protocol. Previous studies have provided parameterizations of SRH for
+micrometer SOA proxies. Based on the experimental data for the SRH of organic/AS
+particles, two parametrizations were reported:
+i)
+
+Bertram et al.:12
+
+SRH(%) = ,
+ii)
+
+35.50 + 339.9 × (O/C) − 471.8 × (O/C)! , 0.2 < O/C < 0.7
+(Eqn. 1)
+0
+, 0.7 < O/C < 1.4
+
+Song et al.:13
+"#!.#$
+
+SRH(%) = >
+
+"#!.#$ $#.""×"#%.&'×(*/,)
+
+0
+
+× 100%, 0.0 < O/C < 0.8
+, 0.8 < O/C
+
+(Eqn. 2)
+
+Both parametrizations were constructed using datasets that cover numerous
+organic/inorganic mixture systems. However, the two parameterizations were based on
+different datasets. The parameterization from Bertram et al. were generated using
+second-order polynomial functions for ternary systems, which were composed of water,
+a single organic compound that varied from system to system, and AS. Song et al. fitted
+the data from Bertram et al. with the addition of several complex mixtures of up to ten
+organic species using a sigmoidal function. Additionally, further experimental data
+have been generated by Bertram and coworkers after these parametrizations were
+published.14 Herein, we integrate all literature-reported SRH data for ternary systems
+(Figure 1).12–14,41 The data for systems containing complex organic mixtures are not
+included since other candidate variables that will be investigated in this study are
+difficult to evaluate for complex organic mixtures. Detailed information about the
+dataset can be found in Table S3. We tested both a polynomial function (second order
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+polynomial function) and a sigmoidal function (four-parameter logistic function) for
+the parameterization (Figure 1a and 1b). Both the second-order polynomial fit and four
+parameter logistic fit indicated a threshold O/C ratio at 0.8, in agreement with Song et
+al. For the second-order polynomial fit, we set the lower bound of the O/C ratio for the
+polynomial fit as 0.2, since no experimental data have been reported for these low O/C
+values. The coefficient of determination (R2) value is 0.62 (Figure 1a, red curve),
+improved from Bertram et al. (R2 is 0.15 for the expanded dataset shown here, Figure
+1a, black curve). The updated parameterization is as follows:
+SRH(%) = ,
+
+17.8 + 369.4 × (O/C) − 431.1 × (O/C)! , 0.2 < O/C < 0.8
+(Eqn. 3)
+0
+, 0.8 < O/C
+
+For the sigmoidal fit, we applied the four-parameter logistic model with and
+without the robust fitting (Figure 1b). The four-parameter logistic fit (4PL) without
+robust fitting also has a R2 value of 0.62. The four-parameter logistic fit with the least
+absolute residuals (4PL-LAR) robust fitting method better depicts the threshold value
+(the O/C value that differentiates LLPS from homogeneous particles) with a higher R2
+value of 0.85. Both 4PL and 4PL-LAR fits are improved compared to the
+parameterization by Song et al., which returns a R2 value of 0.49 for the combined
+ternary system data (Figure 1b, grey curve). As the 4PL-LAR method provides a more
+accurate threshold O/C value for LLPS, we elect the 4PL-LAR fit as a more credible
+result:
+
+SRH(%) = @
+
+94.11 +
+
+'().!)
+.!$./&
+
+"$*".)+(-//)1
+
+0
+
+, O/C < 0.8
+, 0.8 < O/C
+
+(Eqn. 4)
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+We suggest that the sigmoidal fit is more robust given its value at extremely low O/C
+values (< 0.2). Comparing to the second-order polynomial fit, the sigmoidal fit is
+chemically more reasonable at low O/C ratios with the predicted SRH value
+approaching 100%.
+a)
+
+b)
+
+Figure 1. The separation relative humidity (SRH) of aerosol particles containing
+organic compounds and ammonium sulfate (organic-to-inorganic mass ratio = 2:1).
+The open red circles are the updated dataset of SRH for micrometer-sized droplets
+composed of ternary systems, and the small red dots represent homogeneous aerosol
+particles (denoted by HOMO in the legend) that do not undergo LLPS (see detailed
+dataset information in Table S3). The dashed red lines in both a) and b) show the
+updated parameterization of the combined dataset for ternary systems from data by
+Bertram et al (2011),12 Song et al. (2013),35 and Bertram et al (2013)12. a) Polynomial
+fit following Bertram et al. (2011).12 The black dashed lines denote the
+parameterizations for micrometer-sized aerosol particles by Bertram et al. (2011).12 b)
+Sigmoidal fits using a four parameter logistic function (4PL, black dashed line) and a
+four-parameter logistic fit with the least absolute residuals robust fitting method
+(4PL-LAR, red dashed line). The grey dashed lines denotes the parameterizations for
+micrometer-sized aerosol particles by Song et al. (2012).13
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+The SRH of Submicron Organic/AS Particles. We selected nine organic
+compounds with a range of O/C ratios that represent atmospheric secondary organic
+aerosol components with various functional groups and chemical structures (Table 1).
+At relatively high O/C ratios (O/C ≥ 0.56), we picked two to three organic species
+with different molecular structures to investigate the effect of molecular structure on
+submicron aerosol LLPS. The SRH of submicron aerosol particles are characterized
+using the onset SRH, the final SRH, and the mean SRH. The onset SRH refers to the
+RH value at which LLPS was observed for at least one aerosol particle during
+dehumidification experiments. The final SRH denotes the highest RH value at which
+all imaged aerosol particles with a sufficiently large diameter are phase separated.
+Note that aerosol particles that are sufficiently small (dry diameter smaller than 30nm)
+do not undergo LLPS.31,33,39 The mean SRH is the average of all phase-separated
+aerosol particles between the onset SRH and final SRH. For example, the onset SRH
+of 2,5-hexanediol is 78%, the final SRH is 52%, and the mean SRH is 64±6% (Figure
+2a). The morphologies of the submicron organic/AS particles are characterized from
+TEM images (Figure S1). A detailed description can be found in our previous
+work.31,33,39 In brief, aerosol particles that undergo LLPS exhibit an inner phase
+boundary with different image contrast (and associated refractive indices) inside and
+outside the inner boundary, whereas homogeneous aerosol particles show no inner
+phase boundary. The measured data are shown in Figure 2 and summarized in Table
+1. The effect of molecular structure for organic compounds with the same O/C ratio is
+discussed in the SI Section S3. The quantitative relationship between the measured
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+SRH values and different parameterization variables will be discussed in the
+following section.
+a) 2,5-hexanediol (O/C:0.33) + AS (2:1)
+Total particles: 554, mean SRH: 64 ± 6
+
+c) PEG-400 (O/C:0.56) + AS (2:1)
+Total particles: 769, mean SRH: 70 ± 7
+
+e) DMGA (O/C:0.57) + AS (2:1)
+Total particles: 463, mean SRH: 78 ± 4
+
+b) 1,2,6-hexanetriol (O/C:0.50) + AS (2:1)
+Total particles: 678, mean SRH: 58 ± 6
+
+d) HMMA (O/C:0.56) + AS (2:1)
+Total particles: 952, mean SRH: 61 ± 10
+
+f) DEMA (O/C:0.57) + AS (2:1)
+Total particles: 298, mean SRH: 77 ± 4
+
+Figure 2. Summary of LLPS (blue diamonds) vs. homogeneous mixing (red dots) in
+organic/AS particles with mfd(AS) values at 0.33 (organic:inorganic dry mass ratio =
+2:1). a) 2,5-hexanediol; b) 1,2,6-hexaneteriol; c) polyethylene glycol (PEG-400); d)
+DL-4-hydroxy-3-methoxymandelic acid (HMMA); e) 3,3-dimethylglutaric acid
+(DMGA); f) diethyl malonic acid (DEMA). Particles were characterized at different
+RHs to determine whether they exhibit a homogeneous or phase-separated morphology.
+The gray dashed line represents the SRH of micrometer-sized droplets measured via
+optical microscopy. Each marker represents a single particle. All data points were
+collected at 298 K.
+The Parameterization of SRH for Submicron Organic/AS Particles. The variation
+in SRH between different organic/AS aerosol particles illustrates the complex effect
+of molecular structure on SRH. To account for the variability in SRH between
+different organic compounds, parameterization methods based on different chemical
+variables were evaluated to optimize the prediction of SRH. Herein, we fit the SRH
+for both micrometer and submicron aerosols with different variables that represent
+different aspects of molecular properties. The SRH values for micrometer droplets are
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+identical to those in Figure 1, while the submicron aerosol SRH values include six
+components measured in this study (Figure 2) and 2MGA-AS aerosols from our
+previous study.33 Ideally, a parameterization method should fulfill the following
+criteria: i) the independent variable of the parameterization is reasonable from the
+perspective of physical chemistry; ii) the variable can differentiate the threshold for
+the occurrence of LLPS; iii) the method can fit the experimental data and predict the
+SRH sufficiently accurately for both micrometer and submicron sized aerosol
+particles; and iv) the method can bridge the differences between the SRH values for
+submicron aerosol and micrometer-sized droplets.
+Following these criteria, we elected variables to represent the organic molecules
+that may reflect the affinity of the organic compounds to inorganic-rich or organicrich phases: O/C ratio, LogP, LogD, LogS, molar mass, and the polarizability of the
+organic compounds. The O/C ratio is presented in the main text, as it has been most
+commonly used in the literature, and the other variables are presented in the SI section
+S5. As the scattering of the O/C ratio data suggest a threshold value (Figure 3), a fourparameter logistic function (4PL) was used for O/C ratios. All other results are
+displayed in Figures S5 – S8. The fitted functions and R2 values are listed in Tables
+S4 – S7. The parameterization function should exhibit a threshold value that can
+differentiate the homogeneous and LLPS morphology: below the threshold, the
+corresponding organic aerosol particles do not undergo LLPS, whereas the functional
+form of SRH can be determined above the threshold. Although there are some outliers
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+at O/C ratios below 0.8, the O/C ratio can distinguish between a homogeneous
+morphology and LLPS, with a threshold value of 0.8.
+For micrometer-sized droplets, the O/C ratio with 4PL-LAR fit showed the
+highest R2 value of 0.85, whereas for other choices of the independent variable, the R2
+values are lower (0.22 for LogP, 0.29 for LogD, 0.04 for LogS, 0.77 for molar mass,
+and 0.54 for polarizability; see Tables S4 & S6). Using the O/C ratios and SRH values
+reported in field campaigns and flow tube studies, we predicted the SRH using the
+fitted 4PL-LAR model. The results were generally consistent, with discrepancies
+arising from the complex inorganic salt composition and size differences (Table S8,
+details discussed in SI Section S7).42–44 This further highlights the importance of
+extending predictions to submicron aerosol particles.
+For submicron particles, the R2 value of all considered variables, except for the
+sigmoidal fit using O/C ratios (0.83) and the second-order fit using LogP (0.74), are
+low (< 0.4, Table S5 & S7). Fits to variables besides the O/C ratio are discussed in the
+SI. The variation in fits to SRH, especially for submicron aerosol particles, are large
+no matter which parametrization variable is selected. We also note that the dataset is
+limited, especially for the sigmoidal fits for O/C ratio, SRH data is absent in the
+downward sloping region, which can cause inaccuracy in the fitting. Therefore, we
+show that the O/C ratio showed correlation with SRH and can to some extent
+distinguish aerosol morphology. Additionally, as discussed in the SI, polarizability
+can distinguish aerosol morphology, and LogP showed a meaningful correlation with
+submicron aerosol SRH; therefore, other variables merit future investigation.
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 3. Parameterizations of LLPS based on O/C ratio using sigmoidal fitting with
+a four-parameter logistic function. The solid red line denotes the parameterization of
+micrometer-sized droplets. The orange, blue and green colors represent the
+parameterization of the onset SRH, mean SRH, and final SRH, respectively. The solid
+lines denote the fitted results. The dashed lines are the results from the estimated
+scaling factors. The red marker represents the micrometer droplet SRH and the error
+bar represents the standard deviation. The blue marker represents the mean SRH of a
+given organic/AS submicron aerosol system, and the blue error bars denote the
+standard deviations. The purple error bars refer to the onset and final SRH, with the
+upper cap denoting the onset SRH and the lower cap denoting the final SRH. HOMO
+in the legend stands for homogeneous aerosol particles.
+As discussed above, when fitting the SRH of micrometer-sized droplets and
+submicron aerosol particles independently, we achieved different sets of coefficients
+for polynomial and sigmoidal functions. The fact that each dataset has its specific fit
+is hard to apply in practice, as the fitted coefficients and polynomial orders are highly
+dependent on the dataset, and the use of numerous functions can complicate the
+application of the parameterization. Therefore, for complex systems such as
+atmospheric aerosol particles, except for distinguishing the threshold and accurately
+fitting the SRH, the parametrization methods should be practical, and the independent
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+variable used should be easy to measure and effectively predict LLPS. We therefore
+designed a scaling factor that can relate the SRH of submicron aerosol particles to that
+of micrometer-sized droplets. Since the O/C ratio provided the best correlation with
+the SRH of micrometer droplets, we used a scaling factor based on the fit that uses
+O/C as the independent variable. By dividing the onset SRH, the mean SRH, and the
+final SRH of submicron aerosols by the mean SRH of micrometer droplets,
+respectively, we found that the calculated ratios have similar values across all
+organic/AS/water ternary systems investigated herein. We therefore defined the
+scaling factor (SF) for the onset SRH, the mean SRH, and the final SRH of submicron
+aerosol particles as a mean ratio of all SRH(nano)onset/SRH(micro),
+SRH(nano)mean/SRH(micro), SRH(nano)final/SRH(micro) values collected in this
+study. The SRH(micro) is the mean SRH value of micrometer droplets of each
+organic/AS mixture. We have illustrated that the standard deviation of the measured
+droplet SRH is low, and the measurement results are highly consistent across
+experiments. Figure 4 shows the calculated ratios as a function of the O/C ratio. Plots
+for LogP, molar mass, and polarizability are included in Figure S9. Given its
+definition, all of the scaling factors achieved are universal for all variables. The
+fluctuations of the data points around the fitted scaling factor are depicted in residual
+plots (Figure S10). The scaling factor for the onset SRH of submicron aerosols,
+𝑆𝐹23456 is 0.91. The scaling factor for the mean SRH of submicron aerosols, 𝑆𝐹7583
+is 0.80. The scaling factor for the final SRH of submicron aerosols, 𝑆𝐹9:38; is 0.69.
+Given the distribution of the calculated ratios around the scaling factors, we
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+acknowledge that fundamentally each individual organic/AS system may have its own
+degree of suppression of SRH of submicron aerosols compared to the SRH of
+micrometer droplets. Herein, we established an empirical parameterization by
+assuming a uniform suppression effect that is independent of the components of the
+aerosol particles. However, future studies are needed to explore the underlying effects
+of various organic structures over a broad range of molar masses and functionalization
+degrees to achieve an accurate prediction of aerosol SRH on the basis of molecular
+structure.
+
+Figure 4. The estimated value of the scaling factor (SF) using the collected submicron
+aerosol SRH and the micrometer-sized droplet SRH. The scattered points show the data
+distribution around the SF values for the O/C ratio. The orange, blue and green dashed
+lines represent the average SF for the onset SRH, mean SRH, and final SRH,
+respectively. 𝑆𝐹23456 = 0.91 (orange), 𝑆𝐹7583 = 0.80 (blue), 𝑆𝐹9:38; = 0.69
+(green).
+After determining the scaling factors, we applied the scaling factors to the fitted
+curves for micrometer-sized droplets, thereby predicting the expected corresponding
+SRH for submicron-sized particles. As shown in Figure 3, the orange dashed lines are
+the scaled onset SRH, the blue dash lines are the scaled mean SRH, and the green
+dash lines are the scaled final SRH. The predicted SRH of submicron aerosols are
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+compared with experimental data in Figure 5. The blue points denote the comparison
+between the experimental SRH for submicron aerosol particles and the predicated
+SRH for submicron aerosol particles that was scaled from the SRH for micrometer
+droplets. The prediction of SRH using the scaling factor showed a significant
+correlation with the experimental measurements (R2=0.69). The shaded blue area
+denotes the 95% confidence region. We also calculated the region of uncertainty
+using the SFonset for onset SRH and SFfinal for the final SRH, and the region largely
+coincides with the 95% confidence region. Submicron aerosol SRH predicted using
+the scaling factors and the fitted functions for micrometer droplets based on all tested
+variables (O/C ratio, LogP, LogS, LogD, molar mass, and polarizability) are also
+evaluated in Figure 5. Even though the fitted parameterizations for most input
+variables showed weak correlation with micrometer droplet SRH, most of the
+predicted values for all variables lie in the 95% confidence region of the fit to the
+experimental data. The results above indicate that the effect of aerosol size on SRH
+can be effectively predicted using scaling factors, and the SFonset and SFfinal can
+characterize the uncertainty of the SF prediction. The distribution of the predicted
+SRH values in Figure 5 also suggests that the application of the scaling factor is not
+sensitive to the parameterization, as most of the predicted SRH values from different
+parametrizations lie in the uncertainty region established by the predicted onset and
+final SRH. Thus, the scaling factor and the parametrization method can be optimized
+independently with more experimental data, and the scaling factor for the size effect
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+can always be applied to the updated parameterization methods for micrometer
+droplets.
+
+Figure 5. SRH prediction of submicron-sized particles (y-axis) compared to direct
+measurements of submicron aerosol SRH (x-axis). The blue solid circles indicate
+submicron SRH predictions derived from micrometer droplet SRH measurements
+using the scaling factor (labelled as Scaled_MicroSRH). The open markers represent
+the predicted submicron aerosol SRH obtained through the combined
+parameterization of various fitted functions for micrometer droplet SRH and the
+scaling factor. The predictions are labelled based on the variables used for
+micrometer SRH fits: O/C ratio (sigmoidal fit, orange squares), LogP (polynomial fit,
+green diamonds), molar mass (polynomial fit, red stars), polarizability (polynomial
+fit, purple crosses), LogS (polynomial fit, brown upward triangles), and LogD
+(polynomial fit, pink downward triangles). The black line represents the identity line
+(y=x), and the blue dashed line shows the fit using the predicted Scaled_MicroSRH
+and the Measured SRH (nano) for submicron aerosol particles. The grey shaded area
+denotes the 95% confidence region of the linear fit (blue dashed line). The orange
+shaded area represents the region between the onset SRH (orange dashed line) and
+final SRH (green dashed line) predicted using the SFonset and SFfinal. Error bars
+represent the standard deviations of the Measured SRH (nano) values. Since all
+points at the same Measured SRH (nano) share identical error bars, only the error
+bar for the blue solid circles is shown.
+In our recent studies, we observed that for 2MGA-AS aerosols, the submicron
+aerosol SRH converged with that of micrometer-sized droplets after 60 min
+equilibration time, indicating a relatively slow, kinetically driven effect on the
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+suppressed SRH in submicron aerosol particles.33 Therefore, combining the size effect
+and time evolution, we can depict the scaling factor for submicron aerosol SRH as a
+function of aerosol diameter (D) and equilibration time (t): 𝑆𝑅𝐻3832 =
+𝑆𝑅𝐻7:<=2 × 𝑆𝐹(𝐷, 𝑡), where
+𝑆𝐹(𝐷, 𝑡) = 𝛿(𝐷) ∙ 𝑓(𝑡)
+0,
+𝛿(𝐷) = J
+1,
+𝑆𝐹,
+𝑓(𝑡) = J
+1,
+
+𝐷 ≤ 30 𝑛𝑚
+𝐷 > 30 𝑛𝑚
+𝑡 = 20 𝑚𝑖𝑛
+𝑡 ≥ 60 𝑚𝑖𝑛
+
+This expression indicates that: i) aerosol particles < 30 nm wet diameter remain
+homogeneous regardless of the equilibration time (in this equation, this corresponds to
+SRHnano = 0); ii) aerosol particles > 30 nm and with equilibration time = 20 min have
+a scaling factor equal to the ones determined in this study (𝑆𝐹7583 = 0.80, 𝑆𝐹23456 =
+0.91, 𝑆𝐹9:38; = 0.69); iii) when aerosol particle diameter > 30 nm, and the
+equilibration time ³ 60 min, the 𝑆𝑅𝐻3832 = 𝑆𝑅𝐻7:<=2 . In addition, the uncertainty
+can be estimated using the SFonset and SFfinal. We note that an equilibration time of 60
+minutes may not be the shortest time required for reaching the equivalence SRHnano =
+SRHmicro, and future experiments are needed to find the accurate threshold time. Once
+the threshold equilibration time is confirmed, one can use that equilibration time to
+substitute the 60 min in the current SF function. We also note that the scaling factors
+are adequate for the equilibration time used herein (20 min) and may vary based on
+the equilibration time for t < 20 min and 20 < t < 60 min. Our previous studies have
+shown that the 20 min SRH is overall representative for 20 to 30 min equilibration
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+time,33 but additional characterization is needed to determine the range of scaling
+factors for different equilibration times.
+Environmental Implications. Using the SRH measured for a wide variety of
+submicron organic/AS aerosol particles, we determined a parameterization for the
+SRH of submicron organic/inorganic aerosol particles as a function of several
+different variables describing the chemistry of the organic compound. According to
+our evaluation, the use of a scaling factor (SF) applied to the SRH parameterization of
+micrometer droplets can effectively estimate the SRH of submicron aerosol particles.
+Compared to the interpolation of measured SRH using either polynomial or sigmoidal
+fits, the combination of SFmean, SFonset, and SFfinal covers the variation of measured
+submicron aerosol SRH, indicating that the scaling factor model can predict the mean
+SRH and characterize the uncertainty for submicron aerosol SRH within reasonable
+bounds considering the applications of these parameterizations. Current
+parameterizations of SRH rely on experimental data of micrometer droplets and
+model predictions under thermodynamic equilibrium conditions. The scaling factor
+method effectively connects a parameterization targeting submicron secondary
+aerosol to the micrometer-droplet-based parameterization. The scaling factor method
+enables the independent optimization of the scaling factor and the parametrization of
+the SRH for micrometer droplets, respectively. In addition, the two parts can be
+directly combined once an optimization of either part is achieved in future studies.
+Note also that the cut-off size and equilibration time are both incorporated into the
+scaling factor expression, as the size distribution and time evolution are significant
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+aspects of phase separation. Using the scaling factor established in this study along
+with future optimizations for the chemical composition (e.g., O/C ratios, polarizability
+etc.) of organic/inorganic aerosol particles, one can estimate the SRH for submicron
+aerosol particles based on a given aerosol size distribution, the period of time under
+stable conditions, and chemical composition.
+In the meantime, we are aware of limitations of the current parameterization
+methods for atmospheric aerosol LLPS. The size effect in our scaling factor merely
+incorporates a cut-off size for the inhibition of submicron aerosol LLPS, as size
+dependence between SRH and aerosol diameter is not yet observed with the collected
+dataset. However, a more finely resolved size-dependent parameterization requires
+future studies with more size-resolved measurements. In addition to size-resolved
+experimental data, model predictions based on size-dependent thermodynamic models
+accounting for interfacial tension effects on LLPS may also aid in determining
+consistent size-dependence relationships for use in simpler parameterizations.45,46
+For the LLPS dependence on aerosol composition, both inorganic and organic
+components play critical roles. We acknowledge that this study, along with the
+majority of literature studies, uses ammonium sulfate as the inorganic salt. Previous
+studies have shown that variations in inorganic components can significantly impact
+SRH.14,43,47 However, while developing parameterizations for different inorganic salts
+is essential, it is currently not feasible due to the limited data available on this topic.
+Regarding organic components, among the investigated variables in this study, the
+O/C ratio showed the best fit in estimating the SRH for micrometer droplets and in
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+discerning the homogeneous and LLPS morphologies. Other independent variables,
+such as polarizability, molar mass, and LogP, may also be applicable. However,
+compared to O/C ratios and molar mass, parameters like polarizability and LogP, are
+not easily accessible from field measurements since their estimation requires
+molecular structure information (e.g., SMILES). For all tested variables, the
+correlation between the variables and submicron aerosol SRH is weak overall. This
+observation may be due to the combined effects of the chemical structure and the
+aerosol size effect. Taking the O/C ratio as an example, organic compounds with high
+O/C values may exhibit lower SRH in macroscopic systems yet tend to have a higher
+surface tension in aqueous droplets. In submicron aerosol particles, the higher surface
+tension can cause a stronger Kelvin effect, indicating a higher supersaturation (i.e.,
+RH) for LLPS to occur.46,48 Conversely, organic compounds with lower O/C ratios
+would have a higher SRH for micrometer droplets but a smaller Kelvin effect due to
+lower surface tension. Such effects may lead to a dampening in the SRH-dependence
+on the O/C ratio, especially for sub-100 nm droplets. Additionally, our previous work
+has also shown an effect of aerosol pH on LLPS; thus, the proton activity may need to
+be incorporated into future parameterizations.27 Therefore, advances in practical
+parameterization methods that account for the protonation/deprotonation of functional
+groups in organic/inorganic aerosol particles are still needed. In the atmosphere, the
+gas-particle partitioning of aerosol particles, dictated by component volatility, is a key
+process influencing the evolution of aerosol phase state, particularly for aerosol
+particles containing highly volatile primary organic species. Future studies should
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+further explore the role of volatility as a parameter in LLPS for primary organic
+aerosols.
+For atmospheric modeling and the evolution of organic/inorganic aerosol phase
+state, the aerosol size, composition, and ambient conditions may constantly change
+over time. Thus, the coupling between the dynamic change of the physical properties
+of atmospheric secondary aerosol particles and the scaling factor measured in this
+study (𝑆𝐹(𝐷, 𝑡)) requires further investigation. Moreover, applying the relationship
+between the scaling factor and equilibration time to real atmospheric conditions
+require consideration of the timescales of other physical and chemical processes (e.g.,
+deposition, chemical reactions). Ultimately, the interplay between these characteristic
+timescales will determine how the scaling factor should be applied in real atmospheric
+scenarios.
+This study shows that a parameterization based on chemical composition
+(𝑓(𝐶ℎ𝑒𝑚)) demands further optimization due to the weak correlation between the
+investigated variables (O/C ratio, molar mass, LogP, LogS, and polarizability) and
+aerosol SRH (both micrometer-sized and submicron). In the meantime, we have
+shown that the scaling factor that depends on aerosol particle diameter and
+equilibration time (𝑆𝐹(𝐷, 𝑡)) is a promising parameterization for all proxy
+atmospheric secondary aerosol particles studied here, which can be incorporated with
+an accurate chemistry-based parametrization framework (𝑓(𝐶ℎ𝑒𝑚)). Both the scaling
+factor and the chemistry-based parametrization can be optimized independently with
+an enlarged dataset, and can be directly combined together during application. Such a
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+parameterization method can be expressed as 𝑆𝑅𝐻 = 𝑓(𝐶ℎ𝑒𝑚) ∙ 𝑆𝐹(𝐷, 𝑡). This form
+of parametrization is simple to apply and can be easily updated to improve the
+accuracy of SRH prediction. Accurate prediction of atmospheric aerosol phase state,
+particularly the SRH, is significant in predicting the aerosol-related atmospheric
+chemical and physical processes (e.g., gas-particle partitioning and heterogeneous
+chemistry), which in turn impacts the climate, air quality, and human health.45,49 An
+accurate parametrization framework to predict the SRH will effectively reduce the
+uncertainty in atmospheric modeling.50
+Associated Content
+Supporting information
+The supporting information contains detailed information on the literature data,
+example TEM images of SOA proxies, AIOMFAC-LLE predictions of phase
+diagrams, and the details for the fitted parametrization of aerosol SRH (Figures S1–
+S10, Tables S1–S8).
+Author Information
+Corresponding authors:
+Miriam Arak Freedman – Department of Chemistry, The Pennsylvania State
+University, University Park, Pennsylvania 16802, United States; Department of
+Meteorology and Atmospheric Science, The Pennsylvania State University, University
+Park, Pennsylvania 16802, United States; Email: maf43@psu.edu
+
+Phone: 814-867-
+
+4267
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+TOC Art
+
+Micrometer
+droplet
+
+Composition
+
+Parameterization
+（O/C, LogP, LogD etc.）
+SRHmicro
+
+Prediction
+!(#$%&) ( )*(+, -)
+
+Size (D)
+
+Scaling factor
+SF(D, t)
+
+Time (t)
+
+Submicron
+aerosol
+
+SRHsubmicron
+
+Authors
+Qishen Huang –Institute of Chemical Physics, School of Chemistry and Chemical
+Engineering, Beijing Institute of Technology, Beijing, 100081, China;
+Department of Chemistry, The Pennsylvania State University, University Park,
+Pennsylvania 16802, United States.
+Kiran R. Pitta - Department of Chemistry, The Pennsylvania State University,
+University Park, Pennsylvania 16802, United States
+Andreas Zuend - Department of Atmospheric and Oceanic Sciences, McGill
+University, Montreal, Quebec, H3A 0B9, Canada
+Notes
+The authors declare no competing financial interest.
+Acknowledgements
+Q. H., K. R. P., and M. A. F. gratefully acknowledge the support from DOE grant DESC0018032. Q.H. acknowledges support by Beijing Municipal Natural Science
+Foundation (grant no. 8244070). A. Z. acknowledges support by the Natural Sciences
+and Engineering Research Council of Canada (grant no. RGPIN-2021-02688). We
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+thank the Materials Characterization Lab (MCL) at Penn State for the use of FEI Talos
+C TEM and the FEI Tecnai Lab6 TEM, and the Huck Institutes of the Life Sciences for
+the use of Gatan cryo-holder. We acknowledge J. L. Gray and M. Hazen for their help
+with TEM imaging.
+Reference
+(1)
+IPCC. Climate Change 2013: The Physical Science Basis; Cambridge University
+Press, 2013.
+(2)
+Seinfeld, J. H.; Pandis, S. N.; Noone, K. Atmospheric Chemistry and Physics:
+From Air Pollution to Climate Change, 3rd ed.; John Wiley & Sons: NJ, 2016.
+(3)
+Freedman, M. A. Phase Separation in Organic Aerosol. Chem. Soc. Rev. 2017,
+46 (24), 7694–7705.
+(4) Heal, M. R.; Kumar, P.; Harrison, R. M. Particles, Air Quality, Policy and Health.
+Chem. Soc. Rev. 2012, 41 (19), 6606–6630.
+(5)
+Freedman, M. A.; Huang, Q.; Pitta, K. R. Phase Transitions in Organic and
+Organic/Inorganic Aerosol Particles. Annu. Rev. Phys. Chem. 2024, 75 (1), 257–
+281.
+(6) Kanakidou, M.; Seinfeld, J. H.; Pandis, S. N.; Barnes, I.; Dentener, F. J.; Facchini,
+M. C.; Van Dingenen, R.; Ervens, B.; Nenes, A.; Nielsen, C. J.; Swietlicki, E.;
+Putaud, J. P.; Balkanski, Y.; Fuzzi, S.; Horth, J.; Moortgat, G. K.; Winterhalter,
+R.; Myhre, C. E. L.; Tsigaridis, K.; Vignati, E.; Stephanou, E. G.; Wilson, J.
+Organic Aerosol and Global Climate Modelling: A Review. Atmos. Chem. Phys.
+2005, 5 (4), 1053–1123.
+(7)
+Xu, W.; Sun, Y.; Wang, Q.; Zhao, J.; Wang, J.; Ge, X.; Xie, C.; Zhou, W.; Du,
+W.; Li, J.; Fu, P.; Wang, Z.; Worsnop, D. R.; Coe, H. Changes in Aerosol
+Chemistry From 2014 to 2016 in Winter in Beijing: Insights From HighResolution Aerosol Mass Spectrometry. J. Geophys. Res. Atmos. 2019, 124 (2),
+1132–1147.
+(8)
+Nie, W.; Yan, C.; Huang, D. D.; Wang, Z.; Liu, Y.; Qiao, X.; Guo, Y.; Tian, L.;
+Zheng, P.; Xu, Z.; Li, Y.; Xu, Z.; Qi, X.; Sun, P.; Wang, J.; Zheng, F.; Li, X.;
+Yin, R.; Dallenbach, K. R.; Bianchi, F.; Petäjä, T.; Zhang, Y.; Wang, M.;
+Schervish, M.; Wang, S.; Qiao, L.; Wang, Q.; Zhou, M.; Wang, H.; Yu, C.; Yao,
+D.; Guo, H.; Ye, P.; Lee, S.; Li, Y. J.; Liu, Y.; Chi, X.; Kerminen, V. M.; Ehn,
+M.; Donahue, N. M.; Wang, T.; Huang, C.; Kulmala, M.; Worsnop, D.; Jiang, J.;
+Ding, A. Secondary Organic Aerosol Formed by Condensing Anthropogenic
+Vapours over China’s Megacities. Nat. Geosci. 2022, 15 (4), 255–261.
+(9)
+Reid, J. P.; Bertram, A. K.; Topping, D. O.; Laskin, A.; Martin, S. T.; Petters, M.
+D.; Pope, F. D.; Rovelli, G. The Viscosity of Atmospherically Relevant Organic
+Particles. Nat. Commun. 2018, 9 (1), 1–14.
+(10) Zuend, A.; Marcolli, C.; Peter, T.; Seinfeld, J. H. Computation of Liquid-Liquid
+Equilibria and Phase Stabilities: Implications for RH-Dependent Gas/Particle
+Partitioning of Organic-Inorganic Aerosols. Atmos. Chem. Phys. 2010, 10 (16),
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(11)
+
+(12)
+
+(13)
+
+(14)
+
+(15)
+
+(16)
+
+(17)
+
+(18)
+
+(19)
+
+(20)
+
+7795–7820.
+Zhou, S.; Hwang, B. C. H.; Lakey, P. S. J.; Zuend, A.; Abbatt, J. P. D.; Shiraiwa,
+M. Multiphase Reactivity of Polycyclic Aromatic Hydrocarbons Is Driven by
+Phase Separation and Diffusion Limitations. Proc. Natl. Acad. Sci. U. S. A. 2019,
+116 (24), 11658–11663.
+Bertram, A. K.; Martin, S. T.; Hanna, S. J.; Smith, M. L.; Bodsworth, A.; Chen,
+Q.; Kuwata, M.; Liu, A.; You, Y.; Zorn, S. R. Predicting the Relative Humidities
+of Liquid-Liquid Phase Separation, Efflorescence, and Deliquescence of Mixed
+Particles of Ammonium Sulfate, Organic Material, and Water Using the
+Organic-to-Sulfate Mass Ratio of the Particle and the Oxygen-to-Carbon Ele.
+Atmos. Chem. Phys. 2011, 11 (21), 10995–11006.
+Song, M.; Marcolli, C.; Krieger, U. K.; Zuend, A.; Peter, T. Liquid-Liquid Phase
+Separation in Aerosol Particles: Dependence on O:C, Organic Functionalities,
+and Compositional Complexity. Geophys. Res. Lett. 2012, 39 (19), 1–5.
+You, Y.; Renbaum-Wolff, L.; Bertram, A. K. Liquid-Liquid Phase Separation in
+Particles Containing Organics Mixed with Ammonium Sulfate, Ammonium
+Bisulfate, Ammonium Nitrate or Sodium Chloride. Atmos. Chem. Phys. 2013,
+13 (23), 11723–11734.
+Huang, Y.; Mahrt, F.; Xu, S.; Shiraiwa, M.; Zuend, A.; Bertram, A. K.
+Coexistence of Three Liquid Phases in Individual Atmospheric Aerosol Particles.
+Proc. Natl. Acad. Sci. U. S. A. 2021, 118 (16).
+Mahrt, F.; Huang, Y.; Zaks, J.; Devi, A.; Peng, L.; Ohno, P. E.; Qin, Y. M.;
+Martin, S. T.; Ammann, M.; Bertram, A. K. Phase Behavior of Internal Mixtures
+of Hydrocarbon-like Primary Organic Aerosol and Secondary Aerosol Based on
+Their Differences in Oxygen-to-Carbon Ratios. Environ. Sci. Technol. 2022, 56
+(7), 3960–3973.
+Mahrt, F.; Peng, L.; Zaks, J.; Huang, Y.; Ohno, P. E.; Smith, N. R.; Gregson, F.
+K. A.; Qin, Y.; Faiola, C. L.; Martin, S. T.; Nizkorodov, S. A.; Ammann, M.;
+Bertram, A. K. Not All Types of Secondary Organic Aerosol Mix: Two Phases
+Observed When Mixing Different Secondary Organic Aerosol Types. Atmos.
+Chem. Phys. 2022, 22 (20), 13783–13796.
+Zuend, A.; Marcolli, C.; Luo, B. P.; Peter, T. A Thermodynamic Model of Mixed
+Organic-Inorganic Aerosols to Predict Activity Coefficients; 2008; Vol. 8.
+https://doi.org/10.5194/acp-8-4559-2008.
+Yin, H.; Dou, J.; Klein, L.; Krieger, U. K.; Bain, A.; Wallace, B. J.; Preston, T.
+C.; Zuend, A. Extension of the AIOMFAC Model by Iodine and Carbonate
+Species: Applications for Aerosol Acidity and Cloud Droplet Activation. Atmos.
+Chem. Phys. 2022, 22 (2), 973–1013.
+Zuend, A.; Marcolli, C.; Booth, A. M.; Lienhard, D. M.; Soonsin, V.; Krieger,
+U. K.; Topping, D. O.; McFiggans, G.; Peter, T.; Seinfeld, J. H. New and
+Extended Parameterization of the Thermodynamic Model AIOMFAC:
+Calculation of Activity Coefficients for Organic-Inorganic Mixtures Containing
+Carboxyl, Hydroxyl, Carbonyl, Ether, Ester, Alkenyl, Alkyl, and Aromatic
+Functional Groups. Atmos. Chem. Phys. 2011, 11 (17), 9155–9206.
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(21)
+
+(22)
+
+(23)
+
+(24)
+
+(25)
+
+(26)
+
+(27)
+(28)
+(29)
+
+(30)
+(31)
+(32)
+(33)
+
+(34)
+
+(35)
+
+Zuend, A.; Seinfeld, J. H. A Practical Method for the Calculation of LiquidLiquid Equilibria in Multicomponent Organic-Water-Electrolyte Systems Using
+Physicochemical Constraints. Fluid Phase Equilib. 2013, 337, 201–213.
+Altaf, M. B.; Zuend, A.; Freedman, M. A. Role of Nucleation Mechanism on the
+Size Dependent Morphology of Organic Aerosol. Chem. Commun. 2016, 52 (59),
+9220–9223.
+Pye, H. O. T.; Zuend, A.; Fry, J. L.; Isaacman-VanWertz, G.; Capps, S. L.; Appel,
+K. W.; Foroutan, H.; Xu, L.; Ng, N. L.; Goldstein, A. H. Coupling of Organic
+and Inorganic Aerosol Systems and the Effect on Gas-Particle Partitioning in the
+Southeastern US. Atmos. Chem. Phys. 2018, 18 (1), 357–370.
+Losey, D. J.; Parker, R. G.; Freedman, M. A. PH Dependence of Liquid-Liquid
+Phase Separation in Organic Aerosol. J. Phys. Chem. Lett. 2016, 7 (19), 3861–
+3865.
+Tong, Y.; Meng, X.; Zhou, B.; Sun, R.; Wu, Z.; Hu, M.; Ye, A. Detecting the
+PH-Dependent Liquid-Liquid Phase Separation of Single Levitated Aerosol
+Microdroplets via Laser Tweezers-Raman Spectroscopy. Front. Phys. 2022, No.
+August, 1–8.
+Lei, Z.; Chen, Y.; Zhang, Y.; Cooke, M. E.; Ledsky, I. R.; Armstrong, N. C.;
+Olson, N. E.; Zhang, Z.; Gold, A.; Surratt, J. D.; Ault, A. P. Initial PH Governs
+Secondary Organic Aerosol Phase State and Morphology after Uptake of
+Isoprene Epoxydiols (IEPOX). Environ. Sci. Technol. 2022, 56 (15), 10596–
+10607.
+Losey, D. J.; Ott, E. J. E.; Freedman, M. A. Effects of High Acidity on Phase
+Transitions of an Organic Aerosol. J. Phys. Chem. A 2018, 122 (15), 3819–3828.
+Veghte, D. P.; Altaf, M. B.; Freedman, M. A. Size Dependence of the Structure
+of Organic Aerosol. J. Am. Chem. Soc. 2013, 135 (43), 16046–16049.
+Kucinski, T. M.; Dawson, J. N.; Freedman, M. A. Size-Dependent Liquid-Liquid
+Phase Separation in Atmospherically Relevant Complex Systems. J. Phys. Chem.
+Lett. 2019, 10 (21), 6915–6920.
+Altaf, M. B.; Freedman, M. A. Effect of Drying Rate on Aerosol Particle
+Morphology. J. Phys. Chem. Lett. 2017, 8 (15), 3613–3618.
+Kucinski, T. M.; Ott, E. J. E.; Freedman, M. A. Dynamics of Liquid-Liquid
+Phase Separation in Submicrometer Aerosol. J. Phys. Chem. A 2021, 125, 41.
+Freedman, M. A. Liquid-Liquid Phase Separation in Supermicrometer and
+Submicrometer Aerosol Particles. Acc. Chem. Res. 2020, 53 (6), 1102–1110.
+Huang, Q.; Pitta, K. R.; Constantini, K.; Ott, E. J. E.; Zuend, A.; Freedman, M.
+A. Experimental Phase Diagram and Its Temporal Evolution for Submicron 2Methylglutaric Acid and Ammonium Sulfate Aerosol Particles. Phys. Chem.
+Chem. Phys. 2024, 26 (4), 2887–2894.
+Ren, S.; Yao, L.; Wang, Y.; Yang, G.; Liu, Y.; Li, Y.; Lu, Y.; Wang, L.; Wang,
+L. Volatility Parameterization of Ambient Organic Aerosols at a Rural Site of
+the North China Plain. Atmos. Chem. Phys. 2022, 22 (14), 9283–9297.
+Han, S.; Hong, J.; Luo, Q.; Xu, H.; Tan, H.; Wang, Q.; Tao, J.; Zhou, Y.; Peng,
+L.; He, Y.; Shi, J.; Ma, N.; Cheng, Y.; Su, H. Hygroscopicity of Organic
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(36)
+
+(37)
+
+(38)
+
+(39)
+
+(40)
+
+(41)
+
+(42)
+
+(43)
+
+(44)
+
+(45)
+
+(46)
+
+(47)
+
+Compounds as a Function of Organic Functionality, Water Solubility, Molecular
+Weight, and Oxidation Level. Atmos. Chem. Phys. 2022, 22 (6), 3985–4004.
+Dette, H. P.; Qi, M.; Schröder, D. C.; Godt, A.; Koop, T. Glass-Forming
+Properties of 3-Methylbutane-1,2,3-Tricarboxylic Acid and Its Mixtures with
+Water and Pinonic Acid. J. Phys. Chem. A 2014, 118 (34), 7024–7033.
+Shiraiwa, M.; Li, Y.; Tsimpidi, A. P.; Karydis, V. A.; Berkemeier, T.; Pandis, S.
+N.; Lelieveld, J.; Koop, T.; Pöschl, U. Global Distribution of Particle Phase State
+in Atmospheric Secondary Organic Aerosols. Nat. Commun. 2017, 8, 1–7.
+Gorkowski, K.; Preston, T. C.; Zuend, A. Relative-Humidity-Dependent Organic
+Aerosol Thermodynamics via an Efficient Reduced-Complexity Model. Atmos.
+Chem. Phys. 2019, 19 (21), 13383–13407.
+Kucinski, T. M.; Ott, E. J. E.; Freedman, M. A. Flash Freeze Flow Tube to Vitrify
+Aerosol Particles at Fixed Relative Humidity Values. Anal. Chem. 2020, 92 (7),
+5207–5213.
+Xiong, G.; Wu, Z.; Yi, J.; Fu, L.; Yang, Z.; Hsieh, C.; Yin, M.; Zeng, X.; Wu,
+C.; Lu, A.; Chen, X.; Hou, T.; Cao, D. ADMETlab 2.0: An Integrated Online
+Platform for Accurate and Comprehensive Predictions of ADMET Properties.
+Nucleic Acids Res. 2021, 49 (W1), W5–W14.
+Song, M.; Marcolli, C.; Krieger, U. K.; Lienhard, D. M.; Peter, T. Morphologies
+of Mixed Organic/Inorganic/Aqueous Aerosol Droplets. Faraday Discuss. 2013,
+165, 289–316.
+Smith, N. R.; Crescenzo, G. V.; Huang, Y.; Hettiyadura, A. P. S.; Siemens, K.;
+Li, Y.; Faiola, C. L.; Laskin, A.; Shiraiwa, M.; Bertram, A. K.; Nizkorodov, S.
+A. Viscosity and Liquid-Liquid Phase Separation in Healthy and Stressed Plant
+SOA. Environ. Sci. Atmos. 2021, 1 (3), 140–153.
+Yao, M.; Zhao, Y.; Chang, C.; Wang, S.; Li, Z.; Li, C.; Chan, A. W. H.; Xiao,
+H. Multiphase Reactions between Organic Peroxides and Sulfur Dioxide in
+Internally Mixed Inorganic and Organic Particles: Key Roles of Particle Phase
+Separation and Acidity. Environ. Sci. Technol. 2023, 57 (41), 15558–15570.
+Song, M.; Jeong, R.; Kim, D.; Qiu, Y.; Meng, X.; Wu, Z.; Zuend, A.; Ha, Y.;
+Kim, C.; Kim, H.; Gaikwad, S.; Jang, K. S.; Lee, J. Y.; Ahn, J. Comparison of
+Phase States of PM2.5over Megacities, Seoul and Beijing, and Their
+Implications on Particle Size Distribution. Environ. Sci. Technol. 2022, 56 (24),
+17581–17590.
+Schmedding, R.; Zuend, A. A Thermodynamic Framework for Bulk-Surface
+Partitioning in Finite-Volume Mixed Organic-Inorganic Aerosol Particles and
+Cloud Droplets. Atmos. Chem. Phys. 2023, 23 (13), 7741–7765.
+Schmedding, R.; Zuend, A. The Role of Interfacial Tension in the SizeDependent Phase Separation of Atmospheric Aerosol Particles. 2024, No. July,
+1–35.
+Ott, E.-J. E.; Kucinski, T. M.; Dawson, J. N.; Freedman, M. A. Use of
+Transmission Electron Microscopy for Analysis of Aerosol Particles and
+Strategies for Imaging Fragile Particles. Anal. Chem. 2021, 93 (33), 11347–
+11356.
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(48)
+(49)
+
+(50)
+
+Seinfeld, J. H.; Pandis, S. N. Atmospheric Chemistry and Physics: From Air
+Pollution to Climate Change, Third Edit.; John Wiley & Sons, 2016.
+Pye, H. O. T.; Murphy, B. N.; Xu, L.; Ng, N. L.; Carlton, A. G.; Guo, H.; Weber,
+R.; Vasilakos, P.; Wyat Appel, K.; Hapsari Budisulistiorini, S.; Surratt, J. D.;
+Nenes, A.; Hu, W.; Jimenez, J. L.; Isaacman-Vanwertz, G.; Misztal, P. K.;
+Goldstein, A. H. On the Implications of Aerosol Liquid Water and Phase
+Separation for Organic Aerosol Mass. Atmos. Chem. Phys. 2017, 17 (1), 343–
+369.
+Yao, Y.; Curtis, J. H.; Ching, J.; Zheng, Z.; Riemer, N. Quantifying the Effects
+of Mixing State on Aerosol Optical Properties. Atmos. Chem. Phys. 2022, 22
+(14), 9265–9282.
+
+https://doi.org/10.26434/chemrxiv-2024-4rh6c-v2 ORCID: https://orcid.org/0000-0003-4374-6518 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+

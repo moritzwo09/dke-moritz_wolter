@@ -1,0 +1,1564 @@
+Revealing the Photochemical Pathways of
+Nitrate in Water through First-Principles
+Simulations
+Kam-Tung Chan,† Margaret L. Berrens,† Zekun Chen,† C. William McCurdy,†
+Cort Anastasio,‡ and Davide Donadio⇤,†
+†Department of Chemistry, University of California, Davis, One Shields Ave., Davis, CA
+95616 USA
+‡Department of Land, Air, and Water Resources, University of California Davis, One
+Shields Ave. Davis, CA, 95616.
+E-mail: ddonadio@ucdavis.edu
+Abstract
+Nitrate anion (NO3–) is a ubiquitous species in aqueous phases in the environment,
+including atmospheric particles, aerosol droplets, surface waters, and snow. The photolysis of NO3– is a ’renoxification’ process, which converts NO3– solvated in water or
+deposited on surfaces back into NOx to the atmosphere. NO3– photolysis under environmental conditions can follow two channels: (1) NO2 and O–; (2) NO2– and O (3P).
+Despite the well-studied macroscopic kinetics of the two channels, the microscopic picture of the photolysis still needs to be explored. Furthermore, previous experiments
+have shown that NO3– photolysis in aqueous solutions has a low quantum yield of
+⇠1%, leading to a solvation cage e↵ect hypothesis. A previous theoretical study has
+indicated that the low quantum yield may be due to the direct spin-forbidden absorption of NO3– to its triplet state. Here, we employ first-principles molecular dynamics
+
+1
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+simulations at the level of hybrid DFT with enhanced sampling to explore the two
+channels in an aqueous solution to unravel the atomistic and electronic structure details of the photolysis, as well as investigate the causes of its low quantum yield under
+a solvation environment. The direct spin-forbidden absorption to T1 state is viable
+through spin-orbit coupling and is ⇠15 times weaker than the spin-allowed absorption to S1 state. A solvation cage complex is identified as a metastable state that
+requires additional thermal energy to complete the dissociation of the N-O bond at
+the triplet state. This metastable state allows the photo fragments to recombine or
+deactivate through non-radiative processes. Our simulations also qualitatively explain
+the temperature dependence of the two channels observed in experiments based on the
+rearrangement of H-bonds. This work provides a novel molecular picture illustrating
+the significantly low quantum yield and temperature dependence of NO3– photolysis
+under environmental conditions and a starting point for future studies of environmental
+nitrate photochemistry.
+
+Introduction
+The nitrate anion (NO3– ) is a primary species in the global nitrogen cycle. 1 It is ubiquitous in
+the environment, including aerosol particles, surface waters, and Polar snow. Atmospheric
+NO3– is formed from the oxidation of NOx (NO + NO2), which is emitted by fossil fuel
+combustion and other sources. 2,3 Under environmental conditions, NO3– in solution absorbs
+light over a broad band centered at ⇠300 nm, i.e., 4.1 eV, and photolysis can occur via two
+channels: 4,5
+h⌫
+
+NO3–
+NO3–
+
+h⌫
+
+NO2 + O–
+
+(1)
+
+NO2– + O (3P)
+
+(2)
+
+NO3– photolysis is a ’renoxification’ process, which plays an essential role in the formation
+of secondary atmospheric aerosols and oxidants. 3,6 Recent field observations in the marine
+2
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+atmosphere indicate that NO3– photolysis in sea salt aerosols is a significant source of NOx, 7–9
+accounting for the missing source of NOx in a macroscopic chemical model of the atmosphere
+over the oceans. 10 Furthermore, NO3– photolysis can play a crucial role in sulfate formation
+during the co-uptake of SO2 and NO2 by sea salt aerosols. 11 Therefore, the photolysis of NO3–
+under environmental conditions is of great interest to the environmental science community.
+Secondary products of NO3– photolysis have an environmental impact too. In the presence
+of water molecules, the O– produced in Channel (1) is rapidly protonated to form a hydroxyl
+radical, which is one of the most important oxidants in the atmosphere. 1,2 Under acidic
+conditions, NO2– generated in Channel (2) is converted to its protonated form nitrous acid
+(HONO), which is also a crucial photochemical source of hydroxyl radical and nitric oxide. 12
+NO3– photolysis in solution has been studied for decades. 4,12–17 Experiments show that in
+an aqueous solution at room temperature, the quantum yields of the two channels are comparable, with 1.2 ± 0.2% for Channel (1) and 1.1 ± 0.2% for Channel (2). 12,15 Such very low
+quantum yields led to the hypothesis of a solvation cage e↵ect, in which the dissociated fragments recombine before they di↵use out of a cage of hydrogen-bonded water molecules. 18–21
+This hypothesis is supported by experiments showing the enhancement of NO3– photolysis
+rates at the air-water and air-ice interfaces, where the solvation cage e↵ect may be weakened. 22–27 Ab initio molecular dynamics (AIMD) simulations probing the structure of the
+solvation shell of ground-state NO3– in water and at the air-ice interface are not conclusive in
+this regard, and calculations of the UV-visible absorption spectrum exclude that photolysis
+rate enhancement could be even partially attributed to a solvatochromic shift, in contrast
+to the case of organic pollutants. 28–30
+The relative significance of the two channels at di↵erent conditions is also still unclear.
+Experiments suggest that Channel (1) is more favorable at higher temperatures, whereas
+Channel (2) is more prominent at lower temperatures, especially in the liquid-like pockets in
+ice. 31 Scharko et al. observed that Channel (2) has a higher yield in acidic aqueous solutions
+as it produces HONO. 17 This secondary reaction was also predicted by AIMD simulations
+
+3
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+in the ground state. 32 Besides the acidity, Scharko et al. suggested that the hydrolysis of
+NO2 generated in Channel (1) can also be responsible for additional HONO formation, in
+aqueous solutions. 17 Hullar et al. observed that the quantum yield of NO2– in a quasi-liquid
+layer at the air-ice interface is enhanced by a factor of 6.4 over a bulk aqueous solution at the
+same temperature. 27 Considering these experimental findings, factors other than secondary
+reactions should be responsible for the enhancement of the quantum yield at the air-ice
+interface.
+Quantum chemical calculations of the excited state NO3– revealed that only Channel
+(2) is energetically viable in the gas phase and in implicit solvent models. 33–37 The lowest
+energy spin-allowed excitation for NO3– corresponds to a S0 ! S1 symmetry forbidden n !
+⇡* transition that can be enabled only by coupling with vibrational modes. 33,34,36 The S1
+state may be unbound as its gas-phase energy is close to the electron detachment energy, and
+we are not aware of any experimental gas-phase observations of bound excited states of NO3–
+. 34–36,38,39 In solution, the electron affinity increases, and the symmetry of NO3– is lowered
+from D3h to C2v favoring light absorption and photolysis under environmental conditions. 25,36
+However, the S1 potential energy surface is not conducive to Channel (2), as the products
+are in the triplet state. As intersystem crossing from the S1 state is unlikely, Svoboda and
+Slavı́ček suggested that NO3– photolysis may be enabled by direct spin-forbidden absorption
+from S0 to the first triplet state T1 . 35 Furthermore, a minimum energy conical intersection
+between the S0 and S1 states near the FC point suggests that the majority of S1 excited NO3–
+undergoes a non-radiative deactivation to the ground state. These results call for further
+investigation of NO3– photolysis in an explicit solvation environment to assess the hypothesis
+of direct spin-forbidden absorption and probe the molecular mechanisms that enable Channel
+(1).
+Here, we explore NO3– photolysis in water by AIMD in the first excited triplet state,
+explicitly modeling the solvation environment and exploring the reaction free energy surface
+with enhanced sampling. We first calculate the potential energy surfaces of the low-lying
+
+4
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+singlet and triplet states of NO3– along the dissociation coordinate in the gas phase with
+multi-reference quantum chemical methods to assess the dissociation limit of each electronic
+state and to assess the accuracy of a hybrid density functional for this problem. We then
+sample the ground state configurations (S0 ) of NO3– in water at room temperature by AIMD
+and compute the UV-visible absorption spectrum by time-dependent density functional theory (TDDFT), including both the spin-allowed and the direct spin-forbidden excitations, 40
+exploiting a multimodel approach established in previous works. 28,41 We find that the direct
+spin-forbidden absorption to the T1 state is viable through spin-orbit coupling, although
+about 15 times weaker than the spin-allowed absorption to the S1 state. We follow by using
+ab initio metadynamics 42–44 to simulate the dissociation of NO3– in the explicit water in the
+T1 state, from which we obtain free energy barriers and reaction rates to compute the quantum yield of the two reaction channels with a master equation model. These simulations
+show that surrounding water molecules trap NO3– (T1 ) in a weakly metastable solvation cage
+complex. From the solvation cage complex, the system may evolve through either Channel
+(1) or (2) with a relative likelihood dictated by the di↵erent rearrangement of the hydrogen
+bonding in the solvation shell of the products, thus explaining the temperature dependence
+observed in experiments. The current study provides a novel microscopic picture illustrating
+the low experimental quantum yields of NO3– photolysis in aqueous solvation environments.
+
+Computational Methods
+Quantum Chemical Calculations
+Before performing AIMD simulations of solvated nitrate, we computed the potential energy surface of gas phase NO3– along the N-O dissociation coordinate in the ground state
+and the low-lying triplet and singlet excited states at the level of multi-reference N-electron
+valence state perturbation theory at the second order with the quasi-degenerate extension
+(QD-NEVPT2) to account for correlation. 45,46 The ground state geometries along the N-O
+5
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+bond dissociation coordinate were first optimized at the level of broken-symmetry DFT with
+CAM-B3LYP range-separated hybrid density functional and ma-def2-TZVP basis set. 47–49
+It has been found that the equilibrium structure computed by the CAM-B3LYP functional
+and a triple-zeta basis set agrees well with CCSD values. 36 The QD-NEVPT2 calculations
+were then performed over the optimized ground state geometries to build up the potential
+energy surfaces of the low-lying singlet and triplet excited states. The orbitals and references
+used in the QD-NEVPT2 calculations were obtained by previous state-averaged complete
+active space self-consistent field (SA-CASSCF) calculations. 50 For each geometry along the
+dissociation coordinate, the SA-CASSCF calculations considered an active space of ten electrons in nine orbitals. Three singlet states (including the ground state) and four triplet
+states were included in the calculations. The strongly contracted formalism of NEVPT2
+was used with the quasi-degenerate extension based on Van Vleck perturbation theory using
+the aug-cc-pVTZ basis set. 51–53 The vertical excitation energies from the equilibrium geometry were compared with the multi-reference configuration interaction method with Davidson
+correction for linked quadruples (MRCI+Q) using the same active space and basis set. 54 To
+assess the reliability of the DFT framework that we use to simulate the reaction in with
+explicit water, we also performed the same calculations on the ground state and the T1 state
+using the hybrid functional revPBE0 55,56 with D3 dispersion correction 57 and the def2-SVP
+basis set 58,59 (see section S1). The solvation model of density (SMD) 60 was used to account
+for the implicit solvation in water. This hybrid functional with dispersion correction was
+later used for simulating the dissociation dynamics at the T1 state with explicit waters. All
+the potential energy surface calculations in the gas phase and under implicit solvation were
+carried out with ORCA 5.0.2. 61
+
+Ab Initio Molecular Dynamics Simulations
+To capture the local e↵ect of hydrogen bonding on the light absorption and photodissociation
+of NO3– , we performed AIMD simulations of a bulk ammonium nitrate aqueous solution with
+6
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+explicit water. DFT-based AIMD simulations were performed using Quickstep 62 in the CP2K
+8.2 package. 63 The nuclear dynamics were propagated by the Born-Oppenheimer forces. A
+convergence criterion of 1 ⇥ 10 5 Hartree was used to optimize the wave function. The
+hybrid exchange-correlation density functional revPBE0 with Grimme dispersion correction
+(D3) was employed to evolve the dynamics of a 12.98 x 12.98 x 12.98 Å box with 1 unit of
+NH4 NO3 and 63 water molecules with periodic boundary condition for an aqueous solution
+model. 55–57 Previous studies have shown that revPBE0-D3 provides a good description of
+water and aqueous systems. 64,65 The ammonium ion was used as a counterion because it
+is abundant in atmospheric droplets and particulates containing NO3– . 2 Valence KohnSham orbitals were expanded in the DZVP Gaussian basis set together with the plane-waves
+auxiliary basis set, while core states were treated implicitly using Goedecker–Teter–Hutter
+pseudopotentials. 66–68 A 400 Ry energy cuto↵ was set for the plane-wave basis set. AIMD
+simulations in an aqueous solution were run under the canonical (NVT) ensemble with
+a temperature of 300 K using the stochastic velocity-rescaling thermostat with a 100 ps
+coupling time. 69 In these simulations, hydrogen atoms were replaced with deuterium, thus
+allowing a relatively large timestep of 0.5 fs to integrate the equations of motion. The system
+was run for 25 ps in total, with the first 5 ps serving as the equilibration and 20 ps serving
+as the production run.
+Former studies have shown that NO3– in aqueous solutions, adsorption, and solvation
+at the air-water and air-ice interfaces are accurately reproduced using a semi-local density
+functional with dispersion corrections. 28,70–72 However, to model the S0 ! T1 transition,
+semi-local density functionals should not be used, as they lead to a substantial underestimate
+of the energy gap of solvent in which NO3– is embedded. In particular, for the case of water,
+the energy di↵erence between the valence and the conduction band with the Perdew, Burke,
+Ernzehof (PBE) functional 73 is only 4 eV, as opposed to ⇠9 eV as expected from experiments
+and higher-level electronic structure calculations. 74–77 Recalling that the vertical excitation
+energy of NO3– is ⇠4 eV, triplet state NO3– at the PBE level is quasi-degenerate with
+7
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+the water conduction band. This causes an unphysical electron delocalization and drives
+dissociation along Channel (1), which turns out to be the only possible pathway (see section
+S2 and Figure S2 for details). In this respect, a hybrid density functional with dispersion
+corrections, revPBE0-D3, was used as it provides a more realistic representation of the
+electronic structure of materials despite an increased computational cost. 55–57,78,79
+
+UV-Visible Absorption Spectra Calculations
+To compute the finite temperature UV-visible absorption spectrum of solvated NO3– , we
+adopted a multimodel approach that proved accurate and predictive for organic solvents and
+ammonium nitrate. 28,29,41 The oscillator strengths and UV-visible absorption energies were
+calculated as the ensemble average of 800 vertical excitations from the individual frames
+extracted from the 20 ps production run. These extracted frames were embedded in a
+hybrid solvation model, where the first two solvation shells of NO3– , which corresponded to
+12 water molecules, were treated explicitly, and the long-range screening was accounted by
+the CPCM polarizable implicit solvent, with a static dielectric constant of 80.3 and refractive
+index 1.33. 80 The oscillator strengths of S0 ! S1 and S0 ! T1 transitions, as well as the
+UV-visible absorption spectra at a finite temperature were calculated at the level of TDDFT,
+with CAM-B3LYP functional. 48 It has been shown that CAM-B3LYP accurately models the
+excited states of NO3– under implicit solvation and solvated by a small water cluster. 34–36 The
+spin-forbidden absorption was calculated by including spin-orbit coupling between singlet
+and triplet states using quasi-degenerate perturbation theory. 81 All the TDDFT calculations
+were performed using a ma-def2-TZVP basis set 49 along with the resolution of identity
+approximation for the Coulomb and exchange integrals using the ORCA 5.0.2 package. 61 The
+UV-visible spectra were obtained from the Gaussian envelopes with an empirical broadening
+width of 0.027 eV.
+
+8
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Ab Initio Metadynamics in the T1 State
+Under the assumption of a direct spin-forbidden transition to the T1 State, the system was
+simulated in the T1 state at the level of spin-polarized hybrid DFT (revPBE0-D3), to probe
+the dissociation dynamics of NO3– . The computational details of all AIMD simulations at
+the T1 were the same as the AIMD simulations in the ground state.
+Preliminary simulations show that NO3– (T1 ) is metastable and does not dissociate spontaneously within 2 ps, as opposed to the spontaneous dissociation in gas-phase photochemistry (see Figure S3). Well-tempered metadynamics 43,44 was used as an enhanced sampling
+method to overcome and estimate the dissociation barrier and explore the reaction free energy landscape. In metadynamics simulations, a bias potential is continuously applied to
+the system, which depends on the set of predefined collective variables (CVs), where CVs
+are functions of atomic positions. 44 In this study, well-tempered metadynamics was used
+in which the height of the deposited Gaussians would decrease exponentially as the bias is
+applied:
+Vn (s) =
+
+n
+X
+
+G(s, sk )e
+
+1
+
+Vk
+
+1 (sk )
+
+(3)
+
+k=1
+
+where G(s, sk ) = W e
+
+(s sk )2
+2 2
+
+is the bias factor, and
+
+is a Gaussian centered in the CV value sk at time tk ,
+
+= kB1T ,
+
+is the width of the Gaussian.
+
+Two CVs (d, n) were chosen to be applied to the well-tempered metadynamics simulation
+(Figure 1). The first CV, d, is the distance between atom N and O1, corresponding to
+the dissociation coordinate. However, it is not enough to di↵erentiate the two dissociation
+channels. Since the two channels only di↵er in the net negative charge localization and are
+comparable in an aqueous solution, one can hypothesize that the solvation structure of NO3–
+is crucial to determine which channel it will eventually proceed. Based on this hypothesis, a
+second CV, n, was used to describe the number of H atoms surrounding atoms O2 and O3
+(see Figure 1). While the net negative charge of NO2– makes it form hydrogen bonds with
+water, it has been shown that NO2 does not form extensive hydrogen bonds with water. 82
+9
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Therefore, the number of H atoms surrounding atoms O2 and O3 can be a suitable CV
+candidate to drive the dissociation and di↵erentiate the two channels. This number, n, is
+defined as follow:
+n=
+
+X X
+
+sij
+
+(4)
+
+i2O2,O3 j2Hw
+
+where Hw refers to the H atoms of water, sij is a switching function and is defined as
+"
+1 1
+sij =
+2 1
+
+r
+
+( rij0 )n
+r
+
+( rij0 )m
+
+#
+
+(5)
+
+where rij is the distance between atoms i and j. r0 is set to be 2.55 Å, and n and m are set
+to 8 and 16, respectively. The parameters were determined by fitting the switching function
+sij with the radial distribution function of the On Hw pair obtained from the equilibrium
+simulation, where On refers to the O atoms of NO3– .
+
+Figure 1: Schematic representation of the CVs used in the current study. The two CVs, d
+are n are colored in cyan and orange respectively
+The well-tempered metadynamics simulation was carried out at the T1 state after a 2
+ps unbiased equilibration run initiated by exciting a ground-state configuration in the T1
+state. The initial height of the Gaussian W was 5.0 kJ/mol, and the widths were 0.1 Å
+and 0.15. The bias factor was set at 25. A new Gaussian was deposited at every 25 fs. A
+harmonic restraining potential wall with a force constant of 100 kJ/mol Å2 was applied on
+d when it was greater than 4 Å to limit the exploration of the dissociated state. To better
+exploit parallel hardware architecture and enhance the sampling efficiency, we employed
+
+10
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+the multiple walkers approach. 83 In a multiple walkers metadynamics simulation, multiple
+simulations (walkers) explore the same free energy surface (FES), contributing to the same
+history-dependent bias potential. Two walkers were used in the current study, and the
+update frequency of the sharing between the two deposited biases was set to 0.5 ps. The
+multiple-walkers well-tempered metadynamics simulations were run for 52 ps (26 ps for each
+walker). The FES was calculated by reweighing the frames from the two walkers using the
+time dependence of the metadynamics bias potential. The convergence was evaluated by the
+di↵usion of CVs (recrossings of the free energy barriers) and the average error of the relative
+free energy against time through block analysis. 84,85
+We calculated the rate constants from the free energy barriers using transition state
+theory. For the non-radiative deactivation to the ground state through intersystem crossing,
+we applied Fermi’s golden rule combined with the path integral approach. 86–88 This method
+includes the coupling of electronic spin-orbit coupling with vibrational degrees of freedom,
+which can describe the intersystem crossing rates of small organic molecules with negligible
+electronic spin-orbit coupling. 89 A recent study showed that this method can estimate the
+intersystem crossing rates of small aromatic organic molecules qualitatively. 90 More details
+on these calculations are provided in section S6.
+
+Results and Discussion
+Potential Energy Surfaces in the Gas Phase
+In solution, NO3– absorbs light over a broad band with a maximum at 305 nm corresponding to 4.05 eV. Gas-phase calculations indicate that this energy corresponds to the S0 !
+S1 transition. S1 and T1 states are the only relevant excited states under environmental
+conditions as the energy absorption band is at the high energy edge of the solar spectrum.
+We computed the main features of the gas-phase photodissociation potential energy surface
+by ab intio quantum chemical methods and DFT using the same functional as in the AIMD
+11
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Table 1: Gas-phase excitation, electron detachment, and dissociation energies relative to the
+NO3– (S0 ) ground state in eV computed with di↵erent quantum chemical methods and with
+density functional theory.
+Species
+
+NEVPT2(10,9)
+/aug-cc-pVTZ
+
+MRCI(10,9)
+/aug-cc-pVTZ
+
+NO3– (S1 )
+NO3– (T1 )
+NO3
+NO2 + O–
+NO2– + O (3P)
+
+4.42
+4.18
+4.38
+5.21
+4.01
+
+3.81
+3.63
+3.90
+4.10
+3.40
+
+EOM-CCSD
+revPBE0
+/aug-cc-pVQZa /aug-cc-pVTZ
+
+4.08
+3.88
+-
+
+4.07*
+3.67*
+3.91
+4.53
+3.87
+
+Experimentb
+3.92
+-
+
+a
+
+Ref. 35
+Ref. 39
+*
+Calculated at the level of TDDFT.
+b
+
+simulations. The vertical excitation energies, the energies of the photolysis products, and
+the vertical electron detachment energy, calculated by QD-NEVPT2, MRCI+Q, and DFT,
+are reported in Table 1. The excitation energies to the T1 and S1 states are very close to
+the vertical electron detachment energy which was formerly measured as ⇠3.9 eV. 38,39 In
+fact, bound excited states of negatively charged complex anions were never observed experimentally. Both MRCI and DFT calculations reproduce the experimental vertical electron
+detachment energy whereas QD-NEVPT2 overestimates it (4.38 eV). All three methods suggest that the T1 state should be bound in the gas phase (Table 1 and S1). We speculate
+here that the T1 state might be bound in the gas phase, although these calculations cannot
+firmly establish its existence. In contrast, both QD-NEVPT2 and MRCI+Q predict the S1
+excitation energy to be within 0.1 eV of the electron detachment energy, with QD-NEVPT2
+slightly higher and MRCI+Q lower. These results are in agreement with previous EOMCCSD calculations 35 and suggest that the S1 state of NO3– is not bound in gas phase.
+However, experiments show that the electron detachment energy increases from ⇠3.9 eV to
+⇠6.1 eV under aqueous solvation. 39 In contrast, the excitation energy to the S1 state does
+not shift upon solvation and remains ⇠4.1 eV. 39,91,92 Therefore, the S1 state of NO3– becomes
+a bound state in solution.
+Although electron detachment and excitation energies at the QD-NEVPT2 level are sys12
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 2: Potential energy curves of the low-lying electronic states of gas-phase NO3– calculated at the QD-NEVPT2(10,9)/aug-cc-pVTZ level. The total energies of the isolated
+species after dissociation are shown in dashed lines.
+tematically overestimated compared with MRCI+Q and experiments, the former more computationally efficient method provides the same energy di↵erence of ⇠0.2 eV between the S1
+and T1 states, in agreement with Ref. 35 Hence we use QD-NEVPT2 to calculate the potential energy surfaces of the low-lying electronic states of gas-phase NO3– along the dissociation
+coordinate (Figure 2). The dissociation limit of the S0 state corresponds to Channel (1).
+While the dissociation limit of the S1 state is the same as the S0 state, the S2 state produces
+a NO2– and an O atom at its lowest singlet excited state (1 D). The three lowest triplet states
+(T1 , T2 , and T3 ) dissociate into Channel (2). Conversely, T4 dissociates into Channel (1),
+and it is degenerate with the dissociation limits of the S0 and S1 states. This calculation
+verifies the suggestion that singlet and triplet states are degenerate at the dissociation limit
+of Channel (1). It is worth noting that the S1 and T1 states are quasi-degenerate for intact
+NO3– . This also matches the previously calculated potential energy surfaces of the two states
+at MRCI level. 35
+To further assess the reliability of the hybrid functional with dispersion correction, which
+was used to simulate the dissociation dynamics at the T1 state in an aqueous solution, we
+13
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+scanned the ground state and the T1 potential energy surfaces at the level of revPBE0D3/def-SVP with an implicit solvation model (see Figure S1). The potential energy curves
+of the two states agree qualitatively with the NEVPT2 calculations in Figure 2. These results
+and the energies reported in Table 1 show that revPBE0-D3 with a double zeta basis set is
+reliable in providing the correct dissociation limits in aqueous solution.
+Gas phase calculations support the former observation that only Channel (2) is energetically viable, as the products of Channel (1) are about 1 eV higher in energy (see Table 1). 35
+To make Channel (1) viable, its relative energy should be lowered when NO3– is solvated in
+water. In fact, Svoboda and Slavı́ček calculated the reaction Gibbs free energies for both
+channels from the reaction Gibbs free energies in the gas phase and the hydration Gibbs
+free energies for all species. They have found that the energy di↵erence of Channel (1) is
+indeed lowered and becomes energetically plausible under implicit aqueous solvation at a
+finite temperature. 35 This suggests that NO3– photolysis under aqueous solvation can proceed to both channels on the triplet potential energy surface. We notice that the S1 and T1
+potential energy curves Figure 2 exhibit a significant dissociation barrier. This may be due
+to the system not being adiabatically optimized on the excited state surfaces, as the excited
+state energies were calculated from optimized ground state structures.
+
+Direct S0 ! T1 Excitation in an Aqueous Solution
+Even though the direct S0 ! T1 transition is spin-forbidden, it may be enabled by spinorbit coupling, and can be computed using quasi-degenerate perturbation theory. 81 Here, we
+assess the significance of the direct spin-forbidden transition of NO3– in an aqueous solution
+at room temperature by calculating the oscillator strengths and the UV-visible absorption
+spectra at the level of TDDFT. We use a mixed implicit/explicit solvent approach, treating
+explicitly the water molecules in the first and second solvation shells of NO3– (see also 28 ).
+Table 2 summarizes the calculated excitation energies and oscillator strengths compared
+with experimental values. 91,92 The calculated excitation energy of the S1 state agrees with
+14
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+the light absorption measurements remarkably well. Due to the limited available statistics,
+the calculated oscillator strength of the S1 excitation has a large uncertainty. However, it
+has an order of magnitude ranging from 10 5 to 10 4 , which agrees with the experimental
+values in the literature. 91,92 This range of values is low, as the S0 ! S1 transition is symmetry
+forbidden and it is enabled only by the finite temperature dynamics of NO3– and symmetry
+breaking e↵ect of the solvation environment.
+Spin-orbit coupling calculations allow us to determine the excitation energy of the S0 !
+T1 transition as 3.74 eV (⇠ 330 nm) with an oscillator strength of 4 ⇥ 10 6 . Comparing
+the oscillator strengths between the two absorptions indicates that the direct spin-forbidden
+transition is about 15 times weaker than the spin-allowed transition.
+Table 2: Excitation energies and oscillator strengths of the S1 and T1 transitions in aqueous
+solution with 95% confidence intervals.
+Method
+
+ES1 (eV)
+
+ET1 (eV)
+
+f S1
+
+f T1
+
+CAM-B3LYP
+/def2-TZVP+ CPCM
+
+4.13 ± 0.01
+
+3.74 ± 0.01
+
+(7.50 ± 0.45) ⇥ 10 5
+
+(4.33 ± 0.02) ⇥ 10 6
+
+Experiment
+
+†
+‡
+
+4.11 †
+4.13 ‡
+
+7 ⇥ 10 5 †
+2.5 ⇥ 10 4 ‡
+
+Ref. 91
+Ref. 92
+
+Figure 3 shows that the direct excitation to T1 can contribute to the low-energy tail
+of the UV-visible absorption band observed in experiments. The experimental UV-visible
+absorption spectrum shows a broad peak from 280 to 340 nm and is centered at 302 nm,
+which is usually assigned as the absorption corresponding to the S1 state (see Figure 3). The
+calculated spectrum of the S1 excitation agrees well with the experimental spectrum in terms
+of
+
+max but is substantially narrower. Experimentally, the absorption peak corresponding to
+
+the T1 state may be buried in this broad absorption peak due to its low oscillator strength.
+Our calculations confirm this hypothesis as they predict a weak and broad absorption band
+centered at 328 nm for the S0 ! T1 . These results suggest that the S0 ! T1 transition is
+possible and significant for NO3– photolysis.
+15
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 3: Calculated and experimental UV-visible absorption spectra. The shaded regions
+correspond to the 95% confidence interval. The 95% confidence interval for the T1 transition
+is too small to be visually noticed. The experimental absorption spectrum at 298 K was
+obtained from the previous work by Chu and Anastasio. 15
+
+16
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Free Energy Surface of NO3– (T1 ) in Water
+Since NO3– (T1 ) does not dissociate in 2 ps after the vertical excitation to the T1 state,
+metadynamics simulations are performed to estimate the dissociation barriers. To assess
+the reliability of the metadynamics simulation and the choice of CVs - N-O distance, and
+coordination number of the NO2 fragment - in the spirit of commitment probability analysis,
+we run eight unbiased AIMD simulations starting from configurations near the first transition
+state with randomized velocities. Four of the trajectories return to the initial intact NO3–
+(T1 ) state, and the two dissociation channels are observed in the other four trajectories, two
+for Channel (1) and two for Channel (2). The two channels are clearly distinguished by
+the second CV, n, with the confirmation of the atomic charges and spin densities by Bader
+charge analysis (see Figure S4 and Table S2 for details). 93,94 The multiple-walkers welltempered metadynamics simulation was run for 52 ps and dissociation along both channels
+was observed. The metadynamics simulation can be considered reasonably well-converged
+based on the di↵usion of the CVs, recrossings of barriers, and the average error of the relative
+free energy against time through block analysis. 84,85 Figure S6 shows that several recrossings
+among the metastable states have occurred. While Walker 1 has only explored Channel (2),
+Walker 2 has explored both channels. The block analysis is performed using the last 39 ps
+(75% of the whole data) of the simulation. The average error of the free energy surface has
+reached ⇠ 2 kJ/mol with a block size of 9.5 ps (Figure S7a), and the maximum error is ⇠ 3
+kJ/mol (Figure S7b).
+The calculated FES shows 4 basins corresponding to 4 metastable states (Figure 4). To
+characterize the 4 states, we perform a Bader charge analysis on four frames extracted from
+the corresponding basins. 93,94 The result of the Bader charge analysis, including the spin
+densities, are reported in Table 3. The free energy barriers between pairs of contiguous
+basins are calculated by minimum energy pathway analysis using the MEPSA software, 95
+and are summarized in Table S3. The results are compatible with the experimental estimates
+of the activation energies. 15,31 The initial state A corresponds to the intact NO3– (T1 ) (d ⇠1.3
+17
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 4: Free energy surface of NO3– (T1 ) in solution at 300 K. The snapshots of the
+metastable states are shown with the first two solvation shells (12 water molecules). The
+intermolecular bonds between the hydrogen atoms of water and the oxygen atoms of NO3–
+are indicated with blue dashed lines if they are within 2.55 Å.
+Å, n ⇠3.2). In this state, the two unpaired electrons are localized on NO3– with Bader charge
+-0.83 e and spin density 2.0. The system then overcomes a 23±2 kJ/mol free energy barrier,
+reaching state B (d ⇠2.3, n ⇠2.3). The negative charge of state B is neither localized in
+the NO2 fragment nor the dissociated O atom. Moreover, atom O1 has a spin density of
+1.54, indicating that it is neither O– nor O (3P). This metastable state is a ”solvation cage
+complex” (SCC), [NO2 · · · O]–, stabilized by hydrogen bonding with water molecules in the
+first solvation shell, and characterized by the delocalization of the electron in the excited
+state. Simulations with implicit solvent models cannot capture this e↵ect. The solvation
+cage e↵ect was formerly hypothesized to be the cause for the low quantum yield of NO3–
+photodissociation in an aqueous solution. 22 Our ab initio metadynamics simulations uncover
+the molecular and electronic structure details of the SCC and support this hypothesis. The
+presence of additional free energy barriers to complete NO3– dissociation suggests that the
+system may remain in the SCC state for a long enough time to enhance the probability
+18
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+that the photo fragments recombine or deactivate through non-radiative processes. It is
+worth noting that the N-O distance in the SCC corresponds to the crossover between the
+T1 and the S0 potential energy surfaces in the gas phase (Figure 2). To undergo complete
+dissociation, the system overcomes either a 16±3 kJ/mol barrier to state C (d ⇠3.6, n ⇠1.2),
+which corresponds to Channel (1) (NO2 + O–), or a 7±2 kJ/mol barrier to state D (d ⇠4.0,
+n ⇠3.5), which corresponds to Channel (2) (NO2– + O (3P)). Bader charge analysis of the
+products allows us to discriminate the two channels unequivocally, as both in states C and
+D the excess negative charge is localized on either the NO2 or the O fragment (Table 3).
+Table 3: Bader charge analysis of the 4 metastable states on the free energy surface in
+Figure 4. The values of the two collective variables (N-O distance d, and coordination
+number n) correspond to the minima of the metastable states. Each charge and spin density
+corresponds to the atoms in the parentheses. The spin density corresponds to the total
+number of unpaired electrons among the atoms.
+State
+
+CVs: d (Å), n
+
+Bader Charge (e)
+
+Bader Spin Density
+
+A
+B
+C
+D
+
+1.3, 3.2
+2.3, 2.3
+3.6, 1.2
+4.0, 3.5
+
+-0.83 (NO3– )
+-0.51 (NO2) / -0.39 (O)
+-0.00 (NO2) / -0.72 (O–)
+-0.86 (NO2–) / -0.01 (O (3P))
+
+2.00 (NO3– )
+0.46 (NO2) / 1.54 (O)
+1.00 (NO2) / 0.99 (O–)
+0.01 (NO2–) / 1.98 (O (3P))
+
+We note that the free energy barrier from the SCC to NO2 + O– is about twice as high
+as the barrier from the SCC to NO2– + O (3P) (Table S3). This di↵erence is related to
+the rearrangement of hydrogen bonds (H-bonds) in the first solvation shell of the SCC. To
+ascertain the molecular origin of the features of the FES of dissociation, we have run a set
+of unbiased trajectories starting from the transition state between states A (T1 NO3– ) and
+B (SCC) (Figure S4). In two of these trajectories (labeled 5 and 6), the system remains in
+the SCC basin and eventually evolves to form NO2 +O– [Channel (1)]. In two other trajectories (7 and 8) the system remains in the SCC basin for a shorter time eventually forming
+NO2– +O (3P) [Channel (2)]. Examining the features of the first solvation shell in these two
+di↵erent cases, we observe that dissociation along Channel (1) involves a substantial reconfiguration of the H-bonds around the two fragments - NO2 and O–. The average number of
+19
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure 5: Time evolution of N-O1 distance (d) and the number of H-bonds (n) from the
+unbiased trajectories 5 and 8 are shown in Figure S4. The blue, orange, and green curves
+correspond to d, n of the NO2 fragment, and n of the dissociated O atom, respectively. The
+shaded region indicates the SCC metastable state.
+H-bonds around NO2 drops from 3.5 to 1.5, whereas the dissociating oxygen increases its
+coordination with the surrounding water molecules from 1.5 to 2.5 (Figure 5). Conversely,
+in the trajectory that probes Channel (2) the average number of H-bonds between water
+and the two fragments - NO2– +O (3P) - does not vary significantly (Figure 5). The different H-bonds rearrangements involved in the two channels account for the longer resident
+times in the SCC for the unbiased trajectories that evolve along Channel (1) and correlate
+qualitatively with the higher free energy barrier. It can also qualitatively explain the different temperature dependence of the two channels observed in experiments, indicating that
+Channel (1) becomes more favorable at high temperatures. 27
+Quantum Yield Calculations
+We employ a master equation five-state model to estimate the quantum yields of both channels after NO3– is excited to the T1 state. The five states comprise the four basins identified
+20
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+in the T1 FES and the S0 ground state of NO3– . Quantum yield is experimentally defined as
+the fraction of dissociation products over the absorbed photons. 12,15 In this case, we define it
+as the fraction of NO3– in the T1 state that dissociates into NO2 or NO2– normalized by the
+ratio of the calculated molar absorptivity to the T1 state to the total molar absorptivity at
+313 nm from Figure 3, which is ⇠ 0.043. Using transition state theory, 96 we estimate the rate
+constants from the free energy barriers in Table S3. Additionally, we compute non-radiative
+rates for intersystem crossings from states A (T1 NO3– ) and B (SCC) to the S0 ground state
+using Fermi’s golden rule combined with the path integral approach (see section S6). 86–88 We
+also assume that once NO3– fully dissociates into NO2 and NO2– the transition is irreversible,
+as the fragments will undergo further secondary reactions. The transition rate constants are
+summarized in Table S5. It is worth noting that starting from NO3– in the excited T1 state
+the transition to the SCC is about 1000 times faster than the de-excitation to the ground
+state. However, the T1 -S0 intersystem crossing in the SCC is much more favorable and the
+deactivation rate is faster than the transition rates to complete dissociation along either
+Channel (1) or (2). Indeed, the SCC geometry conforms to a minimum energy crossing
+point between the S0 and T1 potential energy surfaces of NO3– both in the gas phase and in
+an implicit solvent model (see details of these calculations in SI, Section S6). Under these
+circumstances, the electronic spin-orbit coupling between the T1 and S0 states at the SCC
+geometry becomes much more significant resulting in a high intersystem crossing rate.
+Given the large uncertainties in the calculation of the free energy barriers, we can only
+predict a range for the photolysis quantum yields, namely 0.01-0.04% for Channel (1) and
+0.23-1.25% for Channel (2). The estimated averages are 0.02% and 0.57%, respectively.
+According to experiments, the two channels in an aqueous solution have similar quantum
+yields (⇠ 1%) at room temperature, as the free energy barriers of the two channels are both
+⇠ 11 ± 1 kJ/mol at 300 K. 15,31 Whereas our estimate for the range of the quantum yield for
+Channel (2) is compatible with experiments, for Channel (1) it is largely underestimated.
+Besides the uncertainties on the free energy barriers, due to the limited sampling time, a
+
+21
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+possible reason lies in inaccuracies related to the chosen DFT hybrid functional and the lack
+of nuclear quantum e↵ects. Previous studies suggest that these two e↵ects combined may
+lead to an overestimate of the melting point of water between 15 and 20 K. 65 Hence, our
+model may be considered representative of a solution at about 10 K above the melting point,
+where the quantum yield for Channel (2) is much larger than for Channel (1). 31 Another
+possible reason is that NO3– excitations in the S1 state may also feed Channel (1) through a
+molecular mechanism similar to that explored in our metadynamics simulations. However,
+we currently do not have the modeling tools to verify this hypothesis.
+
+Conclusions
+Our simulations provide atomistic insights into NO3– photolysis in aqueous solution. We
+have shown that this environmentally significant reaction can occur on the triplet potential energy surface producing either nitrite or NO2 . This process can be initiated by the
+direct spin-forbidden transition from the ground state (S0 ) to the first triplet state (T1 ).
+Although the transition is ⇠15 times weaker than the spin-allowed transition, this pathway
+is practically significant when the majority of NO3– (S1 ) is deactivated non radiatively. 35 We
+also calculated the UV-visible absorption spectra for the two transitions and compared them
+with the experimental spectrum. The calculated spectra show that the peak for the S0 !
+T1 transition is hidden within the experimental broad peak. This opens the door for further
+experimental studies for this direct spin-forbidden excitation.
+For the dissociation dynamics after the photoexcitation, we have shown that the necessity
+of using hybrid density functional to simulate NO3– photolysis in an aqueous solution and the
+capability of multiple walkers well-tempered metadynamics to model its reaction dynamics
+with explicit solvent molecules at the T1 state. Both photodissociation channels are observed,
+and a SCC is identified. This metastable SCC extends the present picture of the solvation
+cage e↵ect in the community from a microscopic perspective, allowing for an illustration of
+
+22
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+how the photo fragments can recombine before escaping from the solvation cage. We also
+estimate the triplet state quantum yields of the two channels with a master equation model.
+The results agree qualitatively with experiments in which Channel (2) dominates at a lower
+temperature. Further investigations on S1 state dynamics, non-adiabatic interactions, and
+transitions among electronic states with explicit solvents will help complete the complex
+picture of NO3– photolysis.
+The current research provides an example of modeling photochemistry in a bulk aqueous
+solution, which can provide insight into how photolysis occurs in di↵erent pathways. We
+show that it is necessary to explicitly model the solvation environment with a reliable electronic structure method to explore di↵erent chemical reaction pathways. We find that the
+rearrangement of H-bonds is necessary to illustrate the temperature dependence of the two
+channels of NO3– photolysis under solvation environments, which cannot be observed using
+an implicit solvent model. To obtain a more comprehensive picture of NO3– photolysis under
+environmental conditions, the current modeling method will be transferred and adapted to
+investigate NO3– photolysis at di↵erent environmental surfaces, such as the air-ice interface,
+and metal oxides. 30,97
+
+Conflicts of interest
+There are no conflicts to declare.
+
+Supporting Information
+The gas-phase calculations, electronic properties of NH4 NO3 solution, non-spontaneous dissociation of T1 in solution, unbiased AIMD trajectories in solution from the transition state,
+error analysis of the multiple walkers well-tempered metadynamics simulation, and the details on the master equation model.
+
+23
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Data availability
+Data are available on PLUMED-NEST xxx-xxx.
+
+Acknowledgements
+We are grateful to Ted Hullar and Aaron Lieberman for several valuable discussions and
+suggestions. We thank Wang-Yeuk Kong for useful suggestions on the gas-phase calculations.
+This work was supported by the National Science Foundation under Grant No. 2305164. This
+work used the Expanse facility at the San Diego Supercomputer Center through allocation
+CHE220067 from the Advanced Cyberinfrastructure Coordination Ecosystem: Services and
+Support (ACCESS) program, which is supported by National Science Foundation grants
+#2138259, #2138286, #2138307, #2137603, and #2138296.
+
+References
+(1) Jacob, D. J. Introduction to Atmospheric Chemistry; Princeton University Press, 1999.
+(2) Seinfeld, J. H.; Pandis, S. N. Atmospheric Chemistry and Physics: From Air Pollution
+to Climate Change; John Wiley & Sons, 2016.
+(3) Cao, Y.; Ma, Q.; Chu, B.; He, H. Homogeneous and heterogeneous photolysis of nitrate
+in the atmosphere: state of the science, current research needs, and future prospects.
+Front. Environ. Sci. Eng. 2022, 17, 48.
+(4) Warneck, P.; Wurzinger, C. Product quantum yields for the 305-nm photodecomposition of nitrate in aqueous solution. J. Phys. Chem. 1988, 92, 6278–6283.
+(5) Mack, J.; Bolton, J. R. Photochemistry of nitrite and nitrate in aqueous solution: a
+review. J. Photochem. Photobiol., A 1999, 128, 1–13.
+
+24
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(6) Finlayson-Pitts, B. J.; Jr, J. N. P. Chemistry of the Upper and Lower Atmosphere:
+Theory, Experiments, and Applications; Elsevier, 1999.
+(7) Ye, C. et al. Rapid cycling of reactive nitrogen in the marine boundary layer. Nature
+2016, 532, 489–491.
+(8) Reed, C.; Evans, M. J.; Crilley, L. R.; Bloss, W. J.; Sherwen, T.; Read, K. A.; Lee, J. D.;
+Carpenter, L. J. Evidence for renoxification in the tropical marine boundary layer.
+Atmos. Chem. Phys. 2017, 17, 4081–4092.
+(9) Zhu, Y.; Wang, Y.; Zhou, X.; Elshorbany, Y. F.; Ye, C.; Hayden, M.; Peters, A. J. An
+investigation into the chemistry of HONO in the marine boundary layer at Tudor Hill
+Marine Atmospheric Observatory in Bermuda. Atmos. Chem. Phys. 2022, 22, 6327–
+6346.
+(10) Shah, V. et al. Nitrogen oxides in the free troposphere: implications for tropospheric
+oxidants and the interpretation of satellite NO2 measurements. Atmos. Chem. Phys.
+2023, 23, 1227–1257.
+(11) Zhang, R.; Chan, C. K. Simultaneous formation of sulfate and nitrate via co-uptake
+of SO2 and NO2 by aqueous NaCl droplets: combined e↵ect of nitrate photolysis and
+chlorine chemistry. Atmos. Chem. Phys. 2023, 23, 6113–6126.
+(12) Benedict, K. B.; McFall, A. S.; Anastasio, C. Quantum Yield of Nitrite from the Photolysis of Aqueous Nitrate above 300 nm. Environ. Sci. Technol. 2017, 51, 4387–4395.
+(13) Zepp, R. G.; Hoigne, J.; Bader, H. Nitrate-induced photooxidation of trace organic
+chemicals in water. Environ. Sci. Technol. 1987, 21, 443–450.
+(14) Zellner, R.; Exner, M.; Herrmann, H. Absolute OH quantum yields in the laser photolysis of nitrate, nitrite and dissolved H2 O2 at 308 and 351 nm in the temperature range
+278–353 K. J. Atmos. Chem. 1990, 10, 411–425.
+25
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(15) Chu, L.; Anastasio, C. Quantum Yields of Hydroxyl Radical and Nitrogen Dioxide from
+the Photolysis of Nitrate on Ice. J. Phys. Chem. A 2003, 107, 9594–9602.
+(16) Chu, L.; Anastasio, C. Temperature and Wavelength Dependence of Nitrite Photolysis
+in Frozen and Aqueous Solutions. Environ. Sci. Technol. 2007, 41, 3626–3632.
+(17) Scharko, N. K.; Berke, A. E.; Ra↵, J. D. Release of Nitrous Acid and Nitrogen Dioxide
+from Nitrate Photolysis in Acidic Aqueous Solutions. Environ. Sci. Technol. 2014, 48,
+11991–12001.
+(18) Noyes, R. M. Kinetics of Competitive Processes when Reactive Fragments are Produced
+in Pairs. J. Am. Chem. Soc. 1955, 77, 2042–2045.
+(19) Noyes, R. M. Models Relating Molecular Reactivity and Di↵usion in Liquids. J. Am.
+Chem. Soc. 1956, 78, 5486–5490.
+(20) Nissenson, P.; Knox, C. J. H.; Finlayson-Pitts, B. J.; Phillips, L. F.; Dabdub, D.
+Enhanced photolysis in aerosols: evidence for important surface e↵ects. Phys. Chem.
+Chem. Phys. 2006, 8, 4700.
+(21) Davis, D.; Seelig, J.; Huey, G.; Crawford, J.; Chen, G.; Wang, Y.; Buhr, M.; Helmig, D.;
+Ne↵, W.; Blake, D. A reassessment of Antarctic plateau reactive nitrogen based on
+ANTCI 2003 airborne and ground based measurements. Atmos. Environ. 2008, 42,
+2831–2848.
+(22) Nissenson, P.; Dabdub, D.; Das, R.; Maurino, V.; Minero, C.; Vione, D. Evidence
+of the water-cage e↵ect on the photolysis of NO3 and FeOH2+ . Implications of this
+e↵ect and of H2 O2 surface accumulation on photochemistry at the air–water interface
+of atmospheric droplets. Atmos. Environ. 2010, 44, 4859–4866.
+(23) Richards, N. K.; Wingen, L. M.; Callahan, K. M.; Nishino, N.; Kleinman, M. T.;
+
+26
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Tobias, D. J.; Finlayson-Pitts, B. J. Nitrate Ion Photolysis in Thin Water Films in the
+Presence of Bromide Ions. J. Phys. Chem. A 2011, 115, 5810–5821.
+(24) Meusinger, C.; Berhanu, T. A.; Erbland, J.; Savarino, J.; Johnson, M. S. Laboratory
+study of nitrate photolysis in Antarctic snow. I. Observed quantum yield, domain of
+photolysis, and secondary chemistry. J. Chem. Phys. 2014, 140, 244305.
+(25) Marcotte, G.; Marchand, P.; Pronovost, S.; Ayotte, P.; La↵on, C.; Parent, P. SurfaceEnhanced Nitrate Photolysis on Ice. J. Phys. Chem. A 2015, 119, 1996–2005.
+(26) McFall, A. S.; Edwards, K. C.; Anastasio, C. Nitrate Photochemistry at the Air–Ice
+Interface and in Other Ice Reservoirs. Environ. Sci. Technol. 2018, 52, 5710–5717.
+(27) Hullar, T.; Tran, T.; Anastasio, C. Nitrate Photolysis at the Air–Ice Interface of NatureIdentical Snow. ACS Earth Space Chem. 2023, 7, 1791–1797.
+(28) Berrens, M. L.; Chen, Z.; Chan, K.-T.; Anastasio, C.; Donadio, D. Solvation Structure
+and UV–Visible Absorption Spectra of the Nitrate Anion at the Air–Ice Interface by
+First-Principles Molecular Simulations. ACS Earth Space Chem. 2023, 7, 1761–1769.
+(29) Bononi, F. C.; Chen, Z.; Rocca, D.; Andreussi, O.; Hullar, T.; Anastasio, C.; Donadio, D. Bathochromic Shift in the UV–Visible Absorption Spectra of Phenols at Ice
+Surfaces: Insights from First-Principles Calculations. J. Phys. Chem. A 2020, 124,
+9288–9298.
+(30) Hullar, T.; Tran, T.; Chen, Z.; Bononi, F.; Palmer, O.; Donadio, D.; Anastasio, C.
+Enhanced photodegradation of dimethoxybenzene isomers in/on ice compared to in
+aqueous solution. Atmos. Chem. Phys. 2022, 22, 5943–5959.
+(31) Benedict, K. B.; Anastasio, C. Quantum Yields of Nitrite (NO2–) from the Photolysis
+of Nitrate (NO3–) in Ice at 313 nm. J. Phys. Chem. A 2017, 121, 8474–8483, Publisher:
+American Chemical Society.
+27
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(32) de Jesus Medeiros, D.; Pimentel, A. S. New Insights in the Atmospheric HONO Formation: New Pathways for N2 O4 Isomerization and NO2 Dimerization in the Presence
+of Water. J. Phys. Chem. A 2011, 115, 6357–6365.
+(33) Harris, L. E. The lower electronic states of nitrite and nitrate ion, nitromethane,
+nitramide, nitric acid, and nitrate esters. J. Chem. Phys. 1973, 58, 5615–5626.
+(34) Svoboda, O.; Kubelová, L.; Slavı́ček, P. Enabling Forbidden Processes: Quantum and
+Solvation Enhancement of Nitrate Anion UV Absorption. J. Phys. Chem. A 2013, 117,
+12868–12877.
+(35) Svoboda, O.; Slavı́ček, P. Is Nitrate Anion Photodissociation Mediated by Singlet–Triplet Absorption? J. Phys. Chem. Lett. 2014, 5, 1958–1962.
+(36) Pedersen, P. D.; Rasmussen, M. H.; Mikkelsen, K. V.; Johnson, M. S. The riddle of
+the forbidden UV absorption of aqueous nitrate: the oscillator strength of the n ! ⇡ ⇤
+transition in NO3 including second order vibronic coupling. Phys. Chem. Chem. Phys.
+2019, 21, 23466–23472.
+(37) Pedersen, P. D.; Mikkelsen, K. V.; Johnson, M. S. The unexpected e↵ect of aqueous ion
+pairs on the forbidden n ! ⇡ ⇤ transition in nitrate. Phys. Chem. Chem. Phys. 2020,
+22, 11678–11685.
+0
+
+(38) Weaver, A.; Arnold, D. W.; Bradforth, S. E.; Neumark, D. M. Examination of the 2 A2
+and 2 E ” states of NO3 by ultraviolet photoelectron spectroscopy of NO3 . J. Chem.
+Phys. 1991, 94, 1740–1751.
+(39) Wang, X.-B.; Yang, X.; Wang, L.-S.; Nicholas, J. B. Photodetachment and theoretical
+study of free and water-solvated nitrate anions, NO3 (H2 On ) (n = 0
+Phys. 2002, 116, 561–570.
+
+28
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+6). J. Chem.
+
+(40) Fehér, P. P.; Madarász, Á.; Stirling, A. Multiscale Modeling of Electronic Spectra
+Including Nuclear Quantum E↵ects. J. Chem. Theory Comput. 2021, 17, 6340–6352.
+(41) Timrov, I.; Andreussi, O.; Biancardi, A.; Marzari, N.; Baroni, S. Self-consistent continuum solvation for optical absorption of complex molecular systems in solution. J.
+Chem. Phys. 2015, 142, 034111.
+(42) Iannuzzi, M.; Laio, A.; Parrinello, M. Efficient Exploration of Reactive Potential Energy
+Surfaces Using Car-Parrinello Molecular Dynamics. Phys. Rev. Lett. 2003, 90, 238302.
+(43) Barducci, A.; Bussi, G.; Parrinello, M. Well-Tempered Metadynamics: A Smoothly
+Converging and Tunable Free-Energy Method. Phys. Rev. Lett. 2008, 100, 020603.
+(44) Barducci, A.; Bonomi, M.; Parrinello, M. Metadynamics. WIREs Comput. Mol. Sci.
+2011, 1, 826–843.
+(45) Angeli, C.; Cimiraglia, R.; Evangelisti, S.; Leininger, T.; Malrieu, J.-P. Introduction of
+n -electron valence states for multireference perturbation theory. J. Chem. Phys. 2001,
+114, 10252–10264.
+(46) Angeli, C.; Borini, S.; Cestari, M.; Cimiraglia, R. A quasidegenerate formulation of the
+second order n-electron valence state perturbation theory approach. J. Chem. Phys.
+2004, 121, 4043–4049.
+(47) Soda, T.; Kitagawa, Y.; Onishi, T.; Takano, Y.; Shigeta, Y.; Nagao, H.; Yoshioka, Y.;
+Yamaguchi, K. Ab initio computations of e↵ective exchange integrals for H–H, H–He–H
+and Mn2 O2 complex: comparison of broken-symmetry approaches. Chem. Phys. Lett.
+2000, 319, 223–230.
+(48) Yanai, T.; Tew, D. P.; Handy, N. C. A new hybrid exchange–correlation functional
+using the Coulomb-attenuating method (CAM-B3LYP). Chem. Phys. Lett. 2004, 393,
+51–57.
+29
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(49) Zheng, J.; Xu, X.; Truhlar, D. G. Minimally augmented Karlsruhe basis sets. Theor.
+Chem. Acc. 2011, 128, 295–305.
+(50) Werner, H.-J.; Knowles, P. J. A second order multiconfiguration SCF procedure with
+optimum convergence. J. Chem. Phys. 1985, 82, 5053–5063.
+(51) Angeli, C.; Cimiraglia, R.; Malrieu, J.-P. N-electron valence state perturbation theory:
+a fast implementation of the strongly contracted variant. Chem. Phys. Lett. 2001, 350,
+297–305.
+(52) Lang, L.; Sivalingam, K.; Neese, F. The combination of multipartitioning of the Hamiltonian with canonical Van Vleck perturbation theory leads to a Hermitian variant of
+quasidegenerate N-electron valence perturbation theory. J. Chem. Phys. 2020, 152,
+014109.
+(53) Dunning, T. H. Gaussian basis sets for use in correlated molecular calculations. I. The
+atoms boron through neon and hydrogen. J. Chem. Phys. 1989, 90, 1007–1023.
+(54) Langho↵, S. R.; Davidson, E. R. Configuration interaction calculations on the nitrogen
+molecule. Int. J. Quantum Chem. 1974, 8, 61–72.
+(55) Zhang, Y.; Yang, W. Comment on “Generalized Gradient Approximation Made Simple”. Phys. Rev. Lett. 1998, 80, 890–890.
+(56) Adamo, C.; Barone, V. Toward reliable density functional methods without adjustable
+parameters: The PBE0 model. J. Chem. Phys. 1999, 110, 6158–6170.
+(57) Grimme, S.; Antony, J.; Ehrlich, S.; Krieg, H. A consistent and accurate ab initio
+parametrization of density functional dispersion correction (DFT-D) for the 94 elements
+H-Pu. J. Chem. Phys. 2010, 132, 154104.
+(58) Weigend, F.; Ahlrichs, R. Balanced basis sets of split valence, triple zeta valence and
+
+30
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+quadruple zeta valence quality for H to Rn: Design and assessment of accuracy. Phys.
+Chem. Chem. Phys. 2005, 7, 3297–3305.
+(59) Weigend, F. Accurate Coulomb-fitting basis sets for H to Rn. Phys. Chem. Chem. Phys.
+2006, 8, 1057–1065.
+(60) Marenich, A. V.; Cramer, C. J.; Truhlar, D. G. Universal Solvation Model Based on
+Solute Electron Density and on a Continuum Model of the Solvent Defined by the
+Bulk Dielectric Constant and Atomic Surface Tensions. J. Phys. Chem. B 2009, 113,
+6378–6396.
+(61) Neese, F.; Wennmohs, F.; Becker, U.; Riplinger, C. The ORCA quantum chemistry
+program package. J. Chem. Phys. 2020, 152, 224108.
+(62) VandeVondele, J.; Krack, M.; Mohamed, F.; Parrinello, M.; Chassaing, T.; Hutter, J.
+Quickstep: Fast and accurate density functional calculations using a mixed Gaussian
+and plane waves approach. Comput. Phys. Commun. 2005, 167, 103–128.
+(63) Kühne, T. D. et al. CP2K: An electronic structure and molecular dynamics software
+package - Quickstep: Efficient and accurate electronic structure calculations. J. Chem.
+Phys. 2020, 152, 194103.
+(64) Cheng, B.; Engel, E. A.; Behler, J.; Dellago, C.; Ceriotti, M. Ab initio thermodynamics
+of liquid and solid water. Proc. Natl. Acad. Sci. U.S.A. 2019, 116, 1110–1115.
+(65) Chen, Z.; Berrens, M. L.; Chan, K.-T.; Fan, Z.; Donadio, D. Thermodynamics of Water
+and Ice from a Fast and Scalable First-Principles Neuroevolution Potential. J. Chem.
+Eng. Data 2024, 69, 128–140.
+(66) VandeVondele, J.; Hutter, J. Gaussian basis sets for accurate calculations on molecular
+systems in gas and condensed phases. J. Chem. Phys. 2007, 127, 114105.
+
+31
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(67) Guidon, M.; Hutter, J.; VandeVondele, J. Auxiliary Density Matrix Methods for
+Hartree—Fock Exchange Calculations. J. Chem. Theory Comput. 2010, 6, 2348–2364.
+(68) Goedecker, S.; Teter, M.; Hutter, J. Separable dual-space Gaussian pseudopotentials.
+Phys. Rev. B 1996, 54, 1703–1710.
+(69) Bussi, G.; Donadio, D.; Parrinello, M. Canonical sampling through velocity rescaling.
+J. Chem. Phys. 2007, 126, 014101.
+(70) Riikonen, S.; Parkkinen, P.; Halonen, L.; Gerber, R. B. Ionization of Acids on the
+Quasi-Liquid Layer of Ice. J. Phys. Chem. A 2014, 118, 5029–5037.
+(71) Gerber, R. B.; Varner, M. E.; Hammerich, A. D.; Riikonen, S.; Murdachaew, G.;
+Shemesh, D.; Finlayson-Pitts, B. J. Computational Studies of Atmospherically-Relevant
+Chemical Reactions in Water Clusters and on Liquid Water and Ice Surfaces. Acc.
+Chem. Res. 2015, 48, 399–406.
+(72) de la Puente, M.; David, R.; Gomez, A.; Laage, D. Acids at the Edge: Why Nitric and
+Formic Acid Dissociations at Air–Water Interfaces Depend on Depth and on Interface
+Specific Area. J. Am. Chem. Soc. 2022, 144, 10524–10529.
+(73) Perdew, J. P.; Burke, K.; Ernzerhof, M. Generalized Gradient Approximation Made
+Simple. Phys. Rev. Lett. 1996, 77, 3865–3868.
+(74) Gaiduk, A. P.; Zhang, C.; Gygi, F.; Galli, G. Structural and electronic properties of
+aqueous NaCl solutions from ab initio molecular dynamics simulations with hybrid
+density functionals. Chem. Phys. Lett. 2014, 604, 89–96.
+(75) Gaiduk, A. P.; Govoni, M.; Seidel, R.; Skone, J. H.; Winter, B.; Galli, G. Photoelectron
+Spectra of Aqueous Solutions from First Principles. J. Am. Chem. Soc. 2016, 138,
+6912–6915.
+
+32
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(76) de Almeida, J. M.; Nguyen, N. L.; Colonna, N.; Chen, W.; Rodrigues Miranda, C.;
+Pasquarello, A.; Marzari, N. Electronic Structure of Water from Koopmans-Compliant
+Functionals. J. Chem. Theory Comput. 2021, 17, 3923–3930.
+(77) Berrens, M. L.; Kundu, A.; Calegari Andrade, M. F.; Pham, T. A.; Galli, G.; Donadio, D. Nuclear Quantum E↵ects on the Electronic Structure of Water and Ice. J. Phys.
+Chem. Lett. 2024, 15, 6818–6825.
+(78) Goerigk, L.; Grimme, S. A thorough benchmark of density functional methods for general main group thermochemistry, kinetics, and noncovalent interactions. Phys. Chem.
+Chem. Phys. 2011, 13, 6670.
+(79) Moellmann, J.; Grimme, S. DFT-D3 Study of Some Molecular Crystals. J. Phys. Chem.
+C 2014, 118, 7615–7621.
+(80) Barone, V.; Cossi, M. Quantum Calculation of Molecular Energies and Energy Gradients in Solution by a Conductor Solvent Model. J. Phys. Chem. A 1998, 102, 1995–
+2001.
+(81) Roemelt, M.; Maganas, D.; DeBeer, S.; Neese, F. A combined DFT and restricted
+open-shell configuration interaction method including spin-orbit coupling: Application
+to transition metal L-edge X-ray absorption spectroscopy. J. Chem. Phys. 2013, 138,
+204101.
+(82) Murdachaew, G.; Varner, M. E.; Phillips, L. F.; Finlayson-Pitts, B. J.; Gerber, R. B.
+Nitrogen dioxide at the air–water interface: trapping, absorption, and solvation in the
+bulk and at the surface. Phys. Chem. Chem. Phys. 2013, 15, 204–212.
+(83) Raiteri, P.; Laio, A.; Gervasio, F. L.; Micheletti, C.; Parrinello, M. Efficient Reconstruction of Complex Free Energy Landscapes by Multiple Walkers Metadynamics. J.
+Phys. Chem. B 2006, 110, 3533–3539.
+
+33
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(84) Tiwary, P.; Parrinello, M. A Time-Independent Free Energy Estimator for Metadynamics. J. Phys. Chem. B 2015, 119, 736–742.
+(85) Tribello, G. A.; Bonomi, M.; Branduardi, D.; Camilloni, C.; Bussi, G. PLUMED 2:
+New feathers for an old bird. Comput. Phys. Commun. 2014, 185, 604–613.
+(86) de Souza, B.; Farias, G.; Neese, F.; Izsák, R. Predicting Phosphorescence Rates of
+Light Organic Molecules Using Time-Dependent Density Functional Theory and the
+Path Integral Approach to Dynamics. J. Chem. Theory Comput. 2019, 15, 1896–1904.
+(87) de Souza, B.; Neese, F.; Izsák, R. On the theoretical prediction of fluorescence rates from
+first principles using the path integral approach. J. Chem. Phys. 2018, 148, 034104.
+(88) Baiardi, A.; Bloino, J.; Barone, V. General Time Dependent Approach to Vibronic
+Spectroscopy Including Franck–Condon, Herzberg–Teller, and Duschinsky E↵ects. J.
+Chem. Theory Comput. 2013, 9, 4097–4115.
+(89) Penfold, T. J.; Gindensperger, E.; Daniel, C.; Marian, C. M. Spin-Vibronic Mechanism
+for Intersystem Crossing. Chem. Rev. 2018, 118, 6975–7025.
+(90) Veys, K.; Bousquet, M. H. E.; Jacquemin, D.; Escudero, D. Modeling the Fluorescence
+Quantum Yields of Aromatic Compounds: Benchmarking the Machinery to Compute
+Intersystem Crossing Rates. J. Chem. Theory Comput. 2023, 19, 9344–9357.
+(91) Rotlevi, E.; Treinin, A. The 300-mµ Band of NO3 . J. Phys. Chem. 1965, 69, 2645–2648.
+(92) Mewes, J.-M.; Jerabek, P.; Bohle, D. S.; Schwerdtfeger, P. The Light-Driven Isomerization of Aqueous Nitrate: A Theoretical Perspective. ChemPhotoChem 2018, 2, 725–
+733.
+(93) Bader, R. F. W. Atoms in molecules. Acc. Chem. Res. 1985, 18, 9–15.
+(94) Tang, W.; Sanville, E.; Henkelman, G. A grid-based Bader analysis algorithm without
+lattice bias. J. Phys.: Condens. Matter 2009, 21, 084204.
+34
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(95) Marcos-Alcalde, I.; Setoain, J.; Mendieta-Moreno, J. I.; Mendieta, J.; GómezPuertas, P. MEPSA: minimum energy pathway analysis for energy landscapes. Bioinformatics 2015, 31, 3853–3855.
+(96) Hänggi, P.; Talkner, P.; Borkovec, M. Reaction-rate theory: fifty years after Kramers.
+Rev. Mod. Phys. 1990, 62, 251–341.
+(97) Rubasinghege, G.; Grassian, V. H. Photochemistry of Adsorbed Nitrate on Aluminum
+Oxide Particle Surfaces. J. Phys. Chem. A 2009, 113, 7818–7825.
+
+35
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Supporting Information
+Revealing the Photochemical Pathways of Nitrate in
+Water through First-Principles Simulations
+Kam-Tung Chan1 , Margaret L. Berrens1 , Zekun Chen1 , Cort Anastasio2 , and Davide
+Donadio1
+1
+
+Department of Chemistry, University of California Davis, One Shields Ave. Davis, CA,
+95616.
+2
+Department of Land, Air, and Water Resources, University of California Davis, One
+Shields Ave. Davis, CA, 95616.
+
+E-mail: ddonadio@ucdavis.edu
+
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+S1: Quantum Chemical Calculations in the Gas Phase and Under
+Implicit Solvation
+The vertical excitation energies of gas phase NO3– at its equilibrium geometry are calculated at the level
+of QD-NEVPT2(10,9)/aug-cc-pVTZ and MRCI+Q(10,9)/aug-cc-pVTZ. The energies of neutral NO3 are
+calculated at the level of QD-NEVPT2(9,9)/aug-cc-pVTZ and MRCI+Q(9,9)/aug-cc-pVTZ. The electron
+detachment energies are calculated by the di↵erence between the ground state of neutral NO3 and the ground
+state of NO3–.
+We also performed potential energy surface scans on the ground state and the T1 states at the level
+of DFT with implicit solvent models. For the ground state, broken-symmetry DFT was used to optimize
+the structures. For the T1 state, the energies were calculated on the ground state structures with an
+unrestricted Kohn-Sham reference. The solvation model based on density (SMD) of water was used as
+the implicit solvation model. All these calculations were calculated using the revPBE0 functional with D3
+dispersion correction with zero-damping and def2-SVP basis set.
+Table S1: The vertical excitation energies of gas phase NO3–.
+Transition
+
+QD-NEVPT2(10,9)/aug-cc-pVTZ (eV)
+
+MRCI+Q(10,9)/aug-cc-pVTZ (eV)
+
+S 0 ! T1
+S0 ! S1
+S 0 ! T2
+S 0 ! T3
+S 0 ! T4
+S0 ! S2
+
+4.179
+4.418
+5.265
+5.268
+5.553
+5.616
+
+3.626
+3.808
+4.632
+5.089
+5.091
+4.714
+
+4.379
+
+3.901
+
+NO3–!NO3
+
+S1
+
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure S1: The potential energy curves of NO3– calculated at the level of revPBE0-D3/def2-SVP with SMD
+implicit solvation model of water. The total energies of the isolated species after dissociation are shown in
+dashed lines
+
+S2
+
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+S2: Electronic Properties of NH4 NO3 Solution
+To illustrate the necessity of using hybrid density functional instead of semi-local density functional when
+performing AIMD simulations at the T1 state, the projected density of states (PDOS) of NO3– and water in
+the NH4 NO3 solution were calculated and shown in Figure S2. All PDOS were calculated by extracting 200
+frames from a preliminary AIMD simulation at the level of a semi-local density functional with dispersion
+correction (PBE-D3), followed by single point calculations for the energy levels at the S0 and T1 state with
+PBE-D3 and revPBE0-D3, respectively. A previous study has shown that the electronic properties of NaCl
+and Cl aqueous solution do not change significantly, regardless of the method of the AIMD simulations.
+[1] For the case of PBE-D3, as shown in Figure S2a, when the system is vertically excited from S0 to T1 ,
+the highest occupied molecular orbital (HOMO) of the system, i.e. the unpaired electron of NO3– is excited
+near to the edge of the water conduction band. This causes the electron to be delocalized to the water
+molecules and spontaneous dissociation of NO3– along the channel (1). Conversely, as shown in Figure S2b,
+the direct spin-forbidden excitation at the level of revPBE0-D3 excites the unpaired electron to the middle
+of the water band gap. The unpaired electron remains localized in NO3–, so channel (2) becomes viable in
+the AIMD simulations. The results above suggest that the substrate and its solvation environment must be
+accurately modeled to simulate the physics and chemistry of the system of interest. In the current study,
+hybrid density functional is a more appropriate approach to model the reaction dynamics at its excited state
+despite its high computational cost.
+
+S3
+
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(a) Levels/Simulation: PBE-D3/PBE-D3
+
+(b) Levels/Simulation: revPBE0-D3/PBE-D3
+
+Figure S2: Projected density of states (PDOS) of NO3– and water in a NH4 NO3 solution calculated at the
+level of (a) PBE-D3/PBE-D3 and (b) revPBE0-D3/PBE-D3. The reference energy is set at the valence band
+maximum (VBM). NO3– and water at the S0 state are colored in orange and blue respectively, while NO3–
+and water at the T1 state are colored in red and green respectively. Occupied states are shaded with the
+corresponding color.
+
+S4
+
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+S3: Non-spontaneous Dissociation of NO3– (T1 ) in Solution After
+the Vertical Excitation from the S0 state.
+
+Figure S3: The time evolution of the three N-O bonds in NO3– (T1 ) after the vertical excitation from the S0
+state.
+
+S5
+
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+S4: Unbiased AIMD Trajectories in Solution from the Transition
+State
+
+Figure S4: The evolution of the two proposed CVs for each downhill unbiased trajectory starting near the
+transition state. Trajectories 1 to 4 go back to intact NO3– (T1 ). Trajectories 5 and 6 go to channel (1).
+Trajectories 7 and 8 go to channel (2).
+
+Table S2: The Bader charge analysis of the last frame from each trajectory shown in Figure S4. Each charge
+and spin density corresponds to the species in the parentheses. The spin density corresponds to the total
+number of unpaired electrons among the atoms.
+Trajectory
+
+Bader Charge
+
+Bader Spin Density
+
+1
+2
+3
+4
+5
+6
+7
+8
+
+-0.87 (NO3– (T1 ))
+-0.87 (NO3– (T1 ))
+-0.87 (NO3– (T1 ))
+-0.90 (NO3– (T1 ))
+
+1.99 (NO3– (T1 ))
+1.99 (NO3– (T1 ))
+1.99 (NO3– (T1 ))
+1.99 (NO3– (T1 ))
+0.99 (NO2) / 1.00 (O –)
+0.98 (NO2) / 0.97 (O –)
+0.03 (NO2–) / 1.96 (O (3P))
+0.01 (NO2–) / 1.98 (O (3P))
+
+-0.01 (NO2) / -0.75 (O –)
+-0.01 (NO2) / -0.76 (O –)
+-0.83 (NO2–) / -0.02 (O (3P))
+-0.86 (NO2–) / -0.01 (O (3P))
+
+S6
+
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Figure S5: The time evolution of N-O1 distance (d) and the number of H-bonds (n) from the unbiased
+trajectory 6 and 7 shown in Figure S3. The blue, orange, and green curves correspond to d, n of the NO2
+fragment, and n of the dissociated O atom, respectively. The shaded region indicates the SCC metastable
+state.
+
+S7
+
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+S5: Error Analysis of the Multiple Walkers Well-Tempered Metadynamics Simulation
+Table S3: The free energy barriers between the 4 meta-stable states on the free energy surface.
+Transition
+
+Molecular Fragments
+
+A!B
+B!A
+B!C
+B!D
+
+NO3–(T1 ) ! [NO2 · · · O]–(T1 )
+[NO2 · · · O]–(T1 ) ! NO3–(T1 )
+[NO2 · · · O]–(T1 ) ! NO2 + O –
+[NO2 · · · O]–(T1 ) ! NO2– + O (3P)
+
+Free Energy Barrier (kJ/mol)
+23 ± 2
+13 ± 2
+16 ± 3
+7±3
+
+S8
+
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(a) The deposition of Gaussians for walker 1.
+
+(b) The deposition of Gaussians for walker 2.
+
+Figure S6: The deposition of Gaussians for the two walkers in the multiple walkers well-tempered metadynamics simulation.
+S9
+
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(a) The average error of the free energy surface against block size.
+
+(b) The free energy surface obtained with a block size of 9.5 ps (left) and the associated error (right).
+
+Figure S7
+
+S10
+
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+S6: Computational Details on the Master Equation Model
+We emploed a master equation model to estimate the quantum yields of both channels after NO3– being
+excited to the T1 state. The transition probability matrix (W) of our master equation model consisted of
+the rate constants of the dissociation processes on the T1 state free energy surface and the non-radiative
+deactivation processes:
+2
+3
+0
+kA0
+kB0
+0 0
+60
+(kA0 + 3kAB )
+3kBA
+0 07
+6
+7
+6
+3kAB
+(kB0 + 3kBA + 3kBC + 3kBD ) 0 07
+W = 60
+7
+40
+0
+3kBC
+0 05
+0
+0
+3kBD
+0 0
+Where the subscripts correspond to the transitions between two states. State 0 corresponds to NO3–
+(S0 ). States A, B, C, and D correspond to the 4 meta-stable states on the free energy surface in Figure 4.
+For example, kA0 corresponds to the intersystem crossing rate constant from NO3– (T1 ) to NO3– (S0 ). The
+initial population is fully occupied with state A (NO3– (T1 )) with a value of 0.043 under the assumption of
+NO3– absorbing photons at a wavelength of 313 nm. The population is propagated by W, and the master
+equations are integrated by the fourth-order Runge-Kutta method. Here, we assume no recombinations will
+occur once state C or D is reached from state B.
+Two kinds of rate constants are present in W: the rate constants of transitions between the free energy
+minima and the intersystem crossing (ISC) rate constants. We apply the simple transition state theory[2]
+to estimate the rate constants on the free energy surface:
+kT ST = ⌫ exp (
+
+F
+)
+kB T
+
+Where F is the free energy barrier of the transition, kB is the Boltzmann constant, and T is the
+temperature. ⌫ is the N-O1 vibrational frequency in states A and B, which is obtained by examining the
+vibrational density of states through the Fourier transform of the velocity autocorrelation function. The
+obtained N-O1 stretching frequencies in states A and B are 36 and 3.9 THz, respectively. These rate
+constants are multiplied with a factor of 3 to consider all three N-O bonds in NO3–.
+To assess the non-radiative deactivation rates, we calculated the ISC rate constant from NO3– (T1 ) to
+NO3– (S0 ) and the ISC rate constant from the solvation cage complex (SCC) at the T1 state to the S0 state
+by the recently developed method using Fermi’s golden rule combined with the path integral approach. [3, 4]
+This method includes the coupling of electronic spin-orbit coupling with vibrational degrees of freedom,
+which can describe the ISC rates of small organic molecules with negligible electronic spin-orbit coupling.
+[5]:
+kISC =
+
+2⇡ X
+PT1 ,⌫ (T )| h
+~
+0
+⌫,⌫
+
+T1 ⇥T1 ,⌫ |ĤSOC |
+
+S0 ⇥S0 ,⌫ 0 i |
+
+2
+
+(ET1 ,⌫
+
+ES0 ,⌫ 0 )
+
+Where is the electronic and ⇥ is the vibrational wavefunction. PT1 ,⌫ (T ) is the Boltzmann population
+of the vibrational state ⇥T1 ,⌫ in the T1 state at a certain temperature T , and ĤSOC is the spin-orbit coupling
+operator. The coupling matrix element is expanded into a Taylor expansion in the normal coordinates Q
+around the final state (i.e., the S0 state in this study) as the reference configuration (Q = 0):
+h
+
+T1 ⇥T1 ,⌫ |ĤSOC |
+
+S0 ⇥S0 ,⌫ 0 i = (h
+
+T1 |ĤSOC | S0 i)0 h⇥T1 ,⌫ |⇥S0 ,⌫ 0 i
+X @ h T |ĤSOC | S i
+1
+0
++
+(
+)0 h⇥T1 ,⌫ |Qk |⇥S0 ,⌫ i
+@Qk
+k
+
+The first term on the right-hand side is the electronic spin-orbit coupling matrix element, which is the socalled Franck-Condon (FC) approximation. The second term on the right-hand side is the vibronic spin-orbit
+interaction, which is similar to the so-called Herzberg-Teller (HT) e↵ect on the electronic transition dipoles
+coupled with normal coordinates. A recent benchmark study showed that this method can qualitatively
+estimate the ISC rates of small organic aromatic molecules. [6]
+S11
+
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+All ISC rate calculations were performed at the level of TD-DFT with CAM-B3LYP functional and madef2-TZVP basis set using the ESD module in ORCA 5.0.4. The spin-orbit coupling operator was calculated
+by specifying the ”SOCFlags = 1,4,3,0” option. The previous benchmark study showed that this is the
+lowest level of approximation to provide reliable results on ISC rates. [6] Other settings were set as default,
+and HT e↵ect and Duschinsky rotations were included in the calculations. [7] Estimating the ISC rate
+using the method mentioned above requires one to calculate the Hessian matrices of the minima of the T1
+and the S0 states. However, the Hessian matrices of the minima are not strictly available for structures
+under explicit solvation at a finite temperature, as the matrices contain imaginary frequencies. Performing
+geometry optimization on configurations with explicit solvation will cause the dynamic information of the
+solvated system to be lost. Under this circumstance, the Hessian matrices were obtained in three ways:
+1 The Hessian matrices were obtained by the geometry optimizations followed by frequency calculations
+of the two structures in the gas phase.
+2 The Hessian matrices were obtained by the geometry optimizations followed by frequency calculations
+of the two structures under the CPCM implicit solvation model.
+3 The Hessian matrices were obtained from the frequency calculations of the free energy minima from
+the AIMD simulations. A hybrid solvation scheme was used with the first two solvation shells (12
+water molecules) and the implicit CPCM solvation model. The imaginary frequencies were removed.
+For the ISC rate from NO3–(T1 ) to NO3–(S0 ), the structure of NO3–(T1 ) was optimized at the level of TD-DFT
+with CAM-B3LYP functional and ma-def2-TZVP basis set, and the structure of NO3–(S0 ) was optimized at
+the level of DFT with the same functional and basis set for methods 1 and 2. Method 3 was not used to
+obtain the Hessian matrices in this case since the equilibrium configurations between NO3–(T1 ) and NO3–(S0 )
+under explicit solvation are more displaced from each other, the harmonic approximation in this case may
+fail.
+For the ISC rate from the SCC(T1 ) to the SCC(S0 ), the configuration of [NO2 · · · O]–without explicit
+solvation in state B on the free energy surface was optimized in the gas phase and under the CPCM implicit
+solvation model for methods 1 and 2, which leads to the minimum energy crossing point (MECP) between
+the T1 and S0 states. For method 3, the configuration in state B with the first two solvation shells on the free
+energy surface was directly used for both states. The frequency calculations in all these three methods were
+performed at the level of broken-symmetry DFT with CAM-B3LYP functional and ma-def2-TZVP basis set.
+For both transitions, the ISC rate was calculated as the weighted average of the ISC rates from the three
+triplet spin sublevels, where the weight of each triplet sublevel was determined by its relative Boltzmann
+population at 300 K:
+E1,2
+
+2
+k 1 + kISC
+e kB T
+av
+kISC
+= ISC
+E1,2
+
+1+e
+
+kB T
+
+3
++ kISC
+e
+
++e
+
+E1,3
+kB T
+
+E1,3
+kB T
+
+1
+Where kISC
+is the ISC rate constant from the first sublevel of T1 state to S0 state and E1,2 is the
+energy di↵erence between the first and second sublevels of T1 state. The ISC rates for both transitions and
+their respective FC and HT contributions are summarized in Table S4. For the ISC rate from NO3–(T1 ) to
+NO3–(S0 ), it is about 50 times lower under the implicit solvation model than the gas-phase (Table S4). We
+note that the HT contribution for this ISC rate is 100%, which indicates that the ISC rate from NO3–(T1 )
+to NO3–(S0 ) is entirely allowed by the vibronic spin-orbit coupling interaction. This also suggests that the
+quality of the Hessian matrices between the two states is crucial to obtaining a reliable estimate of the ISC
+rate. Therefore, this rationalizes not to apply method 3 to calculate the Hessians of the two states. Under
+these circumstances, the ISC rate calculated from method 2 was used for the master equation model to
+describe the ISC from NO3–(T1 ) to NO3–(S0 ).
+For the ISC rate from the SCC(T1 ) to the SCC(S0 ), the three methods show the same order of magnitude
+(Table S4). We note that the HT contribution for this ISC rate has a maximum of ⇠10%, which indicates
+that the ISC rate from the SCC(T1 ) to the SCC(S0 ) is mainly contributed by the electronic spin-orbit
+coupling. Since the HT contribution is low in this case, the error contributed by the Hessian matrices in
+method 3 is acceptable. The reason for the ISC rate from the SCC(T1 ) to the SCC(S0 ) being much faster
+than the case of intact NO3– may be due to the nature of the SCC, which is an ensemble of MECPs between
+
+S12
+
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+Table S4: ISC rate constants for the two transitions calculated by the three methods and their respective
+FC and HT contributions. The ISC rate is the weighted average of the three triplet spin sublevels. The FC
+and HT contributions are the weighted average of the three spin sublevels.
+Transitions
+
+Method for Hessian
+
+NO3–(T1 ) ! NO3–(S0 )
+NO3–(T1 ) ! NO3–(S0 )
+
+1
+2
+
+SCC(T1 ) ! SCC(S0 )
+SCC(T1 ) ! SCC(S0 )
+SCC(T1 ) ! SCC(S0 )
+
+1
+2
+3
+
+ISC rate constant (s 1 )
+
+FC (%)
+
+HT (%)
+
+8
+
+0.00
+0.00
+
+100.00
+100.00
+
+5.9 ⇥ 1012
+5.5 ⇥ 1012
+5.1 ⇥ 1012
+
+98.34
+96.56
+89.78
+
+1.66
+3.44
+10.22
+
+5.5 ⇥ 10
+1.2 ⇥ 107
+
+Table S5: The rate constants of the relevant transitions in NO3– photolysis. The uncertainties of the rate
+constants from the free energy barriers are obtained through the propagation of errors.
+Average Rate Constant (s 1 )
+
+Transition
+A!GS
+A!B
+B!A
+B!GS
+B!C
+B!D
+
+NO3–(T1 ) ! NO3–(S0 )
+NO3–(T1 ) ! [NO2 · · · O]–(T1 )
+[NO2 · · · O]–(T1 ) !NO3–(T1 )
+[NO2 · · · O]–(T1 ) ! [NO2 · · · O]–(S0 )
+[NO2 · · · O]–(T1 ) ! NO2 + O –
+[NO2 · · · O]–(T1 ) ! NO2– + O (3P)
+
+1.2 ⇥ 107
+(1 ± 1) ⇥ 1010
+(7 ± 6) ⇥ 1010
+5.1 ⇥ 1012
+(2 ± 2) ⇥ 1010
+(8 ± 8) ⇥ 1011
+
+the T1 and S0 states. In fact, the ISC rate calculated without MECP optimization (method 3) is close to
+the one calculated with MECP optimization under the implicit solvation model (method 2). Therefore, the
+ISC rate calculated from method 3 was used for the master equation model to describe the ISC from the
+SCC(T1 ) to the SCC(S0 ).
+
+S13
+
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+References
+[1] Alex P. Gaiduk, Cui Zhang, François Gygi, and Giulia Galli, “Structural and electronic properties of
+aqueous NaCl solutions from ab initio molecular dynamics simulations with hybrid density functionals”,
+Chem. Phys. Lett. 604, pp. 89–96 (2014).
+[2] Peter Hänggi, Peter Talkner, and Michal Borkovec, “Reaction-rate theory: fifty years after Kramers”,
+Rev. Mod. Phys. 62(2), pp. 251–341 (1990).
+[3] Bernardo de Souza, Giliandro Farias, Frank Neese, and Róbert Izsák, “Predicting Phosphorescence Rates
+of Light Organic Molecules Using Time-Dependent Density Functional Theory and the Path Integral
+Approach to Dynamics”, J. Chem. Theory Comput. 15(3), pp. 1896–1904 (2019).
+[4] Bernardo de Souza, Frank Neese, and Róbert Izsák, “On the theoretical prediction of fluorescence rates
+from first principles using the path integral approach”, J. Chem. Phys. 148(3), pp. 034104 (2018).
+[5] Thomas J. Penfold, Etienne Gindensperger, Chantal Daniel, and Christel M. Marian, “Spin-Vibronic
+Mechanism for Intersystem Crossing”, Chem. Rev. 118(15), pp. 6975–7025 (2018).
+[6] Koen Veys, Manon H. E. Bousquet, Denis Jacquemin, and Daniel Escudero, “Modeling the Fluorescence Quantum Yields of Aromatic Compounds: Benchmarking the Machinery to Compute Intersystem
+Crossing Rates”, J. Chem. Theory Comput. 19(24), pp. 9344–9357 (2023).
+[7] Alberto Baiardi, Julien Bloino, and Vincenzo Barone, “General Time Dependent Approach to Vibronic
+Spectroscopy Including Franck–Condon, Herzberg–Teller, and Duschinsky E↵ects”, J. Chem. Theory
+Comput. 9(9), pp. 4097–4115 (2013).
+
+S14
+
+https://doi.org/10.26434/chemrxiv-2025-lrx59 ORCID: https://orcid.org/0000-0002-2150-4182 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+

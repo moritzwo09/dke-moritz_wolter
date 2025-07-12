@@ -1,0 +1,1074 @@
+Nitrate Radical Cannot Initiate Oxidation of Hg(0) to Hg(II) in the
+Laboratory or at Ground Level in the Atmosphere
+Darshi T. Hewa Edirappulige,1 Lan Cheng,2 Pedro J. Castro,1 and Theodore S. Dibble1
+Department of Chemistry, State University of New York, College of Environmental Science and Forestry, Syracuse, NY,
+13210, U.S.A.
+2
+Department of Chemistry, The Johns Hopkins University, Baltimore, Maryland 21218, U.S.A.
+1
+
+5
+
+Correspondence to: Theodore S. Dibble (tsdibble@esf.edu)
+Abstract. Multiple field studies have led to suggestions that nitrate radical (NO3) participates in oxidizing gaseous Hg(0) in the
+atmosphere. These suppositions are hard to reconcile with the two-step mechanism of Hg(0) conversion to Hg(II) via Hg(I), due
+10
+
+to the instability of the NO3-Hg(I). We use a high level of computational chemistry to determine its bond energy as 6.5 kcal
+mol-1. We use statistical mechanics to compute the equilibrium constant, Kc(T) for NO3 + Hg(0) = NO3Hg(I), and a box model
+to investigate a field study and laboratory kinetic investigation of this chemistry. Under the conditions of the one field study
+showing a correlation between [NO3] and [Hg(II) (g)] , NO3 could not have contributed significantly to the formation of Hg(II).
+In addition, we find that the one experimental kinetic study of this reaction does not constrain the rate constant.
+
+15
+
+1 Introduction
+The atmosphere transports gaseous elemental mercury (Hg(0), GEM) globally, so that this neurotoxic pollutant is found in the
+poles as well as near its emission sources (Schroeder and Munthe, 1998). GEM deposits from the gaseous atmosphere roughly
+equally into vegetation versus oceans, in competition with reacting to form gaseous oxidized mercury (GOM), that is, Hg(II)
+20
+
+(Shah et al., 2021; Zhou and Obrist, 2021). GOM, if not reduced back to GEM (Saiz-Lopez et al., 2018; Wu et al., 2022), will
+deposit predominantly into oceans. The contrasting fates of GEM and GOM means that we need to understand the redox
+chemistry of atmospheric mercury to predict when and where mercury enters ecosystems.
+Gas-phase oxidation of GEM to GOM in the tropopshere and lower stratosphere occurs via addition of a radical (Br, OH, or
+Cl) to form a mercury-centered radical form of Hg(I), which is further oxidized to Hg(II) by reaction with ozone (Castro et al.,
+
+25
+
+2022; Gómez Martín et al., 2022), NO2, HOO, or most other radicals (Dibble et al., 2012, 2013, 2020; Goodsite, M. E. Plane
+and Skov, 2004; Horowitz et al., 2017; Shah et al., 2021; Wang et al., 2014; Wu et al., 2024, 2020). Production of Br, OH, and
+Cl falls dramatically around sunset, so this mechanism does not explain multiple observations of elevated [GOM] at night.
+During nighttime, nitrate radical (NO3) is the major oxidant for most volatile organic compounds (Brown and Stutz, 2012), so,
+naturally, atmospheric scientists have invoked NO3 to explain elevated [GOM] at night (Mao et al., 2008; Peleg et al., 2015;
+
+30
+
+Weiss-Penzias et al., 2003). Peleg et al. (2015) presented the most compelling evidence, namely, a strong correlation between
+1
+
+https://doi.org/10.26434/chemrxiv-2024-qwh3w-v2 ORCID: https://orcid.org/0000-0002-0023-8233 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+measured nightime [GOM] and [NO3] in Jerusalem over the course of six weeks. Unfortunately, there is very little kinetic or
+thermodynamic data to support these suggestions. Sommar et al. (1997) reported an upper limit to the reaction:
+Hg + NO3 → Products
+
+(1)
+
+at room temperature of k1 ≤ 4 × 10
+35
+
+10
+
+-15
+
+-15
+
+cm molecule s from flow-tube experiments. Sumner et al., (2005) reported k1 ≤ 7 ×
+3
+
+-1
+
+-1
+
+cm molecule s from a chamber experiment. As noted by Hynes et al. (2009), production of Hg(I)O + NO2 in reaction
+3
+
+-1
+
+-1
+
+(1) had subsequently been revealed to be highly endothermic (by ~45 kcal mol-1). As a result, it seems more likely that reaction
+(1) proceeds via formation of an adduct:
+Hg + NO3 + M
+
+
+
+NO3Hg(I)• + M
+
+(2)
+
+(where M is a third body) mimicking the mechanism for other radicals:
+40
+
+Hg(0) + Y + M 
+
+YHg(I)• + M (Y = Br, OH, Cl)
+
+(3)
+
+However, quantum calculations by Dibble et al. (2012) indicated that NO3Hg • was very weakly bound (5.0 kcal mol-1 at 0
+(I)
+
+K). At the time, the only known pathway for oxidation of NO3Hg(I)• was, as for other YHg(I)•, via addition of radicals, •Z (Z =
+NO2, HOO, halogen oxides, etc., but not NO):
+NO3Hg(I)• + •Z + M → NO3Hg(II)Z + M
+45
+
+(4)
+
+The weak bonding of NO3Hg • and the low concentrations of radicals, •Z, in the atmosphere led Dibble et al. (2012) to
+(I)
+
+conclude that NO3 could not initiate oxidation of GEM to GOM.
+The subsequent report, by Peleg et al. (2015) of a strong correlation between [NO3] and [GOM] led us to consider two caveats
+to the conclusion of Dibble et al (2012). First, NO3 radical is rather challenging for quantum chemistry, and the previous
+calculations could easily be improved upon. Second, it had subsequently been determined that YHg(I)• could react with ozone
+50
+
+with a high rate constant (Castro et al., 2022; Gómez Martín et al., 2022), via:
+YHg(I)• + O3 → YHg(II)O• + O2
+
+(5)
+
+In the case of HOHg(I)•, with a bond energy at 0 K (D0) of 11.0 kcal mol-1 (Dibble et al., 2020), the abundance of ozone and
+the high rate constant for reaction (5) enables OH to contribute significantly (~30%) to global production of GOM from GEM
+(Shah et al., 2021). Without reaction (5), Dibble et al. (2020) concluded that OH would contribute < 1% to GEM oxidation.
+55
+
+Typical nighttime [NO3] is perhaps 20-100 times higher than typical daytime [OH] (Chua et al., 2023; Khan et al., 2015;
+Penkett et al., 2007), and this higher concentration could enable NO3 to initiate oxidation of GEM even though the NO3-Hg(I)
+bond energy was likely lower that the HO-Hg(I) bond energy.
+Below we discuss the theoretical methods for our calculations. We then report the structure and bond energy of NO3Hg(I)•,
+followed by the equilibrium constant of reaction (2) versus temperature. Next, we use these results to evaluate the reliability
+
+60
+
+of the upper limit to k2 reported by Sommar et al. (1997). We then determine whether NO3-initiated oxidation of GEM can
+explain the observations of Peleg et al. (2015). Finally, we briefly consider the potential for NO3 to play a major role in GEM
+oxidation the atmosphere, more generally.
+
+2
+
+https://doi.org/10.26434/chemrxiv-2024-qwh3w-v2 ORCID: https://orcid.org/0000-0002-0023-8233 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+2 Methods
+Our calculations aim at an accurate D0 for NO3Hg(I)• to accurately calculate the equilibrium constant for reaction (2). The
+65
+
+electronic structure of NO3 poses major challenges on quantum chemistry calculations because of the multireference characters
+and symmetry breaking due to pseudo-Jahn-Teller coupling in its open-shell electronic states (Eisfeld and Morokuma, 2000;
+Stanton et al., 1991; Viel and Eisfeld, 2018). On the other hand, the NO3− anion has a simple closed-shell electronic ground
+state. Equation-of-motion ionization potential coupled-cluster (EOMIP-CC) calculations (Stanton and Bartlett, 1993; Stanton
+and Gauss, 1994) using the closed-shell ground state of NO3− as the reference state and removing an electron to obtain NO3
+
+70
+
+has been shown to accurately describe low-lying electronic states of NO3 (Stanton, 2007, 2009). We follow this prescription
+here and perform calculations of NO3 and HgNO3(I)• using the EOMIP-CC singles and double (CCSD) and CC singles doubles
+triples (CCSDT) methods (Matthews and Stanton, 2015; Stanton and Gauss, 1999). The spin-free exact two-component theory
+in its one-electron variant (the SFX2C-1e scheme) (Cheng and Gauss, 2011; Dyall, 2001; Liu and Peng, 2009) has been used
+to treat the scalar-relativistic effect. The equilibrium structures and harmonic vibrational frequencies of NO3 and NO3Hg(I)•
+
+75
+
+have been calculated with the valence electrons correlated using triple-zeta quality atomic natural orbital (ANORCC1) basis
+sets using the primitive functions of the ANO-RCC sets (Faegri Jr, 2001; Roos et al., 2003, 2005) recontracted for the SFX2C1e calculations using CCSD density matrices. We have performed calculations of harmonic vibrational frequencies to confirm
+that the optimized structure corresponds to a stable structure on the potential energy surface.
+To an obtain an accurate value of D0, we carried out EOMIP-CCSD calculations with more complete treatments of basis-set
+
+80
+
+and electron-correlation effects. These calculations have correlated valence and semicore electrons including the Hg 4f5s5p5d,
+N 2s2p, and O 2s2p electrons. We used uncontracted triple-zeta (TZ) and quadruple-zeta (QZ) basis sets for Hg constructed
+using primitive functions of the ANO-RCC sets and correlation-consistent sets (Peterson and Puzzarini, 2005) as well as augcc-pVTZ and aug-cc-pVQZ sets for N and O (Kendall et al., 1992) recontracted for the SFX2C-1e scheme. The basis-set-limit
+(∞Z) EOMIP-CCSD energies were obtained by combining the QZ Hartree-Fock energies with basis-set-limit values for the
+
+85
+
+EOMIP-CCSD electron-correlation and ionization energies estimated by extrapolating the TZ and QZ results using a simple
+two-point formula (Helgaker et al., 1997). The contributions due to the correlation of deep inner-shell electrons were estimated
+by performing EOMIP-CCSD/TZ calculations with the correlation of Hg 4s, 4p, 4d and O 1s orbitals. Furthermore, the
+contributions from triple excitations were obtained as the differences between EOMIP-CCSDT and CCSD results using the
+ANORCC1 basis sets. We also carried out EOMIP-CCSD calculations with spin-orbit coupling to obtain the second-order
+
+90
+
+spin-orbit (SO) contributions to D0. Here the X2C Hamiltonian (Dyall, 2001; Kutzelnigg and Liu, 2005; Liu and Peng, 2009)
+with atomic mean field (Heß et al., 1996) integrals (the X2CAMF scheme) (Liu and Cheng, 2018; Zhang and Cheng, 2022)
+has been used to provide variational treatments of spin-orbit coupling. We have used the recent implementation of the
+X2CAMF EOM excitation energy (EOMEE)-CCSD method (Asthana et al., 2019) together with the continuum orbital trick
+(Stanton and Gauss, 1999) for these X2CAMF-EOMIP calculations. The SO contribution to D0 obtained from these
+
+95
+
+calculations is less than 0.1 kcal/mol and thus insignificant for the present discussion. The basis sets used in the calculations
+3
+
+https://doi.org/10.26434/chemrxiv-2024-qwh3w-v2 ORCID: https://orcid.org/0000-0002-0023-8233 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+described here are documented in the Supporting Information. All calculations were performed using the CFOUR program
+package (Stanton et al..; Matthews et al., 2020). We calculated the equilibrium constant for reaction (2) vs. temperature (200320 K) from D0 with the thermo program in the MultiWell program suite (Barker, 2001, 2009; Barker et al., 2023), using the
+rigid rotor-harmonic oscillator approximation.
+100
+
+Our goal for understanding the oxidation of NO3Hg(I)• by radicals (NO2, HOO, BrO, NO3, and O2) and ozone is to verify that
+these reactions occur similarly to those of HOHg(I)• and BrHg(I)•. While this requires reliable levels of theory, it does not
+require the precision needed in determining D0. These quantum chemistry calculations used Gaussian16 (Frisch et al., 2016)
+and ORCA 5.0.3 (Neese, 2012, 2022). Density functional theory (DFT) was used to optimize geometries and compute
+harmonic vibrational frequencies. We used three functionals that have proven reliable in our previous studies of mercury
+
+105
+
+chemistry: CAM-B3LYP (Yanai et al., 2004) with D3BJ dispersion correction (Grimme et al., 2011), PBE0 (Adamo and
+Barone, 1999), and M06-2X (Zhao and Truhlar, 2008). For H, N, and O atoms we used Dunning’s aug-cc-pVTZ basis set
+(Dunning, 1989; Peterson and Dunning, 2002). To account for scalar relativistic effects in Hg and Br we used the
+Stuttgart/Cologne small-core pseudopotentials (ECPMDF60 and ECPMDF10, respectively) while the electrons outside the
+pseudopotential were described with the aug-cc-pVTZ-PP basis set of Peterson and co-workers (Figgen et al., 2005; Peterson
+
+110
+
+et al., 2003; Peterson and Puzzarini, 2005). Our shorthand for this combination of basis sets is AVTZ. All radicals were treated
+with spin-unrestricted wavefunctions, and we verified the stability of wavefunctions. Spin orbit corrections to relative energies
+should be modest (< 1 kcal mol-1) except for reactions involving BrO (Dixon et al., 2000; Jiao and Dibble, 2015).
+
+3 Results and Discussion
+3.1 Hg binding to NO3 radical
+115
+
+We initially optimized a C2v structure of NO3Hg(I)•, but this turned out to be a transition state (denoted TS-NO3Hg(I)•) at both
+DFT/AVTZ (for all three functionals) and SFX2C-1e-EOMIP-CCSD(T)/ANORCC1 levels. Instead, NO3Hg(I)• adopts a
+structure of Cs symmetry with the Hg atom binding asymmetrically (2.20 vs 2.56 Å) to two O atoms of NO3 (see Fig. 1).
+Vibrational frequencies are listed in Tables S3 and S4 of the Supporting Information.
+
+Figure 1. Structures of NO3 (D3h), NO3Hg(I)• (Cs), and TS-NO3Hg(I)• (C2v) at SFX2C-1e-EOMIP-CCSD/ANORCC1 level.
+120
+
+Angles and bond distances are listed in degrees and Å, respectively.
+4
+
+https://doi.org/10.26434/chemrxiv-2024-qwh3w-v2 ORCID: https://orcid.org/0000-0002-0023-8233 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+We computed the NO3‒Hg bond energy at 0 K (D0) as 6.5 kcal mol-1, which is 1.5 kcal mol-1 higher than the value computed
+previously. There are multiple possible contributions to this difference, including that Dibble et al. (2012) used lower levels
+of theory for structures (B3LYP vs EOMIP-CCSD) and energies (CCSD(T) vs CCSDT), and smaller basis sets for the energy
+evaluation (triple-zeta versus quadruple zeta extrapolated to the basis set limit).
+125
+
+As shown in Table S2, the difference between the D0 values obtained from ∞Z and QZ calculations is about 1 kcal mol-1. The
+remaining basis-set effects are likely substantially smaller. The contribution to D0 from the correlation of the inner-shell
+electrons is around 0.5 kcal mol-1. The remaining errors due to the correlation of even deeper electrons are expected to be
+insignificant. The triples contribution to D0 amounts to around 0.5 kcal mol-1. The remaining electron-correlation contributions
+due to quadruple excitations is expected to be smaller than the triples contributions. Based on the trends in these results, we
+
+130
+
+estimate the uncertainty in the contribution from electronic energies to the value of D0 to be about 1 kcal mol-1.
+Note that the NO3 molecule exhibit complex vibronic structures because of the strong vibronic coupling between the ground
+(𝑋𝑋�) and second electronic excited (𝐵𝐵� ) states of NO3 (Eisfeld and Morokuma, 2000; Stanton, 2007, 2009; Viel and Eisfeld,
+
+2018). The present calculations of the zero-point vibrational energy (ZPE) contribution to the bond energy used the harmonic
+
+vibrational frequencies given in Table S3 and S4. Viel and Eisfeld (2018) computed the anharmonic vibrational frequencies
+135
+
+of NO3 while accounting for 𝑋𝑋� -𝐵𝐵� vibronic coupling. They computed the ZPE as 6.8 kcal mol-1, 0.2 kcal mol-1 smaller than our
+
+value of 7.0 kcal mol-1. To compare directly with their value, we need to correct our NO3Hg(I)• results for anharmonicity. We
+
+did this using vibrational second-order perturbation theory (Mills, 1972) and obtained an anharmonic contribution of -0.1 kcal
+mol-1 to the ZPE of NO3Hg. This means that our ZPE is 6.9 kcal mol-1, or just 0.1 kcal mol-1 higher than obtained by Viel and
+Eisfeld (2018).
+140
+
+Table 1 lists the values of Kc for reaction (2) in the range 200 K ≤ T ≤ 320 K. We fit the values in Table 1 to an Arrhenius
+expression:
+Kc = 1.0 × 10-24 e3305/T cm3 molecule-1
+
+(6)
+
+with less than 1% deviation from the values in Table 1. Because vibrational frequencies of NO3 are challenging to compute
+accurately, we used the observed vibrational frequencies as tabulated in the MultiWell Thermodynamics Database (Barker et
+145
+
+al., 2017) rather than the computed values. Using the calculated vibrational frequencies lowered Kc modestly, by 9% to 16%
+for 200 K ≤ T ≤ 320 K. Using the vibrational energy levels of Viel and Eisfeld (2018) raised Kc by 2.4% at 200 K and lowered
+Kc by 4.2%, with a monotonic progression between those two temperatures. These uncertainties in Kc are much smaller than
+those due to the uncertainty in D0, which creates a factor of 5 uncertainty at 298 K). As we show below, this uncertainty will
+not change the conclusions of our analysis of the experiments of Sommar et al. (1997) or the field study of Peleg et al. (2015).
+
+150
+
+5
+
+https://doi.org/10.26434/chemrxiv-2024-qwh3w-v2 ORCID: https://orcid.org/0000-0002-0023-8233 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Table 1. Temperature dependence of the equilibrium constant (Kc, cm3 molecule-1) for reaction (2) based on SFX2C-1eEOMIP-CCSDT/ANORCC1 for energies, CCSD/ANORCC1 for rotational constants, and experimental values of vibrational
+frequencies.
+T (K)
+
+Kc
+
+200
+
+1.5 × 10-17
+
+220
+
+3.3 × 10-18
+
+240
+
+9.6 × 10-19
+
+260
+
+3.3 × 10-19
+
+280
+
+1.3 × 10-19
+
+298.15
+
+6.5 × 10-20
+
+300
+
+6.1 × 10-20
+
+320
+
+3.1 × 10-20
+
+3.2 Bimolecular reactions of NO3Hg radical
+155
+
+We investigated the reactions of NO3Hg(I)• with ozone and with some of the more abundant radicals in the atmosphere: Z =
+O2, NO2, HOO, NO3, and BrO. To help analyze the experimental work of Sommar et al. (1997) we also studied the reactions
+of NO3Hg(I)• with NO3 and HNO3.
+As can be seen from Fig.2, NO3Hg(II)-Z bond energies are only slightly lower than those for HOHg(II)-Z; we previously showed
+the near-equivalence of HOHg(II)-Z and BrHg(II)-Z bond energies (see Dibble et al., 2020). For NO3Hg(II)-NO3, for which no
+
+160
+
+HOHg(II)NO3 or BrHg(II)NO3 analogues appear in the literature, the bond energy is 64.4 kcal mol-1. All bond energies are
+tabulated in the Supporting Information (Table S7). We verified that these radical-radical addition reactions proceed without
+a barrier, except in the cases of Z = O2 and NO3. Note that previous calculations established the presence of a barrier to BrHg(I)•
++ O2 + M → BrHg(II)OO + M (Wu et al., 2022).
+
+165
+
+Reaction of NO3Hg(I)• with ozone to produce NO3Hg(II)O + O2 is significantly exothermic (∆𝐻𝐻𝑟𝑟° (0 𝐾𝐾) = -46.3 kcal mol-1) and
+possesses no barrier. This suggests that the rate constant for this reaction may be as high as that for BrHg(I)• + O3 (7.5 × 10-11
+
+6
+
+https://doi.org/10.26434/chemrxiv-2024-qwh3w-v2 ORCID: https://orcid.org/0000-0002-0023-8233 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+cm3 molecule-1 sec-1 at room temperature) (Castro et al., 2022; Gómez Martín et al., 2022). This suggests that the major
+bimolecular reaction of NO3Hg(I)• in the atmosphere, like HOHg(I)• and BrHg(I)•, is reaction with ozone (Shah et al., 2021).
+
+Figure 2. Bond energies (ZPE-corrected) at 0 K for NO3Hg(II)-Z versus HOHg(II)-Z for Z = O2, NO2, HOO, and BrO at
+PBE0/AVTZ. Note that D0 has not been reported for either HOHg-NO3 or BrHg-NO3, so Hg(NO3)2 (D0 = 64.4 kcal
+170
+
+mol-1) is not included in this Figure.
+Reinterpreting the Experimental Study of k(Hg(0) + NO3)
+Sommar et al. (1997) used a fast-flow discharge reactor to investigate the rate constant for Hg(0) + NO3 at total pressures of 5.4
+– 9.4 hPa in He. Based on previous work using the same reactor at similar pressures, the flow velocity in the reactor probably
+exceeded 100 cm sec-1 (Langer et al., 1993). Given the total reactor length of 1 meter, the reaction time would be less than one
+
+175
+
+second. Nitrate radical was produced from F + HNO3 before Hg entered the reactor, and was initially present (8-17 × 1012
+molecule cm-3) in excess over Hg(0) (0.7-2.1 × 1012 molecule cm-3). Sommar et al. (1997) assumed that reaction of NO3 with
+Hg(0) was irreversible on the time scale of the experiment. This assumption was not unreasonable given the erroneous data then
+available on ∆𝐻𝐻𝑓𝑓0 for HgO (Grade and Hirschwald, 1982), from which it was assumed that the following reaction was
+thermodynamically favorable:
+
+180
+
+Hg(0) + NO3 →
+
+Hg(II)O + NO2
+
+(7)
+7
+
+https://doi.org/10.26434/chemrxiv-2024-qwh3w-v2 ORCID: https://orcid.org/0000-0002-0023-8233 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+However, three quantum chemical studies using three different approaches show that Hg(II)O is very weakly bound (3-6 kcal
+mol-1) (Filatov and Cremer, 2004; Peterson et al., 2007; Shepler and Peterson, 2003), which renders reaction (7) so endothermic
+(∆𝐻𝐻𝑟𝑟° ≈ +45 kcal mol-1) that it will not occur. We view NO3Hg(I)• as the only reasonable product of reaction of NO3 with Hg(0).
+If NO3Hg(I)• falls apart to regenerate Hg(0) faster than, or in competition with, its reaction to form Hg(II), then the upper limit
+
+185
+
+reported by Sommar et al. would not be valid. Therefore, we next consider whether bimolecular reactions of NO3Hg(I)• could
+compete with dissociation of NO3Hg(I)• to NO3 + Hg(0) under the experimental conditions of Sommar et al. (1997).
+Oxidation of NO3Hg(I)• to Hg(II) could occur via reaction with HNO3:
+
+190
+
+NO3Hg(I)• + HNO3 →
+
+NO3Hg(II)H + NO3
+
+(8a)
+
+NO3Hg(I)• + HNO3 →
+
+Hg(II)(NO3)2 + H
+
+(8b)
+
+We find these reactions to be significantly endothermic (at CAM-B3LYP-D3BJ/AVTZ). ∆𝐻𝐻𝑟𝑟0 (0 K) is +24 kcal mol-1 for (8a)
+
+and +39 kcal mol-1 for (8b). We estimate an upper limit to the rate constant for the less endothermic reaction channel (8a). The
+estimate is made via k8a(T) = 𝐴𝐴𝑒𝑒 −𝐸𝐸𝑎𝑎/𝑅𝑅𝑅𝑅 , taking ∆𝐻𝐻𝑟𝑟0 (0 K) as a lower limit for Ea and 10-10 cm3 molecule-1 sec-1 as the upper
+
+limit to A. This approximation gives k8a(298) < 10-26 cm3 molecule-1 sec-1. But even if we assume that the DFT value of
+195
+
+∆𝐻𝐻𝑟𝑟0 (0 K) exceeds the true value by as much as 10 kcal mol-1, we get k8a(298) < 10-20 cm3 molecule-1 sec-1. The HNO3
+concentration was not given, but must have been a modest fraction of the total pressure of 5.4-9.4 hPa (9.8 × 1017 molecule
+
+cm-3). Using the upper limit to k8b, and [HNO3] = 1 hPa, the pseudo-first order rate constant (k8a’ = k8a[HNO3]) for HgNO3 loss
+
+falls below 10-2 sec-1, corresponding to a lifetime greater than 100 sec. Clearly, HNO3 did not contribute to gas-phase loss of
+HgNO3 in the available reaction time of 1 second.
+As discussed above, NO3Hg(I)• can react with NO3 over a barrier to make Hg(II)(NO3)2:
+200
+
+NO3Hg(I)• + NO3 →
+
+Hg(II)(NO3)2
+
+(9)
+
+We simulated the gas-phase formation and dissociation of NO3Hg(I)• (reactions 2 and -2) along with reaction (9) in Kintecus
+(Ianni, 2003, 2019) over 1 second, equal to our estimate of the longest reaction time in the experiment. We set k9 at 10-10 cm3
+molecule-1 s-1 to maximize the formation of Hg(II). We varied k2 between 10-10 and 10-16 cm3 molecule-1 s-1 and computed k-2
+from Kc at 298 K (see Table 1). For k2 > 5 × 10-15 cm3 molecule-1 s-1, the concentration of NO3Hg(I)• was controlled by
+205
+
+equilbrium to within 1%, and the loss of GEM was less than 0.2% at 1 second. Figure 3 depicts the time evolution of [Hg(0)],
+[NO3Hg(I)•], and [Hg(II)(NO3)2] under these conditions. The small fractional losses of GEM in our simulations would not have
+been observable by Sommar et al. against the wall loss that dominated their experiment. Even if Kc was ten times higher than
+computed here, the simulated gas-phase loss of GEM could not have exceeded 1.4%, amounting to less than 3% of the loss of
+GEM to the walls at their lower S/V ratio for a one-second reaction time. Given that reported 20% uncertainty in the effective
+
+210
+
+second-order rate constant for wall loss under these conditions, this small extent of gas-phase loss would not have been
+noticeable. Therefore, the work of Sommar et al. (1997) does not constrain the value of k2.
+
+8
+
+https://doi.org/10.26434/chemrxiv-2024-qwh3w-v2 ORCID: https://orcid.org/0000-0002-0023-8233 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+In separate experiments, Sumner et al. (2005) briefly reported on upper limits to k2 of 7-30 × 10-15 cm3 molecule-1 s-1 in chamber
+experiments in 1 atm of air. They did not report any concentration data that would allow us to simulate the conditions of their
+experiment. Given that k2 is expected to be pressure-dependent, its value at this pressure would probably greatly exceed its
+215
+
+value under the conditions of Sommar et al. (in 5-10 kPa of He).
+
+Figure 3. Simulated time evolution of [Hg] (■), [NO3Hg(I)•] (●), and [Hg(II)(NO3)2] (▲) in the experiment of Sommar et
+al., (1997). This simulation used [Hg(0)]0 = 2.1 × 1013 molecule cm-3 and [NO3]0 = 1.7 × 1013 molecule cm-3, which were
+the highest concentrations used in the experiment.
+220
+
+3.4
+
+NO3-Initiated Oxidation of GEM Cannot Explain Nighttime GOM Production in Peleg et al.
+
+Peleg et al. (2015) reported strong correlations between nighttime [GOM] and [NO3] over their six-week study period, but an
+absence of correlation with [GEM], [particulate mercury], [O3], [CO], [SO2], [sulfate], or wind direction. Citing the argument
+of (Dibble et al. (2012) that the instability of NO3Hg(I)• would prevent it from initiating oxidation of GEM, Peleg et al. were
+careful to suggest that NO3 was “involved” in GEM oxidation, rather than initiating GEM oxidation. However, we know of
+225
+
+only two roles for oxidants in Hg(II) production: either initiation by forming Hg(I) or oxidation of Hg(I) to Hg(II). Subsequent to
+the publication of Peleg, et al., it was learned that ozone can oxidize Hg(I) to Hg(II) with a high rate constant (k5 = 7.5 ×10-11
+cm3 molecule-1 s-1) (Castro et al., 2022; Gómez Martín et al., 2022). Given this high rate constant, the 69 ± 75 ng m-3 of NO3
+present under the conditions of Peleg et al. would not measurably increase the rate of oxidation of Hg(I) over that caused by 90
+± 28 µg m-3 of ozone. However, the discovery of the reaction of Hg(I) with ozone could revise our estimates of the potential
+
+230
+
+role of weakly-bound Hg(I) species in GEM oxidation. Consider, for example, initiation by OH radical: OH had been thought
+to contribute < 1% to global GEM oxidation (Dibble et al., 2020), but adding to models the reaction HOHg(I)• + O3 →
+HOHg(II)O • + O3 increases the global influence of OH to ~30% (Shah et al., 2021). More recently, Lee et al. (2024) suggested
+that atomic iodine can initiate oxidation despite the low bond energy of IHg(I)(Cremer et al., 2008; Salter et al., 1986; Shepler
+9
+
+https://doi.org/10.26434/chemrxiv-2024-qwh3w-v2 ORCID: https://orcid.org/0000-0002-0023-8233 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+et al., 2005). Accordingly, to investigate the role of NO3 in oxidation of GEM to GOM, we simulated the potential for nitrate
+235
+
+radical to initiate production of GOM with the following mechanism:
+Hg + NO3 + M
+NO3Hg(I)• +
+
+NO3Hg(I)• + M
+
+(R2, R-2)
+
+O3 → NO3Hg(II)O• + O2
+
+(R10)
+
+
+
+Our mechanism omits the subsequent reactions of NO3Hg(II)O•. By analogy to HOHg(II)O• and BrHg(II)O•, we presume that
+reactions of NO3Hg(II)O• with volatile organic compounds (VOCs) and NOx would lead to formation of closed-shell GOM
+240
+
+compounds (Hewa Edirappulige et al., 2023; Lam et al., 2019a, b). But reaction of NO3Hg(II)O• with CO would yield NO3Hg(I)•
+(Hewa Edirappulige et al., 2023; Khiri et al., 2019) thereby reducing [GOM] below the total [NO3Hg(II)O•] produced. We
+cannot address these competing processes due to the absence of concentration data for the study site, as well as the absence of
+information on the rate constants for these reactions. As a result, we report the total production of GOM, which would exceed
+the resulting concentrations of GOM.
+
+245
+
+We selected simulation conditions and rate constants that bias our simulations towards high production of GOM. Specifically,
+we used the highest values of reactant concentrations reported by Peleg et al.: [Hg(0)] = 2.6 ng m-3 (7.8 × 106 molecule cm-3),
+[NO3] = 430 ng m-3 (4.2 × 109 molecule cm-3), and [O3] = 200 µg m-3 (2.1 × 1012 molecule cm-3). We also simulated 12 hours
+of reaction time for these summer nights. Despite these choices biasing the simulation to overestimate GOM production, GOM
+production over 12 hours was only 1.8 × 104 molecule cm-3 (6.0 pg m-3), which is much less than the average observed [GOM]
+
+250
+
+of 24 pg m-3, let alone the peak values of > 90 pg m-3. Note that the rate of GOM production in this case is proportional to
+[GEM] × [NO3] × [O3]; by using the maximum concentrations of all three species, we artificially overestimate GOM production
+by a factor of 20 relative to the obsevations. Furthermore, the simulations held [GEM], [NO3], and [O3] constant, whereas
+Peleg et al., (2015) reported concentrations varying considerably during a single night. In addition, we used k2 = k10 = 10-10
+cm3 molecule-1 s-1, that is, near the collision limit. This value may not be unreasonable for k10 (Castro et al., 2022; Gómez
+
+255
+
+Martín et al., 2022), but it exceeds the rate constants for the analogous reactions forming BrHg (Donohoue et al., 2006) and
+HOHg (Pal and Ariya, 2004; Sommar et al., 2001) by factors of ~300 and ~1000, respectively (at 1 atm near 298 K). Given
+all these factors the factor of 5 uncertainty in Kc cannot have caused the discrepancy between our results and the observations
+of Peleg et al., (2015). Finally, the KCl denuder used to trap GOM is now known to underestimate the true concentriaton of
+GOM by a factor of two to four (Dunham-Cheatham et al., 2023; Gustin et al., 2024) So the true [GOM] was likely much
+
+260
+
+higher than that reported.
+As a result, we conclude that gas-phase reaction of NO3 with GEM contributed very little to formation of the GOM observed
+by Peleg et al (2015). One might invoke surface reactions to explain their observations, especially considering that surface
+reactions dominated the loss of GEM in the experiment of Sommar, et al (1997). However, the surface-to-volume ratios of 2.7
+cm-1 and 1.3 cm-1 in their experiments greatly exceeds those in aerosols or the outdoor environment. Recalling our arguments,
+
+10
+
+https://doi.org/10.26434/chemrxiv-2024-qwh3w-v2 ORCID: https://orcid.org/0000-0002-0023-8233 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+265
+
+above, that NO3 could not have measurably increased the rate of Hg(I) oxidation to gaseous Hg(II), it is hard to see how NO3
+could have played any appreciable role in generating the GOM observed by Peleg et al.
+
+4. Conclusions
+We find the NO3-Hg bond energy, D0, to be only 6.5 kcal mol-1, leading to an equilibrium constant of only 6.5 × 10-20 cm3
+molecule-1 at 298 K. While this bond energy is slightly higher than that previously calculated, it so low that NO3Hg(I)• is likely
+270
+
+to fall apart very rapidly. Our kinetic analysis demonstrates that gas phase oxidation of Hg(0) initiated by nitrate radical was
+too slow to contribute significantly to loss of Hg(0) in the experiment of Sommar et al. (1997) or the field study of Peleg et al.
+(2015). This holds true even if we assume that association of NO3 with Hg(0) occurs with a rate constant comparable to the
+collision limit. This means that one cannot rely on the upper limit reported by Sommar et al. (1997). The fact that [O3] ≈ 1000
+[NO3] in the field work of Peleg et al. (2015), along with the barrier to association of NO3Hg(I)• with NO3, means that NO3
+
+275
+
+cannot have significantly increased the rate of oxidation of NO3Hg(I)• to GOM. Consequently, the correlation between [NO3]
+and [GOM] found by Peleg et al. (2015) did not result from the involvement of nitrate radicals in nighttime oxidation of
+mercury.
+Given that [O3] usually greatly exceeds the summed concentration of radicals in the atmosphere, we conclude one can
+reasonably approximate the rate of oxidation of NO3Hg(I)• to Hg(II) as being proportional to k10[O3]. Given the low equilibrium
+
+280
+
+constant for formation of NO3Hg(I)•, it would require very high [O3] × [NO3] for NO3 to initiate significant gas-phase oxidation
+of GEM to GOM near 298 K. Our results do not rule out the participation of NO3 in initiating oxidation of GEM to GOM
+under the colder conditions of the middle and upper troposphere. The potential impact of this oxidation route on mercury redox
+chemistry in the global atmosphere is difficult to assess without carrying out a global modeling study, which is beyond the
+scope of this paper.
+
+285
+Author Contributions. TSD conceived the project. DTHE, LC, and PJC carried out quantum calculations. DTHE and LC wrote
+the original draft. DTHE and TSD carried and kinetic simulations. All authors reviewed and edited the manuscript.
+290
+
+Competing interests. The authors declare that they have no conflicts of interest.
+Financial Support. Work at SUNY-ESF (DHTE, PJC, & TSD) was supported by the National Science Foundation under Grant
+2004100. Work at the Johns Hopkins University (LC) has been supported by the Department of Energy, Office of Science,
+Office of Basic Energy Sciences under Award Number DE-SC0020317.
+
+295
+
+11
+
+https://doi.org/10.26434/chemrxiv-2024-qwh3w-v2 ORCID: https://orcid.org/0000-0002-0023-8233 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+References
+Adamo, C. and Barone, V.: Toward reliable density functional methods without adjustable parameters: The PBE0 model, J
+Chem Phys, 110, 6158–6170, https://doi.org/10.1063/1.478522, 1999.
+Asthana, A., Liu, J., and Cheng, L.: Exact two-component equation-of-motion coupled-cluster singles and doubles method
+300
+
+using atomic mean-field spin-orbit integrals, J Chem Phys, 150, 074102, https://doi.org/10.1063/1.5081715, 2019.
+Barker, J. R.: Multiple-Well, multiple-path unimolecular reaction systems. I. MultiWell computer program suite, Int J Chem
+Kinet, 33, 232–245, https://doi.org/10.1002/kin.1017, 2001.
+Barker, J. R.: Energy transfer in master equation simulations: A new approach, Int J Chem Kinet, 41, 748–763,
+https://doi.org/10.1002/kin.20447, 2009.
+
+305
+
+Barker, J. R., Nguyen, T. L., Stanton, J. F., Aieta, C., Ceotto, M., Gabas, F., Kumar, T. J. D., Li, C. G. L., Lohr, L. L.,
+Maranzana, A., Ortiz, N. F., Preses, J. M., Simmie, J. M., Sonk, J. A., and Stimac, P. J.: MultiWell Thermodynamic Database,
+Ann Arbor, MI, 2017.
+Barker, J. R., Nguyen, T. L., Stanton, J. F., Aieta, C., Ceotto, M., Gabas, F., Kumar, T. J. D., Li, C. G. L., Lohr, L. L.,
+Maranzana, A., Ortiz, N. F., Preses, J. M., Simmie, J. M., Sonk, J. A., and Stimac, P. J.: MultiWell-2023 Software Suite, 2023.
+
+310
+
+Brown, S. S. and Stutz, J.: Nighttime radical observations and chemistry, Chem Soc Rev, 41, 6405,
+https://doi.org/10.1039/c2cs35181a, 2012.
+Castro, P. J., Kellö, V., Cernušák, I., and Dibble, T. S.: Together, Not Separately, OH and O3 Oxidize Hg(0) to Hg(II) in the
+Atmosphere, J Phys Chem A, 126, 8266–8279, https://doi.org/10.1021/acs.jpca.2c04364, 2022.
+Cheng, L. and Gauss, J.: Analytic energy gradients for the spin-free exact two-component theory using an exact block
+
+315
+
+diagonalization for the one-electron Dirac Hamiltonian, J Chem Phys, 135, https://doi.org/10.1063/1.3624397, 2011.
+Chua, G., Naik, V., and Horowitz, L. W.: Exploring the drivers of tropospheric hydroxyl radical trends in the Geophysical
+Fluid Dynamics Laboratory AM4.1 atmospheric chemistry–climate model, Atmos Chem Phys, 23, 4955–4975,
+https://doi.org/10.5194/acp-23-4955-2023, 2023.
+Cremer, D., Kraka, E., and Filatov, M.: Bonding in mercury molecules described by the normalized elimination of the small
+
+320
+
+component and coupled cluster theory., Chemphyschem, 9, 2510–21, https://doi.org/10.1002/cphc.200800510, 2008.
+Dibble, T. S., Zelie, M. J., and Mao, H.: Thermodynamics of reactions of ClHg and BrHg radicals with atmospherically
+abundant free radicals, Atmos Chem Phys, 12, 10271–10279, https://doi.org/10.5194/acp-12-10271-2012, 2012.
+Dibble, T. S., Zelie, M. J., and Mao, H.: Erratum: Thermodynamics of reactions of ClHg and BrHg radicals with
+atmospherically abundant free radicals (Atmospheric Chemistry and Physics (2012) 12 (10271-10279)), Atmos Chem Phys,
+
+325
+
+13, https://doi.org/10.5194/acp-13-9211-2013, 2013.
+Dibble, T. S., Tetu, H. L., Jiao, Y., Thackray, C. P., and Jacob, D. J.: Modeling the OH-Initiated Oxidation of Mercury in the
+Global
+
+Atmosphere
+
+without
+
+Violating
+
+Physical
+
+Laws,
+
+J
+
+Phys
+
+Chem
+
+A,
+
+https://doi.org/10.1021/acs.jpca.9b10121, 2020.
+12
+
+https://doi.org/10.26434/chemrxiv-2024-qwh3w-v2 ORCID: https://orcid.org/0000-0002-0023-8233 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+124,
+
+444–453,
+
+Dixon, D. A., Peterson, K. A., and Francisco, J. S.: The Molecular Structures and Energetics of Cl2 CO, ClCO, Br2 CO, and
+330
+
+BrCO, J Phys Chem A, 104, 6227–6232, https://doi.org/10.1021/jp0005571, 2000.
+Donohoue, D. L., Bauer, D., Cossairt, B., and Hynes, A. J.: Temperature and Pressure Dependent Rate Coefficients for the
+Reaction of Hg with Br and the Reaction of Br with Br: A Pulsed Laser Photolysis-Pulsed Laser Induced Fluorescence Study,
+Journal of Physical Chemistry A, 110, 6623–6632, https://doi.org/10.1021/JP054688J, 2006.
+Dunham-Cheatham, S. M., Lyman, S., and Gustin, M. S.: Comparison and calibration of methods for ambient reactive mercury
+
+335
+
+quantification, Science of The Total Environment, 856, 159219, https://doi.org/10.1016/j.scitotenv.2022.159219, 2023.
+Dunning, T. H.: Gaussian basis sets for use in correlated molecular calculations. I. The atoms boron through neon and
+hydrogen, J Chem Phys, 90, 1007–1023, https://doi.org/10.1063/1.456153, 1989.
+Dyall, K. G.: Interfacing relativistic and nonrelativistic methods. IV. One- and two-electron scalar approximations, J Chem
+Phys, 115, 9136–9143, https://doi.org/10.1063/1.1413512, 2001.
+
+340
+
+Eisfeld, W. and Morokuma, K.: A detailed study on the symmetry breaking and its effect on the potential surface of NO3, J
+Chem Phys, 113, 5587–5597, https://doi.org/10.1063/1.1290607, 2000.
+Faegri Jr, K.: Relativistic Gaussian basis sets for the elements K - Uuo, Theor Chem Acc, 105, 252–258,
+https://doi.org/10.1007/s002140000209, 2001.
+Figgen, D., Rauhut, G., Dolg, M., and Stoll, H.: Energy-consistent pseudopotentials for group 11 and 12 atoms: adjustment to
+
+345
+
+multi-configuration Dirac–Hartree–Fock data, Chem Phys, 311, 227–244, https://doi.org/10.1016/j.chemphys.2004.10.005,
+2005.
+Filatov, M. and Cremer, D.: Revision of the dissociation energies of mercury chalcogenides--unusual types of mercury
+bonding., Chemphyschem, 5, 1547–57, https://doi.org/10.1002/cphc.200301207, 2004.
+Frisch, M. J., Trucks, G. W., Schlegel, H. B., Scuseria, G. E., Robb, M. A., Cheeseman, J. R., Scalmani, G., Barone, V.,
+
+350
+
+Petersson, G. A., Nakatsuji, H., Li, X., Caricato, M., Marenich, A. V., Bloino, J., Janesko, B. G., Gomperts, R., Mennucci, B.,
+Hratchian, D. J., Ortiz, J. V., Izmaylov, A. O., Sonnenberg, J. L., Williams-Young, D., Ding, F., Lipparini, F., Egidi, F.,
+Goings, J., Peng, B., Petrone, A., Henderson, T., Ranasinghe, D., Zakrzewski, V. G., Gao, J., Rega, N., Zheng, G., Liang, W.,
+Hada, M., Ehara, M., Toyota, K., Fukuda, R., Hasegawa, J., Ishida, M., Nakajima, T., Honda, Y., Kitao, O., Nakai, H., Vreven,
+T., Throssell, K., Montgomery, Jr. , J. A., Peralta, J. E., Ogliaro, F., Bearpark, M. J., Heyd, J. J., Brothers, E. N., Kudin, K. N.,
+
+355
+
+Staroverov, V. N., Keith, T. A., Kobayashi, R., Normand, J., Raghavachari, K., Rendell, A. P., Burant, J. C., Iyengar, S. S.,
+Tomasi, J., Cossi, M. M., Millam, J. M., Klene, M., Adamo, C., Cammi, R., Ochterski, J. W., Martin, R. L., Morokuma, K.,
+Farkas, O., Foresman, J. B., and Fox, D. J.: Gaussian 16, Rev. A, 2016.
+Gómez Martín, J. C., Lewis, T. R., Douglas, K. M., Blitz, M. A., Saiz-Lopez, A., and Plane, J. M. C.: The reaction between
+HgBr and O3 : kinetic study and atmospheric implications, Physical Chemistry Chemical Physics, 24, 12419–12432,
+
+360
+
+https://doi.org/10.1039/D2CP00754A, 2022.
+Goodsite, M. E. Plane, J. M. C. and Skov, H.: A Theoretical Study of the Oxidation of Hg0 to HgBr2 in the Troposphere,
+Environ. Sci. Technol., 38, 1772–1776, https://doi.org/10.1021/es034680s, 2004.
+13
+
+https://doi.org/10.26434/chemrxiv-2024-qwh3w-v2 ORCID: https://orcid.org/0000-0002-0023-8233 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Grade, M. and Hirschwald, W.: Energetics and Stabilities of the IIB/VIA‐Compounds at High‐Temperature Equilibrium
+Conditions,
+365
+
+Berichte
+
+der
+
+Bunsengesellschaft
+
+für
+
+physikalische
+
+Chemie,
+
+86,
+
+899–907,
+
+https://doi.org/10.1002/bbpc.19820861006, 1982.
+Grimme, S., Ehrlich, S., and Goerigk, L.: Effect of the damping function in dispersion corrected density functional theory, J
+Comput Chem, 32, 1456–1465, https://doi.org/10.1002/jcc.21759, 2011.
+Gustin, M. S., Dunham-Cheatham, S. M., Lyman, S., Horvat, M., Gay, D. A., Gačnik, J., Gratz, L., Kempkes, G., Khalizov,
+A., Lin, C.-J., Lindberg, S. E., Lown, L., Martin, L., Mason, R. P., MacSween, K., Vijayakumaran Nair, S., Nguyen, L. S. P.,
+
+370
+
+O’Neil, T., Sommar, J., Weiss-Penzias, P., Zhang, L., and Živković, I.: Measurement of Atmospheric Mercury: Current
+Limitations
+
+and
+
+Suggestions
+
+for
+
+Paths
+
+Forward,
+
+Environ
+
+Sci
+
+Technol,
+
+58,
+
+12853–12864,
+
+https://doi.org/10.1021/acs.est.4c06011, 2024.
+Helgaker, T., Klopper, W., Koch, H., and Noga, J.: Basis-set convergence of correlated calculations on water, J Chem Phys,
+106, 9639–9646, https://doi.org/10.1063/1.473863, 1997.
+375
+
+Heß, B. A., Marian, C. M., Wahlgren, U., and Gropen, O.: A mean-field spin-orbit method applicable to correlated
+wavefunctions, Chem Phys Lett, 251, 365–371, https://doi.org/10.1016/0009-2614(96)00119-4, 1996.
+Hewa Edirappulige, D. T., Kirby, I. J., Beckett, C. K., and Dibble, T. S.: Atmospheric Chemistry of HOHg(II)O• Mimics That
+of a Hydroxyl Radical, J Phys Chem A, 127, 8392–8403, https://doi.org/10.1021/acs.jpca.3c04159, 2023.
+Horowitz, H. M., Jacob, D. J., Zhang, Y., Dibble, T. S., Slemr, F., Amos, H. M., Schmidt, J. A., Corbitt, E. S., Marais, E. A.,
+
+380
+
+and Sunderland, E. M.: A new mechanism for atmospheric mercury redox chemistry: implications for the global mercury
+budget, Atmos. Chem. Phys., 17, 6353–6371, https://doi.org/10.5194/acp-17-6353-2017, 2017.
+Hynes, A. J., Donohoue, D. L., Goodsite, M. E., and Hedgecock, I. M.: Our current understanding of major chemical and
+physical processes affecting mercury dynamics in the atmosphere and at the air-water/terrestrial interfaces, in: Mercury Fate
+and Transport in the Global Atmosphere: Emissions, Measurements and Models, Springer US, 427–457,
+
+385
+
+https://doi.org/10.1007/978-0-387-93958-2_14, 2009.
+Ianni, J. C.: A comparison of the Bader-Deuflhard and the Cash-Karp Runge-Kutta integrators for the GRI-MECH 3.0 model
+based on the chemical kinetics code Kintecus, in: Computational Fluid and Solid Mechanics 2003, Elsevier, 1368–1372,
+https://doi.org/10.1016/B978-008044046-0.50335-3, 2003.
+Ianni, J. C.: Kintecus, www.kintecus.com., 2019.
+
+390
+
+Jiao, Y. and Dibble, T. S.: Quality Structures, Vibrational Frequencies, and Thermochemistry of the Products of Reaction of
+BrHg with NO2, HO2, ClO, BrO, and IO, J Phys Chem A, 119, 10502–10510, https://doi.org/10.1021/acs.jpca.5b04889, 2015.
+Kendall, R. A., Dunning, T. H., and Harrison, R. J.: Electron affinities of the first‐row atoms revisited. Systematic basis sets
+and wave functions, J Chem Phys, 96, 6796–6806, https://doi.org/10.1063/1.462569, 1992.
+Khan, M. A. H., Cooke, M. C., Utembe, S. R., Archibald, A. T., Derwent, R. G., Xiao, P., Percival, C. J., Jenkin, M. E., Morris,
+
+395
+
+W. C., and Shallcross, D. E.: Global modeling of the nitrate radical (NO3) for present and pre-industrial scenarios, Atmos Res,
+164–165, 347–357, https://doi.org/10.1016/j.atmosres.2015.06.006, 2015.
+14
+
+https://doi.org/10.26434/chemrxiv-2024-qwh3w-v2 ORCID: https://orcid.org/0000-0002-0023-8233 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Khiri, D., Louis, F., Cernusak, I., and Dibble, T.: BrHgO• + CO: Analogue of OH + CO and Reduction Path for Hg(II) in the
+Atmosphere, ACS Earth Space Chem, 4, 1777–1784, https://doi.org/10.1021/acsearthspacechem.0c00171, 2019.
+Kutzelnigg, W. and Liu, W.: Quasirelativistic theory equivalent to fully relativistic theory, J Chem Phys, 123,
+400
+
+https://doi.org/10.1063/1.2137315, 2005.
+Lam, K. T., Wilhelmsen, C. J., and Dibble, T. S.: BrHgO• + C2H4 and BrHgO• + HCHO in Atmospheric Oxidation of Mercury:
+Determining Rate Constants of Reactions with Pre-Reactive Complexes and a Bifurcation, J Phys Chem A, 123, 6045–6055,
+https://doi.org/10.1021/acs.jpca.9b05120, 2019a.
+Lam, K. T., Wilhelmsen, C. J., Schwid, A. C., Jiao, Y., and Dibble, T. S.: Computational Study on the Photolysis of BrHgONO
+
+405
+
+and the Reactions of BrHgO• with CH4, C2H6, NO, and NO2: Implications for Formation of Hg(II) Compounds in the
+Atmosphere, J Phys Chem A, 123, 1637–1647, https://doi.org/10.1021/acs.jpca.8b11216, 2019b.
+Langer, S., Ljungström, E., and Wängberg, I.: Rates of reaction between the nitrate radical and some aliphatic esters, J. Chem.
+Soc., Faraday Trans., 89, 425–431, https://doi.org/10.1039/FT9938900425, 1993.
+Lee, C. F., Elgiar, T., David, L. M., Wilmot, T. Y., Reza, M., Hirshorn, N., McCubbin, I. B., Shah, V., Lin, J. C., Lyman, S.
+
+410
+
+N., Hallar, A. G., Gratz, L. E., and Volkamer, R.: Elevated Tropospheric Iodine Over the Central Continental United States:
+Is Iodine a Major Oxidant of Atmospheric Mercury?, Geophys Res Lett, 51, https://doi.org/10.1029/2024GL109247, 2024.
+Liu, J. and Cheng, L.: An atomic mean-field spin-orbit approach within exact two-component theory for a non-perturbative
+treatment of spin-orbit coupling, J Chem Phys, 148, https://doi.org/10.1063/1.5023750, 2018.
+Liu, W. and Peng, D.: Exact two-component Hamiltonians revisited, J Chem Phys, 131, https://doi.org/10.1063/1.3159445,
+
+415
+
+2009.
+Mao, H., Talbot, R. W., Sigler, J. M., Sive, B. C., and Hegarty, J. D.: Seasonal and diurnal variations of Hg° over New England,
+Atmos Chem Phys, 8, 1403–1421, https://doi.org/10.5194/acp-8-1403-2008, 2008.
+Matthews, D. A. and Stanton, J. F.: Non-orthogonal spin-adaptation of coupled cluster methods: A new implementation of
+methods including quadruple excitations, J Chem Phys, 142, https://doi.org/10.1063/1.4907278, 2015.
+
+420
+
+Matthews, D. A., Cheng, L., Harding, M. E., Lipparini, F., Stopkowicz, S., Jagau, T.-C., Szalay, P. G., Gauss, J., and Stanton,
+J. F.: Coupled-cluster techniques for computational chemistry: The CFOUR program package, J. Chem. Phys., 152, 214108,
+https://doi.org/10.1063/5.0004837, 2020.
+Mills, I. M.: Modern Spectroscopy: Modern Research, edited by: Rao, K. and Mathews, C., Academic Press, NewYork, 115–
+140 pp., 1972.
+
+425
+
+Neese, F.: The ORCA program system, WIREs Computational Molecular Science, 2, 73–78, https://doi.org/10.1002/wcms.81,
+2012.
+Neese, F.: Software update: The ORCA program system—Version 5.0, WIREs Computational Molecular Science, 12,
+https://doi.org/10.1002/wcms.1606, 2022.
+Pal, B. and Ariya, P. A.: Gas-phase HO-initiated reactions of elemental mercury: kinetics, product studies, and atmospheric
+
+430
+
+implications., Environ Sci Technol, 38, 5555–5566, 2004.
+15
+
+https://doi.org/10.26434/chemrxiv-2024-qwh3w-v2 ORCID: https://orcid.org/0000-0002-0023-8233 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Peleg, M., Tas, E., Obrist, D., Matveev, V., Moore, C., Gabay, M., and Luria, M.: Observational Evidence for Involvement of
+Nitrate
+
+Radicals
+
+in
+
+Nighttime
+
+Oxidation
+
+of
+
+Mercury,
+
+Environ
+
+Sci
+
+Technol,
+
+49,
+
+14008–14018,
+
+https://doi.org/10.1021/acs.est.5b03894, 2015.
+Penkett, S. A., Burgess, R. A., Coe, H., Coll, I., Hov, Ø., Lindskog, A., Schmidbauer, N., Solberg, S., Roemer, M., Thijsse,
+435
+
+T., Beck, J., and Reeves, C. E.: Evidence for large average concentrations of the nitrate radical (NO3) in Western Europe from
+the HANSA hydrocarbon database, Atmos Environ, 41, 3465–3478, https://doi.org/10.1016/j.atmosenv.2006.11.055, 2007.
+Peterson, K. A. and Dunning, T. H.: Accurate correlation consistent basis sets for molecular core-valence correlation effects:
+The second row atoms Al-Ar, and the first row atoms B-Ne revisited, J Chem Phys, 117, 10548–10560,
+https://doi.org/10.1063/1.1520138, 2002.
+
+440
+
+Peterson, K. A. and Puzzarini, C.: Systematically convergent basis sets for transition metals. II. Pseudopotential-based
+correlation consistent basis sets for the group 11 (Cu, Ag, Au) and 12 (Zn, Cd, Hg) elements, Theor Chem Acc, 114, 283–296,
+https://doi.org/10.1007/s00214-005-0681-9, 2005.
+Peterson, K. A., Figgen, D., Goll, E., Stoll, H., and Dolg, M.: Systematically convergent basis sets with relativistic
+pseudopotentials. II. Small-core pseudopotentials and correlation consistent basis sets for the post-d group 16–18 elements, J
+
+445
+
+Chem Phys, 119, 11113, https://doi.org/10.1063/1.1622924, 2003.
+Peterson, K. A., Shepler, B. C., and Singleton, J. M.: The group 12 metal chalcogenides: an accurate multireference
+configuration interaction and coupled cluster study, Mol Phys, 105, 1139–1155, https://doi.org/10.1080/00268970701241664,
+2007.
+Roos, B. O., Malmqvist, P.-Å., Veryazov, V., and Widmark, P.-O.: Main Group Atoms and Dimers Studied with a New
+
+450
+
+Relativistic ANO Basis Set, J Phys Chem A, 108, 2851–2858, 2003.
+Roos, B. O., Lindh, R., Malmqvist, P.-Å., Veryazov, V., and Widmark, P.-O.: New Relativistic ANO Basis Sets for Transition
+Metal Atoms, J Phys Chem A, 109, 6575–6579, https://doi.org/10.1021/JP0581126, 2005.
+Rosanka, S., Vu, G. H. T., Nguyen, H. M. T., Pham, T. V., Javed, U., Taraborrelli, D., and Vereecken, L.: Atmospheric
+chemical loss processes of isocyanic acid (HNCO): a combined theoretical kinetic and global modelling study, Atmos Chem
+
+455
+
+Phys, 20, 6671–6686, https://doi.org/10.5194/acp-20-6671-2020, 2020.
+Saiz-Lopez, A., Sitkiewicz, S. P., Roca-Sanjuán, D., Oliva-Enrich, J. M., Dávalos, J. Z., Notario, R., Jiskra, M., Xu, Y., Wang,
+F., Thackray, C. P., Sunderland, E. M., Jacob, D. J., Travnikov, O., Cuevas, C. A., Acuña, A. U., Rivero, D., Plane, J. M. C.,
+Kinnison, D. E., and Sonke, J. E.: Photoreduction of gaseous oxidized mercury changes global atmospheric mercury speciation,
+transport and deposition, Nat Commun, 9, 4796, https://doi.org/10.1038/s41467-018-07075-3, 2018.
+
+460
+
+Salter, C., Tellinghuisen, P. C., Ashmore, J. G., and Tellinghuisen, J.: The emission spectrum of 200Hg127I, J Mol Spectrosc,
+120, 334–358, https://doi.org/10.1016/0022-2852(86)90009-3, 1986.
+Schroeder, H. and Munthe, J.: Atmospheric Mercury-An Overview, Atmos Env, 32, https://doi.org/10.1016/S13522310(97)00293-8, 1998.
+
+16
+
+https://doi.org/10.26434/chemrxiv-2024-qwh3w-v2 ORCID: https://orcid.org/0000-0002-0023-8233 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Shah, V., Jacob, D. J., Thackray, C. P., Wang, X., Sunderland, E. M., Dibble, T. S., Saiz-Lopez, A., Cernusák, I., Kellö, V.,
+465
+
+Castro, P. J., Wu, R., and Wang, C.: Improved mechanistic model of the atmospheric redox chemistry of mercury, Environ Sci
+Technol, 55, 14445–14456, https://doi.org/10.1021/ACS.EST.1C03160, 2021a.
+Shah, V., Jacob, D. J., Thackray, C. P., Wang, X., Sunderland, E. M., Dibble, T. S., Saiz-Lopez, A., Cernusák, I., Kellö, V.,
+Castro, P. J., Wu, R., and Wang, C.: Improved mechanistic model of the atmospheric redox chemistry of mercury, Environ Sci
+Technol, 55, 14445–14456, https://doi.org/10.1021/acs.est.1c03160, 2021b.
+
+470
+
+Shepler, B. C. and Peterson, K. A.: Mercury Monoxide: A Systematic Investigation of Its Ground Electronic State, J Phys
+Chem A, 107, 1783–1787, https://doi.org/10.1021/jp027512f, 2003.
+Shepler, B. C., Balabanov, N. B., and Peterson, K. A.: Ab initio thermochemistry involving heavy atoms: an investigation of
+the reactions Hg + IX (X = I, Br, Cl, O)., J Phys Chem A, 109, 10363–72, https://doi.org/10.1021/jp0541617, 2005.
+Sommar, J., Hallquist, M., Ljungström, E., and Lindqvist, O.: On the Gas Phase Reactions Between Volatile Biogenic Mercury
+
+475
+
+Species and the Nitrate Radical, J Atmos Chem, 27, 233–247, https://doi.org/10.1023/A:1005873712847, 1997.
+Sommar, J., Gårdfeldt, K., Strömberg, D., and Feng, X.: A kinetic study of the gas-phase reaction between the hydroxyl radical
+and atomic mercury, Atmos Environ, 35, 3049–3054, https://doi.org/10.1016/S1352-2310(01)00108-X, 2001.
+Stanton, J. F.: On the vibronic level structure in the NO3 radical. I. The ground electronic state, J Chem Phys, 126,
+https://doi.org/10.1063/1.2715547, 2007.
+
+480
+
+Stanton, J. F.: On the vibronic level structure in the NO 3 radical: II. Adiabatic calculation of the infrared spectrum, Mol Phys,
+107, 1059–1075, https://doi.org/10.1080/00268970902740530, 2009.
+Stanton, J. F. and Bartlett, R. J.: The equation of motion coupled-cluster method. A systematic biorthogonal approach to
+molecular excitation energies, transition probabilities, and excited state properties, J Chem Phys, 98, 7029–7039,
+https://doi.org/10.1063/1.464746, 1993.
+
+485
+
+Stanton, J. F. and Gauss, J.: Analytic energy derivatives for ionized states described by the equation-of-motion coupled cluster
+method, J Chem Phys, 101, 8938–8944, https://doi.org/10.1063/1.468022, 1994.
+Stanton, J. F. and Gauss, J.: A simple scheme for the direct calculation of ionization potentials with coupled-cluster theory that
+exploits established excitation energy methods, J Chem Phys, 111, 8785–8788, https://doi.org/10.1063/1.479673, 1999.
+Stanton, J. F., Gauss, J., and Bartlett, R. J.: Potential nonrigidity of the NO3 radical, J Chem Phys, 94, 4084–4087,
+
+490
+
+https://doi.org/10.1063/1.460636, 1991.
+Stanton, J. F., Gauss, J., Cheng, L., Harding, M. E., Matthews, D. A., and Szalay, P. Q.: CFOUR, Coupled-Cluster Techniques
+for Computational Chemistry, a Quantum-Chemical Program Package, http://www.cfour.de.
+Sumner, A. L., Spicer, C. W., Satola, J., Mangaraj, R., Cowen, K. A., Landis, M. S., Stevens, R. K., and Atkeson, T. D.:
+Environmental Chamber Studies of Mercury Reactions in the Atmosphere, in: Dynamics of Mercury Pollution on Regional
+
+495
+
+and Global Scales, Springer-Verlag, New York, 193–212, https://doi.org/10.1007/0-387-24494-8_9, 2005.
+Viel, A. and Eisfeld, W.: NO3 full-dimensional potential energy surfaces and ground state vibrational levels revisited, Chem
+Phys, 509, 81–90, https://doi.org/10.1016/J.CHEMPHYS.2018.01.003, 2018.
+17
+
+https://doi.org/10.26434/chemrxiv-2024-qwh3w-v2 ORCID: https://orcid.org/0000-0002-0023-8233 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+Wang, F., Saiz-Lopez, A., Mahajan, A. S., Gómez Martín, J. C., Armstrong, D., Lemes, M., Hay, T., and Prados-Roman, C.:
+Enhanced production of oxidised mercury over the tropical Pacific Ocean: a key missing oxidation pathway, Atmos Chem
+500
+
+Phys, 14, 1323–1335, https://doi.org/10.5194/acp-14-1323-2014, 2014.
+Weiss-Penzias, P., Jaffe, D. A., McClintick, A., Prestbo, E. M., and Landis, M. S.: Gaseous Elemental Mercury in the Marine
+Boundary Layer: Evidence for Rapid Removal in Anthropogenic Pollution, Environ Sci Technol, 37, 3755–3763,
+https://doi.org/10.1021/es0341081, 2003.
+Wu, L., Mao, H., Ye, Z., Dibble, T. S., Saiz‐Lopez, A., and Zhang, Y.: Improving Simulation of Gas‐Particle Partitioning of
+
+505
+
+Atmospheric Mercury Using CMAQ‐newHg‐Br v2, J Adv Model Earth Syst, 16, https://doi.org/10.1029/2023MS003823,
+2024.
+Wu, R., Wang, C., and Dibble, T. S.: First experimental kinetic study of the atmospherically important reaction of BrHg +
+NO2, Chem Phys Lett, 759, 137928, https://doi.org/10.1016/j.cplett.2020.137928, 2020.
+Wu, R., Castro, P. J., Gaito, C., Beiter, K., Dibble, T. S., and Wang, C.: Combined Experimental and Computational Kinetics
+
+510
+
+Studies for the Atmospherically Important BrHg Radical Reacting with NO and O2, J Phys Chem A, 126, 3914–3925,
+https://doi.org/10.1021/acs.jpca.2c02531, 2022.
+Yanai, T., Tew, D. P., and Handy, N. C.: A new hybrid exchange–correlation functional using the Coulomb-attenuating method
+(CAM-B3LYP), Chem Phys Lett, 393, 51–57, https://doi.org/10.1016/j.cplett.2004.06.011, 2004.
+Zhang, C. and Cheng, L.: Atomic Mean-Field Approach within Exact Two-Component Theory Based on the Dirac–Coulomb–
+
+515
+
+Breit Hamiltonian, J Phys Chem A, 126, 4537–4553, https://doi.org/10.1021/acs.jpca.2c02181, 2022.
+Zhao, Y. and Truhlar, D. G.: The M06 suite of density functionals for main group thermochemistry, thermochemical kinetics,
+noncovalent interactions, excited states, and transition elements: two new functionals and systematic testing of four M06-class
+functionals and 12 other functionals, Theor Chem Acc, 120, 215–241, https://doi.org/10.1007/s00214-007-0310-x, 2008.
+Zhou, J. and Obrist, D.: Global Mercury Assimilation by Vegetation, Environ Sci Technol, 55, 14245–14257,
+
+520
+
+https://doi.org/10.1021/ACS.EST.1C03530, 2021.
+
+18
+
+https://doi.org/10.26434/chemrxiv-2024-qwh3w-v2 ORCID: https://orcid.org/0000-0002-0023-8233 Content not peer-reviewed by ChemRxiv. License: CC BY-NC 4.0
+
+

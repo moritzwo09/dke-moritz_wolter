@@ -1,0 +1,2306 @@
+1
+3
+
+Re-examining chemical conditions of past chamber studies of secondary
+organic aerosol formation
+
+4
+
+Matthew B. Goss,1,2,3,* Hannah S. Kenagy,1,4 Colette L. Heald,1,5 Jesse H. Kroll1,6,*
+
+5
+6
+7
+8
+9
+10
+11
+
+1Department of Civil and Environmental Engineering, Massachusetts Institute of Technology
+
+2
+
+2Harvard University Center for the Environment, Harvard University
+
+3John A. Paulson School of Engineering and Applied Sciences, Harvard University
+4Department of Chemistry, University of Minnesota
+
+5Institute for Atmospheric and Climate Science, ETH Zürich
+
+6Department of Chemical Engineering, Massachusetts Institute of Technology
+
+*Corresponding authors
+
+12
+
+Abstract
+
+13
+
+29
+
+The simulation of secondary organic aerosol (SOA) in 3D models generally relies on
+measurements made in laboratory chamber studies. However, many of the laboratory studies that
+underpin the aerosol parameterizations used in these models were carried out more than fifteen
+years ago, before recent developments in our understanding of peroxy radical (RO2) chemistry
+and its role in aerosol formation. As a result, limitations of past chamber experiments and the
+incomplete understanding of their chemical conditions (e.g., the initiating oxidants, RO2 fate),
+may skew SOA representation in models. In this work, literature SOA chamber studies,
+specifically those referenced by the SOA scheme in the GEOS-Chem global model, are
+simulated using a modified version of the Master Chemical Mechanism. This enables explicit
+estimation of typically-unconstrained parameters which affect experimental outcomes, including
+the relative importance of different oxidants, and the relative loss of RO2 to different
+unimolecular and bimolecular processes. This work demonstrates that reaction conditions are
+dynamic, changing within and between experiments, and that many experimental conditions
+involve more than one oxidant or RO2 fate, complicating model parameterizations. However, we
+also find that RO2 isomerization is important under many of the experimental conditions used,
+meaning that some RO2 isomerization processes are to some extent embedded into 3D model
+SOA estimates, despite no explicit representation of this chemistry.
+
+30
+
+Synopsis
+
+31
+
+We model past secondary organic aerosol chamber studies with explicit, detailed chemistry to
+explore the chemical conditions of the laboratory experiments that underpin aerosol
+parameterizations in 3D models.
+
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+
+32
+33
+
+1
+https://doi.org/10.26434/chemrxiv-2025-1xq6q ORCID: https://orcid.org/0000-0002-2688-5463 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+34
+
+Introduction
+
+35
+
+Secondary organic aerosol (SOA), formed from the oxidation and subsequent condensation of
+volatile organic compounds (VOCs), is the major component of organic aerosol in the
+atmosphere1,2 and therefore substantially impacts the climate and contributes to air pollution.
+However, organic aerosol has long posed a challenge for 3D models, which typically do not
+accurately predict its observed variability,3,4 likely due to the complexities and uncertainties
+associated with the formation of SOA.
+
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+
+SOA formation is strongly influenced by key branch points in the chemical oxidation
+mechanism, each of which operate as a function of reaction conditions.5 Two of the most
+important branch points are the identity of the initiating oxidant and the fate of the resulting
+peroxy radical. VOCs are most commonly oxidized by OH, O3, or NO3, and these different
+oxidation pathways can affect SOA yield. For example, the reaction of isoprene with OH often
+results in relatively rapid incorporation of oxygen into the molecule, reducing volatility, while
+the reaction of isoprene with O3 fragments the carbon chain, resulting in two oxidized but more
+volatile products. The oxidation of a VOC typically results in the formation of a peroxy radical
+(RO2), a second key branch point that controls the distribution of potential products. Under a
+conventional understanding of RO2 chemistry, RO2 species typically react with NO, forming an
+alkoxy radical or organonitrate, or HO2, forming an organic peroxide.5 RO2 species can also
+react with other RO2, forming disproportionation or dimer products, and some RO2 may react
+with NO2, forming peroxyacyl nitrates, or with NO3, forming alkoxy radicals.6 These different
+RO2 fates can affect SOA yields, for example by favoring fragmentation (yielding higher
+volatility products) or incorporation of additional oxygen atoms (yielding lower volatility
+products).
+However, advances in our understanding of RO2 chemistry over the last fifteen years have
+brought to light several new RO2 reaction pathways. In particular, peroxy radical isomerization,
+sometimes referred to as autoxidation, has been recognized as an important pathway through
+which oxygen may sequentially be incorporated into an organic molecule, rapidly forming a lowvolatility compound that may condense to efficiently contribute to SOA mass.7,8 RO2
+isomerization rates are highly dependent on the structure of the RO2 species, varying over many
+orders of magnitude, such that for some compounds, it may be a dominant RO2 fate, while for
+others it may be irrelevant.9 While additional RO2 reactions such as the rapid formation of
+ROOR species by RO2 + RO210 or the reaction of RO2 with OH11 have also been discovered in
+recent years, the importance of these for atmospheric SOA formation is not yet clear.
+The formation of SOA is sufficiently complex such that its explicit modeling on a regional and
+global scale is prohibitive. SOA forms through the condensation of numerous products of VOC
+oxidation, each of which is derived from a different complicated (and incompletely understood)
+sequence of oxidation reactions, and each of which differ in vapor pressure and reactivity. In
+order to make this process computationally tractable, 3D models rely on substantial
+simplifications. In the simplest case, SOA is treated as a fixed yield product of the reaction or
+2
+
+https://doi.org/10.26434/chemrxiv-2025-1xq6q ORCID: https://orcid.org/0000-0002-2688-5463 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+
+emission of VOC precursors.3,12 However, SOA is more realistically represented when
+absorptive partitioning of gas-phase organic species into the organic aerosol phase is
+considered,13 typically through the use of the two-product model14 or volatility basis set (VBS).15
+In either case, yields of surrogate species of different volatilities are assigned by fitting the
+laboratory-measured SOA yield as a function of the organic aerosol concentration (cOA), thereby
+linking laboratory results to 3D model output. While SOA yields in a VBS scheme can be
+defined simply based on the identity of the VOC precursor, they may also be specified based on
+VOC/oxidant pairs, or NOX-conditions (“high NOX” and “low NOX”), such that aerosol yields in
+the model can be defined for different chemical environments. Within this framework, aerosol
+yields may be parameterized such that under intermediate chemical conditions (e.g., competing
+RO2 + NO and RO2 + HO2 reactions), SOA yields may be linearly interpolated.16–18
+Because SOA parameterizations fundamentally rely on laboratory chamber experiments, they
+therefore integrate any limitations from these experiments. Many limitations of chamber
+experiments have been documented previously, including large differences between atmospheric
+and chamber temperature, humidity, and NOX concentrations,19 as well as the partitioning of
+semi-volatile and low-volatility species to chamber walls, a process which impacts observed
+aerosol formation.20 An important additional limitation is that the chemical conditions used in
+past chamber experiments are not typically well-characterized.21 Many laboratory chamber
+studies that continue to be used as a basis for regional and global model aerosol modules were
+carried out more than fifteen years ago, before the previously-discussed advances in our
+understanding of RO2 chemistry (e.g., isomerization). Earlier chamber experiments were not
+designed to study these unimolecular reaction pathways, and instead focused on separating
+aerosol yield by reaction with specific oxidants, and/or by “high-NOx” vs “low-NOX” pathways.
+Furthermore, while assessments of RO2 and oxidant fate in contemporary chamber experiments
+using mechanistic modeling is increasingly common, it was much less common in older studies.
+Instead, oxidant and RO2 fate was often assumed based on the oxidant added or the initial NOX
+concentrations, and any such assumptions are subsequently embedded in aerosol
+parameterizations. While contemporary model schemes rely on a range of laboratory studies,
+they often pull from some of the same older experiments; commonly referenced collections of
+volatility basis set fits include Pye et al.,18 Farina et al.,12 and Zhang et al.22
+Given our evolving understanding of radical chemistry, the chemical conditions as reported in
+older publications and the chemical conditions actually used in those experiments may not
+always align. Where an aerosol parameterization relies on assigned RO2 conditions (e.g., reaction
+with NO vs. reaction with HO2), any deviation in the true experimental RO2 fate from this binary
+classification (which may arise from the importance of other reactions such as isomerization or
+RO2 + RO2) may affect the accuracy of the aerosol scheme. Similarly, oxidation processes may
+differ from an assumption of a single dominant oxidant, as multiple oxidants may be formed
+(e.g., OH from O3 + alkene reactions, O3 or NO3 from irradiated VOC + NOX mixtures). These
+effects may be unexpected, for example where these processes are influenced by trace
+background NOX or by the chemistry associated with added compounds (e.g., OH scavengers).
+3
+
+https://doi.org/10.26434/chemrxiv-2025-1xq6q ORCID: https://orcid.org/0000-0002-2688-5463 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+126
+
+This work seeks to re-examine chamber conditions used in literature SOA experiments, by using
+explicit box modeling to estimate typically-unconstrained chemical parameters. The specific
+focus here is on the initiating oxidant and the fate of RO2 radicals, which to our knowledge have
+never been systematically assessed in past SOA chamber studies. The set of historical chamber
+experiments examined is taken from the basis for the “Complex” aerosol scheme18 from GEOSChem, a widely used chemical transport model. This scheme describes SOA formation in terms
+of both oxidant and RO2 fate, and therefore represents an appropriate study to use as a guide for
+the selection of experiments. While this set of experiments is not a comprehensive list, it
+includes chamber studies that form a basis for aerosol schemes in other 3D models, such that the
+results of this work may be more broadly applicable. Chamber experiments are represented using
+explicit chemical mechanisms, modified where possible to include appropriate isomerization
+reactions. Finally, explicitly modeled oxidant and RO2 fate are interpreted in the context of their
+use in aerosol parameterizations, giving insight into challenges facing experimental design and
+the creation of accurate parameterizations.
+
+127
+
+Methods
+
+128
+
+Historical experiments are chosen based on Pye et al.,18 the basis for the “Complex” aerosol
+scheme used in GEOS-Chem. While subsequent studies have updated the aerosol module to
+include aqueous reactive uptake of isoprene oxidation products and some organonitrates
+separately from the volatility basis set,23,24 that work is not considered here. The publications
+covered in this work are shown in Table 1, along with basic experimental details and a brief
+summary of data availability. Starting experimental conditions (NOX levels, VOC levels, etc.) are
+provided in each publication, and experimental timeseries are scraped from paper figures or
+provided by authors. All model parameters for each simulation are shown in Tables S.1 and S.2.
+
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+
+Each experiment is classified into one of six categories (last column of Table 1) based on the
+oxidation conditions. While chamber experiments are often grouped simply as “high-NOX” or
+“low-NOX,” these distinctions do not fully describe the underlying chemistry or RO2 fate.25
+Experiment categories involving added NOX include “HONO” (which use HONO as an oxidant
+precursor26,27), “H2O2, NOX” (which use both H2O2 and added NOX26,28), and “traditional
+photooxidation” (which use a mixture of VOC, NOX, and UV light29). Experiments using VOC,
+NOX, UV light, and added O330 are also grouped into this category based on similarities in the
+observed chemistry. Experiment categories involving no added NOX include “H2O2, low NOX,”
+28,27,26
+and “O3, low NOX”.29,31 In all ozonolysis experiments studied here, an OH scavenger is
+added to minimize OH oxidation of the precursor. Ozonolysis experiments from Zhang et al.30
+are classified as “O3, some NOX” since these experiments featured measurable background NOX
+concentrations of 2 – 15 ppb (sufficiently high to substantially alter observed chemistry).
+
+148
+
+4
+https://doi.org/10.26434/chemrxiv-2025-1xq6q ORCID: https://orcid.org/0000-0002-2688-5463 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+149
+
+Table 1: Summary of modeled experiments.a
+Number
+of expts.
+
+Publication
+
+VOC Precursors
+
+Griffin et al.29
+
+β-pinene
+β-caryophyllene
+α-pinene
+
+Zhang et al.30
+
+limonene
+
+22
+
+Kroll et al.28
+
+isoprene
+
+14
+
+Ng et al.27
+
+m-xylene
+toluene
+benzene
+
+18
+
+Ng et al.26
+
+α-pinene
+
+5
+
+Shilling et al.31
+
+α-pinene
+
+8
+
+5
+
+Reference data
+
+Oxidation category
+
+Starting conditions
+(all expts) + time
+series (one expt)
+Starting conditions
+(all expts) + time
+series (two expts)
+Starting conditions
+(all expts) + max.
+O3 concentrations
+(all expts) + time
+series (two expts)
+VOC, NOX, O3
+time series (all
+expts)
+VOC, NOX, O3
+time series (all
+expts)
+Starting conditions
+(all expts)
+
+O3, low NOX
+Traditional
+photooxidation
+O3, some NOX
+Traditional
+photooxidation
+H2O2, low NOX
+H2O2, NOX
+H2O2, low NOX
+HONO
+H2O2, low NOX
+H2O2, NOX
+HONO
+O3, low NOX
+
+150
+
+a
+
+151
+
+Modeling is carried out using the Framework for 0-D Atmospheric Modeling, version 4.3
+(F0AM).32 Chemical mechanisms are taken from the Master Chemical Mechanism (MCM
+v3.3.1).33,34,34–37 While referenced by Pye et al.,18 α-humulene and naphthalene are not modeled
+since they are not represented in the MCM. Similarly, experiments focusing on the reaction of
+NO3 with β-pinene29 and isoprene38 are also omitted due to insufficient experimental data to
+constrain the model. Only gas-phase chemistry is modeled, with no treatment of partitioning or
+particle-phase chemistry.
+
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+
+Model parameters for each experiment are included in Tables S.1 and S.2.
+
+While some mechanisms in the MCM, most notably for isoprene, include unimolecular RO2
+reactions, most mechanisms used here do not yet feature unimolecular RO2 chemistry. While
+RO2 isomerization rates are highly dependent on structure9 and challenging to accurately
+measure or calculate, some important isomerization rates have been characterized or estimated
+for all of the precursor VOCs studied. Mechanisms are therefore modified to include known or
+estimated RO2 isomerization rate constants for initial RO2, defined here as the first RO2 species
+formed immediately after the VOC-oxidant reaction (these species are listed in Table S.3); all
+other RO2 are referred to as “subsequent” RO2. We note that because a single generation of
+oxidation can include multiple RO2 species formed in sequence, “initial RO2” is not synonymous
+with “first-generation RO2.” Due to the extensive uncertainties and complexities of integrating
+unimolecular RO2 reactions into chemistry that occurs beyond the initial RO2 species, reactions
+for subsequent RO2 are not modified. To conserve carbon without extensively re-writing each
+mechanism, each RO2 isomerization reaction forms an alkyl radical, which reacts with oxygen to
+form another RO2 radical, identical to an RO2 species from a later point in the mechanism. RO2
+isomerization rate constants are taken from literature measurements and calculations.9,39–44
+5
+
+https://doi.org/10.26434/chemrxiv-2025-1xq6q ORCID: https://orcid.org/0000-0002-2688-5463 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+
+Mechanism modifications are applied to all precursor mechanisms (except that of isoprene,
+which already features isomerization reactions), and are detailed in Table S.4 and Section S.1.
+Some experiments use additional VOCs such as radical promoters (propene),29 which facilitate
+additional OH formation through ozonolysis, OH scavengers (2-butanol, n-butanol),29–31 which
+decrease OH concentrations to maximize O3 chemistry, or hydrocarbons (n-pentane),30 which are
+used to dilute the precursor VOC for injection. These species are represented by a standard
+mechanism from the MCM and an identical non-interacting tracer mechanism that is run in
+parallel with the main simulation. This allows the subtraction of the influence of these species
+during analysis, such that analysis focuses solely on the chemistry of the VOC of interest.
+All experiments are first modeled based on known parameters. While the publications vary in
+specificity with regard to reported conditions, they generally report initial VOC, O3, and NOX
+concentrations (See Tables S.1 and S.2 for a summary of all model input parameters). Less well
+quantified starting material concentrations include H2O2 (typically estimated) and OH radical
+sinks (e.g. 2-butanol concentration is “sufficient to consume OH” 29). Light spectra are taken
+from earlier publications for indoor chambers45,46 (See Figure S.1). Experiment length is rarely
+stated explicitly and is assumed to be the same as the length of time shown in relevant figures, or
+the length of time in relevant data files. Since the experiments simulated do not quantify vapor
+wall losses, these processes are not represented in the model.
+For each series of experiments, model runs are then tuned to match measured data by adjusting
+free variables that are unmeasured or poorly quantified. Chamber light intensity is adjusted to
+match reported jNO2 values28 or to fit reported VOC, NOX, and O3 timeseries.29,30 For the outdoor
+experiments of Griffin et al.,29 the default sunlight intensity based on experimental date and
+location is halved to best match data, likely a result of overhead aerosol or clouds. For
+experiments using HONO as an oxidant precursor, a combination of NOX analyzer
+measurements (which measure HONO as “NO2”), and fit to measured timeseries of VOC, NOX,
+and O3 are used to constrain HONO concentrations. H2O2 concentrations are unmeasured but
+estimated in several publications. While these are generally taken as the mean value of the
+estimated range, the concentration is loosely constrained by the NO loss rate (which is sensitive
+to H2O2 concentrations) when NO is present in the experiment. For several experiments with no
+added NOX, ozone is produced when little is predicted; this is likely due to residual NOX species
+off-gassing from the chamber walls.28 In these cases, ozone timeseries are best matched by
+adding trace NO or NO2 to the model; in some cases, this is held constant (see Table S.2). Even
+when ozone formation does not constrain [NOX], experimental conditions are unlikely to be truly
+NOX-free, so a small amount of NO2 (0.1 – 1 ppb, below reported detection limit) is added to the
+model. For variables that are not quantitatively constrained (e.g., a reported jNO2 value), final
+tuning of these input parameters is carried out by eye to achieve a reasonable fit to reported
+VOC, NOX, and O3 timeseries.
+Since some experimental parameters are relatively uncertain, the effect of variability in model
+inputs is explored through sensitivity testing. Light intensity and all nonzero starting
+6
+
+https://doi.org/10.26434/chemrxiv-2025-1xq6q ORCID: https://orcid.org/0000-0002-2688-5463 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+
+concentrations are varied individually by ± 30%. These results are first used to assess how
+uncertainty in starting conditions impacts the fit between measurement and modeled results. As
+described in Results and Discussion, these sensitivities are also used to explore how uncertainty
+in starting conditions propagates to measured parameters associated with subsequent chamber
+chemistry.
+Relative VOC reactive loss pathways and RO2 fates are calculated based on F0AM outputs,
+which include time series of all species in the mechanism and rates over time for each reaction.
+Reactive loss pathways include reaction with OH, O3, or NO3, as well as direct photolysis for
+photolabile product species such as formaldehyde. We extract reaction rates for each “oxidant”
+(including hv) over time and separate them into reactions with the precursor and reactions with
+other organic products. These time series are interpolated, summed, and normalized to get total
+fractional reactive loss pathways for both precursor and total products. Peroxy radical fate is
+assessed in a similar way. Peroxy radicals are grouped into initial RO2 and subsequent RO2, and
+time-dependent RO2 reaction rates (RO2 + HO2, RO2 + NO, RO2 + NO2, RO2 + RO2, RO2 +
+NO3, unimolecular RO2 reaction) are then extracted from the model output. In order to properly
+account for the relative importance of reversible RO2 reactions, most notably acyl RO2 + NO2
+reactions which generate peroxyacyl nitrates (PANs), rates are calculated by summing any
+equilibria such that the reported rate is equal to the net flux (using the F0AM function
+ExtractRates with the “sumEq” parameter set to 1). This does not affect calculated rates for other
+RO2 reactions, which are not reversible in the MCM. As above, grouped RO2 fate timeseries are
+used to obtain total fractional RO2 fate for initial and subsequent RO2. For all model outputs, the
+influence of radical promoters, OH scavengers, and additional hydrocarbons is removed using
+the output of the tracer mechanism.
+Model outputs are further interpreted with respect to the fraction of RO2 reacting with NO vs
+HO2, β, and the bimolecular peroxy radical lifetime, τbi. As defined in Pye et al.18, β enables
+assessment of the competition between reaction with HO2 and NO (eq. 1), and is used as a
+“mixing parameter” in SOA parameterizations to interpolate aerosol yields measured under
+“high-NO” and “low-NO” conditions.16–18
+𝛽𝛽 =
+
+𝑘𝑘RO2+NO [NO]
+𝑘𝑘RO2+NO [NO] + 𝑘𝑘RO2 +HO2 [HO2 ]
+
+(1)
+
+The bimolecular peroxy radical lifetime,47–49 τbi, can be used to assess the relative importance of
+unimolecular RO2 chemistry. Since unimolecular RO2 reaction rates vary over many orders of
+magnitude, τbi can be used as a threshold to indicate whether a given unimolecular reaction
+would be competitive, relative to the unimolecular lifetime, τuni (the inverse of the unimolecular
+RO2 reaction rate constant). While prior work has often defined τbi only with respect to
+bimolecular reaction with NO and HO2,49,21 we define τbi with respect to reaction with NO, HO2,
+RO2, NO2, and NO3 (eq. 2), since under some chamber conditions, these additional reactive sinks
+are found to contribute to RO2 loss.
+
+7
+https://doi.org/10.26434/chemrxiv-2025-1xq6q ORCID: https://orcid.org/0000-0002-2688-5463 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+249
+
+𝜏𝜏𝑏𝑏𝑏𝑏 =
+
+1
+
+𝑘𝑘RO2+NO [NO] + 𝑘𝑘RO2+HO2 [HO2 ] + 𝑘𝑘RO2+RO2 [RO2 ] + 𝑘𝑘RO2+NO2 [NO2 ] + 𝑘𝑘RO2+NO3 [NO3 ]
+
+251
+
+The bimolecular lifetime is calculated using rates extracted from the model, and does not take
+into account substantially faster recent measurements of the RO2 + RO2 rate constants.10
+
+252
+
+Results and Discussion
+
+253
+
+Model-measurement agreement and example model output
+
+254
+
+261
+
+Figure 1A shows an example model-measurement comparison from a “traditional
+photooxidation” experiment in which β-pinene was oxidized in the presence of NOX, propene,
+and sunlight.29 The model agrees qualitatively with the measurements, and nearly all values fall
+within the envelope of timeseries generated by the sensitivity testing (lightly shaded areas).
+While modeled NO2 diverges from the measurements late in the experiment, this might not be a
+model error, and instead could be a result of NOy species (e.g., PANs, organonitrates) reported
+as NO2 by commercial NOX monitors. For most experiments, measurements similarly
+qualitatively agree with model estimates (Figures S.2 and S.3).
+
+262
+263
+264
+265
+266
+267
+268
+
+Figure 1: Model-measurement comparison from an example experiment (Panel A), and stacked time series of
+oxidant and RO2 loss rates (panels B – E). The experiment shown is a traditional photooxidation experiment in
+which β-pinene is oxidized in the presence of NOX and propene (expt. #1, see Table S.1).29 Panel A shows both
+modeled and measured time series for four species, with shaded regions representing the upper and lower bounds
+based on sensitivity testing. Panels B – E separate precursor from product loss pathways, and separate initial and
+subsequent RO2 fate.
+
+250
+
+255
+256
+257
+258
+259
+260
+
+269
+270
+
+(2)
+
+However, the tuned model deviates from measurements in several experiments, most notably for
+H2O2 + NOX experiments,26,28 in which measured O3 is well below the model value. The cause of
+
+8
+https://doi.org/10.26434/chemrxiv-2025-1xq6q ORCID: https://orcid.org/0000-0002-2688-5463 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+271
+272
+273
+274
+
+this is unclear, and is not resolved by modulating light intensity or H2O2 concentrations. To
+explore the impact of this difference, modeled O3 concentrations are fixed to measured values
+and model outputs are recalculated for one experiment for which this occurs. These differ little
+from those derived from the original model run (see Figure S.4).
+
+283
+
+Figure 1B-E shows oxidation rates and RO2 fate over time for the example experiment. The
+precursor β-pinene reacts mostly with OH, but NO3 becomes an important oxidant as the
+experiment proceeds (Figure 1B). Organic products also react mostly with OH, but photolysis
+increases in relative importance as formaldehyde and other photolabile aldehydes are formed
+(Figure 1C). Similarly, RO2 fate differs for initial vs subsequent RO2. Initial RO2 reacts mainly
+with NO, with a small contribution from isomerization (Figure 1D). While NO is still the main
+contributor to subsequent RO2 fate, RO2 + HO2 and acyl RO2 + NO2 reactions become
+increasingly important later in the experiment (Figure 1E). This demonstrates how oxidant and
+RO2 fate can evolve substantially over the course of a given experiment.
+
+284
+
+Relative VOC reactive losses
+
+285
+
+Integrated VOC reactive loss pathways for a larger selection of experiments are presented in
+Figure 2. This figure shows fractional loss rates to each oxidant for the precursor VOC (first
+column) and the organic products (second column) for a selection of experiments. These
+experiments are chosen to represent a range of precursors and oxidation categories, illustrating
+the variety of oxidant fates seen across the experiments modeled in this study.
+
+275
+276
+277
+278
+279
+280
+281
+282
+
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+
+In these experiments, researchers generally sought to achieve chemical conditions in which one
+oxidant was dominant, for example by using an OH scavenger in ozonolysis experiments to
+encourage O3 chemistry to dominate. This is largely achieved for several experiment types—
+HONO, H2O2 + NOX, low-NOX H2O2, and low-NOX ozonolysis all feature precursor oxidation
+largely driven by a single oxidant (OH or O3). However, this is not the case for traditional
+photooxidation experiments, or the “O3, some NOX” experiments. These experiments feature a
+mix of oxidants, in which oxidation by NO3 competes with oxidation by OH and O3.
+The distribution of reactive pathways for reaction products (second column of Figure 2) is
+dramatically different from that for precursors. Ozone reactivity is decreased as double bonds are
+consumed, and photolysis becomes an important loss pathway, since many products include
+photolabile functional groups. A majority of this photolysis is of small aldehydes (e.g.,
+formaldehyde, glyoxal), but larger species can also contribute, depending on the VOC precursor.
+While changing reactivity explains many of the differences between fractional loss of the
+precursor and the products, these differences are also affected by temporal shifts in oxidant
+concentrations across an experiment (e.g., increasing O3 levels).
+
+9
+https://doi.org/10.26434/chemrxiv-2025-1xq6q ORCID: https://orcid.org/0000-0002-2688-5463 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+305
+306
+307
+308
+309
+310
+311
+
+Figure 2: Fractional precursor and product loss by different oxidants. Precursor losses are shown in the left column,
+and product losses are shown in the right column. Experiments are grouped by experimental conditions, and selected
+such that each represents a distinct set of starting conditions. Experiment numbers are found in parentheses
+following the VOC names (see Table S.1). Error bars reflect the range of values observed in response to sensitivity
+tests and represent the range for each oxidant, not the cumulative range. Error bars do not reflect any uncertainties
+propagated from errors or uncertainties in the chemical mechanisms.
+
+312
+
+Figure 2 also shows error bars representing the range of values observed across sensitivity tests.
+Despite varying model inputs by 30%, the ranges observed here are far lower in most cases,
+indicating that these results are relatively robust to uncertainties in experimental starting
+conditions. The main exception is uncertainties driven by trace NO2 added to low-NOX
+ozonolysis experiments (since none of these experiments are carried out under perfectly NOX-
+
+313
+314
+315
+316
+
+10
+https://doi.org/10.26434/chemrxiv-2025-1xq6q ORCID: https://orcid.org/0000-0002-2688-5463 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+323
+
+free conditions). Perturbations to trace NO2, e.g., in α-pinene oxidation carried out by Griffin et
+al.,29 substantially affect the fraction of oxidation products lost to reaction with NO3, resulting in
+larger error bars. This effect is similarly observed for Shilling et al.31 where relatively little total
+product oxidation occurs, leaving later oxidation dominated by NO3 reactions (since NO3 is not
+consumed by reaction with the OH scavenger n-butanol in the MCM). We note that the
+uncertainty ranges shown here do not include possible uncertainties in the chemical mechanism,
+which may be substantial but are beyond the scope of this work.
+
+324
+
+RO2 fate
+
+325
+
+Figure 3 shows modeled RO2 fate for the same set of experiments as shown in Figure 2. This
+figure shows total fractional RO2 fate separated between initial and subsequent RO2, grouped
+again by experiment type.
+
+317
+318
+319
+320
+321
+322
+
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+
+Most OH experiments (with the exception of the traditional photooxidation experiments) feature
+conditions designed to favor one RO2 fate. For experiments in which researchers sought to force
+all RO2 through reaction with NO (e.g. “HONO” and “H2O2, NOX” experiments), this is often
+achieved for initial RO2. Likewise, reactions with high concentrations of H2O2 but no added NOX
+typically involve reaction with HO2 as a majority of initial RO2 fate (e.g. Kroll et al. low-NOX
+oxidation of isoprene28).
+However, numerous experiments feature mixed RO2 fates, particularly with regard to the
+influence of RO2 isomerization. RO2 isomerization represents an important initial RO2 reaction
+channel, particularly for the “low-NOX ozonolysis” experiments,29,31 but also for the “low-NOx
+H2O2” experiments26,28 and even for some experiments in which NOX was added.27,29,30 In many
+cases, the isomerization rates are fast enough to dominate the chemistry of a given RO2,
+outcompeting bimolecular reaction, but limited by the fact that only some RO2 can undergo
+isomerization. In the extreme example of this, ring closure reactions for aromatic species are
+considered fast enough (τuni < ~10-4 s)42 to outcompete bimolecular reaction under all conditions
+(for this reason, the only bimolecular reactions for initial RO2 from m-xylene (Fig. 3) stem from
+the minor OH reaction channel). For RO2 isomerization reactions that involve H-atom
+abstraction and hence have slower isomerization rates (e.g., τuni = 0.25 s-1 for one α-pinenederived RO244), reaction conditions can substantially affect the degree of isomerization. For
+example, the importance of isomerization in the oxidation of α-pinene by Ng et al.26 shifts
+considerably between experiments with and without added NOX (Figure 3). While the
+concentrations of HO2 and NO required to largely shut off the isomerization pathway vary with
+the isomerization rate, Figure 3 suggests that HO2 concentrations for H2O2 experiments are
+typically not high enough to fully suppress unimolecular chemistry. This agrees with previous
+work showing that isomerization (assuming a rate constant of ≥ 0.1 s-1) is only partially
+suppressed even when [H2O2] is as high as 10 ppm.50 In contrast, reaction with NO can fully
+suppress these pathways, but only when large excesses of NO are added (e.g., hundreds of ppb
+NO in the oxidation of α-pinene with HONO26).
+
+11
+https://doi.org/10.26434/chemrxiv-2025-1xq6q ORCID: https://orcid.org/0000-0002-2688-5463 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+355
+356
+357
+358
+359
+
+Figure 3: Fractional RO2 loss rates, grouped by initial RO2 (left column) and subsequent RO2 (right column) for
+selected experiments (same as shown in Figure 2). As in Figure 2, error bars reflect the range of values observed in
+response to sensitivity tests and represent the range for each type of reaction, not the cumulative range; they do not
+reflect any uncertainties propagated from errors in the chemical mechanisms.
+
+360
+
+Subsequent RO2 chemistry can be dramatically different than that of the initial RO2. While this is
+impacted by a lack of isomerization reactions in the reaction mechanisms (see Methods),
+bimolecular pathways also shift substantially, due to changing reactivity and changing reactant
+concentrations. One clear change is the increase in reaction with NO2, driven by increased
+NO2/NO ratios (Figure 1) and formation of acyl peroxy radicals, leading to increased RO2 + NO2
+reactions forming PAN. RO2 + RO2 reactions notably also increase for “low-NOX ozonolysis
+
+361
+362
+363
+364
+365
+
+12
+https://doi.org/10.26434/chemrxiv-2025-1xq6q ORCID: https://orcid.org/0000-0002-2688-5463 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+366
+367
+368
+369
+370
+371
+372
+373
+
+experiments,” where RO2 concentrations are enhanced by the products of OH reaction with
+added OH scavengers, and NO and HO2 concentrations remain relatively low. Finally, in the case
+of isoprene, for which the MCM includes several unimolecular reactions of subsequent RO2,
+isomerization increases in relative importance, in part to due to the gradual increases in τbi that
+occur throughout some experiments. While much of this subsequent isomerization is of RO2
+species formed directly from the initial RO2 isomerization, it also includes substantial
+contributions from the oxidation of first-generation reaction products (e.g., OH + isoprene
+epoxydiol and OH + methacrolein).
+
+378
+
+Like in Figure 2, the range of RO2 fates simulated with perturbed starting conditions (error bars
+in Figure 3) is smaller than the range of perturbations, suggesting these values are relatively
+robust to error in initial conditions. Imperfections in the chemical mechanisms, perhaps most
+notably the lack of later-generation RO2 isomerization reactions likely contribute a larger (but
+unknown) error to RO2 fate.
+
+379
+
+Comparison with SOA parameterizations
+
+380
+
+Chemical conditions as modeled here can be compared to how these experiments are used in the
+GEOS-Chem aerosol parameterization. As mentioned above, the “Complex” aerosol scheme in
+GEOS-Chem specifies aerosol yield parameters as a function of β, the fraction of RO2 reacting
+with NO instead of HO2. Table 2 presents the classification of experiments used for GEOSChem18 alongside modeled oxidant and RO2 chemistry parameters.
+
+374
+375
+376
+377
+
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+
+In most cases, RO2 fates calculated here and those assumed in the parameterization generally
+agree. This is particularly evident where conditions are pushed to very high levels of NO or HO2
+and β falls near 1 or 0.27,28 However, several differences stand out. Sesquiterpene oxidation
+experiments from Griffin et al.29 feature a mean β value of 0.93, indicating NO as a dominant
+RO2 fate, but are used for parameterizing SOA at low-β (RO2 + HO2) conditions. While β values
+from Zhang et al.30 (limonene) and Shilling et al.31 (“monoterpenes”) experiments fall near
+expected extremes, β may not appropriately characterize these experiments due to the importance
+of other RO2 pathways. A large fraction of the overall bimolecular RO2 fate (Table 2) does not
+involve NO or HO2 in these sets of experiments, indicating that these experiments may not serve
+as an ideal basis for SOA parameterizations relying on β.
+
+13
+https://doi.org/10.26434/chemrxiv-2025-1xq6q ORCID: https://orcid.org/0000-0002-2688-5463 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+395
+
+Table 2: Comparison between GEOS-Chem aerosol parameterization conditions and results from this work.a
+GEOS-Chem
+
+This work
+
+Parent
+hydrocarbon
+
+Citation
+
+Assumed
+RO2 fate
+
+Assumed
+oxidant
+
+Expt. #
+
+Limonene
+
+30
+
+NO
+
+OH, O3
+
+16 – 27
+
+Monoterpenesb
+
+c
+
+NO
+
+OH, O3
+
+Sesquiterpenes
+
+d
+
+NO
+
+OH, O3
+
+Limonene
+
+30
+
+HO2
+
+OH, O3
+
+b
+
+Monoterpenes
+
+31
+
+HO2
+
+OH, O3
+
+8 – 15
+65 – 72
+
+Sesquiterpenesb
+
+29
+
+HO2
+
+OH, O3
+
+2–4
+
+Isoprene
+Benzene
+Toluene
+Xylene
+Benzene
+
+28
+
+NO
+NO
+NO
+HO2
+
+OH
+OH
+OH
+OH
+OH
+
+Toluene
+
+27
+
+HO2
+
+OH
+
+28 – 35
+50
+46 – 49
+42 – 45
+59
+55 – 58
+
+Xylene
+
+27
+
+HO2
+
+OH
+
+51 – 54
+
+b
+
+27
+27
+27
+27
+
+Mean β
+(1σ)
+
+0.88
+(0.14)
+0 (0)
+0 (0)
+0.93
+(0.04)
+0 (0)
+1 (-)
+1 (0)
+1 (0)
+0.04 (-)
+0.01 (0)
+0.02
+(0.01)
+
+Mean
+bimolecular
+RO2 fate
+(HO2 % / NO %
+/ other %)
+
+Mean
+precursor
+oxidant
+fraction
+(OH % / O3 %
+/ NO3 %)
+
+2 / 23 / 75
+
+1 / 27 / 73
+
+13 / 0 / 87
+25 / 0 / 75
+
+2 / 74 / 24
+0 / 97 / 3
+
+6 / 86 / 8
+
+19 / 81 / 0
+
+98 / 0 / 1
+0 / 95 / 4
+0 / 99 / 1
+0 / 97 / 3
+92 / 4 / 4
+95 / 1 / 3
+
+100 / 0 / 0
+100 / 0 / 0
+100 / 0 / 0
+100 / 0 / 0
+100 / 0 / 0
+100 / 0 / 0
+
+95 / 2 / 3
+
+100 / 0 / 0
+
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+
+This table is based on Table 1 from Pye et al., omitting rows that do not correspond to model runs in this study.
+Values correspond to modeled oxidant and RO2 chemistry from experiments used to generate the VBS
+parameterization. Note that the total mean bimolecular RO2 fate does not include isomerization reactions. Standard
+deviations reflect the variation within the set of experiments.
+b
+Monoterpene parameterization is based on α-pinene. Sesquiterpene parameterization is based on β-caryophyllene
+and α-humulene, but only β-caryophyllene model data is used here since α-humulene is not in the MCM.
+c
+In Pye et al.,18 corresponding low-NOX monoterpene data31 is scaled by a factor of 0.5 based on Ng et al.26 and
+Pathak et al.51 There are therefore no direct model runs that correspond to this parameterization.
+d
+In Pye et al.,18 corresponding “low-NOX” sesquiterpene data29 is scaled by a factor of 2 based on Ng et al.26 There
+are therefore no direct model runs that correspond to this parameterization.
+
+406
+
+Similarly, Table 2 illustrates that most experiments feature precursor oxidation by OH or O3,
+consistent with assumptions in the aerosol parameterization. The most notable exception to this
+however is the oxidation of limonene in high-NOX experiments,30 where ~73% of the precursor
+is oxidized by NO3. These experiments may be better suited to a parameterization of SOA
+formation following reaction with NO3, since the formation of organonitrate species may impact
+aerosol yields52 relative to reaction only with OH and O3.
+
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+
+a
+
+18
+
+Perhaps the most important difference between the SOA parameterization18 and the box
+modeling results (Figure 3) is that β-based parameterizations do not explicitly capture
+isomerization. The potential importance of RO2 isomerization can be described in terms of the
+RO2 bimolecular lifetime, τbi.47,49 This metric enables comparison of RO2 conditions in chamber
+experiments to atmospheric conditions,21 in addition to facilitating the interpretation of trends in
+14
+
+https://doi.org/10.26434/chemrxiv-2025-1xq6q ORCID: https://orcid.org/0000-0002-2688-5463 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+420
+
+RO2 isomerization. Figure 4 shows the bimolecular lifetime for each experiment considered in
+this study, in comparison with the global distribution of bimolecular lifetimes (weighted by the
+isoprene oxidation rate) taken from GEOS-Chem (version 13.4.0, from hourly output for January
+and July 2016).21
+
+421
+422
+423
+424
+425
+426
+427
+428
+429
+
+Figure 4: τbi in chamber experiments and in the atmosphere. The shaded gray region represents the atmospheric
+distribution of RO2 bimolecular lifetimes taken from GEOS-Chem, weighted by total isoprene reaction rate. The
+shading is proportional to the frequency of a given atmospheric τbi. Modeled chamber experiments are represented
+by points with tails. Each point represents the τbi at the start of the experiment while the tail shows the evolution of
+τbi over the course of the experiment. The tail transparency is scaled to the percentage of precursor remaining. Point
+shape and color correspond to precursor identity and experiment category (Table 1), respectively. Lifetimes
+corresponding to a range of relevant isomerization rates included in the box model are annotated at the bottom of the
+plot. Values of τuni are included in parentheses.
+
+417
+418
+419
+
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+
+Figure 4 demonstrates that experimental τbi varies over many orders of magnitude. Given this
+wide range, only a limited number of experiments fall within the global atmospheric lifetime
+distribution of RO2 radicals weighted by isoprene oxidation (centered at ~ 60 s and shown in
+gray; the distribution is similar when weighted by monoterpene oxidation21), demonstrating that
+laboratory conditions usually differ from those found in the atmosphere. However, despite the
+large overall spread, experiments can clearly be grouped by their oxidation conditions.
+Experiments featuring high levels of added NOX fall around τbi < ~1 s, H2O2 experiments fall
+near τbi = 10 s, ozonolysis with some NOX fall around τbi = 10 – 100 s, and low-NOX ozonolysis
+falls around τbi > ~ 100 s. While many “traditional photooxidation” experiments feature τbi on the
+order of 1 s, some experiments30 feature longer τbi despite high NOX levels, due to suppression of
+NO by O3.. The RO2 bimolecular lifetime also varies within experiments (the “tails” in Fig. 4),
+often increasing by more than an order of magnitude due to decreasing HOX and NOX levels.
+15
+
+https://doi.org/10.26434/chemrxiv-2025-1xq6q ORCID: https://orcid.org/0000-0002-2688-5463 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+
+While for very long or very short τbi, this change over time may not substantially affect observed
+chemistry, shifts across intermediate τbi may affect the importance of unimolecular reactions as
+the experiment proceeds.
+Comparing the RO2 bimolecular lifetime to the unimolecular lifetime of a given isomerization
+reaction indicates whether that reaction will occur. The unimolecular lifetimes corresponding to
+a selection of isomerization rates used in the model are annotated in Figure 4 (slower
+isomerization reactions are not shown, as only the relatively fast ones are included in the
+mechanisms). While these vary by several orders of magnitude, all are shorter than the mean of
+the atmospheric τbi distribution, indicating that these reactions will play an important role under
+most atmospheric conditions. This is consistent with an “atmospherically relevant” threshold of
+0.1 s-1 (τuni = 10 s), which has been used to represent a lower bound for the rate at which
+unimolecular chemistry can proceed as a substantial fraction of RO2 fate.7 The majority of lowNOX experiments involve τbi near or greater than this threshold, indicating that these chamber
+experiments included the effects isomerization reactions, even well before the importance of RO2
+isomerization reactions was appreciated. In contrast, higher NOX experiments feature a shorter τbi
+that prevents all but the fastest reactions from occurring.
+
+471
+
+The wide variability of both experimental τbi and isomerization rates complicate the relationship
+between experimental measurements and model SOA parameterizations. Where an isomerization
+channel is extremely fast (e.g., ring closure reactions in aromatic species) so as to outcompete
+bimolecular reactions under all conditions, the exclusion of isomerization in the parameterization
+does not matter, since this reaction will always occur. In contrast, many “atmosphericallyrelevant” isomerization reactions (τuni ≤ 10 s) occur only under low-NOX H2O2 and ozonolysis
+conditions, thereby playing a role in the gas-phase chemistry (and ultimately aerosol formation)
+in these experiments. While the importance of these reactions in such experiments may not
+perfectly match that of atmospheric conditions,50 their occurrence in chamber experiments means
+that rapid isomerization processes are to some extent built into the global model aerosol
+parameterization for RO2 + HO2 conditions. However, chamber experiments are unlikely to
+perfectly capture the importance of isomerization under most atmospheric conditions. Moreover,
+under high-NOX conditions, isomerization is largely quenched, such that little to no
+isomerization is built into the aerosol parameterization for the high-NOX conditions.
+
+472
+
+Changing chemical conditions across yield curves
+
+473
+
+As mentioned above, aerosol yield curves (aerosol yield vs. mass concentration of organic
+aerosol) can be used to derive a volatility distribution that is useful for representing SOA in 3D
+models. An underlying assumption for an aerosol yield curve is that the only modified variable is
+the mass of organic aerosol into which the gas-phase species partition. However, since the curve
+is typically made up of measurements across a series of experiments (which typically involve
+different starting precursor concentrations), variability in chemical conditions across these
+experiments may affect the resulting aerosol yield curve.
+
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+
+474
+475
+476
+477
+478
+479
+
+16
+https://doi.org/10.26434/chemrxiv-2025-1xq6q ORCID: https://orcid.org/0000-0002-2688-5463 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+
+Figure 5 illustrates how chemical conditions can vary across a series of aerosol yield
+experiments. In this series of experiments, Zhang et al.30 oxidize limonene under dark ozonolysis
+conditions, with low but nonzero NOX. While these experiments were designed to favor the
+reaction of limonene with ozone, the NOX present is sufficient to make reaction with NO3 an
+important contributor to limonene oxidation. As shown in Figure 5a, this is most pronounced for
+experiments with low initial precursor concentrations and hence low organic aerosol
+concentrations (cOA); this is due to variation of the NO3/O3 among experiments. Further, at high
+precursor concentrations (and high cOA), OH generated by the ozonolysis of limonene starts to
+become an important oxidant, exceeding the capacity of the OH scavenger (5 ppm 2-butanol) to
+keep [OH] low.
+
+490
+491
+492
+493
+494
+495
+
+Figure 5: Modeled chemical conditions as a function of measured organic aerosol mass and organic aerosol yield for
+an example set of experiments. Panel A shows the distribution of precursor reactive loss (integrated over the entire
+chamber run) for experiments featuring the oxidation of limonene (O3, some NOX) from Zhang et al.30 (expt. 8 – 15).
+Each experiment is depicted as a pie chart, plotted across the aerosol mass vs aerosol yield space. Panel B shows
+subsequent RO2 fate for the same series of experiments plotted in the same way.
+
+496
+
+Peroxy radical chemistry may also shift as a function of precursor VOC concentration (and
+therefore cOA). While initial peroxy radical fate is relatively stable across these experiments (see
+Figure S.5), Figure 5B shows that subsequent RO2 fate can also shift across a series of
+experiments. At low precursor concentrations (low cOA), reactions with NO3 and NO2 are
+relatively important, while RO2 + RO2 reactions become more important at higher precursor
+concentrations (and higher cOA). While our modeled subsequent chemistry does not include
+
+497
+498
+499
+500
+501
+
+17
+https://doi.org/10.26434/chemrxiv-2025-1xq6q ORCID: https://orcid.org/0000-0002-2688-5463 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+502
+503
+
+isomerization reactions that can redistribute RO2 fate, variations in bimolecular chemistry, due
+for example to differing total RO2 concentrations, are likely to persist.
+
+510
+
+While Fig 5 (Zhang et al.30) provides an example of how chemical conditions may shift across an
+aerosol yield curve, conditions can be more uniform for other experiment types, as shown in
+Figures S.7 to S.12. For experiments which clearly favor a single oxidant or RO2 fate (e.g., lowNOX H2O2 experiments), changes in VOC concentration or NOX background have a smaller
+impact on modeled chemical conditions. Nonetheless some shifts, such as changes in the
+prevalence of RO2 + RO2 reactions, can appear even under these more extreme conditions
+(Figure S.8 and S.10).
+
+511
+
+Implications
+
+512
+
+This work demonstrates that chemical conditions in an environmental chamber often represent a
+complex mix of VOC reactive loss pathways and RO2 fates, making it challenging to assign a
+single pathway to a given experiment. Conditions often vary over the course of an experiment,
+and between relatively similar experiments. These changes occur in both the VOC loss pathways
+and the peroxy radical fate, and are caused by multiple factors. VOC loss pathways can shift as a
+result of changes not only in oxidant concentration, but also in reactivity, as ozone reactivity and
+capacity for photolysis changes as the VOC mixture evolves. Peroxy radical fates similarly shift
+as an experiment proceeds, with NO2 driving later-generation PAN formation, greater total RO2
+concentrations increasing RO2 + RO2 reactions, and decreasing NO and HO2 leading to increases
+in the importance of unimolecular reactions (due to increases in τbi).
+
+504
+505
+506
+507
+508
+509
+
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+
+Patterns in relative VOC loss pathways and RO2 fate arise that are correlated with the varied sets
+of starting oxidation conditions. While chamber experiments using HONO, H2O2 (with or
+without NOX), and ozone (without NOX) all feature oxidation dominated by a single oxidant,
+other types of experiments (traditional photooxidation and “O3, some NOX”) involve a mixture
+of oxidants, due to the formation of substantial OH, O3, and NO3 concentrations. RO2 conditions
+can similarly be grouped by experiment type, with comparable bimolecular lifetimes and
+fractional RO2 fate between like experiments; few experimental conditions (low-NOX H2O2,
+HONO) consistently favor a single RO2 fate.
+The dynamic chemistry observed here may be relevant for the calculation of aerosol yield
+curves, which represent the basis for aerosol parameterizations. As shown in this work, chemical
+conditions, including both oxidant and peroxy radical fate, can sometimes vary across a series of
+SOA experiments from which an aerosol yield curve is derived. Shifts in chemical conditions
+which vary as a function of precursor concentration (and hence cOA) may skew measured yields,
+resulting in fitted volatility distributions that do not represent a single chemical condition. The
+extent to which these changes may affect measured aerosol formation is unclear, as these
+changes are often subtle, and the specific impact of shifting oxidant or RO2 fate on SOA
+formation is often not well understood.
+
+18
+https://doi.org/10.26434/chemrxiv-2025-1xq6q ORCID: https://orcid.org/0000-0002-2688-5463 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+
+When considering the application of SOA chamber studies to 3D modeling, we find that
+experimental oxidant and RO2 conditions for a given experiment do not always match how it is
+used in a 3D model aerosol parameterization. Most notably, the GEOS-Chem SOA
+parameterization bases some low-NOX SOA formation on experiments in which NOX
+concentrations are high enough to influence observed chemistry. With more experimental data
+now available, reevaluating and constraining aerosol parameterizations may represent a valuable
+avenue for future research. Further, since the atmosphere can involve mixed chemical fates,
+future work should additionally consider whether the basis for SOA parameterizations should
+expand beyond experiments targeting single oxidants or RO2 fates.21
+Finally, this work highlights the importance of considering RO2 fates beyond NO and HO2 for
+regional and global SOA parameterizations. Despite the limitations of previous SOA
+experiments, RO2 isomerization reactions, whose importance for SOA formation was not yet
+appreciated when these experiments were carried out, proceed under many of the experimental
+conditions used. Ozonolysis or H2O2 experiments with no added NOx feature relatively long
+bimolecular lifetimes (τbi > ~10 s), allowing for reasonably rapid isomerization (τuni < ~10 s) to
+occur. Because of this, HO2-pathway aerosol yields in 3D models implicitly include the effects
+of some RO2 isomerization on aerosol yields. Still, chamber experiments rarely fall into the same
+range of bimolecular lifetimes that occur in the atmosphere, indicating that laboratory peroxy
+radical conditions generally do not fully match those in the real environment.21 Ultimately, it is
+not clear whether this approach to yield parameterizations is sufficient to characterize aerosol
+formation in the real atmosphere, which may involve slower isomerization processes that do not
+occur in a lab setting, or isomerization processes that may at times compete with reaction with
+NO.
+
+572
+
+This study seeks to explore unmeasured chamber conditions used in key historical SOA
+experiments, and in doing so, identifies patterns that may be useful both for designing laboratory
+experiments and for implementing parameterizations of laboratory chemistry into models. Future
+experimental work should consider the role of changing chemical fate with respect to first- and
+later-generation compounds, and the influence of changing starting conditions across sets of
+aerosol yield experiments (Figure 5). Alternative experimental designs, such as the use of steadystate continuous flow chamber experiments, may help mitigate the challenges associated with
+conditions that change over the course of an experiment. Future SOA model schemes must at
+least consider the uncertainties in experimental chemical conditions, if not explore the
+development of wholly new frameworks to translate experimental yield measurements to the
+modeling sphere.
+
+573
+
+Data availability
+
+574
+
+Data for this article, including all figure data, Matlab code, and model input conditions are
+available on the Kroll Group publication website at http://krollgroup.mit.edu/publications.html.
+
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+
+575
+
+19
+https://doi.org/10.26434/chemrxiv-2025-1xq6q ORCID: https://orcid.org/0000-0002-2688-5463 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+576
+
+Author contributions
+
+577
+
+580
+
+MBG performed all box modeling, analyzed the data, and wrote the paper. HSK assisted in
+framing the project, provided GEOS-Chem output, and shared code relevant to RO2 fate analysis.
+CLH aided in project design and manuscript preparation. JHK aided in project conceptualization,
+project design, data interpretation, and manuscript preparation.
+
+581
+
+Acknowledgements
+
+582
+
+585
+
+The authors thank Sally Ng for providing data from two publications that was not previously
+publicly accessible.26,27 JHK would like to express his deep gratitude to John Seinfeld for
+introducing him to SOA and chamber studies, and more importantly for all the mentorship and
+support over the years.
+
+586
+
+Financial Support
+
+587
+
+592
+
+This work was supported by Department of Energy grant DE-SC0022017 and National Science
+Foundation grant AGS-2129835. MBG was supported by the Training Grant in Environmental
+Toxicology (MIT Center for Environmental Health Sciences, NIEHS Grant # T32-ES007020 and
+Grant # P30-ES002109), the MathWorks Engineering Fellowship Fund, and the Harvard
+University Center for the Environment (HUCE) Environmental Fellows Program. HSK was
+supported by National Science Foundation grant AGS-PRF-2137238.
+
+593
+
+References
+
+594
+595
+596
+597
+598
+599
+600
+601
+
+(1) Zhang, Q.; Jimenez, J. L.; Canagaratna, M. R.; Allan, J. D.; Coe, H.; Ulbrich, I.; Alfarra, M.
+R.; Takami, A.; Middlebrook, A. M.; Sun, Y. L.; Dzepina, K.; Dunlea, E.; Docherty, K.;
+DeCarlo, P. F.; Salcedo, D.; Onasch, T.; Jayne, J. T.; Miyoshi, T.; Shimono, A.; Hatakeyama,
+S.; Takegawa, N.; Kondo, Y.; Schneider, J.; Drewnick, F.; Borrmann, S.; Weimer, S.;
+Demerjian, K.; Williams, P.; Bower, K.; Bahreini, R.; Cottrell, L.; Griffin, R. J.; Rautiainen,
+J.; Sun, J. Y.; Zhang, Y. M.; Worsnop, D. R. Ubiquity and Dominance of Oxygenated Species
+in Organic Aerosols in Anthropogenically-Influenced Northern Hemisphere Midlatitudes.
+Geophys. Res. Lett. 2007, 34 (13). https://doi.org/10.1029/2007GL029979.
+
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+
+(2) Jimenez, J. L.; Canagaratna, M. R.; Donahue, N. M.; Prevot, A. S. H.; Zhang, Q.; Kroll, J.
+H.; DeCarlo, P. F.; Allan, J. D.; Coe, H.; Ng, N. L.; Aiken, A. C.; Docherty, K. S.; Ulbrich,
+I. M.; Grieshop, A. P.; Robinson, A. L.; Duplissy, J.; Smith, J. D.; Wilson, K. R.; Lanz, V.
+A.; Hueglin, C.; Sun, Y. L.; Tian, J.; Laaksonen, A.; Raatikainen, T.; Rautiainen, J.;
+Vaattovaara, P.; Ehn, M.; Kulmala, M.; Tomlinson, J. M.; Collins, D. R.; Cubison, M. J.; E.;
+Dunlea, J.; Huffman, J. A.; Onasch, T. B.; Alfarra, M. R.; Williams, P. I.; Bower, K.; Kondo,
+Y.; Schneider, J.; Drewnick, F.; Borrmann, S.; Weimer, S.; Demerjian, K.; Salcedo, D.;
+Cottrell, L.; Griffin, R.; Takami, A.; Miyoshi, T.; Hatakeyama, S.; Shimono, A.; Sun, J. Y.;
+Zhang, Y. M.; Dzepina, K.; Kimmel, J. R.; Sueper, D.; Jayne, J. T.; Herndon, S. C.; Trimborn,
+A. M.; Williams, L. R.; Wood, E. C.; Middlebrook, A. M.; Kolb, C. E.; Baltensperger, U.;
+Worsnop, D. R. Evolution of Organic Aerosols in the Atmosphere. Science 2009, 326 (5959),
+1525–1529. https://doi.org/10.1126/science.1180353.
+
+578
+579
+
+583
+584
+
+588
+589
+590
+591
+
+20
+https://doi.org/10.26434/chemrxiv-2025-1xq6q ORCID: https://orcid.org/0000-0002-2688-5463 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+
+(3) Tsigaridis, K.; Daskalakis, N.; Kanakidou, M.; Adams, P. J.; Artaxo, P.; Bahadur, R.;
+Balkanski, Y.; Bauer, S. E.; Bellouin, N.; Benedetti, A.; Bergman, T.; Berntsen, T. K.;
+Beukes, J. P.; Bian, H.; Carslaw, K. S.; Chin, M.; Curci, G.; Diehl, T.; Easter, R. C.; Ghan,
+S. J.; Gong, S. L.; Hodzic, A.; Hoyle, C. R.; Iversen, T.; Jathar, S.; Jimenez, J. L.; Kaiser, J.
+W.; Kirkevåg, A.; Koch, D.; Kokkola, H.; Lee, Y. H.; Lin, G.; Liu, X.; Luo, G.; Ma, X.;
+Mann, G. W.; Mihalopoulos, N.; Morcrette, J.-J.; Müller, J.-F.; Myhre, G.; Myriokefalitakis,
+S.; Ng, N. L.; O’Donnell, D.; Penner, J. E.; Pozzoli, L.; Pringle, K. J.; Russell, L. M.; Schulz,
+M.; Sciare, J.; Seland, Ø.; Shindell, D. T.; Sillman, S.; Skeie, R. B.; Spracklen, D.; Stavrakou,
+T.; Steenrod, S. D.; Takemura, T.; Tiitta, P.; Tilmes, S.; Tost, H.; van Noije, T.; van Zyl, P.
+G.; von Salzen, K.; Yu, F.; Wang, Z.; Zaveri, R. A.; Zhang, H.; Zhang, K.; Zhang, Q.; Zhang,
+X. The AeroCom Evaluation and Intercomparison of Organic Aerosol in Global Models.
+Atmospheric Chem. Phys. 2014, 14 (19), 10845–10895. https://doi.org/10.5194/acp-1410845-2014.
+
+627
+628
+629
+630
+631
+
+(4) Pai, S. J.; Heald, C. L.; Pierce, J. R.; Farina, S. C.; Marais, E. A.; Jimenez, J. L.; CampuzanoJost, P.; Nault, B. A.; Middlebrook, A. M.; Coe, H.; Shilling, J. E.; Bahreini, R.; Dingle, J.
+H.; Vu, K. An Evaluation of Global Organic Aerosol Schemes Using Airborne Observations.
+Atmospheric Chem. Phys. 2020, 20 (5), 2637–2665. https://doi.org/10.5194/acp-20-26372020.
+
+632
+633
+634
+
+(5) Kroll, J. H.; Seinfeld, J. H. Chemistry of Secondary Organic Aerosol: Formation and
+Evolution of Low-Volatility Organics in the Atmosphere. Atmos. Environ. 2008, 42 (16),
+3593–3624. https://doi.org/10.1016/j.atmosenv.2008.01.003.
+
+635
+636
+637
+638
+
+(6) Vaughan, S.; Canosa-Mas, C. E.; Pfrang, C.; Shallcross, D. E.; Watson, L.; Wayne, R. P.
+Kinetic Studies of Reactions of the Nitrate Radical (NO3) with Peroxy Radicals (RO2): An
+Indirect Source of OH at Night? Phys. Chem. Chem. Phys. 2006, 8 (32), 3749.
+https://doi.org/10.1039/b605569a.
+
+639
+640
+641
+
+(7) Crounse, J. D.; Nielsen, L. B.; Jørgensen, S.; Kjaergaard, H. G.; Wennberg, P. O.
+Autoxidation of Organic Compounds in the Atmosphere. J. Phys. Chem. Lett. 2013, 4 (20),
+3513–3520. https://doi.org/10.1021/jz4019207.
+
+642
+643
+644
+645
+646
+647
+648
+
+(8) Ehn, M.; Thornton, J. A.; Kleist, E.; Sipilä, M.; Junninen, H.; Pullinen, I.; Springer, M.;
+Rubach, F.; Tillmann, R.; Lee, B.; Lopez-Hilfiker, F.; Andres, S.; Acir, I.-H.; Rissanen, M.;
+Jokinen, T.; Schobesberger, S.; Kangasluoma, J.; Kontkanen, J.; Nieminen, T.; Kurtén, T.;
+Nielsen, L. B.; Jørgensen, S.; Kjaergaard, H. G.; Canagaratna, M.; Maso, M. D.; Berndt, T.;
+Petäjä, T.; Wahner, A.; Kerminen, V.-M.; Kulmala, M.; Worsnop, D. R.; Wildt, J.; Mentel,
+T. F. A Large Source of Low-Volatility Secondary Organic Aerosol. Nature 2014, 506
+(7489), 476–479. https://doi.org/10.1038/nature13032.
+
+649
+650
+651
+
+(9) Vereecken, L.; Nozière, B. H Migration in Peroxy Radicals under Atmospheric Conditions.
+Atmospheric Chem. Phys. 2020, 20 (12), 7429–7458. https://doi.org/10.5194/acp-20-74292020.
+
+652
+653
+654
+655
+
+(10) Berndt, T.; Scholz, W.; Mentler, B.; Fischer, L.; Herrmann, H.; Kulmala, M.; Hansel, A.
+Accretion Product Formation from Self- and Cross-Reactions of RO2 Radicals in the
+Atmosphere.
+Angew.
+Chem.
+Int.
+Ed.
+2018,
+57
+(14),
+3820–3824.
+https://doi.org/10.1002/anie.201710989.
+
+21
+https://doi.org/10.26434/chemrxiv-2025-1xq6q ORCID: https://orcid.org/0000-0002-2688-5463 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+656
+657
+
+(11) Berndt, T.; Chen, J.; Kj, E. R.; Hoffmann, E. H.; Herrmann, H.; Crounse, J. D.; Wennberg,
+P. O.; Kjaergaard, H. G. Hydrotrioxide (ROOOH) Formation in the Atmosphere. 2022, 5.
+
+658
+659
+660
+661
+
+(12) Farina, S. C.; Adams, P. J.; Pandis, S. N. Modeling Global Secondary Organic Aerosol
+Formation and Processing with the Volatility Basis Set: Implications for Anthropogenic
+Secondary Organic Aerosol. J. Geophys. Res. Atmospheres 2010, 115 (D9).
+https://doi.org/10.1029/2009JD013046.
+
+662
+663
+664
+
+(13) Pankow, J. F. An Absorption Model of the Gas/Aerosol Partitioning Involved in the
+Formation of Secondary Organic Aerosol. Atmos. Environ. 1994, 28 (2), 189–193.
+https://doi.org/10.1016/1352-2310(94)90094-9.
+
+665
+666
+667
+
+(14) Odum, J. R.; Hoffmann, T.; Bowman, F.; Collins, D.; Flagan, R. C.; Seinfeld, J. H.
+Gas/Particle Partitioning and Secondary Organic Aerosol Yields. Environ. Sci. Technol.
+1996, 30 (8), 2580–2585. https://doi.org/10.1021/es950943+.
+
+668
+669
+670
+
+(15) Donahue, N. M.; Robinson, A. L.; Stanier, C. O.; Pandis, S. N. Coupled Partitioning,
+Dilution, and Chemical Aging of Semivolatile Organics. Environ. Sci. Technol. 2006, 40 (8),
+2635–2643. https://doi.org/10.1021/es052297c.
+
+671
+672
+673
+
+(16) Presto, A. A.; Donahue, N. M. Investigation of α-Pinene + Ozone Secondary Organic Aerosol
+Formation at Low Total Aerosol Mass. Environ. Sci. Technol. 2006, 40 (11), 3536–3543.
+https://doi.org/10.1021/es052203z.
+
+674
+675
+676
+677
+
+(17) Henze, D. K.; Seinfeld, J. H.; Ng, N. L.; Kroll, J. H.; Fu, T.-M.; Jacob, D. J.; Heald, C. L.
+Global Modeling of Secondary Organic Aerosol Formation from Aromatic Hydrocarbons:
+High- vs. Low-Yield Pathways. Atmospheric Chem. Phys. 2008, 8 (9), 2405–2420.
+https://doi.org/10.5194/acp-8-2405-2008.
+
+678
+679
+680
+
+(18) Pye, H. O. T.; Chan, A. W. H.; Barkley, M. P.; Seinfeld, J. H. Global Modeling of Organic
+Aerosol: The Importance of Reactive Nitrogen (NOX and NO3). Atmospheric Chem. Phys.
+2010, 10 (22), 11261–11276. https://doi.org/10.5194/acp-10-11261-2010.
+
+681
+682
+683
+
+(19) Porter, W. C.; Jimenez, J. L.; Barsanti, K. C. Quantifying Atmospheric Parameter Ranges for
+Ambient Secondary Organic Aerosol Formation. ACS Earth Space Chem. 2021, 5 (9), 2380–
+2397. https://doi.org/10.1021/acsearthspacechem.1c00090.
+
+684
+685
+686
+
+(20) Krechmer, J. E.; Day, D. A.; Jimenez, J. L. Always Lost but Never Forgotten: Gas-Phase
+Wall Losses Are Important in All Teflon Environmental Chambers. Environ. Sci. Technol.
+2020, 54 (20), 12890–12897. https://doi.org/10.1021/acs.est.0c03381.
+
+687
+688
+689
+690
+
+(21) Kenagy, H. S.; Heald, C. L.; Tahsini, N.; Goss, M. B.; Kroll, J. H. Can We Achieve
+Atmospheric Chemical Environments in the Laboratory? An Integrated Model-Measurement
+Approach to Chamber SOA Studies. Sci. Adv. 2024, 10 (37), eado1482.
+https://doi.org/10.1126/sciadv.ado1482.
+
+691
+692
+693
+694
+
+(22) Zhang, X.; Cappa, C. D.; Jathar, S. H.; McVay, R. C.; Ensberg, J. J.; Kleeman, M. J.; Seinfeld,
+J. H. Influence of Vapor Wall Loss in Laboratory Chambers on Yields of Secondary Organic
+Aerosol.
+Proc.
+Natl.
+Acad.
+Sci.
+2014,
+111
+(16),
+5802–5807.
+https://doi.org/10.1073/pnas.1404727111.
+
+695
+696
+
+(23) Fisher, J. A.; Jacob, D. J.; Travis, K. R.; Kim, P. S.; Marais, E. A.; Chan Miller, C.; Yu, K.;
+Zhu, L.; Yantosca, R. M.; Sulprizio, M. P.; Mao, J.; Wennberg, P. O.; Crounse, J. D.; Teng,
+
+22
+https://doi.org/10.26434/chemrxiv-2025-1xq6q ORCID: https://orcid.org/0000-0002-2688-5463 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+697
+698
+699
+700
+701
+702
+703
+
+A. P.; Nguyen, T. B.; St. Clair, J. M.; Cohen, R. C.; Romer, P.; Nault, B. A.; Wooldridge, P.
+J.; Jimenez, J. L.; Campuzano-Jost, P.; Day, D. A.; Hu, W.; Shepson, P. B.; Xiong, F.; Blake,
+D. R.; Goldstein, A. H.; Misztal, P. K.; Hanisco, T. F.; Wolfe, G. M.; Ryerson, T. B.;
+Wisthaler, A.; Mikoviny, T. Organic Nitrate Chemistry and Its Implications for Nitrogen
+Budgets in an Isoprene- and Monoterpene-Rich Atmosphere: Constraints from Aircraft
+(SEAC4RS) and Ground-Based (SOAS) Observations in the Southeast US. Atmospheric
+Chem. Phys. 2016, 16 (9), 5969–5991. https://doi.org/10.5194/acp-16-5969-2016.
+
+704
+705
+706
+707
+708
+709
+710
+
+(24) Marais, E. A.; Jacob, D. J.; Jimenez, J. L.; Campuzano-Jost, P.; Day, D. A.; Hu, W.;
+Krechmer, J.; Zhu, L.; Kim, P. S.; Miller, C. C.; Fisher, J. A.; Travis, K.; Yu, K.; Hanisco, T.
+F.; Wolfe, G. M.; Arkinson, H. L.; Pye, H. O. T.; Froyd, K. D.; Liao, J.; McNeill, V. F.
+Aqueous-Phase Mechanism for Secondary Organic Aerosol Formation from Isoprene:
+Application to the Southeast United States and Co-Benefit of SO2 Emission Controls.
+Atmospheric Chem. Phys. 2016, 16 (3), 1603–1618. https://doi.org/10.5194/acp-16-16032016.
+
+711
+712
+
+(25) Wennberg, P. O. Let’s Abandon the “High NOX” and “Low NOX” Terminology. ACS EST
+Air 2024, 1 (1), 3–4. https://doi.org/10.1021/acsestair.3c00055.
+
+713
+714
+715
+716
+
+(26) Ng, N. L.; Chhabra, P. S.; Chan, A. W. H.; Surratt, J. D.; Kroll, J. H.; Kwan, A. J.; McCabe,
+D. C.; Wennberg, P. O.; Sorooshian, A.; Murphy, S. M.; Dalleska, N. F.; Flagan, R. C.;
+Seinfeld, J. H. Effect of NOx Level on Secondary Organic Aerosol (SOA) Formation from
+the Photooxidation of Terpenes. Atmos Chem Phys 2007, 16.
+
+717
+718
+719
+
+(27) Ng, N. L.; Kroll, J. H.; Chan, A. W. H.; Chhabra, P. S.; Flagan, R. C.; Seinfeld, J. H.
+Secondary Organic Aerosol Formation from m-Xylene, Toluene, and Benzene. Atmospheric
+Chem. Phys. 2007, 7 (14), 3909–3922. https://doi.org/10.5194/acp-7-3909-2007.
+
+720
+721
+722
+
+(28) Kroll, J. H.; Ng, N. L.; Murphy, S. M.; Flagan, R. C.; Seinfeld, J. H. Secondary Organic
+Aerosol Formation from Isoprene Photooxidation. Environ. Sci. Technol. 2006, 40 (6), 1869–
+1877. https://doi.org/10.1021/es0524301.
+
+723
+724
+725
+
+(29) Griffin, R. J.; Cocker, D. R.; Flagan, R. C.; Seinfeld, J. H. Organic Aerosol Formation from
+the Oxidation of Biogenic Hydrocarbons. J. Geophys. Res. Atmospheres 1999, 104 (D3),
+3555–3567. https://doi.org/10.1029/1998JD100049.
+
+726
+727
+728
+729
+
+(30) Zhang, J.; Huff Hartz, K. E.; Pandis, S. N.; Donahue, N. M. Secondary Organic Aerosol
+Formation from Limonene Ozonolysis: Homogeneous and Heterogeneous Influences as a
+Function of NOX. J. Phys. Chem. A 2006, 110 (38), 11053–11063.
+https://doi.org/10.1021/jp062836f.
+
+730
+731
+732
+
+(31) Shilling, J. E.; Chen, Q.; King, S. M.; Rosenoern, T.; Kroll, J. H.; Worsnop, D. R.; McKinney,
+K. A.; Martin, S. T. Particle Mass Yield in Secondary Organic Aerosol Formed by the Dark
+Ozonolysis of α-Pinene. Atmos Chem Phys 2008, 16.
+
+733
+734
+735
+
+(32) Wolfe, G. M.; Marvin, M. R.; Roberts, S. J.; Travis, K. R.; Liao, J. The Framework for 0-D
+Atmospheric Modeling (F0AM) v3.1. Geosci. Model Dev. 2016, 9 (9), 3309–3319.
+https://doi.org/10.5194/gmd-9-3309-2016.
+
+736
+737
+738
+
+(33) Jenkin, M. E.; Saunders, S. M.; Pilling, M. J. The Tropospheric Degradation of Volatile
+Organic Compounds: A Protocol for Mechanism Development. Atmos. Environ. 1997, 31
+(1), 81–104. https://doi.org/10.1016/S1352-2310(96)00105-7.
+23
+
+https://doi.org/10.26434/chemrxiv-2025-1xq6q ORCID: https://orcid.org/0000-0002-2688-5463 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+739
+740
+741
+742
+
+(34) Jenkin, M. E.; Saunders, S. M.; Wagner, V.; Pilling, M. J. Protocol for the Development of
+the Master Chemical Mechanism, MCM v3 (Part B): Tropospheric Degradation of Aromatic
+Volatile Organic Compounds. Atmospheric Chem. Phys. 2003, 3 (1), 181–193.
+https://doi.org/10.5194/acp-3-181-2003.
+
+743
+744
+745
+746
+
+(35) Jenkin, M. E.; Wyche, K. P.; Evans, C. J.; Carr, T.; Monks, P. S.; Alfarra, M. R.; Barley, M.
+H.; McFiggans, G. B.; Young, J. C.; Rickard, A. R. Development and Chamber Evaluation
+of the MCM v3.2 Degradation Scheme for β-Caryophyllene. Atmospheric Chem. Phys. 2012,
+12 (11), 5275–5308. https://doi.org/10.5194/acp-12-5275-2012.
+
+747
+748
+749
+
+(36) Jenkin, M. E.; Young, J. C.; Rickard, A. R. The MCM v3.3.1 Degradation Scheme for
+Isoprene. Atmospheric Chem. Phys. Katlenburg-Lindau 2015, 15 (20), 11433–11459.
+http://dx.doi.org/10.5194/acp-15-11433-2015.
+
+750
+751
+752
+753
+754
+
+(37) Bloss, C.; Wagner, V.; Jenkin, M. E.; Volkamer, R.; Bloss, W. J.; Lee, J. D.; Heard, D. E.;
+Wirtz, K.; Martin-Reviejo, M.; Rea, G.; Wenger, J. C.; Pilling, M. J. Development of a
+Detailed Chemical Mechanism (MCMv3.1) for the Atmospheric Oxidation of Aromatic
+Hydrocarbons. Atmospheric Chem. Phys. 2005, 5 (3), 641–664. https://doi.org/10.5194/acp5-641-2005.
+
+755
+756
+757
+758
+759
+
+(38) Ng, N. L.; Kwan, A. J.; Surratt, J. D.; Chan, A. W. H.; Chhabra, P. S.; Sorooshian, A.; Pye,
+H. O. T.; Crounse, J. D.; Wennberg, P. O.; Flagan, R. C.; Seinfeld, J. H. Secondary Organic
+Aerosol (SOA) Formation from Reaction of Isoprene with Nitrate Radicals (NO3).
+Atmospheric Chem. Phys. 2008, 8 (14), 4117–4140. https://doi.org/10.5194/acp-8-41172008.
+
+760
+761
+762
+
+(39) Iyer, S.; Rissanen, M. P.; Valiev, R.; Barua, S.; Krechmer, J. E.; Thornton, J.; Ehn, M.;
+Kurtén, T. Molecular Mechanism for Rapid Autoxidation in α-Pinene Ozonolysis. Nat.
+Commun. 2021, 12 (1), 878. https://doi.org/10.1038/s41467-021-21172-w.
+
+763
+764
+765
+
+(40) Møller, K. H.; Otkjær, R. V.; Chen, J.; Kjaergaard, H. G. Double Bonds Are Key to Fast
+Unimolecular Reactivity in First-Generation Monoterpene Hydroxy Peroxy Radicals. J.
+Phys. Chem. A 2020, 124 (14), 2885–2896. https://doi.org/10.1021/acs.jpca.0c01079.
+
+766
+767
+768
+769
+770
+771
+772
+
+(41) Pang, J. Y. S.; Novelli, A.; Kaminski, M.; Acir, I.-H.; Bohn, B.; Carlsson, P. T. M.; Cho, C.;
+Dorn, H.-P.; Hofzumahaus, A.; Li, X.; Lutz, A.; Nehr, S.; Reimer, D.; Rohrer, F.; Tillmann,
+R.; Wegener, R.; Kiendler-Scharr, A.; Wahner, A.; Fuchs, H. Investigation of the Limonene
+Photooxidation by OH at Different NO Concentrations in the Atmospheric Simulation
+Chamber SAPHIR (Simulation of Atmospheric PHotochemistry In a Large Reaction
+Chamber). Atmospheric Chem. Phys. 2022, 22 (13), 8497–8527. https://doi.org/10.5194/acp22-8497-2022.
+
+773
+774
+775
+776
+
+(42) Vereecken, L. Reaction Mechanisms for the Atmospheric Oxidation of Monocyclic Aromatic
+Compounds. In Advances in Atmospheric Chemistry; Advances in Atmospheric Chemistry;
+WORLD
+SCIENTIFIC,
+2018;
+Vol.
+Volume
+2,
+pp
+377–527.
+https://doi.org/10.1142/9789813271838_0006.
+
+777
+778
+779
+780
+
+(43) Vereecken, L.; Vu, G.; Wahner, A.; Kiendler-Scharr, A.; Nguyen, H. M. T. A Structure
+Activity Relationship for Ring Closure Reactions in Unsaturated Alkylperoxy Radicals.
+Phys.
+Chem.
+Chem.
+Phys.
+2021,
+23
+(31),
+16564–16576.
+https://doi.org/10.1039/D1CP02758A.
+
+24
+https://doi.org/10.26434/chemrxiv-2025-1xq6q ORCID: https://orcid.org/0000-0002-2688-5463 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+781
+782
+783
+784
+
+(44) Xu, L.; Møller, K. H.; Crounse, J. D.; Otkjær, R. V.; Kjaergaard, H. G.; Wennberg, P. O.
+Unimolecular Reactions of Peroxy Radicals Formed in the Oxidation of α-Pinene and βPinene by Hydroxyl Radicals. J. Phys. Chem. A 2019, 123 (8), 1661–1674.
+https://doi.org/10.1021/acs.jpca.8b11726.
+
+785
+786
+787
+
+(45) Cocker, D. R.; Flagan, R. C.; Seinfeld, J. H. State-of-the-Art Chamber Facility for Studying
+Atmospheric Aerosol Chemistry. Environ. Sci. Technol. 2001, 35 (12), 2594–2601.
+https://doi.org/10.1021/es0019169.
+
+788
+789
+790
+
+(46) Presto, A. A.; Huff Hartz, K. E.; Donahue, N. M. Secondary Organic Aerosol Production
+from Terpene Ozonolysis. 1. Effect of UV Radiation. Environ. Sci. Technol. 2005, 39 (18),
+7036–7045. https://doi.org/10.1021/es050174m.
+
+791
+792
+793
+
+(47) da Silva, G.; Graham, C.; Wang, Z.-F. Unimolecular β-Hydroxyperoxy Radical
+Decomposition with OH Recycling in the Photochemical Oxidation of Isoprene. Environ.
+Sci. Technol. 2010, 44 (1), 250–256. https://doi.org/10.1021/es900924d.
+
+794
+795
+796
+
+(48) Crounse, J. D.; Paulot, F.; Kjaergaard, H. G.; Wennberg, P. O. Peroxy Radical Isomerization
+in the Oxidation of Isoprene. Phys. Chem. Chem. Phys. 2011, 13 (30), 13607–13613.
+https://doi.org/10.1039/C1CP21330J.
+
+797
+798
+
+(49) Teng, A. P.; Crounse, J. D.; Wennberg, P. O. Isoprene Peroxy Radical Dynamics. J. Am.
+Chem. Soc. 2017, 139 (15), 5367–5377. https://doi.org/10.1021/jacs.6b12838.
+
+799
+800
+801
+802
+803
+
+(50) D’Ambro, E. L.; Møller, K. H.; Lopez-Hilfiker, F. D.; Schobesberger, S.; Liu, J.; Shilling, J.
+E.; Lee, B. H.; Kjaergaard, H. G.; Thornton, J. A. Isomerization of Second-Generation
+Isoprene Peroxy Radicals: Epoxide Formation and Implications for Secondary Organic
+Aerosol
+Yields.
+Environ.
+Sci.
+Technol.
+2017,
+51
+(9),
+4978–4987.
+https://doi.org/10.1021/acs.est.7b00460.
+
+804
+805
+806
+807
+
+(51) Pathak, R. K.; Stanier, C. O.; Donahue, N. M.; Pandis, S. N. Ozonolysis of α-Pinene at
+Atmospherically Relevant Concentrations: Temperature Dependence of Aerosol Mass
+Fractions
+(Yields).
+J.
+Geophys.
+Res.
+Atmospheres
+2007,
+112
+(D3).
+https://doi.org/10.1029/2006JD007436.
+
+808
+809
+810
+811
+
+(52) Fry, J. L.; Draper, D. C.; Barsanti, K. C.; Smith, J. N.; Ortega, J.; Winkler, P. M.; Lawler, M.
+J.; Brown, S. S.; Edwards, P. M.; Cohen, R. C.; Lee, L. Secondary Organic Aerosol
+Formation and Organic Nitrate Yield from NO3 Oxidation of Biogenic Hydrocarbons.
+Environ. Sci. Technol. 2014, 48 (20), 11944–11953. https://doi.org/10.1021/es502204x.
+
+812
+
+25
+https://doi.org/10.26434/chemrxiv-2025-1xq6q ORCID: https://orcid.org/0000-0002-2688-5463 Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+

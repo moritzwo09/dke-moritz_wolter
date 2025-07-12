@@ -1,0 +1,1724 @@
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+
+Is there an optimal wavelength for germicidal ultraviolet air disinfection?
+Zhe Peng1,2*, Ben Ma3, Daven K. Henze4, Shelly L. Miller4, Joost A. de Gouw2, Jose L. Jimenez2*
+College of Environment and Climate, Guangdong−Hongkong−Macau Joint Laboratory of Collaborative
+Innovation for Environmental Quality, Jinan University, Guangzhou 511443, China
+2
+Department of Chemistry and Cooperative Institute for Research in Environmental Sciences (CIRES),
+University of Colorado, Boulder, CO 80309, USA
+3
+Department of Civil and Environmental Engineering, University of Nevada, Reno, NV 89557, USA
+4
+Paul M. Rady Department of Mechanical Engineering, University of Colorado, Boulder, CO 80309, USA
+1
+
+* Corresponding authors.
+Email: pengz@jnu.edu.cn (Z.P.); jose.jimenez@colorado.edu (J.L.J.)
+
+Abstract
+Germicidal UV (GUV) disinfection is effective against airborne pathogens, but it has been recently
+reported to increase indoor air pollution. Conventional GUV at 254 nm is applied in the upper room only
+due to skin/eye safety limits, while “Far UVC” (e.g. at 222 nm) is applied across the whole room due to
+less restrictive safety limits, enabling simpler installation and disinfection. We investigate GUV between
+185 and 310 nm by modeling, in search of an optimal wavelength with both high disinfection and safety.
+For a specific fluence rate, GUV-induced air pollution health risks are at least ~20 times larger below 245
+nm than above it. This is mainly due to O3 production through O2 photolysis below 245 nm, with a
+contribution from particulate matter formation from enhanced volatile organic compound oxidation. When
+normalized to a constant CDC-recommended disinfection rate of 5 equivalent air changes per hour
+(eACH), pollution risk below 245 nm is also at least ~20 times that above 245 nm. At very high
+disinfection rates such as 20 eACH, the difference between the ratios below and above 245 nm is
+smaller, but still a factor of ~20. Our results show a clear advantage of upper-room GUV vs. Far UVC for
+indoor air quality. These results appear robust despite substantial uncertainties in absolute disinfection
+efficiencies, which are a critical limitation for widespread GUV application. Thus, there is no optimal GUV
+wavelength across all important criteria (exposure limits, disinfection efficiency, indoor air quality, and
+logistic requirements), and these tradeoffs should be considered in different situations to maximize the
+overall benefit. Use of Far UVC may require simultaneous deployment of air cleaning for pollution. As
+new practical UV light sources at wavelengths other than 222 and 254 nm keep being developed, this
+study provides guidance for evaluating and selecting wavelength(s) for GUV air disinfection.
+
+Synopsis
+As 200-235 nm germicidal UV (GUV) leads to both more efficient air disinfection and more air pollution
+than 245-280 nm GUV does, multiple factors should be considered for maximal benefit of GUV
+deployment.
+
+Key Words
+Indoor air quality, germicidal ultraviolet, air disinfection, atmospheric chemical modeling, health effects
+
+1
+https://doi.org/10.26434/chemrxiv-2025-0zx0w ORCID: https://orcid.org/0000-0002-6823-452X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+
+INTRODUCTION
+For nearly a century, germicidal ultraviolet (GUV) disinfection has been applied for inactivation of airborne
+pathogens, which cause diseases after inhalation of aerosols containing them.1–3 Although there were
+early attempts to widely implement GUV,4 it has predominantly remained a specialized technique in
+medical contexts, mostly for tuberculosis transmission reduction.3 The COVID-19 pandemic prompted
+research confirming the significance of airborne transmission for SARS-CoV-2 and other respiratory
+pathogens.5,6 Consequently, there has been a surge in interest in various methods to remove pathogens
+from the air and/or inactivate them, including ventilation, filtration, and air disinfection,6,7 with a particular
+focus on GUV.3,8
+GUV involves lamps that emit light in the UVC range to irradiate indoor air, inactivating pathogens in
+airborne particles.8 Traditionally, filtered mercury lamps have been employed for this purpose, with their
+most intense emission at 254 nm ("GUV254").9 As exposure to 254 nm UV is harmful for humans,
+GUV254 can only be applied to the upper room or inside ducts.10 Since the COVID-19 pandemic, there
+has been growing interest in shorter wavelengths, specifically "Far UVC" in the range of 200-235 nm. Its
+most popular implementation is based on KrCl* excimer lamps with a peak emission at 222 nm
+("GUV222").8 This interest is due to the fact that direct human exposure to GUV222 is much safer than to
+GUV254. The most recent recommendation from the American Conference of Governmental Industrial
+Hygienists (ACGIH) suggests that GUV222 is 29 times and 51 times safer for human eye and skin
+exposures than GUV254.11 This allows irradiation of the occupied whole room and thus a simpler
+installation,8 and the measured disinfection efficiency of GUV222 is often higher than that of GUV254 for
+airborne pathogens,12,13 despite substantial uncertainties.14–18 UV sources at other wavelengths (e.g., 270
+and 282 nm) have also been reported to be used for pathogen inactivation, with disinfection efficiencies
+being wavelength-dependent.12,19,20
+Recently there have been multiple reports that GUV can produce indoor air pollutants, e.g., O3,21–24
+oxygenated volatile organic compounds (OVOC) and secondary organic aerosol (SOA),23–25 sulfate
+aerosol,26 and ultrafine particles (UFP).25 These reports cover both GUV222 and GUV254, and include
+experiments (in both controlled and real-world settings) and numerical simulations. Nevertheless, there is
+a key difference between the indoor air pollution induced by GUV222 vs. GUV254: there is significant
+direct O3 production through O2 photolysis at 222 nm, which is not possible for GUV254, since O2 cannot
+be photolyzed by UV with wavelengths longer than 245 nm.27 O3 can react with some common indoor
+volatile organic compounds (VOC), e.g., limonene, to form OVOC and SOA.24,28 O3 can also be
+photolyzed in the whole UVC range, producing OH radicals, the main atmospheric oxidant, which can
+oxidize a wide range of species in the air and also form UFP, OVOC, sulfate, and SOA.24,26,29 O3 can also
+react with NO2 to form NO3 radicals, another potent oxidant.30 GUV lamps at other wavelengths are
+expected to induce similar chemistries, since many of the reactions described above will also be active.
+However, the amounts of secondary air pollutants formed from GUV at different wavelengths are
+different, since the UV absorption cross sections of the key species are strongly wavelength-dependent
+(Fig. 1A), leading to complex wavelength-dependent reaction rates.27
+Ozone, particulate matter (PM, of which SOA is an important fraction), UFP, and many OVOC (e.g.,
+formaldehyde) are known to have deleterious effects on human health.31–34 There are well established
+quantitative relationships between human health risks and exposures to O332 and PM,33 enabling
+estimation of net premature mortality associated with exposure to both across a range of GUV
+configurations.
+
+2
+https://doi.org/10.26434/chemrxiv-2025-0zx0w ORCID: https://orcid.org/0000-0002-6823-452X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+97
+98
+99
+100
+101
+102
+103
+104
+
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+
+In addition to GUV222 and GUV254, devices emitting at other wavelengths for practical germicidal use
+have been developed recently. While disinfection efficiency and air pollutant production of all these GUV
+devices both depend on the wavelength, these dependencies are complex, and their tradeoff has never
+been systematically studied in a wavelength-dependent manner. Here we evaluate the ratio of GUVinduced secondary air pollution to disinfection efficacy over a wide range of wavelengths with high
+wavelength resolution, in search of an optimal wavelength(s) that can minimize safety issues (air
+pollution, UV exposure risk etc.) while achieving a certain disinfection goal.
+(A)
+
+(B)
+
+(C)
+
+(D)
+
+Fig. 1. Key wavelength-dependent variables between 185 and 310 nm used in this study. (A) Absorption
+cross sections of several key chemical species35 (averaged over 1 nm intervals), relative DNA/RNA and
+protein absorbance, and skin cancer risk due to UV exposure.8 (B) ACGIH limit of eye exposure to UV11
+and wavelength ranges for different GUV application modes; the solid and dash horizontal lines denote
+the 8-hour GUV exposure at 1 and 0.25 μW cm-2 (a typical fluence rate for GUV applications in the UVC
+range and a lower one for comparison), respectively. At the wavelengths in the colorless region, an 8hour exposure at 0.25 μW cm-2 exceeds the ACGIH limit and/or skin cancer risk due to exposure is
+elevated (see Panel (A)), and thus only upper-room applications are possible. At the wavelengths in the
+darker pink region, 8-hour exposure at 1 μW cm-2 is lower than the ACGIH limit, and thus the whole-room
+applications can be practically possible. The lighter pink denotes the transition region, where whole-room
+
+3
+https://doi.org/10.26434/chemrxiv-2025-0zx0w ORCID: https://orcid.org/0000-0002-6823-452X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+
+applications may be possible at lower fluence rates or exposure times. (C) & (D) Disinfection rate
+coefficients (kd, in base e) from the literature (symbols) and the two scenarios used in this paper (lines)
+based on the fit provided by Fujimoto et al.20 and a “high-wings” scenario (see Materials and Methods).
+Note that the datasets in Panel (D) are scaled by different factors to match at ~270 nm, which does not
+affect the relative comparison between different wavelengths.
+
+MATERIALS AND METHODS
+Indoor Air Chemical Model
+The model used in this study is based on that developed in ref 23 for GUV-induced indoor air chemistry.
+The model in ref 23 was adapted from the chemical model of oxidation flow reactor 29 for inorganic radical
+chemistry under UVC irradiation. Part of the Regional Atmospheric Chemistry Mechanism36 was added to
+describe organic chemistry in a simplified manner. The model has two modes, for upper- and whole-room
+applications, respectively. In the upper-room mode, the irradiated volume accounts for 15% of the whole
+room and the air exchange between the irradiated and unirradiated spaces is fast (240 and 42.4 ACH for
+the upper and lower parts of the room, respectively).23 For our base case the overall room ventilation rate
+is kept at 1 ACH. The model runs are conducted in KinSim,37 a chemical-kinetic solver within Igor Pro 9
+(Wavemetrics, Inc., Lake Oswego, OR, USA).
+Several updates to that model have been made. Several key parameters have been refined to better
+represent the indoor and outdoor conditions, including outdoor air composition and emission rates of
+indoor gases. VOC emission rates are set to values such that their steady-state concentrations in the
+model case with a ventilation rate of 0.4 ACH, the other settings described here, and no UV correspond to
+the mean values reported by Logue et al.38 0.4 ACH is selected as a typical ventilation rate of US
+residences.39 This relatively low ventilation rate results in relatively low VOC emission rates in the base
+model case. The secondary pollution corresponding to these emission rates can be considered as a lower
+limit. We also apply penetration factors to the outdoor gas- and particle-phase species when they are
+transported indoors. The updates to the key parameters are detailed in Table S1.
+We also update the aerosol formation and partitioning from simple literature yield-based calculations for
+different VOCs in ref 23 to a more detailed dynamic treatment. The framework for the dynamic aerosol
+formation and partitioning is based on a two-product volatility basis set (VBS), with the products being
+semivolatile and low-volatility species.40 We assume the saturated vapor concentrations of the two
+products to be 10 and 0.0001 μg m-3. Their VBS product coefficients of the oxidation of limonene, i.e., the
+main indoor SOA precursor, and of the second-generation oxidation of the semivolatile product to the lowvolatility one were fitted to experimental results.28 These coefficients for the other SOA precursors are
+estimated based on the literature yields and reported in Table S2. In addition to the partitioning between
+gas and particle phases, we also include gas and particle deposition onto the indoor surface, at 7.2 and
+0.25 h-1,41 respectively. While gas-particle partitioning is reversible, surface deposition of gas and particle
+products is assumed to be irreversible in the model, given the very high equivalent absorptive mass of the
+walls.42
+Inorganic particle-phase species are also included in this model. Both non-volatile and volatile parts are
+considered, with the latter assumed to be NH4NO3. Inorganic aerosol concentration has no impact on the
+partitioning of organic species at equilibrium, but inorganic particle-phase species are assumed to form
+inorganic cores in aerosols in the model, which can affect the particle size and condensation and
+evaporation rates of organics.43
+
+4
+https://doi.org/10.26434/chemrxiv-2025-0zx0w ORCID: https://orcid.org/0000-0002-6823-452X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+
+This model also accounts for the influence of human occupants on the indoor air composition. 10
+occupants are assumed to be sitting in the room. Exhalation of CO2 and emission of NH3 from occupants
+are included, with the emission rate of 0.21 m3 h-1 person-1 and 0.4 mg h-1 person-1, respectively.44,45 For
+organics that occupants emit, we consider those contributing most to the total OH reactivity in the room
+air, i.e., isoprene and 6-methyl-5-hepten-2-one (6-MHO), whose emission rates are 260 and 19 μg h-1
+person-1, respectively.46–48 Release of 6-MHO from human skin to the gas phase due to heterogeneous
+reactions of skin lipids and O3 and the gas-phase reactions of 6-MHO with OH and O3 are also taken into
+account.49,50 The reactions/processes added into the model for the chemistry of isoprene and 6-MHO are
+listed in Table S3.
+To investigate the impacts of GUV irradiation at different wavelengths, GUV is assumed to be
+monochromatic in individual simulations in this study. A set of 126 model runs (1 nm intervals between
+185 and 310 nm) are carried out for each model case. We also assume that the UV field in the room (or
+the upper and lower parts of the room in the upper-room mode) is uniform. This is unrealistic for the
+wavelengths below 200 nm, where photoabsorption by O2 and water vapor can cause substantial UV
+attenuation within a short optical pathlength.27 But this does not affect the discussions and the
+conclusions of this study, as the wavelengths below 200 nm are only for illustrative purposes and not
+recommended for any practical GUV use.
+The model requires absorption cross sections and quantum yields of all photolyzable species in the
+model between 185 and 310 nm. Some of those, particularly at shorter wavelengths, are unavailable in
+the literature and need to be estimated. We use cross sections and quantum yields from the JPL
+Chemical Kinetic Data Evaluation27 and the MPI-Mainz UV/VIS Spectral Atlas of Gaseous Molecules of
+Atmospheric Interest35 whenever they are available. This is the case for all photolyzable inorganic species
+and some photolyzable organic species. For other organic species, we adopt a strategy similar as in refs
+23,51 to estimate their absorption cross sections. Unavailable cross sections at shorter wavelengths are
+estimated by extrapolation of data available in the literature for the wavelengths close to the unavailable
+ranges. Extrapolation can be done in linear or logarithmic scale, depending on the characteristics of the
+available data. Quantum yields are always assumed to be 1 because of the high energy of photons at the
+short wavelengths where estimation is required, unless the JPL Chemical Kinetic Data Evaluation27
+recommends a non-unity value.
+Air Disinfection Efficiency Scenarios
+GUV disinfection efficiency data are often highly uncertain and different measurements can span a very
+wide range. In this study, we propose two scenarios for wavelength-dependent disinfection rate
+coefficients (kd) to account for the large discrepancies present in the literature studies.
+The critical data for our study concerns the relative dependence of disinfection efficiency vs. wavelength.
+Absolute differences will impact the absolute amount of pollution per unit disinfection, but not the relative
+amount which is a focus of our study. To our knowledge, three studies of measurements of efficiencies of
+GUV inactivating SARS-CoV-2 at multiple wavelengths (covering 222 nm, 254 nm, and other
+wavelengths) are available.12,19,20 Ma et al. measured a kd (e-fold decay) of 3.27 cm2 mJ-1 at 222 nm,
+which is in the middle of the measurements available in the literature, ranging from 1.47 to 12.4 cm2 mJ1 14–18
+,
+while the other two studies both reported 222 nm kd substantially lower than this range. Since ~270
+nm is the main RNA/DNA absorption peak wavelength (Fig. 1A), and the absorption and disinfection near
+this wavelength have been relatively well studied, we use the 270 nm kd of ref 12 as the reference and
+scale the values at all wavelengths reported by Schuit et al. and Fujimoto et al.19,20 by factors of 4.1 and
+
+5
+https://doi.org/10.26434/chemrxiv-2025-0zx0w ORCID: https://orcid.org/0000-0002-6823-452X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+
+2.4, respectively, so that all the three kd at 270 nm are identical (Fig. 1D). It can be found that the relative
+values (peak shape) above 250 nm from these three studies are in a relatively good agreement with each
+other, as well as with the RNA/DNA absorbance trend at these wavelengths. The (after-scaling) kd values
+for the whole wavelength range (~195-305 nm) from the fit by Fujimoto et al. are called the Fujimoto
+scenario, as compared to other multiwavelength measurements, the Fujimoto dataset can serve as the
+lower limit of the possible range of kd after scaling (Fig. 1D). The values for <195 and >305 nm are
+estimated with an extrapolation based on the data at the adjacent wavelengths.
+After scaling the kd values, some diversity is observed at the lower and higher wavelengths across the
+literature studies. kd above ~280 nm from Schuit et al.19 are higher than those from Fujimoto et al.20. kd at
+222 nm from Ma et al.12 is substantially higher than those at 222 nm from the other two studies. Thus we
+construct the “high-wings” disinfection efficiency scenario by combining the (after-scaling) kd above 275
+nm from Schuit et al., those between 235 and 275 nm from Fujimoto et al., and that at 222 nm from Ma et
+al. The values between 222 and 235 nm are interpolated and those below 222 nm are estimated with an
+extrapolation based on the RNA/DNA and protein absorbance at those wavelengths (Fig. 1A,D). The
+relative values between 222 and 298 nm in the “high-wings” scenario also agree well with the recent
+measurements of wavelength-dependent disinfection efficiencies for aerosolized viruses MS2 and Phi652
+(Fig. 1D).
+Total relative risk increase and equivalent “outdoor” concentrations of PM and O3
+Increases in either PM or O3 can increase pollution mortality. As their changes are not proportional in
+different situations, it is desirable to define a single parameter that captures the overall pollution impact to
+simplify the analysis of this complex problem. We define a total relative risk increase (TRRI) as the
+combined increase in mortality risk relative to the no-UV case due to increases in various air pollutants for
+a given condition, i.e.,
+𝑇𝑅𝑅𝐼 = ∑𝑆 ∆𝑅𝑅𝑆
+
+Eq. (1)
+
+where ΔRRS is the increase in all-cause mortality risk ratio (relative risk; RR) due to pollutant S when
+GUV is on compared to the no-UV case. As concentration-mortality relationships, which are essential for
+quantifying TRRI, have been well established only for PM and O3 to date 32,33, the TRRI in this study only
+includes the contributions from PM and O3.
+To estimate ΔRRS, both the RR for pollutant S under the conditions with and without GUV need to be
+estimated. The latter for a typical indoor space with an outdoor concentration of S (𝑥𝑜𝑆 ), denoted as
+𝑅𝑅(𝑥𝑜𝑆 ), can be calculated by applying the concentration-response function for pollutant S, i.e.,
+Weichenthal et al.33 for PM and Turner et al.32 for O3. Note that the concentration-response functions for
+common air pollutants were developed based on their outdoor concentration. RR in this study is
+expressed as a function of outdoor air pollutant concentration, although conceptually the health response
+should be a consequence of exposure to a pollutant, both outdoors and indoors, not that of outdoor
+concentration of that pollutant.
+In the presence of GUV, the exposure to air pollutants changes compared to the no-UV case due to
+indoor concentration changes. In this case, RR cannot be calculated simply from the actual outdoor air
+𝑆
+pollutant concentration. Therefore, we define an equivalent “outdoor” concentration of pollutant S (𝑥𝑜,𝑒𝑞
+).
+People spending time outdoors at this concentration and in a typical indoor space without GUV would
+
+6
+https://doi.org/10.26434/chemrxiv-2025-0zx0w ORCID: https://orcid.org/0000-0002-6823-452X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+
+have the same exposure to pollutant S as they spend time outdoors at the actual concentration of S and
+in that indoor space with GUV. Then RR (and TRRI) can be calculated as
+𝑆
+𝑇𝑅𝑅𝐼 = ∑𝑆[𝑅𝑅(𝑥𝑜,𝑒𝑞
+) − 𝑅𝑅(𝑥𝑜𝑆 )]
+
+Eq. (2)
+
+𝑆
+To obtain 𝑥𝑜,𝑒𝑞
+, we consider the total exposure to S in a manner similar to Xiang et al.53 In the absence
+and presence of GUV, we have
+𝑆
+𝑥𝑒𝑥𝑝,𝑛𝑜𝐺𝑈𝑉
+= 𝑥𝑖𝑆 𝑓𝑖 + 𝑥𝑜𝑆 𝑓𝑜
+
+Eq. (3)
+
+and
+𝑆
+𝑥𝑒𝑥𝑝,𝐺𝑈𝑉
+= (𝑥𝑖𝑆 + Δ𝑥𝑖𝑆 )𝑓𝑖 + 𝑥𝑜𝑆 𝑓𝑜 ,
+
+Eq. (4)
+
+𝑆
+𝑆
+respectively, where 𝑥𝑒𝑥𝑝,𝑛𝑜𝐺𝑈𝑉
+and 𝑥𝑒𝑥𝑝,𝑛𝑜𝐺𝑈𝑉
+are exposure-averaged concentrations of S in the cases
+
+without and with GUV, respectively, 𝑥𝑖𝑆 and Δ𝑥𝑖𝑆 indoor concentration of S and its change induced by
+GUV, respectively, and fi and fo indoor and outdoor breathing rate-adjusted time fractions, respectively.
+𝑆
+𝑆
+With 𝑥𝑜,𝑒𝑞
+introduced, 𝑥𝑒𝑥𝑝,𝐺𝑈𝑉
+can also be written as
+𝑆
+𝑆
+𝑆
+𝑥𝑒𝑥𝑝,𝐺𝑈𝑉
+= 𝑥𝑖,𝑒𝑞
+𝑓𝑖 + 𝑥𝑜,𝑒𝑞
+𝑓𝑜
+
+Eq. (5)
+
+𝑆
+where 𝑥𝑖,𝑒𝑞
+is equivalent “indoor” concentration of S, which a typical indoor space without GUV would
+𝑆
+have when the outdoor concentration of S was 𝑥𝑜,𝑒𝑞
+. In this case, the indoor concentration of S is not 𝑥𝑖𝑆
+because there is air exchange between the air in this indoor space and the outdoor air. The indoor
+𝑆
+concentration of S varies with its outdoor concentration with an indoor-outdoor ratio, 𝑟𝐼/𝑂
+. Then we have
+
+Δ𝑥𝑆𝑖,𝑒𝑞 /Δ𝑥𝑆𝑜,𝑒𝑞 = 𝑟𝑆𝐼/𝑂
+
+Eq. (6)
+
+where 𝛥𝑥𝑆𝑖,𝑒𝑞 = 𝑥𝑆𝑖,𝑒𝑞 − 𝑥𝑆𝑖 and 𝛥𝑥𝑆𝑜,𝑒𝑞 = 𝑥𝑆𝑜,𝑒𝑞 − 𝑥𝑆𝑜 . By considering Eqs. (4-6), we obtain
+
+Δ𝑥𝑆𝑜,𝑒𝑞 = Δ𝑥𝑆𝑖 𝑆
+
+𝑓𝑖
+
+𝑟𝐼/𝑂 𝑓 +𝑓𝑜
+
+Eq. (7)
+
+𝑖
+
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+
+On the right side of this equation, Δ𝑥𝑆𝑖 are outputs of our indoor air chemical model. In this study, we use fi
+𝑆
+= 0.78 and fo = 0.22.54,55 𝑟𝐼/𝑂
+of PM and of O3 are assumed to be ½ and ¼ , respectively.56,57 Then Δ𝑥𝑆𝑜,𝑒𝑞
+can be calculated using this equation, and TRRI obtained using Eq. (2).
+
+RESULTS
+We simulate the indoor air chemistry induced by monochromatic GUV at different wavelengths between
+185 and 310 nm (1 nm interval) for both whole-room and upper-room applications (modes). We simulate
+a typical indoor classroom: 300 m3 with 10 occupants, a ventilation rate of 1 air change per hour (ACH) (a
+value between typical US residential and commercial building ventilation rates)39,58 with typical US
+
+7
+https://doi.org/10.26434/chemrxiv-2025-0zx0w ORCID: https://orcid.org/0000-0002-6823-452X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+
+outdoor air composition, and median emission rates for indoor air pollutants, including limonene38 (see
+Materials and Methods for details) as the base case for both the whole- and upper-room applications. In
+the upper-room mode, 15% of the room volume is irradiated by GUV. This upper-room space exchanges
+air with the lower part at 240 ACH (36 ACH averaged over the whole room). Sensitivity cases under
+different conditions are discussed below. Both modes are simulated at all wavelengths so that we can
+perform a comprehensive comparison in this study. In practice, use of the whole-room mode should be
+limited to GUV below ~235 nm, in order to comply with the eye and skin exposure limits recommended by
+the American Conference of Governmental Industrial Hygienists (ACGIH).8 Whole-room applications
+might be allowed between 235-250 nm if the fluence rates or exposure times are lower (Fig. 1B).
+Wavelengths between 185 and 200 nm are also included in the simulations to illustrate and compare the
+effects of the main chemical and disinfection processes at different wavelengths. Below 200 nm UV can
+photolyze water vapor and directly generate OH radicals in large amounts, in addition to increased O3
+production. For example, this chemistry is utilized in oxidation flow reactors to accelerate atmospheric
+oxidation processes.29 In practice, UV lamps emitting in this range (e.g., unfiltered low-pressure mercury
+lamps) should not be used for disinfection because of their strong pollutant formation, the rapid UV decay
+within a short distance from the lamp that does not allow whole-room disinfection (due to strong
+absorption by O2 and water vapor), and the potential health impacts of direct exposure being unclear.
+We calculate ΔPM (PM concentration increase with UV relative to the concentration when there is no-UV)
+and ΔO3 (O3 increase relative to the no-UV case) vs. wavelength for both whole-room and upper-room
+modes. Since mortality is the largest and most serious health impact of air pollution, to summarize the air
+pollution impacts with a single quantity, we define a total relative risk increase (TRRI; see Materials and
+Methods for details) for mortality due to long-term exposure to PM and O3 relative to the no-UV case
+(TRRI = ΔRRPM + ΔRRO3, where ΔRRPM and ΔRRO3 are the increases in all-cause mortality risk ratios due
+to PM and O3, respectively).
+In the following, we first present the results for a constant fluence rate (1 μW cm-2) at each wavelength,
+which do not involve highly uncertain wavelength-dependent disinfection efficiencies. Then, we show the
+results for two specific disinfection rates (5 and 30 equivalent air changes per hour (eACH)) across
+different wavelengths, which do involve uncertain and wavelength- and pathogen-dependent disinfection
+efficiencies.
+(A)
+
+(B)
+
+8
+https://doi.org/10.26434/chemrxiv-2025-0zx0w ORCID: https://orcid.org/0000-0002-6823-452X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(C)
+
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+
+Fig. 2. Increases in O3 (ΔO3) and particulate matter (ΔPM) mass concentrations (in μg m-3) and total
+relative risk increase (TRRI) relative to the no-UV case. (A) For a fluence rate of 1 μW cm-2 in both wholeand upper-room modes. Note that ΔPM and ΔO3 are plotted along the left axis and TRRI along the right
+one, and that the left axis is divided into the positive and negative parts, which are in log and linear
+scales, respectively. (B) For an effective whole-room disinfection rate of 5 equivalent air changes per
+hour (eACH), as recommended by the CDC for COVID-19.59 (C) For an effective whole-room disinfection
+rate of 20 eACH, comparable to CDC guidelines for upper-room GUV for tuberculosis.60
+Constant Fluence Rate at each Wavelength
+Fig. 2A shows TRRI vs. wavelength at an average fluence rate of 1 μW cm-2 (effective fluence rate
+averaged over the whole room for either mode). Mortality risk generally increases as the GUV wavelength
+decreases towards 185 nm. Two large jumps in TRRI occur at ~244 and ~199 nm. These correspond to
+large increases in ΔO3 and in ΔPM, respectively.
+Above 245 nm, O3 cannot be directly produced through O2 photolysis by GUV. GUV photolyzes O3 and
+produces OH in a similar way as in the troposphere, i.e., via production of O(1D), which then reacts with
+water vapor to form OH.27,29 As a result, ΔO3 is negative at most wavelengths >245 nm. It becomes
+slightly positive only above ~290 nm, where i) O3 photolysis is much weaker due to O3 absorption cross
+section being >1 order of magnitude lower than its peak value at 254 nm, and ii) O3 production in the
+same way as in the troposphere (i.e., via NO2 photolysis, which produces O(3P) that recombines with O2
+and forms O3) is much stronger due to the NO2 absorption cross section being ~1 order of magnitude
+higher than at ~250 nm. At >245 nm, TRRI is dominated by ΔPM, almost all of which results from VOC
+oxidation by OH (Fig. 2A).
+Below 242 nm TRRI (>~0.0013) is at least 20 times larger than at >245 nm (<~6x10-5), mostly due to ΔO3
+resulting from O2 photolysis (Fig. 2A). Although the contribution of ΔPM to TRRI is smaller compared to
+ΔO3 for our base case, ΔPM in this wavelength range is substantially larger than above 245 nm. A much
+higher O3 concentration at 200-242 nm promotes terpene ozonolysis and leads to most of the increase in
+ΔPM, consistent with Jenks et al.28 The OH increase relative to the no-UV case in this wavelength range
+is of the order of 103 molecules cm-3, and thus cannot lead to a substantially higher ΔPM than above 245
+nm. TRRI monotonically increases with decreasing wavelength, because of the same trend on the (1 nmaveraged) cross section of O2 absorption (Fig. 1A), which leads to direct O3 production.
+
+9
+https://doi.org/10.26434/chemrxiv-2025-0zx0w ORCID: https://orcid.org/0000-0002-6823-452X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+
+Below 198 nm, water vapor can be photolyzed, leading to a strong direct production of OH.
+Consequently, compared to 200-242 nm, OH concentration increases at least by a factor of 15. This high
+OH rapidly oxidizes VOCs and causes a large increase in ΔPM (and hence TRRI) by about an order of
+magnitude (Fig. 2A). On the other hand, O2 absorption and ΔO3 do not have a large increase around 199
+nm, and thus do not contribute to this drastic increase in TRRI.
+Note that the results of both whole- and upper-room simulations at 1 μW cm-2 are reported in Fig. 2A, and
+they are almost identical. This is due to the air exchange between the irradiated and unirradiated spaces
+in the upper-room mode being faster than the other production and loss processes of O3 and PM at this
+fluence rate. This indicates that at 1 μW cm-2, if both whole- and upper-room modes use UV light at the
+same wavelength (e.g., both at 222 nm), they lead to almost the same disinfection and air pollution.
+Constant Disinfection Rate
+We also examine mortality risk at specific disinfection rates. Two effective disinfection rates for the whole
+room (not only for the irradiated space, in the upper room case), i.e., 5 and 20 eACH, are investigated.
+The former is the value recommended by the US Centers for Disease Control and Prevention (CDC) and
+close to that from the World Health Organization recommendation (6 eACH) for COVID-19.59,61 The value
+of 20 eACH is chosen because the mid-value of the upper-room GUV254 fluence rate range (30-50 μW
+cm-2) recommended by the CDC for tuberculosis60 leads to a disinfection rate close to 20 eACH in our
+model. The fluence rates needed to achieve these disinfection rates are different at each wavelength (Fig.
+S1), as they are inversely proportional to the (pathogen-specific) disinfection rate coefficients (kd) at each
+wavelength. Measurements of kd have large absolute uncertainties (1-2 orders of magnitude, Fig. 1C), but
+mostly consistent trends vs. wavelength (within factors of 2-3; Fig. 1D). To investigate the disinfection vs.
+pollution tradeoff vs. wavelength, while accounting for the differences in relative wavelength trends in the
+literature, we investigate two disinfection efficiency vs. wavelength scenarios (Fujimoto and “high-wings”;
+Fig. 1D; see Materials and Methods for details). The Fujimoto scenario is based on Fujimoto et al.;20 the
+“high-wings” scenario has higher disinfection efficiencies at <235 nm and >270 nm (higher “wings” in the
+disinfection efficiency curve).
+At 5 eACH of disinfection, the TRRI of the upper- and whole-room modes are still very close (Fig. 2B). For
+the Fujimoto disinfection efficiency scenario, TRRI at 5 eACH is not substantially different from that at 1
+μW cm-2 in the wavelength range of interest of this study, except for those >290 nm. This similarity is
+because i) the relative variation in the disinfection efficiency coefficient (kd; in base e, same hereafter) of
+this scenario with wavelength is relatively small (within a factor of 2 between 185 and 290 nm; Fig. 1D),
+and ii) a fluence rate of 1 μW cm-2 and a kd around 1.5 cm2 mJ-1 (a ballpark value for this estimate) at a
+ventilation rate of 1 ACH result in a disinfection rate of 5.4 eACH. The drastic increase of TRRI at 5 eACH
+above 290 nm corresponds to the fast decrease of the disinfection efficiency as the wavelength increases
+from 290 to 310 nm. When kd is low at these wavelengths, the fluence rate needed for 5 eACH is high,
+which causes more secondary air pollution. Large differences between the two kd scenarios results in
+high uncertainty in TRRI in this region.
+For the “high-wings” disinfection efficiency scenario, TRRI at 5 eACH below 235 nm or above 275 nm is
+lower than that for the Fujimoto scenario (Fig. 2B). This difference is due to the higher kd for the “highwings” scenario at these wavelengths. TRRI at 5 eACH does not monotonically increase with decreasing
+wavelength between 200 and 235 nm, unlike the Fujimoto scenario (Fig. 2B), but rather stays about
+constant. This is due to the stronger increase of kd in the “high-wings” scenario in this wavelength range,
+which allows reduced fluence rate that offsets the increased air pollution (if fluence rate is constant)
+
+10
+https://doi.org/10.26434/chemrxiv-2025-0zx0w ORCID: https://orcid.org/0000-0002-6823-452X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+
+shown in Fig. 2A. TRRI at 5 eACH in the “high-wings” scenario below 235 nm is still >20 times larger than
+that above 250 nm, mainly due to the strong direct O3 production by O2 photolysis at shorter wavelengths
+as discussed above.
+The results for 20 eACH show a significant (about 50%, Fig. 2C) difference between the upper-room and
+whole-room setups. When the disinfection rate is higher, the fluence rate in the irradiated space for the
+upper-room mode is also higher. As a result, the viable airborne pathogen (SARS-CoV-2) gradient
+between the unirradiated and irradiated spaces becomes more pronounced, and the disinfection rate for
+the whole room is limited by the transport of viable SARS-CoV-2 from the unirradiated space to the
+irradiated space through air exchange between these two zones. A disinfection rate of 20 eACH averaged
+over the whole room in the upper-room mode requires a high fluence rate that may result in the SARSCoV-2 concentration in the upper room significantly lower than that in the lower room, depending on the
+airflow patterns in the room, assuming the lamps are installed in the ceiling.23 This reduces the efficacy of
+the upper-room GUV and in turn requires a higher effective fluence rate (averaged over the whole room)
+than in a whole-room setup. According to our additional simulations at different disinfection rates (1-30
+eACH; Fig. S2), this discrepancy between the two modes for a specific disinfection rate starts becoming
+significant at a disinfection rate ~10 eACH and increases drastically as the disinfection rate approaches
+the limit due to in-room air exchange, i.e., 36 eACH (for the volume of the whole room) in our simulations.
+Impact of Variations in Indoor Conditions
+We also investigate how the results change over large ranges of ventilation rates of 0.1-30 ACH, and of
+indoor VOC emission rates (relative to the base case) of 0.1-10. This sensitivity study is performed only
+for the “high-wings” disinfection efficiency scenario, where the TRRI at “wings” wavelengths (i.e., <235 nm
+and > 275 nm) is lower than in the Fujimoto scenario. Since the results above indicate that there are
+mainly two distinct wavelength regions (for whole- and upper-room GUV, respectively), we explore the
+ratio of TRRI between 222 (in the whole-room mode) and 254 nm (in the upper-room mode), the most
+representative wavelengths of each region, at disinfection rates of 5 and 20 eACH (Fig. 3). Even so,
+except for the strongest (weakest) ventilation and the weakest (strongest) indoor emissions explored, the
+222 nm-to-254 nm TRRI ratio is >1 and, under most conditions, >10 (Fig. 3A,B). Moreover, the conditions
+with TRRI ratio <1 correspond to TRRI ratio <0, due to negative TRRI (less air pollution compared to the
+no-UV case) for GUV254 under these conditions. Note that the higher TRRI ratios at low ventilation rates
+and/or high indoor VOC emissions are no longer directly due to O3 formed through O2 photolysis, but
+mainly due to PM formed through VOC ozonolysis, as the high TRRI at 222 nm under these conditions
+are mostly contributed by PM (Fig. 3C). The drastic decrease of the contribution of O3 to TRRI with
+decreasing ventilation rate below 0.9 ACH is associated with the equivalent “outdoor” O3 (in terms of
+exposure mortality; as calculated in the way described in Materials and Methods) decreasing below the
+threshold in Turner et al.32 (Fig. S3), below which no mortality risk increase due to O3 was reported by
+Turner et al. Note that this lack of reported mortality risk increase in their O3 concentration-mortality
+relationship resulted from scarcity of low ambient O3 concentrations. Even at low equivalent “outdoor” O3
+concentrations, low levels of one of the two main contributors, indoor O3, may be related to strong O3
+loss62 and high levels of O3 reaction products. The latter is associated with negative health effects,63
+although, to our knowledge, a quantitative concentration-mortality relationship that can be used in this
+study has not been developed.
+(A) 5 eACH
+
+(B) 20 e ACH
+
+11
+https://doi.org/10.26434/chemrxiv-2025-0zx0w ORCID: https://orcid.org/0000-0002-6823-452X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+(C) 5 eACH
+
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+
+Fig. 3. Sensitivity study exploring the impacts of ventilation rate and indoor VOC emission rate for the
+“high-wings” disinfection efficiency scenario. (A) Image and contour plots of whole-room 222 nm to upperroom 254 nm total relative risk increase (TRRI) ratio at a disinfection rate of 5 eACH. (B) Same format for
+a 20 eACH disinfection rate. (C) Contour plot of the fractional contribution of PM to TRRI at 5 eACH. The
+color scale legend is for Panels (A) and (B).
+
+DISCUSSION
+In practice, GUV at 200-235 nm and that at >245 nm are almost only used for the whole-room and upperroom applications, respectively. As discussed above, wavelengths below 200 nm are of little practical
+interest. Because of low disinfection efficiency and high cancer risk (Fig. 1A), wavelengths above 280 nm
+are also not practically useful. In the following, we thus only compare 200-235 nm (shorter) and 245-280
+nm (longer).
+It can be concluded with high confidence that longer-wavelength (245-280 nm) upper-room GUV
+produces substantially less secondary indoor air pollution per unit disinfection than shorter-wavelength
+(200-235 nm) in whole-room applications (Fig. 2). We first discuss the uncertainties in the results, and
+then their implications.
+Uncertainties in Disinfection Rates
+The absolute values of kd are a major source of uncertainty of the absolute pollution mortality-todisinfection ratio, but much less so for the relative trend of that ratio with wavelength. For instance, the
+absolute values of kd for SARS-CoV-2 at 222 nm reported in different studies range about two orders-ofmagnitude.14–18 If the real kd at 222 nm is close to the high end of the range of the literature
+measurements (~12 cm-2 mJ),16 the fluence rate needed to achieve a specific disinfection rate is about ¼
+
+12
+https://doi.org/10.26434/chemrxiv-2025-0zx0w ORCID: https://orcid.org/0000-0002-6823-452X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+
+of that for the “high-wings” scenario, and the corresponding TRRI is also about ¼ of that scenario.
+Conversely, if the real kd at 222 nm is close to the lower values reported in the literature, the
+corresponding TRRI would be an order-of-magnitude larger.
+Literature kd values for the same pathogen are generally higher in aerosols than in aqueous solutions.64,65
+The relative trend of kd across wavelengths reported in Ma et al.12 is consistent with RNA/DNA absorption
+for >245 nm and with the measurements and the explanation (higher contribution from protein and lipid
+damage) by Lu et al. (Fig. 1A,D).64,66 These authors recently reported aerosol-based multiwavelength kd
+measurements for other viruses than SARS-CoV-2 (MS2 and Phi6; Fig. 1C,D),52 whose relative
+wavelength trend agrees well with Ma et al.,12 but is different from other literature results.19,20 These
+comparisons across wavelengths show that the relative dependence of kd on wavelength (see Materials
+and Methods for detail) is within a factor of ~3 for wavelengths near 222 nm and within a factor of 2
+for >245 nm for all the studies that have reported multiwavelength measurements for SARS-CoV-2 in
+solution and other viruses in aerosols (Fig. 1D).12,19,20,52 This results in limited uncertainty on our
+conclusions about the relative trend. As the range that (after-scaling) kd reported in the literature span is
+largely captured by the Fujimoto and “high-wings” scenarios, the uncertainty about the relative trend is
+unlikely to be substantially larger than the difference between the results of these two scenarios.
+The extrapolation of kd below 222 nm in the “high-wings” scenario could be too optimistic, as kd is
+estimated to increase as fast as the protein or RNA/DNA absorption efficiencies, without accounting for
+aerosol shielding effects.67 Thus the pollution per unit disinfection below 222 nm for this scenario could be
+a lower limit. Nevertheless, the possible underestimation of the pollution per unit disinfection below 222
+nm only reinforces our conclusion that this pollution at shorter wavelengths is higher than at longer
+wavelengths.
+Uncertainties in Pollutant Formation
+There are also uncertainties associated with the chemistry model. The root cause of higher TRRI below
+235 nm is O3 produced from O2 photolysis. This is a simple photochemical process whose kinetic
+parameters were well quantified decades ago.68,69 The O3 production rate through this pathway is
+governed by the O2 absorption cross section, whose relative uncertainty is ~20%.35 The estimation of the
+cross sections and quantum yields of organic species whose measurements are unavailable in the
+literature (see Materials and Methods for detail) may also introduce uncertainty into the model. We
+quantify the potential impact of this treatment for organic photolysis in the UVC range with a sensitivity
+case where all organic photolysis processes are removed. The relative change in ΔPM of the sensitivity
+case is up to ~15% below 290 nm, and within a factor of 2 between 290 and 310 nm (Fig. S4). The
+relative change in ΔO3 is negligible below 245 nm but larger above this wavelength. Nevertheless, the
+contribution of ΔPM to TRRI between 200 and 245 nm is minor. And ΔO3 between 245 and 290 nm is
+negative, of which the amplification cancels the contribution of ΔPM to TRRI in this wavelength range
+(Fig. 2). These lead to the very small relative change in TRRI between 200 and 290 nm. At longer
+wavelengths, as discussed above, practical interest of GUV is low, and the relative change in TRRI is still
+within a factor of ~2.
+Despite the uncertainties in the kd and the chemistry model, the difference in TRRI is so large (>1 order of
+magnitude) that the conclusion that longer-wavelength (245-280 nm) GUV produces much less air
+pollution than shorter-wavelength (<235 nm) GUV for a specific disinfection rate is robust.
+Implications for the net health benefit of GUV device deployment
+
+13
+https://doi.org/10.26434/chemrxiv-2025-0zx0w ORCID: https://orcid.org/0000-0002-6823-452X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+
+As ~85% of the air that people inhale is indoors54 and typical indoor-to-outdoor O3 ratios are ~25% in the
+US,57 indoor O3 accounts for about half of O3 exposure of the US population. As discussed by Xiang et
+al.,53 indoor O3 exposure is a main contributor to the observed correlation between outdoor O3
+concentration and mortality. Here, based on key results of this study and some simple estimations, we
+consider if the mortality due to GUV-induced indoor air pollution can be significant compared to the
+number of lives that GUV air disinfection can save from airborne diseases.
+At a fluence rate of 1 μW cm-2 (corresponding to a disinfection rate of several eACH for SARS-CoV-2,
+depending on kd), ΔO3 between 200 and 235 nm ranges from ~4.9 to ~1.2 μg m-3 (~2.5-0.6 ppb), with that
+at 222 nm being 2.7 μg m-3 (1.4 ppb). Considering the about-half contribution of indoor O3 to O3 exposure,
+we estimate such an indoor ΔO3 of 2.7 μg m-3 to be equivalent to an outdoor O3 increase of 4-5 ppb, to be
+used in the concentration-response relationships that have been developed only with outdoor data. This
+may lead to a ~0.9% increase in all-cause mortality (if O3 increases PM as discussed above, the mortality
+increase could be even higher), while ~2.4% of the deaths in the US in 2023 were related to COVID19.70,71 For simplicity, mortalities due to both other airborne diseases (e.g., influenza and tuberculosis)
+and exposure to other secondary indoor air pollutants (e.g., OVOCs) are ignored here as they are
+expected to be smaller.32,72 As GUV usually reduces airborne disease transmission and increases air
+pollution exposure of indoor space occupants at the same time, a long-term use of short-wavelength
+(200-235 nm) GUV devices without air pollution mitigation measures would be likely to both save lives
+from COVID-19 and other airborne diseases and increase mortality due to GUV-induced O3 pollution. If
+GUV device installations are still too low to significantly change the dynamics of an airborne epidemic, the
+numbers of lives it saves and the deaths caused by its air pollution could be of the same order of
+magnitude. When the highest values of kd at 222 nm reported in the literature are considered (~x4 higher
+than the “high-wings” value),16 mortality due to air pollution would be an order-of-magnitude lower than
+lives saved from airborne diseases by GUV disinfection. GUV-induced air pollution would be a smaller but
+still significant concern. On the other hand, if the real kd at 222 nm is close to the lower end of the range
+of the literature measurements, 222 nm GUV application might bring little net health benefit due to air
+pollution.
+As a consequence, the traditional upper-room longer-wavelength (245-280 nm) GUV application is still of
+high interest, particularly for long-term use (when community transmission of airborne disease(s) of
+interest is sustained) at moderate fluence rates (e.g. 5 eACH), as it results in much lower GUV-induced
+secondary indoor air pollution and thus the related mortality by about an order of magnitude or more.
+Is there an optimal GUV wavelength?
+In summary, across the wavelengths explored in this study (185-310 nm), there is not an optimal
+wavelength that is the best in terms of disinfection efficiency, ease of practical use, secondary air
+pollution, and exposure safety. There are wavelength ranges obviously worse than others, i.e., 185-200
+nm (due to very high secondary air pollution and nearly impossible practical functioning in real indoor
+settings) and 280-310 nm (due to high cancer risk and low kd). Whole room 200-235 nm and upper-room
+245-280 nm represent two regimes of operation with clear tradeoffs. In terms of air pollution per unit
+disinfection, longer-wavelength GUV has a clear advantage over its shorter-wavelength counterpart.
+Nevertheless, this advantage does not negate the less logistic requirement, ability to reduce close-range
+transmission, and the potentially higher kd of shorter-wavelength GUV, and hence the highest possible
+disinfection rate in its whole-room application, all of which can be critically helpful for a fast response to
+an emerging airborne disease and suppression of an airborne epidemic. Shorter wavelength long-term
+applications may necessitate the integrated use of pollution scrubbers (e.g. O3 removal catalysts and PM
+filters).
+
+14
+https://doi.org/10.26434/chemrxiv-2025-0zx0w ORCID: https://orcid.org/0000-0002-6823-452X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+
+Current upper-room installations use mostly 254 nm, partially due to low cost of the lamps.8 There are
+longer wavelengths with slightly better ratios of GUV-induced indoor air pollution per disinfection (Fig. 2).
+At a specific disinfection rate, GUV near 280 nm, where GUV exposure cancer risk is still relatively low
+(Fig. 1A), can reduce TRRI to about half compared to that at 254 nm. However, the uncertainties in
+disinfection rates and higher cost of operating at other wavelengths result in limited incentives to operate
+upper-room systems away from 254 nm. Increasing the upper room air exchange rate (e.g., with a fan)
+can be a way to improve the performance of upper-room GUV (in terms of air pollution per unit
+disinfection) when the disinfection rate needed is high.23,60 A strong air exchange (achieved through
+mixing as recommended by CDC tuberculosis guidelines)60 between the lower and upper room can limit
+the penalty of airborne pathogen depletion in the upper room at a high GUV fluence rate, thus lowering
+the fluence rate needed and reducing associated air pollution. Air pollution mitigation, such as ozone
+destruction and PM filtering, can be performed for both whole- and upper-room GUV, albeit at additional
+cost, to maximize the overall health benefit of GUV applications.
+The future of whole-room shorter-wavelength GUV depends partially on more accurate determinations of
+kd in the real world. If real kd are at the lower end of the literature, its use may be limited to periods or
+locations with high mortality risk from airborne diseases, such as health care settings where infectious
+disease and/or immunocompromised patients are present, or high occupancy settings with unsuspected
+infectious individuals like jails and prisons. If real kd are at the higher end of literature, wide-scale
+deployment with small pollution scrubbers may be attractive.
+
+Acknowledgements: This study was supported by Balvi Filantropic Fund, the Sloan Foundation Indoor
+Chemistry Program, and the CIRES Innovative Research Program. We thank Charles Weschler, Julia
+Lee-Taylor, and Carl Bengtsson for their valuable discussions.
+Author contributions: Z.P. and J.L.J. conceived this study. Z.P. designed the study, developed the
+model, conducted the simulations, and led the analysis of the results and the preparation of the
+manuscript. B.M, D.K.H., S.L.M., J.A.d.G., and J.L.J. contributed to the analysis of the results and the
+preparation of the manuscript.
+Data and materials availability: All data needed to evaluate the conclusions in the paper are present in
+the paper and/or the Supporting Information. The source code of KinSim is publicly available at
+http://tinyurl.com/KinSim-Download. The results for this study can be downloaded from
+https://cires1.colorado.edu/jimenez/group_pubs.html.
+
+References
+(1) Wells, W. F.; Wells, M. W.; Wilder, T. S. The Environmental Control of Epidemic Contagion: I. An
+Epidemiologic Study of Radiant Disinfection of Air in Day Schools. Am. J. Epidemiol. 1942, 35 (1),
+97–121.
+(2) Riley, R. L.; Mills, C. C.; O’grady, F.; Sultan, L. U.; Wittstadt, F.; Shivpuri, D. N. Infectiousness of Air
+from a Tuberculosis Ward. Ultraviolet Irradiation of Infected Air: Comparative Infectiousness of
+Different Patients. Am. Rev. Respir. Dis. 1962, 85, 511–525.
+(3) Nardell, E. A. Air Disinfection for Airborne Infection Control with a Focus on COVID‐19: Why
+Germicidal UV Is Essential. Photochem. Photobiol. 2021, 97 (3), 493–497.
+(4) Jimenez, J. L.; Marr, L. C.; Randall, K.; Ewing, E. T.; Tufekci, Z.; Greenhalgh, T.; Tellier, R.; Tang, J.
+
+15
+https://doi.org/10.26434/chemrxiv-2025-0zx0w ORCID: https://orcid.org/0000-0002-6823-452X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+673
+674
+675
+676
+677
+678
+679
+680
+681
+682
+683
+684
+685
+686
+687
+688
+689
+690
+691
+692
+693
+694
+
+W.; Li, Y.; Morawska, L.; Mesiano-Crookston, J.; Fisman, D.; Hegarty, O.; Dancer, S. J.; Bluyssen, P.
+M.; Buonanno, G.; Loomans, M. G. L. C.; Bahnfleth, W. P.; Yao, M.; Sekhar, C.; Wargocki, P.;
+Melikov, A. K.; Prather, K. A. What Were the Historical Reasons for the Resistance to Recognizing
+Airborne Transmission during the COVID-19 Pandemic? Indoor Air 2022, 32 (8), e13070.
+(5) Greenhalgh, T.; Jimenez, J. L.; Prather, K. A.; Tufekci, Z.; Fisman, D.; Schooley, R. Ten Scientific
+Reasons in Support of Airborne Transmission of SARS-CoV-2. Lancet 2021.
+https://doi.org/10.1016/S0140-6736(21)00869-2.
+(6) Morawska, L.; Allen, J.; Bahnfleth, W.; Bluyssen, P. M.; Boerstra, A.; Buonanno, G.; Cao, J.; Dancer,
+S. J.; Floto, A.; Franchimon, F.; Greenhalgh, T.; Haworth, C.; Hogeling, J.; Isaxon, C.; Jimenez, J. L.;
+Kurnitski, J.; Li, Y.; Loomans, M.; Marks, G.; Marr, L. C.; Mazzarella, L.; Melikov, A. K.; Miller, S.;
+Milton, D. K.; Nazaroff, W.; Nielsen, P. V.; Noakes, C.; Peccia, J.; Prather, K.; Querol, X.; Sekhar, C.;
+Seppänen, O.; Tanabe, S.-I.; Tang, J. W.; Tellier, R.; Tham, K. W.; Wargocki, P.; Wierzbicka, A.;
+Yao, M. A Paradigm Shift to Combat Indoor Respiratory Infection. Science 2021, 372 (6543), 689–
+691.
+(7) Morawska, L.; Tang, J. W.; Bahnfleth, W.; Bluyssen, P. M.; Boerstra, A.; Buonanno, G.; Cao, J.;
+Dancer, S.; Floto, A.; Franchimon, F.; Haworth, C.; Hogeling, J.; Isaxon, C.; Jimenez, J. L.; Kurnitski,
+J.; Li, Y.; Loomans, M.; Marks, G.; Marr, L. C.; Mazzarella, L.; Melikov, A. K.; Miller, S.; Milton, D. K.;
+Nazaroff, W.; Nielsen, P. V.; Noakes, C.; Peccia, J.; Querol, X.; Sekhar, C.; Seppänen, O.; Tanabe,
+S.-I.; Tellier, R.; Tham, K. W.; Wargocki, P.; Wierzbicka, A.; Yao, M. How Can Airborne Transmission
+of COVID-19 Indoors Be Minimised? Environ. Int. 2020, 142, 105832.
+(8) Blatchley, E. R., III; Brenner, D. J.; Claus, H.; Cowan, T. E.; Linden, K. G.; Liu, Y.; Mao, T.; Park, S.J.; Piper, P. J.; Simons, R. M.; Sliney, D. H. Far UV-C Radiation: An Emerging Tool for Pandemic
+Control. Crit. Rev. Environ. Sci. Technol. 2023, 53 (6), 733–753.
+(9) Riley, R. L.; Nardell, E. A. Clearing the Air: The Theory and Application of Ultraviolet Air Disinfection.
+Am. Rev. Respir. Dis. 1989, 140 (6), 1832–1832.
+(10) Zaffina, S.; Camisa, V.; Lembo, M.; Vinci, M. R.; Tucci, M. G.; Borra, M.; Napolitano, A.; Cannatà, V.
+Accidental Exposure to UV Radiation Produced by Germicidal Lamp: Case Report and Risk
+Assessment. Photochem. Photobiol. 2012, 88 (4), 1001–1004.
+(11) American Conference of Governmental Industrial Hygienists, 2024. Threshold Limit Values and
+Biological Exposure Indices.
+(12) Ma, B.; Gundy, P. M.; Gerba, C. P.; Sobsey, M. D.; Linden, K. G. UV Inactivation of SARS-CoV-2
+across the UVC Spectrum: KrCl* Excimer, Mercury-Vapor, and Light-Emitting-Diode (LED) Sources.
+Appl. Environ. Microbiol. 2021, 87 (22), e0153221.
+(13) Ma, B.; Bright, K.; Ikner, L.; Ley, C.; Seyedi, S.; Gerba, C. P.; Sobsey, M. D.; Piper, P.; Linden, K. G.
+UV Inactivation of Common Pathogens and Surrogates Under 222 Nm Irradiation from KrCl* Excimer
+Lamps. Photochem. Photobiol. 2023, 99 (3), 975–982.
+(14) Ma, B.; Linden, Y. S.; Gundy, P. M.; Gerba, C. P.; Sobsey, M. D.; Linden, K. G. Inactivation of
+Coronaviruses and Phage Phi6 from Irradiation across UVC Wavelengths. Environmental Science &
+Technology Letters 2021. https://doi.org/10.1021/acs.estlett.1c00178.
+(15) Robinson, R. T.; Mahfooz, N.; Rosas-Mejia, O.; Liu, Y.; Hull, N. M. UV222 Disinfection of SARS-CoV2 in Solution. Sci. Rep. 2022, 12 (1), 14545.
+(16) Welch, D.; Buonanno, M.; Buchan, A. G.; Yang, L.; Atkinson, K. D.; Shuryak, I.; Brenner, D. J.
+Inactivation Rates for Airborne Human Coronavirus by Low Doses of 222 Nm Far-UVC Radiation.
+Viruses 2022, 14 (4). https://doi.org/10.3390/v14040684.
+(17) Buchan, A. G.; Yang, L.; Welch, D.; Brenner, D. J.; Atkinson, K. D. Improved Estimates of 222 Nm
+Far-UVC Susceptibility for Aerosolized Human Coronavirus via a Validated High-Fidelity Coupled
+Radiation-CFD Code. Sci. Rep. 2021, 11 (1), 19930.
+(18) Buonanno, M.; Welch, D.; Shuryak, I.; Brenner, D. J. Far-UVC Light (222 Nm) Efficiently and Safely
+Inactivates Airborne Human Coronaviruses. Sci. Rep. 2020, 10 (1), 10285.
+(19) Schuit, M. A.; Larason, T. C.; Krause, M. L.; Green, B. M.; Holland, B. P.; Wood, S. P.; Grantham, S.;
+Zong, Y.; Zarobila, C. J.; Freeburger, D. L.; Miller, D. M.; Bohannon, J. K.; Ratnesar-Shumate, S. A.;
+Blatchley, E. R.; Li, X.; Dabisch, P. A.; Miller, C. C. SARS-CoV-2 Inactivation by Ultraviolet Radiation
+and Visible Light Is Dependent on Wavelength and Sample Matrix. J. Photochem. Photobiol. B 2022,
+233 (January), 112503.
+(20) Fujimoto, N.; Nagaoka, K.; Tatsuno, I.; Oishi, H.; Tomita, M.; Hasegawa, T.; Tanaka, Y.; Matsumoto,
+T. Wavelength Dependence of Ultraviolet Light Inactivation for SARS-CoV-2 Omicron Variants. Sci.
+
+16
+https://doi.org/10.26434/chemrxiv-2025-0zx0w ORCID: https://orcid.org/0000-0002-6823-452X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+695
+696
+697
+698
+699
+700
+701
+702
+703
+704
+705
+706
+707
+708
+709
+710
+711
+712
+713
+714
+715
+716
+717
+718
+719
+720
+721
+722
+723
+724
+725
+726
+727
+728
+729
+730
+731
+732
+733
+734
+735
+736
+737
+738
+739
+740
+741
+742
+743
+744
+745
+746
+747
+748
+749
+750
+
+Rep. 2023, 13 (1), 9706.
+(21) Link, M. F.; Shore, A.; Hamadani, B. H.; Poppendieck, D. Ozone Generation from a Germicidal
+Ultraviolet Lamp with Peak Emission at 222 Nm. Environmental Science & Technology Letters 2023.
+https://doi.org/10.1021/acs.estlett.3c00318.
+(22) Peng, Z.; Day, D. A.; Symonds, G. A.; Jenks, O. J.; Stark, H.; Handschy, A. V.; de Gouw, J. A.;
+Jimenez, J. L. Significant Production of Ozone from Germicidal UV Lights at 222 Nm. Environmental
+Science & Technology Letters 2023, 10 (8), 668–674.
+(23) Peng, Z.; Miller, S. L.; Jimenez, J. L. Model Evaluation of Secondary Chemistry due to Disinfection of
+Indoor Air with Germicidal Ultraviolet Lamps. Environmental Science & Technology Letters 2023, 10
+(1), 6–13.
+(24) Barber, V. P.; Goss, M. B.; Franco Deloya, L. J.; LeMar, L. N.; Li, Y.; Helstrom, E.; Canagaratna, M.;
+Keutsch, F. N.; Kroll, J. H. Indoor Air Quality Implications of Germicidal 222 Nm Light. Environ. Sci.
+Technol. 2023. https://doi.org/10.1021/acs.est.3c05680.
+(25) Graeffe, F.; Luo, Y.; Guo, Y.; Ehn, M. Unwanted Indoor Air Quality Effects from Using Ultraviolet C
+Lamps for Disinfection. Environ. Sci. Technol. Lett. 2023, 10 (2), 172–178.
+(26) Liang, Z.; Zhou, L.; Chen, K.; Lin, Y.-H.; Lai, A. C. K.; Lee, P. K. H.; Sit, P. H. L.; Yin, R.; Chan, C. K.
+Formation of Secondary Aerosol by 222 Nm Far-UVC Irradiation on SO2. Atmos. Environ. 2024, 330
+(120559), 120559.
+(27) Burkholder, J. B.; Sander, S. P.; Abbatt, J. P. D.; Barker, J. R.; Cappa, C.; Crounse, J. D.; Dibble, T.
+S.; Huie, R. E.; Kolb, C. E.; Kurylo, M. J.; Others. Chemical Kinetics and Photochemical Data for Use
+in Atmospheric Studies; Evaluation Number 19; Pasadena, CA: Jet Propulsion Laboratory, National
+Aeronautics and Space …, 2020. https://trs.jpl.nasa.gov/handle/2014/49199.
+(28) Jenks, O. J.; Peng, Z.; Schueneman, M. K.; Rutherford, M.; Handschy, A. V.; Day, D. A.; Jimenez, J.
+L.; de Gouw, J. A. Effects of 222 Nm Germicidal Ultraviolet Light on Aerosol and VOC Formation
+from Limonene. ACS EST Air 2024, 1 (7), 725–733.
+(29) Peng, Z.; Jimenez, J. L. Radical Chemistry in Oxidation Flow Reactors for Atmospheric Chemistry
+Research. Chem. Soc. Rev. 2020, 49 (9), 2570–2616.
+(30) Dewald, P.; Lelieveld, J.; Crowley, J. NO3 Reactivity Measurements in an Indoor Environment: A Pilot
+Study. Environ. Sci. Atmos. 2023, 3 (12), 1778–1790.
+(31) Schraufnagel, D. E. The Health Effects of Ultrafine Particles. Exp. Mol. Med. 2020, 52 (3), 311–317.
+(32) Turner, M. C.; Jerrett, M.; Pope, C. A.; Krewski, D.; Gapstur, S. M.; Diver, W. R.; Beckerman, B. S.;
+Marshall, J. D.; Su, J.; Crouse, D. L.; Burnett, R. T. Long-Term Ozone Exposure and Mortality in a
+Large Prospective Study. Am. J. Respir. Crit. Care Med. 2016, 193 (10), 1134–1142.
+(33) Weichenthal, S.; Pinault, L.; Christidis, T.; Burnett, R. T.; Brook, J. R.; Chu, Y.; Crouse, D. L.;
+Erickson, A. C.; Hystad, P.; Li, C.; Martin, R. V.; Meng, J.; Pappin, A. J.; Tjepkema, M.; van
+Donkelaar, A.; Weagle, C. L.; Brauer, M. How Low Can You Go? Air Pollution Affects Mortality at
+Very Low Levels. Science Advances 2022, 8 (39), abo3381.
+(34) Kim, K.-H.; Jahan, S. A.; Lee, J.-T. Exposure to Formaldehyde and Its Potential Human Health
+Hazards. J. Environ. Sci. Health C Environ. Carcinog. Ecotoxicol. Rev. 2011, 29 (4), 277–299.
+(35) Keller-Rudek, H.; Moortgat, G. K.; Sander, R.; Sörensen, R. The MPI-Mainz UV/VIS Spectral Atlas of
+Gaseous Molecules of Atmospheric Interest. Earth Syst. Sci. Data 2013, 5 (2), 365–373.
+(36) Stockwell, W. R.; Kirchner, F.; Kuhn, M.; Seefeld, S. A New Mechanism for Regional Atmospheric
+Chemistry Modeling. J. Geophys. Res. 1997, 102 (D22), 25847–25879.
+(37) Peng, Z.; Jimenez, J. L. KinSim: A Research-Grade, User-Friendly, Visual Kinetics Simulator for
+Chemical-Kinetics and Environmental-Chemistry Teaching. J. Chem. Educ. 2019, 96 (4), 806–811.
+(38) Logue, J. M.; McKone, T. E.; Sherman, M. H.; Singer, B. C. Hazard Assessment of Chemical Air
+Contaminants Measured in Residences. Indoor Air 2011, 21 (2), 92–109.
+(39) Nazaroff, W. W. Residential Air‐change Rates: A Critical Review. Indoor Air 2021, 31 (2), 282–313.
+(40) Krechmer, J. E.; Day, D. A.; Jimenez, J. L. Always Lost but Never Forgotten: Gas-Phase Wall Losses
+Are Important in All Teflon Environmental Chambers. Environ. Sci. Technol. 2020, 54 (20), 12890–
+12897.
+(41) K. Lai, A. C.; Nazaroff, W. W. MODELING INDOOR PARTICLE DEPOSITION FROM TURBULENT
+FLOW ONTO SMOOTH SURFACES. J. Aerosol Sci. 2000, 31 (4), 463–476.
+(42) Algrim, L. B.; Pagonis, D.; de Gouw, J. A.; Jimenez, J. L.; Ziemann, P. J. Measurements and
+Modeling of Absorptive Partitioning of Volatile Organic Compounds to Painted Surfaces. Indoor Air
+2020. https://doi.org/10.1111/ina.12654.
+
+17
+https://doi.org/10.26434/chemrxiv-2025-0zx0w ORCID: https://orcid.org/0000-0002-6823-452X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+751
+752
+753
+754
+755
+756
+757
+758
+759
+760
+761
+762
+763
+764
+765
+766
+767
+768
+769
+770
+771
+772
+773
+774
+775
+776
+777
+778
+779
+780
+781
+782
+783
+784
+785
+786
+787
+788
+789
+790
+791
+792
+793
+794
+795
+796
+797
+798
+799
+800
+801
+802
+803
+804
+805
+806
+
+(43) Donahue, N. M.; Robinson, A. L.; Stanier, C. O.; Pandis, S. N. Coupled Partitioning, Dilution, and
+Chemical Aging of Semivolatile Organics. Environ. Sci. Technol. 2006, 40 (8), 2635–2643.
+(44) Persily, A.; de Jonge, L. Carbon Dioxide Generation Rates for Building Occupants. Indoor Air 2017,
+27 (5), 868–879.
+(45) Li, M.; Weschler, C. J.; Beko, G.; Wargocki, P.; Lucic, G.; Williams, J. Human Ammonia Emission
+Rates under Various Indoor Environmental Conditions. Environ. Sci. Technol. 2020.
+https://doi.org/10.1021/acs.est.0c00094.
+(46) Wang, N.; Zannoni, N.; Ernle, L.; Bekö, G.; Wargocki, P.; Li, M.; Weschler, C. J.; Williams, J. Total
+OH Reactivity of Emissions from Humans: In Situ Measurement and Budget Analysis. Environ. Sci.
+Technol. 2020. https://doi.org/10.1021/acs.est.0c04206.
+(47) Zannoni, N.; Li, M.; Wang, N.; Ernle, L.; Bekö, G.; Wargocki, P.; Langer, S.; Weschler, C. J.;
+Morrison, G.; Williams, J. Effect of Ozone, Clothing, Temperature, and Humidity on the Total OH
+Reactivity Emitted from Humans. Environ. Sci. Technol. 2021.
+https://doi.org/10.1021/acs.est.1c01831.
+(48) Wang, N.; Ernle, L.; Bekö, G.; Wargocki, P.; Williams, J. Emission Rates of Volatile Organic
+Compounds from Humans. Environ. Sci. Technol. 2022, 56 (8), 4838–4848.
+(49) Salvador, C. M.; Bekö, G.; Weschler, C. J.; Morrison, G.; Le Breton, M.; Hallquist, M.; Ekberg, L.;
+Langer, S. Indoor Ozone/human Chemistry and Ventilation Strategies. Indoor Air 2019, 29 (6), 913–
+925.
+(50) Qu, Y.; Zou, Z.; Weschler, C. J.; Liu, Y.; Yang, X. Quantifying Ozone-Dependent Emissions of
+Volatile Organic Compounds from the Human Body. Environ. Sci. Technol. 2023.
+https://doi.org/10.1021/acs.est.3c02340.
+(51) Peng, Z.; Lee-Taylor, J.; Stark, H.; Orlando, J. J.; Aumont, B.; Jimenez, J. L. Evolution of OH
+Reactivity in NO-Free Volatile Organic Compound Photooxidation Investigated by the Fully Explicit
+GECKO-A Model. Atmos. Chem. Phys. 2021, 21 (19), 14649–14669.
+(52) Lu, Y. H.; Wang, R. X.; Liu, H. L.; Lai, A. C. K. Evaluating the Performance of UV Disinfection across
+the 222-365 Nm Spectrum against Aerosolized Bacteria and Viruses. Environ. Sci. Technol. 2024.
+https://doi.org/10.1021/acs.est.3c08675.
+(53) Xiang, J.; Weschler, C. J.; Zhang, J.; Zhang, L.; Sun, Z.; Duan, X.; Zhang, Y. Ozone in Urban China:
+Impact on Mortalities and Approaches for Establishing Indoor Guideline Concentrations. Indoor Air
+2019, 29 (4), ina.12565.
+(54) Klepeis, N. E.; Nelson, W. C.; Ott, W. R.; Robinson, J. P.; Tsang, A. M.; Switzer, P.; Behar, J. V.;
+Hern, S. C.; Engelmann, W. H. The National Human Activity Pattern Survey (NHAPS): A Resource
+for Assessing Exposure to Environmental Pollutants. J. Expo. Anal. Environ. Epidemiol. 2001, 11 (3),
+231–252.
+(55) EPA. Chapter 6—Inhalation Rates. In Exposure Factors Handbook; U.S. Environmental Protection
+Agency, 2011.
+(56) Chen, C.; Zhao, B. Review of Relationship between Indoor and Outdoor Particles: I/O Ratio,
+Infiltration Factor and Penetration Factor. Atmos. Environ. (1994) 2011, 45 (2), 275–288.
+(57) Nazaroff, W. W.; Weschler, C. J. Indoor Ozone: Concentrations and Influencing Factors. Indoor Air
+2022, 32 (1), e12942.
+(58) ASHRAE 62.1-2022. https://www.techstreet.com/ashrae/standards/ashrae-62-12022?product_id=2501063 (accessed 2025-01-13).
+(59) Furlow, B. US CDC Announces Indoor Air Guidance for COVID-19 after 3 Years. Lancet Respir Med
+2023, 11 (7), 587.
+(60) Whalen, J. J. Environmental Control for Tuberculosis; Basic Upper-Room Ultraviolet Germicidal
+Irradiation Guidelines for Healthcare Settings Guide; National Institute for Occupational Safety and
+Health, Division of Applied Research and Technology, 2009. https://stacks.cdc.gov/view/cdc/5306.
+(61) Who. Roadmap to Improve and Ensure Good Indoor Ventilation in the Context of COVID-19; 2021; p
+38.
+(62) Weschler, C. J.; Nazaroff, W. W. Ozone Loss: A Surrogate for the Indoor Concentration of OzoneDerived Products. Environ. Sci. Technol. 2023, 57 (36), 13569–13578.
+(63) He, L.; Hao, Z.; Weschler, C. J.; Li, F.; Zhang, Y.; Zhang, J. J. Indoor Ozone Reaction Products:
+Contributors to the Respiratory Health Effects Associated with Low-Level Outdoor Ozone. Atmos.
+Environ. (1994) 2025, 340 (120920), 120920.
+(64) Kowalski, W. Ultraviolet Germicidal Irradiation Handbook; Springer Berlin Heidelberg: Berlin,
+
+18
+https://doi.org/10.26434/chemrxiv-2025-0zx0w ORCID: https://orcid.org/0000-0002-6823-452X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+807
+808
+809
+810
+811
+812
+813
+814
+815
+816
+817
+818
+819
+820
+821
+822
+823
+824
+
+Heidelberg, 2009; pp 1–23.
+(65) Ruetalo, N.; Berger, S.; Niessner, J.; Schindler, M. Inactivation of Aerosolized SARS-CoV-2 by 254
+Nm UV-C Irradiation. Indoor Air 2022, 32 (9), e13115.
+(66) Lu, Y. H.; Shi, X. R.; Li, W. S.; Lai, A. C. K. Wavelength-Specific Inactivation Mechanisms and
+Efficacies of Germicidal UVC for Airborne Human Coronavirus. J. Hazard. Mater. 2024, 484, 136666.
+(67) Hill, S. C.; Doughty, D. C.; Mackowski, D. W.; Rastogi, V.; Eversole, J. D.; McGrady, D.; Handler, F.;
+Kesavan, J. Enhanced Survival Fractions of UV-Irradiated Spores in Clusters on a Surface in Air:
+Measured and Mathematically Modeled Results at 254-Nm. Aerosol Sci. Technol. 2023, 1–21.
+(68) Johnston, H. S.; Paige, M.; Yao, F. Oxygen Absorption Cross Sections in the Herzberg Continuum
+and between 206 and 327 K. J. Geophys. Res. 1984, 89 (D7), 11661–11665.
+(69) Kaufman, F. Air Afterglow and Kinetics of Some Reactions of Atomic Oxygen. J. Chem. Phys. 1958,
+28 (2), 352–353.
+(70) CDC. COVID data tracker. Centers for Disease Control and Prevention. https://covid.cdc.gov/coviddata-tracker/ (accessed 2024-02-18).
+(71) US Census Bureau. Births Now Outpacing Deaths in over Half the States. 2023.
+(72) Villeneuve, P. J.; Jerrett, M.; Su, J.; Burnett, R. T.; Chen, H.; Brook, J.; Wheeler, A. J.; Cakmak, S.;
+Goldberg, M. S. A Cohort Study of Intra-Urban Variations in Volatile Organic Compounds and
+Mortality, Toronto, Canada. Environ. Pollut. 2013, 183, 30–39.
+
+19
+https://doi.org/10.26434/chemrxiv-2025-0zx0w ORCID: https://orcid.org/0000-0002-6823-452X Content not peer-reviewed by ChemRxiv. License: CC BY-NC-ND 4.0
+
+

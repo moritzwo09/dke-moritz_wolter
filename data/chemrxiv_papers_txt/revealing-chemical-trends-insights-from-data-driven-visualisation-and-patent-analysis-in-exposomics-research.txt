@@ -1,0 +1,978 @@
+1
+2
+3
+
+Revealing Chemical Trends: Insights from
+Data-Driven Visualisation and Patent
+Analysis in Exposomics Research
+
+4
+
+Dagny Aurich*1, Emma L. Schymanski*1, Flavio de Jesus Matias1,2, Paul A. Thiessen3, Jun Pang2
+
+5
+6
+7
+8
+9
+10
+11
+12
+13
+
+1 Luxembourg Centre for Systems Biomedicine (LCSB), University of Luxembourg, 6 Avenue du
+
+14
+
+Abstract
+
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+
+Understanding historical chemical usage is crucial for assessing current and past impacts on
+human health and the environment and informing future regulatory decisions. However, past
+monitoring data is often limited in scope and number of chemicals, while suitable sample
+types are not always available for remeasurement. Data-driven cheminformatics methods on
+patent and literature data oﬀer several opportunities to ﬁll this gap. The chemical stripes were
+developed as an interactive, open source tool for visualising patent and literature trends over
+time, inspired by the global warming and biodiversity stripes. This paper details the underlying
+code and datasets behind the visualisation, with a major focus on the patent data sourced
+from PubChem, including patent origins, uses, and countries. Overall trends and specific
+examples are investigated in greater detail to explore both the promise and caveats that such
+data offers in assessing the trends and patterns of chemical patents over time and across
+different geographic regions. Despite a number of potential artefacts associated with patent
+data extraction, the integration of cheminformatics, statistical analysis, and data visualisation
+tools can help generate valuable insights that can both illuminate the chemical past and
+potentially serve towards an early warning system for the future.
+
+30
+31
+
+Keywords: Chemical Stripes, PubChem, Cheminformatics, Data Visualisation, Exposomics,
+Early Warning System, Patent Analysis
+
+Swing, Belvaux L-4367, Luxembourg.
+2 Faculty of Science, Technology and Medicine (FSTM), University of Luxembourg, 6 Avenue de
+la Fonte, L-4364 Esch-sur-Alzette, Luxembourg.
+3National Center for Biotechnology Information, National Library of Medicine, National
+Institutes of Health, Bethesda, MD 20894, USA.
+ORCIDs: DA: 0000-0001-8823-0596; ELS: 0000-0001-6868-8145; FdJM: 0009-0008-85857690; PAT: 0000-0002-1992-2086; JP: 0000-0002-4521-4112.
+*Corresponding & co-ﬁrst authors: dagny.aurich@uni.lu, emma.schymanski@uni.lu
+
+32
+33
+34
+
+Synopsis: Patent data trends provide insights into chemical use, highlighting past, present and
+future threats to environmental ecosystems and human health.
+
+35
+36
+
+https://doi.org/10.26434/chemrxiv-2024-6jkxv-v2 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+37
+
+TOC Graphic:
+
+38
+
+39
+40
+41
+
+Introduction
+
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+
+While studying historical and current chemical exposures can provide insights into their
+health and environmental impacts, the re-creation of historical exposures to investigate past,
+present or future health effects using analytical data is severely limited by several factors.
+These include the past focus on only a few dozen target chemicals (primarily legacy
+pollutants), in many cases a lack of suitable historical samples for remeasurement with
+modern analytical methods, as well as the sheer immensity of chemical space under
+consideration. Patent data, accessible through platforms like the World Intellectual Property
+Organization (WIPO) and linked to chemical structures in open databases such as PubChem1,
+offers an alternative data-mining approach for examining past and potential chemical
+exposures, even though a mention in a patent does not always equate the use of a chemical.
+
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+
+PubChem is an open database of chemical structures, properties and associated information,
+providing tools for searching and analysing chemical information1. Approximately 40 million
+of the 118 million compounds in PubChem (June 2024) are linked to ~51 million patent files2.
+This Google Patents dataset covers 120 million patent publications from >100 patent offices
+including the European (EPO), Japanese (JPO), Korean (KIPO) and US patent offices (USPTO)
+plus WIPO. Each patent record provides details on the chemicals referenced in that patent,
+along with patent title, abstract, application and publication dates, applicant, inventor, and
+patent classification, but without context about why particular chemicals are mentioned.
+Individual PubChem compound pages contain information about each patent linked to that
+compound (chemical) in the Patent subsection. A single invention may be described across
+multiple patent documents (e.g., patent applications, grants, and re-examination certificates)
+identified with a unique patent identifier suffixed with a code (e.g., A1, A2, B1, B2). The same
+patent may also be filed in multiple national agencies, which can be grouped together into
+patent families.
+
+66
+67
+68
+69
+70
+
+Patent data has been used to prioritize compounds in non-target environmental studies in a
+complementary manner to literature counts, aiding in the identification of potential
+contaminants with known commercial uses3. A recent viewpoint highlighted a concerning
+upward trend in chemical numbers across databases over time frames much shorter than the
+typical time for regulatory actions4. The chemical stripes visualisation included in that
+
+https://doi.org/10.26434/chemrxiv-2024-6jkxv-v2 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+
+viewpoint4 sparked extensive debate, drawing significant attention, feedback and questions
+from various audiences. The subsequent sonification5 and accompanying video6 by J. Perera
+further intensified the discussion, leaving viewers in a state of shock or deep contemplation.
+Combining international legislation, patent filing dates and region information could
+potentially reveal various trends in patent numbers, as well as the effectiveness of regulatory
+measures and the necessity for timely interventions. However, beyond the general upward
+trend in chemical and patent numbers, deviating patterns in the stripes visualisation were
+observed for various chemicals, while several potential artefacts and limitations became
+apparent. This feedback motivated this article, which presents the data, code and methods
+behind the chemical stripes visualisation and corresponding chemicalStripes R package7 and
+performs a more detailed analysis of the patent data in PubChem for this particular context,
+closing with a discussion on the potential and limitations of this data.
+
+83
+
+Methods and Materials
+
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+
+Chemical Stripes Visualisation
+The open source chemicalStripes7 R package is available on GitLab and was developed to
+create the chemical stripes figure for one or more specific chemicals by PubChem Compound
+IDs (CIDs). The default is a single CID (Figure 1A), while multiple chemical forms (e.g. salts,
+stereoisomers) can be handled by inputting multiple CIDs to form summarized stripes (Figure
+1B). CIDs can be obtained easily from multiple starting queries using PubChem search
+functionality8. In addition to the input CID(s), users can specify a date range (default 19602023), mode (patent or literature) and opt for a colourblind friendly version. The patent data
+is retrieved from the “Depositor Supplied Patent Identifiers” section9 of the respective CIDs,
+while the literature data is retrieved from the “Consolidated References” section10. The
+default colour range is green through yellow to red (Figure 1A, C, D), reproducing a trafficlight scheme distinctive from both the warming11 and biodiversity stripes12 already produced,
+whereas the colourblind friendly version is blue to red (Figure 1B), very similar to the warming
+stripes (and hence not the preferred default). The chemical stripes function begins by
+checking package dependencies and loading necessary libraries. It then retrieves compound
+information, including the compound name, molecular formula, and number of patents ﬁled.
+If patent data is available, this is then downloaded and processed, generating the stripe plot
+using the ggplot2 package13, both displaying and saving the output as PNG, see examples in
+Figure 1. For further details see the chemicalStripes repository7.
+
+https://doi.org/10.26434/chemrxiv-2024-6jkxv-v2 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+103
+104
+105
+106
+
+Figure 1: Several examples of Chemical Stripes from 1960-2020; structures generated in CDK Depict14 are overlaid. A: Patent
+stripes for caﬀeine, showing the typical pattern. B: Summarized patent stripes for 4 species related to tetraﬂuoroborate in
+“colour-blind friendly” mode. C: Patent stripes and D: Literature stripes for gallopamil, with atypical patterns.
+
+Statistical Analysis
+
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+
+Since a general trend was obvious (Figure 1A, B) with clear outliers (C), the patent dataset was
+analysed in more detail (the literature dataset is much smaller and currently less suitable for
+these more detailed investigations). Time series clustering was performed to systematically
+identify outliers, inspired by examples such as the abrupt decrease in patents for gallopamil
+(Figure 1C). Region-based analysis was performed by inventor region to identify chemicals
+exclusive to certain regions, or regions with similar patenting activities, while specific trends
+related to chemical classes such as pharmaceuticals, pesticides or persistent compounds like
+per-and polyfluorinated substances (PFAS) were also explored. Additionally, network analysis
+was employed to uncover relationships and connectivity patterns among chemicals in the
+patent dataset. Speciﬁcally, several centrality measures were utilized to assess the
+importance or inﬂuence of chemicals within the constructed network, despite their
+dependency on speciﬁc context and sensitivity to small changes in network structure. Further
+details are available as open source code in the ULPatentTrends15 repository.
+
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+
+Since the patent dataset in PubChem is huge (>4 TB of data), subsets were used to perform
+these analyses. Distinct topics of interest to the environmental community were chosen to
+explore further, including legacy pollutants (polychlorinated biphenyls - PCBs), agrochemicals
+(generally data-rich chemicals) and emerging pollutants of concern (bisphenols and their
+alternatives, plus PFAS). Curated lists of chemicals (often called “suspect lists”) were extracted
+from online resources, including the NORMAN Suspect List Exchange (NORMAN-SLE)16–18,
+CompTox19–21, the PubChem PFAS Tree22,23 and the PubChem Compound Table of Contents
+(TOC) Tree2 in the PubChem Classification Browser. The agrochemical lists included the
+“Agrochemical Information”, “EU Pesticides Data” and “USDA Pesticides Program” sections
+from the PubChem TOC Tree2 and the S28 EUBIOCIDES24 list from the NORMAN-SLE. The
+bisphenol lists included S20 BISPHENOLS25 and the alternatives list S97 UBABPAALT26 from
+the NORMAN-SLE, while a polychlorinated biphenyls (PCBs) list was extracted from
+CompTox27. For PFAS these included the PFAS considered in the PARC project28,29 (S102
+PARCPFAS30) and potential persistent, mobile, toxic (PMT) PFAS (S111 PMTPFAS31) from the
+
+https://doi.org/10.26434/chemrxiv-2024-6jkxv-v2 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+135
+136
+137
+138
+
+NORMAN-SLE plus four Stockholm Convention lists from the regulatory section of the
+PubChem PFAS Tree: the initial and updated perfluorooctanoic acid (PFOA) listing32, the initial
+perfluorohexane sulfonic acid (PFHxS) list33 and the proposed C9-C21 long chain
+perfluoroalkylcarboxylic acids (LC-PFCAs) listing34–36.
+
+139
+
+Results and Discussion
+
+140
+141
+142
+143
+144
+145
+146
+147
+148
+
+Overall and Regional Trends by Chemical Lists
+Information was available for 103 separate regions, with most data generally available for the
+US, Europe, Japan, China, Korea and WIPO; the ﬁrst 5 were chosen for a more detailed
+regional analysis. One example plot showing the top 20 of the 103 regions is shown in Figure
+S1; additional plots are included in the ULPatentTrends repository15. The overall trends in
+patent numbers over the diﬀerent lists broken down by the ﬁve largest regions (with all
+others, including world, in the “other” category) reveal varying trends, with six of the thirteen
+examples shown in Figure 2 and explained below. More examples are given in the Supporting
+Information (SI) Figures S2-S6, including some breakdowns per CID, and in ULPatentTrends15.
+
+149
+150
+151
+152
+153
+154
+
+Figure 2: Patent counts for topic-based subsets of chemicals, with regional information. (A) The PubChem Table of Contents
+(TOC) Agrochemicals category. (B) The NORMAN-SLE S28 EUBIODICES list. (C) The NORMAN-SLE S20 BISPHENOLS list. (D)
+The CompTox Polychlorinated biphenyls (PCBs) list. (E) and (F) The initial and updated perﬂuorooctanoic acid (PFOA) listing
+in the Stockholm Convention. Purple=US, Red=Korea, Green=Japan, Orange=EU, Blue=China and Grey=Other regions. The
+reasons for the steep decrease in recent years are discussed in the ﬁnal section of this manuscript.
+
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+
+The overall trends in the entire Agrochemicals category (Figure 2A) and the two EU and US
+subsets (SI Figure S2B&C) were quite similar, although the increase in patents from China was
+less pronounced for the US compared with the EU and overall agrochemical list. A slightly
+diﬀerent pattern was observed for EUBIOCIDES (Figure 2B). Figure S3, a breakdown by
+compound, shows that this is driven primarily by benzoic acid, propanol and isopropanol.
+Further breakdowns per CID are included in ULPatentTrends15. The pattern for S20
+BISPHENOLS (Figure 2C) and the alternatives list, S97 UBABPAALT, were almost identical,
+dominated by Bisphenol A (see Figure S4). The plot for CompTox PCBs (Figure 2D) reveals a
+markedly diﬀerent pattern with a peak around 2001, potentially due to the impact of the
+Stockholm Convention signed in 2001 (eﬀective 2004) – details by CID are given in Figure S5.
+This baseline is mainly 2-chlorobiphenyl, with 3,3',4,4',5-pentachlorobiphenyl and 3,3',4,4'-
+
+https://doi.org/10.26434/chemrxiv-2024-6jkxv-v2 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+166
+167
+168
+169
+170
+
+tetrachlorobiphenyl forming the peak around 2000 (see Figure S5). The diﬀerence in patent
+trends for the initial versus updated PFOA listings in the Stockholm Convention (Figure 2E vs.
+F), particularly in the last years (2009-2022), underscore the critical importance of updating
+regulatory lists, especially in light of the increasing proportion of Chinese patents. Regional
+plots for all six PFAS lists are included in Figure S6.
+
+171
+172
+173
+174
+175
+176
+177
+178
+
+Discovering Important Chemicals in Lists via Centrality Analysis
+Networks were constructed for CIDs from the chemical lists. Each (weighted) individual
+network consisted of the CIDs from a speciﬁc list as nodes. An edge connecting a pair of CIDs
+was established if both CIDs were mentioned by one patent. Each edge was further weighted
+by the number of co-appearances of the two CIDs in patents. These individual networks
+resulted in plots (see Figures S7-8 and ULPatentTrends15 for examples) that were quite
+diﬃcult to interpret. More detailed network analysis, shown in Figure 3 (including the US in
+Figures S9) helped isolate chemicals of particular interest to certain regions.
+
+179
+180
+181
+182
+
+Figure 3: Network analysis on S111 PMTPFAS to ﬁnd key structures of interest (top 25 nodes). (A) Degree centrality of nodes
+for China. (B) Degree centrality of nodes for Europe. (C) PageRank centrality of nodes for China. (D) PageRank centrality of
+nodes for Europe. (E) Key structures, the top four from (A)-(D), marked on each plot with respective symbols next to the CID.
+
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+
+Figure 3 shows a patent network analysis of the S111 PMTPFAS list, with nodes represented
+by their degree centrality for China (A) and Europe (B), and their PageRank centrality for China
+(C) and Europe (D), each featuring the top 25 nodes. This analysis highlights diﬀerences in
+regional patent activity related to key PFAS compounds. In plots A, B, and C, the top candidate
+is tetraﬂuoroborate (CID 26255, see Figure 3E, top left, “+” symbol), which is used for
+electroplating and as an electrolyte additive for batteries. In the EU PageRank Centrality plot,
+it ranks only 5th, indicating a relatively lower number of patent applications involving this
+compound or within this sector compared to other regions or compounds. In plot D, the top
+compound is triﬂuoroacetic anhydride (TFAA, CID 9845, “*” in Figure 3E), which is second
+highest in A and B, third in C. TFAA serves as a recommended desiccant for triﬂuoroacetic acid
+
+https://doi.org/10.26434/chemrxiv-2024-6jkxv-v2 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+
+(CID 6422, “^”), which is fourth in A and second in C, but is less prominent in Europe (B) and
+absent in D. Triﬂuoroethanol (CID 6409, “°”), a solvent used in organic chemistry, ranks third
+in A and B, second in D, and seventh in C. Fluometuron (CID 16562, sideways “§”), a herbicide,
+is second in D, tenth in C, and lower in both A and B. Lactofen (CID 62276, “-“), another
+herbicide, appears consistently across A, C and D, but is missing in B. PFOA (CID 9554, “X”), a
+well-known PFAS compound restricted by the Stockholm Convention since 2019, is present in
+all four plots, highest in Figure 3C (4th place). The diﬀerences between the plots underscore
+how regulatory environments, industrial needs, and research priorities shape the patenting
+activities related to PFAS compounds in the EU and China (and US - see Figure S9). The
+presence of compounds like PFOA in both regions highlights ongoing attention to regulated
+substances, but the speciﬁc applications and frequency of patent ﬁlings reveal divergent
+technological focuses and market demands between the two regions. A similar analysis for
+agrochemicals is included in the SI, Figure S10. Both examples show how investigating the
+patent data on various lists of chemicals could help isolate “stand-out” trends in chemical
+activity and act as (or help support) a potential early warning system for up and coming action.
+
+208
+209
+210
+211
+212
+
+The regional analysis of the patent dataset (see Figures S9&10) included CIDs that are unique
+to speciﬁc regions, such as agrochemicals present only in China, Europe or the US, or those
+unique to only two regions, such as China and Europe but not US. The analysis covering all
+possible regional subsets and can be found in ULPatentTrends15; custom queries can be
+formed from the CID lists. Examples for the agrochemical list are given in the TOC graphic.
+
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+
+Potential and Limitations of Patent Data
+There are several challenges and limitations associated with analysing the chemical stripes
+visualizations and patent dataset. The patent dataset, while comprehensive, may not always
+be current or complete and seems to contain historical depositions that have been
+discontinued (potentially partially explaining some “blips” seen around 2007 and 2016),
+posing signiﬁcant hurdles for accurate data (and trend) analysis. Extracting chemical
+information via image recognition or text mining from patents is challenging, since older
+patent documents are lower quality and are thus quite noisy and error prone37. The dataset
+in PubChem is reliant on the information provided by depositors and is mapped to CIDs during
+deposition based on the data received. Often, chemicals mentioned in the introduction of
+patents are not actually used in the application, leading to potential misinterpretation of their
+relevance, while any chemicals that happen to appear in Markush structures deﬁned for drug
+discovery purposes may be overrepresented. Chemicals can be mistakenly identiﬁed due to
+their appearance in unrelated contexts, such as being part of an inventor's name. Such an
+error, reported for the 1913 patent linked to PFOS (US-1257524-A), based on a ﬁgure in the
+earlier viewpoint, led to a suggestion to use a higher threshold in the cut-oﬀ applied to the
+scoring of name recognition in future applications. The two earliest PFOS patents currently in
+PubChem (as of 29 June 2024) are due to misrecognised names: US-1257524-A was invented
+by Adolf Pfoser, while US-2290705-A was invented by Wilhelm Pfost – the ﬁrst genuine PFOS
+patent is 1953 (see Figure S11). Additionally, recent patents for PFOS may, for example, reﬂect
+new treatment technology, not PFOS production or use. The tabular view of the patent data
+in PubChem allows a quick check of the linked patents, assisting with rapid veriﬁcation (see
+Figure S12); this can also be downloaded for oﬄine use.
+
+https://doi.org/10.26434/chemrxiv-2024-6jkxv-v2 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+
+The timeliness of patent data is a major issue. Patent records from recent years, particularly
+post-2020, are often incomplete, which can skew analysis and trends; it can take 1-2 years for
+the data to ﬁlter through more completely. This is exacerbated by the use of the “priority
+date”, which can add an 18 month delay from ﬁling, but is the preferred date for the majority
+of PubChem users. This gap highlights the need for rapid updates of data sources to ensure
+that recent innovations and ﬁlings are accurately represented. The accuracy of the dataset is
+heavily reliant on the eﬃciency and precision of literature mining and image recognition
+algorithms, which is an area of active research37–40. Adjustments to the extraction workﬂows
+can result in the exclusion of several patents from the dataset or the omission of information
+such as priority dates (which, if absent, cannot be included in the chemical stripes).
+
+246
+247
+248
+249
+
+Future research directions could include exploring diﬀerent patent sources, such as using AI
+applications such as DeepSearch by IBM to collect and curate documents, which may oﬀer
+more reliable and comprehensive data. Reﬁning the data mining tools would also help in
+managing and interpreting the patent dataset more eﬀectively.
+
+250
+251
+252
+253
+254
+255
+256
+257
+
+The chemical stripes package (ChemicalStripes7) and Jupyter notebooks (ULPatentTrends15)
+provided as part of this work are designed to help environmental researchers explore the
+possibilities of using patent data to address their environmental questions. This will help
+facilitate a deeper understanding of regional trends, regulatory impacts, and innovation
+landscapes in the chemical sector, as well as limitations in this data. Users are encouraged to
+report any artefacts, since such feedback is crucial for reﬁning the dataset and approaches.41
+Incorporating more sophisticated classiﬁcation methods in data extraction may help further
+enhance the accuracy and usability of this data in the future.
+
+258
+
+https://doi.org/10.26434/chemrxiv-2024-6jkxv-v2 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+259
+
+Declarations
+
+260
+261
+262
+263
+264
+265
+266
+267
+
+Supporting Information
+
+268
+269
+270
+271
+272
+273
+
+Acknowledgements
+
+274
+275
+276
+277
+278
+279
+
+Funding
+
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+
+Supporting information available: brief text describing the repository, ﬁgures showing
+patent count by region (Figure S1), regional patent counts for agrochemicals, biocides,
+bisphenols, PCBs, PFAS (Figures S2-6), connected and disconnected networks (Figures S7-8),
+centrality results for China, EU and US for PFAS and Agrochemicals (Figures S9-10),
+screenshots of verifying patent information in PubChem (Figures S11-12). Code is available
+online at https://gitlab.com/uniluxembourg/lcsb/eci/chemicalstripes (Chemical Stripes) and
+https://gitlab.com/uniluxembourg/lcsb/eci/ULPatentTrends (ULPatentTrends notebooks).
+We thank Lutz Weber (OntoChem / MolGenie) for discussions related to extraction artefacts,
+Evan Bolton (PubChem, NCBI/NLM/NIH) for earlier discussions as well as the other
+Environmental Cheminformatics and PubChem team members and other colleagues and
+collaborators who contributed to this work indirectly via other collaborative and scientiﬁc
+activities.
+DA, ELS and FdJM acknowledge funding support from the Luxembourg National Research
+Fund (FNR) for project A18/BM/12341006 (DA, ELS, FdJM) and the University of Luxembourg
+Institute for Advanced Studies (IAS) for the Audacity project “LuxTIME” (DA, ELS). The work of
+PAT was supported by the National Center for Biotechnology Information of the National
+Library of Medicine (NLM), National Institutes of Health.
+
+Author Contributions
+Dagny Aurich: Conceptualization, Data curation, Formal analysis, Investigation, Methodology,
+Software (lead), Validation, Visualization, Writing original draft preparation (joint lead),
+Writing review and editing. Emma L. Schymanski: Conceptualization, Data curation, Funding
+acquisition, Methodology, Project administration, Resources, Supervision, Validation,
+Visualization, Writing original draft preparation (joint lead), Writing review and editing. Flavio
+de Jesus Matias: Data curation, Investigation, Methodology, Software (lead), Writing review
+and editing. Paul A. Thiessen: Data curation, Methodology, Software, Writing review and
+editing. Jun Pang: Conceptualization, Methodology, Resources, Software, Supervision, Writing
+review and editing.
+
+290
+291
+
+Conﬂict of Interest Disclosure
+
+292
+293
+294
+295
+
+Associated Content
+
+The authors declare no competing ﬁnancial interest.
+Aurich D, Schymanski E, De Jesus Matias F, Thiessen P, Pang J. Revealing Chemical Trends:
+Insights from Data-Driven Visualisation and Patent Analysis in Exposomics Research. 2024.
+ChemRxiv. https://doi.org/10.26434/chemrxiv-2024-6jkxv
+
+296
+
+https://doi.org/10.26434/chemrxiv-2024-6jkxv-v2 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+
+References
+(1) Kim, S.; Chen, J.; Cheng, T.; Gindulyte, A.; He, J.; He, S.; Li, Q.; Shoemaker, B. A.;
+Thiessen, P. A.; Yu, B.; Zaslavsky, L.; Zhang, J.; Bolton, E. E. PubChem 2023 Update.
+Nucleic Acids Res. 2022, gkac956. https://doi.org/10.1093/nar/gkac956.
+(2) NCBI/NLM/NIH. PubChem Table of Contents Classiﬁcation Browser.
+https://pubchem.ncbi.nlm.nih.gov/classiﬁcation/#hid=72 (accessed 2024-07-08).
+(3) Ruttkies, C.; Schymanski, E. L.; Wolf, S.; Hollender, J.; Neumann, S. MetFrag
+Relaunched: Incorporating Strategies beyond in Silico Fragmentation. J.
+Cheminformatics 2016, 8 (1), 3. https://doi.org/10.1186/s13321-016-0115-9.
+(4) Arp, H. P. H.; Aurich, D.; Schymanski, E. L.; Sims, K.; Hale, S. E. Avoiding the Next Silent
+Spring: Our Chemical Past, Present, and Future. Environ. Sci. Technol. 2023, 57 (16),
+6355–6359. https://doi.org/10.1021/acs.est.3c01735.
+(5) Perera, J. Our Chemical Past, Present And Future. Soundcloud.
+https://soundcloud.com/jamieperera/our-chemical-past-present-and-future (accessed
+2024-08-19).
+(6) Perera, J. Our Chemical Past, Present and Future.
+https://vimeo.com/jpmlmusic/ourchemicalpastpresentandfuture (accessed 2024-0618).
+(7) Aurich, D.; Schymanski, E. L.; Thiessen, P. A. GitLab repository “Environmental
+Cheminformatics / chemicalstripes.” GitLab.
+https://gitlab.com/uniluxembourg/lcsb/eci/chemicalstripes (accessed 2023-06-12).
+(8) NCBI/NLM/NIH. Search and Tools. PubChem - Search and Tools.
+https://pubchem.ncbi.nlm.nih.gov/docs/search-and-tools (accessed 2024-08-19).
+(9) NCBI/NLM/NIH. Patents - PubChem Documentation.
+https://pubchem.ncbi.nlm.nih.gov/docs/patents (accessed 2024-06-19).
+(10) NCBI/NLM/NIH. Consolidated References - PubChem Documentation.
+https://pubchem.ncbi.nlm.nih.gov/docs/literature#section=Consolidated-LiteratureTable (accessed 2024-06-19).
+(11) Hawkins, E. 2018 visualisation update, Climate Lab Book. Climate Lab Book.
+https://www.climate-lab-book.ac.uk/2018/2018-visualisation-update/ (accessed 202210-25).
+(12) Richardson, M. Biodiversity Stripes – A Journey from Green to Grey. Finding Nature.
+https://ﬁndingnature.org.uk/2022/08/10/biodiversity-stripes/ (accessed 2022-12-14).
+(13) Wickham, H. Ggplot2: Elegant Graphics for Data Analysis, 2nd ed. 2016.; Use R!;
+Springer International Publishing : Imprint: Springer: Cham, 2016.
+https://doi.org/10.1007/978-3-319-24277-4.
+(14) Mayﬁeld, J. CDK Depict Web Interface.
+https://www.simolecule.com/cdkdepict/depict.html (accessed 2023-03-09).
+(15) de Jesus Matias, F. Uniluxembourg / LCSB / Environmental Cheminformatics /
+ULPatentTrends · GitLab, 2024.
+https://gitlab.com/uniluxembourg/lcsb/eci/ULPatentTrends (accessed 2024-07-08).
+(16) Mohammed Taha, H.; Aalizadeh, R.; Alygizakis, N.; Antignac, J.-P.; Arp, H. P. H.; Bade,
+R.; Baker, N.; Belova, L.; Bijlsma, L.; Bolton, E. E.; Brack, W.; Celma, A.; Chen, W.-L.;
+Cheng, T.; Chirsir, P.; Čirka, Ľ.; D’Agostino, L. A.; Djoumbou Feunang, Y.; Dulio, V.;
+Fischer, S. et al. The NORMAN Suspect List Exchange (NORMAN-SLE): Facilitating
+European and Worldwide Collaboration on Suspect Screening in High Resolution Mass
+
+https://doi.org/10.26434/chemrxiv-2024-6jkxv-v2 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+
+Spectrometry. Environ. Sci. Eur. 2022, 34 (1), 104. https://doi.org/10.1186/s12302-02200680-6.
+(17) NORMAN Association; NCBI/NLM/NIH. PubChem Classiﬁcation Browser: NORMAN
+Suspect List Exchange Tree (PubChem NORMAN-SLE Tree).
+https://pubchem.ncbi.nlm.nih.gov/classiﬁcation/#hid=101 (accessed 2024-07-08).
+(18) NORMAN Association. NORMAN Suspect List Exchange (NORMAN-SLE) Website.
+https://www.norman-network.com/nds/SLE/ (accessed 2024-07-08).
+(19) US Environmental Protection Agency. CompTox Chemicals Dashboard: Chemical Lists
+Page. https://comptox.epa.gov/dashboard/chemical-lists (accessed 2024-07-08).
+(20) Williams, A. J.; Grulke, C. M.; Edwards, J.; McEachran, A. D.; Mansouri, K.; Baker, N. C.;
+Patlewicz, G.; Shah, I.; Wambaugh, J. F.; Judson, R. S.; Richard, A. M. The CompTox
+Chemistry Dashboard: A Community Data Resource for Environmental Chemistry. J.
+Cheminformatics 2017, 9 (1), 61. https://doi.org/10.1186/s13321-017-0247-6.
+(21) US EPA; NCBI/NLM/NIH. PubChem Classiﬁcation Browser: EPA DSSTox Tree (PubChem
+CompTox Chemicals Dashboard Chemical Lists Tree).
+https://pubchem.ncbi.nlm.nih.gov/classiﬁcation/#hid=105 (accessed 2024-07-08).
+(22) Schymanski, E. L.; Zhang, J.; Thiessen, P. A.; Chirsir, P.; Kondic, T.; Bolton, E. E. Per- and
+Polyﬂuoroalkyl Substances (PFAS) in PubChem: 7 Million and Growing. Environ. Sci.
+Technol. 2023, 57 (44), 16918–16928. https://doi.org/10.1021/acs.est.3c04855.
+(23) NCBI/NLM/NIH; LCSB-ECI. PubChem Classiﬁcation Browser: PFAS and Fluorinated
+Compounds in PubChem Tree.
+https://pubchem.ncbi.nlm.nih.gov/classiﬁcation/#hid=120 (accessed 2024-07-08).
+(24) Rüdel, H. S28 | EUBIOCIDES | Biocides from the NORMAN Priority List. Zenodo, 2018,
+DOI: 10.5281/zenodo.2648820. https://doi.org/10.5281/zenodo.2648820.
+(25) Rostkowski, P.; Fischer, S. S20 | BISPHENOLS | Bisphenols. Zenodo, 2017, DOI:
+10.5281/zenodo.2631745. https://doi.org/10.5281/zenodo.2631745.
+(26) German Environment Agency (UBA). S97 | UBABPAALT | List of Bisphenol A
+Alternatives from UBA. Zenodo, 2022, DOI: 10.5281/zenodo.6405325.
+https://doi.org/10.5281/zenodo.6405325.
+(27) US EPA. CompTox Chemicals Dashboard | PCBCHEMICALS - Polychlorinated biphenyl
+(PCB) collection. https://comptox.epa.gov/dashboard/chemical-lists/PCBCHEMICALS
+(accessed 2024-06-20).
+(28) PARC Collaborators. Partnership for the Assessment of Risks from Chemicals | Parc.
+PARC. https://www.eu-parc.eu/ (accessed 2024-08-19).
+(29) Marx-Stoelting, P.; Rivière, G.; Luijten, M.; Aiello-Holden, K.; Bandow, N.; Baken, K.;
+Cañas, A.; Castano, A.; Denys, S.; Fillol, C.; Herzler, M.; Iavicoli, I.; Karakitsios, S.;
+Klanova, J.; Kolossa-Gehring, M.; Koutsodimou, A.; Vicente, J. L.; Lynch, I.; Namorado,
+S.; Norager, S.; Pittman, A.; Rotter, S.; Sarigiannis, D.; Silva, M. J.; Theunis, J.; Tralau, T.;
+Uhl, M.; Van Klaveren, J.; Wendt-Rasch, L.; Westerholm, E.; Rousselle, C.; Sanders, P. A
+Walk in the PARC: Developing and Implementing 21st Century Chemical Risk
+Assessment in Europe. Arch. Toxicol. 2023, 97 (3), 893–908.
+https://doi.org/10.1007/s00204-022-03435-7.
+(30) Polesello, S.; Valsecchi, S. S102 | PARCPFAS | List of PFAS from PARC WP4. Zenodo
+2023, DOI:10.5281/zenodo.10252414. https://doi.org/10.5281/zenodo.10252414.
+(31) Schymanski, E. S111 | PMTPFAS | Fluorine-Containing Compounds in PMT Suspect
+Lists. Zenodo 2023, NORMAN-SLE-S111.0.1.0.
+https://doi.org/10.5281/zenodo.8417075.
+
+https://doi.org/10.26434/chemrxiv-2024-6jkxv-v2 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+
+(32) United Nations. Updated Indicative List of Substances Covered by the Listing of
+Perﬂuorooctanoic Acid (PFOA), Its Salts and PFOA-Related Compounds; Stockholm
+Convention on Persistent Organic Pollutants; Persistent Organic Pollutants Review
+Committee Seventeenth meeting UNEP/POPS/POPRC.17/INF/14/Rev.1; Geneva,
+Switzerland, 2022; p 57.
+https://chm.pops.int/TheConvention/POPsReviewCommittee/Meetings/POPRC17/Ove
+rview/tabid/8900/Default.aspx (accessed 2023-06-11).
+(33) United Nations. Draft Decision SC-10/[--]: Listing of Perﬂuorohexane Sulfonic Acid
+(PFHxS), Its Salts and PFHxS-Related Compounds; Stockholm Convention on Persistent
+Organic Pollutants; Persistent Organic Pollutants Review Committee Tenth meeting
+UNEP/POPS/COP.10/CRP.10; Geneva, Switzerland, 2021; p 1.
+https://www.pops.int/TheConvention/POPsReviewCommittee/Meetings/POPRC10/Ov
+erview/tabid/3779/mctl/ViewDetails/EventModID/871/EventID/514/xmid/11873/Defa
+ult.aspx (accessed 2023-06-10).
+(34) United Nations. Proposal to List Long-Chain Perﬂuorocarboxylic Acids, Their Salts and
+Related Compounds in Annexes A, B and/or C to the Stockholm Convention on
+Persistent Organic Pollutants; Stockholm Convention on Persistent Organic Pollutants;
+Persistent Organic Pollutants Review Committee Seventeenth meeting
+UNEP/POPS/POPRC.17/7; Geneva, Switzerland, 2021; p 24.
+https://www.pops.int/TheConvention/POPsReviewCommittee/Meetings/POPRC17/Ov
+erview/tabid/8900/Default.aspx (accessed 2023-06-10).
+(35) United Nations. Draft Indicative List of Long-Chain Perﬂuorocarboxylic Acids, Their Salts
+and Related Compounds; Stockholm Convention on Persistent Organic Pollutants;
+Persistent Organic Pollutants Review Committee Eighteenth meeting
+UNEP/POPS/POPRC.18/INF/14; Rome, 2022; p 24. https://www.pops.int/tabid/9165
+(accessed 2023-06-10).
+(36) United Nations. Draft Risk Proﬁle: Long-Chain Perﬂuorocarboxylic Acids, Their Salts and
+Related Compounds; Stockholm Convention on Persistent Organic Pollutants;
+Persistent Organic Pollutants Review Committee Eighteenth meeting
+UNEP/POPS/POPRC.18/6/Add.1*; Rome, 2022; p 56. https://www.pops.int/tabid/9165
+(accessed 2023-06-10).
+(37) Morin, L.; Weber, V.; Meijer, G. I.; Yu, F.; Staar, P. W. J. PatCID: An Open-Access Dataset
+of Chemical Structures in Patent Documents. Nat. Commun. 2024, 15 (1), 6532.
+https://doi.org/10.1038/s41467-024-50779-y.
+(38) Rajan, K.; Zielesny, A.; Steinbeck, C. DECIMER: Towards Deep Learning for Chemical
+Image Recognition. J. Cheminformatics 2020, 12 (1), 65.
+https://doi.org/10.1186/s13321-020-00469-w.
+(39) Rajan, K.; Brinkhaus, H. O.; Sorokina, M.; Zielesny, A.; Steinbeck, C. DECIMERSegmentation: Automated Extraction of Chemical Structure Depictions from Scientiﬁc
+Literature. J. Cheminformatics 2021, 13 (1), 20. https://doi.org/10.1186/s13321-02100496-1.
+(40) Barnabas, S. J.; Böhme, T.; Boyer, S. K.; Irmer, M.; Ruttkies, C.; Wetherbee, I.; Kondić,
+T.; Schymanski, E. L.; Weber, L. Extraction of Chemical Structures from Literature and
+Patent Documents Using Open Access Chemistry Toolkits: A Case Study with PFAS.
+Digit. Discov. 2022, 1 (4), 490–501. https://doi.org/10.1039/D2DD00019A.
+
+https://doi.org/10.26434/chemrxiv-2024-6jkxv-v2 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+435
+436
+437
+438
+
+(41) Kosonocky, C. W.; Wilke, C. O.; Marcotte, E. M.; Ellington, A. D. Mining Patents with
+Large Language Models Elucidates the Chemical Function Landscape. Digit. Discov.
+2024, 3 (6), 1150–1159. https://doi.org/10.1039/D4DD00011K.
+
+https://doi.org/10.26434/chemrxiv-2024-6jkxv-v2 ORCID: https://orcid.org/0000-0001-6868-8145 Content not peer-reviewed by ChemRxiv. License: CC BY 4.0
+
+
