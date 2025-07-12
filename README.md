@@ -24,7 +24,7 @@ pip install -r requirements.txt
 ### PDFBoT
 
 * PDF papers to be cleaned have to be in the folder `pdf_dataset`
-* The Dockerfile I used to create the custom Docker image for the pdf2htmlEX utility can be foound in the folder PDFBoT/pdf2htmlEX-docker
+* The Dockerfile I used to create the custom Docker image for the pdf2htmlEX utility can be foound in the folder PDFBoT/docker
 * There is also the README from the project I used as inspiration
 * Run the Flask App: `python main.py`
 * Extraction script is: `output/extract.py`
